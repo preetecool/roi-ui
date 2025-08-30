@@ -1,0 +1,54 @@
+---
+title: Select
+description: A customizable select component for choosing from a list of options.
+links:
+  doc: https://base-ui.com/react/components/select
+  api: https://base-ui.com/react/components/select#api-reference
+---
+
+<ComponentPreview name="select-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/select.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectIcon,
+  SelectPortal,
+  SelectPositioner,
+  SelectPopup,
+  SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
+  SelectGroup,
+} from '../ui/select'
+
+<Select>
+  <SelectTrigger>
+    <SelectValue />
+    <SelectIcon />
+  </SelectTrigger>
+  <SelectPortal>
+    <SelectPositioner>
+      <SelectPopup>
+        <SelectGroup>
+          <SelectItem>
+            <SelectItemText />
+            <SelectItemIndicator />
+          </SelectItem>
+        </SelectGroup>
+      </SelectPopup>
+    </SelectPositioner>
+  </SelectPortal>
+</Select>`}
+/>

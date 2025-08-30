@@ -1,0 +1,28 @@
+.headingContainer {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 32px;
+    text-align: center;
+}
+
+.headingContainer h1 {
+    font-size: 2.25rem;
+    color: var(--title);
+}
+.headingContainer p {
+    font-size: 1.125rem;
+    color: var(--foreground);
+}
+
+@media only screen and (max-width: 1280px) {
+    .headingContainer {
+        text-align: left;
+        align-items: flex-start;
+        text-wrap: pretty;
+    }
+}

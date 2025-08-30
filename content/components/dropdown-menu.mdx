@@ -1,0 +1,63 @@
+---
+title: Dropdown Menu
+description: A dropdown menu to display actions.
+links:
+  doc: https://base-ui.com/react/components/menu
+  api: https://base-ui.com/react/components/menu#api-reference
+---
+
+<ComponentPreview name="dropdown-menu-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/dropdown-menu.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuPortal,
+  DropdownMenuPositioner,
+  DropdownMenuPopup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuArrow,
+  DropdownMenuSubmenuRoot,
+  DropdownMenuSubmenuTrigger,
+} from '../ui/dropdown-menu'
+
+<DropdownMenu>
+  <DropdownMenuTrigger />
+  <DropdownMenuPortal>
+    <DropdownMenuPositioner>
+      <DropdownMenuPopup>
+        <DropdownMenuArrow />
+        <DropdownMenuItem />
+        <DropdownMenuSeparator />
+        <DropdownMenuSubmenuRoot>
+          <DropdownMenuSubmenuTrigger />
+        </DropdownMenuSubmenuRoot>
+      </DropdownMenuPopup>
+    </DropdownMenuPositioner>
+  </DropdownMenuPortal>
+</DropdownMenu>`}
+/>
+
+
+
+
+## Examples
+
+### With Submenu
+
+<ComponentPreview name="dropdown-menu-submenu" />
+
+### With Framer Motion
+
+<ComponentPreview name="dropdown-menu-framer-motion" />

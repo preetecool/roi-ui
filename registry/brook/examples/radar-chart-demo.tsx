@@ -1,0 +1,36 @@
+"use client";
+
+import RadarChart from "@/registry/brook/ui/charts/radar-chart";
+import ParentSize from "@visx/responsive/lib/components/ParentSize";
+
+const data = [
+  { category: "Performance", value: 85, type: "METRIC" },
+  { category: "Security", value: 92, type: "METRIC" },
+  { category: "Usability", value: 78, type: "METRIC" },
+  { category: "Reliability", value: 88, type: "METRIC" },
+  { category: "Scalability", value: 75, type: "METRIC" },
+  { category: "Maintainability", value: 82, type: "METRIC" },
+];
+
+export default function RadarChartDemo() {
+  return (
+    <div style={{ width: "100%", height: "100%" }}>
+      <h3 style={{ marginBottom: "16px", color: "var(--title)" }}>System Quality Metrics</h3>
+      <ParentSize>
+        {({ width, height }) => (
+          <RadarChart
+            data={data}
+            width={width}
+            height={height - 50}
+            levels={5}
+            maxValue={100}
+            showLabels={true}
+            showGrid={true}
+            fillOpacity={0.3}
+            animated
+          />
+        )}
+      </ParentSize>
+    </div>
+  );
+}

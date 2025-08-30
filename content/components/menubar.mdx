@@ -1,0 +1,53 @@
+---
+title: Menubar
+description: A menubar component that provides a horizontal interface for applications.
+links:
+  doc: https://base-ui.com/react/components/menubar
+  api: https://base-ui.com/react/components/menubar#api-reference
+---
+
+<ComponentPreview name="menubar-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/menubar.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Menubar,
+  MenubarMenu,
+  MenubarMenuTrigger,
+  MenubarMenuPortal,
+  MenubarMenuPositioner,
+  MenubarMenuPopup,
+  MenubarMenuItem,
+  MenubarMenuSeparator,
+  MenubarMenuArrow,
+  MenubarMenuSubmenuRoot,
+  MenubarMenuSubmenuTrigger,
+} from '../ui/menubar'
+
+<Menubar>
+  <MenubarMenu>
+    <MenubarMenuTrigger />
+    <MenubarMenuPortal>
+      <MenubarMenuPositioner>
+        <MenubarMenuPopup>
+          <MenubarMenuArrow />
+          <MenubarMenuItem />
+          <MenubarMenuSeparator />
+          <MenubarMenuSubmenuRoot>
+            <MenubarMenuSubmenuTrigger />
+          </MenubarMenuSubmenuRoot>
+        </MenubarMenuPopup>
+      </MenubarMenuPositioner>
+    </MenubarMenuPortal>
+  </MenubarMenu>
+</Menubar>`}
+/>

@@ -1,0 +1,903 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Roi ui",
+  "homepage": "https://roiui.com",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:item",
+      "title": "Accordion",
+      "description": "A collapsible content component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/accordion/accordion.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/accordion/accordion.tsx"
+        },
+        {
+          "path": "registry/brook/ui/accordion/accordion.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/accordion/accordion.module.css"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:item",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/alert-dialog/alert-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/alert-dialog/alert-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/ui/alert-dialog/alert-dialog.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/alert-dialog/alert-dialog.module.css"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:item",
+      "title": "Alert",
+      "description": "A component for displaying important messages to users.",
+      "files": [
+        {
+          "path": "registry/brook/ui/alert/alert.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/alert/alert.tsx"
+        },
+        {
+          "path": "registry/brook/ui/alert/alert.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/alert/alert.module.css"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:item",
+      "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
+      "files": [
+        {
+          "path": "registry/brook/ui/avatar/avatar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/avatar/avatar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/avatar/avatar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/avatar/avatar.module.css"
+        }
+      ]
+    },
+    {
+      "name": "background",
+      "type": "registry:item",
+      "title": "Background",
+      "description": "A background component with various visual effects.",
+      "files": [
+        {
+          "path": "registry/brook/ui/background/background.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/background/background.tsx"
+        },
+        {
+          "path": "registry/brook/ui/background/background.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/background/background.module.css"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:item",
+      "title": "Badge",
+      "description": "A small count and labeling component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/badge/badge.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/badge/badge.tsx"
+        },
+        {
+          "path": "registry/brook/ui/badge/badge.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/badge/badge.module.css"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:item",
+      "title": "Button",
+      "description": "A button component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/button/button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/button/button.tsx"
+        },
+        {
+          "path": "registry/brook/ui/button/button.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/button/button.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:item",
+      "title": "Card",
+      "description": "A container component for displaying content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/card/card.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/card/card.tsx"
+        },
+        {
+          "path": "registry/brook/ui/card/card.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/card/card.module.css"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:item",
+      "title": "Carousel",
+      "description": "A slideshow component for cycling through content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/carousel/carousel.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/carousel/carousel.tsx"
+        },
+        {
+          "path": "registry/brook/ui/carousel/carousel.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/carousel/carousel.module.css"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:item",
+      "title": "Checkbox",
+      "description": "A control that allows users to select one or more options from a set.",
+      "files": [
+        {
+          "path": "registry/brook/ui/checkbox/checkbox.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox/checkbox.tsx"
+        },
+        {
+          "path": "registry/brook/ui/checkbox/checkbox.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox/checkbox.module.css"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:item",
+      "title": "Checkbox Group",
+      "description": "A set of checkboxes with shared state management for selecting multiple options.",
+      "files": [
+        {
+          "path": "registry/brook/ui/checkbox-group/checkbox-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
+        },
+        {
+          "path": "registry/brook/ui/checkbox-group/checkbox-group.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox-group/checkbox-group.module.css"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:item",
+      "title": "Collapsible",
+      "description": "An expandable/collapsible panel controlled by a button.",
+      "files": [
+        {
+          "path": "registry/brook/ui/collapsible/collapsible.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/collapsible/collapsible.tsx"
+        },
+        {
+          "path": "registry/brook/ui/collapsible/collapsible.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/collapsible/collapsible.module.css"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:item",
+      "title": "Combobox",
+      "description": "A searchable select component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/combobox/combobox.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/combobox/combobox.tsx"
+        },
+        {
+          "path": "registry/brook/ui/combobox/combobox.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/combobox/combobox.module.css"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:item",
+      "title": "Command",
+      "description": "A command palette component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/command/command.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/command/command.tsx"
+        },
+        {
+          "path": "registry/brook/ui/command/command.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/command/command.module.css"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:item",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "title": "Copy Button",
+      "description": "A button component with animated copy-to-clipboard functionality.",
+      "files": [
+        {
+          "path": "registry/brook/ui/copy-button/copy-button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/copy-button/copy-button.tsx"
+        },
+        {
+          "path": "registry/brook/ui/copy-button/copy-button.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/copy-button/copy-button.module.css"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:item",
+      "title": "Dialog",
+      "description": "A modal dialog component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/dialog/dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/dialog/dialog.tsx"
+        },
+        {
+          "path": "registry/brook/ui/dialog/dialog.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/dialog/dialog.module.css"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:item",
+      "title": "Dropdown Menu",
+      "description": "A dropdown menu component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/dropdown-menu/dropdown-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/dropdown-menu/dropdown-menu.tsx"
+        },
+        {
+          "path": "registry/brook/ui/dropdown-menu/dropdown-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/dropdown-menu/dropdown-menu.module.css"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:item",
+      "dependencies": [
+        "motion"
+      ],
+      "title": "Expandable Card",
+      "description": "A card component that can expand to show more content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/expandable-card/expandable-card.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/expandable-card/expandable-card.tsx"
+        },
+        {
+          "path": "registry/brook/ui/expandable-card/expandable-card.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/expandable-card/expandable-card.module.css"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:item",
+      "title": "Field",
+      "description": "A form field component with label and validation.",
+      "files": [
+        {
+          "path": "registry/brook/ui/field/field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/field/field.tsx"
+        },
+        {
+          "path": "registry/brook/ui/field/field.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/field/field.module.css"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:item",
+      "title": "Form",
+      "description": "A form component for handling user input.",
+      "files": [
+        {
+          "path": "registry/brook/ui/form/form.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/form/form.tsx"
+        },
+        {
+          "path": "registry/brook/ui/form/form.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/form/form.module.css"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:item",
+      "title": "Input",
+      "description": "An input component for user text entry.",
+      "files": [
+        {
+          "path": "registry/brook/ui/input/input.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/input/input.tsx"
+        },
+        {
+          "path": "registry/brook/ui/input/input.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/input/input.module.css"
+        }
+      ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:item",
+      "title": "Like Button",
+      "description": "A button component for liking content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/like-button/like-button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/like-button/like-button.tsx"
+        },
+        {
+          "path": "registry/brook/ui/like-button/like-button.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/like-button/like-button.module.css"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:item",
+      "title": "Menubar",
+      "description": "A horizontal menu bar component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/menubar/menubar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/menubar/menubar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/menubar/menubar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/menubar/menubar.module.css"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "registry:item",
+      "title": "Meter",
+      "description": "A graphical display of a numeric value within a range.",
+      "files": [
+        {
+          "path": "registry/brook/ui/meter/meter.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/meter/meter.tsx"
+        },
+        {
+          "path": "registry/brook/ui/meter/meter.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/meter/meter.module.css"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:item",
+      "title": "Navigation Menu",
+      "description": "A navigation menu component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/navigation-menu/navigation-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/navigation-menu/navigation-menu.tsx"
+        },
+        {
+          "path": "registry/brook/ui/navigation-menu/navigation-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/navigation-menu/navigation-menu.module.css"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:item",
+      "title": "Popover",
+      "description": "A floating content container.",
+      "files": [
+        {
+          "path": "registry/brook/ui/popover/popover.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/popover/popover.tsx"
+        },
+        {
+          "path": "registry/brook/ui/popover/popover.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/popover/popover.module.css"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:item",
+      "title": "Radio",
+      "description": "A customizable radio button component for selecting one option from a group.",
+      "files": [
+        {
+          "path": "registry/brook/ui/radio/radio.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/radio/radio.tsx"
+        },
+        {
+          "path": "registry/brook/ui/radio/radio.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/radio/radio.module.css"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:item",
+      "title": "Scroll Area",
+      "description": "A native scroll container with custom scrollbars.",
+      "files": [
+        {
+          "path": "registry/brook/ui/scroll-area/scroll-area.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/scroll-area/scroll-area.tsx"
+        },
+        {
+          "path": "registry/brook/ui/scroll-area/scroll-area.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/scroll-area/scroll-area.module.css"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:item",
+      "title": "Select",
+      "description": "A customizable select component for choosing from a list of options.",
+      "files": [
+        {
+          "path": "registry/brook/ui/select/select.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/select/select.tsx"
+        },
+        {
+          "path": "registry/brook/ui/select/select.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/select/select.module.css"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:item",
+      "title": "Slider",
+      "description": "A slider component for selecting values from a range.",
+      "files": [
+        {
+          "path": "registry/brook/ui/slider/slider.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.tsx"
+        },
+        {
+          "path": "registry/brook/ui/slider/slider.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.module.css"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:item",
+      "title": "Switch",
+      "description": "A toggle switch component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/switch/switch.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/switch/switch.tsx"
+        },
+        {
+          "path": "registry/brook/ui/switch/switch.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/switch/switch.module.css"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:item",
+      "title": "Tabs",
+      "description": "A set of layered sections of content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/tabs/tabs.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/tabs/tabs.tsx"
+        },
+        {
+          "path": "registry/brook/ui/tabs/tabs.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/tabs/tabs.module.css"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:item",
+      "title": "Toast",
+      "description": "A succinct message notification.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toast/toast.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toast/toast.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toast/toast.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toast/toast.module.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:item",
+      "title": "Toggle",
+      "description": "A two-state button that can be turned on or off.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toggle/toggle.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle/toggle.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toggle/toggle.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle/toggle.module.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:item",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off with shared state management.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toggle-group/toggle-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle-group/toggle-group.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toggle-group/toggle-group.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle-group/toggle-group.module.css"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:item",
+      "title": "Tooltip",
+      "description": "A popup that displays information on hover.",
+      "files": [
+        {
+          "path": "registry/brook/ui/tooltip/tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/tooltip/tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/tooltip/tooltip.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/tooltip/tooltip.module.css"
+        }
+      ]
+    },
+    {
+      "name": "line-chart",
+      "type": "registry:item",
+      "dependencies": [
+        "@visx/group",
+        "@visx/scale",
+        "@visx/axis",
+        "@visx/shape",
+        "@visx/gradient",
+        "@visx/grid",
+        "@visx/tooltip",
+        "@visx/event",
+        "@visx/glyph",
+        "@visx/curve",
+        "d3-array",
+        "@visx/responsive"
+      ],
+      "title": "Line Chart",
+      "description": "Interactive line charts with optional data points and smooth animations.",
+      "files": [
+        {
+          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/chart-tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/line-chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/line-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "area-chart",
+      "type": "registry:item",
+      "dependencies": [
+        "@visx/group",
+        "@visx/scale",
+        "@visx/axis",
+        "@visx/shape",
+        "@visx/gradient",
+        "@visx/grid",
+        "@visx/tooltip",
+        "@visx/event",
+        "@visx/glyph",
+        "@visx/curve",
+        "d3-array",
+        "@visx/responsive"
+      ],
+      "title": "Area Chart",
+      "description": "Area charts that fill the space below the line, perfect for showing volume and trends.",
+      "files": [
+        {
+          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/chart-tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/area-chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/area-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bar-chart",
+      "type": "registry:item",
+      "dependencies": [
+        "@visx/group",
+        "@visx/scale",
+        "@visx/axis",
+        "@visx/shape",
+        "@visx/gradient",
+        "@visx/grid",
+        "@visx/tooltip",
+        "@visx/event",
+        "d3-array",
+        "@visx/responsive"
+      ],
+      "title": "Bar Chart",
+      "description": "Animated vertical bar charts with hover highlighting and customizable styling.",
+      "files": [
+        {
+          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/chart-tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/bar-chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/bar-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radial-bar-chart",
+      "type": "registry:item",
+      "dependencies": [
+        "@visx/group",
+        "@visx/shape",
+        "@visx/scale",
+        "@visx/text",
+        "@visx/tooltip",
+        "@visx/event",
+        "@visx/gradient",
+        "@visx/responsive"
+      ],
+      "title": "Radial Bar Chart",
+      "description": "Circular progress-style charts for displaying progress and comparative metrics.",
+      "files": [
+        {
+          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/chart-tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/radial-bar-chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/radial-bar-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:item",
+      "title": "Progress",
+      "description": "Displays the status of a task that takes a long time.",
+      "files": [
+        {
+          "path": "registry/brook/ui/progress/progress.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/progress/progress.tsx"
+        },
+        {
+          "path": "registry/brook/ui/progress/progress.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/progress/progress.module.css"
+        }
+      ]
+    },
+    {
+      "name": "radar-chart",
+      "type": "registry:item",
+      "dependencies": [
+        "@visx/group",
+        "@visx/scale",
+        "@visx/point",
+        "@visx/shape",
+        "@visx/tooltip",
+        "@visx/event",
+        "@visx/gradient",
+        "@visx/responsive"
+      ],
+      "title": "Radar Chart",
+      "description": "Multi-dimensional radar charts for comparing multiple variables across categories.",
+      "files": [
+        {
+          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/chart-tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/radar-chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/radar-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pie-chart",
+      "type": "registry:item",
+      "dependencies": [
+        "@visx/group",
+        "@visx/shape",
+        "@visx/scale",
+        "@visx/tooltip",
+        "@visx/event",
+        "@visx/gradient",
+        "@visx/responsive"
+      ],
+      "title": "Pie Chart",
+      "description": "Circular charts perfect for displaying proportional data and percentages.",
+      "files": [
+        {
+          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/chart-tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/pie-chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/pie-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:item",
+      "title": "Number Field",
+      "description": "A numeric input element with increment/decrement buttons and a scrub area.",
+      "files": [
+        {
+          "path": "registry/brook/ui/number-field/number-field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/number-field/number-field.tsx"
+        },
+        {
+          "path": "registry/brook/ui/number-field/number-field.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/number-field/number-field.module.css"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:item",
+      "title": "Slider",
+      "description": "A range input component for selecting values within a given range.",
+      "files": [
+        {
+          "path": "registry/brook/ui/slider/slider.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.tsx"
+        },
+        {
+          "path": "registry/brook/ui/slider/slider.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.module.css"
+        }
+      ]
+    }
+  ]
+}

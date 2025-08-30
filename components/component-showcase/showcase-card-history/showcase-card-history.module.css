@@ -1,0 +1,25 @@
+.transactionItem {
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 1.25rem 0.25rem 0.5rem 0.25rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.from {
+    font-weight: 400;
+    color: var(--title);
+}
+
+.date,
+.amount {
+    font-weight: 300;
+    color: var(--muted-foreground);
+}

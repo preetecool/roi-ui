@@ -1,0 +1,44 @@
+.container {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 4px 4px 10px;
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+}
+
+.title {
+    font-size: 0.75rem;
+    font-family: monospace;
+    font-weight: 500;
+    color: var(--muted-foreground);
+}
+
+.codeContent {
+    position: relative;
+}
+
+.codeContainer {
+    overflow: auto;
+    padding: 1rem 0;
+}
+
+.codeContainerStandalone {
+    max-height: 24rem;
+}
+
+.codeContainerEmbedded {
+    height: 450px;
+}
+
+.noSourceText {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}

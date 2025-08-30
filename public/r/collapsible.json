@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:item",
+  "title": "Collapsible",
+  "description": "An expandable/collapsible panel controlled by a button.",
+  "files": [
+    {
+      "path": "registry/brook/ui/collapsible/collapsible.tsx",
+      "content": "\"use client\";\n\nimport { Collapsible } from \"@base-ui-components/react/collapsible\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./collapsible.module.css\";\n\nconst CollapsibleRoot = ({\n  className,\n  ...props\n}: React.ComponentProps<typeof Collapsible.Root>) => (\n  <Collapsible.Root className={cn(styles.root, className)} {...props} />\n);\n\nconst CollapsibleTrigger = ({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof Collapsible.Trigger>) => (\n  <Collapsible.Trigger className={cn(styles.trigger, className)} {...props}>\n    {children}\n    <svg \n      className={styles.chevron}\n      width=\"16\" \n      height=\"16\" \n      viewBox=\"0 0 24 24\" \n      fill=\"none\"\n    >\n      <path\n        d=\"m7 15 5 5 5-5\"\n        stroke=\"currentColor\"\n        strokeWidth=\"2\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      />\n      <path\n        d=\"m7 9 5-5 5 5\"\n        stroke=\"currentColor\"\n        strokeWidth=\"2\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      />\n    </svg>\n  </Collapsible.Trigger>\n);\n\nconst CollapsiblePanel = ({\n  className,\n  ...props\n}: React.ComponentProps<typeof Collapsible.Panel>) => (\n  <Collapsible.Panel className={cn(styles.panel, className)} {...props} />\n);\n\nexport {\n  CollapsibleRoot as Collapsible,\n  CollapsibleTrigger,\n  CollapsiblePanel,\n};",
+      "type": "registry:file",
+      "target": "~/components/ui/collapsible/collapsible.tsx"
+    },
+    {
+      "path": "registry/brook/ui/collapsible/collapsible.module.css",
+      "content": ".root {\n  display: flex;\n  width: 100%;\n  max-width: 14rem;\n  min-height: 9rem;\n  flex-direction: column;\n  justify-content: center;\n  color: var(--foreground);\n}\n\n.trigger {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin: 0;\n  border: 0;\n  outline: 0;\n  padding: 0.25rem 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--muted);\n  color: var(--foreground);\n  font-family: inherit;\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 150ms ease-out;\n}\n\n.trigger:hover {\n  background-color: var(--accent);\n}\n\n.trigger:active {\n  background-color: var(--accent);\n}\n\n.trigger:focus-visible {\n  outline: 2px solid var(--ring);\n}\n\n.trigger[data-disabled] {\n  cursor: not-allowed;\n  opacity: 0.5;\n}\n\n.trigger[data-disabled]:hover {\n  background-color: var(--muted);\n}\n\n.chevron {\n  width: 0.75rem;\n  height: 0.75rem;\n  flex-shrink: 0;\n  transition: transform 150ms ease-out;\n  color: var(--muted-foreground);\n}\n\n.trigger[data-panel-open] .chevron {\n  transform: rotate(90deg);\n}\n\n.panel {\n  display: flex;\n  height: var(--collapsible-panel-height);\n  flex-direction: column;\n  justify-content: end;\n  overflow: hidden;\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n  transition: all 150ms ease-out;\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.panel[data-starting-style],\n.panel[data-ending-style] {\n  height: 0;\n}\n\n.panel[data-closed] {\n  height: 0;\n  border: none;\n}\n\n.panel[data-panel-open] {\n  animation: slideDown 150ms ease-out;\n}\n\n.panel[data-closed] {\n  animation: slideUp 150ms ease-out;\n}\n\n@keyframes slideDown {\n  from {\n    height: 0;\n  }\n  to {\n    height: var(--collapsible-panel-height);\n  }\n}\n\n@keyframes slideUp {\n  from {\n    height: var(--collapsible-panel-height);\n  }\n  to {\n    height: 0;\n  }\n}",
+      "type": "registry:file",
+      "target": "~/components/ui/collapsible/collapsible.module.css"
+    }
+  ]
+}

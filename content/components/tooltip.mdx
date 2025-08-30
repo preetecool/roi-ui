@@ -1,0 +1,45 @@
+---
+title: Tooltip
+description: A component to display information on hover.
+links:
+  doc: https://base-ui.com/react/components/tooltip
+  api: https://base-ui.com/react/components/tooltip#api-reference
+---
+
+
+<ComponentPreview name="tooltip-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/tooltip.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipPortal,
+  TooltipPositioner,
+  TooltipPopup,
+  TooltipArrow,
+} from '../ui/tooltip'
+
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger />
+    <TooltipPortal>
+      <TooltipPositioner>
+        <TooltipPopup>
+          <TooltipArrow />
+        </TooltipPopup>
+      </TooltipPositioner>
+    </TooltipPortal>
+  </Tooltip>
+</TooltipProvider>`}
+/>

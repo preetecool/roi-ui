@@ -1,0 +1,183 @@
+.hamburgerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--background);
+    color: var(--foreground);
+    cursor: pointer;
+    z-index: 50;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: var(--muted);
+    border-right: 1px solid var(--border);
+    z-index: 50;
+    transition: left 300ms ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarOpen {
+    left: 0;
+}
+
+.sidebarClosed {
+    left: -100%;
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.logoLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebarTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: var(--radius);
+    background-color: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+}
+
+.sidebarContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.mainNavSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.navLinkActive {
+    background-color: var(--accent);
+    color: var(--foreground);
+}
+
+.navLinkInactive {
+    background-color: transparent;
+    color: var(--foreground);
+}
+
+.treeNav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.groupContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.groupTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.groupChildren {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.pageLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.pageLinkActive {
+    background-color: var(--accent);
+    color: var(--foreground);
+    font-weight: 500;
+}
+
+.pageLinkInactive {
+    background-color: transparent;
+    color: var(--muted-foreground);
+    font-weight: 400;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .mobileOnly {
+        display: none;
+    }
+}

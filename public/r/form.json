@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "type": "registry:item",
+  "title": "Form",
+  "description": "A form component for handling user input.",
+  "files": [
+    {
+      "path": "registry/brook/ui/form/form.tsx",
+      "content": "\"use client\";\n\nimport { Form } from \"@base-ui-components/react/form\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./form.module.css\";\nimport { Field, FieldControl, FieldLabel, FieldDescription, FieldError } from \"../field/field\";\n\nconst FormRoot = ({ className, ...props }: React.ComponentProps<typeof Form>) => (\n  <Form className={cn(styles.root, className)} {...props} />\n);\n\nconst FormGroup = ({ className, ...props }: React.ComponentProps<\"div\">) => (\n  <div className={cn(styles.formGroup, className)} {...props} />\n);\n\nconst FormRow = ({ className, ...props }: React.ComponentProps<\"div\">) => (\n  <div className={cn(styles.formRow, className)} {...props} />\n);\n\nconst FormActions = ({ className, ...props }: React.ComponentProps<\"div\">) => (\n  <div className={cn(styles.formActions, className)} {...props} />\n);\n\nexport {\n  FormRoot as Form,\n  Field as FormField,\n  FieldControl as FormControl,\n  FieldLabel as FormLabel,\n  FieldDescription as FormDescription,\n  FieldError as FormError,\n  FormGroup,\n  FormRow,\n  FormActions,\n};\n",
+      "type": "registry:file",
+      "target": "~/components/ui/form/form.tsx"
+    },
+    {
+      "path": "registry/brook/ui/form/form.module.css",
+      "content": ".root {\n    width: 100%;\n}\n\n.root > * + * {\n    margin-top: 1rem;\n}\n\n.formGroup {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n}\n\n.formRow {\n    display: flex;\n    gap: 1rem;\n    align-items: center;\n}\n\n@media (max-width: 640px) {\n    .formRow {\n        flex-direction: column;\n        align-items: stretch;\n    }\n}\n\n.formActions {\n    display: flex;\n    gap: 0.75rem;\n    justify-content: flex-end;\n    margin-top: 1.5rem;\n}\n\n@media (max-width: 640px) {\n    .formActions {\n        flex-direction: column;\n        justify-content: stretch;\n    }\n}\n",
+      "type": "registry:file",
+      "target": "~/components/ui/form/form.module.css"
+    }
+  ]
+}

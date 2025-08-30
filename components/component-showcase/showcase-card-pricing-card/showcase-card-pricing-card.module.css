@@ -1,0 +1,45 @@
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.logoContainer {
+    background-color: var(--muted);
+    padding: 0.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+
+.featureContainer {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--muted-foreground);
+    justify-content: left;
+    align-items: center;
+}
+
+.checkIcon {
+    /* border: 1px solid var(--muted-foreground); */
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--muted);
+    color: var(--tranparent);
+}
+
+.featureText {
+    font-size: 16px;
+}
+
+.button {
+    width: 100%;
+}

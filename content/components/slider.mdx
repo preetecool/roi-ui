@@ -1,0 +1,40 @@
+---
+title: Slider
+description: A slider component for selecting values from a range.
+links:
+  doc: https://base-ui.com/react/components/slider
+  api: https://base-ui.com/react/components/slider#api-reference
+---
+
+<ComponentPreview name="slider-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/slider.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  SliderRoot,
+  SliderControl,
+  SliderTrack,
+  SliderIndicator,
+  SliderThumb,
+  SliderValue,
+} from '../ui/slider'
+
+<SliderRoot>
+  <SliderValue />
+  <SliderControl>
+    <SliderTrack>
+      <SliderIndicator />
+      <SliderThumb />
+    </SliderTrack>
+  </SliderControl>
+</SliderRoot>`}
+/>

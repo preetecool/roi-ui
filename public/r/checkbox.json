@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:item",
+  "title": "Checkbox",
+  "description": "A control that allows users to select one or more options from a set.",
+  "files": [
+    {
+      "path": "registry/brook/ui/checkbox/checkbox.tsx",
+      "content": "\"use client\";\n\nimport { Checkbox } from \"@base-ui-components/react/checkbox\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox.module.css\";\n\nconst CheckboxRoot = ({ className, ...props }: React.ComponentProps<typeof Checkbox.Root>) => (\n  <Checkbox.Root className={cn(styles.root, className)} {...props} />\n);\n\nconst CheckboxIndicator = ({ className, ...props }: React.ComponentProps<typeof Checkbox.Indicator>) => (\n  <Checkbox.Indicator className={cn(styles.indicator, className)} {...props} />\n);\n\nexport { CheckboxRoot as Checkbox, CheckboxIndicator };",
+      "type": "registry:file",
+      "target": "~/components/ui/checkbox/checkbox.tsx"
+    },
+    {
+      "path": "registry/brook/ui/checkbox/checkbox.module.css",
+      "content": ".root {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 1rem;\n    height: 1rem;\n    border-radius: 0.25rem;\n    border: 1px solid var(--border);\n    background-color: var(--background);\n    cursor: pointer;\n    transition: all 150ms ease-out;\n    flex-shrink: 0;\n}\n\n.root:hover {\n    border-color: var(--ring);\n}\n\n.root[data-focused] {\n    outline: none;\n    border-color: var(--ring);\n    box-shadow: 0 0 0 2px var(--ring) / 0.2;\n}\n\n.root[data-checked] {\n    background-color: var(--primary);\n    border-color: var(--primary);\n}\n\n.root[data-checked]:hover {\n    background-color: var(--primary);\n    border-color: var(--primary);\n}\n\n.root[data-disabled] {\n    pointer-events: none;\n    opacity: 0.5;\n}\n\n.indicator {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 100%;\n    height: 100%;\n    color: var(--primary-foreground);\n    transform: scale(0);\n    transition: transform 150ms ease-out;\n}\n\n.root[data-checked] .indicator {\n    transform: scale(1);\n}\n",
+      "type": "registry:file",
+      "target": "~/components/ui/checkbox/checkbox.module.css"
+    }
+  ]
+}

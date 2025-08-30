@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utils",
+  "type": "registry:lib",
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "content": "export function cn<TState = Record<string, unknown>>(\n  ...inputs: (string | undefined | null | false | (() => string) | ((state: TState) => string))[]\n) {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+---
+title: Preview Card
+description: A popup that appears when a link is hovered, showing a preview for sighted users.
+links:
+  doc: "https://base-ui.com/react/components/preview-card"
+  api: "https://base-ui.com/react/components/preview-card#api-reference"
+---
+
+<ComponentPreview name="preview-card-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/preview-card.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  PreviewCard,
+  PreviewCardTrigger,
+  PreviewCardPortal,
+  PreviewCardBackdrop,
+  PreviewCardPositioner,
+  PreviewCardPopup,
+  PreviewCardArrow,
+} from '../ui/preview-card'
+
+<PreviewCard>
+  <PreviewCardTrigger href="...">Link</PreviewCardTrigger>
+  <PreviewCardPortal>
+    <PreviewCardPositioner>
+      <PreviewCardPopup>
+        <PreviewCardArrow />
+      </PreviewCardPopup>
+    </PreviewCardPositioner>
+  </PreviewCardPortal>
+</PreviewCard>`}
+/>

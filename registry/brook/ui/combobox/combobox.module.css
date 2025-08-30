@@ -1,0 +1,88 @@
+.root {
+    position: relative;
+    border: none;
+    width: 100%;
+}
+
+.popover {
+    /*width: 200px;*/
+    background-color: var(--card);
+}
+
+.trigger {
+    width: 100%;
+    justify-content: space-between !important;
+    height: auto;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.chevron {
+    margin-left: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+    flex-shrink: 0;
+    opacity: 0.5;
+}
+
+.content {
+    padding: 0;
+    width: 100%;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.input {
+    height: 2.25rem;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: background-color 150ms ease;
+}
+
+.item:hover {
+    background-color: var(--accent);
+
+    color: var(--foreground);
+}
+
+.checkIcon {
+    height: 1rem;
+    width: 1rem;
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: opacity 150ms ease;
+}
+
+.checkIcon.visible {
+    opacity: 1;
+}
+
+.checkIcon.hidden {
+    opacity: 0;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.trigger:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .content {
+        max-width: calc(100vw - 2rem);
+    }
+}

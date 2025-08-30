@@ -1,0 +1,71 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow: hidden;
+  user-select: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--muted);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: inherit;
+}
+
+/* Size variants */
+.root[data-size="sm"] {
+  width: 2rem;
+  height: 2rem;
+}
+
+.root[data-size="sm"] .fallback {
+  font-size: 0.75rem;
+}
+
+.root[data-size="lg"] {
+  width: 3rem;
+  height: 3rem;
+}
+
+.root[data-size="lg"] .fallback {
+  font-size: 1rem;
+}
+
+.root[data-size="xl"] {
+  width: 4rem;
+  height: 4rem;
+}
+
+.root[data-size="xl"] .fallback {
+  font-size: 1.25rem;
+}
+
+/* Shape variants */
+.root[data-shape="circle"] {
+  border-radius: 50%;
+}
+
+.root[data-shape="square"] {
+  border-radius: 0;
+}

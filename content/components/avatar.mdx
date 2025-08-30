@@ -1,0 +1,38 @@
+---
+title: Avatar
+description: An avatar component for displaying user profile pictures, initials, or fallback content.
+links:
+  doc: https://base-ui.com/react/components/avatar
+  api: https://base-ui.com/react/components/avatar#api-reference
+---
+
+<ComponentPreview name="avatar-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/avatar.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from '../ui/avatar'
+
+<Avatar>
+  <AvatarImage />
+  <AvatarFallback />
+</Avatar>`}
+/>
+
+## Examples
+
+### Framer Motion
+
+<ComponentPreview name="avatar-framer-motion" replayButton/>

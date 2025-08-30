@@ -1,0 +1,101 @@
+---
+title: Combobox
+description: A searchable dropdown component that combines a popover with a command menu for filtering and selection.
+---
+
+<ComponentPreview name="combobox-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/combobox.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '../ui/command'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '../ui/popover'
+import { Button } from '../ui/button'
+
+<Popover>
+  <PopoverTrigger render={<Button />}>
+
+  </PopoverTrigger>
+  <PopoverContent>
+    <Command>
+      <CommandInput  />
+      <CommandList>
+        <CommandEmpty></CommandEmpty>
+        <CommandGroup>
+          <CommandItem></CommandItem>
+          <CommandItem></CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  </PopoverContent>
+</Popover>`}
+/>
+
+
+
+
+
+## Props
+
+<PropTable data={[
+  {
+    prop: "options",
+    type: "Array<{value: string, label: string}>",
+    description: "Array of options with value and label properties"
+  },
+  {
+    prop: "value",
+    type: "string",
+    description: "Currently selected value (controlled)"
+  },
+  {
+    prop: "onValueChange",
+    type: "(value: string) => void",
+    description: "Callback when selection changes"
+  },
+  {
+    prop: "placeholder",
+    type: "string",
+    description: "Placeholder text when no option is selected"
+  },
+  {
+    prop: "searchPlaceholder",
+    type: "string",
+    description: "Placeholder text for the search input"
+  },
+  {
+    prop: "emptyText",
+    type: "string",
+    description: "Text to display when no options match the search"
+  },
+  {
+    prop: "disabled",
+    type: "boolean",
+    default: "false",
+    description: "Whether the combobox is disabled"
+  },
+  {
+    prop: "className",
+    type: "string",
+    description: "Additional CSS classes to apply to the combobox"
+  }
+]} />

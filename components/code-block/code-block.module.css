@@ -1,0 +1,40 @@
+.container {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 4px 4px 10px;
+    background-color: var(--card);
+    border-bottom: 1px solid var(--border);
+}
+
+.filename {
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: monospace;
+    color: var(--muted-foreground);
+}
+
+.copyButtonWrapper {
+    position: relative;
+}
+
+.content {
+    max-height: 400px;
+    box-sizing: border-box;
+    overflow: auto;
+
+    position: relative;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}

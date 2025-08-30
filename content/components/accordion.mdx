@@ -1,0 +1,44 @@
+---
+title: Accordion
+description: A component that expands or collapses vertically stacked content.
+links:
+  doc: https://base-ui.com/react/components/accordion
+  api: https://base-ui.com/react/components/accordion#api-reference
+---
+
+<ComponentPreview name="accordion-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/accordion.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionTrigger,
+  AccordionPanel,
+} from '../ui/accordion'
+
+<Accordion>
+  <AccordionItem>
+    <AccordionHeader>
+      <AccordionTrigger />
+    </AccordionHeader>
+    <AccordionPanel />
+  </AccordionItem>
+</Accordion>`}
+/>
+
+## Examples
+
+### With Framer Motion
+
+<ComponentPreview name="accordion-framer-motion" />

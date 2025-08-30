@@ -1,0 +1,74 @@
+---
+title: Expandable Card
+description: A linear inspired drawer modal with expansion animation
+---
+
+<ComponentPreview name="expandable-card-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/expandable-card.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import ExpandableCard from '../ui/expandable-card'
+
+<ExpandableCard
+  items={[
+    {
+      id: '1',
+      src: '/image.jpg',
+      alt: 'Image alt text',
+      cardHeading: 'Card Title',
+      content: <div>Card content</div>
+    }
+  ]}
+/>`}
+/>
+
+## Props
+
+### ExpandableCard
+
+<PropTable data={[
+  {
+    prop: "items",
+    type: "ExpandableCardItem[]",
+    description: "Array of items to display as expandable cards"
+  }
+]} />
+
+### ExpandableCardItem
+
+<PropTable data={[
+  {
+    prop: "id",
+    type: "string | number",
+    description: "Unique identifier for the card item"
+  },
+  {
+    prop: "src",
+    type: "string",
+    description: "Image source URL for the card"
+  },
+  {
+    prop: "alt",
+    type: "string",
+    description: "Alternative text for the image"
+  },
+  {
+    prop: "cardHeading",
+    type: "string",
+    description: "The heading text displayed on the card"
+  },
+  {
+    prop: "content",
+    type: "React.ReactNode",
+    description: "Optional content to display when the card is expanded in modal view"
+  }
+]} />

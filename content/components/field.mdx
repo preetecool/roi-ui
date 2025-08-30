@@ -1,0 +1,37 @@
+---
+title: Field
+description: A complete form field component with label, description, and error handling.
+links:
+  doc: "https://base-ui.com/react/components/field"
+  api: "https://base-ui.com/react/components/field#api-reference"
+---
+
+
+<ComponentPreview name="field-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/field.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Field,
+  FieldControl,
+  FieldLabel,
+  FieldDescription,
+  FieldError,
+} from '../ui/field'
+
+<Field>
+  <FieldLabel />
+  <FieldDescription />
+  <FieldControl />
+  <FieldError />
+</Field>`}
+/>

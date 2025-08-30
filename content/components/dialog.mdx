@@ -1,0 +1,54 @@
+---
+title: Dialog
+description: A modal dialog component for displaying content in an overlay.
+links:
+  doc: https://base-ui.com/react/components/dialog
+  api: https://base-ui.com/react/components/dialog#api-reference
+---
+
+<ComponentPreview name="dialog-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/dialog.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  DialogRoot,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from '../ui/dialog'
+
+<DialogRoot>
+  <DialogTrigger />
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle />
+      <DialogDescription />
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose />
+    </DialogFooter>
+  </DialogContent>
+</DialogRoot>`}
+/>
+
+
+
+
+## Examples
+
+### With Framer Motion
+
+<ComponentPreview name="dialog-framer-motion" />

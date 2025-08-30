@@ -1,0 +1,45 @@
+---
+title: Toast
+description: A toast notification component.
+links:
+  doc: https://base-ui.com/react/components/toast
+  api: https://base-ui.com/react/components/toast#api-reference
+---
+
+
+
+<ComponentPreview name="toast-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/toast.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  ToastProvider,
+  ToastPortal,
+  ToastViewport,
+  Toast,
+  ToastTitle,
+  ToastDescription,
+  ToastClose,
+} from '../ui/toast'
+
+<ToastProvider>
+  <ToastPortal>
+    <ToastViewport>
+      <Toast>
+        <ToastTitle />
+        <ToastDescription />
+        <ToastClose />
+      </Toast>
+    </ToastViewport>
+  </ToastPortal>
+</ToastProvider>`}
+/>

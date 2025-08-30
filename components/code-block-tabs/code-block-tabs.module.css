@@ -1,0 +1,23 @@
+.container {
+    border-radius: var(--radius);
+    background-color: var(--card);
+    overflow: hidden;
+}
+
+.tabsList {
+    margin: 0;
+    border-radius: var(--radius);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+
+    border-bottom: 1px solid var(--border);
+    background-color: var(--card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tabsGroup {
+    display: flex;
+}

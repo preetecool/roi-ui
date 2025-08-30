@@ -1,0 +1,137 @@
+.containerWrap {
+    flex: 1;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1440px;
+    overflow: hidden;
+}
+
+.showcase {
+    display: grid;
+    gap: 1rem;
+    padding: 0 2rem;
+    min-width: 80rem;
+    grid-template-columns: 1.5fr 0.5fr 1.5fr 1fr 1fr 1fr;
+
+    grid-template-areas:
+        "traffic traffic transactions chat chat chat"
+        "traffic traffic transactions radial radial radial"
+        "traffic traffic transactions radial radial radial"
+        "settings pricing pricing radial radial radial"
+        "task areachart areachart motion motion motion";
+}
+
+.traffic {
+    grid-area: traffic;
+}
+
+.transactions {
+    grid-area: transactions;
+}
+
+.chat {
+    grid-area: chat;
+}
+
+.radial {
+    grid-area: radial;
+}
+
+.settings {
+    grid-area: settings;
+}
+
+.pricing {
+    grid-area: pricing;
+}
+
+.areachart {
+    grid-area: areachart;
+}
+
+.task {
+    grid-area: task;
+}
+
+.motion {
+    grid-area: motion;
+}
+
+@media only screen and (max-width: 1280px) {
+    .showcase {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "traffic chat chat"
+            "traffic areachart task"
+            "pricing radial radial"
+            "settings radial radial"
+            "transactions motion motion";
+        min-width: unset;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .showcase {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "traffic traffic"
+            "task areachart"
+            "pricing pricing"
+            "chat chat"
+            "transactions transactions"
+            "settings settings"
+            "radial radial"
+            "motion motion";
+
+        min-width: unset;
+    }
+    .task {
+        justify-self: end;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .showcase {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "chat chat"
+            "traffic traffic"
+            "task areachart"
+            "settings settings"
+            "pricing pricing"
+            "transactions transactions"
+            "radial radial"
+            "motion motion";
+
+        min-width: unset;
+        padding: 1rem;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .showcase {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "chat"
+            "traffic"
+            "pricing"
+            "areachart"
+            "settings"
+            "transactions"
+            "radial"
+            "task"
+            "motion";
+
+        min-width: unset;
+    }
+    .showcase {
+        padding: 1rem;
+    }
+    .task {
+        justify-self: flex-start;
+    }
+}

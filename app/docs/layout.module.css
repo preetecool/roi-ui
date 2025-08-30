@@ -1,0 +1,60 @@
+.docsGrid {
+  width: 100%;
+  display: grid;
+  flex: 1;
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-areas: "main";
+  gap: 0;
+}
+
+@media (min-width: 1024px) {
+  .docsGrid {
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: "sidebar main";
+  }
+}
+
+@media (min-width: 1280px) {
+  .docsGrid {
+    grid-template-columns: 250px 1fr 240px;
+    grid-template-areas: "sidebar main toc";
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    display: block;
+  }
+}
+
+.main {
+  grid-area: main;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.toc {
+  grid-area: toc;
+  padding: 1rem;
+  position: fixed;
+  top: calc(var(--header-height, 0px) + 2rem);
+  right: 1rem;
+  width: 240px;
+  height: fit-content;
+  max-height: calc(100vh - var(--header-height, 0px) - 2rem);
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+}
+
+@media (min-width: 1280px) {
+  .toc {
+    display: block;
+  }
+}

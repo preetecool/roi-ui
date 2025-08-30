@@ -1,0 +1,37 @@
+---
+title: Meter
+description: A graphical display of a numeric value within a range.
+links:
+  doc: https://base-ui.com/react/components/meter
+  api: https://base-ui.com/react/components/meter#api-reference
+---
+
+<ComponentPreview name="meter-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/meter.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Meter,
+  MeterLabel,
+  MeterTrack,
+  MeterIndicator,
+  MeterValue,
+} from '../ui/meter'
+
+<Meter value={24} max={100}>
+  <MeterLabel>Storage Used</MeterLabel>
+  <MeterValue />
+  <MeterTrack>
+    <MeterIndicator />
+  </MeterTrack>
+</Meter>`}
+/>

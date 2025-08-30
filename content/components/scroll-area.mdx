@@ -1,0 +1,44 @@
+---
+title: Scroll Area
+description: A native scroll container with custom scrollbars.
+links:
+  doc: https://base-ui.com/react/components/scroll-area
+  api: https://base-ui.com/react/components/scroll-area#api-reference
+---
+
+<ComponentPreview name="scroll-area-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/scroll-area.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  ScrollArea,
+  ScrollAreaViewport,
+  ScrollAreaContent,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaCorner,
+} from '../ui/scroll-area'
+
+<ScrollArea>
+  <ScrollAreaViewport>
+    <ScrollAreaContent>
+    </ScrollAreaContent>
+  </ScrollAreaViewport>
+  <ScrollAreaScrollbar orientation="vertical">
+    <ScrollAreaThumb />
+  </ScrollAreaScrollbar>
+  <ScrollAreaScrollbar orientation="horizontal">
+    <ScrollAreaThumb />
+  </ScrollAreaScrollbar>
+  <ScrollAreaCorner />
+</ScrollArea>`}
+/>

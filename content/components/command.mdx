@@ -1,0 +1,45 @@
+---
+title: Command
+description: A command menu component for command interfaces. Built with cmdk.
+links:
+  doc: https://github.com/pacocoursey/cmdk
+  api: https://www.npmjs.com/package/cmdk
+---
+
+<ComponentPreview name="command-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/command.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandSeparator,
+  CommandLoading,
+} from '../ui/command'
+
+<Command>
+  <CommandInput />
+  <CommandList>
+    <CommandEmpty />
+    <CommandGroup>
+      <CommandItem />
+      <CommandSeparator />
+    </CommandGroup>
+    <CommandLoading />
+  </CommandList>
+</Command>`}
+/>

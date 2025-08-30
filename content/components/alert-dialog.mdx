@@ -1,0 +1,45 @@
+---
+title: Alert Dialog
+description: A modal dialog that requires user response to proceed.
+links:
+  doc: https://base-ui.com/react/components/alert-dialog
+  api: https://base-ui.com/react/components/alert-dialog#api-reference
+---
+
+<ComponentPreview name="alert-dialog-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/alert-dialog.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogClose,
+} from '../ui/alert-dialog'
+
+<AlertDialogRoot>
+  <AlertDialogTrigger />
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle />
+      <AlertDialogDescription />
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogClose />
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialogRoot>`}
+/>

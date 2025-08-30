@@ -1,0 +1,189 @@
+.base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+.base:active {
+    transform: scale(0.97);
+}
+
+.base:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.base:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.base.loading {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.primary:hover:not(:disabled) {
+    opacity: 0.85;
+}
+
+.secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+.secondary:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+.destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+}
+
+.destructive:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.ghost {
+    background-color: transparent;
+    color: var(--foreground);
+}
+
+.ghost:hover:not(:disabled) {
+    background-color: color-mix(in oklab, var(--muted) 20%, var(--secondary) 80%);
+}
+
+.outline {
+    background-color: color-mix(in oklab, var(--card) 20%, transparent 80%);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+}
+
+.outline:hover:not(:disabled) {
+    background-color: var(--accent);
+}
+
+.link {
+    background-color: transparent;
+    color: var(--muted-foreground);
+    padding: 0;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+}
+
+.link:hover:not(:disabled) {
+    text-decoration: underline;
+    color: var(--foreground);
+}
+
+.sm {
+    height: 2.1125rem;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+}
+
+.md {
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.925rem;
+}
+
+.lg {
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+}
+
+.icon {
+    height: auto;
+    width: auto;
+    padding: 0.25rem;
+    font-size: 0.875rem;
+    aspect-ratio: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    margin-left: 8px;
+    margin-right: -8px;
+    position: relative;
+    top: 0px;
+    overflow: visible;
+    width: 14px;
+    height: 12px;
+    transition: transform 150 ease-in-out;
+}
+
+.arrowLeft {
+    margin-left: -8px;
+    margin-right: 8px;
+}
+
+.arrowExternal {
+    transition: 150ms ease-in-out;
+}
+
+.base:hover .arrowExternal {
+    transform: rotate(-45deg);
+    margin-top: -8px;
+}
+
+.arrowPoint {
+    transition: all 150ms ease-in;
+    transform: translateX(0);
+}
+
+.arrowShaft {
+    transition: all 150ms ease-in;
+    opacity: 0;
+    transform: translateX(0);
+}
+
+.base:hover .arrowPoint {
+    transform: translateX(2px);
+}
+
+.base:hover .arrowShaft {
+    opacity: 1;
+    transform: translateX(-1px);
+}
+
+.base:hover .arrowLeft .arrowPoint {
+    transform: translateX(-2px);
+}
+
+.base:hover .arrowLeft .arrowShaft {
+    opacity: 1;
+    transform: translateX(1px);
+}
+
+.spinner {
+    margin-right: 0.5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+        stroke-dashoffset: 31.416;
+    }
+    to {
+        transform: rotate(360deg);
+        stroke-dashoffset: 0;
+    }
+}

@@ -1,0 +1,28 @@
+.footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  background-color: var(--background);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.link {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.linkUnderline {
+  color: var(--foreground);
+  text-decoration: underline;
+}

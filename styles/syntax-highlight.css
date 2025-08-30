@@ -1,0 +1,64 @@
+[data-line-numbers] {
+    display: grid;
+    min-width: 100%;
+    white-space: pre;
+    counter-reset: line;
+}
+
+[data-line-numbers] [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 3rem;
+    padding-right: 1rem;
+    text-align: right;
+    color: var(--linenumber);
+    user-select: none;
+    pointer-events: none;
+}
+
+[data-line] span {
+    color: var(--shiki-light) !important;
+}
+
+html[data-theme="dark"] [data-line] span {
+    color: var(--shiki-dark) !important;
+}
+
+.code-container pre {
+    overflow-x: auto;
+
+    border-radius: 0.5rem;
+    background: transparent !important;
+    margin: 0;
+}
+
+.code-container code {
+    font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+[data-line-numbers] [data-line] {
+    margin: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.4;
+}
+
+.code-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.code-container::-webkit-scrollbar {
+    display: none;
+}
+
+code[__npm__],
+code[__yarn__],
+code[__pnpm__],
+code[__bun__] {
+}

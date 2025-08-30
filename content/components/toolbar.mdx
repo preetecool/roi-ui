@@ -1,0 +1,47 @@
+---
+title: Toolbar
+description: A container for grouping a set of buttons and controls with keyboard navigation support.
+links:
+  doc: "https://base-ui.com/react/components/toolbar"
+  api: "https://base-ui.com/react/components/toolbar#api-reference"
+---
+
+<ComponentPreview name="toolbar-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/toolbar.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import { 
+  Toolbar, 
+  ToolbarButton, 
+  ToolbarLink, 
+  ToolbarInput,
+  ToolbarGroup,
+  ToolbarSeparator 
+} from '../ui/toolbar'
+import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group'
+import { Toggle } from '../ui/toggle'
+import { Select } from '../ui/select'
+
+<Toolbar>
+  <ToggleGroup>
+    <ToggleGroupItem value="item1">Item 1</ToggleGroupItem>
+    <ToggleGroupItem value="item2">Item 2</ToggleGroupItem>
+  </ToggleGroup>
+  <ToolbarSeparator />
+  <Toggle>Toggle</Toggle>
+  <Select>...</Select>
+  <ToolbarInput placeholder="Search..." />
+  <ToolbarLink href="#">Link</ToolbarLink>
+</Toolbar>`}
+/>
+
+

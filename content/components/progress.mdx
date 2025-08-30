@@ -1,0 +1,37 @@
+---
+title: Progress
+description: Displays the status of a task that takes a long time.
+links:
+  doc: https://base-ui.com/react/components/progress
+  api: https://base-ui.com/react/components/progress#api-reference
+---
+
+<ComponentPreview name="progress-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/progress.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Progress,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressIndicator,
+  ProgressValue,
+} from '../ui/progress'
+
+<Progress value={50}>
+  <ProgressLabel>Loading</ProgressLabel>
+  <ProgressValue />
+  <ProgressTrack>
+    <ProgressIndicator />
+  </ProgressTrack>
+</Progress>`}
+/>

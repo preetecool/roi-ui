@@ -1,0 +1,59 @@
+---
+title: Navigation Menu
+description: A navigation menu linking to diffrent pages.
+links:
+  doc: https://base-ui.com/react/components/navigation-menu
+  api: https://base-ui.com/react/components/navigation-menu#api-reference
+---
+
+
+<ComponentPreview name="navigation-menu-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/navigation-menu.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuViewport,
+  NavigationMenuLink,
+  NavigationMenuLinkItem,
+  NavigationMenuIcon,
+} from '../ui/navigation-menu'
+
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>
+        <NavigationMenuIcon />
+      </NavigationMenuTrigger>
+      <NavigationMenuViewport>
+        <NavigationMenuContent>
+          <NavigationMenuLink />
+          <NavigationMenuLinkItem />
+        </NavigationMenuContent>
+      </NavigationMenuViewport>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>`}
+/>
+
+
+
+
+## Examples
+
+### Sub Menu
+
+<ComponentPreview name="navigation-sub-menu" />

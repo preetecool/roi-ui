@@ -1,0 +1,182 @@
+.root {
+    display: flex;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.25rem;
+    gap: 0.25rem;
+}
+
+.menuRoot {
+    display: inline-block;
+}
+
+.menuTrigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: calc(var(--radius) - 2px);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menuTrigger:hover {
+    background: var(--muted);
+    color: var(--foreground);
+}
+
+.menuTrigger:focus {
+    outline: none;
+    background: var(--muted);
+}
+
+.menuTrigger:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.menuTrigger[data-state="open"] {
+    background: var(--muted);
+    color: var(--foreground);
+}
+
+.menuTrigger[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.menuPositioner {
+    z-index: 50;
+    position: absolute;
+    left: 0;
+}
+
+.menuPopup {
+    min-width: 200px;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: popup-in 0.15s ease-out;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.menuPopup[data-starting-style] {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.25rem);
+}
+
+.menuPopup[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.25rem);
+}
+
+@keyframes popup-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-0.25rem);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    color: var(--foreground);
+    cursor: pointer;
+    border-radius: calc(var(--radius) - 2px);
+    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.menuItemIcon {
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.menuItem:focus {
+    outline: none;
+}
+
+.menuItem[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.menuItem[data-disabled]:hover {
+    background: transparent;
+    color: var(--foreground);
+}
+
+.menuSeparator {
+    height: 1px;
+    margin: 0.25rem 0.75rem;
+    background: var(--border);
+    opacity: 0.6;
+}
+
+.menuArrow {
+    fill: var(--background);
+    stroke: var(--border);
+    stroke-width: 1px;
+}
+
+.menuSubmenuTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    cursor: pointer;
+    border-radius: calc(var(--radius) - 2px);
+    transition: all 0.15s ease;
+}
+
+.menuSubmenuTrigger:hover {
+    background: var(--muted);
+    color: var(--foreground);
+}
+
+.menuSubmenuTrigger:focus {
+    outline: none;
+    background: var(--muted);
+    color: var(--foreground);
+}
+
+.menuSubmenuTrigger[data-state="open"] {
+    background: var(--muted);
+    color: var(--foreground);
+}
+
+.menuSubmenuTrigger::after {
+    content: "›";
+    margin-left: auto;
+    font-size: 1rem;
+}

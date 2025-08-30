@@ -1,0 +1,45 @@
+---
+title: Quick Start
+description: Get started with roi-ui components in minutes
+---
+
+
+
+## Prerequisites
+
+roi-ui components are built on top of Base UI. You'll need to install Base UI first to use these components.
+
+## Installation
+
+### 1. Install Base UI
+
+
+```package-install
+@base-ui/react
+```
+
+### 2. Set up portals
+
+Add a portal container to your root layout:
+
+<CodeBlock
+  filename="layout.tsx"
+  language="tsx"
+  code={`<body>
+  <div className="root">
+    {children}
+  </div>
+</body>`}
+/>
+
+### 3. Add global styles
+
+Copy and paste the global CSS variables into your globals.css file:
+
+<GlobalsCSS />
+
+## Your first component
+
+Once you have Base UI set up, you can start using roi-ui components. Here's a simple button example:
+
+<ComponentPreview name="button-demo" />

@@ -1,0 +1,116 @@
+---
+title: Button
+description: A versatile button component with multiple variants and sizes.
+---
+
+<ComponentPreview name="button-demo" />
+
+<ComponentPreview name="button-with-arrow" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/button.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import { Button } from '../ui/button'
+
+<Button>Button text</Button>`}
+/>
+
+
+
+
+## Examples
+
+### Secondary
+
+<ComponentPreview name="button-secondary" />
+
+### Destructive
+
+<ComponentPreview name="button-destructive" />
+
+### Outline
+
+<ComponentPreview name="button-outline" />
+
+### Ghost
+
+<ComponentPreview name="button-ghost" />
+
+### Disabled
+
+<ComponentPreview name="button-disabled" />
+
+### Loading
+
+<ComponentPreview name="button-loading" />
+
+
+## Props
+
+<PropTable data={[
+  {
+    prop: "variant",
+    type: '"primary" | "secondary" | "destructive" | "ghost" | "icon" | "outline" | "link"',
+    default: '"primary"',
+    description: "The visual style variant of the button"
+  },
+  {
+    prop: "size",
+    type: '"sm" | "md" | "lg"',
+    default: '"md"',
+    description: "The size of the button"
+  },
+  {
+    prop: "showArrow",
+    type: "boolean",
+    default: "false",
+    description: "Whether to show an arrow indicator next to the button content"
+  },
+  {
+    prop: "pointLeft",
+    type: "boolean",
+    default: "false",
+    description: "When showArrow is true, controls if the arrow points left instead of right"
+  },
+  {
+    prop: "loading",
+    type: "boolean",
+    default: "false",
+    description: "Shows a spinner on the left side and disables the button when true"
+  },
+  {
+    prop: "className",
+    type: "string",
+    description: "Additional CSS classes to apply to the button"
+  },
+  {
+    prop: "children",
+    type: "React.ReactNode",
+    description: "The content to display inside the button"
+  },
+  {
+    prop: "disabled",
+    type: "boolean",
+    default: "false",
+    description: "Whether the button is disabled and non-interactive"
+  },
+  {
+    prop: "onClick",
+    type: "() => void",
+    description: "Function to call when the button is clicked"
+  },
+  {
+    prop: "type",
+    type: '"button" | "submit" | "reset"',
+    default: '"button"',
+    description: "The type attribute of the button element"
+  }
+]} />

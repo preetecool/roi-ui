@@ -1,0 +1,224 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.carousel:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.viewport {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
+}
+
+.viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    display: flex;
+    align-items: stretch;
+    padding-left: 0;
+}
+
+.slide {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.slide[aria-hidden="true"] {
+    pointer-events: none;
+}
+
+.slide:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: -2px;
+}
+
+.slide > *:focus-visible {
+    outline: 2px solid var(--ring) !important;
+    outline-offset: 2px !important;
+}
+
+.slide > *:focus {
+    outline: 2px solid var(--ring) !important;
+    outline-offset: 2px !important;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-right: 0;
+}
+
+.navButton {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--card);
+    color: var(--foreground);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s ease;
+    opacity: 0.9;
+    border: 1px solid var(--border);
+}
+
+.navButton:hover {
+    opacity: 1;
+    background: var(--muted);
+    transform: scale(1.05);
+}
+
+.navButton:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.navButton:active {
+    transform: scale(0.95);
+}
+
+.navButton:disabled {
+    opacity: 0.3;
+    cursor: default;
+    background: var(--muted);
+    color: var(--muted-foreground);
+    pointer-events: none;
+}
+
+.navButton:disabled:hover {
+    opacity: 0.3;
+    transform: none;
+    background: var(--muted);
+}
+
+.navButton svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.indicator {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+}
+
+.indicator:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.indicatorActive {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+.indicatorActive:hover {
+    background: var(--primary);
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 640px) {
+    .carousel {
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .viewport {
+        height: 250px;
+    }
+
+    .navContainer {
+        margin-top: 1rem;
+    }
+
+    .navButton {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .navButton svg {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+
+    .indicators {
+        bottom: 0.5rem;
+    }
+
+    .indicator {
+        width: 0.625rem;
+        height: 0.625rem;
+    }
+}
+
+[data-theme="dark"] .indicator {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .indicator:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .container {
+        transition: none;
+    }
+
+    .navButton,
+    .indicator {
+        transition: none;
+    }
+}

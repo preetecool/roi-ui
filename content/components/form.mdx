@@ -1,0 +1,46 @@
+---
+title: Form
+description: A form component that provides validation and error handling for form inputs.
+links:
+  doc: "https://base-ui.com/react/components/form"
+  api: "https://base-ui.com/react/components/form#api-reference"
+---
+
+<ComponentPreview name="form-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/form.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Form,
+  FormField,
+  FormControl,
+  FormLabel,
+  FormDescription,
+  FormError,
+  FormGroup,
+  FormRow,
+  FormActions,
+} from '../ui/form'
+
+<Form>
+  <FormGroup>
+    <FormField>
+      <FormLabel />
+      <FormDescription />
+      <FormControl />
+      <FormError />
+    </FormField>
+  </FormGroup>
+  <FormActions>
+  </FormActions>
+</Form>`}
+/>

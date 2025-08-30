@@ -1,0 +1,527 @@
+---
+title: Charts
+description: Chart components for data visualization using visx
+links:
+  doc: https://airbnb.io/visx/
+  api: https://airbnb.io/visx/docs
+---
+
+<style>
+{`
+  .installation-heading {
+    margin-top: 0 !important;
+  }
+`}
+</style>
+
+## Line Chart
+
+<ComponentPreview name="line-chart-demo" />
+
+<h3 className="installation-heading">Installation</h3>
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/line-chart.json
+```
+
+### Props
+
+<PropTable data={[
+  {
+    prop: "data",
+    type: "LineChartData[]",
+    description: "Array of data points with date, value, and type properties"
+  },
+  {
+    prop: "width",
+    type: "number",
+    description: "Width of the chart in pixels"
+  },
+  {
+    prop: "height",
+    type: "number",
+    description: "Height of the chart in pixels"
+  },
+  {
+    prop: "showXAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the X axis"
+  },
+  {
+    prop: "showYAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the Y axis"
+  },
+  {
+    prop: "showXGrid",
+    type: "boolean",
+    default: "false",
+    description: "Whether to display vertical grid lines"
+  },
+  {
+    prop: "showYGrid",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display horizontal grid lines"
+  },
+  {
+    prop: "curve",
+    type: '"linear" | "monotoneX" | "cardinal" | "basis" | "step"',
+    default: '"linear"',
+    description: "Type of curve interpolation for the line"
+  },
+  {
+    prop: "showPoints",
+    type: "boolean",
+    default: "false",
+    description: "Whether to display data points on the line"
+  },
+  {
+    prop: "pointSize",
+    type: "number",
+    default: "4",
+    description: "Size of the data points when showPoints is true"
+  },
+  {
+    prop: "margin",
+    type: "Margin",
+    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
+    description: "Margins around the chart content"
+  },
+  {
+    prop: "xAxisFormatter",
+    type: "(value: any) => string",
+    description: "Function to format X axis tick labels"
+  }
+]} />
+
+## Radial Bar Chart
+
+
+
+<ComponentPreview name="radial-bar-chart-demo" />
+
+<h3 className="installation-heading">Installation</h3>
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/radial-bar-chart.json
+```
+
+### Props
+
+<PropTable data={[
+  {
+    prop: "data",
+    type: "RadialBarChartData[]",
+    description: "Array of data points with category and value properties"
+  },
+  {
+    prop: "width",
+    type: "number",
+    description: "Width of the chart in pixels"
+  },
+  {
+    prop: "height",
+    type: "number",
+    description: "Height of the chart in pixels"
+  },
+  {
+    prop: "margin",
+    type: "Margin",
+    default: "{ top: 20, right: 20, bottom: 20, left: 20 }",
+    description: "Margins around the chart content"
+  },
+  {
+    prop: "innerRadius",
+    type: "number",
+    description: "Inner radius of the radial bars (creates donut effect)"
+  },
+  {
+    prop: "outerRadius",
+    type: "number",
+    description: "Outer radius of the radial bars"
+  },
+  {
+    prop: "cornerRadius",
+    type: "number",
+    default: "4",
+    description: "Corner radius for rounded bar ends"
+  },
+  {
+    prop: "padAngle",
+    type: "number",
+    default: "0.02",
+    description: "Padding angle between bars in radians"
+  },
+  {
+    prop: "paddingInner",
+    type: "number",
+    default: "0.1",
+    description: "Inner padding between concentric bars"
+  },
+  {
+    prop: "showLabels",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display category labels"
+  },
+  {
+    prop: "animated",
+    type: "boolean",
+    default: "true",
+    description: "Whether to animate the chart on load"
+  }
+]} />
+
+## Area Chart
+
+
+
+<ComponentPreview name="area-chart-demo" />
+
+<h3 className="installation-heading">Installation</h3>
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/area-chart.json
+```
+
+### Props
+
+<PropTable data={[
+  {
+    prop: "data",
+    type: "AreaChartData[]",
+    description: "Array of data points with year, amount, and type properties"
+  },
+  {
+    prop: "width",
+    type: "number",
+    description: "Width of the chart in pixels"
+  },
+  {
+    prop: "height",
+    type: "number",
+    description: "Height of the chart in pixels"
+  },
+  {
+    prop: "showXAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the X axis"
+  },
+  {
+    prop: "showYAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the Y axis"
+  },
+  {
+    prop: "showXGrid",
+    type: "boolean",
+    default: "false",
+    description: "Whether to display vertical grid lines"
+  },
+  {
+    prop: "showYGrid",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display horizontal grid lines"
+  },
+  {
+    prop: "curve",
+    type: '"linear" | "monotoneX" | "cardinal" | "basis" | "step"',
+    default: '"linear"',
+    description: "Type of curve interpolation for the area"
+  },
+  {
+    prop: "showPoints",
+    type: "boolean",
+    default: "false",
+    description: "Whether to display data points on the line"
+  },
+  {
+    prop: "pointSize",
+    type: "number",
+    default: "4",
+    description: "Size of the data points when showPoints is true"
+  },
+  {
+    prop: "margin",
+    type: "Margin",
+    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
+    description: "Margins around the chart content"
+  },
+  {
+    prop: "xAxisFormatter",
+    type: "(value: any) => string",
+    description: "Function to format X axis tick labels"
+  },
+  {
+    prop: "fillOpacity",
+    type: "number",
+    default: "0.7",
+    description: "Opacity of the area fill"
+  }
+]} />
+
+## Bar Chart
+
+<ComponentPreview name="bar-chart-demo" />
+
+<h3 className="installation-heading">Installation</h3>
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/bar-chart.json
+```
+
+### Props
+
+<PropTable data={[
+  {
+    prop: "data",
+    type: "BarChartData[]",
+    description: "Array of data points with category, amount, and type properties"
+  },
+  {
+    prop: "width",
+    type: "number",
+    description: "Width of the chart in pixels"
+  },
+  {
+    prop: "height",
+    type: "number",
+    description: "Height of the chart in pixels"
+  },
+  {
+    prop: "showXAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the X axis"
+  },
+  {
+    prop: "showYAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the Y axis"
+  },
+  {
+    prop: "showXGrid",
+    type: "boolean",
+    default: "false",
+    description: "Whether to display vertical grid lines"
+  },
+  {
+    prop: "showYGrid",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display horizontal grid lines"
+  },
+  {
+    prop: "margin",
+    type: "Margin",
+    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
+    description: "Margins around the chart content"
+  },
+  {
+    prop: "xAxisFormatter",
+    type: "(value: string) => string",
+    description: "Function to format X axis tick labels"
+  },
+  {
+    prop: "barPadding",
+    type: "number",
+    default: "0.3",
+    description: "Padding between bars (0-1)"
+  },
+  {
+    prop: "useGradient",
+    type: "boolean",
+    default: "true",
+    description: "Whether to use gradient fill for bars"
+  }
+]} />
+
+## Pie Chart
+
+<ComponentPreview name="pie-chart-demo" />
+
+<h3 className="installation-heading">Installation</h3>
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/pie-chart.json
+```
+
+### Props
+
+<PropTable data={[
+  {
+    prop: "data",
+    type: "PieChartData[]",
+    description: "Array of data points with category, value, and type properties"
+  },
+  {
+    prop: "width",
+    type: "number",
+    description: "Width of the chart in pixels"
+  },
+  {
+    prop: "height",
+    type: "number",
+    description: "Height of the chart in pixels"
+  },
+  {
+    prop: "margin",
+    type: "Margin",
+    default: "{ top: 20, right: 20, bottom: 20, left: 20 }",
+    description: "Margins around the chart content"
+  },
+  {
+    prop: "innerRadius",
+    type: "number",
+    default: "0",
+    description: "Inner radius of the pie (creates donut chart when > 0)"
+  },
+  {
+    prop: "outerRadius",
+    type: "number",
+    description: "Outer radius of the pie chart"
+  },
+  {
+    prop: "padAngle",
+    type: "number",
+    default: "0.01",
+    description: "Padding angle between pie slices in radians"
+  },
+  {
+    prop: "cornerRadius",
+    type: "number",
+    default: "3",
+    description: "Corner radius for rounded slice edges"
+  },
+  {
+    prop: "showLabels",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display category labels"
+  },
+  {
+    prop: "animate",
+    type: "boolean",
+    default: "true",
+    description: "Whether to animate the chart on load"
+  },
+  {
+    prop: "interactive",
+    type: "boolean",
+    default: "true",
+    description: "Whether slices are interactive (hover effects)"
+  }
+]} />
+
+## Radar Chart
+
+
+
+<ComponentPreview name="radar-chart-demo" />
+
+<h3 className="installation-heading">Installation</h3>
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/radar-chart.json
+```
+
+### Props
+
+<PropTable data={[
+  {
+    prop: "data",
+    type: "RadarChartData[]",
+    description: "Array of data points with category, value, and type properties"
+  },
+  {
+    prop: "width",
+    type: "number",
+    description: "Width of the chart in pixels"
+  },
+  {
+    prop: "height",
+    type: "number",
+    description: "Height of the chart in pixels"
+  },
+  {
+    prop: "margin",
+    type: "Margin",
+    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
+    description: "Margins around the chart content"
+  },
+  {
+    prop: "levels",
+    type: "number",
+    default: "5",
+    description: "Number of concentric grid levels"
+  },
+  {
+    prop: "maxValue",
+    type: "number",
+    description: "Maximum value for the radar scale (auto-calculated if not provided)"
+  },
+  {
+    prop: "showLabels",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display category labels"
+  },
+  {
+    prop: "showGrid",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display the radar grid"
+  },
+  {
+    prop: "fillOpacity",
+    type: "number",
+    default: "0.3",
+    description: "Opacity of the radar area fill"
+  }
+]} />
+
+## Responsive Charts
+
+### Installation
+
+```package-install
+@visx/responsive
+```
+
+### Usage
+
+<CodeBlock
+  filename="responsive-chart.tsx"
+  language="tsx"
+  code={`import { ParentSize } from '@visx/responsive';
+import { LineChart } from '@/registry/brook/ui/charts/line-chart';
+
+export default function ResponsiveChart() {
+  const data = [
+    { date: '2023-01-01', value: 100, type: 'A' },
+    { date: '2023-02-01', value: 150, type: 'A' },
+    { date: '2023-03-01', value: 120, type: 'A' },
+  ];
+
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <ParentSize>
+        {({ width, height }) => (
+          <LineChart
+            data={data}
+            width={width}
+            height={height}
+          />
+        )}
+      </ParentSize>
+    </div>
+  );
+}`}
+/>

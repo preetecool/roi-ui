@@ -1,0 +1,41 @@
+---
+title: Popover
+description: A component for displaying contextual information or actions in a floating panel.
+links:
+  doc: https://base-ui.com/react/components/popover
+  api: https://base-ui.com/react/components/popover#api-reference
+---
+
+<ComponentPreview name="popover-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/popover.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverClose,
+} from '../ui/popover'
+
+<Popover>
+  <PopoverTrigger />
+  <PopoverContent>
+    <PopoverArrow />
+    <PopoverTitle />
+    <PopoverDescription />
+    <PopoverClose />
+  </PopoverContent>
+</Popover>`}
+/>

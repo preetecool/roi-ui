@@ -1,0 +1,36 @@
+---
+title: Collapsible
+description: An expandable/collapsible panel controlled by a button.
+links:
+  doc: https://base-ui.com/react/components/collapsible
+  api: https://base-ui.com/react/components/collapsible#api-reference
+---
+
+<ComponentPreview name="collapsible-demo" />
+
+## Installation
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/collapsible.json
+```
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsiblePanel,
+} from '../ui/collapsible'
+
+<Collapsible>
+  <CollapsibleTrigger>
+    Toggle content
+  </CollapsibleTrigger>
+  <CollapsiblePanel>
+    <div>Collapsible content</div>
+  </CollapsiblePanel>
+</Collapsible>`}
+/>
