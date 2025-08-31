@@ -22,7 +22,7 @@ export default function SliderDemo() {
         min={0} 
         max={100} 
         step={1}
-        onValueChange={setValue}
+        onValueChange={(value) => setValue(Array.isArray(value) ? value[0] : value)}
       >
         <SliderControl>
           <SliderTrack>
