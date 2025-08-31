@@ -49,23 +49,21 @@
     border-radius: 0.25rem;
     background-color: var(--primary);
     user-select: none;
+    transition: none;
 }
 
 .thumb {
     width: 1rem;
     height: 1rem;
     border-radius: 100%;
-    background-color: var(--background);
+    background-color: var(--foreground);
     outline: 1px solid var(--border);
     user-select: none;
+    transition: none;
 }
 
 .thumb:focus-visible {
     outline: 2px solid var(--ring);
-}
-
-.thumb:hover {
-    outline: 2px solid var(--primary);
 }
 
 .thumb:disabled {

@@ -66,22 +66,22 @@
     transition: left calc(var(--duration)) var(--easing);
 }
 
-.arrow[data-side='top'] {
+.arrow[data-side="top"] {
     bottom: -8px;
     rotate: 180deg;
 }
 
-.arrow[data-side='bottom'] {
+.arrow[data-side="bottom"] {
     top: -8px;
     rotate: 0deg;
 }
 
-.arrow[data-side='left'] {
+.arrow[data-side="left"] {
     right: -13px;
     rotate: 90deg;
 }
 
-.arrow[data-side='right'] {
+.arrow[data-side="right"] {
     left: -13px;
     rotate: -90deg;
 }
@@ -347,7 +347,7 @@
 }
 
 .linkCard:hover {
-    background-color: var(--muted);
+    background-color: color-mix(in oklab, var(--card) 10%, var(--muted) 90%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
