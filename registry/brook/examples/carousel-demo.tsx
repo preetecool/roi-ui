@@ -99,5 +99,5 @@ export default function CarouselDemo() {
     ),
   }));
 
-  return <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={2.3} gap={8} />;
+  return <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={1.2} gap={16} />;
 }
