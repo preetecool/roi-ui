@@ -31,6 +31,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 400px;
 }
 
 .imageContainer {
@@ -268,6 +269,10 @@
     .imageContainer {
         width: 260px;
         height: 260px;
+    }
+    .closeButton {
+        width: 32px;
+        height: 32px;
     }
 }
 
