@@ -51,6 +51,24 @@
   gap: 1rem;
 }
 
+.githubLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.githubLink:hover {
+  color: var(--title);
+}
+
 @media (max-width: 1023px) {
   .header {
     display: none;
