@@ -45,20 +45,17 @@ export default function DropdownMenuFramerMotion() {
 
       <DropdownMenuPortal>
         <DropdownMenuPositioner>
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {open && (
               <DropdownMenuPopup
-                key={"popup"}
                 render={
                   <motion.div
-                    initial={{ originX: -0.1, originY: -0.1 }}
-                    animate={{ opacity: 1, scale: [0.1, 1], y: 0, originX: 0, originY: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, originX: -0.1, originY: -0.1 }}
+                    initial={{ opacity: 0, scale: 0.8, originX: -0.1, originY: -0.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8, originX: -0.1, originY: -0.1 }}
                     transition={{
-                      type: "spring",
-                      damping: 20,
-                      bounce: 0.1,
-                      stiffness: 400,
+                      opacity: { duration: 0.15 },
+                      scale: { type: "spring", duration: 0.4, bounce: 0.5 },
                     }}
                   />
                 }
