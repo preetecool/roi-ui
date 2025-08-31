@@ -25,18 +25,19 @@
 .card {
     background: var(--card);
     border: 1px solid var(--border);
-
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 400px;
+    width: 320px;
+    max-width: 320px;
 }
 
 .imageContainer {
     height: 320px;
     overflow: hidden;
+    border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .image {
@@ -181,6 +182,9 @@
     border: none !important;
     outline: none !important;
     border-radius: 0 !important;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    touch-action: pan-y;
 }
 
 .modalScrollContent {

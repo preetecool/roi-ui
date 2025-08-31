@@ -132,7 +132,11 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
       document.documentElement.style.overflow = "hidden";
 
       const preventDefault = (e: TouchEvent) => {
-        e.preventDefault();
+        const target = e.target as Element;
+        const scrollableArea = target.closest('[data-scroll-area-viewport]') || target.closest('.modalScrollViewport');
+        if (!scrollableArea) {
+          e.preventDefault();
+        }
       };
 
       document.addEventListener("touchmove", preventDefault, {
