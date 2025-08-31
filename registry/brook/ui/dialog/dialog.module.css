@@ -92,10 +92,18 @@
     gap: 0.5rem;
 }
 
+.footer > :last-child {
+    margin-top: 0.5rem;
+}
+
 @media (min-width: 640px) {
     .footer {
         flex-direction: row;
         justify-content: flex-end;
+    }
+
+    .footer > :last-child {
+        margin-top: 0;
     }
 }
 
@@ -131,7 +139,6 @@
     .content {
         width: calc(100vw - 2rem);
         max-width: none;
-        margin: 1rem;
         left: 50%;
         top: 50%;
     }

@@ -1,19 +1,22 @@
 .root {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
 }
 
 .control {
-    display: flex;
-    height: 2.5rem;
-    width: 100%;
-    border-radius: var(--radius);
+    box-sizing: border-box;
+    padding: 0 0.875rem;
+    margin: 0;
     border: 1px solid var(--border);
+    width: 100%;
+    height: 2.5rem;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
     background-color: var(--input);
-    padding: 0 0.75rem;
-    font-size: 0.875rem;
-    transition: all 150ms ease-out;
     color: var(--foreground);
 }
 
@@ -21,10 +24,9 @@
     color: var(--muted-foreground);
 }
 
-.control[data-focused] {
-    outline: none;
-    border-color: var(--ring);
-    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+.control:focus {
+    outline: 2px solid var(--ring);
+    outline-offset: -1px;
 }
 
 .control[data-disabled] {
@@ -36,18 +38,15 @@
     border-color: var(--destructive);
 }
 
-.control[data-invalid][data-focused] {
-    border-color: var(--destructive);
-    box-shadow: 0 0 0 2px var(--destructive) / 0.2;
+.control[data-invalid]:focus {
+    outline: 2px solid var(--destructive);
+    outline-offset: -1px;
 }
 
-.control[data-valid][data-filled]:not([data-focused]) {
-    border-color: var(--success, var(--primary));
-}
 
 .label {
-    display: block;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     font-weight: 500;
     color: var(--foreground);
 }
@@ -58,16 +57,14 @@
 }
 
 .description {
-    font-size: 0.8125rem;
-    color: var(--muted-foreground);
     margin: 0;
-    line-height: 1.4;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--muted-foreground);
 }
 
 .error {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     color: var(--destructive);
-    margin: 0;
-    line-height: 1.4;
-    font-weight: 500;
 }
