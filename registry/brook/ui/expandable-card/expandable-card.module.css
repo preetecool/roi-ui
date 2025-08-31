@@ -153,6 +153,7 @@
 
 .closeButton {
     position: absolute;
+    top: 18px;
     right: 18px;
     width: 36px;
     height: 36px;
@@ -176,6 +177,15 @@
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        var(--card) calc(8vh / 2),
+        var(--background) 8vh,
+        black calc(100% - 8vh),
+        rgba(0, 0, 0, 0.2) calc(100% - 8vh / 2),
+        transparent 100%
+    );
 }
 
 .modalScrollViewport {
@@ -185,6 +195,7 @@
     -webkit-overflow-scrolling: touch;
     overflow: auto;
     touch-action: pan-y;
+    overscroll-behavior: contain;
 }
 
 .modalScrollContent {
@@ -231,7 +242,6 @@
     }
 }
 
-
 @media (max-width: 480px) {
     .grid {
         flex-direction: column;
@@ -240,8 +250,12 @@
     }
 
     .imageContainer {
-        width: 260px;
-        height: 260px;
+        width: 320px;
+        height: 320px;
+    }
+    .modal .image {
+        width: 320px;
+        height: 320px;
     }
     .closeButton {
         width: 32px;
