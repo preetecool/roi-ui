@@ -102,12 +102,12 @@ export default function CarouselDemo() {
     ),
   }));
 
-  const [itemsPerView, setItemsPerView] = useState(1.2);
+  const [itemsPerView, setItemsPerView] = useState<number | null>(null);
 
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth >= 1024) {
-        setItemsPerView(3.2); // Desktop: more compact
+        setItemsPerView(3.1); // Desktop: more compact
       } else if (window.innerWidth >= 768) {
         setItemsPerView(2.5); // Tablet: medium compact
       } else {
@@ -116,10 +116,16 @@ export default function CarouselDemo() {
     };
 
     updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
+    window.addEventListener("resize", updateItemsPerView);
 
-    return () => window.removeEventListener('resize', updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
   }, []);
 
-  return <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={itemsPerView} gap={16} />;
+  if (itemsPerView === null) {
+    return <div style={{ height: "280px" }} />; // Placeholder with expected height
+  }
+
+  return (
+    <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={itemsPerView} gap={16} />
+  );
 }
