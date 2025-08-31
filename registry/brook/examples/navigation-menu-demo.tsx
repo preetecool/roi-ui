@@ -88,18 +88,21 @@ export default function NavigationMenuDemo() {
                   >
                     <div
                       style={{
-                        padding: "0.5rem",
+                        width: "2rem",
+                        height: "2rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         borderRadius: "0.375rem",
                         backgroundColor: "var(--muted)",
+                        border: "1px solid var(--border)",
                       }}
                     >
                       <Palette size={16} />
                     </div>
                     <div>
                       <div style={{ fontSize: "0.875rem", fontWeight: "500" }}>Design</div>
-                      <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)" }}>
-                        Design tools
-                      </div>
+                      <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)" }}>Design tools</div>
                     </div>
                   </div>
                 </NavigationMenuLinkItem>
@@ -113,9 +116,14 @@ export default function NavigationMenuDemo() {
                   >
                     <div
                       style={{
-                        padding: "0.5rem",
+                        width: "2rem",
+                        height: "2rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         borderRadius: "0.375rem",
                         backgroundColor: "var(--muted)",
+                        border: "1px solid var(--border)",
                       }}
                     >
                       <Zap size={16} />
@@ -136,18 +144,21 @@ export default function NavigationMenuDemo() {
                   >
                     <div
                       style={{
-                        padding: "0.5rem",
+                        width: "2rem",
+                        height: "2rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         borderRadius: "0.375rem",
                         backgroundColor: "var(--muted)",
+                        border: "1px solid var(--border)",
                       }}
                     >
                       <Shield size={16} />
                     </div>
                     <div>
                       <div style={{ fontSize: "0.875rem", fontWeight: "500" }}>Security</div>
-                      <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)" }}>
-                        Secure platform
-                      </div>
+                      <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)" }}>Secure platform</div>
                     </div>
                   </div>
                 </NavigationMenuLinkItem>
@@ -161,18 +172,21 @@ export default function NavigationMenuDemo() {
                   >
                     <div
                       style={{
-                        padding: "0.5rem",
+                        width: "2rem",
+                        height: "2rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         borderRadius: "0.375rem",
                         backgroundColor: "var(--muted)",
+                        border: "1px solid var(--border)",
                       }}
                     >
                       <Users size={16} />
                     </div>
                     <div>
                       <div style={{ fontSize: "0.875rem", fontWeight: "500" }}>Collaboration</div>
-                      <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)" }}>
-                        Team work
-                      </div>
+                      <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)" }}>Team work</div>
                     </div>
                   </div>
                 </NavigationMenuLinkItem>

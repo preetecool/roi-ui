@@ -9,7 +9,7 @@ const accordionItems = [
     id: "item-1",
     title: "What makes animations smooth?",
     content:
-      "Smooth animations are achieved through proper easing curves, appropriate durations, and understanding the physics of motion. Framer Motion provides spring animations that feel natural and responsive to user interactions.",
+      "Smooth animations are achieved through proper easing curves, appropriate durations, and understanding the physics of motion. Motion provides spring animations that feel natural and responsive to user interactions.",
   },
   {
     id: "item-2",
@@ -21,7 +21,7 @@ const accordionItems = [
     id: "item-3",
     title: "What about performance?",
     content:
-      "Framer Motion is optimized for performance by using hardware acceleration when possible and only animating properties that don't trigger layout recalculations. Transform and opacity changes are handled efficiently by the GPU.",
+      "Motion is optimized for performance by using hardware acceleration when possible and only animating properties that don't trigger layout recalculations. Transform and opacity changes are handled efficiently by the GPU.",
   },
 ];
 

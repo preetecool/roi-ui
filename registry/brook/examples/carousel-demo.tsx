@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import { Card, CardTitle, CardDescription, CardIcon } from "@/registry/brook/ui/card/card";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -99,5 +102,30 @@ export default function CarouselDemo() {
     ),
   }));
 
-  return <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={1.2} gap={16} />;
+  const [itemsPerView, setItemsPerView] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsPerView(3.1); // Desktop: more compact
+      } else if (window.innerWidth >= 768) {
+        setItemsPerView(2.5); // Tablet: medium compact
+      } else {
+        setItemsPerView(1.2); // Mobile: less compact
+      }
+    };
+
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
+
+  if (itemsPerView === null) {
+    return <div style={{ height: "280px" }} />; // Placeholder with expected height
+  }
+
+  return (
+    <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={itemsPerView} gap={16} />
+  );
 }

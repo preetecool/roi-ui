@@ -63,7 +63,7 @@
 }
 
 .ghost:hover:not(:disabled) {
-    background-color: color-mix(in oklab, var(--muted) 20%, var(--secondary) 80%);
+    background-color: color-mix(in oklab, var(--card) 10%, var(--muted) 90%);
 }
 
 .outline {
