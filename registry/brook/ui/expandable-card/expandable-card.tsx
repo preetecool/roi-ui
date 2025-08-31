@@ -4,6 +4,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, Plus } from "lucide-react";
 import styles from "./expandable-card.module.css";
 import Image from "next/image";
+import {
+  ScrollArea,
+  ScrollAreaViewport,
+  ScrollAreaContent,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+} from "../scroll-area/scroll-area";
 
 interface ExpandableCardItem {
   id: string | number;
@@ -33,42 +40,51 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
         <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
           <X width={16} height={16} strokeWidth={2.5} />
         </button>
-        <div className={styles.modalContent}>
-          <motion.div layoutId={`image-${item.id}`} className="imageContainer">
-            <Image src={item.src} className={styles.image} alt={`Character ${item.id}`} width={600} height={600} />
-          </motion.div>
+        <ScrollArea className={styles.modalScrollArea}>
+          <ScrollAreaViewport className={styles.modalScrollViewport}>
+            <ScrollAreaContent className={styles.modalScrollContent}>
+              <div className={styles.modalContent}>
+                <motion.div layoutId={`image-${item.id}`} className="imageContainer">
+                  <Image src={item.src} className={styles.image} alt={`Character ${item.id}`} width={600} height={600} />
+                </motion.div>
 
-          <motion.div
-            className={styles.contentContainerOpen}
-            style={{
-              maxWidth: 600,
-              margin: "0 auto",
-              paddingTop: 28,
-              paddingLeft: 0,
-              paddingRight: 0,
-              paddingBottom: 0,
-              width: "100%",
-            }}
-          >
-            <motion.div layoutId={`heading-container-${item.id}`} className={styles.headingContainer}>
-              <motion.h3 className={styles.cardHeadingLarge}>{item.cardHeading}</motion.h3>
-            </motion.div>
+                <motion.div
+                  className={styles.contentContainerOpen}
+                  style={{
+                    maxWidth: 600,
+                    margin: "0 auto",
+                    paddingTop: 28,
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    paddingBottom: 0,
+                    width: "100%",
+                  }}
+                >
+                  <motion.div layoutId={`heading-container-${item.id}`} className={styles.headingContainer}>
+                    <motion.h3 className={styles.cardHeadingLarge}>{item.cardHeading}</motion.h3>
+                  </motion.div>
 
-            <motion.div
-              className={styles.contentInner}
-              initial={{ opacity: 0.8 }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.2,
-              }}
-            >
-              <motion.div>{item.content}</motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
+                  <motion.div
+                    className={styles.contentInner}
+                    initial={{ opacity: 0.8 }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      duration: 0.2,
+                    }}
+                  >
+                    <motion.div>{item.content}</motion.div>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </ScrollAreaContent>
+          </ScrollAreaViewport>
+          <ScrollAreaScrollbar orientation="vertical">
+            <ScrollAreaThumb />
+          </ScrollAreaScrollbar>
+        </ScrollArea>
       </motion.div>
     </>
   );
@@ -116,7 +132,11 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
       document.documentElement.style.overflow = "hidden";
 
       const preventDefault = (e: TouchEvent) => {
-        e.preventDefault();
+        const target = e.target as Element;
+        const scrollableArea = target.closest('[data-scroll-area-viewport]') || target.closest('.modalScrollViewport');
+        if (!scrollableArea) {
+          e.preventDefault();
+        }
       };
 
       document.addEventListener("touchmove", preventDefault, {

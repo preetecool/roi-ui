@@ -21,7 +21,8 @@
     font-size: 0.875rem;
     font-weight: 500;
     height: 2.25rem;
-    padding: 0 0.75rem;
+    width: 2.25rem;
+    padding: 0;
     border: none;
     background-color: transparent;
     color: var(--muted-foreground);
