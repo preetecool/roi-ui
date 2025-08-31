@@ -1,4 +1,5 @@
 import { ToggleGroup, ToggleGroupItem } from "@/registry/brook/ui/toggle-group/toggle-group";
+import { Bold, Italic, Underline } from "lucide-react";
 
 export default function ToggleGroupDemo() {
   return (
@@ -6,13 +7,13 @@ export default function ToggleGroupDemo() {
       <div>
         <ToggleGroup toggleMultiple defaultValue={["bold"]} aria-label="Text formatting">
           <ToggleGroupItem value="bold" aria-label="Bold">
-            <b>B</b>
+            <Bold size={16} />
           </ToggleGroupItem>
           <ToggleGroupItem value="italic" aria-label="Italic">
-            <i>I</i>
+            <Italic size={16} />
           </ToggleGroupItem>
           <ToggleGroupItem value="underline" aria-label="Underline">
-            <u>U</u>
+            <Underline size={16} />
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
