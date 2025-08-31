@@ -45,7 +45,13 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
             <ScrollAreaContent className={styles.modalScrollContent}>
               <div className={styles.modalContent}>
                 <motion.div layoutId={`image-${item.id}`} className="imageContainer">
-                  <Image src={item.src} className={styles.image} alt={`Character ${item.id}`} width={600} height={600} />
+                  <Image
+                    src={item.src}
+                    className={styles.image}
+                    alt={`Character ${item.id}`}
+                    width={600}
+                    height={600}
+                  />
                 </motion.div>
 
                 <motion.div
@@ -133,7 +139,10 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
 
       const preventDefault = (e: TouchEvent) => {
         const target = e.target as Element;
-        const scrollableArea = target.closest('[data-scroll-area-viewport]') || target.closest('.modalScrollViewport');
+        const scrollableArea =
+          target.closest("[data-scroll-area-viewport]") ||
+          target.closest(`.${styles.modalScrollViewport}`) ||
+          target.closest(`.${styles.modalScrollArea}`);
         if (!scrollableArea) {
           e.preventDefault();
         }
