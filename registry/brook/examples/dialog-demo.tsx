@@ -19,12 +19,12 @@ export default function DialogDemo() {
       <DialogTrigger render={<Button>Open Dialog</Button>} />
       <DialogPortal>
         <DialogOverlay />
-        <DialogPopup>
+        <DialogPopup style={{ maxWidth: "410px" }}>
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription>Make changes to your profile here. Click save when you&apos;re done.</DialogDescription>
+            <DialogDescription>Make changes to your profile here.</DialogDescription>
           </DialogHeader>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "1rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               <label style={{ fontSize: "0.875rem", fontWeight: "500" }}>Name</label>
               <Input defaultValue="John Doe" />
@@ -35,7 +35,7 @@ export default function DialogDemo() {
             </div>
           </div>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline">Cancel</Button>} />
+            <DialogClose render={<Button variant="secondary">Cancel</Button>} />
             <Button>Save Changes</Button>
           </DialogFooter>
         </DialogPopup>
