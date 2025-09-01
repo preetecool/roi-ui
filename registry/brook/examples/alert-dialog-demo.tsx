@@ -23,7 +23,7 @@ export default function AlertDialogDemo() {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogClose render={<Button variant="outline">Cancel</Button>} />
+          <AlertDialogClose render={<Button variant="secondary">Cancel</Button>} />
           <Button variant="destructive">Delete Account</Button>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -29,6 +29,8 @@
     max-height: 400px;
     box-sizing: border-box;
     overflow: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     position: relative;
     scrollbar-width: none;

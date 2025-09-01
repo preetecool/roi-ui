@@ -118,7 +118,7 @@
 
 .description {
     font-size: 0.875rem;
-    color: var(--foreground);
+    color: var(--muted-foreground);
     margin: 0;
     line-height: 1.5;
 }

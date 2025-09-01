@@ -19,12 +19,10 @@ export default function DialogDemo() {
       <DialogTrigger render={<Button>Open Dialog</Button>} />
       <DialogPortal>
         <DialogOverlay />
-        <DialogPopup>
+        <DialogPopup style={{ maxWidth: "410px" }}>
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription style={{ color: "var(--muted-foreground)" }}>
-              Make changes to your profile here. Click save when you&apos;re done.
-            </DialogDescription>
+            <DialogDescription>Make changes to your profile here.</DialogDescription>
           </DialogHeader>
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>

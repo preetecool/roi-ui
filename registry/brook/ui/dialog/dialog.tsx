@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { Dialog } from "@base-ui-components/react/dialog";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,7 +28,7 @@ const DialogTitle = ({ className, ...props }: React.ComponentPropsWithoutRef<typ
   <Dialog.Title className={cn(styles.title, className)} {...props} />
 );
 
-const DialogDescription = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Dialog.Description>) => (
+const DialogDescription = ({ className, ...props }: React.ComponentProps<typeof Dialog.Description>) => (
   <Dialog.Description className={cn(styles.description, className)} {...props} />
 );
 

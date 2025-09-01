@@ -56,9 +56,3 @@ html[data-theme="dark"] [data-line] span {
 .code-container::-webkit-scrollbar {
     display: none;
 }
-
-code[__npm__],
-code[__yarn__],
-code[__pnpm__],
-code[__bun__] {
-}

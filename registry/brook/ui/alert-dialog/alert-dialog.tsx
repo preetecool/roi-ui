@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { AlertDialog } from "@base-ui-components/react/alert-dialog";
 import { cn } from "@/lib/utils";
 import styles from "./alert-dialog.module.css";
@@ -43,10 +44,7 @@ const AlertDialogTitle = ({
   <AlertDialog.Title className={cn(styles.title, className)} {...props} />
 );
 
-const AlertDialogDescription = ({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Description>) => (
+const AlertDialogDescription = ({ className, ...props }: React.ComponentProps<typeof AlertDialog.Description>) => (
   <AlertDialog.Description className={cn(styles.description, className)} {...props} />
 );
 
