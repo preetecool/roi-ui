@@ -1,8 +1,8 @@
-import { getTopInstrumentalSongs } from "@/data/instrumental-songs-2025";
-
-const top30InstrumentalSongs2025 = getTopInstrumentalSongs(30);
-
-export const songChartData = top30InstrumentalSongs2025.map((song) => ({
-  category: song.label || song.title,
-  value: song.streams,
-}));
+export const songChartData = [
+  { category: "Move", value: 85 },
+  { category: "Exercise", value: 72 },
+  { category: "Stand", value: 90 },
+  { category: "Heart Rate", value: 68 },
+  { category: "Sleep", value: 82 },
+  { category: "Mindfulness", value: 45 },
+];

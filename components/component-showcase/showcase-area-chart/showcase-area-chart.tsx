@@ -2,7 +2,6 @@
 
 import { Card, CardHeader, CardContent } from "@/registry/brook/ui/card/card";
 import AreaChart from "@/registry/brook/ui/charts/area-chart";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./showcase-area-chart.module.css";
 import { monthlyUsersData } from "./data";
 
@@ -37,25 +36,18 @@ export function ShowcaseAreaChart() {
       </CardHeader>
       <CardContent className={styles.chartContainer}>
         <div style={{ width: "100%", height: "100%" }}>
-          <ParentSize>
-            {({ width, height }) => (
-              <AreaChart
-                data={monthlyUsersData}
-                width={width}
-                height={height}
-                showXAxis={false}
-                showYAxis={false}
-                showXGrid={false}
-                showYGrid={false}
-                curve="monotoneX"
-                showPoints={false}
-                fillOpacity={0.3}
-                xAxisFormatter={formatMonth}
-                margin={{ top: 0, right: 4, bottom: 0, left: 4 }}
-                animated
-              />
-            )}
-          </ParentSize>
+          <AreaChart
+            data={monthlyUsersData}
+            showXAxis={false}
+            showYAxis={false}
+            showXGrid={false}
+            showYGrid={false}
+            curve="monotoneX"
+            showPoints={false}
+            fillOpacity={0.3}
+            xAxisFormatter={formatMonth}
+            animated
+          />
         </div>
       </CardContent>
     </Card>

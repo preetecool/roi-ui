@@ -1,7 +1,6 @@
 "use client";
 
 import PieChart from "@/registry/brook/ui/charts/pie-chart";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./pie-chart-demo.module.css";
 
 const data = [
@@ -12,14 +11,19 @@ const data = [
 ];
 
 export default function PieChartDemo() {
+  const blueShades = [
+    "#1e40af", // blue-800
+    "#3b82f6", // blue-500
+    "#60a5fa", // blue-400
+    "#93c5fd", // blue-300
+  ];
+
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Traffic by Platform</h3>
-      <ParentSize>
-        {({ width, height }) => (
-          <PieChart data={data} width={width} height={height - 50} showLabels={true} padAngle={0.02} cornerRadius={3} />
-        )}
-      </ParentSize>
+      <div style={{ height: "360px", width: "100%" }}>
+        <PieChart data={data} showLabels={true} colors={blueShades} />
+      </div>
     </div>
   );
 }

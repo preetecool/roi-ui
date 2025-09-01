@@ -3,7 +3,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/registry/brook/ui/card/card";
 import LineChart from "@/registry/brook/ui/charts/line-chart";
 import { Badge } from "@/registry/brook/ui/badge/badge";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./showcase-line-chart.module.css";
 import { trafficData } from "./data";
 
@@ -28,24 +27,17 @@ export function ShowcaseLineChart() {
       </CardHeader>
       <CardContent className={styles.chartContainer}>
         <div style={{ width: "100%", height: "100%" }}>
-          <ParentSize>
-            {({ width, height }) => (
-              <LineChart
-                data={trafficData}
-                width={width}
-                height={height}
-                showXAxis={false}
-                showYAxis={false}
-                showXGrid={false}
-                showYGrid={true}
-                curve="monotoneX"
-                showPoints={false}
-                xAxisFormatter={formatDate}
-                margin={{ top: 0, right: 10, bottom: 0, left: 10 }}
-                animated
-              />
-            )}
-          </ParentSize>
+          <LineChart
+            data={trafficData}
+            showXAxis={false}
+            showYAxis={false}
+            showXGrid={false}
+            showYGrid={true}
+            curve="monotoneX"
+            showPoints={false}
+            xAxisFormatter={formatDate}
+            animated
+          />
         </div>
       </CardContent>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import AreaChart from "@/registry/brook/ui/charts/area-chart";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./area-chart-demo.module.css";
 
 const data = [
@@ -22,23 +21,19 @@ export default function AreaChartDemo() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Revenue Growth (2020-2030)</h3>
-      <ParentSize>
-        {({ width, height }) => (
-          <AreaChart
-            data={data}
-            width={width}
-            height={height - 50}
-            showXAxis={true}
-            showYAxis={true}
-            showXGrid={false}
-            showYGrid={true}
-            curve="monotoneX"
-            showPoints={false}
-            fillOpacity={0.2}
-            animated
-          />
-        )}
-      </ParentSize>
+      <div className={styles.chartContainer}>
+        <AreaChart
+          data={data}
+          showXAxis={true}
+          showYAxis={true}
+          showXGrid={false}
+          showYGrid={true}
+          curve="monotoneX"
+          showPoints={false}
+          fillOpacity={0.2}
+          animated
+        />
+      </div>
     </div>
   );
 }

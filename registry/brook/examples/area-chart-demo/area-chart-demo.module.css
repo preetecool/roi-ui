@@ -1,9 +1,16 @@
 .container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   margin-bottom: 16px;
   color: var(--title);
+}
+
+.chartContainer {
+  flex: 1;
+  min-height: 400px;
 }
