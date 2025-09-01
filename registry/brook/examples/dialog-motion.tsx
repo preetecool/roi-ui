@@ -64,7 +64,7 @@ export default function DialogFramerMotion() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.2, layout: { duration: 0.2 } }}
                   />
                 }
               >
@@ -89,7 +89,7 @@ export default function DialogFramerMotion() {
                   }}
                 >
                   <Dialog.Close render={<Button variant="secondary">Close</Button>}>Close</Dialog.Close>
-                  <motion.div layoutId="button">
+                  <motion.div layoutId="button" transition={{ duration: 0.2 }}>
                     <Button>Toggle Dialog</Button>
                   </motion.div>
                 </div>
