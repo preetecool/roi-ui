@@ -1,0 +1,9 @@
+.triggerContent {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.chevronIcon {
+  margin-top: 1px;
+}

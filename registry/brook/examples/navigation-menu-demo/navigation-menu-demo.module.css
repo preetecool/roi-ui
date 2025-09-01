@@ -1,0 +1,44 @@
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.resourcesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.iconsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.iconLinkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconContainer {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.iconTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.iconDescription {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}

@@ -32,7 +32,7 @@ const items: ExpandableCardItem[] = [
 
 export default function ExpandableCardDemo() {
   return (
-    <div style={{ width: "100%", minHeight: "400px" }}>
+    <div>
       <ExpandableCard items={items} />
     </div>
   );

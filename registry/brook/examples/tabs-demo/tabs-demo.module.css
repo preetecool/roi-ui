@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+}

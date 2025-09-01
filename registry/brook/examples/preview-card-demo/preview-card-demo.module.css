@@ -1,0 +1,50 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.description {
+  margin-bottom: 2rem;
+  color: var(--muted-foreground);
+}
+
+.triggerLink {
+  color: var(--foreground);
+}
+
+.previewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.previewAvatar {
+  border-radius: 50%;
+  border: 2px solid var(--border);
+}
+
+.previewName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.previewUsername {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.previewBio {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+  margin: 0;
+}

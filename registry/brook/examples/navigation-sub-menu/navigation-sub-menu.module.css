@@ -1,0 +1,27 @@
+.mainGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.subMenuItem {
+  width: 100%;
+}
+
+.triggerContainer {
+  padding: 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+}
+
+.linkItemWithIcon {
+  justify-content: space-between;
+}
+
+.subMenuList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

@@ -1,0 +1,11 @@
+.trigger {
+  width: 180px;
+}
+
+.placeholder {
+  color: var(--muted-foreground);
+}
+
+.itemText {
+  color: var(--muted-foreground);
+}
