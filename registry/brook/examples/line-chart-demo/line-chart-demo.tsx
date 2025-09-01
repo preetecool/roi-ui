@@ -1,6 +1,5 @@
 "use client";
 import LineChart from "@/registry/brook/ui/charts/line-chart";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./line-chart-demo.module.css";
 
 const data = [
@@ -83,21 +82,17 @@ export default function LineChartDemo() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Population Growth (1990-2025)</h3>
-      <ParentSize>
-        {({ width, height }) => (
-          <LineChart
-            data={data}
-            width={width}
-            height={height - 50}
-            showXAxis={true}
-            showYAxis={true}
-            showXGrid={false}
-            curve="monotoneX"
-            showPoints={false}
-            animated
-          />
-        )}
-      </ParentSize>
+      <div className={styles.chartContainer}>
+        <LineChart
+          data={data}
+          showXAxis={true}
+          showYAxis={true}
+          showXGrid={false}
+          curve="monotoneX"
+          showPoints={false}
+          animated
+        />
+      </div>
     </div>
   );
 }

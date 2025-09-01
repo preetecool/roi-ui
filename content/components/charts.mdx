@@ -1,9 +1,9 @@
 ---
 title: Charts
-description: Chart components for data visualization using visx
+description: Chart components for data visualization using recharts
 links:
-  doc: https://airbnb.io/visx/
-  api: https://airbnb.io/visx/docs
+  doc: https://recharts.org/
+  api: https://recharts.org/en-US/api
 ---
 
 <style>
@@ -33,16 +33,6 @@ npx shadcn@latest add https://roiui.com/r/line-chart.json
     description: "Array of data points with date, value, and type properties"
   },
   {
-    prop: "width",
-    type: "number",
-    description: "Width of the chart in pixels"
-  },
-  {
-    prop: "height",
-    type: "number",
-    description: "Height of the chart in pixels"
-  },
-  {
     prop: "showXAxis",
     type: "boolean",
     default: "true",
@@ -57,7 +47,7 @@ npx shadcn@latest add https://roiui.com/r/line-chart.json
   {
     prop: "showXGrid",
     type: "boolean",
-    default: "false",
+    default: "true",
     description: "Whether to display vertical grid lines"
   },
   {
@@ -85,15 +75,15 @@ npx shadcn@latest add https://roiui.com/r/line-chart.json
     description: "Size of the data points when showPoints is true"
   },
   {
-    prop: "margin",
-    type: "Margin",
-    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
-    description: "Margins around the chart content"
-  },
-  {
     prop: "xAxisFormatter",
     type: "(value: any) => string",
     description: "Function to format X axis tick labels"
+  },
+  {
+    prop: "animated",
+    type: "boolean",
+    default: "false",
+    description: "Whether to animate the chart on load"
   }
 ]} />
 
@@ -118,48 +108,16 @@ npx shadcn@latest add https://roiui.com/r/radial-bar-chart.json
     description: "Array of data points with category and value properties"
   },
   {
-    prop: "width",
-    type: "number",
-    description: "Width of the chart in pixels"
-  },
-  {
-    prop: "height",
-    type: "number",
-    description: "Height of the chart in pixels"
-  },
-  {
-    prop: "margin",
-    type: "Margin",
-    default: "{ top: 20, right: 20, bottom: 20, left: 20 }",
-    description: "Margins around the chart content"
-  },
-  {
     prop: "innerRadius",
-    type: "number",
+    type: "number | string",
+    default: "10%",
     description: "Inner radius of the radial bars (creates donut effect)"
   },
   {
     prop: "outerRadius",
-    type: "number",
+    type: "number | string",
+    default: "80%",
     description: "Outer radius of the radial bars"
-  },
-  {
-    prop: "cornerRadius",
-    type: "number",
-    default: "4",
-    description: "Corner radius for rounded bar ends"
-  },
-  {
-    prop: "padAngle",
-    type: "number",
-    default: "0.02",
-    description: "Padding angle between bars in radians"
-  },
-  {
-    prop: "paddingInner",
-    type: "number",
-    default: "0.1",
-    description: "Inner padding between concentric bars"
   },
   {
     prop: "showLabels",
@@ -170,7 +128,7 @@ npx shadcn@latest add https://roiui.com/r/radial-bar-chart.json
   {
     prop: "animated",
     type: "boolean",
-    default: "true",
+    default: "false",
     description: "Whether to animate the chart on load"
   }
 ]} />
@@ -196,16 +154,6 @@ npx shadcn@latest add https://roiui.com/r/area-chart.json
     description: "Array of data points with year, amount, and type properties"
   },
   {
-    prop: "width",
-    type: "number",
-    description: "Width of the chart in pixels"
-  },
-  {
-    prop: "height",
-    type: "number",
-    description: "Height of the chart in pixels"
-  },
-  {
     prop: "showXAxis",
     type: "boolean",
     default: "true",
@@ -220,7 +168,7 @@ npx shadcn@latest add https://roiui.com/r/area-chart.json
   {
     prop: "showXGrid",
     type: "boolean",
-    default: "false",
+    default: "true",
     description: "Whether to display vertical grid lines"
   },
   {
@@ -248,12 +196,6 @@ npx shadcn@latest add https://roiui.com/r/area-chart.json
     description: "Size of the data points when showPoints is true"
   },
   {
-    prop: "margin",
-    type: "Margin",
-    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
-    description: "Margins around the chart content"
-  },
-  {
     prop: "xAxisFormatter",
     type: "(value: any) => string",
     description: "Function to format X axis tick labels"
@@ -261,8 +203,14 @@ npx shadcn@latest add https://roiui.com/r/area-chart.json
   {
     prop: "fillOpacity",
     type: "number",
-    default: "0.7",
+    default: "0.3",
     description: "Opacity of the area fill"
+  },
+  {
+    prop: "animated",
+    type: "boolean",
+    default: "false",
+    description: "Whether to animate the chart on load"
   }
 ]} />
 
@@ -283,16 +231,6 @@ npx shadcn@latest add https://roiui.com/r/bar-chart.json
     prop: "data",
     type: "BarChartData[]",
     description: "Array of data points with category, amount, and type properties"
-  },
-  {
-    prop: "width",
-    type: "number",
-    description: "Width of the chart in pixels"
-  },
-  {
-    prop: "height",
-    type: "number",
-    description: "Height of the chart in pixels"
   },
   {
     prop: "showXAxis",
@@ -319,27 +257,21 @@ npx shadcn@latest add https://roiui.com/r/bar-chart.json
     description: "Whether to display horizontal grid lines"
   },
   {
-    prop: "margin",
-    type: "Margin",
-    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
-    description: "Margins around the chart content"
-  },
-  {
     prop: "xAxisFormatter",
     type: "(value: string) => string",
     description: "Function to format X axis tick labels"
-  },
-  {
-    prop: "barPadding",
-    type: "number",
-    default: "0.3",
-    description: "Padding between bars (0-1)"
   },
   {
     prop: "useGradient",
     type: "boolean",
     default: "true",
     description: "Whether to use gradient fill for bars"
+  },
+  {
+    prop: "animated",
+    type: "boolean",
+    default: "false",
+    description: "Whether to animate the chart on load"
   }
 ]} />
 
@@ -362,22 +294,6 @@ npx shadcn@latest add https://roiui.com/r/pie-chart.json
     description: "Array of data points with category, value, and type properties"
   },
   {
-    prop: "width",
-    type: "number",
-    description: "Width of the chart in pixels"
-  },
-  {
-    prop: "height",
-    type: "number",
-    description: "Height of the chart in pixels"
-  },
-  {
-    prop: "margin",
-    type: "Margin",
-    default: "{ top: 20, right: 20, bottom: 20, left: 20 }",
-    description: "Margins around the chart content"
-  },
-  {
     prop: "innerRadius",
     type: "number",
     default: "0",
@@ -389,34 +305,16 @@ npx shadcn@latest add https://roiui.com/r/pie-chart.json
     description: "Outer radius of the pie chart"
   },
   {
-    prop: "padAngle",
-    type: "number",
-    default: "0.01",
-    description: "Padding angle between pie slices in radians"
-  },
-  {
-    prop: "cornerRadius",
-    type: "number",
-    default: "3",
-    description: "Corner radius for rounded slice edges"
-  },
-  {
     prop: "showLabels",
     type: "boolean",
     default: "true",
     description: "Whether to display category labels"
   },
   {
-    prop: "animate",
+    prop: "animated",
     type: "boolean",
-    default: "true",
+    default: "false",
     description: "Whether to animate the chart on load"
-  },
-  {
-    prop: "interactive",
-    type: "boolean",
-    default: "true",
-    description: "Whether slices are interactive (hover effects)"
   }
 ]} />
 
@@ -439,22 +337,6 @@ npx shadcn@latest add https://roiui.com/r/radar-chart.json
     prop: "data",
     type: "RadarChartData[]",
     description: "Array of data points with category, value, and type properties"
-  },
-  {
-    prop: "width",
-    type: "number",
-    description: "Width of the chart in pixels"
-  },
-  {
-    prop: "height",
-    type: "number",
-    description: "Height of the chart in pixels"
-  },
-  {
-    prop: "margin",
-    type: "Margin",
-    default: "{ top: 40, right: 40, bottom: 40, left: 40 }",
-    description: "Margins around the chart content"
   },
   {
     prop: "levels",
@@ -480,48 +362,21 @@ npx shadcn@latest add https://roiui.com/r/radar-chart.json
     description: "Whether to display the radar grid"
   },
   {
+    prop: "showRadialAxis",
+    type: "boolean",
+    default: "true",
+    description: "Whether to display radial axis labels (0-100)"
+  },
+  {
     prop: "fillOpacity",
     type: "number",
     default: "0.3",
     description: "Opacity of the radar area fill"
+  },
+  {
+    prop: "animated",
+    type: "boolean",
+    default: "false",
+    description: "Whether to animate the chart on load"
   }
 ]} />
-
-## Responsive Charts
-
-### Installation
-
-```package-install
-@visx/responsive
-```
-
-### Usage
-
-<CodeBlock
-  filename="responsive-chart.tsx"
-  language="tsx"
-  code={`import { ParentSize } from '@visx/responsive';
-import { LineChart } from '@/registry/brook/ui/charts/line-chart';
-
-export default function ResponsiveChart() {
-  const data = [
-    { date: '2023-01-01', value: 100, type: 'A' },
-    { date: '2023-02-01', value: 150, type: 'A' },
-    { date: '2023-03-01', value: 120, type: 'A' },
-  ];
-
-  return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <ParentSize>
-        {({ width, height }) => (
-          <LineChart
-            data={data}
-            width={width}
-            height={height}
-          />
-        )}
-      </ParentSize>
-    </div>
-  );
-}`}
-/>

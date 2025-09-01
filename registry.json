@@ -672,18 +672,7 @@
       "name": "line-chart",
       "type": "registry:item",
       "dependencies": [
-        "@visx/group",
-        "@visx/scale",
-        "@visx/axis",
-        "@visx/shape",
-        "@visx/gradient",
-        "@visx/grid",
-        "@visx/tooltip",
-        "@visx/event",
-        "@visx/glyph",
-        "@visx/curve",
-        "d3-array",
-        "@visx/responsive"
+        "recharts"
       ],
       "title": "Line Chart",
       "description": "Interactive line charts with optional data points and smooth animations.",
@@ -704,18 +693,7 @@
       "name": "area-chart",
       "type": "registry:item",
       "dependencies": [
-        "@visx/group",
-        "@visx/scale",
-        "@visx/axis",
-        "@visx/shape",
-        "@visx/gradient",
-        "@visx/grid",
-        "@visx/tooltip",
-        "@visx/event",
-        "@visx/glyph",
-        "@visx/curve",
-        "d3-array",
-        "@visx/responsive"
+        "recharts"
       ],
       "title": "Area Chart",
       "description": "Area charts that fill the space below the line, perfect for showing volume and trends.",
@@ -736,16 +714,7 @@
       "name": "bar-chart",
       "type": "registry:item",
       "dependencies": [
-        "@visx/group",
-        "@visx/scale",
-        "@visx/axis",
-        "@visx/shape",
-        "@visx/gradient",
-        "@visx/grid",
-        "@visx/tooltip",
-        "@visx/event",
-        "d3-array",
-        "@visx/responsive"
+        "recharts"
       ],
       "title": "Bar Chart",
       "description": "Animated vertical bar charts with hover highlighting and customizable styling.",
@@ -766,14 +735,7 @@
       "name": "radial-bar-chart",
       "type": "registry:item",
       "dependencies": [
-        "@visx/group",
-        "@visx/shape",
-        "@visx/scale",
-        "@visx/text",
-        "@visx/tooltip",
-        "@visx/event",
-        "@visx/gradient",
-        "@visx/responsive"
+        "recharts"
       ],
       "title": "Radial Bar Chart",
       "description": "Circular progress-style charts for displaying progress and comparative metrics.",
@@ -812,14 +774,7 @@
       "name": "radar-chart",
       "type": "registry:item",
       "dependencies": [
-        "@visx/group",
-        "@visx/scale",
-        "@visx/point",
-        "@visx/shape",
-        "@visx/tooltip",
-        "@visx/event",
-        "@visx/gradient",
-        "@visx/responsive"
+        "recharts"
       ],
       "title": "Radar Chart",
       "description": "Multi-dimensional radar charts for comparing multiple variables across categories.",
@@ -840,13 +795,7 @@
       "name": "pie-chart",
       "type": "registry:item",
       "dependencies": [
-        "@visx/group",
-        "@visx/shape",
-        "@visx/scale",
-        "@visx/tooltip",
-        "@visx/event",
-        "@visx/gradient",
-        "@visx/responsive"
+        "recharts"
       ],
       "title": "Pie Chart",
       "description": "Circular charts perfect for displaying proportional data and percentages.",

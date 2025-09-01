@@ -1,79 +1,66 @@
 "use client";
 
-import { TooltipWithBounds, defaultStyles } from "@visx/tooltip";
-
-type NumberValue = number | { valueOf(): number };
-
-export interface ChartDataItem {
-  type: string;
-  [key: string]: unknown;
+export interface ChartTooltipProps {
+  active?: boolean;
+  payload?: any[];
+  label?: string | number;
+  labelFormatter?: (value: any) => string;
+  valueFormatter?: (value: any, name?: string) => string;
 }
 
-export interface ChartTooltipProps<T extends ChartDataItem> {
-  tooltipData: T[];
-  tooltipLeft: number;
-  tooltipTop: number;
-  uniqueTypes: string[];
-  colors: string[];
-  getRD: (d: T) => number;
-  getDate: (d: T) => NumberValue | string;
-  dateFormatter?: (value: NumberValue | string) => string;
-}
+export function ChartTooltip({
+  active,
+  payload,
+  label,
+  labelFormatter,
+  valueFormatter,
+}: ChartTooltipProps) {
+  if (!active || !payload || !payload.length) {
+    return null;
+  }
 
-export default function ChartTooltip<T extends ChartDataItem>({
-  tooltipData,
-  tooltipLeft,
-  tooltipTop,
-  uniqueTypes,
-  colors,
-  getRD,
-  getDate,
-  dateFormatter,
-}: ChartTooltipProps<T>) {
-  const tooltipStyles = {
-    ...defaultStyles,
-    minWidth: 50,
-    backgroundColor: "var(--background)",
+  const formatLabel = (value: any) => {
+    if (labelFormatter) {
+      return labelFormatter(value);
+    }
+    return String(value);
+  };
 
-    color: "var(--foreground)",
-    borderRadius: "var(--radius)",
-    padding: "8px",
-    fontSize: "12px",
-    transition: "all 200ms linear",
+  const formatValue = (value: any, name?: string) => {
+    if (valueFormatter) {
+      return valueFormatter(value, name);
+    }
+    if (typeof value === 'number') {
+      return value.toLocaleString();
+    }
+    return String(value);
   };
 
   return (
-    <TooltipWithBounds top={tooltipTop} left={tooltipLeft} style={tooltipStyles} offsetLeft={15} offsetTop={-10}>
-      <p style={{ marginBottom: "6px", fontSize: "11px", fontWeight: "500" }}>
-        {dateFormatter ? dateFormatter(getDate(tooltipData[0])) : String(getDate(tooltipData[0]))}
-      </p>
-      {tooltipData.map((d, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: "4px",
-            gap: "12px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-            <div
-              style={{
-                width: "6px",
-                height: "6px",
-                backgroundColor: colors[uniqueTypes.indexOf(d.type)],
-                borderRadius: "50%",
-              }}
-            />
-            <span style={{ fontSize: "11px", color: "var(--muted-foreground)" }}>
-              {d.type.charAt(0) + d.type.slice(1).toLowerCase()}
-            </span>
-          </div>
-          <span style={{ fontSize: "11px", fontFamily: "monospace" }}>{getRD(d)}M</span>
+    <div
+      style={{
+        backgroundColor: "var(--muted)",
+        color: "var(--foreground)",
+        borderRadius: "var(--radius)",
+        padding: "8px",
+        fontSize: "12px",
+        border: "1px solid var(--border)",
+        boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+      }}
+    >
+      {label && (
+        <div style={{ fontSize: "11px", fontWeight: "500", marginBottom: "4px" }}>
+          {formatLabel(label)}
+        </div>
+      )}
+      {payload.map((entry: any, index: number) => (
+        <div key={index} style={{ fontSize: "11px", marginBottom: "2px" }}>
+          <span style={{ color: entry.color, marginRight: "4px" }}>●</span>
+          {entry.name || entry.dataKey}: {formatValue(entry.value, entry.name || entry.dataKey)}
         </div>
       ))}
-    </TooltipWithBounds>
+    </div>
   );
 }
+
+export default ChartTooltip;

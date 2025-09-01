@@ -1,7 +1,6 @@
 "use client";
 
 import RadarChart from "@/registry/brook/ui/charts/radar-chart";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./radar-chart-demo.module.css";
 
 const data = [
@@ -17,21 +16,18 @@ export default function RadarChartDemo() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>System Quality Metrics</h3>
-      <ParentSize>
-        {({ width, height }) => (
-          <RadarChart
-            data={data}
-            width={width}
-            height={height - 50}
-            levels={5}
-            maxValue={100}
-            showLabels={true}
-            showGrid={true}
-            fillOpacity={0.3}
-            animated
-          />
-        )}
-      </ParentSize>
+      <div style={{ height: "400px", width: "100%" }}>
+        <RadarChart
+          data={data}
+          levels={5}
+          maxValue={100}
+          showLabels={true}
+          showGrid={true}
+          showRadialAxis={false}
+          fillOpacity={0.3}
+          animated
+        />
+      </div>
     </div>
   );
 }

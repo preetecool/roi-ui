@@ -1,7 +1,6 @@
 "use client";
 
 import RadialBarChart from "@/registry/brook/ui/charts/radial-bar-chart";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import styles from "./radial-bar-chart-demo.module.css";
 
 const data = [
@@ -18,20 +17,13 @@ export default function RadialBarChartDemo() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Department Budget Allocation</h3>
-      <ParentSize>
-        {({ width, height }) => (
-          <RadialBarChart
-            data={data}
-            width={width}
-            height={height - 50}
-            showLabels={true}
-            cornerRadius={4}
-            padAngle={0.02}
-            paddingInner={0.1}
-            animated
-          />
-        )}
-      </ParentSize>
+      <div style={{ height: "400px", width: "100%" }}>
+        <RadialBarChart
+          data={data}
+          showLabels={true}
+          animated
+        />
+      </div>
     </div>
   );
 }
