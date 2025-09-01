@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.tabsList {
+  position: relative;
+}
+
+.tabTrigger {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabLabel {
+  position: relative;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 0;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  height: calc(100% - 0.5rem);
+  top: 0.25rem;
+}
+
+.contentContainer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border: 1px solid var(--border);
+  border-top: none;
+  background-color: var(--card);
+  min-height: 170px;
+}
+
+.tabContent {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+}

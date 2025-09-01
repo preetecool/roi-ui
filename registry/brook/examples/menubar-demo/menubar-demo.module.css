@@ -1,0 +1,11 @@
+.menuItemContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.shortcut {
+  color: var(--muted-foreground);
+  font-size: 0.6875rem;
+}

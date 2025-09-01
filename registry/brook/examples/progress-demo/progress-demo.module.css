@@ -1,0 +1,10 @@
+.progress {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

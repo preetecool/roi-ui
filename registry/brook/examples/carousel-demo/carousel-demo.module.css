@@ -1,0 +1,30 @@
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.card {
+  height: 280px;
+  position: relative;
+  padding: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+.cardTitle {
+  margin-bottom: 12px;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+.button {
+  padding-left: 0;
+}
+
+.placeholder {
+  height: 280px;
+}

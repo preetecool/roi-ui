@@ -1,0 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 28rem;
+}
+
+.labelText {
+  margin-left: 0.75rem;
+}

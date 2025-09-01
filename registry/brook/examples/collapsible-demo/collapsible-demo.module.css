@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--card);
+  cursor: text;
+  border: 1px solid var(--border);
+}
+
+.recoveryKey {
+  padding: 0.5rem;
+  background-color: var(--muted);
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+}

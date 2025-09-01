@@ -1,0 +1,26 @@
+.triggerContent {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.chevronIcon {
+  margin-top: 1px;
+}
+
+.menuItemButton {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.menuItemContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.separator {
+  height: 1px;
+  background-color: var(--border);
+  border: none;
+}
