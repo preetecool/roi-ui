@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { PieChart as RechartsePieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { motion } from "motion/react";
 import ChartTooltip from "./chart-tooltip";
+import styles from "./pie-chart.module.css";
 
 export interface PieChartData {
   category: string;
@@ -58,6 +59,7 @@ function PieChart({
 
   return (
     <div
+      className={styles.pieChart}
       style={{
         position: "relative",
         width: "100%",

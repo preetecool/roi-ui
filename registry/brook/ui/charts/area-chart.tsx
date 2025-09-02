@@ -11,6 +11,7 @@ import {
   Dot,
 } from "recharts";
 import ChartTooltip from "./chart-tooltip";
+import styles from "./area-chart.module.css";
 
 type NumberValue = number | { valueOf(): number };
 
@@ -86,6 +87,7 @@ function AreaChart({
 
   return (
     <div
+      className={styles.areaChart}
       style={{
         position: "relative",
         width: "100%",
@@ -93,7 +95,7 @@ function AreaChart({
       }}
     >
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsAreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
+        <RechartsAreaChart data={data} margin={{ top: 10, right: 10, left: -5, bottom: 20 }}>
           <defs>
             <linearGradient id="colorArea" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={color} stopOpacity={fillOpacity * 2} />

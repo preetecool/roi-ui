@@ -8,9 +8,22 @@
 .title {
   margin-bottom: 16px;
   color: var(--title);
+  font-size: 1.25rem;
 }
 
 .chartContainer {
-  flex: 1;
+  height: 400px;
   min-height: 400px;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  
+  .chartContainer {
+    height: 380px;
+    min-height: 380px;
+  }
 }

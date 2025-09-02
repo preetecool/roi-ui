@@ -109,6 +109,7 @@
 
         min-width: unset;
         padding: 1rem;
+        padding-bottom: 2rem;
     }
 }
 
@@ -130,6 +131,7 @@
     }
     .showcase {
         padding: 1rem;
+        padding-bottom: 2rem;
     }
     .task {
         justify-self: flex-start;

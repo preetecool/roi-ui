@@ -2,6 +2,7 @@
 
 import { RadialBarChart as RechartsRadialBarChart, RadialBar, ResponsiveContainer, Tooltip } from "recharts";
 import ChartTooltip from "./chart-tooltip";
+import styles from "./radial-bar-chart.module.css";
 
 export interface RadialBarChartData {
   category: string;
@@ -26,6 +27,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, ani
 
   return (
     <div
+      className={styles.radialBarChart}
       style={{
         position: "relative",
         width: "100%",

@@ -56,3 +56,19 @@
     max-width: 144px;
     box-sizing: border-box;
 }
+
+@media (max-width: 1280px) {
+    .form {
+        height: 100%;
+    }
+    
+    .card {
+        height: 100%;
+    }
+    
+    .field textarea {
+        min-height: 6rem;
+        height: 100%;
+        padding: 0.5rem;
+    }
+}

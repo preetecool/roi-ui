@@ -30,9 +30,10 @@ export async function ComponentPreview({
 
         if (!Component) {
             console.warn(`Component not found: ${name}`);
+            const isChartComponent = name.includes("chart");
             return (
                 <div className={styles.container}>
-                    <div className={`${styles.preview} ${styles[align]}`}>
+                    <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ''}`}>
                         <p className={styles.errorMessage}>
                             Preview for <code className={styles.errorCode}>{name}</code>{" "}
                             is temporarily unavailable.
@@ -161,9 +162,12 @@ export async function ComponentPreview({
             );
         }
 
+        // Check if this is a chart component
+        const isChartComponent = name.includes("chart");
+
         return (
             <div className={styles.container}>
-                <div className={`${styles.preview} ${styles[align]}`}>
+                <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ''}`}>
                     <Component />
                     {replayButton && <ReplayButton />}
                 </div>
@@ -191,9 +195,10 @@ export async function ComponentPreview({
         );
     } catch (error) {
         console.error(`Fatal error in ComponentPreview for ${name}:`, error);
+        const isChartComponent = name.includes("chart");
         return (
             <div className={styles.container}>
-                <div className={`${styles.preview} ${styles[align]}`}>
+                <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ''}`}>
                     <p className={styles.errorMessage}>
                         Preview for <code className={styles.errorCode}>{name}</code> is
                         temporarily unavailable.

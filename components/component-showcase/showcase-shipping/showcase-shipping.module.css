@@ -1,8 +1,13 @@
 .cardContainer {
     width: 100%;
     max-height: 250px;
-
     position: relative;
+}
+
+@media (max-width: 640px) {
+    .cardContainer {
+        max-height: none;
+    }
 }
 
 .shippingCard {

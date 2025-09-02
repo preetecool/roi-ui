@@ -1,0 +1,10 @@
+.radialBarChart {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.radialBarChart *:focus,
+.radialBarChart *:focus-visible {
+    outline: none !important;
+}

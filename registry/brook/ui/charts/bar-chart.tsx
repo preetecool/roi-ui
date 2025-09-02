@@ -48,7 +48,7 @@ function BarChart({
   return (
     <div className={styles.barChart}>
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsBarChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 40 }}>
+        <RechartsBarChart data={data} margin={{ top: 10, right: 10, left: -5, bottom: 40 }}>
           {showXGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.2} />}
           {showYGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.2} />}
           {showXAxis && (

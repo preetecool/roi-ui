@@ -38,3 +38,9 @@
 .tomorrowText {
     color: var(--warning-foreground);
 }
+
+@media (max-width: 1280px) {
+    .taskCard {
+        height: 100% !important;
+    }
+}

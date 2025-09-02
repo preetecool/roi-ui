@@ -7,4 +7,12 @@
 .title {
   margin-bottom: 16px;
   color: var(--title);
+  font-size: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
 }

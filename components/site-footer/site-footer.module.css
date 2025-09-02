@@ -4,6 +4,13 @@
   background-color: var(--background);
 }
 
+@media (max-width: 640px) {
+  .footer {
+    margin-top: 2rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
 .container {
   max-width: 720px;
   margin: 0 auto;

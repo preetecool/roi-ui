@@ -1,0 +1,10 @@
+.lineChart {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.lineChart *:focus,
+.lineChart *:focus-visible {
+    outline: none !important;
+}
