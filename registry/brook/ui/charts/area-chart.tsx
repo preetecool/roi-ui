@@ -29,7 +29,6 @@ export interface AreaChartProps {
   showYAxis?: boolean;
   showXGrid?: boolean;
   showYGrid?: boolean;
-  curve?: CurveType;
   showPoints?: boolean;
   pointSize?: number;
   xAxisFormatter?: (value: NumberValue | string) => string;
@@ -43,7 +42,6 @@ function AreaChart({
   showYAxis = true,
   showXGrid = true,
   showYGrid = true,
-  curve = "linear",
   showPoints = false,
   pointSize = 4,
   xAxisFormatter,
@@ -52,21 +50,6 @@ function AreaChart({
 }: AreaChartProps) {
   const color = "var(--chart1)";
 
-  const getCurveType = (curveType: CurveType) => {
-    switch (curveType) {
-      case "monotoneX":
-        return "monotone";
-      case "cardinal":
-        return "cardinal";
-      case "basis":
-        return "basis";
-      case "step":
-        return "step";
-      case "linear":
-      default:
-        return "linear";
-    }
-  };
 
   const formatDate = (value: NumberValue | string) => {
     if (xAxisFormatter) {
@@ -75,13 +58,18 @@ function AreaChart({
     return Math.round(Number(value)).toString();
   };
 
-  const tooltipLabelFormatter = (value: any) => formatDate(value);
+  const tooltipLabelFormatter = (value: NumberValue | string) => formatDate(value);
 
-  const tooltipValueFormatter = (value: any, name?: string) => {
+  const tooltipValueFormatter = (value: number) => {
     return value.toLocaleString();
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface AreaTooltipPayload {
+    value: number;
+    payload: AreaChartData;
+  }
+
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: AreaTooltipPayload[]; label?: NumberValue | string }) => {
     if (!active || !payload || !payload.length) return null;
     
     const data = payload[0];
@@ -93,16 +81,22 @@ function AreaChart({
           name: "Revenue",
           color: color
         }]}
-        label={label}
+        label={typeof label === 'object' && label !== null ? Number(label) : label}
         labelFormatter={tooltipLabelFormatter}
         valueFormatter={tooltipValueFormatter}
       />
     );
   };
 
-  const CustomDot = (props: any) => {
+  interface AreaDotProps {
+    cx?: number;
+    cy?: number;
+    [key: string]: unknown;
+  }
+
+  const CustomDot = (props: AreaDotProps) => {
     const { cx, cy } = props;
-    if (showPoints) {
+    if (showPoints && cx !== undefined && cy !== undefined) {
       return <Dot cx={cx} cy={cy} r={pointSize} fill={color} stroke="var(--background)" strokeWidth={2} />;
     }
     return null;
@@ -148,7 +142,7 @@ function AreaChart({
           )}
           <Tooltip content={<CustomTooltip />} />
           <Area
-            type={getCurveType(curve) as any}
+            type="monotone"
             dataKey="amount"
             stroke={color}
             strokeWidth={3}

@@ -10,6 +10,11 @@
   font-size: 1.25rem;
 }
 
+.chartWrapper {
+  height: 360px;
+  width: 100%;
+}
+
 @media (max-width: 640px) {
   .title {
     font-size: 1rem;

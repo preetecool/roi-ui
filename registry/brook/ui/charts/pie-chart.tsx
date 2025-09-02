@@ -25,7 +25,7 @@ function PieChart({
   innerRadius = 0,
   outerRadius,
   animate = true,
-  interactive = true,
+
   colors,
 }: PieChartProps) {
   const defaultColors = ["var(--chart1)", "var(--chart2)", "var(--accent)", "var(--warning)", "var(--destructive)"];
@@ -33,40 +33,46 @@ function PieChart({
 
   const total = useMemo(() => data.reduce((sum, d) => sum + d.value, 0), [data]);
 
-  const dataWithColors = useMemo(() => 
-    data.map((item, index) => ({
-      ...item,
-      fill: pieColors[index % pieColors.length]
-    })), 
-    [data, pieColors]
+  const dataWithColors = useMemo(
+    () =>
+      data.map((item, index) => ({
+        ...item,
+        fill: pieColors[index % pieColors.length],
+      })),
+    [data, pieColors],
   );
 
-  const tooltipValueFormatter = (value: any, name?: string) => {
+  const tooltipValueFormatter = (value: number) => {
     const percentage = ((value / total) * 100).toFixed(1);
     return `${percentage}%`;
   };
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  interface PieTooltipPayload {
+    value: number;
+    payload: PieChartData & { fill: string };
+  }
+
+  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: PieTooltipPayload[] }) => {
     if (!active || !payload || !payload.length) return null;
-    
+
     const data = payload[0];
     return (
-      <ChartTooltip 
+      <ChartTooltip
         active={active}
-        payload={[{
-          ...data,
-          color: data.payload.fill,
-          name: data.payload.category
-        }]}
+        payload={[
+          {
+            ...data,
+            color: data.payload.fill,
+            name: data.payload.category,
+          },
+        ]}
         valueFormatter={tooltipValueFormatter}
       />
     );
   };
 
   return (
-    <div
-      className={styles.pieChart}
-    >
+    <div className={styles.pieChart}>
       <ResponsiveContainer width="100%" height="100%">
         <RechartsePieChart>
           <Pie

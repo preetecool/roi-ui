@@ -51,22 +51,6 @@ function LineChart({
   const uniqueTypes = Array.from(new Set(data.map((d) => d.type)));
   const colors = ["var(--chart1)", "var(--chart2)"];
 
-  const getCurveType = (curveType: CurveType) => {
-    switch (curveType) {
-      case "monotoneX":
-        return "monotone";
-      case "cardinal":
-        return "cardinal";
-      case "basis":
-        return "basis";
-      case "step":
-        return "step";
-      case "linear":
-      default:
-        return "linear";
-    }
-  };
-
   const formatDate = (value: NumberValue | string) => {
     if (xAxisFormatter) {
       return xAxisFormatter(value);
@@ -74,11 +58,18 @@ function LineChart({
     return Math.round(Number(value)).toString();
   };
 
-  const tooltipLabelFormatter = (value: any) => formatDate(value);
+  const tooltipLabelFormatter = (value: NumberValue | string) => formatDate(value);
 
-  const CustomDot = (props: any) => {
+  interface DotProps {
+    cx?: number;
+    cy?: number;
+    payload?: LineChartData;
+    [key: string]: unknown;
+  }
+
+  const CustomDot = (props: DotProps) => {
     const { cx, cy, payload } = props;
-    if (showPoints) {
+    if (showPoints && cx !== undefined && cy !== undefined && payload) {
       return (
         <Dot
           cx={cx}
@@ -93,8 +84,12 @@ function LineChart({
     return null;
   };
 
-  // Group data by date for recharts format
-  const groupedData = data.reduce((acc: any[], curr) => {
+  interface GroupedDataItem {
+    date: NumberValue;
+    [key: string]: NumberValue | number;
+  }
+
+  const groupedData = data.reduce((acc: GroupedDataItem[], curr) => {
     const existingDate = acc.find((item) => item.date === curr.date);
     if (existingDate) {
       existingDate[curr.type] = curr.value;
@@ -143,7 +138,7 @@ function LineChart({
           {uniqueTypes.map((type, index) => (
             <Line
               key={type}
-              type={getCurveType(curve) as any}
+              type="monotone"
               dataKey={type}
               stroke={colors[index % colors.length]}
               strokeWidth={3}

@@ -42,7 +42,6 @@ export function ShowcaseAreaChart() {
             showYAxis={false}
             showXGrid={false}
             showYGrid={false}
-            curve="monotoneX"
             showPoints={false}
             fillOpacity={0.3}
             xAxisFormatter={formatMonth}
