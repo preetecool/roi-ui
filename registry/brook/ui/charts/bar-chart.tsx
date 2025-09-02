@@ -31,7 +31,6 @@ function BarChart({
   showXGrid = false,
   showYGrid = true,
   xAxisFormatter,
-  useGradient = true,
   animated = false,
 }: BarChartProps) {
   const color = "var(--chart1)";

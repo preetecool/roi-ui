@@ -17,7 +17,7 @@ export default function RadialBarChartDemo() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Department Budget Allocation</h3>
-      <div style={{ height: "400px", width: "100%" }}>
+      <div className={styles.chartWrapper}>
         <RadialBarChart
           data={data}
           showLabels={true}
