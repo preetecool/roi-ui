@@ -42,13 +42,18 @@ function BarChart({
     return String(value);
   };
 
-  const tooltipLabelFormatter = (value: any) => formatCategory(value);
+  const tooltipLabelFormatter = (value: string | number) => formatCategory(value);
 
-  const tooltipValueFormatter = (value: any, name?: string) => {
+  const tooltipValueFormatter = (value: number) => {
     return `$${value.toLocaleString()}k`;
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface TooltipPayload {
+    value: number;
+    payload: BarChartData;
+  }
+
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string | number }) => {
     if (!active || !payload || !payload.length) return null;
     
     const data = payload[0];

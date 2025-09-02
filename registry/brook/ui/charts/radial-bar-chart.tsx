@@ -17,7 +17,7 @@ export interface RadialBarChartProps {
   animated?: boolean;
 }
 
-function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, animated = false }: RadialBarChartProps) {
+function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: RadialBarChartProps) {
   const colors = ["var(--chart1)", "var(--chart2)", "var(--accent)", "var(--warning)", "var(--destructive)"];
 
   // Sort data from highest to lowest values (outside to inside)
@@ -25,25 +25,39 @@ function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, ani
 
   const transformedData = sortedData.map((item, index) => ({
     ...item,
-    fill: item.category.toLowerCase() === 'sleep' ? 'var(--success)' : colors[index % colors.length],
+    fill: item.category.toLowerCase() === "sleep" ? "var(--success)" : colors[index % colors.length],
   }));
 
-  const tooltipValueFormatter = (value: any, name?: string) => {
+  const tooltipValueFormatter = (value: number) => {
     return value.toLocaleString();
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface TooltipPayload {
+    value: number;
+    payload: RadialBarChartData & { fill: string };
+  }
+
+  const CustomTooltip = ({
+    active,
+    payload,
+  }: {
+    active?: boolean;
+    payload?: TooltipPayload[];
+    label?: string | number;
+  }) => {
     if (!active || !payload || !payload.length) return null;
-    
+
     const data = payload[0];
     return (
-      <ChartTooltip 
+      <ChartTooltip
         active={active}
-        payload={[{
-          ...data,
-          name: data.payload.category,
-          color: data.payload.fill
-        }]}
+        payload={[
+          {
+            ...data,
+            name: data.payload.category,
+            color: data.payload.fill,
+          },
+        ]}
         valueFormatter={tooltipValueFormatter}
       />
     );
