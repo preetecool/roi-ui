@@ -11,18 +11,13 @@ const data = [
 ];
 
 export default function PieChartDemo() {
-  const blueShades = [
-    "#1e40af", // blue-800
-    "#3b82f6", // blue-500
-    "#60a5fa", // blue-400
-    "#93c5fd", // blue-300
-  ];
+  const blueShades = ["#1e40af", "#3b82f6", "#60a5fa", "#93c5fd"];
 
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Traffic by Platform</h3>
-      <div style={{ height: "360px", width: "100%" }}>
-        <PieChart data={data} showLabels={true} colors={blueShades} />
+      <div className={styles.chartWrapper}>
+        <PieChart data={data} colors={blueShades} />
       </div>
     </div>
   );

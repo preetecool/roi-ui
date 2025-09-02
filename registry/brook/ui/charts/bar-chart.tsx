@@ -31,7 +31,6 @@ function BarChart({
   showXGrid = false,
   showYGrid = true,
   xAxisFormatter,
-  useGradient = true,
   animated = false,
 }: BarChartProps) {
   const color = "var(--chart1)";
@@ -43,7 +42,35 @@ function BarChart({
     return String(value);
   };
 
-  const tooltipLabelFormatter = (value: any) => formatCategory(value);
+  const tooltipLabelFormatter = (value: string | number) => formatCategory(value);
+
+  const tooltipValueFormatter = (value: number) => {
+    return `$${value.toLocaleString()}k`;
+  };
+
+  interface TooltipPayload {
+    value: number;
+    payload: BarChartData;
+  }
+
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string | number }) => {
+    if (!active || !payload || !payload.length) return null;
+    
+    const data = payload[0];
+    return (
+      <ChartTooltip 
+        active={active}
+        payload={[{
+          ...data,
+          name: "Sales",
+          color: color
+        }]}
+        label={label}
+        labelFormatter={tooltipLabelFormatter}
+        valueFormatter={tooltipValueFormatter}
+      />
+    );
+  };
 
   return (
     <div className={styles.barChart}>
@@ -69,7 +96,7 @@ function BarChart({
             />
           )}
           <Tooltip
-            content={<ChartTooltip labelFormatter={tooltipLabelFormatter} />}
+            content={<CustomTooltip />}
             cursor={{ fill: "var(--secondary)", opacity: 0.15 }}
           />
           <Bar

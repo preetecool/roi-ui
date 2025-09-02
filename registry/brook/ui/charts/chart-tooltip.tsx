@@ -54,9 +54,26 @@ export function ChartTooltip({
         </div>
       )}
       {payload.map((entry: any, index: number) => (
-        <div key={index} style={{ fontSize: "11px", marginBottom: "2px" }}>
-          <span style={{ color: entry.color, marginRight: "4px" }}>●</span>
-          {entry.name || entry.dataKey}: {formatValue(entry.value, entry.name || entry.dataKey)}
+        <div key={index} style={{ 
+          fontSize: "11px", 
+          marginBottom: "2px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "12px"
+        }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span style={{ color: entry.color, marginRight: "4px" }}>●</span>
+            <span style={{ color: "var(--muted-foreground)" }}>
+              {entry.name || entry.dataKey}
+            </span>
+          </div>
+          <span style={{ 
+            fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace", 
+            fontWeight: "500" 
+          }}>
+            {formatValue(entry.value, entry.name || entry.dataKey)}
+          </span>
         </div>
       ))}
     </div>

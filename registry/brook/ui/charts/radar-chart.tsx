@@ -41,11 +41,14 @@ function RadarChart({
 }: RadarChartProps) {
   const colors = ["var(--chart1)", "var(--chart2)"];
 
-  // Group data by type for multiple series if needed
   const uniqueTypes = Array.from(new Set(data.map((d) => d.type)));
 
-  // Create grouped data for recharts
-  const groupedData = data.reduce((acc: any[], curr) => {
+  interface GroupedDataItem {
+    category: string;
+    [key: string]: string | number;
+  }
+
+  const groupedData = data.reduce((acc: GroupedDataItem[], curr) => {
     const existing = acc.find((item) => item.category === curr.category);
     if (existing) {
       existing[curr.type] = curr.value;

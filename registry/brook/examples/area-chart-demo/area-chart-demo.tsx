@@ -28,7 +28,6 @@ export default function AreaChartDemo() {
           showYAxis={true}
           showXGrid={false}
           showYGrid={true}
-          curve="monotoneX"
           showPoints={false}
           fillOpacity={0.2}
           animated

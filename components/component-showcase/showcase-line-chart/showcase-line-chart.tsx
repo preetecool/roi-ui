@@ -33,7 +33,6 @@ export function ShowcaseLineChart() {
             showYAxis={false}
             showXGrid={false}
             showYGrid={true}
-            curve="monotoneX"
             showPoints={false}
             xAxisFormatter={formatDate}
             animated

@@ -88,7 +88,6 @@ export default function LineChartDemo() {
           showXAxis={true}
           showYAxis={true}
           showXGrid={false}
-          curve="monotoneX"
           showPoints={false}
           animated
         />

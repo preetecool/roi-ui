@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { PieChart as RechartsePieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { motion } from "motion/react";
 import ChartTooltip from "./chart-tooltip";
 import styles from "./pie-chart.module.css";
 
@@ -16,7 +15,6 @@ export interface PieChartProps {
   data: PieChartData[];
   innerRadius?: number;
   outerRadius?: number;
-  showLabels?: boolean;
   animate?: boolean;
   interactive?: boolean;
   colors?: string[];
@@ -26,89 +24,78 @@ function PieChart({
   data,
   innerRadius = 0,
   outerRadius,
-  showLabels = true,
   animate = true,
-  interactive = true,
+
   colors,
 }: PieChartProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
   const defaultColors = ["var(--chart1)", "var(--chart2)", "var(--accent)", "var(--warning)", "var(--destructive)"];
   const pieColors = colors || defaultColors;
 
-  const filteredData = selectedCategory ? data.filter((d) => d.category === selectedCategory) : data;
-
   const total = useMemo(() => data.reduce((sum, d) => sum + d.value, 0), [data]);
 
-  const tooltipValueFormatter = (value: any, name?: string) => {
+  const dataWithColors = useMemo(
+    () =>
+      data.map((item, index) => ({
+        ...item,
+        fill: pieColors[index % pieColors.length],
+      })),
+    [data, pieColors],
+  );
+
+  const tooltipValueFormatter = (value: number) => {
     const percentage = ((value / total) * 100).toFixed(1);
-    return `${value.toLocaleString()} (${percentage}%)`;
+    return `${percentage}%`;
   };
 
-  const renderLabel = (entry: any) => {
-    if (!showLabels) return "";
-    const percent = ((entry.value / total) * 100).toFixed(1);
-    return `${percent}%`;
-  };
+  interface PieTooltipPayload {
+    value: number;
+    payload: PieChartData & { fill: string };
+  }
 
-  const handleClick = (data: any) => {
-    if (interactive && animate) {
-      setSelectedCategory(selectedCategory === data.category ? null : data.category);
-    }
+  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: PieTooltipPayload[] }) => {
+    if (!active || !payload || !payload.length) return null;
+
+    const data = payload[0];
+    return (
+      <ChartTooltip
+        active={active}
+        payload={[
+          {
+            ...data,
+            color: data.payload.fill,
+            name: data.payload.category,
+          },
+        ]}
+        valueFormatter={tooltipValueFormatter}
+      />
+    );
   };
 
   return (
-    <div
-      className={styles.pieChart}
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "var(--card)",
-        borderRadius: "14px",
-      }}
-    >
+    <div className={styles.pieChart}>
       <ResponsiveContainer width="100%" height="100%">
         <RechartsePieChart>
           <Pie
-            data={filteredData}
+            data={dataWithColors}
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={showLabels ? renderLabel : false}
+            label={false}
             outerRadius={outerRadius || 120}
             innerRadius={innerRadius}
             fill="#8884d8"
             dataKey="value"
             animationBegin={animate ? 0 : undefined}
             animationDuration={animate ? 800 : 0}
-            onClick={handleClick}
+            stroke="none"
           >
-            {filteredData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={pieColors[index % pieColors.length]} />
+            {dataWithColors.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.fill} />
             ))}
           </Pie>
-          <Tooltip content={<ChartTooltip valueFormatter={tooltipValueFormatter} />} />
+          <Tooltip content={<CustomTooltip />} />
         </RechartsePieChart>
       </ResponsiveContainer>
-      {animate && interactive && (
-        <motion.div
-          style={{
-            position: "absolute",
-            bottom: "16px",
-            right: "16px",
-            color: "var(--muted-foreground)",
-            fontSize: "11px",
-            fontWeight: 300,
-            pointerEvents: "none",
-          }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        >
-          Click segments to update
-        </motion.div>
-      )}
     </div>
   );
 }
