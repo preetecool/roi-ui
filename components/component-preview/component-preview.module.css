@@ -7,7 +7,7 @@
 
 .preview {
   position: relative;
-  height: 450px;
+  min-height: 450px;
   display: flex;
   width: 100%;
   padding: 2rem;
