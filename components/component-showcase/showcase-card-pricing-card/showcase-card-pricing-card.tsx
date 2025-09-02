@@ -15,7 +15,8 @@ import styles from "./showcase-card-pricing-card.module.css";
 
 export function ShowcasePricing() {
   return (
-    <Card>
+    <div className={styles.container}>
+      <Card className={styles.card}>
       <CardHeader>
         <div className={styles.headerContainer}>
           <div className={styles.logoContainer}>
@@ -59,5 +60,6 @@ export function ShowcasePricing() {
         </Button>
       </CardFooter>
     </Card>
+    </div>
   );
 }
