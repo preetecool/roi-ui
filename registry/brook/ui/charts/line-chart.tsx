@@ -11,6 +11,7 @@ import {
   Dot,
 } from "recharts";
 import ChartTooltip from "./chart-tooltip";
+import styles from "./line-chart.module.css";
 
 type NumberValue = number | { valueOf(): number };
 
@@ -108,6 +109,7 @@ function LineChart({
 
   return (
     <div
+      className={styles.lineChart}
       style={{
         position: "relative",
         width: "100%",
@@ -115,7 +117,7 @@ function LineChart({
       }}
     >
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart data={groupedData} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
+        <RechartsLineChart data={groupedData} margin={{ top: 10, right: 10, left: -5, bottom: 20 }}>
           {showXGrid ||
             (showYGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.2} />)}
           {showXAxis && (

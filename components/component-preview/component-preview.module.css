@@ -28,6 +28,20 @@
   justify-content: flex-end;
 }
 
+.chartPreview {
+  height: 400px;
+}
+
+@media (max-width: 640px) {
+  .preview {
+    padding: 1.5rem;
+  }
+  
+  .chartPreview {
+    height: 360px;
+  }
+}
+
 .description {
   border-top: 1px solid var(--border);
   background-color: var(--muted);

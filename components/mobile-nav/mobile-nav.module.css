@@ -1,13 +1,11 @@
 .menuButton {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 3rem;
     height: 3rem;
     border: none;
     border-radius: 1rem;
-    background: var(--background);
-    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1), 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    background: transparent;
     cursor: pointer;
     z-index: 50;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -17,7 +15,6 @@
 
 .menuButton:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.15), 0 4px 16px -4px rgba(0, 0, 0, 0.08);
 }
 
 .menuButton:active {
@@ -26,7 +23,7 @@
 }
 
 .menuButtonActive {
-    background: var(--accent);
+    background: transparent;
     transform: rotate(180deg);
 }
 

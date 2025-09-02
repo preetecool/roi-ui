@@ -7,8 +7,6 @@ import { source } from "@/lib/source";
 import { Button } from "@/registry/brook/ui/button/button";
 
 import { TOCUpdater } from "@/components/toc-updater";
-
-import { MobileNav } from "@/components/mobile-nav/mobile-nav";
 import styles from "./page.module.css";
 
 export const revalidate = false;
@@ -89,10 +87,6 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
     <>
       <TOCUpdater toc={toc} />
 
-      <div className={`${styles.mobileHeader} lg:hidden`}>
-        <MobileNav tree={source.pageTree} />
-        <div className={styles.mobileHeaderSpacer} />
-      </div>
 
       <div
         className={styles.pageContent}

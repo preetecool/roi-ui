@@ -14,3 +14,8 @@
     stroke: none !important;
     filter: none !important;
 }
+
+.barChart *:focus,
+.barChart *:focus-visible {
+    outline: none !important;
+}

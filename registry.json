@@ -686,6 +686,11 @@
           "path": "registry/brook/ui/charts/line-chart.tsx",
           "type": "registry:file",
           "target": "~/components/ui/charts/line-chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/line-chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/line-chart.module.css"
         }
       ]
     },
@@ -707,6 +712,11 @@
           "path": "registry/brook/ui/charts/area-chart.tsx",
           "type": "registry:file",
           "target": "~/components/ui/charts/area-chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/area-chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/area-chart.module.css"
         }
       ]
     },
@@ -728,6 +738,11 @@
           "path": "registry/brook/ui/charts/bar-chart.tsx",
           "type": "registry:file",
           "target": "~/components/ui/charts/bar-chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/bar-chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/bar-chart.module.css"
         }
       ]
     },
@@ -749,6 +764,11 @@
           "path": "registry/brook/ui/charts/radial-bar-chart.tsx",
           "type": "registry:file",
           "target": "~/components/ui/charts/radial-bar-chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/radial-bar-chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/radial-bar-chart.module.css"
         }
       ]
     },
@@ -788,6 +808,11 @@
           "path": "registry/brook/ui/charts/radar-chart.tsx",
           "type": "registry:file",
           "target": "~/components/ui/charts/radar-chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/radar-chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/radar-chart.module.css"
         }
       ]
     },
@@ -809,6 +834,11 @@
           "path": "registry/brook/ui/charts/pie-chart.tsx",
           "type": "registry:file",
           "target": "~/components/ui/charts/pie-chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/charts/pie-chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/charts/pie-chart.module.css"
         }
       ]
     },

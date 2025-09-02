@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from "recharts";
 import ChartTooltip from "./chart-tooltip";
+import styles from "./radar-chart.module.css";
 
 export interface RadarChartData {
   category: string;
@@ -59,6 +60,7 @@ function RadarChart({
 
   return (
     <div
+      className={styles.radarChart}
       style={{
         position: "relative",
         width: "100%",

@@ -22,13 +22,26 @@ export function MultiFileComponentSource({ files }: MultiFileComponentSourceProp
   const [bubbleStyle, setBubbleStyle] = useState({ left: 0, width: 0 });
   const tabRefs = useRef<(HTMLElement | null)[]>([]);
 
-  useEffect(() => {
+  const updateBubbleStyle = () => {
     const activeTabElement = tabRefs.current[activeTab];
 
     if (activeTabElement) {
       const { offsetLeft, offsetWidth } = activeTabElement;
       setBubbleStyle({ left: offsetLeft, width: offsetWidth });
     }
+  };
+
+  useEffect(() => {
+    updateBubbleStyle();
+  }, [activeTab]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      updateBubbleStyle();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [activeTab]);
 
   if (!files || files.length === 0) {

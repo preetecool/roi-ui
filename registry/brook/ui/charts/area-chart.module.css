@@ -1,0 +1,10 @@
+.areaChart {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.areaChart *:focus,
+.areaChart *:focus-visible {
+    outline: none !important;
+}
