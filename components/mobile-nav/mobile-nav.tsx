@@ -5,6 +5,7 @@ import type { PageTree } from "fumadocs-core/server";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "../logo";
+import { motion, AnimatePresence } from "motion/react";
 import styles from "./mobile-nav.module.css";
 
 interface NodeWithChildren {
@@ -48,9 +49,34 @@ export function MobileNav({ tree }: MobileNavProps) {
         </div>
       </button>
 
-      {isOpen && <div className={`${styles.overlay} ${styles.mobileOnly}`} onClick={() => setIsOpen(false)} />}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className={`${styles.overlay} ${styles.mobileOnly}`}
+            onClick={() => setIsOpen(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          />
+        )}
+      </AnimatePresence>
 
-      <div className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : styles.sidebarClosed} ${styles.mobileOnly}`}>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className={`${styles.sidebar} ${styles.mobileOnly}`}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0 }}
+            style={{ transformOrigin: "top" }}
+            transition={{
+              type: "spring",
+              damping: 30,
+              stiffness: 600,
+              duration: 0.15
+            }}
+          >
         <div className={styles.sidebarHeader}>
           <Link href="/" className={styles.logoLink} onClick={() => setIsOpen(false)}>
             <Logo width={32} height={32} />
@@ -80,7 +106,9 @@ export function MobileNav({ tree }: MobileNavProps) {
             ))}
           </nav>
         </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
