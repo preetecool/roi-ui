@@ -11,6 +11,6 @@
 }
 
 .chartContainer {
-  flex: 1;
+  height: 400px;
   min-height: 400px;
 }
