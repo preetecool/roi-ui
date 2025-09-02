@@ -4,7 +4,6 @@ import { useState } from "react";
 import type { PageTree } from "fumadocs-core/server";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import { Logo } from "../logo";
 import styles from "./mobile-nav.module.css";
 
@@ -28,32 +27,14 @@ export function MobileNav({ tree }: MobileNavProps) {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`${styles.hamburgerButton} ${styles.mobileOnly}`}
+        className={`${styles.menuButton} ${styles.mobileOnly} ${isOpen ? styles.menuButtonActive : ""}`}
         aria-label="Toggle navigation menu"
       >
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {isOpen ? (
-            <>
-              <path d="M18 6L6 18" />
-              <path d="M6 6l12 12" />
-            </>
-          ) : (
-            <>
-              <path d="M3 12h18" />
-              <path d="M3 6h18" />
-              <path d="M3 18h18" />
-            </>
-          )}
-        </svg>
+        <div className={styles.menuButtonInner}>
+          <span className={`${styles.menuLine} ${styles.menuLineTop} ${isOpen ? styles.menuLineTopActive : ""}`}></span>
+          <span className={`${styles.menuLine} ${styles.menuLineMiddle} ${isOpen ? styles.menuLineMiddleActive : ""}`}></span>
+          <span className={`${styles.menuLine} ${styles.menuLineBottom} ${isOpen ? styles.menuLineBottomActive : ""}`}></span>
+        </div>
       </button>
 
       {isOpen && <div className={`${styles.overlay} ${styles.mobileOnly}`} onClick={() => setIsOpen(false)} />}
@@ -63,34 +44,17 @@ export function MobileNav({ tree }: MobileNavProps) {
           <Link href="/" className={styles.logoLink} onClick={() => setIsOpen(false)}>
             <Logo width={32} height={32} />
           </Link>
-          <div className={styles.headerActions}>
-            <ThemeSwitcher />
-            <button onClick={() => setIsOpen(false)} className={styles.closeButton}>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 6L6 18" />
-                <path d="M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
         </div>
 
         <div className={styles.sidebarContent}>
-          <div className={styles.mainNavSection}>
+          <div className={styles.menuSection}>
+            <div className={styles.sectionHeader}>Menu</div>
             <Link
-              href="/docs"
+              href="/"
               onClick={() => setIsOpen(false)}
-              className={`${styles.navLink} ${pathname === "/docs" ? styles.navLinkActive : styles.navLinkInactive}`}
+              className={`${styles.menuItem} ${pathname === "/" ? styles.menuItemActive : styles.menuItemInactive}`}
             >
-              Docs
+              Home
             </Link>
           </div>
 

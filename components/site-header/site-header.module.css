@@ -69,8 +69,26 @@
   color: var(--title);
 }
 
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobileMenuWrapper {
+  display: none;
+}
+
 @media (max-width: 1023px) {
-  .header {
+  .mobileMenuWrapper {
+    display: block;
+  }
+  
+  .navLinks {
+    display: none !important;
+  }
+  
+  .logoLink {
     display: none;
   }
 }
