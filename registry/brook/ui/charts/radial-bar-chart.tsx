@@ -20,13 +20,16 @@ export interface RadialBarChartProps {
 function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, animated = false }: RadialBarChartProps) {
   const colors = ["var(--chart1)", "var(--chart2)", "var(--accent)", "var(--warning)", "var(--destructive)"];
 
-  const transformedData = data.map((item, index) => ({
+  // Sort data from highest to lowest values (outside to inside)
+  const sortedData = [...data].sort((a, b) => b.value - a.value);
+
+  const transformedData = sortedData.map((item, index) => ({
     ...item,
-    fill: colors[index % colors.length],
+    fill: item.category.toLowerCase() === 'sleep' ? 'var(--success)' : colors[index % colors.length],
   }));
 
   const tooltipValueFormatter = (value: any, name?: string) => {
-    return `$${value.toLocaleString()}`;
+    return value.toLocaleString();
   };
 
   const CustomTooltip = ({ active, payload, label }: any) => {
@@ -47,50 +50,26 @@ function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, ani
   };
 
   return (
-    <div
-      className={styles.radialBarChart}
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "var(--card)",
-        borderRadius: "14px",
-      }}
-    >
+    <div className={styles.radialBarChart}>
       <ResponsiveContainer width="100%" height="100%">
         <RechartsRadialBarChart
           cx="50%"
           cy="50%"
           innerRadius={innerRadius || "20%"}
           outerRadius={outerRadius || "80%"}
-          barCategoryGap="10%"
+          barCategoryGap="2%"
           data={transformedData}
         >
           <RadialBar
             dataKey="value"
             cornerRadius={4}
-            fill="var(--chart1)"
+            background={{ fill: "var(--secondary)" }}
             animationDuration={animated ? 800 : 0}
             animationBegin={animated ? 0 : undefined}
           />
           <Tooltip content={<CustomTooltip />} />
         </RechartsRadialBarChart>
       </ResponsiveContainer>
-      {showLabels && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-            color: "var(--foreground)",
-            fontSize: "12px",
-          }}
-        >
-          {data.length} items
-        </div>
-      )}
     </div>
   );
 }
