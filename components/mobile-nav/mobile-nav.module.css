@@ -14,7 +14,7 @@
 }
 
 .menuButton:hover {
-    transform: translateY(-1px);
+    /* No hover effect */
 }
 
 .menuButton:active {
@@ -24,7 +24,6 @@
 
 .menuButtonActive {
     background: transparent;
-    transform: rotate(180deg);
 }
 
 .menuButtonInner {
@@ -99,7 +98,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100vw;
     background: var(--background);
     background: color-mix(in srgb, var(--background) 85%, transparent);
     backdrop-filter: blur(20px);
@@ -135,7 +133,7 @@
 .sidebarContent {
     flex: 1;
     overflow-y: auto;
-    padding: 0 1.5rem 1.5rem 0;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
 }
 
 .menuSection {
@@ -151,7 +149,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--muted-foreground);
-    padding-left: 1.5rem;
+    padding-left: 0;
     margin-bottom: 0.5rem;
 }
 
@@ -160,7 +158,7 @@
     align-items: center;
     gap: 0.75rem;
     border-radius: 0.5rem;
-    padding: 1rem 1rem 1rem 1.5rem;
+    padding: 1rem 1rem 1rem 0;
     font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -169,7 +167,7 @@
 }
 
 .menuItem:hover {
-    transform: translateX(2px);
+    /* No hover effect */
 }
 
 .menuItemActive {
@@ -202,7 +200,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1rem 0.75rem 1.5rem;
+    padding: 0.75rem 1rem 0.75rem 0;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -221,7 +219,7 @@
     align-items: center;
     gap: 0.75rem;
     border-radius: 0.5rem;
-    padding: 0.75rem 1rem 0.75rem 1.5rem;
+    padding: 0.75rem 1rem 0.75rem 0;
     font-size: 1.125rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
@@ -229,7 +227,7 @@
 }
 
 .pageLink:hover {
-    transform: translateX(2px);
+    /* No hover effect */
 }
 
 .pageLinkActive {
@@ -250,6 +248,13 @@
 
 .hidden {
     display: none;
+}
+
+.loadingText {
+    padding: 1rem 1.5rem;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+    text-align: center;
 }
 
 @media (min-width: 1024px) and (-webkit-min-device-pixel-ratio: 1), (min-width: 1024px) and (min-resolution: 96dpi) {
