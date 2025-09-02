@@ -44,6 +44,29 @@ function BarChart({
 
   const tooltipLabelFormatter = (value: any) => formatCategory(value);
 
+  const tooltipValueFormatter = (value: any, name?: string) => {
+    return `$${value.toLocaleString()}k`;
+  };
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (!active || !payload || !payload.length) return null;
+    
+    const data = payload[0];
+    return (
+      <ChartTooltip 
+        active={active}
+        payload={[{
+          ...data,
+          name: "Sales",
+          color: color
+        }]}
+        label={label}
+        labelFormatter={tooltipLabelFormatter}
+        valueFormatter={tooltipValueFormatter}
+      />
+    );
+  };
+
   return (
     <div className={styles.barChart}>
       <ResponsiveContainer width="100%" height="100%">
@@ -68,7 +91,7 @@ function BarChart({
             />
           )}
           <Tooltip
-            content={<ChartTooltip labelFormatter={tooltipLabelFormatter} />}
+            content={<CustomTooltip />}
             cursor={{ fill: "var(--secondary)", opacity: 0.15 }}
           />
           <Bar

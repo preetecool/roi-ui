@@ -77,6 +77,29 @@ function AreaChart({
 
   const tooltipLabelFormatter = (value: any) => formatDate(value);
 
+  const tooltipValueFormatter = (value: any, name?: string) => {
+    return value.toLocaleString();
+  };
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (!active || !payload || !payload.length) return null;
+    
+    const data = payload[0];
+    return (
+      <ChartTooltip 
+        active={active}
+        payload={[{
+          ...data,
+          name: "Revenue",
+          color: color
+        }]}
+        label={label}
+        labelFormatter={tooltipLabelFormatter}
+        valueFormatter={tooltipValueFormatter}
+      />
+    );
+  };
+
   const CustomDot = (props: any) => {
     const { cx, cy } = props;
     if (showPoints) {
@@ -123,7 +146,7 @@ function AreaChart({
               width={30}
             />
           )}
-          <Tooltip content={<ChartTooltip labelFormatter={tooltipLabelFormatter} />} />
+          <Tooltip content={<CustomTooltip />} />
           <Area
             type={getCurveType(curve) as any}
             dataKey="amount"

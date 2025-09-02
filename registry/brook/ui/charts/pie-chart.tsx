@@ -43,7 +43,7 @@ function PieChart({
 
   const tooltipValueFormatter = (value: any, name?: string) => {
     const percentage = ((value / total) * 100).toFixed(1);
-    return `${value.toLocaleString()} (${percentage}%)`;
+    return `${percentage}%`;
   };
 
   const CustomTooltip = ({ active, payload }: any) => {

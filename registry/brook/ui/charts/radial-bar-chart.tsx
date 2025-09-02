@@ -25,6 +25,27 @@ function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, ani
     fill: colors[index % colors.length],
   }));
 
+  const tooltipValueFormatter = (value: any, name?: string) => {
+    return `$${value.toLocaleString()}`;
+  };
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (!active || !payload || !payload.length) return null;
+    
+    const data = payload[0];
+    return (
+      <ChartTooltip 
+        active={active}
+        payload={[{
+          ...data,
+          name: data.payload.category,
+          color: data.payload.fill
+        }]}
+        valueFormatter={tooltipValueFormatter}
+      />
+    );
+  };
+
   return (
     <div
       className={styles.radialBarChart}
@@ -52,7 +73,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, showLabels = true, ani
             animationDuration={animated ? 800 : 0}
             animationBegin={animated ? 0 : undefined}
           />
-          <Tooltip content={<ChartTooltip />} />
+          <Tooltip content={<CustomTooltip />} />
         </RechartsRadialBarChart>
       </ResponsiveContainer>
       {showLabels && (
