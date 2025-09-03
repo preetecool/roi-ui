@@ -1,7 +1,8 @@
 import { defineConfig, defineDocs, frontmatterSchema } from "fumadocs-mdx/config";
 import { rehypeToc } from "fumadocs-core/mdx-plugins";
-import rehypePrettyCode from "rehype-pretty-code";
-import { transformers, getShikiHighlighter } from "@/lib/highlight-code";
+import rehypeShiki from "@shikijs/rehype";
+import { transformers } from "@/lib/highlight-code";
+import { getSingletonHighlighter } from "shiki";
 import { z } from "zod";
 
 export default defineConfig({
@@ -9,10 +10,13 @@ export default defineConfig({
     rehypePlugins: [
       rehypeToc,
       [
-        rehypePrettyCode,
+        rehypeShiki,
         {
-          getHighlighter: getShikiHighlighter,
-          theme: {
+          getHighlighter: () => getSingletonHighlighter({
+            themes: ["github-light", "github-dark"],
+            langs: ["tsx", "jsx", "css", "bash", "json", "typescript", "javascript"],
+          }),
+          themes: {
             dark: "github-dark",
             light: "github-light",
           },
