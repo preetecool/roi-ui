@@ -13,10 +13,6 @@
     overflow: hidden;
 }
 
-.menuButton:hover {
-    /* No hover effect */
-}
-
 .menuButton:active {
     transform: translateY(0);
     transition-duration: 0.1s;
@@ -108,7 +104,6 @@
     flex-direction: column;
 }
 
-
 .sidebarHeader {
     display: flex;
     align-items: center;
@@ -122,13 +117,11 @@
     align-items: center;
 }
 
-
 .sidebarTitle {
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--foreground);
 }
-
 
 .sidebarContent {
     flex: 1;
@@ -166,10 +159,6 @@
     position: relative;
 }
 
-.menuItem:hover {
-    /* No hover effect */
-}
-
 .menuItemActive {
     background-color: transparent;
     color: var(--foreground);
@@ -178,10 +167,6 @@
 .menuItemInactive {
     background-color: transparent;
     color: var(--foreground);
-}
-
-.menuItemInactive:hover {
-    background-color: var(--muted);
 }
 
 .treeNav {
@@ -226,10 +211,6 @@
     position: relative;
 }
 
-.pageLink:hover {
-    /* No hover effect */
-}
-
 .pageLinkActive {
     background-color: transparent;
     color: var(--foreground);
@@ -240,10 +221,6 @@
     background-color: transparent;
     color: var(--foreground);
     font-weight: 400;
-}
-
-.pageLinkInactive:hover {
-    background-color: var(--muted);
 }
 
 .hidden {
@@ -262,4 +239,3 @@
         display: none;
     }
 }
-
