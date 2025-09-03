@@ -3,6 +3,8 @@
     border: 1px solid var(--border);
     background-color: var(--card);
     overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .header {
@@ -11,7 +13,6 @@
     justify-content: space-between;
     padding: 4px 4px 4px 10px;
     border-bottom: 1px solid var(--border);
-    border-top: 1px solid var(--border);
 }
 
 .title {
@@ -41,4 +42,85 @@
 .noSourceText {
     font-size: 0.875rem;
     color: var(--muted-foreground);
+}
+
+.fadeOut {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2rem;
+    background: linear-gradient(transparent, var(--card));
+    pointer-events: none;
+}
+
+.collapsibleWrapper {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.toggleInput {
+    display: none;
+}
+
+.collapsibleCode {
+    max-height: 12rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.showButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 var(--radius) var(--radius);
+    cursor: pointer;
+    transition: colors 150ms ease-in-out;
+    margin: 0;
+}
+
+.hideButton {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 var(--radius) var(--radius);
+    cursor: pointer;
+    transition: colors 150ms ease-in-out;
+    margin: 0;
+}
+
+.showButton:hover,
+.hideButton:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+}
+
+.toggleInput:checked ~ .container .collapsibleCode {
+    max-height: none;
+}
+
+.toggleInput:checked ~ .container .fadeOut {
+    display: none;
+}
+
+.toggleInput:checked ~ .container .showButton {
+    display: none;
+}
+
+.toggleInput:checked ~ .container .hideButton {
+    display: flex;
 }

@@ -2,17 +2,57 @@
 title: Command
 description: A command menu component for command interfaces. Built with cmdk.
 links:
-  doc: https://github.com/pacocoursey/cmdk
-  api: https://www.npmjs.com/package/cmdk
+    doc: https://github.com/pacocoursey/cmdk
+    api: https://www.npmjs.com/package/cmdk
 ---
 
 <ComponentPreview name="command-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/command.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/command/command.tsx"
+    title="components/ui/command.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/command/command.module.css"
+    title="components/ui/command.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -32,14 +72,14 @@ filename="anatomy"
 } from '../ui/command'
 
 <Command>
-  <CommandInput />
-  <CommandList>
-    <CommandEmpty />
-    <CommandGroup>
-      <CommandItem />
-      <CommandSeparator />
-    </CommandGroup>
-    <CommandLoading />
-  </CommandList>
-</Command>`}
-/>
+    <CommandInput />
+    <CommandList>
+        <CommandEmpty />
+        <CommandGroup>
+            <CommandItem />
+            <CommandSeparator />
+        </CommandGroup>
+        <CommandLoading />
+    </CommandList>
+</Command>
+`} />

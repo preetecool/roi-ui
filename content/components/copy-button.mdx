@@ -3,14 +3,53 @@ title: Copy Button
 description: A button component with animated copy-to-clipboard functionality.
 ---
 
-
 <ComponentPreview name="copy-button-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/copy-button.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/copy-button/copy-button.tsx"
+    title="components/ui/copy-button.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/copy-button/copy-button.module.css"
+    title="components/ui/copy-button.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -19,5 +58,5 @@ filename="anatomy"
   language="tsx"
   code={`import { CopyButton } from '../ui/copy-button'
 
-<CopyButton code="code to copy" />`}
-/>
+<CopyButton code="code to copy" />
+`} />

@@ -1,19 +1,59 @@
 ---
 title: Toggle Group
-description: A set of two-state buttons that can be toggled on or off with shared state management.
+description:
+    A set of two-state buttons that can be toggled on or off with shared state management.
 links:
-  doc: "https://base-ui.com/react/components/toggle-group"
-  api: "https://base-ui.com/react/components/toggle-group#api-reference"
+    doc: "https://base-ui.com/react/components/toggle-group"
+    api: "https://base-ui.com/react/components/toggle-group#api-reference"
 ---
-
 
 <ComponentPreview name="toggle-group-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/toggle-group.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/toggle-group/toggle-group.tsx"
+    title="components/ui/toggle-group.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/toggle-group/toggle-group.module.css"
+    title="components/ui/toggle-group.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -26,6 +66,6 @@ filename="anatomy"
 } from '../ui/toggle-group'
 
 <ToggleGroup>
-  <ToggleGroupItem>Toggle item</ToggleGroupItem>
-</ToggleGroup>`}
-/>
+    <ToggleGroupItem>Toggle item</ToggleGroupItem>
+</ToggleGroup>
+`} />

@@ -1,18 +1,60 @@
 ---
 title: Toolbar
-description: A container for grouping a set of buttons and controls with keyboard navigation support.
+description:
+    A container for grouping a set of buttons and controls with keyboard navigation
+    support.
 links:
-  doc: "https://base-ui.com/react/components/toolbar"
-  api: "https://base-ui.com/react/components/toolbar#api-reference"
+    doc: "https://base-ui.com/react/components/toolbar"
+    api: "https://base-ui.com/react/components/toolbar#api-reference"
 ---
 
 <ComponentPreview name="toolbar-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/toolbar.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/toolbar/toolbar.tsx"
+    title="components/ui/toolbar.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/toolbar/toolbar.module.css"
+    title="components/ui/toolbar.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -32,16 +74,14 @@ import { Toggle } from '../ui/toggle'
 import { Select } from '../ui/select'
 
 <Toolbar>
-  <ToggleGroup>
-    <ToggleGroupItem value="item1">Item 1</ToggleGroupItem>
-    <ToggleGroupItem value="item2">Item 2</ToggleGroupItem>
-  </ToggleGroup>
-  <ToolbarSeparator />
-  <Toggle>Toggle</Toggle>
-  <Select>...</Select>
-  <ToolbarInput placeholder="Search..." />
-  <ToolbarLink href="#">Link</ToolbarLink>
-</Toolbar>`}
-/>
-
-
+    <ToggleGroup>
+        <ToggleGroupItem value="item1">Item 1</ToggleGroupItem>
+        <ToggleGroupItem value="item2">Item 2</ToggleGroupItem>
+    </ToggleGroup>
+    <ToolbarSeparator />
+    <Toggle>Toggle</Toggle>
+    <Select>...</Select>
+    <ToolbarInput placeholder="Search..." />
+    <ToolbarLink href="#">Link</ToolbarLink>
+</Toolbar>
+`} />

@@ -2,17 +2,57 @@
 title: Switch
 description: A component to toggle states.
 links:
-  doc: https://base-ui.com/react/components/switch
-  api: https://base-ui.com/react/components/switch#api-reference
+    doc: https://base-ui.com/react/components/switch
+    api: https://base-ui.com/react/components/switch#api-reference
 ---
 
 <ComponentPreview name="switch-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/switch.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/switch/switch.tsx"
+    title="components/ui/switch.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/switch/switch.module.css"
+    title="components/ui/switch.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -25,9 +65,9 @@ filename="anatomy"
 } from '../ui/switch'
 
 <Switch>
-  <SwitchThumb />
-</Switch>`}
-/>
+    <SwitchThumb />
+</Switch>
+`} />
 
 ## Examples
 

@@ -7,9 +7,49 @@ description: An animated like button component with particle effects.
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/like-button.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/like-button/like-button.tsx"
+    title="components/ui/like-button.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/like-button/like-button.module.css"
+    title="components/ui/like-button.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -18,28 +58,29 @@ filename="anatomy"
   language="tsx"
   code={`import { LikeButton } from '../ui/like-button'
 
-<LikeButton />`}
-/>
-
-
+<LikeButton />
+`} />
 
 ## Props
 
-<PropTable data={[
-  {
-    prop: "isPlaying",
-    type: "boolean",
-    default: "false",
-    description: "Whether to auto-play the like animation continuously every 3 seconds"
-  },
-  {
-    prop: "onClick",
-    type: "() => void",
-    description: "Callback function called when the button is clicked"
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the like button container"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "isPlaying",
+            type: "boolean",
+            default: "false",
+            description:
+                "Whether to auto-play the like animation continuously every 3 seconds",
+        },
+        {
+            prop: "onClick",
+            type: "() => void",
+            description: "Callback function called when the button is clicked",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the like button container",
+        },
+    ]}
+/>

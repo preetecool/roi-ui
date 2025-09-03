@@ -2,18 +2,57 @@
 title: Navigation Menu
 description: A navigation menu linking to diffrent pages.
 links:
-  doc: https://base-ui.com/react/components/navigation-menu
-  api: https://base-ui.com/react/components/navigation-menu#api-reference
+    doc: https://base-ui.com/react/components/navigation-menu
+    api: https://base-ui.com/react/components/navigation-menu#api-reference
 ---
-
 
 <ComponentPreview name="navigation-menu-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/navigation-menu.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/navigation-menu/navigation-menu.tsx"
+    title="components/ui/navigation-menu.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/navigation-menu/navigation-menu.module.css"
+    title="components/ui/navigation-menu.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -33,24 +72,21 @@ filename="anatomy"
 } from '../ui/navigation-menu'
 
 <NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>
-        <NavigationMenuIcon />
-      </NavigationMenuTrigger>
-      <NavigationMenuViewport>
-        <NavigationMenuContent>
-          <NavigationMenuLink />
-          <NavigationMenuLinkItem />
-        </NavigationMenuContent>
-      </NavigationMenuViewport>
-    </NavigationMenuItem>
-  </NavigationMenuList>
-</NavigationMenu>`}
-/>
-
-
-
+    <NavigationMenuList>
+        <NavigationMenuItem>
+            <NavigationMenuTrigger>
+                <NavigationMenuIcon />
+            </NavigationMenuTrigger>
+            <NavigationMenuViewport>
+                <NavigationMenuContent>
+                    <NavigationMenuLink />
+                    <NavigationMenuLinkItem />
+                </NavigationMenuContent>
+            </NavigationMenuViewport>
+        </NavigationMenuItem>
+    </NavigationMenuList>
+</NavigationMenu>
+`} />
 
 ## Examples
 

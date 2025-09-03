@@ -2,17 +2,57 @@
 title: Dropdown Menu
 description: A dropdown menu to display actions.
 links:
-  doc: https://base-ui.com/react/components/menu
-  api: https://base-ui.com/react/components/menu#api-reference
+    doc: https://base-ui.com/react/components/menu
+    api: https://base-ui.com/react/components/menu#api-reference
 ---
 
 <ComponentPreview name="dropdown-menu-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/dropdown-menu.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/dropdown-menu/dropdown-menu.tsx"
+    title="components/ui/dropdown-menu.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/dropdown-menu/dropdown-menu.module.css"
+    title="components/ui/dropdown-menu.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -33,24 +73,21 @@ filename="anatomy"
 } from '../ui/dropdown-menu'
 
 <DropdownMenu>
-  <DropdownMenuTrigger />
-  <DropdownMenuPortal>
-    <DropdownMenuPositioner>
-      <DropdownMenuPopup>
-        <DropdownMenuArrow />
-        <DropdownMenuItem />
-        <DropdownMenuSeparator />
-        <DropdownMenuSubmenuRoot>
-          <DropdownMenuSubmenuTrigger />
-        </DropdownMenuSubmenuRoot>
-      </DropdownMenuPopup>
-    </DropdownMenuPositioner>
-  </DropdownMenuPortal>
-</DropdownMenu>`}
-/>
-
-
-
+    <DropdownMenuTrigger />
+    <DropdownMenuPortal>
+        <DropdownMenuPositioner>
+            <DropdownMenuPopup>
+                <DropdownMenuArrow />
+                <DropdownMenuItem />
+                <DropdownMenuSeparator />
+                <DropdownMenuSubmenuRoot>
+                    <DropdownMenuSubmenuTrigger />
+                </DropdownMenuSubmenuRoot>
+            </DropdownMenuPopup>
+        </DropdownMenuPositioner>
+    </DropdownMenuPortal>
+</DropdownMenu>
+`} />
 
 ## Examples
 

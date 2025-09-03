@@ -74,7 +74,7 @@
     --secondary: oklch(0.2762 0.0243 274.47);
     --secondary-foreground: oklch(0.88 0.004 220);
 
-    --muted: oklch(0.249 0.01 271.71);
+    --muted: oklch(0.2455 0.0126 284.91);
     --muted-foreground: oklch(0.5247 0.0228 279.03);
 
     --accent: oklch(0.2612 0.015 280);
@@ -139,6 +139,17 @@ h6 {
     color: var(--title);
     font-weight: 600;
     line-height: 1.2;
+}
+
+p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Special margin for TSX file copy instruction - targets paragraph immediately before ComponentSource wrapper with TSX */
+p:has(+ div .container[data-tsx="true"]) {
+    margin-top: 48px;
+    margin-bottom: 16px;
 }
 
 input,

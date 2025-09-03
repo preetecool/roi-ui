@@ -8,6 +8,7 @@ import { CodeBlock } from "@/components/code-block/code-block";
 import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
 import { PropTable } from "@/components/prop-table/prop-table";
 import { GlobalsCSS } from "@/components/globals-css";
+import { InstallationTabs, InstallationTabsList, InstallationTabsTrigger, InstallationTabsContent } from "@/components/installation-tabs/installation-tabs";
 
 import { Tabs as CustomTabs, TabsList, TabsTrigger, TabsContent } from "@/registry/brook/ui/tabs/tabs";
 
@@ -124,8 +125,12 @@ export const mdxComponents = {
   ComponentSource,
   PropTable,
   GlobalsCSS,
+  InstallationTabs,
+  InstallationTabsList,
+  InstallationTabsTrigger,
+  InstallationTabsContent,
   Tab: ({ value, children, ...props }: TabProps) => (
-    <TabsContent value={value} {...props}>
+    <TabsContent value={value} {...props} className="">
       {children}
     </TabsContent>
   ),

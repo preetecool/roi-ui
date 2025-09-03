@@ -2,19 +2,57 @@
 title: Toast
 description: A toast notification component.
 links:
-  doc: https://base-ui.com/react/components/toast
-  api: https://base-ui.com/react/components/toast#api-reference
+    doc: https://base-ui.com/react/components/toast
+    api: https://base-ui.com/react/components/toast#api-reference
 ---
-
-
 
 <ComponentPreview name="toast-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/toast.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/toast/toast.tsx"
+    title="components/ui/toast.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/toast/toast.module.css"
+    title="components/ui/toast.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -32,14 +70,14 @@ filename="anatomy"
 } from '../ui/toast'
 
 <ToastProvider>
-  <ToastPortal>
-    <ToastViewport>
-      <Toast>
-        <ToastTitle />
-        <ToastDescription />
-        <ToastClose />
-      </Toast>
-    </ToastViewport>
-  </ToastPortal>
-</ToastProvider>`}
-/>
+    <ToastPortal>
+        <ToastViewport>
+            <Toast>
+                <ToastTitle />
+                <ToastDescription />
+                <ToastClose />
+            </Toast>
+        </ToastViewport>
+    </ToastPortal>
+</ToastProvider>
+`} />

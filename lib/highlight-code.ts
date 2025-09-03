@@ -31,31 +31,43 @@ export const lineNumbersTransformer: ShikiTransformer = {
   },
 };
 
-export const transformers = [
-  packageManagerTransformer,
-  lineNumbersTransformer,
-] as ShikiTransformer[];
+export const transformers = [packageManagerTransformer, lineNumbersTransformer] as ShikiTransformer[];
 
 declare global {
-  var highlighterInstance: HighlighterGeneric<BundledLanguage, BundledTheme> | undefined;
+  var __SHIKI_HIGHLIGHTER__: HighlighterGeneric<BundledLanguage, BundledTheme> | undefined;
+  var __SHIKI_PROMISE__: Promise<HighlighterGeneric<BundledLanguage, BundledTheme>> | undefined;
+  var __SHIKI_INSTANCE_COUNT__: number;
+}
+
+if (typeof globalThis.__SHIKI_INSTANCE_COUNT__ === "undefined") {
+  globalThis.__SHIKI_INSTANCE_COUNT__ = 0;
 }
 
 async function getHighlighter() {
-  if (!globalThis.highlighterInstance) {
-    const { createHighlighter } = await import("shiki");
-    globalThis.highlighterInstance = await createHighlighter({
-      themes: ["github-light", "github-dark"],
-      langs: ["tsx", "jsx", "css", "bash", "json", "typescript", "javascript"],
-    });
+  if (!globalThis.__SHIKI_HIGHLIGHTER__) {
+    if (!globalThis.__SHIKI_PROMISE__) {
+      const { createHighlighter } = await import("shiki");
+
+      globalThis.__SHIKI_INSTANCE_COUNT__++;
+
+      globalThis.__SHIKI_PROMISE__ = createHighlighter({
+        themes: ["github-light", "github-dark"],
+        langs: ["tsx", "jsx", "css", "bash", "json", "typescript", "javascript"],
+      });
+    }
+    globalThis.__SHIKI_HIGHLIGHTER__ = await globalThis.__SHIKI_PROMISE__;
   }
-  return globalThis.highlighterInstance;
+  return globalThis.__SHIKI_HIGHLIGHTER__;
 }
 
-export async function highlightCode(
-  code: string,
-  language: string = "tsx"
-): Promise<string> {
-  const highlighter = await getHighlighter();
+export async function highlightCode(code: string, language: string = "tsx"): Promise<string> {
+  // Use getSingletonHighlighter to ensure we share the same instance globally
+  const { getSingletonHighlighter } = await import("shiki");
+
+  const highlighter = await getSingletonHighlighter({
+    themes: ["github-light", "github-dark"],
+    langs: ["tsx", "jsx", "css", "bash", "json", "typescript", "javascript"],
+  });
 
   const html = highlighter.codeToHtml(code, {
     lang: language,
@@ -70,6 +82,18 @@ export async function highlightCode(
   return html;
 }
 
-export async function getShikiHighlighter() {
-  return await getHighlighter();
+export async function getShikiHighlighter(_options?: unknown) {
+  const highlighter = await getHighlighter();
+
+  return highlighter;
+}
+
+// Dispose function for cleanup
+export function disposeHighlighter() {
+  if (globalThis.__SHIKI_HIGHLIGHTER__) {
+    globalThis.__SHIKI_HIGHLIGHTER__.dispose();
+    globalThis.__SHIKI_HIGHLIGHTER__ = undefined;
+    globalThis.__SHIKI_PROMISE__ = undefined;
+    globalThis.__SHIKI_INSTANCE_COUNT__ = 0;
+  }
 }
