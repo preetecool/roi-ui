@@ -2,17 +2,57 @@
 title: Form
 description: A form component that provides validation and error handling for form inputs.
 links:
-  doc: "https://base-ui.com/react/components/form"
-  api: "https://base-ui.com/react/components/form#api-reference"
+    doc: "https://base-ui.com/react/components/form"
+    api: "https://base-ui.com/react/components/form#api-reference"
 ---
 
 <ComponentPreview name="form-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/form.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/form/form.tsx"
+    title="components/ui/form.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/form/form.module.css"
+    title="components/ui/form.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -32,15 +72,14 @@ filename="anatomy"
 } from '../ui/form'
 
 <Form>
-  <FormGroup>
-    <FormField>
-      <FormLabel />
-      <FormDescription />
-      <FormControl />
-      <FormError />
-    </FormField>
-  </FormGroup>
-  <FormActions>
-  </FormActions>
-</Form>`}
-/>
+    <FormGroup>
+        <FormField>
+            <FormLabel />
+            <FormDescription />
+            <FormControl />
+            <FormError />
+        </FormField>
+    </FormGroup>
+    <FormActions></FormActions>
+</Form>
+`} />

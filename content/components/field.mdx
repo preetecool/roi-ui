@@ -2,18 +2,57 @@
 title: Field
 description: A complete form field component with label, description, and error handling.
 links:
-  doc: "https://base-ui.com/react/components/field"
-  api: "https://base-ui.com/react/components/field#api-reference"
+    doc: "https://base-ui.com/react/components/field"
+    api: "https://base-ui.com/react/components/field#api-reference"
 ---
-
 
 <ComponentPreview name="field-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/field.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/field/field.tsx"
+    title="components/ui/field.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/field/field.module.css"
+    title="components/ui/field.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -29,9 +68,9 @@ filename="anatomy"
 } from '../ui/field'
 
 <Field>
-  <FieldLabel />
-  <FieldDescription />
-  <FieldControl />
-  <FieldError />
-</Field>`}
-/>
+    <FieldLabel />
+    <FieldDescription />
+    <FieldControl />
+    <FieldError />
+</Field>
+`} />

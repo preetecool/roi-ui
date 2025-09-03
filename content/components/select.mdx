@@ -2,17 +2,57 @@
 title: Select
 description: A customizable select component for choosing from a list of options.
 links:
-  doc: https://base-ui.com/react/components/select
-  api: https://base-ui.com/react/components/select#api-reference
+    doc: https://base-ui.com/react/components/select
+    api: https://base-ui.com/react/components/select#api-reference
 ---
 
 <ComponentPreview name="select-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/select.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/select/select.tsx"
+    title="components/ui/select.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/select/select.module.css"
+    title="components/ui/select.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -34,21 +74,21 @@ filename="anatomy"
 } from '../ui/select'
 
 <Select>
-  <SelectTrigger>
-    <SelectValue />
-    <SelectIcon />
-  </SelectTrigger>
-  <SelectPortal>
-    <SelectPositioner>
-      <SelectPopup>
-        <SelectGroup>
-          <SelectItem>
-            <SelectItemText />
-            <SelectItemIndicator />
-          </SelectItem>
-        </SelectGroup>
-      </SelectPopup>
-    </SelectPositioner>
-  </SelectPortal>
-</Select>`}
-/>
+    <SelectTrigger>
+        <SelectValue />
+        <SelectIcon />
+    </SelectTrigger>
+    <SelectPortal>
+        <SelectPositioner>
+            <SelectPopup>
+                <SelectGroup>
+                    <SelectItem>
+                        <SelectItemText />
+                        <SelectItemIndicator />
+                    </SelectItem>
+                </SelectGroup>
+            </SelectPopup>
+        </SelectPositioner>
+    </SelectPortal>
+</Select>
+`} />

@@ -2,17 +2,57 @@
 title: Alert Dialog
 description: A modal dialog that requires user response to proceed.
 links:
-  doc: https://base-ui.com/react/components/alert-dialog
-  api: https://base-ui.com/react/components/alert-dialog#api-reference
+    doc: https://base-ui.com/react/components/alert-dialog
+    api: https://base-ui.com/react/components/alert-dialog#api-reference
 ---
 
 <ComponentPreview name="alert-dialog-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/alert-dialog.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/alert-dialog/alert-dialog.tsx"
+    title="components/ui/alert-dialog.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/alert-dialog/alert-dialog.module.css"
+    title="components/ui/alert-dialog.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -31,15 +71,15 @@ filename="anatomy"
 } from '../ui/alert-dialog'
 
 <AlertDialogRoot>
-  <AlertDialogTrigger />
-  <AlertDialogContent>
-    <AlertDialogHeader>
-      <AlertDialogTitle />
-      <AlertDialogDescription />
-    </AlertDialogHeader>
-    <AlertDialogFooter>
-      <AlertDialogClose />
-    </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialogRoot>`}
-/>
+    <AlertDialogTrigger />
+    <AlertDialogContent>
+        <AlertDialogHeader>
+            <AlertDialogTitle />
+            <AlertDialogDescription />
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+            <AlertDialogClose />
+        </AlertDialogFooter>
+    </AlertDialogContent>
+</AlertDialogRoot>
+`} />

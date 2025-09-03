@@ -2,17 +2,57 @@
 title: Slider
 description: A slider component for selecting values from a range.
 links:
-  doc: https://base-ui.com/react/components/slider
-  api: https://base-ui.com/react/components/slider#api-reference
+    doc: https://base-ui.com/react/components/slider
+    api: https://base-ui.com/react/components/slider#api-reference
 ---
 
 <ComponentPreview name="slider-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/slider.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/slider/slider.tsx"
+    title="components/ui/slider.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/slider/slider.module.css"
+    title="components/ui/slider.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -29,12 +69,12 @@ filename="anatomy"
 } from '../ui/slider'
 
 <SliderRoot>
-  <SliderValue />
-  <SliderControl>
-    <SliderTrack>
-      <SliderIndicator />
-      <SliderThumb />
-    </SliderTrack>
-  </SliderControl>
-</SliderRoot>`}
-/>
+    <SliderValue />
+    <SliderControl>
+        <SliderTrack>
+            <SliderIndicator />
+            <SliderThumb />
+        </SliderTrack>
+    </SliderControl>
+</SliderRoot>
+`} />

@@ -7,9 +7,49 @@ description: A versatile card component with header, content, footer, and image 
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/card.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/card/card.tsx"
+    title="components/ui/card.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/card/card.module.css"
+    title="components/ui/card.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -19,166 +59,179 @@ filename="anatomy"
   code={`import { Card, CardHeader, CardTitle, CardAction,  CardDescription, CardContent, CardFooter } from '../ui/card'
 
 <Card>
-  <CardHeader>
-    <CardTitle />
-    <CardAction/>
-    <CardDescription />
-  </CardHeader>
-  <CardContent />
-  <CardFooter />
-</Card>`}
+    <CardHeader>
+        <CardTitle />
+        <CardAction />
+        <CardDescription />
+    </CardHeader>
+    <CardContent />
+    <CardFooter />
+</Card>
+`}
 
 />
-
-
 
 ## Examples
 
 ### Image Card
 
-
 <ComponentPreview name="card-image" />
 
 ### Login Card
 
-
 <ComponentPreview name="card-login" />
-
 
 ## Props
 
 ### Card
 
-<PropTable data={[
-  {
-    prop: "variant",
-    type: '"default" | "lift"',
-    default: '"default"',
-    description: "Visual style variant of the card - lift adds hover elevation effects"
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the card"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The content to display inside the card"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "variant",
+            type: '"default" | "lift"',
+            default: '"default"',
+            description:
+                "Visual style variant of the card - lift adds hover elevation effects",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the card",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The content to display inside the card",
+        },
+    ]}
+/>
 
 ### CardHeader
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the card header"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "Content for the card header section"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the card header",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Content for the card header section",
+        },
+    ]}
+/>
 
 ### CardTitle
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the card title"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The title content to display"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the card title",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The title content to display",
+        },
+    ]}
+/>
 
 ### CardDescription
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the card description"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The description content to display"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the card description",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The description content to display",
+        },
+    ]}
+/>
 
 ### CardContent
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the card content"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The main content of the card"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the card content",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The main content of the card",
+        },
+    ]}
+/>
 
 ### CardFooter
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the card footer"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "Content for the card footer section"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the card footer",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Content for the card footer section",
+        },
+    ]}
+/>
 
 ### CardImage
 
-<PropTable data={[
-  {
-    prop: "src",
-    type: "string",
-    description: "The source URL of the image"
-  },
-  {
-    prop: "alt",
-    type: "string",
-    description: "Alternative text for the image"
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the image"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "Optional content to overlay on the image"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "src",
+            type: "string",
+            description: "The source URL of the image",
+        },
+        {
+            prop: "alt",
+            type: "string",
+            description: "Alternative text for the image",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the image",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Optional content to overlay on the image",
+        },
+    ]}
+/>
 
 ### CardIcon
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the icon container"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "Icon content (typically an SVG or icon component)"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the icon container",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Icon content (typically an SVG or icon component)",
+        },
+    ]}
+/>

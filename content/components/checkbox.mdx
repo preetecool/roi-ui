@@ -2,18 +2,57 @@
 title: Checkbox
 description: A control that allows users to select one or more options from a set.
 links:
-  doc: "https://base-ui.com/react/components/checkbox"
-  api: "https://base-ui.com/react/components/checkbox#api-reference"
+    doc: "https://base-ui.com/react/components/checkbox"
+    api: "https://base-ui.com/react/components/checkbox#api-reference"
 ---
-
 
 <ComponentPreview name="checkbox-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/checkbox.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/checkbox/checkbox.tsx"
+    title="components/ui/checkbox.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/checkbox/checkbox.module.css"
+    title="components/ui/checkbox.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -26,6 +65,6 @@ filename="anatomy"
 } from '../ui/checkbox'
 
 <Checkbox>
-  <CheckboxIndicator />
-</Checkbox>`}
-/>
+    <CheckboxIndicator />
+</Checkbox>
+`} />

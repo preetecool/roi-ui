@@ -2,17 +2,57 @@
 title: Menubar
 description: A menubar component that provides a horizontal interface for applications.
 links:
-  doc: https://base-ui.com/react/components/menubar
-  api: https://base-ui.com/react/components/menubar#api-reference
+    doc: https://base-ui.com/react/components/menubar
+    api: https://base-ui.com/react/components/menubar#api-reference
 ---
 
 <ComponentPreview name="menubar-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/menubar.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/menubar/menubar.tsx"
+    title="components/ui/menubar.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/menubar/menubar.module.css"
+    title="components/ui/menubar.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -34,20 +74,20 @@ filename="anatomy"
 } from '../ui/menubar'
 
 <Menubar>
-  <MenubarMenu>
-    <MenubarMenuTrigger />
-    <MenubarMenuPortal>
-      <MenubarMenuPositioner>
-        <MenubarMenuPopup>
-          <MenubarMenuArrow />
-          <MenubarMenuItem />
-          <MenubarMenuSeparator />
-          <MenubarMenuSubmenuRoot>
-            <MenubarMenuSubmenuTrigger />
-          </MenubarMenuSubmenuRoot>
-        </MenubarMenuPopup>
-      </MenubarMenuPositioner>
-    </MenubarMenuPortal>
-  </MenubarMenu>
-</Menubar>`}
-/>
+    <MenubarMenu>
+        <MenubarMenuTrigger />
+        <MenubarMenuPortal>
+            <MenubarMenuPositioner>
+                <MenubarMenuPopup>
+                    <MenubarMenuArrow />
+                    <MenubarMenuItem />
+                    <MenubarMenuSeparator />
+                    <MenubarMenuSubmenuRoot>
+                        <MenubarMenuSubmenuTrigger />
+                    </MenubarMenuSubmenuRoot>
+                </MenubarMenuPopup>
+            </MenubarMenuPositioner>
+        </MenubarMenuPortal>
+    </MenubarMenu>
+</Menubar>
+`} />

@@ -10,6 +10,9 @@ interface ComponentSourceProps {
     title?: string;
     language?: string;
     embedded?: boolean;
+    collapsible?: boolean;
+    buttonText?: string;
+    previewLines?: number;
 }
 
 export async function ComponentSource({
@@ -18,6 +21,9 @@ export async function ComponentSource({
     title,
     language = "tsx",
     embedded = false,
+    collapsible = false,
+    buttonText = "Show code",
+    previewLines = 10,
 }: ComponentSourceProps) {
     let code: string | undefined;
 
@@ -70,7 +76,6 @@ export async function ComponentSource({
         "@/components/ui/$1"
     );
 
-    const highlightedCode = await highlightCode(transformedCode, language);
     let displayTitle = title;
     if (!displayTitle) {
         if (name) {
@@ -82,6 +87,60 @@ export async function ComponentSource({
             displayTitle = "Code";
         }
     }
+
+    if (collapsible) {
+        const highlightedCode = await highlightCode(transformedCode, language);
+
+        const codeLines = transformedCode.split("\n");
+        const hasMoreLines = codeLines.length > previewLines;
+
+        const toggleId = `code-toggle-${Math.random().toString(36).substring(2, 11)}`;
+
+        return (
+            <div className={styles.collapsibleWrapper}>
+                <input type="checkbox" id={toggleId} className={styles.toggleInput} />
+
+                <div
+                    className={styles.container}
+                    data-tsx={
+                        language === "tsx" || displayTitle.includes(".tsx")
+                            ? "true"
+                            : undefined
+                    }
+                >
+                    <div className={styles.header}>
+                        <span className={styles.title}>{displayTitle}</span>
+                        <CopyButton
+                            code={transformedCode}
+                            className="header-copy-button"
+                        />
+                    </div>
+
+                    <div className={styles.codeContent}>
+                        <div
+                            className={`code-container ${styles.codeContainer} ${styles.collapsibleCode}`}
+                            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+                        />
+
+                        {hasMoreLines && <div className={styles.fadeOut}></div>}
+                    </div>
+
+                    {hasMoreLines && (
+                        <>
+                            <label htmlFor={toggleId} className={styles.showButton}>
+                                {buttonText}
+                            </label>
+                            <label htmlFor={toggleId} className={styles.hideButton}>
+                                Hide code
+                            </label>
+                        </>
+                    )}
+                </div>
+            </div>
+        );
+    }
+
+    const highlightedCode = await highlightCode(transformedCode, language);
 
     if (embedded) {
         return (
@@ -102,7 +161,12 @@ export async function ComponentSource({
     }
 
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            data-tsx={
+                language === "tsx" || displayTitle.includes(".tsx") ? "true" : undefined
+            }
+        >
             <div className={styles.header}>
                 <span className={styles.title}>{displayTitle}</span>
                 <CopyButton code={transformedCode} className="header-copy-button" />

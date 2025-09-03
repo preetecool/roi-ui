@@ -2,17 +2,57 @@
 title: Collapsible
 description: An expandable/collapsible panel controlled by a button.
 links:
-  doc: https://base-ui.com/react/components/collapsible
-  api: https://base-ui.com/react/components/collapsible#api-reference
+    doc: https://base-ui.com/react/components/collapsible
+    api: https://base-ui.com/react/components/collapsible#api-reference
 ---
 
 <ComponentPreview name="collapsible-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/collapsible.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/collapsible/collapsible.tsx"
+    title="components/ui/collapsible.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/collapsible/collapsible.module.css"
+    title="components/ui/collapsible.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -26,11 +66,9 @@ filename="anatomy"
 } from '../ui/collapsible'
 
 <Collapsible>
-  <CollapsibleTrigger>
-    Toggle content
-  </CollapsibleTrigger>
-  <CollapsiblePanel>
-    <div>Collapsible content</div>
-  </CollapsiblePanel>
-</Collapsible>`}
-/>
+    <CollapsibleTrigger>Toggle content</CollapsibleTrigger>
+    <CollapsiblePanel>
+        <div>Collapsible content</div>
+    </CollapsiblePanel>
+</Collapsible>
+`} />

@@ -2,17 +2,57 @@
 title: Progress
 description: Displays the status of a task that takes a long time.
 links:
-  doc: https://base-ui.com/react/components/progress
-  api: https://base-ui.com/react/components/progress#api-reference
+    doc: https://base-ui.com/react/components/progress
+    api: https://base-ui.com/react/components/progress#api-reference
 ---
 
 <ComponentPreview name="progress-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/progress.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/progress/progress.tsx"
+    title="components/ui/progress.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/progress/progress.module.css"
+    title="components/ui/progress.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -28,10 +68,10 @@ filename="anatomy"
 } from '../ui/progress'
 
 <Progress value={50}>
-  <ProgressLabel>Loading</ProgressLabel>
-  <ProgressValue />
-  <ProgressTrack>
-    <ProgressIndicator />
-  </ProgressTrack>
-</Progress>`}
-/>
+    <ProgressLabel>Loading</ProgressLabel>
+    <ProgressValue />
+    <ProgressTrack>
+        <ProgressIndicator />
+    </ProgressTrack>
+</Progress>
+`} />

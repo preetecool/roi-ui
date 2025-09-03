@@ -7,9 +7,49 @@ description: A component for displaying important messages to users.
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/alert.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/alert/alert.tsx"
+    title="components/ui/alert.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/alert/alert.module.css"
+    title="components/ui/alert.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -19,11 +59,11 @@ filename="anatomy"
   code={`import { Alert, AlertDescription, AlertIcon, AlertTitle } from '../ui/alert'
 
 <Alert>
-  <AlertIcon />
-  <AlertTitle />
-  <AlertDescription />
-</Alert>`}
-/>
+    <AlertIcon />
+    <AlertTitle />
+    <AlertDescription />
+</Alert>
+`} />
 
 ## Examples
 
@@ -51,72 +91,80 @@ filename="anatomy"
 
 ### Alert
 
-<PropTable data={[
-  {
-    prop: "variant",
-    type: '"default" | "destructive" | "warning" | "success" | "info"',
-    default: '"default"',
-    description: "The visual style variant of the alert"
-  },
-  {
-    prop: "size",
-    type: '"default" | "sm"',
-    default: '"default"',
-    description: "The size of the alert"
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the alert"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The content to display inside the alert"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "variant",
+            type: '"default" | "destructive" | "warning" | "success" | "info"',
+            default: '"default"',
+            description: "The visual style variant of the alert",
+        },
+        {
+            prop: "size",
+            type: '"default" | "sm"',
+            default: '"default"',
+            description: "The size of the alert",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the alert",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The content to display inside the alert",
+        },
+    ]}
+/>
 
 ### AlertTitle
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the alert title"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The title content"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the alert title",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The title content",
+        },
+    ]}
+/>
 
 ### AlertDescription
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the alert description"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The description content"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the alert description",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The description content",
+        },
+    ]}
+/>
 
 ### AlertIcon
 
-<PropTable data={[
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the alert icon"
-  },
-  {
-    prop: "children",
-    type: "React.ReactNode",
-    description: "The icon content"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the alert icon",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "The icon content",
+        },
+    ]}
+/>

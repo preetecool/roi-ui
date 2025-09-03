@@ -1,18 +1,59 @@
 ---
 title: Popover
-description: A component for displaying contextual information or actions in a floating panel.
+description:
+    A component for displaying contextual information or actions in a floating panel.
 links:
-  doc: https://base-ui.com/react/components/popover
-  api: https://base-ui.com/react/components/popover#api-reference
+    doc: https://base-ui.com/react/components/popover
+    api: https://base-ui.com/react/components/popover#api-reference
 ---
 
 <ComponentPreview name="popover-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/popover.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/popover/popover.tsx"
+    title="components/ui/popover.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/popover/popover.module.css"
+    title="components/ui/popover.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -30,12 +71,12 @@ filename="anatomy"
 } from '../ui/popover'
 
 <Popover>
-  <PopoverTrigger />
-  <PopoverContent>
-    <PopoverArrow />
-    <PopoverTitle />
-    <PopoverDescription />
-    <PopoverClose />
-  </PopoverContent>
-</Popover>`}
-/>
+    <PopoverTrigger />
+    <PopoverContent>
+        <PopoverArrow />
+        <PopoverTitle />
+        <PopoverDescription />
+        <PopoverClose />
+    </PopoverContent>
+</Popover>
+`} />

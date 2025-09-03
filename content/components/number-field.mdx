@@ -2,17 +2,57 @@
 title: Number Field
 description: A numeric input element with increment/decrement buttons and a scrub area.
 links:
-  doc: https://base-ui.com/react/components/number-field
-  api: https://base-ui.com/react/components/number-field#api-reference
+    doc: https://base-ui.com/react/components/number-field
+    api: https://base-ui.com/react/components/number-field#api-reference
 ---
 
 <ComponentPreview name="number-field-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/number-field.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/number-field/number-field.tsx"
+    title="components/ui/number-field.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/number-field/number-field.module.css"
+    title="components/ui/number-field.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -30,14 +70,13 @@ filename="anatomy"
 } from '../ui/number-field'
 
 <NumberField>
-  <NumberFieldScrubArea>
-    <NumberFieldScrubAreaCursor />
-  </NumberFieldScrubArea>
-  <NumberFieldGroup>
-    <NumberFieldDecrement />
-    <NumberFieldInput />
-    <NumberFieldIncrement />
-  </NumberFieldGroup>
-</NumberField>`}
-/>
-
+    <NumberFieldScrubArea>
+        <NumberFieldScrubAreaCursor />
+    </NumberFieldScrubArea>
+    <NumberFieldGroup>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+    </NumberFieldGroup>
+</NumberField>
+`} />

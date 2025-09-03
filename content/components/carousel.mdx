@@ -7,9 +7,49 @@ description: A card carousel with horizontal scroll, keyboard and button navigat
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/carousel.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/carousel/carousel.tsx"
+    title="components/ui/carousel.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/carousel/carousel.module.css"
+    title="components/ui/carousel.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -18,68 +58,71 @@ filename="anatomy"
   language="tsx"
   code={`import { Carousel } from '../ui/carousel'
 
-<Carousel items={[
-  { id: '1', content: <div>Item 1</div> },
-  { id: '2', content: <div>Item 2</div> },
-  { id: '3', content: <div>Item 3</div> }
-]} />`}
+<Carousel
+    items={[
+        { id: "1", content: <div>Item 1</div> },
+        { id: "2", content: <div>Item 2</div> },
+        { id: "3", content: <div>Item 3</div> },
+    ]}
 />
-
-
-
+`} />
 
 ## Props
 
 ### Carousel
 
-<PropTable data={[
-  {
-    prop: "items",
-    type: "CarouselItem[]",
-    description: "Array of carousel items to display in the carousel"
-  },
-  {
-    prop: "showIndicators",
-    type: "boolean",
-    default: "false",
-    description: "Whether to show dot indicators at the bottom for navigation"
-  },
-  {
-    prop: "showNavigation",
-    type: "boolean",
-    default: "true",
-    description: "Whether to show previous/next arrow buttons for navigation"
-  },
-  {
-    prop: "itemsPerView",
-    type: "number",
-    default: "3.5",
-    description: "Number of items visible in the viewport at once"
-  },
-  {
-    prop: "gap",
-    type: "number",
-    default: "16",
-    description: "Gap between carousel items in pixels"
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the carousel container"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "items",
+            type: "CarouselItem[]",
+            description: "Array of carousel items to display in the carousel",
+        },
+        {
+            prop: "showIndicators",
+            type: "boolean",
+            default: "false",
+            description: "Whether to show dot indicators at the bottom for navigation",
+        },
+        {
+            prop: "showNavigation",
+            type: "boolean",
+            default: "true",
+            description: "Whether to show previous/next arrow buttons for navigation",
+        },
+        {
+            prop: "itemsPerView",
+            type: "number",
+            default: "3.5",
+            description: "Number of items visible in the viewport at once",
+        },
+        {
+            prop: "gap",
+            type: "number",
+            default: "16",
+            description: "Gap between carousel items in pixels",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the carousel container",
+        },
+    ]}
+/>
 
 ### CarouselItem
 
-<PropTable data={[
-  {
-    prop: "id",
-    type: "string",
-    description: "Unique identifier for the carousel item"
-  },
-  {
-    prop: "content",
-    type: "React.ReactNode",
-    description: "The content to display inside the carousel item"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "id",
+            type: "string",
+            description: "Unique identifier for the carousel item",
+        },
+        {
+            prop: "content",
+            type: "React.ReactNode",
+            description: "The content to display inside the carousel item",
+        },
+    ]}
+/>

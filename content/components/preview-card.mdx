@@ -1,18 +1,59 @@
 ---
 title: Preview Card
-description: A popup that appears when a link is hovered, showing a preview for sighted users.
+description:
+    A popup that appears when a link is hovered, showing a preview for sighted users.
 links:
-  doc: "https://base-ui.com/react/components/preview-card"
-  api: "https://base-ui.com/react/components/preview-card#api-reference"
+    doc: "https://base-ui.com/react/components/preview-card"
+    api: "https://base-ui.com/react/components/preview-card#api-reference"
 ---
 
 <ComponentPreview name="preview-card-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/preview-card.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/preview-card/preview-card.tsx"
+    title="components/ui/preview-card.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/preview-card/preview-card.module.css"
+    title="components/ui/preview-card.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -30,13 +71,13 @@ filename="anatomy"
 } from '../ui/preview-card'
 
 <PreviewCard>
-  <PreviewCardTrigger href="...">Link</PreviewCardTrigger>
-  <PreviewCardPortal>
-    <PreviewCardPositioner>
-      <PreviewCardPopup>
-        <PreviewCardArrow />
-      </PreviewCardPopup>
-    </PreviewCardPositioner>
-  </PreviewCardPortal>
-</PreviewCard>`}
-/>
+    <PreviewCardTrigger href="...">Link</PreviewCardTrigger>
+    <PreviewCardPortal>
+        <PreviewCardPositioner>
+            <PreviewCardPopup>
+                <PreviewCardArrow />
+            </PreviewCardPopup>
+        </PreviewCardPositioner>
+    </PreviewCardPortal>
+</PreviewCard>
+`} />

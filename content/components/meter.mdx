@@ -2,17 +2,57 @@
 title: Meter
 description: A graphical display of a numeric value within a range.
 links:
-  doc: https://base-ui.com/react/components/meter
-  api: https://base-ui.com/react/components/meter#api-reference
+    doc: https://base-ui.com/react/components/meter
+    api: https://base-ui.com/react/components/meter#api-reference
 ---
 
 <ComponentPreview name="meter-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/meter.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/meter/meter.tsx"
+    title="components/ui/meter.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/meter/meter.module.css"
+    title="components/ui/meter.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -28,10 +68,10 @@ filename="anatomy"
 } from '../ui/meter'
 
 <Meter value={24} max={100}>
-  <MeterLabel>Storage Used</MeterLabel>
-  <MeterValue />
-  <MeterTrack>
-    <MeterIndicator />
-  </MeterTrack>
-</Meter>`}
-/>
+    <MeterLabel>Storage Used</MeterLabel>
+    <MeterValue />
+    <MeterTrack>
+        <MeterIndicator />
+    </MeterTrack>
+</Meter>
+`} />

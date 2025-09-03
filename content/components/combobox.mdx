@@ -1,15 +1,57 @@
 ---
 title: Combobox
-description: A searchable dropdown component that combines a popover with a command menu for filtering and selection.
+description:
+    A searchable dropdown component that combines a popover with a command menu for
+    filtering and selection.
 ---
 
 <ComponentPreview name="combobox-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/combobox.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/combobox/combobox.tsx"
+    title="components/ui/combobox.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/combobox/combobox.module.css"
+    title="components/ui/combobox.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -50,52 +92,50 @@ import { Button } from '../ui/button'
 </Popover>`}
 />
 
-
-
-
-
 ## Props
 
-<PropTable data={[
-  {
-    prop: "options",
-    type: "Array<{value: string, label: string}>",
-    description: "Array of options with value and label properties"
-  },
-  {
-    prop: "value",
-    type: "string",
-    description: "Currently selected value (controlled)"
-  },
-  {
-    prop: "onValueChange",
-    type: "(value: string) => void",
-    description: "Callback when selection changes"
-  },
-  {
-    prop: "placeholder",
-    type: "string",
-    description: "Placeholder text when no option is selected"
-  },
-  {
-    prop: "searchPlaceholder",
-    type: "string",
-    description: "Placeholder text for the search input"
-  },
-  {
-    prop: "emptyText",
-    type: "string",
-    description: "Text to display when no options match the search"
-  },
-  {
-    prop: "disabled",
-    type: "boolean",
-    default: "false",
-    description: "Whether the combobox is disabled"
-  },
-  {
-    prop: "className",
-    type: "string",
-    description: "Additional CSS classes to apply to the combobox"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "options",
+            type: "Array<{value: string, label: string}>",
+            description: "Array of options with value and label properties",
+        },
+        {
+            prop: "value",
+            type: "string",
+            description: "Currently selected value (controlled)",
+        },
+        {
+            prop: "onValueChange",
+            type: "(value: string) => void",
+            description: "Callback when selection changes",
+        },
+        {
+            prop: "placeholder",
+            type: "string",
+            description: "Placeholder text when no option is selected",
+        },
+        {
+            prop: "searchPlaceholder",
+            type: "string",
+            description: "Placeholder text for the search input",
+        },
+        {
+            prop: "emptyText",
+            type: "string",
+            description: "Text to display when no options match the search",
+        },
+        {
+            prop: "disabled",
+            type: "boolean",
+            default: "false",
+            description: "Whether the combobox is disabled",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the combobox",
+        },
+    ]}
+/>

@@ -2,18 +2,57 @@
 title: Tooltip
 description: A component to display information on hover.
 links:
-  doc: https://base-ui.com/react/components/tooltip
-  api: https://base-ui.com/react/components/tooltip#api-reference
+    doc: https://base-ui.com/react/components/tooltip
+    api: https://base-ui.com/react/components/tooltip#api-reference
 ---
-
 
 <ComponentPreview name="tooltip-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/tooltip.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/tooltip/tooltip.tsx"
+    title="components/ui/tooltip.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/tooltip/tooltip.module.css"
+    title="components/ui/tooltip.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -31,15 +70,15 @@ filename="anatomy"
 } from '../ui/tooltip'
 
 <TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger />
-    <TooltipPortal>
-      <TooltipPositioner>
-        <TooltipPopup>
-          <TooltipArrow />
-        </TooltipPopup>
-      </TooltipPositioner>
-    </TooltipPortal>
-  </Tooltip>
-</TooltipProvider>`}
-/>
+    <Tooltip>
+        <TooltipTrigger />
+        <TooltipPortal>
+            <TooltipPositioner>
+                <TooltipPopup>
+                    <TooltipArrow />
+                </TooltipPopup>
+            </TooltipPositioner>
+        </TooltipPortal>
+    </Tooltip>
+</TooltipProvider>
+`} />

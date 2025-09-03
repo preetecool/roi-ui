@@ -2,17 +2,57 @@
 title: Input
 description: An input field.
 links:
-  doc: https://base-ui.com/react/components/input
-  api: https://base-ui.com/react/components/input#api-reference
+    doc: https://base-ui.com/react/components/input
+    api: https://base-ui.com/react/components/input#api-reference
 ---
 
 <ComponentPreview name="input-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/input.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/input/input.tsx"
+    title="components/ui/input.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/input/input.module.css"
+    title="components/ui/input.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -21,5 +61,5 @@ filename="anatomy"
   language="tsx"
   code={`import { Input } from '../ui/input'
 
-<Input />`}
-/>
+<Input />
+`} />

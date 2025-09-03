@@ -2,18 +2,57 @@
 title: Radio
 description: A customizable radio button component for selecting one option from a group.
 links:
-  doc: "https://base-ui.com/react/components/radio"
-  api: "https://base-ui.com/react/components/radio#api-reference"
+    doc: "https://base-ui.com/react/components/radio"
+    api: "https://base-ui.com/react/components/radio#api-reference"
 ---
-
 
 <ComponentPreview name="radio-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/radio.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/radio/radio.tsx"
+    title="components/ui/radio.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/radio/radio.module.css"
+    title="components/ui/radio.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -27,8 +66,8 @@ filename="anatomy"
 } from '../ui/radio'
 
 <RadioGroup>
-  <Radio>
-    <RadioIndicator />
-  </Radio>
-</RadioGroup>`}
-/>
+    <Radio>
+        <RadioIndicator />
+    </Radio>
+</RadioGroup>
+`} />

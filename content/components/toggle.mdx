@@ -2,18 +2,57 @@
 title: Toggle
 description: A two-state button that can be turned on or off.
 links:
-  doc: "https://base-ui.com/react/components/toggle"
-  api: "https://base-ui.com/react/components/toggle#api-reference"
+    doc: "https://base-ui.com/react/components/toggle"
+    api: "https://base-ui.com/react/components/toggle#api-reference"
 ---
-
 
 <ComponentPreview name="toggle-demo" />
 
 ## Installation
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/toggle.json
 ```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/toggle/toggle.tsx"
+    title="components/ui/toggle.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/toggle/toggle.module.css"
+    title="components/ui/toggle.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
 
 ## Anatomy
 
@@ -22,5 +61,4 @@ filename="anatomy"
   language="tsx"
   code={`import { Toggle } from '../ui/toggle'
 
-<Toggle>Toggle content</Toggle>`}
-/>
+<Toggle>Toggle content</Toggle>`} />

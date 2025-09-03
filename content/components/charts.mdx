@@ -2,12 +2,12 @@
 title: Charts
 description: Chart components for data visualization using recharts
 links:
-  doc: https://recharts.org/
-  api: https://recharts.org/en-US/api
+    doc: https://recharts.org/
+    api: https://recharts.org/en-US/api
 ---
 
 <style>
-{`
+    {`
   .installation-heading {
     margin-top: 0 !important;
   }
@@ -20,199 +20,321 @@ links:
 
 <h3 className="installation-heading">Installation</h3>
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/line-chart.json
 ```
 
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install recharts
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/line-chart.tsx"
+    title="components/ui/line-chart.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/line-chart.module.css"
+    title="components/ui/line-chart.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
 ### Props
 
-<PropTable data={[
-  {
-    prop: "data",
-    type: "LineChartData[]",
-    description: "Array of data points with date, value, and type properties"
-  },
-  {
-    prop: "showXAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the X axis"
-  },
-  {
-    prop: "showYAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the Y axis"
-  },
-  {
-    prop: "showXGrid",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display vertical grid lines"
-  },
-  {
-    prop: "showYGrid",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display horizontal grid lines"
-  },
-  {
-    prop: "curve",
-    type: '"linear" | "monotoneX" | "cardinal" | "basis" | "step"',
-    default: '"linear"',
-    description: "Type of curve interpolation for the line"
-  },
-  {
-    prop: "showPoints",
-    type: "boolean",
-    default: "false",
-    description: "Whether to display data points on the line"
-  },
-  {
-    prop: "pointSize",
-    type: "number",
-    default: "4",
-    description: "Size of the data points when showPoints is true"
-  },
-  {
-    prop: "xAxisFormatter",
-    type: "(value: any) => string",
-    description: "Function to format X axis tick labels"
-  },
-  {
-    prop: "animated",
-    type: "boolean",
-    default: "false",
-    description: "Whether to animate the chart on load"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "data",
+            type: "LineChartData[]",
+            description: "Array of data points with date, value, and type properties",
+        },
+        {
+            prop: "showXAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the X axis",
+        },
+        {
+            prop: "showYAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the Y axis",
+        },
+        {
+            prop: "showXGrid",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display vertical grid lines",
+        },
+        {
+            prop: "showYGrid",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display horizontal grid lines",
+        },
+        {
+            prop: "curve",
+            type: '"linear" | "monotoneX" | "cardinal" | "basis" | "step"',
+            default: '"linear"',
+            description: "Type of curve interpolation for the line",
+        },
+        {
+            prop: "showPoints",
+            type: "boolean",
+            default: "false",
+            description: "Whether to display data points on the line",
+        },
+        {
+            prop: "pointSize",
+            type: "number",
+            default: "4",
+            description: "Size of the data points when showPoints is true",
+        },
+        {
+            prop: "xAxisFormatter",
+            type: "(value: any) => string",
+            description: "Function to format X axis tick labels",
+        },
+        {
+            prop: "animated",
+            type: "boolean",
+            default: "false",
+            description: "Whether to animate the chart on load",
+        },
+    ]}
+/>
 
 ## Radial Bar Chart
-
-
 
 <ComponentPreview name="radial-bar-chart-demo" />
 
 <h3 className="installation-heading">Installation</h3>
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/radial-bar-chart.json
 ```
 
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install recharts
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/radial-bar-chart.tsx"
+    title="components/ui/radial-bar-chart.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/radial-bar-chart.module.css"
+    title="components/ui/radial-bar-chart.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
 ### Props
 
-<PropTable data={[
-  {
-    prop: "data",
-    type: "RadialBarChartData[]",
-    description: "Array of data points with category and value properties"
-  },
-  {
-    prop: "innerRadius",
-    type: "number | string",
-    default: "10%",
-    description: "Inner radius of the radial bars (creates donut effect)"
-  },
-  {
-    prop: "outerRadius",
-    type: "number | string",
-    default: "80%",
-    description: "Outer radius of the radial bars"
-  },
-  {
-    prop: "showLabels",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display category labels"
-  },
-  {
-    prop: "animated",
-    type: "boolean",
-    default: "false",
-    description: "Whether to animate the chart on load"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "data",
+            type: "RadialBarChartData[]",
+            description: "Array of data points with category and value properties",
+        },
+        {
+            prop: "innerRadius",
+            type: "number | string",
+            default: "10%",
+            description: "Inner radius of the radial bars (creates donut effect)",
+        },
+        {
+            prop: "outerRadius",
+            type: "number | string",
+            default: "80%",
+            description: "Outer radius of the radial bars",
+        },
+        {
+            prop: "showLabels",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display category labels",
+        },
+        {
+            prop: "animated",
+            type: "boolean",
+            default: "false",
+            description: "Whether to animate the chart on load",
+        },
+    ]}
+/>
 
 ## Area Chart
-
-
 
 <ComponentPreview name="area-chart-demo" />
 
 <h3 className="installation-heading">Installation</h3>
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/area-chart.json
 ```
 
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install recharts
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/area-chart.tsx"
+    title="components/ui/area-chart.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/area-chart.module.css"
+    title="components/ui/area-chart.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
 ### Props
 
-<PropTable data={[
-  {
-    prop: "data",
-    type: "AreaChartData[]",
-    description: "Array of data points with year, amount, and type properties"
-  },
-  {
-    prop: "showXAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the X axis"
-  },
-  {
-    prop: "showYAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the Y axis"
-  },
-  {
-    prop: "showXGrid",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display vertical grid lines"
-  },
-  {
-    prop: "showYGrid",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display horizontal grid lines"
-  },
-  {
-    prop: "curve",
-    type: '"linear" | "monotoneX" | "cardinal" | "basis" | "step"',
-    default: '"linear"',
-    description: "Type of curve interpolation for the area"
-  },
-  {
-    prop: "showPoints",
-    type: "boolean",
-    default: "false",
-    description: "Whether to display data points on the line"
-  },
-  {
-    prop: "pointSize",
-    type: "number",
-    default: "4",
-    description: "Size of the data points when showPoints is true"
-  },
-  {
-    prop: "xAxisFormatter",
-    type: "(value: any) => string",
-    description: "Function to format X axis tick labels"
-  },
-  {
-    prop: "fillOpacity",
-    type: "number",
-    default: "0.3",
-    description: "Opacity of the area fill"
-  },
-  {
-    prop: "animated",
-    type: "boolean",
-    default: "false",
-    description: "Whether to animate the chart on load"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "data",
+            type: "AreaChartData[]",
+            description: "Array of data points with year, amount, and type properties",
+        },
+        {
+            prop: "showXAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the X axis",
+        },
+        {
+            prop: "showYAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the Y axis",
+        },
+        {
+            prop: "showXGrid",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display vertical grid lines",
+        },
+        {
+            prop: "showYGrid",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display horizontal grid lines",
+        },
+        {
+            prop: "curve",
+            type: '"linear" | "monotoneX" | "cardinal" | "basis" | "step"',
+            default: '"linear"',
+            description: "Type of curve interpolation for the area",
+        },
+        {
+            prop: "showPoints",
+            type: "boolean",
+            default: "false",
+            description: "Whether to display data points on the line",
+        },
+        {
+            prop: "pointSize",
+            type: "number",
+            default: "4",
+            description: "Size of the data points when showPoints is true",
+        },
+        {
+            prop: "xAxisFormatter",
+            type: "(value: any) => string",
+            description: "Function to format X axis tick labels",
+        },
+        {
+            prop: "fillOpacity",
+            type: "number",
+            default: "0.3",
+            description: "Opacity of the area fill",
+        },
+        {
+            prop: "animated",
+            type: "boolean",
+            default: "false",
+            description: "Whether to animate the chart on load",
+        },
+    ]}
+/>
 
 ## Bar Chart
 
@@ -220,60 +342,103 @@ npx shadcn@latest add https://roiui.com/r/area-chart.json
 
 <h3 className="installation-heading">Installation</h3>
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/bar-chart.json
 ```
 
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install recharts
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/bar-chart.tsx"
+    title="components/ui/bar-chart.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/bar-chart.module.css"
+    title="components/ui/bar-chart.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
 ### Props
 
-<PropTable data={[
-  {
-    prop: "data",
-    type: "BarChartData[]",
-    description: "Array of data points with category, amount, and type properties"
-  },
-  {
-    prop: "showXAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the X axis"
-  },
-  {
-    prop: "showYAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the Y axis"
-  },
-  {
-    prop: "showXGrid",
-    type: "boolean",
-    default: "false",
-    description: "Whether to display vertical grid lines"
-  },
-  {
-    prop: "showYGrid",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display horizontal grid lines"
-  },
-  {
-    prop: "xAxisFormatter",
-    type: "(value: string) => string",
-    description: "Function to format X axis tick labels"
-  },
-  {
-    prop: "useGradient",
-    type: "boolean",
-    default: "true",
-    description: "Whether to use gradient fill for bars"
-  },
-  {
-    prop: "animated",
-    type: "boolean",
-    default: "false",
-    description: "Whether to animate the chart on load"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "data",
+            type: "BarChartData[]",
+            description:
+                "Array of data points with category, amount, and type properties",
+        },
+        {
+            prop: "showXAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the X axis",
+        },
+        {
+            prop: "showYAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the Y axis",
+        },
+        {
+            prop: "showXGrid",
+            type: "boolean",
+            default: "false",
+            description: "Whether to display vertical grid lines",
+        },
+        {
+            prop: "showYGrid",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display horizontal grid lines",
+        },
+        {
+            prop: "xAxisFormatter",
+            type: "(value: string) => string",
+            description: "Function to format X axis tick labels",
+        },
+        {
+            prop: "useGradient",
+            type: "boolean",
+            default: "true",
+            description: "Whether to use gradient fill for bars",
+        },
+        {
+            prop: "animated",
+            type: "boolean",
+            default: "false",
+            description: "Whether to animate the chart on load",
+        },
+    ]}
+/>
 
 ## Pie Chart
 
@@ -281,102 +446,185 @@ npx shadcn@latest add https://roiui.com/r/bar-chart.json
 
 <h3 className="installation-heading">Installation</h3>
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/pie-chart.json
 ```
 
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install recharts
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/pie-chart.tsx"
+    title="components/ui/pie-chart.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/pie-chart.module.css"
+    title="components/ui/pie-chart.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
 ### Props
 
-<PropTable data={[
-  {
-    prop: "data",
-    type: "PieChartData[]",
-    description: "Array of data points with category, value, and type properties"
-  },
-  {
-    prop: "innerRadius",
-    type: "number",
-    default: "0",
-    description: "Inner radius of the pie (creates donut chart when > 0)"
-  },
-  {
-    prop: "outerRadius",
-    type: "number",
-    description: "Outer radius of the pie chart"
-  },
-  {
-    prop: "showLabels",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display category labels"
-  },
-  {
-    prop: "animated",
-    type: "boolean",
-    default: "false",
-    description: "Whether to animate the chart on load"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "data",
+            type: "PieChartData[]",
+            description: "Array of data points with category, value, and type properties",
+        },
+        {
+            prop: "innerRadius",
+            type: "number",
+            default: "0",
+            description: "Inner radius of the pie (creates donut chart when > 0)",
+        },
+        {
+            prop: "outerRadius",
+            type: "number",
+            description: "Outer radius of the pie chart",
+        },
+        {
+            prop: "showLabels",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display category labels",
+        },
+        {
+            prop: "animated",
+            type: "boolean",
+            default: "false",
+            description: "Whether to animate the chart on load",
+        },
+    ]}
+/>
 
 ## Radar Chart
-
-
 
 <ComponentPreview name="radar-chart-demo" />
 
 <h3 className="installation-heading">Installation</h3>
 
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
 ```package-install
 npx shadcn@latest add https://roiui.com/r/radar-chart.json
 ```
 
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install recharts
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/radar-chart.tsx"
+    title="components/ui/radar-chart.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/charts/radar-chart.module.css"
+    title="components/ui/radar-chart.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
 ### Props
 
-<PropTable data={[
-  {
-    prop: "data",
-    type: "RadarChartData[]",
-    description: "Array of data points with category, value, and type properties"
-  },
-  {
-    prop: "levels",
-    type: "number",
-    default: "5",
-    description: "Number of concentric grid levels"
-  },
-  {
-    prop: "maxValue",
-    type: "number",
-    description: "Maximum value for the radar scale (auto-calculated if not provided)"
-  },
-  {
-    prop: "showLabels",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display category labels"
-  },
-  {
-    prop: "showGrid",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display the radar grid"
-  },
-  {
-    prop: "showRadialAxis",
-    type: "boolean",
-    default: "true",
-    description: "Whether to display radial axis labels (0-100)"
-  },
-  {
-    prop: "fillOpacity",
-    type: "number",
-    default: "0.3",
-    description: "Opacity of the radar area fill"
-  },
-  {
-    prop: "animated",
-    type: "boolean",
-    default: "false",
-    description: "Whether to animate the chart on load"
-  }
-]} />
+<PropTable
+    data={[
+        {
+            prop: "data",
+            type: "RadarChartData[]",
+            description: "Array of data points with category, value, and type properties",
+        },
+        {
+            prop: "levels",
+            type: "number",
+            default: "5",
+            description: "Number of concentric grid levels",
+        },
+        {
+            prop: "maxValue",
+            type: "number",
+            description:
+                "Maximum value for the radar scale (auto-calculated if not provided)",
+        },
+        {
+            prop: "showLabels",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display category labels",
+        },
+        {
+            prop: "showGrid",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display the radar grid",
+        },
+        {
+            prop: "showRadialAxis",
+            type: "boolean",
+            default: "true",
+            description: "Whether to display radial axis labels (0-100)",
+        },
+        {
+            prop: "fillOpacity",
+            type: "number",
+            default: "0.3",
+            description: "Opacity of the radar area fill",
+        },
+        {
+            prop: "animated",
+            type: "boolean",
+            default: "false",
+            description: "Whether to animate the chart on load",
+        },
+    ]}
+/>
