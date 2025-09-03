@@ -13,6 +13,13 @@
     overflow: hidden;
 }
 
+@media only screen and (max-width: 800px) {
+    .chartContainer {
+        height: 200px;
+        min-height: 200px;
+    }
+}
+
 .headerContainer {
     display: flex;
     flex-direction: column;
