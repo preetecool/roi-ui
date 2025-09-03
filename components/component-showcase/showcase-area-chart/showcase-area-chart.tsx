@@ -6,9 +6,24 @@ import styles from "./showcase-area-chart.module.css";
 import { monthlyUsersData } from "./data";
 
 const formatMonth = (value: unknown) => {
-  const monthNumber = Math.round(Number(value));
+  const num = Number(value);
+  
+  if (isNaN(num)) return "";
+  
+  const monthNumber = Math.round(num);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return months[monthNumber - 1] || monthNumber.toString();
+  
+  // Only return month names for exact integer values 1-12
+  if (Number.isInteger(num) && monthNumber >= 1 && monthNumber <= 12) {
+    return months[monthNumber - 1];
+  }
+  
+  // For non-integer values (interpolated), find closest valid month
+  if (monthNumber >= 1 && monthNumber <= 12) {
+    return months[monthNumber - 1];
+  }
+  
+  return "";
 };
 
 export function ShowcaseAreaChart() {
@@ -20,13 +35,11 @@ export function ShowcaseAreaChart() {
   return (
     <Card className={styles.cardContainer}>
       <CardHeader>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-          <div style={{ fontSize: "14px", color: "var(--muted-foreground)" }}>Monthly Active Users</div>
-          <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-            <div style={{ fontSize: "24px", fontWeight: "700", color: "var(--foreground)", marginTop: "4px" }}>
-              {currentUsers.toFixed(1)}M
-            </div>
-            <div style={{ fontSize: "14px", color: "var(--muted-foreground)", marginTop: "2px" }}>
+        <div className={styles.headerContainer}>
+          <div className={styles.title}>Monthly Active Users</div>
+          <div className={styles.metricsContainer}>
+            <div className={styles.primaryMetric}>{currentUsers.toFixed(1)}M</div>
+            <div className={styles.secondaryMetric}>
               {growth > 0 ? "+" : ""}
               {growth.toFixed(1)}M ({growth > 0 ? "+" : ""}
               {growthPercent}%) from last month
@@ -35,7 +48,7 @@ export function ShowcaseAreaChart() {
         </div>
       </CardHeader>
       <CardContent className={styles.chartContainer}>
-        <div style={{ width: "100%", height: "100%" }}>
+        <div className={styles.chartWrapper}>
           <AreaChart
             data={monthlyUsersData}
             showXAxis={false}

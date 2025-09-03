@@ -42,7 +42,6 @@ function LineChart({
   showYAxis = true,
   showXGrid = true,
   showYGrid = true,
-  curve = "linear",
   showPoints = false,
   pointSize = 4,
   xAxisFormatter,

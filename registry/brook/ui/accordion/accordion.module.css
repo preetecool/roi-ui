@@ -17,6 +17,7 @@
     font-size: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
+    font-size: 0.85rem;
 }
 
 .trigger {
@@ -38,7 +39,7 @@
     color: var(--title-hover);
     text-decoration: underline solid;
     svg {
-        color: var(--muted-foreground);
+        color: var(--foreground);
     }
 }
 
@@ -65,6 +66,7 @@
     height: 1rem;
     flex-shrink: 0;
     transition: transform 310ms ease;
+    color: var(--muted-foreground);
 }
 
 .trigger[data-panel-open] {
