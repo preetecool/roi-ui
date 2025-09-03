@@ -100,49 +100,6 @@ export function MobileNav({ tree }: MobileNavProps) {
           </div>
 
           <nav className={styles.treeNav}>
-            {/* Manual navigation items for mobile reliability */}
-            <div className={styles.groupContainer}>
-              <div className={styles.groupTitle}>Components</div>
-              <div className={styles.groupChildren}>
-                <Link
-                  href="/docs/components/accordion"
-                  onClick={() => setIsOpen(false)}
-                  className={`${styles.pageLink} ${pathname === "/docs/components/accordion" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                >
-                  Accordion
-                </Link>
-                <Link
-                  href="/docs/components/button"
-                  onClick={() => setIsOpen(false)}
-                  className={`${styles.pageLink} ${pathname === "/docs/components/button" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                >
-                  Button
-                </Link>
-                <Link
-                  href="/docs/components/charts"
-                  onClick={() => setIsOpen(false)}
-                  className={`${styles.pageLink} ${pathname === "/docs/components/charts" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                >
-                  Charts
-                </Link>
-                <Link
-                  href="/docs/components/input"
-                  onClick={() => setIsOpen(false)}
-                  className={`${styles.pageLink} ${pathname === "/docs/components/input" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                >
-                  Input
-                </Link>
-                <Link
-                  href="/docs/components/badge"
-                  onClick={() => setIsOpen(false)}
-                  className={`${styles.pageLink} ${pathname === "/docs/components/badge" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                >
-                  Badge
-                </Link>
-              </div>
-            </div>
-            
-            {/* Keep the dynamic tree as fallback */}
             {tree?.children?.map((item, index) => (
               <MobileSidebarGroup
                 key={item.$id || `item-${index}`}

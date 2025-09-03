@@ -39,7 +39,6 @@ declare global {
   var __SHIKI_INSTANCE_COUNT__: number;
 }
 
-// Initialize counter if not exists
 if (typeof globalThis.__SHIKI_INSTANCE_COUNT__ === "undefined") {
   globalThis.__SHIKI_INSTANCE_COUNT__ = 0;
 }
@@ -50,10 +49,6 @@ async function getHighlighter() {
       const { createHighlighter } = await import("shiki");
 
       globalThis.__SHIKI_INSTANCE_COUNT__++;
-
-      if (process.env.NODE_ENV === "development") {
-        console.log(`🎨 Creating Shiki highlighter instance #${globalThis.__SHIKI_INSTANCE_COUNT__}`);
-      }
 
       globalThis.__SHIKI_PROMISE__ = createHighlighter({
         themes: ["github-light", "github-dark"],
@@ -68,7 +63,7 @@ async function getHighlighter() {
 export async function highlightCode(code: string, language: string = "tsx"): Promise<string> {
   // Use getSingletonHighlighter to ensure we share the same instance globally
   const { getSingletonHighlighter } = await import("shiki");
-  
+
   const highlighter = await getSingletonHighlighter({
     themes: ["github-light", "github-dark"],
     langs: ["tsx", "jsx", "css", "bash", "json", "typescript", "javascript"],
