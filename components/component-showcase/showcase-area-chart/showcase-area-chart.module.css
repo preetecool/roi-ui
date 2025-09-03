@@ -9,5 +9,42 @@
     flex: 1;
     padding: 0;
     margin: 0 -24px -24px -24px;
-    min-height: 160px;
+    height: 160px;
+    overflow: hidden;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.title {
+    font-size: 14px;
+    color: var(--muted-foreground);
+}
+
+.metricsContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.primaryMetric {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-top: 4px;
+}
+
+.secondaryMetric {
+    font-size: 14px;
+    color: var(--muted-foreground);
+    margin-top: 2px;
+}
+
+.chartWrapper {
+    width: calc(100% + 48px);
+    height: 100%;
+    margin-left: -24px;
 }

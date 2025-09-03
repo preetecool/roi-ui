@@ -50,7 +50,6 @@ function AreaChart({
 }: AreaChartProps) {
   const color = "var(--chart1)";
 
-
   const formatDate = (value: NumberValue | string) => {
     if (xAxisFormatter) {
       return xAxisFormatter(value);
@@ -69,19 +68,32 @@ function AreaChart({
     payload: AreaChartData;
   }
 
-  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: AreaTooltipPayload[]; label?: NumberValue | string }) => {
+  const CustomTooltip = ({
+    active,
+    payload,
+    label,
+  }: {
+    active?: boolean;
+    payload?: AreaTooltipPayload[];
+    label?: NumberValue | string;
+  }) => {
     if (!active || !payload || !payload.length) return null;
-    
+
     const data = payload[0];
+
+    const actualLabel = data.payload ? data.payload.year : (typeof label === 'object' && label !== null ? Number(label) : label);
+
     return (
-      <ChartTooltip 
+      <ChartTooltip
         active={active}
-        payload={[{
-          ...data,
-          name: "Revenue",
-          color: color
-        }]}
-        label={typeof label === 'object' && label !== null ? Number(label) : label}
+        payload={[
+          {
+            ...data,
+            name: "Revenue",
+            color: color,
+          },
+        ]}
+        label={actualLabel}
         labelFormatter={tooltipLabelFormatter}
         valueFormatter={tooltipValueFormatter}
       />
@@ -112,7 +124,7 @@ function AreaChart({
       }}
     >
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsAreaChart data={data} margin={{ top: 10, right: 10, left: -5, bottom: 20 }}>
+        <RechartsAreaChart data={data} margin={{ top: 1, right: 10, left: -5, bottom: 6 }}>
           <defs>
             <linearGradient id="colorArea" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={color} stopOpacity={fillOpacity * 2} />
@@ -128,8 +140,6 @@ function AreaChart({
               tickLine={false}
               tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
               tickFormatter={formatDate}
-              interval="preserveStartEnd"
-              ticks={[2020, 2022, 2024, 2026, 2028, 2030]}
             />
           )}
           {showYAxis && (
@@ -140,7 +150,7 @@ function AreaChart({
               width={30}
             />
           )}
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} allowEscapeViewBox={{ x: false, y: false }} />
           <Area
             type="monotone"
             dataKey="amount"
@@ -151,6 +161,7 @@ function AreaChart({
             dot={showPoints ? <CustomDot /> : false}
             animationDuration={animated ? 1000 : 0}
             animationBegin={animated ? 0 : undefined}
+            connectNulls={false}
           />
         </RechartsAreaChart>
       </ResponsiveContainer>
