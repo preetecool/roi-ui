@@ -19,10 +19,12 @@
   bottom: 1.5rem;
   left: 1.5rem;
   right: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .button {
-  padding-left: 0;
+  padding-left: 0 !important;
   margin-top: 8px;
 }
 

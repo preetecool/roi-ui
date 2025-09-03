@@ -44,8 +44,9 @@ function BarChart({
 
   const tooltipLabelFormatter = (value: string | number) => formatCategory(value);
 
-  const tooltipValueFormatter = (value: number) => {
-    return `$${value.toLocaleString()}k`;
+  const tooltipValueFormatter = (value: number | string, name?: string) => {
+    const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+    return isNaN(numValue) ? String(value) : `$${numValue.toLocaleString()}k`;
   };
 
   interface TooltipPayload {

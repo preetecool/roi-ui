@@ -59,8 +59,9 @@ function AreaChart({
 
   const tooltipLabelFormatter = (value: NumberValue | string) => formatDate(value);
 
-  const tooltipValueFormatter = (value: number) => {
-    return value.toLocaleString();
+  const tooltipValueFormatter = (value: number | string, name?: string) => {
+    const numValue = typeof value === "number" ? value : parseFloat(String(value));
+    return isNaN(numValue) ? String(value) : numValue.toLocaleString();
   };
 
   interface AreaTooltipPayload {
@@ -81,7 +82,11 @@ function AreaChart({
 
     const data = payload[0];
 
-    const actualLabel = data.payload ? data.payload.year : (typeof label === 'object' && label !== null ? Number(label) : label);
+    const actualLabel = data.payload
+      ? data.payload.year
+      : typeof label === "object" && label !== null
+        ? Number(label)
+        : label;
 
     return (
       <ChartTooltip
@@ -150,7 +155,11 @@ function AreaChart({
               width={30}
             />
           )}
-          <Tooltip content={<CustomTooltip />} allowEscapeViewBox={{ x: false, y: false }} />
+          <Tooltip
+            cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
+            content={<CustomTooltip />}
+            allowEscapeViewBox={{ x: false, y: false }}
+          />
           <Area
             type="monotone"
             dataKey="amount"

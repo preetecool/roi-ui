@@ -28,8 +28,9 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
     fill: item.category.toLowerCase() === "sleep" ? "var(--success)" : colors[index % colors.length],
   }));
 
-  const tooltipValueFormatter = (value: number) => {
-    return value.toLocaleString();
+  const tooltipValueFormatter = (value: number | string, name?: string) => {
+    const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+    return isNaN(numValue) ? String(value) : numValue.toLocaleString();
   };
 
   interface TooltipPayload {
