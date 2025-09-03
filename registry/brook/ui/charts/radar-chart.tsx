@@ -85,7 +85,7 @@ function RadarChart({
               tickCount={levels + 1}
             />
           )}
-          <Tooltip content={<ChartTooltip />} />
+          <Tooltip cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }} content={<ChartTooltip />} />
           {uniqueTypes.map((type, index) => (
             <Radar
               key={type}

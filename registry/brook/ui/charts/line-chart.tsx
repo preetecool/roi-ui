@@ -101,6 +101,14 @@ function LineChart({
     return acc;
   }, []);
 
+  const dates = data.map((d) => Number(d.date));
+  const minDate = Math.min(...dates);
+  const maxDate = Math.max(...dates);
+
+  const padding = (maxDate - minDate) * 0.05;
+  const domainMin = Math.max(0, minDate - padding);
+  const domainMax = maxDate + padding;
+
   return (
     <div
       className={styles.lineChart}
@@ -111,20 +119,19 @@ function LineChart({
       }}
     >
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart data={groupedData} margin={{ top: 10, right: 10, left: -5, bottom: 20 }}>
+        <RechartsLineChart data={groupedData} margin={{ top: 10, right: 12, left: 12, bottom: 20 }}>
           {showXGrid ||
             (showYGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.2} />)}
-          {showXAxis && (
-            <XAxis
-              dataKey="date"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
-              tickFormatter={formatDate}
-              interval="preserveStartEnd"
-              ticks={[1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]}
-            />
-          )}
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickLine={false}
+            tick={showXAxis ? { fontSize: 11, fill: "var(--muted-foreground)" } : false}
+            tickFormatter={formatDate}
+            interval="preserveStartEnd"
+            domain={[domainMin, domainMax]}
+            hide={!showXAxis}
+          />
           {showYAxis && (
             <YAxis
               axisLine={false}
@@ -133,7 +140,10 @@ function LineChart({
               width={30}
             />
           )}
-          <Tooltip content={<ChartTooltip labelFormatter={tooltipLabelFormatter} />} />
+          <Tooltip
+            cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
+            content={<ChartTooltip labelFormatter={tooltipLabelFormatter} />}
+          />
           {uniqueTypes.map((type, index) => (
             <Line
               key={type}

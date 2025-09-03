@@ -42,8 +42,10 @@ function PieChart({
     [data, pieColors],
   );
 
-  const tooltipValueFormatter = (value: number) => {
-    const percentage = ((value / total) * 100).toFixed(1);
+  const tooltipValueFormatter = (value: number | string, name?: string) => {
+    const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+    if (isNaN(numValue)) return String(value);
+    const percentage = ((numValue / total) * 100).toFixed(1);
     return `${percentage}%`;
   };
 
