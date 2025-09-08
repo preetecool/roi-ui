@@ -1,0 +1,113 @@
+---
+title: Context Menu
+description: A menu component triggered by right-click or long press.
+links:
+    doc: https://base-ui.com/react/components/context-menu
+    api: https://base-ui.com/react/components/context-menu#api-reference
+---
+
+<ComponentPreview name="context-menu-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/context-menu.json
+```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/context-menu/context-menu.tsx"
+    title="components/ui/context-menu.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/context-menu/context-menu.module.css"
+    title="components/ui/context-menu.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuPortal,
+  ContextMenuBackdrop,
+  ContextMenuPositioner,
+  ContextMenuPopup,
+  ContextMenuArrow,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuRadioGroup,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuSubmenuTrigger,
+  ContextMenuSubmenu,
+  ContextMenuGroup,
+  ContextMenuShortcut,
+} from '../ui/context-menu'
+
+<ContextMenu>
+    <ContextMenuTrigger />
+    <ContextMenuPortal>
+        <ContextMenuBackdrop />
+        <ContextMenuPositioner>
+            <ContextMenuPopup>
+                <ContextMenuArrow />
+                <ContextMenuItem />
+                <ContextMenuSeparator />
+                <ContextMenuCheckboxItem />
+                <ContextMenuRadioGroup>
+                    <ContextMenuRadioItem />
+                </ContextMenuRadioGroup>
+                <ContextMenuLabel />
+                <ContextMenuSubmenu>
+                    <ContextMenuSubmenuTrigger />
+                    <ContextMenuPortal>
+                        <ContextMenuPositioner>
+                            <ContextMenuPopup>
+                                <ContextMenuItem />
+                            </ContextMenuPopup>
+                        </ContextMenuPositioner>
+                    </ContextMenuPortal>
+                </ContextMenuSubmenu>
+                <ContextMenuShortcut />
+            </ContextMenuPopup>
+        </ContextMenuPositioner>
+    </ContextMenuPortal>
+</ContextMenu>
+`} />
