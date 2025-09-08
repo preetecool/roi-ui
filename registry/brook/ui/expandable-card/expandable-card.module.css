@@ -76,6 +76,7 @@
     gap: 24px;
     text-align: left;
 }
+
 .contentContainerOpen {
     display: flex;
     flex-direction: column;
@@ -85,6 +86,16 @@
     gap: 36px;
     text-align: left;
     padding-top: 28px !important;
+}
+
+.contentContainerModal {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 28px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    width: 100%;
 }
 
 .cardHeadingSmall {
@@ -240,9 +251,12 @@
     .contentContainer {
         padding: 16px;
     }
+    .card {
+        width: 100%;
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
     .grid {
         flex-direction: column;
         height: auto;

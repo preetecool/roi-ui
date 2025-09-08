@@ -55,16 +55,7 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
                 </motion.div>
 
                 <motion.div
-                  className={styles.contentContainerOpen}
-                  style={{
-                    maxWidth: 600,
-                    margin: "0 auto",
-                    paddingTop: 28,
-                    paddingLeft: 0,
-                    paddingRight: 0,
-                    paddingBottom: 0,
-                    width: "100%",
-                  }}
+                  className={`${styles.contentContainerOpen} ${styles.contentContainerModal}`}
                 >
                   <motion.div layoutId={`heading-container-${item.id}`} className={styles.headingContainer}>
                     <motion.h3 className={styles.cardHeadingLarge}>{item.cardHeading}</motion.h3>
@@ -175,7 +166,7 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
                   <Image src={item.src} className={styles.image} alt={item.alt} width={600} height={600} />
                 </motion.div>
 
-                <motion.div className={styles.contentContainer} style={{ width: "100%" }} initial={false}>
+                <motion.div className={styles.contentContainer} initial={false}>
                   <motion.div
                     layoutId={`heading-container-${item.id}`}
                     className={styles.headingContainer}
