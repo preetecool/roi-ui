@@ -129,3 +129,8 @@
     width: var(--active-tab-width);
     height: 3px;
 }
+
+.content p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
