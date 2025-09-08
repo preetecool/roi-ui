@@ -13,7 +13,6 @@ import {
   ComboboxList,
 } from "@/registry/brook/ui/combobox/combobox";
 import { Avatar, AvatarImage, AvatarFallback } from "@/registry/brook/ui/avatar/avatar";
-import { ChevronsUpDown } from "lucide-react";
 import styles from "./combobox-demo.module.css";
 
 interface User {
@@ -70,15 +69,12 @@ const users: User[] = [
 
 export default function ComboboxDemo() {
   const [selectedUser, setSelectedUser] = useState<string>("");
-  const [inputValue, setInputValue] = useState("");
-
-  // Filter users based on input
-  const filteredUsers = users.filter((user) => {
-    const searchTerm = inputValue.toLowerCase();
-    return user.label.toLowerCase().includes(searchTerm) || user.email.toLowerCase().includes(searchTerm);
-  });
 
   const selectedUserData = users.find((u) => u.value === selectedUser);
+
+  const handleValueChange = (value: string) => {
+    setSelectedUser(value);
+  };
 
   return (
     <div className={styles.container}>
@@ -89,14 +85,13 @@ export default function ComboboxDemo() {
 
       <div className={styles.comboboxWrapper}>
         <Combobox
-          items={filteredUsers}
+          items={users}
           value={selectedUser}
-          onValueChange={(value) => setSelectedUser(value as string)}
+          onValueChange={(value) => handleValueChange(value as string)}
         >
           <div className={styles.inputWrapper}>
-            <ComboboxInput placeholder="Search users..." className={styles.input} />
-            {selectedUserData && !inputValue && (
-              <div className={styles.selectedUser}>
+            {selectedUserData && (
+              <div className={styles.selectedUserDisplay}>
                 <Avatar className={styles.avatarSmall}>
                   <AvatarImage src={selectedUserData.avatar} alt={selectedUserData.label} />
                   <AvatarFallback>
@@ -106,9 +101,13 @@ export default function ComboboxDemo() {
                       .join("")}
                   </AvatarFallback>
                 </Avatar>
-                <span>{selectedUserData.label}</span>
+                <span className={styles.selectedUserText}>{selectedUserData.label}</span>
               </div>
             )}
+            <ComboboxInput 
+              placeholder="Search users..." 
+              className={`${styles.input} ${selectedUserData ? styles.inputWithSelection : ''}`}
+            />
             <div className={styles.actionButtons}>
               <ComboboxTrigger className={styles.trigger} />
             </div>
@@ -120,7 +119,7 @@ export default function ComboboxDemo() {
                 <ComboboxEmpty>No user found.</ComboboxEmpty>
                 <ComboboxList>
                   {(user: User) => (
-                    <ComboboxItem key={user.value} value={user.value}>
+                    <ComboboxItem key={user.value} value={user.value} indicatorPosition="right">
                       <div className={styles.userContainer}>
                         <Avatar className={styles.avatar}>
                           <AvatarImage src={user.avatar} alt={user.label} />

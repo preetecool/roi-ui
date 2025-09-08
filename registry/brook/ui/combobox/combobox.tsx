@@ -81,13 +81,21 @@ const ComboboxEmpty = ({
 const ComboboxItem = ({ 
   className,
   children,
+  indicatorPosition = "left",
   ...props 
-}: React.ComponentProps<typeof Combobox.Item>) => (
+}: React.ComponentProps<typeof Combobox.Item> & { indicatorPosition?: "left" | "right" }) => (
   <Combobox.Item className={cn(styles.item, className)} {...props}>
-    <Combobox.ItemIndicator className={styles.itemIndicator}>
-      <Check size={16} />
-    </Combobox.ItemIndicator>
+    {indicatorPosition === "left" && (
+      <Combobox.ItemIndicator className={styles.itemIndicator}>
+        <Check size={16} />
+      </Combobox.ItemIndicator>
+    )}
     {children}
+    {indicatorPosition === "right" && (
+      <Combobox.ItemIndicator className={styles.itemIndicator}>
+        <Check size={16} />
+      </Combobox.ItemIndicator>
+    )}
   </Combobox.Item>
 );
 
