@@ -1,16 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { Combobox, ComboboxOption } from "@/registry/brook/ui/combobox/combobox";
+import {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxInput,
+  ComboboxPortal,
+  ComboboxPositioner,
+  ComboboxPopup,
+  ComboboxItem,
+  ComboboxEmpty,
+  ComboboxList,
+} from "@/registry/brook/ui/combobox/combobox";
 import { Avatar, AvatarImage, AvatarFallback } from "@/registry/brook/ui/avatar/avatar";
+import { ChevronsUpDown } from "lucide-react";
 import styles from "./combobox-demo.module.css";
 
-interface User extends ComboboxOption {
+interface User {
+  value: string;
+  label: string;
   email: string;
   avatar: string;
 }
 
-const users = [
+const users: User[] = [
   {
     value: "preetecool",
     label: "preetecool",
@@ -57,52 +70,15 @@ const users = [
 
 export default function ComboboxDemo() {
   const [selectedUser, setSelectedUser] = useState<string>("");
+  const [inputValue, setInputValue] = useState("");
 
-  const renderTrigger = (selectedOption: ComboboxOption | undefined) => {
-    if (!selectedOption) return null;
+  // Filter users based on input
+  const filteredUsers = users.filter((user) => {
+    const searchTerm = inputValue.toLowerCase();
+    return user.label.toLowerCase().includes(searchTerm) || user.email.toLowerCase().includes(searchTerm);
+  });
 
-    const user = selectedOption as User;
-
-    return (
-      <div className={styles.userContainer}>
-        <Avatar className={styles.avatar}>
-          <AvatarImage src={user.avatar} alt={user.label} />
-          <AvatarFallback>
-            {user.label
-              .split(" ")
-              .map((n: string) => n[0])
-              .join("")}
-          </AvatarFallback>
-        </Avatar>
-        <div className={styles.userInfo}>
-          <div className={styles.userName}>{user.label}</div>
-          <div className={styles.userEmail}>{user.email}</div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderOption = (option: ComboboxOption) => {
-    const user = option as User;
-
-    return (
-      <div className={styles.userContainer}>
-        <Avatar className={styles.avatar}>
-          <AvatarImage src={user.avatar} alt={user.label} />
-          <AvatarFallback>
-            {user.label
-              .split(" ")
-              .map((n: string) => n[0])
-              .join("")}
-          </AvatarFallback>
-        </Avatar>
-        <div className={styles.userInfoOption}>
-          <div className={styles.userName}>{user.label}</div>
-          <div className={styles.userEmail}>{user.email}</div>
-        </div>
-      </div>
-    );
-  };
+  const selectedUserData = users.find((u) => u.value === selectedUser);
 
   return (
     <div className={styles.container}>
@@ -113,16 +89,60 @@ export default function ComboboxDemo() {
 
       <div className={styles.comboboxWrapper}>
         <Combobox
-          options={users}
+          items={filteredUsers}
           value={selectedUser}
-          onValueChange={setSelectedUser}
-          placeholder="Select a user..."
-          searchPlaceholder="Search users..."
-          emptyText="No user found."
-          renderTrigger={renderTrigger}
-          renderOption={renderOption}
-          contentWidth="300px"
-        />
+          onValueChange={(value) => setSelectedUser(value as string)}
+        >
+          <div className={styles.inputWrapper}>
+            <ComboboxInput placeholder="Search users..." className={styles.input} />
+            {selectedUserData && !inputValue && (
+              <div className={styles.selectedUser}>
+                <Avatar className={styles.avatarSmall}>
+                  <AvatarImage src={selectedUserData.avatar} alt={selectedUserData.label} />
+                  <AvatarFallback>
+                    {selectedUserData.label
+                      .split(" ")
+                      .map((n: string) => n[0])
+                      .join("")}
+                  </AvatarFallback>
+                </Avatar>
+                <span>{selectedUserData.label}</span>
+              </div>
+            )}
+            <div className={styles.actionButtons}>
+              <ComboboxTrigger className={styles.trigger} />
+            </div>
+          </div>
+
+          <ComboboxPortal>
+            <ComboboxPositioner>
+              <ComboboxPopup className={styles.popup}>
+                <ComboboxEmpty>No user found.</ComboboxEmpty>
+                <ComboboxList>
+                  {(user: User) => (
+                    <ComboboxItem key={user.value} value={user.value}>
+                      <div className={styles.userContainer}>
+                        <Avatar className={styles.avatar}>
+                          <AvatarImage src={user.avatar} alt={user.label} />
+                          <AvatarFallback>
+                            {user.label
+                              .split(" ")
+                              .map((n: string) => n[0])
+                              .join("")}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className={styles.userInfo}>
+                          <div className={styles.userName}>{user.label}</div>
+                          <div className={styles.userEmail}>{user.email}</div>
+                        </div>
+                      </div>
+                    </ComboboxItem>
+                  )}
+                </ComboboxList>
+              </ComboboxPopup>
+            </ComboboxPositioner>
+          </ComboboxPortal>
+        </Combobox>
       </div>
     </div>
   );

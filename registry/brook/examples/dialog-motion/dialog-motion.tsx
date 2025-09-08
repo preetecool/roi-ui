@@ -40,7 +40,7 @@ export default function DialogFramerMotion() {
 
   return (
     <div>
-      <Dialog.Root open={open} onOpenChange={setOpen} key="root">
+      <Dialog.Root open={open} onOpenChange={(newOpen) => setOpen(newOpen)} key="root">
         <motion.div layoutId="container">
           <motion.div layoutId="button">
             <Dialog.Trigger render={<Button />}>Toggle Dialog</Dialog.Trigger>

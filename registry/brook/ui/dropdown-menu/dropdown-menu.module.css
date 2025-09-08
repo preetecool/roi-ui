@@ -34,7 +34,6 @@
 
 .popup {
     min-width: 240px;
-    margin-top: 0.4rem;
     padding: 0.5rem;
     background: var(--card);
     border: 1px solid var(--border);

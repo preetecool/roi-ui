@@ -1,52 +1,122 @@
 .container {
-  padding: 2rem;
+    padding: 2rem;
 }
 
 .header {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .description {
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
 }
 
 .comboboxWrapper {
-  width: 300px;
+    width: 300px;
+    position: relative;
+}
+
+.popup {
+    width: 100% !important;
+    min-width: 300px;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--muted);
+    transition: all 150ms ease;
+}
+
+.inputWrapper:focus-within {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+}
+
+.input::placeholder {
+    color: var(--muted-foreground);
+}
+
+.actionButtons {
+    display: flex;
+    align-items: center;
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--muted-foreground);
 }
 
 .userContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
 }
 
 .avatar {
-  width: 1.5rem;
-  height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.avatarSmall {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.selectedUser {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: none;
+    background: var(--background);
+    padding-right: 0.5rem;
 }
 
 .userInfo {
-  text-align: left;
+    text-align: left;
 }
 
 .userInfoOption {
-  flex: 1;
+    flex: 1;
 }
 
 .userName {
-  font-size: 0.875rem;
-  font-weight: 500;
+    font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .userEmail {
-  font-size: 0.75rem;
-  color: var(--muted-foreground);
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
 }
