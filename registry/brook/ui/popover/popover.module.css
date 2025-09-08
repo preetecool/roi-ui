@@ -32,8 +32,8 @@
 .popup {
     position: relative;
     box-sizing: border-box;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
+    padding: 1rem 1rem;
+    border-radius: var(--radius);
     background-color: var(--card);
     color: var(--popover-foreground);
     transform-origin: var(--transform-origin);
@@ -105,8 +105,8 @@
     position: absolute !important;
     top: 0.25rem !important;
     right: 0.25rem !important;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
     transition:
         background-color 150ms ease,
@@ -126,6 +126,7 @@
 .close svg {
     width: 1.5rem;
     height: 1.5rem;
+    color: var(--muted-foreground);
 }
 
 .actions {
