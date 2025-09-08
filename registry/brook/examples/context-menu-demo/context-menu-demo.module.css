@@ -1,0 +1,86 @@
+.container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.trigger {
+    display: block;
+    width: 100%;
+    cursor: context-menu;
+    outline: none;
+    border-radius: var(--radius);
+    transition: all 150ms ease;
+
+    &:hover {
+        background: var(--accent);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+}
+
+.triggerContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    transition: all 150ms ease;
+}
+
+.trigger:hover .triggerContent {
+    border-color: var(--ring);
+    background: var(--accent);
+}
+
+.triggerIcon {
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+.triggerText h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.triggerText p {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin: 0;
+}
+
+.popup {
+    min-width: 16rem;
+}
+
+.deleteItem {
+    color: var(--destructive);
+
+    &:hover,
+    &[data-highlighted] {
+        background: var(--destructive);
+        color: var(--destructive-foreground);
+    }
+}

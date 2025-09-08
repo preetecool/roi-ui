@@ -50,6 +50,24 @@
       ]
     },
     {
+      "name": "autocomplete",
+      "type": "registry:item",
+      "title": "Autocomplete",
+      "description": "An input that suggests options as you type.",
+      "files": [
+        {
+          "path": "registry/brook/ui/autocomplete/autocomplete.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.tsx"
+        },
+        {
+          "path": "registry/brook/ui/autocomplete/autocomplete.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.module.css"
+        }
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:item",
       "title": "Alert",
@@ -262,6 +280,24 @@
           "path": "registry/brook/ui/command/command.module.css",
           "type": "registry:file",
           "target": "~/components/ui/command/command.module.css"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:item",
+      "title": "Context Menu",
+      "description": "A menu component triggered by right-click or long press.",
+      "files": [
+        {
+          "path": "registry/brook/ui/context-menu/context-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/context-menu/context-menu.tsx"
+        },
+        {
+          "path": "registry/brook/ui/context-menu/context-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/context-menu/context-menu.module.css"
         }
       ]
     },

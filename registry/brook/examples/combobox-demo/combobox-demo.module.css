@@ -76,7 +76,7 @@
 .userContainer {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     flex: 1;
 }
 
@@ -90,7 +90,7 @@
     height: 1.25rem;
 }
 
-.selectedUser {
+.selectedUserDisplay {
     position: absolute;
     left: 0.75rem;
     top: 50%;
@@ -99,8 +99,18 @@
     align-items: center;
     gap: 0.5rem;
     pointer-events: none;
-    background: var(--background);
-    padding-right: 0.5rem;
+    background: var(--muted);
+    z-index: 1;
+}
+
+.selectedUserText {
+    font-size: 0.875rem;
+    color: var(--foreground);
+    white-space: nowrap;
+}
+
+.inputWithSelection {
+    color: transparent;
 }
 
 .userInfo {
