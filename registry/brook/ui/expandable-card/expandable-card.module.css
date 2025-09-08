@@ -140,7 +140,7 @@
     margin-inline: auto;
     background: var(--card);
     padding-block: 1em 2em;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
 }
 
 .modalContent {
@@ -224,8 +224,7 @@
     }
 
     .imageContainer {
-        width: 240px;
-        height: 240px;
+        width: 100%;
     }
 
     .modal {
@@ -243,9 +242,8 @@
     }
 
     .modal .image {
-        height: 280px;
-        width: 280px;
-        object-fit: cover;
+        width: 320px;
+        height: 320px;
     }
 
     .contentContainer {
@@ -264,13 +262,10 @@
     }
 
     .imageContainer {
-        width: 320px;
-        height: 320px;
+        width: 100%;
+        height: 100%;
     }
-    .modal .image {
-        width: 320px;
-        height: 320px;
-    }
+
     .closeButton {
         width: 32px;
         height: 32px;
