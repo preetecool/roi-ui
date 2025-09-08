@@ -1,0 +1,115 @@
+---
+title: Autocomplete
+description: An input that suggests options as you type.
+links:
+    doc: https://base-ui.com/react/components/autocomplete
+    api: https://base-ui.com/react/components/autocomplete#api-reference
+---
+
+<ComponentPreview name="autocomplete-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/autocomplete.json
+```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/autocomplete/autocomplete.tsx"
+    title="components/ui/autocomplete.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/autocomplete/autocomplete.module.css"
+    title="components/ui/autocomplete.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`import {
+  Autocomplete,
+  AutocompleteValue,
+  AutocompleteInput,
+  AutocompleteTrigger,
+  AutocompleteIcon,
+  AutocompleteClear,
+  AutocompletePortal,
+  AutocompleteBackdrop,
+  AutocompletePositioner,
+  AutocompletePopup,
+  AutocompleteArrow,
+  AutocompleteStatus,
+  AutocompleteList,
+  AutocompleteEmpty,
+  AutocompleteCollection,
+  AutocompleteRow,
+  AutocompleteItem,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteSeparator,
+} from '../ui/autocomplete'
+
+<Autocomplete>
+    <AutocompleteInput />
+    <AutocompleteTrigger />
+    <AutocompleteIcon />
+    <AutocompleteClear />
+    <AutocompleteValue />
+
+    <AutocompletePortal>
+        <AutocompleteBackdrop />
+        <AutocompletePositioner>
+            <AutocompletePopup>
+                <AutocompleteArrow />
+                <AutocompleteStatus />
+                <AutocompleteEmpty />
+
+                <AutocompleteList>
+                    <AutocompleteRow>
+                        <AutocompleteItem />
+                    </AutocompleteRow>
+                    <AutocompleteSeparator />
+                    <AutocompleteGroup>
+                        <AutocompleteGroupLabel />
+                        <AutocompleteCollection />
+                    </AutocompleteGroup>
+                </AutocompleteList>
+            </AutocompletePopup>
+        </AutocompletePositioner>
+    </AutocompletePortal>
+</Autocomplete>
+`} />

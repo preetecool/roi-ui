@@ -50,6 +50,24 @@
       ]
     },
     {
+      "name": "autocomplete",
+      "type": "registry:item",
+      "title": "Autocomplete",
+      "description": "An input that suggests options as you type.",
+      "files": [
+        {
+          "path": "registry/brook/ui/autocomplete/autocomplete.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.tsx"
+        },
+        {
+          "path": "registry/brook/ui/autocomplete/autocomplete.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.module.css"
+        }
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:item",
       "title": "Alert",

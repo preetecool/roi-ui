@@ -1,0 +1,56 @@
+.container {
+    padding: 2rem;
+}
+
+.header {
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.autocompleteWrapper {
+    width: 300px;
+    position: relative;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+}
+
+.popup {
+    width: 100% !important;
+    min-width: 300px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+}
