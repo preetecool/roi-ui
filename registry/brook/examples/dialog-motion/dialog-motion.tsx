@@ -82,7 +82,7 @@ export default function DialogFramerMotion() {
                 }
               >
                 <Dialog.Title className={styles.title}>What is a brook?</Dialog.Title>
-                <Dialog.Description>
+                <Dialog.Description className={styles.description}>
                   A small, natural stream of fresh water, often winding gently through forests, meadows, or valleys.
                 </Dialog.Description>
                 <div className={styles.actions}>

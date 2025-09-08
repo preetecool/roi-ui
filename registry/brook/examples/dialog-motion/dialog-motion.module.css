@@ -1,35 +1,40 @@
 .overlay {
-  position: fixed;
-  inset: 0;
-  background-color: var(--dialog-overlay);
-  z-index: var(--dialog-z);
+    position: fixed;
+    inset: 0;
+    background-color: var(--dialog-overlay);
+    z-index: var(--dialog-z);
 }
 
 .popup {
-  position: fixed;
-  inset: 50%;
-  margin-top: -100px;
-  margin-left: -200px;
-  border-radius: 8px;
-  padding: 1.5rem;
-  width: 400px;
-  height: 200px;
-  background-color: var(--card);
-  z-index: 101;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    position: fixed;
+    inset: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 400px;
+    height: 200px;
+    background-color: var(--card);
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
+
 .title {
-  border-bottom: none;
-  font-size: 1.125rem;
-  margin: 0;
-  padding: 0;
+    border-bottom: none;
+    font-size: 1.125rem;
+    margin: 0;
+    padding: 0;
+}
+
+.description {
+    margin: 0;
 }
 
 .actions {
-  display: flex;
-  gap: 16px;
-  justify-content: flex-end;
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
 }
