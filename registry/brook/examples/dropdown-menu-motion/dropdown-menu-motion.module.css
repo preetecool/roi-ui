@@ -10,13 +10,16 @@
 
 .menuItemButton {
   width: 100%;
-  justify-content: flex-start;
+  justify-content: flex-start !important;
+  text-align: left !important;
 }
 
 .menuItemContent {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .separator {

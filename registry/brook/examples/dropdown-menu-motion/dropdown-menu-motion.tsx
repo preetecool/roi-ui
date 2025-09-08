@@ -37,7 +37,7 @@ export default function DropdownMenuFramerMotion() {
   const [open, setOpen] = useState(false);
 
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen}>
+    <DropdownMenu open={open} onOpenChange={(newOpen) => setOpen(newOpen)}>
       <DropdownMenuTrigger
         render={
           <Button variant="outline">

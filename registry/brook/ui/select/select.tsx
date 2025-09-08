@@ -8,7 +8,7 @@ import styles from "./select.module.css";
 const SelectRoot = ({ ...props }: React.ComponentProps<typeof Select.Root>) => <Select.Root {...props} />;
 
 const SelectTrigger = ({ className, children, ...props }: React.ComponentPropsWithoutRef<typeof Select.Trigger>) => (
-  <Select.Trigger className={cn(styles.trigger, className)} {...props}>
+  <Select.Trigger className={cn(styles.trigger, className)} nativeButton {...props}>
     {children}
   </Select.Trigger>
 );

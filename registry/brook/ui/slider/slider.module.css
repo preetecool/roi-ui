@@ -62,7 +62,7 @@
     transition: none;
 }
 
-.thumb:focus-visible {
+.thumb:has(:focus-visible) {
     outline: 2px solid var(--ring);
 }
 
