@@ -4,10 +4,19 @@ import React from "react";
 import { RotateCcw } from "lucide-react";
 import styles from "./replay-button.module.css";
 
-export function ReplayButton() {
+interface ReplayButtonProps {
+  onReplay?: () => void;
+}
+
+export function ReplayButton({ onReplay }: ReplayButtonProps) {
   const handleReplay = () => {
-    window.location.reload();
+    if (onReplay) {
+      onReplay();
+    } else {
+      window.location.reload();
+    }
   };
+  
   return (
     <button 
       onClick={handleReplay}

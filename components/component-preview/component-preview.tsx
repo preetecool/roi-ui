@@ -1,7 +1,7 @@
 import React from "react";
 import { getComponent } from "@/lib/registry";
 import { ComponentSource } from "@/components/component-source/component-source";
-import { ReplayButton } from "./replay-button";
+import { ComponentPreviewClient } from "./component-preview-client";
 import { MultiFileComponentSource } from "./multi-file-component-source";
 import { highlightCode } from "@/lib/highlight-code";
 import styles from "./component-preview.module.css";
@@ -167,10 +167,19 @@ export async function ComponentPreview({
 
         return (
             <div className={styles.container}>
-                <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ''}`}>
-                    <Component />
-                    {replayButton && <ReplayButton />}
-                </div>
+                {replayButton ? (
+                    <ComponentPreviewClient
+                        Component={Component}
+                        align={align}
+                        replayButton={replayButton}
+                        isChartComponent={isChartComponent}
+                        className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ''}`}
+                    />
+                ) : (
+                    <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ''}`}>
+                        <Component />
+                    </div>
+                )}
 
                 {description && (
                     <div className={styles.description}>
