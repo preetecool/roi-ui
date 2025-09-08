@@ -52,7 +52,7 @@ export default function AutocompleteDemo() {
       <div className={styles.header}></div>
 
       <div className={styles.autocompleteWrapper}>
-        <Autocomplete items={tags} value={value} onValueChange={setValue} itemToStringValue={(item) => item.value}>
+        <Autocomplete items={tags} value={value} onValueChange={setValue} itemToStringValue={(item) => (item as Tag).value}>
           <div className={styles.inputWrapper}>
             <label className={styles.label}>
               Search tags
