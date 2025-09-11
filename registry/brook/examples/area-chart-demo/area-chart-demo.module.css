@@ -3,6 +3,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 50;
+  overflow: hidden;
 }
 
 .title {
@@ -13,7 +15,7 @@
 
 .chartContainer {
   flex: 1;
-  min-height: 400px;
+  min-height: 360px;
 }
 
 @media (max-width: 640px) {
@@ -23,6 +25,8 @@
   }
   
   .chartContainer {
-    min-height: 280px;
+    flex: none;
+    height: 390px;
+    min-height: 390px;
   }
 }

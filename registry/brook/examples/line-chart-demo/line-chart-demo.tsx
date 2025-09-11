@@ -90,6 +90,7 @@ export default function LineChartDemo() {
           showXGrid={false}
           showPoints={false}
           animated
+          ticks={[1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]}
         />
       </div>
     </div>

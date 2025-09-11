@@ -78,7 +78,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
           <RadialBar
             dataKey="value"
             cornerRadius={4}
-            background={{ fill: "var(--secondary)" }}
+            background={{ fill: "var(--muted)" }}
             animationDuration={animated ? 800 : 0}
             animationBegin={animated ? 0 : undefined}
           />

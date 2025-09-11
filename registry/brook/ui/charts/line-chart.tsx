@@ -34,6 +34,7 @@ export interface LineChartProps {
   pointSize?: number;
   xAxisFormatter?: (value: NumberValue | string) => string;
   animated?: boolean;
+  ticks?: number[];
 }
 
 function LineChart({
@@ -46,6 +47,7 @@ function LineChart({
   pointSize = 4,
   xAxisFormatter,
   animated = false,
+  ticks,
 }: LineChartProps) {
   const uniqueTypes = Array.from(new Set(data.map((d) => d.type)));
   const colors = ["var(--chart1)", "var(--chart2)"];
@@ -128,7 +130,7 @@ function LineChart({
             tickLine={false}
             tick={showXAxis ? { fontSize: 11, fill: "var(--muted-foreground)" } : false}
             tickFormatter={formatDate}
-            interval="preserveStartEnd"
+            ticks={ticks}
             domain={[domainMin, domainMax]}
             hide={!showXAxis}
           />
