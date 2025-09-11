@@ -8,3 +8,8 @@
 .areaChart *:focus-visible {
     outline: none !important;
 }
+
+.areaChart svg {
+    max-width: 100%;
+    max-height: 100%;
+}
