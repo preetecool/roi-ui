@@ -35,6 +35,26 @@ export function MobileNav({ tree }: MobileNavProps) {
     return () => window.removeEventListener('resize', handleResize);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.height = '100%';
+
+      return () => {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.height = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isOpen]);
+
   return (
     <>
       <button
@@ -54,6 +74,7 @@ export function MobileNav({ tree }: MobileNavProps) {
           <motion.div
             className={`${styles.overlay} ${styles.mobileOnly}`}
             onClick={() => setIsOpen(false)}
+            onTouchMove={(e) => e.preventDefault()}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -66,19 +87,19 @@ export function MobileNav({ tree }: MobileNavProps) {
         {isOpen && (
           <motion.div
             className={`${styles.sidebar} ${styles.mobileOnly}`}
-            initial={{ opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            exit={{ opacity: 0, scaleY: 0 }}
-            style={{ 
-              transformOrigin: "top",
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            style={{
               height: "calc(100vh - var(--header-height))",
-              top: "var(--header-height)"
+              top: "var(--header-height)",
+              maxHeight: "calc(100vh - var(--header-height))"
             }}
             transition={{
               type: "spring",
-              damping: 30,
-              stiffness: 600,
-              duration: 0.15
+              damping: 25,
+              stiffness: 400,
+              duration: 0.2
             }}
           >
         <div className={styles.sidebarHeader}>

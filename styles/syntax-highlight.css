@@ -35,11 +35,11 @@ html[data-theme="dark"] [data-line] span {
 
 .code-container code {
     font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
-    font-size: 14px;
+    font-size: var(--code-font-size, 14px);
     line-height: 1.4;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .code-container code {
         font-size: 12px;
     }
