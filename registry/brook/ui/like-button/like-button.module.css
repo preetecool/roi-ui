@@ -5,6 +5,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px 0;
+    box-sizing: border-box;
 }
 
 .animationWrapper {
@@ -15,13 +17,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px 20px;
+    overflow: visible;
 }
 
 .particlesContainer {
     position: absolute;
-    inset: 0;
+    inset: -60px -40px;
     overflow: visible;
     pointer-events: none;
+    z-index: 1;
 }
 
 .particle {
@@ -31,6 +36,8 @@
     will-change: transform, opacity;
     animation: particleMotion 1s ease-out forwards;
     animation-delay: var(--delay);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
 }
 
 .starShape {
@@ -61,9 +68,9 @@
 }
 
 .thumbButton {
-    padding: 12px;
+    padding: 16px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
     position: relative;
     background: transparent;
     border: none;
@@ -71,10 +78,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: visible;
+    margin: 4px 0;
+    outline: none;
 }
 
 .thumbButton:hover {
     transform: scale(1.05);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .thumbButton:hover {
+        transform: none;
+    }
+}
+
+.thumbButton:focus {
+    outline: none;
 }
 
 .thumbButton:focus-visible {
@@ -142,12 +175,69 @@
 
 @keyframes thumbTilt {
     0% {
-        transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1) translateZ(0);
     }
     50% {
-        transform: rotate(-30deg) scale(1.2);
+        transform: rotate(-30deg) scale(1.2) translateZ(0);
     }
     100% {
-        transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1) translateZ(0);
     }
+}
+
+.animateThumbTilt {
+    animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+    .thumbButton {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 16px;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .container {
+        min-height: 160px;
+    }
+
+    .thumbButton,
+    .thumbIcon {
+        transform-origin: center;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+
+    .animateThumbTilt {
+        -webkit-animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+.thumbButton,
+.thumbIcon,
+.particle {
+    will-change: transform, opacity;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@-webkit-keyframes thumbTilt {
+    0% {
+        -webkit-transform: rotate(0deg) scale(1) translateZ(0);
+    }
+    50% {
+        -webkit-transform: rotate(-30deg) scale(1.2) translateZ(0);
+    }
+    100% {
+        -webkit-transform: rotate(0deg) scale(1) translateZ(0);
+    }
+}
+
+.container {
+    -webkit-overflow-scrolling: touch;
 }
