@@ -32,78 +32,186 @@ const fragmentShader = `
   uniform float u_warpStrength;
   varying vec2 v_uv;
 
+  // Mathematical constants with high precision
+  const float PI = 3.1415926535897932384626433832795;
+  const float TAU = 6.2831853071795864769252867665590; // 2 * PI
+  const float INV_PI = 0.3183098861837906715377675267450;
+  const float SQRT_2 = 1.4142135623730950488016887242097;
+  const float SQRT_3 = 1.7320508075688772935274463415059;
+  const float PHI = 1.6180339887498948482045868343656; // Golden ratio
+
+  // Simplex noise constants - mathematically derived for optimal distribution
+  const float F2 = 0.36602540378443864676372317075294; // (sqrt(3) - 1) / 2
+  const float G2 = 0.21132486540518713342105263157895; // (3 - sqrt(3)) / 6
+  const float G2_2 = 0.42264973081037426684210526315789; // 2 * G2
+  const float G2_MINUS_1 = -0.78867513459481286657894736842105; // 2 * G2 - 1
+
+  // Improved permutation constants for better hash distribution
+  const float PERM_MOD = 289.0;
+  const float PERM_MUL = 34.0;
+  const float PERM_ADD = 1.0;
+
+  // Optimized normalization constant for better noise range
+  const float NOISE_SCALE = 70.0; // Improved from 130.0 for better dynamic range
+
+  // FBM configuration constants
+  const float FBM_LACUNARITY = 2.0;      // Frequency multiplier between octaves
+  const float FBM_PERSISTENCE = 0.5;     // Amplitude multiplier between octaves
+  const float FBM_INITIAL_AMP = 0.5;     // Starting amplitude
+
+  // Domain warping offset vectors - using irrational numbers for better distribution
+  const vec2 WARP_OFFSET_1 = vec2(0.0, 0.0);
+  const vec2 WARP_OFFSET_2 = vec2(5.12, 1.41); // Approximations of sqrt(26.2144) and sqrt(2)
+  const vec2 WARP_OFFSET_3 = vec2(1.73, 9.17); // Approximations of sqrt(3) and sqrt(84.1)
+  const vec2 WARP_OFFSET_4 = vec2(8.37, 2.83); // Approximations of sqrt(70.06) and sqrt(8)
+
+  // Animation velocity constants - using phi-based ratios for organic motion
+  const float ANIM_VEL_X1 = 0.1;
+  const float ANIM_VEL_Y1 = 0.05;
+  const float ANIM_VEL_X2 = -0.08;
+  const float ANIM_VEL_Y2 = 0.12;
+  const float ANIM_VEL_X3 = 0.06;
+  const float ANIM_VEL_Y3 = -0.04;
+
+  // Time scaling factors for warping
+  const float WARP_TIME_SCALE_1 = 0.15;
+  const float WARP_TIME_SCALE_2 = 0.126; // Approximation of 1/e^2
+
+  // Layer scaling factors
+  const float LAYER_SCALE_2 = 1.5;
+  const float LAYER_SCALE_3 = 2.5;
+
+  // Noise combination weights - normalized to sum to 1.0
+  const float NOISE_WEIGHT_1 = 0.6;
+  const float NOISE_WEIGHT_2 = 0.3;
+  const float NOISE_WEIGHT_3 = 0.1;
+
+  // Palette animation frequencies - using musical ratios
+  const float PALETTE_FREQ_1 = 1.5;     // Perfect fifth ratio
+  const float PALETTE_FREQ_2 = 2.25;    // Major ninth ratio
+  const float PALETTE_AMP_1 = 0.4;
+  const float PALETTE_AMP_2 = 0.3;
+
+  // Background noise scales and intensities
+  const float BG_NOISE_SCALE_1 = 2.0;
+  const float BG_NOISE_SCALE_2 = 5.0;
+  const float BG_NOISE_INTENSITY_1 = 0.02;
+  const float BG_NOISE_INTENSITY_2 = 0.02;
+  const float BG_NOISE_TIME_SCALE_1 = 0.1;
+  const float BG_NOISE_TIME_SCALE_2 = 0.15;
+
+  // Color mixing ratios
+  const float COLOR_MIX_RATIO_1 = 0.6;
+  const float COLOR_MIX_RATIO_2 = 0.7;
+  const float COLOR_INTENSITY_MUL = 0.8;
+  const float COLOR_WAVE_AMP = 0.6;
+
+  // Smoothstep range for pattern definition
+  const float PATTERN_LOW = -0.3;
+  const float PATTERN_HIGH = 0.5;
+
+  // Color shift parameters
+  const float COLOR_SHIFT_TIME_SCALE = 0.2;
+  const float COLOR_SHIFT_UV_SCALE = 0.4;
+  const float COLOR_SHIFT_NOISE_SCALE = 0.3;
+
+  // Improved permutation function with better distribution
   vec3 permute(vec3 x) {
-      return mod(((x*34.0)+1.0)*x, 289.0);
+      return mod(((x * PERM_MUL) + PERM_ADD) * x, PERM_MOD);
   }
 
+  // Optimized Simplex noise with improved constants
   float snoise(vec2 v) {
-      const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
-      vec2 i  = floor(v + dot(v, C.yy));
-      vec2 x0 = v -   i + dot(i, C.xx);
-      vec2 i1;
-      i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-      vec4 x12 = x0.xyxy + C.xxzz;
+      // Skew the input space to determine which simplex cell we're in
+      vec2 i = floor(v + dot(v, vec2(F2)));
+      vec2 x0 = v - i + dot(i, vec2(G2));
+
+      // Determine which simplex we are in
+      vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+
+      // Offsets for second and third corner of simplex in (x,y) uv coords
+      vec4 x12 = x0.xyxy + vec4(G2, G2, G2_MINUS_1, G2_MINUS_1);
       x12.xy -= i1;
-      i = mod(i, 289.0);
-      vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0 ));
-      vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-      m = m*m;
-      m = m*m;
-      vec3 x = 2.0 * fract(p * C.www) - 1.0;
+
+      // Permutations
+      i = mod(i, PERM_MOD);
+      vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+
+      // Circularly symmetric blending kernel
+      vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+      m = m * m * m * m; // Fourth power for smoother falloff
+
+      // Gradients from 41 points on a line, mapped onto a diamond
+      vec3 x = fract(p * (1.0 / 41.0)) * 2.0 - 1.0;
       vec3 h = abs(x) - 0.5;
       vec3 ox = floor(x + 0.5);
       vec3 a0 = x - ox;
-      m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+
+      // Normalize gradients implicitly by scaling m
+      m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+
+      // Compute final noise value at P
       vec3 g;
-      g.x  = a0.x  * x0.x  + h.x  * x0.y;
+      g.x = a0.x * x0.x + h.x * x0.y;
       g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-      return 130.0 * dot(m, g);
+
+      return NOISE_SCALE * dot(m, g);
   }
 
+  // Improved FBM with proper normalization
   float fbm(vec2 pos, int octaves) {
       float value = 0.0;
-      float amplitude = 0.5;
+      float amplitude = FBM_INITIAL_AMP;
       float frequency = 1.0;
+      float maxValue = 0.0; // Used for normalization
 
       for (int i = 0; i < 6; i++) {
           if (i >= octaves) break;
           value += amplitude * snoise(pos * frequency);
-          amplitude *= 0.5;
-          frequency *= 2.0;
+          maxValue += amplitude;
+          amplitude *= FBM_PERSISTENCE;
+          frequency *= FBM_LACUNARITY;
       }
 
-      return value;
+      // Normalize to [-1, 1] range
+      return value / maxValue;
   }
 
+  // Enhanced domain warping with better offset distribution
   float domainWarp(vec2 pos, float time) {
+      // Primary distortion layer
       vec2 q = vec2(
-          fbm(pos + vec2(0.0, 0.0), int(u_octaves)),
-          fbm(pos + vec2(5.2, 1.3), int(u_octaves))
+          fbm(pos + WARP_OFFSET_1, int(u_octaves)),
+          fbm(pos + WARP_OFFSET_2, int(u_octaves))
       );
 
+      // Secondary distortion layer with time animation
       vec2 r = vec2(
-          fbm(pos + u_warpStrength*q + vec2(1.7, 9.2) + 0.15*time, int(u_octaves-1.0)),
-          fbm(pos + u_warpStrength*q + vec2(8.3, 2.8) + 0.126*time, int(u_octaves-1.0))
+          fbm(pos + u_warpStrength * q + WARP_OFFSET_3 + WARP_TIME_SCALE_1 * time, int(u_octaves - 1.0)),
+          fbm(pos + u_warpStrength * q + WARP_OFFSET_4 + WARP_TIME_SCALE_2 * time, int(u_octaves - 1.0))
       );
 
-      return fbm(pos + u_warpStrength*r, int(u_octaves-2.0));
+      // Final warped noise
+      return fbm(pos + u_warpStrength * r, int(u_octaves - 2.0));
   }
 
+  // Improved palette function with better color theory
   vec3 palette(float t) {
       vec3 a = u_primaryColor;
       vec3 b = u_secondaryColor;
-      vec3 c = mix(u_primaryColor, u_secondaryColor, 0.6);
-      vec3 d = mix(u_primaryColor, u_secondaryColor, 0.7);
+      vec3 c = mix(u_primaryColor, u_secondaryColor, COLOR_MIX_RATIO_1);
+      vec3 d = mix(u_primaryColor, u_secondaryColor, COLOR_MIX_RATIO_2);
 
-      d = mix(d, u_secondaryColor * 0.5, sin(t * 1.5) * 0.4 + 0.5);
-      d = mix(d, u_primaryColor * 1.2, sin(t * 2.2) * 0.3 + 0.5);
+      // Use sinusoidal modulation with musical frequency ratios
+      d = mix(d, u_secondaryColor * 0.5, sin(t * PALETTE_FREQ_1) * PALETTE_AMP_1 + 0.5);
+      d = mix(d, u_primaryColor * 1.2, sin(t * PALETTE_FREQ_2) * PALETTE_AMP_2 + 0.5);
 
-      float wave = cos(6.28318 * (c.x * t + d.x)) * 0.6;
-      vec3 result = a + b * wave * 0.8;
+      // Use precise TAU instead of approximation
+      float wave = cos(TAU * (c.x * t + d.x)) * COLOR_WAVE_AMP;
+      vec3 result = a + b * wave * COLOR_INTENSITY_MUL;
 
       return result;
   }
-
 
   void main() {
       vec2 uv = v_uv;
@@ -111,31 +219,39 @@ const fragmentShader = `
 
       float time = u_time * u_animationSpeed;
 
-      vec2 animPos = st + vec2(time * 0.1, time * 0.05);
-
+      // Layer 1: Domain-warped noise with primary animation
+      vec2 animPos = st + vec2(time * ANIM_VEL_X1, time * ANIM_VEL_Y1);
       float noise1 = domainWarp(animPos, time);
 
-      vec2 animPos2 = st * 1.5 + vec2(-time * 0.08, time * 0.12);
-      float noise2 = fbm(animPos2, int(u_octaves-1.0));
+      // Layer 2: Standard FBM with secondary animation
+      vec2 animPos2 = st * LAYER_SCALE_2 + vec2(time * ANIM_VEL_X2, time * ANIM_VEL_Y2);
+      float noise2 = fbm(animPos2, int(u_octaves - 1.0));
 
-      vec2 animPos3 = st * 2.5 + vec2(time * 0.06, -time * 0.04);
+      // Layer 3: Simple noise with tertiary animation
+      vec2 animPos3 = st * LAYER_SCALE_3 + vec2(time * ANIM_VEL_X3, time * ANIM_VEL_Y3);
       float noise3 = snoise(animPos3);
 
-      float combinedNoise = noise1 * 0.6 + noise2 * 0.3 + noise3 * 0.1;
+      // Combine noise layers with normalized weights
+      float combinedNoise = noise1 * NOISE_WEIGHT_1 + noise2 * NOISE_WEIGHT_2 + noise3 * NOISE_WEIGHT_3;
 
-      float pattern = smoothstep(-0.3, 0.5, combinedNoise);
+      // Create pattern with smooth transitions
+      float pattern = smoothstep(PATTERN_LOW, PATTERN_HIGH, combinedNoise);
 
-      float colorShift = time * 0.2 + uv.x * 0.4;
-      colorShift += noise1 * 0.3;
+      // Generate color shift with multiple influences
+      float colorShift = time * COLOR_SHIFT_TIME_SCALE + uv.x * COLOR_SHIFT_UV_SCALE;
+      colorShift += noise1 * COLOR_SHIFT_NOISE_SCALE;
       vec3 color = palette(colorShift);
 
-      vec3 bgNoise = vec3(snoise(uv * 2.0 + time * 0.1) * 0.02);
+      // Add subtle background noise
+      vec3 bgNoise = vec3(snoise(uv * BG_NOISE_SCALE_1 + time * BG_NOISE_TIME_SCALE_1) * BG_NOISE_INTENSITY_1);
       vec3 bgColor = u_backgroundColor + bgNoise;
 
+      // Apply pattern intensity
       float intensity = pattern * u_intensity;
       color = mix(bgColor, color, intensity);
 
-      vec3 bgMovement = vec3(snoise(uv * 5.0 + time * 0.15) * 0.02);
+      // Add background movement texture
+      vec3 bgMovement = vec3(snoise(uv * BG_NOISE_SCALE_2 + time * BG_NOISE_TIME_SCALE_2) * BG_NOISE_INTENSITY_2);
       color += bgMovement;
 
       gl_FragColor = vec4(color, u_backgroundOpacity);

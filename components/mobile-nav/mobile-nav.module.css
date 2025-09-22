@@ -75,6 +75,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     z-index: 40;
+    touch-action: none;
 }
 
 @keyframes fadeIn {
@@ -102,6 +103,9 @@
     z-index: 50;
     display: flex;
     flex-direction: column;
+    contain: layout style paint;
+    transform: translateZ(0);
+    overflow: hidden;
 }
 
 .sidebarHeader {
@@ -125,8 +129,14 @@
 
 .sidebarContent {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     padding: 1rem 1.5rem 1.5rem 1.5rem;
+    will-change: scroll-position;
+    min-height: 0;
+    max-height: calc(100vh - var(--header-height) - 80px);
 }
 
 .menuSection {
@@ -173,6 +183,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    padding-bottom: 12rem;
 }
 
 .groupContainer {
@@ -237,5 +248,25 @@
 @media (min-width: 1024px) and (-webkit-min-device-pixel-ratio: 1), (min-width: 1024px) and (min-resolution: 96dpi) {
     .mobileOnly {
         display: none;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    .sidebarContent {
+        -webkit-overflow-scrolling: touch;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media (max-width: 1023px) {
+    .sidebar {
+        overscroll-behavior: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sidebarContent {
+        scroll-behavior: smooth;
+        -webkit-scroll-behavior: smooth;
     }
 }
