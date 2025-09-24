@@ -146,11 +146,6 @@ p {
     margin-bottom: 1.5rem;
 }
 
-/* Special margin for TSX file copy instruction - targets paragraph immediately before ComponentSource wrapper with TSX */
-p:has(+ div .container[data-tsx="true"]) {
-    margin-top: 48px;
-    margin-bottom: 16px;
-}
 
 input,
 button,
