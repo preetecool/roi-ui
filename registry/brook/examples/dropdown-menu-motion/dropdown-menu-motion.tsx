@@ -50,7 +50,7 @@ export default function DropdownMenuFramerMotion() {
       ></DropdownMenuTrigger>
 
       <DropdownMenuPortal>
-        <DropdownMenuPositioner>
+        <DropdownMenuPositioner sideOffset={8}>
           <AnimatePresence>
             {open && (
               <DropdownMenuPopup
