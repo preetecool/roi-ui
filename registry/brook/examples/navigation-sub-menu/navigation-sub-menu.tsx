@@ -41,6 +41,7 @@ export default function NavigationSubMenu() {
                   <NavigationMenu>
                     <NavigationMenuItem className={styles.subMenuItem}>
                       <NavigationMenuTrigger
+                        nativeButton={false}
                         render={
                           <div className={styles.triggerContainer}>
                             <NavigationMenuLinkItem
