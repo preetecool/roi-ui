@@ -30,7 +30,7 @@ interface DropdownMenuItemProps extends React.ComponentProps<typeof Menu.Item> {
 }
 
 const DropdownMenuItem = ({ className, icon, children, ...props }: DropdownMenuItemProps) => (
-  <Menu.Item className={cn(styles.item, className)} {...props}>
+  <Menu.Item className={cn(styles.item, className)} nativeButton {...props}>
     {icon && <span className={styles.icon}>{icon}</span>}
     {children}
   </Menu.Item>

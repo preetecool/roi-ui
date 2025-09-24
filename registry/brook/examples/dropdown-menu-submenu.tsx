@@ -17,7 +17,7 @@ export default function DropdownMenuSubmenu() {
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline">Open Menu</Button>} />
       <DropdownMenuPortal>
-        <DropdownMenuPositioner>
+        <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup>
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
