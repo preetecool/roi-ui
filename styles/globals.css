@@ -27,7 +27,7 @@
 
     --border: oklch(0.9166 0.003 220);
     --input: oklch(0.98 0.002 220);
-    --ring: oklch(0.42 0.05 240);
+    --ring: oklch(0.6 0.02 240);
 
     --surface: oklch(0.985 0.002 220);
     --surface-foreground: oklch(0.38 0.006 220);
@@ -82,7 +82,7 @@
 
     --border: oklch(0.2949 0.0143 274.47);
     --input: oklch(0.2329 0.0143 274.47);
-    --ring: oklch(0.78 0.08 240);
+    --ring: oklch(0.65 0.03 240);
 
     --surface: oklch(0.12 0.01 240);
     --surface-foreground: oklch(0.78 0.005 220);
