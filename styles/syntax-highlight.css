@@ -18,30 +18,43 @@
 }
 
 [data-line] span {
-    color: var(--shiki-light) !important;
+    color: var(--shiki-light);
 }
 
 html[data-theme="dark"] [data-line] span {
-    color: var(--shiki-dark) !important;
+    color: var(--shiki-dark);
 }
 
 .code-container pre {
     overflow-x: auto;
-
     border-radius: 0.5rem;
-    background: transparent !important;
     margin: 0;
 }
 
-.code-container code {
+pre code {
+    white-space: pre-wrap;
     font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
-    font-size: var(--code-font-size, 14px);
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.4rem;
 }
 
 @media (max-width: 768px) {
-    .code-container code {
+    pre code {
         font-size: 12px;
+    }
+    [data-line-numbers] [data-line]::before {
+        width: 2rem;
+    }
+}
+
+/* iOS Safari specific fix */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+        pre code span {
+            font-size: 12px;
+            -webkit-text-size-adjust: none;
+            font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+        }
     }
 }
 

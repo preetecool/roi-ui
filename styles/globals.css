@@ -1,7 +1,6 @@
 :root {
     --radius: 0.6rem;
     --radius-lg: 1rem;
-    --code-font-size: 14px;
 
     --background: oklch(0.9757 0.002 220);
     --foreground: oklch(0.35 0.008 220);
@@ -184,9 +183,4 @@ select {
     color: var(--selection-text);
 }
 
-@media (max-width: 768px) {
-    :root {
-        --code-font-size: 12px;
-    }
-}
 
