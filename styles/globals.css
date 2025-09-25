@@ -71,7 +71,7 @@
     --primary: oklch(0.8985 0.0098 252.82);
     --primary-foreground: oklch(0.08 0.008 240);
 
-    --secondary: oklch(0.2762 0.0243 274.47);
+    --secondary: oklch(0.2462 0.0243 274.47);
     --secondary-foreground: oklch(0.88 0.004 220);
 
     --muted: oklch(0.2455 0.0126 284.91);
@@ -146,7 +146,6 @@ p {
     margin-bottom: 1.5rem;
 }
 
-
 input,
 button,
 textarea,
@@ -177,5 +176,3 @@ select {
     background-color: var(--selection-bg);
     color: var(--selection-text);
 }
-
-

@@ -8,6 +8,7 @@ import {
   NavigationMenuContent,
   NavigationMenuLink,
   NavigationMenuLinkItem,
+  NavigationMenuFooter,
   NavigationMenuIcon,
   NavigationMenuViewport,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
@@ -42,6 +43,12 @@ export default function NavigationMenuDemo() {
                 <NavigationMenuLinkItem href="#" title="Automation" description="Automate workflows" />
                 <NavigationMenuLinkItem href="#" title="Reporting" description="Generate reports" />
               </div>
+              <NavigationMenuFooter
+                horizontal
+                title="Explore our full product suite"
+                buttonText="View All Products"
+                buttonHref="#"
+              />
             </NavigationMenuContent>
           </NavigationMenuItem>
 
