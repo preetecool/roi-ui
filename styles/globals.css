@@ -62,7 +62,7 @@
     --text: oklch(0.82 0.005 220);
     --title: oklch(0.96 0.002 220);
     --title-hover: oklch(0.98 0.001 220);
-    --card: oklch(0.2082 0.0077 285.78);
+    --card: oklch(0.2082 0.005 285.78);
 
     --card-foreground: oklch(0.94 0.003 220);
     --popover: oklch(0.13 0.012 240);
