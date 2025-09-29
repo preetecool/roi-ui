@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 import styles from "./button.module.css";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,7 +9,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   pointLeft?: boolean;
   pointExternal?: boolean;
   loading?: boolean;
-  ref?: React.Ref<HTMLButtonElement>;
 }
 
 const Spinner = () => {
@@ -64,31 +64,35 @@ const ArrowPointer = ({
   );
 };
 
-export const Button = ({
-  className,
-  variant = "primary",
-  size = "md",
-  showArrow = false,
-  pointLeft = false,
-  pointExternal = false,
-  loading = false,
-  children,
-  ref,
-  ...props
-}: ButtonProps) => {
-  return (
-    <button
-      ref={ref}
-      className={cn(styles.base, styles[variant], styles[size], loading && styles.loading, className)}
-      disabled={props.disabled}
-      {...props}
-    >
-      {loading && <Spinner />}
-      {!loading && showArrow && pointLeft && <ArrowPointer pointLeft pointExternal={pointExternal} />}
-      {children}
-      {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
-    </button>
-  );
-};
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant = "primary",
+      size = "md",
+      showArrow = false,
+      pointLeft = false,
+      pointExternal = false,
+      loading = false,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(styles.base, styles[variant], styles[size], loading && styles.loading, className)}
+        disabled={props.disabled}
+        {...props}
+      >
+        {loading && <Spinner />}
+        {!loading && showArrow && pointLeft && <ArrowPointer pointLeft pointExternal={pointExternal} />}
+        {children}
+        {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
+      </button>
+    );
+  }
+);
 
 Button.displayName = "Button";
