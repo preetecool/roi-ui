@@ -57,7 +57,7 @@
 }
 
 [data-theme="dark"] {
-    --background: oklch(0.1704 0.0106 284.91);
+    --background: oklch(0.0519 0.0272 282.93);
     --foreground: oklch(0.94 0.003 220);
     --text: oklch(0.82 0.005 220);
     --title: oklch(0.96 0.002 220);
