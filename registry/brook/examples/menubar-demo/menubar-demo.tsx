@@ -25,7 +25,7 @@ export default function MenubarDemo() {
           }
         />
         <MenubarMenuPortal>
-          <MenubarMenuPositioner>
+          <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
@@ -84,7 +84,7 @@ export default function MenubarDemo() {
           }
         />
         <MenubarMenuPortal>
-          <MenubarMenuPositioner>
+          <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
@@ -141,7 +141,7 @@ export default function MenubarDemo() {
           }
         />
         <MenubarMenuPortal>
-          <MenubarMenuPositioner>
+          <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
               <MenubarMenuItem>Toggle Sidebar</MenubarMenuItem>
               <MenubarMenuItem>Toggle Fullscreen</MenubarMenuItem>
@@ -176,7 +176,7 @@ export default function MenubarDemo() {
           }
         />
         <MenubarMenuPortal>
-          <MenubarMenuPositioner>
+          <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
               <MenubarMenuItem>About</MenubarMenuItem>
               <MenubarMenuItem>Documentation</MenubarMenuItem>

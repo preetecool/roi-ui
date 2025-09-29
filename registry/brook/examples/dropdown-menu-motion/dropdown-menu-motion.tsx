@@ -66,7 +66,7 @@ export default function DropdownMenuFramerMotion() {
               >
                 {menuItems.map((item) => (
                   <motion.div key={item.label}>
-                    <DropdownMenuItem render={<Button variant="ghost" className={styles.menuItemButton} />}>
+                    <DropdownMenuItem render={<Button variant="ghost" className={styles.menuItemButton} />} nativeButton>
                       <div className={styles.menuItemContent}>
                         <item.icon size={16} />
                         {item.label}
@@ -79,7 +79,7 @@ export default function DropdownMenuFramerMotion() {
                   <DropdownMenuSeparator className={styles.separator} />
                 </motion.div>
 
-                <DropdownMenuItem render={<Button variant="ghost" className={styles.menuItemButton} />}>
+                <DropdownMenuItem render={<Button variant="ghost" className={styles.menuItemButton} />} nativeButton>
                   <div className={styles.menuItemContent}>
                     <LogOut size={16} />
                     Logout
