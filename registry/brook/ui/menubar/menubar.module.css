@@ -60,7 +60,6 @@
 
 .menuPopup {
     min-width: 200px;
-    margin-top: 0.25rem;
     padding: 0.5rem;
     background: var(--card);
     border: 1px solid var(--border);
