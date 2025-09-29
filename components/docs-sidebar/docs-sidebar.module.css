@@ -91,7 +91,6 @@
     transition: all 0.2s;
     background-color: transparent;
     color: var(--foreground);
-    width: fit-content;
 }
 
 .sidebarItem:hover {
