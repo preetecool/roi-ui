@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 import styles from "./combobox.module.css";
 import React from "react";
 
-const ComboboxRoot = ({ ...props }: React.ComponentProps<typeof Combobox.Root>) => (
-  <Combobox.Root {...props} />
+const ComboboxRoot = <ItemValue,>({ ...props }: React.ComponentProps<typeof Combobox.Root<ItemValue>>) => (
+  <Combobox.Root<ItemValue> {...props} />
 );
 
 const ComboboxTrigger = ({ 

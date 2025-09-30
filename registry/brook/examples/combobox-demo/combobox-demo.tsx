@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Combobox,
   ComboboxTrigger,
@@ -68,14 +67,6 @@ const users: User[] = [
 ];
 
 export default function ComboboxDemo() {
-  const [selectedUser, setSelectedUser] = useState<string>("");
-
-  const selectedUserData = users.find((u) => u.value === selectedUser);
-
-  const handleValueChange = (value: string) => {
-    setSelectedUser(value);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -84,42 +75,23 @@ export default function ComboboxDemo() {
       </div>
 
       <div className={styles.comboboxWrapper}>
-        <Combobox
+        <Combobox<User>
           items={users}
-          value={selectedUser}
-          onValueChange={(value) => handleValueChange(value as string)}
+          itemToStringLabel={(item) => item?.label || ""}
+          itemToStringValue={(item) => item?.value || ""}
         >
           <div className={styles.inputWrapper}>
-            {selectedUserData && (
-              <div className={styles.selectedUserDisplay}>
-                <Avatar className={styles.avatarSmall}>
-                  <AvatarImage src={selectedUserData.avatar} alt={selectedUserData.label} />
-                  <AvatarFallback>
-                    {selectedUserData.label
-                      .split(" ")
-                      .map((n: string) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <span className={styles.selectedUserText}>{selectedUserData.label}</span>
-              </div>
-            )}
-            <ComboboxInput 
-              placeholder="Search users..." 
-              className={`${styles.input} ${selectedUserData ? styles.inputWithSelection : ''}`}
-            />
-            <div className={styles.actionButtons}>
-              <ComboboxTrigger className={styles.trigger} />
-            </div>
+            <ComboboxInput placeholder="Search users..." />
+            <ComboboxTrigger />
           </div>
 
           <ComboboxPortal>
             <ComboboxPositioner>
-              <ComboboxPopup className={styles.popup} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
+              <ComboboxPopup className={styles.popup}>
                 <ComboboxEmpty>No user found.</ComboboxEmpty>
                 <ComboboxList>
                   {(user: User) => (
-                    <ComboboxItem key={user.value} value={user.value} indicatorPosition="right">
+                    <ComboboxItem key={user.value} value={user} indicatorPosition="right">
                       <div className={styles.userContainer}>
                         <Avatar className={styles.avatar}>
                           <AvatarImage src={user.avatar} alt={user.label} />

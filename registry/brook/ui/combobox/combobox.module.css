@@ -1,17 +1,32 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: color-mix(in oklab, var(--input) 70%, transparent);
+    transition: all 150ms ease;
+}
+
+.wrapper:focus-within {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
 .trigger {
     box-sizing: border-box;
     border: none;
-
-    width: 100%;
+    background: transparent;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding: 0 0.5rem;
+    cursor: pointer;
 }
 
 .trigger:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
+    outline: none;
 }
 
 .trigger[data-disabled] {
@@ -33,6 +48,10 @@
 
 .input::placeholder {
     color: var(--muted-foreground);
+}
+
+.input:focus {
+    outline: none;
 }
 
 .clear {
@@ -71,7 +90,7 @@
 .popup {
     max-height: 20rem;
     overflow: auto;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow:
@@ -107,25 +126,42 @@
     gap: 0.5rem;
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
-    border-radius: calc(var(--radius) - 2px);
     cursor: pointer;
-    transition: all 150ms ease;
     user-select: none;
+    outline: 0;
 }
 
-.item:hover,
+.list:not(:has(.item[data-highlighted])) .item[data-selected] {
+    z-index: 0;
+    position: relative;
+}
+
+.list:not(:has(.item[data-highlighted])) .item[data-selected]::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius) - 2px);
+    background: color-mix(in oklch, var(--accent) 33%, transparent);
+}
+
 .item[data-highlighted] {
-    background: var(--accent);
-    color: var(--foreground);
+    z-index: 1;
+    position: relative;
+}
+
+.item[data-highlighted]::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius) - 2px);
+    background: color-mix(in oklch, var(--accent) 33%, transparent);
 }
 
 .item[data-disabled] {
     opacity: 0.5;
     cursor: not-allowed;
-}
-
-.item[data-selected] {
-    background: var(--accent);
 }
 
 .itemText {
