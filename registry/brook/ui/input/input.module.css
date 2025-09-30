@@ -13,6 +13,7 @@
 
 .base::placeholder {
     color: var(--muted-foreground);
+    font-size: 0.875rem;
 }
 
 .base[data-focused] {
