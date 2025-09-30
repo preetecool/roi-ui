@@ -15,7 +15,7 @@ import styles from "./card-demo.module.css";
 
 export default function CardDemo() {
   return (
-    <Card className={styles.card}>
+    <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
       <CardHeader>
         <div>
           <CardIcon>

@@ -7,7 +7,7 @@ import styles from "./alert-info.module.css";
 export default function AlertInfo() {
   return (
     <div className={styles.container}>
-      <Alert variant="info">
+      <Alert variant="info" style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
         <AlertIcon>
           <Info size={16} />
         </AlertIcon>

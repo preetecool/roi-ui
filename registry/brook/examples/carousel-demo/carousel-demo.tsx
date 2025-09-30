@@ -73,7 +73,7 @@ export default function CarouselDemo() {
   const carouselItems = features.map((feature) => ({
     id: feature.id,
     content: (
-      <Card className={styles.card}>
+      <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
         <div>
           <CardIcon>{feature.icon}</CardIcon>
 

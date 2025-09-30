@@ -115,7 +115,7 @@ export default function ComboboxDemo() {
 
           <ComboboxPortal>
             <ComboboxPositioner>
-              <ComboboxPopup className={styles.popup}>
+              <ComboboxPopup className={styles.popup} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
                 <ComboboxEmpty>No user found.</ComboboxEmpty>
                 <ComboboxList>
                   {(user: User) => (

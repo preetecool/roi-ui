@@ -20,7 +20,10 @@ export default function DialogDemo() {
       <DialogTrigger render={<Button>Open Dialog</Button>} />
       <DialogPortal>
         <DialogOverlay />
-        <DialogPopup className={styles.popup}>
+        <DialogPopup
+          className={styles.popup}
+          style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
+        >
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
             <DialogDescription>Make changes to your profile here.</DialogDescription>
@@ -36,7 +39,7 @@ export default function DialogDemo() {
             </div>
           </div>
           <DialogFooter>
-            <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+            <DialogClose render={<Button variant="outline">Cancel</Button>} />
             <Button>Save Changes</Button>
           </DialogFooter>
         </DialogPopup>

@@ -7,7 +7,7 @@ import styles from "./alert-destructive.module.css";
 export default function AlertDestructive() {
   return (
     <div className={styles.container}>
-      <Alert variant="destructive">
+      <Alert variant="destructive" style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
         <AlertIcon>
           <Ban size={16} />
         </AlertIcon>

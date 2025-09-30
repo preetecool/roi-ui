@@ -3,6 +3,7 @@
 import { Autocomplete } from "@base-ui-components/react/autocomplete";
 import { Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./autocomplete.module.css";
 import React from "react";
 
@@ -18,12 +19,12 @@ const AutocompleteValue = ({
   <Autocomplete.Value {...props} />
 );
 
-const AutocompleteInput = ({ 
+const AutocompleteInput = ({
   className,
-  ...props 
+  ...props
 }: React.ComponentProps<typeof Autocomplete.Input>) => (
-  <Autocomplete.Input 
-    className={cn(styles.input, className)} 
+  <Autocomplete.Input
+    render={(props) => <Input {...props} className={cn(className)} />}
     {...props}
   />
 );

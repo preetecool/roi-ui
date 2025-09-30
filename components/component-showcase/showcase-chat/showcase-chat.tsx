@@ -16,7 +16,7 @@ import {
 import { Card, CardFooter, CardContent } from "@/registry/brook/ui/card/card";
 import { Form, FormField, FormControl } from "@/registry/brook/ui/form/form";
 import { Paperclip, Zap, Lightbulb, WandSparkles, GraduationCap, AudioLines, ArrowUp } from "lucide-react";
-import styles from "./component-showcase-chat.module.css";
+import styles from "./showcase-chat.module.css";
 
 const aiModes = [
   { value: "creative", label: "Creative", icon: WandSparkles },
@@ -31,11 +31,11 @@ export function ShowcaseChat() {
 
   return (
     <Form className={styles.form}>
-      <Card className={styles.card}>
+      <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, transparent)' }}>
         <CardContent>
           <FormField className={styles.field}>
             <FormControl
-              render={<textarea value={inputValue} onChange={(e) => setInputValue(e.target.value)} />}
+              render={<textarea value={inputValue} onChange={(e) => setInputValue(e.target.value)} style={{ outline: 'none' }} />}
               placeholder="Ask and i'll answer."
             />
           </FormField>

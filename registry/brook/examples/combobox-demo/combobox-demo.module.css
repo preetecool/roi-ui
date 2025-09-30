@@ -34,7 +34,7 @@
     width: 100%;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: var(--muted);
+    background: color-mix(in oklab, var(--input) 70%, transparent);
     transition: all 150ms ease;
 }
 
@@ -99,7 +99,7 @@
     align-items: center;
     gap: 0.5rem;
     pointer-events: none;
-    background: var(--muted);
+    background: color-mix(in oklab, var(--input) 70%, transparent);
     z-index: 1;
 }
 

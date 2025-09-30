@@ -17,7 +17,7 @@
   padding: 0;
   display: block;
   width: 100%;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .triggerContainer {
@@ -54,6 +54,11 @@
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 300;
+  color: var(--muted-foreground);
+  transition: color 200ms ease-out;
+}
+
+.trigger:hover .icon {
   color: var(--foreground);
 }
 

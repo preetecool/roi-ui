@@ -21,7 +21,7 @@
   position: relative;
   height: 0.375rem;
   width: 100%;
-  background-color: var(--muted);
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
   border-radius: 9999px;
   overflow: hidden;
 }

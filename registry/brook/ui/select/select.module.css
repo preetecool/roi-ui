@@ -54,7 +54,7 @@
 .popup {
     min-width: var(--anchor-width);
     padding: 0.25rem;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     border: 1px solid var(--border);
     border-radius: var(--radius);
     animation: popup-in 0.15s ease-out;

@@ -74,7 +74,17 @@ export const mdxComponents = {
     const { icon, title, children, ...rest } = props;
 
     return (
-      <div>
+      <div
+        style={
+          title
+            ? {
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius)",
+                overflow: "hidden",
+              }
+            : undefined
+        }
+      >
         {title && (
           <div
             style={{
@@ -82,7 +92,7 @@ export const mdxComponents = {
               alignItems: "center",
               justifyContent: "space-between",
               padding: "8px 16px",
-              backgroundColor: "var(--muted)",
+              backgroundColor: "var(--card)",
               borderBottom: "1px solid var(--border)",
             }}
           >
@@ -104,7 +114,6 @@ export const mdxComponents = {
             maxHeight: "400px",
             boxSizing: "border-box",
             overflow: "auto",
-            backgroundColor: "var(--card)",
             position: "relative",
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -156,7 +165,7 @@ export const mdxComponents = {
           padding: 0,
           border: "none",
           borderRadius: 0,
-          backgroundColor: "var(--muted)",
+          backgroundColor: "transparent",
           position: "relative",
         }}
       >

@@ -52,7 +52,7 @@
     color: var(--foreground);
     text-align: center;
     transition: all 150ms ease-out;
-    background-color: var(--card);
+    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
 }
 
 .input::placeholder {
@@ -77,7 +77,7 @@
     padding: 0 1rem;
     height: 2.5rem;
     border: 1px solid var(--border);
-    background-color: var(--card);
+    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
     color: var(--muted-foreground);
     cursor: pointer;
     transition: all 150ms ease-out;

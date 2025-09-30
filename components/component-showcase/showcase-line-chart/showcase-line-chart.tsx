@@ -21,7 +21,7 @@ const formatDate = (value: unknown) => {
 
 export function ShowcaseLineChart() {
   return (
-    <Card className={styles.cardContainer}>
+    <Card className={styles.cardContainer} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, transparent)' }}>
       <CardHeader>
         <CardTitle>Website Traffic</CardTitle>
       </CardHeader>

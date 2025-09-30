@@ -149,6 +149,7 @@
 .icon {
     background-color: var(--muted);
     border-radius: var(--radius);
+    border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;

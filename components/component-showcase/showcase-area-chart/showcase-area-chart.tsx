@@ -7,22 +7,22 @@ import { monthlyUsersData } from "./data";
 
 const formatMonth = (value: unknown) => {
   const num = Number(value);
-  
+
   if (isNaN(num)) return "";
-  
+
   const monthNumber = Math.round(num);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  
+
   // Only return month names for exact integer values 1-12
   if (Number.isInteger(num) && monthNumber >= 1 && monthNumber <= 12) {
     return months[monthNumber - 1];
   }
-  
+
   // For non-integer values (interpolated), find closest valid month
   if (monthNumber >= 1 && monthNumber <= 12) {
     return months[monthNumber - 1];
   }
-  
+
   return "";
 };
 
@@ -33,7 +33,10 @@ export function ShowcaseAreaChart() {
   const growthPercent = ((growth / previousUsers) * 100).toFixed(1);
 
   return (
-    <Card className={styles.cardContainer}>
+    <Card
+      className={styles.cardContainer}
+      style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, transparent)" }}
+    >
       <CardHeader>
         <div className={styles.headerContainer}>
           <div className={styles.title}>Monthly Active Users</div>

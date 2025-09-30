@@ -44,7 +44,7 @@ const PopoverClose = ({ className, ...props }: React.ComponentProps<typeof Popov
 
 const PopoverContent = ({ className, style, ...props }: React.ComponentProps<typeof Popover.Popup>) => (
   <PopoverPortal>
-    <PopoverPositioner sideOffset={4}>
+    <PopoverPositioner sideOffset={8}>
       <PopoverPopup className={cn(styles.popup, className)} style={style} {...props} />
     </PopoverPositioner>
   </PopoverPortal>

@@ -8,7 +8,7 @@ import { MessageCircle, Calendar, LayoutList } from "lucide-react";
 
 export function ShowcaseCardTask() {
   return (
-    <Card className={styles.taskCard} style={{ width: "100%", height: "250px" }}>
+    <Card className={styles.taskCard} style={{ width: "100%", height: "250px", backgroundColor: 'color-mix(in oklch, var(--card) 33%, transparent)' }}>
       <CardHeader>
         <CardTitle style={{ fontSize: "1rem" }}> Update Documentation</CardTitle>
         <CardDescription>Update the card component documentation to reflect the new style</CardDescription>

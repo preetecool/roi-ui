@@ -32,7 +32,7 @@
     border: none;
     cursor: pointer;
     color: var(--title);
-    transition: padding 310ms ease;
+    transition: padding 200ms ease-out;
 }
 
 .trigger:hover {
@@ -65,13 +65,13 @@
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
-    transition: transform 310ms ease;
+    transition: transform 200ms ease-out;
     color: var(--muted-foreground);
 }
 
 .trigger[data-panel-open] {
     padding-bottom: 0rem;
-    transition: padding-bottom 310ms ease;
+    transition: padding-bottom 200ms ease-out;
 }
 
 [data-panel-open] > .chevron {
@@ -82,7 +82,7 @@
     box-sizing: border-box;
     height: var(--accordion-panel-height);
     overflow: hidden;
-    transition: height 310ms ease;
+    transition: height 200ms ease-out;
 }
 
 .panel[data-starting-style],
@@ -96,7 +96,7 @@
     line-height: 1.5;
     color: var(--foreground);
     position: relative;
-    transition: padding-top 310ms ease;
+    transition: padding-top 200ms ease-out;
 }
 
 .panel[data-open] .content {
@@ -107,18 +107,3 @@
     padding-top: 0rem;
 }
 
-.content::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 0;
-    background-color: var(--background);
-    transition: height 310ms ease;
-    pointer-events: none;
-}
-
-.panel[data-ending-style] .content::after {
-    height: 100%;
-}

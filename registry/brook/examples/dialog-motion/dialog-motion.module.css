@@ -19,8 +19,8 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    border: 1px solid var(--border);
 }
-
 
 .title {
     border-bottom: none;

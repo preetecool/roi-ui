@@ -10,7 +10,7 @@
     height: 24px;
     border-radius: 12px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: var(--secondary);
+    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
 
     border: 1px solid var(--border);
 

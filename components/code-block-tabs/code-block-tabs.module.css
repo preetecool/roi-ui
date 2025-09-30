@@ -1,21 +1,19 @@
 .container {
     border-radius: var(--radius);
-    background-color: var(--card);
+    border: 1px solid var(--border);
     overflow: hidden;
 }
 
 .tabsList {
     margin: 0;
-    border-radius: var(--radius);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
     border: none;
-
     border-bottom: 1px solid var(--border);
-    background-color: var(--card);
+    background-color: color-mix(in oklch, var(--card) 66%, transparent);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 2.5rem;
 }
 
 .tabsGroup {
