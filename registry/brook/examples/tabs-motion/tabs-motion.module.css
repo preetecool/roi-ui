@@ -38,6 +38,12 @@
   min-height: 170px;
 }
 
+@media (max-width: 640px) {
+  .contentContainer {
+    min-height: 220px;
+  }
+}
+
 .tabContent {
   position: absolute;
   top: 1.5rem;
@@ -63,6 +69,12 @@
 .buttonGroup {
   display: flex;
   gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .buttonGroup {
+    flex-direction: column;
+  }
 }
 
 .tabContent p {

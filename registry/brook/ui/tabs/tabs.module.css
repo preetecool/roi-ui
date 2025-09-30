@@ -49,6 +49,12 @@
     z-index: 1;
 }
 
+@media (max-width: 640px) {
+    .trigger {
+        font-size: 0.8125rem;
+    }
+}
+
 .trigger:hover {
     color: var(--foreground);
 }

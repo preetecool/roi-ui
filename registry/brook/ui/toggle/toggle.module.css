@@ -26,13 +26,13 @@
 }
 
 .root[data-pressed] {
-    background-color: var(--accent);
-    color: var(--accent-foreground);
+    background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
+    color: var(--foreground);
     border-color: var(--accent);
 }
 
 .root[data-pressed]:hover {
-    background-color: var(--accent);
+    background-color: color-mix(in oklch, var(--accent) 75%, var(--background));
     border-color: var(--accent);
 }
 
