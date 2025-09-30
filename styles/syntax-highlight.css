@@ -1,3 +1,11 @@
+:root {
+    --linenumber: oklch(0.7604 0 0 / 60%);
+}
+
+html[data-theme="dark"] {
+    --linenumber: oklch(0.7604 0 0 / 30%);
+}
+
 [data-line-numbers] {
     display: grid;
     min-width: 100%;

@@ -28,6 +28,7 @@
     resize: none;
     min-height: 2.5rem;
     height: auto;
+    outline: none !important;
 }
 
 .footer {
