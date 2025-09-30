@@ -16,7 +16,7 @@ import styles from "./showcase-card-pricing-card.module.css";
 export function ShowcasePricing() {
   return (
     <div className={styles.container}>
-      <Card className={styles.card}>
+      <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 70%, transparent)' }}>
       <CardHeader>
         <div className={styles.headerContainer}>
           <div className={styles.logoContainer}>

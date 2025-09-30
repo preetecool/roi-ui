@@ -7,7 +7,7 @@ import { ShowcaseAreaChart } from "./showcase-area-chart/showcase-area-chart";
 import { ShowcaseCardHistory } from "./showcase-card-history/showcase-card-history";
 import { ShowcasePricing } from "./showcase-card-pricing-card/showcase-card-pricing-card";
 import { PlaceholderCardBottom } from "./showcase-card-settings/showcase-card-settings";
-import { ShowcaseChat } from "./component-showcase-chat/component-showcase-chat";
+import { ShowcaseChat } from "./showcase-chat/showcase-chat";
 import { ShowcaseShipping } from "./showcase-shipping/showcase-shipping";
 import styles from "./component-showcase.module.css";
 

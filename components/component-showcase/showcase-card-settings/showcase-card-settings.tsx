@@ -11,7 +11,7 @@ export function PlaceholderCardBottom() {
   const [marketing, setMarketing] = useState(true);
 
   return (
-    <Card style={{ height: "100%", justifyContent: "space-evenly" }}>
+    <Card style={{ height: "100%", justifyContent: "space-evenly", backgroundColor: 'color-mix(in oklch, var(--card) 70%, transparent)' }}>
       <CardHeader>
         <CardTitle>Settings</CardTitle>
         <CardDescription>Configure your preferences and privacy settings</CardDescription>

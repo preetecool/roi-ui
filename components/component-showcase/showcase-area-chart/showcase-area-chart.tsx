@@ -33,7 +33,7 @@ export function ShowcaseAreaChart() {
   const growthPercent = ((growth / previousUsers) * 100).toFixed(1);
 
   return (
-    <Card className={styles.cardContainer}>
+    <Card className={styles.cardContainer} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 70%, transparent)' }}>
       <CardHeader>
         <div className={styles.headerContainer}>
           <div className={styles.title}>Monthly Active Users</div>

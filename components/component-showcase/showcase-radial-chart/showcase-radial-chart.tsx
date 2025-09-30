@@ -8,7 +8,7 @@ import { songChartData } from "./data";
 
 export function ShowcaseRadialChart() {
   return (
-    <Card className={styles.cardContainer}>
+    <Card className={styles.cardContainer} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 70%, transparent)' }}>
       <CardHeader>
         <CardTitle>Health Activity</CardTitle>
       </CardHeader>
