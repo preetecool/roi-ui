@@ -41,13 +41,13 @@
 }
 
 .item[data-pressed] {
-    background-color: var(--muted);
+    background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
     color: var(--foreground);
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .item[data-pressed]:hover {
-    background-color: var(--muted);
+    background-color: color-mix(in oklch, var(--accent) 75%, var(--background));
     color: var(--foreground);
 }
 
