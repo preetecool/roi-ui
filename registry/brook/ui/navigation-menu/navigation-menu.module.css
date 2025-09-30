@@ -30,7 +30,7 @@
     position: relative;
     box-sizing: border-box;
     border-radius: 0.5rem;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     border: 1px solid var(--border);
     box-shadow:
         0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -81,7 +81,7 @@
 }
 
 .arrowFill {
-    fill: var(--card);
+    fill: color-mix(in oklch, var(--card) 33%, var(--background));
 }
 
 .arrowOuterStroke {
@@ -315,7 +315,7 @@
     border: 1px solid var(--border);
     border-bottom: none;
     border-right: none;
-    background: var(--background);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     border-radius: 0.125rem 0 0 0;
     transform: rotate(45deg);
 }
@@ -335,7 +335,7 @@
     text-decoration: none;
     color: inherit;
     transition: all 150ms ease;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     width: 100%;
     list-style: none;
 }
@@ -418,7 +418,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background: var(--muted);
+    background: color-mix(in oklch, var(--card) 66%, var(--background));
     border-radius: 0.5rem;
     padding: 1rem 1.5rem;
     margin-top: 1rem;

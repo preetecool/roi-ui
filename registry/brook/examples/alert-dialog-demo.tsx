@@ -14,7 +14,7 @@ export default function AlertDialogDemo() {
   return (
     <AlertDialogRoot>
       <AlertDialogTrigger render={<Button variant="destructive">Delete Account</Button>} />
-      <AlertDialogContent>
+      <AlertDialogContent style={{ backgroundColor: "color-mix(in oklch, var(--card) 66%, var(--muted))" }}>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -23,7 +23,7 @@ export default function AlertDialogDemo() {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogClose render={<Button variant="secondary">Cancel</Button>} />
+          <AlertDialogClose render={<Button variant="outline">Cancel</Button>} />
           <Button variant="destructive">Delete Account</Button>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -7,7 +7,7 @@ import styles from "./alert-success.module.css";
 export default function AlertSuccess() {
   return (
     <div className={styles.container}>
-      <Alert variant="success">
+      <Alert variant="success" style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
         <AlertIcon>
           <CheckCircle size={16} />
         </AlertIcon>

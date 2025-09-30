@@ -7,7 +7,7 @@ import styles from "./alert-warning.module.css";
 export default function AlertWarning() {
   return (
     <div className={styles.container}>
-      <Alert variant="warning">
+      <Alert variant="warning" style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
         <AlertIcon>
           <AlertTriangle size={16} />
         </AlertIcon>

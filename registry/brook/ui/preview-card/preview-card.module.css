@@ -18,7 +18,7 @@
 }
 
 .popup {
-    background-color: var(--popover);
+    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 1rem;
@@ -38,7 +38,7 @@
 }
 
 .arrow {
-    fill: var(--popover);
+    fill: color-mix(in oklch, var(--card) 33%, var(--background));
     stroke: var(--border);
     stroke-width: 1px;
     width: 10px;

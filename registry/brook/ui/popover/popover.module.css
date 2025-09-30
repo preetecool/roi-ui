@@ -34,7 +34,7 @@
     box-sizing: border-box;
     padding: 1rem 1rem;
     border-radius: var(--radius);
-    background-color: var(--card);
+    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
     color: var(--popover-foreground);
     transform-origin: var(--transform-origin);
     transition:
@@ -81,7 +81,7 @@
 }
 
 .arrow svg {
-    fill: var(--popover);
+    fill: color-mix(in oklch, var(--card) 33%, var(--background));
     stroke: var(--border);
     stroke-width: 1px;
 }

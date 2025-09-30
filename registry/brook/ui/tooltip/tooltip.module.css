@@ -1,85 +1,86 @@
 .positioner {
-  z-index: 50;
+    z-index: 50;
 }
 
 .popup {
-  max-width: 20rem;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  color: var(--background);
-  background: var(--title);
-  border-radius: var(--radius);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  animation: tooltip-in 0.15s ease-out;
-  word-wrap: break-word;
-  position: relative;
-  margin-bottom: 0.25rem;
-  border: 1px solid var(--border);
+    max-width: 20rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--primary);
+    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+    border-radius: var(--radius);
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    animation: tooltip-in 0.15s ease-out;
+    word-wrap: break-word;
+    position: relative;
+    margin-bottom: 0.25rem;
+    border: 1px solid var(--border);
 }
 
 .popup[data-starting-style] {
-  opacity: 0;
-  transform: scale(0.95);
+    opacity: 0;
+    transform: scale(0.95);
 }
 
 .popup[data-ending-style] {
-  opacity: 0;
-  transform: scale(0.95);
+    opacity: 0;
+    transform: scale(0.95);
 }
 
 @keyframes tooltip-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .arrow {
-  position: absolute;
-  width: 20px;
-  height: 10px;
-  z-index: 1;
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    z-index: 1;
 
-  &[data-side="top"] {
-    bottom: -8px;
-    transform: rotate(180deg);
-  }
+    &[data-side="top"] {
+        bottom: -8px;
+        transform: rotate(180deg);
+    }
 
-  &[data-side="bottom"] {
-    top: -8px;
-    transform: rotate(0deg);
-  }
+    &[data-side="bottom"] {
+        top: -8px;
+        transform: rotate(0deg);
+    }
 
-  &[data-side="left"] {
-    right: 8px;
-    transform: rotate(90deg);
-  }
+    &[data-side="left"] {
+        right: 8px;
+        transform: rotate(90deg);
+    }
 
-  &[data-side="right"] {
-    left: -8x;
-    transform: rotate(-90deg);
-  }
+    &[data-side="right"] {
+        left: -8x;
+        transform: rotate(-90deg);
+    }
 
-  svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
 }
 
 .arrowFill {
-  fill: var(--title);
+    fill: color-mix(in oklch, var(--card) 33%, var(--background));
 }
 
 .arrowOuterStroke {
-  fill: rgba(0, 0, 0, 0.1);
+    fill: var(--border);
 }
 
 .arrowInnerStroke {
-  fill: rgba(0, 0, 0, 0.05);
+    fill: rgba(0, 0, 0, 0.05);
 }

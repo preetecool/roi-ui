@@ -24,7 +24,7 @@
     right: 0;
     margin: 0 auto;
     box-sizing: border-box;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     color: var(--muted-foreground);
     border: 1px solid var(--border);
     padding: 1rem;

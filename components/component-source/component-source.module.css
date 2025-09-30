@@ -13,7 +13,7 @@
     justify-content: space-between;
     padding: 2px 4px 2px 10px;
     border-bottom: 1px solid var(--border);
-    background-color: var(--card);
+    background-color: color-mix(in oklch, var(--card) 66%, transparent);
     border-radius: 0;
 }
 

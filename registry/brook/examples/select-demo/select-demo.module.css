@@ -1,5 +1,6 @@
 .trigger {
-  width: 180px;
+  display: flex;
+  min-width: 180px;
 }
 
 .placeholder {

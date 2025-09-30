@@ -35,7 +35,7 @@ export default function CardLoginDemo() {
   };
 
   return (
-    <Card className={styles.card}>
+    <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
       <CardHeader>
         <CardTitle>Sign In</CardTitle>
       </CardHeader>

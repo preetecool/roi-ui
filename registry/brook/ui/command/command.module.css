@@ -77,7 +77,7 @@
 
 .item[cmdk-item]:hover,
 .item[cmdk-item][data-selected="true"] {
-    background-color: var(--accent);
+    background-color: color-mix(in oklch, var(--card) 80%, var(--muted));
     color: var(--foreground);
 }
 

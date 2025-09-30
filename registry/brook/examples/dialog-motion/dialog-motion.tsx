@@ -72,6 +72,7 @@ export default function DialogFramerMotion() {
                 render={
                   <motion.div
                     className={styles.popup}
+                    style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
                     layoutId="container"
                     variants={popupVariants}
                     initial="hidden"
@@ -86,7 +87,7 @@ export default function DialogFramerMotion() {
                   A small, natural stream of fresh water, often winding gently through forests, meadows, or valleys.
                 </Dialog.Description>
                 <div className={styles.actions}>
-                  <Dialog.Close render={<Button variant="secondary">Close</Button>}>Close</Dialog.Close>
+                  <Dialog.Close render={<Button variant="outline">Close</Button>}>Close</Dialog.Close>
                   <motion.div layoutId="button" transition={buttonTransition}>
                     <Button>Toggle Dialog</Button>
                   </motion.div>

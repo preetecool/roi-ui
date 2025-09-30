@@ -11,7 +11,7 @@
     padding: 0 1rem 0 0;
     border-bottom: 1px solid var(--border);
     min-height: 2.5rem;
-    background-color: var(--card);
+    background-color: color-mix(in oklch, var(--card) 66%, transparent);
     border-radius: 0;
 }
 

@@ -1,7 +1,7 @@
 .root {
     display: flex;
     align-items: center;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 0.25rem;
@@ -61,7 +61,7 @@
 .menuPopup {
     min-width: 200px;
     padding: 0.5rem;
-    background: var(--card);
+    background: color-mix(in oklch, var(--card) 33%, var(--background));
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow:
