@@ -1,6 +1,5 @@
 .container {
     border-radius: 0;
-    border-bottom: 1px solid var(--border);
     overflow: hidden;
 }
 
@@ -11,7 +10,7 @@
     padding: 0 1rem 0 0;
     border-bottom: 1px solid var(--border);
     min-height: 2.5rem;
-    background-color: color-mix(in oklch, var(--card) 66%, transparent);
+    background-color: var(--code-header-bg);
     border-radius: 0;
 }
 

@@ -9,7 +9,7 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid var(--border);
-    background-color: color-mix(in oklch, var(--card) 66%, transparent);
+    background-color: var(--code-header-bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
