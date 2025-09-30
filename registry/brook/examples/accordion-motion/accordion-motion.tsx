@@ -62,21 +62,21 @@ const contentInnerTransition = {
 const accordionItems = [
   {
     id: "item-1",
-    title: "What makes animations smooth?",
+    title: "What is a brook?",
     content:
-      "Smooth animations are achieved through proper easing curves, appropriate durations, and understanding the physics of motion. Motion provides spring animations that feel natural and responsive to user interactions.",
+      "A small, natural stream of fresh water flowing along a course towards a river, lake, or sea.",
   },
   {
     id: "item-2",
-    title: "How do spring animations work?",
+    title: "What is a stream?",
     content:
-      "Spring animations simulate real-world physics by using mass, tension, and friction values. This creates more natural movement that feels organic rather than mechanical. The motion has bounce and elasticity that mimics how objects move in the physical world.",
+      "A small narrow river that flows continuously in one direction, often through valleys and plains.",
   },
   {
     id: "item-3",
-    title: "What about performance?",
+    title: "What is a creek?",
     content:
-      "Motion is optimized for performance by using hardware acceleration when possible and only animating properties that don't trigger layout recalculations. Transform and opacity changes are handled efficiently by the GPU.",
+      "A narrow waterway smaller than a river, often found in wooded areas and feeding into larger bodies of water.",
   },
 ];
 
