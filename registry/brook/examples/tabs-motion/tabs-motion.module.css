@@ -22,7 +22,7 @@
   z-index: 0;
   background-color: var(--muted);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-lighter, var(--border));
   height: calc(100% - 0.5rem);
   top: 0.25rem;
 }
