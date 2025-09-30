@@ -37,7 +37,7 @@
 
 .secondary {
     border-color: transparent;
-    background-color: var(--secondary);
+    background-color: color-mix(in oklch, var(--card) 66%, var(--background));
     color: var(--secondary-foreground);
 }
 .secondary:hover {
@@ -47,7 +47,7 @@
 
 .destructive {
     border-color: var(--border);
-    background-color: var(--muted);
+    background-color: color-mix(in oklch, var(--card) 66%, var(--background));
     color: var(--destructive);
 }
 
@@ -59,7 +59,7 @@
 
 .success {
     border-color: var(--border);
-    background-color: var(--muted);
+    background-color: color-mix(in oklch, var(--card) 66%, var(--background));
     color: var(--success);
 }
 
