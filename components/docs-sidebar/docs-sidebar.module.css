@@ -91,16 +91,18 @@
     transition: all 0.2s;
     background-color: transparent;
     color: var(--foreground);
+    border: 1px solid transparent;
 }
 
 .sidebarItem:hover {
     color: var(--foreground);
-    background-color: var(--accent);
+    background-color: var(--muted);
 }
 
 .sidebarItem.active {
     background-color: var(--accent);
     color: var(--foreground);
+    border: 1px solid oklch(0.45 0 0);
 }
 
 .sidebarItem.active:hover {

@@ -21,7 +21,10 @@ export function ShowcaseShipping() {
 
   return (
     <div className={styles.cardContainer}>
-      <Card className={styles.shippingCard} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, transparent)' }}>
+      <Card
+        className={styles.shippingCard}
+        style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
+      >
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <div className={styles.shipmentId}>{shipmentData.id}</div>
