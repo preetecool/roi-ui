@@ -115,7 +115,7 @@
     box-sizing: border-box;
     padding-block: 0.5rem;
     border-radius: var(--radius);
-    background-color: var(--muted);
+    background-color: var(--card);
     color: var(--popover-foreground);
     width: var(--anchor-width);
     max-height: min(var(--available-height), 23rem);
