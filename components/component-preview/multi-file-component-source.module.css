@@ -1,10 +1,18 @@
+.container {
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
 .headerContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem 0 0;
     border-bottom: 1px solid var(--border);
-    min-height: 3rem;
+    min-height: 2.5rem;
+    background-color: var(--card);
+    border-radius: 0;
 }
 
 .tabs {
