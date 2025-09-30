@@ -110,12 +110,15 @@
     .content {
         width: calc(100vw - 2rem);
         max-width: none;
-        margin: 1rem;
-        left: 50%;
+        left: 1rem;
+        right: 1rem;
         top: 50%;
+        transform: translateY(-50%);
     }
 
-    .content:not([hidden]) {
-        transform: translate(-50%, -50%) scale(1);
+    .content[data-starting-style],
+    .content[data-ending-style] {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.96);
     }
 }
