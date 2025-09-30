@@ -17,7 +17,7 @@
     outline: 0;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
-    background-color: var(--card);
+    background-color: color-mix(in srgb, var(--card) 50%, transparent);
     color: var(--foreground);
     font-family: inherit;
     font-size: 0.875rem;
@@ -29,11 +29,11 @@
 }
 
 .trigger:hover {
-    background-color: var(--accent);
+    background-color: color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 .trigger:active {
-    background-color: var(--accent);
+    background-color: color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 .trigger:focus-visible {
