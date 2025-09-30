@@ -12,7 +12,7 @@
 
 .recoveryKey {
   padding: 0.5rem;
-  background-color: var(--muted);
+  background-color: color-mix(in oklch, var(--muted) 50%, transparent);
   border-radius: 0.25rem;
   font-family: monospace;
   font-size: 0.75rem;
