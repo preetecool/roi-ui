@@ -102,19 +102,27 @@
 }
 
 .close {
-    position: absolute !important;
-    top: 0.25rem !important;
-    right: 0.25rem !important;
+    all: unset;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
+    padding: 0;
+    border-radius: var(--radius);
     cursor: pointer;
+    color: var(--muted-foreground);
     transition:
         background-color 150ms ease,
         color 150ms ease;
 }
 
 .close:hover {
-    background-color: var(--muted-foreground);
+    background-color: var(--muted);
     color: var(--foreground);
 }
 
@@ -124,9 +132,8 @@
 }
 
 .close svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--muted-foreground);
+    width: 1rem;
+    height: 1rem;
 }
 
 .actions {
