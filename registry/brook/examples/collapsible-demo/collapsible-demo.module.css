@@ -5,7 +5,7 @@
   margin-top: 0.25rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background-color: var(--card);
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   cursor: text;
   border: 1px solid var(--border);
 }

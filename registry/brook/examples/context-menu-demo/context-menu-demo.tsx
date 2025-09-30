@@ -17,20 +17,9 @@ import styles from "./context-menu-demo.module.css";
 export default function ContextMenuDemo() {
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>Context Menu</h3>
-        <p className={styles.description}>Right-click on the area below to open the context menu</p>
-      </div>
-
       <ContextMenu>
         <ContextMenuTrigger className={styles.trigger}>
-          <div className={styles.triggerContent}>
-            <div className={styles.triggerIcon}>📂</div>
-            <div className={styles.triggerText}>
-              <h4>Project Folder</h4>
-              <p>Right-click to see options</p>
-            </div>
-          </div>
+          Right click
         </ContextMenuTrigger>
 
         <ContextMenuPortal>
