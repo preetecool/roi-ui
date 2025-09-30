@@ -69,10 +69,7 @@ const users: User[] = [
 export default function ComboboxDemo() {
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>User Search</h3>
-        <p className={styles.description}>Search and select a user from the list</p>
-      </div>
+      <label className={styles.label}>Search and select a user</label>
 
       <div className={styles.comboboxWrapper}>
         <Combobox<User>

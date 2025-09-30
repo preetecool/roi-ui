@@ -2,19 +2,15 @@
     padding: 2rem;
 }
 
-.header {
-    margin-bottom: 1rem;
-}
-
-.title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.description {
+.label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     font-size: 0.875rem;
-    color: var(--muted-foreground);
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
 }
 
 .comboboxWrapper {

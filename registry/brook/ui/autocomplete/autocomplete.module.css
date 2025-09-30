@@ -113,7 +113,7 @@
 
 .popup {
     box-sizing: border-box;
-    padding-block: 0.5rem;
+    padding: 0.25rem;
     border-radius: var(--radius);
     background-color: color-mix(in oklch, var(--card) 33%, var(--background));
     color: var(--popover-foreground);
@@ -216,16 +216,23 @@
     gap: 0.5rem;
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
-    border-radius: calc(var(--radius) - 2px);
     cursor: pointer;
-    transition: all 150ms ease;
     user-select: none;
-    outline: none;
+    outline: 0;
+    z-index: 0;
 
-    &:hover,
     &[data-highlighted] {
-        background: var(--accent);
-        color: var(--accent-foreground);
+        z-index: 1;
+        position: relative;
+    }
+
+    &[data-highlighted]::before {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        inset: 0;
+        border-radius: calc(var(--radius) - 2px);
+        background: color-mix(in oklch, var(--accent) 33%, transparent);
     }
 
     &[data-disabled] {
