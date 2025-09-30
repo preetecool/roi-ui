@@ -58,9 +58,12 @@
     color: var(--muted-foreground);
     width: 36px;
     height: 36px;
+    min-width: 36px;
+    min-height: 36px;
     border-radius: 50%;
     border: 1px solid var(--border);
     margin-left: auto;
+    flex-shrink: 0;
 }
 
 .cardButton:hover .expandIcon {
@@ -255,6 +258,15 @@
     }
     .card {
         width: 100%;
+    }
+
+    .contentInner p {
+        font-size: calc(1rem - 2px);
+        max-width: 90%;
+    }
+
+    .contentContainerOpen {
+        gap: 24px;
     }
 }
 

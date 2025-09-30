@@ -24,13 +24,9 @@ export default function PopoverDemo() {
               <PopoverArrow />
               <PopoverTitle>Notifications</PopoverTitle>
               <PopoverDescription>You are all caught up! No new notifications.</PopoverDescription>
-              <PopoverClose
-                render={
-                  <Button variant="ghost" size="icon">
-                    <X size={16} />
-                  </Button>
-                }
-              />
+              <PopoverClose aria-label="Close">
+                <X size={16} />
+              </PopoverClose>
             </PopoverPopup>
           </PopoverPositioner>
         </PopoverPortal>

@@ -8,8 +8,8 @@ const PopoverRoot = ({ ...props }: React.ComponentProps<typeof Popover.Root>) =>
   return <Popover.Root {...props} />;
 };
 
-const PopoverTrigger = ({ className, ...props }: React.ComponentProps<typeof Popover.Trigger>) => {
-  return <Popover.Trigger className={cn(styles.trigger, className)} {...props} />;
+const PopoverTrigger = ({ className, render, ...props }: React.ComponentProps<typeof Popover.Trigger>) => {
+  return <Popover.Trigger className={cn(styles.trigger, className)} render={render} {...props} />;
 };
 
 const PopoverPortal = Popover.Portal;
