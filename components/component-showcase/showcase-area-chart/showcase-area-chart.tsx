@@ -35,7 +35,7 @@ export function ShowcaseAreaChart() {
   return (
     <Card
       className={styles.cardContainer}
-      style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, transparent)" }}
+      style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
     >
       <CardHeader>
         <div className={styles.headerContainer}>

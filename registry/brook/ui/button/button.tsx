@@ -83,7 +83,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(styles.base, styles[variant], styles[size], loading && styles.loading, className)}
-        disabled={props.disabled}
+        disabled={props.disabled || loading}
         {...props}
       >
         {loading && <Spinner />}

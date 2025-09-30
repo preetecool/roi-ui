@@ -31,11 +31,20 @@ export function ShowcaseChat() {
 
   return (
     <Form className={styles.form}>
-      <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, transparent)' }}>
+      <Card
+        className={styles.card}
+        style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
+      >
         <CardContent>
           <FormField className={styles.field}>
             <FormControl
-              render={<textarea value={inputValue} onChange={(e) => setInputValue(e.target.value)} style={{ outline: 'none' }} />}
+              render={
+                <textarea
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  style={{ outline: "none" }}
+                />
+              }
               placeholder="Ask and i'll answer."
             />
           </FormField>

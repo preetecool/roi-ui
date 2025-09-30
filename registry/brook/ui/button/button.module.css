@@ -11,7 +11,7 @@
     position: relative;
     overflow: hidden;
 }
-.base:active {
+.base:active:not(:disabled):not(.loading) {
     transform: scale(0.97);
 }
 
@@ -27,7 +27,7 @@
 
 .base.loading {
     opacity: 0.7;
-    cursor: default;
+    cursor: not-allowed;
 }
 
 .primary {
