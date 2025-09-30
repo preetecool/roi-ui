@@ -14,7 +14,7 @@ export default function AlertDialogDemo() {
   return (
     <AlertDialogRoot>
       <AlertDialogTrigger render={<Button variant="destructive">Delete Account</Button>} />
-      <AlertDialogContent style={{ backgroundColor: "color-mix(in oklch, var(--card) 66%, var(--muted))" }}>
+      <AlertDialogContent style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>

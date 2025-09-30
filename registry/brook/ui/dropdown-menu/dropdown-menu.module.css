@@ -80,12 +80,12 @@
     margin: 0rem;
 
     &[data-popup-open] {
-        background-color: var(--accent);
+        background-color: var(--muted);
         color: var(--title);
     }
 
     &[data-highlighted] {
-        background-color: var(--accent);
+        background-color: var(--muted);
         color: var(--title);
     }
 }
@@ -102,7 +102,7 @@
 
 .submenuTrigger:hover,
 .item:hover {
-    background-color: var(--accent) !important;
+    background-color: var(--muted);
     color: var(--title);
 }
 
