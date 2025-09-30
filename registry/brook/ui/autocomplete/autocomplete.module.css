@@ -8,7 +8,7 @@
     border-radius: var(--radius);
     font-family: inherit;
     font-size: 0.875rem;
-    background-color: var(--muted);
+    background-color: color-mix(in oklab, var(--input) 70%, transparent);
     color: var(--foreground);
     outline: none;
     transition: border-color 150ms ease;
@@ -28,7 +28,7 @@
     }
 
     &[data-readonly] {
-        background-color: var(--muted);
+        background-color: color-mix(in oklab, var(--input) 70%, transparent);
     }
 }
 

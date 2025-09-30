@@ -4,7 +4,7 @@
     width: 100%;
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    background-color: var(--input);
+    background-color: color-mix(in oklab, var(--input) 70%, transparent);
     padding: 0 0.75rem;
     font-size: 0.875rem;
     transition: all 150ms ease-out;

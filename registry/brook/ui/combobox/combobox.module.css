@@ -21,8 +21,9 @@
 
 .input {
     flex: 1;
-    background: transparent;
-    border: none;
+    background: color-mix(in oklab, var(--input) 70%, transparent);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     outline: none;
     font-size: 0.875rem;
     color: var(--foreground);
