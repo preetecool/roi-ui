@@ -26,3 +26,9 @@
   display: flex;
   gap: 0.5rem;
 }
+
+@media (max-width: 640px) {
+  .buttonGroup {
+    flex-direction: column;
+  }
+}
