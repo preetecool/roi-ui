@@ -68,8 +68,6 @@ function RadarChart({
         position: "relative",
         width: "100%",
         height: "100%",
-        backgroundColor: "var(--card)",
-        borderRadius: "14px",
       }}
     >
       <ResponsiveContainer width="100%" height="100%">

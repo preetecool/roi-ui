@@ -1,5 +1,6 @@
 :root {
     --linenumber: oklch(0.7604 0 0 / 60%);
+    --code-header-bg: color-mix(in oklch, var(--card) 33%, var(--background));
 }
 
 html[data-theme="dark"] {

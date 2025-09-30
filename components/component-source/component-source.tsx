@@ -13,6 +13,7 @@ interface ComponentSourceProps {
     collapsible?: boolean;
     buttonText?: string;
     previewLines?: number;
+    variant?: "default" | "manual";
 }
 
 export async function ComponentSource({
@@ -24,6 +25,7 @@ export async function ComponentSource({
     collapsible = false,
     buttonText = "Show code",
     previewLines = 10,
+    variant = "default",
 }: ComponentSourceProps) {
     let code: string | undefined;
 
@@ -97,7 +99,7 @@ export async function ComponentSource({
         const toggleId = `code-toggle-${Math.random().toString(36).substring(2, 11)}`;
 
         return (
-            <div className={styles.collapsibleWrapper}>
+            <div className={`${styles.collapsibleWrapper} ${variant === "manual" ? styles.manual : ""}`}>
                 <input type="checkbox" id={toggleId} className={styles.toggleInput} />
 
                 <div
@@ -118,7 +120,7 @@ export async function ComponentSource({
 
                     <div className={styles.codeContent}>
                         <div
-                            className={`code-container ${styles.codeContainer} ${styles.collapsibleCode}`}
+                            className={`code-container ${styles.codeContainer} ${hasMoreLines ? styles.collapsibleCode : ""}`}
                             dangerouslySetInnerHTML={{ __html: highlightedCode }}
                         />
 
@@ -162,7 +164,7 @@ export async function ComponentSource({
 
     return (
         <div
-            className={styles.container}
+            className={`${styles.container} ${variant === "manual" ? styles.manual : ""}`}
             data-tsx={
                 language === "tsx" || displayTitle.includes(".tsx") ? "true" : undefined
             }

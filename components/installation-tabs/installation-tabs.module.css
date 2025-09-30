@@ -1,6 +1,6 @@
 .trigger[data-selected] {
-    border-bottom-color: var(--foreground) !important;
-    background-color: transparent !important;
+    border-bottom-color: var(--foreground);
+    background-color: transparent;
 }
 
 .manual p {

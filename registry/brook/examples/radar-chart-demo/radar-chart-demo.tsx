@@ -16,7 +16,7 @@ export default function RadarChartDemo() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>System Quality Metrics</h3>
-      <div style={{ height: "400px", width: "100%" }}>
+      <div style={{ flex: 1, width: "100%", minHeight: 0 }}>
         <RadarChart
           data={data}
           levels={5}

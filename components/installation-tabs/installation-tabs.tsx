@@ -48,10 +48,11 @@ export function InstallationTabsTrigger({ children, ...props }: React.ComponentP
 export function InstallationTabsContent({ children, value, ...props }: React.ComponentProps<typeof BaseTabsContent>) {
   const className = value === "manual" ? styles.manual : undefined;
   return (
-    <BaseTabsContent 
-      style={{ margin: 0, border: "none", padding: 0, backgroundColor: "transparent" }} 
+    <BaseTabsContent
+      style={{ margin: 0, border: "none", padding: 0, backgroundColor: "transparent" }}
       className={className}
       value={value}
+      data-manual={value === "manual" ? "true" : undefined}
       {...props}
     >
       {children}
