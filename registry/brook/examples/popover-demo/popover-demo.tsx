@@ -19,7 +19,7 @@ export default function PopoverDemo() {
       <Popover>
         <PopoverTrigger render={<Button variant="outline">Open Popover</Button>} />
         <PopoverPortal>
-          <PopoverPositioner side="top" align="center">
+          <PopoverPositioner side="top" align="center" sideOffset={8}>
             <PopoverPopup>
               <PopoverArrow />
               <PopoverTitle>Notifications</PopoverTitle>
