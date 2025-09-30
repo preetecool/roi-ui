@@ -29,7 +29,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
   }));
 
   const tooltipValueFormatter = (value: number | string, name?: string) => {
-    const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+    const numValue = typeof value === "number" ? value : parseFloat(String(value));
     return isNaN(numValue) ? String(value) : numValue.toLocaleString();
   };
 
@@ -78,7 +78,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
           <RadialBar
             dataKey="value"
             cornerRadius={4}
-            background={{ fill: "var(--muted)" }}
+            background={{ fill: "color-mix(in oklch, var(--muted) 33%, var(--background))" }}
             animationDuration={animated ? 800 : 0}
             animationBegin={animated ? 0 : undefined}
           />
