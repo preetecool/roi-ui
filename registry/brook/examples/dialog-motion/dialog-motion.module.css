@@ -38,3 +38,10 @@
     gap: 16px;
     justify-content: flex-end;
 }
+
+@media (max-width: 640px) {
+    .popup {
+        width: calc(100vw - 2rem);
+        margin-left: calc(-50vw + 1rem);
+    }
+}
