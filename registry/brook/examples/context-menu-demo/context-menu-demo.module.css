@@ -4,71 +4,28 @@
     margin: 0 auto;
 }
 
-.header {
-    margin-bottom: 2rem;
-    text-align: left;
-}
-
-.title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.description {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-}
-
 .trigger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    padding: 2rem;
     cursor: context-menu;
     outline: none;
     border-radius: var(--radius);
+    border: 2px dashed var(--border);
     transition: all 150ms ease;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
 
     &:hover {
-        background: var(--accent);
+        border-color: var(--ring);
     }
 
     &:focus-visible {
         outline: 2px solid var(--ring);
         outline-offset: 2px;
     }
-}
-
-.triggerContent {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 2rem;
-    border: 2px dashed var(--border);
-    border-radius: var(--radius);
-    background: var(--card);
-    transition: all 150ms ease;
-}
-
-.trigger:hover .triggerContent {
-    border-color: var(--ring);
-    background: var(--accent);
-}
-
-.triggerIcon {
-    font-size: 2rem;
-    opacity: 0.8;
-}
-
-.triggerText h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.triggerText p {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-    margin: 0;
 }
 
 .popup {

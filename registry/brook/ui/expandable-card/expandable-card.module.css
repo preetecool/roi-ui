@@ -65,6 +65,8 @@
 
 .cardButton:hover .expandIcon {
     color: var(--foreground);
+    background-color: var(--muted);
+    transition: 200ms ease-out;
 }
 
 .contentContainer {
@@ -172,7 +174,7 @@
     border: 1px solid var(--border);
     padding: 0;
     z-index: 104;
-    background: var(--card);
+    background: transparent;
     color: var(--muted-foreground);
     display: flex;
     align-items: center;
@@ -181,6 +183,8 @@
 
 .closeButton:hover {
     color: var(--foreground);
+    background-color: var(--muted);
+    transition: 200ms ease-out;
 }
 
 .modalScrollArea {

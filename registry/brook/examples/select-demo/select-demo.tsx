@@ -11,6 +11,7 @@ import {
   SelectItemText,
   SelectItemIndicator,
 } from "@/registry/brook/ui/select/select";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./select-demo.module.css";
 
 const bodiesOfWater = [
@@ -25,7 +26,7 @@ const bodiesOfWater = [
 export default function SelectDemo() {
   return (
     <Select items={bodiesOfWater} defaultValue="placeholder">
-      <SelectTrigger className={styles.trigger}>
+      <SelectTrigger render={<Button variant="outline" size="sm" className={styles.trigger} />}>
         <SelectValue>
           {(value) => (
             <span className={value === "placeholder" ? styles.placeholder : undefined}>
