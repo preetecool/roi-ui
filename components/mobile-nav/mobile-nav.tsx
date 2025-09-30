@@ -37,20 +37,20 @@ export function MobileNav({ tree }: MobileNavProps) {
 
   useEffect(() => {
     if (isOpen) {
-      const scrollY = window.scrollY;
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
       document.body.style.width = '100%';
       document.body.style.height = '100%';
+      document.body.style.top = '0';
+      document.body.style.left = '0';
 
       return () => {
         document.body.style.overflow = '';
         document.body.style.position = '';
-        document.body.style.top = '';
         document.body.style.width = '';
         document.body.style.height = '';
-        window.scrollTo(0, scrollY);
+        document.body.style.top = '';
+        document.body.style.left = '';
       };
     }
   }, [isOpen]);
@@ -93,7 +93,8 @@ export function MobileNav({ tree }: MobileNavProps) {
             style={{
               height: "calc(100vh - var(--header-height))",
               top: "var(--header-height)",
-              maxHeight: "calc(100vh - var(--header-height))"
+              maxHeight: "calc(100vh - var(--header-height))",
+              position: "fixed"
             }}
             transition={{
               type: "spring",
