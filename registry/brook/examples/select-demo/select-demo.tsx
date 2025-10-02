@@ -7,6 +7,7 @@ import {
   SelectPortal,
   SelectPositioner,
   SelectPopup,
+  SelectList,
   SelectItem,
   SelectItemText,
   SelectItemIndicator,
@@ -39,29 +40,31 @@ export default function SelectDemo() {
       <SelectPortal>
         <SelectPositioner>
           <SelectPopup>
-            <SelectItem value="placeholder" disabled>
-              <SelectItemText className={styles.itemText}>Bodies of Water</SelectItemText>
-            </SelectItem>
-            <SelectItem value="Brook">
-              <SelectItemText>Brook</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-            <SelectItem value="Stream">
-              <SelectItemText>Stream</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-            <SelectItem value="Creek">
-              <SelectItemText>Creek</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-            <SelectItem value="River">
-              <SelectItemText>River</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
-            <SelectItem value="Lake">
-              <SelectItemText>Lake</SelectItemText>
-              <SelectItemIndicator />
-            </SelectItem>
+            <SelectList>
+              <SelectItem value="placeholder" disabled>
+                <SelectItemText className={styles.itemText}>Bodies of Water</SelectItemText>
+              </SelectItem>
+              <SelectItem value="Brook">
+                <SelectItemText>Brook</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+              <SelectItem value="Stream">
+                <SelectItemText>Stream</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+              <SelectItem value="Creek">
+                <SelectItemText>Creek</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+              <SelectItem value="River">
+                <SelectItemText>River</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+              <SelectItem value="Lake">
+                <SelectItemText>Lake</SelectItemText>
+                <SelectItemIndicator />
+              </SelectItem>
+            </SelectList>
           </SelectPopup>
         </SelectPositioner>
       </SelectPortal>

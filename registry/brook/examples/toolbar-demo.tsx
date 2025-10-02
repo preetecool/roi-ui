@@ -64,7 +64,7 @@ function AlignRightIcon() {
 export default function ToolbarDemo() {
   return (
     <Toolbar>
-      <ToggleGroup toggleMultiple aria-label="Text formatting">
+      <ToggleGroup multiple aria-label="Text formatting">
         <ToggleGroupItem value="bold" aria-label="Bold">
           <BoldIcon />
         </ToggleGroupItem>
