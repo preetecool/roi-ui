@@ -37,6 +37,10 @@ const SelectPopup = ({ className, ...props }: React.ComponentPropsWithoutRef<typ
   <Select.Popup className={cn(styles.popup, className)} {...props} />
 );
 
+const SelectList = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Select.List>) => (
+  <Select.List className={cn(className)} {...props} />
+);
+
 const SelectItem = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Select.Item>) => (
   <Select.Item className={cn(styles.item, className)} {...props} />
 );
@@ -67,6 +71,7 @@ export {
   SelectPortal,
   SelectPositioner,
   SelectPopup,
+  SelectList,
   SelectItem,
   SelectItemText,
   SelectGroup,

@@ -6,7 +6,7 @@ export default function ToggleGroupDemo() {
   return (
     <div className={styles.container}>
       <div>
-        <ToggleGroup toggleMultiple defaultValue={["bold"]} aria-label="Text formatting">
+        <ToggleGroup multiple defaultValue={["bold"]} aria-label="Text formatting">
           <ToggleGroupItem value="bold" aria-label="Bold">
             <Bold size={16} />
           </ToggleGroupItem>
