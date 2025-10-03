@@ -1,8 +1,9 @@
 ---
 title: Combobox
-description:
-    A searchable dropdown component that combines a popover with a command menu for
-    filtering and selection.
+description: Filterable select for choosing from a predefined list of items.
+links:
+    doc: https://base-ui.com/react/components/combobox
+    api: https://base-ui.com/react/components/combobox#api-reference
 ---
 
 <ComponentPreview name="combobox-demo" />
@@ -58,69 +59,21 @@ Copy and paste the CSS file:
 <CodeBlock
 filename="anatomy"
   language="tsx"
-  code={`<Popover>
-  <PopoverTrigger render={<Button />}>
-
-  </PopoverTrigger>
-  <PopoverContent>
-    <Command>
-      <CommandInput  />
-      <CommandList>
-        <CommandEmpty></CommandEmpty>
-        <CommandGroup>
-          <CommandItem></CommandItem>
-          <CommandItem></CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </Command>
-  </PopoverContent>
-</Popover>`}
+  code={`<Combobox>
+    <ComboboxInput />
+    <ComboboxTrigger />
+    <ComboboxPortal>
+        <ComboboxPositioner>
+            <ComboboxPopup>
+                <ComboboxList>
+                    <ComboboxItem>
+                        <ComboboxItemText />
+                        <ComboboxItemIndicator />
+                    </ComboboxItem>
+                </ComboboxList>
+            </ComboboxPopup>
+        </ComboboxPositioner>
+    </ComboboxPortal>
+</Combobox>`}
 />
 
-## Props
-
-<PropTable
-    data={[
-        {
-            prop: "options",
-            type: "Array<{value: string, label: string}>",
-            description: "Array of options with value and label properties",
-        },
-        {
-            prop: "value",
-            type: "string",
-            description: "Currently selected value (controlled)",
-        },
-        {
-            prop: "onValueChange",
-            type: "(value: string) => void",
-            description: "Callback when selection changes",
-        },
-        {
-            prop: "placeholder",
-            type: "string",
-            description: "Placeholder text when no option is selected",
-        },
-        {
-            prop: "searchPlaceholder",
-            type: "string",
-            description: "Placeholder text for the search input",
-        },
-        {
-            prop: "emptyText",
-            type: "string",
-            description: "Text to display when no options match the search",
-        },
-        {
-            prop: "disabled",
-            type: "boolean",
-            default: "false",
-            description: "Whether the combobox is disabled",
-        },
-        {
-            prop: "className",
-            type: "string",
-            description: "Additional CSS classes to apply to the combobox",
-        },
-    ]}
-/>
