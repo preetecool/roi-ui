@@ -1,152 +1,152 @@
 .sidebarDesktop {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 1024px) {
-    .sidebarDesktop {
-        display: block;
-    }
+  .sidebarDesktop {
+    display: block;
+  }
 }
 
 .sidebarGap {
-    position: relative;
-    width: var(--sidebar-width);
-    background-color: transparent;
+  position: relative;
+  width: var(--sidebar-width);
+  background-color: transparent;
 }
 
 .sidebarContainer {
-    position: fixed;
-    top: var(--header-height);
-    bottom: 0;
-    left: 0;
-    right: auto;
-    z-index: 10;
-    display: none;
-    height: calc(100vh - var(--header-height));
-    width: var(--sidebar-width);
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  right: auto;
+  z-index: 10;
+  display: none;
+  height: calc(100vh - var(--header-height));
+  width: var(--sidebar-width);
 }
 
 @media (min-width: 1024px) {
-    .sidebarContainer {
-        display: flex;
-    }
+  .sidebarContainer {
+    display: flex;
+  }
 }
 
 .sidebarInner {
-    background-color: var(--background);
-    display: flex;
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
+  background-color: var(--background);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
 }
 
 .sidebarContent {
-    padding: 0 0rem 3rem 1.25rem;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
+  padding: 0 0rem 3rem 1.25rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
 }
 
 .sidebarContent::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .sidebarContent::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 .sidebarContent::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 0;
-    border: 2px solid transparent;
-    background-clip: content-box;
+  background: var(--accent);
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 .sidebarContent::-webkit-scrollbar-thumb:hover {
-    border: 1px solid transparent;
+  border: 1px solid transparent;
 }
 
 .sidebarNav {
-    padding: 32px 0.5rem 1.5rem 0.5rem;
+  padding: 32px 0.5rem 1.5rem 0.5rem;
 }
 
 .nav {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebarItemWrapper {
-    padding: 0;
+  padding: 0;
 }
 
 .sidebarLink {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .sidebarItem {
-    display: inline-block;
-    border-radius: var(--radius);
-    padding: 0.5rem;
-    font-size: 0.825rem;
-    transition: all 0.2s;
-    background-color: transparent;
-    color: var(--foreground);
-    border: 1px solid transparent;
+  display: inline-block;
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  font-size: 0.825rem;
+  transition: all 0.2s;
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid transparent;
 }
 
 .sidebarItem:hover {
-    color: var(--foreground);
-    background-color: var(--muted);
+  color: var(--foreground);
+  background-color: var(--muted);
 }
 
 .sidebarItem.active {
-    background-color: var(--accent);
-    color: var(--foreground);
-    border: 1px solid oklch(0.45 0 0);
+  background-color: var(--accent);
+  color: var(--foreground);
+  border: 1px solid var(--border-light);
 }
 
 .sidebarItem.active:hover {
-    background-color: var(--accent);
-    color: var(--foreground);
+  background-color: var(--accent);
+  color: var(--foreground);
 }
 
 .sidebarItem.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .sidebarItem.disabled:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .badge {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .sidebarGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .sidebarGroupWithMargin {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .sidebarGroupTitle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: var(--radius);
-    padding: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
 }
 
 .sidebarGroupChildren {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1125rem;
 }

@@ -45,6 +45,9 @@ const Carousel = ({
   const canGoNext = scrollLeft < maxScrollLeft;
   const canGoPrev = scrollLeft > 0;
 
+  const showLeftFade = scrollLeft > 20;
+  const showRightFade = scrollLeft < maxScrollLeft - 20;
+
   const goToIndex = useCallback(
     (index: number) => {
       const viewport = viewportRef.current;
@@ -162,7 +165,16 @@ const Carousel = ({
       tabIndex={0}
       {...props}
     >
-      <div ref={viewportRef} className={styles.viewport} aria-live="polite" aria-atomic="false">
+      <div
+        ref={viewportRef}
+        className={cn(
+          styles.viewport,
+          showLeftFade && styles.showLeftFade,
+          showRightFade && styles.showRightFade
+        )}
+        aria-live="polite"
+        aria-atomic="false"
+      >
         <div
           ref={carouselRef}
           id="carousel-slides"

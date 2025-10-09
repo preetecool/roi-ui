@@ -1,5 +1,10 @@
 .card {
   width: 400px;
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+}
+
+.cardTitle {
+  margin-left: 4px;
 }
 
 .form {
@@ -11,9 +16,68 @@
 .footer {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-weight: 300;
 }
 
 .button {
   width: 100%;
+}
+
+.emailField {
+  padding-bottom: 4px;
+}
+
+.fieldLabel {
+  margin-left: 4px;
+}
+
+.rememberForgotRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.forgotPassword {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgotPassword:hover {
+  color: var(--foreground);
+}
+
+.signupBanner {
+  width: calc(100% + 3rem);
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  margin-bottom: -1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 1.25rem 0;
+  background-color: var(--card-light);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.signupText {
+  color: var(--muted-foreground);
+}
+
+.signupLink {
+  color: var(--foreground);
+  cursor: pointer;
 }
