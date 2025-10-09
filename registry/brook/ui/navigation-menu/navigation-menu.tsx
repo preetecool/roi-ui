@@ -2,6 +2,7 @@
 
 import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./navigation-menu.module.css";
 
 const NavigationMenuRoot = ({
@@ -109,7 +110,7 @@ const NavigationMenuPopup = ({
 const NavigationMenuViewport = ({
   className,
   children,
-  showArrow = true,
+  showArrow = false,
   ...props
 }: React.ComponentProps<typeof NavigationMenu.Positioner> & {
   showArrow?: boolean;
@@ -154,49 +155,6 @@ const NavigationMenuLinkItem = ({
   </NavigationMenu.Link>
 );
 
-const NavigationMenuFooter = ({
-  className,
-  children,
-  title,
-  buttonText,
-  buttonHref,
-  onButtonClick,
-  horizontal = false,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement> & {
-  title?: string;
-  buttonText?: string;
-  buttonHref?: string;
-  onButtonClick?: () => void;
-  horizontal?: boolean;
-}) => {
-  if (horizontal && title && buttonText) {
-    return (
-      <div className={cn(styles.footer, styles.horizontalFooter, className)} {...props}>
-        <div className={styles.footerTitle}>{title}</div>
-        <NavigationMenuLink
-          href={buttonHref}
-          onClick={onButtonClick}
-          className={styles.footerButton}
-        >
-          {buttonText}
-          <NavigationMenuIcon>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </NavigationMenuIcon>
-        </NavigationMenuLink>
-      </div>
-    );
-  }
-
-  return (
-    <div className={cn(styles.footer, className)} {...props}>
-      {children}
-    </div>
-  );
-};
-
 export {
   NavigationMenuRoot as NavigationMenu,
   NavigationMenuList,
@@ -206,7 +164,6 @@ export {
   NavigationMenuViewport,
   NavigationMenuLink,
   NavigationMenuLinkItem,
-  NavigationMenuFooter,
   NavigationMenuIcon,
   NavigationMenuArrow,
   NavigationMenuPositioner,

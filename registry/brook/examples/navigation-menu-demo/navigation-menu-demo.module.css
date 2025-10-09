@@ -1,7 +1,7 @@
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .resourcesList {
@@ -41,4 +41,41 @@
 .iconDescription {
   font-size: 0.8rem;
   color: var(--muted-foreground);
+}
+
+.footerLink {
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+  min-height: 120px;
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+}
+
+.footerLeft {
+  flex: 1;
+}
+
+.footerTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.footerDescription {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+
+.footerImage {
+  flex: 1;
+  object-fit: contain;
+  opacity: 0.15;
+  filter: grayscale(50%);
 }
