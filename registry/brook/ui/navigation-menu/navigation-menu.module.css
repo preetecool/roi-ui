@@ -453,6 +453,15 @@
     border-color: var(--accent);
 }
 
+.footerButton:focus {
+    outline: none;
+}
+
+.footerButton:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
 .footerButton .chevron {
     width: 0.875rem;
     height: 0.875rem;
