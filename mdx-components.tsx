@@ -42,13 +42,13 @@ interface CodeBlockTabsTriggerProps {
 }
 
 export const mdxComponents = {
-  h1: (props: ComponentProps<"h1">) => <h1 style={{ color: "var(--title)" }} {...props} />,
+  h1: (props: ComponentProps<"h1">) => <h1 style={{ color: "var(--docs-heading)" }} {...props} />,
   h2: (props: ComponentProps<"h2">) => {
     const id = props.children?.toString().replace(/ /g, "-").replace(/'/g, "").replace(/\?/g, "").toLowerCase();
-    return <h2 id={id} style={{ color: "var(--title)" }} {...props} />;
+    return <h2 id={id} style={{ color: "var(--docs-heading)" }} {...props} />;
   },
-  h3: (props: ComponentProps<"h3">) => <h3 style={{ color: "var(--title)" }} {...props} />,
-  h4: (props: ComponentProps<"h4">) => <h4 style={{ color: "var(--title)" }} {...props} />,
+  h3: (props: ComponentProps<"h3">) => <h3 style={{ color: "var(--docs-heading)" }} {...props} />,
+  h4: (props: ComponentProps<"h4">) => <h4 style={{ color: "var(--docs-heading)" }} {...props} />,
   p: (props: ComponentProps<"p">) => <p style={{ color: "var(--foreground)" }} {...props} />,
   a: (props: ComponentProps<"a">) => (
     <a
