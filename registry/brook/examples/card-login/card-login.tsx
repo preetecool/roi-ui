@@ -1,13 +1,16 @@
 "use client";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
-import { Field, FieldLabel, FieldControl, FieldError } from "@/registry/brook/ui/field/field";
-import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
+import { Field, FieldControl, FieldError, FieldLabel } from "@/registry/brook/ui/field/field";
+import { Check } from "lucide-react";
+import { useState } from "react";
 import styles from "./card-login.module.css";
 
 export default function CardLoginDemo() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,14 +38,14 @@ export default function CardLoginDemo() {
   };
 
   return (
-    <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
+    <Card className={styles.card}>
       <CardHeader>
-        <CardTitle>Sign In</CardTitle>
+        <CardTitle className={styles.cardTitle}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <Field>
-            <FieldLabel>Email</FieldLabel>
+          <Field className={styles.emailField}>
+            <FieldLabel className={styles.fieldLabel}>Email</FieldLabel>
             <FieldControl
               type="email"
               placeholder="Enter your email"
@@ -54,7 +57,7 @@ export default function CardLoginDemo() {
           </Field>
 
           <Field>
-            <FieldLabel>Password</FieldLabel>
+            <FieldLabel className={styles.fieldLabel}>Password</FieldLabel>
             <FieldControl
               type="password"
               placeholder="Enter your password"
@@ -63,16 +66,31 @@ export default function CardLoginDemo() {
             />
             {errors.password && <FieldError>{errors.password}</FieldError>}
           </Field>
+
+          <div className={styles.rememberForgotRow}>
+            <label className={styles.checkboxLabel}>
+              <Checkbox checked={rememberMe} onCheckedChange={(checked) => setRememberMe(checked === true)}>
+                <CheckboxIndicator>
+                  <Check size={16} strokeWidth={3} />
+                </CheckboxIndicator>
+              </Checkbox>
+              <span>Remember me</span>
+            </label>
+            <button type="button" className={styles.forgotPassword}>
+              Forgot password?
+            </button>
+          </div>
         </form>
       </CardContent>
       <CardFooter className={styles.footer}>
         <Button onClick={handleSubmit} className={styles.button}>
           Sign In
         </Button>
-        <Button variant="ghost" className={styles.button}>
-          Forgot Password?
-        </Button>
       </CardFooter>
+      <div className={styles.signupBanner}>
+        <span className={styles.signupText}>No account? </span>
+        <span className={styles.signupLink}>Sign up</span>
+      </div>
     </Card>
   );
 }

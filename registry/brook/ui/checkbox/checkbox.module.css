@@ -2,14 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1rem;
-    height: 1rem;
+    width: 14px;
+    height: 14px;
     border-radius: 0.25rem;
-    border: 1px solid var(--border);
-    background-color: var(--background);
+    border: none;
+    background-color: transparent;
     cursor: pointer;
     transition: all 150ms ease-out;
     flex-shrink: 0;
+    box-shadow: 0 0 0 1px var(--border);
 }
 
 .root:hover {
