@@ -6,8 +6,8 @@ export default function CardImageDemo() {
   return (
     <Card variant="lift" className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
       <CardImage
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=560&h=315&fit=crop&crop=center"
-        alt="Mountain landscape"
+        src="/water.svg"
+        alt="Water illustration"
       />
 
       <CardContent style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
