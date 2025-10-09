@@ -1,10 +1,9 @@
 .carousel {
     position: relative;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     border-radius: 0.5rem;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .carousel:focus-visible {
@@ -24,6 +23,7 @@
     scroll-snap-type: none;
 }
 
+
 .viewport::-webkit-scrollbar {
     display: none;
 }
@@ -31,7 +31,7 @@
 .container {
     display: flex;
     align-items: stretch;
-    padding-left: 0;
+    padding-left: 2rem;
 }
 
 .slide {
@@ -49,13 +49,12 @@
 }
 
 .slide > *:focus-visible {
-    outline: 2px solid var(--ring) !important;
-    outline-offset: 2px !important;
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
 }
 
-.slide > *:focus {
-    outline: 2px solid var(--ring) !important;
-    outline-offset: 2px !important;
+.slide > *:focus:not(:focus-visible) {
+    outline: none;
 }
 
 .navContainer {
@@ -178,16 +177,15 @@
 
     .viewport {
         height: auto;
-        padding: 0 1rem;
     }
 
     .container {
-        padding-left: 0;
+        padding-left: 1.5rem;
     }
 
     .navContainer {
         margin-top: 1rem;
-        padding: 0 1rem;
+        padding-right: 1rem;
     }
 
     .navButton {
@@ -215,12 +213,12 @@
         border-radius: 0.25rem;
     }
 
-    .viewport {
-        padding: 0 0.75rem;
+    .container {
+        padding-left: 0.75rem;
     }
 
     .navContainer {
-        padding: 0 0.75rem;
+        padding-right: 0.75rem;
     }
 
     .navButton {
