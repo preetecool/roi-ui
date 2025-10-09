@@ -1,19 +1,19 @@
 "use client";
 
+import { Logo } from "@/components/logo";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuIcon,
+  NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuLinkItem,
-  NavigationMenuFooter,
-  NavigationMenuIcon,
+  NavigationMenuList,
+  NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
-import { Button } from "@/registry/brook/ui/button/button";
-import { Palette, Zap, Shield, Users, ChevronDown } from "lucide-react";
+import { ChevronDown, Palette, Shield, Users, Zap } from "lucide-react";
 import styles from "./navigation-menu-demo.module.css";
 
 export default function NavigationMenuDemo() {
@@ -41,14 +41,23 @@ export default function NavigationMenuDemo() {
                 <NavigationMenuLinkItem href="#" title="Analytics" description="Track your data" />
                 <NavigationMenuLinkItem href="#" title="Insights" description="Get insights" />
                 <NavigationMenuLinkItem href="#" title="Automation" description="Automate workflows" />
-                <NavigationMenuLinkItem href="#" title="Reporting" description="Generate reports" />
+                <NavigationMenuLinkItem href="#" title="Reporting" description="Generate report" />
               </div>
-              <NavigationMenuFooter
-                horizontal
-                title="Explore our full product suite"
-                buttonText="View All Products"
-                buttonHref="#"
-              />
+              <NavigationMenuLinkItem href="#" className={styles.footerLink}>
+                <div className={styles.footerContent}>
+                  <div className={styles.footerLeft}>
+                    <div className={styles.footerTitle}>Sign up</div>
+                    <div className={styles.footerDescription}>Create an account to access all products.</div>
+                  </div>
+                  <Logo
+                    fillColor="color-mix(in oklch, transparent 85%, var(--foreground))"
+                    strokeColor="color-mix(in oklch, transparent 88%, var(--foreground))"
+                    width={70}
+                    height={70}
+                    className={styles.footerImage}
+                  />
+                </div>
+              </NavigationMenuLinkItem>
             </NavigationMenuContent>
           </NavigationMenuItem>
 
@@ -139,7 +148,7 @@ export default function NavigationMenuDemo() {
           </NavigationMenuItem>
         </NavigationMenuList>
 
-        <NavigationMenuViewport />
+        <NavigationMenuViewport sideOffset={8} />
       </NavigationMenu>
     </>
   );
