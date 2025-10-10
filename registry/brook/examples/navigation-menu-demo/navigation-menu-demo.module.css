@@ -1,7 +1,15 @@
-.productsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.productsLayout {
+  display: flex;
+  flex-wrap: nowrap;
   gap: 0.5rem;
+  align-items: stretch;
+}
+
+.productsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 0 1 auto;
 }
 
 .resourcesList {
@@ -35,7 +43,7 @@
 
 .iconTitle {
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .iconDescription {
@@ -43,39 +51,29 @@
   color: var(--muted-foreground);
 }
 
-.footerLink {
-  margin-top: 1rem;
-  padding: 2rem 1rem;
-  min-height: 120px;
-}
-
 .footerContent {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 2rem;
-}
-
-.footerLeft {
-  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .footerTitle {
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--foreground);
-  margin-bottom: 0.25rem;
 }
 
 .footerDescription {
   font-size: 0.8rem;
   color: var(--muted-foreground);
+  line-height: 1.4;
+  max-width: 240px;
 }
 
 .footerImage {
-  flex: 1;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
-  opacity: 0.15;
-  filter: grayscale(50%);
+  opacity: 0.33;
+  flex-shrink: 0;
 }
