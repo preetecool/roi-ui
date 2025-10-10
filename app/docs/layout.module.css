@@ -1,8 +1,19 @@
+.docsWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background);
+  z-index: 100;
+}
+
 .docsGrid {
   width: 100%;
+  height: 100%;
   display: grid;
-  flex: 1;
-  min-height: 100vh;
   grid-template-columns: 1fr;
   grid-template-areas: "main";
   gap: 0;
@@ -10,14 +21,14 @@
 
 @media (min-width: 1024px) {
   .docsGrid {
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 280px 1fr;
     grid-template-areas: "sidebar main";
   }
 }
 
 @media (min-width: 1280px) {
   .docsGrid {
-    grid-template-columns: 250px 1fr 240px;
+    grid-template-columns: 280px 1fr 240px;
     grid-template-areas: "sidebar main toc";
   }
 }
@@ -36,18 +47,19 @@
 .main {
   grid-area: main;
   min-width: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .toc {
   grid-area: toc;
   padding: 1rem;
   position: fixed;
-  top: calc(var(--header-height, 0px) + 2rem);
+  top: 2rem;
   right: 1rem;
   width: 240px;
   height: fit-content;
-  max-height: calc(100vh - var(--header-height, 0px) - 2rem);
+  max-height: calc(100vh - 2rem);
   overflow-y: auto;
   display: none;
   z-index: 10;

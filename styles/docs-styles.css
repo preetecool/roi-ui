@@ -1,5 +1,5 @@
 :root {
-  --sidebar-width: 220px;
+  --sidebar-width: 260px;
   --sidebar-width-icon: 3rem;
   --header-height: 64px;
   --footer-height: 0px;
@@ -21,13 +21,8 @@ p:has(+ div .container[data-tsx="true"]) {
 
 @media (min-width: 1024px) {
   :root {
-    --sidebar-width: 240px;
+    --sidebar-width: 280px;
     --top-spacing: calc(1rem * 4);
-  }
-
-  header > div {
-    padding-left: calc(8px + 8px + 20px) !important;
-    padding-right: calc(8px + 8px + 20px) !important;
   }
 }
 
