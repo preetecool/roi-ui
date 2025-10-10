@@ -151,14 +151,20 @@ function SidebarGroup({
   const isActive = pathname === item.url;
   const isTopLevel = level === 0;
 
-  // Default expanded state: true for top-level sections or if child is active
+  // Default expanded state: true for top-level sections, level 1 sections, or if child is active
   const hasActiveChild = hasChildren && item.children?.some(child =>
     pathname.startsWith(child.url || '') ||
     child.children?.some(grandchild => pathname.startsWith(grandchild.url || ''))
   );
 
-  const [isExpanded, setIsExpanded] = useState(isTopLevel || hasActiveChild);
+  const [isExpanded, setIsExpanded] = useState(level <= 1 || hasActiveChild);
+  const [updateTrigger, setUpdateTrigger] = useState(0);
+
+  // Check if this collapsed section contains the active item
+  const isCollapsedWithActiveChild = !isExpanded && hasActiveChild;
   const childrenRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLButtonElement>(null);
+  const groupRef = useRef<HTMLDivElement>(null);
   const [indicatorStyle, setIndicatorStyle] = useState<{ top: number; height: number; opacity: number }>({
     top: 0,
     height: 0,
@@ -170,10 +176,65 @@ function SidebarGroup({
     opacity: 0
   });
 
+  // Trigger update when expand/collapse changes
+  useEffect(() => {
+    if (level === 1) {
+      // Trigger parent update by dispatching a custom event
+      const event = new CustomEvent('sidebarChildStateChange');
+      window.dispatchEvent(event);
+    }
+  }, [isExpanded, level]);
+
+  // Listen for child state changes if this is a level 0 component
+  useEffect(() => {
+    if (level !== 0) return;
+
+    const handleChildStateChange = () => {
+      setUpdateTrigger(prev => prev + 1);
+    };
+
+    window.addEventListener('sidebarChildStateChange', handleChildStateChange);
+    return () => {
+      window.removeEventListener('sidebarChildStateChange', handleChildStateChange);
+    };
+  }, [level]);
+
   // Update indicator position when pathname or children change
   useEffect(() => {
-    if (!childrenRef.current || !hasChildren) return;
+    if (!hasChildren || !childrenRef.current) return;
 
+    // Don't show indicator for collapsed level 1 items - let parent handle it
+    if (isCollapsedWithActiveChild && level === 1) {
+      setIndicatorStyle({ top: 0, height: 0, opacity: 0 });
+      return;
+    }
+
+    // Check if any level 1 child is collapsed with an active descendant
+    let collapsedChildWithActive: Element | null = null;
+    if (level === 0 && isExpanded) {
+      const childGroups = childrenRef.current.querySelectorAll(`.${styles.sidebarGroup}`);
+      childGroups.forEach((childGroup) => {
+        const header = childGroup.querySelector(`.${styles.sidebarGroupHeader}.${styles.activeHeader}`);
+        if (header) {
+          collapsedChildWithActive = header;
+        }
+      });
+    }
+
+    // If we found a collapsed child with active descendant, show indicator on it
+    if (collapsedChildWithActive) {
+      const container = childrenRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const headerRect = collapsedChildWithActive.getBoundingClientRect();
+      const topOffset = 0.45 * 16;
+      const top = headerRect.top - containerRect.top + topOffset;
+      const height = headerRect.height - (topOffset * 2);
+
+      setIndicatorStyle({ top, height, opacity: 1 });
+      return;
+    }
+
+    // Otherwise, show indicator on the active child item
     const activeLink = childrenRef.current.querySelector(`.${styles.active}`);
     if (activeLink) {
       const container = childrenRef.current;
@@ -191,7 +252,7 @@ function SidebarGroup({
     } else {
       setIndicatorStyle({ top: 0, height: 0, opacity: 0 });
     }
-  }, [pathname, hasChildren, isExpanded]);
+  }, [pathname, hasChildren, isExpanded, isCollapsedWithActiveChild, level, updateTrigger]);
 
   const handleItemHover = (event: React.MouseEvent) => {
     if (!childrenRef.current) return;
@@ -240,17 +301,19 @@ function SidebarGroup({
     );
   }
 
-  // Collapsible section
-  const isCollapsible = isTopLevel && hasChildren;
+  // Collapsible section - allow both top-level (level 0) and level 1 items to be collapsible
+  const isCollapsible = (level === 0 || level === 1) && hasChildren;
 
   return (
     <div
+      ref={groupRef}
       className={`${styles.sidebarGroup} ${!isFirst ? styles.sidebarGroupWithMargin : ""} ${isTopLevel ? styles.topLevelGroup : ""}`}
       style={{ paddingLeft: level > 1 ? `${(level - 1) * 1}rem` : 0 }}
     >
       {isCollapsible ? (
         <button
-          className={styles.sidebarGroupHeader}
+          ref={headerRef}
+          className={`${styles.sidebarGroupHeader} ${isCollapsedWithActiveChild ? styles.activeHeader : ""}`}
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
         >
