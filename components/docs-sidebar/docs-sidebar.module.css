@@ -99,8 +99,8 @@
   color: var(--muted-foreground);
   border-radius: var(--radius);
   position: relative;
-  margin-left: -0.25rem;
-  padding-left: 1rem;
+  margin-left: -1.25rem;
+  padding-left: 2.25rem;
 }
 
 .sidebarItem:hover {
@@ -144,7 +144,7 @@
 }
 
 .sidebarGroupWithMargin {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .topLevelGroup.sidebarGroupWithMargin {
@@ -273,12 +273,16 @@
 }
 
 .topLevelGroup > .sidebarGroupChildren {
-  padding-top: 1rem;
+  padding-top: 0;
   padding-bottom: 0.5rem;
   gap: 0.125rem;
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup {
+  margin-bottom: 0.625rem;
+}
+
+.topLevelGroup > .sidebarGroupChildren > .sidebarGroup:last-child {
   margin-bottom: 0;
 }
 
@@ -322,6 +326,7 @@
   padding-left: 0;
   padding-top: 0;
   opacity: 1;
+  font-weight: 400;
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader .chevron {

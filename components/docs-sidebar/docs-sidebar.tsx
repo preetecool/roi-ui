@@ -157,7 +157,13 @@ function SidebarGroup({
     child.children?.some(grandchild => pathname.startsWith(grandchild.url || ''))
   );
 
-  const [isExpanded, setIsExpanded] = useState(level <= 1 || hasActiveChild);
+  // For level 0 (top-level): only "Get Started" is open by default, or sections with active children
+  // For level 1+: only open if has active child
+  const [isExpanded, setIsExpanded] = useState(
+    level === 0
+      ? (item.name === "Get Started" || hasActiveChild)
+      : hasActiveChild
+  );
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
   // Check if this collapsed section contains the active item
