@@ -1,9 +1,40 @@
 .sidebarDesktop {
   display: none;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 100;
 }
 
 @media (min-width: 1024px) {
   .sidebarDesktop {
+    display: block;
+  }
+}
+
+.sidebarCollapsed {
+  transform: translateX(calc(-1 * var(--sidebar-width)));
+}
+
+.sidebarFloating {
+  transform: translateX(0) !important;
+}
+
+.sidebarFloating .sidebarContainer {
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+.hoverTrigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100vh;
+  z-index: 90;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hoverTrigger {
     display: block;
   }
 }
@@ -20,7 +51,7 @@
   bottom: 0;
   left: 0;
   right: auto;
-  z-index: 10;
+  z-index: 100;
   display: none;
   height: 100vh;
   width: var(--sidebar-width);
@@ -353,6 +384,13 @@
   gap: 1rem;
 }
 
+.logoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .logoLink {
   display: inline-flex;
   align-items: center;
@@ -362,6 +400,28 @@
 
 .logoLink:hover {
   opacity: 0.8;
+}
+
+.collapseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 0.375rem;
+  border-radius: var(--radius);
+  transition: all 0.15s;
+}
+
+.collapseButton:hover {
+  color: var(--foreground);
+  background-color: color-mix(in oklch, var(--accent) 20%, transparent);
+}
+
+.collapseIcon {
+  transform: scaleX(-1);
 }
 
 .searchWrapper {
@@ -421,4 +481,57 @@
 
 .githubLink:hover {
   color: var(--foreground);
+}
+
+/* Collapsed sidebar buttons */
+.collapsedButtons {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 50;
+  display: flex;
+}
+
+/* Hide on desktop when sidebar is not collapsed */
+@media (min-width: 1024px) {
+  .collapsedButtons {
+    display: none;
+  }
+
+  /* Show on desktop when sidebar is collapsed */
+  .sidebarCollapsed ~ .collapsedButtons {
+    display: flex;
+  }
+}
+
+.collapsedButtonsInner {
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  padding: 2px;
+}
+
+.collapsedButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 0.15s;
+  padding: 6px;
+  border-radius: var(--radius);
+}
+
+.collapsedButton:hover {
+  color: var(--foreground);
+  background-color: color-mix(in oklch, var(--accent) 66%, transparent);
+}
+
+.collapsedButton:active {
+  transform: scale(0.95);
 }
