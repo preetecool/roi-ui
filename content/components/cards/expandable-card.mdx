@@ -44,3 +44,50 @@ Copy and paste the CSS file:
 </InstallationTabsContent>
 
 </InstallationTabs>
+
+## Props
+
+### ExpandableCard
+
+<PropTable
+    data={[
+        {
+            prop: "items",
+            type: "ExpandableCardItem[]",
+            description: "Array of items to display as expandable cards",
+        },
+    ]}
+/>
+
+### ExpandableCardItem
+
+<PropTable
+    data={[
+        {
+            prop: "id",
+            type: "string | number",
+            description: "Unique identifier for the card item",
+        },
+        {
+            prop: "src",
+            type: "string",
+            description: "Image source URL for the card",
+        },
+        {
+            prop: "alt",
+            type: "string",
+            description: "Alternative text for the image",
+        },
+        {
+            prop: "cardHeading",
+            type: "string",
+            description: "The heading text displayed on the card",
+        },
+        {
+            prop: "content",
+            type: "React.ReactNode",
+            description:
+                "Optional content to display when the card is expanded in modal view",
+        },
+    ]}
+/>
