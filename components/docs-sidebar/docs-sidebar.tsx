@@ -223,11 +223,11 @@ function SidebarGroup({
     child.children?.some(grandchild => pathname.startsWith(grandchild.url || ''))
   );
 
-  // For level 0 (top-level): only "Get Started" is open by default, or sections with active children
+  // For level 0 (top-level): only "Get Started" is open by default
   // For level 1+: only open if has active child
   const [isExpanded, setIsExpanded] = useState(
     level === 0
-      ? (item.name === "Get Started" || hasActiveChild)
+      ? item.name === "Get Started"
       : hasActiveChild
   );
   const [updateTrigger, setUpdateTrigger] = useState(0);
