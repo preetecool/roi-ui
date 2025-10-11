@@ -109,13 +109,12 @@
 }
 
 .sidebarItem.active {
-  background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
   color: var(--foreground);
-  font-weight: 500;
 }
 
 .sidebarItem.active:hover {
-  background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
 }
 
 .sidebarItem.disabled {
@@ -178,7 +177,7 @@
 }
 
 .sidebarGroupHeader:hover {
-  background-color: var(--accent);
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
 }
 
 .sidebarGroupTitle {
@@ -246,7 +245,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 1px;
+  width: 1.5px;
   background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
   border-radius: 2px;
   transition:
@@ -261,7 +260,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 1px;
+  width: 1.5px;
   background-color: var(--accent);
   border-radius: 2px;
   transition:
@@ -269,7 +268,7 @@
     height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
-  z-index: 1;
+  z-index: 10;
 }
 
 .topLevelGroup > .sidebarGroupChildren {
@@ -308,17 +307,16 @@
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader.activeHeader {
-  background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
   color: var(--foreground);
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader.activeHeader .sidebarGroupTitle {
   color: var(--foreground);
-  font-weight: 500;
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader.activeHeader:hover {
-  background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader .sidebarGroupTitle {
@@ -327,6 +325,7 @@
   padding-top: 0;
   opacity: 1;
   font-weight: 400;
+  color: var(--secondary-foreground);
 }
 
 .topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader .chevron {
