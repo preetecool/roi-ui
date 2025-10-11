@@ -225,10 +225,10 @@ function SidebarGroup({
 
   // For level 0 (top-level): only "Get Started" is open by default
   // For level 1+: only open if has active child
-  const [isExpanded, setIsExpanded] = useState(
+  const [isExpanded, setIsExpanded] = useState<boolean>(
     level === 0
       ? item.name === "Get Started"
-      : hasActiveChild
+      : hasActiveChild ?? false
   );
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
@@ -282,28 +282,23 @@ function SidebarGroup({
     }
 
     // Check if any level 1 child is collapsed with an active descendant
-    let collapsedChildWithActive: Element | null = null;
     if (level === 0 && isExpanded) {
       const childGroups = childrenRef.current.querySelectorAll(`.${styles.sidebarGroup}`);
-      childGroups.forEach((childGroup) => {
+      for (const childGroup of childGroups) {
         const header = childGroup.querySelector(`.${styles.sidebarGroupHeader}.${styles.activeHeader}`);
         if (header) {
-          collapsedChildWithActive = header;
+          // If we found a collapsed child with active descendant, show indicator on it
+          const container = childrenRef.current;
+          const containerRect = container.getBoundingClientRect();
+          const headerRect = header.getBoundingClientRect();
+          const topOffset = 0.45 * 16;
+          const top = headerRect.top - containerRect.top + topOffset;
+          const height = headerRect.height - (topOffset * 2);
+
+          setIndicatorStyle({ top, height, opacity: 1 });
+          return;
         }
-      });
-    }
-
-    // If we found a collapsed child with active descendant, show indicator on it
-    if (collapsedChildWithActive) {
-      const container = childrenRef.current;
-      const containerRect = container.getBoundingClientRect();
-      const headerRect = collapsedChildWithActive.getBoundingClientRect();
-      const topOffset = 0.45 * 16;
-      const top = headerRect.top - containerRect.top + topOffset;
-      const height = headerRect.height - (topOffset * 2);
-
-      setIndicatorStyle({ top, height, opacity: 1 });
-      return;
+      }
     }
 
     // Otherwise, show indicator on the active child item
