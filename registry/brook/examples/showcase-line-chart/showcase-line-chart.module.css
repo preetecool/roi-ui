@@ -1,0 +1,53 @@
+.cardContainer {
+    width: 100%;
+    max-width: 600px;
+}
+
+.chartContainer {
+    height: 200px;
+    padding: 0;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-top: 1px solid var(--border);
+    margin: 0 -24px -24px -24px;
+}
+
+.statCard {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.statCard:nth-child(2n) {
+    border-right: none;
+}
+
+.statCard:nth-child(n + 3) {
+    border-bottom: none;
+}
+
+.statHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statLabel {
+    font-size: 14px;
+    color: var(--muted-foreground);
+    font-weight: 500;
+}
+
+.statNumber {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--foreground);
+    line-height: 1;
+}

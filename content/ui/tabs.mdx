@@ -1,0 +1,66 @@
+---
+title: Tabs
+description: A set of layered sections of content that are displayed one at a
+  time.
+links:
+  doc: https://base-ui.com/react/components/tabs
+  api: https://base-ui.com/react/components/tabs#api-reference
+---
+
+<ComponentPreview name="tabs-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/tabs.json
+```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource src="registry/brook/ui/tabs/tabs.tsx" title="components/ui/tabs.tsx" collapsible={true} />
+
+Copy and paste the CSS file:
+
+<ComponentSource
+  src="registry/brook/ui/tabs/tabs.module.css"
+  title="components/ui/tabs.module.css"
+  language="css"
+  collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+  filename="anatomy"
+  language="tsx"
+  code={`<Tabs>
+    <TabsList>
+        <TabsTrigger />
+    </TabsList>
+    <TabsContent />
+</Tabs>
+`}
+/>

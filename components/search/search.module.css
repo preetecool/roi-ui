@@ -3,7 +3,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: var(--muted);
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   border-radius: var(--radius);
   font-size: 0.875rem;
   color: var(--muted-foreground);

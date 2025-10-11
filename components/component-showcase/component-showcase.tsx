@@ -1,14 +1,14 @@
 "use client";
 
-import { ShowcaseCardTask } from "./showcase-card-task/showcase-card-task";
-import { ShowcaseLineChart } from "./showcase-line-chart/showcase-line-chart";
+import { ShowcaseCardTask } from "@/registry/brook/examples/showcase-card-task/showcase-card-task";
+import { ShowcaseLineChart } from "@/registry/brook/examples/showcase-line-chart/showcase-line-chart";
 import { ShowcaseRadialChart } from "./showcase-radial-chart/showcase-radial-chart";
 import { ShowcaseAreaChart } from "./showcase-area-chart/showcase-area-chart";
-import { ShowcaseCardHistory } from "./showcase-card-history/showcase-card-history";
-import { ShowcasePricing } from "./showcase-card-pricing-card/showcase-card-pricing-card";
-import { PlaceholderCardBottom } from "./showcase-card-settings/showcase-card-settings";
-import { ShowcaseChat } from "./showcase-chat/showcase-chat";
-import { ShowcaseShipping } from "./showcase-shipping/showcase-shipping";
+import { ShowcaseCardHistory } from "@/registry/brook/examples/showcase-card-history/showcase-card-history";
+import { ShowcasePricing } from "@/registry/brook/examples/showcase-card-pricing-card/showcase-card-pricing-card";
+import { PlaceholderCardBottom } from "@/registry/brook/examples/showcase-card-settings/showcase-card-settings";
+import { ShowcaseChat } from "@/registry/brook/examples/showcase-chat/showcase-chat";
+import { ShowcaseShipping } from "@/registry/brook/examples/showcase-shipping/showcase-shipping";
 import styles from "./component-showcase.module.css";
 
 export function ComponentShowcase() {

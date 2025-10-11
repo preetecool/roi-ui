@@ -1,0 +1,75 @@
+---
+title: Dialog
+description: A modal dialog component for displaying content in an overlay.
+links:
+    doc: https://base-ui.com/react/components/dialog
+    api: https://base-ui.com/react/components/dialog#api-reference
+---
+
+<ComponentPreview name="dialog-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/dialog.json
+```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/dialog/dialog.tsx"
+    title="components/ui/dialog.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/dialog/dialog.module.css"
+    title="components/ui/dialog.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`<DialogRoot>
+    <DialogTrigger />
+    <DialogContent>
+        <DialogHeader>
+            <DialogTitle />
+            <DialogDescription />
+        </DialogHeader>
+        <DialogFooter>
+            <DialogClose />
+        </DialogFooter>
+    </DialogContent>
+</DialogRoot>
+`} />
+

@@ -1,0 +1,53 @@
+---
+title: Badge
+description: A small status descriptor for UI elements, commonly used for external links and
+  labels.
+---
+
+<ComponentPreview name="badge-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/badge.json
+```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the TSX file:
+
+<ComponentSource src="registry/brook/ui/badge/badge.tsx" title="components/ui/badge.tsx" collapsible={true} />
+
+Copy and paste the CSS file:
+
+<ComponentSource
+  src="registry/brook/ui/badge/badge.module.css"
+  title="components/ui/badge.module.css"
+  language="css"
+  collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock filename="anatomy" language="tsx" code={`<Badge>Badge text</Badge>`} />
+
+## Examples
+
+### Variants
+
+<ComponentPreview name="badge-variants" />

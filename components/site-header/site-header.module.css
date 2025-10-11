@@ -15,8 +15,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 1rem;
-  padding-left: 1rem;
+  padding: 0 1.5rem;
   max-width: 100%;
 }
 
@@ -83,11 +82,11 @@
   .mobileMenuWrapper {
     display: block;
   }
-  
+
   .navLinks {
     display: none !important;
   }
-  
+
   .logoLink {
     display: none;
   }

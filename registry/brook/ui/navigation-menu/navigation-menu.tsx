@@ -1,28 +1,18 @@
 "use client";
 
-import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/brook/ui/button/button";
+import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import styles from "./navigation-menu.module.css";
 
-const NavigationMenuRoot = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Root>) => (
+const NavigationMenuRoot = ({ className, ...props }: React.ComponentProps<typeof NavigationMenu.Root>) => (
   <NavigationMenu.Root className={cn(styles.root, className)} {...props} />
 );
 
-const NavigationMenuList = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.List>) => (
+const NavigationMenuList = ({ className, ...props }: React.ComponentProps<typeof NavigationMenu.List>) => (
   <NavigationMenu.List className={cn(styles.list, className)} {...props} />
 );
 
-const NavigationMenuItem = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Item>) => (
+const NavigationMenuItem = ({ className, ...props }: React.ComponentProps<typeof NavigationMenu.Item>) => (
   <NavigationMenu.Item className={cn(styles.item, className)} {...props} />
 );
 
@@ -35,23 +25,14 @@ const NavigationMenuTrigger = ({
 
 const NavigationMenuPortal = NavigationMenu.Portal;
 
-const NavigationMenuIcon = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Icon>) => (
+const NavigationMenuIcon = ({ className, ...props }: React.ComponentProps<typeof NavigationMenu.Icon>) => (
   <NavigationMenu.Icon className={cn(styles.chevron, className)} {...props} />
 );
 
-const NavigationMenuArrow = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Arrow>) => (
+const NavigationMenuArrow = ({ className, ...props }: React.ComponentProps<typeof NavigationMenu.Arrow>) => (
   <NavigationMenu.Arrow className={cn(styles.arrow, className)} {...props}>
     <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
-      <path
-        d="M8 0L16 8H0L8 0Z"
-        className={styles.arrowFill}
-      />
+      <path d="M8 0L16 8H0L8 0Z" className={styles.arrowFill} />
       <path
         d="M8 0L16 8H0L8 0Z"
         className={styles.arrowOuterStroke}
@@ -82,10 +63,7 @@ const NavigationMenuPopup = ({
     {showArrow && (
       <NavigationMenu.Arrow className={cn(styles.arrow)}>
         <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
-          <path
-            d="M8 0L16 8H0L8 0Z"
-            className={styles.arrowFill}
-          />
+          <path d="M8 0L16 8H0L8 0Z" className={styles.arrowFill} />
           <path
             d="M8 0L0 8"
             className={styles.arrowOuterStroke}
@@ -129,10 +107,7 @@ const NavigationMenuContent = ({
   <NavigationMenu.Content className={cn(styles.content, className)} {...props} />
 );
 
-const NavigationMenuLink = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Link>) => (
+const NavigationMenuLink = ({ className, ...props }: React.ComponentProps<typeof NavigationMenu.Link>) => (
   <NavigationMenu.Link className={cn(styles.link, className)} {...props} />
 );
 
@@ -157,15 +132,15 @@ const NavigationMenuLinkItem = ({
 
 export {
   NavigationMenuRoot as NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
+  NavigationMenuArrow,
   NavigationMenuContent,
-  NavigationMenuViewport,
+  NavigationMenuIcon,
+  NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuLinkItem,
-  NavigationMenuIcon,
-  NavigationMenuArrow,
-  NavigationMenuPositioner,
+  NavigationMenuList,
   NavigationMenuPortal,
+  NavigationMenuPositioner,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
 };

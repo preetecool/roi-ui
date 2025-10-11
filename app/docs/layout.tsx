@@ -11,15 +11,17 @@ export default function DocsLayout({
 }) {
   return (
     <TOCProvider>
-      <div className={styles.docsGrid}>
-        <div className={styles.sidebar}>
-          <DocsSidebar tree={source.pageTree} />
-        </div>
-        <div className={styles.main}>
-          {children}
-        </div>
-        <div className={styles.toc}>
-          <TOCDisplay />
+      <div className={styles.docsWrapper}>
+        <div className={styles.docsGrid}>
+          <div className={styles.sidebar}>
+            <DocsSidebar tree={source.pageTree} />
+          </div>
+          <div className={styles.main}>
+            {children}
+          </div>
+          <div className={styles.toc}>
+            <TOCDisplay />
+          </div>
         </div>
       </div>
     </TOCProvider>

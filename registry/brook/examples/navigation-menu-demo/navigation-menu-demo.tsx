@@ -37,27 +37,29 @@ export default function NavigationMenuDemo() {
               }
             />
             <NavigationMenuContent>
-              <div className={styles.productsGrid}>
-                <NavigationMenuLinkItem href="#" title="Analytics" description="Track your data" />
-                <NavigationMenuLinkItem href="#" title="Insights" description="Get insights" />
-                <NavigationMenuLinkItem href="#" title="Automation" description="Automate workflows" />
-                <NavigationMenuLinkItem href="#" title="Reporting" description="Generate report" />
-              </div>
-              <NavigationMenuLinkItem href="#" className={styles.footerLink}>
-                <div className={styles.footerContent}>
-                  <div className={styles.footerLeft}>
-                    <div className={styles.footerTitle}>Sign up</div>
-                    <div className={styles.footerDescription}>Create an account to access all products.</div>
-                  </div>
-                  <Logo
-                    fillColor="color-mix(in oklch, transparent 85%, var(--foreground))"
-                    strokeColor="color-mix(in oklch, transparent 88%, var(--foreground))"
-                    width={70}
-                    height={70}
-                    className={styles.footerImage}
-                  />
+              <div className={styles.productsLayout}>
+                <div className={styles.productsGrid}>
+                  <NavigationMenuLinkItem href="#" title="Analytics" />
+                  <NavigationMenuLinkItem href="#" title="Insights" />
+                  <NavigationMenuLinkItem href="#" title="Automation" />
+                  <NavigationMenuLinkItem href="#" title="Reporting" />
                 </div>
-              </NavigationMenuLinkItem>
+                <NavigationMenuLinkItem href="#">
+                  <div className={styles.footerContent}>
+                    <Logo
+                      fillColor="color-mix(in oklch, transparent 85%, var(--foreground))"
+                      strokeColor="color-mix(in oklch, transparent 88%, var(--foreground))"
+                      width={70}
+                      height={70}
+                      className={styles.footerImage}
+                    />
+                    <div className={styles.footerTitle}>Sign up</div>
+                    <div className={styles.footerDescription}>
+                      Create an account to access all products.
+                    </div>
+                  </div>
+                </NavigationMenuLinkItem>
+              </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
 
