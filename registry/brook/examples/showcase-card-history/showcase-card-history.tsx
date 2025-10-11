@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardHeader, CardTitle, CardAction, CardContent } from "@/registry/brook/ui/card/card";
 import styles from "./showcase-card-history.module.css";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -37,7 +39,7 @@ const items = [
 
 export function ShowcaseCardHistory() {
   return (
-    <Card style={{ height: "100%", backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}>
+    <Card style={{ height: "100%", width: "100%", maxWidth: "500px", backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}>
       <CardHeader>
         <CardTitle style={{ fontSize: "1.125rem" }}>Transactions</CardTitle>
         <CardAction>

@@ -23,7 +23,11 @@ export function ShowcaseLineChart() {
   return (
     <Card
       className={styles.cardContainer}
-      style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
+      style={{
+        backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
+        maxWidth: "600px",
+        width: "100%"
+      }}
     >
       <CardHeader>
         <CardTitle>Website Traffic</CardTitle>

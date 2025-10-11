@@ -12,6 +12,7 @@ export function ShowcaseCardTask() {
       className={styles.taskCard}
       style={{
         width: "100%",
+        maxWidth: "300px",
         height: "250px",
         backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
       }}

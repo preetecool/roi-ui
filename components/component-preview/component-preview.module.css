@@ -9,6 +9,8 @@
     min-height: 450px;
     display: flex;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
     border-bottom: 1px solid var(--border);
 }
@@ -28,17 +30,9 @@
     justify-content: flex-end;
 }
 
-.chartPreview {
-    height: 400px;
-}
-
 @media (max-width: 640px) {
     .preview {
         padding: 1.5rem;
-    }
-
-    .chartPreview {
-        height: 360px;
     }
 }
 
