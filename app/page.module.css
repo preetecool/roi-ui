@@ -28,12 +28,15 @@
 .heroSection {
     position: relative;
     width: 100%;
+    max-width: 1140px;
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     z-index: 1;
+    margin: 0 auto;
+    padding: 0 32px;
 }
 
 .gradientTransition {
@@ -76,7 +79,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 64px 32px;
+    padding: 64px 0;
     text-align: center;
 }
 

@@ -10,21 +10,25 @@
 
 .tabTrigger {
   position: relative;
+  background-color: transparent;
   -webkit-tap-highlight-color: transparent;
+}
+
+.tabTrigger[data-selected] {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
 }
 
 .tabLabel {
   position: relative;
+  z-index: 1;
 }
 
 .bubble {
   position: absolute;
-  z-index: 0;
+  inset: 0;
   background-color: var(--muted);
-  border-radius: var(--radius);
   border: 1px solid var(--border-light, var(--border));
-  height: calc(100% - 0.5rem);
-  top: 0.25rem;
 }
 
 .contentContainer {
@@ -35,23 +39,18 @@
   border: 1px solid var(--border);
   border-top: none;
   background-color: color-mix(in oklch, var(--card) 33%, var(--background));
-  min-height: 170px;
 }
 
-@media (max-width: 640px) {
-  .contentContainer {
-    min-height: 230px;
-  }
+.contentWrapper {
+  position: relative;
+  width: 100%;
 }
 
 .tabContent {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .heading {
