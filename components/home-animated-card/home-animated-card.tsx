@@ -1,115 +1,96 @@
 "use client";
 
-import { motion } from "motion/react";
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import { useEffect, useState } from "react";
+import useMeasure from "react-use-measure";
+import styles from "./home-animated-card.module.css";
 
 const cardData = {
   title: "Art Brook",
-  description: "Beautiful landscape photography",
+  description: "Beautiful landscapes",
   longDescription: "Discover This stunning landscape captures the essence of tranquility.",
   image: "/art-brook.png",
 };
 
 export const HomeAnimatedCard = () => {
-  const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [cardOpen, setCardOpen] = useState(false);
+  const [ref, bounds] = useMeasure();
 
   useEffect(() => {
     setTimeout(() => {
-      setOpen(true);
-    }, 800);
+      setVisible(true);
+    }, 1000);
+
+    setTimeout(() => {
+      setCardOpen(true);
+    }, 1500);
   }, []);
 
   return (
-    <>
-      {open && (
-        <motion.div
-          layoutId="card"
-          style={{
-            backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
-            borderRadius: "24px",
-            padding: "12px",
-            width: "300px",
-            overflow: "hidden",
-          }}
-        >
-          <motion.img
-            layoutId="image"
-            alt={cardData.title}
-            src={cardData.image}
-            style={{
-              width: "100%",
-              height: "200px",
-              borderRadius: "12px",
-              objectFit: "cover",
-              marginBottom: "12px",
-            }}
-          />
-          <motion.div layout style={{ paddingLeft: "8px" }}>
-            <motion.h2 layoutId="title" style={{ fontSize: "20px", fontWeight: "600" }}>
-              {cardData.title}
-            </motion.h2>
-            <motion.p
-              layoutId="description"
-              style={{ fontSize: "12px", color: "var(--foreground)", opacity: 0.7, marginTop: "4px" }}
-            >
-              {cardData.description}
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              style={{ fontSize: "14px", lineHeight: "1.6", margin: "12px 0" }}
-            >
-              {cardData.longDescription}
-            </motion.p>
-          </motion.div>
-        </motion.div>
-      )}
+    <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
+      <AnimatePresence mode="sync">
+        <motion.div initial={{ rotate: -4 }} className={styles.container} animate={{ height: bounds.height }}>
+          <div ref={ref}>
+            {visible && cardOpen && (
+              <motion.div layoutId="card" className={styles.cardExpanded} style={{ borderRadius: "24px" }}>
+                <motion.img
+                  layoutId="image"
+                  alt={cardData.title}
+                  src={cardData.image}
+                  className={styles.imageExpanded}
+                  style={{ borderRadius: "12px" }}
+                />
+                <motion.div layoutId="text-wrapper" className={styles.wrapperExpanded}>
+                  <motion.h2 layoutId="title" className={styles.titleExpanded}>
+                    {cardData.title}
+                  </motion.h2>
+                  <motion.p
+                    layoutId="description"
+                    className={`${styles.description} ${styles.descriptionExpanded}`}
+                  >
+                    {cardData.description}
+                  </motion.p>
+                  <motion.p
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className={styles.longDescription}
+                  >
+                    {cardData.longDescription}
+                  </motion.p>
+                </motion.div>
+              </motion.div>
+            )}
 
-      {!open && (
-        <motion.div
-          layoutId="card"
-          style={{
-            backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
-            borderRadius: "20px",
-            width: "300px",
-            overflow: "hidden",
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-            padding: "12px",
-          }}
-        >
-          <motion.img
-            layoutId="image"
-            alt={cardData.title}
-            src={cardData.image}
-            style={{
-              width: "60px",
-              height: "60px",
-              borderRadius: "10px",
-            }}
-          />
-          <motion.div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              flex: 1,
-              paddingRight: "12px",
-            }}
-          >
-            <motion.h2 layoutId="title" style={{ fontSize: "14px", fontWeight: "500", margin: 0 }}>
-              {cardData.title}
-            </motion.h2>
-            <motion.p
-              layoutId="description"
-              style={{ fontSize: "14px", color: "var(--foreground)", opacity: 0.6, margin: 0 }}
-            >
-              {cardData.description}
-            </motion.p>
-          </motion.div>
+            {visible && !cardOpen && (
+              <motion.div
+                layoutId="card"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className={styles.cardCollapsed}
+                style={{ borderRadius: "24px" }}
+              >
+                <motion.img
+                  layoutId="image"
+                  alt={cardData.title}
+                  src={cardData.image}
+                  className={styles.imageCollapsed}
+                  style={{ borderRadius: "12px" }}
+                />
+                <motion.div layoutId="text-wrapper" className={styles.wrapperCollapsed}>
+                  <motion.h2 layoutId="title" className={styles.titleCollapsed}>
+                    {cardData.title}
+                  </motion.h2>
+                  <motion.p layoutId="description" className={styles.description}>
+                    {cardData.description}
+                  </motion.p>
+                </motion.div>
+              </motion.div>
+            )}
+          </div>
         </motion.div>
-      )}
-    </>
+      </AnimatePresence>
+    </MotionConfig>
   );
 };

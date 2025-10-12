@@ -5,6 +5,7 @@
   height: var(--header-height);
   width: 100%;
   box-sizing: border-box;
+  background-color: color-mix(in oklch, var(--card) 15%, var(--background));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid oklch(from var(--border) l c h / 0.5);

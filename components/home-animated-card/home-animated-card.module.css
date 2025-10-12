@@ -1,0 +1,74 @@
+.container {
+  width: 300px;
+  min-height: 360px;
+}
+
+.cardExpanded {
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  padding: 12px;
+  width: 300px;
+  overflow: hidden;
+}
+
+.imageExpanded {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.wrapperExpanded {
+  padding-left: 8px;
+}
+
+.titleExpanded {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+.descriptionExpanded {
+  font-size: 14px;
+}
+
+.longDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  color: var(--secondary-foreground);
+}
+
+.cardCollapsed {
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  width: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+}
+
+.imageCollapsed {
+  width: 60px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.wrapperCollapsed {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 12px;
+}
+
+.titleCollapsed {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}

@@ -1,3 +1,52 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background-color: color-mix(in oklab, var(--card) 20%, var(--background) 80%);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--foreground);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.7s forwards;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.badge:hover {
+  background-color: var(--accent);
+}
+
+.badgeArrow {
+  width: 14px;
+  height: 12px;
+  overflow: visible;
+  transition: transform 150ms ease-in-out;
+}
+
+.badgeArrowPoint {
+  transition: all 150ms ease-in;
+  transform: translateX(0);
+}
+
+.badgeArrowShaft {
+  transition: all 150ms ease-in;
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.badge:hover .badgeArrowPoint {
+  transform: translateX(2px);
+}
+
+.badge:hover .badgeArrowShaft {
+  opacity: 1;
+  transform: translateX(-1px);
+}
+
 .h1 {
   font-size: clamp(28px, 4vw + 1rem, 48px);
   font-weight: 600;
