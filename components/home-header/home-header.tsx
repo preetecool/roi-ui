@@ -81,7 +81,7 @@ export const HomeHeader = () => {
       <div className={styles.buttonWrapper}>
         <Button showArrow>Get Started</Button>
         <Button variant="outline" onClick={handleLuckyClick}>
-          I'm feeling lucky
+          I&apos;m feeling lucky
         </Button>
       </div>
     </div>
