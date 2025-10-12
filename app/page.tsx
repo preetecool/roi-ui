@@ -18,8 +18,6 @@ export default function Home() {
         <div
           style={{
             marginTop: "60px",
-            transform: "rotate(-3deg)",
-            transformOrigin: "top left",
           }}
         >
           <HomeAnimatedCard />

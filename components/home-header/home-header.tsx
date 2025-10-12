@@ -26,6 +26,36 @@ const COMPONENTS = [
   "dropdown-menus/dropdown-menu",
 ];
 
+const ArrowPointer = () => {
+  return (
+    <svg
+      viewBox="0 0 14 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={styles.badgeArrow}
+    >
+      <g fillRule="nonzero">
+        <path
+          d="M1 1l4 4-4 4"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
+          className={styles.badgeArrowPoint}
+        />
+        <path
+          d="M1 5h4.8"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+          className={styles.badgeArrowShaft}
+        />
+      </g>
+    </svg>
+  );
+};
+
 export const HomeHeader = () => {
   const [reset, setReset] = useState(0);
   const router = useRouter();
@@ -40,6 +70,10 @@ export const HomeHeader = () => {
 
   return (
     <div key={reset} className={styles.container}>
+      <div className={styles.badge}>
+        <span>Checkout the improved animated tabs component</span>
+        <ArrowPointer />
+      </div>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
           <span key={index} className={styles.wordWrapper}>
