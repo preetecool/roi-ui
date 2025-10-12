@@ -33,15 +33,15 @@ const ArrowPointer = () => {
         <path
           d="M1 1l4 4-4 4"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="butt"
           strokeLinejoin="miter"
           className={styles.badgeArrowPoint}
         />
         <path
-          d="M1 5h4.8"
+          d="M1.5 5h4.8"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="square"
           strokeLinejoin="miter"
           className={styles.badgeArrowShaft}
@@ -54,32 +54,34 @@ const ArrowPointer = () => {
 export const HomeHeader = () => {
   const [reset, setReset] = useState(0);
   const router = useRouter();
-  const HEADING = "Functional, delighful UI components";
+  const HEADING = "Functional & delighful UI components";
   const SUBHEADING =
     "React components built with Base UI primitives and Motion for seamless, accessible interactions";
 
   const handleLuckyClick = () => {
     const randomComponent = COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
-    router.push(`/docs/components/${randomComponent}`);
+    router.push(`/docs/examples/${randomComponent}`);
   };
 
   return (
     <div key={reset} className={styles.container}>
-      <div className={styles.badge} onClick={() => router.push("/docs/components/tabs/tabs")}>
+      <div className={styles.badge} onClick={() => router.push("/docs/examples/tabs/tabs")}>
         <span>New animated tabs component</span>
         <ArrowPointer />
       </div>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span key={index} className={styles.wordWrapper}>
-            <span style={{ "--index": index } as React.CSSProperties}>{word}</span>
-            {index < HEADING.split(" ").length - 1 && <span className={styles.space}> </span>}
+          <span key={index} className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
+            {word}
+            {index < HEADING.split(" ").length - 1 && " "}
           </span>
         ))}
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button showArrow>Get Started</Button>
+        <Button showArrow onClick={() => router.push("/docs/start")}>
+          Get Started
+        </Button>
         <Button variant="outline" onClick={handleLuckyClick}>
           I&apos;m feeling lucky
         </Button>

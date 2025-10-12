@@ -3,8 +3,8 @@
 import { HomeAnimatedCard } from "@/components/home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "@/components/home-animated-dialog/home-animated-dialog";
 import { HomeHeader } from "@/components/home-header/home-header";
-import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [activeCells, setActiveCells] = useState<Map<string, number>>(new Map());
@@ -51,12 +51,40 @@ export default function Home() {
         height: "100%",
         width: "100%",
         position: "relative",
-        paddingTop: "150px",
-        paddingLeft: "max(40px, 5vw)",
-        paddingRight: "max(40px, 5vw)",
+        paddingTop: "clamp(100px, 15vw, 150px)",
+        paddingLeft: "max(24px, 5vw)",
+        paddingRight: "max(24px, 5vw)",
         backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
       }}
     >
+      {/* Noise Filter Definition */}
+      <svg
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <defs>
+          <filter id="noise-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves={4} stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="0.46" />
+              <feFuncG type="linear" slope="0.46" />
+              <feFuncB type="linear" slope="0.46" />
+              <feFuncA type="linear" slope="0.37" />
+            </feComponentTransfer>
+            <feComponentTransfer>
+              <feFuncR type="linear" slope="1.47" intercept="-0.23" />
+              <feFuncG type="linear" slope="1.47" intercept="-0.23" />
+              <feFuncB type="linear" slope="1.47" intercept="-0.23" />
+            </feComponentTransfer>
+          </filter>
+        </defs>
+      </svg>
+
       {/* Animated Grid Lines */}
       <svg
         style={{
@@ -99,8 +127,8 @@ export default function Home() {
         <rect width="100%" height="100%" fill="url(#grid)" mask="url(#fadeMask)" />
       </svg>
 
-      {/* Interactive Grid Cells */}
-      <div
+      {/* Interactive Grid Cells with Noise */}
+      <svg
         style={{
           position: "absolute",
           top: 0,
@@ -118,27 +146,32 @@ export default function Home() {
             const y = row * cellSize;
 
             return (
-              <motion.div
-                key={cellKey}
-                style={{
-                  position: "absolute",
-                  left: x,
-                  top: y,
-                  width: cellSize,
-                  height: cellSize,
-                  backgroundColor: "black",
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.08 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  duration: 0.15,
-                }}
-              />
+              <g key={cellKey}>
+                <defs>
+                  <clipPath id={`clip-${cellKey}`}>
+                    <rect x={x} y={y} width={cellSize} height={cellSize} />
+                  </clipPath>
+                </defs>
+                <motion.rect
+                  x={x}
+                  y={y}
+                  width={cellSize}
+                  height={cellSize}
+                  fill="white"
+                  filter="url(#noise-filter)"
+                  clipPath={`url(#clip-${cellKey})`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.15 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    duration: 0.15,
+                  }}
+                />
+              </g>
             );
           })}
         </AnimatePresence>
-      </div>
+      </svg>
 
       <div style={{ position: "relative", zIndex: 1, maxWidth: "980px", margin: "0 auto" }}>
         <HomeHeader />

@@ -20,6 +20,13 @@
   border: 1px solid var(--border);
   padding: 0.25rem;
   gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
 
 .vertical .list {
@@ -44,6 +51,7 @@
   position: relative;
   margin-right: 0.25rem;
   border: 1px solid transparent;
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {
