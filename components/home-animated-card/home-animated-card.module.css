@@ -1,30 +1,71 @@
-.dialogBox {
-  border-radius: 12px;
-  padding: 1.5rem;
+.container {
   width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  min-height: 360px;
 }
 
-.title {
-  border-bottom: none;
-  font-size: 1.125rem;
-  margin: 0;
-  padding: 0;
+.cardExpanded {
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  padding: 12px;
+  width: 300px;
+  overflow: hidden;
+}
+
+.imageExpanded {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.wrapperExpanded {
+  padding-left: 8px;
+}
+
+.titleExpanded {
+  font-size: 20px;
   font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .description {
-  margin: 0;
-  font-size: 0.925rem;
+  font-size: 12px;
   color: var(--muted-foreground);
-  line-height: 1.5;
+  margin-top: 0px;
+  margin-bottom: 12px;
 }
 
-.actions {
+.longDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  color: var(--secondary-foreground);
+}
+
+.cardCollapsed {
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  width: 300px;
+  overflow: hidden;
   display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  margin-top: 8px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+}
+
+.imageCollapsed {
+  width: 60px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.wrapperCollapsed {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 12px;
+}
+
+.titleCollapsed {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
 }

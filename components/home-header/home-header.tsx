@@ -28,12 +28,7 @@ const COMPONENTS = [
 
 const ArrowPointer = () => {
   return (
-    <svg
-      viewBox="0 0 14 10"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={styles.badgeArrow}
-    >
+    <svg viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.badgeArrow}>
       <g fillRule="nonzero">
         <path
           d="M1 1l4 4-4 4"
@@ -70,8 +65,8 @@ export const HomeHeader = () => {
 
   return (
     <div key={reset} className={styles.container}>
-      <div className={styles.badge}>
-        <span>Checkout the improved animated tabs component</span>
+      <div className={styles.badge} onClick={() => router.push("/docs/components/tabs/tabs")}>
+        <span>New animated tabs component</span>
         <ArrowPointer />
       </div>
       <h1 className={styles.h1}>

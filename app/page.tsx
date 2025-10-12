@@ -1,4 +1,5 @@
 import { HomeAnimatedCard } from "@/components/home-animated-card/home-animated-card";
+import { HomeAnimatedDialog } from "@/components/home-animated-dialog/home-animated-dialog";
 import { HomeHeader } from "@/components/home-header/home-header";
 
 export default function Home() {
@@ -18,9 +19,13 @@ export default function Home() {
         <div
           style={{
             marginTop: "60px",
+            display: "flex",
+            gap: "40px",
+            alignItems: "flex-start",
           }}
         >
           <HomeAnimatedCard />
+          <HomeAnimatedDialog />
         </div>
       </div>
     </div>
