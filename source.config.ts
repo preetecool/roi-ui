@@ -38,6 +38,8 @@ export const docs = defineDocs({
           api: z.string().optional(),
         })
         .optional(),
+      components: z.array(z.string()).optional(),
+      motion: z.boolean().optional(),
     }),
   },
 });

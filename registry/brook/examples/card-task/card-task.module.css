@@ -68,8 +68,8 @@
 
 .destructiveMenuItem:hover,
 .destructiveMenuItem[data-highlighted] {
-  background-color: color-mix(in oklch, var(--destructive) 66%, var(--background));
-  color: var(--destructive-foreground);
+  background-color: color-mix(in oklch, var(--destructive) 66%, var(--background)) !important;
+  color: var(--destructive-foreground) !important;
 }
 
 @media (max-width: 1280px) {

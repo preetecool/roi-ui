@@ -1,13 +1,44 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 
-import { mdxComponents } from "@/mdx-components";
 import { source } from "@/lib/source";
+import { mdxComponents } from "@/mdx-components";
+import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 
 import { TOCUpdater } from "@/components/toc-updater";
 import styles from "./page.module.css";
+
+const ArrowPointer = ({ pointExternal = false }: { pointExternal?: boolean }) => {
+  return (
+    <svg
+      viewBox="0 0 14 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`${styles.arrow} ${pointExternal ? styles.arrowExternal : ""}`}
+    >
+      <g fillRule="nonzero">
+        <path
+          d="M1 1l4 4-4 4"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
+          className={styles.arrowPoint}
+        />
+        <path
+          d="M1 5h4.8"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+          className={styles.arrowShaft}
+        />
+      </g>
+    </svg>
+  );
+};
 
 export const revalidate = false;
 export const dynamic = "force-static";
@@ -72,6 +103,10 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
   // @ts-expect-error - revisit fumadocs types.
   const links = doc.links;
   // @ts-expect-error - revisit fumadocs types.
+  const components = doc.components;
+  // @ts-expect-error - revisit fumadocs types.
+  const motion = doc.motion;
+  // @ts-expect-error - revisit fumadocs types.
   const exportedToc = doc.toc;
 
   const toc = exportedToc;
@@ -83,17 +118,21 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
     next: currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
   };
 
+  // Check if this is an examples page
+  const isExamplesPage = page.url.startsWith("/examples/");
+
   return (
     <>
       <TOCUpdater toc={toc} />
-
 
       <div
         className={styles.pageContent}
         {...(doc.title === "Introduction" && {
           "data-introduction-page": true,
         })}
-        {...((!params.slug || params.slug.length === 0 || (params.slug.length === 1 && params.slug[0] === "start")) && {
+        {...((!params.slug ||
+          params.slug.length === 0 ||
+          (params.slug.length === 1 && params.slug[0] === "start")) && {
           "data-no-gap-page": true,
         })}
       >
@@ -104,17 +143,46 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
             </div>
             {doc.description && <p className={styles.pageDescription}>{doc.description}</p>}
           </div>
-          {links ? (
+          {links || components ? (
             <div className={styles.linksSection}>
-              {links?.doc && (
-                <Button variant="link" size="sm" style={{ paddingLeft: 0 }} showArrow pointExternal>
-                  <Link href={links.doc}>Docs</Link>
-                </Button>
+              {(links?.doc || links?.api) && (
+                <div className={styles.externalLinks}>
+                  {links?.doc && (
+                    <a href={links.doc} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+                      <Badge variant="outline" size="md">
+                        Docs
+                        <ArrowPointer pointExternal />
+                      </Badge>
+                    </a>
+                  )}
+                  {links?.api && (
+                    <a href={links.api} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+                      <Badge variant="outline" size="md">
+                        API Reference
+                        <ArrowPointer pointExternal />
+                      </Badge>
+                    </a>
+                  )}
+                </div>
               )}
-              {links?.api && (
-                <Button variant="link" size="sm" style={{ paddingLeft: 0 }} showArrow pointExternal>
-                  <Link href={links.api}>API Reference</Link>
-                </Button>
+              {components && components.length > 0 && (
+                <div className={styles.componentBadges}>
+                  {components.map((component: string) => (
+                    <Link key={component} href={`/docs/ui/${component}`}>
+                      <Badge variant="secondary" size="md">
+                        {component.charAt(0).toUpperCase() + component.slice(1)}
+                      </Badge>
+                    </Link>
+                  ))}
+                  {motion && (
+                    <a href="https://motion.dev" target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+                      <Badge variant="outline" size="md">
+                        Motion
+                        <ArrowPointer pointExternal />
+                      </Badge>
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           ) : null}

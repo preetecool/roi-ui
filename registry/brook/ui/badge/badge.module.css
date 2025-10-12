@@ -1,125 +1,127 @@
 .badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid;
-    font-weight: 500;
-    width: fit-content;
-    white-space: nowrap;
-    flex-shrink: 0;
-    gap: 0.375rem;
-    transition:
-        color 150ms ease,
-        box-shadow 150ms ease;
-    overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  font-weight: 500;
+  width: fit-content;
+  white-space: nowrap;
+  flex-shrink: 0;
+  gap: 0.375rem;
+  transition:
+    color 150ms ease,
+    box-shadow 150ms ease;
+  overflow: hidden;
 }
 
 .badge svg {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .badge:focus-visible {
-    border-color: var(--ring);
-    box-shadow:
-        0 0 0 3px var(--ring),
-        inset 0 0 0 1px var(--ring);
+  border-color: var(--ring);
+  box-shadow:
+    0 0 0 3px var(--ring),
+    inset 0 0 0 1px var(--ring);
 }
 
 .badge[aria-invalid="true"] {
-    box-shadow: 0 0 0 1px var(--destructive);
-    border-color: var(--destructive);
+  box-shadow: 0 0 0 1px var(--destructive);
+  border-color: var(--destructive);
 }
 
 .default {
-    background-color: var(--foreground);
-    color: var(--primary-foreground);
+  background-color: var(--foreground);
+  color: var(--primary-foreground);
 }
 
 .secondary {
-    border-color: transparent;
-    background-color: color-mix(in oklch, var(--card) 66%, var(--background));
-    color: var(--secondary-foreground);
+  border-color: transparent;
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  color: var(--secondary-foreground);
 }
 .secondary:hover {
-    background-color: var(--accent);
-    cursor: pointer;
+  background-color: var(--card);
+  cursor: pointer;
 }
 
 .destructive {
-    border-color: var(--border);
-    background-color: color-mix(in oklch, var(--card) 66%, var(--background));
-    color: var(--destructive);
+  border-color: var(--border);
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  color: var(--destructive);
 }
 
 .destructive:focus-visible {
-    box-shadow:
-        0 0 0 3px var(--destructive),
-        inset 0 0 0 1px var(--destructive);
+  box-shadow:
+    0 0 0 3px var(--destructive),
+    inset 0 0 0 1px var(--destructive);
 }
 
 .success {
-    border-color: var(--border);
-    background-color: color-mix(in oklch, var(--card) 66%, var(--background));
-    color: var(--success);
+  border-color: var(--border);
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  color: var(--success);
 }
 
 .success:focus-visible {
-    box-shadow:
-        0 0 0 3px var(--success),
-        inset 0 0 0 1px var(--success);
+  box-shadow:
+    0 0 0 3px var(--success),
+    inset 0 0 0 1px var(--success);
 }
 
 .outline {
-    color: var(--foreground);
-    border-color: var(--border);
-    background-color: transparent;
+  color: var(--foreground);
+  border-color: var(--border-dark);
+  background-color: transparent;
+}
+.outline:hover {
+  background-color: var(--card);
 }
 
-/* Icon container */
 .iconContainer {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    flex-shrink: 0;
-    padding: 0.125rem;
-    margin-right: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  padding: 0.125rem;
+  margin-right: 0.25rem;
 }
 
 .defaultIcon {
-    background-color: color-mix(in srgb, var(--foreground) 20%, var(--muted) 80%);
+  background-color: color-mix(in srgb, var(--foreground) 20%, var(--muted) 80%);
 }
 
 .secondaryIcon {
-    background-color: color-mix(in srgb, var(--secondary) 20%, var(--muted) 80%);
+  background-color: color-mix(in srgb, var(--secondary) 20%, var(--muted) 80%);
 }
 
 .destructiveIcon {
-    background-color: color-mix(in srgb, var(--destructive) 20%, var(--muted) 80%);
+  background-color: color-mix(in srgb, var(--destructive) 20%, var(--muted) 80%);
 }
 
 .successIcon {
-    background-color: color-mix(in srgb, var(--success) 20%, var(--muted) 80%);
+  background-color: color-mix(in srgb, var(--success) 20%, var(--muted) 80%);
 }
 
 .outlineIcon {
-    background-color: color-mix(in srgb, var(--foreground) 20%, var(--muted) 80%);
+  background-color: color-mix(in srgb, var(--foreground) 20%, var(--muted) 80%);
 }
 
 .sm {
-    padding: 0.0625rem 0.375rem;
-    font-size: 0.625rem;
-    border-radius: 0.25rem;
+  padding: 0.0625rem 0.375rem;
+  font-size: 0.625rem;
+  border-radius: var(--radius);
 }
 
 .md {
-    padding: 0.125rem 0.5rem;
-    font-size: 0.75rem;
-    border-radius: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: var(--radius);
 }
 
 .lg {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-    border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-lg);
 }
