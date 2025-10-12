@@ -63,7 +63,7 @@ export const HomeAnimatedDialog = () => {
               borderRadius: "var(--radius)",
             }}
             transition={{
-              opacity: { duration: 0.6, delay: 1.5, ease: [0.19, 1, 0.22, 1] },
+              opacity: { duration: 0.6, delay: 1.75, ease: [0.19, 1, 0.22, 1] },
               scale: { duration: 0.2 },
             }}
           >
