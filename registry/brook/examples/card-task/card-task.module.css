@@ -1,0 +1,79 @@
+.taskCard {
+  width: 100%;
+  max-width: 300px;
+  min-height: 260px;
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.badgeContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.divider {
+  width: calc(100% + 3rem);
+  height: 1px;
+  background: var(--border-dark);
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  margin-bottom: -1rem;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.footerLeftGroup {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.footerItem {
+  display: flex;
+  justify-content: flex-center;
+  align-items: center;
+  gap: 4px;
+}
+
+.tomorrowText {
+  color: var(--warning-foreground);
+}
+
+.taskFooter {
+  margin-bottom: -0.5rem;
+}
+
+.taskDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.destructiveMenuItem {
+  color: var(--destructive);
+}
+
+.destructiveMenuItem:hover,
+.destructiveMenuItem[data-highlighted] {
+  background-color: color-mix(in oklch, var(--destructive) 66%, var(--background));
+  color: var(--destructive-foreground);
+}
+
+@media (max-width: 1280px) {
+  .taskCard {
+    min-height: auto;
+  }
+}
