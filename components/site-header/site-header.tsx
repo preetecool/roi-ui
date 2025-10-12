@@ -16,7 +16,7 @@ export function SiteHeader() {
               <MobileNav tree={source.pageTree} />
             </div>
             <Link href="/" className={styles.logoLink}>
-              <Logo width={24} height={24} />
+              <Logo width={24} height={24} fillColor="var(--muted-foreground)" strokeColor="var(--card)" />
             </Link>
           </div>
 

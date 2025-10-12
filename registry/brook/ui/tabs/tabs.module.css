@@ -41,12 +41,9 @@
   color: var(--muted-foreground);
   border: none;
   cursor: pointer;
-  transition: all 150ms ease-in-out;
   position: relative;
-  overflow: hidden;
   margin-right: 0.25rem;
   border: 1px solid transparent;
-  z-index: 1;
 }
 
 @media (max-width: 640px) {
@@ -73,11 +70,6 @@
   background-color: var(--muted);
   color: var(--foreground);
   border: 1px solid var(--border-light, var(--border));
-}
-
-.trigger[data-framer-motion="true"][data-selected] {
-  background-color: transparent !important;
-  border: 1px solid transparent !important;
 }
 
 .vertical .trigger {
@@ -112,23 +104,12 @@
   display: block;
 }
 
-.trigger {
-  transform: translateZ(0);
-}
-
-.trigger[data-selected]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--background) 0%, var(--accent) 100%);
-  opacity: 0.1;
-}
-
 .indicator {
   position: absolute;
   background-color: var(--primary);
   border-radius: var(--radius);
   transition: all 150ms ease-in-out;
+  background-color: red;
 
   left: var(--active-tab-left);
   top: calc(var(--active-tab-top) + var(--active-tab-height) - 3px);

@@ -1,181 +1,147 @@
 "use client";
 
-import { Tabs, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import { Button } from "@/registry/brook/ui/button/button";
-import { motion } from "motion/react";
-import { useState, useRef, useEffect } from "react";
+import { Tabs, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+import useMeasure from "react-use-measure";
 import styles from "./tabs-motion.module.css";
 
 const tabs = [
-  { id: "account", label: "Account" },
-  { id: "password", label: "Password" },
-  { id: "team", label: "Team" },
-  { id: "billing", label: "Billing" },
+  {
+    id: "account",
+    label: "Account",
+    heading: "Account Settings",
+    description: "Make changes to your account here. Click save when you're done.",
+    buttons: [
+      { label: "Save Changes", variant: "primary" as const },
+      { label: "Cancel", variant: "outline" as const },
+    ],
+  },
+  {
+    id: "password",
+    label: "Password",
+    heading: "Password",
+    description: "Change your password here. After saving, you'll be logged out.",
+    buttons: [
+      { label: "Update Password", variant: "primary" as const },
+      { label: "Cancel", variant: "outline" as const },
+    ],
+  },
+  {
+    id: "team",
+    label: "Team",
+    heading: "Team Management",
+    description:
+      "Invite and manage your team members. Set permissions, roles, and access levels for each team member.",
+    buttons: [
+      { label: "Invite Member", variant: "primary" as const },
+      { label: "Manage Roles", variant: "outline" as const },
+    ],
+  },
+  {
+    id: "billing",
+    label: "Billing",
+    heading: "Billing",
+    description: "View your billing information and payment methods.",
+    buttons: [
+      { label: "Save Changes", variant: "primary" as const },
+      { label: "Cancel", variant: "outline" as const },
+    ],
+  },
 ];
 
-const bubbleVariants = {
-  animate: (bubbleStyle: { left: number; width: number }) => ({
-    left: bubbleStyle.left,
-    width: bubbleStyle.width,
-  }),
-};
-
-const bubbleTransition = {
-  type: "spring" as const,
-  bounce: 0.2,
-  duration: 0.6,
-};
-
 const contentVariants = {
-  active: { x: 0, opacity: 1, filter: "blur(0px)" },
-  inactive: (direction: number) => ({
-    x: direction > 0 ? 100 : -100,
-    opacity: 0,
-    filter: "blur(4px)",
-  }),
+  initial: (direction: number) => {
+    return { x: `${110 * direction}%`, opacity: 0, filter: "blur(4px)" };
+  },
+  active: { x: "0%", opacity: 1, filter: "blur(0px)" },
+  exit: (direction: number) => {
+    return { x: `${-110 * direction}%`, opacity: 0, filter: "blur(4px)" };
+  },
 };
 
 const contentTransition = {
   type: "spring" as const,
   bounce: 0.1,
   duration: 0.5,
-  opacity: { duration: 0.3 },
-  filter: { duration: 0.3 },
 };
 
 export default function TabsFramerMotion() {
   const [activeTab, setActiveTab] = useState("account");
-  const [bubbleStyle, setBubbleStyle] = useState({ left: 0, width: 0 });
-  const tabRefs = useRef<(HTMLElement | null)[]>([]);
+  const [direction, setDirection] = useState(0);
+  const [ref, bounds] = useMeasure();
 
-  useEffect(() => {
-    const activeIndex = tabs.findIndex((tab) => tab.id === activeTab);
-    const activeTabElement = tabRefs.current[activeIndex];
+  const handleTabChange = (newTab: string) => {
+    const currentIndex = tabs.findIndex((t) => t.id === activeTab);
+    const newIndex = tabs.findIndex((t) => t.id === newTab);
+    setDirection(newIndex > currentIndex ? 1 : -1);
+    setActiveTab(newTab);
+  };
 
-    if (activeTabElement) {
-      const { offsetLeft, offsetWidth } = activeTabElement;
-      setBubbleStyle({ left: offsetLeft, width: offsetWidth });
-    }
-  }, [activeTab]);
+  const activeTabData = tabs.find((tab) => tab.id === activeTab);
 
   return (
     <div className={styles.container}>
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
+      <Tabs value={activeTab} onValueChange={handleTabChange}>
         <TabsList className={styles.tabsList}>
-          {tabs.map((tab, index) => (
+          {tabs.map((tab) => (
             <TabsTrigger
               key={tab.id}
               value={tab.id}
               data-framer-motion="true"
-              ref={(el) => {
-                tabRefs.current[index] = el as HTMLElement;
-              }}
               className={styles.tabTrigger}
+              tabIndex={0}
             >
+              {activeTab === tab.id && (
+                <motion.span
+                  layoutId="bubble"
+                  className={styles.bubble}
+                  style={{ borderRadius: "var(--radius)", zIndex: 0 }}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                />
+              )}
               <span className={styles.tabLabel}>{tab.label}</span>
             </TabsTrigger>
           ))}
-          <motion.span
-            className={styles.bubble}
-            variants={bubbleVariants}
-            animate="animate"
-            custom={bubbleStyle}
-            transition={bubbleTransition}
-          />
         </TabsList>
 
-        <div className={styles.contentContainer}>
-          {tabs.map((tab, index) => {
-            const isActive = activeTab === tab.id;
-            const currentIndex = tabs.findIndex((t) => t.id === activeTab);
-
-            return (
-              <motion.div
-                key={tab.id}
-                initial={false}
-                variants={contentVariants}
-                animate={isActive ? "active" : "inactive"}
-                custom={index > currentIndex ? 1 : -1}
-                transition={contentTransition}
-                className={styles.tabContent}
-                style={{ pointerEvents: isActive ? "auto" : "none" }}
-              >
-                {tab.id === "account" && (
-                  <>
-                    <div>
-                      <h3 className={styles.heading}>
-                        Account Settings
-                      </h3>
-                      <p className={styles.description}>
-                        Make changes to your account here. Click save when you&apos;re done.
-                      </p>
-                    </div>
-                    <div className={styles.buttonGroup}>
-                      <Button size="sm">Save Changes</Button>
-                      <Button variant="outline" size="sm">
-                        Cancel
+        <motion.div
+          className={styles.contentContainer}
+          initial={{ height: "auto" }}
+          animate={{ height: bounds.height }}
+          transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+        >
+          <div ref={ref} className={styles.contentWrapper}>
+            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+              {activeTabData && (
+                <motion.div
+                  key={activeTab}
+                  variants={contentVariants}
+                  initial="initial"
+                  animate="active"
+                  exit="exit"
+                  custom={direction}
+                  transition={contentTransition}
+                  className={styles.tabContent}
+                  style={{ padding: "1.5rem" }}
+                >
+                  <div>
+                    <h3 className={styles.heading}>{activeTabData.heading}</h3>
+                    <p className={styles.description}>{activeTabData.description}</p>
+                  </div>
+                  <div className={styles.buttonGroup}>
+                    {activeTabData.buttons.map((button, btnIndex) => (
+                      <Button key={btnIndex} variant={button.variant} size="sm">
+                        {button.label}
                       </Button>
-                    </div>
-                  </>
-                )}
-                {tab.id === "password" && (
-                  <>
-                    <div>
-                      <h3 className={styles.heading}>
-                        Password
-                      </h3>
-                      <p className={styles.description}>
-                        Change your password here. After saving, you&apos;ll be logged out.
-                      </p>
-                    </div>
-                    <div className={styles.buttonGroup}>
-                      <Button size="sm">Update Password</Button>
-                      <Button variant="outline" size="sm">
-                        Cancel
-                      </Button>
-                    </div>
-                  </>
-                )}
-                {tab.id === "team" && (
-                  <>
-                    <div>
-                      <h3 className={styles.heading}>
-                        Team Management
-                      </h3>
-                      <p className={styles.description}>
-                        Invite and manage your team members here.
-                      </p>
-                    </div>
-                    <div className={styles.buttonGroup}>
-                      <Button size="sm">Invite Member</Button>
-                      <Button variant="outline" size="sm">
-                        Manage Roles
-                      </Button>
-                    </div>
-                  </>
-                )}
-                {tab.id === "billing" && (
-                  <>
-                    <div>
-                      <h3 className={styles.heading}>
-                        Billing
-                      </h3>
-                      <p className={styles.description}>
-                        View your billing information and payment methods.
-                      </p>
-                    </div>
-                    <div className={styles.buttonGroup}>
-                      <Button size="sm">Save Changes</Button>
-                      <Button variant="outline" size="sm">
-                        Cancel
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </Tabs>
     </div>
   );

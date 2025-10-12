@@ -55,7 +55,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                   <Logo width={24} height={24} />
                 </Link>
                 <button
-                  className={styles.collapseButton}
+                  className={`${styles.collapseButton} hit-area-extend`}
                   aria-label="Collapse sidebar"
                   onClick={() => setIsCollapsed(!isCollapsed)}
                 >
@@ -116,14 +116,14 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
       <div className={styles.collapsedButtons}>
         <div className={styles.collapsedButtonsInner}>
           <button
-            className={styles.collapsedButton}
+            className={`${styles.collapsedButton} hit-area-extend`}
             aria-label="Toggle sidebar"
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
             <PanelRight size={18} className={styles.collapseIcon} />
           </button>
           <button
-            className={styles.collapsedButton}
+            className={`${styles.collapsedButton} hit-area-extend`}
             aria-label="Search"
           >
             <svg

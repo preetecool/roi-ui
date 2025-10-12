@@ -1,13 +1,13 @@
 .header {
-  background-color: var(--background);
   position: fixed;
   top: 0;
   z-index: 100;
   height: var(--header-height);
   width: 100%;
   box-sizing: border-box;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid oklch(from var(--border) l c h / 0.5);
 }
 
 .container {
@@ -16,7 +16,9 @@
   justify-content: space-between;
   height: 100%;
   padding: 0 1.5rem;
-  max-width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .nav {

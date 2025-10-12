@@ -1,0 +1,65 @@
+.h1 {
+  font-size: clamp(28px, 4vw + 1rem, 48px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  overflow: hidden;
+}
+
+.wordWrapper {
+  display: inline;
+}
+
+.wordWrapper > span:first-child {
+  display: inline-block;
+  animation: reveal 1.3s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+  animation-delay: calc(0.03s * var(--index));
+}
+
+.space {
+  display: inline;
+  white-space: pre;
+}
+
+.container {
+  text-align: left;
+}
+
+.subheading {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+  margin-top: 16px;
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.5s forwards;
+}
+
+.buttonWrapper {
+  margin-top: 24px;
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.6s forwards;
+  display: flex;
+  gap: 12px;
+}
+
+@keyframes reveal {
+  from {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
