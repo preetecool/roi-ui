@@ -51,9 +51,9 @@ export default function Home() {
         height: "100%",
         width: "100%",
         position: "relative",
-        paddingTop: "150px",
-        paddingLeft: "max(40px, 5vw)",
-        paddingRight: "max(40px, 5vw)",
+        paddingTop: "clamp(100px, 15vw, 150px)",
+        paddingLeft: "max(24px, 5vw)",
+        paddingRight: "max(24px, 5vw)",
         backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
       }}
     >

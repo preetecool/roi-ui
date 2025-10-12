@@ -54,7 +54,7 @@ const ArrowPointer = () => {
 export const HomeHeader = () => {
   const [reset, setReset] = useState(0);
   const router = useRouter();
-  const HEADING = "Functional, delighful UI components";
+  const HEADING = "Functional & delighful UI components";
   const SUBHEADING =
     "React components built with Base UI primitives and Motion for seamless, accessible interactions";
 
@@ -71,15 +71,17 @@ export const HomeHeader = () => {
       </div>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span key={index} className={styles.wordWrapper}>
-            <span style={{ "--index": index } as React.CSSProperties}>{word}</span>
-            {index < HEADING.split(" ").length - 1 && <span className={styles.space}> </span>}
+          <span key={index} className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
+            {word}
+            {index < HEADING.split(" ").length - 1 && " "}
           </span>
         ))}
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button showArrow onClick={() => router.push("/docs/start")}>Get Started</Button>
+        <Button showArrow onClick={() => router.push("/docs/start")}>
+          Get Started
+        </Button>
         <Button variant="outline" onClick={handleLuckyClick}>
           I&apos;m feeling lucky
         </Button>
