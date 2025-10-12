@@ -33,15 +33,15 @@ const ArrowPointer = () => {
         <path
           d="M1 1l4 4-4 4"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="butt"
           strokeLinejoin="miter"
           className={styles.badgeArrowPoint}
         />
         <path
-          d="M1 5h4.8"
+          d="M1.5 5h4.8"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="square"
           strokeLinejoin="miter"
           className={styles.badgeArrowShaft}

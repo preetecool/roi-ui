@@ -33,12 +33,12 @@ export const HomeAnimatedDialog = () => {
     // Dialog auto-open
     const clickTimer = setTimeout(() => {
       setTriggerClicked(true);
-    }, 2500);
+    }, 2700);
 
     const openTimer = setTimeout(() => {
       setDialogOpen(true);
       setTriggerClicked(false);
-    }, 2700);
+    }, 2900);
 
     return () => {
       clearTimeout(clickTimer);
@@ -47,7 +47,15 @@ export const HomeAnimatedDialog = () => {
   }, []);
 
   return (
-    <div style={{ transform: "rotate(4deg)", transformOrigin: "top left" }}>
+    <motion.div
+      style={{ transformOrigin: "top left" }}
+      initial={{ rotate: 4, y: 40, opacity: 0 }}
+      animate={{ rotate: 4, y: 0, opacity: 1 }}
+      transition={{
+        y: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
+        opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 }
+      }}
+    >
       {!dialogOpen && (
         <AnimatePresence>
           <motion.div
@@ -63,7 +71,7 @@ export const HomeAnimatedDialog = () => {
               borderRadius: "var(--radius)",
             }}
             transition={{
-              opacity: { duration: 0.6, delay: 1.75, ease: [0.19, 1, 0.22, 1] },
+              opacity: { duration: 0.6, delay: 0, ease: [0.19, 1, 0.22, 1] },
               scale: { duration: 0.2 },
             }}
           >
@@ -120,6 +128,6 @@ export const HomeAnimatedDialog = () => {
           </motion.div>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
