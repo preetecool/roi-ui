@@ -23,7 +23,7 @@
 
 .titleExpanded {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 4px;
 }
 
@@ -32,6 +32,9 @@
   color: var(--muted-foreground);
   margin-top: 0px;
   margin-bottom: 12px;
+}
+.descriptionExpanded {
+  font-size: 14px;
 }
 
 .longDescription {

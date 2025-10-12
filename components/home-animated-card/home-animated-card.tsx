@@ -29,7 +29,7 @@ export const HomeAnimatedCard = () => {
 
   return (
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
-      <AnimatePresence>
+      <AnimatePresence mode="sync">
         <motion.div initial={{ rotate: -4 }} className={styles.container} animate={{ height: bounds.height }}>
           <div ref={ref}>
             {visible && cardOpen && (
@@ -45,7 +45,10 @@ export const HomeAnimatedCard = () => {
                   <motion.h2 layoutId="title" className={styles.titleExpanded}>
                     {cardData.title}
                   </motion.h2>
-                  <motion.p layoutId="description" className={styles.description}>
+                  <motion.p
+                    layoutId="description"
+                    className={`${styles.description} ${styles.descriptionExpanded}`}
+                  >
                     {cardData.description}
                   </motion.p>
                   <motion.p

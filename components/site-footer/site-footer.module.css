@@ -1,7 +1,7 @@
 .footer {
   margin-top: 4rem;
   padding: 2rem 1rem;
-  background-color: var(--background);
+  background-color: color-mix(in oklch, var(--card) 15%, var(--background));
 }
 
 @media (max-width: 640px) {
