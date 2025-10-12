@@ -8,7 +8,7 @@ import styles from "./home-animated-card.module.css";
 const cardData = {
   title: "Art Brook",
   description: "Beautiful landscapes",
-  longDescription: "Discover This stunning landscape captures the essence of tranquility.",
+  longDescription: "Discover this stunning landscape capturing the essence of tranquility.",
   image: "/art-brook.png",
 };
 
