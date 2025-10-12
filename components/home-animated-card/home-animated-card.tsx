@@ -44,13 +44,13 @@ export const HomeAnimatedCard = () => {
               marginBottom: "12px",
             }}
           />
-          <div>
-            <motion.h2 layoutId="title" style={{ fontSize: "20px", fontWeight: "600", marginBottom: "2px" }}>
+          <motion.div layout style={{ paddingLeft: "8px" }}>
+            <motion.h2 layoutId="title" style={{ fontSize: "20px", fontWeight: "600" }}>
               {cardData.title}
             </motion.h2>
             <motion.p
               layoutId="description"
-              style={{ fontSize: "12px", color: "var(--foreground)", opacity: 0.7 }}
+              style={{ fontSize: "12px", color: "var(--foreground)", opacity: 0.7, marginTop: "4px" }}
             >
               {cardData.description}
             </motion.p>
@@ -58,11 +58,11 @@ export const HomeAnimatedCard = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              style={{ fontSize: "14px", lineHeight: "1.6", marginTop: "12px" }}
+              style={{ fontSize: "14px", lineHeight: "1.6", margin: "12px 0" }}
             >
               {cardData.longDescription}
             </motion.p>
-          </div>
+          </motion.div>
         </motion.div>
       )}
 
