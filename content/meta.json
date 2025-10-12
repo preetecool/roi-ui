@@ -1,4 +1,4 @@
 {
   "title": "roi-ui",
-  "pages": ["(root)", "ui", "components"]
+  "pages": ["(root)", "ui", "examples"]
 }

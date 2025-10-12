@@ -60,12 +60,12 @@ export const HomeHeader = () => {
 
   const handleLuckyClick = () => {
     const randomComponent = COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
-    router.push(`/docs/components/${randomComponent}`);
+    router.push(`/docs/examples/${randomComponent}`);
   };
 
   return (
     <div key={reset} className={styles.container}>
-      <div className={styles.badge} onClick={() => router.push("/docs/components/tabs/tabs")}>
+      <div className={styles.badge} onClick={() => router.push("/docs/examples/tabs/tabs")}>
         <span>New animated tabs component</span>
         <ArrowPointer />
       </div>
