@@ -8,7 +8,7 @@ import styles from "./home-animated-dialog.module.css";
 const popupVariants = {
   hidden: {
     opacity: 0,
-    scale: 0.95,
+    scale: 0.8,
   },
   visible: {
     opacity: 1,
@@ -17,9 +17,12 @@ const popupVariants = {
 };
 
 const popupTransition = {
-  duration: 0.4,
-  ease: [0.19, 1, 0.22, 1] as const,
-  layout: { duration: 0.4, ease: [0.19, 1, 0.22, 1] as const },
+  duration: 0.2,
+  layout: { duration: 0.2 },
+};
+
+const buttonTransition = {
+  duration: 0.2,
 };
 
 export const HomeAnimatedDialog = () => {
@@ -47,7 +50,7 @@ export const HomeAnimatedDialog = () => {
     <div style={{ transform: "rotate(4deg)", transformOrigin: "top left" }}>
       {!dialogOpen && (
         <motion.div
-          layoutId="dialog-container"
+          layoutId="container"
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
@@ -63,7 +66,7 @@ export const HomeAnimatedDialog = () => {
             backgroundColor: { duration: 0.2 },
           }}
         >
-          <motion.div layoutId="button-content">
+          <motion.div layoutId="button">
             <Button variant="outline" size="sm">
               Button
             </Button>
@@ -74,7 +77,7 @@ export const HomeAnimatedDialog = () => {
       <AnimatePresence>
         {dialogOpen && (
           <motion.div
-            layoutId="dialog-container"
+            layoutId="container"
             className={styles.dialogBox}
             style={{
               backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
@@ -91,7 +94,7 @@ export const HomeAnimatedDialog = () => {
               I just wanted to let you know that making this component was fun.{" "}
             </p>
             <div className={styles.actions}>
-              <motion.div layoutId="button-content" transition={popupTransition}>
+              <motion.div layoutId="button" transition={buttonTransition}>
                 <Button variant="outline" size="sm">
                   Button
                 </Button>

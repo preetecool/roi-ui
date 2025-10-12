@@ -79,7 +79,7 @@ export const HomeHeader = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button showArrow>Get Started</Button>
+        <Button showArrow onClick={() => router.push("/docs/start")}>Get Started</Button>
         <Button variant="outline" onClick={handleLuckyClick}>
           I&apos;m feeling lucky
         </Button>
