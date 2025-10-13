@@ -76,7 +76,7 @@
   padding: 0 1.5rem 3rem 24px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--muted-foreground) transparent;
+  scrollbar-color: color-mix(in oklch, var(--card) 50%, var(--background)) transparent;
 }
 
 .sidebarContent::-webkit-scrollbar {
@@ -88,12 +88,12 @@
 }
 
 .sidebarContent::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
+  background: color-mix(in oklch, var(--card) 50%, var(--background));
   border-radius: 2px;
 }
 
 .sidebarContent::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
+  background: color-mix(in oklch, var(--card) 66%, var(--background));
 }
 
 .sidebarNav {

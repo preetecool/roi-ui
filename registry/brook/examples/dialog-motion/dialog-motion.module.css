@@ -1,47 +1,52 @@
-.overlay {
-    position: fixed;
-    inset: 0;
-    background-color: var(--dialog-overlay);
-    z-index: var(--dialog-z);
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 400;
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.925rem;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .popup {
-    position: fixed;
-    inset: 50%;
-    margin-top: -100px;
-    margin-left: -200px;
-    border-radius: 8px;
-    padding: 1.5rem;
-    width: 400px;
-    height: 200px;
-    background-color: var(--card);
-    z-index: 101;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  border: 1px solid var(--border-dark);
 }
 
 .title {
-    border-bottom: none;
-    font-size: 1.125rem;
-    margin: 0;
-    padding: 0;
+  border-bottom: none;
+  font-size: 1.125rem;
+  margin: 0;
+  padding: 0;
 }
 
 .description {
-    margin: 0;
+  margin: 0;
 }
 
 .actions {
-    display: flex;
-    gap: 16px;
-    justify-content: flex-end;
-}
-
-@media (max-width: 640px) {
-    .popup {
-        width: calc(100vw - 2rem);
-        margin-left: calc(-50vw + 1rem);
-    }
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
 }

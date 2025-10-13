@@ -2,6 +2,7 @@
 import { Button } from "@/registry/brook/ui/button/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
@@ -65,10 +66,10 @@ export const HomeHeader = () => {
 
   return (
     <div key={reset} className={styles.container}>
-      <div className={styles.badge} onClick={() => router.push("/docs/examples/tabs/tabs")}>
+      <Link href="/docs/examples/tabs/tabs" className={styles.badge}>
         <span>New animated tabs component</span>
         <ArrowPointer />
-      </div>
+      </Link>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
           <span key={index} className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>

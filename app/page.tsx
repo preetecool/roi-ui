@@ -3,31 +3,34 @@
 import { HomeAnimatedCard } from "@/components/home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "@/components/home-animated-dialog/home-animated-dialog";
 import { HomeHeader } from "@/components/home-header/home-header";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [activeCells, setActiveCells] = useState<Map<string, number>>(new Map());
   const cellSize = 100;
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const col = Math.floor(e.clientX / cellSize);
-      const row = Math.floor(e.clientY / cellSize);
-      const cellKey = `${row}-${col}`;
+  const SPRING = {
+    mass: 0.1,
+  };
 
-      setActiveCells((prev) => {
-        const newMap = new Map(prev);
-        newMap.set(cellKey, Date.now());
-        return newMap;
-      });
-    };
+  const springX = useSpring(0, SPRING);
+  const springY = useSpring(0, SPRING);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  useMotionValueEvent(springX, "change", (x) => {
+    const y = springY.get();
+    const col = Math.floor(x / cellSize);
+    const row = Math.floor(y / cellSize);
+    const cellKey = `${row}-${col}`;
 
-  // Clean up old cells
+    setActiveCells((prev) => {
+      if (prev.has(cellKey)) return prev;
+      const newMap = new Map(prev);
+      newMap.set(cellKey, Date.now());
+      return newMap;
+    });
+  });
+
   useEffect(() => {
     const interval = setInterval(() => {
       const now = Date.now();
@@ -47,6 +50,10 @@ export default function Home() {
 
   return (
     <div
+      onPointerMove={(e) => {
+        springX.set(e.clientX);
+        springY.set(e.clientY);
+      }}
       style={{
         height: "100%",
         width: "100%",
@@ -57,7 +64,6 @@ export default function Home() {
         backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
       }}
     >
-      {/* Noise Filter Definition */}
       <svg
         style={{
           position: "absolute",
@@ -68,7 +74,20 @@ export default function Home() {
       >
         <defs>
           <filter id="noise-filter">
-            <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves={4} stitchTiles="stitch" />
+            <motion.feTurbulence
+              type="fractalNoise"
+              baseFrequency="1.2"
+              numOctaves={4}
+              stitchTiles="stitch"
+              initial={{ baseFrequency: 1.2 }}
+              animate={{ baseFrequency: 1.4 }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
             <feColorMatrix type="saturate" values="0" />
             <feComponentTransfer>
               <feFuncR type="linear" slope="0.46" />
@@ -161,11 +180,8 @@ export default function Home() {
                   filter="url(#noise-filter)"
                   clipPath={`url(#clip-${cellKey})`}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.15 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 0.15,
-                  }}
+                  animate={{ opacity: 0.5, transition: { duration: 0.2 } }}
+                  exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeOut" } }}
                 />
               </g>
             );

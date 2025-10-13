@@ -90,7 +90,7 @@ export const HomeAnimatedDialog = () => {
           className={styles.dialogBox}
           style={{
             backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
-            border: "1px solid var(--border)",
+            boxShadow: "0 .753698px .452219px -.583333px #0000000f, 0 1.927px 1.1562px -1.16667px #0000000d, 0 3.86321px 2.31793px -1.75px #0000000d, 0 7.32331px 4.39398px -2.33333px #0000000d, 0 14.5565px 8.73393px -2.91667px #0000000a, 0 32px 19.2px -3.5px #00000005",
           }}
           variants={popupVariants}
           initial="hidden"

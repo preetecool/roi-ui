@@ -1,310 +1,309 @@
 .grid {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    padding: 24px;
-    z-index: 101;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  z-index: 101;
 }
 
 .cardButton {
-    all: unset;
-    cursor: pointer;
-    border-radius: var(--radius);
+  all: unset;
+  cursor: pointer;
+  border-radius: var(--radius);
 }
 
 .cardButton:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
-    box-shadow:
-        var(--shadow-md),
-        0 0 0 4px var(--ring);
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 4px var(--ring);
 }
 
 .card {
-    background: color-mix(in oklch, var(--card) 33%, var(--background));
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 320px;
-    max-width: 320px;
+  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  max-width: 320px;
 }
 
 .imageContainer {
-    height: 320px;
-    overflow: hidden;
-    border-radius: var(--radius) var(--radius) 0 0;
+  height: 320px;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .image {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .modal .image {
-    height: 600px;
-    width: 600px;
-    object-fit: contain;
+  height: 600px;
+  width: 600px;
+  object-fit: contain;
 }
 
 .expandIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted-foreground);
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    margin-left: auto;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-dark);
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .cardButton:hover .expandIcon {
-    color: var(--foreground);
-    background-color: var(--muted);
-    transition: 200ms ease-out;
+  color: var(--foreground);
+  background-color: var(--muted);
+  transition: 200ms ease-out;
 }
 
 .contentContainer {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    width: 100%;
-    height: auto;
-    gap: 24px;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  height: auto;
+  gap: 24px;
+  text-align: left;
 }
 
 .contentContainerOpen {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    height: auto;
-    gap: 36px;
-    text-align: left;
-    padding-top: 28px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  gap: 24px;
+  text-align: left;
+  padding-top: 28px !important;
 }
 
 .contentContainerModal {
-    max-width: 600px;
-    margin: 0 auto;
-    padding-top: 28px;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 28px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  width: 100%;
 }
 
 .cardHeadingSmall {
-    font-size: var(--font-size-2xl);
-    font-weight: 600;
-    color: var(--title);
-    margin: 0 !important;
-    letter-spacing: -0.025em !important;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    display: block;
-    font-family: inherit;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--title);
+  margin: 0 !important;
+  letter-spacing: -0.025em !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: block;
+  font-family: inherit;
 }
 
 .cardHeadingLarge {
-    font-size: var(--font-size-3xl) !important;
-    font-weight: 600;
-    color: var(--title);
-    margin: 0 !important;
-    letter-spacing: -0.025em !important   ;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    display: block;
-    font-family: inherit;
-    text-align: left;
+  font-size: var(--font-size-3xl) !important;
+  font-weight: 600;
+  color: var(--title);
+  margin: 0 !important;
+  letter-spacing: -0.025em !important   ;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: block;
+  font-family: inherit;
+  text-align: left;
 }
 
 .overlay {
-    position: fixed;
-    inset: 0;
-    background-color: var(--background);
-    z-index: 100;
+  position: fixed;
+  inset: 0;
+  background-color: var(--background);
+  z-index: 100;
 }
 
 .modal {
-    position: fixed;
-    inset: 8vh 0 0 0;
-    z-index: 102;
-    cursor: pointer;
-    outline: none;
-    max-width: 900px;
-    margin-inline: auto;
-    background: color-mix(in oklch, var(--card) 33%, var(--background));
-    padding-block: 1em 2em;
-    border-radius: var(--radius-lg);
+  position: fixed;
+  inset: 8vh 0 0 0;
+  z-index: 102;
+  cursor: pointer;
+  outline: none;
+  max-width: 900px;
+  margin-inline: auto;
+  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  padding-block: 1em 2em;
 }
 
 .modalContent {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: default;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-bottom: 8vh;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 8vh;
 }
 
 .contentInner {
-    font-weight: 400;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .closeButton {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    padding: 0;
-    z-index: 104;
-    background: transparent;
-    color: var(--muted-foreground);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-dark);
+  padding: 0;
+  z-index: 104;
+  background: transparent;
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .closeButton:hover {
-    color: var(--foreground);
-    background-color: var(--muted);
-    transition: 200ms ease-out;
+  color: var(--foreground);
+  background-color: var(--muted);
+  transition: 200ms ease-out;
 }
 
 .modalScrollArea {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    max-height: none !important;
-    mask-image: linear-gradient(
-        to bottom,
-        transparent 0,
-        var(--card) calc(8vh / 2),
-        var(--background) 8vh,
-        black calc(100% - 8vh),
-        rgba(0, 0, 0, 0.2) calc(100% - 8vh / 2),
-        transparent 100%
-    );
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    var(--card) calc(8vh / 2),
+    var(--background) 8vh,
+    black calc(100% - 8vh),
+    rgba(0, 0, 0, 0.2) calc(100% - 8vh / 2),
+    transparent 100%
+  );
 }
 
 .modalScrollViewport {
-    border: none !important;
-    outline: none !important;
-    border-radius: 0 !important;
-    -webkit-overflow-scrolling: touch;
-    overflow: auto;
-    touch-action: pan-y;
-    overscroll-behavior: contain;
+  border: none !important;
+  outline: none !important;
+  border-radius: 0 !important;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
 }
 
 .modalScrollContent {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .contentInner p {
-    padding-bottom: 12px;
+  padding-bottom: 12px;
 }
 
 @media (max-width: 768px) {
-    .grid {
-        gap: 16px;
-        padding: 16px;
-    }
+  .grid {
+    gap: 16px;
+    padding: 16px;
+  }
 
-    .imageContainer {
-        width: 100%;
-    }
+  .imageContainer {
+    width: 100%;
+  }
 
-    .modal {
-        padding: 16px;
-    }
+  .modal {
+    padding: 16px;
+  }
 
-    .modalContent {
-        max-height: 95vh;
-    }
+  .modalContent {
+    max-height: 95vh;
+  }
 
-    .modalContent .imageContainer {
-        height: 280px;
-        width: 280px;
-        align-self: flex-start;
-    }
+  .modalContent .imageContainer {
+    height: 280px;
+    width: 280px;
+    align-self: flex-start;
+  }
 
-    .modal .image {
-        width: 320px;
-        height: 320px;
-    }
+  .modal .image {
+    width: 320px;
+    height: 320px;
+  }
 
-    .contentContainer {
-        padding: 16px;
-    }
-    .card {
-        width: 100%;
-    }
+  .contentContainer {
+    padding: 16px;
+  }
+  .card {
+    width: 100%;
+  }
 
-    .contentInner p {
-        font-size: calc(1rem - 2px);
-        max-width: 90%;
-    }
+  .contentInner p {
+    font-size: calc(1rem - 2px);
+    max-width: 90%;
+  }
 
-    .contentContainerOpen {
-        gap: 24px;
-    }
+  .contentContainerOpen {
+    gap: 24px;
+  }
 }
 
 @media (max-width: 490px) {
-    .grid {
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-    }
+  .grid {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
 
-    .imageContainer {
-        width: 100%;
-        height: 100%;
-    }
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+  }
 
-    .closeButton {
-        width: 32px;
-        height: 32px;
-    }
+  .closeButton {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .card,
-    .image,
-    .closeButton {
-        transition: none;
-        animation: none;
-    }
+  .card,
+  .image,
+  .closeButton {
+    transition: none;
+    animation: none;
+  }
 }
 
 @media (prefers-contrast: high) {
-    .card {
-        border-width: 2px;
-    }
+  .card {
+    border-width: 2px;
+  }
 
-    .closeButton {
-        background: var(--foreground);
-        border: 2px solid var(--background);
-        color: var(--background);
-    }
+  .closeButton {
+    background: var(--foreground);
+    border: 2px solid var(--background);
+    color: var(--background);
+  }
 }
