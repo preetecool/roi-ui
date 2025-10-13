@@ -15,7 +15,6 @@ export function PlaceholderCardBottom() {
       style={{
         height: "100%",
         justifyContent: "space-evenly",
-        backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
       }}
     >
       <CardHeader>

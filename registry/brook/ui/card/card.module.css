@@ -6,7 +6,7 @@
   gap: 1.5rem;
   padding: 1.5rem;
 
-  background-color: var(--card);
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   border: 1px solid var(--border);
   position: relative;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 .cardLift .content {
   padding: 1.5rem 0;
   transition: transform 0.4s ease;
-  background-color: var(--card);
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   width: calc(100% + 3rem);
   margin-left: -1.5rem;
   margin-right: -1.5rem;
@@ -92,7 +92,7 @@
   opacity: 0;
   transition:
     opacity 0.3s ease,
-    transform 0.4s ease;
+    transform 0.3s ease;
   position: absolute;
   bottom: 0px;
   left: 24px;

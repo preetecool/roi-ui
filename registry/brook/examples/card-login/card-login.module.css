@@ -1,6 +1,5 @@
 .card {
   width: 400px;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background)) !important;
 }
 
 .cardTitle {

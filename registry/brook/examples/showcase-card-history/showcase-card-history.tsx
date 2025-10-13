@@ -39,7 +39,7 @@ const items = [
 
 export function ShowcaseCardHistory() {
   return (
-    <Card style={{ height: "100%", width: "100%", maxWidth: "500px", backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}>
+    <Card style={{ height: "100%", width: "100%", maxWidth: "500px" }}>
       <CardHeader>
         <CardTitle style={{ fontSize: "1.125rem" }}>Transactions</CardTitle>
         <CardAction>
