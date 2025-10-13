@@ -95,6 +95,7 @@ export function CardTask() {
             <div className={styles.footerLeftGroup}>
               <div className={styles.footerItem}>
                 <Users size="14" />
+
                 <span>2</span>
               </div>
               <div className={styles.footerItem}>
