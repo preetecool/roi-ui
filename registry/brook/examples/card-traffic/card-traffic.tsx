@@ -3,7 +3,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/registry/brook/ui/card/card";
 import LineChart from "@/registry/brook/ui/charts/line-chart";
 import { Badge } from "@/registry/brook/ui/badge/badge";
-import styles from "./showcase-line-chart.module.css";
+import styles from "./card-traffic.module.css";
 import { trafficData } from "./data";
 
 const formatDate = (value: unknown) => {
@@ -19,7 +19,7 @@ const formatDate = (value: unknown) => {
   });
 };
 
-export function ShowcaseLineChart() {
+export function CardTraffic() {
   return (
     <Card
       className={styles.cardContainer}

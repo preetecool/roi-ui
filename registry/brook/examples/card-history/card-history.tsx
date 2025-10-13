@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardAction, CardContent } from "@/registry/brook/ui/card/card";
-import styles from "./showcase-card-history.module.css";
+import styles from "./card-history.module.css";
 import { Button } from "@/registry/brook/ui/button/button";
 
 const items = [
@@ -37,7 +37,7 @@ const items = [
   },
 ];
 
-export function ShowcaseCardHistory() {
+export function CardHistory() {
   return (
     <Card style={{ height: "100%", width: "100%", maxWidth: "500px" }}>
       <CardHeader>

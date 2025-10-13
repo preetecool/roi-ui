@@ -5,9 +5,9 @@ import { Truck, Phone, MessageCircle } from "lucide-react";
 import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 
-import styles from "./showcase-shipping.module.css";
+import styles from "./shipping.module.css";
 
-export function ShowcaseShipping() {
+export function Shipping() {
   const shipmentData = {
     id: "SHP-1312023",
     driver: "John Doe",
