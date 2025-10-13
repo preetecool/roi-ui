@@ -33,6 +33,30 @@
     border-bottom: none;
 }
 
+@media (max-width: 400px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .statCard {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .statCard:nth-child(2n) {
+        border-right: none;
+    }
+
+    .statCard:nth-child(n + 3) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .statCard:last-child {
+        border-bottom: none;
+    }
+}
+
 .statHeader {
     display: flex;
     justify-content: space-between;
