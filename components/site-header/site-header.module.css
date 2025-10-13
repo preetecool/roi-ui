@@ -10,6 +10,13 @@
   padding: 0 max(24px, 5vw);
 }
 
+@media (max-width: 1023px) {
+  .header {
+    top: 0 !important;
+    padding: 0 24px;
+  }
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -83,6 +90,10 @@
   display: none;
 }
 
+.desktopOnly {
+  display: block;
+}
+
 @media (max-width: 1023px) {
   .mobileMenuWrapper {
     display: block;
@@ -92,7 +103,7 @@
     display: none !important;
   }
 
-  .logoLink {
-    display: none;
+  .desktopOnly {
+    display: none !important;
   }
 }

@@ -9,6 +9,12 @@
   --docs-heading: oklch(0.9 0 0);
 }
 
+@media (max-width: 1023px) {
+  :root {
+    --header-height: 52px;
+  }
+}
+
 [data-theme="light"] {
   --docs-heading: oklch(0.2 0 0);
 }

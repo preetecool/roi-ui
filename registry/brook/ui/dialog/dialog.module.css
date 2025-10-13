@@ -1,149 +1,142 @@
 .overlay {
-    position: fixed;
-    inset: 0;
-    z-index: var(--dialog-z);
-    background-color: var(--dialog-overlay);
-    opacity: 1;
-    transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: fixed;
+  inset: 0;
+  z-index: var(--dialog-z);
+  background-color: var(--dialog-overlay);
+  opacity: 1;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .overlay[data-starting-style],
 .overlay[data-ending-style] {
-    opacity: 0;
+  opacity: 0;
 }
 
 .content {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    z-index: 101;
-    display: grid;
-    width: 100%;
-    max-width: 32rem;
-    max-height: 85vh;
-    overflow-y: auto;
-    gap: 1rem;
-    border: 1px solid var(--border);
-    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    transition:
-        opacity 200ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 200ms ease-out;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 101;
+  display: grid;
+  width: 100%;
+
+  overflow-y: auto;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955),
+    transform 200ms ease-out;
 }
 
 .content[data-starting-style],
 .content[data-ending-style] {
-    opacity: 0;
-    transform: translate(-50%, -54%) scale(0.96);
+  opacity: 0;
+  transform: translate(-50%, -54%) scale(0.96);
 }
 
 .close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    border-radius: 0.25rem;
-    opacity: 0.7;
-    background: transparent;
-    border: none;
-    padding: 0.25rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border-radius: 0.25rem;
+  opacity: 0.7;
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .close:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .close:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .close svg {
-    width: 1rem;
-    height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
 
 .header h2 {
-    margin: 0;
+  margin: 0;
 }
 
 .header p {
-    margin: 0;
+  margin: 0;
 }
 
 .footer {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
 }
 
 .footer > :last-child {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 @media (min-width: 640px) {
-    .footer {
-        flex-direction: row;
-        justify-content: flex-end;
-    }
+  .footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 
-    .footer > :last-child {
-        margin-top: 0;
-    }
+  .footer > :last-child {
+    margin-top: 0;
+  }
 }
 
 .title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.025em;
-    color: var(--title);
-    margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--title);
+  margin: 0;
 }
 
 .description {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-    margin: 0;
-    line-height: 1.5;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.5;
 }
 
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 @media (max-width: 640px) {
-    .content {
-        width: calc(100vw - 2rem);
-        max-width: none;
-        left: 50%;
-        top: 50%;
-    }
-
-    .content:not([hidden]) {
-        transform: translate(-50%, -50%) scale(1);
-    }
+  .content {
+    width: calc(100vw - 2rem);
+    max-width: none;
+  }
 }
