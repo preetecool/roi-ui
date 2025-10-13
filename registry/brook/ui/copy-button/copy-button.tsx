@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Check, Copy } from "lucide-react";
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { useState } from "react";
 import styles from "./copy-button.module.css";
 
 interface CopyButtonProps {
@@ -18,7 +18,7 @@ export function CopyButton({ code, className }: CopyButtonProps) {
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 800);
     } catch (error) {
       console.error("Failed to copy code:", error);
     }
@@ -27,35 +27,35 @@ export function CopyButton({ code, className }: CopyButtonProps) {
   const isHeaderButton = className?.includes("header-copy-button");
 
   return (
-    <button
-      onClick={handleCopy}
-      className={cn(styles.root, isHeaderButton && styles.header, className)}
-    >
-      <AnimatePresence mode="wait">
-        {copied ? (
-          <motion.div
-            key="check"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: 180 }}
-            transition={{ duration: 0.2 }}
-            className={styles.iconContainer}
-          >
-            <Check size={14} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="copy"
-            initial={{ scale: 0, rotate: 180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: -180 }}
-            transition={{ duration: 0.2 }}
-            className={styles.iconContainer}
-          >
-            <Copy size={14} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </button>
+    <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
+      <motion.button
+        onClick={handleCopy}
+        className={cn(styles.root, isHeaderButton && styles.header, className)}
+      >
+        <AnimatePresence mode="popLayout">
+          {copied ? (
+            <motion.div
+              key="check"
+              initial={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
+              animate={{ scale: 1, rotate: 0, filter: "blur(0px)" }}
+              exit={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
+              className={styles.iconContainer}
+            >
+              <Check size={14} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="copy"
+              initial={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
+              animate={{ scale: 1, rotate: 0, filter: "blur(0px)" }}
+              exit={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
+              className={styles.iconContainer}
+            >
+              <Copy size={14} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
+    </MotionConfig>
   );
 }
