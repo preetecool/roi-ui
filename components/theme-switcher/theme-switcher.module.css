@@ -10,6 +10,9 @@
     transition: all 0.2s ease;
     border: none;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .button:hover {

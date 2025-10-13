@@ -9,6 +9,11 @@
   --docs-heading: oklch(0.9 0 0);
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 @media (max-width: 1023px) {
   :root {
     --header-height: 52px;
@@ -19,7 +24,6 @@
   --docs-heading: oklch(0.2 0 0);
 }
 
-/* Special margin for TSX file copy instruction - targets paragraph immediately before ComponentSource wrapper with TSX */
 p:has(+ div .container[data-tsx="true"]) {
   margin-top: 48px;
   margin-bottom: 16px;

@@ -8,6 +8,9 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0 max(24px, 5vw);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 @media (max-width: 1023px) {
@@ -31,18 +34,22 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  height: 100%;
 }
 
 .logoLink {
   text-decoration: none;
   display: flex;
   align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .navLinks {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  height: 100%;
 }
 
 .navLink {
@@ -50,12 +57,15 @@
   font-weight: 400;
   text-decoration: none;
   color: var(--secondary-foreground);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .actions {
   display: flex;
   align-items: center;
   gap: 1rem;
+  height: 100%;
 }
 
 .githubLink {
@@ -68,6 +78,8 @@
   color: var(--muted-foreground);
   text-decoration: none;
   transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .githubLink:hover {
@@ -78,6 +90,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  height: 100%;
 }
 
 .separator {
@@ -91,7 +104,8 @@
 }
 
 .desktopOnly {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 1023px) {

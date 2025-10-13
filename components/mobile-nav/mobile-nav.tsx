@@ -10,6 +10,7 @@ import {
 } from "@/registry/brook/ui/dialog/dialog";
 import type { PageTree } from "fumadocs-core/server";
 import { X } from "lucide-react";
+import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import styles from "./mobile-nav.module.css";
@@ -29,12 +30,14 @@ interface MobileNavProps {
 export function MobileNav({ tree }: MobileNavProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <DialogRoot>
+    <DialogRoot open={open} onOpenChange={setOpen}>
       <DialogTrigger
         className={`${styles.menuButton} ${styles.mobileOnly}`}
         aria-label="Toggle navigation menu"
+        data-open={open}
       >
         <div className={styles.menuButtonInner}>
           <span className={styles.menuLine}></span>
