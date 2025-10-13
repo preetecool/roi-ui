@@ -57,7 +57,12 @@ export default function CardLoginDemo() {
           </Field>
 
           <Field>
-            <FieldLabel className={styles.fieldLabel}>Password</FieldLabel>
+            <div className={styles.passwordLabelRow}>
+              <FieldLabel className={styles.fieldLabel}>Password</FieldLabel>
+              <button type="button" className={styles.forgotPassword}>
+                Forgot password?
+              </button>
+            </div>
             <FieldControl
               type="password"
               placeholder="Enter your password"
@@ -67,23 +72,18 @@ export default function CardLoginDemo() {
             {errors.password && <FieldError>{errors.password}</FieldError>}
           </Field>
 
-          <div className={styles.rememberForgotRow}>
-            <label className={styles.checkboxLabel}>
-              <Checkbox checked={rememberMe} onCheckedChange={(checked) => setRememberMe(checked === true)}>
-                <CheckboxIndicator>
-                  <Check size={16} strokeWidth={3} />
-                </CheckboxIndicator>
-              </Checkbox>
-              <span>Remember me</span>
-            </label>
-            <button type="button" className={styles.forgotPassword}>
-              Forgot password?
-            </button>
-          </div>
+          <label className={styles.checkboxLabel}>
+            <Checkbox checked={rememberMe} onCheckedChange={(checked) => setRememberMe(checked === true)}>
+              <CheckboxIndicator>
+                <Check size={16} strokeWidth={3} />
+              </CheckboxIndicator>
+            </Checkbox>
+            <span>Remember me</span>
+          </label>
         </form>
       </CardContent>
       <CardFooter className={styles.footer}>
-        <Button onClick={handleSubmit} className={styles.button}>
+        <Button size="lg" onClick={handleSubmit} className={styles.button}>
           Sign In
         </Button>
       </CardFooter>
