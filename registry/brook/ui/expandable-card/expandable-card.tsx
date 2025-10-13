@@ -1,16 +1,16 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { X, Plus } from "lucide-react";
-import styles from "./expandable-card.module.css";
+import { Plus, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
   ScrollArea,
-  ScrollAreaViewport,
   ScrollAreaContent,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
+  ScrollAreaViewport,
 } from "../scroll-area/scroll-area";
+import styles from "./expandable-card.module.css";
 
 interface ExpandableCardItem {
   id: string | number;
@@ -36,7 +36,7 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
         onClick={onClose}
       />
 
-      <motion.div className={styles.modal} layoutId={`card-${item.id}`}>
+      <motion.div className={styles.modal} layoutId={`card-${item.id}`} style={{ borderRadius: "24px" }}>
         <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
           <X width={16} height={16} strokeWidth={2.5} />
         </button>
@@ -51,12 +51,11 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
                     alt={`Character ${item.id}`}
                     width={600}
                     height={600}
+                    style={{ borderRadius: "12px" }}
                   />
                 </motion.div>
 
-                <motion.div
-                  className={`${styles.contentContainerOpen} ${styles.contentContainerModal}`}
-                >
+                <motion.div className={`${styles.contentContainerOpen} ${styles.contentContainerModal}`}>
                   <motion.div layoutId={`heading-container-${item.id}`} className={styles.headingContainer}>
                     <motion.h3 className={styles.cardHeadingLarge}>{item.cardHeading}</motion.h3>
                   </motion.div>
@@ -161,7 +160,12 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
               aria-label={`View details for ${item.cardHeading}`}
               onClick={() => setSelectedId(item.id)}
             >
-              <motion.div className={styles.card} layoutId={`card-${item.id}`} initial={false}>
+              <motion.div
+                className={styles.card}
+                layoutId={`card-${item.id}`}
+                initial={false}
+                style={{ borderRadius: "24px" }}
+              >
                 <motion.div layoutId={`image-${item.id}`} className={styles.imageContainer} initial={false}>
                   <Image src={item.src} className={styles.image} alt={item.alt} width={600} height={600} />
                 </motion.div>
@@ -187,7 +191,9 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
       </div>
 
       <AnimatePresence>
-        {selectedItem && <ExpandableCardModal key="modal" item={selectedItem} onClose={() => setSelectedId(null)} />}
+        {selectedItem && (
+          <ExpandableCardModal key="modal" item={selectedItem} onClose={() => setSelectedId(null)} />
+        )}
       </AnimatePresence>
     </div>
   );

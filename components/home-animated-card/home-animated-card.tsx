@@ -6,9 +6,9 @@ import useMeasure from "react-use-measure";
 import styles from "./home-animated-card.module.css";
 
 const cardData = {
-  title: "Art Brook",
-  description: "Beautiful landscapes",
-  longDescription: "Discover this stunning landscape capturing the essence of tranquility.",
+  title: "Luna",
+  description: "Beautiful Nights",
+  longDescription: "Gazing at the moon capturing the essence of tranquility.",
   image: "/art-brook.png",
 };
 
@@ -20,7 +20,7 @@ export const HomeAnimatedCard = () => {
   useEffect(() => {
     setTimeout(() => {
       setVisible(true);
-    }, 200);
+    }, 0);
 
     setTimeout(() => {
       setCardOpen(true);
@@ -29,14 +29,14 @@ export const HomeAnimatedCard = () => {
 
   return (
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
-      <AnimatePresence mode="sync">
+      <AnimatePresence>
         <motion.div
-          initial={{ rotate: -4, y: 20, opacity: 0 }}
+          initial={{ rotate: -4, y: 40, opacity: 0 }}
           animate={{ height: bounds.height, y: 0, opacity: 1 }}
           transition={{
             height: { duration: 0.4, type: "spring", bounce: 0 },
-            y: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 },
-            opacity: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.2 }
+            y: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0 },
+            opacity: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0 },
           }}
           className={styles.container}
         >
