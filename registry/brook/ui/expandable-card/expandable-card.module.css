@@ -12,10 +12,12 @@
   all: unset;
   cursor: pointer;
   border-radius: var(--radius);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cardButton:focus-visible {
   outline: 2px solid var(--ring);
+  border-radius: 32px;
   outline-offset: 2px;
   box-shadow:
     var(--shadow-md),
@@ -32,6 +34,7 @@
   align-items: center;
   width: 320px;
   max-width: 320px;
+  overflow: hidden;
 }
 
 .imageContainer {
@@ -190,16 +193,16 @@
 }
 
 .modalScrollArea {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
   mask-image: linear-gradient(
     to bottom,
     transparent 0,
     var(--card) calc(8vh / 2),
     var(--background) 8vh,
-    black calc(100% - 8vh),
+    black calc(100% - 6vh),
     rgba(0, 0, 0, 0.2) calc(100% - 8vh / 2),
     transparent 100%
   );
@@ -241,31 +244,51 @@
     max-height: 95vh;
   }
 
-  .modalContent .imageContainer {
-    height: 280px;
-    width: 280px;
-    align-self: flex-start;
-  }
-
-  .modal .image {
-    width: 320px;
-    height: 320px;
-  }
-
   .contentContainer {
     padding: 16px;
   }
+
   .card {
     width: 100%;
   }
 
   .contentInner p {
     font-size: calc(1rem - 2px);
-    max-width: 90%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .contentContainerOpen {
     gap: 24px;
+  }
+
+  .contentContainerModal {
+    max-width: calc(100vw - 32px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .contentInner {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 640px) {
+  .modal .image {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .modalContent .imageContainer {
+    max-width: calc(100vw - 32px);
+    height: auto;
+  }
+
+  .contentContainerModal {
+    max-width: calc(100vw - 32px);
   }
 }
 
