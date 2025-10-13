@@ -118,9 +118,6 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
     next: currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
   };
 
-  // Check if this is an examples page
-  const isExamplesPage = page.url.startsWith("/examples/");
-
   return (
     <>
       <TOCUpdater toc={toc} />
@@ -148,7 +145,12 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
               {(links?.doc || links?.api) && (
                 <div className={styles.externalLinks}>
                   {links?.doc && (
-                    <a href={links.doc} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+                    <a
+                      href={links.doc}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.externalLink}
+                    >
                       <Badge variant="outline" size="md">
                         Docs
                         <ArrowPointer pointExternal />
@@ -156,7 +158,12 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                     </a>
                   )}
                   {links?.api && (
-                    <a href={links.api} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+                    <a
+                      href={links.api}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.externalLink}
+                    >
                       <Badge variant="outline" size="md">
                         API Reference
                         <ArrowPointer pointExternal />
@@ -175,7 +182,12 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                     </Link>
                   ))}
                   {motion && (
-                    <a href="https://motion.dev" target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
+                    <a
+                      href="https://motion.dev"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.externalLink}
+                    >
                       <Badge variant="outline" size="md">
                         Motion
                         <ArrowPointer pointExternal />
