@@ -36,10 +36,20 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
         onClick={onClose}
       />
 
-      <motion.div className={styles.modal} layoutId={`card-${item.id}`} style={{ borderRadius: "24px" }}>
-        <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
-          <X width={16} height={16} strokeWidth={2.5} />
-        </button>
+      <motion.div className={styles.modal} layoutId={`card-${item.id}`} style={{ borderRadius: "32px" }}>
+        <motion.button
+          initial={{ opacity: 0, scale: 0.9, x: -40 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          exit={{ opacity: 0, scale: 0.9, x: -40 }}
+          transition={{
+            duration: 0.25,
+          }}
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          <X width={16} height={16} strokeWidth={2} />
+        </motion.button>
         <ScrollArea className={styles.modalScrollArea}>
           <ScrollAreaViewport className={styles.modalScrollViewport}>
             <ScrollAreaContent className={styles.modalScrollContent}>
@@ -51,7 +61,7 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
                     alt={`Character ${item.id}`}
                     width={600}
                     height={600}
-                    style={{ borderRadius: "12px" }}
+                    style={{ borderRadius: "16px" }}
                   />
                 </motion.div>
 
@@ -62,16 +72,18 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
 
                   <motion.div
                     className={styles.contentInner}
-                    initial={{ opacity: 0.8 }}
+                    initial={{ opacity: 0, y: 100, scale: 0.9 }}
                     animate={{
                       opacity: 1,
+                      y: 0,
+                      scale: 1,
                     }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, y: 50, scale: 0.9 }}
                     transition={{
                       duration: 0.2,
                     }}
                   >
-                    <motion.div>{item.content}</motion.div>
+                    <motion.div layout>{item.content}</motion.div>
                   </motion.div>
                 </motion.div>
               </div>
@@ -166,8 +178,15 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
                 initial={false}
                 style={{ borderRadius: "24px" }}
               >
-                <motion.div layoutId={`image-${item.id}`} className={styles.imageContainer} initial={false}>
-                  <Image src={item.src} className={styles.image} alt={item.alt} width={600} height={600} />
+                <motion.div layoutId={`image-${item.id}`} className={styles.imageContainer}>
+                  <Image
+                    src={item.src}
+                    className={styles.image}
+                    alt={item.alt}
+                    width={600}
+                    height={600}
+                    style={{ borderRadius: "12px" }}
+                  />
                 </motion.div>
 
                 <motion.div className={styles.contentContainer} initial={false}>
@@ -180,9 +199,9 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
                       {item.cardHeading}
                     </motion.h3>
                   </motion.div>
-                  <div className={styles.expandIcon}>
-                    <Plus width={21} height={21} strokeWidth={2.5} />
-                  </div>
+                  <motion.div layout className={styles.expandIcon}>
+                    <Plus width={21} height={21} strokeWidth={2} />
+                  </motion.div>
                 </motion.div>
               </motion.div>
             </button>

@@ -13,9 +13,9 @@ import { Button } from "@/registry/brook/ui/button/button";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Logo } from "@/components/logo";
 import { Check } from "lucide-react";
-import styles from "./showcase-card-pricing-card.module.css";
+import styles from "./card-pricing-card.module.css";
 
-export function ShowcasePricing() {
+export function CardPricingCard() {
   return (
     <div className={styles.container}>
       <Card

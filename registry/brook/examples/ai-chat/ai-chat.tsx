@@ -1,24 +1,24 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
+import { useState } from "react";
 
+import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
+import { Form, FormControl, FormField } from "@/registry/brook/ui/form/form";
 import {
   Select,
   SelectIcon,
   SelectItem,
-  SelectItemText,
   SelectItemIndicator,
+  SelectItemText,
   SelectPopup,
   SelectPortal,
   SelectPositioner,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
-import { Card, CardFooter, CardContent } from "@/registry/brook/ui/card/card";
-import { Form, FormField, FormControl } from "@/registry/brook/ui/form/form";
-import { Paperclip, Zap, Lightbulb, WandSparkles, GraduationCap, AudioLines, ArrowUp } from "lucide-react";
-import styles from "./showcase-chat.module.css";
+import { ArrowUp, AudioLines, GraduationCap, Lightbulb, Paperclip, WandSparkles, Zap } from "lucide-react";
+import styles from "./ai-chat.module.css";
 
 const aiModes = [
   { value: "creative", label: "Creative", icon: WandSparkles },
@@ -27,16 +27,13 @@ const aiModes = [
   { value: "teach", label: "Teach", icon: GraduationCap },
 ];
 
-export function ShowcaseChat() {
+export function AiChat() {
   const [inputValue, setInputValue] = useState("");
   const [selectedItem, setSelectedItem] = useState<string>(aiModes[0].value);
 
   return (
     <Form className={styles.form}>
-      <Card
-        className={styles.card}
-        style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
-      >
+      <Card className={styles.card}>
         <CardContent>
           <FormField className={styles.field}>
             <FormControl
@@ -58,7 +55,7 @@ export function ShowcaseChat() {
               variant="outline"
               className={styles.iconButton}
               type="button"
-              style={{ width: "32px", height: "32px" }}
+              style={{ width: "32px", height: "32px", borderRadius: "50%" }}
             >
               <Paperclip size={14} />
             </Button>
@@ -106,9 +103,10 @@ export function ShowcaseChat() {
             size="icon"
             variant="outline"
             type="submit"
-            style={{ padding: "8px", borderRadius: "50%", width: "36px", height: "36px" }}
+            className={styles.iconButton}
+            style={{ borderRadius: "50%", width: "36px", height: "36px" }}
           >
-            {inputValue.trim() ? <ArrowUp size={20} /> : <AudioLines size={20} />}
+            {inputValue.trim() ? <ArrowUp size={16} /> : <AudioLines size={16} />}
           </Button>
         </CardFooter>
       </Card>

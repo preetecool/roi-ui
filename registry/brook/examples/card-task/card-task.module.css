@@ -1,7 +1,6 @@
 .taskCard {
   width: 100%;
   max-width: 300px;
-  min-height: 260px;
   gap: 1rem;
   padding: 16px;
 }
@@ -20,11 +19,11 @@
 }
 
 .divider {
-  width: calc(100% + 2rem);
+  width: calc(100% + 32px);
   height: 1px;
   background: var(--border-dark);
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin-left: -16px;
+  margin-right: -16px;
   margin-top: auto;
 }
 
@@ -48,7 +47,6 @@
   align-items: center;
   gap: 4px;
 }
-
 .tomorrowText {
   color: var(--warning-foreground);
 }
@@ -56,7 +54,6 @@
 .taskFooter {
   margin-top: 0;
   margin-bottom: 0;
-  padding: 0;
 }
 
 .taskDropdown {
@@ -65,12 +62,12 @@
   gap: 0.25rem;
 }
 
-.destructiveMenuItem {
+.taskDropdown .destructiveMenuItem {
   color: var(--destructive);
 }
 
-.destructiveMenuItem:hover,
-.destructiveMenuItem[data-highlighted] {
+.taskDropdown .destructiveMenuItem:hover,
+.taskDropdown .destructiveMenuItem[data-highlighted] {
   background-color: color-mix(in oklch, var(--destructive) 66%, var(--background)) !important;
   color: var(--destructive-foreground) !important;
 }

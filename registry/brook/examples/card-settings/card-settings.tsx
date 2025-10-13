@@ -5,7 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/reg
 import { Switch, SwitchThumb } from "@/registry/brook/ui/switch/switch";
 import { Field, FieldLabel, FieldDescription } from "@/registry/brook/ui/field/field";
 
-export function PlaceholderCardBottom() {
+export function CardSettings() {
   const [notifications, setNotifications] = useState(true);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(true);

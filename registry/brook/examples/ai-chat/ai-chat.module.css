@@ -1,0 +1,77 @@
+.card {
+  padding: 0.75rem !important;
+  gap: 0.75rem;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  min-width: 0;
+  flex: 1;
+  border-radius: var(--radius-lg) !important;
+  border-color: var(--border-dark) !important;
+}
+
+.form {
+  width: 100%;
+}
+
+.iconButton {
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.iconButton:first-child svg {
+  transform: rotate(-45deg);
+}
+
+.field textarea {
+  background-color: transparent;
+  border: none;
+  padding: 0.25rem;
+  resize: none;
+  min-height: 2.5rem;
+  height: auto;
+  outline: none !important;
+}
+
+.footer {
+  gap: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconLabel {
+  display: "flex";
+  gap: 0.5rem;
+}
+
+.triggerContent {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.popup {
+  padding: 0.25rem;
+  width: 144px;
+  min-width: 144px;
+  max-width: 144px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1280px) {
+  .form {
+    height: 100%;
+  }
+
+  .card {
+    height: 100%;
+  }
+
+  .field textarea {
+    min-height: 4rem;
+    height: 100%;
+    padding: 0.5rem;
+  }
+}

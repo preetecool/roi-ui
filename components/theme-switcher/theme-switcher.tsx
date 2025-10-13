@@ -13,7 +13,7 @@ export function ThemeSwitcher() {
       className={styles.button}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
-      <SunMoon size={18} />
+      <SunMoon size={20} />
     </button>
   );
 }

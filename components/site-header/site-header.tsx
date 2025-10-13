@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import type { PageTree } from "fumadocs-core/server";
+import { useEffect, useState } from "react";
 import { Logo } from "../logo";
 import { MobileNav } from "../mobile-nav/mobile-nav";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
@@ -13,9 +14,18 @@ interface SiteHeaderProps {
 }
 
 export function SiteHeader({ pageTree }: SiteHeaderProps) {
+  const [isMobile, setIsMobile] = useState(false);
   const { scrollY } = useScroll();
-  const top = useTransform(scrollY, [0, 100], [30, 0]);
-  const borderOpacity = useTransform(scrollY, [0, 50], [0, 1]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const top = useTransform(scrollY, [0, 100], isMobile ? [0, 0] : [30, 0]);
+  const borderOpacity = useTransform(scrollY, [0, 50], isMobile ? [1, 1] : [0, 1]);
 
   return (
     <motion.header
@@ -45,9 +55,6 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
         >
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
-              <div className={styles.mobileMenuWrapper}>
-                <MobileNav tree={pageTree} />
-              </div>
               <Link href="/" className={styles.logoLink}>
                 <Logo width={24} height={24} fillColor="var(--muted-foreground)" strokeColor="var(--card)" />
               </Link>
@@ -65,7 +72,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
               href="https://github.com/preetecool/roi-ui"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.githubLink}
+              className={`${styles.githubLink} ${styles.desktopOnly}`}
               aria-label="View source on GitHub"
             >
               <svg width="18" height="18" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
@@ -77,8 +84,13 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
                 />
               </svg>
             </a>
-            <div className={styles.separator}></div>
-            <ThemeSwitcher />
+            <div className={`${styles.separator} ${styles.desktopOnly}`}></div>
+            <div className={styles.desktopOnly}>
+              <ThemeSwitcher />
+            </div>
+            <div className={styles.mobileMenuWrapper}>
+              <MobileNav tree={pageTree} />
+            </div>
           </div>
         </motion.div>
       </div>

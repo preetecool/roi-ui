@@ -1,5 +1,8 @@
 .card {
   width: 400px;
+  padding: 20px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
 }
 
 .cardTitle {
@@ -25,6 +28,8 @@
   font-size: 0.875rem;
   cursor: pointer;
   font-weight: 300;
+  margin-left: 4px;
+  margin-top: 0.5rem;
 }
 
 .button {
@@ -39,11 +44,12 @@
   margin-left: 4px;
 }
 
-.rememberForgotRow {
+.passwordLabelRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .forgotPassword {
@@ -51,9 +57,10 @@
   border: none;
   padding: 0;
   font-size: 0.875rem;
-  color: var(--muted-foreground);
+  color: var(--secondary-foreground);
   cursor: pointer;
   transition: color 0.2s;
+  margin-right: 4px;
 }
 
 .forgotPassword:hover {
@@ -61,14 +68,15 @@
 }
 
 .signupBanner {
-  width: calc(100% + 3rem);
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-  margin-bottom: -1.5rem;
+  width: calc(100% + 40px);
+
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
   text-align: center;
   font-size: 0.875rem;
   padding: 1.25rem 0;
-  background-color: var(--card-light);
+  background-color: color-mix(in oklch, var(--card) 33%, transparent);
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
@@ -77,6 +85,6 @@
 }
 
 .signupLink {
-  color: var(--foreground);
+  color: var(--secondary-foreground);
   cursor: pointer;
 }
