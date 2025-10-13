@@ -22,7 +22,6 @@ export default function DialogDemo() {
         <DialogOverlay />
         <DialogPopup
           className={styles.popup}
-          style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
         >
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>

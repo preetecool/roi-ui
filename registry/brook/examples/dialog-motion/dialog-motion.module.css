@@ -30,7 +30,6 @@
 .popup {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   border: 1px solid var(--border-dark);
 }
 

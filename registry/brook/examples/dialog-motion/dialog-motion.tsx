@@ -20,16 +20,16 @@ export default function DialogFramerMotion() {
 
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
-      <AnimatePresence key="modal">
+      <AnimatePresence>
         {!open && (
-          <DialogTrigger render={<motion.button className={styles.button} layoutId="button" />}>
+          <DialogTrigger render={<motion.button key="button" className={styles.button} layoutId="button" />}>
             Toggle Dialog
           </DialogTrigger>
         )}
 
-        {open && <DialogOverlay />}
+        <AnimatePresence>{open && <DialogOverlay key="overlay" />}</AnimatePresence>
 
-        <DialogPortal keepMounted>
+        <DialogPortal keepMounted key="portal">
           {open && (
             <DialogPopup
               className={styles.popup}
@@ -49,10 +49,11 @@ export default function DialogFramerMotion() {
               </DialogDescription>
               <div className={styles.actions}>
                 <DialogClose render={<Button variant="outline">Close</Button>} />
-
-                <motion.button className={styles.button} layoutId="button">
-                  Toggle Dialog
-                </motion.button>
+                <AnimatePresence>
+                  <motion.button key="button-inner" className={styles.button} layoutId="button">
+                    Toggle Dialog
+                  </motion.button>
+                </AnimatePresence>
               </div>
             </DialogPopup>
           )}
