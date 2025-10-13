@@ -20,7 +20,6 @@ export function ShowcasePricing() {
     <div className={styles.container}>
       <Card
         className={styles.card}
-        style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
       >
         <CardHeader>
           <div className={styles.headerContainer}>

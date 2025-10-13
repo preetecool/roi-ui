@@ -8,13 +8,12 @@ export default function CardImageDemo() {
       variant="lift"
       className={styles.card}
       style={{
-        backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
         borderRadius: "24px",
       }}
     >
       <CardImage src="/scene_01.png" alt="Mountain scene" style={{ borderRadius: "12px", width: "auto" }} />
 
-      <CardContent style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}>
+      <CardContent>
         <CardTitle className={styles.title}>Mountain Adventure</CardTitle>
         <p className={styles.description}>
           Experience the beauty of mountain landscapes with guided tours and hiking adventures.
