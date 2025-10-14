@@ -54,11 +54,11 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
           <ScrollAreaViewport className={styles.modalScrollViewport}>
             <ScrollAreaContent className={styles.modalScrollContent}>
               <div className={styles.modalContent}>
-                <motion.div layoutId={`image-${item.id}`} className="imageContainer">
+                <motion.div className={styles.imageContainer} layoutId={`image-container-${item.id}`}>
                   <Image
                     src={item.src}
                     className={styles.image}
-                    alt={`Character ${item.id}`}
+                    alt={item.alt}
                     width={600}
                     height={600}
                     style={{ borderRadius: "16px" }}
@@ -66,9 +66,9 @@ function ExpandableCardModal({ item, onClose }: ExpandableCardModalProps) {
                 </motion.div>
 
                 <motion.div className={`${styles.contentContainerOpen} ${styles.contentContainerModal}`}>
-                  <motion.div layoutId={`heading-container-${item.id}`} className={styles.headingContainer}>
-                    <motion.h3 className={styles.cardHeadingLarge}>{item.cardHeading}</motion.h3>
-                  </motion.div>
+                  <motion.h3 className={styles.cardHeadingLarge} layoutId={`heading--${item.id}`}>
+                    {item.cardHeading}
+                  </motion.h3>
 
                   <motion.div
                     className={styles.contentInner}
@@ -175,30 +175,28 @@ export default function ExpandableCard({ items }: ExpandableCardProps) {
               <motion.div
                 className={styles.card}
                 layoutId={`card-${item.id}`}
-                initial={false}
                 style={{ borderRadius: "24px" }}
               >
-                <motion.div layoutId={`image-${item.id}`} className={styles.imageContainer}>
+                <motion.div className={styles.imageContainer} layoutId={`image-container-${item.id}`}>
                   <Image
                     src={item.src}
                     className={styles.image}
                     alt={item.alt}
-                    width={600}
-                    height={600}
+                    width={300}
+                    height={300}
                     style={{ borderRadius: "12px" }}
                   />
                 </motion.div>
 
                 <motion.div className={styles.contentContainer} initial={false}>
-                  <motion.div
-                    layoutId={`heading-container-${item.id}`}
-                    className={styles.headingContainer}
+                  <motion.h3
+                    className={styles.cardHeadingSmall}
                     initial={false}
+                    layoutId={`heading--${item.id}`}
                   >
-                    <motion.h3 className={styles.cardHeadingSmall} initial={false}>
-                      {item.cardHeading}
-                    </motion.h3>
-                  </motion.div>
+                    {item.cardHeading}
+                  </motion.h3>
+
                   <motion.div layout className={styles.expandIcon}>
                     <Plus width={21} height={21} strokeWidth={2} />
                   </motion.div>

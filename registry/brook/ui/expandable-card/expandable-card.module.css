@@ -278,13 +278,16 @@
 @media (max-width: 640px) {
   .modal .image {
     max-width: 100%;
-    width: auto;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+    aspect-ratio: 1/1;
   }
 
   .modalContent .imageContainer {
     max-width: calc(100vw - 32px);
-    height: auto;
+    height: auto !important;
+    overflow: visible;
   }
 
   .contentContainerModal {
