@@ -1,17 +1,32 @@
 import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 import styles from "./button.module.css";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "destructive" | "ghost" | "outline" | "link";
-  size?: "sm" | "md" | "lg" | "icon";
-  showArrow?: boolean;
-  pointLeft?: boolean;
-  pointExternal?: boolean;
-  loading?: boolean;
-}
+const buttonVariants = cva(styles.base, {
+  variants: {
+    variant: {
+      primary: styles.primary,
+      secondary: styles.secondary,
+      destructive: styles.destructive,
+      ghost: styles.ghost,
+      outline: styles.outline,
+      link: styles.link,
+    },
+    size: {
+      sm: styles.sm,
+      md: styles.md,
+      lg: styles.lg,
+      icon: styles.icon,
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
+  },
+});
 
-const Spinner = () => {
+function Spinner() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={styles.spinner}>
       <circle
@@ -26,15 +41,33 @@ const Spinner = () => {
       />
     </svg>
   );
-};
+}
 
-const ArrowPointer = ({
+/**
+ * ArrowPointer component for displaying directional arrows within buttons.
+ *
+ * @param pointLeft - When true, arrow points left instead of right
+ * @param pointExternal - When true, applies external link arrow styling (diagonal orientation)
+ *
+ * @example
+ * ```tsx
+ * // Right-pointing arrow (default)
+ * <ArrowPointer />
+ *
+ * // Left-pointing arrow
+ * <ArrowPointer pointLeft />
+ *
+ * // External link arrow
+ * <ArrowPointer pointExternal />
+ * ```
+ */
+function ArrowPointer({
   pointLeft = false,
   pointExternal = false,
 }: {
   pointLeft?: boolean;
   pointExternal?: boolean;
-}) => {
+}) {
   return (
     <svg
       viewBox="0 0 14 10"
@@ -62,14 +95,23 @@ const ArrowPointer = ({
       </g>
     </svg>
   );
-};
+}
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<"button"> &
+    VariantProps<typeof buttonVariants> & {
+      showArrow?: boolean;
+      pointLeft?: boolean;
+      pointExternal?: boolean;
+      loading?: boolean;
+    }
+>(
   (
     {
       className,
-      variant = "primary",
-      size = "md",
+      variant,
+      size,
       showArrow = false,
       pointLeft = false,
       pointExternal = false,
@@ -77,12 +119,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <button
         ref={ref}
-        className={cn(styles.base, styles[variant], styles[size], loading && styles.loading, className)}
+        data-slot="button"
+        className={cn(buttonVariants({ variant, size }), loading && styles.loading, className)}
         disabled={props.disabled || loading}
         {...props}
       >
@@ -92,7 +135,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";
+
+export { Button };

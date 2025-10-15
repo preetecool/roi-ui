@@ -1,59 +1,86 @@
-"use client";
-
-import type { ComponentProps, ReactNode } from "react";
-import { createContext, useContext } from "react";
-
 import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import styles from "./badge.module.css";
 
-type BadgeVariant = "default" | "secondary" | "destructive" | "outline" | "success";
-type BadgeSize = "sm" | "md" | "lg";
-
-interface BadgeProps extends ComponentProps<"span"> {
-  variant?: BadgeVariant;
-  size?: BadgeSize;
-  children: ReactNode;
-}
-
-interface BadgeIconProps extends ComponentProps<"span"> {
-  children: ReactNode;
-}
-
-const BadgeContext = createContext<{ variant: BadgeVariant }>({ 
-  variant: "default"
+const badgeVariants = cva(styles.badge, {
+  variants: {
+    variant: {
+      default: styles.default,
+      secondary: styles.secondary,
+      destructive: styles.destructive,
+      outline: styles.outline,
+      success: styles.success,
+    },
+    size: {
+      sm: styles.sm,
+      md: styles.md,
+      lg: styles.lg,
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
 });
 
-const Badge = ({
+/**
+ * Badge component for displaying labels, tags, and status indicators.
+ *
+ * @param variant - The visual style of the badge
+ *   - `"default"` - Standard badge appearance
+ *   - `"secondary"` - Secondary color scheme
+ *   - `"destructive"` - Red color scheme for errors or warnings
+ *   - `"outline"` - Outlined badge with transparent background
+ *   - `"success"` - Green color scheme for success states
+ * @param size - The size of the badge
+ *   - `"sm"` - Small badge
+ *   - `"md"` - Medium badge (default)
+ *   - `"lg"` - Large badge
+ * @param className - Optional CSS class names
+ *
+ * @example
+ * ```tsx
+ * // Standard badge
+ * <Badge>New</Badge>
+ *
+ * // Badge with variant and size
+ * <Badge variant="success" size="lg">Active</Badge>
+ *
+ * // Badge with icon
+ * <Badge variant="destructive">
+ *   <BadgeIcon>
+ *     <AlertIcon />
+ *   </BadgeIcon>
+ *   Error
+ * </Badge>
+ * ```
+ */
+function Badge({
   className,
-  variant = "default",
-  size = "md",
-  children,
+  variant,
+  size,
   ...props
-}: BadgeProps) => {
-  const badgeClassName = cn(styles.badge, styles[variant], styles[size], className);
+}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+  return <span data-slot="badge" className={cn(badgeVariants({ variant, size }), className)} {...props} />;
+}
 
-  return (
-    <BadgeContext.Provider value={{ variant }}>
-      <span data-slot="badge" className={badgeClassName} {...props}>
-        {children}
-      </span>
-    </BadgeContext.Provider>
-  );
-};
+/**
+ * BadgeIcon component for displaying icons within a Badge.
+ *
+ * @param className - Optional CSS class names
+ *
+ * @example
+ * ```tsx
+ * <Badge>
+ *   <BadgeIcon>
+ *     <StarIcon />
+ *   </BadgeIcon>
+ *   Featured
+ * </Badge>
+ * ```
+ */
+function BadgeIcon({ className, ...props }: React.ComponentProps<"span">) {
+  return <span data-slot="badge-icon" className={cn(styles.iconContainer, className)} {...props} />;
+}
 
-const BadgeIcon = ({ className, children, ...props }: BadgeIconProps) => {
-  const { variant } = useContext(BadgeContext);
-  const iconClassName = cn(
-    styles.iconContainer, 
-    styles[`${variant}Icon`],
-    className
-  );
-
-  return (
-    <span className={iconClassName} {...props}>
-      {children}
-    </span>
-  );
-};
-
-export { Badge, BadgeIcon, type BadgeProps, type BadgeIconProps };
+export { Badge, BadgeIcon };
