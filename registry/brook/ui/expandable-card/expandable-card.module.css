@@ -29,6 +29,11 @@
   overflow: hidden;
 }
 
+.card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
 .image {
   width: 100%;
   height: 320px;
@@ -76,7 +81,18 @@
 
 .contentExpanded {
   max-width: 600px;
+  margin: 0 auto;
+  padding-top: 28px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
   width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  text-align: left;
 }
 
 .expandedImage {
@@ -87,7 +103,7 @@
 }
 
 .expandedHeading {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 600;
   color: var(--title);
   margin: 0;
@@ -101,10 +117,10 @@
 
 .closeButton {
   position: absolute;
-  top: 16px;
-  right: 16px;
   width: 32px;
   height: 32px;
+  right: 16px;
+  top: 16px;
   border-radius: 50%;
   border: 1px solid var(--border);
   padding: 0;

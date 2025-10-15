@@ -39,7 +39,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         </AnimatePresence>
 
         <Dialog.Portal keepMounted>
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence>
             {isOpen && (
               <div className={styles.modalPositioner}>
                 <Dialog.Popup
@@ -55,7 +55,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   }
                 >
                   <Dialog.Close className={styles.closeButton} aria-label="Close">
-                    <X width={16} height={16} strokeWidth={2.5} />
+                    <X width={21} height={21} strokeWidth={2} />
                   </Dialog.Close>
 
                   <motion.img
@@ -68,22 +68,20 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                     style={{ borderRadius: "12px" }}
                   />
 
-                  <div className={styles.contentExpanded}>
-                    <motion.h3 layoutId={`heading-${item.id}`} className={styles.expandedHeading}>
-                      {item.cardHeading}
-                    </motion.h3>
+                  <motion.div className={styles.contentExpanded}>
+                    <motion.div layoutId={`heading-${item.id}`}>
+                      <motion.h3 className={styles.expandedHeading}>{item.cardHeading}</motion.h3>
+                    </motion.div>
 
                     <motion.div
                       className={styles.expandedContent}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.1 }}
-                      layout
+                      initial={{ opacity: 0, y: 80, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 40, scale: 0.95 }}
                     >
                       {item.content}
                     </motion.div>
-                  </div>
+                  </motion.div>
                 </Dialog.Popup>
               </div>
             )}
@@ -110,16 +108,16 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
           />
 
           <div className={styles.contentContainer}>
-            <motion.h3
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              layoutId={`heading-${item.id}`}
-              className={styles.heading}
-            >
-              {item.cardHeading}
-            </motion.h3>
+            <motion.div layoutId={`heading-${item.id}`}>
+              <motion.h3
+                transition={{ layout: { duration: 0, bounce: 0, delay: 0.3 } }}
+                className={styles.heading}
+              >
+                {item.cardHeading}
+              </motion.h3>
+            </motion.div>
 
-            <motion.div layout className={styles.expandIcon}>
+            <motion.div className={styles.expandIcon}>
               <Plus width={21} height={21} strokeWidth={2} />
             </motion.div>
           </div>
