@@ -22,19 +22,21 @@ function Alert({
   variant,
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  return <div className={cn(alertVariants({ variant }), className)} {...props} />;
+  return (
+    <div role="alert" data-slot="alert" className={cn(alertVariants({ variant }), className)} {...props} />
+  );
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn(styles.title, className)} {...props} />;
+  return <div data-slot="alert-title" className={cn(styles.title, className)} {...props} />;
 }
 
 function AlertDescription({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn(styles.description, className)} {...props} />;
+  return <div data-slot="alert-description" className={cn(styles.description, className)} {...props} />;
 }
 
 function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn(styles.icon, className)} {...props} />;
+  return <div data-slot="alert-icon" className={cn(styles.icon, className)} {...props} />;
 }
 
 export { Alert, AlertDescription, AlertIcon, AlertTitle };

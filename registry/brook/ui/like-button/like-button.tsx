@@ -13,13 +13,27 @@ interface Particle {
   scale: number;
 }
 
-interface LikeButtonProps {
+/**
+ * LikeButton component with animated thumbs-up and particle effects.
+ * Features smooth animations and visual feedback when clicked.
+ *
+ * @param isPlaying - Auto-play the animation continuously (default: false)
+ * @param onClick - Callback function when the button is clicked
+ * @param className - Optional CSS class names
+ *
+ * @example
+ * ```tsx
+ * <LikeButton onClick={() => console.log('Liked!')} />
+ *
+ * // Auto-playing version
+ * <LikeButton isPlaying={true} />
+ * ```
+ */
+function LikeButton({ isPlaying = false, onClick, className }: {
   isPlaying?: boolean;
   onClick?: () => void;
   className?: string;
-}
-
-const LikeButton: React.FC<LikeButtonProps> = ({ isPlaying = false, onClick, className }) => {
+}) {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [isThumbAnimating, setIsThumbAnimating] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -155,6 +169,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ isPlaying = false, onClick, cla
         </div>
 
         <button
+          data-slot="like-button"
           className={`${styles.thumbButton} ${isThumbAnimating ? styles.animateThumbTilt : ""}`}
           onClick={handleClick}
           onTouchStart={handleTouchStart}
@@ -195,6 +210,6 @@ const LikeButton: React.FC<LikeButtonProps> = ({ isPlaying = false, onClick, cla
       </div>
     </div>
   );
-};
+}
 
-export default LikeButton;
+export { LikeButton };
