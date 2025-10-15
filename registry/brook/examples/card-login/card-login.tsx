@@ -78,7 +78,7 @@ export default function CardLoginDemo() {
                 <Check size={16} strokeWidth={3} />
               </CheckboxIndicator>
             </Checkbox>
-            <span>Remember me</span>
+            <span className={styles.rememberMe}>Remember me</span>
           </label>
         </form>
       </CardContent>
