@@ -4,7 +4,7 @@ const item: ExpandableCardItem = {
   id: 1,
   imageSrc: "/scene_02.png",
   cardHeading: "Expandable Card",
-  alt: "Mountain scene",
+  alt: "Man by the brook, under a bridge,  looking at the sunrise",
   content: (
     <div>
       <p style={{ margin: "0 0 1rem 0" }}>

@@ -7,8 +7,8 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-
+  background-color: var(--background);
+  z-index: 999;
   pointer-events: auto;
 }
 
@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   width: 320px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-dark);
   overflow: hidden;
 }
 
@@ -65,8 +65,9 @@
   max-height: 100vh;
   overflow-y: auto;
   background-color: color-mix(in oklch, var(--card) 33%, var(--background));
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-dark);
   padding: 24px;
+  padding-top: 6vh;
   padding-bottom: 8vh;
   display: flex;
   flex-direction: column;
@@ -77,6 +78,25 @@
   animation: none;
   opacity: 1;
   transform: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.expandedCard::-webkit-scrollbar {
+  width: 8px;
+}
+
+.expandedCard::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.expandedCard::-webkit-scrollbar-thumb {
+  background-color: var(--border-dark);
+  border-radius: 4px;
+}
+
+.expandedCard::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
 }
 
 .contentExpanded {
@@ -124,7 +144,7 @@
   border-radius: 50%;
   border: 1px solid var(--border);
   padding: 0;
-  z-index: 10;
+  z-index: 20;
   background: var(--card);
   color: var(--muted-foreground);
   display: flex;
@@ -159,4 +179,21 @@
   border: 1px solid var(--border-dark);
   margin-left: auto;
   flex-shrink: 0;
+}
+.expandIcon:hover {
+  background-color: var(--card);
+  color: var(--foreground);
+  transition: 150ms ease-out;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 300px;
+  }
+  .expandedHeading {
+    font-size: 32px;
+  }
+  .expandedContent {
+    font-size: 14px;
+  }
 }

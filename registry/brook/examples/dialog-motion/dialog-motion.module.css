@@ -31,6 +31,7 @@
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   border: 1px solid var(--border-dark);
+  max-width: 400px;
 }
 
 .title {

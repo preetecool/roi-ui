@@ -21,7 +21,7 @@ export default function CardImageDemo() {
       </CardContent>
 
       <CardFooter>
-        <Button showArrow size="sm">
+        <Button showArrow variant="outline" size="sm">
           Learn More
         </Button>
       </CardFooter>
