@@ -4,3 +4,7 @@
   line-height: 1.375rem;
   color: var(--foreground);
 }
+
+.viewport {
+  outline: 1px solid var(--border);
+}
