@@ -1,243 +1,231 @@
 .container {
-    min-height: 200px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 0;
-    box-sizing: border-box;
+  min-height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 .animationWrapper {
-    position: relative;
-    width: 100%;
-    max-width: 240px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 20px;
-    overflow: visible;
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+  overflow: visible;
 }
 
 .particlesContainer {
-    position: absolute;
-    inset: -60px -40px;
-    overflow: visible;
-    pointer-events: none;
-    z-index: 1;
+  position: absolute;
+  inset: -60px -40px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .particle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    will-change: transform, opacity;
-    animation: particleMotion 1s ease-out forwards;
-    animation-delay: var(--delay);
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  will-change: transform, opacity;
+  animation: particleMotion 1s ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
 }
 
 .starShape {
-    width: var(--size);
-    height: var(--size);
-    position: relative;
-    display: block;
-    transform: rotate(var(--rotation));
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  display: block;
+  transform: rotate(var(--rotation));
 }
 
 .starShape::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--foreground);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--foreground);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .circleShape {
-    width: var(--size);
-    height: var(--size);
-    background: var(--foreground);
-    border-radius: 50%;
-    transform: scale(var(--scale));
+  width: var(--size);
+  height: var(--size);
+  background: var(--foreground);
+  border-radius: 50%;
+  transform: scale(var(--scale));
 }
 
 .thumbButton {
-    padding: 16px;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    position: relative;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    touch-action: manipulation;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-perspective: 1000;
-    perspective: 1000;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    overflow: visible;
-    margin: 4px 0;
-    outline: none;
+  padding: 16px;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: visible;
+  margin: 4px 0;
+  outline: none;
+  will-change: transform, opacity;
 }
 
 .thumbButton:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 @media (hover: none) and (pointer: coarse) {
-    .thumbButton:hover {
-        transform: none;
-    }
+  .thumbButton:hover {
+    transform: none;
+  }
 }
 
 .thumbButton:focus {
-    outline: none;
+  outline: none;
 }
 
 .thumbButton:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .thumbIcon {
-    transition: all 0.3s ease;
-    width: 24px;
-    height: 24px;
+  transition: all 0.25s ease;
+  width: 24px;
+  height: 24px;
+  will-change: transform, opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .scaledIcon {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .fillAnimation {
-    animation: fillThumb 0.2s ease-out forwards;
-}
-
-.animateThumbTilt {
-    animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fillThumb 0.25s ease-out forwards;
 }
 
 @keyframes particleMotion {
-    0% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        transform: translate(
-                calc(-50% + (cos(var(--angle)) * var(--distance))),
-                calc(-50% + (sin(var(--angle)) * var(--distance)))
-            )
-            scale(1);
-        opacity: 1;
-    }
-    80% {
-        transform: translate(
-                calc(-50% + (cos(var(--angle)) * var(--distance) * 0.75)),
-                calc(-50% + (sin(var(--angle)) * var(--distance) * 0.75))
-            )
-            scale(0.8);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translate(
-                calc(-50% + (cos(var(--angle)) * var(--distance) * 0)),
-                calc(-50% + (sin(var(--angle)) * var(--distance) * 0))
-            )
-            scale(0.05);
-        opacity: 0;
-    }
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(
+        calc(-50% + (cos(var(--angle)) * var(--distance))),
+        calc(-50% + (sin(var(--angle)) * var(--distance)))
+      )
+      scale(1);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(
+        calc(-50% + (cos(var(--angle)) * var(--distance) * 0.1)),
+        calc(-50% + (sin(var(--angle)) * var(--distance) * 0.1))
+      )
+      scale(0.3);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(
+        calc(-50% + (cos(var(--angle)) * var(--distance) * 0)),
+        calc(-50% + (sin(var(--angle)) * var(--distance) * 0))
+      )
+      scale(0);
+    opacity: 0;
+  }
 }
 
 @keyframes fillThumb {
-    0% {
-        fill: none;
-    }
-    100% {
-        fill: var(--primary);
-    }
+  0% {
+    fill: none;
+  }
+  100% {
+    fill: var(--primary);
+  }
 }
 
 @keyframes thumbTilt {
-    0% {
-        transform: rotate(0deg) scale(1) translateZ(0);
-    }
-    50% {
-        transform: rotate(-30deg) scale(1.2) translateZ(0);
-    }
-    100% {
-        transform: rotate(0deg) scale(1) translateZ(0);
-    }
+  0% {
+    transform: rotate(0deg) scale(1) translateZ(0);
+  }
+  50% {
+    transform: rotate(-30deg) scale(1.2) translateZ(0);
+  }
+  100% {
+    transform: rotate(0deg) scale(1) translateZ(0);
+  }
 }
 
 .animateThumbTilt {
-    animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: thumbTilt 1.15s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -webkit-animation: thumbTilt 1.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (max-width: 768px) {
-    .thumbButton {
-        min-height: 48px;
-        min-width: 48px;
-        padding: 16px;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  .thumbButton {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 16px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 
-    .container {
-        min-height: 160px;
-    }
+  .container {
+    min-height: 160px;
+  }
 
-    .thumbButton,
-    .thumbIcon {
-        transform-origin: center;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-    }
-
-    .animateThumbTilt {
-        -webkit-animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        animation: thumbTilt 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-}
-
-.thumbButton,
-.thumbIcon,
-.particle {
-    will-change: transform, opacity;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+  .thumbButton,
+  .thumbIcon {
+    transform-origin: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
 }
 
 @-webkit-keyframes thumbTilt {
-    0% {
-        -webkit-transform: rotate(0deg) scale(1) translateZ(0);
-    }
-    50% {
-        -webkit-transform: rotate(-30deg) scale(1.2) translateZ(0);
-    }
-    100% {
-        -webkit-transform: rotate(0deg) scale(1) translateZ(0);
-    }
+  0% {
+    -webkit-transform: rotate(0deg) scale(1) translateZ(0);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg) scale(1.2) translateZ(0);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) scale(1) translateZ(0);
+  }
 }
 
 .container {
-    -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 }

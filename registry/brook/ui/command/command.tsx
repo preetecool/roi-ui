@@ -1,24 +1,33 @@
 "use client";
 
-import { Children, isValidElement, cloneElement } from "react";
-import { Command as CommandPrimitive } from "cmdk";
 import { cn } from "@/lib/utils";
-import styles from "./command.module.css";
+import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
+import { Children, cloneElement, isValidElement } from "react";
+import styles from "./command.module.css";
 
 const CommandRoot = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive>) => (
   <CommandPrimitive className={cn(styles.root, className)} {...props} />
 );
 
-const CommandDialog = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) => (
+const CommandDialog = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) => (
   <CommandPrimitive.Dialog className={cn(styles.dialog, className)} {...props} />
 );
 
-const CommandInput = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>) => (
+const CommandInput = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) => (
   <CommandPrimitive.Input className={cn(styles.input, className)} {...props} />
 );
 
-const CommandList = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) => (
+const CommandList = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) => (
   <CommandPrimitive.List className={cn(styles.list, className)} {...props} />
 );
 
@@ -58,11 +67,17 @@ const CommandItem = ({
   );
 };
 
-const CommandGroup = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) => (
+const CommandGroup = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) => (
   <CommandPrimitive.Group className={cn(styles.group, className)} {...props} />
 );
 
-const CommandEmpty = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) => (
+const CommandEmpty = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) => (
   <CommandPrimitive.Empty className={cn(styles.empty, className)} {...props} />
 );
 
@@ -73,18 +88,21 @@ const CommandSeparator = ({
   <CommandPrimitive.Separator className={cn(styles.separator, className)} {...props} />
 );
 
-const CommandLoading = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) => (
+const CommandLoading = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) => (
   <CommandPrimitive.Loading className={cn(styles.loading, className)} {...props} />
 );
 
 export {
   CommandRoot as Command,
   CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandItem,
-  CommandGroup,
   CommandEmpty,
-  CommandSeparator,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
   CommandLoading,
+  CommandSeparator,
 };

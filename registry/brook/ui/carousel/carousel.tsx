@@ -1,7 +1,16 @@
 "use client";
 
-import { useState, useRef, useMemo, useCallback, useEffect, isValidElement, cloneElement, ReactElement } from "react";
 import { cn } from "@/lib/utils";
+import {
+  cloneElement,
+  isValidElement,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./carousel.module.css";
 
 export interface CarouselItem {
@@ -9,25 +18,47 @@ export interface CarouselItem {
   content: React.ReactNode;
 }
 
-interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
-  items: CarouselItem[];
-  showIndicators?: boolean;
-  showNavigation?: boolean;
-  itemsPerView?: number;
-  gap?: number;
-  ref?: React.Ref<HTMLDivElement>;
-}
-
-const Carousel = ({
+/**
+ * Carousel component for displaying multiple items in a scrollable horizontal layout with optional navigation and indicators.
+ *
+ * @param items - Array of carousel items to display
+ * @param showIndicators - Show dot indicators for each item (default: false)
+ * @param showNavigation - Show previous/next navigation buttons (default: true)
+ * @param itemsPerView - Number of items visible at once (default: 3.2)
+ * @param gap - Gap between items in pixels (default: 16)
+ * @param className - Optional CSS class names
+ *
+ * @example
+ * ```tsx
+ * const items = [
+ *   { id: '1', content: <Card>Item 1</Card> },
+ *   { id: '2', content: <Card>Item 2</Card> },
+ *   { id: '3', content: <Card>Item 3</Card> },
+ * ];
+ *
+ * <Carousel
+ *   items={items}
+ *   showNavigation={true}
+ *   showIndicators={false}
+ *   itemsPerView={3.2}
+ * />
+ * ```
+ */
+function Carousel({
   className,
   items,
   showIndicators = false,
   showNavigation = true,
   itemsPerView = 3.2,
   gap = 16,
-  ref,
   ...props
-}: CarouselProps) => {
+}: React.ComponentProps<"div"> & {
+  items: CarouselItem[];
+  showIndicators?: boolean;
+  showNavigation?: boolean;
+  itemsPerView?: number;
+  gap?: number;
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -157,7 +188,7 @@ const Carousel = ({
 
   return (
     <div
-      ref={ref}
+      data-slot="carousel"
       className={cn(styles.carousel, className)}
       role="region"
       aria-roledescription="carousel"
@@ -170,7 +201,7 @@ const Carousel = ({
         className={cn(
           styles.viewport,
           showLeftFade && styles.showLeftFade,
-          showRightFade && styles.showRightFade
+          showRightFade && styles.showRightFade,
         )}
         aria-live="polite"
         aria-atomic="false"
@@ -184,7 +215,8 @@ const Carousel = ({
           }}
         >
           {items.map((item, index) => {
-            const isVisible = index >= Math.max(0, currentIndex - 1) && index < currentIndex + Math.ceil(itemsPerView);
+            const isVisible =
+              index >= Math.max(0, currentIndex - 1) && index < currentIndex + Math.ceil(itemsPerView);
 
             return (
               <div
@@ -207,7 +239,8 @@ const Carousel = ({
                       tabIndex: isVisible ? 0 : -1,
                       "aria-label": `Item ${index + 1} content`,
                       style: {
-                        ...((item.content as ReactElement<React.HTMLAttributes<HTMLElement>>)?.props?.style || {}),
+                        ...((item.content as ReactElement<React.HTMLAttributes<HTMLElement>>)?.props?.style ||
+                          {}),
                         outline: "none",
                         width: "100%",
                         height: "100%",
@@ -283,16 +316,13 @@ const Carousel = ({
 
       <div className={styles.srOnly}>
         <div aria-live="polite" aria-atomic="true">
-          Showing items {currentIndex + 1} to {Math.min(items.length, currentIndex + Math.ceil(itemsPerView))} of{" "}
-          {items.length}
+          Showing items {currentIndex + 1} to {Math.min(items.length, currentIndex + Math.ceil(itemsPerView))}{" "}
+          of {items.length}
         </div>
         <p>Use arrow keys or tab/shift+tab to navigate slides.</p>
       </div>
     </div>
   );
-};
-
-Carousel.displayName = "Carousel";
+}
 
 export { Carousel };
-export type { CarouselProps };

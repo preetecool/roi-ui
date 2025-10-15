@@ -70,9 +70,6 @@
     gap: 0.5rem;
     outline: none;
     margin-top: 0.5rem;
-    transition:
-        background-color 150ms ease,
-        color 150ms ease;
 }
 
 .item[cmdk-item]:hover,
@@ -137,7 +134,7 @@
 
 .group[cmdk-group] [cmdk-group-heading] {
     padding: 0 0.5rem;
-    font-size: 0.65rem;
+    font-size: 0.71875rem;
     font-weight: 500;
     color: var(--muted-foreground);
     text-transform: uppercase;

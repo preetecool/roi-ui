@@ -6,12 +6,19 @@ import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import { useState } from "react";
 import styles from "./copy-button.module.css";
 
-interface CopyButtonProps {
-  code: string;
-  className?: string;
-}
-
-export function CopyButton({ code, className }: CopyButtonProps) {
+/**
+ * CopyButton component for copying text to clipboard with animated feedback.
+ * Shows a copy icon that animates to a check mark when clicked.
+ *
+ * @param code - The text content to copy to clipboard
+ * @param className - Optional CSS class names
+ *
+ * @example
+ * ```tsx
+ * <CopyButton code="const example = 'Hello World';" />
+ * ```
+ */
+function CopyButton({ code, className }: { code: string; className?: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -29,6 +36,7 @@ export function CopyButton({ code, className }: CopyButtonProps) {
   return (
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
       <motion.button
+        data-slot="copy-button"
         onClick={handleCopy}
         className={cn(styles.root, isHeaderButton && styles.header, className)}
       >
@@ -59,3 +67,5 @@ export function CopyButton({ code, className }: CopyButtonProps) {
     </MotionConfig>
   );
 }
+
+export { CopyButton };

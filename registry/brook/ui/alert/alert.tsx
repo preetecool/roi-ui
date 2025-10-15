@@ -1,40 +1,42 @@
 import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import styles from "./alert.module.css";
 
-export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  ref?: React.Ref<HTMLDivElement>;
-  variant?: "default" | "destructive" | "warning" | "success" | "info";
-  size?: "default" | "sm";
+const alertVariants = cva(styles.alert, {
+  variants: {
+    variant: {
+      default: styles.default,
+      destructive: styles.destructive,
+      warning: styles.warning,
+      success: styles.success,
+      info: styles.info,
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+function Alert({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+  return (
+    <div role="alert" data-slot="alert" className={cn(alertVariants({ variant }), className)} {...props} />
+  );
 }
 
-export const Alert = ({ className, ref, variant = "default", size = "default", ...props }: AlertProps) => (
-  <div ref={ref} className={cn(styles.alert, styles[variant], size === "sm" && styles.sm, className)} {...props} />
-);
-Alert.displayName = "Alert";
-
-export interface AlertTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  ref?: React.Ref<HTMLHeadingElement>;
+function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return <div data-slot="alert-title" className={cn(styles.title, className)} {...props} />;
 }
 
-export const AlertTitle = ({ className, ref, ...props }: AlertTitleProps) => (
-  <h5 ref={ref} className={cn(styles.title, className)} {...props} />
-);
-AlertTitle.displayName = "AlertTitle";
-
-export interface AlertDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
-  ref?: React.Ref<HTMLDivElement>;
+function AlertDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return <div data-slot="alert-description" className={cn(styles.description, className)} {...props} />;
 }
 
-export const AlertDescription = ({ className, ref, ...props }: AlertDescriptionProps) => (
-  <div ref={ref} className={cn(styles.description, className)} {...props} />
-);
-AlertDescription.displayName = "AlertDescription";
-
-export interface AlertIconProps extends React.HTMLAttributes<HTMLDivElement> {
-  ref?: React.Ref<HTMLDivElement>;
+function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
+  return <div data-slot="alert-icon" className={cn(styles.icon, className)} {...props} />;
 }
 
-export const AlertIcon = ({ className, ref, ...props }: AlertIconProps) => (
-  <div ref={ref} className={cn(styles.icon, className)} {...props} />
-);
-AlertIcon.displayName = "AlertIcon";
+export { Alert, AlertDescription, AlertIcon, AlertTitle };

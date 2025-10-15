@@ -361,7 +361,7 @@
     },
     {
       "name": "expandable-card",
-      "type": "registry:item",
+      "type": "registry:block",
       "dependencies": [
         "motion"
       ],
@@ -369,14 +369,14 @@
       "description": "A card component that can expand to show more content.",
       "files": [
         {
-          "path": "registry/brook/ui/expandable-card/expandable-card.tsx",
+          "path": "registry/brook/blocks/expandable-card/expandable-card.tsx",
           "type": "registry:file",
-          "target": "~/components/ui/expandable-card/expandable-card.tsx"
+          "target": "~/components/blocks/expandable-card/expandable-card.tsx"
         },
         {
-          "path": "registry/brook/ui/expandable-card/expandable-card.module.css",
+          "path": "registry/brook/blocks/expandable-card/expandable-card.module.css",
           "type": "registry:file",
-          "target": "~/components/ui/expandable-card/expandable-card.module.css"
+          "target": "~/components/blocks/expandable-card/expandable-card.module.css"
         }
       ]
     },

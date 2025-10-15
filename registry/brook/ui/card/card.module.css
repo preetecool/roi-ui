@@ -30,10 +30,6 @@
   padding-bottom: 2rem;
 }
 
-.cardLift:hover .liftDiv {
-  transform: translateY(-1rem);
-}
-
 .cardLift:hover .content {
   transform: translateY(-3rem);
 }
