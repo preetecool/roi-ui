@@ -8,10 +8,10 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/brook/ui/command/command";
-import { FileText, Puzzle, Component } from "lucide-react";
+import type { PageTree } from "fumadocs-core/server";
+import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import type { PageTree } from "fumadocs-core/server";
 import styles from "./search.module.css";
 
 interface SearchProps {
@@ -20,13 +20,7 @@ interface SearchProps {
 
 const ArrowIcon = () => {
   return (
-    <svg
-      viewBox="0 0 14 10"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="10"
-    >
+    <svg viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="10">
       <g fillRule="nonzero">
         <path
           d="M1 1l4 4-4 4"
@@ -93,10 +87,10 @@ export function Search({ tree }: SearchProps) {
       "chat",
       "task",
       "image card",
-      "transaction history"
+      "transaction history",
     ];
 
-    if (componentExamples.some(example => nameLower.includes(example))) {
+    if (componentExamples.some((example) => nameLower.includes(example))) {
       return <Component size={16} />;
     }
 
@@ -107,10 +101,10 @@ export function Search({ tree }: SearchProps) {
       "badge error",
       "badge success",
       "copy button",
-      "like button"
+      "like button",
     ];
 
-    if (url.includes("/examples/") && puzzleExamples.some(example => nameLower.includes(example))) {
+    if (url.includes("/examples/") && puzzleExamples.some((example) => nameLower.includes(example))) {
       return <Puzzle size={16} />;
     }
 
@@ -123,20 +117,23 @@ export function Search({ tree }: SearchProps) {
 
   const formatHeading = (text: string) => {
     return text
-      .split(' / ')
-      .map(part => {
-        if (part.toLowerCase() === 'ui') {
-          return 'UI';
+      .split(" / ")
+      .map((part) => {
+        if (part.toLowerCase() === "ui") {
+          return "UI";
         }
         return part
-          .split(' ')
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-          .join(' ');
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(" ");
       })
-      .join(' / ');
+      .join(" / ");
   };
 
-  const collectGroups = (node: PageTree.Node, parentName: string = ""): Array<{ heading: string; pages: Array<{ name: string; url: string }> }> => {
+  const collectGroups = (
+    node: PageTree.Node,
+    parentName: string = "",
+  ): Array<{ heading: string; pages: Array<{ name: string; url: string }> }> => {
     const groups: Array<{ heading: string; pages: Array<{ name: string; url: string }> }> = [];
 
     if (node.type === "folder" && node.children) {
@@ -163,7 +160,7 @@ export function Search({ tree }: SearchProps) {
         if (child.type === "folder") {
           const childGroups = collectGroups(
             child,
-            parentName ? `${parentName} / ${node.name?.toString() || ""}` : node.name?.toString() || ""
+            parentName ? `${parentName} / ${node.name?.toString() || ""}` : node.name?.toString() || "",
           );
           groups.push(...childGroups);
         }
@@ -184,10 +181,7 @@ export function Search({ tree }: SearchProps) {
       <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       <div className={styles.commandWrapper}>
         <Command>
-          <CommandInput
-            ref={inputRef}
-            placeholder="Search documentation..."
-          />
+          <CommandInput ref={inputRef} placeholder="Search documentation..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             {allGroups.map((group, idx) => (
@@ -200,9 +194,7 @@ export function Search({ tree }: SearchProps) {
                   >
                     {getIcon(page.url, page.name)}
                     <div className={styles.commandItemContent}>
-                      <div className={styles.commandItemTitle}>
-                        {page.name}
-                      </div>
+                      <div className={styles.commandItemTitle}>{page.name}</div>
                     </div>
                   </CommandItem>
                 ))}
