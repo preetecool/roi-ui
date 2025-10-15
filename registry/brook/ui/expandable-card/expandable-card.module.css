@@ -1,57 +1,133 @@
-.grid {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 24px;
-  z-index: 101;
+.wrapper {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
 }
 
-.cardButton {
-  all: unset;
-  cursor: pointer;
-  border-radius: var(--radius);
-  -webkit-tap-highlight-color: transparent;
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  pointer-events: auto;
 }
 
-.cardButton:focus-visible {
-  outline: 2px solid var(--ring);
-  border-radius: 32px;
-  outline-offset: 2px;
-  box-shadow:
-    var(--shadow-md),
-    0 0 0 4px var(--ring);
+.overlay[data-starting-style],
+.overlay[data-ending-style] {
+  opacity: 1;
+  transform: none;
 }
 
 .card {
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius);
+  all: unset;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 320px;
-  max-width: 320px;
+  border: 1px solid var(--border);
   overflow: hidden;
-}
-
-.imageContainer {
-  height: 320px;
-  overflow: hidden;
-  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .image {
   width: 100%;
-  height: 100%;
+  height: 320px;
+  object-fit: cover;
 }
 
-.modal .image {
-  height: 600px;
-  width: 600px;
+.heading {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--title);
+  margin: 0;
+}
+
+.modalPositioner {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.expandedCard {
+  position: relative;
+  top: 5vh;
+  width: 100%;
+  max-width: 900px;
+  max-height: 100vh;
+  overflow-y: auto;
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  border: 1px solid var(--border);
+  padding: 24px;
+  padding-bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+  transition: none;
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.contentExpanded {
+  max-width: 600px;
+  width: 100%;
+}
+
+.expandedImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
   object-fit: contain;
+}
+
+.expandedHeading {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--title);
+  margin: 0;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.expandedContent {
+  color: var(--foreground);
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  padding: 0;
+  z-index: 10;
+  background: var(--card);
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+}
+
+.contentContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 }
 
 .expandIcon {
@@ -67,269 +143,4 @@
   border: 1px solid var(--border-dark);
   margin-left: auto;
   flex-shrink: 0;
-}
-
-.cardButton:hover .expandIcon {
-  color: var(--foreground);
-  background-color: var(--muted);
-  transition: 200ms ease-out;
-}
-
-.contentContainer {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  width: 100%;
-  height: auto;
-  gap: 24px;
-  text-align: left;
-}
-
-.contentContainerOpen {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  height: auto;
-  gap: 24px;
-  text-align: left;
-  padding-top: 28px !important;
-}
-
-.contentContainerModal {
-  max-width: 600px;
-  margin: 0 auto;
-  padding-top: 28px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  width: 100%;
-}
-
-.cardHeadingSmall {
-  font-size: var(--font-size-2xl);
-  font-weight: 600;
-  color: var(--title);
-  margin: 0 !important;
-  letter-spacing: -0.025em !important;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  display: block;
-  font-family: inherit;
-}
-
-.cardHeadingLarge {
-  font-size: var(--font-size-3xl) !important;
-  font-weight: 600;
-  color: var(--title);
-  margin: 0 !important;
-  letter-spacing: -0.025em !important   ;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  display: block;
-  font-family: inherit;
-  text-align: left;
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background-color: var(--background);
-  z-index: 100;
-}
-
-.modal {
-  position: fixed;
-  inset: 8vh 0 0 0;
-  z-index: 102;
-  cursor: pointer;
-  outline: none;
-  max-width: 900px;
-  margin-inline: auto;
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
-  padding-block: 1em 2em;
-}
-
-.modalContent {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-bottom: 8vh;
-}
-
-.contentInner {
-  font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.closeButton {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border-dark);
-  padding: 0;
-  z-index: 104;
-  background: transparent;
-  color: var(--muted-foreground);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.closeButton:hover {
-  color: var(--foreground);
-  background-color: var(--muted);
-  transition: 200ms ease-out;
-}
-
-.modalScrollArea {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    var(--card) calc(8vh / 2),
-    var(--background) 8vh,
-    black calc(100% - 6vh),
-    rgba(0, 0, 0, 0.2) calc(100% - 8vh / 2),
-    transparent 100%
-  );
-}
-
-.modalScrollViewport {
-  border: none !important;
-  outline: none !important;
-  border-radius: 0 !important;
-  -webkit-overflow-scrolling: touch;
-  overflow: auto;
-  touch-action: pan-y;
-  overscroll-behavior: contain;
-}
-
-.modalScrollContent {
-  padding: 0 !important;
-}
-
-.contentInner p {
-  padding-bottom: 12px;
-}
-
-@media (max-width: 768px) {
-  .grid {
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .imageContainer {
-    width: 100%;
-  }
-
-  .modal {
-    padding: 16px;
-  }
-
-  .modalContent {
-    max-height: 95vh;
-  }
-
-  .contentContainer {
-    padding: 16px;
-  }
-
-  .card {
-    width: 100%;
-  }
-
-  .contentInner p {
-    font-size: calc(1rem - 2px);
-    max-width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .contentContainerOpen {
-    gap: 24px;
-  }
-
-  .contentContainerModal {
-    max-width: calc(100vw - 32px);
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .contentInner {
-    max-width: 100%;
-    overflow: hidden;
-  }
-}
-
-@media (max-width: 640px) {
-  .modal .image {
-    max-width: 100%;
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain;
-    aspect-ratio: 1/1;
-  }
-
-  .modalContent .imageContainer {
-    max-width: calc(100vw - 32px);
-    height: auto !important;
-    overflow: visible;
-  }
-
-  .contentContainerModal {
-    max-width: calc(100vw - 32px);
-  }
-}
-
-@media (max-width: 490px) {
-  .grid {
-    flex-direction: column;
-    height: auto;
-    min-height: 100vh;
-  }
-
-  .imageContainer {
-    width: 100%;
-    height: 100%;
-  }
-
-  .closeButton {
-    width: 32px;
-    height: 32px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  .image,
-  .closeButton {
-    transition: none;
-    animation: none;
-  }
-}
-
-@media (prefers-contrast: high) {
-  .card {
-    border-width: 2px;
-  }
-
-  .closeButton {
-    background: var(--foreground);
-    border: 2px solid var(--background);
-    color: var(--background);
-  }
 }
