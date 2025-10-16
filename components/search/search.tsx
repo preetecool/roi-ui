@@ -102,6 +102,7 @@ export function Search({ tree }: SearchProps) {
       "badge success",
       "copy button",
       "like button",
+      "dropdown menu motion",
     ];
 
     if (url.includes("/examples/") && puzzleExamples.some((example) => nameLower.includes(example))) {

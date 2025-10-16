@@ -1,29 +1,88 @@
-.triggerContent {
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   display: flex;
-  gap: 4px;
+  width: 44px;
+  height: 44px;
   align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  cursor: pointer;
+  outline: none;
+  color: var(--secondary-foreground);
+}
+.button:hover {
+  background-color: var(--card);
+  transition: 150ms ease-out;
 }
 
-.chevronIcon {
-  margin-top: 1px;
+.button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
-.menuItemButton {
+.button span {
+  display: flex;
+}
+
+.popup {
+  position: absolute;
+  right: 0;
+  bottom: calc(25% + 8px);
+  width: 170px;
+  overflow: hidden;
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  border: 1px solid var(--border);
+  padding: 4px;
+  outline: none;
+}
+
+.iconPlaceholder {
+  opacity: 0;
+  position: absolute;
+}
+
+.menuItem {
   width: 100%;
-  justify-content: flex-start !important;
-  text-align: left !important;
-}
-
-.menuItemContent {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  justify-content: flex-start;
+  gap: 0.6rem;
+  padding: 8px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary-foreground);
+  font-size: 12px;
+  border-radius: 0.5rem;
+  transition: background-color 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.menuItem svg {
+  color: oklch(from var(--secondary-foreground) l c h / 0.8);
+}
+
+.menuItem:hover {
+  background-color: var(--card) !important;
+}
+
+.menuItem:active {
+  transform: scale(0.98);
 }
 
 .separator {
   height: 1px;
   background-color: var(--border);
-  border: none;
+  margin: 4px -6px;
 }
