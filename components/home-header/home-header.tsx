@@ -1,8 +1,8 @@
 "use client";
 import { Button } from "@/registry/brook/ui/button/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Link from "next/link";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
@@ -12,19 +12,15 @@ const COMPONENTS = [
   "chat/chat",
   "cards/task",
   "cards/expandable-card",
-  "cards/shipping",
   "cards/pricing",
   "cards/login-card",
-  "cards/settings",
   "cards/image-card",
   "cards/traffic",
   "cards/history",
-  "backgrounds/background",
   "dialogs/dialog",
   "avatars/avatar",
   "badges/badge-error",
   "badges/badge-success",
-  "dropdown-menus/dropdown-menu",
 ];
 
 const ArrowPointer = () => {
@@ -72,7 +68,11 @@ export const HomeHeader = () => {
       </Link>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span key={index} className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
+          <span
+            key={index}
+            className={styles.wordWrapper}
+            style={{ "--index": index } as React.CSSProperties}
+          >
             {word}
             {index < HEADING.split(" ").length - 1 && " "}
           </span>
