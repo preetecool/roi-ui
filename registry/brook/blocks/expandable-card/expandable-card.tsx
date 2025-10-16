@@ -25,73 +25,81 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
         {isOpen && (
           <Dialog.Backdrop
+            key="overlay"
             className={styles.overlay}
             render={
               <motion.div
                 className={styles.overlay}
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{ opacity: 0, background: "red" }}
+                transition={{ delay: 0.1, duration: 0.17, ease: [0.455, 0.03, 0.515, 0.955] }}
               />
             }
           />
         )}
 
         <Dialog.Portal keepMounted>
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {isOpen && (
-              <div className={styles.modalPositioner}>
+              <div className={styles.modalPositioner} key="positioner">
                 <Dialog.Popup
                   render={
                     <motion.div
                       layoutId={`card-${item.id}`}
                       className={styles.expandedCard}
                       style={{
-                        borderRadius: "24px",
-                        transform: "none",
+                        borderRadius: "32px",
+                        overflow: "hidden",
                       }}
                     />
                   }
                 >
-                  <Dialog.Close
-                    className={styles.closeButton}
-                    aria-label="Close"
-                    render={
-                      <motion.button
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ type: "spring", duration: 0.25, delay: 0.2 }}
-                      />
-                    }
-                  >
-                    <X width={21} height={21} strokeWidth={2} />
-                  </Dialog.Close>
+                  <div className={styles.scrollableContent}>
+                    <div className={styles.closeButtonContainer}>
+                      <Dialog.Close
+                        className={styles.closeButton}
+                        aria-label="Close"
+                        render={
+                          <motion.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ type: "spring", duration: 0.2, delay: 0.1 }}
+                          />
+                        }
+                      >
+                        <X width={21} height={21} strokeWidth={2} />
+                      </Dialog.Close>
+                    </div>
 
-                  <motion.img
-                    layoutId={`image-${item.id}`}
-                    width={600}
-                    height={600}
-                    src={item.imageSrc}
-                    alt={item.alt}
-                    className={styles.expandedImage}
-                    style={{ borderRadius: "12px" }}
-                  />
+                    <motion.img
+                      layoutId={`image-${item.id}`}
+                      width={600}
+                      height={600}
+                      src={item.imageSrc}
+                      alt={item.alt}
+                      className={styles.expandedImage}
+                      style={{ borderRadius: "16px" }}
+                    />
 
-                  <motion.div className={styles.contentExpanded}>
-                    <motion.div layoutId={`heading-${item.id}`}>
-                      <motion.h3 className={styles.expandedHeading}>{item.cardHeading}</motion.h3>
+                    <motion.div className={styles.contentExpanded}>
+                      <motion.div layoutId={`heading-${item.id}`}>
+                        <motion.h3 className={styles.expandedHeading}>{item.cardHeading}</motion.h3>
+                      </motion.div>
+
+                      <motion.div
+                        className={styles.expandedContent}
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                      >
+                        {item.content}
+                      </motion.div>
                     </motion.div>
-
-                    <motion.div
-                      className={styles.expandedContent}
-                      initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                    >
-                      {item.content}
-                    </motion.div>
-                  </motion.div>
+                  </div>
                 </Dialog.Popup>
               </div>
             )}
