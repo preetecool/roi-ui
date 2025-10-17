@@ -315,7 +315,12 @@
 }
 
 /* Items within collapsible groups under Components - also reduced margin */
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupChildren > .sidebarItemWrapper .sidebarItem {
+.topLevelGroup
+  > .sidebarGroupChildren
+  > .sidebarGroup
+  > .sidebarGroupChildren
+  > .sidebarItemWrapper
+  .sidebarItem {
   margin-left: -1rem;
   padding-left: 2rem;
 }
@@ -507,7 +512,6 @@
   color: var(--foreground);
 }
 
-/* Collapsed sidebar buttons */
 .collapsedButtons {
   position: fixed;
   top: 1.5rem;
@@ -516,13 +520,11 @@
   display: flex;
 }
 
-/* Hide on desktop when sidebar is not collapsed */
 @media (min-width: 1024px) {
   .collapsedButtons {
     display: none;
   }
 
-  /* Show on desktop when sidebar is collapsed */
   .sidebarCollapsed ~ .collapsedButtons {
     display: flex;
   }

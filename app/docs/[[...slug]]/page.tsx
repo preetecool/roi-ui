@@ -207,21 +207,28 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
         <div className={styles.bottomNavigation}>
           <div className={styles.prevButton}>
             {neighbours.previous && (
-              <Link href={neighbours.previous.url}>
-                <Button variant="ghost" showArrow pointLeft className={styles.buttonCustomStyle}>
-                  {neighbours.previous.data.title}
-                </Button>
-              </Link>
+              <Button
+                variant="ghost"
+                showArrow
+                pointLeft
+                className={styles.buttonCustomStyle}
+                render={<Link href={neighbours.previous.url} />}
+              >
+                {neighbours.previous.data.title}
+              </Button>
             )}
           </div>
 
           <div className={styles.nextButton}>
             {neighbours.next && (
-              <Link href={neighbours.next.url}>
-                <Button variant="ghost" showArrow className={styles.buttonCustomStyle}>
-                  {neighbours.next.data.title}
-                </Button>
-              </Link>
+              <Button
+                variant="ghost"
+                showArrow
+                className={styles.buttonCustomStyle}
+                render={<Link href={neighbours.next.url} />}
+              >
+                {neighbours.next.data.title}
+              </Button>
             )}
           </div>
         </div>
