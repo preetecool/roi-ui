@@ -1,16 +1,9 @@
 .container {
   position: relative;
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  min-height: 44px;
-  min-width: 44px;
 }
 
 .button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  position: relative;
   display: flex;
   width: 44px;
   height: 44px;
@@ -19,8 +12,8 @@
   border: 1px solid var(--border);
   background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   cursor: pointer;
-  outline: none;
   color: var(--secondary-foreground);
+  /*border-radius: 50%;*/
 }
 .button:hover {
   background-color: var(--card);
@@ -50,7 +43,7 @@
 
 .iconPlaceholder {
   opacity: 0;
-  position: absolute;
+  position: relative;
 }
 
 .menuItem {
