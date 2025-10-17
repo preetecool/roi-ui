@@ -19,7 +19,7 @@ export default function DropdownMenuFramerMotion() {
 
   return (
     <div ref={containerRef}>
-      <MotionConfig transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}>
+      <MotionConfig transition={{ type: "spring", bounce: 0.4, ease: [0.785, 0.135, 0.15, 0.86] }}>
         <Menu.Root open={open} onOpenChange={setOpen}>
           {!open && (
             <Menu.Trigger
@@ -33,8 +33,10 @@ export default function DropdownMenuFramerMotion() {
               }
             >
               <motion.div
-                layoutId="menu-icon"
                 style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, filter: "blur(4px)" }}
               >
                 <Plus size={18} />
               </motion.div>
@@ -54,8 +56,6 @@ export default function DropdownMenuFramerMotion() {
                       />
                     }
                   >
-                    <motion.div className={styles.iconPlaceholder} layoutId="menu-icon" />
-
                     <ul>
                       {menuItems.map((item, index) => (
                         <motion.li key={item.label}>
