@@ -20,13 +20,12 @@ export default function DialogFramerMotion() {
 
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
+      {!open && (
+        <DialogTrigger render={<motion.button key="button" className={styles.button} layoutId="button" />}>
+          Toggle Dialog
+        </DialogTrigger>
+      )}
       <AnimatePresence>
-        {!open && (
-          <DialogTrigger render={<motion.button key="button" className={styles.button} layoutId="button" />}>
-            Toggle Dialog
-          </DialogTrigger>
-        )}
-
         <AnimatePresence>{open && <DialogOverlay key="overlay" />}</AnimatePresence>
 
         <DialogPortal keepMounted key="portal">
