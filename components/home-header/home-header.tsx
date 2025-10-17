@@ -67,12 +67,13 @@ export const HomeHeader = () => {
       </Link>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span
-            key={index}
-            className={styles.wordWrapper}
-            style={{ "--index": index } as React.CSSProperties}
-          >
-            {word}
+          <span key={index} className={styles.wordContainer}>
+            <span
+              className={styles.wordWrapper}
+              style={{ "--index": index } as React.CSSProperties}
+            >
+              {word}
+            </span>
             {index < HEADING.split(" ").length - 1 && " "}
           </span>
         ))}
