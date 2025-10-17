@@ -42,10 +42,9 @@ export default function DialogFramerMotion() {
                 />
               }
             >
-              <DialogTitle className={styles.title}>What is a brook?</DialogTitle>
+              <DialogTitle className={styles.title}>Premium Plan</DialogTitle>
               <DialogDescription className={styles.description}>
-                A small, natural stream of fresh water, often winding gently through forests, meadows, or
-                valleys.
+                Unlimited projects, priority support, and team collaboration tools for growing businesses.
               </DialogDescription>
               <div className={styles.actions}>
                 <DialogClose render={<Button variant="outline">Close</Button>} />

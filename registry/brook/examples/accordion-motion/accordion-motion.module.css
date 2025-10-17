@@ -84,5 +84,6 @@
   padding: 0 2rem 2rem 2rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--foreground);
+  color: var(--secondary-foreground);
+  font-weight: 400;
 }

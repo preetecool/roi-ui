@@ -5,28 +5,28 @@ export default function AccordionDemo() {
     <Accordion defaultValue={["item-1"]}>
       <AccordionItem value="item-1">
         <AccordionHeader>
-          <AccordionTrigger>What is a brook?</AccordionTrigger>
+          <AccordionTrigger>What features are included?</AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          A small, natural stream of fresh water flowing along a course towards a river, lake, or sea.
+          All plans include real-time analytics, unlimited team members, custom branding, API access, and 24/7 support.
         </AccordionPanel>
       </AccordionItem>
 
       <AccordionItem value="item-2">
         <AccordionHeader>
-          <AccordionTrigger>What is a stream?</AccordionTrigger>
+          <AccordionTrigger>How does billing work?</AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          A small narrow river that flows continuously in one direction, often through valleys and plains.
+          You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.
         </AccordionPanel>
       </AccordionItem>
 
       <AccordionItem value="item-3">
         <AccordionHeader>
-          <AccordionTrigger>What is a creek?</AccordionTrigger>
+          <AccordionTrigger>Can I upgrade or downgrade?</AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          A narrow waterway smaller than a river, often found in wooded areas and feeding into larger bodies of water.
+          Yes, you can change your plan at any time. Upgrades take effect immediately, and downgrades apply at your next billing cycle.
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

@@ -62,21 +62,21 @@ const contentInnerTransition = {
 const accordionItems = [
   {
     id: "item-1",
-    title: "What is a brook?",
+    title: "What features are included?",
     content:
-      "A small, natural stream of fresh water flowing along a course towards a river, lake, or sea.",
+      "All plans include real-time analytics, unlimited team members, custom branding, API access, and 24/7 support.",
   },
   {
     id: "item-2",
-    title: "What is a stream?",
+    title: "How does billing work?",
     content:
-      "A small narrow river that flows continuously in one direction, often through valleys and plains.",
+      "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
   },
   {
     id: "item-3",
-    title: "What is a creek?",
+    title: "Can I upgrade or downgrade?",
     content:
-      "A narrow waterway smaller than a river, often found in wooded areas and feeding into larger bodies of water.",
+      "Yes, you can change your plan at any time. Upgrades take effect immediately, and downgrades apply at your next billing cycle.",
   },
 ];
 

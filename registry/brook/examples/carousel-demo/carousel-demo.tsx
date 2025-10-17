@@ -4,69 +4,69 @@ import { useState, useEffect } from "react";
 import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import { Card, CardTitle, CardDescription, CardIcon } from "@/registry/brook/ui/card/card";
 import { Button } from "@/registry/brook/ui/button/button";
-import { Waves, Droplets, Mountain, TreePine, Fish, Compass, Map, Anchor, Wind } from "lucide-react";
+import { Zap, Shield, Palette, Users, BarChart, Cloud, Lock, RefreshCw, Settings } from "lucide-react";
 import styles from "./carousel-demo.module.css";
 
 export default function CarouselDemo() {
   const features = [
     {
-      id: "brook",
-      icon: <Droplets className={styles.icon} />,
-      title: "Brook",
-      description: "A small, natural stream of fresh water flowing along a course towards a river, lake, or sea.",
+      id: "performance",
+      icon: <Zap className={styles.icon} />,
+      title: "Performance",
+      description: "Instant loading and millisecond response times for optimal user experience.",
     },
     {
-      id: "stream",
-      icon: <Waves className={styles.icon} />,
-      title: "Stream",
-      description: "A small narrow river that flows continuously in one direction, often through valleys and plains.",
+      id: "security",
+      icon: <Shield className={styles.icon} />,
+      title: "Security",
+      description: "Bank-level encryption keeps your data protected and compliant.",
     },
     {
-      id: "creek",
-      icon: <Fish className={styles.icon} />,
-      title: "Creek",
+      id: "customization",
+      icon: <Palette className={styles.icon} />,
+      title: "Customize",
       description:
-        "A narrow waterway smaller than a river, often found in wooded areas and feeding into larger bodies of water.",
+        "Tailor every aspect to match your brand with flexible theming and configuration options.",
     },
     {
-      id: "river",
-      icon: <Map className={styles.icon} />,
-      title: "River",
+      id: "collaboration",
+      icon: <Users className={styles.icon} />,
+      title: "Collaboration",
       description:
-        "A large flowing body of water that usually empties into a sea or ocean, carved by centuries of erosion.",
+        "Work together seamlessly with real-time collaboration tools.",
     },
     {
-      id: "lake",
-      icon: <Mountain className={styles.icon} />,
-      title: "Lake",
+      id: "analytics",
+      icon: <BarChart className={styles.icon} />,
+      title: "Analytics",
       description:
-        "A large body of water surrounded by land, formed by glacial activity, volcanic action, or river damming.",
+        "Gain actionable insights with comprehensive dashboards and reporting.",
     },
     {
-      id: "pond",
-      icon: <TreePine className={styles.icon} />,
-      title: "Pond",
+      id: "cloud",
+      icon: <Cloud className={styles.icon} />,
+      title: "Integration",
       description:
-        "A small body of still water formed naturally or artificially, often supporting diverse aquatic life.",
+        "Connect with popular cloud services and scale automatically.",
     },
     {
-      id: "inlet",
-      icon: <Compass className={styles.icon} />,
-      title: "Inlet",
-      description: "A narrow strip of water that extends into land from a larger body of water like a sea or lake.",
+      id: "privacy",
+      icon: <Lock className={styles.icon} />,
+      title: "Privacy",
+      description: "Your data stays yours. Full control over privacy settings and data ownership.",
     },
     {
-      id: "bay",
-      icon: <Anchor className={styles.icon} />,
-      title: "Bay",
+      id: "sync",
+      icon: <RefreshCw className={styles.icon} />,
+      title: "Sync",
       description:
-        "A broad inlet of the sea where the land curves inward, providing shelter for boats and marine life.",
+        "Changes sync instantly across all devices in real-time.",
     },
     {
-      id: "fjord",
-      icon: <Wind className={styles.icon} />,
-      title: "Fjord",
-      description: "An inlet of the sea between cliffs, typically formed by glacial erosion in mountainous regions.",
+      id: "configuration",
+      icon: <Settings className={styles.icon} />,
+      title: "Configuration",
+      description: "Simple setup and intuitive controls get you running in minutes, not hours.",
     },
   ];
 
