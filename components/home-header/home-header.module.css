@@ -52,14 +52,18 @@
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.1;
+}
+
+.wordContainer {
+  display: inline-block;
   overflow: hidden;
+  vertical-align: top;
 }
 
 .wordWrapper {
   display: inline-block;
   animation: reveal 1.3s cubic-bezier(0.19, 1, 0.22, 1) backwards;
   animation-delay: calc(0.25s + 0.03s * var(--index));
-  white-space: pre;
 }
 
 .container {
