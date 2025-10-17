@@ -11,7 +11,7 @@ export function ThemeSwitcher() {
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className={styles.button}
-      title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      title="Toggle theme"
     >
       <SunMoon size={20} />
     </button>
