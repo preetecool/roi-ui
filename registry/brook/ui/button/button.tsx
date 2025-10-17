@@ -80,7 +80,7 @@ function ArrowPointer({
           d={pointLeft ? "M9 1l-4 4 4 4" : "M1 1l4 4-4 4"}
           stroke="currentColor"
           strokeWidth="2"
-          strokeLinecap="butt"
+          strokeLinecap="square"
           strokeLinejoin="miter"
           className={styles.arrowPoint}
         />

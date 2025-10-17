@@ -45,6 +45,10 @@
 
   --chart1: oklch(0.5759 0.1503 264.31);
   --chart2: oklch(0.4819 0.1788 263.5);
+
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 [data-theme="dark"] {

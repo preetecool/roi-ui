@@ -5,7 +5,7 @@ description: A versatile button component with multiple variants and sizes.
 
 <ComponentPreview name="button-demo" />
 
-<p style={{ marginTop: '1rem', marginBottom: '0' }}>With Stripe styled arrow</p>
+<p style={{ marginTop: "1rem", marginBottom: "0" }}>With Stripe styled arrow</p>
 
 <ComponentPreview name="button-with-arrow" />
 
@@ -14,8 +14,8 @@ description: A versatile button component with multiple variants and sizes.
 <InstallationTabs>
 
 <InstallationTabsList>
-    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
-    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
 </InstallationTabsList>
 
 <InstallationTabsContent value="cli">
@@ -31,18 +31,18 @@ npx shadcn@latest add https://roiui.com/r/button.json
 Copy and paste the TSX file:
 
 <ComponentSource
-    src="registry/brook/ui/button/button.tsx"
-    title="components/ui/button.tsx"
-    collapsible={true}
+  src="registry/brook/ui/button/button.tsx"
+  title="components/ui/button.tsx"
+  collapsible={true}
 />
 
 Copy and paste the CSS file:
 
 <ComponentSource
-    src="registry/brook/ui/button/button.module.css"
-    title="components/ui/button.module.css"
-    language="css"
-    collapsible={true}
+  src="registry/brook/ui/button/button.module.css"
+  title="components/ui/button.module.css"
+  language="css"
+  collapsible={true}
 />
 
 </InstallationTabsContent>
@@ -51,10 +51,7 @@ Copy and paste the CSS file:
 
 ## Anatomy
 
-<CodeBlock
-filename="anatomy"
-  language="tsx"
-  code={`<Button></Button>`} />
+<CodeBlock filename="anatomy" language="tsx" code={`<Button></Button>`} />
 
 ## Examples
 
@@ -82,68 +79,82 @@ filename="anatomy"
 
 <ComponentPreview name="button-loading" />
 
+### External Link
+
+<ComponentPreview name="button-external-link" />
+
 ## Props
 
 <PropTable
-    data={[
-        {
-            prop: "variant",
-            type: '"primary" | "secondary" | "destructive" | "ghost" | "icon" | "outline" | "link"',
-            default: '"primary"',
-            description: "The visual style variant of the button",
-        },
-        {
-            prop: "size",
-            type: '"sm" | "md" | "lg"',
-            default: '"md"',
-            description: "The size of the button",
-        },
-        {
-            prop: "showArrow",
-            type: "boolean",
-            default: "false",
-            description: "Whether to show an arrow indicator next to the button content",
-        },
-        {
-            prop: "pointLeft",
-            type: "boolean",
-            default: "false",
-            description:
-                "When showArrow is true, controls if the arrow points left instead of right",
-        },
-        {
-            prop: "loading",
-            type: "boolean",
-            default: "false",
-            description:
-                "Shows a spinner on the left side and disables the button when true",
-        },
-        {
-            prop: "className",
-            type: "string",
-            description: "Additional CSS classes to apply to the button",
-        },
-        {
-            prop: "children",
-            type: "React.ReactNode",
-            description: "The content to display inside the button",
-        },
-        {
-            prop: "disabled",
-            type: "boolean",
-            default: "false",
-            description: "Whether the button is disabled and non-interactive",
-        },
-        {
-            prop: "onClick",
-            type: "() => void",
-            description: "Function to call when the button is clicked",
-        },
-        {
-            prop: "type",
-            type: '"button" | "submit" | "reset"',
-            default: '"button"',
-            description: "The type attribute of the button element",
-        },
-    ]}
+  data={[
+    {
+      prop: "variant",
+      type: '"primary" | "secondary" | "destructive" | "ghost" | "icon" | "outline" | "link"',
+      default: '"primary"',
+      description: "The visual style variant of the button",
+    },
+    {
+      prop: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "The size of the button",
+    },
+    {
+      prop: "render",
+      type: "React.ReactElement",
+      description:
+        "Custom element to render the button as (e.g., Link, anchor tag). Enables polymorphic behavior.",
+    },
+    {
+      prop: "showArrow",
+      type: "boolean",
+      default: "false",
+      description: "Whether to show an arrow indicator next to the button content",
+    },
+    {
+      prop: "pointLeft",
+      type: "boolean",
+      default: "false",
+      description: "When showArrow is true, controls if the arrow points left instead of right",
+    },
+    {
+      prop: "pointExternal",
+      type: "boolean",
+      default: "false",
+      description: "When showArrow is true, applies external link arrow styling (diagonal orientation)",
+    },
+    {
+      prop: "loading",
+      type: "boolean",
+      default: "false",
+      description: "Shows a spinner on the left side and disables the button when true",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the button",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      description: "The content to display inside the button",
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Whether the button is disabled and non-interactive",
+    },
+    {
+      prop: "onClick",
+      type: "() => void",
+      description: "Function to call when the button is clicked",
+    },
+    {
+      prop: "type",
+      type: '"button" | "submit" | "reset"',
+      default: '"button"',
+      description: "The type attribute of the button element",
+    },
+  ]}
 />
