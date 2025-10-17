@@ -18,6 +18,7 @@ const COMPONENTS = [
   "cards/traffic",
   "cards/history",
   "dialogs/dialog",
+  "dropdown/dropdown-menu-motion",
   "avatars/avatar",
   "badges/badge-error",
   "badges/badge-success",

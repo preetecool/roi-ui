@@ -1,7 +1,3 @@
-.container {
-  position: relative;
-}
-
 .button {
   position: relative;
   display: flex;
@@ -13,20 +9,10 @@
   background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   cursor: pointer;
   color: var(--secondary-foreground);
-  /*border-radius: 50%;*/
 }
 .button:hover {
   background-color: var(--card);
   transition: 150ms ease-out;
-}
-
-.button:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
-
-.button span {
-  display: flex;
 }
 
 .popup {
@@ -42,8 +28,9 @@
 }
 
 .iconPlaceholder {
-  opacity: 0;
-  position: relative;
+  position: absolute;
+  top: 8;
+  right: 8;
 }
 
 .menuItem {
