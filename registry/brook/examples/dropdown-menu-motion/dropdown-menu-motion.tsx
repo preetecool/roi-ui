@@ -16,12 +16,11 @@ const menuItems = [
 export default function DropdownMenuFramerMotion() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const actionsRef = useRef({ unmount: () => {} });
 
   return (
     <div ref={containerRef}>
       <MotionConfig transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}>
-        <Menu.Root open={open} onOpenChange={setOpen} actionsRef={actionsRef}>
+        <Menu.Root open={open} onOpenChange={setOpen}>
           {!open && (
             <Menu.Trigger
               nativeButton
