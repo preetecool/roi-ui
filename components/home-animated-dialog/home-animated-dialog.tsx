@@ -2,6 +2,7 @@
 
 import { Button } from "@/registry/brook/ui/button/button";
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./home-animated-dialog.module.css";
 
@@ -53,7 +54,7 @@ export const HomeAnimatedDialog = () => {
       animate={{ rotate: 4, y: 0, opacity: 1 }}
       transition={{
         y: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
-        opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 }
+        opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 },
       }}
     >
       {!dialogOpen && (
@@ -90,7 +91,8 @@ export const HomeAnimatedDialog = () => {
           className={styles.dialogBox}
           style={{
             backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
-            boxShadow: "0 .753698px .452219px -.583333px #0000000f, 0 1.927px 1.1562px -1.16667px #0000000d, 0 3.86321px 2.31793px -1.75px #0000000d, 0 7.32331px 4.39398px -2.33333px #0000000d, 0 14.5565px 8.73393px -2.91667px #0000000a, 0 32px 19.2px -3.5px #00000005",
+            boxShadow:
+              "0 .753698px .452219px -.583333px #0000000f, 0 1.927px 1.1562px -1.16667px #0000000d, 0 3.86321px 2.31793px -1.75px #0000000d, 0 7.32331px 4.39398px -2.33333px #0000000d, 0 14.5565px 8.73393px -2.91667px #0000000a, 0 32px 19.2px -3.5px #00000005",
           }}
           variants={popupVariants}
           initial="hidden"
@@ -105,7 +107,7 @@ export const HomeAnimatedDialog = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.25 }}
           >
-            Hi, how are you?
+            Motion dialog
           </motion.h3>
           <motion.p
             layout
@@ -114,14 +116,14 @@ export const HomeAnimatedDialog = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.25 }}
           >
-            I just wanted to let you know that making this component was fun.{" "}
+            This is a Dialog component made with motion.
           </motion.p>
 
           <motion.div layout className={styles.actions}>
             <AnimatePresence>
               <motion.div layoutId="button" transition={buttonTransition}>
                 <Button variant="outline" size="sm">
-                  Button
+                  <Link href="/docs/examples/dialogs/dialog">View Component</Link>
                 </Button>
               </motion.div>
             </AnimatePresence>

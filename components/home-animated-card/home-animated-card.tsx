@@ -8,7 +8,7 @@ import styles from "./home-animated-card.module.css";
 const cardData = {
   title: "Luna",
   description: "Beautiful Nights",
-  longDescription: "Gazing at the moon capturing the essence of tranquility.",
+  longDescription: "Gazing at the night sky capturing the essence of tranquility.",
   image: "/art-brook.png",
 };
 

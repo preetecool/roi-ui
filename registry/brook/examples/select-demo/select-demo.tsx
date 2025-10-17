@@ -15,23 +15,22 @@ import {
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./select-demo.module.css";
 
-const bodiesOfWater = [
-  { value: "placeholder", label: "Bodies of Water" },
-  { value: "Brook", label: "Brook" },
-  { value: "Stream", label: "Stream" },
-  { value: "Creek", label: "Creek" },
-  { value: "River", label: "River" },
-  { value: "Lake", label: "Lake" },
+const subscriptionPlans = [
+  { value: "placeholder", label: "Select a Plan" },
+  { value: "Starter", label: "Starter" },
+  { value: "Professional", label: "Professional" },
+  { value: "Business", label: "Business" },
+  { value: "Enterprise", label: "Enterprise" },
 ];
 
 export default function SelectDemo() {
   return (
-    <Select items={bodiesOfWater} defaultValue="placeholder">
+    <Select items={subscriptionPlans} defaultValue="placeholder">
       <SelectTrigger render={<Button variant="outline" size="sm" className={styles.trigger} />}>
         <SelectValue>
           {(value) => (
             <span className={value === "placeholder" ? styles.placeholder : undefined}>
-              {bodiesOfWater.find((item) => item.value === value)?.label}
+              {subscriptionPlans.find((item) => item.value === value)?.label}
             </span>
           )}
         </SelectValue>
@@ -42,26 +41,22 @@ export default function SelectDemo() {
           <SelectPopup>
             <SelectList>
               <SelectItem value="placeholder" disabled>
-                <SelectItemText className={styles.itemText}>Bodies of Water</SelectItemText>
+                <SelectItemText className={styles.itemText}>Select a Plan</SelectItemText>
               </SelectItem>
-              <SelectItem value="Brook">
-                <SelectItemText>Brook</SelectItemText>
+              <SelectItem value="Starter">
+                <SelectItemText>Starter</SelectItemText>
                 <SelectItemIndicator />
               </SelectItem>
-              <SelectItem value="Stream">
-                <SelectItemText>Stream</SelectItemText>
+              <SelectItem value="Professional">
+                <SelectItemText>Professional</SelectItemText>
                 <SelectItemIndicator />
               </SelectItem>
-              <SelectItem value="Creek">
-                <SelectItemText>Creek</SelectItemText>
+              <SelectItem value="Business">
+                <SelectItemText>Business</SelectItemText>
                 <SelectItemIndicator />
               </SelectItem>
-              <SelectItem value="River">
-                <SelectItemText>River</SelectItemText>
-                <SelectItemIndicator />
-              </SelectItem>
-              <SelectItem value="Lake">
-                <SelectItemText>Lake</SelectItemText>
+              <SelectItem value="Enterprise">
+                <SelectItemText>Enterprise</SelectItemText>
                 <SelectItemIndicator />
               </SelectItem>
             </SelectList>

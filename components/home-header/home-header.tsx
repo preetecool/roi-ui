@@ -2,7 +2,7 @@
 import { Button } from "@/registry/brook/ui/button/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
@@ -50,14 +50,21 @@ const ArrowPointer = () => {
 export const HomeHeader = () => {
   const [reset, setReset] = useState(0);
   const router = useRouter();
-  const HEADING = "Functional & delighful UI components";
+  const HEADING = "Functional & delighful components";
   const SUBHEADING =
     "React components built with Base UI primitives and Motion for seamless, accessible interactions";
 
-  const handleLuckyClick = () => {
+  const getRandomComponent = () => {
     const randomComponent = COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
-    router.push(`/docs/examples/${randomComponent}`);
+
+    return randomComponent;
   };
+
+  const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
+
+  useEffect(() => {
+    setRandomComponent(getRandomComponent());
+  }, []);
 
   return (
     <div key={reset} className={styles.container}>
@@ -68,10 +75,7 @@ export const HomeHeader = () => {
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
           <span key={index} className={styles.wordContainer}>
-            <span
-              className={styles.wordWrapper}
-              style={{ "--index": index } as React.CSSProperties}
-            >
+            <span className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
               {word}
               {index < HEADING.split(" ").length - 1 && " "}
             </span>
@@ -81,10 +85,10 @@ export const HomeHeader = () => {
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
         <Button showArrow onClick={() => router.push("/docs/start")}>
-          Get Started
+          <Link href="/docs/start">Get Started</Link>
         </Button>
-        <Button variant="outline" onClick={handleLuckyClick}>
-          I&apos;m feeling lucky
+        <Button variant="outline">
+          <Link href={`/docs/examples/${randomComponent}`}>I&apos;m Feeling Lucky</Link>
         </Button>
       </div>
     </div>

@@ -11,12 +11,16 @@ export default function CardImageDemo() {
         borderRadius: "24px",
       }}
     >
-      <CardImage src="/scene_01.png" alt="Mountain scene" style={{ borderRadius: "12px", width: "auto" }} />
+      <CardImage
+        src="/scene_01.png"
+        alt="Veiled woman gazing at architecture under the night sky"
+        style={{ borderRadius: "12px", width: "auto" }}
+      />
 
       <CardContent>
-        <CardTitle className={styles.title}>Mountain Adventure</CardTitle>
+        <CardTitle className={styles.title}>Threshold</CardTitle>
         <p className={styles.description}>
-          Experience the beauty of mountain landscapes with guided tours and hiking adventures.
+          Between what we build and what eternally exists standing in quiet contemplation.
         </p>
       </CardContent>
 
