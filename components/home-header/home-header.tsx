@@ -73,8 +73,8 @@ export const HomeHeader = () => {
               style={{ "--index": index } as React.CSSProperties}
             >
               {word}
+              {index < HEADING.split(" ").length - 1 && " "}
             </span>
-            {index < HEADING.split(" ").length - 1 && " "}
           </span>
         ))}
       </h1>
