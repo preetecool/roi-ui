@@ -1,8 +1,9 @@
 "use client";
 
+import { Button } from "@/registry/brook/ui/button/button";
+import type { PageTree } from "fumadocs-core/server";
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
-import type { PageTree } from "fumadocs-core/server";
 import { useEffect, useState } from "react";
 import { Logo } from "../logo";
 import { MobileNav } from "../mobile-nav/mobile-nav";
@@ -61,19 +62,21 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
             </div>
 
             <div className={`${styles.navLinks} lg:flex`}>
-              <Link href="/docs" className={styles.navLink}>
+              <Button size="sm" variant="ghost" className={styles.navLink} render={<Link href="/docs" />}>
                 Docs
-              </Link>
+              </Button>
             </div>
           </nav>
 
           <div className={styles.actions}>
-            <a
-              href="https://github.com/preetecool/roi-ui"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              variant="ghost"
+              size="icon"
               className={`${styles.githubLink} ${styles.desktopOnly}`}
               aria-label="View source on GitHub"
+              render={
+                <a href="https://github.com/preetecool/roi-ui" target="_blank" rel="noopener noreferrer" />
+              }
             >
               <svg width="18" height="18" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -83,7 +86,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
                   fill="currentColor"
                 />
               </svg>
-            </a>
+            </Button>
             <div className={`${styles.separator} ${styles.desktopOnly}`}></div>
             <div className={styles.desktopOnly}>
               <ThemeSwitcher />

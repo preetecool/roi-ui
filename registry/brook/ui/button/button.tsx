@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
+import { useRender } from "@base-ui-components/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
-import { forwardRef } from "react";
 import styles from "./button.module.css";
 
 const buttonVariants = cva(styles.base, {
@@ -97,46 +97,45 @@ function ArrowPointer({
   );
 }
 
-const Button = forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<"button"> &
-    VariantProps<typeof buttonVariants> & {
-      showArrow?: boolean;
-      pointLeft?: boolean;
-      pointExternal?: boolean;
-      loading?: boolean;
-    }
->(
-  (
-    {
-      className,
-      variant,
-      size,
-      showArrow = false,
-      pointLeft = false,
-      pointExternal = false,
-      loading = false,
-      children,
-      ...props
+interface ButtonProps extends useRender.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
+  showArrow?: boolean;
+  pointLeft?: boolean;
+  pointExternal?: boolean;
+  loading?: boolean;
+}
+
+function Button({
+  render,
+  className,
+  variant,
+  size,
+  showArrow = false,
+  pointLeft = false,
+  pointExternal = false,
+  loading = false,
+  ...props
+}: ButtonProps) {
+  const decoratedChildren = (
+    <>
+      {loading && <Spinner />}
+      {!loading && showArrow && pointLeft && <ArrowPointer pointLeft pointExternal={pointExternal} />}
+      {props.children}
+      {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
+    </>
+  );
+
+  return useRender({
+    defaultTagName: "button",
+    render,
+    props: {
+      ...props,
+      "data-slot": "button",
+      className: cn(buttonVariants({ variant, size }), loading && styles.loading, className),
+      disabled: props.disabled || loading,
+      children: decoratedChildren,
     },
-    ref,
-  ) => {
-    return (
-      <button
-        ref={ref}
-        data-slot="button"
-        className={cn(buttonVariants({ variant, size }), loading && styles.loading, className)}
-        disabled={props.disabled || loading}
-        {...props}
-      >
-        {loading && <Spinner />}
-        {!loading && showArrow && pointLeft && <ArrowPointer pointLeft pointExternal={pointExternal} />}
-        {children}
-        {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
-      </button>
-    );
-  },
-);
+  });
+}
 
 Button.displayName = "Button";
 

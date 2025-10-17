@@ -20,16 +20,13 @@
   text-align: center;
   color: var(--muted-foreground);
   font-size: 0.875rem;
-  line-height: 1.5;
 }
 
 .link {
   color: var(--foreground);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.linkUnderline {
-  color: var(--foreground);
-  text-decoration: underline;
+  height: 100%;
+  padding: 0;
+  border-radius: 0;
+  margin: 0;
+  font-weight: 300;
 }

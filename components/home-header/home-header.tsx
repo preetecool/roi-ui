@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/registry/brook/ui/button/button";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./home-header.module.css";
 
@@ -49,7 +48,6 @@ const ArrowPointer = () => {
 
 export const HomeHeader = () => {
   const [reset, setReset] = useState(0);
-  const router = useRouter();
   const HEADING = "Functional & delighful components";
   const SUBHEADING =
     "React components built with Base UI primitives and Motion for seamless, accessible interactions";
@@ -84,11 +82,11 @@ export const HomeHeader = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button showArrow onClick={() => router.push("/docs/start")}>
-          <Link href="/docs/start">Get Started</Link>
+        <Button showArrow render={<Link href="/docs/start" />}>
+          Get Started
         </Button>
-        <Button variant="outline">
-          <Link href={`/docs/examples/${randomComponent}`}>I&apos;m Feeling Lucky</Link>
+        <Button variant="outline" render={<Link href={`/docs/examples/${randomComponent}`} />}>
+          I&apos;m Feeling Lucky
         </Button>
       </div>
     </div>

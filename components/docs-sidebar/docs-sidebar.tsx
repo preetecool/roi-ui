@@ -4,6 +4,7 @@ import { Logo } from "@/components/logo";
 import { Search } from "@/components/search/search";
 import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
 import { Badge } from "@/registry/brook/ui/badge/badge";
+import { Button } from "@/registry/brook/ui/button/button";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
 import { PanelRight } from "lucide-react";
 import Link from "next/link";
@@ -61,15 +62,17 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
             <div className={styles.sidebarHeader}>
               <div className={styles.logoRow}>
                 <Link href="/" className={styles.logoLink}>
-                  <Logo width={24} height={24} />
+                  <Logo width={24} height={24} fillColor="var(--muted-foreground)" strokeColor="var(--card)" />
                 </Link>
-                <button
+                <Button
+                  variant="ghost"
+                  size="icon"
                   className={`${styles.collapseButton} hit-area-extend`}
                   aria-label="Collapse sidebar"
                   onClick={() => setIsCollapsed(!isCollapsed)}
                 >
                   <PanelRight size={18} className={styles.collapseIcon} />
-                </button>
+                </Button>
               </div>
               <div className={styles.searchWrapper} onClick={triggerSearch}>
                 <svg
@@ -104,12 +107,14 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
             </div>
             <SidebarContent tree={tree} pathname={pathname} />
             <div className={styles.sidebarFooter}>
-              <a
-                href="https://github.com/preetecool/roi-ui"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                variant="ghost"
+                size="icon"
                 className={styles.githubLink}
                 aria-label="View source on GitHub"
+                render={
+                  <a href="https://github.com/preetecool/roi-ui" target="_blank" rel="noopener noreferrer" />
+                }
               >
                 <svg width="20" height="20" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -119,7 +124,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
+              </Button>
               <ThemeSwitcher />
             </div>
           </div>
@@ -129,14 +134,18 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
       {/* Collapsed sidebar buttons */}
       <div className={styles.collapsedButtons}>
         <div className={styles.collapsedButtonsInner}>
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             className={`${styles.collapsedButton} hit-area-extend`}
             aria-label="Toggle sidebar"
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
             <PanelRight size={18} className={styles.collapseIcon} />
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
             className={`${styles.collapsedButton} hit-area-extend`}
             aria-label="Search"
             onClick={triggerSearch}
@@ -157,7 +166,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
     </>
