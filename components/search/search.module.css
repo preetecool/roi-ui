@@ -122,22 +122,22 @@
 }
 
 /* Arrow animation styles */
-.commandWrapper [cmdk-item] svg[viewBox="0 0 14 10"] path:nth-child(1) {
-  transition: all 150ms ease-in;
-  transform: translateX(0);
+.arrowPoint {
+  transition: 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
-.commandWrapper [cmdk-item] svg[viewBox="0 0 14 10"] path:nth-child(2) {
-  transition: all 150ms ease-in;
+.arrowShaft {
+  transition: 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   opacity: 0;
-  transform: translateX(0);
 }
 
-.commandWrapper [cmdk-item]:hover svg[viewBox="0 0 14 10"] path:nth-child(1) {
+.commandWrapper [cmdk-item]:hover .arrowPoint,
+.commandWrapper [cmdk-item][data-selected="true"] .arrowPoint {
   transform: translateX(2px);
 }
 
-.commandWrapper [cmdk-item]:hover svg[viewBox="0 0 14 10"] path:nth-child(2) {
+.commandWrapper [cmdk-item]:hover .arrowShaft,
+.commandWrapper [cmdk-item][data-selected="true"] .arrowShaft {
   opacity: 1;
-  transform: translateX(-1px);
+  transform: translateX(-2px);
 }

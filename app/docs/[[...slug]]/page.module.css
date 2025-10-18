@@ -333,6 +333,21 @@
     text-decoration: underline;
 }
 
+.badgeButton {
+    height: auto;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+}
+
+.badgeButton svg {
+    width: 10px;
+    height: 9px;
+    margin-left: 6px;
+    margin-right: -4px;
+}
+
 body[data-page="introduction"] .contentWrapper :global(h2),
 [data-introduction-page] .contentWrapper :global(h2) {
     margin-top: 48px;

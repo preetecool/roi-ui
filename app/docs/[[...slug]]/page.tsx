@@ -10,36 +10,6 @@ import { Button } from "@/registry/brook/ui/button/button";
 import { TOCUpdater } from "@/components/toc-updater";
 import styles from "./page.module.css";
 
-const ArrowPointer = ({ pointExternal = false }: { pointExternal?: boolean }) => {
-  return (
-    <svg
-      viewBox="0 0 14 10"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={`${styles.arrow} ${pointExternal ? styles.arrowExternal : ""}`}
-    >
-      <g fillRule="nonzero">
-        <path
-          d="M1 1l4 4-4 4"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          className={styles.arrowPoint}
-        />
-        <path
-          d="M1 5h4.8"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
-          className={styles.arrowShaft}
-        />
-      </g>
-    </svg>
-  );
-};
-
 export const revalidate = false;
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -145,54 +115,55 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
               {(links?.doc || links?.api) && (
                 <div className={styles.externalLinks}>
                   {links?.doc && (
-                    <a
-                      href={links.doc}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.externalLink}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      showArrow
+                      pointExternal
+                      className={styles.badgeButton}
+                      render={<a href={links.doc} target="_blank" rel="noopener noreferrer" />}
                     >
-                      <Badge variant="outline" size="md">
-                        Docs
-                        <ArrowPointer pointExternal />
-                      </Badge>
-                    </a>
+                      Docs
+                    </Button>
                   )}
                   {links?.api && (
-                    <a
-                      href={links.api}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.externalLink}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      showArrow
+                      pointExternal
+                      className={styles.badgeButton}
+                      render={<a href={links.api} target="_blank" rel="noopener noreferrer" />}
                     >
-                      <Badge variant="outline" size="md">
-                        API Reference
-                        <ArrowPointer pointExternal />
-                      </Badge>
-                    </a>
+                      API Reference
+                    </Button>
                   )}
                 </div>
               )}
               {components && components.length > 0 && (
                 <div className={styles.componentBadges}>
                   {components.map((component: string) => (
-                    <Link key={component} href={`/docs/ui/${component}`}>
-                      <Badge variant="secondary" size="md">
-                        {component.charAt(0).toUpperCase() + component.slice(1)}
-                      </Badge>
-                    </Link>
+                    <Button
+                      key={component}
+                      variant="secondary"
+                      size="sm"
+                      className={styles.badgeButton}
+                      render={<Link href={`/docs/ui/${component}`} />}
+                    >
+                      {component.charAt(0).toUpperCase() + component.slice(1)}
+                    </Button>
                   ))}
                   {motion && (
-                    <a
-                      href="https://motion.dev"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.externalLink}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      showArrow
+                      pointExternal
+                      className={styles.badgeButton}
+                      render={<a href="https://motion.dev" target="_blank" rel="noopener noreferrer" />}
                     >
-                      <Badge variant="outline" size="md">
-                        Motion
-                        <ArrowPointer pointExternal />
-                      </Badge>
-                    </a>
+                      Motion
+                    </Button>
                   )}
                 </div>
               )}

@@ -85,7 +85,7 @@ function ArrowPointer({
           className={styles.arrowPoint}
         />
         <path
-          d={pointLeft ? "M8.2 5H4" : "M1 5h4.8"}
+          d={pointLeft ? "M9 5H4" : "M1.8 5h4.8"}
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="square"
