@@ -59,22 +59,34 @@ Copy and paste the CSS file:
 <CodeBlock
 filename="anatomy"
   language="tsx"
-  code={`<Select>
+  code={`<SelectRoot>
     <SelectTrigger>
         <SelectValue />
         <SelectIcon />
     </SelectTrigger>
     <SelectPortal>
+        <SelectOverlay />
         <SelectPositioner>
+            <SelectScrollUpArrow />
             <SelectPopup>
-                <SelectGroup>
+                <SelectArrow />
+                <SelectList>
                     <SelectItem>
                         <SelectItemText />
                         <SelectItemIndicator />
                     </SelectItem>
-                </SelectGroup>
+                    <SelectSeparator />
+                    <SelectGroup>
+                        <SelectGroupLabel />
+                        <SelectItem>
+                            <SelectItemText />
+                            <SelectItemIndicator />
+                        </SelectItem>
+                    </SelectGroup>
+                </SelectList>
             </SelectPopup>
+            <SelectScrollDownArrow />
         </SelectPositioner>
     </SelectPortal>
-</Select>
+</SelectRoot>
 `} />
