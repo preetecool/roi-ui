@@ -3,3 +3,12 @@
   justify-content: center;
   width: 100%;
 }
+
+.buttonContainer {
+  grid-column-start: 3;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
