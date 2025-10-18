@@ -1,6 +1,5 @@
 .sidebarDesktop {
   display: none;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 100;
 }
@@ -11,15 +10,12 @@
   }
 }
 
-.sidebarCollapsed {
+.sidebarCollapsed .sidebarContainer {
   transform: translateX(calc(-1 * var(--sidebar-width)));
 }
 
-.sidebarFloating {
-  transform: translateX(0) !important;
-}
-
 .sidebarFloating .sidebarContainer {
+  transform: translateX(0) !important;
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
 }
 
@@ -55,6 +51,7 @@
   display: none;
   height: 100vh;
   width: var(--sidebar-width);
+  transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 @media (min-width: 1024px) {

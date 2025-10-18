@@ -1,86 +1,84 @@
 :root {
-    --linenumber: oklch(0.7604 0 0 / 60%);
-    --code-header-bg: color-mix(in oklch, var(--card) 33%, var(--background));
+  --linenumber: oklch(0.7604 0 0 / 60%);
+  --code-header-bg: color-mix(in oklch, var(--card) 33%, var(--background));
 }
 
 html[data-theme="dark"] {
-    --linenumber: oklch(0.7604 0 0 / 30%);
+  --linenumber: oklch(0.7604 0 0 / 30%);
 }
 
 [data-line-numbers] {
-    display: grid;
-    min-width: 100%;
-    white-space: pre;
-    counter-reset: line;
+  display: grid;
+  min-width: 100%;
+  white-space: pre;
+  counter-reset: line;
 }
 
 [data-line-numbers] [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 3rem;
-    padding-right: 1rem;
-    text-align: right;
-    color: var(--linenumber);
-    user-select: none;
-    pointer-events: none;
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2.5rem;
+  padding-right: 1.5rem;
+  text-align: right;
+  color: var(--linenumber);
+  user-select: none;
+  pointer-events: none;
 }
 
 [data-line] span {
-    color: var(--shiki-light);
+  color: var(--shiki-light);
 }
 
 html[data-theme="dark"] [data-line] span {
-    color: var(--shiki-dark);
+  color: var(--shiki-dark);
 }
 
 .code-container pre {
-    overflow-x: auto;
-    border-radius: 0.5rem;
-    margin: 0;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  margin: 0;
 }
 
 pre code {
-    white-space: pre-wrap;
-    font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
-    font-size: 14px;
-    line-height: 1.4rem;
+  white-space: pre-wrap;
+  font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+  font-size: 12px !important;
+  line-height: 1.4rem;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
-    pre code {
-        font-size: 12px;
-    }
-    [data-line-numbers] [data-line]::before {
-        width: 2rem;
-    }
+  [data-line-numbers] [data-line]::before {
+    width: 2rem;
+  }
 }
 
-/* iOS Safari specific fix */
 @supports (-webkit-touch-callout: none) {
-    @media (max-width: 768px) {
-        pre code span {
-            font-size: 12px;
-            -webkit-text-size-adjust: none;
-            font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
-        }
+  @media (max-width: 768px) {
+    pre code span {
+      font-size: 12px;
+      -webkit-text-size-adjust: none;
+      font-family:
+        "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
     }
+  }
 }
 
 [data-line-numbers] [data-line] {
-    margin: 0;
-    padding: 0;
-    display: block;
-    line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  display: block;
+  line-height: 1.4;
 }
 
 .code-container {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .code-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }

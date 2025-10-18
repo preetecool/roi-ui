@@ -26,15 +26,17 @@ const ArrowIcon = () => {
           d="M1 1l4 4-4 4"
           stroke="currentColor"
           strokeWidth="2"
-          strokeLinecap="butt"
+          strokeLinecap="square"
           strokeLinejoin="miter"
+          className={styles.arrowPoint}
         />
         <path
-          d="M1 5h4.8"
+          d="M1.8 5h4.8"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="square"
           strokeLinejoin="miter"
+          className={styles.arrowShaft}
         />
       </g>
     </svg>

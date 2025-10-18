@@ -75,7 +75,6 @@
 }
 
 .outline:hover:not(:disabled) {
-  /*oklch(from var(--secondary-foreground) l c h / 0.8);*/
   background-color: oklch(from var(--accent) l c h / 0.33);
 }
 
@@ -153,12 +152,12 @@
 }
 
 .arrowExternal {
-  transition: 200ms var(--ease-in-out-cubic);
+  transform-origin: 8%;
+  transition: transform 200ms var(--ease-in-out-cubic);
 }
 
 .base:hover .arrowExternal {
   transform: rotate(-45deg);
-  margin-top: -8px;
 }
 
 .arrowPoint {
@@ -176,7 +175,7 @@
 
 .base:hover .arrowShaft {
   opacity: 1;
-  transform: translateX(-1px);
+  transform: translateX(-2px);
 }
 
 .base:hover .arrowLeft .arrowPoint {
