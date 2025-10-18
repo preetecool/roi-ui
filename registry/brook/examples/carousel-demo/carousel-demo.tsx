@@ -74,7 +74,7 @@ export default function CarouselDemo() {
     id: feature.id,
     content: (
       <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
-        <div>
+        <div className={styles.cardContent}>
           <CardIcon>{feature.icon}</CardIcon>
 
           <CardTitle className={styles.cardTitle}>{feature.title}</CardTitle>

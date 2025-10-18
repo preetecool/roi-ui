@@ -9,6 +9,14 @@
   padding: 1.5rem;
   padding-bottom: 4rem;
   border-color: var(--border-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContent {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .cardTitle {
