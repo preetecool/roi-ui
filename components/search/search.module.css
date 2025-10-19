@@ -4,6 +4,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   animation: fadeIn 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 @keyframes fadeIn {
@@ -13,6 +14,19 @@
   to {
     opacity: 1;
   }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.overlayClosing {
+  animation: fadeOut 0.15s ease forwards;
 }
 
 .commandWrapper {
@@ -96,6 +110,21 @@
   }
 }
 
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.commandWrapperClosing {
+  animation: slideOut 0.15s var(--ease-out-expo) forwards;
+}
+
 .commandItemContent {
   display: flex;
   flex-direction: column;
@@ -106,7 +135,7 @@
 
 .commandItemTitle {
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 450;
   color: var(--foreground);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -121,7 +150,6 @@
   white-space: nowrap;
 }
 
-/* Arrow animation styles */
 .arrowPoint {
   transition: 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
@@ -140,4 +168,32 @@
 .commandWrapper [cmdk-item][data-selected="true"] .arrowShaft {
   opacity: 1;
   transform: translateX(-2px);
+}
+
+.commandFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 0 -0.25rem -0.25rem -0.25rem;
+  border-top: 1px solid var(--border-dark);
+  background-color: color-mix(in oklch, var(--muted) 20%, transparent);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.commandFooterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.commandFooterText {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+.commandFooterKbd {
+  font-size: 0.9375rem;
 }
