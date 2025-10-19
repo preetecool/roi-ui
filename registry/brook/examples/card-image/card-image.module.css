@@ -1,5 +1,11 @@
 .card {
   max-width: 360px;
+  border-radius: 24px;
+}
+
+.cardImage {
+  border-radius: 12px;
+  width: auto;
 }
 
 .title {

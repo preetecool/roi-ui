@@ -7,14 +7,11 @@ export default function CardImageDemo() {
     <Card
       variant="lift"
       className={styles.card}
-      style={{
-        borderRadius: "24px",
-      }}
     >
       <CardImage
         src="/scene_01.png"
         alt="Veiled woman gazing at architecture under the night sky"
-        style={{ borderRadius: "12px", width: "auto" }}
+        className={styles.cardImage}
       />
 
       <CardContent>
