@@ -7,15 +7,13 @@
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  border: 1px solid var(--border);
-  background: linear-gradient(
-    to bottom,
-    var(--card),
-    color-mix(in oklch, var(--card) 90%, var(--background))
-  );
+  border: 1px solid color-mix(in oklch, var(--foreground) 6%, transparent);
+  border-bottom: 3px solid color-mix(in oklch, var(--foreground) 6%, transparent);
+  background: var(--card);
   box-shadow:
-    0 1px 2px 0 rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 0 color-mix(in oklch, var(--border) 80%, transparent);
+    0 0.753698px 0.452219px -0.583333px rgba(0, 0, 0, 0.03),
+    0 1.927px 1.1562px -1.16667px rgba(0, 0, 0, 0.025),
+    0 3.86321px 2.31793px -1.75px rgba(0, 0, 0, 0.02);
   color: var(--foreground);
   transition: all 150ms ease;
 }

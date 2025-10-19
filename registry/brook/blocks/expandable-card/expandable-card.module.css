@@ -7,10 +7,9 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: var(--background);
-  z-index: var(--dialog-z);
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 9998;
   pointer-events: auto;
-  opacity: 0.2;
 }
 
 .card {
@@ -20,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   width: 320px;
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border);
   overflow: hidden;
 }
 
@@ -53,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  z-index: 9999;
   pointer-events: none;
   overflow-y: auto;
   max-height: 100%;

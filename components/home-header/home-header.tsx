@@ -82,10 +82,8 @@ export const HomeHeader = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button showArrow render={<Link href="/docs/start" />}>
-          Get Started
-        </Button>
-        <Button variant="outline" render={<Link href={`/docs/examples/${randomComponent}`} />}>
+        <Button render={<Link href="/docs/start" />}>Get Started</Button>
+        <Button variant="ghost" render={<Link href={`/docs/examples/${randomComponent}`} />}>
           I&apos;m Feeling Lucky
         </Button>
       </div>
