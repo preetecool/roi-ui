@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/switch/switch.tsx",
-      "content": "\"use client\";\n\nimport { Switch } from \"@base-ui-components/react/switch\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./switch.module.css\";\n\nconst SwitchRoot = ({ className, ...props }: React.ComponentProps<typeof Switch.Root>) => (\n  <Switch.Root className={cn(styles.root, className)} {...props} />\n);\n\nconst SwitchThumb = ({ className, ...props }: React.ComponentProps<typeof Switch.Thumb>) => (\n  <Switch.Thumb className={cn(styles.thumb, className)} {...props} />\n);\n\nexport { SwitchRoot as Switch, SwitchThumb };\n",
+      "content": "\"use client\";\n\nimport { Switch } from \"@base-ui-components/react/switch\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./switch.module.css\";\n\nfunction SwitchRoot({ className, ...props }: React.ComponentProps<typeof Switch.Root>) {\n  return <Switch.Root className={cn(styles.root, className)} {...props} />;\n}\n\nfunction SwitchThumb({ className, ...props }: React.ComponentProps<typeof Switch.Thumb>) {\n  return <Switch.Thumb className={cn(styles.thumb, className)} {...props} />;\n}\n\nexport { SwitchRoot as Switch, SwitchThumb };\n",
       "type": "registry:file",
       "target": "~/components/ui/switch/switch.tsx"
     },

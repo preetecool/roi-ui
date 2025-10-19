@@ -4,52 +4,54 @@ import { ScrollArea } from "@base-ui-components/react/scroll-area";
 import { cn } from "@/lib/utils";
 import styles from "./scroll-area.module.css";
 
-const ScrollAreaRoot = ({
+function ScrollAreaRoot({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Root>) => (
-  <ScrollArea.Root className={cn(styles.root, className)} {...props} />
-);
+}: React.ComponentProps<typeof ScrollArea.Root>) {
+  return <ScrollArea.Root className={cn(styles.root, className)} {...props} />;
+}
 
-const ScrollAreaViewport = ({
+function ScrollAreaViewport({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Viewport>) => (
-  <ScrollArea.Viewport className={cn(styles.viewport, className)} {...props} />
-);
+}: React.ComponentProps<typeof ScrollArea.Viewport>) {
+  return <ScrollArea.Viewport className={cn(styles.viewport, className)} {...props} />;
+}
 
-const ScrollAreaContent = ({
+function ScrollAreaContent({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Content>) => (
-  <ScrollArea.Content className={cn(styles.content, className)} {...props} />
-);
+}: React.ComponentProps<typeof ScrollArea.Content>) {
+  return <ScrollArea.Content className={cn(styles.content, className)} {...props} />;
+}
 
-const ScrollAreaScrollbar = ({
+function ScrollAreaScrollbar({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollArea.Scrollbar>) => (
-  <ScrollArea.Scrollbar 
-    className={cn(styles.scrollbar, orientation === "horizontal" && styles.horizontal, className)} 
-    orientation={orientation}
-    {...props} 
-  />
-);
+}: React.ComponentProps<typeof ScrollArea.Scrollbar>) {
+  return (
+    <ScrollArea.Scrollbar
+      className={cn(styles.scrollbar, orientation === "horizontal" && styles.horizontal, className)}
+      orientation={orientation}
+      {...props}
+    />
+  );
+}
 
-const ScrollAreaThumb = ({
+function ScrollAreaThumb({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Thumb>) => (
-  <ScrollArea.Thumb className={cn(styles.thumb, className)} {...props} />
-);
+}: React.ComponentProps<typeof ScrollArea.Thumb>) {
+  return <ScrollArea.Thumb className={cn(styles.thumb, className)} {...props} />;
+}
 
-const ScrollAreaCorner = ({
+function ScrollAreaCorner({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Corner>) => (
-  <ScrollArea.Corner className={cn(styles.corner, className)} {...props} />
-);
+}: React.ComponentProps<typeof ScrollArea.Corner>) {
+  return <ScrollArea.Corner className={cn(styles.corner, className)} {...props} />;
+}
 
 export {
   ScrollAreaRoot as ScrollArea,

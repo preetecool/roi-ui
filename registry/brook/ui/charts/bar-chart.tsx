@@ -54,12 +54,12 @@ function BarChart({
     payload: BarChartData;
   }
 
-  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string | number }) => {
+  function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string | number }) {
     if (!active || !payload || !payload.length) return null;
-    
+
     const data = payload[0];
     return (
-      <ChartTooltip 
+      <ChartTooltip
         active={active}
         payload={[{
           ...data,
@@ -71,7 +71,7 @@ function BarChart({
         valueFormatter={tooltipValueFormatter}
       />
     );
-  };
+  }
 
   return (
     <div className={styles.barChart}>

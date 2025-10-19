@@ -5,20 +5,20 @@ import { useEffect, useState } from "react";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
-  "tabs/tabs",
-  "accordions/accordion",
-  "buttons/like-button",
-  "chat/chat",
-  "cards/task",
-  "cards/expandable-card",
-  "cards/login-card",
-  "cards/image-card",
-  "cards/traffic",
-  "cards/history",
-  "dialogs/dialog",
-  "dropdown/dropdown-menu-motion",
-  "badges/badge-error",
-  "badges/badge-success",
+  "/tabs",
+  "/accordion",
+  "/like-button",
+  "/chat",
+  "/task",
+  "/card-expdanble",
+  "/card-login",
+  "/card-image",
+  "/card-traffic",
+  "/card-history",
+  "/dialog",
+  "/dropdown-menu-motion",
+  "/badge-error",
+  "/badge-success",
 ];
 
 const ArrowPointer = () => {
