@@ -38,7 +38,7 @@
 }
 
 .primary:hover:not(:disabled) {
-  opacity: 0.85;
+  background-color: oklch(from var(--primary) l c h / 0.8);
 }
 
 .secondary {
@@ -47,7 +47,7 @@
 }
 
 .secondary:hover:not(:disabled) {
-  opacity: 0.8;
+  background-color: oklch(from var(--secondary) l c h / 0.8);
 }
 
 .destructive {
@@ -56,7 +56,7 @@
 }
 
 .destructive:hover:not(:disabled) {
-  opacity: 0.9;
+  background-color: oklch(from var(--destructive) l c h / 0.85);
 }
 
 .ghost {
@@ -65,7 +65,7 @@
 }
 
 .ghost:hover:not(:disabled) {
-  background-color: color-mix(in oklab, var(--card) 10%, var(--muted) 90%);
+  background-color: oklch(from var(--accent) l c h / 0.33);
 }
 
 .outline {
@@ -92,7 +92,7 @@
 }
 
 .sm {
-  height: 2.1125rem;
+  height: 2rem;
   padding: 0 0.75rem;
   font-size: 0.875rem;
 }

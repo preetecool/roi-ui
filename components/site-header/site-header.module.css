@@ -4,7 +4,7 @@
   height: var(--header-height);
   width: 100%;
   box-sizing: border-box;
-  background-color: color-mix(in oklch, var(--card) 15%, var(--background));
+
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0 max(24px, 5vw);
@@ -28,6 +28,9 @@
   max-width: 980px;
   margin: 0 auto;
   width: 100%;
+  background-color: color-mix(in oklch, var(--card) 15%, var(--background));
+  padding: 0 8px;
+  border-radius: var(--radius);
 }
 
 .nav {

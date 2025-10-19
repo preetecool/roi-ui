@@ -6,7 +6,7 @@
   bottom: 0;
   width: 100%;
   height: calc(100vh - var(--header-height));
-  background-color: var(--background);
+
   z-index: 10;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -48,14 +48,14 @@
 
 @media (min-width: 1024px) {
   .docsGrid {
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 286px 1fr;
     grid-template-areas: "sidebar main";
   }
 }
 
 @media (min-width: 1280px) {
   .docsGrid {
-    grid-template-columns: 280px 1fr 240px;
+    grid-template-columns: 286px 1fr 240px;
     grid-template-areas: "sidebar main toc";
   }
 }

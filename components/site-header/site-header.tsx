@@ -11,7 +11,7 @@ import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import styles from "./site-header.module.css";
 
 interface SiteHeaderProps {
-  pageTree: PageTree.Root;
+  pageTree?: PageTree.Root;
 }
 
 export function SiteHeader({ pageTree }: SiteHeaderProps) {
@@ -91,9 +91,11 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
             <div className={styles.desktopOnly}>
               <ThemeSwitcher />
             </div>
-            <div className={styles.mobileMenuWrapper}>
-              <MobileNav tree={pageTree} />
-            </div>
+            {pageTree && (
+              <div className={styles.mobileMenuWrapper}>
+                <MobileNav tree={pageTree} />
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

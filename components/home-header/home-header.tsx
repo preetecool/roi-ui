@@ -66,7 +66,7 @@ export const HomeHeader = () => {
 
   return (
     <div key={reset} className={styles.container}>
-      <Link href="/docs/examples/tabs/tabs" className={styles.badge}>
+      <Link href="/docs/examples/tabs" className={styles.badge}>
         <span>New animated tabs component</span>
         <ArrowPointer />
       </Link>

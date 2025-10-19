@@ -1,16 +1,14 @@
 "use client";
 
-import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@/registry/brook/ui/alert/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/ui/alert/alert";
 import { CheckCircle } from "lucide-react";
 import styles from "./alert-success.module.css";
 
 export default function AlertSuccess() {
   return (
     <div className={styles.container}>
-      <Alert variant="success" style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
-        <AlertIcon>
-          <CheckCircle size={16} />
-        </AlertIcon>
+      <Alert variant="success">
+        <CheckCircle />
         <AlertTitle>Success</AlertTitle>
         <AlertDescription>Your account has been created successfully.</AlertDescription>
       </Alert>

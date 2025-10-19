@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
 import { Form, FormControl, FormField } from "@/registry/brook/ui/form/form";
 import {
-  Select,
   SelectIcon,
   SelectItem,
   SelectItemIndicator,
@@ -14,6 +13,7 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectRoot,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -60,7 +60,7 @@ export function AiChat() {
               <Paperclip size={14} />
             </Button>
 
-            <Select
+            <SelectRoot
               items={aiModes}
               defaultValue={aiModes[0].value}
               value={selectedItem}
@@ -96,7 +96,7 @@ export function AiChat() {
                   </SelectPopup>
                 </SelectPositioner>
               </SelectPortal>
-            </Select>
+            </SelectRoot>
           </div>
 
           <Button

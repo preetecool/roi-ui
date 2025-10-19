@@ -11,19 +11,44 @@
 }
 
 .sidebarCollapsed .sidebarContainer {
-  transform: translateX(calc(-1 * var(--sidebar-width)));
+  transform: translateX(calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem)));
+  padding: 0.25rem;
+  height: calc(100vh - 0.5rem);
+  top: 0.25rem;
+  left: 0.25rem;
+  width: calc(var(--sidebar-width) + 0.5rem + 1px);
+  transition:
+    transform 150ms var(--ease-in-out-quad),
+    padding 0s 150ms,
+    height 0s 150ms,
+    top 0s 150ms,
+    left 0s 150ms,
+    width 0s 150ms;
+}
+
+.sidebarCollapsed .sidebarInner {
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dark);
+}
+
+.sidebarCollapsed.sidebarFloating .sidebarContainer {
+  transform: translateX(0);
+  transition: transform 150ms var(--ease-in-out-quad);
+}
+
+.sidebarCollapsed.sidebarFloating .sidebarInner {
+  transition: none;
 }
 
 .sidebarFloating .sidebarContainer {
-  transform: translateX(0) !important;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
 }
 
 .hoverTrigger {
   position: fixed;
   top: 0;
   left: 0;
-  width: 4px;
+  width: 20px;
   height: 100vh;
   z-index: 90;
   display: none;
@@ -51,7 +76,13 @@
   display: none;
   height: 100vh;
   width: var(--sidebar-width);
-  transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition:
+    transform 250ms var(--ease-out-expo),
+    padding 250ms var(--ease-out-expo),
+    height 250ms var(--ease-out-expo),
+    top 250ms var(--ease-out-expo),
+    left 250ms var(--ease-out-expo),
+    width 250ms var(--ease-out-expo);
 }
 
 @media (min-width: 1024px) {
@@ -61,21 +92,21 @@
 }
 
 .sidebarInner {
-  background-color: color-mix(in oklch, var(--card) 15%, var(--background));
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   display: flex;
   height: 100%;
   width: 100%;
   flex-direction: column;
-  border-right: 1px solid var(--border-dark);
+  border-right: 1px solid var(--border);
 }
 
 .sidebarContent {
-  padding: 0 1.5rem 3rem 24px;
+  padding: 16px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklch, var(--card) 50%, var(--background)) transparent;
-  mask-image: linear-gradient(to bottom, transparent 0, black 2rem, black 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 2rem, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black calc(2rem - 4px), black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black calc(2rem - 4px), black 100%);
 }
 
 .sidebarContent::-webkit-scrollbar {
@@ -96,7 +127,6 @@
 }
 
 .sidebarNav {
-  padding: 2rem 0 2rem 0;
   position: relative;
 }
 
@@ -121,15 +151,13 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 0.75rem;
+  padding: 0.5rem;
   font-size: 0.8125rem;
   font-weight: 400;
   background-color: transparent;
   color: var(--muted-foreground);
   border-radius: var(--radius);
   position: relative;
-  margin-left: -1.25rem;
-  padding-left: 2.25rem;
 }
 
 .sidebarItem:hover {
@@ -171,41 +199,28 @@
   gap: 0.125rem;
 }
 
-.sidebarGroupWithMargin {
-  margin-top: 0.5rem;
-}
-
-.topLevelGroup.sidebarGroupWithMargin {
-  margin-top: 1rem;
-}
-
 .topLevelGroup {
   padding: 0;
-}
-
-.topLevelGroup:first-child {
-  padding-top: 0;
-}
-
-.topLevelGroup:last-child {
-  padding-bottom: 0;
 }
 
 .sidebarGroupHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% + 10px);
+  width: 100%;
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem;
   border-radius: var(--radius);
-  margin-left: -10px;
 }
 
 .sidebarGroupHeader:hover {
   background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+}
+
+.sidebarGroupHeader:hover .sidebarGroupTitle {
+  color: var(--foreground);
 }
 
 .sidebarGroupTitle {
@@ -221,19 +236,45 @@
 }
 
 .topLevelGroup .sidebarGroupTitle {
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  font-weight: 400;
   color: var(--foreground);
   letter-spacing: 0;
   text-transform: none;
   opacity: 1;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.topLevelGroup:first-child .sidebarGroupTitle {
+  margin-top: 0;
+}
+
+.topLevelGroup:not(:first-child) .sidebarGroupTitle {
+  margin-top: 1.5rem;
+}
+
+.sidebarGroupHeader .sidebarGroupTitle {
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarItemIcon {
+  flex-shrink: 0;
+}
+.sidebarItemIcon:hover polygon {
+  flex-shrink: 0;
+  stroke: red !important;
 }
 
 .chevron {
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.15s var(--ease-out-quad);
   color: var(--muted-foreground);
   flex-shrink: 0;
   opacity: 0.7;
+  margin-left: auto;
 }
 
 .chevronOpen {
@@ -252,137 +293,15 @@
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
-  padding-top: 0.625rem;
-  padding-left: 0;
-  position: relative;
 }
 
-.sidebarGroupChildren::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 0.75rem;
-  bottom: 0.25rem;
-  width: 1px;
-  background-color: var(--border-dark);
-  opacity: 0.6;
-  border-radius: 2px;
+/* Level-based padding */
+.sidebarItem[data-level="1"] {
+  padding-inline-start: 0.5rem;
 }
 
-.timelineIndicatorHover {
-  position: absolute;
-  left: 4px;
-  top: 0;
-  width: 1.5px;
-  background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
-  border-radius: 2px;
-  transition:
-    transform 0.2s ease-out,
-    height 0.2s ease-out,
-    opacity 0.2s ease-out;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.timelineIndicator {
-  position: absolute;
-  left: 4px;
-  top: 0;
-  width: 1.5px;
-  background-color: var(--accent);
-  border-radius: 2px;
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  z-index: 10;
-}
-
-.topLevelGroup > .sidebarGroupChildren {
-  padding-top: 0;
-  padding-bottom: 0.5rem;
-  gap: 0.125rem;
-}
-
-/* Direct children of top-level groups - reduced negative margin */
-.topLevelGroup > .sidebarGroupChildren > .sidebarItemWrapper .sidebarItem {
-  margin-left: 0;
-  padding-left: 1rem;
-}
-
-/* Items within collapsible groups under Components - also reduced margin */
-.topLevelGroup
-  > .sidebarGroupChildren
-  > .sidebarGroup
-  > .sidebarGroupChildren
-  > .sidebarItemWrapper
-  .sidebarItem {
-  margin-left: -1rem;
-  padding-left: 2rem;
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup {
-  margin-bottom: 0.625rem;
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup:last-child {
-  margin-bottom: 0;
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupTitle {
-  margin-bottom: 0.375rem;
-  padding-left: 1rem;
-  padding-top: 0.125rem;
-}
-
-/* Level 1 collapsible headers - match regular item styling */
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader {
-  margin-bottom: 0;
-  padding: 0.45rem 0.75rem;
-  margin-left: 0;
-  padding-left: 1rem;
-  width: 100%;
-  border-radius: var(--radius);
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader:hover {
-  background-color: color-mix(in oklch, var(--accent) 20%, transparent);
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader.activeHeader {
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
-  color: var(--foreground);
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader.activeHeader .sidebarGroupTitle {
-  color: var(--foreground);
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader.activeHeader:hover {
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader .sidebarGroupTitle {
-  margin-bottom: 0;
-  padding-left: 0;
-  padding-top: 0;
-  opacity: 1;
-  font-weight: 400;
-  color: var(--secondary-foreground);
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup > .sidebarGroupHeader .chevron {
-  margin-left: auto;
-}
-
-/* Adjust margin when level 1 section is collapsed */
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup:has(.collapsed) {
-  margin-bottom: 0.75rem;
-}
-
-.topLevelGroup > .sidebarGroupChildren > .sidebarGroup:has(.collapsed):last-child {
-  margin-bottom: 0;
+.sidebarItem[data-level="2"] {
+  padding-inline-start: 1.25rem;
 }
 
 .collapsed {
@@ -390,7 +309,7 @@
 }
 
 .sidebarHeader {
-  padding: 1.5rem 1.5rem 1rem 24px;
+  padding: 16px 16px 8px 16px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -407,12 +326,19 @@
 .logoLink {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
   transition: opacity 0.15s;
 }
 
 .logoLink:hover {
   opacity: 0.8;
+}
+
+.logoText {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--foreground);
 }
 
 .collapseButton {
@@ -442,8 +368,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
-  border: 1px solid var(--border-dark);
+  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.5rem 0.5rem;
   gap: 0.5rem;
@@ -453,7 +379,7 @@
 }
 
 .searchWrapper:hover {
-  background-color: color-mix(in oklch, var(--card) 50%, var(--background));
+  background-color: color-mix(in oklch, var(--card) 85%, var(--background));
 }
 
 .searchInput {
@@ -485,8 +411,12 @@
   flex-shrink: 0;
 }
 
+.searchKbd :global(kbd) {
+  color: var(--secondary-foreground);
+}
+
 .sidebarFooter {
-  padding: 1rem 1.5rem 1rem 24px;
+  padding: 8px 16px 16px 16px;
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -501,7 +431,7 @@
   align-items: center;
   justify-content: center;
   color: var(--muted-foreground);
-  transition: color 0.15s;
+  transition: color 0.15s var(--ease-out-quad);
   text-decoration: none;
 }
 
@@ -511,8 +441,8 @@
 
 .collapsedButtons {
   position: fixed;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: 16px;
+  left: 16px;
   z-index: 50;
   display: flex;
 }
@@ -545,7 +475,7 @@
   border: none;
   color: var(--muted-foreground);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.15s color 0.15s var(--ease-out-quad);
   padding: 6px;
   border-radius: var(--radius);
 }

@@ -3,22 +3,30 @@
   width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  padding: 0.75rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: grid;
+  grid-template-columns: 0 1fr auto;
+  gap: 0.125rem 0.75rem;
+  align-items: start;
   font-size: 0.75rem;
-  justify-content: center;
-  align-items: center;
+  line-height: 1.2;
+  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+}
+
+.alert:has(> svg) {
+  grid-template-columns: 1rem 1fr auto;
+}
+
+.alert > svg {
+  width: 1rem;
+  height: 100%;
 }
 
 .default {
-  background-color: var(--muted);
   color: var(--foreground);
 }
 
 .destructive {
-  background-color: var(--muted);
   color: var(--destructive);
 }
 
@@ -31,7 +39,6 @@
 }
 
 .warning {
-  background-color: var(--muted);
   color: var(--warning);
 }
 
@@ -44,7 +51,6 @@
 }
 
 .success {
-  background-color: var(--muted);
   color: var(--success);
 }
 
@@ -57,7 +63,6 @@
 }
 
 .info {
-  background-color: var(--muted);
   color: var(--info);
 }
 
@@ -69,23 +74,19 @@
   color: var(--info);
 }
 
-.icon {
-  flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
-  margin-top: 0.125rem;
-}
-
 .title {
-  margin: 0 0 0.25rem 0;
-  font-weight: 500;
-  font-size: 0.875rem;
-  line-height: 1.25;
   margin: 0;
+  font-weight: 400;
+  font-size: 0.875rem;
+  grid-column-start: 2;
+  letter-spacing: -0.02em;
 }
 
 .description {
-  line-height: 1.5;
   margin: 0;
-  flex: 1;
+  font-weight: 300;
+  font-size: 0.875rem;
+  grid-column-start: 2;
+
+  color: var(--muted-foreground);
 }

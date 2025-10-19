@@ -7,72 +7,41 @@
 }
 
 .accordionItem {
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-}
-
-.header {
-  margin: 0;
-  padding: 0;
-  display: block;
-  width: 100%;
-  font-size: 0.95rem;
-}
-
-.triggerContainer {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
+  background-color: color-mix(in oklch, var(--card) 50%, var(--background));
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 .trigger {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 2rem;
-  font-weight: 400;
+  gap: 1rem;
+
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  font-weight: 350;
   text-align: left;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--title);
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
+  color: var(--secondary-foreground);
 }
 
 .icon {
-  width: 1.5rem;
-  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 300;
+  width: 2rem;
+  height: 2rem;
   color: var(--muted-foreground);
-  transition: color 200ms ease-out;
+  transition: color 200ms ease;
 }
 
 .trigger:hover .icon {
   color: var(--foreground);
-}
-
-.hoverBackground {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--muted);
-  z-index: 0;
-  width: 50px;
-  height: 75px;
-  opacity: 0;
-  border-radius: 12px;
 }
 
 .content {
@@ -81,9 +50,10 @@
 }
 
 .contentInner {
-  padding: 0 2rem 2rem 2rem;
+  margin-top: 0.25rem;
+  margin-left: calc(3rem);
+  padding-right: 3rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--secondary-foreground);
-  font-weight: 400;
+  color: oklch(from var(--foreground) l c h / 0.75);
 }

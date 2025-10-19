@@ -3,6 +3,8 @@
 import { HomeAnimatedCard } from "@/components/home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "@/components/home-animated-dialog/home-animated-dialog";
 import { HomeHeader } from "@/components/home-header/home-header";
+import { SiteFooter } from "@/components/site-footer/site-footer";
+import { SiteHeader } from "@/components/site-header/site-header";
 import { AnimatePresence, motion, useMotionValueEvent, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -49,21 +51,23 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      onPointerMove={(e) => {
-        springX.set(e.clientX);
-        springY.set(e.clientY);
-      }}
-      style={{
-        height: "100%",
-        width: "100%",
-        position: "relative",
-        paddingTop: "clamp(100px, 15vw, 150px)",
-        paddingLeft: "max(24px, 5vw)",
-        paddingRight: "max(24px, 5vw)",
-        backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
-      }}
-    >
+    <>
+      <SiteHeader />
+      <div
+        onPointerMove={(e) => {
+          springX.set(e.clientX);
+          springY.set(e.clientY);
+        }}
+        style={{
+          height: "100%",
+          width: "100%",
+          position: "relative",
+          paddingTop: "clamp(100px, 15vw, 150px)",
+          paddingLeft: "max(24px, 5vw)",
+          paddingRight: "max(24px, 5vw)",
+          backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
+        }}
+      >
       <svg
         style={{
           position: "absolute",
@@ -204,5 +208,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <SiteFooter />
+  </>
   );
 }

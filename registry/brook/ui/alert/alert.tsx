@@ -35,8 +35,4 @@ function AlertDescription({ className, ...props }: React.ComponentProps<"div">) 
   return <div data-slot="alert-description" className={cn(styles.description, className)} {...props} />;
 }
 
-function AlertIcon({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="alert-icon" className={cn(styles.icon, className)} {...props} />;
-}
-
-export { Alert, AlertDescription, AlertIcon, AlertTitle };
+export { Alert, AlertDescription, AlertTitle };
