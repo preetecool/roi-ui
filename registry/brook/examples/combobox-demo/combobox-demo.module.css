@@ -1,100 +1,99 @@
 .container {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 500;
-    color: var(--foreground);
-    margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
 }
 
 .comboboxWrapper {
-    width: 300px;
-    position: relative;
+  width: 300px;
+  position: relative;
 }
 
 .inputWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: color-mix(in oklab, var(--input) 70%, transparent);
-    transition: all 150ms ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--card) 70%, var(--background));
+  transition: all 150ms ease;
 }
 
 .inputWrapper:focus-within {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .popup {
-    width: 100% !important;
-    min-width: 300px;
+  width: 100% !important;
+  min-width: 300px;
 }
 
-
 .userContainer {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
 }
 
 .avatar {
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .avatarSmall {
-    width: 1.25rem;
-    height: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .selectedUserDisplay {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    pointer-events: none;
-    z-index: 1;
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .selectedUserText {
-    font-size: 0.875rem;
-    color: var(--foreground);
-    white-space: nowrap;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  white-space: nowrap;
 }
 
 .inputWithSelection {
-    color: transparent;
-    text-shadow: none;
-    -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+  -webkit-text-fill-color: transparent;
 }
 
 .userInfo {
-    text-align: left;
+  text-align: left;
 }
 
 .userInfoOption {
-    flex: 1;
+  flex: 1;
 }
 
 .userName {
-    font-size: 0.875rem;
-    font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .userEmail {
-    font-size: 0.75rem;
-    color: var(--muted-foreground);
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
 }
