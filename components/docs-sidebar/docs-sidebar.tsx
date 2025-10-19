@@ -6,10 +6,18 @@ import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
+import {
+  Tooltip,
+  TooltipPopup,
+  TooltipPortal,
+  TooltipPositioner,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/registry/brook/ui/tooltip/tooltip";
 import { Gauge, PanelRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./docs-sidebar.module.css";
 
 import type { PageTree } from "fumadocs-core/server";
@@ -32,6 +40,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
   const pathname = usePathname();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isMac, setIsMac] = useState(false);
 
   const triggerSearch = () => {
     const event = new KeyboardEvent("keydown", {
@@ -47,8 +56,44 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
     setIsHovering(false);
   };
 
+  useEffect(() => {
+    setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "b") {
+        event.preventDefault();
+        handleToggleCollapse();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isCollapsed]);
+
+  const tooltipContent = (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+      <span style={{ color: "var(--secondary-foreground)" }}>Toggle sidebar</span>
+      <div style={{ display: "flex", gap: "0.25rem" }}>
+        <Kbd size="sm">{isMac ? "⌘" : "Ctrl"}</Kbd>
+        <Kbd size="sm">B</Kbd>
+      </div>
+    </div>
+  );
+
+  const searchTooltipContent = (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+      <span style={{ color: "var(--secondary-foreground)" }}>Search</span>
+      <div style={{ display: "flex", gap: "0.25rem" }}>
+        <Kbd size="sm">{isMac ? "⌘" : "Ctrl"}</Kbd>
+        <Kbd size="sm">K</Kbd>
+      </div>
+    </div>
+  );
+
   return (
-    <>
+    <TooltipProvider delay={50}>
       <Search tree={tree} />
       {isCollapsed && <div className={styles.hoverTrigger} onMouseEnter={() => setIsHovering(true)} />}
 
@@ -75,15 +120,27 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                   />
                   <span className={styles.logoText}>Roi UI</span>
                 </Link>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`${styles.collapseButton} hit-area-extend`}
-                  aria-label="Collapse sidebar"
-                  onClick={handleToggleCollapse}
-                >
-                  <PanelRight size={18} className={styles.collapseIcon} />
-                </Button>
+                <Tooltip>
+                  <TooltipTrigger
+                    render={
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className={`${styles.collapseButton} hit-area-extend`}
+                        aria-label="Collapse sidebar"
+                        onClick={handleToggleCollapse}
+                        render={<div />}
+                      >
+                        <PanelRight size={18} className={styles.collapseIcon} />
+                      </Button>
+                    }
+                  />
+                  <TooltipPortal>
+                    <TooltipPositioner side="right">
+                      <TooltipPopup>{tooltipContent}</TooltipPopup>
+                    </TooltipPositioner>
+                  </TooltipPortal>
+                </Tooltip>
               </div>
               <div className={styles.searchWrapper} onClick={triggerSearch}>
                 <svg
@@ -144,42 +201,66 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
 
       <div className={styles.collapsedButtons}>
         <div className={styles.collapsedButtonsInner}>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={`${styles.collapsedButton} hit-area-extend`}
-            aria-label="Toggle sidebar"
-            onClick={handleToggleCollapse}
-          >
-            <PanelRight size={18} className={styles.collapseIcon} />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={`${styles.collapsedButton} hit-area-extend`}
-            aria-label="Search"
-            onClick={triggerSearch}
-          >
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7 12C9.76142 12 12 9.76142 12 7C12 4.23858 9.76142 2 7 2C4.23858 2 2 4.23858 2 7C2 9.76142 4.23858 12 7 12Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M14 14L10.5 10.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </Button>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={`${styles.collapsedButton} hit-area-extend`}
+                  aria-label="Toggle sidebar"
+                  onClick={handleToggleCollapse}
+                  render={<div />}
+                >
+                  <PanelRight size={18} className={styles.collapseIcon} />
+                </Button>
+              }
+            />
+            <TooltipPortal>
+              <TooltipPositioner side="right">
+                <TooltipPopup>{tooltipContent}</TooltipPopup>
+              </TooltipPositioner>
+            </TooltipPortal>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={`${styles.collapsedButton} hit-area-extend`}
+                  aria-label="Search"
+                  onClick={triggerSearch}
+                  render={<div />}
+                >
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M7 12C9.76142 12 12 9.76142 12 7C12 4.23858 9.76142 2 7 2C4.23858 2 2 4.23858 2 7C2 9.76142 4.23858 12 7 12Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M14 14L10.5 10.5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Button>
+              }
+            />
+            <TooltipPortal>
+              <TooltipPositioner side="right">
+                <TooltipPopup>{searchTooltipContent}</TooltipPopup>
+              </TooltipPositioner>
+            </TooltipPortal>
+          </Tooltip>
         </div>
       </div>
-    </>
+    </TooltipProvider>
   );
 }
 
