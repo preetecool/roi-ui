@@ -8,7 +8,7 @@
   border-radius: 1rem;
   background: transparent;
   cursor: pointer;
-  z-index: 50;
+  z-index: 250;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -49,7 +49,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 40;
+  z-index: 150;
   background-color: transparent !important;
   background-image: linear-gradient(to bottom, transparent 2rem, rgb(0 0 0 / 5%) 50%) !important;
   backdrop-filter: blur(1.5px);
@@ -75,7 +75,7 @@
   inset: 0;
   left: 50%;
   top: -10px;
-  z-index: 50;
+  z-index: 200;
   outline: 0;
   width: calc(100% - 2rem);
   max-width: 40rem;

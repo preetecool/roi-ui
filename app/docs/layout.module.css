@@ -1,3 +1,13 @@
+.mobileHeader {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .mobileHeader {
+    display: none;
+  }
+}
+
 .docsWrapper {
   position: fixed;
   top: var(--header-height);
