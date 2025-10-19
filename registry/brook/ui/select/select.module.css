@@ -1,6 +1,7 @@
 .container {
   position: relative;
   display: inline-block;
+  z-index: 150;
 }
 
 .trigger {
@@ -51,6 +52,10 @@
   transform: rotate(180deg);
 }
 
+.positioner {
+  z-index: 150;
+}
+
 .popup {
   min-width: var(--anchor-width);
   background: color-mix(in oklch, var(--card) 33%, var(--background));
@@ -58,7 +63,7 @@
   border-radius: var(--radius);
   transform-origin: var(--transform-origin);
   overflow-y: auto;
-  z-index: 100;
+  z-index: 150;
 
   transition:
     transform 150ms,
@@ -194,6 +199,6 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 99;
+  z-index: 140;
   transition: opacity 150ms;
 }

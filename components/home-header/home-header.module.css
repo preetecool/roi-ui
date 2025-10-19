@@ -3,7 +3,7 @@
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  background-color: color-mix(in oklab, var(--card) 20%, var(--background) 80%);
+  background-color: color-mix(in oklch, var(--card) 20%, var(--background) 80%);
   border: 1px solid var(--border-dark);
   border-radius: 999px;
   font-size: 14px;

@@ -19,19 +19,15 @@
 }
 
 .cardLift .content {
-  padding: 1.5rem 0;
-  transition: transform 0.4s ease;
+  padding: 1.5rem 1.5rem 2rem;
+  transition: transform 0.25s var(--ease-in-out-quad);
   background-color: color-mix(in oklch, var(--card) 33%, var(--background));
   width: calc(100% + 3rem);
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 2rem;
+  margin: 0 -1.5rem;
 }
 
 .cardLift:hover .content {
-  transform: translateY(-3rem);
+  transform: translateY(-2rem);
 }
 
 .cardLift:hover .footer {
@@ -87,24 +83,21 @@
 .cardLift .footer {
   opacity: 0;
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.25s var(--ease-in-out-quad),
+    transform 0.25s var(--ease-in-out-quad);
   position: absolute;
-  bottom: 0px;
-  left: 24px;
-  right: 24px;
+  bottom: 0;
+  left: 1.5rem;
+  right: 1.5rem;
 }
 
 .image {
   width: calc(100% + 3rem + 2px);
-  margin: -1.5rem -1.5rem 0 -1.5rem;
-  margin-top: calc(-1.5rem - 1px);
-  margin-left: calc(-1.5rem - 1px);
-  margin-right: calc(-1.5rem - 1px);
+  margin: calc(-1.5rem - 1px) calc(-1.5rem - 1px) 0;
   object-fit: cover;
   height: 300px;
   aspect-ratio: 16/9;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s var(--ease-in-out-quad);
   border-radius: var(--radius) var(--radius) 0 0;
   max-width: 100vw;
   box-sizing: border-box;
@@ -113,9 +106,7 @@
 @media (max-width: 768px) {
   .image {
     width: 100%;
-    margin: 0;
-    margin-top: -1.5rem;
-    margin-bottom: 0;
+    margin: -1.5rem 0 0;
     max-width: none;
     height: 250px;
   }

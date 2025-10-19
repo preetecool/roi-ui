@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <link rel="shortcut icon" href="/favicon.svg" />
         </head>
         <body
+          className="root"
           style={{
             backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
             color: "var(--foreground)",

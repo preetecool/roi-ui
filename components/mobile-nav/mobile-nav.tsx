@@ -1,17 +1,11 @@
 "use client";
 
-import {
-  DialogClose,
-  DialogOverlay,
-  DialogPopup,
-  DialogPortal,
-  DialogRoot,
-  DialogTrigger,
-} from "@/registry/brook/ui/dialog/dialog";
+import { Dialog } from "@base-ui-components/react";
+
 import type { PageTree } from "fumadocs-core/server";
 import { X } from "lucide-react";
-import React from "react";
 import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import styles from "./mobile-nav.module.css";
 
@@ -33,41 +27,34 @@ export function MobileNav({ tree }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <DialogRoot open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        className={`${styles.menuButton} ${styles.mobileOnly}`}
-        aria-label="Toggle navigation menu"
-        data-open={open}
-      >
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger className={`${styles.menuButton}`} aria-label="Toggle navigation menu" data-open={open}>
         <div className={styles.menuButtonInner}>
           <span className={styles.menuLine}></span>
           <span className={styles.menuLine}></span>
         </div>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <DialogPortal>
-        <DialogOverlay
-          className={`${styles.overlay} ${styles.mobileOnly}`}
-          style={{ backgroundColor: "transparent" }}
-        />
-        <DialogPopup className={`${styles.drawer} ${styles.mobileOnly}`}>
+      <Dialog.Portal>
+        <Dialog.Backdrop className={`${styles.overlay}`} style={{ backgroundColor: "transparent" }} />
+        <Dialog.Popup className={`${styles.drawer}`}>
           <div className={styles.viewport}>
             <div className={styles.viewportInner}>
-              <DialogClose className={styles.backdropTapArea} nativeButton={false} render={<div />} />
+              <Dialog.Close className={styles.backdropTapArea} nativeButton={false} render={<div />} />
               <div className={styles.panel}>
                 <div className={styles.closeContainer}>
-                  <DialogClose className={styles.closeButton}>
+                  <Dialog.Close className={styles.closeButton}>
                     <X size={16} />
-                  </DialogClose>
+                  </Dialog.Close>
                 </div>
                 <div className={styles.menuSection}>
                   <div className={styles.groupTitle}>Menu</div>
-                  <DialogClose
+                  <Dialog.Close
                     className={`${styles.pageLink} ${pathname === "/" ? styles.pageLinkActive : styles.pageLinkInactive}`}
                     onClick={() => router.push("/")}
                   >
                     Home
-                  </DialogClose>
+                  </Dialog.Close>
                 </div>
 
                 <nav className={styles.treeNav}>
@@ -102,9 +89,9 @@ export function MobileNav({ tree }: MobileNavProps) {
               </div>
             </div>
           </div>
-        </DialogPopup>
-      </DialogPortal>
-    </DialogRoot>
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }
 
@@ -115,12 +102,12 @@ function MobileSidebarGroup({ item, pathname }: { item: NodeWithChildren; pathna
 
   if (!hasChildren && item.type === "page" && item.url) {
     return (
-      <DialogClose
+      <Dialog.Close
         className={`${styles.pageLink} ${isActive ? styles.pageLinkActive : styles.pageLinkInactive}`}
         onClick={() => router.push(item.url!)}
       >
         {item.name}
-      </DialogClose>
+      </Dialog.Close>
     );
   }
 

@@ -105,8 +105,8 @@
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklch, var(--foreground) 15%, transparent) transparent;
-  mask-image: linear-gradient(to bottom, transparent 0, black calc(2rem - 4px), black 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black calc(2rem - 4px), black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
 }
 
 .sidebarContent::-webkit-scrollbar {
@@ -360,7 +360,15 @@
 }
 
 .collapseIcon {
-  transform: scaleX(-1);
+}
+
+.collapseIconFill {
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-out-expo);
+}
+
+.collapseIconFillActive {
+  opacity: 1;
 }
 
 .searchWrapper {
@@ -368,18 +376,14 @@
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.5rem 0.5rem;
+  background-color: color-mix(in oklch, var(--card) 75%, var(--background));
+  border: 1px solid var(--border-dark);
+  padding: 0.5rem;
+  padding-left: 0.6rem;
   gap: 0.5rem;
   cursor: pointer;
   transition: all 0.15s;
   min-height: 2.25rem;
-}
-
-.searchWrapper:hover {
-  background-color: color-mix(in oklch, var(--card) 85%, var(--background));
 }
 
 .searchInput {

@@ -53,7 +53,7 @@
 }
 
 .menuPositioner {
-    z-index: 50;
+    z-index: 150;
     position: absolute;
     left: 0;
 }
