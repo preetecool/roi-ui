@@ -1,7 +1,7 @@
 "use client";
 
-import { Checkbox } from "@base-ui-components/react/checkbox";
 import { cn } from "@/lib/utils";
+import { Checkbox } from "@base-ui-components/react/checkbox";
 import styles from "./checkbox.module.css";
 
 function CheckboxRoot({ className, ...props }: React.ComponentProps<typeof Checkbox.Root>) {
