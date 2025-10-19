@@ -7,9 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem 0 0;
+  padding: 2px 4px 2px 4px;
   border-bottom: 1px solid var(--border);
-  min-height: 2.5rem;
   background-color: var(--code-header-bg);
   border-radius: 0;
 }
@@ -18,7 +17,7 @@
   display: flex;
   flex: 1;
   position: relative;
-  padding: 0.25rem;
+  padding: 2px 0;
   border-radius: var(--radius);
   overflow: hidden;
   min-width: 0;

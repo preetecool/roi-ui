@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
-  "/tabs",
+  "/tabs-animated",
   "/accordion",
   "/like-button",
   "/chat",

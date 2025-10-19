@@ -131,7 +131,45 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                         onClick={handleToggleCollapse}
                         render={<div />}
                       >
-                        <PanelRight size={18} className={styles.collapseIcon} />
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={styles.collapseIcon}
+                        >
+                          <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="2"
+                            ry="2"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            fill="none"
+                          />
+                          <path
+                            d="M9 3L9 21"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <rect
+                            x="3"
+                            y="3"
+                            width="6"
+                            height="18"
+                            rx="2"
+                            ry="2"
+                            fill="currentColor"
+                            className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ''}`}
+                          />
+                        </svg>
                       </Button>
                     }
                   />
@@ -142,7 +180,8 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                   </TooltipPortal>
                 </Tooltip>
               </div>
-              <div className={styles.searchWrapper} onClick={triggerSearch}>
+
+              <Button variant="ghost" onClick={triggerSearch} className={styles.searchWrapper}>
                 <svg
                   className={styles.searchIcon}
                   width="16"
@@ -166,12 +205,14 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                     strokeLinejoin="round"
                   />
                 </svg>
+
                 <input type="text" placeholder="Search" className={styles.searchInput} readOnly />
+
                 <div className={styles.searchKbd}>
                   <Kbd size="sm">⌘</Kbd>
                   <Kbd size="sm">K</Kbd>
                 </div>
-              </div>
+              </Button>
             </div>
             <SidebarContent tree={tree} pathname={pathname} />
             <div className={styles.sidebarFooter}>
@@ -212,12 +253,50 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                   onClick={handleToggleCollapse}
                   render={<div />}
                 >
-                  <PanelRight size={18} className={styles.collapseIcon} />
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={styles.collapseIcon}
+                  >
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 3L9 21"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <rect
+                      x="3"
+                      y="3"
+                      width="6"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                      fill="currentColor"
+                      className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ''}`}
+                    />
+                  </svg>
                 </Button>
               }
             />
             <TooltipPortal>
-              <TooltipPositioner side="right">
+              <TooltipPositioner side="bottom">
                 <TooltipPopup>{tooltipContent}</TooltipPopup>
               </TooltipPositioner>
             </TooltipPortal>
@@ -233,7 +312,13 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                   onClick={triggerSearch}
                   render={<div />}
                 >
-                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M7 12C9.76142 12 12 9.76142 12 7C12 4.23858 9.76142 2 7 2C4.23858 2 2 4.23858 2 7C2 9.76142 4.23858 12 7 12Z"
                       stroke="currentColor"
@@ -253,7 +338,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
               }
             />
             <TooltipPortal>
-              <TooltipPositioner side="right">
+              <TooltipPositioner side="bottom">
                 <TooltipPopup>{searchTooltipContent}</TooltipPopup>
               </TooltipPositioner>
             </TooltipPortal>
