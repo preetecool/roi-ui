@@ -1,3 +1,20 @@
 {
-  "title": "Examples"
+  "title": "Examples",
+  "pages": [
+    "accordion",
+    "badge-error",
+    "badge-success",
+    "card-expandable",
+    "card-history",
+    "card-image",
+    "card-login",
+    "card-task",
+    "card-traffic",
+    "chat",
+    "copy-button",
+    "dialog",
+    "dropdown-menu-motion",
+    "like-button",
+    "tabs"
+  ]
 }

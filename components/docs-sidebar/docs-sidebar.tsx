@@ -6,10 +6,10 @@ import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import { PanelRight } from "lucide-react";
+import { Gauge, PanelRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./docs-sidebar.module.css";
 
 import type { PageTree } from "fumadocs-core/server";
@@ -42,10 +42,14 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
     document.dispatchEvent(event);
   };
 
+  const handleToggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+    setIsHovering(false);
+  };
+
   return (
     <>
       <Search tree={tree} />
-      {/* Hover trigger zone */}
       {isCollapsed && <div className={styles.hoverTrigger} onMouseEnter={() => setIsHovering(true)} />}
 
       <div
@@ -61,15 +65,22 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
           <div data-slot="sidebar-inner" className={styles.sidebarInner}>
             <div className={styles.sidebarHeader}>
               <div className={styles.logoRow}>
-                <Link href="/" className={styles.logoLink}>
-                  <Logo width={24} height={24} fillColor="var(--muted-foreground)" strokeColor="var(--card)" />
+                <Link href="/" className={styles.logoLink} style={{ marginLeft: "4px" }}>
+                  <Logo
+                    width={20}
+                    height={20}
+                    fillColor="var(--muted-foreground)"
+                    strokeColor="var(--card)"
+                    strokeWidth={20}
+                  />
+                  <span className={styles.logoText}>Roi UI</span>
                 </Link>
                 <Button
                   variant="ghost"
                   size="icon"
                   className={`${styles.collapseButton} hit-area-extend`}
                   aria-label="Collapse sidebar"
-                  onClick={() => setIsCollapsed(!isCollapsed)}
+                  onClick={handleToggleCollapse}
                 >
                   <PanelRight size={18} className={styles.collapseIcon} />
                 </Button>
@@ -131,7 +142,6 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
         </div>
       </div>
 
-      {/* Collapsed sidebar buttons */}
       <div className={styles.collapsedButtons}>
         <div className={styles.collapsedButtonsInner}>
           <Button
@@ -139,7 +149,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
             size="icon"
             className={`${styles.collapsedButton} hit-area-extend`}
             aria-label="Toggle sidebar"
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={handleToggleCollapse}
           >
             <PanelRight size={18} className={styles.collapseIcon} />
           </Button>
@@ -214,6 +224,28 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
   );
 }
 
+function getIconForItem(itemName: string) {
+  const name = itemName.toLowerCase();
+
+  if (name === "quick start") {
+    return <Gauge size={16} className={styles.sidebarItemIcon} />;
+  }
+  if (name === "about roi ui" || name === "intro") {
+    return (
+      <Logo
+        width={16}
+        height={16}
+        strokeWidth={20}
+        fillColor="transparent"
+        strokeColor="currentColor"
+        className={styles.sidebarItemIcon}
+      />
+    );
+  }
+
+  return null;
+}
+
 function SidebarGroup({
   item,
   pathname,
@@ -229,7 +261,6 @@ function SidebarGroup({
   const isActive = pathname === item.url;
   const isTopLevel = level === 0;
 
-  // Default expanded state: true for top-level sections, level 1 sections, or if child is active
   const hasActiveChild =
     hasChildren &&
     item.children?.some(
@@ -238,133 +269,22 @@ function SidebarGroup({
         child.children?.some((grandchild) => pathname.startsWith(grandchild.url || "")),
     );
 
-  // For level 0 (top-level): only "Get Started" is open by default
-  // For level 1+: only open if has active child
   const [isExpanded, setIsExpanded] = useState<boolean>(
-    level === 0 ? item.name === "Get Started" : (hasActiveChild ?? false),
+    level === 0 ? item.name === "UI" : (hasActiveChild ?? false),
   );
-  const [updateTrigger, setUpdateTrigger] = useState(0);
 
-  // Check if this collapsed section contains the active item
   const isCollapsedWithActiveChild = !isExpanded && hasActiveChild;
   const childrenRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLButtonElement>(null);
   const groupRef = useRef<HTMLDivElement>(null);
-  const [indicatorStyle, setIndicatorStyle] = useState<{ top: number; height: number; opacity: number }>({
-    top: 0,
-    height: 0,
-    opacity: 0,
-  });
-  const [hoverIndicatorStyle, setHoverIndicatorStyle] = useState<{
-    top: number;
-    height: number;
-    opacity: number;
-  }>({
-    top: 0,
-    height: 0,
-    opacity: 0,
-  });
-
-  // Trigger update when expand/collapse changes
-  useEffect(() => {
-    if (level === 1) {
-      // Trigger parent update by dispatching a custom event
-      const event = new CustomEvent("sidebarChildStateChange");
-      window.dispatchEvent(event);
-    }
-  }, [isExpanded, level]);
-
-  // Listen for child state changes if this is a level 0 component
-  useEffect(() => {
-    if (level !== 0) return;
-
-    const handleChildStateChange = () => {
-      setUpdateTrigger((prev) => prev + 1);
-    };
-
-    window.addEventListener("sidebarChildStateChange", handleChildStateChange);
-    return () => {
-      window.removeEventListener("sidebarChildStateChange", handleChildStateChange);
-    };
-  }, [level]);
-
-  // Update indicator position when pathname or children change
-  useEffect(() => {
-    if (!hasChildren || !childrenRef.current) return;
-
-    // Don't show indicator for collapsed level 1 items - let parent handle it
-    if (isCollapsedWithActiveChild && level === 1) {
-      setIndicatorStyle({ top: 0, height: 0, opacity: 0 });
-      return;
-    }
-
-    // Check if any level 1 child is collapsed with an active descendant
-    if (level === 0 && isExpanded) {
-      const childGroups = childrenRef.current.querySelectorAll(`.${styles.sidebarGroup}`);
-      for (const childGroup of childGroups) {
-        const header = childGroup.querySelector(`.${styles.sidebarGroupHeader}.${styles.activeHeader}`);
-        if (header) {
-          // If we found a collapsed child with active descendant, show indicator on it
-          const container = childrenRef.current;
-          const containerRect = container.getBoundingClientRect();
-          const headerRect = header.getBoundingClientRect();
-          const topOffset = 0.45 * 16;
-          const top = headerRect.top - containerRect.top + topOffset;
-          const height = headerRect.height - topOffset * 2;
-
-          setIndicatorStyle({ top, height, opacity: 1 });
-          return;
-        }
-      }
-    }
-
-    // Otherwise, show indicator on the active child item
-    const activeLink = childrenRef.current.querySelector(`.${styles.active}`);
-    if (activeLink) {
-      const container = childrenRef.current;
-      const linkElement = activeLink.closest(`.${styles.sidebarItemWrapper}`) as HTMLElement;
-
-      if (linkElement) {
-        const containerRect = container.getBoundingClientRect();
-        const linkRect = linkElement.getBoundingClientRect();
-        const topOffset = 0.45 * 16; // 0.45rem in pixels (assuming 16px base)
-        const top = linkRect.top - containerRect.top + topOffset;
-        const height = linkRect.height - topOffset * 2;
-
-        setIndicatorStyle({ top, height, opacity: 1 });
-      }
-    } else {
-      setIndicatorStyle({ top: 0, height: 0, opacity: 0 });
-    }
-  }, [pathname, hasChildren, isExpanded, isCollapsedWithActiveChild, level, updateTrigger]);
-
-  const handleItemHover = (event: React.MouseEvent) => {
-    if (!childrenRef.current) return;
-
-    const target = event.target as HTMLElement;
-    const itemWrapper = target.closest(`.${styles.sidebarItemWrapper}`) as HTMLElement;
-
-    if (itemWrapper) {
-      const container = childrenRef.current;
-      const containerRect = container.getBoundingClientRect();
-      const itemRect = itemWrapper.getBoundingClientRect();
-      const topOffset = 0.45 * 16;
-      const top = itemRect.top - containerRect.top + topOffset;
-      const height = itemRect.height - topOffset * 2;
-
-      setHoverIndicatorStyle({ top, height, opacity: 1 });
-    }
-  };
-
-  const handleItemLeave = () => {
-    setHoverIndicatorStyle({ top: 0, height: 0, opacity: 0 });
-  };
 
   if (!hasChildren && item.type === "page" && item.url) {
     const content = (
       <span
         className={`${styles.sidebarItem} ${isActive ? styles.active : ""} ${item.disabled ? styles.disabled : ""}`}
+        data-level={level}
       >
+        {getIconForItem(item.name as string)}
         {item.name}
         {item.badge && (
           <Badge variant="secondary" size="sm" className={styles.badge}>
@@ -375,10 +295,7 @@ function SidebarGroup({
     );
 
     return (
-      <div
-        className={styles.sidebarItemWrapper}
-        style={{ paddingLeft: level > 1 ? `${(level - 1) * 1}rem` : 0 }}
-      >
+      <div className={styles.sidebarItemWrapper}>
         {item.disabled ? (
           content
         ) : (
@@ -390,27 +307,45 @@ function SidebarGroup({
     );
   }
 
-  // Collapsible section - allow both top-level (level 0) and level 1 items to be collapsible
-  const isCollapsible = (level === 0 || level === 1) && hasChildren;
+  const isCollapsible = level === 1 && hasChildren;
+
+  const groupClasses = [
+    styles.sidebarGroup,
+    isTopLevel && styles.topLevelGroup,
+    level === 1 && styles.nestedGroup,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const headerClasses = [
+    level === 1 ? styles.nestedGroupHeader : styles.sidebarGroupHeader,
+    isCollapsedWithActiveChild && styles.activeHeader,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const titleClasses = level === 1 ? styles.nestedGroupTitle : styles.sidebarGroupTitle;
 
   return (
-    <div
-      ref={groupRef}
-      className={`${styles.sidebarGroup} ${!isFirst ? styles.sidebarGroupWithMargin : ""} ${isTopLevel ? styles.topLevelGroup : ""}`}
-      style={{ paddingLeft: level > 1 ? `${(level - 1) * 1}rem` : 0 }}
-    >
+    <div ref={groupRef} className={groupClasses}>
       {isCollapsible ? (
         <button
           ref={headerRef}
-          className={`${styles.sidebarGroupHeader} ${isCollapsedWithActiveChild ? styles.activeHeader : ""}`}
+          className={headerClasses}
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
         >
-          <h5 className={styles.sidebarGroupTitle}>{item.name}</h5>
+          <h5 className={titleClasses}>
+            {getIconForItem(item.name as string)}
+            {item.name}
+          </h5>
           <ChevronIcon isOpen={isExpanded} />
         </button>
       ) : (
-        <h5 className={styles.sidebarGroupTitle}>{item.name}</h5>
+        <h5 className={titleClasses}>
+          {getIconForItem(item.name as string)}
+          {item.name}
+        </h5>
       )}
 
       {hasChildren && (
@@ -418,25 +353,7 @@ function SidebarGroup({
           ref={childrenRef}
           className={`${styles.sidebarGroupChildren} ${isCollapsible && !isExpanded ? styles.collapsed : ""}`}
           style={{ display: isCollapsible ? (isExpanded ? "flex" : "none") : "flex" }}
-          onMouseOver={handleItemHover}
-          onMouseLeave={handleItemLeave}
         >
-          <div
-            className={styles.timelineIndicatorHover}
-            style={{
-              transform: `translateY(${hoverIndicatorStyle.top}px)`,
-              height: `${hoverIndicatorStyle.height}px`,
-              opacity: hoverIndicatorStyle.opacity,
-            }}
-          />
-          <div
-            className={styles.timelineIndicator}
-            style={{
-              transform: `translateY(${indicatorStyle.top}px)`,
-              height: `${indicatorStyle.height}px`,
-              opacity: indicatorStyle.opacity,
-            }}
-          />
           {item.children?.map((child, index) => (
             <SidebarGroup
               key={child.$id || `child-${index}`}

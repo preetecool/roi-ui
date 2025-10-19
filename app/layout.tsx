@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
-import "@/styles/globals.css";
-import "@/styles/docs-styles.css";
-import "@/styles/syntax-highlight.css";
-import { SiteHeader } from "@/components/site-header/site-header";
-import { SiteFooter } from "@/components/site-footer/site-footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import "@/styles/docs-styles.css";
+import "@/styles/globals.css";
+import "@/styles/syntax-highlight.css";
 import { GeistSans } from "geist/font/sans";
-import { source } from "@/lib/source";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "roi-ui - Component system with CSS Modules",
+  title: "Roi UI - Component system with CSS Modules",
   description: "Copy-paste components built on Base UI and CSS Modules",
   icons: {
     icon: [
@@ -39,13 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         >
           <ThemeProvider defaultTheme="dark" enableSystem disableTransitionOnChange storageKey="theme">
-            <div className="root">
-              <div style={{ position: "relative", minHeight: "100vh" }}>
-                <SiteHeader pageTree={source.pageTree} />
-                <main className="main-content">{children}</main>
-                <SiteFooter />
-              </div>
-            </div>
+            {children}
           </ThemeProvider>
         </body>
       </html>
