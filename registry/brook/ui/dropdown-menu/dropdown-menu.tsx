@@ -5,23 +5,23 @@ import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./dropdown-menu.module.css";
 
-const DropdownMenuRoot = ({ ...props }: React.ComponentProps<typeof Menu.Root>) => {
+function DropdownMenuRoot({ ...props }: React.ComponentProps<typeof Menu.Root>) {
   return <Menu.Root {...props} />;
-};
+}
 
-const DropdownMenuTrigger = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Menu.Trigger>) => {
+function DropdownMenuTrigger({ className, ...props }: React.ComponentPropsWithoutRef<typeof Menu.Trigger>) {
   return <Menu.Trigger {...props} className={cn(styles.trigger, className)} />;
-};
+}
 
 const DropdownMenuPortal = Menu.Portal;
 
-const DropdownMenuPositioner = ({ className, ...props }: React.ComponentProps<typeof Menu.Positioner>) => (
-  <Menu.Positioner className={cn(styles.positioner, className)} side="bottom" align="start" {...props} />
-);
+function DropdownMenuPositioner({ className, ...props }: React.ComponentProps<typeof Menu.Positioner>) {
+  return <Menu.Positioner className={cn(styles.positioner, className)} side="bottom" align="start" {...props} />;
+}
 
-const DropdownMenuPopup = ({ className, ...props }: React.ComponentProps<typeof Menu.Popup>) => (
-  <Menu.Popup className={cn(styles.popup, className)} {...props} />
-);
+function DropdownMenuPopup({ className, ...props }: React.ComponentProps<typeof Menu.Popup>) {
+  return <Menu.Popup className={cn(styles.popup, className)} {...props} />;
+}
 
 interface DropdownMenuItemProps extends React.ComponentProps<typeof Menu.Item> {
   icon?: ReactNode;
@@ -29,28 +29,30 @@ interface DropdownMenuItemProps extends React.ComponentProps<typeof Menu.Item> {
   children?: ReactNode;
 }
 
-const DropdownMenuItem = ({ className, icon, children, ...props }: DropdownMenuItemProps) => (
-  <Menu.Item className={cn(styles.item, className)} {...props}>
-    {icon && <span className={styles.icon}>{icon}</span>}
-    {children}
-  </Menu.Item>
-);
+function DropdownMenuItem({ className, icon, children, ...props }: DropdownMenuItemProps) {
+  return (
+    <Menu.Item className={cn(styles.item, className)} {...props}>
+      {icon && <span className={styles.icon}>{icon}</span>}
+      {children}
+    </Menu.Item>
+  );
+}
 
-const DropdownMenuSeparator = ({ className, ...props }: React.ComponentProps<typeof Menu.Separator>) => (
-  <Menu.Separator className={cn(styles.separator, className)} {...props} />
-);
+function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof Menu.Separator>) {
+  return <Menu.Separator className={cn(styles.separator, className)} {...props} />;
+}
 
-const DropdownMenuArrow = ({ className, ...props }: React.ComponentProps<typeof Menu.Arrow>) => (
-  <Menu.Arrow className={cn(styles.arrow, className)} {...props} />
-);
+function DropdownMenuArrow({ className, ...props }: React.ComponentProps<typeof Menu.Arrow>) {
+  return <Menu.Arrow className={cn(styles.arrow, className)} {...props} />;
+}
 
-const DropdownMenuSubmenuRoot = ({ ...props }: React.ComponentProps<typeof Menu.SubmenuRoot>) => {
+function DropdownMenuSubmenuRoot({ ...props }: React.ComponentProps<typeof Menu.SubmenuRoot>) {
   return <Menu.SubmenuRoot {...props} />;
-};
+}
 
-const DropdownMenuSubmenuTrigger = ({ className, ...props }: React.ComponentProps<typeof Menu.SubmenuTrigger>) => (
-  <Menu.SubmenuTrigger className={cn(styles.submenuTrigger, className)} {...props} />
-);
+function DropdownMenuSubmenuTrigger({ className, ...props }: React.ComponentProps<typeof Menu.SubmenuTrigger>) {
+  return <Menu.SubmenuTrigger className={cn(styles.submenuTrigger, className)} {...props} />;
+}
 
 export {
   DropdownMenuRoot as DropdownMenu,

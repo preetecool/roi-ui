@@ -7,159 +7,173 @@ import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./autocomplete.module.css";
 import React from "react";
 
-const AutocompleteRoot = ({ 
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Root>) => (
-  <Autocomplete.Root {...props} />
-);
+function AutocompleteRoot({
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Root>) {
+  return <Autocomplete.Root {...props} />;
+}
 
-const AutocompleteValue = ({ 
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Value>) => (
-  <Autocomplete.Value {...props} />
-);
+function AutocompleteValue({
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Value>) {
+  return <Autocomplete.Value {...props} />;
+}
 
-const AutocompleteInput = ({
+function AutocompleteInput({
   className,
   ...props
-}: React.ComponentProps<typeof Autocomplete.Input>) => (
-  <Autocomplete.Input
-    render={(props) => <Input {...props} className={cn(className)} />}
-    {...props}
-  />
-);
+}: React.ComponentProps<typeof Autocomplete.Input>) {
+  return (
+    <Autocomplete.Input
+      render={(props) => <Input {...props} className={cn(className)} />}
+      {...props}
+    />
+  );
+}
 
-const AutocompleteTrigger = ({ 
+function AutocompleteTrigger({
   className,
   children,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Trigger>) => (
-  <Autocomplete.Trigger className={cn(styles.trigger, className)} {...props}>
-    {children || <Search size={16} className={styles.icon} />}
-  </Autocomplete.Trigger>
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Trigger>) {
+  return (
+    <Autocomplete.Trigger className={cn(styles.trigger, className)} {...props}>
+      {children || <Search size={16} className={styles.icon} />}
+    </Autocomplete.Trigger>
+  );
+}
 
-const AutocompleteIcon = ({ 
+function AutocompleteIcon({
   className,
   children,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Icon>) => (
-  <Autocomplete.Icon className={cn(styles.icon, className)} {...props}>
-    {children || <Search size={16} />}
-  </Autocomplete.Icon>
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Icon>) {
+  return (
+    <Autocomplete.Icon className={cn(styles.icon, className)} {...props}>
+      {children || <Search size={16} />}
+    </Autocomplete.Icon>
+  );
+}
 
-const AutocompleteClear = ({ 
+function AutocompleteClear({
   className,
   children,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Clear>) => (
-  <Autocomplete.Clear className={cn(styles.clear, className)} {...props}>
-    {children || <X size={16} />}
-  </Autocomplete.Clear>
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Clear>) {
+  return (
+    <Autocomplete.Clear className={cn(styles.clear, className)} {...props}>
+      {children || <X size={16} />}
+    </Autocomplete.Clear>
+  );
+}
 
 const AutocompletePortal = Autocomplete.Portal;
 
-const AutocompleteBackdrop = ({ 
+function AutocompleteBackdrop({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Backdrop>) => (
-  <Autocomplete.Backdrop 
-    className={cn(styles.backdrop, className)}
-    {...props}
-  />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Backdrop>) {
+  return (
+    <Autocomplete.Backdrop
+      className={cn(styles.backdrop, className)}
+      {...props}
+    />
+  );
+}
 
-const AutocompletePositioner = ({ 
+function AutocompletePositioner({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Positioner>) => (
-  <Autocomplete.Positioner 
-    className={cn(styles.positioner, className)}
-    sideOffset={4}
-    {...props}
-  />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Positioner>) {
+  return (
+    <Autocomplete.Positioner
+      className={cn(styles.positioner, className)}
+      sideOffset={4}
+      {...props}
+    />
+  );
+}
 
-const AutocompletePopup = ({ 
+function AutocompletePopup({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Popup>) => (
-  <Autocomplete.Popup className={cn(styles.popup, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Popup>) {
+  return <Autocomplete.Popup className={cn(styles.popup, className)} {...props} />;
+}
 
-const AutocompleteArrow = ({ 
+function AutocompleteArrow({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Arrow>) => (
-  <Autocomplete.Arrow className={cn(styles.arrow, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Arrow>) {
+  return <Autocomplete.Arrow className={cn(styles.arrow, className)} {...props} />;
+}
 
-const AutocompleteStatus = ({ 
+function AutocompleteStatus({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Status>) => (
-  <Autocomplete.Status className={cn(styles.status, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Status>) {
+  return <Autocomplete.Status className={cn(styles.status, className)} {...props} />;
+}
 
-const AutocompleteList = ({ 
+function AutocompleteList({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.List>) => (
-  <Autocomplete.List className={cn(styles.list, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.List>) {
+  return <Autocomplete.List className={cn(styles.list, className)} {...props} />;
+}
 
-const AutocompleteEmpty = ({ 
+function AutocompleteEmpty({
   className,
   children,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Empty>) => (
-  <Autocomplete.Empty className={cn(styles.empty, className)} {...props}>
-    {children || "No items found"}
-  </Autocomplete.Empty>
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Empty>) {
+  return (
+    <Autocomplete.Empty className={cn(styles.empty, className)} {...props}>
+      {children || "No items found"}
+    </Autocomplete.Empty>
+  );
+}
 
-const AutocompleteCollection = ({ 
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Collection>) => (
-  <Autocomplete.Collection {...props} />
-);
+function AutocompleteCollection({
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Collection>) {
+  return <Autocomplete.Collection {...props} />;
+}
 
-const AutocompleteRow = ({ 
+function AutocompleteRow({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Row>) => (
-  <Autocomplete.Row className={cn(styles.row, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Row>) {
+  return <Autocomplete.Row className={cn(styles.row, className)} {...props} />;
+}
 
-const AutocompleteItem = ({ 
+function AutocompleteItem({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Item>) => (
-  <Autocomplete.Item className={cn(styles.item, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Item>) {
+  return <Autocomplete.Item className={cn(styles.item, className)} {...props} />;
+}
 
-const AutocompleteGroup = ({ 
+function AutocompleteGroup({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Group>) => (
-  <Autocomplete.Group className={cn(styles.group, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Group>) {
+  return <Autocomplete.Group className={cn(styles.group, className)} {...props} />;
+}
 
-const AutocompleteGroupLabel = ({ 
+function AutocompleteGroupLabel({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.GroupLabel>) => (
-  <Autocomplete.GroupLabel className={cn(styles.groupLabel, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.GroupLabel>) {
+  return <Autocomplete.GroupLabel className={cn(styles.groupLabel, className)} {...props} />;
+}
 
-const AutocompleteSeparator = ({ 
+function AutocompleteSeparator({
   className,
-  ...props 
-}: React.ComponentProps<typeof Autocomplete.Separator>) => (
-  <Autocomplete.Separator className={cn(styles.separator, className)} {...props} />
-);
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Separator>) {
+  return <Autocomplete.Separator className={cn(styles.separator, className)} {...props} />;
+}
 
 export {
   AutocompleteRoot as Autocomplete,

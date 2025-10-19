@@ -2,24 +2,24 @@ import { Tabs } from "@base-ui-components/react/tabs";
 import { cn } from "@/lib/utils";
 import styles from "./tabs.module.css";
 
-const TabsRoot = ({ className, ...props }: React.ComponentProps<typeof Tabs.Root>) => (
-  <Tabs.Root className={cn(styles.root, className)} {...props}></Tabs.Root>
-);
+function TabsRoot({ className, ...props }: React.ComponentProps<typeof Tabs.Root>) {
+  return <Tabs.Root className={cn(styles.root, className)} {...props}></Tabs.Root>;
+}
 
-const TabsList = ({ className, ...props }: React.ComponentProps<typeof Tabs.List>) => (
-  <Tabs.List className={cn(styles.list, className)} {...props} />
-);
+function TabsList({ className, ...props }: React.ComponentProps<typeof Tabs.List>) {
+  return <Tabs.List className={cn(styles.list, className)} {...props} />;
+}
 
-const TabsTrigger = ({ className, ...props }: React.ComponentProps<typeof Tabs.Tab>) => (
-  <Tabs.Tab className={cn(styles.trigger, className)} {...props} />
-);
+function TabsTrigger({ className, ...props }: React.ComponentProps<typeof Tabs.Tab>) {
+  return <Tabs.Tab className={cn(styles.trigger, className)} {...props} />;
+}
 
-const TabsContent = ({ className, ...props }: React.ComponentProps<typeof Tabs.Panel>) => (
-  <Tabs.Panel className={cn(styles.content, className)} {...props} />
-);
+function TabsContent({ className, ...props }: React.ComponentProps<typeof Tabs.Panel>) {
+  return <Tabs.Panel className={cn(styles.content, className)} {...props} />;
+}
 
-const TabsIndicator = ({ className, ...props }: React.ComponentProps<typeof Tabs.Indicator>) => (
-  <Tabs.Indicator className={cn(styles.indicator, className)} {...props} />
-);
+function TabsIndicator({ className, ...props }: React.ComponentProps<typeof Tabs.Indicator>) {
+  return <Tabs.Indicator className={cn(styles.indicator, className)} {...props} />;
+}
 
 export { TabsRoot as Tabs, TabsList, TabsTrigger, TabsContent, TabsIndicator };

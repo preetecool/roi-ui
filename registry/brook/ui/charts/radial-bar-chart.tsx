@@ -38,14 +38,14 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
     payload: RadialBarChartData & { fill: string };
   }
 
-  const CustomTooltip = ({
+  function CustomTooltip({
     active,
     payload,
   }: {
     active?: boolean;
     payload?: TooltipPayload[];
     label?: string | number;
-  }) => {
+  }) {
     if (!active || !payload || !payload.length) return null;
 
     const data = payload[0];
@@ -62,7 +62,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
         valueFormatter={tooltipValueFormatter}
       />
     );
-  };
+  }
 
   return (
     <div className={styles.radialBarChart}>

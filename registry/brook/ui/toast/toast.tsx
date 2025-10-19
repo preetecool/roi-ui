@@ -5,35 +5,39 @@ import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import styles from "./toast.module.css";
 
-const ToastProvider = ({ ...props }: React.ComponentPropsWithoutRef<typeof Toast.Provider>) => (
-  <Toast.Provider {...props} />
-);
+function ToastProvider({ ...props }: React.ComponentPropsWithoutRef<typeof Toast.Provider>) {
+  return <Toast.Provider {...props} />;
+}
 
-const ToastPortal = ({ ...props }: React.ComponentPropsWithoutRef<typeof Toast.Portal>) => <Toast.Portal {...props} />;
+function ToastPortal({ ...props }: React.ComponentPropsWithoutRef<typeof Toast.Portal>) {
+  return <Toast.Portal {...props} />;
+}
 
-const ToastViewport = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Viewport>) => (
-  <Toast.Viewport className={cn(styles.Viewport, className)} {...props} />
-);
+function ToastViewport({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Viewport>) {
+  return <Toast.Viewport className={cn(styles.Viewport, className)} {...props} />;
+}
 
-const ToastRoot = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Root>) => (
-  <Toast.Root className={cn(styles.root, className)} {...props} />
-);
+function ToastRoot({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Root>) {
+  return <Toast.Root className={cn(styles.root, className)} {...props} />;
+}
 
-const ToastTitle = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Title>) => (
-  <Toast.Title className={cn(styles.title, className)} {...props} />
-);
+function ToastTitle({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Title>) {
+  return <Toast.Title className={cn(styles.title, className)} {...props} />;
+}
 
-const ToastDescription = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Description>) => (
-  <Toast.Description className={cn(styles.description, className)} {...props} />
-);
+function ToastDescription({ className, ...props }: React.ComponentPropsWithoutRef<typeof Toast.Description>) {
+  return <Toast.Description className={cn(styles.description, className)} {...props} />;
+}
 
-const ToastClose = ({
+function ToastClose({
   className,
   render,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Toast.Close> & {
   render?: (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => React.ReactNode;
-}) => <Toast.Close className={cn(styles.close, className)} render={render} {...props} />;
+}) {
+  return <Toast.Close className={cn(styles.close, className)} render={render} {...props} />;
+}
 
 export {
   ToastProvider,

@@ -5,62 +5,64 @@ import { AlertDialog } from "@base-ui-components/react/alert-dialog";
 import { cn } from "@/lib/utils";
 import styles from "./alert-dialog.module.css";
 
-const AlertDialogRoot = ({ ...props }: React.ComponentProps<typeof AlertDialog.Root>) => {
+function AlertDialogRoot({ ...props }: React.ComponentProps<typeof AlertDialog.Root>) {
   return <AlertDialog.Root {...props} />;
-};
+}
 
-const AlertDialogTrigger = ({ ...props }: React.ComponentProps<typeof AlertDialog.Trigger>) => {
+function AlertDialogTrigger({ ...props }: React.ComponentProps<typeof AlertDialog.Trigger>) {
   return <AlertDialog.Trigger {...props} />;
-};
+}
 
 const AlertDialogPortal = AlertDialog.Portal;
 
-const AlertDialogBackdrop = ({
+function AlertDialogBackdrop({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Backdrop>) => (
-  <AlertDialog.Backdrop className={cn(styles.overlay, className)} {...props} />
-);
+}: React.ComponentPropsWithoutRef<typeof AlertDialog.Backdrop>) {
+  return <AlertDialog.Backdrop className={cn(styles.overlay, className)} {...props} />;
+}
 
-const AlertDialogPopup = ({
+function AlertDialogPopup({
   className,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Popup>) => (
-  <AlertDialogPortal>
-    <AlertDialogBackdrop />
-    <AlertDialog.Popup className={cn(styles.content, className)} {...props}>
-      {children}
-    </AlertDialog.Popup>
-  </AlertDialogPortal>
-);
+}: React.ComponentPropsWithoutRef<typeof AlertDialog.Popup>) {
+  return (
+    <AlertDialogPortal>
+      <AlertDialogBackdrop />
+      <AlertDialog.Popup className={cn(styles.content, className)} {...props}>
+        {children}
+      </AlertDialog.Popup>
+    </AlertDialogPortal>
+  );
+}
 
 const AlertDialogContent = AlertDialogPopup;
 
-const AlertDialogTitle = ({
+function AlertDialogTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Title>) => (
-  <AlertDialog.Title className={cn(styles.title, className)} {...props} />
-);
+}: React.ComponentPropsWithoutRef<typeof AlertDialog.Title>) {
+  return <AlertDialog.Title className={cn(styles.title, className)} {...props} />;
+}
 
-const AlertDialogDescription = ({ className, ...props }: React.ComponentProps<typeof AlertDialog.Description>) => (
-  <AlertDialog.Description className={cn(styles.description, className)} {...props} />
-);
+function AlertDialogDescription({ className, ...props }: React.ComponentProps<typeof AlertDialog.Description>) {
+  return <AlertDialog.Description className={cn(styles.description, className)} {...props} />;
+}
 
-const AlertDialogClose = ({ ...props }: React.ComponentProps<typeof AlertDialog.Close>) => {
+function AlertDialogClose({ ...props }: React.ComponentProps<typeof AlertDialog.Close>) {
   return <AlertDialog.Close {...props} />;
-};
+}
 
 const AlertDialogOverlay = AlertDialogBackdrop;
 
-const AlertDialogHeader = ({ className, ...props }: React.ComponentProps<"div">) => (
-  <div className={cn(styles.header, className)} {...props} />
-);
+function AlertDialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.header, className)} {...props} />;
+}
 
-const AlertDialogFooter = ({ className, ...props }: React.ComponentProps<"div">) => (
-  <div className={cn(styles.footer, className)} {...props} />
-);
+function AlertDialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.footer, className)} {...props} />;
+}
 
 export {
   AlertDialogRoot,

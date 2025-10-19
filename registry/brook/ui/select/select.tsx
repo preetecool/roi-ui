@@ -5,99 +5,113 @@ import { Select } from "@base-ui-components/react/select";
 import { Check, ChevronDown } from "lucide-react";
 import styles from "./select.module.css";
 
-const SelectRoot = ({ ...props }: React.ComponentProps<typeof Select.Root>) => <Select.Root {...props} />;
+function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {
+  return <Select.Root {...props} />;
+}
 
-const SelectTrigger = ({ className, children, ...props }: React.ComponentProps<typeof Select.Trigger>) => (
-  <Select.Trigger className={cn(styles.trigger, className)} nativeButton {...props}>
-    {children}
-  </Select.Trigger>
-);
+function SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof Select.Trigger>) {
+  return (
+    <Select.Trigger className={cn(styles.trigger, className)} nativeButton {...props}>
+      {children}
+    </Select.Trigger>
+  );
+}
 
-const SelectValue = ({ className, children, ...props }: React.ComponentProps<typeof Select.Value>) => (
-  <Select.Value className={cn(styles.value, className)} {...props}>
-    {children}
-  </Select.Value>
-);
+function SelectValue({ className, children, ...props }: React.ComponentProps<typeof Select.Value>) {
+  return (
+    <Select.Value className={cn(styles.value, className)} {...props}>
+      {children}
+    </Select.Value>
+  );
+}
 
-const SelectIcon = ({ className, children, ...props }: React.ComponentProps<typeof Select.Icon>) => (
-  <Select.Icon className={cn(styles.icon, className)} {...props}>
-    {children || <ChevronDown size={16} />}
-  </Select.Icon>
-);
+function SelectIcon({ className, children, ...props }: React.ComponentProps<typeof Select.Icon>) {
+  return (
+    <Select.Icon className={cn(styles.icon, className)} {...props}>
+      {children || <ChevronDown size={16} />}
+    </Select.Icon>
+  );
+}
 
-const SelectPortal = ({ ...props }: React.ComponentProps<typeof Select.Portal>) => (
-  <Select.Portal {...props} />
-);
+function SelectPortal({ ...props }: React.ComponentProps<typeof Select.Portal>) {
+  return <Select.Portal {...props} />;
+}
 
-const SelectOverlay = ({ className, ...props }: React.ComponentProps<typeof Select.Backdrop>) => (
-  <Select.Backdrop className={cn(styles.backdrop, className)} {...props} />
-);
+function SelectOverlay({ className, ...props }: React.ComponentProps<typeof Select.Backdrop>) {
+  return <Select.Backdrop className={cn(styles.backdrop, className)} {...props} />;
+}
 
-const SelectPositioner = ({ className, ...props }: React.ComponentProps<typeof Select.Positioner>) => (
-  <Select.Positioner className={cn(styles.positioner, className)} {...props} />
-);
+function SelectPositioner({ className, ...props }: React.ComponentProps<typeof Select.Positioner>) {
+  return <Select.Positioner className={cn(styles.positioner, className)} {...props} />;
+}
 
-const SelectScrollUpArrow = ({
+function SelectScrollUpArrow({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Select.ScrollUpArrow>) => (
-  <Select.ScrollUpArrow className={cn(styles.scrollArrow, className)} {...props}>
-    {children || <ChevronDown size={16} style={{ transform: "rotate(180deg)" }} />}
-  </Select.ScrollUpArrow>
-);
+}: React.ComponentProps<typeof Select.ScrollUpArrow>) {
+  return (
+    <Select.ScrollUpArrow className={cn(styles.scrollArrow, className)} {...props}>
+      {children || <ChevronDown size={16} style={{ transform: "rotate(180deg)" }} />}
+    </Select.ScrollUpArrow>
+  );
+}
 
-const SelectPopup = ({ className, ...props }: React.ComponentProps<typeof Select.Popup>) => (
-  <Select.Popup className={cn(styles.popup, className)} {...props} />
-);
+function SelectPopup({ className, ...props }: React.ComponentProps<typeof Select.Popup>) {
+  return <Select.Popup className={cn(styles.popup, className)} {...props} />;
+}
 
-const SelectArrow = ({ className, ...props }: React.ComponentProps<typeof Select.Arrow>) => (
-  <Select.Arrow className={cn(styles.arrow, className)} {...props} />
-);
+function SelectArrow({ className, ...props }: React.ComponentProps<typeof Select.Arrow>) {
+  return <Select.Arrow className={cn(styles.arrow, className)} {...props} />;
+}
 
-const SelectScrollDownArrow = ({
+function SelectScrollDownArrow({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Select.ScrollDownArrow>) => (
-  <Select.ScrollDownArrow className={cn(styles.scrollArrow, className)} {...props}>
-    {children || <ChevronDown size={16} />}
-  </Select.ScrollDownArrow>
-);
+}: React.ComponentProps<typeof Select.ScrollDownArrow>) {
+  return (
+    <Select.ScrollDownArrow className={cn(styles.scrollArrow, className)} {...props}>
+      {children || <ChevronDown size={16} />}
+    </Select.ScrollDownArrow>
+  );
+}
 
-const SelectList = ({ className, ...props }: React.ComponentProps<typeof Select.List>) => (
-  <Select.List className={cn(styles.list, className)} {...props} />
-);
+function SelectList({ className, ...props }: React.ComponentProps<typeof Select.List>) {
+  return <Select.List className={cn(styles.list, className)} {...props} />;
+}
 
-const SelectItem = ({ className, ...props }: React.ComponentProps<typeof Select.Item>) => (
-  <Select.Item className={cn(styles.item, className)} {...props} />
-);
+function SelectItem({ className, ...props }: React.ComponentProps<typeof Select.Item>) {
+  return <Select.Item className={cn(styles.item, className)} {...props} />;
+}
 
-const SelectItemText = ({ className, ...props }: React.ComponentProps<typeof Select.ItemText>) => (
-  <Select.ItemText className={cn(styles.itemText, className)} {...props} />
-);
+function SelectItemText({ className, ...props }: React.ComponentProps<typeof Select.ItemText>) {
+  return <Select.ItemText className={cn(styles.itemText, className)} {...props} />;
+}
 
-const SelectGroup = ({ className, ...props }: React.ComponentProps<typeof Select.Group>) => (
-  <Select.Group className={cn(styles.selectGroup, className)} {...props} />
-);
+function SelectGroup({ className, ...props }: React.ComponentProps<typeof Select.Group>) {
+  return <Select.Group className={cn(styles.selectGroup, className)} {...props} />;
+}
 
-const SelectGroupLabel = ({ className, ...props }: React.ComponentProps<typeof Select.GroupLabel>) => (
-  <Select.GroupLabel className={cn(styles.groupLabel, className)} {...props} />
-);
+function SelectGroupLabel({ className, ...props }: React.ComponentProps<typeof Select.GroupLabel>) {
+  return <Select.GroupLabel className={cn(styles.groupLabel, className)} {...props} />;
+}
 
-const SelectSeparator = ({ className, ...props }: React.ComponentProps<typeof Select.Separator>) => (
-  <Select.Separator className={cn(styles.separator, className)} {...props} />
-);
+function SelectSeparator({ className, ...props }: React.ComponentProps<typeof Select.Separator>) {
+  return <Select.Separator className={cn(styles.separator, className)} {...props} />;
+}
 
-const SelectItemIndicator = ({
+function SelectItemIndicator({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Select.ItemIndicator>) => (
-  <Select.ItemIndicator className={cn(styles.indicator, className)} {...props}>
-    {children || <Check size={16} />}
-  </Select.ItemIndicator>
-);
+}: React.ComponentProps<typeof Select.ItemIndicator>) {
+  return (
+    <Select.ItemIndicator className={cn(styles.indicator, className)} {...props}>
+      {children || <Check size={16} />}
+    </Select.ItemIndicator>
+  );
+}
 
 export {
   SelectArrow,

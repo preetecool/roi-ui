@@ -68,7 +68,7 @@ function LineChart({
     [key: string]: unknown;
   }
 
-  const CustomDot = (props: DotProps) => {
+  function CustomDot(props: DotProps) {
     const { cx, cy, payload } = props;
     if (showPoints && cx !== undefined && cy !== undefined && payload) {
       return (
@@ -83,7 +83,7 @@ function LineChart({
       );
     }
     return null;
-  };
+  }
 
   interface GroupedDataItem {
     date: NumberValue;

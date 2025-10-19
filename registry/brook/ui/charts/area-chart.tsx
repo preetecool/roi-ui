@@ -69,7 +69,7 @@ function AreaChart({
     payload: AreaChartData;
   }
 
-  const CustomTooltip = ({
+  function CustomTooltip({
     active,
     payload,
     label,
@@ -77,7 +77,7 @@ function AreaChart({
     active?: boolean;
     payload?: AreaTooltipPayload[];
     label?: NumberValue | string;
-  }) => {
+  }) {
     if (!active || !payload || !payload.length) return null;
 
     const data = payload[0];
@@ -103,7 +103,7 @@ function AreaChart({
         valueFormatter={tooltipValueFormatter}
       />
     );
-  };
+  }
 
   interface AreaDotProps {
     cx?: number;
@@ -111,13 +111,13 @@ function AreaChart({
     [key: string]: unknown;
   }
 
-  const CustomDot = (props: AreaDotProps) => {
+  function CustomDot(props: AreaDotProps) {
     const { cx, cy } = props;
     if (showPoints && cx !== undefined && cy !== undefined) {
       return <Dot cx={cx} cy={cy} r={pointSize} fill={color} stroke="var(--background)" strokeWidth={2} />;
     }
     return null;
-  };
+  }
 
   return (
     <div

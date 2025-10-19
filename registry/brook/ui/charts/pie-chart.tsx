@@ -54,7 +54,7 @@ function PieChart({
     payload: PieChartData & { fill: string };
   }
 
-  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: PieTooltipPayload[] }) => {
+  function CustomTooltip({ active, payload }: { active?: boolean; payload?: PieTooltipPayload[] }) {
     if (!active || !payload || !payload.length) return null;
 
     const data = payload[0];
@@ -71,7 +71,7 @@ function PieChart({
         valueFormatter={tooltipValueFormatter}
       />
     );
-  };
+  }
 
   return (
     <div className={styles.pieChart}>

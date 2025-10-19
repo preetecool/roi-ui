@@ -8,8 +8,8 @@ interface InputProps extends React.ComponentProps<typeof Input> {
   variant?: "default" | "error";
 }
 
-const InputRoot = ({ className, variant = "default", ...props }: InputProps) => (
-  <Input className={cn(styles.base, styles[variant], className)} {...props} />
-);
+function InputRoot({ className, variant = "default", ...props }: InputProps) {
+  return <Input className={cn(styles.base, styles[variant], className)} {...props} />;
+}
 
 export { InputRoot as Input };

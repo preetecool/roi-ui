@@ -4,36 +4,38 @@ import { Tooltip } from "@base-ui-components/react/tooltip";
 import { cn } from "@/lib/utils";
 import styles from "./tooltip.module.css";
 
-const TooltipProvider = ({ ...props }: React.ComponentProps<typeof Tooltip.Provider>) => {
+function TooltipProvider({ ...props }: React.ComponentProps<typeof Tooltip.Provider>) {
   return <Tooltip.Provider {...props} />;
-};
+}
 
-const TooltipRoot = ({ ...props }: React.ComponentProps<typeof Tooltip.Root>) => {
+function TooltipRoot({ ...props }: React.ComponentProps<typeof Tooltip.Root>) {
   return <Tooltip.Root {...props} />;
-};
+}
 
-const TooltipTrigger = ({ ...props }: React.ComponentProps<typeof Tooltip.Trigger>) => {
+function TooltipTrigger({ ...props }: React.ComponentProps<typeof Tooltip.Trigger>) {
   return <Tooltip.Trigger {...props} />;
-};
+}
 
 const TooltipPortal = Tooltip.Portal;
 
-const TooltipPositioner = ({
+function TooltipPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Tooltip.Positioner>) => (
-  <Tooltip.Positioner className={cn(styles.positioner, className)} {...props} />
-);
+}: React.ComponentProps<typeof Tooltip.Positioner>) {
+  return <Tooltip.Positioner className={cn(styles.positioner, className)} {...props} />;
+}
 
-const TooltipPopup = ({ className, ...props }: React.ComponentProps<typeof Tooltip.Popup>) => (
-  <Tooltip.Popup className={cn(styles.popup, className)} {...props} />
-);
+function TooltipPopup({ className, ...props }: React.ComponentProps<typeof Tooltip.Popup>) {
+  return <Tooltip.Popup className={cn(styles.popup, className)} {...props} />;
+}
 
-const TooltipArrow = ({ className, ...props }: React.ComponentProps<typeof Tooltip.Arrow>) => (
-  <Tooltip.Arrow className={cn(styles.arrow, className)} {...props}>
-    <ArrowSvg />
-  </Tooltip.Arrow>
-);
+function TooltipArrow({ className, ...props }: React.ComponentProps<typeof Tooltip.Arrow>) {
+  return (
+    <Tooltip.Arrow className={cn(styles.arrow, className)} {...props}>
+      <ArrowSvg />
+    </Tooltip.Arrow>
+  );
+}
 
 function ArrowSvg(props: React.ComponentProps<"svg">) {
   return (

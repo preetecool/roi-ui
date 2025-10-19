@@ -4,40 +4,40 @@ import { Meter } from "@base-ui-components/react/meter";
 import { cn } from "@/lib/utils";
 import styles from "./meter.module.css";
 
-const MeterRoot = ({
+function MeterRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Root>) => (
-  <Meter.Root className={cn(styles.root, className)} {...props} />
-);
+}: React.ComponentProps<typeof Meter.Root>) {
+  return <Meter.Root className={cn(styles.root, className)} {...props} />;
+}
 
-const MeterLabel = ({
+function MeterLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Label>) => (
-  <Meter.Label className={cn(styles.label, className)} {...props} />
-);
+}: React.ComponentProps<typeof Meter.Label>) {
+  return <Meter.Label className={cn(styles.label, className)} {...props} />;
+}
 
-const MeterTrack = ({
+function MeterTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Track>) => (
-  <Meter.Track className={cn(styles.track, className)} {...props} />
-);
+}: React.ComponentProps<typeof Meter.Track>) {
+  return <Meter.Track className={cn(styles.track, className)} {...props} />;
+}
 
-const MeterIndicator = ({
+function MeterIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Indicator>) => (
-  <Meter.Indicator className={cn(styles.indicator, className)} {...props} />
-);
+}: React.ComponentProps<typeof Meter.Indicator>) {
+  return <Meter.Indicator className={cn(styles.indicator, className)} {...props} />;
+}
 
-const MeterValue = ({
+function MeterValue({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Value>) => (
-  <Meter.Value className={cn(styles.value, className)} {...props} />
-);
+}: React.ComponentProps<typeof Meter.Value>) {
+  return <Meter.Value className={cn(styles.value, className)} {...props} />;
+}
 
 export {
   MeterRoot as Meter,
