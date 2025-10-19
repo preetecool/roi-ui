@@ -76,7 +76,7 @@ export function Search({ tree }: SearchProps) {
   const getIcon = (url: string, name: string) => {
     const nameLower = name.toLowerCase();
 
-    if (nameLower === "introduction" || nameLower === "quick start") {
+    if (nameLower === "introduction" || nameLower === "quick start" || nameLower === "about roi ui") {
       return <ArrowIcon />;
     }
 
