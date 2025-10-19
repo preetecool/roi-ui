@@ -1,18 +1,15 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Accordion } from "@base-ui-components/react/accordion";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 import styles from "./accordion.module.css";
 
 const AccordionRoot = ({ className, ...props }: React.ComponentProps<typeof Accordion.Root>) => (
   <Accordion.Root className={cn(styles.root, className)} {...props} />
 );
 
-const AccordionItem = ({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Accordion.Item>) => (
+const AccordionItem = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof Accordion.Item>) => (
   <Accordion.Item className={cn(styles.item, className)} {...props} />
 );
 
@@ -45,10 +42,10 @@ const AccordionPanel = ({
 );
 
 export {
-  AccordionRoot as Accordion,
-  AccordionItem,
   AccordionHeader,
-  AccordionTrigger,
+  AccordionItem,
   AccordionPanel,
+  AccordionRoot,
+  AccordionTrigger,
   ChevronDown as ChevronDownIcon,
 };
