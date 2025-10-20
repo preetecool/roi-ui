@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Radar Chart",
   "description": "Multi-dimensional radar charts for comparing multiple variables across categories.",
-  "dependencies": [
-    "recharts"
-  ],
+  "dependencies": ["recharts"],
   "files": [
     {
       "path": "registry/brook/ui/charts/chart-tooltip.tsx",

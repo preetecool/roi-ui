@@ -1,8 +1,14 @@
 "use client";
 
-import { Card, CardHeader, CardTitle, CardAction, CardContent } from "@/registry/brook/ui/card/card";
-import styles from "./card-history.module.css";
 import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/registry/brook/ui/card/card";
+import styles from "./card-history.module.css";
 
 const items = [
   {
@@ -43,14 +49,14 @@ export function CardHistory() {
       <CardHeader>
         <CardTitle style={{ fontSize: "1.125rem" }}>Transactions</CardTitle>
         <CardAction>
-          <Button variant="ghost" size="sm" style={{ fontSize: "0.75rem" }}>
+          <Button size="sm" style={{ fontSize: "0.75rem" }} variant="ghost">
             View All
           </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
         {items.map(({ id, from, date, amount }) => (
-          <div key={id} className={styles.transactionItem}>
+          <div className={styles.transactionItem} key={id}>
             <div className={styles.title}>
               <div className={styles.from}>{from}</div>
               <div className={styles.date}>{date}</div>

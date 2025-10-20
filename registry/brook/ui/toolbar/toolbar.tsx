@@ -11,7 +11,11 @@ function ToolbarRoot({
 }: React.ComponentProps<typeof Toolbar.Root>) {
   return (
     <Toolbar.Root
-      className={cn(styles.root, orientation === "vertical" && styles.vertical, className)}
+      className={cn(
+        styles.root,
+        orientation === "vertical" && styles.vertical,
+        className
+      )}
       orientation={orientation}
       {...props}
     />
@@ -50,7 +54,9 @@ function ToolbarSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof Toolbar.Separator>) {
-  return <Toolbar.Separator className={cn(styles.separator, className)} {...props} />;
+  return (
+    <Toolbar.Separator className={cn(styles.separator, className)} {...props} />
+  );
 }
 
 export {

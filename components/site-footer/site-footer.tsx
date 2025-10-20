@@ -8,17 +8,29 @@ export function SiteFooter() {
         <div className={styles.content}>
           Built by{" "}
           <Button
-            variant="link"
             id={styles.link}
-            render={<a href="https://x.com/preetecool" target="_blank" rel="noopener noreferrer" />}
+            render={
+              <a
+                href="https://x.com/preetecool"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            }
+            variant="link"
           >
             @preetecool.
           </Button>{" "}
           Available on{" "}
           <Button
-            variant="link"
             id={styles.link}
-            render={<a href="https://github.com/preetecool" target="_blank" rel="noopener noreferrer" />}
+            render={
+              <a
+                href="https://github.com/preetecool"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            }
+            variant="link"
           >
             GitHub
           </Button>

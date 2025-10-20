@@ -1,7 +1,7 @@
 "use client";
 
-import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { motion } from "motion/react";
+import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 
 const shakeVariants = {
   shake: {
@@ -31,23 +31,31 @@ const iconTransition = {
 
 export default function BadgeErrorFramerMotion() {
   return (
-    <motion.div variants={shakeVariants} animate="shake" transition={shakeTransition}>
-      <Badge variant="destructive" size="lg">
+    <motion.div
+      animate="shake"
+      transition={shakeTransition}
+      variants={shakeVariants}
+    >
+      <Badge size="lg" variant="destructive">
         <BadgeIcon>
           <motion.svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
+            animate="visible"
             fill="none"
+            height="16"
+            initial="hidden"
             stroke="currentColor"
-            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial="hidden"
-            animate="visible"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width="16"
           >
             <motion.circle cx="12" cy="12" r="10" />
-            <motion.path d="m4.9 4.9 14.2 14.2" variants={iconVariants} transition={iconTransition} />
+            <motion.path
+              d="m4.9 4.9 14.2 14.2"
+              transition={iconTransition}
+              variants={iconVariants}
+            />
           </motion.svg>
         </BadgeIcon>
         Error

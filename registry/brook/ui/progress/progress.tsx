@@ -29,7 +29,12 @@ function ProgressIndicator({
   className,
   ...props
 }: React.ComponentProps<typeof Progress.Indicator>) {
-  return <Progress.Indicator className={cn(styles.indicator, className)} {...props} />;
+  return (
+    <Progress.Indicator
+      className={cn(styles.indicator, className)}
+      {...props}
+    />
+  );
 }
 
 function ProgressValue({

@@ -2,15 +2,15 @@
 
 import {
   ContextMenu,
-  ContextMenuTrigger,
+  ContextMenuItem,
+  ContextMenuPopup,
   ContextMenuPortal,
   ContextMenuPositioner,
-  ContextMenuPopup,
-  ContextMenuItem,
   ContextMenuSeparator,
+  ContextMenuShortcut,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
-  ContextMenuShortcut,
+  ContextMenuTrigger,
 } from "@/registry/brook/ui/context-menu/context-menu";
 import styles from "./context-menu-demo.module.css";
 

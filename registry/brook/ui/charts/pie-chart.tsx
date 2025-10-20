@@ -1,24 +1,30 @@
 "use client";
 
 import { useMemo } from "react";
-import { PieChart as RechartsePieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import {
+  Cell,
+  Pie,
+  PieChart as RechartsePieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 import ChartTooltip from "./chart-tooltip";
 import styles from "./pie-chart.module.css";
 
-export interface PieChartData {
+export type PieChartData = {
   category: string;
   value: number;
   type: string;
-}
+};
 
-export interface PieChartProps {
+export type PieChartProps = {
   data: PieChartData[];
   innerRadius?: number;
   outerRadius?: number;
   animate?: boolean;
   interactive?: boolean;
   colors?: string[];
-}
+};
 
 function PieChart({
   data,
@@ -28,10 +34,19 @@ function PieChart({
 
   colors,
 }: PieChartProps) {
-  const defaultColors = ["var(--chart1)", "var(--chart2)", "var(--accent)", "var(--warning)", "var(--destructive)"];
+  const defaultColors = [
+    "var(--chart1)",
+    "var(--chart2)",
+    "var(--accent)",
+    "var(--warning)",
+    "var(--destructive)",
+  ];
   const pieColors = colors || defaultColors;
 
-  const total = useMemo(() => data.reduce((sum, d) => sum + d.value, 0), [data]);
+  const total = useMemo(
+    () => data.reduce((sum, d) => sum + d.value, 0),
+    [data]
+  );
 
   const dataWithColors = useMemo(
     () =>
@@ -39,23 +54,34 @@ function PieChart({
         ...item,
         fill: pieColors[index % pieColors.length],
       })),
-    [data, pieColors],
+    [data, pieColors]
   );
 
-  const tooltipValueFormatter = (value: number | string, name?: string) => {
-    const numValue = typeof value === 'number' ? value : parseFloat(String(value));
-    if (isNaN(numValue)) return String(value);
+  const tooltipValueFormatter = (value: number | string, _name?: string) => {
+    const numValue =
+      typeof value === "number" ? value : Number.parseFloat(String(value));
+    if (Number.isNaN(numValue)) {
+      return String(value);
+    }
     const percentage = ((numValue / total) * 100).toFixed(1);
     return `${percentage}%`;
   };
 
-  interface PieTooltipPayload {
+  type PieTooltipPayload = {
     value: number;
     payload: PieChartData & { fill: string };
-  }
+  };
 
-  function CustomTooltip({ active, payload }: { active?: boolean; payload?: PieTooltipPayload[] }) {
-    if (!active || !payload || !payload.length) return null;
+  function CustomTooltip({
+    active,
+    payload,
+  }: {
+    active?: boolean;
+    payload?: PieTooltipPayload[];
+  }) {
+    if (!(active && payload && payload.length)) {
+      return null;
+    }
 
     const data = payload[0];
     return (
@@ -75,24 +101,24 @@ function PieChart({
 
   return (
     <div className={styles.pieChart}>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer height="100%" width="100%">
         <RechartsePieChart>
           <Pie
-            data={dataWithColors}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={false}
-            outerRadius={outerRadius || 120}
-            innerRadius={innerRadius}
-            fill="#8884d8"
-            dataKey="value"
             animationBegin={animate ? 0 : undefined}
             animationDuration={animate ? 800 : 0}
+            cx="50%"
+            cy="50%"
+            data={dataWithColors}
+            dataKey="value"
+            fill="#8884d8"
+            innerRadius={innerRadius}
+            label={false}
+            labelLine={false}
+            outerRadius={outerRadius || 120}
             stroke="none"
           >
             {dataWithColors.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.fill} />
+              <Cell fill={entry.fill} key={`cell-${index}`} />
             ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} />

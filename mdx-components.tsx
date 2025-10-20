@@ -1,55 +1,77 @@
-import { ComponentProps, ReactNode } from "react";
 import Link from "next/link";
-import { ComponentPreview } from "@/components/component-preview/component-preview";
-import { ComponentSource } from "@/components/component-source/component-source";
-import { Button } from "@/registry/brook/ui/button/button";
-
+import type { ComponentProps, ReactNode } from "react";
 import { CodeBlock } from "@/components/code-block/code-block";
 import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
-import { PropTable } from "@/components/prop-table/prop-table";
+import { ComponentPreview } from "@/components/component-preview/component-preview";
+import { ComponentSource } from "@/components/component-source/component-source";
 import { GlobalsCSS } from "@/components/globals-css";
-import { InstallationTabs, InstallationTabsList, InstallationTabsTrigger, InstallationTabsContent } from "@/components/installation-tabs/installation-tabs";
+import {
+  InstallationTabs,
+  InstallationTabsContent,
+  InstallationTabsList,
+  InstallationTabsTrigger,
+} from "@/components/installation-tabs/installation-tabs";
+import { PropTable } from "@/components/prop-table/prop-table";
+import { Button } from "@/registry/brook/ui/button/button";
 
-import { Tabs as CustomTabs, TabsList, TabsTrigger, TabsContent } from "@/registry/brook/ui/tabs/tabs";
+import {
+  Tabs as CustomTabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/brook/ui/tabs/tabs";
 
-interface TabProps {
+type TabProps = {
   value: string;
   children: ReactNode;
   [key: string]: unknown;
-}
+};
 
-interface TabsProps {
+type TabsProps = {
   items?: string[];
   children: ReactNode;
   [key: string]: unknown;
-}
+};
 
-interface CodeBlockTabProps {
+type CodeBlockTabProps = {
   value: string;
   children: ReactNode;
   [key: string]: unknown;
-}
+};
 
-interface CodeBlockTabsListProps {
+type CodeBlockTabsListProps = {
   children: ReactNode;
   [key: string]: unknown;
-}
+};
 
-interface CodeBlockTabsTriggerProps {
+type CodeBlockTabsTriggerProps = {
   value: string;
   children: ReactNode;
   [key: string]: unknown;
-}
+};
 
 export const mdxComponents = {
-  h1: (props: ComponentProps<"h1">) => <h1 style={{ color: "var(--docs-heading)" }} {...props} />,
+  h1: (props: ComponentProps<"h1">) => (
+    <h1 style={{ color: "var(--docs-heading)" }} {...props} />
+  ),
   h2: (props: ComponentProps<"h2">) => {
-    const id = props.children?.toString().replace(/ /g, "-").replace(/'/g, "").replace(/\?/g, "").toLowerCase();
+    const id = props.children
+      ?.toString()
+      .replace(/ /g, "-")
+      .replace(/'/g, "")
+      .replace(/\?/g, "")
+      .toLowerCase();
     return <h2 id={id} style={{ color: "var(--docs-heading)" }} {...props} />;
   },
-  h3: (props: ComponentProps<"h3">) => <h3 style={{ color: "var(--docs-heading)" }} {...props} />,
-  h4: (props: ComponentProps<"h4">) => <h4 style={{ color: "var(--docs-heading)" }} {...props} />,
-  p: (props: ComponentProps<"p">) => <p style={{ color: "var(--foreground)" }} {...props} />,
+  h3: (props: ComponentProps<"h3">) => (
+    <h3 style={{ color: "var(--docs-heading)" }} {...props} />
+  ),
+  h4: (props: ComponentProps<"h4">) => (
+    <h4 style={{ color: "var(--docs-heading)" }} {...props} />
+  ),
+  p: (props: ComponentProps<"p">) => (
+    <p style={{ color: "var(--foreground)" }} {...props} />
+  ),
   a: (props: ComponentProps<"a">) => (
     <a
       style={{
@@ -63,7 +85,9 @@ export const mdxComponents = {
   ul: (props: ComponentProps<"ul">) => <ul {...props} />,
   ol: (props: ComponentProps<"ol">) => <ol {...props} />,
   li: (props: ComponentProps<"li">) => <li {...props} />,
-  blockquote: (props: ComponentProps<"blockquote">) => <blockquote {...props} />,
+  blockquote: (props: ComponentProps<"blockquote">) => (
+    <blockquote {...props} />
+  ),
   code: (props: ComponentProps<"code">) => {
     if (typeof props.children === "string") {
       return <code {...props} />;
@@ -106,10 +130,16 @@ export const mdxComponents = {
             >
               {title}
             </span>
-            {icon && <div style={{ opacity: "0.6" }} dangerouslySetInnerHTML={{ __html: icon }} />}
+            {icon && (
+              <div
+                dangerouslySetInnerHTML={{ __html: icon }}
+                style={{ opacity: "0.6" }}
+              />
+            )}
           </div>
         )}
         <div
+          className="code-container"
           style={{
             maxHeight: "400px",
             boxSizing: "border-box",
@@ -118,7 +148,6 @@ export const mdxComponents = {
             scrollbarWidth: "none",
             msOverflowStyle: "none",
           }}
-          className="code-container"
         >
           <pre {...rest} style={{ margin: 0, padding: "1rem" }}>
             {children}
@@ -155,27 +184,31 @@ export const mdxComponents = {
       {children}
     </CustomTabs>
   ),
-  CodeBlockTab: ({ value, children, ...props }: CodeBlockTabProps) => {
-    return (
-      <TabsContent
-        value={value}
-        {...props}
-        style={{
-          margin: 0,
-          padding: 0,
-          border: "none",
-          borderRadius: 0,
-          backgroundColor: "transparent",
-          position: "relative",
-        }}
-      >
-        {children}
-      </TabsContent>
-    );
-  },
+  CodeBlockTab: ({ value, children, ...props }: CodeBlockTabProps) => (
+    <TabsContent
+      value={value}
+      {...props}
+      style={{
+        margin: 0,
+        padding: 0,
+        border: "none",
+        borderRadius: 0,
+        backgroundColor: "transparent",
+        position: "relative",
+      }}
+    >
+      {children}
+    </TabsContent>
+  ),
   CodeBlockTabs,
-  CodeBlockTabsList: ({ children, ...props }: CodeBlockTabsListProps) => <TabsList {...props}>{children}</TabsList>,
-  CodeBlockTabsTrigger: ({ value, children, ...props }: CodeBlockTabsTriggerProps) => (
+  CodeBlockTabsList: ({ children, ...props }: CodeBlockTabsListProps) => (
+    <TabsList {...props}>{children}</TabsList>
+  ),
+  CodeBlockTabsTrigger: ({
+    value,
+    children,
+    ...props
+  }: CodeBlockTabsTriggerProps) => (
     <TabsTrigger value={value} {...props}>
       {children}
     </TabsTrigger>

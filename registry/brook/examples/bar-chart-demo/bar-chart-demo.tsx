@@ -20,13 +20,13 @@ export default function BarChartDemo() {
       <h3 className={styles.title}>Monthly Sales Performance</h3>
       <div className={styles.chartContainer}>
         <BarChart
+          animated
           data={data}
           showXAxis={true}
-          showYAxis={true}
           showXGrid={false}
+          showYAxis={true}
           showYGrid={true}
           useGradient={false}
-          animated
         />
       </div>
     </div>

@@ -1,25 +1,29 @@
 "use client";
 
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/brook/ui/avatar/avatar";
+import {
   Combobox,
-  ComboboxTrigger,
+  ComboboxEmpty,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxPopup,
   ComboboxPortal,
   ComboboxPositioner,
-  ComboboxPopup,
-  ComboboxItem,
-  ComboboxEmpty,
-  ComboboxList,
+  ComboboxTrigger,
 } from "@/registry/brook/ui/combobox/combobox";
-import { Avatar, AvatarImage, AvatarFallback } from "@/registry/brook/ui/avatar/avatar";
 import styles from "./combobox-demo.module.css";
 
-interface User {
+type User = {
   value: string;
   label: string;
   email: string;
   avatar: string;
-}
+};
 
 const users: User[] = [
   {
@@ -32,37 +36,43 @@ const users: User[] = [
     value: "john-doe",
     label: "John Doe",
     email: "john@example.com",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "jane-smith",
     label: "Jane Smith",
     email: "jane@example.com",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "mike-johnson",
     label: "Mike Johnson",
     email: "mike@example.com",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "sarah-wilson",
     label: "Sarah Wilson",
     email: "sarah@example.com",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "alex-brown",
     label: "Alex Brown",
     email: "alex@example.com",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=face",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "emma-davis",
     label: "Emma Davis",
     email: "emma@example.com",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=32&h=32&fit=crop&crop=face",
+    avatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=32&h=32&fit=crop&crop=face",
   },
 ];
 
@@ -88,10 +98,14 @@ export default function ComboboxDemo() {
                 <ComboboxEmpty>No user found.</ComboboxEmpty>
                 <ComboboxList>
                   {(user: User) => (
-                    <ComboboxItem key={user.value} value={user} indicatorPosition="right">
+                    <ComboboxItem
+                      indicatorPosition="right"
+                      key={user.value}
+                      value={user}
+                    >
                       <div className={styles.userContainer}>
                         <Avatar id={styles.avatar}>
-                          <AvatarImage src={user.avatar} alt={user.label} />
+                          <AvatarImage alt={user.label} src={user.avatar} />
                           <AvatarFallback>
                             {user.label
                               .split(" ")

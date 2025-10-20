@@ -15,14 +15,21 @@ function ScrollAreaViewport({
   className,
   ...props
 }: React.ComponentProps<typeof ScrollArea.Viewport>) {
-  return <ScrollArea.Viewport className={cn(styles.viewport, className)} {...props} />;
+  return (
+    <ScrollArea.Viewport
+      className={cn(styles.viewport, className)}
+      {...props}
+    />
+  );
 }
 
 function ScrollAreaContent({
   className,
   ...props
 }: React.ComponentProps<typeof ScrollArea.Content>) {
-  return <ScrollArea.Content className={cn(styles.content, className)} {...props} />;
+  return (
+    <ScrollArea.Content className={cn(styles.content, className)} {...props} />
+  );
 }
 
 function ScrollAreaScrollbar({
@@ -32,7 +39,11 @@ function ScrollAreaScrollbar({
 }: React.ComponentProps<typeof ScrollArea.Scrollbar>) {
   return (
     <ScrollArea.Scrollbar
-      className={cn(styles.scrollbar, orientation === "horizontal" && styles.horizontal, className)}
+      className={cn(
+        styles.scrollbar,
+        orientation === "horizontal" && styles.horizontal,
+        className
+      )}
       orientation={orientation}
       {...props}
     />
@@ -43,14 +54,18 @@ function ScrollAreaThumb({
   className,
   ...props
 }: React.ComponentProps<typeof ScrollArea.Thumb>) {
-  return <ScrollArea.Thumb className={cn(styles.thumb, className)} {...props} />;
+  return (
+    <ScrollArea.Thumb className={cn(styles.thumb, className)} {...props} />
+  );
 }
 
 function ScrollAreaCorner({
   className,
   ...props
 }: React.ComponentProps<typeof ScrollArea.Corner>) {
-  return <ScrollArea.Corner className={cn(styles.corner, className)} {...props} />;
+  return (
+    <ScrollArea.Corner className={cn(styles.corner, className)} {...props} />
+  );
 }
 
 export {

@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import type React from "react";
+import { useEffect, useRef } from "react";
 import styles from "./background.module.css";
 
 const vertexShader = `
@@ -258,7 +259,7 @@ const fragmentShader = `
   }
 `;
 
-interface BackgroundProps {
+type BackgroundProps = {
   className?: string;
   primaryColor?: [number, number, number];
   secondaryColor?: [number, number, number];
@@ -269,7 +270,7 @@ interface BackgroundProps {
   intensity?: number;
   octaves?: number;
   warpStrength?: number;
-}
+};
 
 const Background: React.FC<BackgroundProps> = ({
   className,
@@ -289,11 +290,12 @@ const Background: React.FC<BackgroundProps> = ({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
 
     const gl = canvas.getContext("webgl");
     if (!gl) {
-      console.error("WebGL not supported");
       return;
     }
 
@@ -310,13 +312,14 @@ const Background: React.FC<BackgroundProps> = ({
     // Create shaders
     const createShader = (type: number, source: string) => {
       const shader = gl.createShader(type);
-      if (!shader) return null;
+      if (!shader) {
+        return null;
+      }
 
       gl.shaderSource(shader, source);
       gl.compileShader(shader);
 
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error("Shader compile error:", gl.getShaderInfoLog(shader));
         gl.deleteShader(shader);
         return null;
       }
@@ -327,18 +330,21 @@ const Background: React.FC<BackgroundProps> = ({
     const vertShader = createShader(gl.VERTEX_SHADER, vertexShader);
     const fragShader = createShader(gl.FRAGMENT_SHADER, fragmentShader);
 
-    if (!vertShader || !fragShader) return;
+    if (!(vertShader && fragShader)) {
+      return;
+    }
 
     // Create program
     const program = gl.createProgram();
-    if (!program) return;
+    if (!program) {
+      return;
+    }
 
     gl.attachShader(program, vertShader);
     gl.attachShader(program, fragShader);
     gl.linkProgram(program);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error("Program link error:", gl.getProgramInfoLog(program));
       return;
     }
 
@@ -357,20 +363,40 @@ const Background: React.FC<BackgroundProps> = ({
     const timeLocation = gl.getUniformLocation(program, "u_time");
     const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
 
-    const primaryColorLocation = gl.getUniformLocation(program, "u_primaryColor");
-    const secondaryColorLocation = gl.getUniformLocation(program, "u_secondaryColor");
-    const backgroundColorLocation = gl.getUniformLocation(program, "u_backgroundColor");
-    const backgroundOpacityLocation = gl.getUniformLocation(program, "u_backgroundOpacity");
+    const primaryColorLocation = gl.getUniformLocation(
+      program,
+      "u_primaryColor"
+    );
+    const secondaryColorLocation = gl.getUniformLocation(
+      program,
+      "u_secondaryColor"
+    );
+    const backgroundColorLocation = gl.getUniformLocation(
+      program,
+      "u_backgroundColor"
+    );
+    const backgroundOpacityLocation = gl.getUniformLocation(
+      program,
+      "u_backgroundOpacity"
+    );
 
-    const animationSpeedLocation = gl.getUniformLocation(program, "u_animationSpeed");
+    const animationSpeedLocation = gl.getUniformLocation(
+      program,
+      "u_animationSpeed"
+    );
     const noiseScaleLocation = gl.getUniformLocation(program, "u_noiseScale");
     const intensityLocation = gl.getUniformLocation(program, "u_intensity");
 
     const octavesLocation = gl.getUniformLocation(program, "u_octaves");
-    const warpStrengthLocation = gl.getUniformLocation(program, "u_warpStrength");
+    const warpStrengthLocation = gl.getUniformLocation(
+      program,
+      "u_warpStrength"
+    );
 
     const render = (time: number) => {
-      if (!startTimeRef.current) startTimeRef.current = time;
+      if (!startTimeRef.current) {
+        startTimeRef.current = time;
+      }
       const elapsedTime = (time - startTimeRef.current) * 0.001;
 
       gl.useProgram(program);
@@ -378,9 +404,24 @@ const Background: React.FC<BackgroundProps> = ({
       gl.uniform1f(timeLocation, elapsedTime);
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
 
-      gl.uniform3f(primaryColorLocation, primaryColor[0], primaryColor[1], primaryColor[2]);
-      gl.uniform3f(secondaryColorLocation, secondaryColor[0], secondaryColor[1], secondaryColor[2]);
-      gl.uniform3f(backgroundColorLocation, backgroundColor[0], backgroundColor[1], backgroundColor[2]);
+      gl.uniform3f(
+        primaryColorLocation,
+        primaryColor[0],
+        primaryColor[1],
+        primaryColor[2]
+      );
+      gl.uniform3f(
+        secondaryColorLocation,
+        secondaryColor[0],
+        secondaryColor[1],
+        secondaryColor[2]
+      );
+      gl.uniform3f(
+        backgroundColorLocation,
+        backgroundColor[0],
+        backgroundColor[1],
+        backgroundColor[2]
+      );
       gl.uniform1f(backgroundOpacityLocation, backgroundOpacity);
 
       gl.uniform1f(animationSpeedLocation, animationSpeed);
@@ -417,7 +458,7 @@ const Background: React.FC<BackgroundProps> = ({
 
   return (
     <div className={`${styles.backgroundContainer} ${className || ""}`}>
-      <canvas ref={canvasRef} className={styles.canvas} />
+      <canvas className={styles.canvas} ref={canvasRef} />
     </div>
   );
 };

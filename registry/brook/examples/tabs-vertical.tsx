@@ -1,11 +1,16 @@
 "use client";
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/brook/ui/tabs/tabs";
 import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/brook/ui/tabs/tabs";
 
 export default function TabsVertical() {
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="mx-auto w-full max-w-2xl">
       <Tabs defaultValue="account" orientation="vertical">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
@@ -16,13 +21,14 @@ export default function TabsVertical() {
 
         <TabsContent value="account">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Account Settings</h3>
-            <p className="text-sm text-muted-foreground">
-              Make changes to your account here. Click save when you&apos;re done.
+            <h3 className="font-semibold text-lg">Account Settings</h3>
+            <p className="text-muted-foreground text-sm">
+              Make changes to your account here. Click save when you&apos;re
+              done.
             </p>
             <div className="flex gap-2">
               <Button size="sm">Save Changes</Button>
-              <Button variant="outline" size="sm">
+              <Button size="sm" variant="outline">
                 Cancel
               </Button>
             </div>
@@ -31,13 +37,14 @@ export default function TabsVertical() {
 
         <TabsContent value="password">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Password</h3>
-            <p className="text-sm text-muted-foreground">
-              Change your password here. After saving, you&apos;ll be logged out.
+            <h3 className="font-semibold text-lg">Password</h3>
+            <p className="text-muted-foreground text-sm">
+              Change your password here. After saving, you&apos;ll be logged
+              out.
             </p>
             <div className="flex gap-2">
               <Button size="sm">Update Password</Button>
-              <Button variant="outline" size="sm">
+              <Button size="sm" variant="outline">
                 Cancel
               </Button>
             </div>
@@ -46,11 +53,13 @@ export default function TabsVertical() {
 
         <TabsContent value="team">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Team Management</h3>
-            <p className="text-sm text-muted-foreground">Invite and manage your team members here.</p>
+            <h3 className="font-semibold text-lg">Team Management</h3>
+            <p className="text-muted-foreground text-sm">
+              Invite and manage your team members here.
+            </p>
             <div className="flex gap-2">
               <Button size="sm">Invite Member</Button>
-              <Button variant="outline" size="sm">
+              <Button size="sm" variant="outline">
                 Manage Roles
               </Button>
             </div>
@@ -59,11 +68,13 @@ export default function TabsVertical() {
 
         <TabsContent value="billing">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Billing & Usage</h3>
-            <p className="text-sm text-muted-foreground">View your billing information and payment methods.</p>
+            <h3 className="font-semibold text-lg">Billing & Usage</h3>
+            <p className="text-muted-foreground text-sm">
+              View your billing information and payment methods.
+            </p>
             <div className="flex gap-2">
               <Button size="sm">Upgrade Plan</Button>
-              <Button variant="outline" size="sm">
+              <Button size="sm" variant="outline">
                 Download Invoice
               </Button>
             </div>

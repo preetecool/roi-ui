@@ -1,22 +1,22 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import {
   cloneElement,
   isValidElement,
-  ReactElement,
+  type ReactElement,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./carousel.module.css";
 
-export interface CarouselItem {
+export type CarouselItem = {
   id: string;
   content: React.ReactNode;
-}
+};
 
 /**
  * Carousel component for displaying multiple items in a scrollable horizontal layout with optional navigation and indicators.
@@ -66,9 +66,10 @@ function Carousel({
 
   const totalItems = items.length;
 
-  const itemWidth = useMemo(() => {
-    return `calc((100% - ${gap * (itemsPerView - 1)}px) / ${itemsPerView})`;
-  }, [itemsPerView, gap]);
+  const itemWidth = useMemo(
+    () => `calc((100% - ${gap * (itemsPerView - 1)}px) / ${itemsPerView})`,
+    [itemsPerView, gap]
+  );
 
   const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScrollLeft, setMaxScrollLeft] = useState(0);
@@ -82,14 +83,20 @@ function Carousel({
   const goToIndex = useCallback(
     (index: number) => {
       const viewport = viewportRef.current;
-      if (!viewport) return;
+      if (!viewport) {
+        return;
+      }
 
       const containerWidth = viewport.clientWidth;
-      const itemWidth = (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
+      const itemWidth =
+        (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
       const itemWithGap = itemWidth + gap;
 
       const previousItemOffset = index > 0 ? itemWidth * 0.2 : 0;
-      const targetScroll = Math.max(0, index * itemWithGap - previousItemOffset);
+      const targetScroll = Math.max(
+        0,
+        index * itemWithGap - previousItemOffset
+      );
 
       isScrollingRef.current = true;
       viewport.scrollTo({ left: targetScroll, behavior: "smooth" });
@@ -98,7 +105,7 @@ function Carousel({
         isScrollingRef.current = false;
       }, 300);
     },
-    [itemsPerView, gap],
+    [itemsPerView, gap]
   );
 
   const nextSlide = useCallback(() => {
@@ -119,10 +126,15 @@ function Carousel({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const isActiveInCarousel = carouselRef.current?.contains(document.activeElement);
-      const isActiveOnCarouselContainer = document.activeElement === carouselRef.current?.parentElement;
+      const isActiveInCarousel = carouselRef.current?.contains(
+        document.activeElement
+      );
+      const isActiveOnCarouselContainer =
+        document.activeElement === carouselRef.current?.parentElement;
 
-      if (!isActiveInCarousel && !isActiveOnCarouselContainer) return;
+      if (!(isActiveInCarousel || isActiveOnCarouselContainer)) {
+        return;
+      }
 
       switch (event.key) {
         case "ArrowLeft":
@@ -150,11 +162,21 @@ function Carousel({
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [prevSlide, nextSlide, goToIndex, canGoNext, canGoPrev, totalItems, itemsPerView]);
+  }, [
+    prevSlide,
+    nextSlide,
+    goToIndex,
+    canGoNext,
+    canGoPrev,
+    totalItems,
+    itemsPerView,
+  ]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
-    if (!viewport) return;
+    if (!viewport) {
+      return;
+    }
 
     const updateScrollInfo = () => {
       const newScrollLeft = viewport.scrollLeft;
@@ -165,7 +187,8 @@ function Carousel({
 
       if (!isScrollingRef.current) {
         const containerWidth = viewport.clientWidth;
-        const itemWidth = (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
+        const itemWidth =
+          (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
         const itemWithGap = itemWidth + gap;
 
         const adjustedScrollLeft = newScrollLeft + itemWidth * 0.2;
@@ -188,45 +211,45 @@ function Carousel({
 
   return (
     <div
-      data-slot="carousel"
-      className={cn(styles.carousel, className)}
-      role="region"
-      aria-roledescription="carousel"
       aria-label="Interactive carousel"
-      tabIndex={0}
+      aria-roledescription="carousel"
+      className={cn(styles.carousel, className)}
+      data-slot="carousel"
+      role="region"
       {...props}
     >
       <div
-        ref={viewportRef}
+        aria-atomic="false"
+        aria-live="polite"
         className={cn(
           styles.viewport,
           showLeftFade && styles.showLeftFade,
-          showRightFade && styles.showRightFade,
+          showRightFade && styles.showRightFade
         )}
-        aria-live="polite"
-        aria-atomic="false"
+        ref={viewportRef}
       >
         <div
-          ref={carouselRef}
-          id="carousel-slides"
           className={styles.container}
+          id="carousel-slides"
+          ref={carouselRef}
           style={{
             gap: `${gap}px`,
           }}
         >
           {items.map((item, index) => {
             const isVisible =
-              index >= Math.max(0, currentIndex - 1) && index < currentIndex + Math.ceil(itemsPerView);
+              index >= Math.max(0, currentIndex - 1) &&
+              index < currentIndex + Math.ceil(itemsPerView);
 
             return (
               <div
-                key={item.id}
-                className={styles.slide}
-                role="group"
-                aria-roledescription="slide"
-                aria-label={`${index + 1} of ${items.length}`}
                 aria-hidden={!isVisible}
-                inert={!isVisible ? true : undefined}
+                aria-label={`${index + 1} of ${items.length}`}
+                aria-roledescription="slide"
+                className={styles.slide}
+                inert={isVisible ? undefined : true}
+                key={item.id}
+                role="group"
                 style={{
                   width: itemWidth,
                   minWidth: itemWidth,
@@ -235,26 +258,34 @@ function Carousel({
               >
                 {item.content ? (
                   isValidElement(item.content) ? (
-                    cloneElement(item.content as ReactElement<React.HTMLAttributes<HTMLElement>>, {
-                      tabIndex: isVisible ? 0 : -1,
-                      "aria-label": `Item ${index + 1} content`,
-                      style: {
-                        ...((item.content as ReactElement<React.HTMLAttributes<HTMLElement>>)?.props?.style ||
-                          {}),
-                        outline: "none",
-                        width: "100%",
-                        height: "100%",
-                      },
-                    })
+                    cloneElement(
+                      item.content as ReactElement<
+                        React.HTMLAttributes<HTMLElement>
+                      >,
+                      {
+                        tabIndex: isVisible ? 0 : -1,
+                        "aria-label": `Item ${index + 1} content`,
+                        style: {
+                          ...((
+                            item.content as ReactElement<
+                              React.HTMLAttributes<HTMLElement>
+                            >
+                          )?.props?.style || {}),
+                          outline: "none",
+                          width: "100%",
+                          height: "100%",
+                        },
+                      }
+                    )
                   ) : (
                     <div
-                      tabIndex={isVisible ? 0 : -1}
                       aria-label={`Item ${index + 1} content`}
                       style={{
                         outline: "none",
                         width: "100%",
                         height: "100%",
                       }}
+                      tabIndex={isVisible ? 0 : -1}
                     >
                       {item.content}
                     </div>
@@ -271,26 +302,38 @@ function Carousel({
       {showNavigation && items.length > 1 && (
         <div className={styles.navContainer}>
           <button
-            className={cn(styles.navButton, styles.prevButton)}
-            onClick={prevSlide}
-            disabled={!canGoPrev}
-            aria-label="Scroll to previous items"
             aria-controls="carousel-slides"
+            aria-label="Scroll to previous items"
+            className={cn(styles.navButton, styles.prevButton)}
+            disabled={!canGoPrev}
+            onClick={prevSlide}
             type="button"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <svg
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
               <path d="m15 18-6-6 6-6" />
             </svg>
           </button>
           <button
-            className={cn(styles.navButton, styles.nextButton)}
-            onClick={nextSlide}
-            disabled={!canGoNext}
-            aria-label="Scroll to next items"
             aria-controls="carousel-slides"
+            aria-label="Scroll to next items"
+            className={cn(styles.navButton, styles.nextButton)}
+            disabled={!canGoNext}
+            onClick={nextSlide}
             type="button"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <svg
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
               <path d="m9 18 6-6-6-6" />
             </svg>
           </button>
@@ -298,16 +341,23 @@ function Carousel({
       )}
 
       {showIndicators && items.length > 1 && (
-        <div className={styles.indicators} role="tablist" aria-label="Choose slide to display">
+        <div
+          aria-label="Choose slide to display"
+          className={styles.indicators}
+          role="tablist"
+        >
           {items.map((_, index) => (
             <button
+              aria-controls="carousel-slides"
+              aria-label={`Scroll to item ${index + 1}`}
+              aria-selected={false}
+              className={cn(
+                styles.indicator,
+                currentIndex === index && styles.indicatorActive
+              )}
               key={index}
-              className={cn(styles.indicator, currentIndex === index && styles.indicatorActive)}
               onClick={() => goToIndex(index)}
               role="tab"
-              aria-selected={false}
-              aria-label={`Scroll to item ${index + 1}`}
-              aria-controls="carousel-slides"
               type="button"
             />
           ))}
@@ -315,9 +365,10 @@ function Carousel({
       )}
 
       <div className={styles.srOnly}>
-        <div aria-live="polite" aria-atomic="true">
-          Showing items {currentIndex + 1} to {Math.min(items.length, currentIndex + Math.ceil(itemsPerView))}{" "}
-          of {items.length}
+        <div aria-atomic="true" aria-live="polite">
+          Showing items {currentIndex + 1} to{" "}
+          {Math.min(items.length, currentIndex + Math.ceil(itemsPerView))} of{" "}
+          {items.length}
         </div>
         <p>Use arrow keys or tab/shift+tab to navigate slides.</p>
       </div>

@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 import { ReplayButton } from "./replay-button";
 
-interface ComponentPreviewClientProps {
+type ComponentPreviewClientProps = {
   Component: React.ComponentType;
   align: "center" | "start" | "end";
   replayButton?: boolean;
   isChartComponent?: boolean;
   className: string;
-}
+};
 
 export function ComponentPreviewClient({
   Component,

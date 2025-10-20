@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Radial Bar Chart",
   "description": "Circular progress-style charts for displaying progress and comparative metrics.",
-  "dependencies": [
-    "recharts"
-  ],
+  "dependencies": ["recharts"],
   "files": [
     {
       "path": "registry/brook/ui/charts/chart-tooltip.tsx",

@@ -1,7 +1,7 @@
 "use client";
 
-import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { motion } from "motion/react";
+import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 
 const bounceVariants = {
   bounce: {
@@ -31,22 +31,30 @@ const checkTransition = {
 
 export default function BadgeSuccessFramerMotion() {
   return (
-    <motion.div variants={bounceVariants} animate="bounce" transition={bounceTransition}>
-      <Badge variant="success" size="lg">
+    <motion.div
+      animate="bounce"
+      transition={bounceTransition}
+      variants={bounceVariants}
+    >
+      <Badge size="lg" variant="success">
         <BadgeIcon>
           <motion.svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
+            animate="visible"
             fill="none"
+            height="16"
+            initial="hidden"
             stroke="currentColor"
-            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial="hidden"
-            animate="visible"
+            strokeWidth="2"
+            viewBox="0 0 16 16"
+            width="16"
           >
-            <motion.path d="m3 8 3 3 7-7" variants={checkVariants} transition={checkTransition} />
+            <motion.path
+              d="m3 8 3 3 7-7"
+              transition={checkTransition}
+              variants={checkVariants}
+            />
           </motion.svg>
         </BadgeIcon>
         Success

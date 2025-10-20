@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Progress,
+  ProgressIndicator,
   ProgressLabel,
   ProgressTrack,
-  ProgressIndicator,
   ProgressValue,
 } from "@/registry/brook/ui/progress/progress";
 import styles from "./progress-demo.module.css";
@@ -27,7 +27,7 @@ export default function ProgressDemo() {
   }, []);
 
   return (
-    <Progress value={progress} className={styles.progress}>
+    <Progress className={styles.progress} value={progress}>
       <div className={styles.progressHeader}>
         <ProgressLabel>Loading</ProgressLabel>
         <ProgressValue />

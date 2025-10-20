@@ -14,8 +14,8 @@ export default function AccordionDemo() {
           <AccordionTrigger>What features are included?</AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          All plans include real-time analytics, unlimited team members, custom branding, API access, and 24/7
-          support.
+          All plans include real-time analytics, unlimited team members, custom
+          branding, API access, and 24/7 support.
         </AccordionPanel>
       </AccordionItem>
 
@@ -24,8 +24,8 @@ export default function AccordionDemo() {
           <AccordionTrigger>How does billing work?</AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no
-          fees.
+          You can choose monthly or annual billing. Annual plans save 20% and
+          you can cancel anytime with no fees.
         </AccordionPanel>
       </AccordionItem>
 
@@ -34,8 +34,8 @@ export default function AccordionDemo() {
           <AccordionTrigger>Can I upgrade or downgrade?</AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          Yes, you can change your plan at any time. Upgrades take effect immediately, and downgrades apply at
-          your next billing cycle.
+          Yes, you can change your plan at any time. Upgrades take effect
+          immediately, and downgrades apply at your next billing cycle.
         </AccordionPanel>
       </AccordionItem>
     </AccordionRoot>

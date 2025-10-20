@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Line Chart",
   "description": "Interactive line charts with optional data points and smooth animations.",
-  "dependencies": [
-    "recharts"
-  ],
+  "dependencies": ["recharts"],
   "files": [
     {
       "path": "registry/brook/ui/charts/chart-tooltip.tsx",

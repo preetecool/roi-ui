@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   PreviewCard,
-  PreviewCardTrigger,
+  PreviewCardArrow,
+  PreviewCardPopup,
   PreviewCardPortal,
   PreviewCardPositioner,
-  PreviewCardPopup,
-  PreviewCardArrow,
+  PreviewCardTrigger,
 } from "@/registry/brook/ui/preview-card/preview-card";
-import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./preview-card-demo.module.css";
 
 export default function PreviewCardDemo() {
@@ -22,41 +22,35 @@ export default function PreviewCardDemo() {
       <PreviewCard closeDelay={200}>
         <PreviewCardTrigger
           href="https://github.com/base-ui"
-          target="_blank"
           rel="noopener noreferrer"
           render={
-            <Button variant="link" className={styles.triggerLink}>
+            <Button className={styles.triggerLink} variant="link">
               Github
             </Button>
           }
-        ></PreviewCardTrigger>
+          target="_blank"
+        />
 
         <PreviewCardPortal>
-          <PreviewCardPositioner side="top" align="center" sideOffset={8}>
+          <PreviewCardPositioner align="center" side="top" sideOffset={8}>
             <PreviewCardPopup>
               <PreviewCardArrow />
               <div className={styles.previewContent}>
                 <div className={styles.previewHeader}>
                   <Image
-                    src="/preetecool.png"
                     alt="Profile"
-                    width={32}
-                    height={32}
                     className={styles.previewAvatar}
+                    height={32}
+                    src="/preetecool.png"
+                    width={32}
                   />
                   <div className="previewInfo">
-                    <h3 className={styles.previewName}>
-                      Preet
-                    </h3>
-                    <p className={styles.previewUsername}>
-                      @preetecool
-                    </p>
+                    <h3 className={styles.previewName}>Preet</h3>
+                    <p className={styles.previewUsername}>@preetecool</p>
                   </div>
                 </div>
 
-                <p className={styles.previewBio}>
-                  ❤️ Design & Build
-                </p>
+                <p className={styles.previewBio}>❤️ Design & Build</p>
               </div>
             </PreviewCardPopup>
           </PreviewCardPositioner>

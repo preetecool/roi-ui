@@ -1,29 +1,33 @@
+import { X } from "lucide-react";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   Popover,
-  PopoverTrigger,
+  PopoverArrow,
+  PopoverClose,
+  PopoverDescription,
+  PopoverPopup,
   PopoverPortal,
   PopoverPositioner,
-  PopoverPopup,
-  PopoverArrow,
   PopoverTitle,
-  PopoverDescription,
-  PopoverClose,
+  PopoverTrigger,
 } from "@/registry/brook/ui/popover/popover";
-import { Button } from "@/registry/brook/ui/button/button";
-import { X } from "lucide-react";
 import styles from "./popover-demo.module.css";
 
 export default function PopoverDemo() {
   return (
     <div className={styles.container}>
       <Popover>
-        <PopoverTrigger render={<Button variant="outline">Open Popover</Button>} />
+        <PopoverTrigger
+          render={<Button variant="outline">Open Popover</Button>}
+        />
         <PopoverPortal>
-          <PopoverPositioner side="top" align="center" sideOffset={8}>
+          <PopoverPositioner align="center" side="top" sideOffset={8}>
             <PopoverPopup>
               <PopoverArrow />
               <PopoverTitle>Notifications</PopoverTitle>
-              <PopoverDescription>You are all caught up! No new notifications.</PopoverDescription>
+              <PopoverDescription>
+                You are all caught up! No new notifications.
+              </PopoverDescription>
               <PopoverClose aria-label="Close">
                 <X size={16} />
               </PopoverClose>

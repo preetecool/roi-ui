@@ -1,12 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
 import type { TOCItemType } from "fumadocs-core/server";
+import { createContext, type ReactNode, useContext, useState } from "react";
 
-interface TOCContextType {
+type TOCContextType = {
   toc: TOCItemType[] | null;
   setToc: (toc: TOCItemType[] | null) => void;
-}
+};
 
 const TOCContext = createContext<TOCContextType | undefined>(undefined);
 

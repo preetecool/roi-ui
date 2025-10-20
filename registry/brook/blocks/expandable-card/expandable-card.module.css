@@ -96,7 +96,12 @@
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
   mask-image: linear-gradient(to bottom, #000 0%, #000 91%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 91%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 91%,
+    transparent 100%
+  );
 }
 
 .scrollableContent::-webkit-scrollbar {

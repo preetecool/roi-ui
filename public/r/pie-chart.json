@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Pie Chart",
   "description": "Circular charts perfect for displaying proportional data and percentages.",
-  "dependencies": [
-    "recharts"
-  ],
+  "dependencies": ["recharts"],
   "files": [
     {
       "path": "registry/brook/ui/charts/chart-tooltip.tsx",

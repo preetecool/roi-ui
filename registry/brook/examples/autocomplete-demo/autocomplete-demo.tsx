@@ -3,20 +3,20 @@
 import { useState } from "react";
 import {
   Autocomplete,
+  AutocompleteEmpty,
   AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopup,
   AutocompletePortal,
   AutocompletePositioner,
-  AutocompletePopup,
-  AutocompleteList,
-  AutocompleteItem,
-  AutocompleteEmpty,
 } from "@/registry/brook/ui/autocomplete/autocomplete";
 import styles from "./autocomplete-demo.module.css";
 
-interface Tag {
+type Tag = {
   id: string;
   value: string;
-}
+};
 
 const tags: Tag[] = [
   { id: "t1", value: "feature" },
@@ -49,14 +49,22 @@ export default function AutocompleteDemo() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}></div>
+      <div className={styles.header} />
 
       <div className={styles.autocompleteWrapper}>
-        <Autocomplete items={tags} value={value} onValueChange={setValue} itemToStringValue={(item) => (item as Tag).value}>
+        <Autocomplete
+          items={tags}
+          itemToStringValue={(item) => (item as Tag).value}
+          onValueChange={setValue}
+          value={value}
+        >
           <div className={styles.inputWrapper}>
             <label className={styles.label}>
               Search tags
-              <AutocompleteInput placeholder="e.g. feature" className={styles.input} />
+              <AutocompleteInput
+                className={styles.input}
+                placeholder="e.g. feature"
+              />
             </label>
           </div>
 
@@ -66,7 +74,11 @@ export default function AutocompleteDemo() {
                 <AutocompleteEmpty>No tags found.</AutocompleteEmpty>
                 <AutocompleteList>
                   {(tag: Tag) => (
-                    <AutocompleteItem key={tag.id} value={tag} className={styles.item}>
+                    <AutocompleteItem
+                      className={styles.item}
+                      key={tag.id}
+                      value={tag}
+                    >
                       {tag.value}
                     </AutocompleteItem>
                   )}

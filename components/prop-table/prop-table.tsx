@@ -1,20 +1,25 @@
 "use client";
 
 import { Info } from "lucide-react";
-import { Popover, PopoverTrigger, PopoverContent, PopoverArrow } from "@/registry/brook/ui/popover/popover";
-import styles from "./prop-table.module.css";
 import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Popover,
+  PopoverArrow,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/brook/ui/popover/popover";
+import styles from "./prop-table.module.css";
 
-interface PropRow {
+type PropRow = {
   prop: string;
   type: string;
   default?: string;
   description: string;
-}
+};
 
-interface PropTableProps {
+type PropTableProps = {
   data: PropRow[];
-}
+};
 
 export function PropTable({ data }: PropTableProps) {
   return (
@@ -29,14 +34,21 @@ export function PropTable({ data }: PropTableProps) {
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={index} className={styles.row}>
+            <tr className={styles.row} key={index}>
               <td className={styles.cell}>
                 <div className={styles.propCell}>
                   <code className={styles.code}>{row.prop}</code>
                   {row.description && (
                     <Popover>
-                      <PopoverTrigger render={<Button size="icon" style={{ backgroundColor: "transparent" }} />}>
-                        <Info size={14} className={styles.infoIcon} />
+                      <PopoverTrigger
+                        render={
+                          <Button
+                            size="icon"
+                            style={{ backgroundColor: "transparent" }}
+                          />
+                        }
+                      >
+                        <Info className={styles.infoIcon} size={14} />
                       </PopoverTrigger>
                       <PopoverContent>
                         <div>{row.description}</div>

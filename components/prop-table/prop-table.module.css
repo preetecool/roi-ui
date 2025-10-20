@@ -1,71 +1,71 @@
 .container {
-    overflow-x: auto;
-    border: 1px solid var(--border) !important;
-    border-radius: var(--radius);
-    background-color: var(--mix-card-33-bg);
-    margin-bottom: var(--space-lg);
+  overflow-x: auto;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius);
+  background-color: var(--mix-card-33-bg);
+  margin-bottom: var(--space-lg);
 }
 
 .table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    font-size: 14px;
-    border: none !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 14px;
+  border: none !important;
 }
 
 .headerCell {
-    padding: 12px 16px;
-    text-align: left;
-    background-color: var(--mix-card-33-bg);
-    border-bottom: 1px solid var(--border);
-    font-weight: 500;
-    font-size: 14px;
+  padding: 12px 16px;
+  text-align: left;
+  background-color: var(--mix-card-33-bg);
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .headerCell:not(:last-child) {
-    border-right: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 .row {
-    background-color: var(--mix-card-33-bg);
+  background-color: var(--mix-card-33-bg);
 }
 
 .row:not(:last-child) .cell {
-    border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .cell {
-    padding: 12px 16px;
-    vertical-align: top;
-    background-color: var(--mix-card-33-bg);
+  padding: 12px 16px;
+  vertical-align: top;
+  background-color: var(--mix-card-33-bg);
 }
 
 .cell:not(:last-child) {
-    border-right: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 .propCell {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .code {
-    background-color: var(--muted);
-    font-size: 12px;
+  background-color: var(--muted);
+  font-size: 12px;
 }
 
 .infoIcon {
-    color: var(--muted-foreground);
+  color: var(--muted-foreground);
 }
 
 .popoverContent {
-    padding: 8px 12px;
-    max-width: 300px;
-    font-size: 12px;
-    line-height: 1.4;
+  padding: 8px 12px;
+  max-width: 300px;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .defaultEmpty {
-    color: var(--muted-foreground);
+  color: var(--muted-foreground);
 }

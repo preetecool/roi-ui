@@ -1,9 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./copy-button.module.css";
 
 /**
@@ -26,9 +26,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), 800);
-    } catch (error) {
-      console.error("Failed to copy code:", error);
-    }
+    } catch (_error) {}
   };
 
   const isHeaderButton = className?.includes("header-copy-button");
@@ -36,28 +34,28 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
   return (
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
       <motion.button
+        className={cn(styles.root, isHeaderButton && styles.header, className)}
         data-slot="copy-button"
         onClick={handleCopy}
-        className={cn(styles.root, isHeaderButton && styles.header, className)}
       >
         <AnimatePresence mode="popLayout">
           {copied ? (
             <motion.div
-              key="check"
-              initial={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
               animate={{ scale: 1, rotate: 0, filter: "blur(0px)" }}
-              exit={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
               className={styles.iconContainer}
+              exit={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
+              initial={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
+              key="check"
             >
               <Check size={14} />
             </motion.div>
           ) : (
             <motion.div
-              key="copy"
-              initial={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
               animate={{ scale: 1, rotate: 0, filter: "blur(0px)" }}
-              exit={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
               className={styles.iconContainer}
+              exit={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
+              initial={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
+              key="copy"
             >
               <Copy size={14} />
             </motion.div>

@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
 import { SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./theme-switcher.module.css";
 
 export function ThemeSwitcher() {
@@ -10,11 +10,11 @@ export function ThemeSwitcher() {
 
   return (
     <Button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className={styles.button}
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      size="icon"
       title="Toggle theme"
       variant="ghost"
-      size="icon"
     >
       <SunMoon size={20} />
     </Button>

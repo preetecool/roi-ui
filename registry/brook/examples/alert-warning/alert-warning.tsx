@@ -1,7 +1,11 @@
 "use client";
 
-import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/ui/alert/alert";
 import { AlertTriangle } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/brook/ui/alert/alert";
 import styles from "./alert-warning.module.css";
 
 export default function AlertWarning() {

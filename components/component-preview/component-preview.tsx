@@ -1,20 +1,20 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ComponentSource } from "@/components/component-source/component-source";
 import { highlightCode } from "@/lib/highlight-code";
 import { getComponent } from "@/lib/registry";
-import { existsSync, readFileSync } from "fs";
-import { join } from "path";
-import { ComponentPreviewClient } from "./component-preview-client";
 import styles from "./component-preview.module.css";
+import { ComponentPreviewClient } from "./component-preview-client";
 import { MultiFileComponentSource } from "./multi-file-component-source";
 
-interface ComponentPreviewProps {
+type ComponentPreviewProps = {
   name: string;
   align?: "center" | "start" | "end";
   description?: string;
   showCode?: boolean;
   replayButton?: boolean;
   files?: Array<{ path: string; name: string; language?: string }>;
-}
+};
 
 export async function ComponentPreview({
   name,
@@ -28,7 +28,6 @@ export async function ComponentPreview({
     const Component = await getComponent(name);
 
     if (!Component) {
-      console.warn(`Component not found: ${name}`);
       const isChartComponent = name.includes("chart");
       return (
         <div className={styles.container}>
@@ -36,16 +35,28 @@ export async function ComponentPreview({
             className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
           >
             <p className={styles.errorMessage}>
-              Preview for <code className={styles.errorCode}>{name}</code> is temporarily unavailable.
+              Preview for <code className={styles.errorCode}>{name}</code> is
+              temporarily unavailable.
             </p>
           </div>
-          {showCode && <ComponentSource src={`./registry/brook/examples/${name}.tsx`} embedded />}
+          {showCode && (
+            <ComponentSource
+              embedded
+              src={`./registry/brook/examples/${name}.tsx`}
+            />
+          )}
         </div>
       );
     }
 
     // Check if component has folder structure with multiple files
-    const componentFolderPath = join(process.cwd(), "registry", "brook", "examples", name);
+    const componentFolderPath = join(
+      process.cwd(),
+      "registry",
+      "brook",
+      "examples",
+      name
+    );
     const hasFolder = existsSync(componentFolderPath);
 
     let processedFiles:
@@ -87,17 +98,22 @@ export async function ComponentPreview({
             const rawCode = readFileSync(file.path, "utf-8");
             let transformedCode = rawCode;
             if (file.language === "tsx") {
-              transformedCode = rawCode.replace(/@\/registry\/brook\/ui\/([^"']+)/g, "@/components/ui/$1");
+              transformedCode = rawCode.replace(
+                /@\/registry\/brook\/ui\/([^"']+)/g,
+                "@/components/ui/$1"
+              );
             }
-            const highlightedCode = await highlightCode(transformedCode, file.language || "tsx");
+            const highlightedCode = await highlightCode(
+              transformedCode,
+              file.language || "tsx"
+            );
             return {
               name: file.name,
               content: highlightedCode,
               rawContent: transformedCode,
               language: file.language,
             };
-          } catch (error) {
-            console.error(`Error reading file ${file.path}:`, error);
+          } catch (_error) {
             return {
               name: file.name,
               content: `File not found: ${file.name}`,
@@ -105,7 +121,7 @@ export async function ComponentPreview({
               language: file.language,
             };
           }
-        }),
+        })
       );
     } else if (files) {
       processedFiles = await Promise.all(
@@ -115,17 +131,22 @@ export async function ComponentPreview({
             const rawCode = readFileSync(filePath, "utf-8");
             let transformedCode = rawCode;
             if (file.language === "tsx") {
-              transformedCode = rawCode.replace(/@\/registry\/brook\/ui\/([^"']+)/g, "@/components/ui/$1");
+              transformedCode = rawCode.replace(
+                /@\/registry\/brook\/ui\/([^"']+)/g,
+                "@/components/ui/$1"
+              );
             }
-            const highlightedCode = await highlightCode(transformedCode, file.language || "tsx");
+            const highlightedCode = await highlightCode(
+              transformedCode,
+              file.language || "tsx"
+            );
             return {
               name: file.name,
               content: highlightedCode,
               rawContent: transformedCode,
               language: file.language,
             };
-          } catch (error) {
-            console.error(`Error reading file ${file.path}:`, error);
+          } catch (_error) {
             return {
               name: file.name,
               content: `File not found: ${file.name}`,
@@ -133,7 +154,7 @@ export async function ComponentPreview({
               language: file.language,
             };
           }
-        }),
+        })
       );
     }
 
@@ -143,11 +164,11 @@ export async function ComponentPreview({
       <div className={styles.container}>
         {replayButton ? (
           <ComponentPreviewClient
-            Component={Component}
             align={align}
-            replayButton={replayButton}
-            isChartComponent={isChartComponent}
+            Component={Component}
             className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+            isChartComponent={isChartComponent}
+            replayButton={replayButton}
           />
         ) : (
           <div
@@ -168,27 +189,34 @@ export async function ComponentPreview({
             <MultiFileComponentSource files={processedFiles} />
           ) : (
             <ComponentSource
+              embedded
               src={
                 hasFolder
                   ? `./registry/brook/examples/${name}/${name}.tsx`
                   : `./registry/brook/examples/${name}.tsx`
               }
-              embedded
             />
           ))}
       </div>
     );
-  } catch (error) {
-    console.error(`Fatal error in ComponentPreview for ${name}:`, error);
+  } catch (_error) {
     const isChartComponent = name.includes("chart");
     return (
       <div className={styles.container}>
-        <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}>
+        <div
+          className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+        >
           <p className={styles.errorMessage}>
-            Preview for <code className={styles.errorCode}>{name}</code> is temporarily unavailable.
+            Preview for <code className={styles.errorCode}>{name}</code> is
+            temporarily unavailable.
           </p>
         </div>
-        {showCode && <ComponentSource src={`./registry/brook/examples/${name}.tsx`} embedded />}
+        {showCode && (
+          <ComponentSource
+            embedded
+            src={`./registry/brook/examples/${name}.tsx`}
+          />
+        )}
       </div>
     );
   }

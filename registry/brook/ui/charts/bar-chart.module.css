@@ -1,21 +1,21 @@
 .barChart {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .barChart .recharts-active-bar {
-    filter: none !important;
-    opacity: 1 !important;
+  filter: none !important;
+  opacity: 1 !important;
 }
 
 .barChart .recharts-bar-rectangle:hover {
-    fill-opacity: 1 !important;
-    stroke: none !important;
-    filter: none !important;
+  fill-opacity: 1 !important;
+  stroke: none !important;
+  filter: none !important;
 }
 
 .barChart *:focus,
 .barChart *:focus-visible {
-    outline: none !important;
+  outline: none !important;
 }

@@ -1,40 +1,40 @@
 .root {
-    width: 100%;
+  width: 100%;
 }
 
 .root > * + * {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .formRow {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 @media (max-width: 640px) {
-    .formRow {
-        flex-direction: column;
-        align-items: stretch;
-    }
+  .formRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .formActions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 640px) {
-    .formActions {
-        flex-direction: column;
-        justify-content: stretch;
-    }
+  .formActions {
+    flex-direction: column;
+    justify-content: stretch;
+  }
 }

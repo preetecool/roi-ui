@@ -1,29 +1,29 @@
 "use client";
 
 import {
-  AreaChart as RechartsAreaChart,
   Area,
+  CartesianGrid,
+  Dot,
+  AreaChart as RechartsAreaChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Dot,
 } from "recharts";
-import ChartTooltip from "./chart-tooltip";
 import styles from "./area-chart.module.css";
+import ChartTooltip from "./chart-tooltip";
 
 type NumberValue = number | { valueOf(): number };
 
-export interface AreaChartData {
+export type AreaChartData = {
   year: number;
   amount: number;
   type: string;
-}
+};
 
 export type CurveType = "linear" | "monotoneX" | "cardinal" | "basis" | "step";
 
-export interface AreaChartProps {
+export type AreaChartProps = {
   data: AreaChartData[];
   showXAxis?: boolean;
   showYAxis?: boolean;
@@ -34,7 +34,7 @@ export interface AreaChartProps {
   xAxisFormatter?: (value: NumberValue | string) => string;
   fillOpacity?: number;
   animated?: boolean;
-}
+};
 
 function AreaChart({
   data,
@@ -57,17 +57,19 @@ function AreaChart({
     return Math.round(Number(value)).toString();
   };
 
-  const tooltipLabelFormatter = (value: NumberValue | string) => formatDate(value);
+  const tooltipLabelFormatter = (value: NumberValue | string) =>
+    formatDate(value);
 
-  const tooltipValueFormatter = (value: number | string, name?: string) => {
-    const numValue = typeof value === "number" ? value : parseFloat(String(value));
-    return isNaN(numValue) ? String(value) : numValue.toLocaleString();
+  const tooltipValueFormatter = (value: number | string, _name?: string) => {
+    const numValue =
+      typeof value === "number" ? value : Number.parseFloat(String(value));
+    return Number.isNaN(numValue) ? String(value) : numValue.toLocaleString();
   };
 
-  interface AreaTooltipPayload {
+  type AreaTooltipPayload = {
     value: number;
     payload: AreaChartData;
-  }
+  };
 
   function CustomTooltip({
     active,
@@ -78,7 +80,9 @@ function AreaChart({
     payload?: AreaTooltipPayload[];
     label?: NumberValue | string;
   }) {
-    if (!active || !payload || !payload.length) return null;
+    if (!(active && payload && payload.length)) {
+      return null;
+    }
 
     const data = payload[0];
 
@@ -91,30 +95,39 @@ function AreaChart({
     return (
       <ChartTooltip
         active={active}
+        label={actualLabel}
+        labelFormatter={tooltipLabelFormatter}
         payload={[
           {
             ...data,
             name: "Revenue",
-            color: color,
+            color,
           },
         ]}
-        label={actualLabel}
-        labelFormatter={tooltipLabelFormatter}
         valueFormatter={tooltipValueFormatter}
       />
     );
   }
 
-  interface AreaDotProps {
+  type AreaDotProps = {
     cx?: number;
     cy?: number;
     [key: string]: unknown;
-  }
+  };
 
   function CustomDot(props: AreaDotProps) {
     const { cx, cy } = props;
     if (showPoints && cx !== undefined && cy !== undefined) {
-      return <Dot cx={cx} cy={cy} r={pointSize} fill={color} stroke="var(--background)" strokeWidth={2} />;
+      return (
+        <Dot
+          cx={cx}
+          cy={cy}
+          fill={color}
+          r={pointSize}
+          stroke="var(--background)"
+          strokeWidth={2}
+        />
+      );
     }
     return null;
   }
@@ -128,49 +141,62 @@ function AreaChart({
         height: "100%",
       }}
     >
-      <ResponsiveContainer width="100%" height="100%">
-        <RechartsAreaChart data={data} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
+      <ResponsiveContainer height="100%" width="100%">
+        <RechartsAreaChart
+          data={data}
+          margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+        >
           <defs>
-            <linearGradient id="colorArea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor={color} stopOpacity={fillOpacity * 2} />
+            <linearGradient id="colorArea" x1="0" x2="0" y1="0" y2="1">
+              <stop
+                offset="5%"
+                stopColor={color}
+                stopOpacity={fillOpacity * 2}
+              />
               <stop offset="95%" stopColor={color} stopOpacity={0} />
             </linearGradient>
           </defs>
           {showXGrid ||
-            (showYGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.2} />)}
+            (showYGrid && (
+              <CartesianGrid
+                stroke="var(--border)"
+                strokeDasharray="3 3"
+                strokeOpacity={0.2}
+              />
+            ))}
           {showXAxis && (
             <XAxis
-              dataKey="year"
               axisLine={false}
-              tickLine={false}
+              dataKey="year"
               tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
               tickFormatter={formatDate}
+              tickLine={false}
             />
           )}
           {showYAxis && (
             <YAxis
               axisLine={false}
-              tickLine={false}
               tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+              tickLine={false}
               width={30}
             />
           )}
           <Tooltip
-            cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
-            content={<CustomTooltip />}
             allowEscapeViewBox={{ x: false, y: false }}
+            content={<CustomTooltip />}
+            cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
           />
           <Area
-            type="monotone"
+            animationBegin={animated ? 0 : undefined}
+            animationDuration={animated ? 1000 : 0}
+            connectNulls={false}
             dataKey="amount"
+            dot={showPoints ? <CustomDot /> : false}
+            fill="url(#colorArea)"
+            fillOpacity={1}
             stroke={color}
             strokeWidth={3}
-            fillOpacity={1}
-            fill="url(#colorArea)"
-            dot={showPoints ? <CustomDot /> : false}
-            animationDuration={animated ? 1000 : 0}
-            animationBegin={animated ? 0 : undefined}
-            connectNulls={false}
+            type="monotone"
           />
         </RechartsAreaChart>
       </ResponsiveContainer>

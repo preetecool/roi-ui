@@ -11,7 +11,9 @@
 }
 
 .sidebarCollapsed .sidebarContainer {
-  transform: translateX(calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem)));
+  transform: translateX(
+    calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem))
+  );
   padding: 0.25rem;
   height: calc(100vh - 0.5rem);
   top: 0.25rem;
@@ -106,7 +108,12 @@
   scrollbar-width: thin;
   scrollbar-color: var(--mix-foreground-15-trans) transparent;
   mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 1rem,
+    black 100%
+  );
 }
 
 .sidebarContent::-webkit-scrollbar {

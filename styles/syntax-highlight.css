@@ -42,7 +42,9 @@ html[data-theme="dark"] [data-line] span {
 
 pre code {
   white-space: pre-wrap;
-  font-family: "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+  font-family:
+    "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono",
+    "Source Code Pro", monospace;
   font-size: 12px !important;
   line-height: 1.4rem;
   font-weight: 400;
@@ -60,7 +62,8 @@ pre code {
       font-size: 12px;
       -webkit-text-size-adjust: none;
       font-family:
-        "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+        "Geist Mono", "SF Mono", Monaco, "Inconsolata", "Roboto Mono",
+        "Source Code Pro", monospace;
     }
   }
 }

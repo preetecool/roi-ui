@@ -1,10 +1,25 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
-import { Card, CardDescription, CardIcon, CardTitle } from "@/registry/brook/ui/card/card";
-import { Carousel } from "@/registry/brook/ui/carousel/carousel";
-import { BarChart, Cloud, Lock, Palette, RefreshCw, Settings, Shield, Users, Zap } from "lucide-react";
+import {
+  BarChart,
+  Cloud,
+  Lock,
+  Palette,
+  RefreshCw,
+  Settings,
+  Shield,
+  Users,
+  Zap,
+} from "lucide-react";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Card,
+  CardDescription,
+  CardIcon,
+  CardTitle,
+} from "@/registry/brook/ui/card/card";
+import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import styles from "./carousel-demo.module.css";
 
 export default function CarouselDemo() {
@@ -13,43 +28,50 @@ export default function CarouselDemo() {
       id: "performance",
       icon: <Zap className={styles.icon} />,
       title: "Performance",
-      description: "Instant loading and millisecond response times for optimal user experience.",
+      description:
+        "Instant loading and millisecond response times for optimal user experience.",
     },
     {
       id: "security",
       icon: <Shield className={styles.icon} />,
       title: "Security",
-      description: "Bank-level encryption keeps your data protected and compliant.",
+      description:
+        "Bank-level encryption keeps your data protected and compliant.",
     },
     {
       id: "customization",
       icon: <Palette className={styles.icon} />,
       title: "Customize",
-      description: "Tailor every aspect to match your brand with flexible theming and configuration options.",
+      description:
+        "Tailor every aspect to match your brand with flexible theming and configuration options.",
     },
     {
       id: "collaboration",
       icon: <Users className={styles.icon} />,
       title: "Collaboration",
-      description: "Work together seamlessly with real-time collaboration tools.",
+      description:
+        "Work together seamlessly with real-time collaboration tools.",
     },
     {
       id: "analytics",
       icon: <BarChart className={styles.icon} />,
       title: "Analytics",
-      description: "Gain actionable insights with comprehensive dashboards and reporting.",
+      description:
+        "Gain actionable insights with comprehensive dashboards and reporting.",
     },
     {
       id: "cloud",
       icon: <Cloud className={styles.icon} />,
       title: "Integration",
-      description: "Connect with popular cloud services and scale automatically.",
+      description:
+        "Connect with popular cloud services and scale automatically.",
     },
     {
       id: "privacy",
       icon: <Lock className={styles.icon} />,
       title: "Privacy",
-      description: "Your data stays yours. Full control over privacy settings and data ownership.",
+      description:
+        "Your data stays yours. Full control over privacy settings and data ownership.",
     },
     {
       id: "sync",
@@ -61,7 +83,8 @@ export default function CarouselDemo() {
       id: "configuration",
       icon: <Settings className={styles.icon} />,
       title: "Configuration",
-      description: "Simple setup and intuitive controls get you running in minutes, not hours.",
+      description:
+        "Simple setup and intuitive controls get you running in minutes, not hours.",
     },
   ];
 
@@ -76,7 +99,7 @@ export default function CarouselDemo() {
           <CardDescription>{feature.description}</CardDescription>
         </div>
         <div className={styles.buttonContainer}>
-          <Button variant="link" showArrow className={styles.button}>
+          <Button className={styles.button} showArrow variant="link">
             Learn More
           </Button>
         </div>
@@ -109,11 +132,11 @@ export default function CarouselDemo() {
 
   return (
     <Carousel
+      gap={16}
       items={carouselItems}
+      itemsPerView={itemsPerView}
       showIndicators={false}
       showNavigation={true}
-      itemsPerView={itemsPerView}
-      gap={16}
     />
   );
 }

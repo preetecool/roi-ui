@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Area Chart",
   "description": "Area charts that fill the space below the line, perfect for showing volume and trends.",
-  "dependencies": [
-    "recharts"
-  ],
+  "dependencies": ["recharts"],
   "files": [
     {
       "path": "registry/brook/ui/charts/chart-tooltip.tsx",

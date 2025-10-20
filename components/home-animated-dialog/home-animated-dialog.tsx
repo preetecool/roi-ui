@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-animated-dialog.module.css";
 
 const popupVariants = {
@@ -49,9 +49,9 @@ export const HomeAnimatedDialog = () => {
 
   return (
     <motion.div
-      style={{ transformOrigin: "top left" }}
-      initial={{ rotate: 4, y: 40, opacity: 0 }}
       animate={{ rotate: 4, y: 0, opacity: 1 }}
+      initial={{ rotate: 4, y: 40, opacity: 0 }}
+      style={{ transformOrigin: "top left" }}
       transition={{
         y: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
         opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 },
@@ -60,14 +60,14 @@ export const HomeAnimatedDialog = () => {
       {!dialogOpen && (
         <AnimatePresence>
           <motion.div
-            layoutId="button"
-            initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
               scale: triggerClicked ? 0.97 : 1,
               backgroundColor: triggerClicked ? "var(--accent)" : "transparent",
             }}
             exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            layoutId="button"
             style={{
               borderRadius: "var(--radius)",
             }}
@@ -77,7 +77,7 @@ export const HomeAnimatedDialog = () => {
             }}
           >
             <div style={{ opacity: 1 }}>
-              <Button variant="outline" size="sm">
+              <Button size="sm" variant="outline">
                 Button
               </Button>
             </div>
@@ -87,42 +87,42 @@ export const HomeAnimatedDialog = () => {
 
       {dialogOpen && (
         <motion.div
-          layoutId="container"
+          animate="visible"
           className={styles.dialogBox}
+          exit="hidden"
+          initial="hidden"
+          layoutId="container"
           style={{
             backgroundColor: "var(--mix-card-33-bg)",
             boxShadow:
               "0 .753698px .452219px -.583333px #0000000f, 0 1.927px 1.1562px -1.16667px #0000000d, 0 3.86321px 2.31793px -1.75px #0000000d, 0 7.32331px 4.39398px -2.33333px #0000000d, 0 14.5565px 8.73393px -2.91667px #0000000a, 0 32px 19.2px -3.5px #00000005",
           }}
-          variants={popupVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
           transition={popupTransition}
+          variants={popupVariants}
         >
           <motion.h3
-            layout
+            animate={{ opacity: 1 }}
             className={styles.title}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            layout
             transition={{ delay: 0.2, duration: 0.25 }}
           >
             Motion dialog
           </motion.h3>
           <motion.p
-            layout
+            animate={{ opacity: 1 }}
             className={styles.description}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            layout
             transition={{ delay: 0.3, duration: 0.25 }}
           >
             This is a Dialog component made with motion.
           </motion.p>
 
-          <motion.div layout className={styles.actions}>
+          <motion.div className={styles.actions} layout>
             <AnimatePresence>
               <motion.div layoutId="button" transition={buttonTransition}>
-                <Button variant="outline" size="sm">
+                <Button size="sm" variant="outline">
                   <Link href="/docs/examples/dialog">View Component</Link>
                 </Button>
               </motion.div>

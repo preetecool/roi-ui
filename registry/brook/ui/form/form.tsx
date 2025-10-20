@@ -2,8 +2,14 @@
 
 import { Form } from "@base-ui-components/react/form";
 import { cn } from "@/lib/utils";
+import {
+  Field,
+  FieldControl,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "../field/field";
 import styles from "./form.module.css";
-import { Field, FieldControl, FieldLabel, FieldDescription, FieldError } from "../field/field";
 
 function FormRoot({ className, ...props }: React.ComponentProps<typeof Form>) {
   return <Form className={cn(styles.root, className)} {...props} />;

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import useMeasure from "react-use-measure";
 import styles from "./home-animated-card.module.css";
@@ -8,7 +8,8 @@ import styles from "./home-animated-card.module.css";
 const cardData = {
   title: "Luna",
   description: "Beautiful Nights",
-  longDescription: "Gazing at the night sky capturing the essence of tranquility.",
+  longDescription:
+    "Gazing at the night sky capturing the essence of tranquility.",
   image: "/art-brook.png",
 };
 
@@ -31,40 +32,47 @@ export const HomeAnimatedCard = () => {
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
       <AnimatePresence>
         <motion.div
-          initial={{ rotate: -4, y: 40, opacity: 0 }}
           animate={{ height: bounds.height, y: 0, opacity: 1 }}
+          className={styles.container}
+          initial={{ rotate: -4, y: 40, opacity: 0 }}
           transition={{
             height: { duration: 0.4, type: "spring", bounce: 0 },
             y: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0 },
             opacity: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0 },
           }}
-          className={styles.container}
         >
           <div ref={ref}>
             {visible && cardOpen && (
-              <motion.div layoutId="card" className={styles.cardExpanded} style={{ borderRadius: "24px" }}>
+              <motion.div
+                className={styles.cardExpanded}
+                layoutId="card"
+                style={{ borderRadius: "24px" }}
+              >
                 <motion.img
-                  layoutId="image"
                   alt={cardData.title}
-                  src={cardData.image}
                   className={styles.imageExpanded}
+                  layoutId="image"
+                  src={cardData.image}
                   style={{ borderRadius: "12px" }}
                 />
-                <motion.div layoutId="text-wrapper" className={styles.wrapperExpanded}>
-                  <motion.h2 layoutId="title" className={styles.titleExpanded}>
+                <motion.div
+                  className={styles.wrapperExpanded}
+                  layoutId="text-wrapper"
+                >
+                  <motion.h2 className={styles.titleExpanded} layoutId="title">
                     {cardData.title}
                   </motion.h2>
                   <motion.p
-                    layoutId="description"
                     className={`${styles.description} ${styles.descriptionExpanded}`}
+                    layoutId="description"
                   >
                     {cardData.description}
                   </motion.p>
                   <motion.p
-                    layout
-                    initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className={styles.longDescription}
+                    initial={{ opacity: 0 }}
+                    layout
                   >
                     {cardData.longDescription}
                   </motion.p>
@@ -74,24 +82,30 @@ export const HomeAnimatedCard = () => {
 
             {visible && !cardOpen && (
               <motion.div
-                layoutId="card"
-                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className={styles.cardCollapsed}
+                initial={{ opacity: 0 }}
+                layoutId="card"
                 style={{ borderRadius: "24px" }}
               >
                 <motion.img
-                  layoutId="image"
                   alt={cardData.title}
-                  src={cardData.image}
                   className={styles.imageCollapsed}
+                  layoutId="image"
+                  src={cardData.image}
                   style={{ borderRadius: "12px" }}
                 />
-                <motion.div layoutId="text-wrapper" className={styles.wrapperCollapsed}>
-                  <motion.h2 layoutId="title" className={styles.titleCollapsed}>
+                <motion.div
+                  className={styles.wrapperCollapsed}
+                  layoutId="text-wrapper"
+                >
+                  <motion.h2 className={styles.titleCollapsed} layoutId="title">
                     {cardData.title}
                   </motion.h2>
-                  <motion.p layoutId="description" className={styles.description}>
+                  <motion.p
+                    className={styles.description}
+                    layoutId="description"
+                  >
                     {cardData.description}
                   </motion.p>
                 </motion.div>

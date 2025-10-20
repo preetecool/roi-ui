@@ -23,14 +23,14 @@ export default function AreaChartDemo() {
       <h3 className={styles.title}>Revenue Growth (2020-2030)</h3>
       <div className={styles.chartContainer}>
         <AreaChart
-          data={data}
-          showXAxis={true}
-          showYAxis={true}
-          showXGrid={false}
-          showYGrid={true}
-          showPoints={false}
-          fillOpacity={0.2}
           animated
+          data={data}
+          fillOpacity={0.2}
+          showPoints={false}
+          showXAxis={true}
+          showXGrid={false}
+          showYAxis={true}
+          showYGrid={true}
         />
       </div>
     </div>

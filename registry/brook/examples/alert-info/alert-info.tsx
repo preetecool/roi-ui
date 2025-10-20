@@ -1,7 +1,11 @@
 "use client";
 
-import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/ui/alert/alert";
 import { Info } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/brook/ui/alert/alert";
 import styles from "./alert-info.module.css";
 
 export default function AlertInfo() {
@@ -10,7 +14,9 @@ export default function AlertInfo() {
       <Alert variant="info">
         <Info />
         <AlertTitle>Info</AlertTitle>
-        <AlertDescription>New features are available! Check out the latest updates.</AlertDescription>
+        <AlertDescription>
+          New features are available! Check out the latest updates.
+        </AlertDescription>
       </Alert>
     </div>
   );

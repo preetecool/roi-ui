@@ -96,7 +96,7 @@
   margin: calc(-1.5rem - 1px) calc(-1.5rem - 1px) 0;
   object-fit: cover;
   height: 300px;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
   transition: transform 0.25s var(--ease-in-out-quad);
   border-radius: var(--radius) var(--radius) 0 0;
   max-width: 100vw;

@@ -1,7 +1,12 @@
 "use client";
 
 import { Badge } from "@/registry/brook/ui/badge/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/registry/brook/ui/card/card";
 import LineChart from "@/registry/brook/ui/charts/line-chart";
 import styles from "./card-traffic.module.css";
 import { trafficData } from "./data";
@@ -34,14 +39,14 @@ export function CardTraffic() {
       <CardContent className={styles.chartContainer}>
         <div style={{ width: "100%", height: "100%" }}>
           <LineChart
-            data={trafficData}
-            showXAxis={false}
-            showYAxis={false}
-            showXGrid={false}
-            showYGrid={true}
-            showPoints={false}
-            xAxisFormatter={formatDate}
             animated
+            data={trafficData}
+            showPoints={false}
+            showXAxis={false}
+            showXGrid={false}
+            showYAxis={false}
+            showYGrid={true}
+            xAxisFormatter={formatDate}
           />
         </div>
       </CardContent>
@@ -64,7 +69,7 @@ export function CardTraffic() {
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <span className={styles.statLabel}>Bounce Rate</span>
-            <Badge variant="success" size="sm">
+            <Badge size="sm" variant="success">
               -3.4%
             </Badge>
           </div>
@@ -74,7 +79,7 @@ export function CardTraffic() {
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <span className={styles.statLabel}>Conversion</span>
-            <Badge variant="destructive" size="sm">
+            <Badge size="sm" variant="destructive">
               -0.9%
             </Badge>
           </div>

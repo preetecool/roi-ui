@@ -1,78 +1,78 @@
 .positioner {
-    z-index: 9999;
+  z-index: 9999;
 }
 
 .popup {
-    max-width: 20rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    color: var(--primary);
-    background-color: var(--mix-card-33-bg);
-    border-radius: var(--radius);
-    box-shadow:
-        0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition:
-        transform 0.125s ease-out,
-        opacity 0.125s ease-out;
-    transform-origin: var(--transform-origin);
-    word-wrap: break-word;
-    position: relative;
-    margin-bottom: 0.25rem;
-    border: 1px solid var(--border);
+  max-width: 20rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--primary);
+  background-color: var(--mix-card-33-bg);
+  border-radius: var(--radius);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.125s ease-out,
+    opacity 0.125s ease-out;
+  transform-origin: var(--transform-origin);
+  word-wrap: break-word;
+  position: relative;
+  margin-bottom: 0.25rem;
+  border: 1px solid var(--border);
 }
 
 .popup[data-starting-style],
 .popup[data-ending-style] {
-    opacity: 0;
-    transform: scale(0.97);
+  opacity: 0;
+  transform: scale(0.97);
 }
 
 .popup[data-instant] {
-    transition-duration: 0ms;
+  transition-duration: 0ms;
 }
 
 .arrow {
-    position: absolute;
-    width: 20px;
-    height: 10px;
-    z-index: 1;
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  z-index: 1;
 
-    &[data-side="top"] {
-        bottom: -8px;
-        transform: rotate(180deg);
-    }
+  &[data-side="top"] {
+    bottom: -8px;
+    transform: rotate(180deg);
+  }
 
-    &[data-side="bottom"] {
-        top: -8px;
-        transform: rotate(0deg);
-    }
+  &[data-side="bottom"] {
+    top: -8px;
+    transform: rotate(0deg);
+  }
 
-    &[data-side="left"] {
-        right: 8px;
-        transform: rotate(90deg);
-    }
+  &[data-side="left"] {
+    right: 8px;
+    transform: rotate(90deg);
+  }
 
-    &[data-side="right"] {
-        left: -8x;
-        transform: rotate(-90deg);
-    }
+  &[data-side="right"] {
+    left: -8x;
+    transform: rotate(-90deg);
+  }
 
-    svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 }
 
 .arrowFill {
-    fill: var(--mix-card-33-bg);
+  fill: var(--mix-card-33-bg);
 }
 
 .arrowOuterStroke {
-    fill: var(--border);
+  fill: var(--border);
 }
 
 .arrowInnerStroke {
-    fill: rgba(0, 0, 0, 0.05);
+  fill: rgba(0, 0, 0, 0.05);
 }

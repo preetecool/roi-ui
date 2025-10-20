@@ -1,20 +1,20 @@
 "use client";
 
-interface PayloadEntry {
+type PayloadEntry = {
   name?: string;
   dataKey?: string;
   value: number | string;
   color?: string;
-}
+};
 
-export interface ChartTooltipProps {
+export type ChartTooltipProps = {
   active?: boolean;
   payload?: PayloadEntry[];
   label?: string | number;
   labelFormatter?: (value: string | number) => string;
   valueFormatter?: (value: number | string, name?: string) => string;
   nameFormatter?: (name: string) => string;
-}
+};
 
 export function ChartTooltip({
   active,
@@ -24,7 +24,7 @@ export function ChartTooltip({
   valueFormatter,
   nameFormatter,
 }: ChartTooltipProps) {
-  if (!active || !payload || !payload.length) {
+  if (!(active && payload && payload.length)) {
     return null;
   }
 
@@ -65,7 +65,13 @@ export function ChartTooltip({
         boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
       }}
     >
-      {label && <div style={{ fontSize: "11px", fontWeight: "500", marginBottom: "4px" }}>{formatLabel(label)}</div>}
+      {label && (
+        <div
+          style={{ fontSize: "11px", fontWeight: "500", marginBottom: "4px" }}
+        >
+          {formatLabel(label)}
+        </div>
+      )}
       {payload.map((entry, index) => (
         <div
           key={index}
@@ -80,11 +86,14 @@ export function ChartTooltip({
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             <span style={{ color: entry.color, marginRight: "4px" }}>●</span>
-            <span style={{ color: "var(--muted-foreground)" }}>{formatName(entry.name || entry.dataKey || "")}</span>
+            <span style={{ color: "var(--muted-foreground)" }}>
+              {formatName(entry.name || entry.dataKey || "")}
+            </span>
           </div>
           <span
             style={{
-              fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
+              fontFamily:
+                "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
               fontWeight: "500",
             }}
           >

@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   Form,
-  FormField,
-  FormControl,
-  FormLabel,
-  FormError,
   FormActions,
+  FormControl,
+  FormError,
+  FormField,
+  FormLabel,
 } from "@/registry/brook/ui/form/form";
-import { Button } from "@/registry/brook/ui/button/button";
 
 export default function FormDemo() {
   const [errors, setErrors] = useState({});
@@ -38,16 +38,16 @@ export default function FormDemo() {
       <FormField name="url">
         <FormLabel>Homepage</FormLabel>
         <FormControl
-          type="url"
-          required
-          placeholder="https://example.com"
           pattern="https?://[^/]+\.com(/.*)?$"
+          placeholder="https://example.com"
+          required
+          type="url"
         />
         <FormError />
       </FormField>
 
       <FormActions>
-        <Button disabled={loading} type="submit" style={{ width: "100%" }}>
+        <Button disabled={loading} style={{ width: "100%" }} type="submit">
           {loading ? "Submitting..." : "Submit"}
         </Button>
       </FormActions>

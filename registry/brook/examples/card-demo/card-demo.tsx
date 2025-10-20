@@ -1,16 +1,16 @@
+import { Droplets } from "lucide-react";
+import { Badge } from "@/registry/brook/ui/badge/badge";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardAction,
-  CardDescription,
   CardContent,
+  CardDescription,
   CardFooter,
+  CardHeader,
   CardIcon,
+  CardTitle,
 } from "@/registry/brook/ui/card/card";
-import { Droplets } from "lucide-react";
-import { Button } from "@/registry/brook/ui/button/button";
-import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./card-demo.module.css";
 
 export default function CardDemo() {
@@ -33,7 +33,10 @@ export default function CardDemo() {
         <CardDescription>Defining a brook</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>A small, natural stream of fresh water flowing along a course towards a river, lake, or sea.</p>
+        <p>
+          A small, natural stream of fresh water flowing along a course towards
+          a river, lake, or sea.
+        </p>
       </CardContent>
       <CardFooter>
         <Button size="sm">Click me</Button>
