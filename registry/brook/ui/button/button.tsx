@@ -77,7 +77,7 @@ function ArrowPointer({
     >
       <g fillRule="nonzero">
         <path
-          d={pointLeft ? "M9 1l-4 4 4 4" : "M1 1l4 4-4 4"}
+          d={pointLeft ? "M7.2 1l-4 4 4 4" : "M-0.8 1l4 4-4 4"}
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="square"
@@ -85,7 +85,7 @@ function ArrowPointer({
           className={styles.arrowPoint}
         />
         <path
-          d={pointLeft ? "M9 5H4" : "M1.8 5h4.8"}
+          d={pointLeft ? "M7.2 5H2.2" : "M0 5h4.8"}
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="square"

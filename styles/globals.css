@@ -50,15 +50,75 @@
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+  --mix-card-15-bg: oklch(0.98 0 0);
+  --mix-card-20-bg: oklch(0.975 0 0);
+  --mix-card-33-bg: oklch(0.965 0 0);
+  --mix-card-50-bg: oklch(0.95 0 0);
+  --mix-card-66-bg: oklch(0.935 0 0);
+  --mix-card-70-bg: oklch(0.93 0 0);
+  --mix-card-75-bg: oklch(0.925 0 0);
+  --mix-card-80-muted: oklch(0.918 0 0);
+  --mix-card-85-bg: oklch(0.92 0 0);
+  --mix-muted-20-trans: oklch(0.92 0 0 / 0.2);
+  --mix-muted-50-trans: oklch(0.9 0 0 / 0.5);
+  --mix-border-50-trans: oklch(0.94 0 0 / 0.5);
+  --mix-border-70-trans: oklch(0.93 0 0 / 0.7);
+  --mix-accent-20-trans: oklch(0.8 0 0 / 0.2);
+  --mix-accent-33-trans: oklch(0.8 0 0 / 0.33);
+  --mix-accent-66-bg: oklch(0.84 0 0);
+  --mix-accent-75-bg: oklch(0.83 0 0);
+  --mix-destructive-66-bg: oklch(0.75 0.09 15);
+  --mix-foreground-6-trans: oklch(0.35 0 0 / 0.06);
+  --mix-foreground-15-trans: oklch(0.35 0 0 / 0.15);
+  --mix-foreground-20-muted: oklch(0.82 0 0);
+  --mix-foreground-25-trans: oklch(0.35 0 0 / 0.25);
+  --mix-destructive-20-muted: oklch(0.86 0.03 15);
+  --mix-secondary-20-muted: oklch(0.916 0 0);
+  --mix-success-20-muted: oklch(0.84 0.04 146);
+  --mix-transparent-85-fg: oklch(0.35 0 0 / 0.85);
+  --mix-transparent-88-fg: oklch(0.35 0 0 / 0.88);
+}
+
+@supports (background: color-mix(in oklab, white, black)) {
+  :root {
+    --mix-card-15-bg: color-mix(in oklab, var(--card) 15%, var(--background));
+    --mix-card-20-bg: color-mix(in oklab, var(--card) 20%, var(--background));
+    --mix-card-33-bg: color-mix(in oklab, var(--card) 33%, var(--background));
+    --mix-card-50-bg: color-mix(in oklab, var(--card) 50%, var(--background));
+    --mix-card-66-bg: color-mix(in oklab, var(--card) 66%, var(--background));
+    --mix-card-70-bg: color-mix(in oklab, var(--card) 70%, var(--background));
+    --mix-card-75-bg: color-mix(in oklab, var(--card) 75%, var(--background));
+    --mix-card-85-bg: color-mix(in oklab, var(--card) 85%, var(--background));
+    --mix-card-80-muted: color-mix(in oklab, var(--card) 80%, var(--muted));
+    --mix-muted-20-trans: color-mix(in oklab, var(--muted) 20%, transparent);
+    --mix-muted-50-trans: color-mix(in oklab, var(--muted) 50%, transparent);
+    --mix-border-50-trans: color-mix(in oklab, var(--border) 50%, transparent);
+    --mix-border-70-trans: color-mix(in oklab, var(--border) 70%, transparent);
+    --mix-accent-20-trans: color-mix(in oklab, var(--accent) 20%, transparent);
+    --mix-accent-33-trans: color-mix(in oklab, var(--accent) 33%, transparent);
+    --mix-accent-66-bg: color-mix(in oklab, var(--accent) 66%, var(--background));
+    --mix-accent-75-bg: color-mix(in oklab, var(--accent) 75%, var(--background));
+    --mix-destructive-66-bg: color-mix(in oklab, var(--destructive) 66%, var(--background));
+    --mix-foreground-6-trans: color-mix(in oklab, var(--foreground) 6%, transparent);
+    --mix-foreground-15-trans: color-mix(in oklab, var(--foreground) 15%, transparent);
+    --mix-foreground-20-muted: color-mix(in oklab, var(--foreground) 20%, var(--muted));
+    --mix-foreground-25-trans: color-mix(in oklab, var(--foreground) 25%, transparent);
+    --mix-destructive-20-muted: color-mix(in oklab, var(--destructive) 20%, var(--muted));
+    --mix-secondary-20-muted: color-mix(in oklab, var(--secondary) 20%, var(--muted));
+    --mix-success-20-muted: color-mix(in oklab, var(--success) 20%, var(--muted));
+    --mix-transparent-85-fg: color-mix(in oklab, transparent 85%, var(--foreground));
+    --mix-transparent-88-fg: color-mix(in oklab, transparent 88%, var(--foreground));
+  }
 }
 
 [data-theme="dark"] {
-  --background: oklch(0.14 0 290);
+  --background: oklch(0.18 0 290);
   --foreground: oklch(0.94 0 290);
   --text: oklch(0.82 0 0);
   --title: oklch(0.96 0 0);
   --title-hover: oklch(0.98 0 0);
-  --card: oklch(0.24 0 0);
+  --card: oklch(0.19 0 0);
   --card-light: oklch(0.2 0 0);
   --popover-foreground: oklch(0.94 0 0);
 
@@ -74,9 +134,9 @@
   --accent: oklch(0.32 0 0);
   --accent-foreground: oklch(0.85 0 0);
 
-  --border: oklch(0.25 0 0);
+  --border: oklch(0.28 0 0);
   --border-light: oklch(0.4 0 0);
-  --border-dark: oklch(0.23 0 0);
+  --border-dark: oklch(0.24 0 0);
   --input: oklch(0.2029 0.003 0);
   --ring: oklch(0.45 0.025 270);
 
@@ -93,6 +153,34 @@
 
   --chart1: oklch(0.6487 0.1856 264.84);
   --chart2: oklch(0.4187 0.2556 267.84);
+
+  --mix-card-15-bg: oklch(0.18 0 0);
+  --mix-card-20-bg: oklch(0.185 0 0);
+  --mix-card-33-bg: oklch(0.195 0 0);
+  --mix-card-50-bg: oklch(0.21 0 0);
+  --mix-card-66-bg: oklch(0.225 0 0);
+  --mix-card-70-bg: oklch(0.23 0 0);
+  --mix-card-75-bg: oklch(0.235 0 0);
+  --mix-card-80-muted: oklch(0.265 0 0);
+  --mix-card-85-bg: oklch(0.24 0 0);
+  --mix-muted-20-trans: oklch(0.19 0 0 / 0.2);
+  --mix-muted-50-trans: oklch(0.24 0 0 / 0.5);
+  --mix-border-50-trans: oklch(0.2 0 0 / 0.5);
+  --mix-border-70-trans: oklch(0.22 0 0 / 0.7);
+  --mix-accent-20-trans: oklch(0.32 0 0 / 0.2);
+  --mix-accent-33-trans: oklch(0.32 0 0 / 0.33);
+  --mix-accent-66-bg: oklch(0.25 0 0);
+  --mix-accent-75-bg: oklch(0.23 0 0);
+  --mix-destructive-66-bg: oklch(0.35 0.11 18);
+  --mix-foreground-6-trans: oklch(0.94 0 0 / 0.06);
+  --mix-foreground-15-trans: oklch(0.94 0 0 / 0.15);
+  --mix-foreground-20-muted: oklch(0.68 0 0);
+  --mix-foreground-25-trans: oklch(0.94 0 0 / 0.25);
+  --mix-destructive-20-muted: oklch(0.36 0.05 18);
+  --mix-secondary-20-muted: oklch(0.265 0 0);
+  --mix-success-20-muted: oklch(0.48 0.04 151);
+  --mix-transparent-85-fg: oklch(0.94 0 0 / 0.85);
+  --mix-transparent-88-fg: oklch(0.94 0 0 / 0.88);
 }
 
 * {

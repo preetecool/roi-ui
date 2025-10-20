@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: flex-start;
   border-radius: var(--radius);
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border: 1px solid var(--border);
@@ -91,7 +91,7 @@
   border: 1px solid var(--border);
   border-top: none;
   padding: 1.5rem;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
 }
 
 .content:focus-visible {

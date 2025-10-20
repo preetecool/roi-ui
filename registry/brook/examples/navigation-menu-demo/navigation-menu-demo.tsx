@@ -47,8 +47,8 @@ export default function NavigationMenuDemo() {
                 <NavigationMenuLinkItem href="#">
                   <div className={styles.footerContent}>
                     <Logo
-                      fillColor="color-mix(in oklch, transparent 85%, var(--foreground))"
-                      strokeColor="color-mix(in oklch, transparent 88%, var(--foreground))"
+                      fillColor="var(--mix-transparent-85-fg)"
+                      strokeColor="var(--mix-transparent-88-fg)"
                       width={70}
                       height={70}
                       className={styles.footerImage}

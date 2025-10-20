@@ -5,7 +5,7 @@
   width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: color-mix(in oklab, var(--card) 70%, var(--background));
+  background: var(--mix-card-75-bg);
   transition: all 150ms ease;
 }
 
@@ -43,6 +43,7 @@
   color: var(--foreground);
   width: 100%;
   padding: 0.5rem 0.75rem;
+
   height: 2.5rem;
 }
 
@@ -90,7 +91,7 @@
 .popup {
   max-height: 20rem;
   overflow: auto;
-  background: color-mix(in oklab, var(--card) 70%, var(--background));
+  background: var(--mix-card-75-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow:
@@ -142,7 +143,7 @@
   position: absolute;
   inset: 0;
   border-radius: calc(var(--radius) - 2px);
-  background: color-mix(in oklch, var(--accent) 33%, transparent);
+  background: var(--mix-accent-33-trans);
 }
 
 .item[data-highlighted] {
@@ -156,7 +157,7 @@
   position: absolute;
   inset: 0;
   border-radius: calc(var(--radius) - 2px);
-  background: color-mix(in oklch, var(--accent) 33%, transparent);
+  background: var(--mix-accent-33-trans);
 }
 
 .item[data-disabled] {

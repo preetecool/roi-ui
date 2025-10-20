@@ -1,6 +1,6 @@
 "use client";
 
-import { RadialBarChart as RechartsRadialBarChart, RadialBar, ResponsiveContainer, Tooltip } from "recharts";
+import { RadialBar, RadialBarChart as RechartsRadialBarChart, ResponsiveContainer, Tooltip } from "recharts";
 import ChartTooltip from "./chart-tooltip";
 import styles from "./radial-bar-chart.module.css";
 
@@ -78,7 +78,7 @@ function RadialBarChart({ data, innerRadius, outerRadius, animated = false }: Ra
           <RadialBar
             dataKey="value"
             cornerRadius={4}
-            background={{ fill: "color-mix(in oklch, var(--muted) 33%, var(--background))" }}
+            background={{ fill: "var(--mix-card-50-bg)" }}
             animationDuration={animated ? 800 : 0}
             animationBegin={animated ? 0 : undefined}
           />

@@ -46,7 +46,7 @@ export default function DropdownMenuFramerMotion() {
           <AnimatePresence>
             {open && (
               <Menu.Portal key="portal">
-                <Menu.Positioner anchor={containerRef} className={styles.positioner}>
+                <Menu.Positioner anchor={containerRef} className={styles.positioner} sideOffset={10}>
                   <Menu.Popup
                     render={
                       <motion.div

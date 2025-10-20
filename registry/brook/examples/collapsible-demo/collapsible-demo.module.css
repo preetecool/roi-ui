@@ -5,14 +5,14 @@
   margin-top: 0.25rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   cursor: text;
   border: 1px solid var(--border);
 }
 
 .recoveryKey {
   padding: 0.5rem;
-  background-color: color-mix(in oklch, var(--muted) 50%, transparent);
+  background-color: var(--mix-muted-50-trans);
   border-radius: 0.25rem;
   font-family: monospace;
   font-size: 0.75rem;

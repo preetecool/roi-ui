@@ -116,20 +116,14 @@ export function CardTask() {
       </Card>
 
       <AlertDialogRoot open={alertOpen} onOpenChange={setAlertOpen}>
-        <AlertDialogContent
-          style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
-        >
+        <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Task</AlertDialogTitle>
             <AlertDialogDescription>Are you sure you want to delete this task?</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogClose render={<Button variant="outline">Cancel</Button>} />
-            <Button
-              variant="destructive"
-              style={{ backgroundColor: "color-mix(in oklch, var(--destructive) 90%, var(--background))" }}
-              onClick={() => setAlertOpen(false)}
-            >
+            <Button variant="destructive" onClick={() => setAlertOpen(false)}>
               Delete
             </Button>
           </AlertDialogFooter>

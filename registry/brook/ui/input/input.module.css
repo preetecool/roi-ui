@@ -4,7 +4,7 @@
   width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background-color: color-mix(in oklch, var(--card) 70%, var(--background));
+  background-color: var(--mix-card-50-bg);
   padding: 0 0.75rem;
   font-size: 0.875rem;
   transition: all 150ms ease-out;

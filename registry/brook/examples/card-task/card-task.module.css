@@ -68,7 +68,7 @@
 
 .taskDropdown .destructiveMenuItem:hover,
 .taskDropdown .destructiveMenuItem[data-highlighted] {
-  background-color: color-mix(in oklch, var(--destructive) 66%, var(--background)) !important;
+  background-color: var(--mix-destructive-66-bg) !important;
   color: var(--destructive-foreground) !important;
 }
 

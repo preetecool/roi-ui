@@ -7,7 +7,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: var(--background);
   z-index: 9998;
   pointer-events: auto;
 }
@@ -65,7 +65,7 @@
   max-width: 900px;
   max-height: 100dvh;
   overflow: hidden;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-15-bg);
   border: 1px solid var(--border-dark);
   padding: 0;
   display: flex;

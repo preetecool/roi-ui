@@ -1,9 +1,4 @@
-.icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-.card {
+#card {
   height: 280px;
   position: relative;
   padding: 1.5rem;
@@ -11,6 +6,11 @@
   border-color: var(--border-dark);
   display: flex;
   flex-direction: column;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
 }
 
 .cardContent {

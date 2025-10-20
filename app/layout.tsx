@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body
           className="root"
           style={{
-            backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
+            backgroundColor: "var(--mix-card-15-bg)",
             color: "var(--foreground)",
             minHeight: "100vh",
             margin: 0,

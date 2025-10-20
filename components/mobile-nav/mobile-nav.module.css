@@ -154,7 +154,7 @@
   height: 1.75rem;
   border-radius: 100%;
   border: none;
-  background-color: color-mix(in oklch, var(--card) 50%, var(--background));
+  background-color: var(--mix-card-50);
   backdrop-filter: blur(1rem);
   color: var(--muted-foreground);
   cursor: pointer;
@@ -162,7 +162,7 @@
 }
 
 .closeButton:hover {
-  background-color: color-mix(in oklch, var(--card) 70%, var(--background));
+  background-color: var(--mix-card-70);
 }
 
 .closeButton:focus-visible {
@@ -176,7 +176,7 @@
   padding: 1.5rem;
   margin-top: 60px;
   min-height: calc(100dvh - 60px);
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   border: 1px solid var(--border-dark);
   border-radius: var(--radius-lg);
 }

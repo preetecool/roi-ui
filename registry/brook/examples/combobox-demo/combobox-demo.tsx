@@ -90,7 +90,7 @@ export default function ComboboxDemo() {
                   {(user: User) => (
                     <ComboboxItem key={user.value} value={user} indicatorPosition="right">
                       <div className={styles.userContainer}>
-                        <Avatar className={styles.avatar}>
+                        <Avatar id={styles.avatar}>
                           <AvatarImage src={user.avatar} alt={user.label} />
                           <AvatarFallback>
                             {user.label
