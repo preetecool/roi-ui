@@ -9,22 +9,22 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 40;
+    z-index: 140;
 }
 
 .positioner {
     position: absolute;
-    z-index: 50;
+    z-index: 150;
 }
 
 .popup {
-    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+    background-color: var(--mix-card-33-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 1rem;
     max-width: 320px;
     box-shadow: var(--shadow-lg);
-    z-index: 50;
+    z-index: 150;
     animation: scaleIn 0.2s ease-out;
     transform-origin: var(--transform-origin);
 }
@@ -38,7 +38,7 @@
 }
 
 .arrow {
-    fill: color-mix(in oklch, var(--card) 33%, var(--background));
+    fill: var(--mix-card-33-bg);
     stroke: var(--border);
     stroke-width: 1px;
     width: 10px;

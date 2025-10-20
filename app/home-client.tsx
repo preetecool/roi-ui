@@ -70,7 +70,7 @@ export default function HomeClient({ pageTree }: HomeClientProps) {
           paddingTop: "clamp(100px, 15vw, 150px)",
           paddingLeft: "max(24px, 5vw)",
           paddingRight: "max(24px, 5vw)",
-          backgroundColor: "color-mix(in oklch, var(--card) 15%, var(--background))",
+          backgroundColor: "var(--mix-card-15-bg)",
         }}
       >
       <svg

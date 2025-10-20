@@ -33,7 +33,7 @@ export function AiChat() {
 
   return (
     <Form className={styles.form}>
-      <Card className={styles.card}>
+      <Card id={styles.card}>
         <CardContent>
           <FormField className={styles.field}>
             <FormControl

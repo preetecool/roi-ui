@@ -38,7 +38,7 @@
   border-radius: 0 0 var(--radius) var(--radius);
   border: 1px solid var(--border);
   border-top: none;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
 }
 
 .contentWrapper {

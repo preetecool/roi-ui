@@ -6,6 +6,7 @@
 
 .trigger {
   min-width: 9rem;
+  background-color: var(--mix-card-50-bg);
 }
 .trigger:hover:not(.disabled) {
   background-color: var(--muted);
@@ -58,7 +59,7 @@
 
 .popup {
   min-width: var(--anchor-width);
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-75-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transform-origin: var(--transform-origin);
@@ -85,7 +86,7 @@
 .arrow {
   width: 0.75rem;
   height: 0.75rem;
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-33-bg);
   border: 1px solid var(--border);
   border-right: none;
   border-bottom: none;
@@ -98,7 +99,7 @@
   align-items: center;
   justify-content: center;
   height: 1.5rem;
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-33-bg);
   border: none;
   cursor: pointer;
   color: var(--foreground);

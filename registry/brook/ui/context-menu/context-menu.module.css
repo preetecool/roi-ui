@@ -27,7 +27,7 @@
   min-width: 8rem;
   padding: 0.25rem;
   border-radius: var(--radius);
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-85-bg);
   color: var(--popover-foreground);
   border: 1px solid var(--border);
   box-shadow:
@@ -58,7 +58,7 @@
   position: absolute;
   width: 0.5rem;
   height: 0.5rem;
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-33-bg);
   border: 1px solid var(--border);
   transform: rotate(45deg);
 }

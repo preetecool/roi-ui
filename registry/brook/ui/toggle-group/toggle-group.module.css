@@ -1,65 +1,65 @@
 .root {
-    display: inline-flex;
-    border-radius: var(--radius);
-    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
-    padding: 0.125rem;
+  display: inline-flex;
+  border-radius: var(--radius);
+  background-color: var(--mix-card-33-bg);
+  padding: 0.125rem;
 }
 
 .root[data-orientation="horizontal"] {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .root[data-orientation="vertical"] {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: calc(var(--radius) - 0.125rem);
-    font-size: 0.875rem;
-    font-weight: 500;
-    height: 2.25rem;
-    width: 2.25rem;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    color: var(--muted-foreground);
-    cursor: pointer;
-    transition: all 150ms ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 0.125rem);
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 150ms ease-out;
 }
 
 .item:hover {
-    background-color: var(--muted-foreground) / 0.1;
-    color: var(--foreground);
+  background-color: var(--muted-foreground) / 0.1;
+  color: var(--foreground);
 }
 
 .item[data-focused] {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring) / 0.2;
 }
 
 .item[data-pressed] {
-    background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
-    color: var(--foreground);
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  background-color: var(--mix-accent-66-bg);
+  color: var(--foreground);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .item[data-pressed]:hover {
-    background-color: color-mix(in oklch, var(--accent) 75%, var(--background));
-    color: var(--foreground);
+  background-color: var(--mix-accent-75-bg);
+  color: var(--foreground);
 }
 
 .item[data-disabled] {
-    pointer-events: none;
-    opacity: 0.5;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .root[data-orientation="horizontal"] .item:not(:first-child) {
-    margin-left: 0.125rem;
+  margin-left: 0.125rem;
 }
 
 .root[data-orientation="vertical"] .item:not(:first-child) {
-    margin-top: 0.125rem;
+  margin-top: 0.125rem;
 }

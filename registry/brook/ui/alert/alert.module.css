@@ -10,7 +10,7 @@
   align-items: start;
   font-size: 0.75rem;
   line-height: 1.2;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-70-bg);
 }
 
 .alert:has(> svg) {

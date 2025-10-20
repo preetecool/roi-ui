@@ -83,7 +83,7 @@
   text-align: center;
   font-size: 0.875rem;
   padding: 1.25rem 0;
-  background-color: color-mix(in oklch, var(--card) 33%, transparent);
+  background-color: var(--mix-card-35-trans);
 
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }

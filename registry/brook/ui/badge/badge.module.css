@@ -37,7 +37,7 @@
 
 .secondary {
   border-color: transparent;
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  background-color: var(--mix-card-66-bg);
   color: var(--secondary-foreground);
 }
 .secondary:hover {
@@ -47,7 +47,7 @@
 
 .destructive {
   border-color: var(--border);
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  background-color: var(--mix-card-66-bg);
   color: var(--destructive);
 }
 
@@ -59,7 +59,7 @@
 
 .success {
   border-color: var(--border);
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  background-color: var(--mix-card-66-bg);
   color: var(--success);
 }
 
@@ -89,23 +89,23 @@
 }
 
 .defaultIcon {
-  background-color: color-mix(in srgb, var(--foreground) 20%, var(--muted) 80%);
+  background-color: var(--mix-foreground-20-muted);
 }
 
 .secondaryIcon {
-  background-color: color-mix(in srgb, var(--secondary) 20%, var(--muted) 80%);
+  background-color: var(--mix-secondary-20-muted);
 }
 
 .destructiveIcon {
-  background-color: color-mix(in srgb, var(--destructive) 20%, var(--muted) 80%);
+  background-color: var(--mix-destructive-20-muted);
 }
 
 .successIcon {
-  background-color: color-mix(in srgb, var(--success) 20%, var(--muted) 80%);
+  background-color: var(--mix-success-20-muted);
 }
 
 .outlineIcon {
-  background-color: color-mix(in srgb, var(--foreground) 20%, var(--muted) 80%);
+  background-color: var(--mix-foreground-20-muted);
 }
 
 .sm {

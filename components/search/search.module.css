@@ -73,13 +73,13 @@
 
 .commandWrapper [cmdk-item]:hover,
 .commandWrapper [cmdk-item][data-selected="true"] {
-  background-color: color-mix(in oklch, var(--muted) 50%, transparent);
+  background-color: var(--mix-muted-50-trans);
   border-color: var(--border-light);
 }
 
 .commandWrapper [cmdk-list] {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklch, var(--border) 50%, transparent) transparent;
+  scrollbar-color: var(--mix-border-50-trans) transparent;
 }
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar {
@@ -91,12 +91,12 @@
 }
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar-thumb {
-  background: color-mix(in oklch, var(--border) 50%, transparent);
+  background: var(--mix-border-50-trans);
   border-radius: 3px;
 }
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklch, var(--border) 70%, transparent);
+  background: var(--mix-border-70-trans);
 }
 
 @keyframes slideIn {
@@ -177,7 +177,7 @@
   padding: 0.75rem 1rem;
   margin: 0 -0.25rem -0.25rem -0.25rem;
   border-top: 1px solid var(--border-dark);
-  background-color: color-mix(in oklch, var(--muted) 20%, transparent);
+  background-color: var(--mix-muted-20-trans);
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
 }

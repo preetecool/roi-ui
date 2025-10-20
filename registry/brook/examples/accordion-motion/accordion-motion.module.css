@@ -9,7 +9,7 @@
 .accordionItem {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-color: color-mix(in oklch, var(--card) 50%, var(--background));
+  background-color: var(--mix-card-66-bg);
   margin-bottom: 1rem;
   padding: 1rem;
 }

@@ -16,7 +16,7 @@
   border-radius: var(--radius);
   font-family: inherit;
   font-size: 0.875rem;
-  background-color: color-mix(in oklch, var(--card) 70%, var(--background));
+  background-color: var(--mix-card-50-bg);
   color: var(--foreground);
 }
 

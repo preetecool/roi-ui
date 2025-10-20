@@ -22,7 +22,7 @@
   overflow-y: auto;
   gap: 1rem;
   border: 1px solid var(--border);
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--background);
   padding: 1.5rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);

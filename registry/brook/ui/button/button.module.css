@@ -69,13 +69,13 @@
 }
 
 .outline {
-  background-color: color-mix(in oklab, var(--card) 10%, transparent 80%);
+  background-color: var(--mix-card-50-bg);
   color: var(--foreground);
   border: 1px solid var(--border);
 }
 
 .outline:hover:not(:disabled) {
-  background-color: oklch(from var(--accent) l c h / 0.33);
+  background-color: var(--mix-card-66-bg);
 }
 
 .link {

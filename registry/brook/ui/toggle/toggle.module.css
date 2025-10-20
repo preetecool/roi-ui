@@ -1,42 +1,41 @@
 .root {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius);
-    font-size: 0.875rem;
-    font-weight: 500;
-    height: 2.25rem;
-    padding: 0 0.75rem;
-    border: 1px solid var(--border);
-    background-color: color-mix(in oklch, var(--card) 33%, var(--background));
-    color: var(--foreground);
-    cursor: pointer;
-    transition: all 150ms ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  background-color: var(--mix-card-33-bg);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 150ms ease-out;
 }
 
 .root:hover {
-    background-color: var(--muted);
-    border-color: var(--muted-foreground);
+  background-color: var(--muted);
 }
 
 .root[data-focused] {
-    outline: none;
-    border-color: var(--ring);
-    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring) / 0.2;
 }
 
 .root[data-pressed] {
-    background-color: color-mix(in oklch, var(--accent) 66%, var(--background));
-    color: var(--foreground);
-    border-color: var(--accent);
+  background-color: var(--mix-accent-66-bg);
+  color: var(--foreground);
+  border-color: var(--accent);
 }
 
 .root[data-pressed]:hover {
-    background-color: color-mix(in oklch, var(--accent) 75%, var(--background));
-    border-color: var(--accent);
+  background-color: var(--mix-accent-75-bg);
+  border-color: var(--accent);
 }
 
 .root[data-disabled] {
-    pointer-events: none;
-    opacity: 0.5;
+  pointer-events: none;
+  opacity: 0.5;
 }

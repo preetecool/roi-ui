@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Carousel } from "@/registry/brook/ui/carousel/carousel";
-import { Card, CardTitle, CardDescription, CardIcon } from "@/registry/brook/ui/card/card";
 import { Button } from "@/registry/brook/ui/button/button";
-import { Zap, Shield, Palette, Users, BarChart, Cloud, Lock, RefreshCw, Settings } from "lucide-react";
+import { Card, CardDescription, CardIcon, CardTitle } from "@/registry/brook/ui/card/card";
+import { Carousel } from "@/registry/brook/ui/carousel/carousel";
+import { BarChart, Cloud, Lock, Palette, RefreshCw, Settings, Shield, Users, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
 import styles from "./carousel-demo.module.css";
 
 export default function CarouselDemo() {
@@ -25,29 +25,25 @@ export default function CarouselDemo() {
       id: "customization",
       icon: <Palette className={styles.icon} />,
       title: "Customize",
-      description:
-        "Tailor every aspect to match your brand with flexible theming and configuration options.",
+      description: "Tailor every aspect to match your brand with flexible theming and configuration options.",
     },
     {
       id: "collaboration",
       icon: <Users className={styles.icon} />,
       title: "Collaboration",
-      description:
-        "Work together seamlessly with real-time collaboration tools.",
+      description: "Work together seamlessly with real-time collaboration tools.",
     },
     {
       id: "analytics",
       icon: <BarChart className={styles.icon} />,
       title: "Analytics",
-      description:
-        "Gain actionable insights with comprehensive dashboards and reporting.",
+      description: "Gain actionable insights with comprehensive dashboards and reporting.",
     },
     {
       id: "cloud",
       icon: <Cloud className={styles.icon} />,
       title: "Integration",
-      description:
-        "Connect with popular cloud services and scale automatically.",
+      description: "Connect with popular cloud services and scale automatically.",
     },
     {
       id: "privacy",
@@ -59,8 +55,7 @@ export default function CarouselDemo() {
       id: "sync",
       icon: <RefreshCw className={styles.icon} />,
       title: "Sync",
-      description:
-        "Changes sync instantly across all devices in real-time.",
+      description: "Changes sync instantly across all devices in real-time.",
     },
     {
       id: "configuration",
@@ -73,7 +68,7 @@ export default function CarouselDemo() {
   const carouselItems = features.map((feature) => ({
     id: feature.id,
     content: (
-      <Card className={styles.card} style={{ backgroundColor: 'color-mix(in oklch, var(--card) 33%, var(--background))' }}>
+      <Card id={styles.card}>
         <div className={styles.cardContent}>
           <CardIcon>{feature.icon}</CardIcon>
 
@@ -113,6 +108,12 @@ export default function CarouselDemo() {
   }
 
   return (
-    <Carousel items={carouselItems} showIndicators={false} showNavigation={true} itemsPerView={itemsPerView} gap={16} />
+    <Carousel
+      items={carouselItems}
+      showIndicators={false}
+      showNavigation={true}
+      itemsPerView={itemsPerView}
+      gap={16}
+    />
   );
 }

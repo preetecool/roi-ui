@@ -1,8 +1,8 @@
 "use client";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/registry/brook/ui/card/card";
-import LineChart from "@/registry/brook/ui/charts/line-chart";
 import { Badge } from "@/registry/brook/ui/badge/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
+import LineChart from "@/registry/brook/ui/charts/line-chart";
 import styles from "./card-traffic.module.css";
 import { trafficData } from "./data";
 
@@ -24,9 +24,8 @@ export function CardTraffic() {
     <Card
       className={styles.cardContainer}
       style={{
-        backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))",
         maxWidth: "600px",
-        width: "100%"
+        width: "100%",
       }}
     >
       <CardHeader>

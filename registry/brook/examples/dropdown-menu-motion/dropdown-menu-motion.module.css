@@ -6,12 +6,12 @@
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   cursor: pointer;
   color: var(--secondary-foreground);
 }
 .button:hover {
-  background-color: var(--card);
+  background-color: var(--muted);
   transition: 150ms ease-out;
 }
 
@@ -25,7 +25,7 @@
   bottom: calc(25% + 8px);
   width: 170px;
   overflow: hidden;
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   border: 1px solid var(--border);
   padding: 4px;
   outline: none;
@@ -75,13 +75,12 @@
   }
 }
 
-
 .menuItem svg {
   color: oklch(from var(--secondary-foreground) l c h / 0.8);
 }
 
 .menuItem:hover {
-  background-color: var(--card) !important;
+  background-color: var(--muted);
 }
 
 .menuItem:active {

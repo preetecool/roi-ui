@@ -14,7 +14,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/registry/brook/ui/tooltip/tooltip";
-import { Gauge, PanelRight } from "lucide-react";
+import { Gauge } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -167,7 +167,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                             rx="2"
                             ry="2"
                             fill="currentColor"
-                            className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ''}`}
+                            className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ""}`}
                           />
                         </svg>
                       </Button>
@@ -181,7 +181,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                 </Tooltip>
               </div>
 
-              <Button variant="ghost" onClick={triggerSearch} className={styles.searchWrapper}>
+              <Button variant="ghost" onClick={triggerSearch} id={styles.searchWrapper}>
                 <svg
                   className={styles.searchIcon}
                   width="16"
@@ -289,7 +289,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                       rx="2"
                       ry="2"
                       fill="currentColor"
-                      className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ''}`}
+                      className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ""}`}
                     />
                   </svg>
                 </Button>

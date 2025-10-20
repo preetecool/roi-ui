@@ -31,7 +31,7 @@
   position: relative;
   box-sizing: border-box;
   border-radius: 0.5rem;
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-33-bg);
   border: 1px solid var(--border);
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -80,7 +80,7 @@
 }
 
 .arrowFill {
-  fill: color-mix(in oklch, var(--card) 33%, var(--background));
+  fill: var(--mix-card-33-bg);
 }
 
 .arrowOuterStroke {
@@ -118,7 +118,7 @@
 }
 
 .trigger[data-popup-open] {
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-33-bg);
   color: var(--foreground);
 }
 
@@ -203,7 +203,7 @@
   border: 1px solid var(--border);
   border-bottom: none;
   border-right: none;
-  background: color-mix(in oklch, var(--card) 33%, var(--background));
+  background: var(--mix-card-33-bg);
   border-radius: 0.125rem 0 0 0;
   transform: rotate(45deg);
 }
@@ -228,7 +228,7 @@
 }
 
 .linkCard:hover {
-  background-color: color-mix(in oklch, var(--card) 66%, var(--background));
+  background-color: var(--mix-card-66-bg);
 }
 
 .linkCard:focus-visible {

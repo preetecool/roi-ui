@@ -4,7 +4,7 @@
 }
 
 .cardExpanded {
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   padding: 12px;
   width: 300px;
   overflow: hidden;
@@ -46,7 +46,7 @@
 }
 
 .cardCollapsed {
-  background-color: color-mix(in oklch, var(--card) 33%, var(--background));
+  background-color: var(--mix-card-33-bg);
   width: 300px;
   overflow: hidden;
   display: flex;

@@ -12,8 +12,18 @@
   font-size: 1.25rem;
 }
 
+.chartWrapper {
+  height: 400px;
+  min-height: 400px;
+}
+
 @media (max-width: 640px) {
   .title {
     font-size: 1rem;
+  }
+
+  .chartWrapper {
+    height: 380px;
+    min-height: 380px;
   }
 }

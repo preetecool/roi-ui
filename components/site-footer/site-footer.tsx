@@ -9,15 +9,15 @@ export function SiteFooter() {
           Built by{" "}
           <Button
             variant="link"
-            className={styles.link}
+            id={styles.link}
             render={<a href="https://x.com/preetecool" target="_blank" rel="noopener noreferrer" />}
           >
-            @preetecool
-          </Button>
-          . Available on{" "}
+            @preetecool.
+          </Button>{" "}
+          Available on{" "}
           <Button
             variant="link"
-            className={styles.link}
+            id={styles.link}
             render={<a href="https://github.com/preetecool" target="_blank" rel="noopener noreferrer" />}
           >
             GitHub

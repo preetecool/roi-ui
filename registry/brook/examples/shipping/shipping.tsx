@@ -23,7 +23,7 @@ export function Shipping() {
     <div className={styles.cardContainer}>
       <Card
         className={styles.shippingCard}
-        style={{ backgroundColor: "color-mix(in oklch, var(--card) 33%, var(--background))" }}
+        style={{ backgroundColor: "var(--mix-card-33-bg)" }}
       >
         <div className={styles.header}>
           <div className={styles.headerLeft}>
