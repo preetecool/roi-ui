@@ -4,7 +4,9 @@
   "type": "registry:item",
   "title": "Bar Chart",
   "description": "Animated vertical bar charts with hover highlighting and customizable styling.",
-  "dependencies": ["recharts"],
+  "dependencies": [
+    "recharts"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/charts/chart-tooltip.tsx",
