@@ -19,7 +19,7 @@ export default function DropdownMenuFramerMotion() {
 
   return (
     <div ref={containerRef}>
-      <MotionConfig transition={{ type: "spring", bounce: 0.4, ease: [0.785, 0.135, 0.15, 0.86] }}>
+      <MotionConfig transition={{ type: "spring", bounce: 0.1, duration: 0.3, ease: [0.19, 1, 0.22, 1] }}>
         <Menu.Root open={open} onOpenChange={setOpen}>
           {!open && (
             <Menu.Trigger

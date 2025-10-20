@@ -12,9 +12,8 @@
 }
 
 .chartWrapper {
-  flex: 1;
-  width: 100%;
-  min-height: 0;
+  height: 400px;
+  min-height: 400px;
 }
 
 @media (max-width: 640px) {
