@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/docs-styles.css";
 import "@/styles/globals.css";
 import "@/styles/syntax-highlight.css";
+import { Analytics } from "@vercel/analytics/next";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <ThemeProvider defaultTheme="dark" enableSystem disableTransitionOnChange storageKey="theme">
             {children}
+            <Analytics />
           </ThemeProvider>
         </body>
       </html>
