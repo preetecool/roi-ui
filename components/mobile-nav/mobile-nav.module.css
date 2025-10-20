@@ -263,6 +263,7 @@
   border: none;
   border-radius: 0.5rem;
   background: transparent;
+  color: var(--foreground);
   font-size: 1.125rem;
   text-align: left;
   text-decoration: none;
