@@ -101,7 +101,7 @@
 }
 
 .panel[data-open] .content {
-  padding-top: 1.25rem;
+  padding-top: 0.75rem;
 }
 
 .panel[data-ending-style] .content {
