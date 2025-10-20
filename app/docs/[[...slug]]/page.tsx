@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
-import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 
 import { TOCUpdater } from "@/components/toc-updater";
