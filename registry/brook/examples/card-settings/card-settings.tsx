@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -14,6 +13,7 @@ import {
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
 import { Switch, SwitchThumb } from "@/registry/brook/ui/switch/switch";
+import { useState } from "react";
 
 export function CardSettings() {
   const [notifications, setNotifications] = useState(true);

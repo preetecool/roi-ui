@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/registry/brook/ui/avatar/avatar";
+import { motion } from "motion/react";
 
 const avatarVariants = {
   hidden: {

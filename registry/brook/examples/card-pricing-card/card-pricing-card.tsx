@@ -1,6 +1,5 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -13,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/brook/ui/card/card";
+import { Check } from "lucide-react";
 import styles from "./card-pricing-card.module.css";
 
 export function CardPricingCard() {

@@ -1,8 +1,8 @@
 "use client";
 
+import { Button } from "@/registry/brook/ui/button/button";
 import { SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./theme-switcher.module.css";
 
 export function ThemeSwitcher() {

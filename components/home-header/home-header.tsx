@@ -1,7 +1,7 @@
 "use client";
+import { Button } from "@/registry/brook/ui/button/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [

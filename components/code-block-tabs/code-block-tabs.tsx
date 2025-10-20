@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import {
   Tabs as CustomTabs,
   TabsList,
   TabsTrigger,
 } from "@/registry/brook/ui/tabs/tabs";
+import React from "react";
 import styles from "./code-block-tabs.module.css";
 
 type CodeBlockTabsProps = {
@@ -43,7 +43,7 @@ export function CodeBlockTabs({ children }: CodeBlockTabsProps) {
       }
       const props = child.props as { value?: string };
       return props.value === "npm" || props.value === "pnpm";
-    }
+    },
   );
 
   const [activeTab, setActiveTab] = React.useState("npm");

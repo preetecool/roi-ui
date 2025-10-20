@@ -1,4 +1,5 @@
 import { highlightCode } from "@/lib/highlight-code";
+import styles from "./component-source.module.css";
 import {
   getDisplayTitle,
   loadCodeByName,
@@ -10,7 +11,6 @@ import {
   EmbeddedCodeDisplay,
   StandardCodeDisplay,
 } from "./component-source-renderers";
-import styles from "./component-source.module.css";
 
 type ComponentSourceProps = {
   name?: string;
@@ -55,9 +55,9 @@ export async function ComponentSource({
     return (
       <EmbeddedCodeDisplay
         displayTitle={displayTitle}
-        transformedCode={transformedCode}
         highlightedCode={highlightedCode}
         language={language}
+        transformedCode={transformedCode}
       />
     );
   }
@@ -68,12 +68,12 @@ export async function ComponentSource({
 
     return (
       <CollapsibleCodeDisplay
+        buttonText={buttonText}
         displayTitle={displayTitle}
-        transformedCode={transformedCode}
+        hasMoreLines={hasMoreLines}
         highlightedCode={highlightedCode}
         language={language}
-        hasMoreLines={hasMoreLines}
-        buttonText={buttonText}
+        transformedCode={transformedCode}
         variant={variant}
       />
     );
@@ -82,9 +82,9 @@ export async function ComponentSource({
   return (
     <StandardCodeDisplay
       displayTitle={displayTitle}
-      transformedCode={transformedCode}
       highlightedCode={highlightedCode}
       language={language}
+      transformedCode={transformedCode}
       variant={variant}
     />
   );

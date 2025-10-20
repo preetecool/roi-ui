@@ -1,7 +1,7 @@
 "use client";
 
-import { Avatar } from "@base-ui-components/react/avatar";
 import { cn } from "@/lib/utils";
+import { Avatar } from "@base-ui-components/react/avatar";
 import styles from "./avatar.module.css";
 
 function AvatarRoot({
@@ -27,4 +27,4 @@ function AvatarFallback({
   );
 }
 
-export { AvatarRoot as Avatar, AvatarImage, AvatarFallback };
+export { AvatarRoot as Avatar, AvatarFallback, AvatarImage };

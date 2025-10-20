@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   PreviewCard,
@@ -10,6 +9,7 @@ import {
   PreviewCardPositioner,
   PreviewCardTrigger,
 } from "@/registry/brook/ui/preview-card/preview-card";
+import Image from "next/image";
 import styles from "./preview-card-demo.module.css";
 
 export default function PreviewCardDemo() {

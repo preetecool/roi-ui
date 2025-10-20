@@ -1,15 +1,5 @@
 "use client";
 
-import {
-  ArrowUp,
-  AudioLines,
-  GraduationCap,
-  Lightbulb,
-  Paperclip,
-  WandSparkles,
-  Zap,
-} from "lucide-react";
-import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
 import { Form, FormControl, FormField } from "@/registry/brook/ui/form/form";
@@ -25,6 +15,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
+import {
+  ArrowUp,
+  AudioLines,
+  GraduationCap,
+  Lightbulb,
+  Paperclip,
+  WandSparkles,
+  Zap,
+} from "lucide-react";
+import { useState } from "react";
 import styles from "./ai-chat.module.css";
 
 const aiModes = [
@@ -77,7 +77,7 @@ export function AiChat() {
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find(
-                      (mode) => mode.value === value
+                      (mode) => mode.value === value,
                     );
                     const IconComponent = selectedMode?.icon;
                     return (

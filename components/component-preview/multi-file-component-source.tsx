@@ -1,8 +1,8 @@
 "use client";
 
+import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import componentSourceStyles from "../component-source/component-source.module.css";
 import styles from "./multi-file-component-source.module.css";
 
@@ -59,6 +59,7 @@ export function MultiFileComponentSource({
         <div className={styles.tabs}>
           {files.map((file, index) => (
             <button
+              type="button"
               className={`${styles.tab} ${index === activeTab ? styles.tabActive : ""}`}
               key={file.name}
               onClick={() => setActiveTab(index)}

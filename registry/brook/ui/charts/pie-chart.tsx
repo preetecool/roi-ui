@@ -45,7 +45,7 @@ function PieChart({
 
   const total = useMemo(
     () => data.reduce((sum, d) => sum + d.value, 0),
-    [data]
+    [data],
   );
 
   const dataWithColors = useMemo(
@@ -54,7 +54,7 @@ function PieChart({
         ...item,
         fill: pieColors[index % pieColors.length],
       })),
-    [data, pieColors]
+    [data, pieColors],
   );
 
   const tooltipValueFormatter = (value: number | string, _name?: string) => {

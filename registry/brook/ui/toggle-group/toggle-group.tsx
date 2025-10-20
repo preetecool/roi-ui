@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Toggle } from "@base-ui-components/react/toggle";
 import { ToggleGroup } from "@base-ui-components/react/toggle-group";
-import { cn } from "@/lib/utils";
 import styles from "./toggle-group.module.css";
 
 function ToggleGroupRoot({

@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Menubar } from "@base-ui-components/react/menubar";
 import type { ReactNode } from "react";
-import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuArrow,
@@ -125,13 +125,13 @@ function MenubarMenuSubmenuTrigger({
 export {
   MenubarRoot as Menubar,
   MenubarMenuRoot as MenubarMenu,
-  MenubarMenuTrigger,
+  MenubarMenuArrow,
+  MenubarMenuItem,
+  MenubarMenuPopup,
   MenubarMenuPortal,
   MenubarMenuPositioner,
-  MenubarMenuPopup,
-  MenubarMenuItem,
   MenubarMenuSeparator,
-  MenubarMenuArrow,
   MenubarMenuSubmenuRoot,
   MenubarMenuSubmenuTrigger,
+  MenubarMenuTrigger,
 };

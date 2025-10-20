@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   SliderControl,
   SliderIndicator,
@@ -8,6 +7,7 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@/registry/brook/ui/slider/slider";
+import { useState } from "react";
 import styles from "./slider-demo.module.css";
 
 export default function SliderDemo() {

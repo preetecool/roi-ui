@@ -1,7 +1,7 @@
 "use client";
 
-import { Slider } from "@base-ui-components/react/slider";
 import { cn } from "@/lib/utils";
+import { Slider } from "@base-ui-components/react/slider";
 import styles from "./slider.module.css";
 
 function SliderRoot({
@@ -51,10 +51,10 @@ function SliderValue({
 }
 
 export {
-  SliderRoot,
   SliderControl,
-  SliderTrack,
   SliderIndicator,
+  SliderRoot,
   SliderThumb,
+  SliderTrack,
   SliderValue,
 };

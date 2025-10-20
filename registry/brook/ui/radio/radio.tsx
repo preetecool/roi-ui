@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Radio } from "@base-ui-components/react/radio";
 import { RadioGroup } from "@base-ui-components/react/radio-group";
-import { cn } from "@/lib/utils";
 import styles from "./radio.module.css";
 
 function RadioGroupRoot({
@@ -28,4 +28,4 @@ function RadioIndicator({
   );
 }
 
-export { RadioGroupRoot as RadioGroup, RadioRoot as Radio, RadioIndicator };
+export { RadioRoot as Radio, RadioGroupRoot as RadioGroup, RadioIndicator };

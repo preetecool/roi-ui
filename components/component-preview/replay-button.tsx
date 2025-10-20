@@ -18,6 +18,7 @@ export function ReplayButton({ onReplay }: ReplayButtonProps) {
 
   return (
     <button
+      type="button"
       aria-label="Replay animation"
       className={styles.replayButton}
       onClick={handleReplay}

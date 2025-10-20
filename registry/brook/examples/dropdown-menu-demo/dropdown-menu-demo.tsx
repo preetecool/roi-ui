@@ -1,4 +1,3 @@
-import { Archive, ChevronDown, Copy, Edit, Trash2 } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   DropdownMenu,
@@ -9,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
+import { Archive, ChevronDown, Copy, Edit, Trash2 } from "lucide-react";
 import styles from "./dropdown-menu-demo.module.css";
 
 export default function DropdownMenuDemo() {

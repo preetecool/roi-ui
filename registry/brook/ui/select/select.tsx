@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Select } from "@base-ui-components/react/select";
 import { Check, ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 import styles from "./select.module.css";
 
 function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {

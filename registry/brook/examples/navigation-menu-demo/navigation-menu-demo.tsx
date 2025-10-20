@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown, Palette, Shield, Users, Zap } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
@@ -14,6 +13,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
+import { ChevronDown, Palette, Shield, Users, Zap } from "lucide-react";
 import styles from "./navigation-menu-demo.module.css";
 
 export default function NavigationMenuDemo() {

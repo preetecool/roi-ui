@@ -1,6 +1,5 @@
 "use client";
 
-import { Info } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Popover,
@@ -8,6 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/brook/ui/popover/popover";
+import { Info } from "lucide-react";
 import styles from "./prop-table.module.css";
 
 type PropRow = {

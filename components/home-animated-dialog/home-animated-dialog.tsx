@@ -1,9 +1,9 @@
 "use client";
 
+import { Button } from "@/registry/brook/ui/button/button";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-animated-dialog.module.css";
 
 const popupVariants = {

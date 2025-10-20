@@ -1,7 +1,7 @@
 "use client";
 
-import { Popover } from "@base-ui-components/react/popover";
 import { cn } from "@/lib/utils";
+import { Popover } from "@base-ui-components/react/popover";
 import styles from "./popover.module.css";
 
 function PopoverRoot({ ...props }: React.ComponentProps<typeof Popover.Root>) {
@@ -105,14 +105,14 @@ function PopoverContent({
 
 export {
   PopoverRoot as Popover,
-  PopoverTrigger,
-  PopoverPortal,
-  PopoverBackdrop,
-  PopoverPositioner,
-  PopoverPopup,
   PopoverArrow,
-  PopoverTitle,
-  PopoverDescription,
+  PopoverBackdrop,
   PopoverClose,
   PopoverContent,
+  PopoverDescription,
+  PopoverPopup,
+  PopoverPortal,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
 };

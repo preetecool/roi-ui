@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
-import { cn } from "@/lib/utils";
 import styles from "./command.module.css";
 
 function CommandRoot({

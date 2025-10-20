@@ -1,5 +1,10 @@
 "use client";
 
+import { HomeAnimatedCard } from "@/components/home-animated-card/home-animated-card";
+import { HomeAnimatedDialog } from "@/components/home-animated-dialog/home-animated-dialog";
+import { HomeHeader } from "@/components/home-header/home-header";
+import { SiteFooter } from "@/components/site-footer/site-footer";
+import { SiteHeader } from "@/components/site-header/site-header";
 import type { PageTree } from "fumadocs-core/server";
 import {
   AnimatePresence,
@@ -8,11 +13,6 @@ import {
   useSpring,
 } from "motion/react";
 import { useEffect, useState } from "react";
-import { HomeAnimatedCard } from "@/components/home-animated-card/home-animated-card";
-import { HomeAnimatedDialog } from "@/components/home-animated-dialog/home-animated-dialog";
-import { HomeHeader } from "@/components/home-header/home-header";
-import { SiteFooter } from "@/components/site-footer/site-footer";
-import { SiteHeader } from "@/components/site-header/site-header";
 
 type HomeClientProps = {
   pageTree: PageTree.Root;
@@ -20,9 +20,11 @@ type HomeClientProps = {
 
 export default function HomeClient({ pageTree }: HomeClientProps) {
   const [activeCells, setActiveCells] = useState<Map<string, number>>(
-    new Map()
+    new Map(),
   );
   const cellSize = 100;
+  const CELL_ACTIVE_DURATION_MS = 400;
+  const CLEANUP_INTERVAL_MS = 50;
 
   const SPRING = {
     mass: 0.1,
@@ -53,13 +55,13 @@ export default function HomeClient({ pageTree }: HomeClientProps) {
       setActiveCells((prev) => {
         const newMap = new Map(prev);
         for (const [key, timestamp] of newMap.entries()) {
-          if (now - timestamp > 400) {
+          if (now - timestamp > CELL_ACTIVE_DURATION_MS) {
             newMap.delete(key);
           }
         }
         return newMap;
       });
-    }, 50);
+    }, CLEANUP_INTERVAL_MS);
 
     return () => clearInterval(interval);
   }, []);
@@ -90,6 +92,7 @@ export default function HomeClient({ pageTree }: HomeClientProps) {
             pointerEvents: "none",
           }}
         >
+          <title>Noise Filter Definition</title>
           <defs>
             <filter id="noise-filter">
               <motion.feTurbulence

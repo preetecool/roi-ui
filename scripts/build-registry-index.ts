@@ -1,5 +1,8 @@
+import type { Dirent } from "node:fs";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+
+const FILE_EXTENSION_REGEX = /\.(tsx?|jsx?)$/;
 
 async function buildRegistryIndex() {
   const examplesDir = path.join(process.cwd(), "registry/brook/examples");
@@ -9,7 +12,7 @@ async function buildRegistryIndex() {
     withFileTypes: true,
   });
 
-  let blocksEntries: any[] = [];
+  let blocksEntries: Dirent[] = [];
   try {
     blocksEntries = await fs.readdir(blocksDir, { withFileTypes: true });
   } catch {
@@ -24,7 +27,7 @@ export const Index: Record<string, any> = {`;
 
   // Process examples
   for (const entry of examplesEntries) {
-    const name = entry.name.replace(/\.(tsx?|jsx?)$/, "");
+    const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
 
     // Check if it's a file or folder
     const isFile = entry.isFile();
@@ -46,7 +49,7 @@ export const Index: Record<string, any> = {`;
 
   // Process blocks
   for (const entry of blocksEntries) {
-    const name = entry.name.replace(/\.(tsx?|jsx?)$/, "");
+    const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
 
     // Check if it's a file or folder
     const isFile = entry.isFile();

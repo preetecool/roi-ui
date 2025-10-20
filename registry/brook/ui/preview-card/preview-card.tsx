@@ -1,7 +1,7 @@
 "use client";
 
-import { PreviewCard } from "@base-ui-components/react/preview-card";
 import { cn } from "@/lib/utils";
+import { PreviewCard } from "@base-ui-components/react/preview-card";
 import styles from "./preview-card.module.css";
 
 function PreviewCardRoot({
@@ -69,10 +69,10 @@ function PreviewCardArrow({
 
 export {
   PreviewCardRoot as PreviewCard,
-  PreviewCardTrigger,
-  PreviewCardPortal,
-  PreviewCardBackdrop,
-  PreviewCardPositioner,
-  PreviewCardPopup,
   PreviewCardArrow,
+  PreviewCardBackdrop,
+  PreviewCardPopup,
+  PreviewCardPortal,
+  PreviewCardPositioner,
+  PreviewCardTrigger,
 };

@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { ContextMenu } from "@base-ui-components/react/context-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
-import { cn } from "@/lib/utils";
 import styles from "./context-menu.module.css";
 
 function ContextMenuRoot({
@@ -190,20 +190,20 @@ function ContextMenuShortcut({
 
 export {
   ContextMenuRoot as ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuPortal,
-  ContextMenuBackdrop,
-  ContextMenuPositioner,
-  ContextMenuPopup,
   ContextMenuArrow,
-  ContextMenuItem,
+  ContextMenuBackdrop,
   ContextMenuCheckboxItem,
-  ContextMenuRadioItem,
-  ContextMenuRadioGroup,
+  ContextMenuGroup,
+  ContextMenuItem,
   ContextMenuLabel,
+  ContextMenuPopup,
+  ContextMenuPortal,
+  ContextMenuPositioner,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
   ContextMenuSeparator,
+  ContextMenuShortcut,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
-  ContextMenuGroup,
-  ContextMenuShortcut,
+  ContextMenuTrigger,
 };

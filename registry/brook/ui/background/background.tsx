@@ -365,24 +365,24 @@ const Background: React.FC<BackgroundProps> = ({
 
     const primaryColorLocation = gl.getUniformLocation(
       program,
-      "u_primaryColor"
+      "u_primaryColor",
     );
     const secondaryColorLocation = gl.getUniformLocation(
       program,
-      "u_secondaryColor"
+      "u_secondaryColor",
     );
     const backgroundColorLocation = gl.getUniformLocation(
       program,
-      "u_backgroundColor"
+      "u_backgroundColor",
     );
     const backgroundOpacityLocation = gl.getUniformLocation(
       program,
-      "u_backgroundOpacity"
+      "u_backgroundOpacity",
     );
 
     const animationSpeedLocation = gl.getUniformLocation(
       program,
-      "u_animationSpeed"
+      "u_animationSpeed",
     );
     const noiseScaleLocation = gl.getUniformLocation(program, "u_noiseScale");
     const intensityLocation = gl.getUniformLocation(program, "u_intensity");
@@ -390,7 +390,7 @@ const Background: React.FC<BackgroundProps> = ({
     const octavesLocation = gl.getUniformLocation(program, "u_octaves");
     const warpStrengthLocation = gl.getUniformLocation(
       program,
-      "u_warpStrength"
+      "u_warpStrength",
     );
 
     const render = (time: number) => {
@@ -408,19 +408,19 @@ const Background: React.FC<BackgroundProps> = ({
         primaryColorLocation,
         primaryColor[0],
         primaryColor[1],
-        primaryColor[2]
+        primaryColor[2],
       );
       gl.uniform3f(
         secondaryColorLocation,
         secondaryColor[0],
         secondaryColor[1],
-        secondaryColor[2]
+        secondaryColor[2],
       );
       gl.uniform3f(
         backgroundColorLocation,
         backgroundColor[0],
         backgroundColor[1],
-        backgroundColor[2]
+        backgroundColor[2],
       );
       gl.uniform1f(backgroundOpacityLocation, backgroundOpacity);
 

@@ -1,7 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   DialogClose,
@@ -13,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/brook/ui/dialog/dialog";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 import styles from "./dialog-motion.module.css";
 
 export default function DialogFramerMotion() {

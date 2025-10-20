@@ -1,10 +1,10 @@
 "use client";
 
+import { Button } from "@/registry/brook/ui/button/button";
 import type { PageTree } from "fumadocs-core/server";
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button } from "@/registry/brook/ui/button/button";
 import { Logo } from "../logo";
 import { MobileNav } from "../mobile-nav/mobile-nav";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
@@ -29,7 +29,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
   const borderOpacity = useTransform(
     scrollY,
     [0, 50],
-    isMobile ? [1, 1] : [0, 1]
+    isMobile ? [1, 1] : [0, 1],
   );
 
   return (
@@ -46,7 +46,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
             borderBottomColor: useTransform(
               borderOpacity,
               (o) =>
-                `color-mix(in oklch, var(--border-dark) ${o * 50}%, transparent)`
+                `color-mix(in oklch, var(--border-dark) ${o * 50}%, transparent)`,
             ),
             marginLeft: "-20px",
             marginRight: "-20px",

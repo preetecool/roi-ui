@@ -1,9 +1,9 @@
 import { ComponentSource } from "@/components/component-source/component-source";
 import { Index } from "@/registry/__index__";
+import { ComponentPreviewClient } from "./component-preview-client";
+import styles from "./component-preview.module.css";
 import { getComponentFiles } from "./get-component-files";
 import { MultiFileComponentSource } from "./multi-file-component-source";
-import styles from "./component-preview.module.css";
-import { ComponentPreviewClient } from "./component-preview-client";
 
 type ComponentPreviewProps = {
   name: string;

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Progress,
   ProgressIndicator,
@@ -8,6 +7,7 @@ import {
   ProgressTrack,
   ProgressValue,
 } from "@/registry/brook/ui/progress/progress";
+import { useEffect, useState } from "react";
 import styles from "./progress-demo.module.css";
 
 export default function ProgressDemo() {

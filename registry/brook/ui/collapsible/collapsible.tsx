@@ -1,7 +1,7 @@
 "use client";
 
-import { Collapsible } from "@base-ui-components/react/collapsible";
 import { cn } from "@/lib/utils";
+import { Collapsible } from "@base-ui-components/react/collapsible";
 import styles from "./collapsible.module.css";
 
 function CollapsibleRoot({
@@ -54,4 +54,4 @@ function CollapsiblePanel({
   );
 }
 
-export { CollapsibleRoot as Collapsible, CollapsibleTrigger, CollapsiblePanel };
+export { CollapsibleRoot as Collapsible, CollapsiblePanel, CollapsibleTrigger };

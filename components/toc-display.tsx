@@ -1,7 +1,7 @@
 "use client";
 
-import { TableOfContents } from "./toc/toc";
 import { useTOC } from "./toc-context";
+import { TableOfContents } from "./toc/toc";
 
 export function TOCDisplay() {
   const { toc } = useTOC();

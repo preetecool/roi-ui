@@ -1,7 +1,7 @@
 "use client";
 
-import { ScrollArea } from "@base-ui-components/react/scroll-area";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@base-ui-components/react/scroll-area";
 import styles from "./scroll-area.module.css";
 
 function ScrollAreaRoot({
@@ -42,7 +42,7 @@ function ScrollAreaScrollbar({
       className={cn(
         styles.scrollbar,
         orientation === "horizontal" && styles.horizontal,
-        className
+        className,
       )}
       orientation={orientation}
       {...props}
@@ -70,9 +70,9 @@ function ScrollAreaCorner({
 
 export {
   ScrollAreaRoot as ScrollArea,
-  ScrollAreaViewport,
   ScrollAreaContent,
+  ScrollAreaCorner,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
-  ScrollAreaCorner,
+  ScrollAreaViewport,
 };

@@ -1,7 +1,7 @@
 "use client";
 
-import { Meter } from "@base-ui-components/react/meter";
 import { cn } from "@/lib/utils";
+import { Meter } from "@base-ui-components/react/meter";
 import styles from "./meter.module.css";
 
 function MeterRoot({
@@ -43,8 +43,8 @@ function MeterValue({
 
 export {
   MeterRoot as Meter,
+  MeterIndicator,
   MeterLabel,
   MeterTrack,
-  MeterIndicator,
   MeterValue,
 };

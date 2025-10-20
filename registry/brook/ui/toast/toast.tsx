@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Toast } from "@base-ui-components/react/toast";
 import { X } from "lucide-react";
-import { cn } from "@/lib/utils";
 import styles from "./toast.module.css";
 
 function ToastProvider({
@@ -58,7 +58,7 @@ function ToastClose({
   ...props
 }: React.ComponentPropsWithoutRef<typeof Toast.Close> & {
   render?: (
-    props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
   ) => React.ReactNode;
 }) {
   return (
@@ -71,12 +71,12 @@ function ToastClose({
 }
 
 export {
-  ToastProvider,
-  ToastPortal,
-  ToastViewport,
-  ToastRoot as Toast,
-  ToastTitle,
-  ToastDescription,
-  ToastClose,
   X as CloseIcon,
+  ToastRoot as Toast,
+  ToastClose,
+  ToastDescription,
+  ToastPortal,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
 };

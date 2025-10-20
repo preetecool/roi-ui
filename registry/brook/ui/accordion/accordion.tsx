@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Accordion } from "@base-ui-components/react/accordion";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 import styles from "./accordion.module.css";
 
 function AccordionRoot({

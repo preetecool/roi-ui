@@ -1,6 +1,4 @@
 "use client";
-import { Check } from "lucide-react";
-import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Card,
@@ -19,6 +17,8 @@ import {
   FieldError,
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
+import { Check } from "lucide-react";
+import { useState } from "react";
 import styles from "./card-login.module.css";
 
 export default function CardLoginDemo() {
@@ -26,7 +26,7 @@ export default function CardLoginDemo() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {}
+    {},
   );
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -1,10 +1,10 @@
 "use client";
 
+import { Button } from "@/registry/brook/ui/button/button";
+import { Tabs, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
-import { Button } from "@/registry/brook/ui/button/button";
-import { Tabs, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import styles from "./tabs-motion.module.css";
 
 const tabs = [

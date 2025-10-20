@@ -1,4 +1,3 @@
-import { Droplets } from "lucide-react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
@@ -11,6 +10,7 @@ import {
   CardIcon,
   CardTitle,
 } from "@/registry/brook/ui/card/card";
+import { Droplets } from "lucide-react";
 import styles from "./card-demo.module.css";
 
 export default function CardDemo() {

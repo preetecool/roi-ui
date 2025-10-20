@@ -44,7 +44,10 @@ export function CollapsibleCodeDisplay({
   buttonText: string;
   variant: string;
 }) {
-  const toggleId = `code-toggle-${Math.random().toString(36).substring(2, 11)}`;
+  const RADIX_36 = 36;
+  const SUBSTRING_START = 2;
+  const SUBSTRING_END = 11;
+  const toggleId = `code-toggle-${Math.random().toString(RADIX_36).substring(SUBSTRING_START, SUBSTRING_END)}`;
 
   return (
     <div

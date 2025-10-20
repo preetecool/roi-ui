@@ -1,7 +1,7 @@
 "use client";
 
-import { Form } from "@base-ui-components/react/form";
 import { cn } from "@/lib/utils";
+import { Form } from "@base-ui-components/react/form";
 import {
   Field,
   FieldControl,
@@ -29,12 +29,12 @@ function FormActions({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
   FormRoot as Form,
-  Field as FormField,
+  FormActions,
   FieldControl as FormControl,
-  FieldLabel as FormLabel,
   FieldDescription as FormDescription,
   FieldError as FormError,
+  Field as FormField,
   FormGroup,
+  FieldLabel as FormLabel,
   FormRow,
-  FormActions,
 };

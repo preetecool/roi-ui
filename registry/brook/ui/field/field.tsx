@@ -1,7 +1,7 @@
 "use client";
 
-import { Field } from "@base-ui-components/react/field";
 import { cn } from "@/lib/utils";
+import { Field } from "@base-ui-components/react/field";
 import styles from "./field.module.css";
 
 function FieldRoot({
@@ -53,7 +53,7 @@ function FieldError({
 export {
   FieldRoot as Field,
   FieldControl,
-  FieldLabel,
   FieldDescription,
   FieldError,
+  FieldLabel,
 };

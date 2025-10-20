@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
+import { motion } from "motion/react";
 
 const bounceVariants = {
   bounce: {

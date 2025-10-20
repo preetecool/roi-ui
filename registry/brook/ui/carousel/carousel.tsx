@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import {
   cloneElement,
   isValidElement,
@@ -10,7 +11,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { cn } from "@/lib/utils";
 import styles from "./carousel.module.css";
 
 export type CarouselItem = {
@@ -68,7 +68,7 @@ function Carousel({
 
   const itemWidth = useMemo(
     () => `calc((100% - ${gap * (itemsPerView - 1)}px) / ${itemsPerView})`,
-    [itemsPerView, gap]
+    [itemsPerView, gap],
   );
 
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -95,7 +95,7 @@ function Carousel({
       const previousItemOffset = index > 0 ? itemWidth * 0.2 : 0;
       const targetScroll = Math.max(
         0,
-        index * itemWithGap - previousItemOffset
+        index * itemWithGap - previousItemOffset,
       );
 
       isScrollingRef.current = true;
@@ -105,7 +105,7 @@ function Carousel({
         isScrollingRef.current = false;
       }, 300);
     },
-    [itemsPerView, gap]
+    [itemsPerView, gap],
   );
 
   const nextSlide = useCallback(() => {
@@ -127,7 +127,7 @@ function Carousel({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const isActiveInCarousel = carouselRef.current?.contains(
-        document.activeElement
+        document.activeElement,
       );
       const isActiveOnCarouselContainer =
         document.activeElement === carouselRef.current?.parentElement;
@@ -224,7 +224,7 @@ function Carousel({
         className={cn(
           styles.viewport,
           showLeftFade && styles.showLeftFade,
-          showRightFade && styles.showRightFade
+          showRightFade && styles.showRightFade,
         )}
         ref={viewportRef}
       >
@@ -275,7 +275,7 @@ function Carousel({
                           width: "100%",
                           height: "100%",
                         },
-                      }
+                      },
                     )
                   ) : (
                     <div
@@ -353,7 +353,7 @@ function Carousel({
               aria-selected={false}
               className={cn(
                 styles.indicator,
-                currentIndex === index && styles.indicatorActive
+                currentIndex === index && styles.indicatorActive,
               )}
               key={index}
               onClick={() => goToIndex(index)}

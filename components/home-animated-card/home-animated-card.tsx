@@ -17,6 +17,9 @@ export const HomeAnimatedCard = () => {
   const [visible, setVisible] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
   const [ref, bounds] = useMeasure();
+  const CARD_OPEN_DELAY_MS = 2150;
+  const EASE_START = 0.19;
+  const EASE_MID = 0.22;
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,7 +28,7 @@ export const HomeAnimatedCard = () => {
 
     setTimeout(() => {
       setCardOpen(true);
-    }, 2150);
+    }, CARD_OPEN_DELAY_MS);
   }, []);
 
   return (
@@ -37,8 +40,12 @@ export const HomeAnimatedCard = () => {
           initial={{ rotate: -4, y: 40, opacity: 0 }}
           transition={{
             height: { duration: 0.4, type: "spring", bounce: 0 },
-            y: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0 },
-            opacity: { duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0 },
+            y: { duration: 0.8, ease: [EASE_START, 1, EASE_MID, 1], delay: 0 },
+            opacity: {
+              duration: 0.8,
+              ease: [EASE_START, 1, EASE_MID, 1],
+              delay: 0,
+            },
           }}
         >
           <div ref={ref}>

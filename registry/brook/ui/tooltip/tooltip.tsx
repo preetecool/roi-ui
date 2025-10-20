@@ -1,7 +1,7 @@
 "use client";
 
-import { Tooltip } from "@base-ui-components/react/tooltip";
 import { cn } from "@/lib/utils";
+import { Tooltip } from "@base-ui-components/react/tooltip";
 import styles from "./tooltip.module.css";
 
 function TooltipProvider({
@@ -72,12 +72,12 @@ function ArrowSvg(props: React.ComponentProps<"svg">) {
 }
 
 export {
-  TooltipProvider,
+  ArrowSvg,
   TooltipRoot as Tooltip,
-  TooltipTrigger,
+  TooltipArrow,
+  TooltipPopup,
   TooltipPortal,
   TooltipPositioner,
-  TooltipPopup,
-  TooltipArrow,
-  ArrowSvg,
+  TooltipProvider,
+  TooltipTrigger,
 };

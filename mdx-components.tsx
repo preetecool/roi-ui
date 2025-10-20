@@ -1,7 +1,5 @@
-import Link from "next/link";
-import type { ComponentProps, ReactNode } from "react";
-import { CodeBlock } from "@/components/code-block/code-block";
 import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
+import { CodeBlock } from "@/components/code-block/code-block";
 import { ComponentPreview } from "@/components/component-preview/component-preview";
 import { ComponentSource } from "@/components/component-source/component-source";
 import { GlobalsCSS } from "@/components/globals-css";
@@ -13,6 +11,8 @@ import {
 } from "@/components/installation-tabs/installation-tabs";
 import { PropTable } from "@/components/prop-table/prop-table";
 import { Button } from "@/registry/brook/ui/button/button";
+import Link from "next/link";
+import type { ComponentProps, ReactNode } from "react";
 
 import {
   Tabs as CustomTabs,

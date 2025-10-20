@@ -1,5 +1,13 @@
 "use client";
 
+import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Card,
+  CardDescription,
+  CardIcon,
+  CardTitle,
+} from "@/registry/brook/ui/card/card";
+import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import {
   BarChart,
   Cloud,
@@ -12,14 +20,6 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Card,
-  CardDescription,
-  CardIcon,
-  CardTitle,
-} from "@/registry/brook/ui/card/card";
-import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import styles from "./carousel-demo.module.css";
 
 export default function CarouselDemo() {

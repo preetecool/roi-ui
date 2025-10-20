@@ -1,8 +1,8 @@
-import { Bold, Italic, Underline } from "lucide-react";
 import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/brook/ui/toggle-group/toggle-group";
+import { Bold, Italic, Underline } from "lucide-react";
 import styles from "./toggle-group-demo.module.css";
 
 export default function ToggleGroupDemo() {

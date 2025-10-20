@@ -3,7 +3,7 @@
   "extends": ["ultracite"],
   "css": {
     "parser": {
-      "cssModules": true
-    }
-  }
+      "cssModules": true,
+    },
+  },
 }

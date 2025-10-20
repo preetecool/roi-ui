@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Combobox } from "@base-ui-components/react/combobox";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
-import { cn } from "@/lib/utils";
 import styles from "./combobox.module.css";
 
 function ComboboxRoot<ItemValue>({
@@ -165,18 +165,18 @@ function ComboboxNoItems({
 
 export {
   ComboboxRoot as Combobox,
-  ComboboxTrigger,
-  ComboboxInput,
+  ComboboxArrow,
   ComboboxClear,
-  ComboboxPortal,
-  ComboboxPositioner,
-  ComboboxPopup,
-  ComboboxList,
   ComboboxEmpty,
-  ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxGroup,
   ComboboxGroupLabel,
-  ComboboxArrow,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxList,
   ComboboxNoItems,
+  ComboboxPopup,
+  ComboboxPortal,
+  ComboboxPositioner,
+  ComboboxTrigger,
 };

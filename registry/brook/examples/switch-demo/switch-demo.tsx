@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { Switch, SwitchThumb } from "@/registry/brook/ui/switch/switch";
+import { useState } from "react";
 import styles from "./switch-demo.module.css";
 
 export default function SwitchDemo() {

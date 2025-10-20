@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 import styles from "./copy-button.module.css";
 
 /**

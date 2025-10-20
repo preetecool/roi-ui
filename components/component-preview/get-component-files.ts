@@ -1,8 +1,8 @@
 import { existsSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { highlightCode } from "@/lib/highlight-code";
 import { transformCode } from "@/components/component-source/component-source-helpers";
+import { highlightCode } from "@/lib/highlight-code";
 
 type ProcessedFile = {
   name: string;

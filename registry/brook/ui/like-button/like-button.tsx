@@ -48,7 +48,7 @@ function LikeButton({
   const createParticle = (
     angleOffset: number,
     type: "star" | "circle",
-    size: number
+    size: number,
   ): Particle => {
     const baseAngle = -Math.PI / 2;
     const angle = baseAngle + (angleOffset * Math.PI) / 180;
@@ -74,7 +74,7 @@ function LikeButton({
       createParticle(0, "circle", 6),
       createParticle(30, "circle", 5),
     ],
-    [createParticle]
+    [createParticle],
   );
 
   const startThumbAnimation = useCallback(() => {

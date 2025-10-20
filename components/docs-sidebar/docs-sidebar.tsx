@@ -1,10 +1,5 @@
 "use client";
 
-import type { PageTree } from "fumadocs-core/server";
-import { Gauge } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
 import { Search } from "@/components/search/search";
 import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
@@ -19,6 +14,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/registry/brook/ui/tooltip/tooltip";
+import type { PageTree } from "fumadocs-core/server";
+import { Gauge } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import styles from "./docs-sidebar.module.css";
 
 type SidebarItem = {
@@ -467,12 +467,12 @@ function SidebarGroup({
       (child) =>
         pathname.startsWith(child.url || "") ||
         child.children?.some((grandchild) =>
-          pathname.startsWith(grandchild.url || "")
-        )
+          pathname.startsWith(grandchild.url || ""),
+        ),
     );
 
   const [isExpanded, setIsExpanded] = useState<boolean>(
-    level === 0 ? item.name === "UI" : (hasActiveChild ?? false)
+    level === 0 ? item.name === "UI" : (hasActiveChild ?? false),
   );
 
   const isCollapsedWithActiveChild = !isExpanded && hasActiveChild;

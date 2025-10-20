@@ -1,6 +1,6 @@
+import { cn } from "@/lib/utils";
 import { useRender } from "@base-ui-components/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
 import styles from "./button.module.css";
 
 const buttonVariants = cva(styles.base, {
@@ -79,7 +79,7 @@ function ArrowPointer({
       className={cn(
         styles.arrow,
         pointLeft && styles.arrowLeft,
-        pointExternal && styles.arrowExternal
+        pointExternal && styles.arrowExternal,
       )}
       fill="none"
       viewBox="0 0 14 10"
@@ -149,7 +149,7 @@ function Button({
       className: cn(
         buttonVariants({ variant, size }),
         loading && styles.loading,
-        className
+        className,
       ),
       disabled: props.disabled || loading,
       children: decoratedChildren,

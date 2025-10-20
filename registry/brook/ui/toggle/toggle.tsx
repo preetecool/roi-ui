@@ -1,7 +1,7 @@
 "use client";
 
-import { Toggle } from "@base-ui-components/react/toggle";
 import { cn } from "@/lib/utils";
+import { Toggle } from "@base-ui-components/react/toggle";
 import styles from "./toggle.module.css";
 
 function ToggleRoot({

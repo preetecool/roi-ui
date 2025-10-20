@@ -41,8 +41,12 @@ export function getDisplayTitle(
   name: string | undefined,
   src: string | undefined
 ): string {
-  if (title) return title;
-  if (name) return `${name}.tsx`;
+  if (title) {
+    return title;
+  }
+  if (name) {
+    return `${name}.tsx`;
+  }
   if (src) {
     const filename = src.split("/").pop();
     return filename || "Code";

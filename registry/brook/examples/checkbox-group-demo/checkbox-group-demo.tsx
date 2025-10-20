@@ -1,11 +1,11 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
 import {
   Checkbox,
   CheckboxIndicator,
 } from "@/registry/brook/ui/checkbox/checkbox";
-import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
+import { Check } from "lucide-react";
 import styles from "./checkbox-group-demo.module.css";
 
 export default function CheckboxGroupDemo() {

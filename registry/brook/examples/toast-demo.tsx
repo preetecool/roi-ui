@@ -1,6 +1,5 @@
 "use client";
 
-import { Toast } from "@base-ui-components/react/toast";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   CloseIcon,
@@ -12,6 +11,7 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/registry/brook/ui/toast/toast";
+import { Toast } from "@base-ui-components/react/toast";
 
 export default function ToastDemo() {
   return (

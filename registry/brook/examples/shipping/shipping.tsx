@@ -1,9 +1,9 @@
 "use client";
 
-import { MessageCircle, Phone, Truck } from "lucide-react";
 import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card } from "@/registry/brook/ui/card/card";
+import { MessageCircle, Phone, Truck } from "lucide-react";
 
 import styles from "./shipping.module.css";
 

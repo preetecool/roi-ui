@@ -1,9 +1,5 @@
 "use client";
 
-import type { PageTree } from "fumadocs-core/server";
-import { Component, FileText, Puzzle } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -13,6 +9,10 @@ import {
   CommandList,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
+import type { PageTree } from "fumadocs-core/server";
+import { Component, FileText, Puzzle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import styles from "./search.module.css";
 
 type SearchProps = {
@@ -149,7 +149,8 @@ export function Search({ tree }: SearchProps) {
         return part
           .split(" ")
           .map(
-            (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            (word) =>
+              word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
           )
           .join(" ");
       })
@@ -157,7 +158,7 @@ export function Search({ tree }: SearchProps) {
 
   const collectGroups = (
     node: PageTree.Node,
-    parentName = ""
+    parentName = "",
   ): Array<{
     heading: string;
     pages: Array<{ name: string; url: string }>;
@@ -193,7 +194,7 @@ export function Search({ tree }: SearchProps) {
             child,
             parentName
               ? `${parentName} / ${node.name?.toString() || ""}`
-              : node.name?.toString() || ""
+              : node.name?.toString() || "",
           );
           groups.push(...childGroups);
         }
@@ -204,7 +205,7 @@ export function Search({ tree }: SearchProps) {
   };
 
   const allGroups = tree.children.flatMap((topLevel) =>
-    collectGroups(topLevel)
+    collectGroups(topLevel),
   );
 
   if (!isOpen) {

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Autocomplete,
   AutocompleteEmpty,
@@ -11,6 +10,7 @@ import {
   AutocompletePortal,
   AutocompletePositioner,
 } from "@/registry/brook/ui/autocomplete/autocomplete";
+import { useState } from "react";
 import styles from "./autocomplete-demo.module.css";
 
 type Tag = {

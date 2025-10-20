@@ -1,13 +1,4 @@
 import {
-  Calendar,
-  CreditCard,
-  FileText,
-  Mail,
-  Smile,
-  Terminal,
-  User,
-} from "lucide-react";
-import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -17,6 +8,15 @@ import {
   CommandSeparator,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
+import {
+  Calendar,
+  CreditCard,
+  FileText,
+  Mail,
+  Smile,
+  Terminal,
+  User,
+} from "lucide-react";
 import styles from "./command-demo.module.css";
 
 export default function CommandDemo() {

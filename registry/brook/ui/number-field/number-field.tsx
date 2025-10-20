@@ -1,7 +1,7 @@
 "use client";
 
-import { NumberField } from "@base-ui-components/react/number-field";
 import { cn } from "@/lib/utils";
+import { NumberField } from "@base-ui-components/react/number-field";
 import styles from "./number-field.module.css";
 
 function NumberFieldRoot({
@@ -115,10 +115,10 @@ function NumberFieldScrubAreaCursor({
 
 export {
   NumberFieldRoot as NumberField,
-  NumberFieldGroup,
-  NumberFieldInput,
-  NumberFieldIncrement,
   NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
   NumberFieldScrubArea,
   NumberFieldScrubAreaCursor,
 };
