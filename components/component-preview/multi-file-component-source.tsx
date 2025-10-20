@@ -87,6 +87,7 @@ export function MultiFileComponentSource({
       <div className={componentSourceStyles.codeContent}>
         <div
           className={`code-container ${componentSourceStyles.codeContainer} ${componentSourceStyles.codeContainerEmbedded}`}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
           dangerouslySetInnerHTML={{ __html: currentFile.content }}
         />
       </div>
