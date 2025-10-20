@@ -91,17 +91,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
     <>
       <TOCUpdater toc={toc} />
 
-      <div
-        className={styles.pageContent}
-        {...(doc.title === "Introduction" && {
-          "data-introduction-page": true,
-        })}
-        {...((!params.slug ||
-          params.slug.length === 0 ||
-          (params.slug.length === 1 && params.slug[0] === "start")) && {
-          "data-no-gap-page": true,
-        })}
-      >
+      <div className={styles.pageContent}>
         <div className={styles.pageHeader}>
           <div className={styles.headerContent}>
             <div className={styles.titleSection}>
