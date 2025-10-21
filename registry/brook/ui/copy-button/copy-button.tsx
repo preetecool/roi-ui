@@ -1,10 +1,12 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./copy-button.module.css";
+
+const COPIED_RESET_DELAY_MS = 800;
 
 /**
  * CopyButton component for copying text to clipboard with animated feedback.
@@ -25,8 +27,10 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      setTimeout(() => setCopied(false), 800);
-    } catch (_error) {}
+      setTimeout(() => setCopied(false), COPIED_RESET_DELAY_MS);
+    } catch (_error) {
+      // Silently fail - user will notice copy didn't work
+    }
   };
 
   const isHeaderButton = className?.includes("header-copy-button");

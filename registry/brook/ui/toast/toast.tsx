@@ -1,8 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Toast } from "@base-ui-components/react/toast";
-import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import styles from "./toast.module.css";
 
 function ToastProvider({
@@ -58,7 +57,7 @@ function ToastClose({
   ...props
 }: React.ComponentPropsWithoutRef<typeof Toast.Close> & {
   render?: (
-    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>
   ) => React.ReactNode;
 }) {
   return (
@@ -70,8 +69,10 @@ function ToastClose({
   );
 }
 
+// biome-ignore lint/performance/noBarrelFile: Re-exporting icon as part of component API
+export { X as CloseIcon } from "lucide-react";
+
 export {
-  X as CloseIcon,
   ToastRoot as Toast,
   ToastClose,
   ToastDescription,

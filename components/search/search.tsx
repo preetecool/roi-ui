@@ -1,5 +1,9 @@
 "use client";
 
+import type { PageTree } from "fumadocs-core/server";
+import { Component, FileText, Puzzle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -9,10 +13,6 @@ import {
   CommandList,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import type { PageTree } from "fumadocs-core/server";
-import { Component, FileText, Puzzle } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 import styles from "./search.module.css";
 
 type SearchProps = {
@@ -21,6 +21,7 @@ type SearchProps = {
 
 const ArrowIcon = () => (
   <svg
+    aria-hidden="true"
     fill="none"
     height="10"
     viewBox="0 0 14 10"
@@ -76,10 +77,11 @@ export function Search({ tree }: SearchProps) {
 
   const handleClose = () => {
     setIsClosing(true);
+    const CLOSE_ANIMATION_DELAY = 150;
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
-    }, 150);
+    }, CLOSE_ANIMATION_DELAY);
   };
 
   const handleSelect = (url: string) => {
@@ -149,16 +151,35 @@ export function Search({ tree }: SearchProps) {
         return part
           .split(" ")
           .map(
-            (word) =>
-              word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+            (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
           )
           .join(" ");
       })
       .join(" / ");
 
-  const collectGroups = (
-    node: PageTree.Node,
-    parentName = "",
+  const buildHeadingPath = (parentName: string, nodeName: string) =>
+    parentName ? `${parentName} / ${nodeName}` : nodeName;
+
+  const extractPagesFromChildren = (
+    children: PageTree.Node[]
+  ): Array<{ name: string; url: string }> => {
+    const pages: Array<{ name: string; url: string }> = [];
+
+    for (const child of children) {
+      if (child.type === "page" && child.url) {
+        pages.push({
+          name: child.name?.toString() || "",
+          url: child.url,
+        });
+      }
+    }
+
+    return pages;
+  };
+
+  const collectChildFolderGroups = (
+    children: PageTree.Node[],
+    currentPath: string
   ): Array<{
     heading: string;
     pages: Array<{ name: string; url: string }>;
@@ -168,44 +189,50 @@ export function Search({ tree }: SearchProps) {
       pages: Array<{ name: string; url: string }>;
     }> = [];
 
-    if (node.type === "folder" && node.children) {
-      const pages: Array<{ name: string; url: string }> = [];
-
-      for (const child of node.children) {
-        if (child.type === "page" && child.url) {
-          pages.push({
-            name: child.name?.toString() || "",
-            url: child.url,
-          });
-        }
-      }
-
-      if (pages.length > 0) {
-        const rawHeading = parentName
-          ? `${parentName} / ${node.name?.toString() || ""}`
-          : node.name?.toString() || "";
-        const heading = formatHeading(rawHeading);
-        groups.push({ heading, pages });
-      }
-
-      for (const child of node.children) {
-        if (child.type === "folder") {
-          const childGroups = collectGroups(
-            child,
-            parentName
-              ? `${parentName} / ${node.name?.toString() || ""}`
-              : node.name?.toString() || "",
-          );
-          groups.push(...childGroups);
-        }
+    for (const child of children) {
+      if (child.type === "folder") {
+        const childGroups = collectGroups(child, currentPath);
+        groups.push(...childGroups);
       }
     }
 
     return groups;
   };
 
+  const collectGroups = (
+    node: PageTree.Node,
+    parentName = ""
+  ): Array<{
+    heading: string;
+    pages: Array<{ name: string; url: string }>;
+  }> => {
+    const groups: Array<{
+      heading: string;
+      pages: Array<{ name: string; url: string }>;
+    }> = [];
+
+    if (node.type !== "folder" || !node.children) {
+      return groups;
+    }
+
+    const nodeName = node.name?.toString() || "";
+    const pages = extractPagesFromChildren(node.children);
+
+    if (pages.length > 0) {
+      const rawHeading = buildHeadingPath(parentName, nodeName);
+      const heading = formatHeading(rawHeading);
+      groups.push({ heading, pages });
+    }
+
+    const currentPath = buildHeadingPath(parentName, nodeName);
+    const childGroups = collectChildFolderGroups(node.children, currentPath);
+    groups.push(...childGroups);
+
+    return groups;
+  };
+
   const allGroups = tree.children.flatMap((topLevel) =>
-    collectGroups(topLevel),
+    collectGroups(topLevel)
   );
 
   if (!isOpen) {
@@ -214,9 +241,18 @@ export function Search({ tree }: SearchProps) {
 
   return (
     <>
-      <div
+      <button
+        aria-label="Close search"
         className={`${styles.overlay} ${isClosing ? styles.overlayClosing : ""}`}
         onClick={handleClose}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleClose();
+          }
+        }}
+        tabIndex={0}
+        type="button"
       />
       <div
         className={`${styles.commandWrapper} ${isClosing ? styles.commandWrapperClosing : ""}`}
@@ -249,6 +285,7 @@ export function Search({ tree }: SearchProps) {
             <div className={styles.commandFooterItem}>
               <Kbd className={styles.commandFooterKbd} size="md">
                 <svg
+                  aria-hidden="true"
                   fill="none"
                   height="14"
                   stroke="currentColor"

@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Avatar } from "@base-ui-components/react/avatar";
+import { cn } from "@/lib/utils";
 import styles from "./avatar.module.css";
 
 function AvatarRoot({

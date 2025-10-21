@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Collapsible } from "@base-ui-components/react/collapsible";
+import { cn } from "@/lib/utils";
 import styles from "./collapsible.module.css";
 
 function CollapsibleRoot({
@@ -20,6 +20,7 @@ function CollapsibleTrigger({
     <Collapsible.Trigger className={cn(styles.trigger, className)} {...props}>
       {children}
       <svg
+        aria-hidden="true"
         className={styles.chevron}
         fill="none"
         height="16"

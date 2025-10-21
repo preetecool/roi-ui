@@ -22,6 +22,23 @@
   height: 100%;
 }
 
+.title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 0.875rem;
+  grid-column-start: 2;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.875rem;
+  grid-column-start: 2;
+
+  color: var(--muted-foreground);
+}
+
 .default {
   color: var(--foreground);
 }
@@ -72,21 +89,4 @@
 
 .info .description {
   color: var(--info);
-}
-
-.title {
-  margin: 0;
-  font-weight: 400;
-  font-size: 0.875rem;
-  grid-column-start: 2;
-  letter-spacing: -0.02em;
-}
-
-.description {
-  margin: 0;
-  font-weight: 300;
-  font-size: 0.875rem;
-  grid-column-start: 2;
-
-  color: var(--muted-foreground);
 }

@@ -1,13 +1,5 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Card,
-  CardDescription,
-  CardIcon,
-  CardTitle,
-} from "@/registry/brook/ui/card/card";
-import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import {
   BarChart,
   Cloud,
@@ -20,7 +12,21 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Card,
+  CardDescription,
+  CardIcon,
+  CardTitle,
+} from "@/registry/brook/ui/card/card";
+import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import styles from "./carousel-demo.module.css";
+
+const DESKTOP_BREAKPOINT = 1024;
+const TABLET_BREAKPOINT = 768;
+const DESKTOP_ITEMS_PER_VIEW = 3.1;
+const TABLET_ITEMS_PER_VIEW = 2.5;
+const MOBILE_ITEMS_PER_VIEW = 1.2;
 
 export default function CarouselDemo() {
   const features = [
@@ -111,12 +117,12 @@ export default function CarouselDemo() {
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth >= 1024) {
-        setItemsPerView(3.1); // Desktop: more compact
-      } else if (window.innerWidth >= 768) {
-        setItemsPerView(2.5); // Tablet: medium compact
+      if (window.innerWidth >= DESKTOP_BREAKPOINT) {
+        setItemsPerView(DESKTOP_ITEMS_PER_VIEW); // Desktop: more compact
+      } else if (window.innerWidth >= TABLET_BREAKPOINT) {
+        setItemsPerView(TABLET_ITEMS_PER_VIEW); // Tablet: medium compact
       } else {
-        setItemsPerView(1.2); // Mobile: less compact
+        setItemsPerView(MOBILE_ITEMS_PER_VIEW); // Mobile: less compact
       }
     };
 

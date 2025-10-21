@@ -1,5 +1,6 @@
 "use client";
 
+import { Info } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Popover,
@@ -7,7 +8,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/brook/ui/popover/popover";
-import { Info } from "lucide-react";
 import styles from "./prop-table.module.css";
 
 type PropRow = {
@@ -34,7 +34,7 @@ export function PropTable({ data }: PropTableProps) {
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr className={styles.row} key={index}>
+            <tr className={styles.row} key={`row-${row.prop}-${index}`}>
               <td className={styles.cell}>
                 <div className={styles.propCell}>
                   <code className={styles.code}>{row.prop}</code>

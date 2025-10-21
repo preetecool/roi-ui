@@ -24,6 +24,7 @@ export default function DropdownMenuFramerMotion() {
           type: "spring",
           bounce: 0.1,
           duration: 0.3,
+          // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
           ease: [0.19, 1, 0.22, 1],
         }}
       >

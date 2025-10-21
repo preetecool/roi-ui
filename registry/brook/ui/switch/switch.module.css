@@ -3,7 +3,6 @@
   display: inline-flex;
   align-items: center;
   appearance: none;
-  border: 0;
   margin: 0;
   padding: 2px;
   width: 44px;
@@ -11,7 +10,6 @@
   border-radius: 12px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--mix-card-50-bg);
-
   border: 1px solid var(--border);
 
   &:hover {

@@ -5,7 +5,7 @@ import { CodeBlock } from "./code-block/code-block";
 export function GlobalsCSS() {
   const cssContent = readFileSync(
     join(process.cwd(), "styles/globals.css"),
-    "utf8",
+    "utf8"
   );
 
   return <CodeBlock code={cssContent} filename="globals.css" language="css" />;

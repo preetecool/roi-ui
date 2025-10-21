@@ -1,11 +1,11 @@
 "use client";
 
+import { Info } from "lucide-react";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
 } from "@/registry/brook/ui/alert/alert";
-import { Info } from "lucide-react";
 import styles from "./alert-info.module.css";
 
 export default function AlertInfo() {

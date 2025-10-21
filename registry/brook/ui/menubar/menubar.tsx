@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Menubar } from "@base-ui-components/react/menubar";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuArrow,

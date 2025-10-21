@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Autocomplete,
   AutocompleteEmpty,
@@ -10,7 +11,6 @@ import {
   AutocompletePortal,
   AutocompletePositioner,
 } from "@/registry/brook/ui/autocomplete/autocomplete";
-import { useState } from "react";
 import styles from "./autocomplete-demo.module.css";
 
 type Tag = {
@@ -59,10 +59,11 @@ export default function AutocompleteDemo() {
           value={value}
         >
           <div className={styles.inputWrapper}>
-            <label className={styles.label}>
+            <label className={styles.label} htmlFor="tag-search">
               Search tags
               <AutocompleteInput
                 className={styles.input}
+                id="tag-search"
                 placeholder="e.g. feature"
               />
             </label>

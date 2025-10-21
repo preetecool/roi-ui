@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
 import type { PageTree } from "fumadocs-core/server";
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
 import { Logo } from "../logo";
 import { MobileNav } from "../mobile-nav/mobile-nav";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
@@ -18,18 +18,22 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
   const [isMobile, setIsMobile] = useState(false);
   const { scrollY } = useScroll();
 
+  const MOBILE_BREAKPOINT = 1024;
+  const SCROLL_THRESHOLD = 100;
+  const HEADER_TOP_OFFSET = 30;
+
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    const checkMobile = () =>
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const top = useTransform(scrollY, [0, 100], isMobile ? [0, 0] : [30, 0]);
-  const borderOpacity = useTransform(
+  const top = useTransform(
     scrollY,
-    [0, 50],
-    isMobile ? [1, 1] : [0, 1],
+    [0, SCROLL_THRESHOLD],
+    isMobile ? [0, 0] : [HEADER_TOP_OFFSET, 0]
   );
 
   return (
@@ -40,25 +44,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
       }}
     >
       <div className={styles.container}>
-        <motion.div
-          style={{
-            borderBottom: "1px solid var(--border-dark)",
-            borderBottomColor: useTransform(
-              borderOpacity,
-              (o) =>
-                `color-mix(in oklch, var(--border-dark) ${o * 50}%, transparent)`,
-            ),
-            marginLeft: "-20px",
-            marginRight: "-20px",
-            paddingLeft: "20px",
-            paddingRight: "20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: "100%",
-            width: "calc(100% + 40px)",
-          }}
-        >
+        <motion.div className={styles.innerWrapper}>
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
               <Link className={styles.logoLink} href="/">
@@ -73,6 +59,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
 
             <div className={`${styles.navLinks} lg:flex`}>
               <Button
+                aria-label="Navigate to /docs page"
                 className={styles.navLink}
                 render={<Link href="/docs" />}
                 size="sm"
@@ -88,7 +75,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
               aria-label="View source on GitHub"
               className={`${styles.githubLink} ${styles.desktopOnly}`}
               render={
-                <a
+                <Link
                   href="https://github.com/preetecool/roi-ui"
                   rel="noopener noreferrer"
                   target="_blank"
@@ -98,7 +85,9 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
               variant="ghost"
             >
               <svg
+                aria-label="GitHub"
                 height="18"
+                role="img"
                 viewBox="0 0 98 96"
                 width="18"
                 xmlns="http://www.w3.org/2000/svg"

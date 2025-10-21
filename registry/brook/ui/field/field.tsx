@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Field } from "@base-ui-components/react/field";
+import { cn } from "@/lib/utils";
 import styles from "./field.module.css";
 
 function FieldRoot({

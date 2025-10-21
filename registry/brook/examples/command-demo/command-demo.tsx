@@ -1,4 +1,13 @@
 import {
+  Calendar,
+  CreditCard,
+  FileText,
+  Mail,
+  Smile,
+  Terminal,
+  User,
+} from "lucide-react";
+import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -8,15 +17,6 @@ import {
   CommandSeparator,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import {
-  Calendar,
-  CreditCard,
-  FileText,
-  Mail,
-  Smile,
-  Terminal,
-  User,
-} from "lucide-react";
 import styles from "./command-demo.module.css";
 
 export default function CommandDemo() {
@@ -67,6 +67,7 @@ export default function CommandDemo() {
         <div className={styles.commandFooterItem}>
           <Kbd className={styles.commandFooterKbd} size="md">
             <svg
+              aria-hidden="true"
               fill="none"
               height="14"
               stroke="currentColor"

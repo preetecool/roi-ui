@@ -54,7 +54,7 @@
   }
 
   &[data-side="right"] {
-    left: -8x;
+    left: -8px;
     transform: rotate(-90deg);
   }
 

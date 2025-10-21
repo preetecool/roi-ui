@@ -87,7 +87,9 @@ export function MobileNav({ tree }: MobileNavProps) {
                     target="_blank"
                   >
                     <svg
+                      aria-label="GitHub"
                       height="20"
+                      role="img"
                       viewBox="0 0 98 96"
                       width="20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -123,10 +125,11 @@ function MobileSidebarGroup({
   const isActive = pathname === item.url;
 
   if (!hasChildren && item.type === "page" && item.url) {
+    const url = item.url;
     return (
       <Dialog.Close
         className={`${styles.pageLink} ${isActive ? styles.pageLinkActive : styles.pageLinkInactive}`}
-        onClick={() => router.push(item.url!)}
+        onClick={() => router.push(url)}
       >
         {item.name}
       </Dialog.Close>

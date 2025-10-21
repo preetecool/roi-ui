@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { Tabs } from "@base-ui-components/react/tabs";
+import { cn } from "@/lib/utils";
 import styles from "./tabs.module.css";
 
 function TabsRoot({

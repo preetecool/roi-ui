@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   NavigationMenu,
@@ -12,7 +13,6 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
-import { ChevronDown } from "lucide-react";
 import styles from "./navigation-sub-menu.module.css";
 
 export default function NavigationSubMenu() {

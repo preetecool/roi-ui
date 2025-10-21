@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Slider } from "@base-ui-components/react/slider";
+import { cn } from "@/lib/utils";
 import styles from "./slider.module.css";
 
 function SliderRoot({

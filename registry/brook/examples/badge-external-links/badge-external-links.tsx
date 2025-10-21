@@ -1,7 +1,7 @@
 "use client";
 
-import { Badge } from "@/registry/brook/ui/badge/badge";
 import Link from "next/link";
+import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./badge-external-links.module.css";
 
 export default function BadgeExternalLinks() {

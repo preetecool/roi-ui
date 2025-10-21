@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "@/registry/brook/ui/button/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
@@ -23,6 +23,7 @@ const COMPONENTS = [
 
 const ArrowPointer = () => (
   <svg
+    aria-hidden="true"
     className={styles.badgeArrow}
     fill="none"
     viewBox="0 0 14 10"
@@ -76,7 +77,7 @@ export const HomeHeader = () => {
       </Link>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span className={styles.wordContainer} key={index}>
+          <span className={styles.wordContainer} key={word}>
             <span
               className={styles.wordWrapper}
               style={{ "--index": index } as React.CSSProperties}

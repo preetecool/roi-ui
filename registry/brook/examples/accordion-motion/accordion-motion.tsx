@@ -5,6 +5,10 @@ import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
 import styles from "./accordion-motion.module.css";
 
+// biome-ignore lint/style/noMagicNumbers: cubic-bezier easing curve values
+const EASE_IN_OUT_CUBIC = [0.455, 0.03, 0.515, 0.955] as const;
+const ICON_ROTATION = 90;
+
 const accordionItems = [
   {
     id: "item-1",
@@ -31,9 +35,7 @@ export default function AccordionFramerMotion() {
 
   return (
     <div className={styles.container}>
-      <MotionConfig
-        transition={{ duration: 0.15, ease: [0.455, 0.03, 0.515, 0.955] }}
-      >
+      <MotionConfig transition={{ duration: 0.15, ease: EASE_IN_OUT_CUBIC }}>
         <Accordion.Root onValueChange={setValue} value={value}>
           {accordionItems.map((item) => {
             const isOpen = value.includes(item.id);
@@ -54,15 +56,18 @@ export default function AccordionFramerMotion() {
                       render={<motion.button />}
                     >
                       <motion.div
-                        animate={{ rotate: isOpen ? 90 : 0 }}
+                        animate={{ rotate: isOpen ? ICON_ROTATION : 0 }}
                         className={styles.icon}
                       >
                         <svg
+                          aria-label="Accordion toggle icon"
                           fill="none"
                           height="18"
+                          role="img"
                           viewBox="0 0 20 20"
                           width="18"
                         >
+                          <title>Toggle accordion</title>
                           <motion.path
                             animate={{
                               d: isOpen ? "M10 4L10 16" : "M4 10L16 10",

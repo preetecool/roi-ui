@@ -32,6 +32,54 @@ export type BarChartProps = {
   animated?: boolean;
 };
 
+const ANIMATION_DURATION_MS = 500;
+// biome-ignore lint/style/noMagicNumbers: Border radius values for bar corners
+const BAR_RADIUS = [4, 4, 0, 0] as const;
+
+type TooltipPayload = {
+  value: number;
+  payload: BarChartData;
+};
+
+type CustomTooltipProps = {
+  active?: boolean;
+  payload?: TooltipPayload[];
+  label?: string | number;
+  tooltipLabelFormatter: (value: string | number) => string;
+  tooltipValueFormatter: (value: number | string, name?: string) => string;
+  color: string;
+};
+
+function CustomTooltip({
+  active,
+  payload,
+  label,
+  tooltipLabelFormatter,
+  tooltipValueFormatter,
+  color,
+}: CustomTooltipProps) {
+  if (!(active && payload && payload.length)) {
+    return null;
+  }
+
+  const tooltipData = payload[0];
+  return (
+    <ChartTooltip
+      active={active}
+      label={label}
+      labelFormatter={tooltipLabelFormatter}
+      payload={[
+        {
+          ...tooltipData,
+          name: "Revenue",
+          color,
+        },
+      ]}
+      valueFormatter={tooltipValueFormatter}
+    />
+  );
+}
+
 function BarChart({
   data,
   showXAxis = true,
@@ -60,42 +108,6 @@ function BarChart({
       ? String(value)
       : `$${numValue.toLocaleString()}k`;
   };
-
-  type TooltipPayload = {
-    value: number;
-    payload: BarChartData;
-  };
-
-  function CustomTooltip({
-    active,
-    payload,
-    label,
-  }: {
-    active?: boolean;
-    payload?: TooltipPayload[];
-    label?: string | number;
-  }) {
-    if (!(active && payload && payload.length)) {
-      return null;
-    }
-
-    const data = payload[0];
-    return (
-      <ChartTooltip
-        active={active}
-        label={label}
-        labelFormatter={tooltipLabelFormatter}
-        payload={[
-          {
-            ...data,
-            name: "Sales",
-            color,
-          },
-        ]}
-        valueFormatter={tooltipValueFormatter}
-      />
-    );
-  }
 
   return (
     <div className={styles.barChart}>
@@ -136,17 +148,27 @@ function BarChart({
             />
           )}
           <Tooltip
-            content={<CustomTooltip />}
+            content={
+              <CustomTooltip
+                color={color}
+                tooltipLabelFormatter={tooltipLabelFormatter}
+                tooltipValueFormatter={tooltipValueFormatter}
+              />
+            }
             cursor={{ fill: "var(--secondary)", opacity: 0.15 }}
           />
           <Bar
             animationBegin={animated ? 0 : undefined}
-            animationDuration={animated ? 500 : 0}
+            animationDuration={animated ? ANIMATION_DURATION_MS : 0}
             dataKey="amount"
             fill={color}
-            onMouseEnter={() => {}}
-            onMouseLeave={() => {}}
-            radius={[4, 4, 0, 0]}
+            onMouseEnter={() => {
+              /* Placeholder for hover interaction */
+            }}
+            onMouseLeave={() => {
+              /* Placeholder for hover interaction */
+            }}
+            radius={BAR_RADIUS}
             style={{
               cursor: "pointer",
             }}

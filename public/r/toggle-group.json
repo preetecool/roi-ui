@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/toggle-group/toggle-group.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { Toggle } from \"@base-ui-components/react/toggle\";\nimport { ToggleGroup } from \"@base-ui-components/react/toggle-group\";\nimport styles from \"./toggle-group.module.css\";\n\nfunction ToggleGroupRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof ToggleGroup>) {\n  return <ToggleGroup className={cn(styles.root, className)} {...props} />;\n}\n\nfunction ToggleGroupItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof Toggle>) {\n  return <Toggle className={cn(styles.item, className)} {...props} />;\n}\n\nexport { ToggleGroupRoot as ToggleGroup, ToggleGroupItem };\n",
+      "content": "\"use client\";\n\nimport { Toggle } from \"@base-ui-components/react/toggle\";\nimport { ToggleGroup } from \"@base-ui-components/react/toggle-group\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./toggle-group.module.css\";\n\nfunction ToggleGroupRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof ToggleGroup>) {\n  return <ToggleGroup className={cn(styles.root, className)} {...props} />;\n}\n\nfunction ToggleGroupItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof Toggle>) {\n  return <Toggle className={cn(styles.item, className)} {...props} />;\n}\n\nexport { ToggleGroupRoot as ToggleGroup, ToggleGroupItem };\n",
       "type": "registry:file",
       "target": "~/components/ui/toggle-group/toggle-group.tsx"
     },

@@ -10,6 +10,17 @@
   padding: clamp(1.5rem, 2vw + 1rem, 2.5rem) clamp(1rem, 3vw, 2rem);
   color: var(--foreground);
   font-size: clamp(0.875rem, 0.8rem + 0.25vw, 0.9375rem);
+}
+
+.contentWrapper p,
+.contentWrapper li,
+.contentWrapper td,
+.contentWrapper th,
+.contentWrapper blockquote {
+  line-height: 1.65;
+}
+
+.contentWrapper code:not(pre code) {
   line-height: 1.65;
 }
 
@@ -192,10 +203,14 @@
   scroll-margin-top: 5rem;
 }
 
-.contentWrapper > :global(p) {
+.contentWrapper > :global(p:not(:has([data-component]))) {
   margin-top: 0;
   margin-bottom: 1.25rem;
   line-height: 1.65;
+}
+
+.contentWrapper > :global(p:has([data-component])) {
+  margin: 0;
 }
 
 .contentWrapper > :global(ul),

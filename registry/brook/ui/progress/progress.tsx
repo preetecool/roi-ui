@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Progress } from "@base-ui-components/react/progress";
+import { cn } from "@/lib/utils";
 import styles from "./progress.module.css";
 
 function ProgressRoot({

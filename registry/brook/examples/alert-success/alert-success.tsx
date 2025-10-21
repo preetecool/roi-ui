@@ -1,11 +1,11 @@
 "use client";
 
+import { CheckCircle } from "lucide-react";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
 } from "@/registry/brook/ui/alert/alert";
-import { CheckCircle } from "lucide-react";
 import styles from "./alert-success.module.css";
 
 export default function AlertSuccess() {

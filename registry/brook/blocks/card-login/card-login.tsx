@@ -1,4 +1,6 @@
 "use client";
+import { Check } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Card,
@@ -17,16 +19,17 @@ import {
   FieldError,
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
-import { Check } from "lucide-react";
-import { useState } from "react";
 import styles from "./card-login.module.css";
+
+const EMAIL_REGEX = /\S+@\S+\.\S+/;
+const MIN_PASSWORD_LENGTH = 6;
 
 export default function CardLoginDemo() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {},
+    {}
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,19 +39,20 @@ export default function CardLoginDemo() {
 
     if (!email) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!EMAIL_REGEX.test(email)) {
       newErrors.email = "Email is invalid";
     }
 
     if (!password) {
       newErrors.password = "Password is required";
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    } else if (password.length < MIN_PASSWORD_LENGTH) {
+      newErrors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
+      // Form is valid, ready to submit
     }
   };
 
@@ -87,7 +91,7 @@ export default function CardLoginDemo() {
             {errors.password && <FieldError>{errors.password}</FieldError>}
           </Field>
 
-          <label className={styles.checkboxLabel}>
+          <div className={styles.checkboxLabel}>
             <Checkbox
               checked={rememberMe}
               onCheckedChange={(checked) => setRememberMe(checked === true)}
@@ -97,7 +101,7 @@ export default function CardLoginDemo() {
               </CheckboxIndicator>
             </Checkbox>
             <span className={styles.rememberMe}>Remember me</span>
-          </label>
+          </div>
         </form>
       </CardContent>
       <CardFooter className={styles.footer}>

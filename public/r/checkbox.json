@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/checkbox/checkbox.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { Checkbox } from \"@base-ui-components/react/checkbox\";\nimport styles from \"./checkbox.module.css\";\n\nfunction CheckboxRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof Checkbox.Root>) {\n  return <Checkbox.Root className={cn(styles.root, className)} {...props} />;\n}\n\nfunction CheckboxIndicator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Checkbox.Indicator>) {\n  return (\n    <Checkbox.Indicator\n      className={cn(styles.indicator, className)}\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxRoot as Checkbox, CheckboxIndicator };\n",
+      "content": "\"use client\";\n\nimport { Checkbox } from \"@base-ui-components/react/checkbox\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox.module.css\";\n\nfunction CheckboxRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof Checkbox.Root>) {\n  return <Checkbox.Root className={cn(styles.root, className)} {...props} />;\n}\n\nfunction CheckboxIndicator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Checkbox.Indicator>) {\n  return (\n    <Checkbox.Indicator\n      className={cn(styles.indicator, className)}\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxRoot as Checkbox, CheckboxIndicator };\n",
       "type": "registry:file",
       "target": "~/components/ui/checkbox/checkbox.tsx"
     },

@@ -1,11 +1,13 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
-import { Tabs, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
+import { Button } from "@/registry/brook/ui/button/button";
+import { Tabs, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import styles from "./tabs-motion.module.css";
+
+const SLIDE_OFFSET_PERCENTAGE = 110;
 
 const tabs = [
   {
@@ -55,13 +57,13 @@ const tabs = [
 
 const contentVariants = {
   initial: (direction: number) => ({
-    x: `${110 * direction}%`,
+    x: `${SLIDE_OFFSET_PERCENTAGE * direction}%`,
     opacity: 0,
     filter: "blur(4px)",
   }),
   active: { x: "0%", opacity: 1, filter: "blur(0px)" },
   exit: (direction: number) => ({
-    x: `${-110 * direction}%`,
+    x: `${-SLIDE_OFFSET_PERCENTAGE * direction}%`,
     opacity: 0,
     filter: "blur(4px)",
   }),
@@ -143,8 +145,12 @@ export default function TabsFramerMotion() {
                     </p>
                   </div>
                   <div className={styles.buttonGroup}>
-                    {activeTabData.buttons.map((button, btnIndex) => (
-                      <Button key={btnIndex} size="sm" variant={button.variant}>
+                    {activeTabData.buttons.map((button) => (
+                      <Button
+                        key={button.label}
+                        size="sm"
+                        variant={button.variant}
+                      >
                         {button.label}
                       </Button>
                     ))}

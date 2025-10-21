@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   DropdownMenu,
@@ -10,7 +11,6 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import { ChevronRight } from "lucide-react";
 
 export default function DropdownMenuSubmenu() {
   return (

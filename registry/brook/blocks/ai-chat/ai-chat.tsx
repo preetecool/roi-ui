@@ -1,8 +1,19 @@
 "use client";
 
+import {
+  ArrowUp,
+  AudioLines,
+  GraduationCap,
+  Lightbulb,
+  Paperclip,
+  WandSparkles,
+  Zap,
+} from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
-import { Form, FormControl, FormField } from "@/registry/brook/ui/form/form";
+import { Field, FieldControl } from "@/registry/brook/ui/field/field";
+import { Form } from "@/registry/brook/ui/form/form";
 import {
   SelectIcon,
   SelectItem,
@@ -15,16 +26,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
-import {
-  ArrowUp,
-  AudioLines,
-  GraduationCap,
-  Lightbulb,
-  Paperclip,
-  WandSparkles,
-  Zap,
-} from "lucide-react";
-import { useState } from "react";
 import styles from "./ai-chat.module.css";
 
 const aiModes = [
@@ -42,8 +43,8 @@ export function AiChat() {
     <Form className={styles.form}>
       <Card id={styles.card}>
         <CardContent>
-          <FormField className={styles.field}>
-            <FormControl
+          <Field className={styles.field}>
+            <FieldControl
               placeholder="Ask and i'll answer."
               render={
                 <textarea
@@ -53,7 +54,7 @@ export function AiChat() {
                 />
               }
             />
-          </FormField>
+          </Field>
         </CardContent>
         <CardFooter className={styles.footer}>
           <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
@@ -77,7 +78,7 @@ export function AiChat() {
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find(
-                      (mode) => mode.value === value,
+                      (mode) => mode.value === value
                     );
                     const IconComponent = selectedMode?.icon;
                     return (

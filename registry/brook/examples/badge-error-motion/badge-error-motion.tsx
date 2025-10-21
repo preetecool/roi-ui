@@ -1,10 +1,11 @@
 "use client";
 
-import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { motion } from "motion/react";
+import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 
 const shakeVariants = {
   shake: {
+    // biome-ignore lint/style/noMagicNumbers: animation keyframe sequence
     x: [-4, 4, 0, -4, 0],
   },
 };
@@ -40,6 +41,7 @@ export default function BadgeErrorFramerMotion() {
         <BadgeIcon>
           <motion.svg
             animate="visible"
+            aria-hidden="true"
             fill="none"
             height="16"
             initial="hidden"

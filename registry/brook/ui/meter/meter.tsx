@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Meter } from "@base-ui-components/react/meter";
+import { cn } from "@/lib/utils";
 import styles from "./meter.module.css";
 
 function MeterRoot({

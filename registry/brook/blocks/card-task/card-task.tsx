@@ -1,6 +1,16 @@
 "use client";
 
 import {
+  Calendar,
+  LayoutList,
+  MessageCircle,
+  MoreHorizontal,
+  Trash,
+  UserPlus,
+  Users,
+} from "lucide-react";
+import { useState } from "react";
+import {
   AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
@@ -33,16 +43,6 @@ import {
   DropdownMenuPositioner,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import {
-  Calendar,
-  LayoutList,
-  MessageCircle,
-  MoreHorizontal,
-  Trash,
-  UserPlus,
-  Users,
-} from "lucide-react";
-import { useState } from "react";
 import styles from "./card-task.module.css";
 
 export function CardTask() {

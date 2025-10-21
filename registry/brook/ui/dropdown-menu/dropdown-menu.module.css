@@ -3,9 +3,6 @@
 }
 
 .trigger {
-  @media (hover: hover) {
-  }
-
   &[data-popup-open] {
     background-color: var(--muted);
     color: var(--title-hover);

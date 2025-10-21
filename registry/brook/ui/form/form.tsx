@@ -1,14 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Form } from "@base-ui-components/react/form";
-import {
-  Field,
-  FieldControl,
-  FieldDescription,
-  FieldError,
-  FieldLabel,
-} from "../field/field";
+import type React from "react";
+import { cn } from "@/lib/utils";
 import styles from "./form.module.css";
 
 function FormRoot({ className, ...props }: React.ComponentProps<typeof Form>) {
@@ -27,14 +21,4 @@ function FormActions({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.formActions, className)} {...props} />;
 }
 
-export {
-  FormRoot as Form,
-  FormActions,
-  FieldControl as FormControl,
-  FieldDescription as FormDescription,
-  FieldError as FormError,
-  Field as FormField,
-  FormGroup,
-  FieldLabel as FormLabel,
-  FormRow,
-};
+export { FormRoot as Form, FormActions, FormGroup, FormRow };

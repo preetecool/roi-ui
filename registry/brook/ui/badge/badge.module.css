@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid;
-  font-weight: 500;
+  font-weight: 400;
   width: fit-content;
   white-space: nowrap;
   flex-shrink: 0;
@@ -40,6 +40,7 @@
   background-color: var(--mix-card-66-bg);
   color: var(--secondary-foreground);
 }
+
 .secondary:hover {
   background-color: var(--card);
   cursor: pointer;
@@ -74,6 +75,7 @@
   border-color: var(--border-dark);
   background-color: transparent;
 }
+
 .outline:hover {
   background-color: var(--card);
 }

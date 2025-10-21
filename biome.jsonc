@@ -3,7 +3,14 @@
   "extends": ["ultracite"],
   "css": {
     "parser": {
-      "cssModules": true,
-    },
+      "cssModules": true
+    }
   },
+  "linter": {
+    "rules": {
+      "performance": {
+        "noImgElement": "off"
+      }
+    }
+  }
 }

@@ -2,6 +2,27 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./like-button.module.css";
 
+// Constants for animation calculations
+const DEGREES_TO_RADIANS = 180;
+const ANGLE_OFFSET_BASE = 90;
+const DELAY_DIVISOR = 1000;
+const ROTATION_MULTIPLIER = 6;
+const SCALE_BASE = 0.8;
+const SCALE_DIVISOR = 30;
+const PARTICLE_SIZE_STAR_LARGE = 12;
+const PARTICLE_SIZE_STAR_MEDIUM = 10;
+const PARTICLE_SIZE_CIRCLE_LARGE = 6;
+const PARTICLE_SIZE_CIRCLE_MEDIUM = 5;
+const PARTICLE_ANGLE_LEFT = -60;
+const PARTICLE_ANGLE_CENTER = 0;
+const PARTICLE_ANGLE_RIGHT = 60;
+const PARTICLE_ANGLE_LEFT_SMALL = -30;
+const PARTICLE_ANGLE_RIGHT_SMALL = 30;
+const THUMB_ANIMATION_DURATION = 1200;
+const PARTICLE_ANIMATION_DURATION = 1000;
+const LIKE_STATE_DELAY = 100;
+const AUTO_PLAY_INTERVAL = 3000;
+
 type Particle = {
   id: number;
   type: "star" | "circle";
@@ -45,36 +66,47 @@ function LikeButton({
   const [isFilled, setIsFilled] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const createParticle = (
-    angleOffset: number,
-    type: "star" | "circle",
-    size: number,
-  ): Particle => {
-    const baseAngle = -Math.PI / 2;
-    const angle = baseAngle + (angleOffset * Math.PI) / 180;
+  const createParticle = useCallback(
+    (angleOffset: number, type: "star" | "circle", size: number): Particle => {
+      const baseAngle = -Math.PI / 2;
+      const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
-    return {
-      id: Date.now() + angleOffset + size,
-      type,
-      angle,
-      distance: 40,
-      delay: (angleOffset + 90) / 1000,
-      rotation: angleOffset * 6,
-      size,
-      scale: 0.8 + size / 30,
-    };
-  };
+      return {
+        id: Date.now() + angleOffset + size,
+        type,
+        angle,
+        distance: 40,
+        delay: (angleOffset + ANGLE_OFFSET_BASE) / DELAY_DIVISOR,
+        rotation: angleOffset * ROTATION_MULTIPLIER,
+        size,
+        scale: SCALE_BASE + size / SCALE_DIVISOR,
+      };
+    },
+    []
+  );
 
   const createParticleSet = useCallback(
     (): Particle[] => [
-      createParticle(-60, "star", 12),
-      createParticle(0, "star", 10),
-      createParticle(60, "star", 12),
-      createParticle(-30, "circle", 6),
-      createParticle(0, "circle", 6),
-      createParticle(30, "circle", 5),
+      createParticle(PARTICLE_ANGLE_LEFT, "star", PARTICLE_SIZE_STAR_LARGE),
+      createParticle(PARTICLE_ANGLE_CENTER, "star", PARTICLE_SIZE_STAR_MEDIUM),
+      createParticle(PARTICLE_ANGLE_RIGHT, "star", PARTICLE_SIZE_STAR_LARGE),
+      createParticle(
+        PARTICLE_ANGLE_LEFT_SMALL,
+        "circle",
+        PARTICLE_SIZE_CIRCLE_LARGE
+      ),
+      createParticle(
+        PARTICLE_ANGLE_CENTER,
+        "circle",
+        PARTICLE_SIZE_CIRCLE_LARGE
+      ),
+      createParticle(
+        PARTICLE_ANGLE_RIGHT_SMALL,
+        "circle",
+        PARTICLE_SIZE_CIRCLE_MEDIUM
+      ),
     ],
-    [createParticle],
+    [createParticle]
   );
 
   const startThumbAnimation = useCallback(() => {
@@ -85,14 +117,14 @@ function LikeButton({
       setIsThumbAnimating(false);
       setIsFilled(false);
       setIsAnimating(false);
-    }, 1200);
+    }, THUMB_ANIMATION_DURATION);
   }, []);
 
   const startParticleAnimation = useCallback(() => {
     setParticles(createParticleSet());
     setTimeout(() => {
       setParticles([]);
-    }, 1000);
+    }, PARTICLE_ANIMATION_DURATION);
   }, [createParticleSet]);
 
   const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
@@ -110,7 +142,7 @@ function LikeButton({
       startParticleAnimation();
       setTimeout(() => {
         setIsLiked(true);
-      }, 100);
+      }, LIKE_STATE_DELAY);
     } else {
       setIsLiked(false);
       setIsFilled(false);
@@ -134,7 +166,7 @@ function LikeButton({
       intervalRef.current = setInterval(() => {
         startThumbAnimation();
         startParticleAnimation();
-      }, 3000);
+      }, AUTO_PLAY_INTERVAL);
     } else if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
@@ -199,8 +231,10 @@ function LikeButton({
           type="button"
         >
           <svg
+            aria-label="Like"
             className={`${styles.thumbIcon} ${isPlaying ? styles.scaledIcon : ""}`}
             height="24"
+            role="img"
             style={{
               visibility: "visible",
               opacity: 1,

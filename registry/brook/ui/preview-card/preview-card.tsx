@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { PreviewCard } from "@base-ui-components/react/preview-card";
+import { cn } from "@/lib/utils";
 import styles from "./preview-card.module.css";
 
 function PreviewCardRoot({

@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/registry/brook/ui/button/button";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-animated-dialog.module.css";
 
 const popupVariants = {
@@ -30,16 +30,19 @@ export const HomeAnimatedDialog = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [triggerClicked, setTriggerClicked] = useState(false);
 
+  const TRIGGER_CLICK_DELAY = 2700;
+  const DIALOG_OPEN_DELAY = 2900;
+
   useEffect(() => {
     // Dialog auto-open
     const clickTimer = setTimeout(() => {
       setTriggerClicked(true);
-    }, 2700);
+    }, TRIGGER_CLICK_DELAY);
 
     const openTimer = setTimeout(() => {
       setDialogOpen(true);
       setTriggerClicked(false);
-    }, 2900);
+    }, DIALOG_OPEN_DELAY);
 
     return () => {
       clearTimeout(clickTimer);
@@ -54,6 +57,7 @@ export const HomeAnimatedDialog = () => {
       style={{ transformOrigin: "top left" }}
       transition={{
         y: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
+        // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
         opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 },
       }}
     >
@@ -62,6 +66,7 @@ export const HomeAnimatedDialog = () => {
           <motion.div
             animate={{
               opacity: 1,
+              // biome-ignore lint/style/noMagicNumbers: button pressed scale
               scale: triggerClicked ? 0.97 : 1,
               backgroundColor: triggerClicked ? "var(--accent)" : "transparent",
             }}
@@ -72,6 +77,7 @@ export const HomeAnimatedDialog = () => {
               borderRadius: "var(--radius)",
             }}
             transition={{
+              // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
               opacity: { duration: 0.6, delay: 0, ease: [0.19, 1, 0.22, 1] },
               scale: { duration: 0.2 },
             }}

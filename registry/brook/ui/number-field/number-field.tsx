@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { NumberField } from "@base-ui-components/react/number-field";
+import { cn } from "@/lib/utils";
 import styles from "./number-field.module.css";
 
 function NumberFieldRoot({
@@ -39,9 +39,11 @@ function NumberFieldIncrement({
     >
       {children || (
         <svg
+          aria-label="Increment"
           className={styles.icon}
           fill="none"
           height="16"
+          role="img"
           viewBox="0 0 24 24"
           width="16"
         >
@@ -70,9 +72,11 @@ function NumberFieldDecrement({
     >
       {children || (
         <svg
+          aria-label="Decrement"
           className={styles.icon}
           fill="none"
           height="16"
+          role="img"
           viewBox="0 0 24 24"
           width="16"
         >

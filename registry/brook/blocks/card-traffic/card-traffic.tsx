@@ -11,10 +11,18 @@ import LineChart from "@/registry/brook/ui/charts/line-chart";
 import styles from "./card-traffic.module.css";
 import { trafficData } from "./data";
 
+const CHART_START_YEAR = 2025;
+const CHART_START_MONTH = 6; // July (0-indexed)
+const CHART_START_DAY = 14;
+
 const formatDate = (value: unknown) => {
   const dayNumber = Math.round(Number(value));
 
-  const startDate = new Date(2025, 6, 14);
+  const startDate = new Date(
+    CHART_START_YEAR,
+    CHART_START_MONTH,
+    CHART_START_DAY
+  );
   const currentDate = new Date(startDate);
   currentDate.setDate(startDate.getDate() + (dayNumber - 1));
 

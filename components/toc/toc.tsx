@@ -11,6 +11,7 @@ type TableOfContentsProps = {
 
 export function TableOfContents({ toc, children }: TableOfContentsProps) {
   const viewRef = useRef<HTMLDivElement>(null);
+  const NESTED_ITEM_INDENT = 12;
 
   if (!toc || toc.length === 0) {
     return null;
@@ -31,7 +32,9 @@ export function TableOfContents({ toc, children }: TableOfContentsProps) {
                   key={item.url}
                   style={{
                     paddingLeft:
-                      item.depth > 2 ? `${(item.depth - 2) * 12}px` : "0px",
+                      item.depth > 2
+                        ? `${(item.depth - 2) * NESTED_ITEM_INDENT}px`
+                        : "0px",
                   }}
                 >
                   {item.title}

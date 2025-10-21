@@ -11,29 +11,31 @@ export function SiteFooter() {
             id={styles.link}
             render={
               <a
+                aria-label="Follow on X/Twitter"
                 href="https://x.com/preetecool"
                 rel="noopener noreferrer"
                 target="_blank"
-              />
+              >
+                @preetecool.
+              </a>
             }
             variant="link"
-          >
-            @preetecool.
-          </Button>{" "}
+          />{" "}
           Available on{" "}
           <Button
             id={styles.link}
             render={
               <a
+                aria-label="View on GitHub"
                 href="https://github.com/preetecool"
                 rel="noopener noreferrer"
                 target="_blank"
-              />
+              >
+                GitHub
+              </a>
             }
             variant="link"
-          >
-            GitHub
-          </Button>
+          />
           .
         </div>
       </div>

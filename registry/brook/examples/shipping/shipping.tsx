@@ -1,11 +1,24 @@
 "use client";
 
+import { MessageCircle, Phone, Truck } from "lucide-react";
 import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card } from "@/registry/brook/ui/card/card";
-import { MessageCircle, Phone, Truck } from "lucide-react";
 
 import styles from "./shipping.module.css";
+
+function getTimelineStatus(item: {
+  completed?: boolean;
+  current?: boolean;
+}): string {
+  if (item.completed) {
+    return styles.completed;
+  }
+  if (item.current) {
+    return styles.current;
+  }
+  return styles.pending;
+}
 
 export function Shipping() {
   const shipmentData = {
@@ -53,16 +66,13 @@ export function Shipping() {
 
         <div className={styles.timeline}>
           {shipmentData.timeline.map((item, index) => (
-            <div className={styles.timelineItem} key={index}>
+            <div
+              className={styles.timelineItem}
+              key={`${item.company}-${item.time}`}
+            >
               <div className={styles.timelineIndicator}>
                 <div
-                  className={`${styles.timelineCircle} ${
-                    item.completed
-                      ? styles.completed
-                      : item.current
-                        ? styles.current
-                        : styles.pending
-                  }`}
+                  className={`${styles.timelineCircle} ${getTimelineStatus(item)}`}
                 />
                 {index < shipmentData.timeline.length - 1 && (
                   <div className={styles.timelineLine} />

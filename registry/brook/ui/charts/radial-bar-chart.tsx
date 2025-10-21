@@ -22,6 +22,45 @@ export type RadialBarChartProps = {
   animated?: boolean;
 };
 
+const ANIMATION_DURATION_MS = 800;
+
+type TooltipPayload = {
+  value: number;
+  payload: RadialBarChartData & { fill: string };
+};
+
+type CustomTooltipProps = {
+  active?: boolean;
+  payload?: TooltipPayload[];
+  label?: string | number;
+  tooltipValueFormatter: (value: number | string, name?: string) => string;
+};
+
+function CustomTooltip({
+  active,
+  payload,
+  tooltipValueFormatter,
+}: CustomTooltipProps) {
+  if (!(active && payload && payload.length)) {
+    return null;
+  }
+
+  const tooltipData = payload[0];
+  return (
+    <ChartTooltip
+      active={active}
+      payload={[
+        {
+          ...tooltipData,
+          name: tooltipData.payload.category,
+          color: tooltipData.payload.fill,
+        },
+      ]}
+      valueFormatter={tooltipValueFormatter}
+    />
+  );
+}
+
 function RadialBarChart({
   data,
   innerRadius,
@@ -53,39 +92,6 @@ function RadialBarChart({
     return Number.isNaN(numValue) ? String(value) : numValue.toLocaleString();
   };
 
-  type TooltipPayload = {
-    value: number;
-    payload: RadialBarChartData & { fill: string };
-  };
-
-  function CustomTooltip({
-    active,
-    payload,
-  }: {
-    active?: boolean;
-    payload?: TooltipPayload[];
-    label?: string | number;
-  }) {
-    if (!(active && payload && payload.length)) {
-      return null;
-    }
-
-    const data = payload[0];
-    return (
-      <ChartTooltip
-        active={active}
-        payload={[
-          {
-            ...data,
-            name: data.payload.category,
-            color: data.payload.fill,
-          },
-        ]}
-        valueFormatter={tooltipValueFormatter}
-      />
-    );
-  }
-
   return (
     <div className={styles.radialBarChart}>
       <ResponsiveContainer height="100%" width="100%">
@@ -99,12 +105,16 @@ function RadialBarChart({
         >
           <RadialBar
             animationBegin={animated ? 0 : undefined}
-            animationDuration={animated ? 800 : 0}
+            animationDuration={animated ? ANIMATION_DURATION_MS : 0}
             background={{ fill: "var(--mix-card-50-bg)" }}
             cornerRadius={4}
             dataKey="value"
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip
+            content={
+              <CustomTooltip tooltipValueFormatter={tooltipValueFormatter} />
+            }
+          />
         </RechartsRadialBarChart>
       </ResponsiveContainer>
     </div>

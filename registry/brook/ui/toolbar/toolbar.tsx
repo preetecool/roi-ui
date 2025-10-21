@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Toolbar } from "@base-ui-components/react/toolbar";
+import { cn } from "@/lib/utils";
 import styles from "./toolbar.module.css";
 
 function ToolbarRoot({
@@ -14,7 +14,7 @@ function ToolbarRoot({
       className={cn(
         styles.root,
         orientation === "vertical" && styles.vertical,
-        className,
+        className
       )}
       orientation={orientation}
       {...props}

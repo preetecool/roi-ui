@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   SliderControl,
   SliderIndicator,
@@ -7,21 +8,22 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@/registry/brook/ui/slider/slider";
-import { useState } from "react";
 import styles from "./slider-demo.module.css";
 
+const DEFAULT_SLIDER_VALUE = 50;
+
 export default function SliderDemo() {
-  const [value, setValue] = useState(50);
+  const [value, setValue] = useState(DEFAULT_SLIDER_VALUE);
 
   return (
     <div className={styles.container}>
       <div className={styles.valueDisplay}>{Math.round(value)}</div>
       <SliderRoot
-        defaultValue={50}
+        defaultValue={DEFAULT_SLIDER_VALUE}
         max={100}
         min={0}
-        onValueChange={(value) =>
-          setValue(Array.isArray(value) ? value[0] : value)
+        onValueChange={(newValue) =>
+          setValue(Array.isArray(newValue) ? newValue[0] : newValue)
         }
         step={1}
       >

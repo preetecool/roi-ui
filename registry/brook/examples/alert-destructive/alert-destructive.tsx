@@ -1,11 +1,11 @@
 "use client";
 
+import { Ban } from "lucide-react";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
 } from "@/registry/brook/ui/alert/alert";
-import { Ban } from "lucide-react";
 import styles from "./alert-destructive.module.css";
 
 export default function AlertDestructive() {

@@ -87,6 +87,26 @@
   stroke: var(--border);
 }
 
+.content {
+  --easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 0.35s;
+  transition:
+    opacity calc(var(--duration) * 0.5) ease,
+    transform var(--duration) var(--easing);
+  padding: 0.75rem;
+  width: calc(100vw - 40px);
+  height: 100%;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+@media (min-width: 500px) {
+  .content {
+    width: max-content;
+    min-width: 400px;
+  }
+}
+
 .list {
   display: flex;
   flex: 1;
@@ -131,26 +151,6 @@
 
 .trigger[data-popup-open] .chevron {
   transform: rotate(180deg);
-}
-
-.content {
-  --easing: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration: 0.35s;
-  transition:
-    opacity calc(var(--duration) * 0.5) ease,
-    transform var(--duration) var(--easing);
-  padding: 0.75rem;
-  width: calc(100vw - 40px);
-  height: 100%;
-  list-style: none;
-  box-sizing: border-box;
-}
-
-@media (min-width: 500px) {
-  .content {
-    width: max-content;
-    min-width: 400px;
-  }
 }
 
 .link {

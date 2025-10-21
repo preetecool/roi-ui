@@ -41,8 +41,10 @@ export function Logo({
   }
   return (
     <svg
+      aria-label="ROI UI Logo"
       className={className}
       height={height}
+      role="img"
       viewBox="0 0 463.07 349.31"
       width={width}
     >

@@ -111,6 +111,19 @@
   align-items: center;
 }
 
+.innerWrapper {
+  border-bottom: 1px solid var(--border-dark);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: calc(100% + 40px);
+}
+
 @media (max-width: 1023px) {
   .mobileMenuWrapper {
     display: block;

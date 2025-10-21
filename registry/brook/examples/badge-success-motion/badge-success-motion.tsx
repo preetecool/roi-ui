@@ -1,10 +1,11 @@
 "use client";
 
-import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { motion } from "motion/react";
+import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 
 const bounceVariants = {
   bounce: {
+    // biome-ignore lint/style/noMagicNumbers: animation keyframe sequence
     scale: [0.8, 1.05, 1],
   },
 };
@@ -40,6 +41,7 @@ export default function BadgeSuccessFramerMotion() {
         <BadgeIcon>
           <motion.svg
             animate="visible"
+            aria-hidden="true"
             fill="none"
             height="16"
             initial="hidden"

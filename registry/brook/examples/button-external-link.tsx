@@ -4,12 +4,10 @@ export default function ButtonExternalLink() {
   return (
     <Button
       pointExternal
-      render={<a href="#" />}
+      render={<a href="https://example.com">View External</a>}
       showArrow
       style={{ borderRadius: "30px" }}
       variant="outline"
-    >
-      View External
-    </Button>
+    />
   );
 }

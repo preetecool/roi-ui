@@ -1,6 +1,6 @@
 .root {
   width: 32rem;
-  max-width: calc(100vw-8rem);
+  max-width: calc(100vw - 8rem);
   cursor: inherit;
 }
 
@@ -14,7 +14,6 @@
 
 .header {
   margin: 0;
-  font-size: inherit;
   font-weight: 500;
   letter-spacing: inherit;
   font-size: 0.875rem;
@@ -38,6 +37,7 @@
 .trigger:hover {
   color: var(--title-hover);
   text-decoration: underline solid;
+
   svg {
     color: var(--foreground);
   }

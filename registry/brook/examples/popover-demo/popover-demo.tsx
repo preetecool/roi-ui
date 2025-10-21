@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Popover,
@@ -10,7 +11,6 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/registry/brook/ui/popover/popover";
-import { X } from "lucide-react";
 import styles from "./popover-demo.module.css";
 
 export default function PopoverDemo() {

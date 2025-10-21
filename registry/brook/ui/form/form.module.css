@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.root > * + * {
+.root {
   margin-top: 1rem;
 }
 

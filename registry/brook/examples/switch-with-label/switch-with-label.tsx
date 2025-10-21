@@ -1,12 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import {
   Field,
   FieldDescription,
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
 import { Switch, SwitchThumb } from "@/registry/brook/ui/switch/switch";
-import { useState } from "react";
 import styles from "./switch-with-label.module.css";
 
 export default function SwitchWithLabel() {

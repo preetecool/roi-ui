@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { TOCUpdater } from "@/components/toc-updater";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 
 export const revalidate = false;

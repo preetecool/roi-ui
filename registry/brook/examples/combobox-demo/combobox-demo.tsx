@@ -79,7 +79,9 @@ const users: User[] = [
 export default function ComboboxDemo() {
   return (
     <div className={styles.container}>
-      <label className={styles.label}>Search and select a user</label>
+      <label className={styles.label} htmlFor="cb-input">
+        Search and select a user
+      </label>
 
       <div className={styles.comboboxWrapper}>
         <Combobox<User>
@@ -88,7 +90,7 @@ export default function ComboboxDemo() {
           itemToStringValue={(item) => item?.value || ""}
         >
           <div className={styles.inputWrapper}>
-            <ComboboxInput placeholder="Search users..." />
+            <ComboboxInput id="cb-input" placeholder="Search users..." />
             <ComboboxTrigger />
           </div>
 

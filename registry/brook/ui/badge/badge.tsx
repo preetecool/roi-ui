@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 import styles from "./badge.module.css";
 
 const badgeVariants = cva(styles.badge, {

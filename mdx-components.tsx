@@ -1,5 +1,7 @@
-import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
+import Link from "next/link";
+import type { ComponentProps, ReactNode } from "react";
 import { CodeBlock } from "@/components/code-block/code-block";
+import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
 import { ComponentPreview } from "@/components/component-preview/component-preview";
 import { ComponentSource } from "@/components/component-source/component-source";
 import { GlobalsCSS } from "@/components/globals-css";
@@ -11,8 +13,6 @@ import {
 } from "@/components/installation-tabs/installation-tabs";
 import { PropTable } from "@/components/prop-table/prop-table";
 import { Button } from "@/registry/brook/ui/button/button";
-import Link from "next/link";
-import type { ComponentProps, ReactNode } from "react";
 
 import {
   Tabs as CustomTabs,
@@ -73,6 +73,7 @@ export const mdxComponents = {
     <p style={{ color: "var(--foreground)" }} {...props} />
   ),
   a: (props: ComponentProps<"a">) => (
+    // biome-ignore lint/nursery/useAnchorHref: href is provided via props in MDX
     <a
       style={{
         fontWeight: "500",
@@ -94,8 +95,8 @@ export const mdxComponents = {
     }
     return <code {...props} />;
   },
-  pre: (props: ComponentProps<"pre"> & { icon?: string; title?: string }) => {
-    const { icon, title, children, ...rest } = props;
+  pre: (props: ComponentProps<"pre"> & { title?: string }) => {
+    const { title, children, ...rest } = props;
 
     return (
       <div
@@ -130,12 +131,6 @@ export const mdxComponents = {
             >
               {title}
             </span>
-            {icon && (
-              <div
-                dangerouslySetInnerHTML={{ __html: icon }}
-                style={{ opacity: "0.6" }}
-              />
-            )}
           </div>
         )}
         <div

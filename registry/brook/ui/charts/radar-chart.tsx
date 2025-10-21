@@ -29,6 +29,9 @@ export type RadarChartProps = {
   animated?: boolean;
 };
 
+const ANIMATION_STAGGER_DELAY_MS = 200;
+const ANIMATION_DURATION_MS = 800;
+
 function RadarChart({
   data,
   levels = 5,
@@ -97,8 +100,10 @@ function RadarChart({
           />
           {uniqueTypes.map((type, index) => (
             <Radar
-              animationBegin={animated ? index * 200 : undefined}
-              animationDuration={animated ? 800 : 0}
+              animationBegin={
+                animated ? index * ANIMATION_STAGGER_DELAY_MS : undefined
+              }
+              animationDuration={animated ? ANIMATION_DURATION_MS : 0}
               dataKey={type}
               fill={colors[index % colors.length]}
               fillOpacity={fillOpacity}

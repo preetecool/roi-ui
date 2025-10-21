@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Menu } from "@base-ui-components/react/menu";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./dropdown-menu.module.css";
 
 function DropdownMenuRoot({

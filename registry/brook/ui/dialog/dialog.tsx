@@ -1,9 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Dialog } from "@base-ui-components/react/dialog";
-import { X } from "lucide-react";
 import type React from "react";
+import { cn } from "@/lib/utils";
 import styles from "./dialog.module.css";
 
 function DialogRoot({ ...props }: React.ComponentProps<typeof Dialog.Root>) {
@@ -66,7 +65,6 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-  X as CloseIcon,
   DialogClose,
   DialogDescription,
   DialogFooter,

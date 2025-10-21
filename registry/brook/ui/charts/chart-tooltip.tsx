@@ -74,7 +74,7 @@ export function ChartTooltip({
       )}
       {payload.map((entry, index) => (
         <div
-          key={index}
+          key={`${entry.dataKey || entry.name || "entry"}-${index}`}
           style={{
             fontSize: "11px",
             marginBottom: "2px",

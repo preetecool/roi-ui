@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import {
   cloneElement,
   isValidElement,
@@ -11,12 +10,88 @@ import {
   useRef,
   useState,
 } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./carousel.module.css";
+
+const FADE_THRESHOLD_PX = 20;
+const PREVIOUS_ITEM_OFFSET_PERCENTAGE = 0.2;
+const SCROLL_TIMEOUT_MS = 300;
+const INDICATOR_KEY_SLICE_LENGTH = 20;
 
 export type CarouselItem = {
   id: string;
   content: React.ReactNode;
 };
+
+type CarouselSlideProps = {
+  item: CarouselItem;
+  index: number;
+  totalItems: number;
+  isVisible: boolean;
+  itemWidth: string;
+};
+
+function CarouselSlide({
+  item,
+  index,
+  totalItems,
+  isVisible,
+  itemWidth,
+}: CarouselSlideProps) {
+  return (
+    <fieldset
+      aria-hidden={!isVisible}
+      aria-label={`${index + 1} of ${totalItems}`}
+      aria-roledescription="slide"
+      className={styles.slide}
+      inert={isVisible ? undefined : true}
+      key={item.id}
+      style={{
+        width: itemWidth,
+        minWidth: itemWidth,
+        visibility: isVisible ? "visible" : "hidden",
+        border: "none",
+        padding: 0,
+        margin: 0,
+      }}
+    >
+      {item.content ? (
+        isValidElement(item.content) ? (
+          cloneElement(
+            item.content as ReactElement<React.HTMLAttributes<HTMLElement>>,
+            {
+              tabIndex: isVisible ? 0 : -1,
+              "aria-label": `Item ${index + 1} content`,
+              style: {
+                ...((
+                  item.content as ReactElement<
+                    React.HTMLAttributes<HTMLElement>
+                  >
+                )?.props?.style || {}),
+                outline: "none",
+                width: "100%",
+                height: "100%",
+              },
+            }
+          )
+        ) : (
+          <span
+            style={{
+              outline: "none",
+              width: "100%",
+              height: "100%",
+            }}
+            tabIndex={isVisible ? 0 : -1}
+          >
+            {item.content}
+          </span>
+        )
+      ) : (
+        <div>Invalid carousel item</div>
+      )}
+    </fieldset>
+  );
+}
 
 /**
  * Carousel component for displaying multiple items in a scrollable horizontal layout with optional navigation and indicators.
@@ -68,7 +143,7 @@ function Carousel({
 
   const itemWidth = useMemo(
     () => `calc((100% - ${gap * (itemsPerView - 1)}px) / ${itemsPerView})`,
-    [itemsPerView, gap],
+    [itemsPerView, gap]
   );
 
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -77,8 +152,8 @@ function Carousel({
   const canGoNext = scrollLeft < maxScrollLeft;
   const canGoPrev = scrollLeft > 0;
 
-  const showLeftFade = scrollLeft > 20;
-  const showRightFade = scrollLeft < maxScrollLeft - 20;
+  const showLeftFade = scrollLeft > FADE_THRESHOLD_PX;
+  const showRightFade = scrollLeft < maxScrollLeft - FADE_THRESHOLD_PX;
 
   const goToIndex = useCallback(
     (index: number) => {
@@ -88,14 +163,15 @@ function Carousel({
       }
 
       const containerWidth = viewport.clientWidth;
-      const itemWidth =
+      const calculatedItemWidth =
         (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
-      const itemWithGap = itemWidth + gap;
+      const itemWithGap = calculatedItemWidth + gap;
 
-      const previousItemOffset = index > 0 ? itemWidth * 0.2 : 0;
+      const previousItemOffset =
+        index > 0 ? calculatedItemWidth * PREVIOUS_ITEM_OFFSET_PERCENTAGE : 0;
       const targetScroll = Math.max(
         0,
-        index * itemWithGap - previousItemOffset,
+        index * itemWithGap - previousItemOffset
       );
 
       isScrollingRef.current = true;
@@ -103,9 +179,9 @@ function Carousel({
 
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, 300);
+      }, SCROLL_TIMEOUT_MS);
     },
-    [itemsPerView, gap],
+    [itemsPerView, gap]
   );
 
   const nextSlide = useCallback(() => {
@@ -127,7 +203,7 @@ function Carousel({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const isActiveInCarousel = carouselRef.current?.contains(
-        document.activeElement,
+        document.activeElement
       );
       const isActiveOnCarouselContainer =
         document.activeElement === carouselRef.current?.parentElement;
@@ -156,6 +232,9 @@ function Carousel({
         case "End":
           event.preventDefault();
           goToIndex(Math.max(0, totalItems - Math.ceil(itemsPerView)));
+          break;
+        default:
+          // Other keys are not handled
           break;
       }
     };
@@ -187,11 +266,12 @@ function Carousel({
 
       if (!isScrollingRef.current) {
         const containerWidth = viewport.clientWidth;
-        const itemWidth =
+        const calculatedItemWidth =
           (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
-        const itemWithGap = itemWidth + gap;
+        const itemWithGap = calculatedItemWidth + gap;
 
-        const adjustedScrollLeft = newScrollLeft + itemWidth * 0.2;
+        const adjustedScrollLeft =
+          newScrollLeft + calculatedItemWidth * PREVIOUS_ITEM_OFFSET_PERCENTAGE;
         const newIndex = Math.round(adjustedScrollLeft / itemWithGap);
         setCurrentIndex(Math.max(0, Math.min(newIndex, totalItems - 1)));
       }
@@ -210,12 +290,11 @@ function Carousel({
   }, [itemsPerView, totalItems, gap]);
 
   return (
-    <div
+    <section
       aria-label="Interactive carousel"
       aria-roledescription="carousel"
       className={cn(styles.carousel, className)}
       data-slot="carousel"
-      role="region"
       {...props}
     >
       <div
@@ -224,7 +303,7 @@ function Carousel({
         className={cn(
           styles.viewport,
           showLeftFade && styles.showLeftFade,
-          showRightFade && styles.showRightFade,
+          showRightFade && styles.showRightFade
         )}
         ref={viewportRef}
       >
@@ -242,58 +321,14 @@ function Carousel({
               index < currentIndex + Math.ceil(itemsPerView);
 
             return (
-              <div
-                aria-hidden={!isVisible}
-                aria-label={`${index + 1} of ${items.length}`}
-                aria-roledescription="slide"
-                className={styles.slide}
-                inert={isVisible ? undefined : true}
+              <CarouselSlide
+                index={index}
+                isVisible={isVisible}
+                item={item}
+                itemWidth={itemWidth}
                 key={item.id}
-                role="group"
-                style={{
-                  width: itemWidth,
-                  minWidth: itemWidth,
-                  visibility: isVisible ? "visible" : "hidden",
-                }}
-              >
-                {item.content ? (
-                  isValidElement(item.content) ? (
-                    cloneElement(
-                      item.content as ReactElement<
-                        React.HTMLAttributes<HTMLElement>
-                      >,
-                      {
-                        tabIndex: isVisible ? 0 : -1,
-                        "aria-label": `Item ${index + 1} content`,
-                        style: {
-                          ...((
-                            item.content as ReactElement<
-                              React.HTMLAttributes<HTMLElement>
-                            >
-                          )?.props?.style || {}),
-                          outline: "none",
-                          width: "100%",
-                          height: "100%",
-                        },
-                      },
-                    )
-                  ) : (
-                    <div
-                      aria-label={`Item ${index + 1} content`}
-                      style={{
-                        outline: "none",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                      tabIndex={isVisible ? 0 : -1}
-                    >
-                      {item.content}
-                    </div>
-                  )
-                ) : (
-                  <div>Invalid carousel item</div>
-                )}
-              </div>
+                totalItems={items.length}
+              />
             );
           })}
         </div>
@@ -346,16 +381,16 @@ function Carousel({
           className={styles.indicators}
           role="tablist"
         >
-          {items.map((_, index) => (
+          {items.map((item, index) => (
             <button
               aria-controls="carousel-slides"
               aria-label={`Scroll to item ${index + 1}`}
               aria-selected={false}
               className={cn(
                 styles.indicator,
-                currentIndex === index && styles.indicatorActive,
+                currentIndex === index && styles.indicatorActive
               )}
-              key={index}
+              key={`indicator-${index}-${typeof item === "object" && item !== null ? JSON.stringify(item).slice(0, INDICATOR_KEY_SLICE_LENGTH) : String(item)}`}
               onClick={() => goToIndex(index)}
               role="tab"
               type="button"
@@ -372,7 +407,7 @@ function Carousel({
         </div>
         <p>Use arrow keys or tab/shift+tab to navigate slides.</p>
       </div>
-    </div>
+    </section>
   );
 }
 

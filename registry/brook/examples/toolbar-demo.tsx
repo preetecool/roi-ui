@@ -12,6 +12,7 @@ import {
 
 function BoldIcon() {
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -28,6 +29,7 @@ function BoldIcon() {
 
 function ItalicIcon() {
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -45,6 +47,7 @@ function ItalicIcon() {
 
 function UnderlineIcon() {
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -61,6 +64,7 @@ function UnderlineIcon() {
 
 function AlignLeftIcon() {
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -78,6 +82,7 @@ function AlignLeftIcon() {
 
 function AlignCenterIcon() {
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -95,6 +100,7 @@ function AlignCenterIcon() {
 
 function AlignRightIcon() {
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"

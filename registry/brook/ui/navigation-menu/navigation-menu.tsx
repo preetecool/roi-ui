@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
+import { cn } from "@/lib/utils";
 import styles from "./navigation-menu.module.css";
 
 function NavigationMenuRoot({
@@ -60,7 +60,13 @@ function NavigationMenuArrow({
 }: React.ComponentProps<typeof NavigationMenu.Arrow>) {
   return (
     <NavigationMenu.Arrow className={cn(styles.arrow, className)} {...props}>
-      <svg fill="none" height="8" viewBox="0 0 16 8" width="16">
+      <svg
+        aria-hidden="true"
+        fill="none"
+        height="8"
+        viewBox="0 0 16 8"
+        width="16"
+      >
         <path className={styles.arrowFill} d="M8 0L16 8H0L8 0Z" />
         <path
           className={styles.arrowOuterStroke}
@@ -98,7 +104,13 @@ function NavigationMenuPopup({
     <NavigationMenu.Popup className={cn(styles.popup, className)} {...props}>
       {showArrow && (
         <NavigationMenu.Arrow className={cn(styles.arrow)}>
-          <svg fill="none" height="8" viewBox="0 0 16 8" width="16">
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="8"
+            viewBox="0 0 16 8"
+            width="16"
+          >
             <path className={styles.arrowFill} d="M8 0L16 8H0L8 0Z" />
             <path
               className={styles.arrowOuterStroke}

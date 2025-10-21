@@ -29,12 +29,16 @@ export default function DialogDemo() {
           </DialogHeader>
           <div className={styles.form}>
             <div className={styles.fieldGroup}>
-              <label className={styles.label}>Name</label>
-              <Input defaultValue="John Doe" />
+              <label className={styles.label} htmlFor="name">
+                Name
+              </label>
+              <Input defaultValue="John Doe" id="name" />
             </div>
             <div className={styles.fieldGroup}>
-              <label className={styles.label}>Email</label>
-              <Input defaultValue="john@example.com" type="email" />
+              <label className={styles.label} htmlFor="email">
+                Email
+              </label>
+              <Input defaultValue="john@example.com" id="email" type="email" />
             </div>
           </div>
           <DialogFooter>

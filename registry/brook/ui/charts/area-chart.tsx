@@ -36,6 +36,93 @@ export type AreaChartProps = {
   animated?: boolean;
 };
 
+const ANIMATION_DURATION_MS = 1000;
+
+type AreaTooltipPayload = {
+  value: number;
+  payload: AreaChartData;
+};
+
+type AreaTooltipProps = {
+  active?: boolean;
+  payload?: AreaTooltipPayload[];
+  label?: NumberValue | string;
+  tooltipLabelFormatter: (value: NumberValue | string) => string;
+  tooltipValueFormatter: (value: number | string, name?: string) => string;
+  color: string;
+};
+
+function CustomTooltip({
+  active,
+  payload,
+  label,
+  tooltipLabelFormatter,
+  tooltipValueFormatter,
+  color,
+}: AreaTooltipProps) {
+  if (!(active && payload && payload.length)) {
+    return null;
+  }
+
+  const tooltipData = payload[0];
+
+  function getActualLabel(
+    data: AreaTooltipPayload,
+    labelValue?: NumberValue | string
+  ): number | string | undefined {
+    if (data.payload) {
+      return data.payload.year;
+    }
+    if (typeof labelValue === "object" && labelValue !== null) {
+      return Number(labelValue);
+    }
+    return labelValue;
+  }
+
+  const actualLabel = getActualLabel(tooltipData, label);
+
+  return (
+    <ChartTooltip
+      active={active}
+      label={actualLabel}
+      labelFormatter={tooltipLabelFormatter}
+      payload={[
+        {
+          ...tooltipData,
+          name: "Revenue",
+          color,
+        },
+      ]}
+      valueFormatter={tooltipValueFormatter}
+    />
+  );
+}
+
+type AreaDotProps = {
+  cx?: number;
+  cy?: number;
+  showPoints: boolean;
+  pointSize: number;
+  color: string;
+  [key: string]: unknown;
+};
+
+function CustomDot({ cx, cy, showPoints, pointSize, color }: AreaDotProps) {
+  if (showPoints && cx !== undefined && cy !== undefined) {
+    return (
+      <Dot
+        cx={cx}
+        cy={cy}
+        fill={color}
+        r={pointSize}
+        stroke="var(--background)"
+        strokeWidth={2}
+      />
+    );
+  }
+  return null;
+}
+
 function AreaChart({
   data,
   showXAxis = true,
@@ -65,72 +152,6 @@ function AreaChart({
       typeof value === "number" ? value : Number.parseFloat(String(value));
     return Number.isNaN(numValue) ? String(value) : numValue.toLocaleString();
   };
-
-  type AreaTooltipPayload = {
-    value: number;
-    payload: AreaChartData;
-  };
-
-  function CustomTooltip({
-    active,
-    payload,
-    label,
-  }: {
-    active?: boolean;
-    payload?: AreaTooltipPayload[];
-    label?: NumberValue | string;
-  }) {
-    if (!(active && payload && payload.length)) {
-      return null;
-    }
-
-    const data = payload[0];
-
-    const actualLabel = data.payload
-      ? data.payload.year
-      : typeof label === "object" && label !== null
-        ? Number(label)
-        : label;
-
-    return (
-      <ChartTooltip
-        active={active}
-        label={actualLabel}
-        labelFormatter={tooltipLabelFormatter}
-        payload={[
-          {
-            ...data,
-            name: "Revenue",
-            color,
-          },
-        ]}
-        valueFormatter={tooltipValueFormatter}
-      />
-    );
-  }
-
-  type AreaDotProps = {
-    cx?: number;
-    cy?: number;
-    [key: string]: unknown;
-  };
-
-  function CustomDot(props: AreaDotProps) {
-    const { cx, cy } = props;
-    if (showPoints && cx !== undefined && cy !== undefined) {
-      return (
-        <Dot
-          cx={cx}
-          cy={cy}
-          fill={color}
-          r={pointSize}
-          stroke="var(--background)"
-          strokeWidth={2}
-        />
-      );
-    }
-    return null;
-  }
 
   return (
     <div
@@ -183,15 +204,31 @@ function AreaChart({
           )}
           <Tooltip
             allowEscapeViewBox={{ x: false, y: false }}
-            content={<CustomTooltip />}
+            content={
+              <CustomTooltip
+                color={color}
+                tooltipLabelFormatter={tooltipLabelFormatter}
+                tooltipValueFormatter={tooltipValueFormatter}
+              />
+            }
             cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
           />
           <Area
             animationBegin={animated ? 0 : undefined}
-            animationDuration={animated ? 1000 : 0}
+            animationDuration={animated ? ANIMATION_DURATION_MS : 0}
             connectNulls={false}
             dataKey="amount"
-            dot={showPoints ? <CustomDot /> : false}
+            dot={
+              showPoints ? (
+                <CustomDot
+                  color={color}
+                  pointSize={pointSize}
+                  showPoints={showPoints}
+                />
+              ) : (
+                false
+              )
+            }
             fill="url(#colorArea)"
             fillOpacity={1}
             stroke={color}

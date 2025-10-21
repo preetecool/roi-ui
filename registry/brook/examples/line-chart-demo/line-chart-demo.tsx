@@ -90,6 +90,7 @@ export default function LineChartDemo() {
           showXAxis={true}
           showXGrid={false}
           showYAxis={true}
+          // biome-ignore lint/style/noMagicNumbers: year values for chart tick marks
           ticks={[1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]}
         />
       </div>

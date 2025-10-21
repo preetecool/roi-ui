@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Command } from "lucide-react";
+import { cn } from "@/lib/utils";
 import styles from "./kbd.module.css";
 
 const kbdVariants = cva(styles.kbd, {
@@ -54,7 +54,7 @@ function Kbd({
       className={cn(
         kbdVariants({ size }),
         isCommandKey && styles.commandKey,
-        className,
+        className
       )}
       data-slot="kbd"
       {...props}

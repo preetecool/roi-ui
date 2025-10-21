@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Accordion } from "@base-ui-components/react/accordion";
 import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 import styles from "./accordion.module.css";
 
 function AccordionRoot({
@@ -53,11 +53,13 @@ function AccordionPanel({
   );
 }
 
+// biome-ignore lint/performance/noBarrelFile: Re-exporting icon as part of component API
+export { ChevronDown as ChevronDownIcon } from "lucide-react";
+
 export {
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
   AccordionRoot,
   AccordionTrigger,
-  ChevronDown as ChevronDownIcon,
 };

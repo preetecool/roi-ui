@@ -37,6 +37,45 @@ export type LineChartProps = {
   ticks?: number[];
 };
 
+const DOMAIN_PADDING_PERCENTAGE = 0.05;
+const ANIMATION_STAGGER_DELAY_MS = 200;
+const ANIMATION_DURATION_MS = 800;
+
+type DotProps = {
+  cx?: number;
+  cy?: number;
+  payload?: LineChartData;
+  showPoints: boolean;
+  pointSize: number;
+  colors: string[];
+  uniqueTypes: string[];
+  [key: string]: unknown;
+};
+
+function CustomDot({
+  cx,
+  cy,
+  payload,
+  showPoints,
+  pointSize,
+  colors,
+  uniqueTypes,
+}: DotProps) {
+  if (showPoints && cx !== undefined && cy !== undefined && payload) {
+    return (
+      <Dot
+        cx={cx}
+        cy={cy}
+        fill={colors[uniqueTypes.indexOf(payload.type)]}
+        r={pointSize}
+        stroke="var(--background)"
+        strokeWidth={2}
+      />
+    );
+  }
+  return null;
+}
+
 function LineChart({
   data,
   showXAxis = true,
@@ -62,30 +101,6 @@ function LineChart({
   const tooltipLabelFormatter = (value: NumberValue | string) =>
     formatDate(value);
 
-  type DotProps = {
-    cx?: number;
-    cy?: number;
-    payload?: LineChartData;
-    [key: string]: unknown;
-  };
-
-  function CustomDot(props: DotProps) {
-    const { cx, cy, payload } = props;
-    if (showPoints && cx !== undefined && cy !== undefined && payload) {
-      return (
-        <Dot
-          cx={cx}
-          cy={cy}
-          fill={colors[uniqueTypes.indexOf(payload.type)]}
-          r={pointSize}
-          stroke="var(--background)"
-          strokeWidth={2}
-        />
-      );
-    }
-    return null;
-  }
-
   type GroupedDataItem = {
     date: NumberValue;
     [key: string]: NumberValue | number;
@@ -108,7 +123,7 @@ function LineChart({
   const minDate = Math.min(...dates);
   const maxDate = Math.max(...dates);
 
-  const padding = (maxDate - minDate) * 0.05;
+  const padding = (maxDate - minDate) * DOMAIN_PADDING_PERCENTAGE;
   const domainMin = Math.max(0, minDate - padding);
   const domainMax = maxDate + padding;
 
@@ -162,10 +177,23 @@ function LineChart({
           />
           {uniqueTypes.map((type, index) => (
             <Line
-              animationBegin={animated ? index * 200 : undefined}
-              animationDuration={animated ? 800 : 0}
+              animationBegin={
+                animated ? index * ANIMATION_STAGGER_DELAY_MS : undefined
+              }
+              animationDuration={animated ? ANIMATION_DURATION_MS : 0}
               dataKey={type}
-              dot={showPoints ? <CustomDot /> : false}
+              dot={
+                showPoints ? (
+                  <CustomDot
+                    colors={colors}
+                    pointSize={pointSize}
+                    showPoints={showPoints}
+                    uniqueTypes={uniqueTypes}
+                  />
+                ) : (
+                  false
+                )
+              }
               key={type}
               stroke={colors[index % colors.length]}
               strokeWidth={3}

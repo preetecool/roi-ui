@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 import styles from "./alert.module.css";
 
 const alertVariants = cva(styles.alert, {
