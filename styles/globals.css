@@ -98,72 +98,48 @@
     --mix-border-70-trans: color-mix(in oklab, var(--border) 70%, transparent);
     --mix-accent-20-trans: color-mix(in oklab, var(--accent) 20%, transparent);
     --mix-accent-33-trans: color-mix(in oklab, var(--accent) 33%, transparent);
-    --mix-accent-66-bg: color-mix(
-      in oklab,
-      var(--accent) 66%,
-      var(--background)
-    );
-    --mix-accent-75-bg: color-mix(
-      in oklab,
-      var(--accent) 75%,
-      var(--background)
-    );
-    --mix-destructive-66-bg: color-mix(
-      in oklab,
-      var(--destructive) 66%,
-      var(--background)
-    );
-    --mix-foreground-6-trans: color-mix(
-      in oklab,
-      var(--foreground) 6%,
-      transparent
-    );
-    --mix-foreground-15-trans: color-mix(
-      in oklab,
-      var(--foreground) 15%,
-      transparent
-    );
-    --mix-foreground-20-muted: color-mix(
-      in oklab,
-      var(--foreground) 20%,
-      var(--muted)
-    );
-    --mix-foreground-25-trans: color-mix(
-      in oklab,
-      var(--foreground) 25%,
-      transparent
-    );
-    --mix-destructive-20-muted: color-mix(
-      in oklab,
-      var(--destructive) 20%,
-      var(--muted)
-    );
-    --mix-secondary-20-muted: color-mix(
-      in oklab,
-      var(--secondary) 20%,
-      var(--muted)
-    );
-    --mix-success-20-muted: color-mix(
-      in oklab,
-      var(--success) 20%,
-      var(--muted)
-    );
-    --mix-transparent-85-fg: color-mix(
-      in oklab,
-      transparent 85%,
-      var(--foreground)
-    );
-    --mix-transparent-88-fg: color-mix(
-      in oklab,
-      transparent 88%,
-      var(--foreground)
-    );
+    --mix-accent-66-bg: color-mix(in oklab,
+        var(--accent) 66%,
+        var(--background));
+    --mix-accent-75-bg: color-mix(in oklab,
+        var(--accent) 75%,
+        var(--background));
+    --mix-destructive-66-bg: color-mix(in oklab,
+        var(--destructive) 66%,
+        var(--background));
+    --mix-foreground-6-trans: color-mix(in oklab,
+        var(--foreground) 6%,
+        transparent);
+    --mix-foreground-15-trans: color-mix(in oklab,
+        var(--foreground) 15%,
+        transparent);
+    --mix-foreground-20-muted: color-mix(in oklab,
+        var(--foreground) 20%,
+        var(--muted));
+    --mix-foreground-25-trans: color-mix(in oklab,
+        var(--foreground) 25%,
+        transparent);
+    --mix-destructive-20-muted: color-mix(in oklab,
+        var(--destructive) 20%,
+        var(--muted));
+    --mix-secondary-20-muted: color-mix(in oklab,
+        var(--secondary) 20%,
+        var(--muted));
+    --mix-success-20-muted: color-mix(in oklab,
+        var(--success) 20%,
+        var(--muted));
+    --mix-transparent-85-fg: color-mix(in oklab,
+        transparent 85%,
+        var(--foreground));
+    --mix-transparent-88-fg: color-mix(in oklab,
+        transparent 88%,
+        var(--foreground));
   }
 }
 
 [data-theme="dark"] {
-  --background: oklch(0.18 0 290);
-  --foreground: oklch(0.94 0 290);
+  --background: oklch(0.18 0 0);
+  --foreground: oklch(0.94 0 0);
   --text: oklch(0.82 0 0);
   --title: oklch(0.96 0 0);
   --title-hover: oklch(0.98 0 0);

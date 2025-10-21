@@ -29,7 +29,6 @@
 .sidebarGap {
   position: relative;
   width: var(--sidebar-width);
-  background-color: transparent;
 }
 
 .sidebarContainer {
@@ -58,7 +57,7 @@
 }
 
 .sidebarInner {
-  background-color: var(--mix-card-15-bg);
+  background-color: var(--background);
   display: flex;
   height: 100%;
   width: 100%;
@@ -74,7 +73,7 @@
   mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
   -webkit-mask-image: linear-gradient(to bottom,
       transparent 0,
-      black 1rem,
+      black 1.4rem,
       black 100%);
 }
 
@@ -123,7 +122,7 @@
   padding: 0.5rem;
   font-size: 0.8125rem;
   font-weight: 400;
-  background-color: transparent;
+  background-color: var(--background);
   color: var(--muted-foreground);
   border-radius: var(--radius);
   position: relative;
@@ -131,7 +130,7 @@
 
 .sidebarItem:hover {
   color: var(--foreground);
-  background-color: var(--mix-accent-20-trans);
+  background-color: var(--mix-card-75-bg);
 }
 
 .sidebarItem.active {

@@ -33,7 +33,7 @@ export default function RootLayout({
       <body
         className="root"
         style={{
-          backgroundColor: "var(--mix-card-15-bg)",
+          backgroundColor: "var(--background)",
           color: "var(--foreground)",
           minHeight: "100vh",
           margin: 0,
