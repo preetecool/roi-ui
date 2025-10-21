@@ -1,9 +1,32 @@
 .carousel {
+    --page-max-width: 1280px;
+    --page-padding-left: 1rem;
+    --carousel-gap: 16px;
+    --edge: calc((100vw - var(--page-max-width)) / 2);
+    --min-edge: calc(var(--edge) - var(--carousel-gap));
+    --min-padding: calc(var(--page-padding-left) - var(--carousel-gap));
+
     position: relative;
     width: 100%;
     margin: 0 auto;
     border-radius: 0.5rem;
     overflow: visible;
+}
+
+.carouselCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.bleed {
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
 }
 
 .carousel:focus-visible {
@@ -14,13 +37,13 @@
 .viewport {
     position: relative;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
-
+    overscroll-behavior-x: contain;
+    scroll-snap-stop: always;
+    padding-block: calc(var(--focus-ring-width, 2px) + var(--focus-ring-offset, 2px));
     scrollbar-width: none;
     -ms-overflow-style: none;
-    scroll-behavior: smooth;
-    scroll-snap-type: none;
 }
 
 .viewport::-webkit-scrollbar {
@@ -30,7 +53,18 @@
 .container {
     display: flex;
     align-items: stretch;
+}
 
+.container::before {
+    content: "";
+    flex-shrink: 0;
+    width: var(--inset-padding-left, 0);
+}
+
+.container::after {
+    content: "";
+    flex-shrink: 0;
+    width: var(--inset-padding-right, 0);
 }
 
 .slide {
@@ -38,30 +72,16 @@
     position: relative;
 }
 
-.slide[aria-hidden="true"] {
-    pointer-events: none;
-}
-
 .slide:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: -2px;
 }
 
-.slide>*:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
-}
-
-.slide>*:focus:not(:focus-visible) {
-    outline: none;
-}
-
 .navContainer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 0.5rem;
-    margin-top: 1.5rem;
-    padding-right: 0;
+    margin-top: 3rem;
 }
 
 .navButton {
@@ -167,81 +187,7 @@
     border: 0;
 }
 
-@media (max-width: 768px) {
-    .carousel {
-        max-width: 100%;
-        border-radius: 0.25rem;
-    }
-
-    .viewport {
-        height: auto;
-    }
-
-    .container {
-        padding-left: 1.5rem;
-    }
-
-    .navContainer {
-        margin-top: 1rem;
-        padding-right: 1rem;
-    }
-
-    .navButton {
-        width: 2.25rem;
-        height: 2.25rem;
-    }
-
-    .navButton svg {
-        width: 1rem;
-        height: 1rem;
-    }
-
-    .indicators {
-        bottom: 0.75rem;
-    }
-
-    .indicator {
-        width: 0.625rem;
-        height: 0.625rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .carousel {
-        border-radius: 0.25rem;
-    }
-
-    .container {
-        padding-left: 0.75rem;
-    }
-
-    .navContainer {
-        padding-right: 0.75rem;
-    }
-
-    .navButton {
-        width: 2rem;
-        height: 2rem;
-    }
-
-    .navButton svg {
-        width: 0.875rem;
-        height: 0.875rem;
-    }
-}
-
-[data-theme="dark"] .indicator {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-[data-theme="dark"] .indicator:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .container {
-        transition: none;
-    }
 
     .navButton,
     .indicator {

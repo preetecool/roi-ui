@@ -1,42 +1,39 @@
 #card {
-  height: 280px;
-  position: relative;
-  padding: 1.5rem;
-  padding-bottom: 4rem;
-  border-color: var(--border-dark);
-  display: flex;
-  flex-direction: column;
+    height: 280px;
+    width: 300px;
+    position: relative;
+    padding: 1.5rem;
+    padding-bottom: 4rem;
+    border-color: var(--border-dark);
+    display: flex;
+    flex-direction: column;
 }
 
 .icon {
-  width: 2rem;
-  height: 2rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 .cardContent {
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .cardTitle {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .buttonContainer {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  justify-content: flex-start;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .button {
-  padding-left: 0 !important;
-  margin-top: 8px;
-}
-
-.placeholder {
-  height: 280px;
+    padding-left: 0;
+    margin-top: 8px;
 }
