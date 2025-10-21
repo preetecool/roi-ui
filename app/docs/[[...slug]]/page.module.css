@@ -99,13 +99,13 @@
 }
 
 /* Reduce top margin from first heading (when it follows page header) */
-.contentWrapper> :global(h2:first-child),
-.contentWrapper> :global(h3:first-child),
-.contentWrapper> :global(h4:first-child) {
+.contentWrapper > :global(h2:first-child),
+.contentWrapper > :global(h3:first-child),
+.contentWrapper > :global(h4:first-child) {
   margin-top: 0 !important;
 }
 
-.contentWrapper> :global(*:last-child) {
+.contentWrapper > :global(*:last-child) {
   margin-bottom: 0 !important;
 }
 
@@ -165,7 +165,7 @@
   background-color: var(--accent);
 }
 
-.contentWrapper> :global(h2) {
+.contentWrapper > :global(h2) {
   margin-top: 3rem;
   margin-bottom: 0.75rem;
   font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
@@ -175,7 +175,7 @@
   scroll-margin-top: 5rem;
 }
 
-.contentWrapper> :global(h3) {
+.contentWrapper > :global(h3) {
   margin-top: 2.5rem;
   margin-bottom: 0.625rem;
   font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
@@ -185,7 +185,7 @@
   scroll-margin-top: 5rem;
 }
 
-.contentWrapper> :global(h4) {
+.contentWrapper > :global(h4) {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
@@ -194,8 +194,8 @@
   scroll-margin-top: 5rem;
 }
 
-.contentWrapper> :global(h5),
-.contentWrapper> :global(h6) {
+.contentWrapper > :global(h5),
+.contentWrapper > :global(h6) {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
@@ -204,31 +204,31 @@
   scroll-margin-top: 5rem;
 }
 
-.contentWrapper> :global(p:not(:has([data-component]))) {
+.contentWrapper > :global(p:not(:has([data-component]))) {
   margin-top: 0;
   margin-bottom: 1.25rem;
   line-height: 1.65;
 }
 
-.contentWrapper> :global(p:has([data-component])) {
+.contentWrapper > :global(p:has([data-component])) {
   margin: 0;
 }
 
-.contentWrapper> :global(ul),
-.contentWrapper> :global(ol) {
+.contentWrapper > :global(ul),
+.contentWrapper > :global(ol) {
   margin-top: 0;
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
 
-.contentWrapper> :global(ul > li),
-.contentWrapper> :global(ol > li) {
+.contentWrapper > :global(ul > li),
+.contentWrapper > :global(ol > li) {
   margin-bottom: 0.5rem;
   line-height: 1.65;
 }
 
-.contentWrapper> :global(ul > li:last-child),
-.contentWrapper> :global(ol > li:last-child) {
+.contentWrapper > :global(ul > li:last-child),
+.contentWrapper > :global(ol > li:last-child) {
   margin-bottom: 0;
 }
 
@@ -238,7 +238,7 @@
   margin-bottom: 0.5rem;
 }
 
-.contentWrapper> :global(pre) {
+.contentWrapper > :global(pre) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -247,7 +247,7 @@
   font-size: 0.9em;
 }
 
-.contentWrapper> :global(blockquote) {
+.contentWrapper > :global(blockquote) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
@@ -255,15 +255,15 @@
   font-style: italic;
 }
 
-.contentWrapper> :global(blockquote p) {
+.contentWrapper > :global(blockquote p) {
   margin-bottom: 0.75rem;
 }
 
-.contentWrapper> :global(blockquote p:last-child) {
+.contentWrapper > :global(blockquote p:last-child) {
   margin-bottom: 0;
 }
 
-.contentWrapper> :global(hr) {
+.contentWrapper > :global(hr) {
   margin-top: 3rem;
   margin-bottom: 3rem;
   border: none;

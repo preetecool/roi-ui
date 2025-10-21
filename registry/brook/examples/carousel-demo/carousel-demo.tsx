@@ -94,35 +94,16 @@ export default function CarouselDemo() {
     },
   ];
 
-  const carouselItems = features.map((feature) => ({
-    id: feature.id,
-    content: (
-      <Card id={styles.card}>
-        <div className={styles.cardContent}>
-          <CardIcon>{feature.icon}</CardIcon>
-
-          <CardTitle className={styles.cardTitle}>{feature.title}</CardTitle>
-          <CardDescription>{feature.description}</CardDescription>
-        </div>
-        <div className={styles.buttonContainer}>
-          <Button className={styles.button} showArrow variant="link">
-            Learn More
-          </Button>
-        </div>
-      </Card>
-    ),
-  }));
-
   const [itemsPerView, setItemsPerView] = useState<number | null>(null);
 
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth >= DESKTOP_BREAKPOINT) {
-        setItemsPerView(DESKTOP_ITEMS_PER_VIEW); // Desktop: more compact
+        setItemsPerView(DESKTOP_ITEMS_PER_VIEW);
       } else if (window.innerWidth >= TABLET_BREAKPOINT) {
-        setItemsPerView(TABLET_ITEMS_PER_VIEW); // Tablet: medium compact
+        setItemsPerView(TABLET_ITEMS_PER_VIEW);
       } else {
-        setItemsPerView(MOBILE_ITEMS_PER_VIEW); // Mobile: less compact
+        setItemsPerView(MOBILE_ITEMS_PER_VIEW);
       }
     };
 
@@ -133,16 +114,36 @@ export default function CarouselDemo() {
   }, []);
 
   if (itemsPerView === null) {
-    return <div className={styles.placeholder} />; // Placeholder with expected height
+    return <div className={styles.placeholder} />;
   }
 
   return (
-    <Carousel
-      gap={16}
-      items={carouselItems}
-      itemsPerView={itemsPerView}
-      showIndicators={false}
-      showNavigation={true}
-    />
+    <Carousel gap={16} itemsPerView={itemsPerView}>
+      <Carousel.Viewport>
+        <Carousel.Content>
+          {features.map((feature, index) => (
+            <Carousel.Item index={index} key={feature.id}>
+              <Card id={styles.card}>
+                <div className={styles.cardContent}>
+                  <CardIcon>{feature.icon}</CardIcon>
+                  <CardTitle className={styles.cardTitle}>
+                    {feature.title}
+                  </CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </div>
+                <div className={styles.buttonContainer}>
+                  <Button className={styles.button} showArrow variant="link">
+                    Learn More
+                  </Button>
+                </div>
+              </Card>
+            </Carousel.Item>
+          ))}
+        </Carousel.Content>
+      </Carousel.Viewport>
+      <Carousel.Navigation />
+      <Carousel.SRInfo />
+      <Carousel.KeyboardHandler />
+    </Carousel>
   );
 }

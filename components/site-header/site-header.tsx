@@ -52,6 +52,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
                   fillColor="var(--muted-foreground)"
                   height={24}
                   strokeColor="var(--card)"
+                  strokeWidth={20}
                   width={24}
                 />
               </Link>

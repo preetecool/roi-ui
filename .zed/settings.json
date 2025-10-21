@@ -49,9 +49,7 @@
   },
   "lsp": {
     "biome": {
-      "initialization_options": {
-        "config_path": "biome.jsonc"
-      }
+      "settings": {}
     },
     "typescript-language-server": {
       "settings": {

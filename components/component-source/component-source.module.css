@@ -5,7 +5,6 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 1px solid var(--border);
-
 }
 
 .header {
@@ -87,7 +86,6 @@
   transition: 150ms var(--ease-out-quad);
   margin: 0;
   letter-spacing: -0.0125em;
-
 }
 
 .hideButton {
@@ -109,22 +107,22 @@
 
 .showButton:hover,
 .hideButton:hover {
-  background-color: oklch(from var(--secondary) l c h / 0.30);
+  background-color: oklch(from var(--secondary) l c h / 0.3);
   color: var(--foreground);
 }
 
-.toggleInput:checked~.container .collapsibleCode {
+.toggleInput:checked ~ .container .collapsibleCode {
   max-height: none;
 }
 
-.toggleInput:checked~.container .fadeOut {
+.toggleInput:checked ~ .container .fadeOut {
   display: none;
 }
 
-.toggleInput:checked~.container .showButton {
+.toggleInput:checked ~ .container .showButton {
   display: none;
 }
 
-.toggleInput:checked~.container .hideButton {
+.toggleInput:checked ~ .container .hideButton {
   display: flex;
 }

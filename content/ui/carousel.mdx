@@ -1,6 +1,6 @@
 ---
 title: Carousel
-description: A card carousel with horizontal scroll, keyboard and button navigation.
+description: A composable card carousel with horizontal scroll, keyboard and button navigation.
 ---
 
 <ComponentPreview name="carousel-demo" />
@@ -56,42 +56,40 @@ Copy and paste the CSS file:
 <CodeBlock
 filename="anatomy"
   language="tsx"
-  code={`<Carousel
-    items={[
-        { id: "1", content: <div>Item 1</div> },
-        { id: "2", content: <div>Item 2</div> },
-        { id: "3", content: <div>Item 3</div> },
-    ]}
-/>
+  code={`import { Carousel } from "@/components/ui/carousel";
+
+<Carousel itemsPerView={3.2} gap={16}>
+  <Carousel.Viewport>
+    <Carousel.Content>
+      <Carousel.Item index={0}>
+        <div>Item 1</div>
+      </Carousel.Item>
+      <Carousel.Item index={1}>
+        <div>Item 2</div>
+      </Carousel.Item>
+      <Carousel.Item index={2}>
+        <div>Item 3</div>
+      </Carousel.Item>
+    </Carousel.Content>
+  </Carousel.Viewport>
+  <Carousel.Navigation />
+  <Carousel.SRInfo />
+  <Carousel.KeyboardHandler />
+</Carousel>
 `} />
 
 ## Props
 
 ### Carousel
 
+The main carousel component (root).
+
 <PropTable
     data={[
         {
-            prop: "items",
-            type: "CarouselItem[]",
-            description: "Array of carousel items to display in the carousel",
-        },
-        {
-            prop: "showIndicators",
-            type: "boolean",
-            default: "false",
-            description: "Whether to show dot indicators at the bottom for navigation",
-        },
-        {
-            prop: "showNavigation",
-            type: "boolean",
-            default: "true",
-            description: "Whether to show previous/next arrow buttons for navigation",
-        },
-        {
             prop: "itemsPerView",
             type: "number",
-            default: "3.5",
+            default: "3.2",
             description: "Number of items visible in the viewport at once",
         },
         {
@@ -108,19 +106,122 @@ filename="anatomy"
     ]}
 />
 
-### CarouselItem
+### Viewport
 
 <PropTable
     data={[
         {
-            prop: "id",
+            prop: "className",
             type: "string",
-            description: "Unique identifier for the carousel item",
-        },
-        {
-            prop: "content",
-            type: "React.ReactNode",
-            description: "The content to display inside the carousel item",
+            description: "Additional CSS classes to apply to the viewport",
         },
     ]}
 />
+
+### Content
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the content container",
+        },
+    ]}
+/>
+
+### Item
+
+<PropTable
+    data={[
+        {
+            prop: "index",
+            type: "number",
+            description: "The index of the item in the carousel (required)",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the item",
+        },
+    ]}
+/>
+
+### Navigation
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the navigation container",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Custom navigation buttons (defaults to Previous and Next)",
+        },
+    ]}
+/>
+
+### Previous
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the previous button",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Custom content for the previous button",
+        },
+    ]}
+/>
+
+### Next
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the next button",
+        },
+        {
+            prop: "children",
+            type: "React.ReactNode",
+            description: "Custom content for the next button",
+        },
+    ]}
+/>
+
+### Indicators
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the indicators container",
+        },
+    ]}
+/>
+
+### SRInfo
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the screen reader info",
+        },
+    ]}
+/>
+
+### KeyboardHandler
+
+This component has no props. It enables keyboard navigation for the carousel (arrow keys, Home, End).
