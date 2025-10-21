@@ -1,139 +1,139 @@
 .header {
-  position: fixed;
-  z-index: 100;
-  height: var(--header-height);
-  width: 100%;
-  box-sizing: border-box;
+    position: fixed;
+    z-index: 100;
+    height: var(--header-height);
+    width: 100%;
+    box-sizing: border-box;
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0 max(24px, 5vw);
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  user-select: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0 max(24px, 5vw);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 @media (max-width: 1023px) {
-  .header {
-    top: 0 !important;
-    padding: 0 24px;
-  }
+    .header {
+        top: 0 !important;
+        padding: 0 24px;
+    }
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  width: 100%;
-  background-color: var(--mix-card-15-bg);
-  padding: 0 8px;
-  border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: var(--mix-card-15-bg);
+    padding: 0 8px;
+    border-radius: var(--radius);
 }
 
 .nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
 }
 
 .logoLink {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 .navLinks {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
 }
 
 .navLink {
-  font-size: 0.875rem;
-  font-weight: 400;
-  text-decoration: none;
-  color: var(--secondary-foreground);
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--secondary-foreground);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 .actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
 }
 
 .githubLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  background-color: transparent;
-  color: var(--muted-foreground);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: transparent;
+    color: var(--muted-foreground);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 .githubLink:hover {
-  color: var(--title);
+    color: var(--title);
 }
 
 .leftSection {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
 }
 
 .separator {
-  width: 1px;
-  height: 1.25rem;
-  background-color: var(--border-dark);
+    width: 1px;
+    height: 1.25rem;
+    background-color: var(--border-dark);
 }
 
 .mobileMenuWrapper {
-  display: none;
+    display: none;
 }
 
 .desktopOnly {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .innerWrapper {
-  border-bottom: 1px solid var(--border-dark);
-  margin-left: -20px;
-  margin-right: -20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  width: calc(100% + 40px);
+    border-bottom: 1px solid var(--border-dark);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: calc(100% + 40px);
 }
 
 @media (max-width: 1023px) {
-  .mobileMenuWrapper {
-    display: block;
-  }
+    .mobileMenuWrapper {
+        display: block;
+    }
 
-  .navLinks {
-    display: none !important;
-  }
+    .navLinks {
+        display: none !important;
+    }
 
-  .desktopOnly {
-    display: none !important;
-  }
+    .desktopOnly {
+        display: none !important;
+    }
 }

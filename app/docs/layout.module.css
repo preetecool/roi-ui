@@ -9,11 +9,11 @@
 }
 
 .docsWrapper {
-  position: fixed;
+  /*position: fixed;
   top: var(--header-height);
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0;*/
   width: 100%;
   height: calc(100vh - var(--header-height));
   background-color: var(--background);
@@ -85,6 +85,13 @@
   grid-area: main;
   min-width: 0;
   height: 100%;
+  padding-top: var(--header-height);
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding-top: 0;
+  }
 }
 
 .toc {
@@ -99,6 +106,7 @@
   overflow-y: auto;
   display: none;
   z-index: 10;
+  background-color: var(--background);
 }
 
 @media (min-width: 1280px) {

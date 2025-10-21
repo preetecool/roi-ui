@@ -5,6 +5,8 @@
   z-index: 1000;
   animation: fadeIn 0.15s ease;
   transition: opacity 0.15s ease;
+  outline: none;
+  border: none;
 }
 
 @keyframes fadeIn {
