@@ -5,7 +5,7 @@ import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 export default function CopyButtonDemo() {
   return (
     <div>
-      <CopyButton code="You are awesome!" className="header-copy-button" />
+      <CopyButton className="header-copy-button" code="You are awesome!" />
     </div>
   );
 }

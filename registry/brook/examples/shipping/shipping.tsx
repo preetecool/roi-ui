@@ -1,11 +1,24 @@
 "use client";
 
-import { Card } from "@/registry/brook/ui/card/card";
-import { Truck, Phone, MessageCircle } from "lucide-react";
+import { MessageCircle, Phone, Truck } from "lucide-react";
 import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
+import { Card } from "@/registry/brook/ui/card/card";
 
 import styles from "./shipping.module.css";
+
+function getTimelineStatus(item: {
+  completed?: boolean;
+  current?: boolean;
+}): string {
+  if (item.completed) {
+    return styles.completed;
+  }
+  if (item.current) {
+    return styles.current;
+  }
+  return styles.pending;
+}
 
 export function Shipping() {
   const shipmentData = {
@@ -14,8 +27,16 @@ export function Shipping() {
     status: "En Route",
     estimatedTime: "2 Hrs 15 Min",
     timeline: [
-      { company: "Harris Transportation", time: "Aug, 20, 11:00 EST", completed: true },
-      { company: "Main Paper Company", time: "Aug, 20, 16:00 EST", current: false },
+      {
+        company: "Harris Transportation",
+        time: "Aug, 20, 11:00 EST",
+        completed: true,
+      },
+      {
+        company: "Main Paper Company",
+        time: "Aug, 20, 16:00 EST",
+        current: false,
+      },
     ],
   };
 
@@ -31,26 +52,31 @@ export function Shipping() {
             <div className={styles.driver}>{shipmentData.driver}</div>
           </div>
           <div className={styles.headerRight}>
-            <Badge variant="success" className={styles.statusBadge}>
+            <Badge className={styles.statusBadge} variant="success">
               <BadgeIcon>
-                <Truck size={12} className={styles.statusIcon} />
+                <Truck className={styles.statusIcon} size={12} />
               </BadgeIcon>
               {shipmentData.status}
             </Badge>
-            <div className={styles.estimatedTime}>{shipmentData.estimatedTime}</div>
+            <div className={styles.estimatedTime}>
+              {shipmentData.estimatedTime}
+            </div>
           </div>
         </div>
 
         <div className={styles.timeline}>
           {shipmentData.timeline.map((item, index) => (
-            <div key={index} className={styles.timelineItem}>
+            <div
+              className={styles.timelineItem}
+              key={`${item.company}-${item.time}`}
+            >
               <div className={styles.timelineIndicator}>
                 <div
-                  className={`${styles.timelineCircle} ${
-                    item.completed ? styles.completed : item.current ? styles.current : styles.pending
-                  }`}
+                  className={`${styles.timelineCircle} ${getTimelineStatus(item)}`}
                 />
-                {index < shipmentData.timeline.length - 1 && <div className={styles.timelineLine} />}
+                {index < shipmentData.timeline.length - 1 && (
+                  <div className={styles.timelineLine} />
+                )}
               </div>
               <div className={styles.timelineContent}>
                 <div className={styles.companyName}>{item.company}</div>
@@ -60,18 +86,18 @@ export function Shipping() {
           ))}
         </div>
 
-        <div className={styles.separator}></div>
+        <div className={styles.separator} />
 
         <div className={styles.actions}>
-          <Button variant="outline" size="sm" className={styles.actionButton}>
+          <Button className={styles.actionButton} size="sm" variant="outline">
             <Phone size={16} />
             Call
           </Button>
-          <Button variant="outline" size="sm" className={styles.actionButton}>
+          <Button className={styles.actionButton} size="sm" variant="outline">
             <MessageCircle size={16} />
             Message
           </Button>
-          <Button variant="ghost" size="sm" className={styles.viewDetails}>
+          <Button className={styles.viewDetails} size="sm" variant="ghost">
             View Details
           </Button>
         </div>

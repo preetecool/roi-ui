@@ -18,14 +18,14 @@ export default function RadarChartDemo() {
       <h3 className={styles.title}>System Quality Metrics</h3>
       <div className={styles.chartWrapper}>
         <RadarChart
+          animated
           data={data}
+          fillOpacity={0.3}
           levels={5}
           maxValue={100}
-          showLabels={true}
           showGrid={true}
+          showLabels={true}
           showRadialAxis={false}
-          fillOpacity={0.3}
-          animated
         />
       </div>
     </div>

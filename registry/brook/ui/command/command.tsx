@@ -1,12 +1,15 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./command.module.css";
 
-function CommandRoot({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive>) {
+function CommandRoot({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CommandPrimitive>) {
   return <CommandPrimitive className={cn(styles.root, className)} {...props} />;
 }
 
@@ -14,21 +17,33 @@ function CommandDialog({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) {
-  return <CommandPrimitive.Dialog className={cn(styles.dialog, className)} {...props} />;
+  return (
+    <CommandPrimitive.Dialog
+      className={cn(styles.dialog, className)}
+      {...props}
+    />
+  );
 }
 
 function CommandInput({
   className,
   ...props
 }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
-  return <CommandPrimitive.Input className={cn(styles.input, className)} {...props} />;
+  return (
+    <CommandPrimitive.Input
+      className={cn(styles.input, className)}
+      {...props}
+    />
+  );
 }
 
 function CommandList({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
-  return <CommandPrimitive.List className={cn(styles.list, className)} {...props} />;
+  return (
+    <CommandPrimitive.List className={cn(styles.list, className)} {...props} />
+  );
 }
 
 function CommandItem({
@@ -45,7 +60,9 @@ function CommandItem({
     icon && Children.count(children) > 0
       ? Children.map(children, (child, index) => {
           if (index === 0 && isValidElement(child)) {
-            const typedChild = child as React.ReactElement<React.HTMLAttributes<HTMLElement>>;
+            const typedChild = child as React.ReactElement<
+              React.HTMLAttributes<HTMLElement>
+            >;
             return cloneElement(typedChild, {
               className: cn(styles.iconBackground, typedChild.props.className),
             });
@@ -71,28 +88,48 @@ function CommandGroup({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
-  return <CommandPrimitive.Group className={cn(styles.group, className)} {...props} />;
+  return (
+    <CommandPrimitive.Group
+      className={cn(styles.group, className)}
+      {...props}
+    />
+  );
 }
 
 function CommandEmpty({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
-  return <CommandPrimitive.Empty className={cn(styles.empty, className)} {...props} />;
+  return (
+    <CommandPrimitive.Empty
+      className={cn(styles.empty, className)}
+      {...props}
+    />
+  );
 }
 
 function CommandSeparator({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
-  return <CommandPrimitive.Separator className={cn(styles.separator, className)} {...props} />;
+  return (
+    <CommandPrimitive.Separator
+      className={cn(styles.separator, className)}
+      {...props}
+    />
+  );
 }
 
 function CommandLoading({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
-  return <CommandPrimitive.Loading className={cn(styles.loading, className)} {...props} />;
+  return (
+    <CommandPrimitive.Loading
+      className={cn(styles.loading, className)}
+      {...props}
+    />
+  );
 }
 
 export {

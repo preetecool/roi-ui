@@ -30,7 +30,8 @@
   --input: oklch(0.98 0 0);
   --ring: oklch(0.6 0 0);
 
-  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.05), 0 4px 6px -2px oklch(0 0 0 / 0.02);
+  --shadow-lg:
+    0 10px 15px -3px oklch(0 0 0 / 0.05), 0 4px 6px -2px oklch(0 0 0 / 0.02);
 
   --destructive: oklch(0.6553 0.1374 15.66);
   --destructive-foreground: oklch(0.9808 0 24);
@@ -97,18 +98,66 @@
     --mix-border-70-trans: color-mix(in oklab, var(--border) 70%, transparent);
     --mix-accent-20-trans: color-mix(in oklab, var(--accent) 20%, transparent);
     --mix-accent-33-trans: color-mix(in oklab, var(--accent) 33%, transparent);
-    --mix-accent-66-bg: color-mix(in oklab, var(--accent) 66%, var(--background));
-    --mix-accent-75-bg: color-mix(in oklab, var(--accent) 75%, var(--background));
-    --mix-destructive-66-bg: color-mix(in oklab, var(--destructive) 66%, var(--background));
-    --mix-foreground-6-trans: color-mix(in oklab, var(--foreground) 6%, transparent);
-    --mix-foreground-15-trans: color-mix(in oklab, var(--foreground) 15%, transparent);
-    --mix-foreground-20-muted: color-mix(in oklab, var(--foreground) 20%, var(--muted));
-    --mix-foreground-25-trans: color-mix(in oklab, var(--foreground) 25%, transparent);
-    --mix-destructive-20-muted: color-mix(in oklab, var(--destructive) 20%, var(--muted));
-    --mix-secondary-20-muted: color-mix(in oklab, var(--secondary) 20%, var(--muted));
-    --mix-success-20-muted: color-mix(in oklab, var(--success) 20%, var(--muted));
-    --mix-transparent-85-fg: color-mix(in oklab, transparent 85%, var(--foreground));
-    --mix-transparent-88-fg: color-mix(in oklab, transparent 88%, var(--foreground));
+    --mix-accent-66-bg: color-mix(
+      in oklab,
+      var(--accent) 66%,
+      var(--background)
+    );
+    --mix-accent-75-bg: color-mix(
+      in oklab,
+      var(--accent) 75%,
+      var(--background)
+    );
+    --mix-destructive-66-bg: color-mix(
+      in oklab,
+      var(--destructive) 66%,
+      var(--background)
+    );
+    --mix-foreground-6-trans: color-mix(
+      in oklab,
+      var(--foreground) 6%,
+      transparent
+    );
+    --mix-foreground-15-trans: color-mix(
+      in oklab,
+      var(--foreground) 15%,
+      transparent
+    );
+    --mix-foreground-20-muted: color-mix(
+      in oklab,
+      var(--foreground) 20%,
+      var(--muted)
+    );
+    --mix-foreground-25-trans: color-mix(
+      in oklab,
+      var(--foreground) 25%,
+      transparent
+    );
+    --mix-destructive-20-muted: color-mix(
+      in oklab,
+      var(--destructive) 20%,
+      var(--muted)
+    );
+    --mix-secondary-20-muted: color-mix(
+      in oklab,
+      var(--secondary) 20%,
+      var(--muted)
+    );
+    --mix-success-20-muted: color-mix(
+      in oklab,
+      var(--success) 20%,
+      var(--muted)
+    );
+    --mix-transparent-85-fg: color-mix(
+      in oklab,
+      transparent 85%,
+      var(--foreground)
+    );
+    --mix-transparent-88-fg: color-mix(
+      in oklab,
+      transparent 88%,
+      var(--foreground)
+    );
   }
 }
 
@@ -140,7 +189,8 @@
   --input: oklch(0.2029 0.003 0);
   --ring: oklch(0.45 0.025 270);
 
-  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.25), 0 4px 6px -2px oklch(0 0 0 / 0.15);
+  --shadow-lg:
+    0 10px 15px -3px oklch(0 0 0 / 0.25), 0 4px 6px -2px oklch(0 0 0 / 0.15);
 
   --destructive: oklch(0.5219 0.1656 18.34);
   --destructive-foreground: oklch(0.8988 0.0447 17.32);
@@ -215,11 +265,6 @@ h6 {
   color: var(--title);
   font-weight: 600;
   line-height: 1.2;
-}
-
-p {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 input,

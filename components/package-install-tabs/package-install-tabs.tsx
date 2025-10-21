@@ -1,12 +1,17 @@
 "use client";
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/brook/ui/tabs/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/brook/ui/tabs/tabs";
 import styles from "./package-install-tabs.module.css";
 
-interface PackageInstallTabsProps {
+type PackageInstallTabsProps = {
   packageName: string;
   children?: React.ReactNode;
-}
+};
 
 export function PackageInstallTabs({ packageName }: PackageInstallTabsProps) {
   const packageManagers = [
@@ -23,7 +28,7 @@ export function PackageInstallTabs({ packageName }: PackageInstallTabsProps) {
   ];
 
   return (
-    <Tabs defaultValue="npm" className={styles.tabs}>
+    <Tabs className={styles.tabs} defaultValue="npm">
       <TabsList>
         {packageManagers.map((pm) => (
           <TabsTrigger key={pm.name} value={pm.name}>
@@ -35,9 +40,7 @@ export function PackageInstallTabs({ packageName }: PackageInstallTabsProps) {
       {packageManagers.map((pm) => (
         <TabsContent key={pm.name} value={pm.name}>
           <pre className={styles.codeBlock}>
-            <code className={styles.code}>
-              {pm.command}
-            </code>
+            <code className={styles.code}>{pm.command}</code>
           </pre>
         </TabsContent>
       ))}

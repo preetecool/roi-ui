@@ -2,9 +2,9 @@
 
 import { ContextMenu } from "@base-ui-components/react/context-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./context-menu.module.css";
-import React from "react";
 
 function ContextMenuRoot({
   ...props
@@ -16,7 +16,9 @@ function ContextMenuTrigger({
   className,
   ...props
 }: React.ComponentProps<typeof ContextMenu.Trigger>) {
-  return <ContextMenu.Trigger className={cn(styles.trigger, className)} {...props} />;
+  return (
+    <ContextMenu.Trigger className={cn(styles.trigger, className)} {...props} />
+  );
 }
 
 const ContextMenuPortal = ContextMenu.Portal;
@@ -50,14 +52,18 @@ function ContextMenuPopup({
   className,
   ...props
 }: React.ComponentProps<typeof ContextMenu.Popup>) {
-  return <ContextMenu.Popup className={cn(styles.popup, className)} {...props} />;
+  return (
+    <ContextMenu.Popup className={cn(styles.popup, className)} {...props} />
+  );
 }
 
 function ContextMenuArrow({
   className,
   ...props
 }: React.ComponentProps<typeof ContextMenu.Arrow>) {
-  return <ContextMenu.Arrow className={cn(styles.arrow, className)} {...props} />;
+  return (
+    <ContextMenu.Arrow className={cn(styles.arrow, className)} {...props} />
+  );
 }
 
 function ContextMenuItem({
@@ -79,7 +85,10 @@ function ContextMenuCheckboxItem({
   ...props
 }: React.ComponentProps<typeof ContextMenu.CheckboxItem>) {
   return (
-    <ContextMenu.CheckboxItem className={cn(styles.checkboxItem, className)} {...props}>
+    <ContextMenu.CheckboxItem
+      className={cn(styles.checkboxItem, className)}
+      {...props}
+    >
       <span className={styles.itemIndicator}>
         <Check size={16} />
       </span>
@@ -94,9 +103,12 @@ function ContextMenuRadioItem({
   ...props
 }: React.ComponentProps<typeof ContextMenu.RadioItem>) {
   return (
-    <ContextMenu.RadioItem className={cn(styles.radioItem, className)} {...props}>
+    <ContextMenu.RadioItem
+      className={cn(styles.radioItem, className)}
+      {...props}
+    >
       <span className={styles.itemIndicator}>
-        <Circle size={8} fill="currentColor" />
+        <Circle fill="currentColor" size={8} />
       </span>
       {children}
     </ContextMenu.RadioItem>
@@ -127,7 +139,12 @@ function ContextMenuSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof ContextMenu.Separator>) {
-  return <ContextMenu.Separator className={cn(styles.separator, className)} {...props} />;
+  return (
+    <ContextMenu.Separator
+      className={cn(styles.separator, className)}
+      {...props}
+    />
+  );
 }
 
 function ContextMenuSubmenuRoot({
@@ -141,14 +158,16 @@ function ContextMenuSubmenuTrigger({
   inset = false,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.SubmenuTrigger> & { inset?: boolean }) {
+}: React.ComponentProps<typeof ContextMenu.SubmenuTrigger> & {
+  inset?: boolean;
+}) {
   return (
     <ContextMenu.SubmenuTrigger
       className={cn(styles.submenuTrigger, inset && styles.inset, className)}
       {...props}
     >
       {children}
-      <ChevronRight size={16} className={styles.submenuIcon} />
+      <ChevronRight className={styles.submenuIcon} size={16} />
     </ContextMenu.SubmenuTrigger>
   );
 }
@@ -157,37 +176,34 @@ function ContextMenuGroup({
   className,
   ...props
 }: React.ComponentProps<typeof ContextMenu.Group>) {
-  return <ContextMenu.Group className={cn(styles.group, className)} {...props} />;
+  return (
+    <ContextMenu.Group className={cn(styles.group, className)} {...props} />
+  );
 }
 
 function ContextMenuShortcut({
   className,
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) {
-  return (
-    <span
-      className={cn(styles.shortcut, className)}
-      {...props}
-    />
-  );
+  return <span className={cn(styles.shortcut, className)} {...props} />;
 }
 
 export {
   ContextMenuRoot as ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuPortal,
-  ContextMenuBackdrop,
-  ContextMenuPositioner,
-  ContextMenuPopup,
   ContextMenuArrow,
-  ContextMenuItem,
+  ContextMenuBackdrop,
   ContextMenuCheckboxItem,
-  ContextMenuRadioItem,
-  ContextMenuRadioGroup,
+  ContextMenuGroup,
+  ContextMenuItem,
   ContextMenuLabel,
+  ContextMenuPopup,
+  ContextMenuPortal,
+  ContextMenuPositioner,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
   ContextMenuSeparator,
+  ContextMenuShortcut,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
-  ContextMenuGroup,
-  ContextMenuShortcut,
+  ContextMenuTrigger,
 };

@@ -1,17 +1,17 @@
 "use client";
 
 import { Toast } from "@base-ui-components/react/toast";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
-  ToastProvider,
+  CloseIcon,
+  ToastClose,
+  ToastDescription,
   ToastPortal,
-  ToastViewport,
+  ToastProvider,
   Toast as ToastRoot,
   ToastTitle,
-  ToastDescription,
-  ToastClose,
-  CloseIcon,
+  ToastViewport,
 } from "@/registry/brook/ui/toast/toast";
-import { Button } from "@/registry/brook/ui/button/button";
 
 export default function ToastDemo() {
   return (

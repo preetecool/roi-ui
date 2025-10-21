@@ -24,7 +24,6 @@
   overflow-y: auto;
   gap: 1rem;
   border: 1px solid var(--border);
-  background-color: var(--card);
   padding: 1.5rem;
   border-radius: var(--radius-lg);
   background-color: var(--background);

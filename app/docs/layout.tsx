@@ -1,8 +1,8 @@
-import { source } from "@/lib/source";
 import { DocsSidebar } from "@/components/docs-sidebar/docs-sidebar";
 import { SiteHeader } from "@/components/site-header/site-header";
 import { TOCProvider } from "@/components/toc-context";
 import { TOCDisplay } from "@/components/toc-display";
+import { source } from "@/lib/source";
 import styles from "./layout.module.css";
 
 export default function DocsLayout({
@@ -20,9 +20,7 @@ export default function DocsLayout({
           <div className={styles.sidebar}>
             <DocsSidebar tree={source.pageTree} />
           </div>
-          <div className={styles.main}>
-            {children}
-          </div>
+          <div className={styles.main}>{children}</div>
           <div className={styles.toc}>
             <TOCDisplay />
           </div>

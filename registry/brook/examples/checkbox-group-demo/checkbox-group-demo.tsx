@@ -1,8 +1,11 @@
 "use client";
 
-import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
-import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
 import { Check } from "lucide-react";
+import {
+  Checkbox,
+  CheckboxIndicator,
+} from "@/registry/brook/ui/checkbox/checkbox";
+import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
 import styles from "./checkbox-group-demo.module.css";
 
 export default function CheckboxGroupDemo() {
@@ -11,32 +14,32 @@ export default function CheckboxGroupDemo() {
       <div className={styles.title}>Select your interests</div>
 
       <CheckboxGroup defaultValue={["design"]}>
-        <label className={styles.label}>
+        <div className={styles.label}>
           <Checkbox name="interests" value="design">
             <CheckboxIndicator>
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
           <span className={styles.text}>Design</span>
-        </label>
+        </div>
 
-        <label className={styles.label}>
+        <div className={styles.label}>
           <Checkbox name="interests" value="development">
             <CheckboxIndicator>
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
           <span className={styles.text}>Development</span>
-        </label>
+        </div>
 
-        <label className={styles.labelLast}>
+        <div className={styles.labelLast}>
           <Checkbox name="interests" value="marketing">
             <CheckboxIndicator>
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
           <span className={styles.text}>Marketing</span>
-        </label>
+        </div>
       </CheckboxGroup>
     </div>
   );

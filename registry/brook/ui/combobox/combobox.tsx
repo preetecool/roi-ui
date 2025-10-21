@@ -2,11 +2,13 @@
 
 import { Combobox } from "@base-ui-components/react/combobox";
 import { Check, ChevronsUpDown, X } from "lucide-react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./combobox.module.css";
-import React from "react";
 
-function ComboboxRoot<ItemValue>({ ...props }: React.ComponentProps<typeof Combobox.Root<ItemValue>>) {
+function ComboboxRoot<ItemValue>({
+  ...props
+}: React.ComponentProps<typeof Combobox.Root<ItemValue>>) {
   return <Combobox.Root<ItemValue> {...props} />;
 }
 
@@ -18,7 +20,7 @@ function ComboboxTrigger({
   return (
     <Combobox.Trigger className={cn(styles.trigger, className)} {...props}>
       {children}
-      <ChevronsUpDown size={16} className={styles.icon} />
+      <ChevronsUpDown className={styles.icon} size={16} />
     </Combobox.Trigger>
   );
 }
@@ -27,12 +29,7 @@ function ComboboxInput({
   className,
   ...props
 }: React.ComponentProps<typeof Combobox.Input>) {
-  return (
-    <Combobox.Input
-      className={cn(styles.input, className)}
-      {...props}
-    />
-  );
+  return <Combobox.Input className={cn(styles.input, className)} {...props} />;
 }
 
 function ComboboxClear({
@@ -93,7 +90,9 @@ function ComboboxItem({
   children,
   indicatorPosition = "left",
   ...props
-}: React.ComponentProps<typeof Combobox.Item> & { indicatorPosition?: "left" | "right" }) {
+}: React.ComponentProps<typeof Combobox.Item> & {
+  indicatorPosition?: "left" | "right";
+}) {
   return (
     <Combobox.Item className={cn(styles.item, className)} {...props}>
       {indicatorPosition === "left" && (
@@ -117,7 +116,10 @@ function ComboboxItemIndicator({
   ...props
 }: React.ComponentProps<typeof Combobox.ItemIndicator>) {
   return (
-    <Combobox.ItemIndicator className={cn(styles.itemIndicator, className)} {...props}>
+    <Combobox.ItemIndicator
+      className={cn(styles.itemIndicator, className)}
+      {...props}
+    >
       {children || <Check size={16} />}
     </Combobox.ItemIndicator>
   );
@@ -134,7 +136,12 @@ function ComboboxGroupLabel({
   className,
   ...props
 }: React.ComponentProps<typeof Combobox.GroupLabel>) {
-  return <Combobox.GroupLabel className={cn(styles.groupLabel, className)} {...props} />;
+  return (
+    <Combobox.GroupLabel
+      className={cn(styles.groupLabel, className)}
+      {...props}
+    />
+  );
 }
 
 function ComboboxArrow({
@@ -158,18 +165,18 @@ function ComboboxNoItems({
 
 export {
   ComboboxRoot as Combobox,
-  ComboboxTrigger,
-  ComboboxInput,
+  ComboboxArrow,
   ComboboxClear,
-  ComboboxPortal,
-  ComboboxPositioner,
-  ComboboxPopup,
-  ComboboxList,
   ComboboxEmpty,
-  ComboboxItem,
-  ComboboxItemIndicator,
   ComboboxGroup,
   ComboboxGroupLabel,
-  ComboboxArrow,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxList,
   ComboboxNoItems,
+  ComboboxPopup,
+  ComboboxPortal,
+  ComboboxPositioner,
+  ComboboxTrigger,
 };

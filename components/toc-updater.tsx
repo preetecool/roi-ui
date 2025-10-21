@@ -1,12 +1,12 @@
 "use client";
 
+import type { TOCItemType } from "fumadocs-core/server";
 import { useEffect } from "react";
 import { useTOC } from "./toc-context";
-import type { TOCItemType } from "fumadocs-core/server";
 
-interface TOCUpdaterProps {
+type TOCUpdaterProps = {
   toc: TOCItemType[] | null;
-}
+};
 
 export function TOCUpdater({ toc }: TOCUpdaterProps) {
   const { setToc } = useTOC();

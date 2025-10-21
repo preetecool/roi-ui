@@ -17,7 +17,7 @@ export default function PieChartDemo() {
     <div className={styles.container}>
       <h3 className={styles.title}>Traffic by Platform</h3>
       <div className={styles.chartWrapper}>
-        <PieChart data={data} colors={blueShades} />
+        <PieChart colors={blueShades} data={data} />
       </div>
     </div>
   );

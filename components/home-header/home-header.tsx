@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "@/registry/brook/ui/button/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
@@ -21,59 +21,67 @@ const COMPONENTS = [
   "/badge-success",
 ];
 
-const ArrowPointer = () => {
-  return (
-    <svg viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.badgeArrow}>
-      <g fillRule="nonzero">
-        <path
-          d="M1 1l4 4-4 4"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          className={styles.badgeArrowPoint}
-        />
-        <path
-          d="M1.5 5h4.8"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
-          className={styles.badgeArrowShaft}
-        />
-      </g>
-    </svg>
-  );
+const ArrowPointer = () => (
+  <svg
+    aria-hidden="true"
+    className={styles.badgeArrow}
+    fill="none"
+    viewBox="0 0 14 10"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g fillRule="nonzero">
+      <path
+        className={styles.badgeArrowPoint}
+        d="M1 1l4 4-4 4"
+        stroke="currentColor"
+        strokeLinecap="butt"
+        strokeLinejoin="miter"
+        strokeWidth="1.5"
+      />
+      <path
+        className={styles.badgeArrowShaft}
+        d="M1.5 5h4.8"
+        stroke="currentColor"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        strokeWidth="1.5"
+      />
+    </g>
+  </svg>
+);
+
+const getRandomComponent = () => {
+  const randomComponent =
+    COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
+
+  return randomComponent;
 };
 
 export const HomeHeader = () => {
-  const [reset, setReset] = useState(0);
+  const [reset, _setReset] = useState(0);
   const HEADING = "Functional & delighful components";
   const SUBHEADING =
     "React components built with Base UI primitives and Motion for seamless, accessible interactions";
 
-  const getRandomComponent = () => {
-    const randomComponent = COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
-
-    return randomComponent;
-  };
-
-  const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
+  const [randomComponent, setRandomComponent] = useState(getRandomComponent);
 
   useEffect(() => {
     setRandomComponent(getRandomComponent());
   }, []);
 
   return (
-    <div key={reset} className={styles.container}>
-      <Link href="/docs/examples/tabs" className={styles.badge}>
+    <div className={styles.container} key={reset}>
+      <Link className={styles.badge} href="/docs/examples/tabs">
         <span>New animated tabs component</span>
         <ArrowPointer />
       </Link>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span key={index} className={styles.wordContainer}>
-            <span className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
+          <span className={styles.wordContainer} key={word}>
+            <span
+              className={styles.wordWrapper}
+              style={{ "--index": index } as React.CSSProperties}
+            >
               {word}
               {index < HEADING.split(" ").length - 1 && " "}
             </span>
@@ -83,7 +91,10 @@ export const HomeHeader = () => {
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
         <Button render={<Link href="/docs/start" />}>Get Started</Button>
-        <Button variant="ghost" render={<Link href={`/docs/examples/${randomComponent}`} />}>
+        <Button
+          render={<Link href={`/docs/examples/${randomComponent}`} />}
+          variant="ghost"
+        >
           I&apos;m Feeling Lucky
         </Button>
       </div>

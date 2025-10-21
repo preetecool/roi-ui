@@ -50,7 +50,11 @@
   inset: 0;
   z-index: var(--dialog-z);
   background-color: transparent;
-  background-image: linear-gradient(to bottom, transparent 2rem, rgb(0 0 0 / 5%) 50%);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 2rem,
+    rgb(0 0 0 / 5%) 50%
+  );
   backdrop-filter: blur(2px);
   opacity: 1;
   transition:

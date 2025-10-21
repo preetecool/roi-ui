@@ -1,21 +1,21 @@
 .container {
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .tabsList {
-    margin: 0;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid var(--border);
-    background-color: var(--code-header-bg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 2.5rem;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--code-header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 2.5rem;
 }
 
 .tabsGroup {
-    display: flex;
+  display: flex;
 }

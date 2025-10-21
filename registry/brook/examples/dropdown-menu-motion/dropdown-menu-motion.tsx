@@ -1,7 +1,7 @@
 "use client";
 import { Menu } from "@base-ui-components/react";
 import { CreditCard, LogOut, Plus, Settings, User, Users } from "lucide-react";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useRef, useState } from "react";
 import styles from "./dropdown-menu-motion.module.css";
 
@@ -19,24 +19,36 @@ export default function DropdownMenuFramerMotion() {
 
   return (
     <div ref={containerRef}>
-      <MotionConfig transition={{ type: "spring", bounce: 0.1, duration: 0.3, ease: [0.19, 1, 0.22, 1] }}>
-        <Menu.Root open={open} onOpenChange={setOpen}>
+      <MotionConfig
+        transition={{
+          type: "spring",
+          bounce: 0.1,
+          duration: 0.3,
+          // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
+          ease: [0.19, 1, 0.22, 1],
+        }}
+      >
+        <Menu.Root onOpenChange={setOpen} open={open}>
           {!open && (
             <Menu.Trigger
               nativeButton
               render={
                 <motion.button
-                  layoutId="menu-wrapper"
                   className={styles.button}
+                  layoutId="menu-wrapper"
                   style={{ borderRadius: 14 }}
                 />
               }
             >
               <motion.div
-                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-                initial={{ opacity: 0, filter: "blur(4px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, filter: "blur(4px)" }}
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
                 <Plus size={18} />
               </motion.div>
@@ -46,12 +58,16 @@ export default function DropdownMenuFramerMotion() {
           <AnimatePresence>
             {open && (
               <Menu.Portal key="portal">
-                <Menu.Positioner anchor={containerRef} className={styles.positioner} sideOffset={10}>
+                <Menu.Positioner
+                  anchor={containerRef}
+                  className={styles.positioner}
+                  sideOffset={10}
+                >
                   <Menu.Popup
                     render={
                       <motion.div
-                        layoutId="menu-wrapper"
                         className={styles.popup}
+                        layoutId="menu-wrapper"
                         style={{ borderRadius: 14 }}
                       />
                     }
@@ -59,8 +75,15 @@ export default function DropdownMenuFramerMotion() {
                     <ul>
                       {menuItems.map((item, index) => (
                         <motion.li key={item.label}>
-                          {index === menuItems.length - 1 && <motion.div className={styles.separator} />}
-                          <Menu.Item nativeButton render={<motion.button className={styles.menuItem} />}>
+                          {index === menuItems.length - 1 && (
+                            <motion.div className={styles.separator} />
+                          )}
+                          <Menu.Item
+                            nativeButton
+                            render={
+                              <motion.button className={styles.menuItem} />
+                            }
+                          >
                             <item.icon size={14} />
                             {item.label}
                           </Menu.Item>

@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
 import { RotateCcw } from "lucide-react";
 import styles from "./replay-button.module.css";
 
-interface ReplayButtonProps {
+type ReplayButtonProps = {
   onReplay?: () => void;
-}
+};
 
 export function ReplayButton({ onReplay }: ReplayButtonProps) {
   const handleReplay = () => {
@@ -16,12 +15,13 @@ export function ReplayButton({ onReplay }: ReplayButtonProps) {
       window.location.reload();
     }
   };
-  
+
   return (
-    <button 
-      onClick={handleReplay}
-      className={styles.replayButton}
+    <button
       aria-label="Replay animation"
+      className={styles.replayButton}
+      onClick={handleReplay}
+      type="button"
     >
       <RotateCcw size={16} />
     </button>

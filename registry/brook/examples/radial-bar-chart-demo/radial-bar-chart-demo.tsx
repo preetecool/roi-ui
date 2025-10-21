@@ -18,11 +18,7 @@ export default function RadialBarChartDemo() {
     <div className={styles.container}>
       <h3 className={styles.title}>Department Budget Allocation</h3>
       <div className={styles.chartWrapper}>
-        <RadialBarChart
-          data={data}
-          showLabels={true}
-          animated
-        />
+        <RadialBarChart animated data={data} showLabels={true} />
       </div>
     </div>
   );

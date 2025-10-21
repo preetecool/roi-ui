@@ -7,13 +7,13 @@
   "files": [
     {
       "path": "registry/brook/ui/checkbox-group/checkbox-group.tsx",
-      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui-components/react/checkbox-group\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox-group.module.css\";\n\nfunction CheckboxGroupRoot({ className, ...props }: React.ComponentProps<typeof CheckboxGroup>) {\n  return <CheckboxGroup className={cn(styles.root, className)} {...props} />;\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };",
+      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui-components/react/checkbox-group\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox-group.module.css\";\n\nfunction CheckboxGroupRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof CheckboxGroup>) {\n  return <CheckboxGroup className={cn(styles.root, className)} {...props} />;\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };\n",
       "type": "registry:file",
       "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
     },
     {
       "path": "registry/brook/ui/checkbox-group/checkbox-group.module.css",
-      "content": ".root {\n    display: flex;\n    flex-direction: column;\n    gap: 0.75rem;\n}",
+      "content": ".root {\n  display: flex;\n  flex-direction: column;\n  gap: 0.75rem;\n}\n",
       "type": "registry:file",
       "target": "~/components/ui/checkbox-group/checkbox-group.module.css"
     }

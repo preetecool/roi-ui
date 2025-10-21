@@ -1,12 +1,10 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
+import { TOCUpdater } from "@/components/toc-updater";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
-
-import { TOCUpdater } from "@/components/toc-updater";
 import styles from "./page.module.css";
 
 export const revalidate = false;
@@ -17,7 +15,9 @@ export function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug?: string[] }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
@@ -27,7 +27,7 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
 
   const doc = page.data;
 
-  if (!doc.title || !doc.description) {
+  if (!(doc.title && doc.description)) {
     notFound();
   }
 
@@ -58,7 +58,9 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   };
 }
 
-export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
+export default async function Page(props: {
+  params: Promise<{ slug?: string[] }>;
+}) {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) {
@@ -84,7 +86,8 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
   const currentIndex = allPages.findIndex((p) => p.url === page.url);
   const neighbours = {
     previous: currentIndex > 0 ? allPages[currentIndex - 1] : null,
-    next: currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
+    next:
+      currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
   };
 
   return (
@@ -97,7 +100,9 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
             <div className={styles.titleSection}>
               <h1 className={styles.pageTitle}>{doc.title}</h1>
             </div>
-            {doc.description && <p className={styles.pageDescription}>{doc.description}</p>}
+            {doc.description && (
+              <p className={styles.pageDescription}>{doc.description}</p>
+            )}
           </div>
           {links || components ? (
             <div className={styles.linksSection}>
@@ -105,24 +110,36 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                 <div className={styles.externalLinks}>
                   {links?.doc && (
                     <Button
-                      variant="outline"
-                      size="sm"
-                      showArrow
-                      pointExternal
                       className={styles.badgeButton}
-                      render={<a href={links.doc} target="_blank" rel="noopener noreferrer" />}
+                      pointExternal
+                      render={
+                        <Link
+                          href={links.doc}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      }
+                      showArrow
+                      size="sm"
+                      variant="outline"
                     >
                       Docs
                     </Button>
                   )}
                   {links?.api && (
                     <Button
-                      variant="outline"
-                      size="sm"
-                      showArrow
-                      pointExternal
                       className={styles.badgeButton}
-                      render={<a href={links.api} target="_blank" rel="noopener noreferrer" />}
+                      pointExternal
+                      render={
+                        <Link
+                          href={links.api}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      }
+                      showArrow
+                      size="sm"
+                      variant="outline"
                     >
                       API Reference
                     </Button>
@@ -133,23 +150,29 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                 <div className={styles.componentBadges}>
                   {components.map((component: string) => (
                     <Button
-                      key={component}
-                      variant="secondary"
-                      size="sm"
                       className={styles.badgeButton}
+                      key={component}
                       render={<Link href={`/docs/ui/${component}`} />}
+                      size="sm"
+                      variant="secondary"
                     >
                       {component.charAt(0).toUpperCase() + component.slice(1)}
                     </Button>
                   ))}
                   {motion && (
                     <Button
-                      variant="outline"
-                      size="sm"
-                      showArrow
-                      pointExternal
                       className={styles.badgeButton}
-                      render={<a href="https://motion.dev" target="_blank" rel="noopener noreferrer" />}
+                      pointExternal
+                      render={
+                        <Link
+                          href="https://motion.dev"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      }
+                      showArrow
+                      size="sm"
+                      variant="outline"
                     >
                       Motion
                     </Button>
@@ -168,11 +191,11 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
           <div className={styles.prevButton}>
             {neighbours.previous && (
               <Button
-                variant="ghost"
-                showArrow
-                pointLeft
                 className={styles.buttonCustomStyle}
+                pointLeft
                 render={<Link href={neighbours.previous.url} />}
+                showArrow
+                variant="ghost"
               >
                 {neighbours.previous.data.title}
               </Button>
@@ -182,10 +205,10 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
           <div className={styles.nextButton}>
             {neighbours.next && (
               <Button
-                variant="ghost"
-                showArrow
                 className={styles.buttonCustomStyle}
                 render={<Link href={neighbours.next.url} />}
+                showArrow
+                variant="ghost"
               >
                 {neighbours.next.data.title}
               </Button>

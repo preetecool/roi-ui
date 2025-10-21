@@ -1,160 +1,160 @@
 @media (hover: hover) {
-    .trigger:hover {
-        background-color: var(--accent);
-    }
+  .trigger:hover {
+    background-color: var(--accent);
+  }
 }
 
 .trigger:active {
-    background-color: var(--accent);
+  background-color: var(--accent);
 }
 
 .trigger[data-popup-open] {
-    background-color: var(--accent);
+  background-color: var(--accent);
 }
 
 .trigger:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: -1px;
+  outline: 2px solid var(--ring);
+  outline-offset: -1px;
 }
 
 .backdrop {
-    position: fixed;
-    inset: 0;
-    background-color: oklch(0 0 0 / 0.1);
-    z-index: 998;
+  position: fixed;
+  inset: 0;
+  background-color: oklch(0 0 0 / 0.1);
+  z-index: 998;
 }
 
 .positioner {
-    position: absolute;
-    z-index: 999;
+  position: absolute;
+  z-index: 999;
 }
 
 .popup {
-    position: relative;
-    box-sizing: border-box;
-    padding: 1rem 1rem;
-    border-radius: var(--radius);
-    background-color: var(--mix-card-33-bg);
-    color: var(--popover-foreground);
-    transform-origin: var(--transform-origin);
-    transition:
-        transform 150ms ease,
-        opacity 150ms ease;
-    outline: 1px solid var(--border);
-    box-shadow: var(--shadow-lg);
-    z-index: 1000;
+  position: relative;
+  box-sizing: border-box;
+  padding: 1rem 1rem;
+  border-radius: var(--radius);
+  background-color: var(--mix-card-33-bg);
+  color: var(--popover-foreground);
+  transform-origin: var(--transform-origin);
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
+  outline: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
 }
 
 .popup[data-starting-style],
 .popup[data-ending-style] {
-    opacity: 0;
-    transform: scale(0.9);
+  opacity: 0;
+  transform: scale(0.9);
 }
 
 .popup:focus-visible {
-    outline: 1px solid var(--ring);
-    outline-offset: 1px;
+  outline: 1px solid var(--ring);
+  outline-offset: 1px;
 }
 
 .arrow {
-    display: flex;
+  display: flex;
 }
 
 .arrow[data-side="top"] {
-    bottom: -8px;
-    rotate: 180deg;
+  bottom: -8px;
+  rotate: 180deg;
 }
 
 .arrow[data-side="bottom"] {
-    top: -8px;
-    rotate: 0deg;
+  top: -8px;
+  rotate: 0deg;
 }
 
 .arrow[data-side="left"] {
-    right: -13px;
-    rotate: 90deg;
+  right: -13px;
+  rotate: 90deg;
 }
 
 .arrow[data-side="right"] {
-    left: -13px;
-    rotate: -90deg;
+  left: -13px;
+  rotate: -90deg;
 }
 
 .arrow svg {
-    fill: var(--mix-card-33-bg);
-    stroke: var(--border);
-    stroke-width: 1px;
+  fill: var(--mix-card-33-bg);
+  stroke: var(--border);
+  stroke-width: 1px;
 }
 
 .title {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 500;
-    color: var(--popover-foreground);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: var(--popover-foreground);
 }
 
 .description {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: var(--muted-foreground);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--muted-foreground);
 }
 
 .close {
-    all: unset;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0.25rem;
-    right: 0.25rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    padding: 0;
-    border-radius: var(--radius);
-    cursor: pointer;
-    color: var(--muted-foreground);
-    transition:
-        background-color 150ms ease,
-        color 150ms ease;
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--muted-foreground);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
 }
 
 .close:hover {
-    background-color: var(--muted);
-    color: var(--foreground);
+  background-color: var(--muted);
+  color: var(--foreground);
 }
 
 .close:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .close svg {
-    width: 1rem;
-    height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .actions {
-    display: flex;
-    justify-content: end;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 [data-theme="dark"] .backdrop {
-    background-color: oklch(0 0 0 / 0.2);
+  background-color: oklch(0 0 0 / 0.2);
 }
 
 [data-theme="dark"] .popup {
-    outline: 1px solid var(--border);
-    outline-offset: -1px;
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
 }
 
 @media (max-width: 640px) {
-    .popup {
-        max-width: calc(100vw - 2rem);
-        margin: 1rem;
-    }
+  .popup {
+    max-width: calc(100vw - 2rem);
+    margin: 1rem;
+  }
 }

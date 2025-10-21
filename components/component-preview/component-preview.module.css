@@ -1,61 +1,65 @@
 .container {
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .preview {
-    position: relative;
-    min-height: 450px;
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    border-bottom: 1px solid var(--border);
+  position: relative;
+  min-height: 450px;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .preview.center {
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .preview.start {
-    align-items: flex-start;
-    justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .preview.end {
-    align-items: flex-end;
-    justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 @media (max-width: 640px) {
-    .preview {
-        padding: 1rem;
-    }
+  .preview {
+    padding: 1rem;
+  }
+}
+
+.chartPreview {
+  min-height: 350px;
 }
 
 .description {
-    border-top: 1px solid var(--border);
-    background-color: var(--muted);
-    padding: 1rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--muted);
+  padding: 1rem;
 }
 
 .descriptionText {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-    margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
 }
 
 .errorMessage {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
 }
 
 .errorCode {
-    background-color: var(--muted);
-    padding: 0.375rem 0.375rem;
-    border-radius: var(--radius);
-    font-size: 0.875rem;
+  background-color: var(--muted);
+  padding: 0.375rem 0.375rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
 }

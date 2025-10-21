@@ -20,25 +20,26 @@ function CollapsibleTrigger({
     <Collapsible.Trigger className={cn(styles.trigger, className)} {...props}>
       {children}
       <svg
+        aria-hidden="true"
         className={styles.chevron}
-        width="16"
+        fill="none"
         height="16"
         viewBox="0 0 24 24"
-        fill="none"
+        width="16"
       >
         <path
           d="m7 15 5 5 5-5"
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
         />
         <path
           d="m7 9 5-5 5 5"
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
         />
       </svg>
     </Collapsible.Trigger>
@@ -49,11 +50,9 @@ function CollapsiblePanel({
   className,
   ...props
 }: React.ComponentProps<typeof Collapsible.Panel>) {
-  return <Collapsible.Panel className={cn(styles.panel, className)} {...props} />;
+  return (
+    <Collapsible.Panel className={cn(styles.panel, className)} {...props} />
+  );
 }
 
-export {
-  CollapsibleRoot as Collapsible,
-  CollapsibleTrigger,
-  CollapsiblePanel,
-};
+export { CollapsibleRoot as Collapsible, CollapsiblePanel, CollapsibleTrigger };

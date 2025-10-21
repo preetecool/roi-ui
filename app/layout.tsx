@@ -18,31 +18,38 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <html lang="en" className={GeistSans.className} suppressHydrationWarning>
-        <head>
-          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="shortcut icon" href="/favicon.svg" />
-        </head>
-        <body
-          className="root"
-          style={{
-            backgroundColor: "var(--mix-card-15-bg)",
-            color: "var(--foreground)",
-            minHeight: "100vh",
-            margin: 0,
-            padding: 0,
-          }}
+    <html className={GeistSans.className} lang="en" suppressHydrationWarning>
+      <head>
+        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/favicon.ico" rel="icon" sizes="any" />
+        <link href="/favicon.svg" rel="shortcut icon" />
+      </head>
+      <body
+        className="root"
+        style={{
+          backgroundColor: "var(--mix-card-15-bg)",
+          color: "var(--foreground)",
+          minHeight: "100vh",
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <ThemeProvider
+          defaultTheme="dark"
+          disableTransitionOnChange
+          enableSystem
+          storageKey="theme"
         >
-          <ThemeProvider defaultTheme="dark" enableSystem disableTransitionOnChange storageKey="theme">
-            {children}
-            <Analytics />
-          </ThemeProvider>
-        </body>
-      </html>
-    </>
+          {children}
+          <Analytics />
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

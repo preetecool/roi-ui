@@ -304,10 +304,7 @@
     {
       "name": "copy-button",
       "type": "registry:item",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
+      "dependencies": ["motion", "lucide-react"],
       "title": "Copy Button",
       "description": "A button component with animated copy-to-clipboard functionality.",
       "files": [
@@ -362,9 +359,7 @@
     {
       "name": "expandable-card",
       "type": "registry:block",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "title": "Expandable Card",
       "description": "A card component that can expand to show more content.",
       "files": [
@@ -707,9 +702,7 @@
     {
       "name": "line-chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Line Chart",
       "description": "Interactive line charts with optional data points and smooth animations.",
       "files": [
@@ -733,9 +726,7 @@
     {
       "name": "area-chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Area Chart",
       "description": "Area charts that fill the space below the line, perfect for showing volume and trends.",
       "files": [
@@ -759,9 +750,7 @@
     {
       "name": "bar-chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Bar Chart",
       "description": "Animated vertical bar charts with hover highlighting and customizable styling.",
       "files": [
@@ -785,9 +774,7 @@
     {
       "name": "radial-bar-chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Radial Bar Chart",
       "description": "Circular progress-style charts for displaying progress and comparative metrics.",
       "files": [
@@ -829,9 +816,7 @@
     {
       "name": "radar-chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Radar Chart",
       "description": "Multi-dimensional radar charts for comparing multiple variables across categories.",
       "files": [
@@ -855,9 +840,7 @@
     {
       "name": "pie-chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Pie Chart",
       "description": "Circular charts perfect for displaying proportional data and percentages.",
       "files": [

@@ -84,12 +84,13 @@ export default function LineChartDemo() {
       <h3 className={styles.title}>Population Growth (1990-2025)</h3>
       <div className={styles.chartContainer}>
         <LineChart
-          data={data}
-          showXAxis={true}
-          showYAxis={true}
-          showXGrid={false}
-          showPoints={false}
           animated
+          data={data}
+          showPoints={false}
+          showXAxis={true}
+          showXGrid={false}
+          showYAxis={true}
+          // biome-ignore lint/style/noMagicNumbers: year values for chart tick marks
           ticks={[1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025]}
         />
       </div>

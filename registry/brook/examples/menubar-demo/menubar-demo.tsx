@@ -1,16 +1,16 @@
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   Menubar,
   MenubarMenu,
-  MenubarMenuTrigger,
+  MenubarMenuItem,
+  MenubarMenuPopup,
   MenubarMenuPortal,
   MenubarMenuPositioner,
-  MenubarMenuPopup,
-  MenubarMenuItem,
   MenubarMenuSeparator,
   MenubarMenuSubmenuRoot,
   MenubarMenuSubmenuTrigger,
+  MenubarMenuTrigger,
 } from "@/registry/brook/ui/menubar/menubar";
-import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./menubar-demo.module.css";
 
 export default function MenubarDemo() {
@@ -19,7 +19,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button variant="ghost" size="sm">
+            <Button size="sm" variant="ghost">
               File
             </Button>
           }
@@ -30,26 +30,20 @@ export default function MenubarDemo() {
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   New File
-                  <span className={styles.shortcut}>
-                    ⌘N
-                  </span>
+                  <span className={styles.shortcut}>⌘N</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Open
-                  <span className={styles.shortcut}>
-                    ⌘O
-                  </span>
+                  <span className={styles.shortcut}>⌘O</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuSeparator />
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Save
-                  <span className={styles.shortcut}>
-                    ⌘S
-                  </span>
+                  <span className={styles.shortcut}>⌘S</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuItem>Save As...</MenubarMenuItem>
@@ -58,7 +52,11 @@ export default function MenubarDemo() {
               <MenubarMenuSubmenuRoot>
                 <MenubarMenuSubmenuTrigger>Export</MenubarMenuSubmenuTrigger>
                 <MenubarMenuPortal>
-                  <MenubarMenuPositioner side="right" align="start" sideOffset={8}>
+                  <MenubarMenuPositioner
+                    align="start"
+                    side="right"
+                    sideOffset={8}
+                  >
                     <MenubarMenuPopup>
                       <MenubarMenuItem>PDF</MenubarMenuItem>
                       <MenubarMenuItem>PNG</MenubarMenuItem>
@@ -78,7 +76,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button variant="ghost" size="sm">
+            <Button size="sm" variant="ghost">
               Edit
             </Button>
           }
@@ -89,42 +87,32 @@ export default function MenubarDemo() {
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Undo
-                  <span className={styles.shortcut}>
-                    ⌘Z
-                  </span>
+                  <span className={styles.shortcut}>⌘Z</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Redo
-                  <span className={styles.shortcut}>
-                    ⌘⇧Z
-                  </span>
+                  <span className={styles.shortcut}>⌘⇧Z</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuSeparator />
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Cut
-                  <span className={styles.shortcut}>
-                    ⌘X
-                  </span>
+                  <span className={styles.shortcut}>⌘X</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Copy
-                  <span className={styles.shortcut}>
-                    ⌘C
-                  </span>
+                  <span className={styles.shortcut}>⌘C</span>
                 </div>
               </MenubarMenuItem>
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Paste
-                  <span className={styles.shortcut}>
-                    ⌘V
-                  </span>
+                  <span className={styles.shortcut}>⌘V</span>
                 </div>
               </MenubarMenuItem>
             </MenubarMenuPopup>
@@ -135,7 +123,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button variant="ghost" size="sm">
+            <Button size="sm" variant="ghost">
               View
             </Button>
           }
@@ -154,7 +142,11 @@ export default function MenubarDemo() {
               <MenubarMenuSubmenuRoot>
                 <MenubarMenuSubmenuTrigger>Layout</MenubarMenuSubmenuTrigger>
                 <MenubarMenuPortal>
-                  <MenubarMenuPositioner side="right" align="start" sideOffset={8}>
+                  <MenubarMenuPositioner
+                    align="start"
+                    side="right"
+                    sideOffset={8}
+                  >
                     <MenubarMenuPopup>
                       <MenubarMenuItem>Single Page</MenubarMenuItem>
                       <MenubarMenuItem>Two Pages</MenubarMenuItem>
@@ -170,7 +162,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button variant="ghost" size="sm">
+            <Button size="sm" variant="ghost">
               Help
             </Button>
           }

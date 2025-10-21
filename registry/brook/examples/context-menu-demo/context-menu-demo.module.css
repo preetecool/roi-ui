@@ -1,43 +1,43 @@
 .container {
-    padding: 2rem;
-    max-width: 600px;
-    margin: 0 auto;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .trigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 2rem;
-    cursor: context-menu;
-    outline: none;
-    border-radius: var(--radius);
-    border: 2px dashed var(--border);
-    transition: all 150ms ease;
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+  cursor: context-menu;
+  outline: none;
+  border-radius: var(--radius);
+  border: 2px dashed var(--border);
+  transition: all 150ms ease;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
 
-    &:hover {
-        border-color: var(--ring);
-    }
+  &:hover {
+    border-color: var(--ring);
+  }
 
-    &:focus-visible {
-        outline: 2px solid var(--ring);
-        outline-offset: 2px;
-    }
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
 .popup {
-    min-width: 16rem;
+  min-width: 16rem;
 }
 
 .deleteItem {
-    color: var(--destructive);
+  color: var(--destructive);
 
-    &:hover,
-    &[data-highlighted] {
-        background: var(--destructive);
-        color: var(--destructive-foreground);
-    }
+  &:hover,
+  &[data-highlighted] {
+    background: var(--destructive);
+    color: var(--destructive-foreground);
+  }
 }

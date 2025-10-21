@@ -33,8 +33,8 @@
   transition: all 0.2s;
   position: relative;
   font-family:
-    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   border-radius: var(--radius);
   z-index: 1;
   -webkit-tap-highlight-color: transparent;

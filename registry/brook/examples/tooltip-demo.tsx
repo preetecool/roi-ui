@@ -1,13 +1,13 @@
+import { Button } from "@/registry/brook/ui/button/button";
 import {
-  TooltipProvider,
   Tooltip,
-  TooltipTrigger,
+  TooltipArrow,
+  TooltipPopup,
   TooltipPortal,
   TooltipPositioner,
-  TooltipPopup,
-  TooltipArrow,
+  TooltipProvider,
+  TooltipTrigger,
 } from "@/registry/brook/ui/tooltip/tooltip";
-import { Button } from "@/registry/brook/ui/button/button";
 
 export default function TooltipDemo() {
   return (

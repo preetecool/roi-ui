@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Form,
-  FormField,
-  FormControl,
-  FormLabel,
-  FormError,
-  FormActions,
-} from "@/registry/brook/ui/form/form";
 import { Button } from "@/registry/brook/ui/button/button";
+import {
+  Field,
+  FieldControl,
+  FieldError,
+  FieldLabel,
+} from "@/registry/brook/ui/field/field";
+import { Form, FormActions } from "@/registry/brook/ui/form/form";
 
 export default function FormDemo() {
   const [errors, setErrors] = useState({});
@@ -35,19 +34,19 @@ export default function FormDemo() {
       }}
       style={{ maxWidth: "400px" }}
     >
-      <FormField name="url">
-        <FormLabel>Homepage</FormLabel>
-        <FormControl
-          type="url"
-          required
-          placeholder="https://example.com"
+      <Field name="url">
+        <FieldLabel>Homepage</FieldLabel>
+        <FieldControl
           pattern="https?://[^/]+\.com(/.*)?$"
+          placeholder="https://example.com"
+          required
+          type="url"
         />
-        <FormError />
-      </FormField>
+        <FieldError />
+      </Field>
 
       <FormActions>
-        <Button disabled={loading} type="submit" style={{ width: "100%" }}>
+        <Button disabled={loading} style={{ width: "100%" }} type="submit">
           {loading ? "Submitting..." : "Submit"}
         </Button>
       </FormActions>
@@ -55,9 +54,11 @@ export default function FormDemo() {
   );
 }
 
+const SIMULATED_DELAY_MS = 1000;
+
 async function submitForm(value: string) {
   await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
+    setTimeout(resolve, SIMULATED_DELAY_MS);
   });
 
   try {

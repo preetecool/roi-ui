@@ -1,88 +1,118 @@
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationMenuLinkItem,
-  NavigationMenuIcon,
-  NavigationMenuViewport,
-  NavigationMenuPositioner,
-  NavigationMenuPortal,
-  NavigationMenuArrow,
-} from "@/registry/brook/ui/navigation-menu/navigation-menu";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
+import {
+  NavigationMenu,
+  NavigationMenuArrow,
+  NavigationMenuContent,
+  NavigationMenuIcon,
+  NavigationMenuItem,
+  NavigationMenuLinkItem,
+  NavigationMenuList,
+  NavigationMenuPortal,
+  NavigationMenuPositioner,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/registry/brook/ui/navigation-menu/navigation-menu";
 import styles from "./navigation-sub-menu.module.css";
 
 export default function NavigationSubMenu() {
   return (
-    <>
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger
-              render={
-                <Button variant="ghost">
-                  Open
-                  <NavigationMenuIcon>
-                    <ChevronDown size={16} />
-                  </NavigationMenuIcon>
-                </Button>
-              }
-            ></NavigationMenuTrigger>
-            <NavigationMenuViewport>
-              <NavigationMenuArrow />
-              <NavigationMenuContent>
-                <div className={styles.mainGrid}>
-                  <NavigationMenuLinkItem href="#" title="Button" description="Interactive button component" />
-                  <NavigationMenuLinkItem href="#" title="Input" description="Form input controls" />
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger
+            render={
+              <Button variant="ghost">
+                Open
+                <NavigationMenuIcon>
+                  <ChevronDown size={16} />
+                </NavigationMenuIcon>
+              </Button>
+            }
+          />
+          <NavigationMenuViewport>
+            <NavigationMenuArrow />
+            <NavigationMenuContent>
+              <div className={styles.mainGrid}>
+                <NavigationMenuLinkItem
+                  description="Interactive button component"
+                  href="#"
+                  title="Button"
+                />
+                <NavigationMenuLinkItem
+                  description="Form input controls"
+                  href="#"
+                  title="Input"
+                />
 
-                  <NavigationMenu>
-                    <NavigationMenuItem className={styles.subMenuItem}>
-                      <NavigationMenuTrigger
-                        nativeButton={false}
-                        render={
-                          <div className={styles.triggerContainer}>
-                            <NavigationMenuLinkItem
-                              title="Input"
-                              description="Form input controls"
-                              className={styles.linkItemWithIcon}
-                            >
-                              <NavigationMenuIcon>
-                                <ChevronDown size={16} />
-                              </NavigationMenuIcon>
-                            </NavigationMenuLinkItem>
-                          </div>
-                        }
-                      />
-
-                      <NavigationMenuContent>
-                        <div className={styles.subMenuList}>
-                          <NavigationMenuLinkItem href="#" title="Dialog" description="Modal dialogs" />
-                          <NavigationMenuLinkItem href="#" title="Popover" description="Floating content" />
-                          <NavigationMenuLinkItem href="#" title="Tooltip" description="Helpful hints" />
-                          <NavigationMenuLinkItem href="#" title="Accordion" description="Collapsible sections" />
+                <NavigationMenu>
+                  <NavigationMenuItem className={styles.subMenuItem}>
+                    <NavigationMenuTrigger
+                      nativeButton={false}
+                      render={
+                        <div className={styles.triggerContainer}>
+                          <NavigationMenuLinkItem
+                            className={styles.linkItemWithIcon}
+                            description="Form input controls"
+                            title="Input"
+                          >
+                            <NavigationMenuIcon>
+                              <ChevronDown size={16} />
+                            </NavigationMenuIcon>
+                          </NavigationMenuLinkItem>
                         </div>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
+                      }
+                    />
 
-                    <NavigationMenuPortal>
-                      <NavigationMenuPositioner side="right" sideOffset={8} alignOffset={-50}>
-                        <NavigationMenuViewport>
-                          <NavigationMenuArrow />
-                        </NavigationMenuViewport>
-                      </NavigationMenuPositioner>
-                    </NavigationMenuPortal>
-                  </NavigationMenu>
+                    <NavigationMenuContent>
+                      <div className={styles.subMenuList}>
+                        <NavigationMenuLinkItem
+                          description="Modal dialogs"
+                          href="#"
+                          title="Dialog"
+                        />
+                        <NavigationMenuLinkItem
+                          description="Floating content"
+                          href="#"
+                          title="Popover"
+                        />
+                        <NavigationMenuLinkItem
+                          description="Helpful hints"
+                          href="#"
+                          title="Tooltip"
+                        />
+                        <NavigationMenuLinkItem
+                          description="Collapsible sections"
+                          href="#"
+                          title="Accordion"
+                        />
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
 
-                  <NavigationMenuLinkItem href="#" title="Table" description="Data tables and grids" />
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuViewport>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-    </>
+                  <NavigationMenuPortal>
+                    <NavigationMenuPositioner
+                      alignOffset={-50}
+                      side="right"
+                      sideOffset={8}
+                    >
+                      <NavigationMenuViewport>
+                        <NavigationMenuArrow />
+                      </NavigationMenuViewport>
+                    </NavigationMenuPositioner>
+                  </NavigationMenuPortal>
+                </NavigationMenu>
+
+                <NavigationMenuLinkItem
+                  description="Data tables and grids"
+                  href="#"
+                  title="Table"
+                />
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuViewport>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }

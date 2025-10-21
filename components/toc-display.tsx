@@ -1,11 +1,11 @@
 "use client";
 
-import { useTOC } from "./toc-context";
 import { TableOfContents } from "./toc/toc";
+import { useTOC } from "./toc-context";
 
 export function TOCDisplay() {
   const { toc } = useTOC();
-  
+
   if (!toc || toc.length === 0) {
     return null;
   }

@@ -2,10 +2,9 @@
 
 import { Autocomplete } from "@base-ui-components/react/autocomplete";
 import { Search, X } from "lucide-react";
+import type React from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./autocomplete.module.css";
-import React from "react";
 
 function AutocompleteRoot({
   ...props
@@ -24,10 +23,7 @@ function AutocompleteInput({
   ...props
 }: React.ComponentProps<typeof Autocomplete.Input>) {
   return (
-    <Autocomplete.Input
-      render={(props) => <Input {...props} className={cn(className)} />}
-      {...props}
-    />
+    <Autocomplete.Input className={cn(styles.input, className)} {...props} />
   );
 }
 
@@ -38,7 +34,7 @@ function AutocompleteTrigger({
 }: React.ComponentProps<typeof Autocomplete.Trigger>) {
   return (
     <Autocomplete.Trigger className={cn(styles.trigger, className)} {...props}>
-      {children || <Search size={16} className={styles.icon} />}
+      {children || <Search className={styles.icon} size={16} />}
     </Autocomplete.Trigger>
   );
 }
@@ -98,28 +94,36 @@ function AutocompletePopup({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Popup>) {
-  return <Autocomplete.Popup className={cn(styles.popup, className)} {...props} />;
+  return (
+    <Autocomplete.Popup className={cn(styles.popup, className)} {...props} />
+  );
 }
 
 function AutocompleteArrow({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Arrow>) {
-  return <Autocomplete.Arrow className={cn(styles.arrow, className)} {...props} />;
+  return (
+    <Autocomplete.Arrow className={cn(styles.arrow, className)} {...props} />
+  );
 }
 
 function AutocompleteStatus({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Status>) {
-  return <Autocomplete.Status className={cn(styles.status, className)} {...props} />;
+  return (
+    <Autocomplete.Status className={cn(styles.status, className)} {...props} />
+  );
 }
 
 function AutocompleteList({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.List>) {
-  return <Autocomplete.List className={cn(styles.list, className)} {...props} />;
+  return (
+    <Autocomplete.List className={cn(styles.list, className)} {...props} />
+  );
 }
 
 function AutocompleteEmpty({
@@ -151,49 +155,63 @@ function AutocompleteItem({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Item>) {
-  return <Autocomplete.Item className={cn(styles.item, className)} {...props} />;
+  return (
+    <Autocomplete.Item className={cn(styles.item, className)} {...props} />
+  );
 }
 
 function AutocompleteGroup({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Group>) {
-  return <Autocomplete.Group className={cn(styles.group, className)} {...props} />;
+  return (
+    <Autocomplete.Group className={cn(styles.group, className)} {...props} />
+  );
 }
 
 function AutocompleteGroupLabel({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.GroupLabel>) {
-  return <Autocomplete.GroupLabel className={cn(styles.groupLabel, className)} {...props} />;
+  return (
+    <Autocomplete.GroupLabel
+      className={cn(styles.groupLabel, className)}
+      {...props}
+    />
+  );
 }
 
 function AutocompleteSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Separator>) {
-  return <Autocomplete.Separator className={cn(styles.separator, className)} {...props} />;
+  return (
+    <Autocomplete.Separator
+      className={cn(styles.separator, className)}
+      {...props}
+    />
+  );
 }
 
 export {
   AutocompleteRoot as Autocomplete,
-  AutocompleteValue,
-  AutocompleteInput,
-  AutocompleteTrigger,
-  AutocompleteIcon,
-  AutocompleteClear,
-  AutocompletePortal,
-  AutocompleteBackdrop,
-  AutocompletePositioner,
-  AutocompletePopup,
   AutocompleteArrow,
-  AutocompleteStatus,
-  AutocompleteList,
-  AutocompleteEmpty,
+  AutocompleteBackdrop,
+  AutocompleteClear,
   AutocompleteCollection,
-  AutocompleteRow,
-  AutocompleteItem,
+  AutocompleteEmpty,
   AutocompleteGroup,
   AutocompleteGroupLabel,
+  AutocompleteIcon,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopup,
+  AutocompletePortal,
+  AutocompletePositioner,
+  AutocompleteRow,
   AutocompleteSeparator,
+  AutocompleteStatus,
+  AutocompleteTrigger,
+  AutocompleteValue,
 };

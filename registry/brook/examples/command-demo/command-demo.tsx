@@ -1,4 +1,13 @@
 import {
+  Calendar,
+  CreditCard,
+  FileText,
+  Mail,
+  Smile,
+  Terminal,
+  User,
+} from "lucide-react";
+import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -8,15 +17,14 @@ import {
   CommandSeparator,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import { Mail, Calendar, CreditCard, FileText, User, Smile, Terminal } from "lucide-react";
 import styles from "./command-demo.module.css";
 
 export default function CommandDemo() {
   return (
     <Command className={styles.command}>
       <CommandInput
-        placeholder="Type a command or search..."
         className={styles.commandInput}
+        placeholder="Type a command or search..."
       />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -57,16 +65,17 @@ export default function CommandDemo() {
       </CommandList>
       <div className={styles.commandFooter}>
         <div className={styles.commandFooterItem}>
-          <Kbd size="md" className={styles.commandFooterKbd}>
+          <Kbd className={styles.commandFooterKbd} size="md">
             <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
+              aria-hidden="true"
               fill="none"
+              height="14"
               stroke="currentColor"
-              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+              width="14"
             >
               <polyline points="9 10 4 15 9 20" />
               <path d="M20 4v7a4 4 0 0 1-4 4H4" />

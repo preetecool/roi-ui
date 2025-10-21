@@ -1,29 +1,29 @@
 "use client";
 
 import {
-  LineChart as RechartsLineChart,
+  CartesianGrid,
+  Dot,
   Line,
+  LineChart as RechartsLineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Dot,
 } from "recharts";
 import ChartTooltip from "./chart-tooltip";
 import styles from "./line-chart.module.css";
 
 type NumberValue = number | { valueOf(): number };
 
-export interface LineChartData {
+export type LineChartData = {
   date: NumberValue;
   value: number;
   type: string;
-}
+};
 
 export type CurveType = "linear" | "monotoneX" | "cardinal" | "basis" | "step";
 
-export interface LineChartProps {
+export type LineChartProps = {
   data: LineChartData[];
   showXAxis?: boolean;
   showYAxis?: boolean;
@@ -35,6 +35,45 @@ export interface LineChartProps {
   xAxisFormatter?: (value: NumberValue | string) => string;
   animated?: boolean;
   ticks?: number[];
+};
+
+const DOMAIN_PADDING_PERCENTAGE = 0.05;
+const ANIMATION_STAGGER_DELAY_MS = 200;
+const ANIMATION_DURATION_MS = 800;
+
+type DotProps = {
+  cx?: number;
+  cy?: number;
+  payload?: LineChartData;
+  showPoints: boolean;
+  pointSize: number;
+  colors: string[];
+  uniqueTypes: string[];
+  [key: string]: unknown;
+};
+
+function CustomDot({
+  cx,
+  cy,
+  payload,
+  showPoints,
+  pointSize,
+  colors,
+  uniqueTypes,
+}: DotProps) {
+  if (showPoints && cx !== undefined && cy !== undefined && payload) {
+    return (
+      <Dot
+        cx={cx}
+        cy={cy}
+        fill={colors[uniqueTypes.indexOf(payload.type)]}
+        r={pointSize}
+        stroke="var(--background)"
+        strokeWidth={2}
+      />
+    );
+  }
+  return null;
 }
 
 function LineChart({
@@ -59,36 +98,13 @@ function LineChart({
     return Math.round(Number(value)).toString();
   };
 
-  const tooltipLabelFormatter = (value: NumberValue | string) => formatDate(value);
+  const tooltipLabelFormatter = (value: NumberValue | string) =>
+    formatDate(value);
 
-  interface DotProps {
-    cx?: number;
-    cy?: number;
-    payload?: LineChartData;
-    [key: string]: unknown;
-  }
-
-  function CustomDot(props: DotProps) {
-    const { cx, cy, payload } = props;
-    if (showPoints && cx !== undefined && cy !== undefined && payload) {
-      return (
-        <Dot
-          cx={cx}
-          cy={cy}
-          r={pointSize}
-          fill={colors[uniqueTypes.indexOf(payload.type)]}
-          stroke="var(--background)"
-          strokeWidth={2}
-        />
-      );
-    }
-    return null;
-  }
-
-  interface GroupedDataItem {
+  type GroupedDataItem = {
     date: NumberValue;
     [key: string]: NumberValue | number;
-  }
+  };
 
   const groupedData = data.reduce((acc: GroupedDataItem[], curr) => {
     const existingDate = acc.find((item) => item.date === curr.date);
@@ -107,7 +123,7 @@ function LineChart({
   const minDate = Math.min(...dates);
   const maxDate = Math.max(...dates);
 
-  const padding = (maxDate - minDate) * 0.05;
+  const padding = (maxDate - minDate) * DOMAIN_PADDING_PERCENTAGE;
   const domainMin = Math.max(0, minDate - padding);
   const domainMax = maxDate + padding;
 
@@ -120,42 +136,68 @@ function LineChart({
         height: "100%",
       }}
     >
-      <ResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart data={groupedData} margin={{ top: 10, right: 12, left: 12, bottom: 20 }}>
+      <ResponsiveContainer height="100%" width="100%">
+        <RechartsLineChart
+          data={groupedData}
+          margin={{ top: 10, right: 12, left: 12, bottom: 20 }}
+        >
           {showXGrid ||
-            (showYGrid && <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.2} />)}
+            (showYGrid && (
+              <CartesianGrid
+                stroke="var(--border)"
+                strokeDasharray="3 3"
+                strokeOpacity={0.2}
+              />
+            ))}
           <XAxis
-            dataKey="date"
             axisLine={false}
-            tickLine={false}
-            tick={showXAxis ? { fontSize: 11, fill: "var(--muted-foreground)" } : false}
-            tickFormatter={formatDate}
-            ticks={ticks}
+            dataKey="date"
             domain={[domainMin, domainMax]}
             hide={!showXAxis}
+            tick={
+              showXAxis
+                ? { fontSize: 11, fill: "var(--muted-foreground)" }
+                : false
+            }
+            tickFormatter={formatDate}
+            tickLine={false}
+            ticks={ticks}
           />
           {showYAxis && (
             <YAxis
               axisLine={false}
-              tickLine={false}
               tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+              tickLine={false}
               width={30}
             />
           )}
           <Tooltip
-            cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
             content={<ChartTooltip labelFormatter={tooltipLabelFormatter} />}
+            cursor={{ stroke: "var(--secondary)", strokeWidth: 1 }}
           />
           {uniqueTypes.map((type, index) => (
             <Line
-              key={type}
-              type="monotone"
+              animationBegin={
+                animated ? index * ANIMATION_STAGGER_DELAY_MS : undefined
+              }
+              animationDuration={animated ? ANIMATION_DURATION_MS : 0}
               dataKey={type}
+              dot={
+                showPoints ? (
+                  <CustomDot
+                    colors={colors}
+                    pointSize={pointSize}
+                    showPoints={showPoints}
+                    uniqueTypes={uniqueTypes}
+                  />
+                ) : (
+                  false
+                )
+              }
+              key={type}
               stroke={colors[index % colors.length]}
               strokeWidth={3}
-              dot={showPoints ? <CustomDot /> : false}
-              animationDuration={animated ? 800 : 0}
-              animationBegin={animated ? index * 200 : undefined}
+              type="monotone"
             />
           ))}
         </RechartsLineChart>

@@ -9,7 +9,9 @@ interface InputProps extends React.ComponentProps<typeof Input> {
 }
 
 function InputRoot({ className, variant = "default", ...props }: InputProps) {
-  return <Input className={cn(styles.base, styles[variant], className)} {...props} />;
+  return (
+    <Input className={cn(styles.base, styles[variant], className)} {...props} />
+  );
 }
 
 export { InputRoot as Input };

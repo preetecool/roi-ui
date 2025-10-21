@@ -5,37 +5,42 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import styles from "./expandable-card.module.css";
 
-interface ExpandableCardItem {
+type ExpandableCardItem = {
   id: string | number;
   imageSrc: string;
   alt: string;
   cardHeading: string;
   content?: React.ReactNode;
-}
+};
 
-interface ExpandableCardProps {
+type ExpandableCardProps = {
   item: ExpandableCardItem;
-}
+};
 
 export default function ExpandableCard({ item }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={styles.wrapper}>
-      <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
         {isOpen && (
           <Dialog.Backdrop
-            key="overlay"
             className={styles.overlay}
+            key="overlay"
             render={
               <motion.div
-                className={styles.overlay}
-                initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
                 }}
+                className={styles.overlay}
                 exit={{ opacity: 0, background: "red" }}
-                transition={{ delay: 0.1, duration: 0.17, ease: [0.455, 0.03, 0.515, 0.955] }}
+                initial={{ opacity: 0 }}
+                transition={{
+                  delay: 0.1,
+                  duration: 0.17,
+                  // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
+                  ease: [0.455, 0.03, 0.515, 0.955],
+                }}
               />
             }
           />
@@ -48,8 +53,8 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                 <Dialog.Popup
                   render={
                     <motion.div
-                      layoutId={`card-${item.id}`}
                       className={styles.expandedCard}
+                      layoutId={`card-${item.id}`}
                       style={{
                         borderRadius: "32px",
                         overflow: "hidden",
@@ -60,41 +65,47 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   <div className={styles.scrollableContent}>
                     <div className={styles.closeButtonContainer}>
                       <Dialog.Close
-                        className={styles.closeButton}
                         aria-label="Close"
+                        className={styles.closeButton}
                         render={
                           <motion.button
-                            initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ type: "spring", duration: 0.2, delay: 0.1 }}
+                            initial={{ opacity: 0 }}
+                            transition={{
+                              type: "spring",
+                              duration: 0.2,
+                              delay: 0.1,
+                            }}
                           />
                         }
                       >
-                        <X width={21} height={21} strokeWidth={2} />
+                        <X height={21} strokeWidth={2} width={21} />
                       </Dialog.Close>
                     </div>
 
                     <motion.img
-                      layoutId={`image-${item.id}`}
-                      width={600}
-                      height={600}
-                      src={item.imageSrc}
                       alt={item.alt}
                       className={styles.expandedImage}
+                      height={600}
+                      layoutId={`image-${item.id}`}
+                      src={item.imageSrc}
                       style={{ borderRadius: "16px" }}
+                      width={600}
                     />
 
                     <motion.div className={styles.contentExpanded}>
                       <motion.div layoutId={`heading-${item.id}`}>
-                        <motion.h3 className={styles.expandedHeading}>{item.cardHeading}</motion.h3>
+                        <motion.h3 className={styles.expandedHeading}>
+                          {item.cardHeading}
+                        </motion.h3>
                       </motion.div>
 
                       <motion.div
-                        className={styles.expandedContent}
-                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
+                        className={styles.expandedContent}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
                       >
                         {item.content}
                       </motion.div>
@@ -109,29 +120,31 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         <Dialog.Trigger
           render={
             <motion.button
-              layoutId={`card-${item.id}`}
               className={styles.card}
+              layoutId={`card-${item.id}`}
               style={{ borderRadius: "24px" }}
             />
           }
         >
           <motion.img
-            layoutId={`image-${item.id}`}
-            height={300}
-            width={300}
-            src={item.imageSrc}
             alt={item.alt}
             className={styles.image}
+            height={300}
+            layoutId={`image-${item.id}`}
+            src={item.imageSrc}
             style={{ borderRadius: "12px" }}
+            width={300}
           />
 
           <div className={styles.contentContainer}>
             <motion.div layoutId={`heading-${item.id}`}>
-              <motion.h3 className={styles.heading}>{item.cardHeading}</motion.h3>
+              <motion.h3 className={styles.heading}>
+                {item.cardHeading}
+              </motion.h3>
             </motion.div>
 
             <motion.div className={styles.expandIcon}>
-              <Plus width={21} height={21} strokeWidth={2} />
+              <Plus height={21} strokeWidth={2} width={21} />
             </motion.div>
           </div>
         </Dialog.Trigger>

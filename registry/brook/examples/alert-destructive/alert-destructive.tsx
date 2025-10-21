@@ -1,7 +1,11 @@
 "use client";
 
-import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/ui/alert/alert";
 import { Ban } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/brook/ui/alert/alert";
 import styles from "./alert-destructive.module.css";
 
 export default function AlertDestructive() {
@@ -10,7 +14,9 @@ export default function AlertDestructive() {
       <Alert variant="destructive">
         <Ban />
         <AlertTitle>Error</AlertTitle>
-        <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
+        <AlertDescription>
+          Your session has expired. Please log in again.
+        </AlertDescription>
       </Alert>
     </div>
   );

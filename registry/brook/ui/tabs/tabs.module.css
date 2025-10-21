@@ -43,10 +43,9 @@
   border-radius: var(--radius);
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 450;
   background-color: transparent;
   color: var(--muted-foreground);
-  border: none;
   cursor: pointer;
   position: relative;
   margin-right: 0.25rem;
@@ -117,7 +116,6 @@
   background-color: var(--primary);
   border-radius: var(--radius);
   transition: all 150ms ease-in-out;
-  background-color: red;
 
   left: var(--active-tab-left);
   top: calc(var(--active-tab-top) + var(--active-tab-height) - 3px);

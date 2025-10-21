@@ -1,16 +1,16 @@
+import { Button } from "@/registry/brook/ui/button/button";
 import {
-  DialogRoot,
-  DialogTrigger,
-  DialogPortal,
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogOverlay,
   DialogPopup,
-  DialogHeader,
-  DialogFooter,
+  DialogPortal,
+  DialogRoot,
   DialogTitle,
-  DialogDescription,
-  DialogClose,
+  DialogTrigger,
 } from "@/registry/brook/ui/dialog/dialog";
-import { Button } from "@/registry/brook/ui/button/button";
 import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./dialog-demo.module.css";
 
@@ -20,21 +20,25 @@ export default function DialogDemo() {
       <DialogTrigger render={<Button>Open Dialog</Button>} />
       <DialogPortal>
         <DialogOverlay />
-        <DialogPopup
-          className={styles.popup}
-        >
+        <DialogPopup className={styles.popup}>
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription>Make changes to your profile here.</DialogDescription>
+            <DialogDescription>
+              Make changes to your profile here.
+            </DialogDescription>
           </DialogHeader>
           <div className={styles.form}>
             <div className={styles.fieldGroup}>
-              <label className={styles.label}>Name</label>
-              <Input defaultValue="John Doe" />
+              <label className={styles.label} htmlFor="name">
+                Name
+              </label>
+              <Input defaultValue="John Doe" id="name" />
             </div>
             <div className={styles.fieldGroup}>
-              <label className={styles.label}>Email</label>
-              <Input type="email" defaultValue="john@example.com" />
+              <label className={styles.label} htmlFor="email">
+                Email
+              </label>
+              <Input defaultValue="john@example.com" id="email" type="email" />
             </div>
           </div>
           <DialogFooter>

@@ -29,7 +29,9 @@ function MeterIndicator({
   className,
   ...props
 }: React.ComponentProps<typeof Meter.Indicator>) {
-  return <Meter.Indicator className={cn(styles.indicator, className)} {...props} />;
+  return (
+    <Meter.Indicator className={cn(styles.indicator, className)} {...props} />
+  );
 }
 
 function MeterValue({
@@ -41,8 +43,8 @@ function MeterValue({
 
 export {
   MeterRoot as Meter,
+  MeterIndicator,
   MeterLabel,
   MeterTrack,
-  MeterIndicator,
   MeterValue,
 };
