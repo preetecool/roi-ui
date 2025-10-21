@@ -58,11 +58,11 @@ export const HomeAnimatedCard = () => {
                 <motion.img
                   alt={cardData.title}
                   className={styles.imageExpanded}
-                  height={400}
+                  height={300}
                   layoutId="image"
                   src={cardData.image}
                   style={{ borderRadius: "12px" }}
-                  width={600}
+                  width={300}
                 />
                 <motion.div
                   className={styles.wrapperExpanded}
@@ -100,11 +100,11 @@ export const HomeAnimatedCard = () => {
                 <motion.img
                   alt={cardData.title}
                   className={styles.imageCollapsed}
-                  height={400}
+                  height={60}
                   layoutId="image"
                   src={cardData.image}
                   style={{ borderRadius: "12px" }}
-                  width={600}
+                  width={60}
                 />
                 <motion.div
                   className={styles.wrapperCollapsed}
