@@ -72,12 +72,10 @@
   scrollbar-width: thin;
   scrollbar-color: var(--mix-foreground-15-trans) transparent;
   mask-image: linear-gradient(to bottom, transparent 0, black 1rem, black 100%);
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    black 1rem,
-    black 100%
-  );
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0,
+      black 1rem,
+      black 100%);
 }
 
 .sidebarContent::-webkit-scrollbar {
@@ -330,6 +328,14 @@
   background-color: var(--mix-accent-20-trans);
 }
 
+.collapseIcon {
+  color: var(--muted-foreground);
+}
+
+.collapseButton:hover .collapseIcon {
+  color: var(--foreground);
+}
+
 .collapseIconFill {
   opacity: 0;
   transition: opacity 0.25s var(--ease-out-expo);
@@ -427,7 +433,7 @@
     display: none;
   }
 
-  .sidebarCollapsed ~ .collapsedButtons {
+  .sidebarCollapsed~.collapsedButtons {
     display: flex;
   }
 }
@@ -455,9 +461,17 @@
   border-radius: var(--radius);
 }
 
+.collapsedButton svg {
+  color: var(--muted-foreground);
+}
+
 .collapsedButton:hover {
   color: var(--foreground);
   background-color: var(--card);
+}
+
+.collapsedButton:hover svg {
+  color: var(--foreground);
 }
 
 .collapsedButton:active {
@@ -465,9 +479,7 @@
 }
 
 .sidebarCollapsed .sidebarContainer {
-  transform: translateX(
-    calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem))
-  );
+  transform: translateX(calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem)));
   padding: 0.25rem;
   height: calc(100vh - 0.5rem);
   top: 0.25rem;
