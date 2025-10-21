@@ -40,6 +40,7 @@
   margin-top: 0px;
   margin-bottom: 12px;
 }
+
 .descriptionExpanded {
   font-size: 14px;
 }
@@ -54,6 +55,7 @@
 .cardCollapsed {
   background-color: var(--mix-card-33-bg);
   width: 300px;
+  height: 80px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -69,7 +71,6 @@
 }
 
 .imageCollapsed {
-  width: 60px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }

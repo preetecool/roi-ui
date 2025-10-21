@@ -23,15 +23,20 @@ export default function DialogFramerMotion() {
       {!open && (
         <DialogTrigger
           render={
-            <motion.button
-              className={styles.button}
-              key="button"
-              layoutId="button"
-            />
+            <Button
+              render={
+                <motion.button
+                  id={styles.id}
+                  key="button-inner"
+                  layoutId="button"
+                />
+              }
+              style={{ transition: "none" }}
+            >
+              Toggle Dialog
+            </Button>
           }
-        >
-          Toggle Dialog
-        </DialogTrigger>
+        />
       )}
       <AnimatePresence>
         <AnimatePresence>
@@ -61,13 +66,18 @@ export default function DialogFramerMotion() {
                   render={<Button variant="outline">Close</Button>}
                 />
                 <AnimatePresence>
-                  <motion.button
-                    className={styles.button}
-                    key="button-inner"
-                    layoutId="button"
+                  <Button
+                    render={
+                      <motion.button
+                        id={styles.id}
+                        key="button-inner"
+                        layoutId="button"
+                      />
+                    }
+                    style={{ transition: "none" }}
                   >
                     Toggle Dialog
-                  </motion.button>
+                  </Button>
                 </AnimatePresence>
               </div>
             </DialogPopup>

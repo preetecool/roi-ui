@@ -5,20 +5,20 @@ import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
-  "/tabs-animated",
-  "/accordion",
-  "/like-button",
-  "/chat",
-  "/task",
-  "/card-expdanble",
-  "/card-login",
-  "/card-image",
-  "/card-traffic",
-  "/card-history",
-  "/dialog",
-  "/dropdown-menu-motion",
-  "/badge-error",
-  "/badge-success",
+  "tabs-animated",
+  "accordion",
+  "like-button",
+  "ai-chat",
+  "card-task",
+  "card-expdanble",
+  "card-login",
+  "card-image",
+  "card-traffic",
+  "card-history",
+  "dialog",
+  "dropdown-menu-motion",
+  "badge-error",
+  "badge-success",
 ];
 
 const ArrowPointer = () => (
@@ -63,7 +63,7 @@ export const HomeHeader = () => {
   const SUBHEADING =
     "React components built with Base UI primitives and Motion for seamless, accessible interactions";
 
-  const [randomComponent, setRandomComponent] = useState(getRandomComponent);
+  const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
 
   useEffect(() => {
     setRandomComponent(getRandomComponent());
