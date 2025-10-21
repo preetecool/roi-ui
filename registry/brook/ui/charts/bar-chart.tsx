@@ -34,7 +34,7 @@ export type BarChartProps = {
 
 const ANIMATION_DURATION_MS = 500;
 // biome-ignore lint/style/noMagicNumbers: Border radius values for bar corners
-const BAR_RADIUS = [4, 4, 0, 0] as const;
+const BAR_RADIUS: [number, number, number, number] = [4, 4, 0, 0];
 
 type TooltipPayload = {
   value: number;

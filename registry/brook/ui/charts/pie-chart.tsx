@@ -127,7 +127,7 @@ function PieChart({
             stroke="none"
           >
             {dataWithColors.map((entry) => (
-              <Cell fill={entry.fill} key={`cell-${entry.name}`} />
+              <Cell fill={entry.fill} key={`cell-${entry.category}`} />
             ))}
           </Pie>
           <Tooltip
