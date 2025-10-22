@@ -18,6 +18,7 @@
 .sidebar [data-slot="sidebar-menu-button"][data-active] {
   background-color: var(--mix-card-50-bg);
   color: var(--foreground);
+  font-weight: 400;
 }
 
 .sidebar [data-slot="sidebar-menu-button"][data-active]:hover {
@@ -40,6 +41,7 @@
 .sidebar [data-slot="sidebar-menu-sub-button"][data-active] {
   background-color: var(--mix-card-50-bg);
   color: var(--foreground);
+  font-weight: 400;
 }
 
 .sidebar [data-slot="sidebar-menu-sub-button"][data-active]:hover {
@@ -60,7 +62,7 @@
   bottom: 0;
   left: 0;
   right: 12px;
-  height: 2rem;
+  height: 1.625rem;
   background: linear-gradient(to bottom, var(--background), transparent);
   pointer-events: none;
   z-index: 1;
@@ -92,7 +94,7 @@
 }
 
 .footer {
-  padding: 0.5rem 1rem 1rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   border-top: 1px solid var(--border-dark);
   display: flex;
   align-items: center;
