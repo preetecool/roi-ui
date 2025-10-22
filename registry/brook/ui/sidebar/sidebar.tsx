@@ -158,13 +158,12 @@ function Sidebar({
   variant = "sidebar",
   collapsible = "offcanvas",
   ...props
-}: React.ComponentProps<"aside"> & {
+}: React.ComponentProps<"div"> & {
   side?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
 }) {
-  const { isMobile, state, openMobile, setOpenMobile, toggleSidebar } =
-    useSidebar();
+  const { isMobile, state, openMobile, toggleSidebar } = useSidebar();
   const [isHovering, setIsHovering] = useState(false);
 
   // Reset hover state when sidebar expands
