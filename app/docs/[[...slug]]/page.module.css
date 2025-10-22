@@ -98,7 +98,32 @@
   gap: 0;
 }
 
-/* Reduce top margin from first heading (when it follows page header) */
+.contentWrapper :global(*[class*="bleed"]) {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.contentWrapper :global(*[class*="bleed"]) :global(*[class*="navContainer"]) {
+  margin-left: -5vw;
+}
+
+@media (max-width: 1024px) {
+  .contentWrapper :global(*[class*="bleed"]) {
+    width: 200vw;
+  }
+
+  .contentWrapper :global(*[class*="bleed"]) :global(*[class*="navContainer"]) {
+    position: relative;
+    left: -50vw;
+    margin-left: 50vw;
+    max-width: 190vw;
+  }
+}
+
 .contentWrapper > :global(h2:first-child),
 .contentWrapper > :global(h3:first-child),
 .contentWrapper > :global(h4:first-child) {

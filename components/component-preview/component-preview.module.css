@@ -7,7 +7,8 @@
 .preview {
   position: relative;
   min-height: 450px;
-  display: flex;
+  display: grid;
+  place-items: start;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -16,18 +17,15 @@
 }
 
 .preview.center {
-  align-items: center;
-  justify-content: center;
+  place-items: center;
 }
 
 .preview.start {
-  align-items: flex-start;
-  justify-content: flex-start;
+  place-items: start;
 }
 
 .preview.end {
-  align-items: flex-end;
-  justify-content: flex-end;
+  place-items: end;
 }
 
 @media (max-width: 640px) {

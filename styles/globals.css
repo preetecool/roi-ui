@@ -49,6 +49,7 @@
 
     --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
     --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
@@ -161,7 +162,7 @@
 
     --border: oklch(0.28 0 0);
     --border-light: oklch(0.4 0 0);
-    --border-dark: oklch(0.24 0 0);
+    --border-dark: oklch(0.23 0 0);
     --input: oklch(0.2029 0.003 0);
     --ring: oklch(0.45 0.025 270);
 
