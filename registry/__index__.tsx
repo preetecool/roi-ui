@@ -128,21 +128,6 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
-  "area-chart-demo": {
-    name: "area-chart-demo",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/area-chart-demo/area-chart-demo"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "area-chart-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
   "autocomplete-demo": {
     name: "autocomplete-demo",
     type: "example",
@@ -288,21 +273,6 @@ export const Index: Record<string, RegistryEntry> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "badge-variants";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
-  "bar-chart-demo": {
-    name: "bar-chart-demo",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/bar-chart-demo/bar-chart-demo"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "bar-chart-demo";
       return { default: mod.default || mod[exportName] };
     }),
   },
@@ -497,6 +467,66 @@ export const Index: Record<string, RegistryEntry> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "carousel-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-area-demo": {
+    name: "chart-area-demo",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/examples/chart-area-demo/chart-area-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-area-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-bar-demo": {
+    name: "chart-bar-demo",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/examples/chart-bar-demo/chart-bar-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-bar-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-line-demo": {
+    name: "chart-line-demo",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/examples/chart-line-demo/chart-line-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-line-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-pie-demo": {
+    name: "chart-pie-demo",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/examples/chart-pie-demo/chart-pie-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-pie-demo";
       return { default: mod.default || mod[exportName] };
     }),
   },
@@ -749,21 +779,6 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
-  "line-chart-demo": {
-    name: "line-chart-demo",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/line-chart-demo/line-chart-demo"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "line-chart-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
   "menubar-demo": {
     name: "menubar-demo",
     type: "example",
@@ -839,21 +854,6 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
-  "pie-chart-demo": {
-    name: "pie-chart-demo",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/pie-chart-demo/pie-chart-demo"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "pie-chart-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
   "popover-demo": {
     name: "popover-demo",
     type: "example",
@@ -896,36 +896,6 @@ export const Index: Record<string, RegistryEntry> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "progress-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
-  "radar-chart-demo": {
-    name: "radar-chart-demo",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/radar-chart-demo/radar-chart-demo"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radar-chart-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
-  "radial-bar-chart-demo": {
-    name: "radial-bar-chart-demo",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/radial-bar-chart-demo/radial-bar-chart-demo"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "radial-bar-chart-demo";
       return { default: mod.default || mod[exportName] };
     }),
   },
