@@ -347,14 +347,8 @@ export function Item({
   children,
   ...props
 }: CarouselItemProps) {
-  const {
-    totalItems,
-    goToIndex,
-    nextSlide,
-    prevSlide,
-    canGoNext,
-    canGoPrev,
-  } = useCarousel();
+  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev } =
+    useCarousel();
 
   const isVisible = true;
 
@@ -390,6 +384,7 @@ export function Item({
   );
 
   return (
+    // biome-ignore lint/a11y/noNoninteractiveElementInteractions: Keyboard navigation is required for carousel accessibility
     <div
       aria-label={`${index + 1} of ${totalItems}`}
       aria-roledescription="slide"

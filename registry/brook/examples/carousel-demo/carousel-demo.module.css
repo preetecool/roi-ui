@@ -6,7 +6,9 @@
     border-color: var(--border-dark);
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, var(--mix-card-66-bg)0%, var(--background) 50%);
+    background: linear-gradient(135deg,
+            var(--mix-card-66-bg) 0%,
+            var(--background) 50%);
 }
 
 @media (max-width: 768px) {
@@ -19,9 +21,7 @@
     background-color: var(--mix-card-66-bg);
     border-color: var(--border);
     color: var(--muted-foreground);
-
 }
-
 
 .iconSection {
     flex: 1;
@@ -29,8 +29,6 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
-
-
 
 .cardContent {
     height: 50%;
@@ -47,9 +45,6 @@
     flex-direction: column;
 
     gap: 0.5rem;
-
-
-
 }
 
 .cardTitle {
@@ -71,5 +66,4 @@
 
 .button:hover {
     color: var(--foreground);
-
 }

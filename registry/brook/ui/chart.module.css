@@ -1,0 +1,203 @@
+.chartContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.chartContainer :global(.recharts-cartesian-axis-tick text) {
+  fill: var(--muted-foreground);
+}
+
+.chartContainer :global(.recharts-cartesian-grid line) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-curve.recharts-tooltip-cursor) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-polar-grid line) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-radial-bar-background-sector) {
+  fill: var(--muted);
+}
+
+.chartContainer :global(.recharts-rectangle.recharts-tooltip-cursor) {
+  fill: var(--muted);
+  opacity: 0.3;
+}
+
+.chartContainer :global(.recharts-reference-line line) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-dot[stroke="#fff"]) {
+  stroke: transparent;
+}
+
+.chartContainer :global(.recharts-layer) {
+  outline: none;
+}
+
+.chartContainer :global(.recharts-sector) {
+  outline: none;
+}
+
+.chartContainer :global(.recharts-sector[stroke="#fff"]) {
+  stroke: transparent;
+}
+
+.chartContainer :global(.recharts-surface) {
+  outline: none;
+}
+
+.tooltipContent {
+  display: grid;
+  align-items: start;
+  gap: 6px;
+  min-width: 8rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 6px 10px;
+  font-size: 12px;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.tooltipLabel {
+  font-weight: 500;
+}
+
+.tooltipItems {
+  display: grid;
+  gap: 6px;
+}
+
+.tooltipItem {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.tooltipItemDot {
+  align-items: center;
+}
+
+.tooltipIcon {
+  color: var(--muted-foreground);
+  height: 10px;
+  width: 10px;
+}
+
+.tooltipIndicator {
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.indicatorDot {
+  height: 10px;
+  width: 10px;
+}
+
+.indicatorLine {
+  width: 4px;
+}
+
+.indicatorDashed {
+  width: 0;
+  border-width: 1.5px;
+  border-style: dashed;
+  background-color: transparent;
+}
+
+.indicatorNested {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.tooltipItemContent {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tooltipItemContentNested {
+  align-items: flex-end;
+}
+
+.tooltipItemLabel {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.tooltipItemName {
+  color: var(--muted-foreground);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 150px;
+}
+
+.tooltipItemValue {
+  color: var(--foreground);
+  font-family:
+    "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New",
+    monospace;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.legendContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.legendTop {
+  padding-bottom: 12px;
+}
+
+.legendBottom {
+  padding-top: 12px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendIcon {
+  color: var(--muted-foreground);
+  height: 12px;
+  width: 12px;
+}
+
+.legendIndicator {
+  height: 8px;
+  width: 8px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.legendLabel {
+  font-size: 12px;
+}

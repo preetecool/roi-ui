@@ -700,98 +700,21 @@
       ]
     },
     {
-      "name": "line-chart",
+      "name": "chart",
       "type": "registry:item",
       "dependencies": ["recharts"],
-      "title": "Line Chart",
-      "description": "Interactive line charts with optional data points and smooth animations.",
+      "title": "Chart",
+      "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
       "files": [
         {
-          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
+          "path": "registry/brook/ui/chart.tsx",
           "type": "registry:file",
-          "target": "~/components/ui/charts/chart-tooltip.tsx"
+          "target": "~/components/ui/chart.tsx"
         },
         {
-          "path": "registry/brook/ui/charts/line-chart.tsx",
+          "path": "registry/brook/ui/chart.module.css",
           "type": "registry:file",
-          "target": "~/components/ui/charts/line-chart.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/line-chart.module.css",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/line-chart.module.css"
-        }
-      ]
-    },
-    {
-      "name": "area-chart",
-      "type": "registry:item",
-      "dependencies": ["recharts"],
-      "title": "Area Chart",
-      "description": "Area charts that fill the space below the line, perfect for showing volume and trends.",
-      "files": [
-        {
-          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/chart-tooltip.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/area-chart.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/area-chart.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/area-chart.module.css",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/area-chart.module.css"
-        }
-      ]
-    },
-    {
-      "name": "bar-chart",
-      "type": "registry:item",
-      "dependencies": ["recharts"],
-      "title": "Bar Chart",
-      "description": "Animated vertical bar charts with hover highlighting and customizable styling.",
-      "files": [
-        {
-          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/chart-tooltip.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/bar-chart.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/bar-chart.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/bar-chart.module.css",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/bar-chart.module.css"
-        }
-      ]
-    },
-    {
-      "name": "radial-bar-chart",
-      "type": "registry:item",
-      "dependencies": ["recharts"],
-      "title": "Radial Bar Chart",
-      "description": "Circular progress-style charts for displaying progress and comparative metrics.",
-      "files": [
-        {
-          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/chart-tooltip.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/radial-bar-chart.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/radial-bar-chart.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/radial-bar-chart.module.css",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/radial-bar-chart.module.css"
+          "target": "~/components/ui/chart.module.css"
         }
       ]
     },
@@ -810,54 +733,6 @@
           "path": "registry/brook/ui/progress/progress.module.css",
           "type": "registry:file",
           "target": "~/components/ui/progress/progress.module.css"
-        }
-      ]
-    },
-    {
-      "name": "radar-chart",
-      "type": "registry:item",
-      "dependencies": ["recharts"],
-      "title": "Radar Chart",
-      "description": "Multi-dimensional radar charts for comparing multiple variables across categories.",
-      "files": [
-        {
-          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/chart-tooltip.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/radar-chart.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/radar-chart.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/radar-chart.module.css",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/radar-chart.module.css"
-        }
-      ]
-    },
-    {
-      "name": "pie-chart",
-      "type": "registry:item",
-      "dependencies": ["recharts"],
-      "title": "Pie Chart",
-      "description": "Circular charts perfect for displaying proportional data and percentages.",
-      "files": [
-        {
-          "path": "registry/brook/ui/charts/chart-tooltip.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/chart-tooltip.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/pie-chart.tsx",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/pie-chart.tsx"
-        },
-        {
-          "path": "registry/brook/ui/charts/pie-chart.module.css",
-          "type": "registry:file",
-          "target": "~/components/ui/charts/pie-chart.module.css"
         }
       ]
     },
