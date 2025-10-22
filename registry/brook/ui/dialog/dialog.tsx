@@ -65,6 +65,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
+  DialogRoot as Dialog,
   DialogClose,
   DialogDescription,
   DialogFooter,

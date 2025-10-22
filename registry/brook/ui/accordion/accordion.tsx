@@ -57,6 +57,7 @@ function AccordionPanel({
 export { ChevronDown as ChevronDownIcon } from "lucide-react";
 
 export {
+  AccordionRoot as Accordion,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,

@@ -191,6 +191,7 @@ function SelectItemIndicator({
 }
 
 export {
+  SelectRoot as Select,
   SelectArrow,
   SelectGroup,
   SelectGroupLabel,

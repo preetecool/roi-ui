@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
+  Select,
   SelectIcon,
   SelectItem,
   SelectItemIndicator,
@@ -9,7 +10,6 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
-  SelectRoot,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -25,7 +25,7 @@ const subscriptionPlans = [
 
 export default function SelectDemo() {
   return (
-    <SelectRoot defaultValue="placeholder" items={subscriptionPlans}>
+    <Select defaultValue="placeholder" items={subscriptionPlans}>
       <SelectTrigger
         render={
           <Button className={styles.trigger} size="sm" variant="outline" />
@@ -73,6 +73,6 @@ export default function SelectDemo() {
           </SelectPopup>
         </SelectPositioner>
       </SelectPortal>
-    </SelectRoot>
+    </Select>
   );
 }

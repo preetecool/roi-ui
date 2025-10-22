@@ -92,6 +92,7 @@ function AlertDialogFooter({
 }
 
 export {
+  AlertDialogRoot as AlertDialog,
   AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,

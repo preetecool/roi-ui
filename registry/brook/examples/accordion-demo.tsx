@@ -1,14 +1,14 @@
 import {
+  Accordion,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
-  AccordionRoot,
   AccordionTrigger,
 } from "@/registry/brook/ui/accordion/accordion";
 
 export default function AccordionDemo() {
   return (
-    <AccordionRoot defaultValue={["item-1"]}>
+    <Accordion defaultValue={["item-1"]}>
       <AccordionItem value="item-1">
         <AccordionHeader>
           <AccordionTrigger>What features are included?</AccordionTrigger>
@@ -38,6 +38,6 @@ export default function AccordionDemo() {
           immediately, and downgrades apply at your next billing cycle.
         </AccordionPanel>
       </AccordionItem>
-    </AccordionRoot>
+    </Accordion>
   );
 }

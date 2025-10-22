@@ -15,6 +15,7 @@ import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
 import { Field, FieldControl } from "@/registry/brook/ui/field/field";
 import { Form } from "@/registry/brook/ui/form/form";
 import {
+  Select,
   SelectIcon,
   SelectItem,
   SelectItemIndicator,
@@ -22,7 +23,6 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
-  SelectRoot,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -68,7 +68,7 @@ export function AiChat() {
               <Paperclip size={14} />
             </Button>
 
-            <SelectRoot
+            <Select
               defaultValue={aiModes[0].value}
               items={aiModes}
               onValueChange={(value) => setSelectedItem(value as string)}
@@ -106,7 +106,7 @@ export function AiChat() {
                   </SelectPopup>
                 </SelectPositioner>
               </SelectPortal>
-            </SelectRoot>
+            </Select>
           </div>
 
           <Button

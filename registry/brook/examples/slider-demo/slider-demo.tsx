@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import {
+  Slider,
   SliderControl,
   SliderIndicator,
-  SliderRoot,
   SliderThumb,
   SliderTrack,
 } from "@/registry/brook/ui/slider/slider";
@@ -18,7 +18,7 @@ export default function SliderDemo() {
   return (
     <div className={styles.container}>
       <div className={styles.valueDisplay}>{Math.round(value)}</div>
-      <SliderRoot
+      <Slider
         defaultValue={DEFAULT_SLIDER_VALUE}
         max={100}
         min={0}
@@ -33,7 +33,7 @@ export default function SliderDemo() {
             <SliderThumb />
           </SliderTrack>
         </SliderControl>
-      </SliderRoot>
+      </Slider>
     </div>
   );
 }

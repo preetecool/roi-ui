@@ -11,12 +11,12 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import {
+  AlertDialog,
   AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogRoot,
   AlertDialogTitle,
 } from "@/registry/brook/ui/alert-dialog/alert-dialog";
 import {
@@ -142,7 +142,7 @@ export function CardTask() {
         </CardFooter>
       </Card>
 
-      <AlertDialogRoot onOpenChange={setAlertOpen} open={alertOpen}>
+      <AlertDialog onOpenChange={setAlertOpen} open={alertOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Task</AlertDialogTitle>
@@ -159,7 +159,7 @@ export function CardTask() {
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
-      </AlertDialogRoot>
+      </AlertDialog>
     </>
   );
 }

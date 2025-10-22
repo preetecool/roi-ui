@@ -1,10 +1,10 @@
 import {
+  AlertDialog,
   AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/brook/ui/alert-dialog/alert-dialog";
@@ -12,7 +12,7 @@ import { Button } from "@/registry/brook/ui/button/button";
 
 export default function AlertDialogDemo() {
   return (
-    <AlertDialogRoot>
+    <AlertDialog>
       <AlertDialogTrigger
         render={<Button variant="destructive">Delete Account</Button>}
       />
@@ -30,6 +30,6 @@ export default function AlertDialogDemo() {
           <Button variant="destructive">Delete Account</Button>
         </AlertDialogFooter>
       </AlertDialogContent>
-    </AlertDialogRoot>
+    </AlertDialog>
   );
 }

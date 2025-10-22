@@ -1,5 +1,6 @@
 import { Button } from "@/registry/brook/ui/button/button";
 import {
+  Dialog,
   DialogClose,
   DialogDescription,
   DialogFooter,
@@ -7,7 +8,6 @@ import {
   DialogOverlay,
   DialogPopup,
   DialogPortal,
-  DialogRoot,
   DialogTitle,
   DialogTrigger,
 } from "@/registry/brook/ui/dialog/dialog";
@@ -16,7 +16,7 @@ import styles from "./dialog-demo.module.css";
 
 export default function DialogDemo() {
   return (
-    <DialogRoot>
+    <Dialog>
       <DialogTrigger render={<Button>Open Dialog</Button>} />
       <DialogPortal>
         <DialogOverlay />
@@ -47,6 +47,6 @@ export default function DialogDemo() {
           </DialogFooter>
         </DialogPopup>
       </DialogPortal>
-    </DialogRoot>
+    </Dialog>
   );
 }
