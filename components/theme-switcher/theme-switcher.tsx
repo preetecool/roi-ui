@@ -16,7 +16,7 @@ export function ThemeSwitcher() {
       title="Toggle theme"
       variant="ghost"
     >
-      <SunMoon size={20} />
+      <SunMoon size={18} />
     </Button>
   );
 }

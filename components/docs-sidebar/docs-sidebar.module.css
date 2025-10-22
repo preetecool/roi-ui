@@ -46,7 +46,7 @@
   background-color: var(--mix-card-66-bg);
 }
 
-.header {
+#header {
   padding: 1rem 1rem 0.5rem 1rem;
   gap: 1rem;
   background-color: var(--background);
@@ -54,7 +54,7 @@
   position: relative;
 }
 
-.header::after {
+#header::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -192,24 +192,24 @@
   color: var(--foreground);
 }
 
-.groupLabel {
+#groupLabel {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--foreground);
+  color: var(--secondary-foreground);
   text-transform: none;
   letter-spacing: 0;
   opacity: 1;
   padding: 0.5rem;
 }
 
-.sidebar [data-slot="sidebar-group"]:first-child .groupLabel {
+.sidebar [data-slot="sidebar-group"]:first-child #groupLabel {
   margin-top: 0;
 }
 
-.sidebar [data-slot="sidebar-group"]:not(:first-child) .groupLabel {
+.sidebar [data-slot="sidebar-group"]:not(:first-child) #groupLabel {
   margin-top: 1.5rem;
 }
 

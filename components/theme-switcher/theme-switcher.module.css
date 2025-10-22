@@ -1,18 +1,6 @@
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  background-color: transparent;
   color: var(--muted-foreground);
-  cursor: pointer;
   transition: all 0.2s ease;
-  border: none;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  user-select: none;
 }
 
 .button:hover {
