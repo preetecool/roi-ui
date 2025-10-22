@@ -58,45 +58,73 @@ filename="anatomy"
   language="tsx"
   code={`import { Carousel } from "@/components/ui/carousel";
 
-<Carousel itemsPerView={3.2} gap={16}>
-  <Carousel.Viewport>
-    <Carousel.Content>
-      <Carousel.Item index={0}>
-        <div>Item 1</div>
-      </Carousel.Item>
-      <Carousel.Item index={1}>
-        <div>Item 2</div>
-      </Carousel.Item>
-      <Carousel.Item index={2}>
-        <div>Item 3</div>
-      </Carousel.Item>
-    </Carousel.Content>
-  </Carousel.Viewport>
-  <Carousel.Navigation />
-  <Carousel.SRInfo />
-  <Carousel.KeyboardHandler />
-</Carousel>
+<Carousel.Bleed>
+  <Carousel.Root totalItems={3} gap={16} variant="inset" align="center">
+    <Carousel.Viewport>
+      <Carousel.Content>
+        <Carousel.Item index={0}>
+          <div>Item 1</div>
+        </Carousel.Item>
+        <Carousel.Item index={1}>
+          <div>Item 2</div>
+        </Carousel.Item>
+        <Carousel.Item index={2}>
+          <div>Item 3</div>
+        </Carousel.Item>
+      </Carousel.Content>
+    </Carousel.Viewport>
+    <Carousel.Navigation />
+  </Carousel.Root>
+</Carousel.Bleed>
 `} />
 
 ## Props
 
-### Carousel
+### Root
 
-The main carousel component (root).
+The main carousel component that manages state and provides context.
 
 <PropTable
     data={[
         {
-            prop: "itemsPerView",
+            prop: "totalItems",
             type: "number",
-            default: "3.2",
-            description: "Number of items visible in the viewport at once",
+            required: true,
+            description: "Total number of items in the carousel",
         },
         {
             prop: "gap",
             type: "number",
             default: "16",
             description: "Gap between carousel items in pixels",
+        },
+        {
+            prop: "variant",
+            type: '"default" | "inset"',
+            default: '"default"',
+            description: "Carousel variant. Use 'inset' to align with parent container bounds",
+        },
+        {
+            prop: "align",
+            type: '"start" | "center"',
+            default: '"start"',
+            description: "Alignment of carousel content",
+        },
+        {
+            prop: "index",
+            type: "number",
+            description: "Controlled index value",
+        },
+        {
+            prop: "defaultIndex",
+            type: "number",
+            default: "0",
+            description: "Default index for uncontrolled mode",
+        },
+        {
+            prop: "onIndexChange",
+            type: "(index: number) => void",
+            description: "Callback when index changes",
         },
         {
             prop: "className",
@@ -106,7 +134,23 @@ The main carousel component (root).
     ]}
 />
 
+### Bleed
+
+Wrapper that extends carousel to full viewport width.
+
+<PropTable
+    data={[
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the bleed container",
+        },
+    ]}
+/>
+
 ### Viewport
+
+Scrollable viewport container with hidden scrollbars.
 
 <PropTable
     data={[
@@ -119,6 +163,8 @@ The main carousel component (root).
 />
 
 ### Content
+
+Flex container for horizontal layout with pseudo elements for spacing.
 
 <PropTable
     data={[
@@ -137,7 +183,8 @@ The main carousel component (root).
         {
             prop: "index",
             type: "number",
-            description: "The index of the item in the carousel (required)",
+            required: true,
+            description: "The index of the item in the carousel",
         },
         {
             prop: "className",
@@ -148,6 +195,8 @@ The main carousel component (root).
 />
 
 ### Navigation
+
+Container for navigation buttons with default Previous/Next rendering.
 
 <PropTable
     data={[
@@ -166,6 +215,8 @@ The main carousel component (root).
 
 ### Previous
 
+Previous button that auto-disables at start.
+
 <PropTable
     data={[
         {
@@ -176,12 +227,14 @@ The main carousel component (root).
         {
             prop: "children",
             type: "React.ReactNode",
-            description: "Custom content for the previous button",
+            description: "Custom content for the previous button (defaults to left arrow icon)",
         },
     ]}
 />
 
 ### Next
+
+Next button that auto-disables at end.
 
 <PropTable
     data={[
@@ -193,12 +246,14 @@ The main carousel component (root).
         {
             prop: "children",
             type: "React.ReactNode",
-            description: "Custom content for the next button",
+            description: "Custom content for the next button (defaults to right arrow icon)",
         },
     ]}
 />
 
 ### Indicators
+
+Dot indicators for each item (hidden when only one item).
 
 <PropTable
     data={[
@@ -209,19 +264,3 @@ The main carousel component (root).
         },
     ]}
 />
-
-### SRInfo
-
-<PropTable
-    data={[
-        {
-            prop: "className",
-            type: "string",
-            description: "Additional CSS classes to apply to the screen reader info",
-        },
-    ]}
-/>
-
-### KeyboardHandler
-
-This component has no props. It enables keyboard navigation for the carousel (arrow keys, Home, End).

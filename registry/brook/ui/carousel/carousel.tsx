@@ -1,44 +1,29 @@
 "use client";
 
+import { useControlled } from "@base-ui-components/utils/useControlled";
 import {
   createContext,
-  type ReactNode,
   useCallback,
   useContext,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./carousel.module.css";
 
-const FADE_THRESHOLD_PX = 20;
-const PREVIOUS_ITEM_OFFSET_PERCENTAGE = 0.2;
-const SCROLL_TIMEOUT_MS = 300;
-
 type CarouselContextValue = {
   currentIndex: number;
   setCurrentIndex: (index: number) => void;
   totalItems: number;
-  itemsPerView: number;
   gap: number;
-  itemWidth: string;
+  variant: "default" | "inset";
   goToIndex: (index: number) => void;
   nextSlide: () => void;
   prevSlide: () => void;
   canGoNext: boolean;
   canGoPrev: boolean;
-  showLeftFade: boolean;
-  showRightFade: boolean;
-  scrollLeft: number;
-  maxScrollLeft: number;
-  setScrollLeft: (value: number) => void;
-  setMaxScrollLeft: (value: number) => void;
   viewportRef: React.RefObject<HTMLDivElement | null>;
-  containerRef: React.RefObject<HTMLDivElement | null>;
-  isScrollingRef: React.MutableRefObject<boolean>;
-  registerItem: () => void;
 };
 
 const CarouselContext = createContext<CarouselContextValue | null>(null);
@@ -51,57 +36,58 @@ function useCarousel() {
   return context;
 }
 
-/**
- * Props for the Carousel root component.
- */
-export type CarouselRootProps = React.ComponentProps<"section"> & {
-  /** Number of items visible in the viewport at once. @default 3.2 */
-  itemsPerView?: number;
-  /** Gap between carousel items in pixels. @default 16 */
+export type CarouselRootProps = React.ComponentProps<"div"> & {
+  /** Total number of items in the carousel. */
+  totalItems: number;
+  /** Gap between items in pixels. @default 16 */
   gap?: number;
-  children: ReactNode;
+  /** Controlled index value. */
+  index?: number;
+  /** Default index for uncontrolled mode. @default 0 */
+  defaultIndex?: number;
+  /** Callback when index changes. */
+  onIndexChange?: (index: number) => void;
+  /** Align carousel content. @default "start" */
+  align?: "start" | "center";
+  /** Carousel variant. @default "default" */
+  variant?: "default" | "inset";
 };
 
-/**
- * Root component for the Carousel. Manages state and provides context to all child components.
- *
- * @example
- * ```tsx
- * <Carousel itemsPerView={3} gap={16}>
- *   <Carousel.Viewport>
- *     <Carousel.Content>
- *       <Carousel.Item index={0}>Item 1</Carousel.Item>
- *     </Carousel.Content>
- *   </Carousel.Viewport>
- *   <Carousel.Navigation />
- * </Carousel>
- * ```
- */
+/** Root component. Manages state and provides context. */
 export function Root({
   children,
-  itemsPerView = 3.2,
+  totalItems,
   gap = 16,
+  index: indexProp,
+  defaultIndex = 0,
+  onIndexChange,
+  align = "start",
+  variant = "default",
   className,
   ...props
 }: CarouselRootProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [maxScrollLeft, setMaxScrollLeft] = useState(0);
+  const [currentIndex, setCurrentIndexInternal] = useControlled({
+    controlled: indexProp,
+    default: defaultIndex,
+    name: "Carousel",
+    state: "index",
+  });
 
   const viewportRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isScrollingRef = useRef(false);
+  const bleedRefFromContext = useBleedRef();
+  const [insetPaddingLeft, setInsetPaddingLeft] = useState(0);
+  const [insetPaddingRight, setInsetPaddingRight] = useState(0);
 
-  const canGoNext = scrollLeft < maxScrollLeft;
-  const canGoPrev = scrollLeft > 0;
+  const maxIndex = totalItems - 1;
+  const canGoNext = currentIndex < maxIndex;
+  const canGoPrev = currentIndex > 0;
 
-  const showLeftFade = scrollLeft > FADE_THRESHOLD_PX;
-  const showRightFade = scrollLeft < maxScrollLeft - FADE_THRESHOLD_PX;
-
-  const itemWidth = useMemo(
-    () => `calc((100% - ${gap * (itemsPerView - 1)}px) / ${itemsPerView})`,
-    [itemsPerView, gap]
+  const setCurrentIndex = useCallback(
+    (index: number) => {
+      setCurrentIndexInternal(index);
+      onIndexChange?.(index);
+    },
+    [setCurrentIndexInternal, onIndexChange]
   );
 
   const goToIndex = useCallback(
@@ -111,179 +97,203 @@ export function Root({
         return;
       }
 
-      const containerWidth = viewport.clientWidth;
-      const calculatedItemWidth =
-        (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
-      const itemWithGap = calculatedItemWidth + gap;
+      const slides = viewport.querySelectorAll('[role="group"]');
+      const targetSlide = slides[index] as HTMLElement;
 
-      const previousItemOffset =
-        index > 0 ? calculatedItemWidth * PREVIOUS_ITEM_OFFSET_PERCENTAGE : 0;
-      const targetScroll = Math.max(
-        0,
-        index * itemWithGap - previousItemOffset
-      );
+      if (targetSlide) {
+        let targetScroll = targetSlide.offsetLeft;
 
-      isScrollingRef.current = true;
-      viewport.scrollTo({ left: targetScroll, behavior: "smooth" });
+        // For inset variant, adjust scroll position to account for left padding
+        if (variant === "inset" && bleedRefFromContext?.current) {
+          const parent = bleedRefFromContext.current.parentElement;
+          if (parent) {
+            const parentRect = parent.getBoundingClientRect();
+            const leftPadding = parentRect.left;
+            targetScroll = targetSlide.offsetLeft - leftPadding;
+          }
+        }
 
-      setTimeout(() => {
-        isScrollingRef.current = false;
-      }, SCROLL_TIMEOUT_MS);
+        viewport.scrollTo({ left: targetScroll, behavior: "smooth" });
+      }
+
+      setCurrentIndex(index);
     },
-    [itemsPerView, gap]
+    [setCurrentIndex, variant, bleedRefFromContext]
   );
 
+  const getVisibleItemsCount = useCallback(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) {
+      return 1;
+    }
+
+    const slides = viewport.querySelectorAll('[role="group"]');
+    if (slides.length === 0) {
+      return 1;
+    }
+
+    const viewportRect = viewport.getBoundingClientRect();
+    let visibleCount = 0;
+    const VISIBILITY_THRESHOLD = 0.5;
+
+    for (const slide of slides) {
+      const slideRect = slide.getBoundingClientRect();
+      // Check if slide is at least 50% visible in viewport
+      const visibleWidth =
+        Math.min(slideRect.right, viewportRect.right) -
+        Math.max(slideRect.left, viewportRect.left);
+      const slideWidth = slideRect.width;
+
+      if (visibleWidth / slideWidth >= VISIBILITY_THRESHOLD) {
+        visibleCount++;
+      }
+    }
+
+    return Math.max(1, visibleCount);
+  }, []);
+
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => {
-      const newIndex = Math.min(prev + 1, totalItems - Math.ceil(itemsPerView));
-      goToIndex(newIndex);
-      return newIndex;
-    });
-  }, [totalItems, itemsPerView, goToIndex]);
+    const visibleItems = getVisibleItemsCount();
+    const newIndex = Math.min(currentIndex + visibleItems, maxIndex);
+    goToIndex(newIndex);
+  }, [currentIndex, maxIndex, goToIndex, getVisibleItemsCount]);
 
   const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => {
-      const newIndex = Math.max(prev - 1, 0);
-      goToIndex(newIndex);
-      return newIndex;
-    });
-  }, [goToIndex]);
-
-  const registerItem = useCallback(() => {
-    setTotalItems((prev) => prev + 1);
-  }, []);
+    const visibleItems = getVisibleItemsCount();
+    const newIndex = Math.max(currentIndex - visibleItems, 0);
+    goToIndex(newIndex);
+  }, [currentIndex, goToIndex, getVisibleItemsCount]);
 
   const value: CarouselContextValue = {
     currentIndex,
     setCurrentIndex,
     totalItems,
-    itemsPerView,
     gap,
-    itemWidth,
+    variant,
     goToIndex,
     nextSlide,
     prevSlide,
     canGoNext,
     canGoPrev,
-    showLeftFade,
-    showRightFade,
-    scrollLeft,
-    maxScrollLeft,
-    setScrollLeft,
-    setMaxScrollLeft,
     viewportRef,
-    containerRef,
-    isScrollingRef,
-    registerItem,
   };
+
+  // Calculate inset padding based on parent container
+  useEffect(() => {
+    if (
+      variant !== "inset" ||
+      !bleedRefFromContext?.current ||
+      !viewportRef.current
+    ) {
+      return;
+    }
+
+    const calculatePadding = () => {
+      const bleed = bleedRefFromContext.current;
+      const viewport = viewportRef.current;
+      if (!(bleed && viewport)) {
+        return;
+      }
+
+      const parent = bleed.parentElement;
+      if (!parent) {
+        return;
+      }
+
+      const parentRect = parent.getBoundingClientRect();
+      const viewportRect = viewport.getBoundingClientRect();
+
+      // Get parent's computed padding to account for container padding
+      const parentStyles = window.getComputedStyle(parent);
+      const parentPaddingLeft = Number.parseFloat(parentStyles.paddingLeft);
+      const parentPaddingRight = Number.parseFloat(parentStyles.paddingRight);
+
+      // Calculate the padding needed to align cards with parent's content area (inside padding)
+      // Left padding: distance from viewport's left edge to parent's content left edge, minus gap
+      const leftPadding = Math.max(
+        0,
+        parentRect.left + parentPaddingLeft - viewportRect.left - gap
+      );
+
+      // Right padding: distance from parent's content right edge to viewport's right edge
+      const rightPadding = Math.max(
+        0,
+        viewportRect.right - (parentRect.right - parentPaddingRight)
+      );
+
+      setInsetPaddingLeft(leftPadding);
+      setInsetPaddingRight(rightPadding);
+    };
+
+    calculatePadding();
+
+    window.addEventListener("resize", calculatePadding);
+    return () => window.removeEventListener("resize", calculatePadding);
+  }, [variant, bleedRefFromContext, gap]);
 
   return (
     <CarouselContext.Provider value={value}>
-      <section
-        aria-label="Interactive carousel"
-        aria-roledescription="carousel"
-        className={cn(styles.carousel, className)}
+      <div
+        className={cn(
+          styles.carousel,
+          align === "center" && styles.carouselCenter,
+          className
+        )}
         data-slot="carousel"
+        style={
+          {
+            "--calculated-inset-padding-left": `${insetPaddingLeft}px`,
+            "--calculated-inset-padding-right": `${insetPaddingRight}px`,
+          } as React.CSSProperties
+        }
         {...props}
       >
         {children}
-      </section>
+        <div aria-atomic="true" aria-live="polite" className={styles.srOnly}>
+          Item {currentIndex + 1} of {totalItems}
+        </div>
+      </div>
     </CarouselContext.Provider>
   );
 }
 
-/**
- * Props for the Carousel Viewport component.
- */
+export type CarouselBleedProps = React.ComponentProps<"div">;
+
+const BleedRefContext =
+  createContext<React.RefObject<HTMLDivElement | null> | null>(null);
+
+export function useBleedRef() {
+  return useContext(BleedRefContext);
+}
+
+/** Bleed wrapper. Extends carousel to full viewport width. */
+export function Bleed({ className, children, ...props }: CarouselBleedProps) {
+  const bleedRef = useRef<HTMLDivElement | null>(null);
+
+  return (
+    <BleedRefContext.Provider value={bleedRef}>
+      <div className={cn(styles.bleed, className)} ref={bleedRef} {...props}>
+        {children}
+      </div>
+    </BleedRefContext.Provider>
+  );
+}
+
 export type CarouselViewportProps = React.ComponentProps<"div">;
 
-/**
- * Viewport component that contains the scrollable area for carousel items.
- * Handles scroll events and applies fade effects at the edges.
- *
- * @example
- * ```tsx
- * <Carousel.Viewport>
- *   <Carousel.Content>
- *     ...items
- *   </Carousel.Content>
- * </Carousel.Viewport>
- * ```
- */
+/** Scrollable viewport. */
 export function Viewport({
   className,
   children,
   ...props
 }: CarouselViewportProps) {
-  const {
-    viewportRef,
-    showLeftFade,
-    showRightFade,
-    setScrollLeft,
-    setMaxScrollLeft,
-    setCurrentIndex,
-    itemsPerView,
-    totalItems,
-    gap,
-    isScrollingRef,
-  } = useCarousel();
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) {
-      return;
-    }
-
-    const updateScrollInfo = () => {
-      const newScrollLeft = viewport.scrollLeft;
-      const newMaxScrollLeft = viewport.scrollWidth - viewport.clientWidth;
-
-      setScrollLeft(newScrollLeft);
-      setMaxScrollLeft(newMaxScrollLeft);
-
-      if (!isScrollingRef.current) {
-        const containerWidth = viewport.clientWidth;
-        const calculatedItemWidth =
-          (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
-        const itemWithGap = calculatedItemWidth + gap;
-
-        const adjustedScrollLeft =
-          newScrollLeft + calculatedItemWidth * PREVIOUS_ITEM_OFFSET_PERCENTAGE;
-        const newIndex = Math.round(adjustedScrollLeft / itemWithGap);
-        setCurrentIndex(Math.max(0, Math.min(newIndex, totalItems - 1)));
-      }
-    };
-
-    updateScrollInfo();
-
-    viewport.addEventListener("scroll", updateScrollInfo, { passive: true });
-    window.addEventListener("resize", updateScrollInfo);
-
-    return () => {
-      viewport.removeEventListener("scroll", updateScrollInfo);
-      window.removeEventListener("resize", updateScrollInfo);
-    };
-  }, [
-    itemsPerView,
-    totalItems,
-    gap,
-    setScrollLeft,
-    setMaxScrollLeft,
-    setCurrentIndex,
-    viewportRef,
-    isScrollingRef,
-  ]);
+  const { viewportRef } = useCarousel();
 
   return (
     <div
       aria-atomic="false"
       aria-live="polite"
-      className={cn(
-        styles.viewport,
-        showLeftFade && styles.showLeftFade,
-        showRightFade && styles.showRightFade,
-        className
-      )}
+      className={cn(styles.viewport, className)}
       ref={viewportRef}
       {...props}
     >
@@ -292,38 +302,32 @@ export function Viewport({
   );
 }
 
-/**
- * Props for the Carousel Content component.
- */
 export type CarouselContentProps = React.ComponentProps<"div">;
 
-/**
- * Content component that wraps all carousel items.
- * Provides the flex container for horizontal layout.
- *
- * @example
- * ```tsx
- * <Carousel.Content>
- *   <Carousel.Item index={0}>Item 1</Carousel.Item>
- *   <Carousel.Item index={1}>Item 2</Carousel.Item>
- * </Carousel.Content>
- * ```
- */
+/** Content wrapper. Flex container for horizontal layout. */
 export function Content({
   className,
   children,
   ...props
 }: CarouselContentProps) {
-  const { containerRef, gap } = useCarousel();
+  const { gap, variant } = useCarousel();
 
   return (
     <div
       className={cn(styles.container, className)}
-      id="carousel-slides"
-      ref={containerRef}
-      style={{
-        gap: `${gap}px`,
-      }}
+      style={
+        {
+          gap: `${gap}px`,
+          "--inset-padding-left":
+            variant === "inset"
+              ? "var(--calculated-inset-padding-left, max(var(--min-edge), var(--min-padding)))"
+              : undefined,
+          "--inset-padding-right":
+            variant === "inset"
+              ? "var(--calculated-inset-padding-right, max(var(--min-edge), var(--min-padding)))"
+              : undefined,
+        } as React.CSSProperties
+      }
       {...props}
     >
       {children}
@@ -331,80 +335,78 @@ export function Content({
   );
 }
 
-/**
- * Props for the Carousel Item component.
- */
-export type CarouselItemProps = React.ComponentProps<"fieldset"> & {
-  /** The index of the item in the carousel (required). */
+export type CarouselItemProps = React.ComponentProps<"div"> & {
+  /** Item index (required). */
   index: number;
 };
 
-/**
- * Item component that represents a single carousel slide.
- * Automatically registers itself with the carousel context.
- *
- * @example
- * ```tsx
- * <Carousel.Item index={0}>
- *   <Card>Item content</Card>
- * </Carousel.Item>
- * ```
- */
+/** Individual carousel slide. */
 export function Item({
   index,
   className,
   children,
   ...props
 }: CarouselItemProps) {
-  const { currentIndex, itemsPerView, totalItems, itemWidth, registerItem } =
-    useCarousel();
+  const {
+    totalItems,
+    goToIndex,
+    nextSlide,
+    prevSlide,
+    canGoNext,
+    canGoPrev,
+  } = useCarousel();
 
-  useEffect(() => {
-    registerItem();
-  }, [registerItem]);
+  const isVisible = true;
 
-  const isVisible =
-    index >= Math.max(0, currentIndex - 1) &&
-    index < currentIndex + Math.ceil(itemsPerView);
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      switch (e.key) {
+        case "ArrowLeft":
+          if (canGoPrev) {
+            e.preventDefault();
+            prevSlide();
+          }
+          break;
+        case "ArrowRight":
+          if (canGoNext) {
+            e.preventDefault();
+            nextSlide();
+          }
+          break;
+        case "Home":
+          e.preventDefault();
+          goToIndex(0);
+          break;
+        case "End":
+          e.preventDefault();
+          goToIndex(totalItems - 1);
+          break;
+        default:
+          // No action for other keys
+          break;
+      }
+    },
+    [canGoPrev, canGoNext, prevSlide, nextSlide, goToIndex, totalItems]
+  );
 
   return (
-    <fieldset
-      aria-hidden={!isVisible}
+    <div
       aria-label={`${index + 1} of ${totalItems}`}
       aria-roledescription="slide"
       className={cn(styles.slide, className)}
-      inert={isVisible ? undefined : true}
-      style={{
-        width: itemWidth,
-        minWidth: itemWidth,
-        visibility: isVisible ? "visible" : "hidden",
-        border: "none",
-        padding: 0,
-        margin: 0,
-      }}
+      onKeyDown={handleKeyDown}
+      role="group"
+      tabIndex={isVisible ? 0 : -1}
       {...props}
     >
       {children}
-    </fieldset>
+    </div>
   );
 }
 
-/**
- * Props for the Carousel Previous button component.
- */
 export type CarouselPreviousProps = React.ComponentProps<"button">;
 
-/**
- * Previous button component for navigating to the previous carousel slide.
- * Automatically disabled when at the beginning of the carousel.
- *
- * @example
- * ```tsx
- * <Carousel.Previous>
- *   <ChevronLeft />
- * </Carousel.Previous>
- * ```
- */
+/** Previous button. Auto-disabled at start. */
 export function Previous({
   className,
   children,
@@ -416,7 +418,7 @@ export function Previous({
     <button
       aria-controls="carousel-slides"
       aria-label="Scroll to previous items"
-      className={cn(styles.navButton, styles.prevButton, className)}
+      className={cn(styles.navButton, className)}
       disabled={!canGoPrev}
       onClick={prevSlide}
       type="button"
@@ -437,22 +439,9 @@ export function Previous({
   );
 }
 
-/**
- * Props for the Carousel Next button component.
- */
 export type CarouselNextProps = React.ComponentProps<"button">;
 
-/**
- * Next button component for navigating to the next carousel slide.
- * Automatically disabled when at the end of the carousel.
- *
- * @example
- * ```tsx
- * <Carousel.Next>
- *   <ChevronRight />
- * </Carousel.Next>
- * ```
- */
+/** Next button. Auto-disabled at end. */
 export function Next({ className, children, ...props }: CarouselNextProps) {
   const { nextSlide, canGoNext } = useCarousel();
 
@@ -460,7 +449,7 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
     <button
       aria-controls="carousel-slides"
       aria-label="Scroll to next items"
-      className={cn(styles.navButton, styles.nextButton, className)}
+      className={cn(styles.navButton, className)}
       disabled={!canGoNext}
       onClick={nextSlide}
       type="button"
@@ -481,41 +470,32 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
   );
 }
 
-/**
- * Props for the Carousel Navigation component.
- */
 export type CarouselNavigationProps = React.ComponentProps<"div">;
 
-/**
- * Navigation component that wraps Previous and Next buttons.
- * Renders default buttons if no children are provided.
- * Automatically hidden when there is only one item.
- *
- * @example
- * ```tsx
- * // Default navigation
- * <Carousel.Navigation />
- *
- * // Custom navigation
- * <Carousel.Navigation>
- *   <Carousel.Previous>Prev</Carousel.Previous>
- *   <Carousel.Next>Next</Carousel.Next>
- * </Carousel.Navigation>
- * ```
- */
+/** Navigation wrapper. Renders default buttons if no children provided. Hidden with one item. */
 export function Navigation({
   className,
   children,
   ...props
 }: CarouselNavigationProps) {
-  const { totalItems } = useCarousel();
+  const { totalItems, variant } = useCarousel();
 
   if (totalItems <= 1) {
     return null;
   }
 
   return (
-    <div className={cn(styles.navContainer, className)} {...props}>
+    <div
+      className={cn(styles.navContainer, className)}
+      style={
+        variant === "inset"
+          ? ({
+              "--inset-padding": "var(--calculated-inset-padding, 0)",
+            } as React.CSSProperties)
+          : undefined
+      }
+      {...props}
+    >
       {children || (
         <>
           <Previous />
@@ -526,20 +506,9 @@ export function Navigation({
   );
 }
 
-/**
- * Props for the Carousel Indicators component.
- */
 export type CarouselIndicatorsProps = React.ComponentProps<"div">;
 
-/**
- * Indicators component that displays dot indicators for each carousel item.
- * Automatically hidden when there is only one item.
- *
- * @example
- * ```tsx
- * <Carousel.Indicators />
- * ```
- */
+/** Dot indicators for each item. Hidden with one item. */
 export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
   const { totalItems, currentIndex, goToIndex } = useCarousel();
 
@@ -575,148 +544,15 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
 }
 
 /**
- * Props for the Carousel SRInfo component.
+ * Composable carousel component with horizontal scrolling.
+ * Built-in keyboard navigation with arrow keys, Home, and End.
+ * Built-in screen reader announcements for current position.
+ * Required: Carousel.Root, Carousel.Viewport, Carousel.Content, Carousel.Item.
+ * Optional: Carousel.Bleed, Carousel.Navigation, Carousel.Previous, Carousel.Next, Carousel.Indicators.
  */
-export type CarouselSRInfoProps = React.ComponentProps<"div">;
-
-/**
- * Screen reader information component that provides accessibility information.
- * Announces the current position and navigation instructions.
- *
- * @example
- * ```tsx
- * <Carousel.SRInfo />
- * ```
- */
-export function SRInfo({ className, ...props }: CarouselSRInfoProps) {
-  const { currentIndex, itemsPerView, totalItems } = useCarousel();
-
-  return (
-    <div className={cn(styles.srOnly, className)} {...props}>
-      <div aria-atomic="true" aria-live="polite">
-        Showing items {currentIndex + 1} to{" "}
-        {Math.min(totalItems, currentIndex + Math.ceil(itemsPerView))} of{" "}
-        {totalItems}
-      </div>
-      <p>Use arrow keys or tab/shift+tab to navigate slides.</p>
-    </div>
-  );
-}
-
-function useKeyboardNavigation() {
-  const {
-    containerRef,
-    canGoNext,
-    canGoPrev,
-    prevSlide,
-    nextSlide,
-    goToIndex,
-    totalItems,
-    itemsPerView,
-  } = useCarousel();
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      const isActiveInCarousel = containerRef.current?.contains(
-        document.activeElement
-      );
-      const isActiveOnCarouselContainer =
-        document.activeElement === containerRef.current?.parentElement;
-
-      if (!(isActiveInCarousel || isActiveOnCarouselContainer)) {
-        return;
-      }
-
-      switch (event.key) {
-        case "ArrowLeft":
-          if (canGoPrev) {
-            event.preventDefault();
-            prevSlide();
-          }
-          break;
-        case "ArrowRight":
-          if (canGoNext) {
-            event.preventDefault();
-            nextSlide();
-          }
-          break;
-        case "Home":
-          event.preventDefault();
-          goToIndex(0);
-          break;
-        case "End":
-          event.preventDefault();
-          goToIndex(Math.max(0, totalItems - Math.ceil(itemsPerView)));
-          break;
-        default:
-          break;
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [
-    prevSlide,
-    nextSlide,
-    goToIndex,
-    canGoNext,
-    canGoPrev,
-    totalItems,
-    itemsPerView,
-    containerRef,
-  ]);
-}
-
-/**
- * KeyboardHandler component that enables keyboard navigation for the carousel.
- * Supports arrow keys, Home, and End keys.
- *
- * @example
- * ```tsx
- * <Carousel.KeyboardHandler />
- * ```
- */
-export function KeyboardHandler() {
-  useKeyboardNavigation();
-  return null;
-}
-
-/**
- * Carousel component for displaying multiple items in a scrollable horizontal layout.
- *
- * A composable carousel component that provides full control over layout and behavior.
- * Use the subcomponents to build custom carousel layouts:
- * - `Carousel` - Root component (required)
- * - `Carousel.Viewport` - Scrollable viewport (required)
- * - `Carousel.Content` - Content wrapper (required)
- * - `Carousel.Item` - Individual carousel item (required)
- * - `Carousel.Navigation` - Navigation buttons container (optional)
- * - `Carousel.Previous` - Previous button (optional)
- * - `Carousel.Next` - Next button (optional)
- * - `Carousel.Indicators` - Dot indicators (optional)
- * - `Carousel.SRInfo` - Screen reader info (optional)
- * - `Carousel.KeyboardHandler` - Keyboard navigation support (optional)
- *
- * @example
- * ```tsx
- * import { Carousel } from "@/components/ui/carousel";
- *
- * <Carousel itemsPerView={3} gap={16}>
- *   <Carousel.Viewport>
- *     <Carousel.Content>
- *       {items.map((item, index) => (
- *         <Carousel.Item index={index} key={item.id}>
- *           <Card>{item.content}</Card>
- *         </Carousel.Item>
- *       ))}
- *     </Carousel.Content>
- *   </Carousel.Viewport>
- *   <Carousel.Navigation />
- *   <Carousel.KeyboardHandler />
- * </Carousel>
- * ```
- */
-const CarouselNamespace = Object.assign(Root, {
+export const Carousel = {
+  Root,
+  Bleed,
   Viewport,
   Content,
   Item,
@@ -724,8 +560,4 @@ const CarouselNamespace = Object.assign(Root, {
   Next,
   Navigation,
   Indicators,
-  SRInfo,
-  KeyboardHandler,
-});
-
-export { CarouselNamespace as Carousel };
+};

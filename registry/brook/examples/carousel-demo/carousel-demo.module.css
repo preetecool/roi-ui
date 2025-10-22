@@ -1,42 +1,75 @@
 #card {
-  height: 280px;
-  position: relative;
-  padding: 1.5rem;
-  padding-bottom: 4rem;
-  border-color: var(--border-dark);
-  display: flex;
-  flex-direction: column;
+    height: 300px;
+    width: 330px;
+    position: relative;
+    padding: 1rem;
+    border-color: var(--border-dark);
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, var(--mix-card-66-bg)0%, var(--background) 50%);
 }
 
-.icon {
-  width: 2rem;
-  height: 2rem;
+@media (max-width: 768px) {
+    #card {
+        max-width: 230px;
+    }
 }
+
+#icon {
+    background-color: var(--mix-card-66-bg);
+    border-color: var(--border);
+    color: var(--muted-foreground);
+
+}
+
+
+.iconSection {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
 
 .cardContent {
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
+    height: 50%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 1rem;
+    margin: 0 -1rem -1rem -1rem;
+    gap: 1rem;
+    border-top: 1px solid var(--border-dark);
+}
+
+.contentText {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+
+
 }
 
 .cardTitle {
-  margin-bottom: 12px;
-}
-
-.buttonContainer {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  justify-content: flex-start;
+    margin: 0;
+    font-size: 1.125rem;
 }
 
 .button {
-  padding-left: 0 !important;
-  margin-top: 8px;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    padding: 0.25rem;
+    align-self: end;
+    color: var(--muted-foreground);
+    border-color: var(--border-dark);
 }
 
-.placeholder {
-  height: 280px;
+.button:hover {
+    color: var(--foreground);
+
 }
