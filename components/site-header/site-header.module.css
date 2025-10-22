@@ -5,6 +5,7 @@
   width: 100%;
   box-sizing: border-box;
 
+  background-color: var(--mix-card-15-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0 max(24px, 5vw);
