@@ -184,6 +184,7 @@ function SidebarProvider({
  * This is the main sidebar panel that slides in and out.
  *
  * @param side - Which side the sidebar appears on ("left" or "right")
+ * @param modal - Whether the sidebar should act as a modal (with focus trap). Defaults to false for persistent sidebars.
  *
  * @example
  * ```tsx
@@ -197,19 +198,22 @@ function Sidebar({
   className,
   children,
   side = "left",
+  modal = false,
   ...props
 }: React.ComponentProps<"aside"> & {
   side?: "left" | "right";
+  modal?: boolean;
 }) {
   const { open, setOpen } = useSidebar();
   const sidebarRef = useRef<HTMLElement>(null);
 
-  useFocusTrap(sidebarRef, open, () => setOpen(false));
-  useRestoreFocus(open);
+  // Only enable focus trap and restore focus for modal sidebars
+  useFocusTrap(sidebarRef, modal && open, () => setOpen(false));
+  useRestoreFocus(modal && open);
 
   return (
     <aside
-      aria-modal="true"
+      aria-modal={modal ? "true" : undefined}
       className={cn(styles.sidebar, className)}
       data-closed={open ? undefined : ""}
       data-open={open ? "" : undefined}
@@ -217,7 +221,7 @@ function Sidebar({
       data-slot="sidebar"
       data-state={open ? "open" : "closed"}
       ref={sidebarRef}
-      role="dialog"
+      role={modal ? "dialog" : undefined}
       {...props}
     >
       {children}
