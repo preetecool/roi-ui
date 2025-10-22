@@ -114,7 +114,7 @@ function DocsSidebarContent({
   return (
     <TooltipProvider delay={150}>
       <Sidebar className={styles.sidebar} collapsible="offcanvas" side="left">
-        <SidebarHeader className={styles.header}>
+        <SidebarHeader id={styles.header}>
           <div className={styles.logoRow}>
             <Link className={styles.logoLink} href="/">
               <Logo
@@ -131,7 +131,8 @@ function DocsSidebarContent({
                 render={
                   <SidebarTrigger
                     aria-label="Collapse sidebar"
-                    className={`${styles.collapseButton} hit-area-extend`}
+                    className="hit-area-extend"
+                    id={styles.collapseButton}
                     render={<div />}
                   >
                     <svg
@@ -215,10 +216,10 @@ function DocsSidebarContent({
             >
               <svg
                 aria-label="GitHub"
-                height="20"
+                height="18"
                 role="img"
                 viewBox="0 0 98 96"
-                width="20"
+                width="18"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -242,7 +243,8 @@ function DocsSidebarContent({
                 render={
                   <SidebarTrigger
                     aria-label="Toggle sidebar"
-                    className={`${styles.collapsedButton} hit-area-extend`}
+                    className="hit-area-extend"
+                    id={styles.collapsedButton}
                     render={<div />}
                   >
                     <svg
@@ -355,7 +357,7 @@ function SearchTrigger() {
 
   return (
     <Button
-      className={styles.searchWrapper}
+      id={styles.searchWrapper}
       onClick={triggerSearch}
       variant="ghost"
     >
@@ -501,7 +503,7 @@ function DocsSidebarGroup({
   if (level === 0 && hasChildren) {
     return (
       <>
-        <SidebarGroupLabel className={styles.groupLabel}>
+        <SidebarGroupLabel id={styles.groupLabel}>
           {getIconForItem(item.name as string)}
           {item.name}
         </SidebarGroupLabel>

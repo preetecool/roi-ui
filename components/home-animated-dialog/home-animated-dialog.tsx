@@ -52,11 +52,11 @@ export const HomeAnimatedDialog = () => {
 
   return (
     <motion.div
-      animate={{ rotate: 4, y: 0, opacity: 1 }}
-      initial={{ rotate: 4, y: 40, opacity: 0 }}
+      animate={{ transform: "translateY(0px) rotate(4deg)", opacity: 1 }}
+      initial={{ transform: "translateY(40px) rotate(4deg)", opacity: 0 }}
       style={{ transformOrigin: "top left" }}
       transition={{
-        y: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
+        transform: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
         // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
         opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 },
       }}
