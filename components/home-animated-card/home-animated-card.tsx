@@ -35,12 +35,12 @@ export const HomeAnimatedCard = () => {
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
       <AnimatePresence>
         <motion.div
-          animate={{ height: bounds.height, y: 0, opacity: 1 }}
+          animate={{ height: bounds.height, transform: "translateY(0px) rotate(0deg)", opacity: 1 }}
           className={styles.container}
-          initial={{ rotate: -4, y: 40, opacity: 0 }}
+          initial={{ transform: "translateY(40px) rotate(-4deg)", opacity: 0 }}
           transition={{
             height: { duration: 0.4, type: "spring", bounce: 0 },
-            y: { duration: 0.8, ease: [EASE_START, 1, EASE_MID, 1], delay: 0 },
+            transform: { duration: 0.8, ease: [EASE_START, 1, EASE_MID, 1], delay: 0 },
             opacity: {
               duration: 0.8,
               ease: [EASE_START, 1, EASE_MID, 1],
