@@ -12,6 +12,16 @@ import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
 import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from "@/registry/brook/ui/sidebar/sidebar";
+import {
   Tooltip,
   TooltipPopup,
   TooltipPortal,
@@ -37,7 +47,25 @@ type DocsSidebarProps = {
 
 export function DocsSidebar({ tree }: DocsSidebarProps) {
   const pathname = usePathname();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  return (
+    <TooltipProvider delay={50}>
+      <Search tree={tree} />
+      <SidebarProvider defaultOpen={true}>
+        <DocsSidebarInner tree={tree} pathname={pathname} />
+      </SidebarProvider>
+    </TooltipProvider>
+  );
+}
+
+function DocsSidebarInner({
+  tree,
+  pathname,
+}: {
+  tree: PageTree.Root;
+  pathname: string;
+}) {
+  const { open, setOpen } = useSidebar();
   const [isHovering, setIsHovering] = useState(false);
   const [isMac, setIsMac] = useState(false);
 
@@ -51,9 +79,9 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
   };
 
   const handleToggleCollapse = useCallback(() => {
-    setIsCollapsed((prev) => !prev);
+    setOpen(!open);
     setIsHovering(false);
-  }, []);
+  }, [open, setOpen]);
 
   useEffect(() => {
     setIsMac(navigator.platform.toUpperCase().indexOf("MAC") >= 0);
@@ -94,9 +122,8 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
   );
 
   return (
-    <TooltipProvider delay={50}>
-      <Search tree={tree} />
-      {isCollapsed && (
+    <>
+      {!open && (
         <div
           aria-hidden="true"
           className={styles.hoverTrigger}
@@ -105,7 +132,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
       )}
 
       <div
-        className={`${styles.sidebarDesktop} ${isCollapsed ? styles.sidebarCollapsed : ""} ${isHovering ? styles.sidebarFloating : ""}`}
+        className={`${styles.sidebarDesktop} ${!open ? styles.sidebarCollapsed : ""} ${isHovering ? styles.sidebarFloating : ""}`}
       >
         <div className={styles.sidebarGap} data-slot="sidebar-gap" />
 
@@ -115,8 +142,8 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
           onMouseLeave={() => setIsHovering(false)}
           role="none"
         >
-          <div className={styles.sidebarInner} data-slot="sidebar-inner">
-            <div className={styles.sidebarHeader}>
+          <Sidebar side="left" className={styles.docsSidebar}>
+            <SidebarHeader className={styles.docsSidebarHeader}>
               <div className={styles.logoRow}>
                 <Link
                   className={styles.logoLink}
@@ -173,7 +200,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                             strokeWidth="2"
                           />
                           <rect
-                            className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ""}`}
+                            className={`${styles.collapseIconFill} ${!open ? styles.collapseIconFillActive : ""}`}
                             fill="currentColor"
                             height="18"
                             rx="2"
@@ -236,9 +263,25 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                   <Kbd size="sm">K</Kbd>
                 </div>
               </Button>
-            </div>
-            <SidebarContent pathname={pathname} tree={tree} />
-            <div className={styles.sidebarFooter}>
+            </SidebarHeader>
+
+            <SidebarContent className={styles.docsSidebarContent}>
+              <div className={styles.sidebarNav}>
+                <nav className={styles.nav}>
+                  {tree.children.map((item, index) => (
+                    <SidebarGroup key={item.$id || `item-${index}`}>
+                      <DocsSidebarGroup
+                        item={item as SidebarItem}
+                        level={0}
+                        pathname={pathname}
+                      />
+                    </SidebarGroup>
+                  ))}
+                </nav>
+              </div>
+            </SidebarContent>
+
+            <SidebarFooter className={styles.docsSidebarFooter}>
               <a
                 aria-label="View source on GitHub"
                 className={styles.githubLink}
@@ -269,8 +312,8 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                 </Button>
               </a>
               <ThemeSwitcher />
-            </div>
-          </div>
+            </SidebarFooter>
+          </Sidebar>
         </aside>
       </div>
 
@@ -317,7 +360,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
                       strokeWidth="2"
                     />
                     <rect
-                      className={`${styles.collapseIconFill} ${isCollapsed ? styles.collapseIconFillActive : ""}`}
+                      className={`${styles.collapseIconFill} ${!open ? styles.collapseIconFillActive : ""}`}
                       fill="currentColor"
                       height="18"
                       rx="2"
@@ -381,34 +424,10 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
           </Tooltip>
         </div>
       </div>
-    </TooltipProvider>
+    </>
   );
 }
 
-function SidebarContent({
-  tree,
-  pathname,
-}: {
-  tree: PageTree.Root;
-  pathname: string;
-}) {
-  return (
-    <div className={styles.sidebarContent}>
-      <div className={styles.sidebarNav}>
-        <nav className={styles.nav}>
-          {tree.children.map((item, index) => (
-            <SidebarGroup
-              item={item as SidebarItem}
-              key={item.$id || `item-${index}`}
-              level={0}
-              pathname={pathname}
-            />
-          ))}
-        </nav>
-      </div>
-    </div>
-  );
-}
 
 function ChevronIcon({ isOpen }: { isOpen: boolean }) {
   return (
@@ -579,7 +598,7 @@ function GroupHeader({
   return <h5 className={titleClasses}>{titleContent}</h5>;
 }
 
-function SidebarGroup({
+function DocsSidebarGroup({
   item,
   pathname,
   level = 0,
@@ -634,7 +653,7 @@ function SidebarGroup({
           }}
         >
           {item.children?.map((child, index) => (
-            <SidebarGroup
+            <DocsSidebarGroup
               item={child}
               key={child.$id || `child-${index}`}
               level={level + 1}
