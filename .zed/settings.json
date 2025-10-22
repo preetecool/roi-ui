@@ -2,7 +2,16 @@
   "formatter": "language_server",
   "format_on_save": "on",
   "languages": {
+    "CSS": {
+      "tab_size": 2,
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    },
     "JavaScript": {
+      "tab_size": 2,
       "formatter": {
         "language_server": {
           "name": "biome"
@@ -14,17 +23,7 @@
       }
     },
     "TypeScript": {
-      "formatter": {
-        "language_server": {
-          "name": "biome"
-        }
-      },
-      "code_actions_on_format": {
-        "source.fixAll.biome": true,
-        "source.organizeImports.biome": true
-      }
-    },
-    "JSX": {
+      "tab_size": 2,
       "formatter": {
         "language_server": {
           "name": "biome"
@@ -36,6 +35,7 @@
       }
     },
     "TSX": {
+      "tab_size": 2,
       "formatter": {
         "language_server": {
           "name": "biome"

@@ -4,12 +4,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
+  Dialog,
   DialogClose,
   DialogDescription,
   DialogOverlay,
   DialogPopup,
   DialogPortal,
-  DialogRoot,
   DialogTitle,
   DialogTrigger,
 } from "@/registry/brook/ui/dialog/dialog";
@@ -19,7 +19,7 @@ export default function DialogFramerMotion() {
   const [open, setOpen] = useState(false);
 
   return (
-    <DialogRoot onOpenChange={setOpen} open={open}>
+    <Dialog onOpenChange={setOpen} open={open}>
       {!open && (
         <DialogTrigger
           render={
@@ -84,6 +84,6 @@ export default function DialogFramerMotion() {
           )}
         </DialogPortal>
       </AnimatePresence>
-    </DialogRoot>
+    </Dialog>
   );
 }

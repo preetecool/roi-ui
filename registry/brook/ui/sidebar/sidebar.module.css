@@ -1,0 +1,490 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  width: 100%;
+}
+
+.desktop {
+  position: relative;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop {
+    display: block;
+  }
+}
+
+.gap {
+  position: relative;
+  width: var(--sidebar-width);
+  background: transparent;
+  transition: width 250ms var(--ease-out-expo);
+}
+
+.desktop[data-collapsible="offcanvas"][data-state="collapsed"] .gap {
+  width: 0.25rem;
+}
+
+.desktop[data-collapsible="icon"] .gap {
+  width: var(--sidebar-width-icon);
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  display: none;
+  height: 100svh;
+  width: var(--sidebar-width);
+  transition:
+    transform 250ms var(--ease-out-expo),
+    padding 250ms var(--ease-out-expo),
+    height 250ms var(--ease-out-expo),
+    top 250ms var(--ease-out-expo),
+    left 250ms var(--ease-out-expo),
+    width 250ms var(--ease-out-expo);
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+}
+
+.desktop[data-side="left"] .container {
+  left: 0;
+}
+
+.desktop[data-side="left"][data-collapsible="offcanvas"][data-state="collapsed"]
+  .container {
+  left: 0.25rem;
+  transform: translateX(
+    calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem))
+  );
+  padding: 0.25rem;
+  height: calc(100vh - 0.5rem);
+  top: 0.25rem;
+  width: calc(var(--sidebar-width) + 0.5rem + 1px);
+  overflow: visible;
+  transition:
+    transform 150ms var(--ease-in-out-quad),
+    padding 0s 150ms,
+    height 0s 150ms,
+    top 0s 150ms,
+    left 0s 150ms,
+    width 0s 150ms;
+}
+
+.desktop[data-side="right"] .container {
+  right: 0;
+}
+
+.desktop[data-side="right"][data-collapsible="offcanvas"] .container {
+  right: calc(var(--sidebar-width) * -1);
+}
+
+/* Icon width when collapsed */
+.desktop[data-collapsible="icon"] .container {
+  width: var(--sidebar-width-icon);
+}
+
+/* Sidebar */
+.sidebar {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+.desktop[data-state="expanded"] .sidebar {
+  border-right: 1px solid var(--border-dark);
+}
+
+.desktop[data-state="collapsed"] .sidebar {
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dark);
+}
+
+.desktop[data-side="right"] .sidebar {
+  border-right: none;
+  border-left: 1px solid var(--border-dark);
+}
+
+/* Mobile sidebar */
+.mobile {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  height: 100svh;
+  width: 80vw;
+  max-width: 18rem;
+  flex-direction: column;
+  background-color: var(--background);
+  border-right: 1px solid var(--border-dark);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-100%);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.mobile[data-state="open"] {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.groupLabel {
+  display: flex;
+  height: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  transition:
+    margin 200ms ease-linear,
+    opacity 200ms ease-linear;
+}
+
+.desktop[data-collapsible="icon"] .groupLabel {
+  margin-top: -2rem;
+  opacity: 0;
+}
+
+.groupContent {
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.footer {
+  padding: 0.5rem;
+  border-top: 1px solid var(--border-dark);
+  margin-top: auto;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.trigger:hover {
+  background-color: var(--muted);
+}
+
+.trigger:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.close {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  color: var(--foreground);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms ease-out;
+}
+
+.close:hover {
+  background-color: var(--muted);
+}
+
+.close:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  display: none;
+  width: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-linear;
+}
+
+@media (min-width: 768px) {
+  .rail {
+    display: flex;
+  }
+}
+
+.desktop[data-side="left"][data-collapsible="offcanvas"] .rail {
+  left: 0;
+}
+
+.desktop[data-side="right"][data-collapsible="offcanvas"] .rail {
+  right: 0;
+}
+
+.desktop[data-side="left"][data-state="collapsed"] .rail {
+  cursor: e-resize;
+}
+
+.desktop[data-side="right"][data-state="collapsed"] .rail {
+  cursor: w-resize;
+}
+
+.desktop[data-collapsible="offcanvas"]:has(.rail:hover) .container {
+  transform: translateX(0);
+}
+
+.menu {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menuButton {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+  outline: none;
+}
+
+.menuButton:hover {
+  background-color: var(--muted);
+}
+
+.menuButton:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.menuButton[data-active],
+.menuButtonActive {
+  background-color: var(--muted);
+  font-weight: 600;
+}
+
+.desktop[data-collapsible="icon"] .menuButton {
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 0.5rem !important;
+}
+
+.menuButton > span:last-child {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.menuButton > svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.menuAction {
+  position: absolute;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.25rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 150ms ease-out;
+  outline: none;
+}
+
+.menuAction:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.menuAction:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.desktop[data-collapsible="icon"] .menuAction {
+  display: none;
+}
+
+/* Menu Sub */
+.menuSub {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-left: 1px solid var(--border-dark);
+  margin-left: 0.875rem;
+  padding-left: 0.625rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  list-style: none;
+}
+
+.desktop[data-collapsible="icon"] .menuSub {
+  display: none;
+}
+
+.menuSubItem {
+  position: relative;
+}
+
+.menuSubButton {
+  display: flex;
+  height: 1.75rem;
+  min-width: 0;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+  outline: none;
+  text-decoration: none;
+}
+
+.menuSubButton:hover {
+  background-color: var(--muted);
+}
+
+.menuSubButton:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.menuSubButton[data-active],
+.menuSubButtonActive {
+  background-color: var(--muted);
+  font-weight: 600;
+}
+
+.menuSubButton > span:last-child {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.menuSubButton > svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.desktop[data-collapsible="icon"] .menuSubButton {
+  display: none;
+}
+
+.hoverTrigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100vh;
+  z-index: 90;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hoverTrigger {
+    display: block;
+  }
+}
+
+/* Hover state - slide sidebar in when hovering (only when collapsed) */
+.desktop[data-state="collapsed"][data-hover="true"][data-side="left"]
+.container {
+  transform: translateX(0);
+  transition: transform 150ms var(--ease-in-out-quad);
+}
+
+.desktop[data-state="collapsed"][data-hover="true"] .sidebar {
+  transition: none;
+}

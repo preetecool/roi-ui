@@ -51,6 +51,7 @@ function SliderValue({
 }
 
 export {
+  SliderRoot as Slider,
   SliderControl,
   SliderIndicator,
   SliderRoot,
