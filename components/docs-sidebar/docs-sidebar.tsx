@@ -131,7 +131,8 @@ function DocsSidebarContent({
                 render={
                   <SidebarTrigger
                     aria-label="Collapse sidebar"
-                    className={`${styles.collapseButton} hit-area-extend`}
+                    className="hit-area-extend"
+                    id={styles.collapseButton}
                     render={<div />}
                   >
                     <svg
@@ -242,7 +243,8 @@ function DocsSidebarContent({
                 render={
                   <SidebarTrigger
                     aria-label="Toggle sidebar"
-                    className={`${styles.collapsedButton} hit-area-extend`}
+                    className="hit-area-extend"
+                    id={styles.collapsedButton}
                     render={<div />}
                   >
                     <svg
@@ -355,7 +357,7 @@ function SearchTrigger() {
 
   return (
     <Button
-      className={styles.searchWrapper}
+      id={styles.searchWrapper}
       onClick={triggerSearch}
       variant="ghost"
     >
