@@ -6,7 +6,6 @@ import { createContext, useContext, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./sidebar.module.css";
 
-// Context for managing sidebar state
 type SidebarContextValue = {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -211,19 +210,29 @@ function Sidebar({
   useFocusTrap(sidebarRef, modal && open, () => setOpen(false));
   useRestoreFocus(modal && open);
 
+  const commonProps = {
+    className: cn(styles.sidebar, className),
+    "data-side": side,
+    "data-slot": "sidebar",
+    "data-state": open ? "open" : "closed",
+    ...props,
+  };
+
+  if (modal) {
+    return (
+      <div
+        aria-modal="true"
+        role="dialog"
+        {...commonProps}
+        ref={sidebarRef as React.Ref<HTMLDivElement>}
+      >
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <aside
-      aria-modal={modal ? "true" : undefined}
-      className={cn(styles.sidebar, className)}
-      data-closed={open ? undefined : ""}
-      data-open={open ? "" : undefined}
-      data-side={side}
-      data-slot="sidebar"
-      data-state={open ? "open" : "closed"}
-      ref={sidebarRef}
-      role={modal ? "dialog" : undefined}
-      {...props}
-    >
+    <aside {...commonProps} ref={sidebarRef as React.Ref<HTMLElement>}>
       {children}
     </aside>
   );
@@ -266,7 +275,6 @@ function SidebarTrigger({
     },
   });
 }
-
 
 /**
  * SidebarHeader - Sticky header at the top of the sidebar
