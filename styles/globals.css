@@ -257,11 +257,18 @@
   outline-offset: 2px;
 }
 
-html,
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
+  color: var(--foreground);
+  background-color: var(--background) !important;
+}
+
 body {
   max-width: 100vw;
   overflow-x: hidden;
   color: var(--foreground);
+  background-color: var(--background) !important;
 }
 
 a {
