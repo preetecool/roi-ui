@@ -22,6 +22,8 @@ const THUMB_ANIMATION_DURATION = 1200;
 const PARTICLE_ANIMATION_DURATION = 1000;
 const LIKE_STATE_DELAY = 100;
 const AUTO_PLAY_INTERVAL = 3000;
+const PARTICLE_RETURN_DELAY_OUTER = 0;
+const PARTICLE_RETURN_DELAY_INNER = 0.05;
 
 type Particle = {
   id: number;
@@ -68,11 +70,7 @@ function LikeButton({
   const [isAnimating, setIsAnimating] = useState(false);
 
   const createParticle = useCallback(
-    (
-      angleOffset: number,
-      type: "star" | "circle",
-      size: number
-    ): Particle => {
+    (angleOffset: number, type: "star" | "circle", size: number): Particle => {
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
@@ -81,13 +79,13 @@ function LikeButton({
       // ±30° (middle) → delay 0.05s (return second)
       // 0° (center) → delay 0.05s (return last)
       const absAngle = Math.abs(angleOffset);
-      let returnDelay = 0;
-      if (absAngle === 0) {
-        returnDelay = 0.05; // Center particles return last (50ms faster)
-      } else if (absAngle === 30) {
-        returnDelay = 0.05; // Mid particles return second
-      } else if (absAngle === 60) {
-        returnDelay = 0; // Outer particles return first
+      let returnDelay = PARTICLE_RETURN_DELAY_OUTER;
+      if (absAngle === PARTICLE_ANGLE_CENTER) {
+        returnDelay = PARTICLE_RETURN_DELAY_INNER; // Center particles return last
+      } else if (absAngle === Math.abs(PARTICLE_ANGLE_LEFT_SMALL)) {
+        returnDelay = PARTICLE_RETURN_DELAY_INNER; // Mid particles return second
+      } else if (absAngle === Math.abs(PARTICLE_ANGLE_LEFT)) {
+        returnDelay = PARTICLE_RETURN_DELAY_OUTER; // Outer particles return first
       }
 
       return {
