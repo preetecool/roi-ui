@@ -22,6 +22,8 @@ const THUMB_ANIMATION_DURATION = 1200;
 const PARTICLE_ANIMATION_DURATION = 1000;
 const LIKE_STATE_DELAY = 100;
 const AUTO_PLAY_INTERVAL = 3000;
+const PARTICLE_RETURN_DELAY_OUTER = 0;
+const PARTICLE_RETURN_DELAY_INNER = 0.05;
 
 type Particle = {
   id: number;
@@ -29,6 +31,7 @@ type Particle = {
   angle: number;
   distance: number;
   delay: number;
+  returnDelay: number;
   rotation: number;
   size: number;
   scale: number;
@@ -71,12 +74,27 @@ function LikeButton({
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
+      // Calculate return delay based on absolute angle (outside-in pattern)
+      // ±60° (outermost) → delay 0 (return first)
+      // ±30° (middle) → delay 0.05s (return second)
+      // 0° (center) → delay 0.05s (return last)
+      const absAngle = Math.abs(angleOffset);
+      let returnDelay = PARTICLE_RETURN_DELAY_OUTER;
+      if (absAngle === PARTICLE_ANGLE_CENTER) {
+        returnDelay = PARTICLE_RETURN_DELAY_INNER; // Center particles return last
+      } else if (absAngle === Math.abs(PARTICLE_ANGLE_LEFT_SMALL)) {
+        returnDelay = PARTICLE_RETURN_DELAY_INNER; // Mid particles return second
+      } else if (absAngle === Math.abs(PARTICLE_ANGLE_LEFT)) {
+        returnDelay = PARTICLE_RETURN_DELAY_OUTER; // Outer particles return first
+      }
+
       return {
         id: Date.now() + angleOffset + size,
         type,
         angle,
         distance: 40,
         delay: (angleOffset + ANGLE_OFFSET_BASE) / DELAY_DIVISOR,
+        returnDelay,
         rotation: angleOffset * ROTATION_MULTIPLIER,
         size,
         scale: SCALE_BASE + size / SCALE_DIVISOR,
@@ -192,6 +210,7 @@ function LikeButton({
                   "--angle": `${particle.angle}rad`,
                   "--distance": `${particle.distance}px`,
                   "--delay": `${particle.delay}s`,
+                  "--return-delay": `${particle.returnDelay}s`,
                   "--scale": particle.scale,
                 } as React.CSSProperties
               }

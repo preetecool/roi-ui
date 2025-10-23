@@ -1,12 +1,45 @@
 "use client";
 
-import { Check, Copy } from "lucide-react";
-import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { Check } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./copy-button.module.css";
 
-const COPIED_RESET_DELAY_MS = 800;
+const COPIED_RESET_DELAY_MS = 700;
+
+const CopyIcon = ({ size = 14 }: { size?: number }) => (
+  <svg
+    aria-label="copy-icon"
+    height={size}
+    role="img"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    style={{ transform: "scaleX(-1)" }}
+    viewBox="0 0 24 24"
+    width={size}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      className={styles.copyFront}
+      data-element="front"
+      fill="none"
+      height="14"
+      rx="2"
+      ry="2"
+      width="14"
+      x="8"
+      y="8"
+    />
+    <path
+      className={styles.copyBack}
+      d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+      data-element="back"
+      fill="none"
+    />
+  </svg>
+);
 
 /**
  * CopyButton component for copying text to clipboard with animated feedback.
@@ -29,44 +62,25 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), COPIED_RESET_DELAY_MS);
     } catch (_error) {
-      // Silently fail - user will notice copy didn't work
+      // Error handling - Silently fail by default
     }
   };
 
-  const isHeaderButton = className?.includes("header-copy-button");
-
   return (
-    <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
-      <motion.button
-        className={cn(styles.root, isHeaderButton && styles.header, className)}
-        data-slot="copy-button"
-        onClick={handleCopy}
-      >
-        <AnimatePresence mode="popLayout">
-          {copied ? (
-            <motion.div
-              animate={{ scale: 1, rotate: 0, filter: "blur(0px)" }}
-              className={styles.iconContainer}
-              exit={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
-              initial={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
-              key="check"
-            >
-              <Check size={14} />
-            </motion.div>
-          ) : (
-            <motion.div
-              animate={{ scale: 1, rotate: 0, filter: "blur(0px)" }}
-              className={styles.iconContainer}
-              exit={{ scale: 0, rotate: -180, filter: "blur(4px)" }}
-              initial={{ scale: 0, rotate: 180, filter: "blur(4px)" }}
-              key="copy"
-            >
-              <Copy size={14} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
-    </MotionConfig>
+    <button
+      className={cn(styles.root, styles.header, className)}
+      data-copied={copied}
+      data-slot="copy-button"
+      onClick={handleCopy}
+      type="button"
+    >
+      <div className={styles.iconContainer} data-icon="copy">
+        <CopyIcon size={14} />
+      </div>
+      <div className={styles.iconContainer} data-icon="check">
+        <Check size={14} />
+      </div>
+    </button>
   );
 }
 
