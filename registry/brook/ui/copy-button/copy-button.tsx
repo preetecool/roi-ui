@@ -9,8 +9,9 @@ const COPIED_RESET_DELAY_MS = 700;
 
 const CopyIcon = ({ size = 14 }: { size?: number }) => (
   <svg
-    fill="none"
+    aria-label="copy-icon"
     height={size}
+    role="img"
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
