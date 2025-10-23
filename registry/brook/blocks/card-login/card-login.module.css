@@ -26,7 +26,6 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  cursor: pointer;
   font-weight: 300;
   margin-left: 4px;
   margin-top: 0.5rem;
@@ -70,6 +69,7 @@
 
 .rememberMe {
   color: var(--secondary-foreground);
+  cursor: pointer;
 }
 .rememberMe:hover {
   color: var(--foreground);
@@ -80,6 +80,7 @@
   margin-left: -20px;
   margin-right: -20px;
   margin-bottom: -20px;
+  margin-top: -8px;
   text-align: center;
   font-size: 0.875rem;
   padding: 1.25rem 0;
@@ -95,4 +96,52 @@
 .signupLink {
   color: var(--secondary-foreground);
   cursor: pointer;
+}
+
+.dividerContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-dark);
+}
+
+.dividerText {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0 0.5rem;
+}
+
+.socialLoginContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.socialButton {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.appleLogo {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: -8px;
+}
+
+.lastUsedBadge {
+  position: absolute;
+  right: 12px;
 }
