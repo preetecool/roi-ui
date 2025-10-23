@@ -17,7 +17,7 @@ export function EmbeddedCodeDisplay({
     <>
       <div className={styles.header}>
         <span className={styles.title}>{displayTitle}</span>
-        <CopyButton className={"header-copy-button"} code={transformedCode} />
+        <CopyButton code={transformedCode} />
       </div>
 
       <div className={styles.codeContent}>
@@ -65,7 +65,7 @@ export function CollapsibleCodeDisplay({
       >
         <div className={styles.header}>
           <span className={styles.title}>{displayTitle}</span>
-          <CopyButton className="header-copy-button" code={transformedCode} />
+          <CopyButton code={transformedCode} />
         </div>
 
         <div className={styles.codeContent}>
@@ -109,7 +109,7 @@ export function StandardCodeDisplay({
     >
       <div className={styles.header}>
         <span className={styles.title}>{displayTitle}</span>
-        <CopyButton className="header-copy-button" code={transformedCode} />
+        <CopyButton code={transformedCode} />
       </div>
 
       <div className={styles.codeContent}>

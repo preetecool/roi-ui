@@ -24,7 +24,7 @@ export async function CodeBlock({
       <div className={styles.header}>
         <span className={styles.filename}>{filename}</span>
         <div className={styles.copyButtonWrapper}>
-          <CopyButton className="header-copy-button" code={code} />
+          <CopyButton code={code} />
         </div>
       </div>
 

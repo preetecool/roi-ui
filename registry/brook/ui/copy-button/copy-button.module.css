@@ -21,14 +21,14 @@
   background-color: var(--muted);
 }
 
-.header {
+.root.header {
   position: static;
   border: none;
   background-color: transparent;
   color: var(--muted-foreground);
 }
 
-.header:hover {
+.root.header:hover {
   background-color: var(--accent);
 }
 

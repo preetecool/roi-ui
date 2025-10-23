@@ -70,6 +70,18 @@
     inset 0 0 0 1px var(--success);
 }
 
+.info {
+  border-color: var(--border);
+  background-color: var(--mix-card-66-bg);
+  color: var(--info);
+}
+
+.info:focus-visible {
+  box-shadow:
+    0 0 0 3px var(--info),
+    inset 0 0 0 1px var(--info);
+}
+
 .outline {
   color: var(--foreground);
   border-color: var(--border-dark);
@@ -104,6 +116,10 @@
 
 .successIcon {
   background-color: var(--mix-success-20-muted);
+}
+
+.infoIcon {
+  background-color: var(--mix-info-20-muted);
 }
 
 .outlineIcon {

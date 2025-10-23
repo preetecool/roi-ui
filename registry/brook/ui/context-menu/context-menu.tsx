@@ -42,7 +42,6 @@ function ContextMenuPositioner({
   return (
     <ContextMenu.Positioner
       className={cn(styles.positioner, className)}
-      sideOffset={4}
       {...props}
     />
   );

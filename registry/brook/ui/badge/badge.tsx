@@ -10,6 +10,7 @@ const badgeVariants = cva(styles.badge, {
       destructive: styles.destructive,
       outline: styles.outline,
       success: styles.success,
+      info: styles.info,
     },
     size: {
       sm: styles.sm,
@@ -32,6 +33,7 @@ const badgeVariants = cva(styles.badge, {
  *   - `"destructive"` - Red color scheme for errors or warnings
  *   - `"outline"` - Outlined badge with transparent background
  *   - `"success"` - Green color scheme for success states
+ *   - `"info"` - Blue color scheme for informational states
  * @param size - The size of the badge
  *   - `"sm"` - Small badge
  *   - `"md"` - Medium badge (default)
