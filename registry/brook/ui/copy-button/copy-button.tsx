@@ -63,11 +63,9 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
     }
   };
 
-  const isHeaderButton = className?.includes("header-copy-button");
-
   return (
     <button
-      className={cn(styles.root, isHeaderButton && styles.header, className)}
+      className={cn(styles.root, styles.header, className)}
       data-copied={copied}
       data-slot="copy-button"
       onClick={handleCopy}

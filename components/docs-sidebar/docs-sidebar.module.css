@@ -357,3 +357,33 @@
 #collapsedButton:active {
   transform: scale(0.95);
 }
+
+.collapsedButtonsInner .collapsedButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 0.15s;
+  padding: 6px;
+  border-radius: var(--radius);
+}
+
+.collapsedButtonsInner .collapsedButton svg {
+  color: var(--muted-foreground);
+}
+
+.collapsedButtonsInner .collapsedButton:hover {
+  color: var(--foreground);
+  background-color: var(--card);
+}
+
+.collapsedButtonsInner .collapsedButton:hover svg {
+  color: var(--foreground);
+}
+
+.collapsedButtonsInner .collapsedButton:active {
+  transform: scale(0.95);
+}
