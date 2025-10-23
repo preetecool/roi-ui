@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import { cn } from "@/lib/utils";
 import styles from "./navigation-menu.module.css";
@@ -25,9 +25,7 @@ function NavigationMenuItem({
   className,
   ...props
 }: React.ComponentProps<typeof NavigationMenu.Item>) {
-  return (
-    <NavigationMenu.Item className={cn(styles.item, className)} {...props} />
-  );
+  return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 
 function NavigationMenuTrigger({
@@ -42,15 +40,6 @@ function NavigationMenuTrigger({
   );
 }
 
-function NavigationMenuIcon({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Icon>) {
-  return (
-    <NavigationMenu.Icon className={cn(styles.chevron, className)} {...props} />
-  );
-}
-
 function NavigationMenuContent({
   className,
   ...props
@@ -60,6 +49,15 @@ function NavigationMenuContent({
       className={cn(styles.content, className)}
       {...props}
     />
+  );
+}
+
+function NavigationMenuIcon({
+  className,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Icon>) {
+  return (
+    <NavigationMenu.Icon className={cn(styles.chevron, className)} {...props} />
   );
 }
 

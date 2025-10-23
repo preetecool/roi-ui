@@ -1,7 +1,44 @@
-.mainGrid {
+.linkList {
   display: grid;
+  margin: 0;
+  list-style: none;
+  padding: 0.5rem;
+  width: 400px;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0;
+}
+
+.linkListItem {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  border-radius: 6px;
+  line-height: 1;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.linkListItem:hover {
+  background-color: var(--secondary);
+}
+
+.linkListItemHeading {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  color: var(--foreground);
+}
+
+.linkListItemText {
+  all: unset;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: initial;
 }
 
 .subMenuItem {
@@ -21,7 +58,10 @@
 }
 
 .subMenuList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  margin: 0;
+  list-style: none;
+  padding: 0.5rem;
+  width: 200px;
+  gap: 0;
 }
