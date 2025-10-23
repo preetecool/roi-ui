@@ -1,13 +1,16 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
-import { Button } from "@/registry/brook/ui/button/button";
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuArrow,
   NavigationMenuContent,
   NavigationMenuIcon,
   NavigationMenuItem,
-  NavigationMenuLinkItem,
+  NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuPopup,
   NavigationMenuPortal,
   NavigationMenuPositioner,
   NavigationMenuTrigger,
@@ -20,73 +23,92 @@ export default function NavigationSubMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger
-            render={
-              <Button variant="ghost">
-                Open
-                <NavigationMenuIcon>
-                  <ChevronDown size={16} />
-                </NavigationMenuIcon>
-              </Button>
-            }
-          />
-          <NavigationMenuViewport>
-            <NavigationMenuArrow />
-            <NavigationMenuContent>
-              <div className={styles.mainGrid}>
-                <NavigationMenuLinkItem
-                  description="Interactive button component"
-                  href="#"
-                  title="Button"
-                />
-                <NavigationMenuLinkItem
-                  description="Form input controls"
-                  href="#"
-                  title="Input"
-                />
+          <NavigationMenuTrigger>
+            Open
+            <NavigationMenuIcon>
+              <ChevronDown size={16} />
+            </NavigationMenuIcon>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className={styles.linkList}>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Button</h3>
+                  <p className={styles.linkListItemText}>
+                    Interactive button component
+                  </p>
+                </NavigationMenuLink>
+              </li>
 
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Input</h3>
+                  <p className={styles.linkListItemText}>Form input controls</p>
+                </NavigationMenuLink>
+              </li>
+
+              <li className={styles.linkListItem}>
                 <NavigationMenu>
                   <NavigationMenuItem className={styles.subMenuItem}>
-                    <NavigationMenuTrigger
-                      nativeButton={false}
-                      render={
-                        <div className={styles.triggerContainer}>
-                          <NavigationMenuLinkItem
-                            className={styles.linkItemWithIcon}
-                            description="Form input controls"
-                            title="Input"
-                          >
-                            <NavigationMenuIcon>
-                              <ChevronDown size={16} />
-                            </NavigationMenuIcon>
-                          </NavigationMenuLinkItem>
+                    <NavigationMenuTrigger nativeButton={false}>
+                      <div className={styles.triggerContainer}>
+                        <div className={styles.linkItemWithIcon}>
+                          <div>
+                            <h3 className={styles.linkListItemHeading}>More</h3>
+                            <p className={styles.linkListItemText}>
+                              Additional components
+                            </p>
+                          </div>
+                          <NavigationMenuIcon>
+                            <ChevronDown size={16} />
+                          </NavigationMenuIcon>
                         </div>
-                      }
-                    />
+                      </div>
+                    </NavigationMenuTrigger>
 
                     <NavigationMenuContent>
-                      <div className={styles.subMenuList}>
-                        <NavigationMenuLinkItem
-                          description="Modal dialogs"
-                          href="#"
-                          title="Dialog"
-                        />
-                        <NavigationMenuLinkItem
-                          description="Floating content"
-                          href="#"
-                          title="Popover"
-                        />
-                        <NavigationMenuLinkItem
-                          description="Helpful hints"
-                          href="#"
-                          title="Tooltip"
-                        />
-                        <NavigationMenuLinkItem
-                          description="Collapsible sections"
-                          href="#"
-                          title="Accordion"
-                        />
-                      </div>
+                      <ul className={styles.subMenuList}>
+                        <li className={styles.linkListItem}>
+                          <NavigationMenuLink render={<Link href="#" />}>
+                            <h3 className={styles.linkListItemHeading}>
+                              Dialog
+                            </h3>
+                            <p className={styles.linkListItemText}>
+                              Modal dialogs
+                            </p>
+                          </NavigationMenuLink>
+                        </li>
+                        <li className={styles.linkListItem}>
+                          <NavigationMenuLink render={<Link href="#" />}>
+                            <h3 className={styles.linkListItemHeading}>
+                              Popover
+                            </h3>
+                            <p className={styles.linkListItemText}>
+                              Floating content
+                            </p>
+                          </NavigationMenuLink>
+                        </li>
+                        <li className={styles.linkListItem}>
+                          <NavigationMenuLink render={<Link href="#" />}>
+                            <h3 className={styles.linkListItemHeading}>
+                              Tooltip
+                            </h3>
+                            <p className={styles.linkListItemText}>
+                              Helpful hints
+                            </p>
+                          </NavigationMenuLink>
+                        </li>
+                        <li className={styles.linkListItem}>
+                          <NavigationMenuLink render={<Link href="#" />}>
+                            <h3 className={styles.linkListItemHeading}>
+                              Accordion
+                            </h3>
+                            <p className={styles.linkListItemText}>
+                              Collapsible sections
+                            </p>
+                          </NavigationMenuLink>
+                        </li>
+                      </ul>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
 
@@ -96,23 +118,36 @@ export default function NavigationSubMenu() {
                       side="right"
                       sideOffset={8}
                     >
-                      <NavigationMenuViewport>
+                      <NavigationMenuPopup>
                         <NavigationMenuArrow />
-                      </NavigationMenuViewport>
+                        <NavigationMenuViewport />
+                      </NavigationMenuPopup>
                     </NavigationMenuPositioner>
                   </NavigationMenuPortal>
                 </NavigationMenu>
+              </li>
 
-                <NavigationMenuLinkItem
-                  description="Data tables and grids"
-                  href="#"
-                  title="Table"
-                />
-              </div>
-            </NavigationMenuContent>
-          </NavigationMenuViewport>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Table</h3>
+                  <p className={styles.linkListItemText}>
+                    Data tables and grids
+                  </p>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
+
+      <NavigationMenuPortal>
+        <NavigationMenuPositioner sideOffset={8}>
+          <NavigationMenuPopup>
+            <NavigationMenuArrow />
+            <NavigationMenuViewport />
+          </NavigationMenuPopup>
+        </NavigationMenuPositioner>
+      </NavigationMenuPortal>
     </NavigationMenu>
   );
 }

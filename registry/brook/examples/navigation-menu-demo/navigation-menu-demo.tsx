@@ -1,173 +1,172 @@
 "use client";
 
-import { ChevronDown, Palette, Shield, Users, Zap } from "lucide-react";
-import { Logo } from "@/components/logo";
-import { Button } from "@/registry/brook/ui/button/button";
+import Link from "next/link";
+import { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIcon,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuLinkItem,
   NavigationMenuList,
+  NavigationMenuPopup,
+  NavigationMenuPortal,
+  NavigationMenuPositioner,
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
+import { Button } from "../../ui/button/button";
 import styles from "./navigation-menu-demo.module.css";
 
 export default function NavigationMenuDemo() {
+  const [hoveredLink, setHoveredLink] = useState<string | null>("link1");
+
+  const linkColors = {
+    link1: "var(--info)",
+    link2: "var(--success)",
+    link3: "var(--warning)",
+  };
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink href="#">Home</NavigationMenuLink>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
           <NavigationMenuTrigger
-            render={
-              <Button variant="ghost">
-                Products
-                <NavigationMenuIcon>
-                  <ChevronDown size={16} />
-                </NavigationMenuIcon>
-              </Button>
-            }
-          />
+            onPointerEnter={() => setHoveredLink("link1")}
+            render={<Button variant="ghost" />}
+          >
+            Products
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className={styles.productsLayout}>
-              <div className={styles.productsGrid}>
-                <NavigationMenuLinkItem href="#" title="Analytics" />
-                <NavigationMenuLinkItem href="#" title="Insights" />
-                <NavigationMenuLinkItem href="#" title="Automation" />
-                <NavigationMenuLinkItem href="#" title="Reporting" />
-              </div>
-              <NavigationMenuLinkItem href="#">
-                <div className={styles.footerContent}>
-                  <Logo
-                    className={styles.footerImage}
-                    fillColor="var(--mix-transparent-85-fg)"
-                    height={70}
-                    strokeColor="var(--mix-transparent-88-fg)"
-                    width={70}
-                  />
-                  <div className={styles.footerTitle}>Sign up</div>
-                  <div className={styles.footerDescription}>
-                    Create an account to access all products.
-                  </div>
+            <ul className={`${styles.linkList} ${styles.one}`}>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink
+                  onPointerEnter={() => setHoveredLink("link1")}
+                  onPointerLeave={() => setHoveredLink(null)}
+                  render={<Link href="#" />}
+                >
+                  <h3 className={styles.linkListItemHeading}>Link 1</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink
+                  onPointerEnter={() => setHoveredLink("link2")}
+                  onPointerLeave={() => setHoveredLink(null)}
+                  render={<Link href="#" />}
+                >
+                  <h3 className={styles.linkListItemHeading}>Link 2</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink
+                  onPointerEnter={() => setHoveredLink("link3")}
+                  onPointerLeave={() => setHoveredLink(null)}
+                  render={<Link href="#" />}
+                >
+                  <h3 className={styles.linkListItemHeading}>Link 3</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.previewCard}>
+                <div className={styles.previewContent}>
+                  <svg
+                    aria-label="Preview Shape"
+                    className={styles.previewSvg}
+                    role="img"
+                    viewBox="0 0 200 200"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="ellipse-gradient"
+                        x1="0%"
+                        x2="100%"
+                        y1="0%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stopColor="var(--mix-card-33-bg)" />
+                        <stop
+                          offset="100%"
+                          stopColor={
+                            hoveredLink === "link1"
+                              ? "var(--success)"
+                              : hoveredLink === "link2"
+                                ? "var(--info)"
+                                : "var(--warning)"
+                          }
+                        />
+                      </linearGradient>
+                    </defs>
+                    <ellipse
+                      className={styles.rotatingEllipse}
+                      cx="100"
+                      cy="100"
+                      fill="url(#ellipse-gradient)"
+                      rx="100"
+                      ry="100"
+                      stroke="none"
+                    />
+                  </svg>
                 </div>
-              </NavigationMenuLinkItem>
-            </div>
+              </li>
+            </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger
-            render={
-              <Button variant="ghost">
-                Resources
-                <NavigationMenuIcon>
-                  <ChevronDown size={16} />
-                </NavigationMenuIcon>
-              </Button>
-            }
-          />
+          <NavigationMenuTrigger render={<Button variant="ghost" />}>
+            About
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className={styles.resourcesList}>
-              <NavigationMenuLinkItem
-                description="Learn our products"
-                href="#"
-                title="Documentation"
-              />
-              <NavigationMenuLinkItem
-                description="News and updates"
-                href="#"
-                title="Blog"
-              />
-              <NavigationMenuLinkItem
-                description="Get help"
-                href="#"
-                title="Support"
-              />
-              <NavigationMenuLinkItem
-                description="Step-by-step guides"
-                href="#"
-                title="Tutorials"
-              />
-            </div>
+            <ul className={`${styles.linkList} ${styles.two}`}>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Link</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Link 2</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Link 3</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.separator} />
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Link 4</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Link 5</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+              <li className={styles.linkListItem}>
+                <NavigationMenuLink render={<Link href="#" />}>
+                  <h3 className={styles.linkListItemHeading}>Link 6</h3>
+                  <p className={styles.linkListItemText}>description</p>
+                </NavigationMenuLink>
+              </li>
+            </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuTrigger
-            render={
-              <Button variant="ghost">
-                Icons
-                <NavigationMenuIcon>
-                  <ChevronDown size={16} />
-                </NavigationMenuIcon>
-              </Button>
-            }
-          />
-          <NavigationMenuContent>
-            <div className={styles.iconsGrid}>
-              <NavigationMenuLinkItem href="#">
-                <div className={styles.iconLinkItem}>
-                  <div className={styles.iconContainer}>
-                    <Palette size={16} />
-                  </div>
-                  <div>
-                    <div className={styles.iconTitle}>Design</div>
-                    <div className={styles.iconDescription}>Design tools</div>
-                  </div>
-                </div>
-              </NavigationMenuLinkItem>
-              <NavigationMenuLinkItem href="#">
-                <div className={styles.iconLinkItem}>
-                  <div className={styles.iconContainer}>
-                    <Zap size={16} />
-                  </div>
-                  <div>
-                    <div className={styles.iconTitle}>Performance</div>
-                    <div className={styles.iconDescription}>Fast speed</div>
-                  </div>
-                </div>
-              </NavigationMenuLinkItem>
-              <NavigationMenuLinkItem href="#">
-                <div className={styles.iconLinkItem}>
-                  <div className={styles.iconContainer}>
-                    <Shield size={16} />
-                  </div>
-                  <div>
-                    <div className={styles.iconTitle}>Security</div>
-                    <div className={styles.iconDescription}>
-                      Secure platform
-                    </div>
-                  </div>
-                </div>
-              </NavigationMenuLinkItem>
-              <NavigationMenuLinkItem href="#">
-                <div className={styles.iconLinkItem}>
-                  <div className={styles.iconContainer}>
-                    <Users size={16} />
-                  </div>
-                  <div>
-                    <div className={styles.iconTitle}>Collaboration</div>
-                    <div className={styles.iconDescription}>Team work</div>
-                  </div>
-                </div>
-              </NavigationMenuLinkItem>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuLink href="#">Pricing</NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
-
-      <NavigationMenuViewport sideOffset={8} />
+      <NavigationMenuPortal>
+        <NavigationMenuPositioner sideOffset={8}>
+          <NavigationMenuPopup>
+            <NavigationMenuViewport />
+          </NavigationMenuPopup>
+        </NavigationMenuPositioner>
+      </NavigationMenuPortal>
     </NavigationMenu>
   );
 }

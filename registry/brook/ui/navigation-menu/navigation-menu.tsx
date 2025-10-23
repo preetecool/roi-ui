@@ -1,5 +1,4 @@
 "use client";
-
 import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import { cn } from "@/lib/utils";
 import styles from "./navigation-menu.module.css";
@@ -26,9 +25,7 @@ function NavigationMenuItem({
   className,
   ...props
 }: React.ComponentProps<typeof NavigationMenu.Item>) {
-  return (
-    <NavigationMenu.Item className={cn(styles.item, className)} {...props} />
-  );
+  return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 
 function NavigationMenuTrigger({
@@ -43,7 +40,17 @@ function NavigationMenuTrigger({
   );
 }
 
-const NavigationMenuPortal = NavigationMenu.Portal;
+function NavigationMenuContent({
+  className,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Content>) {
+  return (
+    <NavigationMenu.Content
+      className={cn(styles.content, className)}
+      {...props}
+    />
+  );
+}
 
 function NavigationMenuIcon({
   className,
@@ -51,6 +58,61 @@ function NavigationMenuIcon({
 }: React.ComponentProps<typeof NavigationMenu.Icon>) {
   return (
     <NavigationMenu.Icon className={cn(styles.chevron, className)} {...props} />
+  );
+}
+
+function NavigationMenuLink({
+  className,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Link>) {
+  return (
+    <NavigationMenu.Link className={cn(styles.link, className)} {...props} />
+  );
+}
+
+function NavigationMenuPortal({
+  children,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Portal>) {
+  return <NavigationMenu.Portal {...props}>{children}</NavigationMenu.Portal>;
+}
+
+function NavigationMenuBackdrop({
+  className,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Backdrop>) {
+  return (
+    <NavigationMenu.Backdrop
+      className={cn(styles.backdrop, className)}
+      {...props}
+    />
+  );
+}
+
+function NavigationMenuPositioner({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Positioner>) {
+  return (
+    <NavigationMenu.Positioner
+      className={cn(styles.positioner, className)}
+      {...props}
+    >
+      {children}
+    </NavigationMenu.Positioner>
+  );
+}
+
+function NavigationMenuPopup({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof NavigationMenu.Popup>) {
+  return (
+    <NavigationMenu.Popup className={cn(styles.popup, className)} {...props}>
+      {children}
+    </NavigationMenu.Popup>
   );
 }
 
@@ -70,7 +132,14 @@ function NavigationMenuArrow({
         <path className={styles.arrowFill} d="M8 0L16 8H0L8 0Z" />
         <path
           className={styles.arrowOuterStroke}
-          d="M8 0L16 8H0L8 0Z"
+          d="M8 0L0 8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+        <path
+          className={styles.arrowOuterStroke}
+          d="M8 0L16 8"
           fill="none"
           stroke="currentColor"
           strokeWidth="1"
@@ -80,136 +149,30 @@ function NavigationMenuArrow({
   );
 }
 
-function NavigationMenuPositioner({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Positioner>) {
-  return (
-    <NavigationMenu.Positioner
-      className={cn(styles.positioner, className)}
-      {...props}
-    />
-  );
-}
-
-function NavigationMenuPopup({
-  className,
-  children,
-  showArrow = true,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Popup> & {
-  showArrow?: boolean;
-}) {
-  return (
-    <NavigationMenu.Popup className={cn(styles.popup, className)} {...props}>
-      {showArrow && (
-        <NavigationMenu.Arrow className={cn(styles.arrow)}>
-          <svg
-            aria-hidden="true"
-            fill="none"
-            height="8"
-            viewBox="0 0 16 8"
-            width="16"
-          >
-            <path className={styles.arrowFill} d="M8 0L16 8H0L8 0Z" />
-            <path
-              className={styles.arrowOuterStroke}
-              d="M8 0L0 8"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-            <path
-              className={styles.arrowOuterStroke}
-              d="M8 0L16 8"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-          </svg>
-        </NavigationMenu.Arrow>
-      )}
-      <NavigationMenu.Viewport className={styles.viewport}>
-        {children}
-      </NavigationMenu.Viewport>
-    </NavigationMenu.Popup>
-  );
-}
-
 function NavigationMenuViewport({
   className,
-  children,
-  showArrow = false,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Positioner> & {
-  showArrow?: boolean;
-}) {
+}: React.ComponentProps<typeof NavigationMenu.Viewport>) {
   return (
-    <NavigationMenuPortal>
-      <NavigationMenuPositioner className={className} {...props}>
-        <NavigationMenuPopup showArrow={showArrow}>
-          {children}
-        </NavigationMenuPopup>
-      </NavigationMenuPositioner>
-    </NavigationMenuPortal>
-  );
-}
-
-function NavigationMenuContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Content>) {
-  return (
-    <NavigationMenu.Content
-      className={cn(styles.content, className)}
+    <NavigationMenu.Viewport
+      className={cn(styles.viewport, className)}
       {...props}
     />
-  );
-}
-
-function NavigationMenuLink({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Link>) {
-  return (
-    <NavigationMenu.Link className={cn(styles.link, className)} {...props} />
-  );
-}
-
-function NavigationMenuLinkItem({
-  className,
-  title,
-  description,
-  children,
-  ...props
-}: React.ComponentProps<typeof NavigationMenu.Link> & {
-  title?: string;
-  description?: string;
-}) {
-  return (
-    <NavigationMenu.Link className={cn(styles.linkCard, className)} {...props}>
-      <div>
-        {title && <div className={styles.linkTitle}>{title}</div>}
-        {description && (
-          <div className={styles.linkDescription}>{description}</div>
-        )}
-      </div>
-      {children}
-    </NavigationMenu.Link>
   );
 }
 
 export {
   NavigationMenuRoot as NavigationMenu,
-  NavigationMenuArrow,
-  NavigationMenuContent,
-  NavigationMenuIcon,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuLinkItem,
   NavigationMenuList,
-  NavigationMenuPortal,
-  NavigationMenuPositioner,
+  NavigationMenuItem,
   NavigationMenuTrigger,
+  NavigationMenuIcon,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuPortal,
+  NavigationMenuBackdrop,
+  NavigationMenuPositioner,
+  NavigationMenuPopup,
+  NavigationMenuArrow,
   NavigationMenuViewport,
 };
