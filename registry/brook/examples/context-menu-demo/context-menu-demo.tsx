@@ -65,7 +65,9 @@ export default function ContextMenuDemo() {
               <ContextMenuSeparator />
               <ContextMenuItem className={styles.deleteItem}>
                 Delete
-                <ContextMenuShortcut>⌫</ContextMenuShortcut>
+                <ContextMenuShortcut className="destructiveIcon">
+                  ⌫
+                </ContextMenuShortcut>
               </ContextMenuItem>
             </ContextMenuPopup>
           </ContextMenuPositioner>

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 2rem;
+  padding: 8rem;
   cursor: context-menu;
   outline: none;
   border-radius: var(--radius);
@@ -40,4 +40,8 @@
     background: var(--destructive);
     color: var(--destructive-foreground);
   }
+}
+
+.deleteItem:hover > span {
+  color: var(--destructive-foreground);
 }
