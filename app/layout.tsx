@@ -31,7 +31,6 @@ export default function RootLayout({
         <link href="/favicon.svg" rel="shortcut icon" />
       </head>
       <body
-        className="root"
         style={{
           backgroundColor: "var(--background)",
           color: "var(--foreground)",
@@ -40,15 +39,17 @@ export default function RootLayout({
           padding: 0,
         }}
       >
-        <ThemeProvider
-          defaultTheme="dark"
-          disableTransitionOnChange
-          enableSystem
-          storageKey="theme"
-        >
-          {children}
-          <Analytics />
-        </ThemeProvider>
+        <div className="root">
+          <ThemeProvider
+            defaultTheme="dark"
+            disableTransitionOnChange
+            enableSystem
+            storageKey="theme"
+          >
+            {children}
+            <Analytics />
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );
