@@ -42,7 +42,7 @@
 .copyFront,
 .copyBack {
   transform-origin: center;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .iconContainer[data-icon="copy"] {
@@ -50,15 +50,15 @@
   scale: 1;
   rotate: 0deg;
   filter: blur(0px);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .iconContainer[data-icon="check"] {
   opacity: 0;
-  scale: 0.6;
-  rotate: 90deg;
+  scale: 0;
+  rotate: -45deg;
   filter: blur(4px);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .root[data-copied="true"] .copyFront {
