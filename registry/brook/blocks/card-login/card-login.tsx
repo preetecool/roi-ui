@@ -92,22 +92,18 @@ export default function CardLoginDemo() {
             {errors.password && <FieldError>{errors.password}</FieldError>}
           </Field>
 
-          <div className={styles.checkboxLabel}>
+          <label className={styles.checkboxLabel} htmlFor="remember-me">
             <Checkbox
               checked={rememberMe}
+              id="remember-me"
               onCheckedChange={(checked) => setRememberMe(checked === true)}
             >
               <CheckboxIndicator>
                 <Check size={16} strokeWidth={3} />
               </CheckboxIndicator>
             </Checkbox>
-            <span
-              className={styles.rememberMe}
-              onClick={() => setRememberMe(!rememberMe)}
-            >
-              Remember me
-            </span>
-          </div>
+            <span className={styles.rememberMe}>Remember me</span>
+          </label>
         </form>
       </CardContent>
       <CardFooter className={styles.footer}>
