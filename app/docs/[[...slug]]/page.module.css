@@ -10,7 +10,6 @@
   padding: clamp(1.5rem, 2vw + 1rem, 2.5rem) clamp(1rem, 3vw, 2rem);
   color: var(--foreground);
   font-size: clamp(0.875rem, 0.8rem + 0.25vw, 0.9375rem);
-  background-color: var(--background);
 }
 
 .contentWrapper p,
