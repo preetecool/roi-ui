@@ -27,17 +27,17 @@ export default function DropdownMenuDemo() {
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup>
-            <DropdownMenuItem icon={<Edit size={16} />}>Edit</DropdownMenuItem>
+            <DropdownMenuItem icon={<Edit size={14} />}>Edit</DropdownMenuItem>
 
             <DropdownMenuSeparator />
-            <DropdownMenuItem icon={<Copy size={16} />}>
+            <DropdownMenuItem icon={<Copy size={14} />}>
               Duplicate
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem icon={<Archive size={16} />}>
+            <DropdownMenuItem icon={<Archive size={14} />}>
               Archive
             </DropdownMenuItem>
-            <DropdownMenuItem icon={<Trash2 size={16} />}>
+            <DropdownMenuItem icon={<Trash2 size={14} />}>
               Delete
             </DropdownMenuItem>
           </DropdownMenuPopup>

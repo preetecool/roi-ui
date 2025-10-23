@@ -79,10 +79,7 @@ export function MultiFileComponentSource({
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         </div>
-        <CopyButton
-          className="header-copy-button"
-          code={currentFile.rawContent}
-        />
+        <CopyButton code={currentFile.rawContent} />
       </div>
 
       <div className={componentSourceStyles.codeContent}>

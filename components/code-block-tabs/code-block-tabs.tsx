@@ -75,10 +75,7 @@ export function CodeBlockTabs({ children }: CodeBlockTabsProps) {
             <TabsTrigger value="npm">npm</TabsTrigger>
             <TabsTrigger value="pnpm">pnpm</TabsTrigger>
           </div>
-          <CopyButton
-            className="header-copy-button"
-            code={currentCommandText}
-          />
+          <CopyButton code={currentCommandText} />
         </TabsList>
         {filteredChildren}
       </CustomTabs>

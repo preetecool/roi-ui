@@ -32,11 +32,7 @@ export default function DropdownMenuSubmenu() {
                 <ChevronRight size={16} />
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner
-                  align="start"
-                  side="right"
-                  sideOffset={8}
-                >
+                <DropdownMenuPositioner align="start" side="right">
                   <DropdownMenuPopup>
                     <DropdownMenuItem>Export</DropdownMenuItem>
                     <DropdownMenuItem>Import</DropdownMenuItem>
