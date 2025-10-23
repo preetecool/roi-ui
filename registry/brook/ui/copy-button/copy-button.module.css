@@ -5,7 +5,7 @@
   padding: 0.5rem;
   border-radius: 0.375rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: var(--muted);
+
   color: var(--muted);
   cursor: pointer;
   transition: all 0.2s;
@@ -19,7 +19,6 @@
 
 .root:hover {
   background-color: var(--muted);
-  color: var(--foreground);
 }
 
 .header {
@@ -37,4 +36,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+}
+
+.copyFront,
+.copyBack {
+  transform-origin: center;
+  transition: all 0.25s ease;
+}
+
+.iconContainer[data-icon="copy"] {
+  opacity: 1;
+  scale: 1;
+  rotate: 0deg;
+  filter: blur(0px);
+  transition: all 0.25s ease;
+}
+
+.iconContainer[data-icon="check"] {
+  opacity: 0;
+  scale: 0.6;
+  rotate: 90deg;
+  filter: blur(4px);
+  transition: all 0.25s ease;
+}
+
+.root[data-copied="true"] .copyFront {
+  transform: translate(-4px, -4px) scale(0.8);
+  opacity: 0;
+  transition:
+    transform 0.1s ease,
+    opacity 0.1s ease 0.1s;
+}
+
+.root[data-copied="true"] .copyBack {
+  transform: scale(0.8);
+  opacity: 0;
+  transition:
+    transform 0.1s ease,
+    opacity 0.1s ease 50ms;
+}
+
+.root[data-copied="true"] .iconContainer[data-icon="copy"] {
+  opacity: 0;
+  transition: opacity 0.25s ease 50ms;
+}
+
+.root[data-copied="true"] .iconContainer[data-icon="check"] {
+  opacity: 1;
+  scale: 1;
+  rotate: 0deg;
+  filter: blur(0px);
+  transition: all 0.25s ease 50ms;
 }
