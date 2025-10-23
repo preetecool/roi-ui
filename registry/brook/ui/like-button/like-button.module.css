@@ -35,8 +35,9 @@
   left: 50%;
   top: 50%;
   will-change: transform, opacity;
-  animation: particleMotion 1s ease-out forwards;
-  animation-delay: var(--delay);
+  animation:
+    particleOut 0.5s ease-out var(--delay) forwards,
+    particleReturn 0.5s ease-out calc(0.65s + var(--return-delay)) forwards;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0);
 }
@@ -134,12 +135,12 @@
   animation: fillThumb 0.25s ease-out forwards;
 }
 
-@keyframes particleMotion {
+@keyframes particleOut {
   0% {
     transform: translate(-50%, -50%) scale(0.5);
     opacity: 0;
   }
-  50% {
+  100% {
     transform: translate(
         calc(-50% + (cos(var(--angle)) * var(--distance))),
         calc(-50% + (sin(var(--angle)) * var(--distance)))
@@ -147,7 +148,18 @@
       scale(1);
     opacity: 0.9;
   }
-  75% {
+}
+
+@keyframes particleReturn {
+  0% {
+    transform: translate(
+        calc(-50% + (cos(var(--angle)) * var(--distance))),
+        calc(-50% + (sin(var(--angle)) * var(--distance)))
+      )
+      scale(1);
+    opacity: 0.9;
+  }
+  50% {
     transform: translate(
         calc(-50% + (cos(var(--angle)) * var(--distance) * 0.1)),
         calc(-50% + (sin(var(--angle)) * var(--distance) * 0.1))
@@ -156,11 +168,7 @@
     opacity: 0.25;
   }
   100% {
-    transform: translate(
-        calc(-50% + (cos(var(--angle)) * var(--distance) * 0)),
-        calc(-50% + (sin(var(--angle)) * var(--distance) * 0))
-      )
-      scale(0);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0;
   }
 }

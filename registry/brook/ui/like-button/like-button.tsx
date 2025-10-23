@@ -29,6 +29,7 @@ type Particle = {
   angle: number;
   distance: number;
   delay: number;
+  returnDelay: number;
   rotation: number;
   size: number;
   scale: number;
@@ -67,9 +68,27 @@ function LikeButton({
   const [isAnimating, setIsAnimating] = useState(false);
 
   const createParticle = useCallback(
-    (angleOffset: number, type: "star" | "circle", size: number): Particle => {
+    (
+      angleOffset: number,
+      type: "star" | "circle",
+      size: number
+    ): Particle => {
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
+
+      // Calculate return delay based on absolute angle (outside-in pattern)
+      // ±60° (outermost) → delay 0 (return first)
+      // ±30° (middle) → delay 0.05s (return second)
+      // 0° (center) → delay 0.05s (return last)
+      const absAngle = Math.abs(angleOffset);
+      let returnDelay = 0;
+      if (absAngle === 0) {
+        returnDelay = 0.05; // Center particles return last (50ms faster)
+      } else if (absAngle === 30) {
+        returnDelay = 0.05; // Mid particles return second
+      } else if (absAngle === 60) {
+        returnDelay = 0; // Outer particles return first
+      }
 
       return {
         id: Date.now() + angleOffset + size,
@@ -77,6 +96,7 @@ function LikeButton({
         angle,
         distance: 40,
         delay: (angleOffset + ANGLE_OFFSET_BASE) / DELAY_DIVISOR,
+        returnDelay,
         rotation: angleOffset * ROTATION_MULTIPLIER,
         size,
         scale: SCALE_BASE + size / SCALE_DIVISOR,
@@ -192,6 +212,7 @@ function LikeButton({
                   "--angle": `${particle.angle}rad`,
                   "--distance": `${particle.distance}px`,
                   "--delay": `${particle.delay}s`,
+                  "--return-delay": `${particle.returnDelay}s`,
                   "--scale": particle.scale,
                 } as React.CSSProperties
               }
