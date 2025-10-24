@@ -4,9 +4,6 @@ const nextConfig = {
   images: {
     domains: ["images.unsplash.com"],
   },
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 const withMDX = createMDX();

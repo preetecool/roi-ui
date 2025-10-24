@@ -24,7 +24,7 @@
   text-decoration: none;
   color: var(--muted-foreground);
   font-weight: 400;
-  transition: color 0.2s;
+  transition: color 0.2s, font-weight 0.2s;
 }
 
 .tocItem:hover {

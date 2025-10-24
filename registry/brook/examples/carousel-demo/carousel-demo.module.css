@@ -3,7 +3,7 @@
   width: 330px;
   position: relative;
   padding: 1rem;
-  border-color: var(--border-dark);
+  border-color: var(--border);
   display: flex;
   flex-direction: column;
   background: linear-gradient(
@@ -59,7 +59,7 @@
   padding: 1rem;
   margin: 0 -1rem -1rem -1rem;
   gap: 1rem;
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border);
 }
 
 .contentText {
@@ -83,7 +83,7 @@
   padding: 0.25rem;
   align-self: end;
   color: var(--muted-foreground);
-  border-color: var(--border-dark);
+  border-color: var(--border);
 }
 
 .button:hover {
