@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { TOCUpdater } from "@/components/toc-updater";
+import { TableOfContents } from "@/components/toc/toc";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -92,8 +92,6 @@ export default async function Page(props: {
 
   return (
     <>
-      <TOCUpdater toc={toc} />
-
       <div className={styles.pageContent}>
         <div className={styles.pageHeader}>
           <div className={styles.headerContent}>
@@ -215,6 +213,10 @@ export default async function Page(props: {
             )}
           </div>
         </div>
+      </div>
+
+      <div className={styles.toc}>
+        <TableOfContents toc={toc} />
       </div>
     </>
   );

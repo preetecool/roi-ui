@@ -22,7 +22,6 @@ export function MultiFileComponentSource({
 }: MultiFileComponentSourceProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [bubbleStyle, setBubbleStyle] = useState({ left: 0, width: 0 });
-  const [isInitialized, setIsInitialized] = useState(false);
   const tabRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -31,11 +30,8 @@ export function MultiFileComponentSource({
     if (activeTabElement) {
       const { offsetLeft, offsetWidth } = activeTabElement;
       setBubbleStyle({ left: offsetLeft, width: offsetWidth });
-      if (!isInitialized) {
-        setIsInitialized(true);
-      }
     }
-  }, [activeTab, isInitialized]);
+  }, [activeTab]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -80,7 +76,7 @@ export function MultiFileComponentSource({
               width: bubbleStyle.width,
             }}
             className={styles.tabIndicator}
-            style={{ opacity: isInitialized ? 1 : 0 }}
+            initial={false}
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         </div>

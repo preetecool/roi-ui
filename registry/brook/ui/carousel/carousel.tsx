@@ -77,9 +77,6 @@ export function Root({
   const bleedRefFromContext = useBleedRef();
   const [insetPaddingLeft, setInsetPaddingLeft] = useState(0);
   const [insetPaddingRight, setInsetPaddingRight] = useState(0);
-  const [isPaddingInitialized, setIsPaddingInitialized] = useState(
-    variant !== "inset"
-  );
 
   const maxIndex = totalItems - 1;
   const canGoNext = currentIndex < maxIndex;
@@ -226,7 +223,6 @@ export function Root({
 
       setInsetPaddingLeft(leftPadding);
       setInsetPaddingRight(rightPadding);
-      setIsPaddingInitialized(true);
     };
 
     calculatePadding();
@@ -248,7 +244,6 @@ export function Root({
           {
             "--calculated-inset-padding-left": `${insetPaddingLeft}px`,
             "--calculated-inset-padding-right": `${insetPaddingRight}px`,
-            opacity: isPaddingInitialized ? 1 : 0,
           } as React.CSSProperties
         }
         {...props}

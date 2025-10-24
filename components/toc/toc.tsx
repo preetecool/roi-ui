@@ -1,15 +1,14 @@
 "use client";
 import type { TOCItemType } from "fumadocs-core/server";
 import { AnchorProvider, ScrollProvider, TOCItem } from "fumadocs-core/toc";
-import { type ReactNode, useRef } from "react";
+import { useRef } from "react";
 import styles from "./toc.module.css";
 
 type TableOfContentsProps = {
   toc?: TOCItemType[];
-  children?: ReactNode;
 };
 
-export function TableOfContents({ toc, children }: TableOfContentsProps) {
+export function TableOfContents({ toc }: TableOfContentsProps) {
   const viewRef = useRef<HTMLDivElement>(null);
   const NESTED_ITEM_INDENT = 12;
 
@@ -45,7 +44,6 @@ export function TableOfContents({ toc, children }: TableOfContentsProps) {
           </nav>
         </ScrollProvider>
       </div>
-      {children}
     </AnchorProvider>
   );
 }
