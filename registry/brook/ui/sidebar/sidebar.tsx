@@ -2,13 +2,14 @@
 
 import { useRender } from "@base-ui-components/react/use-render";
 import { useControlled } from "@base-ui-components/utils/useControlled";
-import type { CSSProperties } from "react";
+import type { CSSProperties, MutableRefObject } from "react";
 import {
   createContext,
   useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -18,6 +19,41 @@ import styles from "./sidebar.module.css";
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
+
+// Roving tabindex types
+type RovingTabindexItem = {
+  id: string;
+  element: HTMLElement;
+};
+
+type RovingTabindexContextValue = {
+  focusableId: string | null;
+  setFocusableId: (id: string) => void;
+  onShiftTab: () => void;
+  getOrderedItems: () => RovingTabindexItem[];
+  elements: MutableRefObject<Map<string, HTMLElement>>;
+};
+
+const RovingTabindexContext = createContext<
+  RovingTabindexContextValue | undefined
+>(undefined);
+
+// Helper functions for roving tabindex navigation
+function getNextFocusableId(
+  items: RovingTabindexItem[],
+  id: string
+): RovingTabindexItem | undefined {
+  const currIndex = items.findIndex((item) => item.id === id);
+  return items.at(currIndex === items.length - 1 ? 0 : currIndex + 1);
+}
+
+function getPrevFocusableId(
+  items: RovingTabindexItem[],
+  id: string
+): RovingTabindexItem | undefined {
+  const currIndex = items.findIndex((item) => item.id === id);
+  return items.at(currIndex === 0 ? -1 : currIndex - 1);
+}
 
 type SidebarContextValue = {
   state: "expanded" | "collapsed";
@@ -42,6 +78,50 @@ function useSidebar() {
     throw new Error("Sidebar components must be used within SidebarProvider");
   }
   return context;
+}
+
+/**
+ * Hook for roving tabindex functionality
+ */
+function useRovingTabindex(id: string) {
+  const context = useContext(RovingTabindexContext);
+
+  // Allow usage outside of roving tabindex context (graceful degradation)
+  if (!context) {
+    return {
+      getOrderedItems: () => [],
+      rovingProps: {},
+    };
+  }
+
+  const { elements, getOrderedItems, setFocusableId, focusableId } = context;
+
+  return {
+    getOrderedItems,
+    rovingProps: {
+      ref: (element: HTMLElement | null) => {
+        if (element) {
+          elements.current.set(id, element);
+        } else {
+          elements.current.delete(id);
+        }
+      },
+      onMouseDown: (e: React.MouseEvent) => {
+        if (e.target !== e.currentTarget) {
+          return;
+        }
+        setFocusableId(id);
+      },
+      onFocus: (e: React.FocusEvent) => {
+        if (e.target !== e.currentTarget) {
+          return;
+        }
+        setFocusableId(id);
+      },
+      "data-roving-tabindex-item": true as const,
+      tabIndex: focusableId === id ? 0 : -1,
+    },
+  };
 }
 
 /**
@@ -440,15 +520,69 @@ function SidebarClose({
 }
 
 /**
- * SidebarMenu - List container for menu items
+ * SidebarMenu - List container for menu items with roving tabindex
  */
 function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
+  const [focusableId, setFocusableId] = useState<string | null>(null);
+  const [isShiftTabbing, setIsShiftTabbing] = useState(false);
+  const elements = useRef(new Map<string, HTMLElement>());
+  const menuRef = useRef<HTMLUListElement>(null);
+
+  const getOrderedItems = useCallback(() => {
+    if (!menuRef.current) {
+      return [];
+    }
+    const elementsFromDOM = Array.from(
+      menuRef.current.querySelectorAll<HTMLElement>(
+        "[data-roving-tabindex-item]"
+      )
+    );
+
+    return Array.from(elements.current)
+      .sort(
+        (a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1])
+      )
+      .map(([id, element]) => ({ id, element }));
+  }, []);
+
+  const contextValue = useMemo<RovingTabindexContextValue>(
+    () => ({
+      focusableId,
+      setFocusableId,
+      onShiftTab: () => setIsShiftTabbing(true),
+      getOrderedItems,
+      elements,
+    }),
+    [focusableId, getOrderedItems]
+  );
+
   return (
-    <ul
-      className={cn(styles.menu, className)}
-      data-slot="sidebar-menu"
-      {...props}
-    />
+    <RovingTabindexContext.Provider value={contextValue}>
+      {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: roving tabindex requires focus management on ul */}
+      <ul
+        className={cn(styles.menu, className)}
+        data-slot="sidebar-menu"
+        onBlur={() => setIsShiftTabbing(false)}
+        onFocus={(e) => {
+          if (e.target !== e.currentTarget || isShiftTabbing) {
+            return;
+          }
+          const orderedItems = getOrderedItems();
+          if (orderedItems.length === 0) {
+            return;
+          }
+
+          if (focusableId != null) {
+            elements.current.get(focusableId)?.focus();
+          } else {
+            orderedItems.at(0)?.element.focus();
+          }
+        }}
+        ref={menuRef}
+        tabIndex={isShiftTabbing ? -1 : 0}
+        {...props}
+      />
+    </RovingTabindexContext.Provider>
   );
 }
 
@@ -465,8 +599,12 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
   );
 }
 
+const ID_START_INDEX = 2;
+const ID_END_INDEX = 9;
+const ID_RADIX = 36;
+
 /**
- * SidebarMenuButton - Button for menu items
+ * SidebarMenuButton - Button for menu items with keyboard navigation
  */
 function SidebarMenuButton({
   render,
@@ -476,11 +614,71 @@ function SidebarMenuButton({
 }: useRender.ComponentProps<"button"> & {
   isActive?: boolean;
 }) {
+  // Generate a stable ID from children or use a ref
+  const id = useRef(
+    `sidebar-menu-button-${Math.random().toString(ID_RADIX).substring(ID_START_INDEX, ID_END_INDEX)}`
+  ).current;
+
+  const { getOrderedItems, rovingProps } = useRovingTabindex(id);
+  const context = useContext(RovingTabindexContext);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    // Call original handler if it exists
+    props.onKeyDown?.(e);
+
+    if (!context) {
+      return;
+    }
+
+    // Handle shift+tab to exit the roving tabindex
+    if (e.shiftKey && e.key === "Tab") {
+      context.onShiftTab();
+      return;
+    }
+
+    const items = getOrderedItems();
+    let nextItem: RovingTabindexItem | undefined;
+
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        nextItem = getNextFocusableId(items, id);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        nextItem = getPrevFocusableId(items, id);
+        break;
+      case "Home":
+        e.preventDefault();
+        nextItem = items.at(0);
+        break;
+      case "End":
+        e.preventDefault();
+        nextItem = items.at(-1);
+        break;
+      default:
+        return;
+    }
+
+    nextItem?.element.focus();
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    props.onMouseDown?.(e);
+    rovingProps.onMouseDown?.(e);
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
+    props.onFocus?.(e);
+    rovingProps.onFocus?.(e);
+  };
+
   return useRender({
     defaultTagName: "button",
     render,
     props: {
       ...props,
+      ...rovingProps,
       type: "button",
       "data-slot": "sidebar-menu-button",
       "data-active": isActive ? "" : undefined,
@@ -489,6 +687,9 @@ function SidebarMenuButton({
         isActive && styles.menuButtonActive,
         className
       ),
+      onKeyDown: handleKeyDown,
+      onMouseDown: handleMouseDown,
+      onFocus: handleFocus,
     },
   });
 }
