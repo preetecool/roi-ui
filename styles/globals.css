@@ -7,7 +7,7 @@
   --title: oklch(0.12 0 0);
   --title-hover: oklch(0 0 0);
   --card: oklch(0.946 0 0);
-  --card-light: oklch(0.95 0 0);
+  --card-light: oklch(0.9759 0.0013 106.42);
   --popover-foreground: oklch(0.18 0 0);
   --dialog-overlay: oklch(0 0 0 / 0.4);
   --dialog-z: 100;
@@ -15,16 +15,16 @@
   --primary: oklch(0.1855 0 0);
   --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.928 0.0025 0);
+  --secondary: oklch(0.958 0.0025 0);
   --secondary-foreground: oklch(0.4 0 0);
 
-  --muted: oklch(0.9 0 0);
-  --muted-foreground: oklch(0.7 0 0);
+  --muted: oklch(0.9759 0.0013 106.42);
+  --muted-foreground: oklch(0.6476 0.0012 17.19);
 
   --accent: oklch(0.94 0 0);
   --accent-foreground: oklch(0.32 0.015 280);
 
-  --border: oklch(0.92 0 0);
+  --border: oklch(0.9579 0.0013 106.42);
   --border-light: oklch(0.86 0 0);
   --border-dark: oklch(0.9 0 0);
   --input: oklch(0.98 0 0);

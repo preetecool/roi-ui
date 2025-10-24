@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,60 +13,42 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
-import { Button } from "../../ui/button/button";
 import styles from "./navigation-menu-demo.module.css";
 
+function ListItem({
+  className,
+  children,
+  title,
+  href = "#",
+}: {
+  className?: string;
+  children?: React.ReactNode;
+  title: string;
+  href?: string;
+}) {
+  return (
+    <li className={styles.linkListItem}>
+      <NavigationMenuLink render={<Link href={href} />}>
+        <h3 className={styles.linkListItemHeading}>{title}</h3>
+        <p className={styles.linkListItemText}>{children}</p>
+      </NavigationMenuLink>
+    </li>
+  );
+}
+
 export default function NavigationMenuDemo() {
-  const [hoveredLink, setHoveredLink] = useState<string | null>("link1");
-
-  const linkColors = {
-    link1: "var(--info)",
-    link2: "var(--success)",
-    link3: "var(--warning)",
-  };
-
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger
-            onPointerEnter={() => setHoveredLink("link1")}
-            render={<Button variant="ghost" />}
-          >
+          <NavigationMenuTrigger className={styles.trigger}>
             Products
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className={`${styles.linkList} ${styles.one}`}>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink
-                  onPointerEnter={() => setHoveredLink("link1")}
-                  onPointerLeave={() => setHoveredLink(null)}
-                  render={<Link href="#" />}
-                >
-                  <h3 className={styles.linkListItemHeading}>Link 1</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink
-                  onPointerEnter={() => setHoveredLink("link2")}
-                  onPointerLeave={() => setHoveredLink(null)}
-                  render={<Link href="#" />}
-                >
-                  <h3 className={styles.linkListItemHeading}>Link 2</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink
-                  onPointerEnter={() => setHoveredLink("link3")}
-                  onPointerLeave={() => setHoveredLink(null)}
-                  render={<Link href="#" />}
-                >
-                  <h3 className={styles.linkListItemHeading}>Link 3</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
+              <ListItem title="UI">Building blocks</ListItem>
+              <ListItem title="Blocks">Ready made components</ListItem>
+              <ListItem title="Templates">Full app starters</ListItem>
               <li className={styles.previewCard}>
                 <div className={styles.previewContent}>
                   <svg
@@ -84,17 +65,8 @@ export default function NavigationMenuDemo() {
                         y1="0%"
                         y2="0%"
                       >
-                        <stop offset="0%" stopColor="var(--mix-card-33-bg)" />
-                        <stop
-                          offset="100%"
-                          stopColor={
-                            hoveredLink === "link1"
-                              ? "var(--success)"
-                              : hoveredLink === "link2"
-                                ? "var(--info)"
-                                : "var(--warning)"
-                          }
-                        />
+                        <stop offset="0%" stopColor="var(--info)" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="var(--info)" stopOpacity="0.6" />
                       </linearGradient>
                     </defs>
                     <ellipse
@@ -114,50 +86,31 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger render={<Button variant="ghost" />}>
+          <NavigationMenuTrigger className={styles.trigger}>
             About
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className={`${styles.linkList} ${styles.two}`}>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink render={<Link href="#" />}>
-                  <h3 className={styles.linkListItemHeading}>Link</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink render={<Link href="#" />}>
-                  <h3 className={styles.linkListItemHeading}>Link 2</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink render={<Link href="#" />}>
-                  <h3 className={styles.linkListItemHeading}>Link 3</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.separator} />
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink render={<Link href="#" />}>
-                  <h3 className={styles.linkListItemHeading}>Link 4</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink render={<Link href="#" />}>
-                  <h3 className={styles.linkListItemHeading}>Link 5</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-              <li className={styles.linkListItem}>
-                <NavigationMenuLink render={<Link href="#" />}>
-                  <h3 className={styles.linkListItemHeading}>Link 6</h3>
-                  <p className={styles.linkListItemText}>description</p>
-                </NavigationMenuLink>
-              </li>
-            </ul>
+            <div className={styles.twoColContainer}>
+              <ul className={styles.linkListCol}>
+                <ListItem title="The team">Meet our team</ListItem>
+                <ListItem title="The vision">The where and the how</ListItem>
+                <ListItem title="The philosophy">Our founding pillars</ListItem>
+              </ul>
+              <ul className={styles.linkListCol}>
+                <ListItem title="News">Latest announcements</ListItem>
+                <ListItem title="What's new">Recent Improvements</ListItem>
+                <ListItem title="Blog">Insights and stories</ListItem>
+              </ul>
+            </div>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={styles.trigger}
+            render={<Link href="#" />}
+          >
+            Help
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
       <NavigationMenuPortal>
