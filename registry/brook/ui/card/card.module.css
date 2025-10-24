@@ -7,7 +7,7 @@
   padding: 1.5rem;
 
   background-color: var(--mix-card-33-bg);
-  border: 1px solid var(--border);
+  border: 1px solid oklch(from var(--border-light) l c h / 0.4);
   position: relative;
   justify-content: space-between;
 }
@@ -136,7 +136,10 @@
 .icon {
   background-color: var(--muted);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid oklch(from var(--border) l c h / 0.5);
+  box-shadow:
+    0 1px 2px oklch(from var(--foreground) l c h / 0.04),
+    inset 0 0 0 1px oklch(from var(--background) l c h / 0.02);
   display: flex;
   align-items: center;
   justify-content: center;

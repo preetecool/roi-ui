@@ -41,11 +41,6 @@
   color: var(--secondary-foreground);
 }
 
-.secondary:hover {
-  background-color: var(--card);
-  cursor: pointer;
-}
-
 .destructive {
   border-color: var(--border);
   background-color: var(--mix-card-66-bg);
