@@ -49,7 +49,7 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
             <div className={styles.leftSection}>
               <Link className={styles.logoLink} href="/">
                 <Logo
-                  fillColor="var(--muted-foreground)"
+                  fillColor="var(--foreground)"
                   height={24}
                   strokeColor="var(--card)"
                   strokeWidth={20}
