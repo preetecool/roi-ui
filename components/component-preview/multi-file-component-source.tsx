@@ -76,6 +76,7 @@ export function MultiFileComponentSource({
               width: bubbleStyle.width,
             }}
             className={styles.tabIndicator}
+            initial={false}
             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
           />
         </div>

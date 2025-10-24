@@ -1,5 +1,5 @@
 .command {
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   background-color: var(--background);
@@ -10,7 +10,7 @@
 }
 
 .commandInput {
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -66,7 +66,7 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin: 0 -0.25rem -0.25rem -0.25rem;
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border);
   background-color: var(--mix-muted-20-trans);
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);

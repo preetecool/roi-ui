@@ -15,7 +15,7 @@
 
 .from {
   font-weight: 400;
-  color: var(--title);
+  color: var(--foreground);
 }
 
 .date,

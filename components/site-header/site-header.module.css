@@ -4,6 +4,8 @@
   height: var(--header-height);
   width: 100%;
   box-sizing: border-box;
+  left: 0;
+  right: 0;
 
   background-color: transparent;
   backdrop-filter: blur(12px);
@@ -18,6 +20,8 @@
   .header {
     top: 0 !important;
     padding: 0;
+    left: 0;
+    right: 0;
   }
 }
 
@@ -29,6 +33,7 @@
   max-width: 980px;
   margin: 0 auto;
   width: 100%;
+  box-sizing: border-box;
   background-color: var(--mix-card-15-bg);
   padding: 0 8px;
   border-radius: var(--radius);
@@ -87,7 +92,7 @@
 }
 
 .githubLink:hover {
-  color: var(--title);
+  color: var(--foreground);
 }
 
 .leftSection {
@@ -114,18 +119,28 @@
 
 .innerWrapper {
   border-bottom: 1px solid var(--border-dark);
-  /*margin-left: -20px;
-  margin-right: -20px;*/
   padding-left: 8px;
   padding-right: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: calc(100% + 40px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1023px) {
+  .container {
+    border-radius: 0;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .innerWrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .mobileMenuWrapper {
     display: block;
   }

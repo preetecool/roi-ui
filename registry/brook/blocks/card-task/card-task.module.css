@@ -21,7 +21,7 @@
 .divider {
   width: calc(100% + 32px);
   height: 1px;
-  background: var(--border-dark);
+  background: var(--border);
   margin-left: -16px;
   margin-right: -16px;
   margin-top: auto;

@@ -1,7 +1,5 @@
 import { DocsSidebar } from "@/components/docs-sidebar/docs-sidebar";
 import { SiteHeader } from "@/components/site-header/site-header";
-import { TOCProvider } from "@/components/toc-context";
-import { TOCDisplay } from "@/components/toc-display";
 import { source } from "@/lib/source";
 import styles from "./layout.module.css";
 
@@ -11,7 +9,7 @@ export default function DocsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <TOCProvider>
+    <>
       <div className={styles.mobileHeader}>
         <SiteHeader pageTree={source.pageTree} />
       </div>
@@ -20,12 +18,9 @@ export default function DocsLayout({
           <div className={styles.sidebar}>
             <DocsSidebar tree={source.pageTree} />
           </div>
-          <div className={styles.main}>{children}</div>
-          <div className={styles.toc}>
-            <TOCDisplay />
-          </div>
+          {children}
         </div>
       </div>
-    </TOCProvider>
+    </>
   );
 }

@@ -10,7 +10,7 @@
 }
 .trigger:hover:not(.disabled) {
   background-color: var(--muted);
-  color: var(--title-hover);
+  color: var(--foreground);
 }
 
 .trigger:focus-visible {
@@ -20,7 +20,7 @@
 
 .trigger[data-popup-open] {
   background-color: var(--muted);
-  color: var(--title-hover);
+  color: var(--foreground);
 }
 
 .trigger.disabled {
@@ -138,12 +138,12 @@
 
 .item:hover:not(.itemDisabled) {
   background-color: var(--muted);
-  color: var(--title-hover);
+  color: var(--foreground);
 }
 
 .item[data-highlighted] {
   background-color: var(--muted);
-  color: var(--title-hover);
+  color: var(--foreground);
 }
 
 .item[data-selected] {

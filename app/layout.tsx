@@ -30,15 +30,7 @@ export default function RootLayout({
         <link href="/favicon.ico" rel="icon" sizes="any" />
         <link href="/favicon.svg" rel="shortcut icon" />
       </head>
-      <body
-        style={{
-          backgroundColor: "var(--background)",
-          color: "var(--foreground)",
-          minHeight: "100vh",
-          margin: 0,
-          padding: 0,
-        }}
-      >
+      <body>
         <div className="root">
           <ThemeProvider
             defaultTheme="dark"

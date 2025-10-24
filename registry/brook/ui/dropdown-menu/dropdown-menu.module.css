@@ -5,7 +5,7 @@
 .trigger {
   &[data-popup-open] {
     background-color: var(--muted);
-    color: var(--title-hover);
+    color: var(--foreground);
   }
 
   &:focus-visible {
@@ -77,12 +77,12 @@
 
   &[data-popup-open] {
     background-color: var(--muted);
-    color: var(--title);
+    color: var(--foreground);
   }
 
   &[data-highlighted] {
     background-color: var(--muted);
-    color: var(--title);
+    color: var(--foreground);
   }
 }
 
@@ -103,7 +103,7 @@
 .submenuTrigger:hover,
 .item:hover {
   background-color: var(--muted);
-  color: var(--title);
+  color: var(--foreground);
 }
 
 .item:hover .icon {
@@ -113,7 +113,7 @@
 .item:focus {
   outline: none;
   background: var(--muted);
-  color: var(--title);
+  color: var(--foreground);
 }
 
 .item[data-disabled] {

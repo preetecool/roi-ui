@@ -39,10 +39,16 @@
   border-radius: var(--radius);
   z-index: 1;
   -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .tab:hover {
   color: var(--foreground);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
 }
 
 .tabActive {

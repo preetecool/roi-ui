@@ -296,7 +296,6 @@
 
 .buttonCustomStyle {
   font-weight: 400;
-  text-decoration: underline;
 }
 
 .badgeButton {
@@ -312,4 +311,20 @@
   height: 9px;
   margin-left: 6px;
   margin-right: -4px;
+}
+
+.toc {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .toc {
+    display: block;
+    position: sticky;
+    top: 4rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    width: 240px;
+    flex-shrink: 0;
+  }
 }

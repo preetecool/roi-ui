@@ -84,7 +84,7 @@
 
 .outline {
   color: var(--foreground);
-  border-color: var(--border-dark);
+  border-color: var(--border);
   background-color: transparent;
 }
 

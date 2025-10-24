@@ -118,7 +118,7 @@ function DocsSidebarContent({
           <div className={styles.logoRow}>
             <Link className={styles.logoLink} href="/">
               <Logo
-                fillColor="var(--muted-foreground)"
+                fillColor="var(--foreground)"
                 height={20}
                 strokeColor="var(--card)"
                 strokeWidth={20}

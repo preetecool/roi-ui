@@ -15,10 +15,21 @@
   justify-content: center;
   width: 1.875rem;
   height: 1.875rem;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .root:hover {
   background-color: var(--muted);
+}
+
+.root:active {
+  background-color: var(--muted);
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
 }
 
 .root.header {
@@ -30,6 +41,15 @@
 
 .root.header:hover {
   background-color: var(--accent);
+}
+
+.root.header:active {
+  background-color: var(--accent);
+}
+
+.root.header:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
 }
 
 .iconContainer {
