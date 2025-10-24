@@ -1,0 +1,37 @@
+@keyframes badge-shake {
+  0%,
+  100% {
+    translate: 0;
+  }
+  25% {
+    translate: -1px 0;
+  }
+  50% {
+    translate: 1px 0;
+  }
+  75% {
+    translate: -1px 0;
+  }
+}
+
+@keyframes icon-draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.badgeShake {
+  will-change: transform;
+  animation: badge-shake 0.3s ease;
+}
+
+.iconPath {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: icon-draw 0.4s ease forwards;
+}

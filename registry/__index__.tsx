@@ -201,18 +201,18 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
-  "badge-error-motion": {
-    name: "badge-error-motion",
+  "badge-error": {
+    name: "badge-error",
     type: "example",
     component: lazy(async () => {
       const mod = await import(
-        "@/registry/brook/examples/badge-error-motion/badge-error-motion"
+        "@/registry/brook/examples/badge-error/badge-error"
       );
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge-error-motion";
+        ) || "badge-error";
       return { default: mod.default || mod[exportName] };
     }),
   },
@@ -246,18 +246,18 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
-  "badge-success-motion": {
-    name: "badge-success-motion",
+  "badge-success": {
+    name: "badge-success",
     type: "example",
     component: lazy(async () => {
       const mod = await import(
-        "@/registry/brook/examples/badge-success-motion/badge-success-motion"
+        "@/registry/brook/examples/badge-success/badge-success"
       );
       const exportName =
         Object.keys(mod).find(
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge-success-motion";
+        ) || "badge-success";
       return { default: mod.default || mod[exportName] };
     }),
   },
