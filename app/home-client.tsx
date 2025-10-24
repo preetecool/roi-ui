@@ -232,31 +232,26 @@ const InteractiveGrid = memo(() => {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const cleanupExpiredCells = () => {
       const now = Date.now();
       setActiveCells((prev) => {
-        let hasExpiredCells = false;
-        for (const [, timestamp] of prev.entries()) {
-          if (now - timestamp > CELL_ACTIVE_DURATION_MS) {
-            hasExpiredCells = true;
-            break;
-          }
-        }
+        const expiredKeys = Array.from(prev.entries())
+          .filter(([, timestamp]) => now - timestamp > CELL_ACTIVE_DURATION_MS)
+          .map(([key]) => key);
 
-        if (!hasExpiredCells) {
+        if (expiredKeys.length === 0) {
           return prev;
         }
 
         const newMap = new Map(prev);
-        for (const [key, timestamp] of newMap.entries()) {
-          if (now - timestamp > CELL_ACTIVE_DURATION_MS) {
-            newMap.delete(key);
-          }
+        for (const key of expiredKeys) {
+          newMap.delete(key);
         }
         return newMap;
       });
-    }, CLEANUP_INTERVAL_MS);
+    };
 
+    const interval = setInterval(cleanupExpiredCells, CLEANUP_INTERVAL_MS);
     return () => clearInterval(interval);
   }, []);
 
