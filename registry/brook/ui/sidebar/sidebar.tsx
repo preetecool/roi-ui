@@ -2,7 +2,7 @@
 
 import { useRender } from "@base-ui-components/react/use-render";
 import { useControlled } from "@base-ui-components/utils/useControlled";
-import type { CSSProperties, MutableRefObject } from "react";
+import type { CSSProperties } from "react";
 import {
   createContext,
   useCallback,
@@ -31,7 +31,7 @@ type RovingTabindexContextValue = {
   setFocusableId: (id: string) => void;
   onShiftTab: () => void;
   getOrderedItems: () => RovingTabindexItem[];
-  elements: MutableRefObject<Map<string, HTMLElement>>;
+  elements: { current: Map<string, HTMLElement> };
 };
 
 const RovingTabindexContext = createContext<
