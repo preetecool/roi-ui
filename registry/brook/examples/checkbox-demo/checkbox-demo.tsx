@@ -9,13 +9,13 @@ import styles from "./checkbox-demo.module.css";
 
 export default function CheckboxDemo() {
   return (
-    <div className={styles.label}>
-      <Checkbox>
+    <label className={styles.label} htmlFor="terms">
+      <Checkbox id="terms">
         <CheckboxIndicator>
           <Check size={16} strokeWidth={3} />
         </CheckboxIndicator>
       </Checkbox>
       <span className={styles.text}>Accept terms and conditions</span>
-    </div>
+    </label>
   );
 }

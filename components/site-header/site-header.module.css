@@ -17,7 +17,7 @@
 @media (max-width: 1023px) {
   .header {
     top: 0 !important;
-    padding: 0 24px;
+    padding: 0;
   }
 }
 
@@ -116,8 +116,8 @@
   border-bottom: 1px solid var(--border-dark);
   /*margin-left: -20px;
   margin-right: -20px;*/
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 8px;
+  padding-right: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;

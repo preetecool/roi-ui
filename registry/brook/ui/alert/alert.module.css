@@ -90,3 +90,29 @@
 .info .description {
   color: var(--info);
 }
+
+@media (max-width: 640px) {
+  .alert {
+    padding: 1rem;
+    gap: 0.5rem 0.75rem;
+    grid-template-columns: 1rem 1fr;
+  }
+
+  .alert:has(> svg) {
+    grid-template-columns: 1rem 1fr;
+  }
+
+  .alert > svg {
+    width: 1rem;
+  }
+
+  .title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import {
   Avatar,
   AvatarFallback,
@@ -77,6 +78,8 @@ const users: User[] = [
 ];
 
 export default function ComboboxDemo() {
+  const anchorRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className={styles.container}>
       <label className={styles.label} htmlFor="cb-input">
@@ -89,13 +92,13 @@ export default function ComboboxDemo() {
           itemToStringLabel={(item) => item?.label || ""}
           itemToStringValue={(item) => item?.value || ""}
         >
-          <div className={styles.inputWrapper}>
+          <div className={styles.inputWrapper} ref={anchorRef}>
             <ComboboxInput id="cb-input" placeholder="Search users..." />
             <ComboboxTrigger />
           </div>
 
           <ComboboxPortal>
-            <ComboboxPositioner>
+            <ComboboxPositioner anchor={anchorRef}>
               <ComboboxPopup className={styles.popup}>
                 <ComboboxEmpty>No user found.</ComboboxEmpty>
                 <ComboboxList>

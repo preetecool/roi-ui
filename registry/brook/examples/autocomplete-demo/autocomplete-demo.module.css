@@ -54,3 +54,21 @@
   width: 100%;
   text-align: left;
 }
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0rem;
+  }
+
+  .autocompleteWrapper {
+    width: 100%;
+  }
+
+  .label {
+    font-size: 0.9375rem;
+  }
+
+  .popup {
+    min-width: auto;
+  }
+}

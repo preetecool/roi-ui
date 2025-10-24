@@ -12,3 +12,16 @@
   justify-content: center;
   height: 100%;
 }
+
+@media (max-width: 640px) {
+  .buttonContainer {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-top: 0.5rem;
+    justify-content: stretch;
+  }
+
+  .buttonContainer > * {
+    width: 100%;
+  }
+}

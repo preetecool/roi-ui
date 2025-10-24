@@ -188,12 +188,58 @@
 }
 
 @media (max-width: 640px) {
+  .root[cmdk-root] {
+    height: auto;
+  }
+
   .dialog .root {
     max-width: calc(100vw - 2rem);
     margin: 1rem;
   }
 
+  .input[cmdk-input] {
+    height: 3rem;
+    font-size: 0.9375rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .input[cmdk-input]::placeholder {
+    font-size: 0.9375rem;
+  }
+
   .list[cmdk-list] {
-    max-height: 200px;
+    max-height: 250px;
+    padding: 0.375rem;
+  }
+
+  .item[cmdk-item] {
+    min-height: 2.75rem;
+    padding: 0.75rem 0.625rem;
+    font-size: 0.9375rem;
+    gap: 0.75rem;
+  }
+
+  .item[cmdk-item]:has(svg) {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .item[cmdk-item] svg:not(.keyboardShortcut svg) {
+    height: 1.125rem;
+    width: 1.125rem;
+  }
+
+  .group[cmdk-group] [cmdk-group-heading] {
+    font-size: 0.8125rem;
+    padding: 0 0.625rem;
+  }
+
+  .empty[cmdk-empty] {
+    padding: 1.75rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .keyboardShortcut {
+    font-size: 0.8125rem;
+    padding: 0.1875rem 0.375rem;
   }
 }

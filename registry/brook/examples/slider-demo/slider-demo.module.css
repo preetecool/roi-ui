@@ -11,3 +11,14 @@
   font-family: monospace;
   min-width: 3ch;
 }
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .valueDisplay {
+    font-size: 0.9375rem;
+  }
+}

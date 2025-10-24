@@ -9,3 +9,9 @@
   color: var(--muted-foreground);
   font-size: 0.6875rem;
 }
+
+@media (max-width: 640px) {
+  .shortcut {
+    font-size: 0.8125rem;
+  }
+}

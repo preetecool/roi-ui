@@ -58,7 +58,7 @@
 }
 
 .popup {
-  min-width: var(--anchor-width);
+  width: var(--anchor-width);
   background: var(--mix-card-75-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -128,7 +128,6 @@
   padding-block: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 1rem;
-  min-width: var(--anchor-width);
   font-size: 0.875rem;
   color: var(--foreground);
   cursor: pointer;

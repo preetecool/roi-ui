@@ -272,7 +272,28 @@
 }
 
 @media (max-width: 640px) {
+  .input {
+    height: 2.75rem;
+    font-size: 0.9375rem;
+    padding: 0 1rem;
+  }
+
+  .input::placeholder {
+    font-size: 0.9375rem;
+  }
+
   .popup {
     max-width: calc(100vw - 2rem);
+    padding: 0.5rem;
+  }
+
+  .item {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .empty {
+    padding: 1.25rem;
+    font-size: 0.9375rem;
   }
 }

@@ -45,3 +45,18 @@
 .deleteItem:hover > span {
   color: var(--destructive-foreground);
 }
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .trigger {
+    padding: 4rem 2rem;
+    font-size: 0.9375rem;
+  }
+
+  .popup {
+    min-width: 14rem;
+  }
+}

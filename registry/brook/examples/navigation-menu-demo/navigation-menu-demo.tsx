@@ -16,7 +16,6 @@ import {
 import styles from "./navigation-menu-demo.module.css";
 
 function ListItem({
-  className,
   children,
   title,
   href = "#",
@@ -65,8 +64,16 @@ export default function NavigationMenuDemo() {
                         y1="0%"
                         y2="0%"
                       >
-                        <stop offset="0%" stopColor="var(--info)" stopOpacity="0.2" />
-                        <stop offset="100%" stopColor="var(--info)" stopOpacity="0.6" />
+                        <stop
+                          offset="0%"
+                          stopColor="var(--info)"
+                          stopOpacity="0.2"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="var(--info)"
+                          stopOpacity="0.6"
+                        />
                       </linearGradient>
                     </defs>
                     <ellipse
