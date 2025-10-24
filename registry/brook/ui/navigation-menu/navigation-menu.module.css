@@ -9,7 +9,6 @@
 .list {
   display: flex;
   justify-content: center;
-  background-color: var(--background);
   padding: 0.25rem;
   border-radius: var(--radius-lg);
   list-style: none;
@@ -80,16 +79,6 @@
   }
 }
 
-.arrow {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 10px;
-  top: 100%;
-  overflow: hidden;
-  z-index: 1;
-}
-
 .popup {
   padding: 0.5rem;
   position: relative;
@@ -99,7 +88,7 @@
   box-sizing: border-box;
   width: var(--popup-width);
   height: var(--popup-height);
-  transform-origin: var(--transform-origin);
+  transform-origin: top center;
   box-shadow:
     0 0 0 1px oklch(from var(--muted) l c h / 0.3),
     0px 1px 1px oklch(from var(--muted) l c h / 0.15),
@@ -147,12 +136,11 @@
 }
 
 .positioner {
-  --easing: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration: 0.35s;
+  --duration: 0.25s;
   box-sizing: border-box;
   transition-property: top, left, right, bottom;
   transition-duration: var(--duration);
-  transition-timing-function: var(--easing);
+  transition-timing-function: var(--ease-out-expo);
   width: var(--positioner-width);
   height: var(--positioner-height);
   max-width: var(--available-width);
@@ -208,6 +196,39 @@
   &[data-popup-open] {
     transform: rotate(180deg);
   }
+}
+
+.arrow {
+  display: flex;
+  transition: left 0.25s var(--easing);
+
+  &[data-side="top"] {
+    bottom: -8px;
+    rotate: 180deg;
+  }
+
+  &[data-side="bottom"] {
+    top: -8px;
+    rotate: 0deg;
+  }
+
+  &[data-side="left"] {
+    right: -13px;
+    rotate: 90deg;
+  }
+
+  &[data-side="right"] {
+    left: -13px;
+    rotate: -90deg;
+  }
+}
+
+.arrowFill {
+  fill: var(--background);
+}
+
+.arrowOuterStroke {
+  stroke: oklch(from var(--muted) l c h / 0.3);
 }
 
 /* Popup directional animations */

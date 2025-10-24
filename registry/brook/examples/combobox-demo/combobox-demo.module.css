@@ -35,8 +35,7 @@
 }
 
 .popup {
-  width: 100% !important;
-  min-width: 300px;
+  width: var(--anchor-width);
 }
 
 .userContainer {
@@ -96,4 +95,35 @@
 .userEmail {
   font-size: 0.75rem;
   color: var(--muted-foreground);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .comboboxWrapper {
+    width: 100%;
+  }
+
+  .label {
+    font-size: 0.9375rem;
+  }
+
+  #avatar {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .userName {
+    font-size: 0.9375rem;
+  }
+
+  .userEmail {
+    font-size: 0.8125rem;
+  }
+
+  .userContainer {
+    gap: 0.75rem;
+  }
 }

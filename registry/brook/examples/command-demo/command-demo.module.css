@@ -87,3 +87,39 @@
 .commandFooterKbd {
   font-size: 0.9375rem;
 }
+
+@media (max-width: 640px) {
+  .command [cmdk-root] {
+    padding: 0;
+  }
+
+  .commandInput {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .command [cmdk-item] {
+    min-height: 2.75rem;
+    padding: 0.75rem 0.625rem;
+    font-size: 0.9375rem;
+  }
+
+  .command [cmdk-group] [cmdk-group-heading] {
+    font-size: 0.8125rem;
+    padding: 0 0.625rem;
+  }
+
+  .commandFooter {
+    padding: 0.625rem 1rem;
+    margin: 0;
+  }
+
+  .commandFooterText {
+    font-size: 0.8125rem;
+  }
+
+  .commandFooterKbd {
+    font-size: 1rem;
+  }
+}

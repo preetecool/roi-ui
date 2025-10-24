@@ -8,3 +8,10 @@
 .viewport {
   outline: 1px solid var(--border);
 }
+
+@media (max-width: 640px) {
+  .paragraph {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+}

@@ -14,32 +14,32 @@ export default function CheckboxGroupDemo() {
       <div className={styles.title}>Select your interests</div>
 
       <CheckboxGroup defaultValue={["design"]}>
-        <div className={styles.label}>
-          <Checkbox name="interests" value="design">
+        <label className={styles.label} htmlFor="design">
+          <Checkbox id="design" name="interests" value="design">
             <CheckboxIndicator>
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
           <span className={styles.text}>Design</span>
-        </div>
+        </label>
 
-        <div className={styles.label}>
-          <Checkbox name="interests" value="development">
+        <label className={styles.label} htmlFor="development">
+          <Checkbox id="development" name="interests" value="development">
             <CheckboxIndicator>
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
           <span className={styles.text}>Development</span>
-        </div>
+        </label>
 
-        <div className={styles.labelLast}>
-          <Checkbox name="interests" value="marketing">
+        <label className={styles.labelLast} htmlFor="marketing">
+          <Checkbox id="marketing" name="interests" value="marketing">
             <CheckboxIndicator>
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
           <span className={styles.text}>Marketing</span>
-        </div>
+        </label>
       </CheckboxGroup>
     </div>
   );

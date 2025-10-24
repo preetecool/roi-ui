@@ -19,6 +19,26 @@
   }
 }
 
+@media (max-width: 640px) {
+  #card {
+    height: 340px;
+    max-width: 280px;
+    padding: 1rem;
+  }
+
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .contentText {
+    gap: 0.375rem;
+  }
+
+  .cardTitle {
+    font-size: 1.0625rem;
+  }
+}
+
 #icon {
   background-color: var(--mix-card-66-bg);
   border-color: var(--border);

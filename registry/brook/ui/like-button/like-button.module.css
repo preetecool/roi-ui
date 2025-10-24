@@ -86,7 +86,8 @@
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
+  tap-highlight-color: transparent !important;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-perspective: 1000;

@@ -79,3 +79,22 @@
   display: block;
   margin-right: 0.5rem;
 }
+
+@media (max-width: 640px) {
+  .control {
+    padding-block: 1rem;
+  }
+
+  .track {
+    height: 0.375rem;
+  }
+
+  .track[data-orientation="vertical"] {
+    width: 0.375rem;
+  }
+
+  .thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}

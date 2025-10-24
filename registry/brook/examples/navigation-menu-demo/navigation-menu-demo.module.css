@@ -8,51 +8,37 @@
 
 .linkList.one {
   width: 350px;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 1fr);
   row-gap: 0;
 }
 
-.linkList.two {
+.twoColContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 400px;
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  padding: 0.5rem;
+  column-gap: 1rem;
+  position: relative;
 }
 
-@media (max-width: 768px) {
-  .linkList.one {
-    width: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .linkList.one .previewCard {
-    grid-row: auto;
-    grid-column: 1;
-    min-height: 150px;
-  }
-
-  .linkList.two {
-    width: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .separator {
-    display: none;
-  }
-}
-
-.linkList.two {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.separator {
+.twoColContainer::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
   width: 1px;
   background-color: var(--border);
-  grid-row: 1 / span 3;
-  grid-column: 2;
+  transform: translateX(-0.5rem);
+}
+
+.linkListCol {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5rem;
 }
 
 .linkListItem {
@@ -65,7 +51,7 @@
   border-radius: 6px;
 
   line-height: 1;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
   transition: background-color 0.2s ease;
 }
 
@@ -97,6 +83,27 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .linkList.one {
+    max-width: 300px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .linkList.one .previewCard {
+    display: none;
+  }
+
+  .twoColContainer {
+    max-width: 260px;
+    grid-template-columns: 1fr;
+  }
+
+  .twoColContainer::before {
+    display: none;
+  }
+}
+
 .previewContent {
   position: relative;
   width: 100%;
@@ -125,6 +132,49 @@
   pointer-events: none;
 }
 
-.rotatingEllipse {
-  transform-origin: center;
+.previewSvg {
+  animation: sway 5s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0% {
+    transform: translate(50%, -50%) rotate(180deg);
+  }
+  50% {
+    transform: translate(calc(50% - 10px), -50%) rotate(180deg);
+  }
+  100% {
+    transform: translate(50%, -50%) rotate(180deg);
+  }
+}
+
+.trigger {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  user-select: none;
+  font-weight: 400;
+  line-height: 1;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.trigger:hover {
+  background-color: var(--mix-card-33-bg);
+}
+
+.trigger:focus-visible {
+  position: relative;
+  outline: 2px solid var(--ring);
+  outline-offset: -1px;
+}
+
+.trigger[data-popup-open] {
+  background-color: var(--mix-card-33-bg);
 }

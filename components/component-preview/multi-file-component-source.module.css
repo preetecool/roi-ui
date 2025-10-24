@@ -62,3 +62,21 @@
   height: calc(100% - 0.5rem);
   top: 0.25rem;
 }
+
+@media (max-width: 640px) {
+  .headerContainer {
+    justify-content: flex-start;
+  }
+
+  .tabs {
+    justify-content: flex-start;
+  }
+
+  .tab {
+    text-align: left;
+  }
+
+  .tabContent {
+    text-align: left;
+  }
+}

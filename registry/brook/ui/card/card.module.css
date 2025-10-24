@@ -154,3 +154,30 @@
   align-self: start;
   justify-self: end;
 }
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+
+  .description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .content {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 1rem;
+  }
+}
