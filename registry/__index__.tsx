@@ -1103,7 +1103,9 @@ export const Index: Record<string, RegistryEntry> = {
     name: "toolbar-demo",
     type: "example",
     component: lazy(async () => {
-      const mod = await import("@/registry/brook/examples/toolbar-demo");
+      const mod = await import(
+        "@/registry/brook/examples/toolbar-demo/toolbar-demo"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

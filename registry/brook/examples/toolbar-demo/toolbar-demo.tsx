@@ -9,10 +9,10 @@ import {
   ToolbarLink,
   ToolbarSeparator,
 } from "@/registry/brook/ui/toolbar/toolbar";
+import styles from "./toolbar-demo.module.css";
 
 function BoldIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -29,7 +29,6 @@ function BoldIcon() {
 
 function ItalicIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -47,7 +46,6 @@ function ItalicIcon() {
 
 function UnderlineIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -64,7 +62,6 @@ function UnderlineIcon() {
 
 function AlignLeftIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -82,7 +79,6 @@ function AlignLeftIcon() {
 
 function AlignCenterIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -100,7 +96,6 @@ function AlignCenterIcon() {
 
 function AlignRightIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, parent has aria-label
     <svg
       fill="none"
       height="16"
@@ -118,38 +113,40 @@ function AlignRightIcon() {
 
 export default function ToolbarDemo() {
   return (
-    <Toolbar>
-      <ToggleGroup aria-label="Text formatting" multiple>
-        <ToggleGroupItem aria-label="Bold" value="bold">
-          <BoldIcon />
-        </ToggleGroupItem>
-        <ToggleGroupItem aria-label="Italic" value="italic">
-          <ItalicIcon />
-        </ToggleGroupItem>
-        <ToggleGroupItem aria-label="Underline" value="underline">
-          <UnderlineIcon />
-        </ToggleGroupItem>
-      </ToggleGroup>
+    <div className={styles.scrollContainer}>
+      <Toolbar>
+        <ToggleGroup aria-label="Text formatting" multiple>
+          <ToggleGroupItem aria-label="Bold" value="bold">
+            <BoldIcon />
+          </ToggleGroupItem>
+          <ToggleGroupItem aria-label="Italic" value="italic">
+            <ItalicIcon />
+          </ToggleGroupItem>
+          <ToggleGroupItem aria-label="Underline" value="underline">
+            <UnderlineIcon />
+          </ToggleGroupItem>
+        </ToggleGroup>
 
-      <ToolbarSeparator />
+        <ToolbarSeparator />
 
-      <ToggleGroup aria-label="Text alignment">
-        <ToggleGroupItem aria-label="Align left" value="left">
-          <AlignLeftIcon />
-        </ToggleGroupItem>
-        <ToggleGroupItem aria-label="Align center" value="center">
-          <AlignCenterIcon />
-        </ToggleGroupItem>
-        <ToggleGroupItem aria-label="Align right" value="right">
-          <AlignRightIcon />
-        </ToggleGroupItem>
-      </ToggleGroup>
+        <ToggleGroup aria-label="Text alignment">
+          <ToggleGroupItem aria-label="Align left" value="left">
+            <AlignLeftIcon />
+          </ToggleGroupItem>
+          <ToggleGroupItem aria-label="Align center" value="center">
+            <AlignCenterIcon />
+          </ToggleGroupItem>
+          <ToggleGroupItem aria-label="Align right" value="right">
+            <AlignRightIcon />
+          </ToggleGroupItem>
+        </ToggleGroup>
 
-      <ToolbarSeparator />
+        <ToolbarSeparator />
 
-      <ToolbarLink aria-label="Help" href="#">
-        Help
-      </ToolbarLink>
-    </Toolbar>
+        <ToolbarLink aria-label="Help" href="#">
+          Help
+        </ToolbarLink>
+      </Toolbar>
+    </div>
   );
 }

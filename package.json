@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
-    "registry:build": "shadcn build"
+    "registry:build": "shadcn build",
+    "registry:index": "node scripts/build-registry-index.ts"
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.4",
