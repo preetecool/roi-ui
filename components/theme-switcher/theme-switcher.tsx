@@ -8,10 +8,22 @@ import styles from "./theme-switcher.module.css";
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
 
+  const handleThemeToggle = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      (document as any).startViewTransition(() => {
+        setTheme(newTheme);
+      });
+    } else {
+      setTheme(newTheme);
+    }
+  };
+
   return (
     <Button
       className={styles.button}
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={handleThemeToggle}
       size="icon"
       title="Toggle theme"
       variant="ghost"

@@ -4,7 +4,7 @@ import type { PageTree } from "fumadocs-core/server";
 import { Gauge } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
 import { Search } from "@/components/search/search";
 import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher";
@@ -201,38 +201,7 @@ function DocsSidebarContent({
           ))}
         </SidebarContent>
 
-        <SidebarFooter className={styles.footer}>
-          <a
-            aria-label="View source on GitHub"
-            className={styles.githubLink}
-            href="https://github.com/preetecool/roi-ui"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Button
-              aria-label="View source on GitHub"
-              size="icon"
-              variant="ghost"
-            >
-              <svg
-                aria-label="GitHub"
-                height="18"
-                role="img"
-                viewBox="0 0 98 96"
-                width="18"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clipRule="evenodd"
-                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                />
-              </svg>
-            </Button>
-          </a>
-          <ThemeSwitcher />
-        </SidebarFooter>
+        <DocsSidebarFooter />
       </Sidebar>
 
       {state === "collapsed" && (
@@ -345,7 +314,42 @@ function DocsSidebarContent({
   );
 }
 
-function SearchTrigger() {
+// Memoize footer since it doesn't depend on pathname
+const DocsSidebarFooter = memo(() => (
+  <SidebarFooter className={styles.footer}>
+    <a
+      aria-label="View source on GitHub"
+      className={styles.githubLink}
+      href="https://github.com/preetecool/roi-ui"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <Button aria-label="View source on GitHub" size="icon" variant="ghost">
+        <svg
+          aria-label="GitHub"
+          height="18"
+          role="img"
+          viewBox="0 0 98 96"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clipRule="evenodd"
+            d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </Button>
+    </a>
+    <ThemeSwitcher />
+  </SidebarFooter>
+));
+
+DocsSidebarFooter.displayName = "DocsSidebarFooter";
+
+// Memoize SearchTrigger since it has no dynamic props
+const SearchTrigger = memo(() => {
   const triggerSearch = () => {
     const event = new KeyboardEvent("keydown", {
       key: "k",
@@ -356,11 +360,7 @@ function SearchTrigger() {
   };
 
   return (
-    <Button
-      id={styles.searchWrapper}
-      onClick={triggerSearch}
-      variant="ghost"
-    >
+    <Button id={styles.searchWrapper} onClick={triggerSearch} variant="ghost">
       <svg
         aria-hidden="true"
         className={styles.searchIcon}
@@ -399,7 +399,9 @@ function SearchTrigger() {
       </div>
     </Button>
   );
-}
+});
+
+SearchTrigger.displayName = "SearchTrigger";
 
 function ChevronIcon({ isOpen }: { isOpen: boolean }) {
   return (
@@ -462,112 +464,154 @@ function hasActiveDescendant(item: SidebarItem, pathname: string): boolean {
   });
 }
 
-function DocsSidebarGroup({
-  item,
-  pathname,
-  level = 0,
-}: {
+const DocsSidebarGroup = memo<{
   item: SidebarItem;
   pathname: string;
   level?: number;
-}) {
-  const hasChildren = Boolean(item.children && item.children.length > 0);
-  const isActive = pathname === item.url;
-  const hasActiveChild = hasActiveDescendant(item, pathname);
+}>(
+  ({ item, pathname, level = 0 }) => {
+    const hasChildren = Boolean(item.children && item.children.length > 0);
+    const isActive = pathname === item.url;
+    const hasActiveChild = hasActiveDescendant(item, pathname);
 
-  const [isExpanded, setIsExpanded] = useState<boolean>(
-    level === 0 ? item.name === "UI" : hasActiveChild
-  );
-
-  // Simple link item
-  if (!hasChildren && item.type === "page" && item.url) {
-    return (
-      <SidebarMenuItem>
-        <SidebarMenuButton
-          isActive={isActive}
-          render={<Link href={item.url} />}
-        >
-          {getIconForItem(item.name as string)}
-          <span>{item.name}</span>
-          {item.badge && (
-            <Badge className={styles.badge} size="sm" variant="secondary">
-              {item.badge}
-            </Badge>
-          )}
-        </SidebarMenuButton>
-      </SidebarMenuItem>
+    const [isExpanded, setIsExpanded] = useState<boolean>(
+      level === 0 ? item.name === "UI" : hasActiveChild
     );
-  }
 
-  // Group with children
-  if (level === 0 && hasChildren) {
-    return (
-      <>
-        <SidebarGroupLabel id={styles.groupLabel}>
-          {getIconForItem(item.name as string)}
-          {item.name}
-        </SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            {item.children?.map((child, index) => (
-              <DocsSidebarGroup
-                item={child}
-                key={child.$id || `child-${index}`}
-                level={level + 1}
-                pathname={pathname}
-              />
-            ))}
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </>
-    );
-  }
+    // Simple link item
+    if (!hasChildren && item.type === "page" && item.url) {
+      return (
+        <SidebarMenuItem>
+          <SidebarMenuButton
+            isActive={isActive}
+            render={<Link href={item.url} />}
+          >
+            {getIconForItem(item.name as string)}
+            <span>{item.name}</span>
+            {item.badge && (
+              <Badge className={styles.badge} size="sm" variant="secondary">
+                {item.badge}
+              </Badge>
+            )}
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      );
+    }
 
-  // Collapsible submenu
-  const isCollapsible = level === 1 && hasChildren;
-
-  if (isCollapsible) {
-    return (
-      <SidebarMenuItem>
-        <button
-          aria-expanded={isExpanded}
-          className={styles.collapsibleButton}
-          onClick={() => setIsExpanded(!isExpanded)}
-          type="button"
-        >
-          <span className={styles.collapsibleTitle}>
+    if (level === 0 && hasChildren) {
+      return (
+        <>
+          <SidebarGroupLabel id={styles.groupLabel}>
             {getIconForItem(item.name as string)}
             {item.name}
-          </span>
-          <ChevronIcon isOpen={isExpanded} />
-        </button>
-        {isExpanded && (
-          <SidebarMenuSub>
-            {item.children?.map((child, index) => (
-              <SidebarMenuSubItem key={child.$id || `child-${index}`}>
-                <SidebarMenuSubButton
-                  isActive={pathname === child.url}
-                  render={<Link href={child.url || "#"} />}
-                >
-                  {getIconForItem(child.name as string)}
-                  <span>{child.name}</span>
-                  {child.badge && (
-                    <Badge
-                      className={styles.badge}
-                      size="sm"
-                      variant="secondary"
-                    >
-                      {child.badge}
-                    </Badge>
-                  )}
-                </SidebarMenuSubButton>
-              </SidebarMenuSubItem>
-            ))}
-          </SidebarMenuSub>
-        )}
-      </SidebarMenuItem>
-    );
-  }
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {item.children?.map((child, index) => (
+                <DocsSidebarGroup
+                  item={child}
+                  key={child.$id || `child-${index}`}
+                  level={level + 1}
+                  pathname={pathname}
+                />
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </>
+      );
+    }
 
-  return null;
-}
+    // Collapsible submenu
+    const isCollapsible = level === 1 && hasChildren;
+
+    if (isCollapsible) {
+      return (
+        <SidebarMenuItem>
+          <button
+            aria-expanded={isExpanded}
+            className={styles.collapsibleButton}
+            onClick={() => setIsExpanded(!isExpanded)}
+            type="button"
+          >
+            <span className={styles.collapsibleTitle}>
+              {getIconForItem(item.name as string)}
+              {item.name}
+            </span>
+            <ChevronIcon isOpen={isExpanded} />
+          </button>
+          {isExpanded && (
+            <SidebarMenuSub>
+              {item.children?.map((child, index) => (
+                <SidebarMenuSubItem key={child.$id || `child-${index}`}>
+                  <SidebarMenuSubButton
+                    isActive={pathname === child.url}
+                    render={<Link href={child.url || "#"} />}
+                  >
+                    {getIconForItem(child.name as string)}
+                    <span>{child.name}</span>
+                    {child.badge && (
+                      <Badge
+                        className={styles.badge}
+                        size="sm"
+                        variant="secondary"
+                      >
+                        {child.badge}
+                      </Badge>
+                    )}
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              ))}
+            </SidebarMenuSub>
+          )}
+        </SidebarMenuItem>
+      );
+    }
+
+    return null;
+  },
+  (prevProps, nextProps) => {
+    if (
+      prevProps.item !== nextProps.item ||
+      prevProps.level !== nextProps.level
+    ) {
+      return false;
+    }
+
+    if (prevProps.pathname === nextProps.pathname) {
+      return true; // true = skip re-render
+    }
+
+    const itemUrl = prevProps.item.url || "";
+
+    const prevIsActive = prevProps.pathname === itemUrl;
+    const nextIsActive = nextProps.pathname === itemUrl;
+
+    if (prevIsActive !== nextIsActive) {
+      return false;
+    }
+
+    if (!prevProps.item.children || prevProps.item.children.length === 0) {
+      return true;
+    }
+
+    let prevHasDirectActiveChild = false;
+    let nextHasDirectActiveChild = false;
+
+    for (const child of prevProps.item.children) {
+      if (child.url && prevProps.pathname.startsWith(child.url)) {
+        prevHasDirectActiveChild = true;
+      }
+      if (child.url && nextProps.pathname.startsWith(child.url)) {
+        nextHasDirectActiveChild = true;
+      }
+    }
+
+    if (prevHasDirectActiveChild !== nextHasDirectActiveChild) {
+      return false;
+    }
+
+    return true;
+  }
+);
+
+DocsSidebarGroup.displayName = "DocsSidebarGroup";
