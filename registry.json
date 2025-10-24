@@ -394,6 +394,24 @@
       ]
     },
     {
+      "name": "fieldset",
+      "type": "registry:item",
+      "title": "Fieldset",
+      "description": "A native fieldset element with an easily stylable legend.",
+      "files": [
+        {
+          "path": "registry/brook/ui/fieldset/fieldset.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/fieldset/fieldset.tsx"
+        },
+        {
+          "path": "registry/brook/ui/fieldset/fieldset.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/fieldset/fieldset.module.css"
+        }
+      ]
+    },
+    {
       "name": "form",
       "type": "registry:item",
       "title": "Form",

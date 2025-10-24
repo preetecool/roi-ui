@@ -1,0 +1,95 @@
+---
+title: Fieldset
+description: A native fieldset element with an easily stylable legend.
+links:
+    doc: "https://base-ui.com/react/components/fieldset"
+    api: "https://base-ui.com/react/components/fieldset#api-reference"
+---
+
+<ComponentPreview name="fieldset-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+```package-install
+npx shadcn@latest add https://roiui.com/r/fieldset.json
+```
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Install dependencies:
+
+```package-install
+npm install @base-ui-components/react
+```
+
+Copy and paste the TSX file:
+
+<ComponentSource
+    src="registry/brook/ui/fieldset/fieldset.tsx"
+    title="components/ui/fieldset.tsx"
+    collapsible={true}
+/>
+
+Copy and paste the CSS file:
+
+<ComponentSource
+    src="registry/brook/ui/fieldset/fieldset.module.css"
+    title="components/ui/fieldset.module.css"
+    language="css"
+    collapsible={true}
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`<Fieldset>
+    <FieldsetLegend />
+    {/* Fields or other form controls */}
+</Fieldset>
+`} />
+
+## Usage
+
+The Fieldset component is typically used with the Field component to group related form fields together:
+
+<CodeBlock
+filename="usage-example"
+  language="tsx"
+  code={`import { Fieldset, FieldsetLegend } from "@/components/ui/fieldset";
+import { Field, FieldLabel, FieldControl } from "@/components/ui/field";
+
+export default function BillingForm() {
+  return (
+    <Fieldset>
+      <FieldsetLegend>Billing details</FieldsetLegend>
+
+      <Field>
+        <FieldLabel>Company</FieldLabel>
+        <FieldControl placeholder="Enter company name" />
+      </Field>
+
+      <Field>
+        <FieldLabel>Tax ID</FieldLabel>
+        <FieldControl placeholder="Enter fiscal number" />
+      </Field>
+    </Fieldset>
+  );
+}
+`} />

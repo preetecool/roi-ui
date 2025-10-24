@@ -71,41 +71,8 @@
 }
 
 @media (max-width: 640px) {
-  .container {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .tabsList {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .tabTrigger {
-    font-size: 0.8125rem;
-    min-height: 2.75rem;
-    padding: 0.625rem 0.25rem;
-    width: 100%;
-  }
-
-  .heading {
-    font-size: 1.125rem;
-    line-height: 1.5;
-  }
-
-  .description {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-  }
-
   .buttonGroup {
     flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .tabContent {
-    gap: 1.25rem;
   }
 }
 

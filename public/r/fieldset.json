@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset",
+  "type": "registry:item",
+  "title": "Fieldset",
+  "description": "A native fieldset element with an easily stylable legend.",
+  "files": [
+    {
+      "path": "registry/brook/ui/fieldset/fieldset.tsx",
+      "content": "\"use client\";\n\nimport { Fieldset } from \"@base-ui-components/react/fieldset\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./fieldset.module.css\";\n\nfunction FieldsetRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof Fieldset.Root>) {\n  return <Fieldset.Root className={cn(styles.root, className)} {...props} />;\n}\n\nfunction FieldsetLegend({\n  className,\n  ...props\n}: React.ComponentProps<typeof Fieldset.Legend>) {\n  return <Fieldset.Legend className={cn(styles.legend, className)} {...props} />;\n}\n\nexport { FieldsetRoot as Fieldset, FieldsetLegend };\n",
+      "type": "registry:file",
+      "target": "~/components/ui/fieldset/fieldset.tsx"
+    },
+    {
+      "path": "registry/brook/ui/fieldset/fieldset.module.css",
+      "content": ".root {\n  border: 0;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  width: 100%;\n}\n\n.legend {\n  border-bottom: 1px solid var(--border);\n  padding-bottom: 0.75rem;\n  font-weight: 500;\n  font-size: 1rem;\n  line-height: 1.5rem;\n  letter-spacing: -0.0025em;\n  color: var(--foreground);\n}\n",
+      "type": "registry:file",
+      "target": "~/components/ui/fieldset/fieldset.module.css"
+    }
+  ]
+}

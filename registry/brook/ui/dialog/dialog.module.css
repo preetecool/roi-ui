@@ -110,7 +110,7 @@
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.025em;
-  color: var(--title);
+  color: var(--foreground);
   margin: 0;
 }
 

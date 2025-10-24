@@ -147,7 +147,7 @@
 .expandedHeading {
   font-size: 48px;
   font-weight: 600;
-  color: var(--title);
+  color: var(--foreground);
   margin: 0;
   align-self: flex-start;
   width: 100%;

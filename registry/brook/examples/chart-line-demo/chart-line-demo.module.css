@@ -7,7 +7,7 @@
 
 .title {
   margin-bottom: 16px;
-  color: var(--title);
+  color: var(--foreground);
   font-size: 1.25rem;
 }
 

@@ -738,6 +738,21 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "fieldset-demo": {
+    name: "fieldset-demo",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/examples/fieldset-demo/fieldset-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "fieldset-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   "form-demo": {
     name: "form-demo",
     type: "example",
