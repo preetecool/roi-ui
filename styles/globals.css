@@ -321,3 +321,13 @@ select {
   min-width: 44px;
   z-index: -1;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0ms;
+  mix-blend-mode: normal;
+}
+
+html {
+  color-scheme: light dark;
+}
