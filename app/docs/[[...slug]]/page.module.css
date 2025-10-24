@@ -8,8 +8,15 @@
   flex-direction: column;
   gap: 0;
   padding: clamp(1.5rem, 2vw + 1rem, 2.5rem) clamp(1rem, 3vw, 2rem);
+  padding-top: calc(var(--header-height) + clamp(1.5rem, 2vw + 1rem, 2.5rem));
   color: var(--foreground);
   font-size: clamp(0.875rem, 0.8rem + 0.25vw, 0.9375rem);
+}
+
+@media (min-width: 1024px) {
+  .pageContent {
+    padding-top: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  }
 }
 
 .contentWrapper p,
