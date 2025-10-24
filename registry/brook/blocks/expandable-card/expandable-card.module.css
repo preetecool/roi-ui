@@ -231,4 +231,17 @@
   .expandedContent {
     font-size: 14px;
   }
+
+  .scrollableContent {
+    padding: 0px 16px;
+    justify-content: space-between;
+    gap: 0px;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 97%,
+      transparent 100%
+    );
+  }
 }
