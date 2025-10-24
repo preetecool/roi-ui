@@ -57,12 +57,14 @@
   align-items: center;
   justify-content: center;
   position: absolute;
+  will-change: transform;
 }
 
 .copyFront,
 .copyBack {
   transform-origin: center;
   transition: all 0.3s ease;
+  will-change: transform;
 }
 
 .iconContainer[data-icon="copy"] {

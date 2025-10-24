@@ -261,21 +261,6 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
-  "badge-variants": {
-    name: "badge-variants",
-    type: "example",
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/badge-variants/badge-variants"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "badge-variants";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
   "button-demo": {
     name: "button-demo",
     type: "example",
@@ -1103,7 +1088,9 @@ export const Index: Record<string, RegistryEntry> = {
     name: "toolbar-demo",
     type: "example",
     component: lazy(async () => {
-      const mod = await import("@/registry/brook/examples/toolbar-demo");
+      const mod = await import(
+        "@/registry/brook/examples/toolbar-demo/toolbar-demo"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

@@ -1,19 +1,79 @@
-.container {
+.panel {
+  border: 1px solid oklch(from var(--border-light) l c h / 0.5);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.trigger {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  transition: background-color 150ms;
+}
+
+.trigger:hover {
+  background-color: var(--mix-card-50-bg);
+}
+
+.mainStat {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: 0.25rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  background-color: var(--mix-card-33-bg);
-  cursor: text;
-  border: 1px solid var(--border);
 }
 
-.recoveryKey {
-  padding: 0.5rem;
-  background-color: var(--mix-muted-50-trans);
-  border-radius: 0.25rem;
-  font-family: monospace;
+.label {
   font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.change {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--success);
+}
+
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid oklch(from var(--border) l c h / 0.5);
+  padding: 0.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius);
+  transition: background-color 150ms;
+}
+
+.row:hover {
+  background-color: var(--mix-card-50-bg);
+}
+
+.rowLabel {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.rowValue {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  font-variant-numeric: tabular-nums;
 }

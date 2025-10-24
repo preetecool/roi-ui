@@ -1,4 +1,5 @@
 import { DocsSidebar } from "@/components/docs-sidebar/docs-sidebar";
+import { SiteFooter } from "@/components/site-footer/site-footer";
 import { SiteHeader } from "@/components/site-header/site-header";
 import { source } from "@/lib/source";
 import styles from "./layout.module.css";
@@ -20,6 +21,7 @@ export default function DocsLayout({
           </div>
           {children}
         </div>
+        <SiteFooter />
       </div>
     </>
   );

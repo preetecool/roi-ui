@@ -2,7 +2,6 @@
   display: flex;
   width: 100%;
   max-width: 14rem;
-  min-height: 9rem;
   flex-direction: column;
   justify-content: center;
   color: var(--foreground);
@@ -52,12 +51,25 @@
   width: 0.75rem;
   height: 0.75rem;
   flex-shrink: 0;
-  transition: transform 150ms ease-out;
   color: var(--muted-foreground);
 }
 
-.trigger[data-panel-open] .chevron {
-  transform: rotate(90deg);
+.chevron path:first-child {
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.chevron path:last-child {
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.trigger[data-panel-open] .chevron path:first-child {
+  transform: translate(0, -10px);
+}
+
+.trigger[data-panel-open] .chevron path:last-child {
+  transform: translate(0, 10px);
 }
 
 .panel {

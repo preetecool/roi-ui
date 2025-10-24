@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid oklch(from var(--border-light) l c h / 0.6);
   padding: 0.75rem 1rem;
   display: grid;
   grid-template-columns: 0 1fr auto;
@@ -11,6 +11,9 @@
   font-size: 0.75rem;
   line-height: 1.2;
   background-color: var(--mix-card-70-bg);
+  box-shadow:
+    0 1px 2px oklch(from var(--foreground) l c h / 0.04),
+    inset 0 0 0 1px oklch(from var(--background) l c h / 0.02);
 }
 
 .alert:has(> svg) {

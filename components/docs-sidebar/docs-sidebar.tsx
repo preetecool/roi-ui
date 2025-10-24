@@ -22,9 +22,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarProvider,
   SidebarTrigger,
   useSidebar,
@@ -403,28 +400,6 @@ const SearchTrigger = memo(() => {
 
 SearchTrigger.displayName = "SearchTrigger";
 
-function ChevronIcon({ isOpen }: { isOpen: boolean }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}
-      fill="none"
-      height="12"
-      viewBox="0 0 12 12"
-      width="12"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3 4.5L6 7.5L9 4.5"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
 function getIconForItem(itemName: string) {
   const name = itemName.toLowerCase();
 
@@ -446,24 +421,6 @@ function getIconForItem(itemName: string) {
   return null;
 }
 
-function hasActiveDescendant(item: SidebarItem, pathname: string): boolean {
-  if (!item.children) {
-    return false;
-  }
-
-  return item.children.some((child) => {
-    if (pathname.startsWith(child.url || "")) {
-      return true;
-    }
-    if (child.children) {
-      return child.children.some((grandchild) =>
-        pathname.startsWith(grandchild.url || "")
-      );
-    }
-    return false;
-  });
-}
-
 const DocsSidebarGroup = memo<{
   item: SidebarItem;
   pathname: string;
@@ -472,11 +429,6 @@ const DocsSidebarGroup = memo<{
   ({ item, pathname, level = 0 }) => {
     const hasChildren = Boolean(item.children && item.children.length > 0);
     const isActive = pathname === item.url;
-    const hasActiveChild = hasActiveDescendant(item, pathname);
-
-    const [isExpanded, setIsExpanded] = useState<boolean>(
-      level === 0 ? item.name === "UI" : hasActiveChild
-    );
 
     // Simple link item
     if (!hasChildren && item.type === "page" && item.url) {
@@ -518,52 +470,6 @@ const DocsSidebarGroup = memo<{
             </SidebarMenu>
           </SidebarGroupContent>
         </>
-      );
-    }
-
-    // Collapsible submenu
-    const isCollapsible = level === 1 && hasChildren;
-
-    if (isCollapsible) {
-      return (
-        <SidebarMenuItem>
-          <button
-            aria-expanded={isExpanded}
-            className={styles.collapsibleButton}
-            onClick={() => setIsExpanded(!isExpanded)}
-            type="button"
-          >
-            <span className={styles.collapsibleTitle}>
-              {getIconForItem(item.name as string)}
-              {item.name}
-            </span>
-            <ChevronIcon isOpen={isExpanded} />
-          </button>
-          {isExpanded && (
-            <SidebarMenuSub>
-              {item.children?.map((child, index) => (
-                <SidebarMenuSubItem key={child.$id || `child-${index}`}>
-                  <SidebarMenuSubButton
-                    isActive={pathname === child.url}
-                    render={<Link href={child.url || "#"} />}
-                  >
-                    {getIconForItem(child.name as string)}
-                    <span>{child.name}</span>
-                    {child.badge && (
-                      <Badge
-                        className={styles.badge}
-                        size="sm"
-                        variant="secondary"
-                      >
-                        {child.badge}
-                      </Badge>
-                    )}
-                  </SidebarMenuSubButton>
-                </SidebarMenuSubItem>
-              ))}
-            </SidebarMenuSub>
-          )}
-        </SidebarMenuItem>
       );
     }
 

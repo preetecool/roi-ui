@@ -3,8 +3,7 @@
   inset: 0;
   z-index: var(--dialog-z);
   background-color: var(--dialog-overlay);
-  opacity: 1;
-  transition: opacity 200ms var(--ease-out-expo);
+  transition: opacity 150ms;
 }
 
 .overlay[data-starting-style],
@@ -21,22 +20,22 @@
   width: 100%;
   overflow-y: auto;
   gap: 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid oklch(from var(--border-light) l c h / 0.4);
   background-color: var(--background);
   padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  opacity: 1;
+  border-radius: var(--radius);
+  box-shadow:
+    0 10px 15px -3px oklch(from var(--foreground) l c h / 0.02),
+    0 4px 6px -4px oklch(from var(--foreground) l c h / 0.02),
+    inset 0 0 0 1px oklch(from var(--background) l c h / 0.02);
   transform: translate(-50%, -50%);
-  transition:
-    opacity 200ms var(--ease-out-expo),
-    transform 200ms var(--ease-out-expo);
+  transition: all 150ms;
 }
 
 .content[data-starting-style],
 .content[data-ending-style] {
   opacity: 0;
-  transform: translate(-50%, -54%) scale(0.96);
+  transform: translate(-50%, -50%) scale(0.95);
 }
 
 .close {

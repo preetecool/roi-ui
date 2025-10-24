@@ -232,31 +232,26 @@ const InteractiveGrid = memo(() => {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const cleanupExpiredCells = () => {
       const now = Date.now();
       setActiveCells((prev) => {
-        let hasExpiredCells = false;
-        for (const [, timestamp] of prev.entries()) {
-          if (now - timestamp > CELL_ACTIVE_DURATION_MS) {
-            hasExpiredCells = true;
-            break;
-          }
-        }
+        const expiredKeys = Array.from(prev.entries())
+          .filter(([, timestamp]) => now - timestamp > CELL_ACTIVE_DURATION_MS)
+          .map(([key]) => key);
 
-        if (!hasExpiredCells) {
+        if (expiredKeys.length === 0) {
           return prev;
         }
 
         const newMap = new Map(prev);
-        for (const [key, timestamp] of newMap.entries()) {
-          if (now - timestamp > CELL_ACTIVE_DURATION_MS) {
-            newMap.delete(key);
-          }
+        for (const key of expiredKeys) {
+          newMap.delete(key);
         }
         return newMap;
       });
-    }, CLEANUP_INTERVAL_MS);
+    };
 
+    const interval = setInterval(cleanupExpiredCells, CLEANUP_INTERVAL_MS);
     return () => clearInterval(interval);
   }, []);
 
@@ -271,6 +266,7 @@ const InteractiveGrid = memo(() => {
         width: "100%",
         position: "relative",
         paddingTop: "clamp(100px, 15vw, 150px)",
+        paddingBottom: "clamp(2rem, 5vw, 4rem)",
         paddingLeft: "max(24px, 5vw)",
         paddingRight: "max(24px, 5vw)",
         backgroundColor: "var(--mix-card-15-bg)",
