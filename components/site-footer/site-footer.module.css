@@ -1,12 +1,10 @@
 .footer {
-  margin-top: 4rem;
   padding: 2rem 1rem;
   background-color: var(--mix-card-15-bg);
 }
 
 @media (max-width: 640px) {
   .footer {
-    margin-top: 2rem;
     padding: 1.5rem 1rem;
   }
 }

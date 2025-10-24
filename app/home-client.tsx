@@ -266,6 +266,7 @@ const InteractiveGrid = memo(() => {
         width: "100%",
         position: "relative",
         paddingTop: "clamp(100px, 15vw, 150px)",
+        paddingBottom: "clamp(2rem, 5vw, 4rem)",
         paddingLeft: "max(24px, 5vw)",
         paddingRight: "max(24px, 5vw)",
         backgroundColor: "var(--mix-card-15-bg)",
