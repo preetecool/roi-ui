@@ -1,9 +1,34 @@
 .triggerContent {
   display: flex;
-  gap: 4px;
   align-items: center;
 }
 
-.chevronIcon {
-  margin-top: 1px;
+.deleteItem {
+  color: var(--destructive);
+}
+
+.deleteItem svg {
+  color: var(--destructive);
+}
+
+.deleteItem::before {
+  content: "";
+  position: absolute;
+  inset: 0 4px;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  transition: background-color 150ms;
+  z-index: -1;
+}
+
+.deleteItem:hover::before {
+  background-color: var(--destructive);
+}
+
+.deleteItem:hover {
+  color: var(--destructive-foreground);
+}
+
+.deleteItem:hover svg {
+  color: var(--destructive-foreground);
 }

@@ -20,7 +20,7 @@
   width: 100%;
   overflow-y: auto;
   gap: 1rem;
-  border: 1px solid oklch(from var(--border-light) l c h / 0.4);
+  border: 0.5px solid oklch(from var(--border-light) l c h / 0.6);
   background-color: var(--background);
   padding: 1.5rem;
   border-radius: var(--radius);

@@ -21,28 +21,44 @@ export default function DropdownMenuSubmenu() {
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <div style={{ height: "4px", width: "100%" }} />
+            <DropdownMenuItem>
+              <span style={{ marginLeft: "4px" }}>Profile</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <span style={{ marginLeft: "4px" }}>Settings</span>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuSubmenuRoot>
               <DropdownMenuSubmenuTrigger
                 style={{ justifyContent: "space-between" }}
               >
-                More Options
+                <span style={{ marginLeft: "4px" }}>More Options</span>
                 <ChevronRight size={16} />
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuPositioner align="start" side="right">
                   <DropdownMenuPopup>
-                    <DropdownMenuItem>Export</DropdownMenuItem>
-                    <DropdownMenuItem>Import</DropdownMenuItem>
-                    <DropdownMenuItem>Share</DropdownMenuItem>
+                    <div style={{ height: "4px", width: "100%" }} />
+                    <DropdownMenuItem>
+                      <span style={{ marginLeft: "4px" }}>Export</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <span style={{ marginLeft: "4px" }}>Import</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <span style={{ marginLeft: "4px" }}>Share</span>
+                    </DropdownMenuItem>
+                    <div style={{ height: "4px", width: "100%" }} />
                   </DropdownMenuPopup>
                 </DropdownMenuPositioner>
               </DropdownMenuPortal>
             </DropdownMenuSubmenuRoot>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem>
+              <span style={{ marginLeft: "4px" }}>Logout</span>
+            </DropdownMenuItem>
+            <div style={{ height: "4px", width: "100%" }} />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>
