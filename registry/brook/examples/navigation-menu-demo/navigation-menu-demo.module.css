@@ -23,13 +23,13 @@
 }
 
 .twoColContainer::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 1px;
-  background-color: var(--border);
+  width: 0.5px;
+  background-color: oklch(from var(--border) l c h / 0.6);
   transform: translateX(-0.5rem);
 }
 

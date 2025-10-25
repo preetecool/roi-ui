@@ -40,8 +40,11 @@
   transition:
     transform 150ms ease,
     opacity 150ms ease;
-  outline: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
+  outline: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  box-shadow:
+    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
+    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
+    oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
   z-index: 1000;
 }
 
@@ -143,12 +146,8 @@
   margin-top: 1rem;
 }
 
-[data-theme="dark"] .backdrop {
-  background-color: oklch(0 0 0 / 0.2);
-}
-
 [data-theme="dark"] .popup {
-  outline: 1px solid var(--border);
+  outline: 0.5px solid oklch(from var(--border) l c h / 0.7);
   outline-offset: -1px;
 }
 

@@ -25,14 +25,15 @@
 
 .popup {
   min-width: 170px;
+  background-color: var(--mix-card-50-bg);
   border: 0.5px solid oklch(from var(--border) l c h / 0.6);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   box-shadow:
-    lch(0 0 0 / 0.188) 0px 3px 8px,
-    lch(0 0 0 / 0.188) 0px 2px 5px,
-    lch(0 0 0 / 0.188) 0px 1px 1px;
+    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
+    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
+    oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
   transform-origin: "top center";
   transition:
     transform 250ms var(--ease-out-expo),
@@ -63,12 +64,13 @@
   height: 32px;
   font-size: 0.875rem;
   line-height: 1.2;
-  color: var(--secondary-foreground);
+  color: var(--foreground);
   cursor: pointer;
   border-radius: 0.3rem;
   justify-content: flex-start;
   margin: 0rem;
   position: relative;
+  isolation: isolate;
 
   &::before {
     content: "";
@@ -76,24 +78,15 @@
     inset: 0 4px;
     border-radius: 0.3rem;
     background-color: transparent;
-    transition: background-color 150ms;
     z-index: -1;
   }
 
   &[data-popup-open]::before {
-    background-color: oklch(from var(--muted) l c h / 0.6);
+    background-color: oklch(from var(--accent) l c h / 0.7);
   }
 
   &[data-highlighted]::before {
-    background-color: oklch(from var(--muted) l c h / 0.6);
-  }
-
-  &[data-popup-open] {
-    color: var(--foreground);
-  }
-
-  &[data-highlighted] {
-    color: var(--foreground);
+    background-color: oklch(from var(--accent) l c h / 0.7);
   }
 }
 
@@ -111,12 +104,7 @@
 
 .submenuTrigger:hover::before,
 .item:hover::before {
-  background-color: var(--muted);
-}
-
-.submenuTrigger:hover,
-.item:hover {
-  color: var(--foreground);
+  background-color: oklch(from var(--accent) l c h / 0.7);
 }
 
 .item:hover .icon {
@@ -124,12 +112,11 @@
 }
 
 .item:focus::before {
-  background-color: var(--muted);
+  background-color: oklch(from var(--accent) l c h / 0.7);
 }
 
 .item:focus {
   outline: none;
-  color: var(--foreground);
 }
 
 .item[data-disabled] {
@@ -139,7 +126,6 @@
 
 .item[data-disabled]:hover {
   background: transparent;
-  color: var(--foreground);
 }
 
 .arrow {

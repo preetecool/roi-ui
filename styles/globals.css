@@ -4,7 +4,7 @@
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.2365 0.0078 17.71);
-  --card: oklch(0.946 0 0);
+  --card: oklch(0.98 0 0);
   --card-light: oklch(0.9759 0.0013 106.42);
   --popover-foreground: oklch(0.18 0 0);
   --dialog-overlay: oklch(0 0 0 / 0.4);

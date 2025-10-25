@@ -21,7 +21,7 @@ function ToastViewport({
   ...props
 }: React.ComponentPropsWithoutRef<typeof Toast.Viewport>) {
   return (
-    <Toast.Viewport className={cn(styles.Viewport, className)} {...props} />
+    <Toast.Viewport className={cn(styles.viewport, className)} {...props} />
   );
 }
 

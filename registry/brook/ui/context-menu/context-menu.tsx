@@ -3,6 +3,7 @@
 import { ContextMenu } from "@base-ui-components/react/context-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./context-menu.module.css";
 
@@ -65,16 +66,28 @@ function ContextMenuArrow({
   );
 }
 
+interface ContextMenuItemProps extends React.ComponentProps<typeof ContextMenu.Item> {
+  icon?: ReactNode;
+  inset?: boolean;
+  className?: string;
+  children?: ReactNode;
+}
+
 function ContextMenuItem({
   className,
+  icon,
+  children,
   inset = false,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Item> & { inset?: boolean }) {
+}: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
       className={cn(styles.item, inset && styles.inset, className)}
       {...props}
-    />
+    >
+      {icon && <span className={styles.icon}>{icon}</span>}
+      {children}
+    </ContextMenu.Item>
   );
 }
 
@@ -139,10 +152,12 @@ function ContextMenuSeparator({
   ...props
 }: React.ComponentProps<typeof ContextMenu.Separator>) {
   return (
-    <ContextMenu.Separator
-      className={cn(styles.separator, className)}
-      {...props}
-    />
+    <div className={styles.seperatorWrapper}>
+      <ContextMenu.Separator
+        className={cn(styles.separator, className)}
+        {...props}
+      />
+    </div>
   );
 }
 
