@@ -14,19 +14,21 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) {
             setActiveId(`#${entry.target.id}`);
           }
-        });
+        }
       },
-      { rootMargin: "-20% 0px -35% 0px" }
+      { rootMargin: "-50px 0px 0px 0px" }
     );
 
     const headings = document.querySelectorAll(
       "h2[id], h3[id], h4[id], h5[id], h6[id]"
     );
-    headings.forEach((heading) => observer.observe(heading));
+    for (const heading of headings) {
+      observer.observe(heading);
+    }
 
     return () => observer.disconnect();
   }, []);

@@ -1,23 +1,18 @@
 .badge {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background-color: var(--mix-card-20-bg);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--foreground);
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
+  height: 26px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.4s forwards;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
 }
 
 .badge:hover {
-  background-color: var(--mix-card-66-bg);
+  background-color: var(--accent);
 }
 
 .badgeArrow {

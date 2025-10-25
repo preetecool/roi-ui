@@ -10,7 +10,7 @@ const cardData = {
   description: "Beautiful Nights",
   longDescription:
     "Gazing at the night sky capturing the essence of tranquility.",
-  image: "/art-brook.png",
+  image: "/scene_00.png",
 };
 
 export const HomeAnimatedCard = () => {
@@ -35,12 +35,20 @@ export const HomeAnimatedCard = () => {
     <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
       <AnimatePresence>
         <motion.div
-          animate={{ height: bounds.height, transform: "translateY(0px) rotate(0deg)", opacity: 1 }}
+          animate={{
+            height: bounds.height,
+            transform: "translateY(0px) rotate(0deg)",
+            opacity: 1,
+          }}
           className={styles.container}
           initial={{ transform: "translateY(40px) rotate(-4deg)", opacity: 0 }}
           transition={{
             height: { duration: 0.4, type: "spring", bounce: 0 },
-            transform: { duration: 0.8, ease: [EASE_START, 1, EASE_MID, 1], delay: 0 },
+            transform: {
+              duration: 0.8,
+              ease: [EASE_START, 1, EASE_MID, 1],
+              delay: 0,
+            },
             opacity: {
               duration: 0.8,
               ease: [EASE_START, 1, EASE_MID, 1],
