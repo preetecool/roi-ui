@@ -414,111 +414,60 @@ function getIconForItem(itemName: string) {
   return null;
 }
 
-const DocsSidebarGroup = memo<{
+function DocsSidebarGroup({
+  item,
+  pathname,
+  level = 0,
+}: {
   item: SidebarItem;
   pathname: string;
   level?: number;
-}>(
-  ({ item, pathname, level = 0 }) => {
-    const hasChildren = Boolean(item.children && item.children.length > 0);
-    const isActive = pathname === item.url;
+}) {
+  const hasChildren = Boolean(item.children && item.children.length > 0);
+  const isActive = pathname === item.url;
 
-    // Simple link item
-    if (!hasChildren && item.type === "page" && item.url) {
-      return (
-        <SidebarMenuItem>
-          <SidebarMenuButton
-            isActive={isActive}
-            render={<Link href={item.url} />}
-          >
-            {getIconForItem(item.name as string)}
-            <span>{item.name}</span>
-            {item.badge && (
-              <Badge className={styles.badge} size="sm" variant="secondary">
-                {item.badge}
-              </Badge>
-            )}
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      );
-    }
-
-    if (level === 0 && hasChildren) {
-      return (
-        <>
-          <SidebarGroupLabel id={styles.groupLabel}>
-            {getIconForItem(item.name as string)}
-            {item.name}
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {item.children?.map((child, index) => (
-                <DocsSidebarGroup
-                  item={child}
-                  key={child.$id || `child-${index}`}
-                  level={level + 1}
-                  pathname={pathname}
-                />
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </>
-      );
-    }
-
-    return null;
-  },
-  (prevProps, nextProps) => {
-    // Always re-render if item or level changed
-    if (
-      prevProps.item !== nextProps.item ||
-      prevProps.level !== nextProps.level
-    ) {
-      return false;
-    }
-
-    // If pathname hasn't changed, no need to re-render
-    if (prevProps.pathname === nextProps.pathname) {
-      return true; // true = skip re-render
-    }
-
-    // Pathname changed, check if this affects this item
-    const itemUrl = prevProps.item.url || "";
-
-    const prevIsActive = prevProps.pathname === itemUrl;
-    const nextIsActive = nextProps.pathname === itemUrl;
-
-    // If active state changed for this item, re-render
-    if (prevIsActive !== nextIsActive) {
-      return false;
-    }
-
-    // If no children, and active state didn't change, skip re-render
-    if (!prevProps.item.children || prevProps.item.children.length === 0) {
-      return true;
-    }
-
-    // Check if any children are affected by the pathname change
-    let prevHasDirectActiveChild = false;
-    let nextHasDirectActiveChild = false;
-
-    for (const child of prevProps.item.children) {
-      if (child.url && prevProps.pathname.startsWith(child.url)) {
-        prevHasDirectActiveChild = true;
-      }
-      if (child.url && nextProps.pathname.startsWith(child.url)) {
-        nextHasDirectActiveChild = true;
-      }
-    }
-
-    // If child active state changed, re-render
-    if (prevHasDirectActiveChild !== nextHasDirectActiveChild) {
-      return false;
-    }
-
-    // Pathname changed but doesn't affect this item or its children, skip re-render
-    return true;
+  // Simple link item
+  if (!hasChildren && item.type === "page" && item.url) {
+    return (
+      <SidebarMenuItem>
+        <SidebarMenuButton
+          isActive={isActive}
+          render={<Link href={item.url} />}
+        >
+          {getIconForItem(item.name as string)}
+          <span>{item.name}</span>
+          {item.badge && (
+            <Badge className={styles.badge} size="sm" variant="secondary">
+              {item.badge}
+            </Badge>
+          )}
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    );
   }
-);
 
-DocsSidebarGroup.displayName = "DocsSidebarGroup";
+  if (level === 0 && hasChildren) {
+    return (
+      <>
+        <SidebarGroupLabel id={styles.groupLabel}>
+          {getIconForItem(item.name as string)}
+          {item.name}
+        </SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {item.children?.map((child, index) => (
+              <DocsSidebarGroup
+                item={child}
+                key={child.$id || `child-${index}`}
+                level={level + 1}
+                pathname={pathname}
+              />
+            ))}
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </>
+    );
+  }
+
+  return null;
+}

@@ -113,7 +113,7 @@
   margin-right: -50vw;
 }
 
-.contentWrapper :global(*[class*="bleed"]):global(*[class*="navContainer"]) {
+.contentWrapper :global(*[class*="navContainer"]) {
   margin-left: -5vw;
 }
 
