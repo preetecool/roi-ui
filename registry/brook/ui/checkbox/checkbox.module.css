@@ -8,7 +8,6 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  /*transition: all 150ms var(--ease-out-expo);*/
   flex-shrink: 0;
   position: relative;
 
