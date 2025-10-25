@@ -10,7 +10,7 @@
   width: 1rem;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background-color: var(--background);
+  background-color: oklch(from var(--accent) l c h / 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,21 +19,21 @@
 }
 
 .root:hover {
-  border-color: var(--ring);
+  border-color: oklch(from var(--secondary-foreground) l c h / 0.4);
 }
 
 .root[data-focused] {
   outline: none;
   border-color: var(--ring);
-  box-shadow: 0 0 0 2px var(--ring) / 0.2;
+  box-shadow: 0 0 0 2px var(--ring);
 }
 
 .root[data-checked] {
-  border-color: var(--secondary-foreground);
+  border-color: oklch(from var(--secondary-foreground) l c h / 0.6);
 }
 
 .root[data-checked]:hover {
-  border-color: var(--secondary-foreground);
+  border-color: oklch(from var(--secondary-foreground) l c h / 0.8);
 }
 
 .root[data-disabled] {
