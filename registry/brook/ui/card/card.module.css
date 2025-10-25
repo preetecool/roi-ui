@@ -7,7 +7,7 @@
   padding: 1.5rem;
 
   background-color: var(--mix-card-33-bg);
-  border: 1px solid oklch(from var(--border-light) l c h / 0.4);
+  border: 1px solid oklch(from var(--border) l c h / 0.4);
   position: relative;
   justify-content: space-between;
 }

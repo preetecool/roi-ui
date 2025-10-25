@@ -1,6 +1,6 @@
 .container {
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   overflow: hidden;
 }
 
@@ -13,7 +13,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  border-bottom: 1px solid var(--border);
+  /*border-bottom: 1px solid var(--border);*/
 }
 
 .preview.center {

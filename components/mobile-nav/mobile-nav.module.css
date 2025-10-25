@@ -181,7 +181,7 @@
   margin-top: 60px;
   min-height: calc(100dvh - 60px);
   background-color: var(--mix-card-33-bg);
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
 
@@ -208,7 +208,7 @@
   gap: 1.5rem;
   padding: 1rem 0;
   margin: 1.5rem 0;
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border);
 }
 
 .iconLink {

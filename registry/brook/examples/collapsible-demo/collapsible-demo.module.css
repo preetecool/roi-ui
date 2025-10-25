@@ -1,5 +1,5 @@
 .panel {
-  border: 1px solid oklch(from var(--border-light) l c h / 0.5);
+  border: 1px solid oklch(from var(--border) l c h / 0.5);
   border-radius: var(--radius);
   overflow: hidden;
 }

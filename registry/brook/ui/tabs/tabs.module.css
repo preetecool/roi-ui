@@ -75,7 +75,7 @@
 .trigger[data-selected] {
   background-color: var(--muted);
   color: var(--foreground);
-  border: 1px solid var(--border-light, var(--border));
+  border: 1px solid var(--border);
 }
 
 .vertical .trigger {

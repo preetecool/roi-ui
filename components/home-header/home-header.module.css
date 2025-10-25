@@ -4,7 +4,7 @@
   gap: 8px;
   padding: 6px 14px;
   background-color: var(--mix-card-20-bg);
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border);
   border-radius: 999px;
   font-size: 14px;
   font-weight: 300;

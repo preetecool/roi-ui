@@ -35,7 +35,7 @@
 .command [cmdk-item]:hover,
 .command [cmdk-item][data-selected="true"] {
   background-color: var(--mix-muted-50-trans);
-  border-color: var(--border-light);
+  border-color: var(--border);
 }
 
 .command [cmdk-list] {

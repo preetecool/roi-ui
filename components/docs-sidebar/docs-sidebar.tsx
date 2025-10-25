@@ -51,25 +51,18 @@ type DocsSidebarProps = {
 };
 
 export function DocsSidebar({ tree }: DocsSidebarProps) {
-  const pathname = usePathname();
-
   return (
     <>
       <Search tree={tree} />
       <SidebarProvider defaultOpen={true}>
-        <DocsSidebarContent pathname={pathname} tree={tree} />
+        <DocsSidebarContent tree={tree} />
       </SidebarProvider>
     </>
   );
 }
 
-function DocsSidebarContent({
-  tree,
-  pathname,
-}: {
-  tree: PageTree.Root;
-  pathname: string;
-}) {
+function DocsSidebarContent({ tree }: { tree: PageTree.Root }) {
+  const pathname = usePathname();
   const { state } = useSidebar();
   const [isMac, setIsMac] = useState(false);
 
@@ -476,6 +469,7 @@ const DocsSidebarGroup = memo<{
     return null;
   },
   (prevProps, nextProps) => {
+    // Always re-render if item or level changed
     if (
       prevProps.item !== nextProps.item ||
       prevProps.level !== nextProps.level
@@ -483,23 +477,28 @@ const DocsSidebarGroup = memo<{
       return false;
     }
 
+    // If pathname hasn't changed, no need to re-render
     if (prevProps.pathname === nextProps.pathname) {
       return true; // true = skip re-render
     }
 
+    // Pathname changed, check if this affects this item
     const itemUrl = prevProps.item.url || "";
 
     const prevIsActive = prevProps.pathname === itemUrl;
     const nextIsActive = nextProps.pathname === itemUrl;
 
+    // If active state changed for this item, re-render
     if (prevIsActive !== nextIsActive) {
       return false;
     }
 
+    // If no children, and active state didn't change, skip re-render
     if (!prevProps.item.children || prevProps.item.children.length === 0) {
       return true;
     }
 
+    // Check if any children are affected by the pathname change
     let prevHasDirectActiveChild = false;
     let nextHasDirectActiveChild = false;
 
@@ -512,10 +511,12 @@ const DocsSidebarGroup = memo<{
       }
     }
 
+    // If child active state changed, re-render
     if (prevHasDirectActiveChild !== nextHasDirectActiveChild) {
       return false;
     }
 
+    // Pathname changed but doesn't affect this item or its children, skip re-render
     return true;
   }
 );
