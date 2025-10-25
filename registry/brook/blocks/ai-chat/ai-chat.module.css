@@ -7,7 +7,7 @@
   min-width: 0;
   flex: 1;
   border-radius: var(--radius-lg);
-  border-color: var(--border-light);
+  border-color: var(--border);
   background-color: var(--mix-card-50-bg);
 }
 

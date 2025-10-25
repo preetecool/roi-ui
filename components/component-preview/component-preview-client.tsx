@@ -1,32 +1,49 @@
 "use client";
 
-import type React from "react";
+import { RotateCcw } from "lucide-react";
 import { useState } from "react";
-import { ReplayButton } from "./replay-button";
+import { Index } from "@/registry/__index__";
+import styles from "./component-preview.module.css";
 
 type ComponentPreviewClientProps = {
-  Component: React.ComponentType;
+  name: string;
   align: "center" | "start" | "end";
-  replayButton?: boolean;
-  isChartComponent?: boolean;
-  className: string;
+  isChartComponent: boolean;
+  replayButton: boolean;
 };
 
 export function ComponentPreviewClient({
-  Component,
-  replayButton = false,
-  className,
+  name,
+  align,
+  isChartComponent,
+  replayButton,
 }: ComponentPreviewClientProps) {
   const [key, setKey] = useState(0);
+  const Component = Index[name]?.component;
 
   const handleReplay = () => {
     setKey((prev) => prev + 1);
   };
 
+  if (!Component) {
+    return null;
+  }
+
   return (
-    <div className={className}>
+    <div
+      className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+    >
       <Component key={key} />
-      {replayButton && <ReplayButton onReplay={handleReplay} />}
+      {replayButton && (
+        <button
+          aria-label="Replay animation"
+          className={styles.replayButton}
+          onClick={handleReplay}
+          type="button"
+        >
+          <RotateCcw size={16} />
+        </button>
+      )}
     </div>
   );
 }

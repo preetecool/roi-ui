@@ -28,7 +28,7 @@
   position: absolute;
   inset: 0;
   background-color: var(--muted);
-  border: 1px solid var(--border-light, var(--border));
+  border: 1px solid var(--border);
 }
 
 .contentContainer {

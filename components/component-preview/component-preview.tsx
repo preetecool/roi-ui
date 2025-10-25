@@ -2,8 +2,6 @@ import { ComponentSource } from "@/components/component-source/component-source"
 import { Index } from "@/registry/__index__";
 import styles from "./component-preview.module.css";
 import { ComponentPreviewClient } from "./component-preview-client";
-import { getComponentFiles } from "./get-component-files";
-import { MultiFileComponentSource } from "./multi-file-component-source";
 
 type ComponentPreviewProps = {
   name: string;
@@ -13,7 +11,7 @@ type ComponentPreviewProps = {
   replayButton?: boolean;
 };
 
-export async function ComponentPreview({
+export function ComponentPreview({
   name,
   align = "center",
   description,
@@ -21,9 +19,9 @@ export async function ComponentPreview({
   replayButton = false,
 }: ComponentPreviewProps) {
   const item = Index[name];
+  const isChartComponent = name.includes("chart");
 
   if (!item?.component) {
-    const isChartComponent = name.includes("chart");
     return (
       <div className={styles.container}>
         <div
@@ -34,39 +32,18 @@ export async function ComponentPreview({
             in registry.
           </p>
         </div>
-        {showCode && (
-          <ComponentSource
-            embedded
-            src={`./registry/brook/examples/${name}.tsx`}
-          />
-        )}
       </div>
     );
   }
 
-  const Component = item.component;
-  const isChartComponent = name.includes("chart");
-
-  // Check if component has multiple files (tsx + css)
-  const files = showCode ? await getComponentFiles(name) : null;
-
   return (
     <div className={styles.container}>
-      {replayButton ? (
-        <ComponentPreviewClient
-          align={align}
-          Component={Component}
-          className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
-          isChartComponent={isChartComponent}
-          replayButton={replayButton}
-        />
-      ) : (
-        <div
-          className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
-        >
-          <Component />
-        </div>
-      )}
+      <ComponentPreviewClient
+        align={align}
+        isChartComponent={isChartComponent}
+        name={name}
+        replayButton={replayButton}
+      />
 
       {description && (
         <div className={styles.description}>
@@ -74,12 +51,7 @@ export async function ComponentPreview({
         </div>
       )}
 
-      {showCode &&
-        (files ? (
-          <MultiFileComponentSource files={files} />
-        ) : (
-          <ComponentSource embedded name={name} />
-        ))}
+      {showCode && <ComponentSource embedded name={name} />}
     </div>
   );
 }

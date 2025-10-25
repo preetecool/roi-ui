@@ -1,6 +1,15 @@
 "use client";
 
 import {
+  Copy,
+  FileText,
+  FolderPlus,
+  MoreHorizontal,
+  Scissors,
+  Share2,
+  Trash2,
+} from "lucide-react";
+import {
   ContextMenu,
   ContextMenuItem,
   ContextMenuPopup,
@@ -25,50 +34,64 @@ export default function ContextMenuDemo() {
         <ContextMenuPortal>
           <ContextMenuPositioner>
             <ContextMenuPopup className={styles.popup}>
-              <ContextMenuItem>
+              <div style={{ height: "4px", width: "100%" }} />
+              <ContextMenuItem icon={<FileText size={14} />}>
                 New File
                 <ContextMenuShortcut>⌘+N</ContextMenuShortcut>
               </ContextMenuItem>
-              <ContextMenuItem>
+              <ContextMenuItem icon={<FolderPlus size={14} />}>
                 New Folder
                 <ContextMenuShortcut>⌘+⇧+N</ContextMenuShortcut>
               </ContextMenuItem>
               <ContextMenuSeparator />
 
               <ContextMenuSubmenuRoot>
-                <ContextMenuSubmenuTrigger>Share</ContextMenuSubmenuTrigger>
+                <ContextMenuSubmenuTrigger>
+                  <Share2 size={14} style={{ marginLeft: "4px" }} />
+                  Share
+                </ContextMenuSubmenuTrigger>
                 <ContextMenuPortal>
                   <ContextMenuPositioner>
                     <ContextMenuPopup>
-                      <ContextMenuItem>Email Link</ContextMenuItem>
-                      <ContextMenuItem>Copy Link</ContextMenuItem>
+                      <div style={{ height: "4px", width: "100%" }} />
+                      <ContextMenuItem style={{ paddingLeft: "12px" }}>
+                        Email Link
+                      </ContextMenuItem>
+                      <ContextMenuItem style={{ paddingLeft: "12px" }}>
+                        Copy Link
+                      </ContextMenuItem>
                       <ContextMenuSeparator />
-                      <ContextMenuItem>More...</ContextMenuItem>
+                      <ContextMenuItem icon={<MoreHorizontal size={14} />}>
+                        More...
+                      </ContextMenuItem>
+                      <div style={{ height: "4px", width: "100%" }} />
                     </ContextMenuPopup>
                   </ContextMenuPositioner>
                 </ContextMenuPortal>
               </ContextMenuSubmenuRoot>
 
               <ContextMenuSeparator />
-              <ContextMenuItem>
+              <ContextMenuItem icon={<Copy size={14} />}>
                 Copy
                 <ContextMenuShortcut>⌘+C</ContextMenuShortcut>
               </ContextMenuItem>
-              <ContextMenuItem>
+              <ContextMenuItem icon={<Scissors size={14} />}>
                 Cut
                 <ContextMenuShortcut>⌘+X</ContextMenuShortcut>
               </ContextMenuItem>
-              <ContextMenuItem>
+              <ContextMenuItem icon={<Copy size={14} />}>
                 Paste
                 <ContextMenuShortcut>⌘+V</ContextMenuShortcut>
               </ContextMenuItem>
               <ContextMenuSeparator />
-              <ContextMenuItem className={styles.deleteItem}>
+              <ContextMenuItem
+                className={styles.deleteItem}
+                icon={<Trash2 size={14} />}
+              >
                 Delete
-                <ContextMenuShortcut className="destructiveIcon">
-                  ⌫
-                </ContextMenuShortcut>
+                <ContextMenuShortcut>⌫</ContextMenuShortcut>
               </ContextMenuItem>
+              <div style={{ height: "4px", width: "100%" }} />
             </ContextMenuPopup>
           </ContextMenuPositioner>
         </ContextMenuPortal>

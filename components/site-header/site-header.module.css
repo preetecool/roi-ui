@@ -34,7 +34,6 @@
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--mix-card-15-bg);
   padding: 0 8px;
   border-radius: var(--radius);
 }
@@ -105,7 +104,7 @@
 .separator {
   width: 1px;
   height: 1.25rem;
-  background-color: var(--border-dark);
+  background-color: var(--border);
 }
 
 .mobileMenuWrapper {
@@ -118,7 +117,7 @@
 }
 
 .innerWrapper {
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border);
   padding-left: 8px;
   padding-right: 8px;
   display: flex;

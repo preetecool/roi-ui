@@ -1,16 +1,14 @@
 import { highlightCode } from "@/lib/highlight-code";
+import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./component-source.module.css";
 import {
   getDisplayTitle,
   loadCodeByName,
   loadCodeBySrc,
+  loadMultipleFiles,
   transformCode,
 } from "./component-source-helpers";
-import {
-  CollapsibleCodeDisplay,
-  EmbeddedCodeDisplay,
-  StandardCodeDisplay,
-} from "./component-source-renderers";
+import { ComponentSourceTabs } from "./component-source-tabs";
 
 type ComponentSourceProps = {
   name?: string;
@@ -19,9 +17,6 @@ type ComponentSourceProps = {
   language?: string;
   embedded?: boolean;
   collapsible?: boolean;
-  buttonText?: string;
-  previewLines?: number;
-  variant?: "default" | "manual";
 };
 
 export async function ComponentSource({
@@ -30,11 +25,37 @@ export async function ComponentSource({
   title,
   language = "tsx",
   embedded = false,
-  collapsible = false,
-  buttonText = "Show code",
-  previewLines = 10,
-  variant = "default",
 }: ComponentSourceProps) {
+  if (!(name || src)) {
+    return null;
+  }
+
+  // Check for multi-file components first (only for name-based lookups)
+  if (name) {
+    const multipleFiles = await loadMultipleFiles(name);
+
+    if (multipleFiles) {
+      // Process and highlight all files
+      const processedFiles = await Promise.all(
+        multipleFiles.map(async (file) => {
+          const transformedContent = transformCode(file.content);
+          const highlightedContent = await highlightCode(
+            transformedContent,
+            file.language
+          );
+          return {
+            name: file.name,
+            content: transformedContent,
+            highlightedContent,
+          };
+        })
+      );
+
+      return <ComponentSourceTabs files={processedFiles} />;
+    }
+  }
+
+  // Single file component
   let code: string | undefined;
 
   if (name) {
@@ -51,41 +72,20 @@ export async function ComponentSource({
   const displayTitle = getDisplayTitle(title, name, src);
   const highlightedCode = await highlightCode(transformedCode, language);
 
-  if (embedded) {
-    return (
-      <EmbeddedCodeDisplay
-        displayTitle={displayTitle}
-        highlightedCode={highlightedCode}
-        language={language}
-        transformedCode={transformedCode}
-      />
-    );
-  }
-
-  if (collapsible) {
-    const codeLines = transformedCode.split("\n");
-    const hasMoreLines = codeLines.length > previewLines;
-
-    return (
-      <CollapsibleCodeDisplay
-        buttonText={buttonText}
-        displayTitle={displayTitle}
-        hasMoreLines={hasMoreLines}
-        highlightedCode={highlightedCode}
-        language={language}
-        transformedCode={transformedCode}
-        variant={variant}
-      />
-    );
-  }
-
   return (
-    <StandardCodeDisplay
-      displayTitle={displayTitle}
-      highlightedCode={highlightedCode}
-      language={language}
-      transformedCode={transformedCode}
-      variant={variant}
-    />
+    <div className={`${styles.container} ${embedded ? styles.embedded : ""}`}>
+      <div className={styles.header}>
+        <span className={styles.title}>{displayTitle}</span>
+        <CopyButton code={transformedCode} />
+      </div>
+
+      <div className={styles.codeContent}>
+        <div
+          className={`code-container ${styles.codeContainer}`}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
+          dangerouslySetInnerHTML={{ __html: highlightedCode }}
+        />
+      </div>
+    </div>
   );
 }

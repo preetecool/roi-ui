@@ -136,6 +136,7 @@ const HomeContent = memo(() => (
         display: "flex",
         gap: "40px",
         alignItems: "flex-start",
+        minHeight: "360px",
       }}
     >
       <HomeAnimatedCard />
@@ -269,7 +270,6 @@ const InteractiveGrid = memo(() => {
         paddingBottom: "clamp(2rem, 5vw, 4rem)",
         paddingLeft: "max(24px, 5vw)",
         paddingRight: "max(24px, 5vw)",
-        backgroundColor: "var(--mix-card-15-bg)",
       }}
     >
       <StaticBackgrounds />
@@ -283,10 +283,14 @@ InteractiveGrid.displayName = "InteractiveGrid";
 
 export default function HomeClient({ pageTree }: HomeClientProps) {
   return (
-    <>
+    <div
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+    >
       <MemoizedSiteHeader pageTree={pageTree} />
-      <InteractiveGrid />
+      <div style={{ flex: 1 }}>
+        <InteractiveGrid />
+      </div>
       <SiteFooter />
-    </>
+    </div>
   );
 }

@@ -26,9 +26,8 @@ function DropdownMenuPositioner({
 }: React.ComponentProps<typeof Menu.Positioner>) {
   return (
     <Menu.Positioner
-      align="start"
       className={cn(styles.positioner, className)}
-      side="bottom"
+      side="top"
       {...props}
     />
   );
@@ -66,7 +65,9 @@ function DropdownMenuSeparator({
   ...props
 }: React.ComponentProps<typeof Menu.Separator>) {
   return (
-    <Menu.Separator className={cn(styles.separator, className)} {...props} />
+    <div className={styles.seperatorWrapper}>
+      <Menu.Separator className={cn(styles.separator, className)} {...props} />
+    </div>
   );
 }
 

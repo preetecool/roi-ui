@@ -87,54 +87,19 @@
 }
 
 .navButton {
-  position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--foreground);
+  /* Minimal unstyled button - styling should be done in demos/examples */
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
-  transition: all 0.2s var(--ease-out-quad);
-  opacity: 0.9;
-}
-
-.navButton:hover {
-  opacity: 1;
-  background: var(--muted);
-  transform: scale(1.05);
-}
-
-.navButton:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
-
-.navButton:active {
-  transform: scale(0.95);
 }
 
 .navButton:disabled {
-  opacity: 0.3;
-  cursor: default;
-  background: var(--muted);
-  color: var(--muted-foreground);
-  pointer-events: none;
-}
-
-.navButton:disabled:hover {
-  opacity: 0.3;
-  transform: none;
-  background: var(--muted);
-}
-
-.navButton svg {
-  width: 1rem;
-  height: 1rem;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .indicators {
@@ -190,7 +155,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .navButton,
   .indicator {
     transition: none;
   }

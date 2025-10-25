@@ -42,7 +42,7 @@
   animation: slideIn 0.2s ease;
   background-color: var(--background);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .commandWrapper [cmdk-input] {
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -76,7 +76,7 @@
 .commandWrapper [cmdk-item]:hover,
 .commandWrapper [cmdk-item][data-selected="true"] {
   background-color: var(--mix-muted-50-trans);
-  border-color: var(--border-light);
+  border-color: var(--border);
 }
 
 .commandWrapper [cmdk-list] {
@@ -178,7 +178,7 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin: 0 -0.25rem -0.25rem -0.25rem;
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border);
   background-color: var(--mix-muted-20-trans);
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
