@@ -32,7 +32,7 @@
 .popup {
   position: relative;
   box-sizing: border-box;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius);
   background-color: var(--mix-card-33-bg);
   color: var(--popover-foreground);

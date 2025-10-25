@@ -36,6 +36,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
     const element = document.querySelector(url);
     element?.scrollIntoView({ behavior: "smooth" });
     setActiveId(url);
+    window.history.pushState(null, "", url);
   };
 
   if (!toc || toc.length === 0) {
