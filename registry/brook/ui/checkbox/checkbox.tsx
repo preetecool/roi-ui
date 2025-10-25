@@ -8,7 +8,12 @@ function CheckboxRoot({
   className,
   ...props
 }: React.ComponentProps<typeof Checkbox.Root>) {
-  return <Checkbox.Root className={cn(styles.root, className)} {...props} />;
+  return (
+    <Checkbox.Root
+      className={cn("hit-area-extend", styles.root, className)}
+      {...props}
+    />
+  );
 }
 
 function CheckboxIndicator({
