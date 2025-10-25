@@ -17,7 +17,7 @@
   background-color: var(--mix-card-33-bg);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   padding: 0.25rem;
   gap: 0.25rem;
   overflow-x: auto;
@@ -49,7 +49,7 @@
   cursor: pointer;
   position: relative;
   margin-right: 0.25rem;
-  border: 1px solid transparent;
+  border: 0.5px solid transparent;
   flex-shrink: 0;
 }
 
@@ -86,7 +86,7 @@
 .content {
   margin-top: 0;
   border-radius: 0 0 var(--radius) var(--radius);
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-top: none;
   padding: 1.5rem;
   background-color: var(--mix-card-33-bg);

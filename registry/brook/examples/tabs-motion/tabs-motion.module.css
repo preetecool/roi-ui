@@ -36,7 +36,7 @@
   overflow: hidden;
   margin-top: 0;
   border-radius: 0 0 var(--radius) var(--radius);
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-top: none;
   background-color: var(--mix-card-33-bg);
 }

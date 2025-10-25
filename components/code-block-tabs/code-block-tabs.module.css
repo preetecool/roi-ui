@@ -1,5 +1,5 @@
 .container {
-  border-radius: var(--radius);
+  /*border-radius: var(--radius);*/
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
   overflow: hidden;
 }
