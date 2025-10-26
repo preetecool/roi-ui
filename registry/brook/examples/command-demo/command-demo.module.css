@@ -1,6 +1,6 @@
 .command {
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  /*border-radius: var(--radius-lg);*/
   box-shadow: var(--shadow-lg);
   background-color: var(--background);
 }
@@ -10,7 +10,6 @@
 }
 
 .commandInput {
-  border-bottom: 1px solid var(--border);
   border-radius: 0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -19,7 +18,7 @@
 
 .command [cmdk-item] {
   min-height: 2.5rem;
-  padding: 0.625rem 0.5rem;
+  padding: 0.625rem 0.375rem !important;
   font-weight: 400;
   border: 1px solid transparent;
 }
@@ -34,13 +33,12 @@
 
 .command [cmdk-item]:hover,
 .command [cmdk-item][data-selected="true"] {
-  background-color: var(--mix-muted-50-trans);
-  border-color: var(--border);
+  background-color: var(--mix-card-50-bg);
 }
 
 .command [cmdk-list] {
   scrollbar-width: thin;
-  scrollbar-color: var(--mix-border-50-trans) transparent;
+  scrollbar-color: var(--mix-card-50-bg) transparent;
 }
 
 .command [cmdk-list]::-webkit-scrollbar {
@@ -66,10 +64,9 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin: 0 -0.25rem -0.25rem -0.25rem;
-  border-top: 1px solid var(--border);
+  border-top: 0.5px solid oklch(from var(--border) l c h / 0.5);
+
   background-color: var(--mix-muted-20-trans);
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
 }
 
 .commandFooterItem {
