@@ -28,3 +28,13 @@
   justify-content: flex-end;
   margin-top: 8px;
 }
+
+.hideOnMobile {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+}

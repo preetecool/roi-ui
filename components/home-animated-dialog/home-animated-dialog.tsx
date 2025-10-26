@@ -53,6 +53,7 @@ export const HomeAnimatedDialog = () => {
   return (
     <motion.div
       animate={{ transform: "translateY(0px) rotate(4deg)", opacity: 1 }}
+      className={styles.hideOnMobile}
       initial={{ transform: "translateY(40px) rotate(4deg)", opacity: 0 }}
       style={{ transformOrigin: "top left" }}
       transition={{

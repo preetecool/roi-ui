@@ -249,9 +249,6 @@ html {
   color: var(--foreground);
   color-scheme: light dark;
 }
-body {
-  background-color: var(--background);
-}
 
 a {
   color: inherit;
