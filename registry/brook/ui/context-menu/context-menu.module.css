@@ -272,6 +272,10 @@
   opacity: 0.6;
 }
 
+.submenuTrigger:hover .submenuIcon {
+  color: var(--secondary-foreground);
+}
+
 .group {
   overflow: hidden;
 }

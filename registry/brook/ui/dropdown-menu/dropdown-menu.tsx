@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu } from "@base-ui-components/react/menu";
+import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./dropdown-menu.module.css";
@@ -86,13 +87,17 @@ function DropdownMenuSubmenuRoot({
 
 function DropdownMenuSubmenuTrigger({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof Menu.SubmenuTrigger>) {
   return (
     <Menu.SubmenuTrigger
       className={cn(styles.submenuTrigger, className)}
       {...props}
-    />
+    >
+      {children}
+      <ChevronRight className={styles.submenuIcon} size={16} />
+    </Menu.SubmenuTrigger>
   );
 }
 
