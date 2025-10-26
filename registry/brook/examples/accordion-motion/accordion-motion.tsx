@@ -1,13 +1,8 @@
 "use client";
 
 import { Accordion } from "@base-ui-components/react/accordion";
-import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
 import styles from "./accordion-motion.module.css";
-
-// biome-ignore lint/style/noMagicNumbers: cubic-bezier easing curve values
-const EASE_IN_OUT_CUBIC = [0.455, 0.03, 0.515, 0.955] as const;
-const ICON_ROTATION = 90;
 
 const accordionItems = [
   {
@@ -35,97 +30,52 @@ export default function AccordionFramerMotion() {
 
   return (
     <div className={styles.container}>
-      <MotionConfig transition={{ duration: 0.15, ease: EASE_IN_OUT_CUBIC }}>
-        <Accordion.Root onValueChange={setValue} value={value}>
-          {accordionItems.map((item) => {
-            const isOpen = value.includes(item.id);
-            return (
-              <Accordion.Item
-                className={styles.accordionItem}
-                key={item.id}
-                value={item.id}
-              >
-                <Accordion.Header>
-                  <motion.div
-                    className={styles.triggerContainer}
-                    whileHover="hover"
+      <Accordion.Root onValueChange={setValue} value={value}>
+        {accordionItems.map((item) => (
+          <Accordion.Item
+            className={styles.accordionItem}
+            key={item.id}
+            value={item.id}
+          >
+            <Accordion.Header>
+              <Accordion.Trigger className={styles.trigger}>
+                <div className={styles.icon}>
+                  <svg
+                    aria-label="Accordion toggle icon"
+                    fill="none"
+                    height="18"
+                    role="img"
+                    viewBox="0 0 20 20"
+                    width="18"
                   >
-                    <Accordion.Trigger
-                      className={styles.trigger}
-                      key="trigger"
-                      render={<motion.button />}
-                    >
-                      <motion.div
-                        animate={{ rotate: isOpen ? ICON_ROTATION : 0 }}
-                        className={styles.icon}
-                      >
-                        <svg
-                          aria-label="Accordion toggle icon"
-                          fill="none"
-                          height="18"
-                          role="img"
-                          viewBox="0 0 20 20"
-                          width="18"
-                        >
-                          <title>Toggle accordion</title>
-                          <motion.path
-                            animate={{
-                              d: isOpen ? "M10 4L10 16" : "M4 10L16 10",
-                              scale: isOpen ? 0 : 1,
-                            }}
-                            d="M4 10L16 10"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeWidth="2"
-                          />
+                    <title>Toggle accordion</title>
+                    <path
+                      className={styles.horizontalLine}
+                      d="M4 10L16 10"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M10 4L10 16"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+                <div>{item.title}</div>
+              </Accordion.Trigger>
+            </Accordion.Header>
 
-                          <path
-                            d="M10 4L10 16"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeWidth="2"
-                          />
-                        </svg>
-                      </motion.div>
-                      <div>{item.title}</div>
-                    </Accordion.Trigger>
-                  </motion.div>
-                </Accordion.Header>
-
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div className={styles.content} key="content">
-                      <motion.div
-                        animate={{
-                          height: "auto",
-                          opacity: 1,
-                          filter: "blur(0px)",
-                          scale: 1,
-                        }}
-                        className={styles.contentInner}
-                        exit={{
-                          height: 0,
-                          opacity: 0,
-                          filter: "blur(2px)",
-                          scale: 0.95,
-                        }}
-                        initial={{
-                          height: 0,
-                          opacity: 0,
-                          filter: "blur(2px)",
-                          scale: 0.95,
-                        }}
-                      >
-                        {item.content}
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Accordion.Item>
-            );
-          })}
-        </Accordion.Root>
-      </MotionConfig>
+            <Accordion.Panel className={styles.panel}>
+              <div className={styles.content}>
+                <div className={styles.contentInner}>{item.content}</div>
+              </div>
+            </Accordion.Panel>
+          </Accordion.Item>
+        ))}
+      </Accordion.Root>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/brook/ui/chart";
+} from "@/registry/brook/ui/chart/chart";
 import styles from "./chart-line-demo.module.css";
 
 const chartData = [
