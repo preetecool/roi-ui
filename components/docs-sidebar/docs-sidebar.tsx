@@ -429,7 +429,7 @@ function DocsSidebarGroup({
   // Simple link item
   if (!hasChildren && item.type === "page" && item.url) {
     return (
-      <SidebarMenuItem>
+      <SidebarMenuItem className={styles.menuButton}>
         <SidebarMenuButton
           isActive={isActive}
           render={<Link href={item.url} />}

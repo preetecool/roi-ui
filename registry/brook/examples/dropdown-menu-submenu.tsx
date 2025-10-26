@@ -1,4 +1,3 @@
-import { ChevronRight } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   DropdownMenu,
@@ -30,11 +29,8 @@ export default function DropdownMenuSubmenu() {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuSubmenuRoot>
-              <DropdownMenuSubmenuTrigger
-                style={{ justifyContent: "space-between" }}
-              >
+              <DropdownMenuSubmenuTrigger>
                 <span style={{ marginLeft: "4px" }}>More Options</span>
-                <ChevronRight size={16} />
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuPositioner align="start" side="right">

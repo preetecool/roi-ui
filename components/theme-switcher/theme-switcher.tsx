@@ -11,8 +11,12 @@ export function ThemeSwitcher() {
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
 
-    if (typeof document !== "undefined" && "startViewTransition" in document) {
-      (document as any).startViewTransition(() => {
+    if (
+      typeof document !== "undefined" &&
+      "startViewTransition" in document &&
+      typeof document.startViewTransition === "function"
+    ) {
+      document.startViewTransition(() => {
         setTheme(newTheme);
       });
     } else {

@@ -1,3 +1,8 @@
+.root {
+  isolation: isolate;
+  background-color: var(--background);
+}
+
 :root {
   --radius: 0.6rem;
   --radius-lg: 1.2rem;
@@ -163,7 +168,7 @@
 
 .dark,
 [data-theme="dark"] {
-  --background: oklch(0.18 0 0);
+  --background: oklch(0.15 0 0);
   --foreground: oklch(0.94 0 0);
   --card: oklch(0.19 0 0);
   --card-light: oklch(0.2 0 0);
@@ -248,9 +253,29 @@ html {
   overflow-x: hidden;
   color: var(--foreground);
   color-scheme: light dark;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 body {
   background-color: var(--background);
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
 }
 
 a {
@@ -274,10 +299,6 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-.root {
-  isolation: isolate;
 }
 
 ::selection {
