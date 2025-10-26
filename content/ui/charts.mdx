@@ -67,3 +67,131 @@ Copy and paste the CSS file:
 ## Pie Chart
 
 <ComponentPreview name="chart-pie-demo" replayButton={true} />
+
+## Props
+
+### ChartContainer
+
+The main container component for all charts. Provides configuration and responsive sizing.
+
+<PropTable
+  data={[
+    {
+      prop: "config",
+      type: "ChartConfig",
+      description: "Configuration object that defines chart colors, labels, and icons for data keys",
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      description: "The Recharts component (LineChart, BarChart, etc.) to render inside the container",
+    },
+    {
+      prop: "id",
+      type: "string",
+      description: "Optional unique identifier for the chart. Auto-generated if not provided",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the chart container",
+    },
+  ]}
+/>
+
+### ChartTooltipContent
+
+Custom tooltip content component for displaying data on hover.
+
+<PropTable
+  data={[
+    {
+      prop: "indicator",
+      type: '"line" | "dot" | "dashed"',
+      default: '"dot"',
+      description: "The visual style of the indicator shown next to each tooltip item",
+    },
+    {
+      prop: "hideLabel",
+      type: "boolean",
+      default: "false",
+      description: "Whether to hide the tooltip label (typically the x-axis value)",
+    },
+    {
+      prop: "hideIndicator",
+      type: "boolean",
+      default: "false",
+      description: "Whether to hide the color indicator for each data series",
+    },
+    {
+      prop: "labelFormatter",
+      type: "function",
+      description: "Function to format the tooltip label. Receives (value, payload) and returns ReactNode",
+    },
+    {
+      prop: "formatter",
+      type: "function",
+      description: "Function to format individual tooltip values. Receives (value, name, item, index, payload)",
+    },
+    {
+      prop: "labelClassName",
+      type: "string",
+      description: "Additional CSS classes to apply to the tooltip label",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the tooltip container",
+    },
+    {
+      prop: "color",
+      type: "string",
+      description: "Override color for all tooltip indicators",
+    },
+    {
+      prop: "nameKey",
+      type: "string",
+      description: "Key to use for looking up item names in the config",
+    },
+    {
+      prop: "labelKey",
+      type: "string",
+      description: "Key to use for looking up the label value from the payload",
+    },
+  ]}
+/>
+
+### ChartLegendContent
+
+Custom legend component for displaying chart data series.
+
+<PropTable
+  data={[
+    {
+      prop: "hideIcon",
+      type: "boolean",
+      default: "false",
+      description: "Whether to hide custom icons defined in the chart config",
+    },
+    {
+      prop: "verticalAlign",
+      type: '"top" | "bottom"',
+      default: '"bottom"',
+      description: "Vertical alignment of the legend",
+    },
+    {
+      prop: "nameKey",
+      type: "string",
+      description: "Key to use for looking up item names in the config",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the legend container",
+    },
+  ]}
+/>
+
+### Chart Types
+
+For individual chart components (LineChart, BarChart, AreaChart, PieChart, etc.), refer to the [Recharts API documentation](https://recharts.org/en-US/api).

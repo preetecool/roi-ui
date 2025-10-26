@@ -35,6 +35,7 @@ export default defineConfig({
           },
           transformers,
           defaultLang: "tsx",
+          inline: "tailing-curly-colon",
         },
       ],
     ],

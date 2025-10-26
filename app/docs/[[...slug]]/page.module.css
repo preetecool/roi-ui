@@ -177,14 +177,14 @@
 }
 
 .contentWrapper :global(th) {
-  padding: 0.75rem 1rem;
+  padding: 0.375rem 1rem;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--foreground);
+  background-color: oklch(from var(--background) l c h / 0.1) !important;
 }
 
 .contentWrapper :global(td) {
-  padding: 0.75rem 1rem;
   color: var(--foreground);
 }
 

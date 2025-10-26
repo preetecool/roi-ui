@@ -123,7 +123,7 @@ The main carousel component that manages state and provides context.
         },
         {
             prop: "onIndexChange",
-            type: "(index: number) => void",
+            type: "function",
             description: "Callback when index changes",
         },
         {
@@ -207,7 +207,7 @@ Container for navigation buttons with default Previous/Next rendering.
         },
         {
             prop: "children",
-            type: "React.ReactNode",
+            type: "ReactNode",
             description: "Custom navigation buttons (defaults to Previous and Next)",
         },
     ]}
@@ -226,7 +226,7 @@ Previous button that auto-disables at start.
         },
         {
             prop: "children",
-            type: "React.ReactNode",
+            type: "ReactNode",
             description: "Custom content for the previous button (defaults to left arrow icon)",
         },
     ]}
@@ -245,7 +245,7 @@ Next button that auto-disables at end.
         },
         {
             prop: "children",
-            type: "React.ReactNode",
+            type: "ReactNode",
             description: "Custom content for the next button (defaults to right arrow icon)",
         },
     ]}
