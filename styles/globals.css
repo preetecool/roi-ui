@@ -165,7 +165,6 @@
 [data-theme="dark"] {
   --background: oklch(0.18 0 0);
   --foreground: oklch(0.94 0 0);
-  --text: oklch(0.82 0 0);
   --card: oklch(0.19 0 0);
   --card-light: oklch(0.2 0 0);
   --popover-foreground: oklch(0.94 0 0);
@@ -248,12 +247,7 @@ html {
   max-width: 100vw;
   overflow-x: hidden;
   color: var(--foreground);
-}
-
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  color: var(--foreground);
+  color-scheme: light dark;
 }
 
 a {
@@ -309,14 +303,4 @@ select {
   height: 100%;
   min-height: 44px;
   min-width: 44px;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0ms;
-  mix-blend-mode: normal;
-}
-
-html {
-  color-scheme: light dark;
 }
