@@ -12,7 +12,7 @@ export default function AlertDestructive() {
   return (
     <div className={styles.container}>
       <Alert variant="destructive">
-        <Ban />
+        <Ban size={16} />
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>
           Your session has expired. Please log in again.

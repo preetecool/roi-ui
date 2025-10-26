@@ -10,10 +10,11 @@
   align-items: start;
   font-size: 0.75rem;
   line-height: 1.2;
-  background-color: var(--mix-card-70-bg);
+  background-color: var(--mix-card-33-bg);
   box-shadow:
-    0 1px 2px oklch(from var(--foreground) l c h / 0.04),
-    inset 0 0 0 1px oklch(from var(--background) l c h / 0.02);
+    oklch(from var(--border) l c h / 0.2) 0px 1px 2px,
+    oklch(from var(--border) l c h / 0.2) 0px 1px 2px,
+    oklch(from var(--border) l c h / 0.2) 0px 1px 1px;
 }
 
 .alert:has(> svg) {
@@ -31,6 +32,7 @@
   font-size: 0.875rem;
   grid-column-start: 2;
   letter-spacing: -0.02em;
+  color: var(--secondary-foreground);
 }
 
 .description {
@@ -59,15 +61,15 @@
 }
 
 .warning {
-  color: var(--warning);
+  color: var(--warning-foreground);
 }
 
 .warning .title {
-  color: var(--warning);
+  color: var(--warning-foreground);
 }
 
 .warning .description {
-  color: var(--warning);
+  color: var(--warning-foreground);
 }
 
 .success {

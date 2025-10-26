@@ -12,6 +12,10 @@
   overflow: hidden;
   line-height: 1.2;
   letter-spacing: -0.014em;
+  box-shadow:
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
 }
 .base:active:not(:disabled):not(.loading) {
   transform: scale(0.97);

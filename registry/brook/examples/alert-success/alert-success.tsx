@@ -12,7 +12,7 @@ export default function AlertSuccess() {
   return (
     <div className={styles.container}>
       <Alert variant="success">
-        <CheckCircle />
+        <CheckCircle size={16} />
         <AlertTitle>Success</AlertTitle>
         <AlertDescription>
           Your account has been created successfully.
