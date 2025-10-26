@@ -126,6 +126,7 @@
   opacity: 0;
   &[data-closed] {
     opacity: 0;
+    padding: 0;
   }
   &[data-open] {
     opacity: 1;
