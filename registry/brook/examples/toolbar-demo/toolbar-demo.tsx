@@ -9,6 +9,15 @@ import {
   ToolbarLink,
   ToolbarSeparator,
 } from "@/registry/brook/ui/toolbar/toolbar";
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipPopup,
+  TooltipPortal,
+  TooltipPositioner,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/registry/brook/ui/tooltip/tooltip";
 import styles from "./toolbar-demo.module.css";
 
 function BoldIcon() {
@@ -113,40 +122,136 @@ function AlignRightIcon() {
 
 export default function ToolbarDemo() {
   return (
-    <div className={styles.scrollContainer}>
-      <Toolbar>
-        <ToggleGroup aria-label="Text formatting" multiple>
-          <ToggleGroupItem aria-label="Bold" value="bold">
-            <BoldIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem aria-label="Italic" value="italic">
-            <ItalicIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem aria-label="Underline" value="underline">
-            <UnderlineIcon />
-          </ToggleGroupItem>
-        </ToggleGroup>
+    <TooltipProvider delay={300}>
+      <div className={styles.scrollContainer}>
+        <Toolbar>
+          <ToggleGroup aria-label="Text formatting" multiple>
+            <Tooltip>
+              <TooltipTrigger
+                aria-label="Bold"
+                render={
+                  <ToggleGroupItem aria-label="Bold" value="bold">
+                    <BoldIcon />
+                  </ToggleGroupItem>
+                }
+              />
+              <TooltipPortal>
+                <TooltipPositioner side="top" sideOffset={8}>
+                  <TooltipPopup>
+                    <TooltipArrow />
+                    Bold
+                  </TooltipPopup>
+                </TooltipPositioner>
+              </TooltipPortal>
+            </Tooltip>
 
-        <ToolbarSeparator />
+            <Tooltip>
+              <TooltipTrigger
+                aria-label="Italic"
+                render={
+                  <ToggleGroupItem aria-label="Italic" value="italic">
+                    <ItalicIcon />
+                  </ToggleGroupItem>
+                }
+              />
+              <TooltipPortal>
+                <TooltipPositioner side="top" sideOffset={8}>
+                  <TooltipPopup>
+                    <TooltipArrow />
+                    Italic
+                  </TooltipPopup>
+                </TooltipPositioner>
+              </TooltipPortal>
+            </Tooltip>
 
-        <ToggleGroup aria-label="Text alignment">
-          <ToggleGroupItem aria-label="Align left" value="left">
-            <AlignLeftIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem aria-label="Align center" value="center">
-            <AlignCenterIcon />
-          </ToggleGroupItem>
-          <ToggleGroupItem aria-label="Align right" value="right">
-            <AlignRightIcon />
-          </ToggleGroupItem>
-        </ToggleGroup>
+            <Tooltip>
+              <TooltipTrigger
+                aria-label="Underline"
+                render={
+                  <ToggleGroupItem aria-label="Underline" value="underline">
+                    <UnderlineIcon />
+                  </ToggleGroupItem>
+                }
+              />
+              <TooltipPortal>
+                <TooltipPositioner side="top" sideOffset={8}>
+                  <TooltipPopup>
+                    <TooltipArrow />
+                    Underline
+                  </TooltipPopup>
+                </TooltipPositioner>
+              </TooltipPortal>
+            </Tooltip>
+          </ToggleGroup>
 
-        <ToolbarSeparator />
+          <ToolbarSeparator />
 
-        <ToolbarLink aria-label="Help" href="#">
-          Help
-        </ToolbarLink>
-      </Toolbar>
-    </div>
+          <ToggleGroup aria-label="Text alignment">
+            <Tooltip>
+              <TooltipTrigger
+                aria-label="Align left"
+                render={
+                  <ToggleGroupItem aria-label="Align left" value="left">
+                    <AlignLeftIcon />
+                  </ToggleGroupItem>
+                }
+              />
+              <TooltipPortal>
+                <TooltipPositioner side="top" sideOffset={8}>
+                  <TooltipPopup>
+                    <TooltipArrow />
+                    Align left
+                  </TooltipPopup>
+                </TooltipPositioner>
+              </TooltipPortal>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger
+                aria-label="Align center"
+                render={
+                  <ToggleGroupItem aria-label="Align center" value="center">
+                    <AlignCenterIcon />
+                  </ToggleGroupItem>
+                }
+              />
+              <TooltipPortal>
+                <TooltipPositioner side="top" sideOffset={8}>
+                  <TooltipPopup>
+                    <TooltipArrow />
+                    Align center
+                  </TooltipPopup>
+                </TooltipPositioner>
+              </TooltipPortal>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger
+                aria-label="Align right"
+                render={
+                  <ToggleGroupItem aria-label="Align right" value="right">
+                    <AlignRightIcon />
+                  </ToggleGroupItem>
+                }
+              />
+              <TooltipPortal>
+                <TooltipPositioner side="top" sideOffset={8}>
+                  <TooltipPopup>
+                    <TooltipArrow />
+                    Align right
+                  </TooltipPopup>
+                </TooltipPositioner>
+              </TooltipPortal>
+            </Tooltip>
+          </ToggleGroup>
+
+          <ToolbarSeparator />
+
+          <ToolbarLink aria-label="Help" href="#">
+            Help
+          </ToolbarLink>
+        </Toolbar>
+      </div>
+    </TooltipProvider>
   );
 }
