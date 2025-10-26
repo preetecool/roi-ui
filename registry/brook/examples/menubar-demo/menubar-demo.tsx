@@ -19,7 +19,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button size="sm" variant="ghost">
+            <Button className={styles.trigger} size="sm" variant="ghost">
               File
             </Button>
           }
@@ -27,6 +27,7 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
+              <div style={{ height: "4px", width: "100%" }} />
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   New File
@@ -54,9 +55,11 @@ export default function MenubarDemo() {
                 <MenubarMenuPortal>
                   <MenubarMenuPositioner align="start" side="right">
                     <MenubarMenuPopup>
+                      <div style={{ height: "4px", width: "100%" }} />
                       <MenubarMenuItem>PDF</MenubarMenuItem>
                       <MenubarMenuItem>PNG</MenubarMenuItem>
                       <MenubarMenuItem>SVG</MenubarMenuItem>
+                      <div style={{ height: "4px", width: "100%" }} />
                     </MenubarMenuPopup>
                   </MenubarMenuPositioner>
                 </MenubarMenuPortal>
@@ -64,6 +67,7 @@ export default function MenubarDemo() {
 
               <MenubarMenuSeparator />
               <MenubarMenuItem>Print</MenubarMenuItem>
+              <div style={{ height: "4px", width: "100%" }} />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -72,7 +76,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button size="sm" variant="ghost">
+            <Button className={styles.trigger} size="sm" variant="ghost">
               Edit
             </Button>
           }
@@ -80,6 +84,7 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
+              <div style={{ height: "4px", width: "100%" }} />
               <MenubarMenuItem>
                 <div className={styles.menuItemContent}>
                   Undo
@@ -111,6 +116,7 @@ export default function MenubarDemo() {
                   <span className={styles.shortcut}>⌘V</span>
                 </div>
               </MenubarMenuItem>
+              <div style={{ height: "4px", width: "100%" }} />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -119,7 +125,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button size="sm" variant="ghost">
+            <Button className={styles.trigger} size="sm" variant="ghost">
               View
             </Button>
           }
@@ -127,6 +133,7 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
+              <div style={{ height: "4px", width: "100%" }} />
               <MenubarMenuItem>Toggle Sidebar</MenubarMenuItem>
               <MenubarMenuItem>Toggle Fullscreen</MenubarMenuItem>
               <MenubarMenuSeparator />
@@ -140,12 +147,15 @@ export default function MenubarDemo() {
                 <MenubarMenuPortal>
                   <MenubarMenuPositioner align="start" side="right">
                     <MenubarMenuPopup>
+                      <div style={{ height: "4px", width: "100%" }} />
                       <MenubarMenuItem>Single Page</MenubarMenuItem>
                       <MenubarMenuItem>Two Pages</MenubarMenuItem>
+                      <div style={{ height: "4px", width: "100%" }} />
                     </MenubarMenuPopup>
                   </MenubarMenuPositioner>
                 </MenubarMenuPortal>
               </MenubarMenuSubmenuRoot>
+              <div style={{ height: "4px", width: "100%" }} />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -154,7 +164,7 @@ export default function MenubarDemo() {
       <MenubarMenu>
         <MenubarMenuTrigger
           render={
-            <Button size="sm" variant="ghost">
+            <Button className={styles.trigger} size="sm" variant="ghost">
               Help
             </Button>
           }
@@ -162,9 +172,11 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
+              <div style={{ height: "4px", width: "100%" }} />
               <MenubarMenuItem>About</MenubarMenuItem>
               <MenubarMenuItem>Documentation</MenubarMenuItem>
               <MenubarMenuItem disabled>Keyboard Shortcuts</MenubarMenuItem>
+              <div style={{ height: "4px", width: "100%" }} />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
