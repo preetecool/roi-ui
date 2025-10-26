@@ -21,7 +21,7 @@
 .divider {
   width: calc(100% + 32px);
   height: 1px;
-  background: var(--border);
+  background: oklch(from var(--border) l c h / 0.5);
   margin-left: -16px;
   margin-right: -16px;
   margin-top: auto;
@@ -56,20 +56,34 @@
   margin-bottom: 0;
 }
 
-.taskDropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.destructiveMenuItem {
+  color: var(--destructive);
+  isolation: isolate;
 }
 
-.taskDropdown .destructiveMenuItem {
+.destructiveMenuItem svg {
   color: var(--destructive);
 }
 
-.taskDropdown .destructiveMenuItem:hover,
-.taskDropdown .destructiveMenuItem[data-highlighted] {
-  background-color: var(--mix-destructive-66-bg) !important;
-  color: var(--destructive-foreground) !important;
+.destructiveMenuItem::before {
+  content: "";
+  position: absolute;
+  inset: 0 4px;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.destructiveMenuItem:hover::before {
+  background-color: var(--destructive);
+}
+
+.destructiveMenuItem:hover {
+  color: var(--destructive-foreground);
+}
+
+.destructiveMenuItem:hover svg {
+  color: var(--destructive-foreground);
 }
 
 @media (max-width: 1280px) {

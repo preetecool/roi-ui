@@ -41,6 +41,7 @@ import {
   DropdownMenuPopup,
   DropdownMenuPortal,
   DropdownMenuPositioner,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
 import styles from "./card-task.module.css";
@@ -69,25 +70,34 @@ export function CardTask() {
                 )}
               />
               <DropdownMenuPortal>
-                <DropdownMenuPositioner>
+                <DropdownMenuPositioner sideOffset={8}>
                   <DropdownMenuPopup
-                    className={styles.taskDropdown}
+                    render={<ul />}
                     style={{ minWidth: "160px" }}
                   >
-                    <DropdownMenuItem icon={<Calendar size="14" />}>
+                    <div style={{ height: "4px", width: "100%" }} />
+                    <DropdownMenuItem
+                      icon={<Calendar size="14" />}
+                      render={<li />}
+                    >
                       Change due date
                     </DropdownMenuItem>
-                    <DropdownMenuItem icon={<UserPlus size="14" />}>
+                    <DropdownMenuItem
+                      icon={<UserPlus size="14" />}
+                      render={<li />}
+                    >
                       Add collaborator
                     </DropdownMenuItem>
-
+                    <DropdownMenuSeparator />
                     <DropdownMenuItem
                       className={styles.destructiveMenuItem}
                       icon={<Trash size="14" />}
                       onClick={() => setAlertOpen(true)}
+                      render={<li />}
                     >
                       Delete task
                     </DropdownMenuItem>
+                    <div style={{ height: "4px", width: "100%" }} />
                   </DropdownMenuPopup>
                 </DropdownMenuPositioner>
               </DropdownMenuPortal>
