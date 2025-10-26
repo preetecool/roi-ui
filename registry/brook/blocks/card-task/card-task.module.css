@@ -21,7 +21,7 @@
 .divider {
   width: calc(100% + 32px);
   height: 1px;
-  background: var(--border);
+  background: oklch(from var(--border) l c h / 0.5);
   margin-left: -16px;
   margin-right: -16px;
   margin-top: auto;
@@ -31,7 +31,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  color: var(--muted-foreground);
+  color: oklch(from var(--muted-foreground) l c h / 0.6);
   font-size: 12px;
 }
 
@@ -54,22 +54,39 @@
 .taskFooter {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.taskDropdown {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.65rem;
 }
 
-.taskDropdown .destructiveMenuItem {
+.destructiveMenuItem {
+  color: var(--destructive);
+  isolation: isolate;
+}
+
+.destructiveMenuItem svg {
   color: var(--destructive);
 }
 
-.taskDropdown .destructiveMenuItem:hover,
-.taskDropdown .destructiveMenuItem[data-highlighted] {
-  background-color: var(--mix-destructive-66-bg) !important;
-  color: var(--destructive-foreground) !important;
+.destructiveMenuItem::before {
+  content: "";
+  position: absolute;
+  inset: 0 4px;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.destructiveMenuItem:hover::before {
+  background-color: var(--destructive);
+}
+
+.destructiveMenuItem:hover {
+  color: var(--destructive-foreground);
+}
+
+.destructiveMenuItem:hover svg {
+  color: var(--destructive-foreground);
 }
 
 @media (max-width: 1280px) {

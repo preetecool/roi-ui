@@ -315,7 +315,6 @@ select {
   height: 100%;
   min-height: 44px;
   min-width: 44px;
-  z-index: -1;
 }
 
 ::view-transition-old(root),

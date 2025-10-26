@@ -161,4 +161,4 @@ function Button({
 
 Button.displayName = "Button";
 
-export { Button };
+export { Button, ArrowPointer };

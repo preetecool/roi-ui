@@ -5,6 +5,7 @@ import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
 import { ComponentPreview } from "@/components/component-preview/component-preview";
 import { ComponentSource } from "@/components/component-source/component-source";
 import { GlobalsCSS } from "@/components/globals-css";
+import { HeadingAnchor } from "@/components/heading-anchor/heading-anchor";
 import {
   InstallationTabs,
   InstallationTabsContent,
@@ -54,21 +55,9 @@ export const mdxComponents = {
   h1: (props: ComponentProps<"h1">) => (
     <h1 style={{ color: "var(--docs-heading)" }} {...props} />
   ),
-  h2: (props: ComponentProps<"h2">) => {
-    const id = props.children
-      ?.toString()
-      .replace(/ /g, "-")
-      .replace(/'/g, "")
-      .replace(/\?/g, "")
-      .toLowerCase();
-    return <h2 id={id} style={{ color: "var(--docs-heading)" }} {...props} />;
-  },
-  h3: (props: ComponentProps<"h3">) => (
-    <h3 style={{ color: "var(--docs-heading)" }} {...props} />
-  ),
-  h4: (props: ComponentProps<"h4">) => (
-    <h4 style={{ color: "var(--docs-heading)" }} {...props} />
-  ),
+  h2: (props: ComponentProps<"h2">) => <HeadingAnchor level={2} {...props} />,
+  h3: (props: ComponentProps<"h3">) => <HeadingAnchor level={3} {...props} />,
+  h4: (props: ComponentProps<"h4">) => <HeadingAnchor level={4} {...props} />,
   p: (props: ComponentProps<"p">) => (
     <p style={{ color: "var(--foreground)" }} {...props} />
   ),

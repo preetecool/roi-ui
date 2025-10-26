@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
@@ -71,10 +72,12 @@ export const HomeHeader = () => {
 
   return (
     <div className={styles.container} key={reset}>
-      <Link className={styles.badge} href="/docs/examples/tabs-animated">
-        <span>New animated tabs component</span>
+      <Badge className={styles.badge} variant="outline">
+        <Link href="/docs/examples/tabs-animated">
+          <span>New animated tabs component</span>
+        </Link>
         <ArrowPointer />
-      </Link>
+      </Badge>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
           <span className={styles.wordContainer} key={word}>

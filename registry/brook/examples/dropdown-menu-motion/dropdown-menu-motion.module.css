@@ -6,26 +6,31 @@
   align-items: center;
   justify-content: center;
   border: 0.5px solid var(--border);
-  border-radius: 0.5rem;
   background-color: var(--mix-card-33-bg);
   cursor: pointer;
   color: var(--secondary-foreground);
   margin-left: 0;
+  z-index: 999;
 }
 
 .button:hover {
   background-color: var(--muted);
+
   transition: 150ms ease-out;
+}
+.button[data-popup-open] {
+  background-color: none;
+  opacity: 0;
+}
+.button[data-pressed] {
+  background-color: transparent;
+  opacity: 0;
+  border: none;
 }
 
 .button:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
-}
-
-.button[data-popup-open] {
-  background-color: var(--muted);
-  color: var(--foreground);
 }
 
 .button[data-disabled] {
@@ -40,26 +45,23 @@
 }
 
 .popup {
+  margin-top: -11rem;
   min-width: 170px;
   background-color: var(--mix-card-50-bg);
   border: 0.5px solid oklch(from var(--border) l c h / 0.6);
-  border-radius: var(--radius);
+
   display: flex;
   flex-direction: column;
+  transition: none;
   box-shadow:
     oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
     oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
     oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
   transform-origin: "top center";
-  transition:
-    transform 250ms var(--ease-out-expo),
-    opacity 250ms var(--ease-out-expo);
-}
-
-.popup[data-starting-style],
-.popup[data-ending-style] {
-  opacity: 0;
-  transform: scale(0.95);
+  &[data-starting-style],
+  &[data-ending-style] {
+    transition: none;
+  }
 }
 
 .popup ul {

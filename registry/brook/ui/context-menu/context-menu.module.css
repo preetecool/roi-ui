@@ -319,7 +319,7 @@
   }
 
   .shortcut {
-    font-size: 0.8125rem;
+    display: none;
   }
 
   .itemIndicator {

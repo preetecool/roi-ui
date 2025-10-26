@@ -1,0 +1,34 @@
+.heading-with-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  color: oklch(from var(--secondary-foreground) l c h / 0.95);
+}
+
+.heading-with-anchor:hover,
+.heading-with-anchor[data-popup-open] {
+  color: var(--foreground);
+  cursor: pointer;
+  background-color: transparent !important;
+}
+
+.heading-anchor-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition:
+    opacity 0.2s var(--ease-out-expo),
+    transform 0.3s var(--ease-out-expo);
+  color: var(--muted-foreground);
+}
+
+.heading-with-anchor:hover .heading-anchor-icon,
+.heading-with-anchor[data-popup-open] .heading-anchor-icon {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--foreground);
+}
+

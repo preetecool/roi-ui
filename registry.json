@@ -789,6 +789,102 @@
           "target": "~/components/ui/slider/slider.module.css"
         }
       ]
+    },
+    {
+      "name": "card-login",
+      "type": "registry:block",
+      "title": "Card Login",
+      "description": "A login card component with email/password fields and social login options.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-login/card-login.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-login/card-login.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-login/card-login.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-login/card-login.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card-task",
+      "type": "registry:block",
+      "title": "Card Task",
+      "description": "A task card component with badges, avatars, and action menu.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-task/card-task.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/card-task.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-task/card-task.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/card-task.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card-traffic",
+      "type": "registry:block",
+      "dependencies": ["recharts"],
+      "title": "Card Traffic",
+      "description": "A website traffic card component with line chart and statistics.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-traffic/card-traffic.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/card-traffic.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-traffic/card-traffic.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/card-traffic.module.css"
+        },
+        {
+          "path": "registry/brook/blocks/card-traffic/data.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/data.ts"
+        }
+      ]
+    },
+    {
+      "name": "card-image",
+      "type": "registry:block",
+      "title": "Card Image",
+      "description": "A card component with image, title, description, and button.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-image/card-image.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image/card-image.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-image/card-image.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image/card-image.module.css"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat",
+      "type": "registry:block",
+      "title": "AI Chat",
+      "description": "An AI chat input component with mode selector and action buttons.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/ai-chat/ai-chat.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/ai-chat/ai-chat.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/ai-chat/ai-chat.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/ai-chat/ai-chat.module.css"
+        }
+      ]
     }
   ]
 }

@@ -104,7 +104,7 @@
 .separator {
   width: 1px;
   height: 1.25rem;
-  background-color: var(--border);
+  background-color: oklch(from var(--border) l c h / 0.5);
 }
 
 .mobileMenuWrapper {
@@ -117,7 +117,7 @@
 }
 
 .innerWrapper {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.5);
   padding-left: 8px;
   padding-right: 8px;
   display: flex;
