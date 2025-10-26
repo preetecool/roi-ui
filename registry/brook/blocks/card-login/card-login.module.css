@@ -1,8 +1,12 @@
 .card {
   width: 400px;
   padding: 20px;
-  border: 1px solid var(--border);
+  border: 0.5px solid var(--border);
   border-radius: var(--radius-lg);
+  box-shadow:
+    oklch(from var(--border) l c h / 0.2) 0px 1px 1px,
+    oklch(from var(--border) l c h / 0.2) 0px 2px 2px,
+    oklch(from var(--border) l c h / 0.2) 0px 1px 1px;
 }
 
 .cardTitle {
