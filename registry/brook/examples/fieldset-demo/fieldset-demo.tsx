@@ -1,12 +1,12 @@
 import {
-  Fieldset,
-  FieldsetLegend,
-} from "@/registry/brook/ui/fieldset/fieldset";
-import {
   Field,
   FieldControl,
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
+import {
+  Fieldset,
+  FieldsetLegend,
+} from "@/registry/brook/ui/fieldset/fieldset";
 import styles from "./fieldset-demo.module.css";
 
 export default function FieldsetDemo() {

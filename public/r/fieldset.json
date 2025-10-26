@@ -13,7 +13,7 @@
     },
     {
       "path": "registry/brook/ui/fieldset/fieldset.module.css",
-      "content": ".root {\n  border: 0;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  width: 100%;\n}\n\n.legend {\n  border-bottom: 1px solid var(--border);\n  padding-bottom: 0.75rem;\n  font-weight: 500;\n  font-size: 1rem;\n  line-height: 1.5rem;\n  letter-spacing: -0.0025em;\n  color: var(--foreground);\n}\n",
+      "content": ".root {\n  border: 0;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n  width: 100%;\n}\n\n.legend {\n  border-bottom: 1px solid oklch(from var(--border) l c h / 0.7);\n  padding-bottom: 0.75rem;\n  font-weight: 500;\n  font-size: 1rem;\n  line-height: 1.5rem;\n  letter-spacing: -0.0025em;\n  color: var(--foreground);\n}\n",
       "type": "registry:file",
       "target": "~/components/ui/fieldset/fieldset.module.css"
     }

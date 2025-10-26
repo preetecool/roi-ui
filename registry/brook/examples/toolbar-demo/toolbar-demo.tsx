@@ -247,7 +247,7 @@ export default function ToolbarDemo() {
 
           <ToolbarSeparator />
 
-          <ToolbarLink aria-label="Help" href="#">
+          <ToolbarLink aria-label="Help" className={styles.helpLink} href="#">
             Help
           </ToolbarLink>
         </Toolbar>

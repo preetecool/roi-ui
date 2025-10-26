@@ -9,7 +9,7 @@
 }
 
 .legend {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid oklch(from var(--border) l c h / 0.7);
   padding-bottom: 0.75rem;
   font-weight: 500;
   font-size: 1rem;
