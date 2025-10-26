@@ -129,7 +129,9 @@ export const HomeAnimatedDialog = () => {
             <AnimatePresence>
               <motion.div layoutId="button" transition={buttonTransition}>
                 <Button size="sm" variant="outline">
-                  <Link href="/docs/examples/dialog">View Component</Link>
+                  <Link href="/docs/ui/dialog#with-animations">
+                    View Component
+                  </Link>
                 </Button>
               </motion.div>
             </AnimatePresence>
