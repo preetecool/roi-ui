@@ -2,11 +2,17 @@
   --sidebar-width: 260px;
   --sidebar-width-icon: 3rem;
   --header-height: 64px;
-  --footer-height: 0px;
   --top-spacing: 0;
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 3rem;
   --docs-heading: oklch(0.9 0 0);
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 80px;
 }
 
 * {
@@ -24,26 +30,11 @@
   --docs-heading: oklch(0.2 0 0);
 }
 
-p:has(+ div .container[data-tsx="true"]) {
-  margin-top: 48px;
-  margin-bottom: 16px;
-}
-
 @media (min-width: 1024px) {
   :root {
     --sidebar-width: 280px;
     --top-spacing: calc(1rem * 4);
   }
-}
-
-:root {
-  --space-xs: 8px; /* 0.5rem */
-  --space-sm: 16px; /* 1rem */
-  --space-md: 24px; /* 1.5rem */
-  --space-lg: 32px; /* 2rem */
-  --space-xl: 48px; /* 3rem */
-  --space-2xl: 64px; /* 4rem */
-  --space-3xl: 80px; /* 5rem */
 }
 
 .docs-content > h1,
@@ -227,12 +218,6 @@ p:has(+ div .container[data-tsx="true"]) {
   padding-top: var(--header-height);
 }
 
-@media (max-width: 1023px) {
-  .main-content {
-    padding-top: var(--header-height);
-  }
-}
-
 @media (min-width: 1536px) {
   .container-wrapper {
     max-width: calc(1536px + 2rem);
@@ -257,17 +242,6 @@ p:has(+ div .container[data-tsx="true"]) {
 @media (min-width: 1536px) {
   .container {
     max-width: 1536px;
-  }
-}
-
-.toc-container {
-  height: fit-content;
-  width: 240px;
-}
-
-@media (min-width: 1280px) {
-  .toc-container {
-    display: block !important;
   }
 }
 
@@ -299,38 +273,22 @@ p:has(+ div .container[data-tsx="true"]) {
 
 @media (min-width: 1024px) {
   .sidebar-desktop {
-    display: block !important;
+    display: block;
   }
 
   .sidebar-container-desktop {
-    display: flex !important;
+    display: flex;
   }
 }
 
 @media (max-width: 1023px) {
-  .lg\:hidden {
-    display: block !important;
-  }
-
-  .lg\:block {
-    display: none !important;
-  }
-
   .lg\:flex {
-    display: none !important;
+    display: none;
   }
 }
 
 @media (min-width: 1024px) {
-  .lg\:hidden {
-    display: none !important;
-  }
-
-  .lg\:block {
-    display: block !important;
-  }
-
   .lg\:flex {
-    display: flex !important;
+    display: flex;
   }
 }

@@ -11,7 +11,7 @@
 .heading-with-anchor[data-popup-open] {
   color: var(--foreground);
   cursor: pointer;
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .heading-anchor-icon {
@@ -31,4 +31,3 @@
   transform: translateX(4px);
   color: var(--foreground);
 }
-

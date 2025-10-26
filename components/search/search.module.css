@@ -5,7 +5,7 @@
   z-index: 1000;
   animation: fadeIn 0.15s ease;
   transition: opacity 0.15s ease;
-  outline: none;
+
   border: none;
 }
 
@@ -39,10 +39,10 @@
   width: 90%;
   max-width: 560px;
   z-index: 1001;
-  animation: slideIn 0.2s ease;
+  /*animation: slideIn 0.2s ease;*/
   background-color: var(--background);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
+
+  border: 0.5px solid oklch(from var(--border) l c h / 0.5);
   box-shadow: var(--shadow-lg);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .commandWrapper [cmdk-input] {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.5);
   border-radius: 0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -63,6 +63,18 @@
   padding: 0.625rem 0.5rem;
   font-weight: 400;
   border: 1px solid transparent;
+  position: relative;
+  isolation: isolate;
+}
+
+.commandWrapper [cmdk-item]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background-color: transparent;
+  border: 1px solid transparent;
+  z-index: -1;
 }
 
 .commandWrapper [cmdk-item] svg {
@@ -70,13 +82,13 @@
 }
 
 .commandWrapper [cmdk-group] [cmdk-group-heading] {
-  text-transform: none !important;
+  text-transform: none;
 }
 
-.commandWrapper [cmdk-item]:hover,
-.commandWrapper [cmdk-item][data-selected="true"] {
-  background-color: var(--mix-muted-50-trans);
-  border-color: var(--border);
+.commandWrapper [cmdk-item]:hover::before,
+.commandWrapper [cmdk-item][data-selected="true"]::before {
+  background-color: var(--mix-card-66-bg);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
 }
 
 .commandWrapper [cmdk-list] {
@@ -178,7 +190,7 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin: 0 -0.25rem -0.25rem -0.25rem;
-  border-top: 1px solid var(--border);
+  border-top: 0.5px solid oklch(from var(--border) l c h / 0.5);
   background-color: var(--mix-muted-20-trans);
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);

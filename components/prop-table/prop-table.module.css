@@ -1,10 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 0;
   margin-bottom: var(--space-lg);
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
-  border-radius: 0;
 }
 
 .header {
@@ -51,11 +49,11 @@
 }
 
 .collapsible .panel[data-panel-open] {
-  animation: none !important;
+  animation: none;
 }
 
 .collapsible .panel[data-closed] {
-  animation: none !important;
+  animation: none;
 }
 
 .trigger {
@@ -67,7 +65,6 @@
   justify-content: space-between;
   gap: 16px;
   border: none;
-  border-radius: 0;
 }
 
 .trigger:hover {
@@ -129,6 +126,7 @@
   opacity: 0;
   &[data-closed] {
     opacity: 0;
+    padding: 0;
   }
   &[data-open] {
     opacity: 1;
@@ -172,13 +170,7 @@
   color: var(--muted-foreground);
 }
 
-.detailValue {
-  font-size: 13px;
-  color: var(--foreground);
-  line-height: 1.6;
-  word-break: break-word;
-}
-
+.detailValue,
 .detailValueSpan {
   font-size: 13px;
   color: var(--foreground);
@@ -193,15 +185,12 @@
 }
 
 .code {
-  padding: 0;
-  border-radius: 0;
   font-size: 12px;
   font-family: "Geist Mono", monospace;
   color: oklch(85% 0.1 264);
 }
 
 .typeCode {
-  border-radius: 0;
   font-size: 12px;
   font-family: "Geist Mono", monospace;
   color: #a3be8c;

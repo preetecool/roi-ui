@@ -6,7 +6,6 @@
   min-width: 0;
   flex: 1;
   flex-direction: column;
-  gap: 0;
   padding: clamp(1.5rem, 2vw + 1rem, 2.5rem) clamp(1rem, 3vw, 2rem);
   padding-top: calc(var(--header-height) + clamp(1.5rem, 2vw + 1rem, 2.5rem));
   color: var(--foreground);
@@ -101,7 +100,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .contentWrapper :global(*[class*="bleed"]) {
@@ -133,11 +131,11 @@
 .contentWrapper > :global(h2:first-child),
 .contentWrapper > :global(h3:first-child),
 .contentWrapper > :global(h4:first-child) {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .contentWrapper > :global(*:last-child) {
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 .bottomNavigation {
@@ -181,7 +179,7 @@
   text-align: left;
   font-weight: 500;
   color: var(--foreground);
-  background-color: oklch(from var(--background) l c h / 0.1) !important;
+  background-color: oklch(from var(--background) l c h / 0.1);
 }
 
 .contentWrapper :global(td) {

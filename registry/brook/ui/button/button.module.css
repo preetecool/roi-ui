@@ -4,7 +4,7 @@
   justify-content: center;
   border-radius: var(--radius);
   font-weight: 400;
-  transition: all 0.2s var(--ease-out-quad);
+  transition: transform 0.2s var(--ease-out-quad);
   cursor: pointer;
   border: 1px solid transparent;
   outline: none;

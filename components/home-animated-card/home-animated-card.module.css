@@ -39,6 +39,7 @@
   color: var(--muted-foreground);
   margin-top: 0px;
   margin-bottom: 12px;
+  will-change: transform;
 }
 
 .descriptionExpanded {
