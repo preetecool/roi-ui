@@ -74,7 +74,9 @@ export const Index: Record<string, RegistryEntry> = {
     name: "alert-dialog-demo",
     type: "example",
     component: lazy(async () => {
-      const mod = await import("@/registry/brook/examples/alert-dialog-demo");
+      const mod = await import(
+        "@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>
