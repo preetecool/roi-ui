@@ -31,7 +31,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  color: var(--muted-foreground);
+  color: oklch(from var(--muted-foreground) l c h / 0.6);
   font-size: 12px;
 }
 
@@ -54,6 +54,9 @@
 .taskFooter {
   margin-top: 0;
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
 .destructiveMenuItem {
