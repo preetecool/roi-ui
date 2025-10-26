@@ -63,7 +63,7 @@ export function CodeBlockTabs({ children }: CodeBlockTabsProps) {
     }, CODE_DETECTION_DELAY_MS);
 
     return () => clearTimeout(timer);
-  }, [activeTab]);
+  }, []);
 
   const currentCommandText = commandText || `${activeTab} install package-name`;
 

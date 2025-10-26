@@ -70,9 +70,9 @@
 }
 
 .arrowOuterStroke {
-  fill: var(--border);
+  fill: oklch(from var(--border) l c h / 0.6);
 }
 
 .arrowInnerStroke {
-  fill: rgba(0, 0, 0, 0.05);
+  fill: oklch(from var(--border) l c h / 0.1);
 }

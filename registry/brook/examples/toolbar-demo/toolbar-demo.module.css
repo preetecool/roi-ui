@@ -29,6 +29,10 @@
   background-color: var(--foreground);
 }
 
+.helpLink {
+  margin-right: 4px;
+}
+
 @media (min-width: 400px) {
   .scrollContainer {
     overflow-x: visible;

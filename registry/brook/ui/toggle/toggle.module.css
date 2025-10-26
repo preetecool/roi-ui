@@ -7,7 +7,7 @@
   font-weight: 500;
   height: 2.25rem;
   padding: 0 0.75rem;
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
   background-color: var(--mix-card-33-bg);
   color: var(--foreground);
   cursor: pointer;
@@ -25,14 +25,13 @@
 }
 
 .root[data-pressed] {
-  background-color: var(--mix-accent-66-bg);
+  background-color: var(--mix-card-66-bg);
   color: var(--foreground);
-  border-color: var(--accent);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.9);
 }
 
 .root[data-pressed]:hover {
-  background-color: var(--mix-accent-75-bg);
-  border-color: var(--accent);
+  background-color: var(--mix-card-85-bg);
 }
 
 .root[data-disabled] {

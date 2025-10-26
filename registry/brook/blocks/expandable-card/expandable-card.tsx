@@ -36,7 +36,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                 exit={{ opacity: 0, background: "red" }}
                 initial={{ opacity: 0 }}
                 transition={{
-                  delay: 0.1,
+                  delay: 0.035,
                   duration: 0.17,
                   // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                   ease: [0.455, 0.03, 0.515, 0.955],
@@ -104,8 +104,14 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                       <motion.div
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         className={styles.expandedContent}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        exit={{
+                          opacity: 0,
+                          y: -40,
+                          scale: 0.95,
+                          transition: { delay: 0.05 },
+                        }}
+                        initial={{ opacity: 0, y: -40, scale: 0.95 }}
+                        transition={{ duration: 0.2, delay: 0.1 }}
                       >
                         {item.content}
                       </motion.div>

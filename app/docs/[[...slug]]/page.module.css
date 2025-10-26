@@ -312,7 +312,7 @@
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 500;
-  border-radius: var(--radius);
+  border-radius: 0;
 }
 
 .badgeButton svg {

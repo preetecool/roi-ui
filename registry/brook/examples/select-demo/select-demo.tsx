@@ -45,7 +45,7 @@ export default function SelectDemo() {
         <SelectIcon />
       </SelectTrigger>
       <SelectPortal>
-        <SelectPositioner>
+        <SelectPositioner sideOffset={8}>
           <SelectPopup>
             <SelectList>
               <SelectItem disabled value="placeholder">

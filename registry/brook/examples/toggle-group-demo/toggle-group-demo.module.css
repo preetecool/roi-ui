@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
   border-radius: var(--radius);
 }
