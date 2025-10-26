@@ -333,9 +333,11 @@
     display: block;
     position: sticky;
     top: 4rem;
+    height: fit-content;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     width: 240px;
     flex-shrink: 0;
+    align-self: flex-start;
   }
 }
