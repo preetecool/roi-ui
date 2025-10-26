@@ -3,6 +3,10 @@
   overflow: hidden;
 }
 
+.trigger {
+  border-radius: 0;
+}
+
 .tabsList {
   border-radius: 0;
   border: none;

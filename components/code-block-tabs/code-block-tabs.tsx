@@ -72,8 +72,12 @@ export function CodeBlockTabs({ children }: CodeBlockTabsProps) {
       <CustomTabs defaultValue="npm" onValueChange={setActiveTab}>
         <TabsList className={styles.tabsList}>
           <div className={styles.tabsGroup}>
-            <TabsTrigger value="npm">npm</TabsTrigger>
-            <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+            <TabsTrigger className={styles.trigger} value="npm">
+              npm
+            </TabsTrigger>
+            <TabsTrigger className={styles.trigger} value="pnpm">
+              pnpm
+            </TabsTrigger>
           </div>
           <CopyButton code={currentCommandText} />
         </TabsList>

@@ -19,8 +19,10 @@
   outline: none;
 }
 
-.root:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .root:hover {
+    background-color: var(--muted);
+  }
 }
 
 .root:active {
@@ -39,8 +41,10 @@
   color: var(--muted-foreground);
 }
 
-.root.header:hover {
-  background-color: var(--accent);
+@media (hover: hover) {
+  .root.header:hover {
+    background-color: var(--accent);
+  }
 }
 
 .root.header:active {

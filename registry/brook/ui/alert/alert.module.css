@@ -109,6 +109,8 @@
 
   .alert > svg {
     width: 1rem;
+    height: 1rem;
+    align-self: start;
   }
 
   .title {
