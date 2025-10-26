@@ -22,3 +22,12 @@
 .tabsGroup {
   display: flex;
 }
+
+/* Package manager command styling */
+.container pre code span:first-child {
+  color: #b392f0 !important;
+}
+
+.container pre code span:not(:first-child) {
+  color: #9ecbff !important;
+}

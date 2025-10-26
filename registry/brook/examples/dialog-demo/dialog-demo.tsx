@@ -23,7 +23,7 @@ export default function DialogDemo() {
         <DialogPopup className={styles.popup}>
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription>
+            <DialogDescription className={styles.description}>
               Make changes to your profile here.
             </DialogDescription>
           </DialogHeader>
@@ -41,7 +41,7 @@ export default function DialogDemo() {
               <Input defaultValue="john@example.com" id="email" type="email" />
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className={styles.footer}>
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
             <Button>Save Changes</Button>
           </DialogFooter>

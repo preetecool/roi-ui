@@ -4,3 +4,69 @@
   justify-content: center;
   min-height: 200px;
 }
+
+.trigger {
+  gap: 0.5rem;
+}
+
+.popup {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.socialButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: all 150ms ease;
+  color: var(--foreground);
+}
+
+.socialButton:hover {
+  background: var(--muted);
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.input {
+  flex: 1;
+  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  background: transparent;
+}
+
+.copyButton {
+  width: 40px;
+  height: 40px;
+  background: var(--muted);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.6) !important;
+  border-radius: var(--radius);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
