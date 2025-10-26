@@ -15,7 +15,6 @@
 }
 
 .menuButton:active {
-  transform: translateY(0);
   transition-duration: 0.1s;
 }
 
@@ -197,7 +196,6 @@
 .menuSection {
   display: flex;
   flex-direction: column;
-  gap: 0;
   margin-bottom: 1.5rem;
 }
 

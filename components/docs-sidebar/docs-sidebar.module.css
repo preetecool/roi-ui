@@ -186,7 +186,6 @@
   align-items: center;
   justify-content: center;
   color: var(--muted-foreground);
-  transition: color 0.15s var(--ease-out-quad);
   text-decoration: none;
 }
 

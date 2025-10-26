@@ -4,9 +4,6 @@
   height: var(--header-height);
   width: 100%;
   box-sizing: border-box;
-  left: 0;
-  right: 0;
-
   background-color: transparent;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -18,10 +15,8 @@
 
 @media (max-width: 1023px) {
   .header {
-    top: 0 !important;
+    top: 0;
     padding: 0;
-    left: 0;
-    right: 0;
   }
 }
 
@@ -145,10 +140,10 @@
   }
 
   .navLinks {
-    display: none !important;
+    display: none;
   }
 
   .desktopOnly {
-    display: none !important;
+    display: none;
   }
 }

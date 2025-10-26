@@ -19,10 +19,6 @@
   place-items: center;
 }
 
-.preview.start {
-  place-items: start;
-}
-
 .preview.end {
   place-items: end;
 }
@@ -75,7 +71,6 @@
   border-radius: var(--radius);
   color: var(--muted-foreground);
   cursor: pointer;
-  transition: all 0.2s ease;
   z-index: 10;
 }
 
