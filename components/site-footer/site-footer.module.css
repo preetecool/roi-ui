@@ -23,4 +23,6 @@
   color: var(--foreground);
   height: 100%;
   font-weight: 300;
+  margin: 0;
+  padding: 0;
 }
