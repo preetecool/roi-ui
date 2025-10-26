@@ -1,5 +1,4 @@
 .container {
-  /*border-radius: var(--radius);*/
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
   overflow: hidden;
   height: fit-content;
@@ -12,7 +11,6 @@
   padding: 2px 4px 2px 10px;
   background-color: var(--code-header-bg);
   border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
-  border-radius: 0;
 }
 
 .filename {
@@ -59,13 +57,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
-  transition: colors 150ms ease-in-out;
   list-style: none;
   margin-bottom: 1rem;
 }
 
 .summary:hover {
-  background-color: var(--muted);
   color: var(--foreground);
 }
 

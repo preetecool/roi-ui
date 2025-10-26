@@ -214,7 +214,6 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 150ms ease-out;
 }
 
 .trigger:hover {
@@ -237,7 +236,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 150ms ease-out;
 }
 
 .close:hover {
@@ -321,7 +319,6 @@
   font-weight: 500;
   text-align: left;
   cursor: pointer;
-  transition: all 150ms ease-out;
   outline: none;
 }
 
@@ -372,7 +369,6 @@
   background-color: transparent;
   color: var(--muted-foreground);
   cursor: pointer;
-  transition: all 150ms ease-out;
   outline: none;
 }
 
@@ -426,7 +422,6 @@
   font-size: 0.875rem;
   text-align: left;
   cursor: pointer;
-  transition: all 150ms ease-out;
   outline: none;
   text-decoration: none;
 }
