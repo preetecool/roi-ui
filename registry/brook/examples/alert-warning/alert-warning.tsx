@@ -12,7 +12,7 @@ export default function AlertWarning() {
   return (
     <div className={styles.container}>
       <Alert variant="warning">
-        <AlertTriangle />
+        <AlertTriangle size={16} />
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>Something went wrong.</AlertDescription>
       </Alert>

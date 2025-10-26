@@ -47,7 +47,6 @@ Copy and paste the CSS file:
   filename="anatomy"
   language="tsx"
   code={`<Alert>
-    <AlertIcon />
     <AlertTitle />
     <AlertDescription />
 </Alert>
@@ -97,7 +96,7 @@ Copy and paste the CSS file:
     },
     {
       prop: "children",
-      type: "React.ReactNode",
+      type: "ReactNode",
       description: "The content to display inside the alert",
     },
   ]}
@@ -114,7 +113,7 @@ Copy and paste the CSS file:
     },
     {
       prop: "children",
-      type: "React.ReactNode",
+      type: "ReactNode",
       description: "The title content",
     },
   ]}
@@ -131,25 +130,8 @@ Copy and paste the CSS file:
     },
     {
       prop: "children",
-      type: "React.ReactNode",
+      type: "ReactNode",
       description: "The description content",
-    },
-  ]}
-/>
-
-### Icon
-
-<PropTable
-  data={[
-    {
-      prop: "className",
-      type: "string",
-      description: "Additional CSS classes to apply to the alert icon",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      description: "The icon content",
     },
   ]}
 />

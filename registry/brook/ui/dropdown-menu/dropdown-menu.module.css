@@ -133,3 +133,15 @@
   stroke: var(--border);
   stroke-width: 1px;
 }
+
+.submenuIcon {
+  margin-left: auto;
+  height: 1rem;
+  width: 1rem;
+  color: var(--muted-foreground);
+  opacity: 0.6;
+}
+
+.submenuTrigger:hover .submenuIcon {
+  color: var(--secondary-foreground);
+}

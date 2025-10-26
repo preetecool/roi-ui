@@ -13,11 +13,13 @@ export default function AlertDemo() {
   return (
     <div className={styles.container}>
       <Alert>
-        <Mail />
+        <Mail size={14} stroke="var(--muted-foreground)" />
         <AlertTitle>New Message</AlertTitle>
         <AlertDescription> You&apos;ve got a new message.</AlertDescription>
         <div className={styles.buttonContainer}>
-          <Button size="sm">View Inbox</Button>
+          <Button size="sm" variant="secondary">
+            View Inbox
+          </Button>
         </div>
       </Alert>
     </div>

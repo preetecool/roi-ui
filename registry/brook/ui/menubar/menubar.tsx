@@ -74,8 +74,9 @@ function MenubarMenuItem({
 }: MenubarMenuItemProps) {
   return (
     <DropdownMenuItem
-      className={cn(styles.menuItem, className)}
+      className={className}
       icon={icon}
+      style={icon ? undefined : { paddingLeft: "12px" }}
       {...props}
     >
       {children}
@@ -84,24 +85,15 @@ function MenubarMenuItem({
 }
 
 function MenubarMenuSeparator({
-  className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuSeparator>) {
-  return (
-    <DropdownMenuSeparator
-      className={cn(styles.menuSeparator, className)}
-      {...props}
-    />
-  );
+  return <DropdownMenuSeparator {...props} />;
 }
 
 function MenubarMenuArrow({
-  className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuArrow>) {
-  return (
-    <DropdownMenuArrow className={cn(styles.menuArrow, className)} {...props} />
-  );
+  return <DropdownMenuArrow {...props} />;
 }
 
 function MenubarMenuSubmenuRoot({
@@ -112,13 +104,24 @@ function MenubarMenuSubmenuRoot({
 
 function MenubarMenuSubmenuTrigger({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuSubmenuTrigger>) {
+  // Check if children contains an icon element (checking for common icon props)
+  const hasIcon =
+    typeof children === "object" &&
+    children !== null &&
+    "type" in children &&
+    typeof children.type === "function";
+
   return (
     <DropdownMenuSubmenuTrigger
-      className={cn(styles.menuSubmenuTrigger, className)}
+      className={className}
+      style={hasIcon ? undefined : { paddingLeft: "12px" }}
       {...props}
-    />
+    >
+      {children}
+    </DropdownMenuSubmenuTrigger>
   );
 }
 

@@ -5,13 +5,26 @@
   width: 100%;
 }
 
+.trigger {
+  border-radius: 0.4rem;
+  border: none;
+}
+
 .shortcut {
+  margin-left: auto;
+  margin-right: 4px;
+  font-size: 0.75rem;
   color: var(--muted-foreground);
-  font-size: 0.6875rem;
+  letter-spacing: 0.025em;
+  opacity: 0.6;
+}
+
+.menuItemContent:hover .shortcut {
+  color: var(--secondary-foreground);
 }
 
 @media (max-width: 640px) {
   .shortcut {
-    font-size: 0.8125rem;
+    display: none;
   }
 }

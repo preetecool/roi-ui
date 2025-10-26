@@ -12,7 +12,7 @@ export default function AlertInfo() {
   return (
     <div className={styles.container}>
       <Alert variant="info">
-        <Info />
+        <Info size={16} />
         <AlertTitle>Info</AlertTitle>
         <AlertDescription>
           New features are available! Check out the latest updates.
