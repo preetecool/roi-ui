@@ -8,7 +8,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--background);
-  z-index: 9998;
+  z-index: 100;
   pointer-events: auto;
 }
 
@@ -87,18 +87,18 @@
   overflow-y: auto;
   padding: 24px;
   padding-top: 0vh;
-  padding-bottom: 8vh;
+  padding-bottom: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
-  mask-image: linear-gradient(to bottom, #000 0%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    #000 91%,
+    #000 80%,
     transparent 100%
   );
 }
