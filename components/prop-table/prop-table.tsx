@@ -36,6 +36,7 @@ const SEPARATOR_PATTERN = /([|&()<>[\],\s]+)/;
 const SEPARATOR_TEST_PATTERN = /^[|&()<>[\],\s]+$/;
 const PASCAL_CASE_PATTERN = /^[A-Z][a-zA-Z]*$/;
 const STRING_LITERAL_PATTERN = /^"(.+)"$/;
+const NUMBER_PATTERN = /^-?\d+(\.\d+)?$/;
 
 function highlightType(typeString: string) {
   const parts = typeString.split(SEPARATOR_PATTERN);
@@ -112,7 +113,7 @@ function renderDefaultValue(defaultValue?: string) {
   }
 
   // Check if it's a number (including negative numbers and decimals)
-  if (/^-?\d+(\.\d+)?$/.test(defaultValue)) {
+  if (NUMBER_PATTERN.test(defaultValue)) {
     return <span className={styles.numberValue}>{defaultValue}</span>;
   }
 
@@ -130,7 +131,6 @@ export function PropTable({ data }: PropTableProps) {
       {data.map((row, index) => (
         <Collapsible
           className={styles.collapsible}
-          hiddenUntilFound
           key={`prop-${row.prop}-${index}`}
         >
           <CollapsibleTrigger className={styles.trigger}>
@@ -150,7 +150,7 @@ export function PropTable({ data }: PropTableProps) {
               </div>
             </div>
           </CollapsibleTrigger>
-          <CollapsiblePanel className={styles.panel}>
+          <CollapsiblePanel className={styles.panel} hiddenUntilFound>
             <div className={styles.panelRow}>
               <div className={styles.detailLabel}>Name</div>
               <div className={styles.detailValue}>
