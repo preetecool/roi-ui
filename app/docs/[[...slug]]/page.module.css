@@ -216,6 +216,10 @@
   scroll-margin-top: 5rem;
 }
 
+.contentWrapper > :global(h2 + h3) {
+  margin-top: 1rem;
+}
+
 .contentWrapper > :global(h4) {
   margin-top: 2rem;
   margin-bottom: 0.5rem;

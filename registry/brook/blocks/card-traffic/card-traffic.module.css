@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  border-top: 1px solid var(--border);
+  border-top: 0.5px solid oklch(from var(--border) l c h / 0.7);
   margin: 0 -24px -24px -24px;
 }
 
@@ -21,8 +21,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-right: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
 }
 
 .statCard:nth-child(2n) {

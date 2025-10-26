@@ -6,20 +6,20 @@ import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
-  "tabs-animated",
-  "accordion",
-  "like-button",
-  "ai-chat",
-  "card-task",
-  "card-expdanble",
-  "card-login",
-  "card-image",
-  "card-traffic",
-  "card-history",
-  "dialog",
-  "dropdown-menu-motion",
-  "badge-error",
-  "badge-success",
+  { path: "tabs", anchor: "#animated" },
+  { path: "accordion", anchor: "#with-animations" },
+  { path: "like-button", anchor: "" },
+  { path: "ai-chat", anchor: "" },
+  { path: "card-task", anchor: "" },
+  { path: "card-expandable", anchor: "" },
+  { path: "card-login", anchor: "" },
+  { path: "card-image", anchor: "" },
+  { path: "card-traffic", anchor: "" },
+  { path: "card-history", anchor: "" },
+  { path: "dialog", anchor: "#with-animations" },
+  { path: "dropdown-menu-motion", anchor: "" },
+  { path: "badge", anchor: "#error" },
+  { path: "badge", anchor: "#success" },
 ];
 
 const ArrowPointer = () => (
@@ -58,6 +58,21 @@ const getRandomComponent = () => {
   return randomComponent;
 };
 
+const getComponentUrl = (component: { path: string; anchor: string }) => {
+  // UI components are in /docs/ui/, others are in /docs/blocks/
+  const uiComponents = ["accordion", "badge", "tabs", "dialog", "dropdown-menu-motion"];
+  const basePath = uiComponents.includes(component.path)
+    ? "/docs/ui"
+    : "/docs/blocks";
+
+  // Special handling for dropdown-menu-motion
+  if (component.path === "dropdown-menu-motion") {
+    return `/docs/ui/dropdown-menu#with-motion`;
+  }
+
+  return `${basePath}/${component.path}${component.anchor}`;
+};
+
 export const HomeHeader = () => {
   const [reset, _setReset] = useState(0);
   const HEADING = "Functional & delighful components";
@@ -73,7 +88,7 @@ export const HomeHeader = () => {
   return (
     <div className={styles.container} key={reset}>
       <Badge className={styles.badge} variant="outline">
-        <Link href="/docs/examples/tabs-animated">
+        <Link href="/docs/ui/tabs#animated">
           <span>New animated tabs component</span>
         </Link>
         <ArrowPointer />
@@ -95,7 +110,7 @@ export const HomeHeader = () => {
       <div className={styles.buttonWrapper}>
         <Button render={<Link href="/docs/start" />}>Get Started</Button>
         <Button
-          render={<Link href={`/docs/examples/${randomComponent}`} />}
+          render={<Link href={getComponentUrl(randomComponent)} />}
           variant="ghost"
         >
           I&apos;m Feeling Lucky

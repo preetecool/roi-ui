@@ -11,7 +11,7 @@
 }
 
 .chartContainer :global(.recharts-cartesian-grid line) {
-  stroke: var(--border);
+  stroke: oklch(from var(--border) l c h / 0.3);
 }
 
 .chartContainer :global(.recharts-curve.recharts-tooltip-cursor) {

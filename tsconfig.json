@@ -34,6 +34,9 @@
       ],
       "@/registry/*": [
         "./registry/*"
+      ],
+      "@/.source": [
+        "./.source"
       ]
     },
     "strictNullChecks": true

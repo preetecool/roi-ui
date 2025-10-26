@@ -1,10 +1,7 @@
 {
-  "title": "Examples",
+  "title": "Blocks",
   "pages": [
     "ai-chat",
-    "accordion",
-    "badge-error",
-    "badge-success",
     "card-expandable",
     "card-history",
     "card-image",
@@ -12,9 +9,6 @@
     "card-task",
     "card-traffic",
     "copy-button",
-    "dialog",
-    "dropdown-menu-motion",
-    "like-button",
-    "tabs-animated"
+    "like-button"
   ]
 }

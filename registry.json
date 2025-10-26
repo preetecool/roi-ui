@@ -304,7 +304,10 @@
     {
       "name": "copy-button",
       "type": "registry:item",
-      "dependencies": ["motion", "lucide-react"],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
       "title": "Copy Button",
       "description": "A button component with animated copy-to-clipboard functionality.",
       "files": [
@@ -359,7 +362,9 @@
     {
       "name": "expandable-card",
       "type": "registry:block",
-      "dependencies": ["motion"],
+      "dependencies": [
+        "motion"
+      ],
       "title": "Expandable Card",
       "description": "A card component that can expand to show more content.",
       "files": [
@@ -720,19 +725,21 @@
     {
       "name": "chart",
       "type": "registry:item",
-      "dependencies": ["recharts"],
+      "dependencies": [
+        "recharts"
+      ],
       "title": "Chart",
       "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
       "files": [
         {
-          "path": "registry/brook/ui/chart.tsx",
+          "path": "registry/brook/ui/chart/chart.tsx",
           "type": "registry:file",
-          "target": "~/components/ui/chart.tsx"
+          "target": "~/components/ui/chart/chart.tsx"
         },
         {
-          "path": "registry/brook/ui/chart.module.css",
+          "path": "registry/brook/ui/chart/chart.module.css",
           "type": "registry:file",
-          "target": "~/components/ui/chart.module.css"
+          "target": "~/components/ui/chart/chart.module.css"
         }
       ]
     },
@@ -829,7 +836,9 @@
     {
       "name": "card-traffic",
       "type": "registry:block",
-      "dependencies": ["recharts"],
+      "dependencies": [
+        "recharts"
+      ],
       "title": "Card Traffic",
       "description": "A website traffic card component with line chart and statistics.",
       "files": [

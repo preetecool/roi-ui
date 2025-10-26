@@ -8,7 +8,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/brook/ui/chart";
+} from "@/registry/brook/ui/chart/chart";
 import styles from "./chart-pie-demo.module.css";
 
 const chartData = [
