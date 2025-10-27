@@ -8,8 +8,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/brook/ui/chart/chart";
-import styles from "./chart-pie-demo.module.css";
+} from "@/registry/brook/tailwind/ui/chart";
 
 const chartData = [
   { platform: "mobile", visitors: 45.2, fill: "var(--color-mobile)" },
@@ -42,8 +41,8 @@ const chartConfig = {
 
 export default function ChartPieDemo() {
   return (
-    <div className={styles.container}>
-      <ChartContainer className={styles.chartContainer} config={chartConfig}>
+    <div className="w-full h-full flex flex-col">
+      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
         <PieChart>
           <ChartTooltip
             content={

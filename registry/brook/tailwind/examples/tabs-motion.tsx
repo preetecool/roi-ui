@@ -89,7 +89,7 @@ export default function TabsFramerMotion() {
   const activeTabData = tabs.find((tab) => tab.id === activeTab);
 
   return (
-    <div className="mx-auto w-full max-w-2xl">
+    <div className="mx-auto w-full max-w-[32rem]">
       <Tabs onValueChange={handleTabChange} value={activeTab}>
         <TabsList className="relative">
           {tabs.map((tab) => (
@@ -115,7 +115,7 @@ export default function TabsFramerMotion() {
 
         <motion.div
           animate={{ height: bounds.height }}
-          className="relative mt-0 overflow-hidden rounded-b-[var(--radius)] border-[0.5px] border-border/80 border-t-0 bg-[--mix-card-33-bg]"
+          className="relative mt-0 overflow-hidden rounded-b-[var(--radius)] border-[0.5px] border-border/80 border-t-0 bg-[var(--mix-card-33-bg)]"
           initial={{ height: "auto" }}
           transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
         >

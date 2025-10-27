@@ -44,13 +44,13 @@ export function AiChat() {
   const [selectedItem, setSelectedItem] = useState<string>(aiModes[0].value);
 
   return (
-    <Form className="flex h-full w-full items-center justify-center xl:h-auto xl:items-start xl:justify-start">
+    <Form className="w-full max-xl:h-full max-sm:flex max-sm:items-center max-sm:justify-center">
       <Card
         className={cn(
           "h-auto w-full flex-1 gap-3 rounded-[var(--radius-lg)] border-[var(--border)] bg-[var(--mix-card-50-bg)] p-3",
           "min-w-0 max-w-none",
-          "xl:h-full",
-          "sm:mx-auto"
+          "max-xl:h-full",
+          "max-sm:mx-auto"
         )}
       >
         <CardContent>
@@ -58,7 +58,7 @@ export function AiChat() {
             className={cn(
               "[&_textarea]:resize-none [&_textarea]:border-none [&_textarea]:bg-transparent [&_textarea]:p-1",
               "[&_textarea]:h-auto [&_textarea]:min-h-10 [&_textarea]:outline-none",
-              "xl:[&_textarea]:h-full xl:[&_textarea]:min-h-16 xl:[&_textarea]:p-2"
+              "max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16 max-xl:[&_textarea]:p-2"
             )}
           >
             <FieldControl

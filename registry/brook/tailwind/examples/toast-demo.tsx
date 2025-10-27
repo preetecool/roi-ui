@@ -45,13 +45,9 @@ function ToastList() {
     <ToastRoot key={toast.id} toast={toast}>
       <ToastTitle />
       <ToastDescription />
-      <ToastClose
-        render={(props: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
-          <button {...props} aria-label="Close">
-            <CloseIcon />
-          </button>
-        )}
-      />
+      <ToastClose>
+        <CloseIcon className="h-4 w-4" />
+      </ToastClose>
     </ToastRoot>
   ));
 }

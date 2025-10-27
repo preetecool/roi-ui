@@ -99,6 +99,9 @@ function ChartContainer({
           [data-chart="${chartId}"] .recharts-sector[stroke="#fff"] {
             stroke: transparent;
           }
+          [data-chart="${chartId}"] .recharts-sector {
+            stroke: transparent;
+          }
           [data-chart="${chartId}"] .recharts-surface {
             outline: none;
           }

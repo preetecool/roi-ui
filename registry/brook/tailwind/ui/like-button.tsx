@@ -260,7 +260,7 @@ function LikeButton({
             "[-webkit-perspective:1000] [perspective:1000]",
             "[-webkit-backface-visibility:hidden] [backface-visibility:hidden]",
             "my-1 overflow-visible outline-none will-change-[transform,opacity]",
-            "hover:scale-105 max-[hover:none]:hover:scale-100 max-[pointer:coarse]:hover:scale-100",
+            "hover:scale-105",
             "focus:outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
             isThumbAnimating &&
               "animate-[thumbTilt_1.15s_cubic-bezier(0.455,0.03,0.515,0.955)]",

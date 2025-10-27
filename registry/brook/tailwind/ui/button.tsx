@@ -4,12 +4,12 @@ import { cn } from "@/lib/tw-utils";
 
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center rounded-[var(--radius)] font-normal",
+    "inline-flex items-center justify-center rounded-[var(--radius)] font-[450]",
     "transition-transform duration-200 ease-[var(--ease-out-quad)]",
     "relative cursor-pointer overflow-hidden border border-transparent outline-none",
-    "leading-tight tracking-tight",
+    "leading-[1.2] tracking-[-0.014em]",
     "active:scale-[0.97] active:disabled:scale-100 active:[&.loading]:scale-100",
-    "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
+    "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",
     "disabled:cursor-not-allowed disabled:opacity-70",
     "[&.loading]:cursor-not-allowed [&.loading]:opacity-70",
   ],
@@ -17,30 +17,30 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-primary text-primary-foreground",
+          "bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)]",
           "shadow-[0_0.5px_0.5px_rgba(0,0,0,0.1)]",
-          "hover:bg-primary/80 hover:disabled:bg-primary",
+          "hover:bg-[color:oklch(from_var(--color-primary)_l_c_h_/_0.8)] hover:disabled:bg-[color:var(--color-primary)]",
         ],
         secondary: [
-          "bg-secondary text-secondary-foreground",
-          "hover:bg-secondary/80 hover:disabled:bg-secondary",
+          "bg-[color:var(--color-secondary)] text-[color:var(--color-secondary-foreground)]",
+          "hover:bg-[color:oklch(from_var(--color-secondary)_l_c_h_/_0.8)] hover:disabled:bg-[color:var(--color-secondary)]",
         ],
         destructive: [
-          "bg-destructive text-destructive-foreground",
-          "hover:bg-destructive/85 hover:disabled:bg-destructive",
+          "bg-[color:var(--color-destructive)] text-[color:var(--color-destructive-foreground)]",
+          "hover:bg-[color:oklch(from_var(--color-destructive)_l_c_h_/_0.85)] hover:disabled:bg-[color:var(--color-destructive)]",
         ],
         ghost: [
-          "bg-transparent text-foreground",
-          "hover:bg-accent/66 hover:disabled:bg-transparent",
+          "bg-transparent text-[color:var(--color-foreground)]",
+          "hover:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.66)] hover:disabled:bg-transparent",
         ],
         outline: [
-          "border-border/70 bg-[var(--mix-card-50-bg)] text-foreground",
-          "hover:bg-[var(--mix-card-66-bg)] hover:disabled:bg-[var(--mix-card-50-bg)]",
+          "border-[color:oklch(from_var(--color-border)_l_c_h_/_0.7)] bg-[color:oklch(from_var(--color-card)_l_c_h_/_0.5)] text-[color:var(--color-foreground)]",
+          "hover:bg-[color:oklch(from_var(--color-card)_l_c_h_/_0.66)] hover:disabled:bg-[color:oklch(from_var(--color-card)_l_c_h_/_0.5)]",
         ],
         link: [
-          "bg-transparent p-0 text-muted-foreground no-underline",
+          "bg-transparent p-0 text-[color:var(--color-muted-foreground)] no-underline",
           "transition-[text-decoration] duration-200 ease-out",
-          "hover:text-foreground hover:underline hover:disabled:text-muted-foreground hover:disabled:no-underline",
+          "hover:text-[color:var(--color-foreground)] hover:underline hover:disabled:text-[color:var(--color-muted-foreground)] hover:disabled:no-underline",
         ],
       },
       size: {

@@ -2,6 +2,7 @@
 
 import { RotateCcw } from "lucide-react";
 import { useState } from "react";
+import { useStyle } from "@/components/style-provider";
 import { Index } from "@/registry/__index__";
 import styles from "./component-preview.module.css";
 
@@ -19,7 +20,15 @@ export function ComponentPreviewClient({
   replayButton,
 }: ComponentPreviewClientProps) {
   const [key, setKey] = useState(0);
-  const Component = Index[name]?.component;
+  const { style } = useStyle();
+
+  // Determine component name based on style preference
+  const componentName =
+    style === "tailwind" && Index[`${name}-tailwind`]
+      ? `${name}-tailwind`
+      : name;
+
+  const Component = Index[componentName]?.component;
 
   const handleReplay = () => {
     setKey((prev) => prev + 1);
@@ -32,6 +41,7 @@ export function ComponentPreviewClient({
   return (
     <div
       className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+      data-demo={style}
     >
       <Component key={key} />
       {replayButton && (

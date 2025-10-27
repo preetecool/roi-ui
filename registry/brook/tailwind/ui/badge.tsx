@@ -31,7 +31,7 @@ const badgeVariants = cva(
         outline: "border-border bg-transparent text-foreground hover:bg-card",
       },
       size: {
-        sm: "rounded-[var(--radius)] px-1.5 py-0.5 text-[0.625rem]",
+        sm: "rounded-[var(--radius)] px-1.5 py-px text-[0.625rem]",
         md: "rounded-[var(--radius)] px-2 py-0.5 text-xs",
         lg: "rounded-[var(--radius-lg)] px-3 py-1 text-sm",
       },
@@ -106,13 +106,33 @@ function Badge({
  * </Badge>
  * ```
  */
-function BadgeIcon({ className, ...props }: React.ComponentProps<"span">) {
+const badgeIconVariants = cva(
+  "mr-1 inline-flex flex-shrink-0 items-center justify-center rounded-full p-0.5",
+  {
+    variants: {
+      variant: {
+        default: "bg-[var(--mix-foreground-20-muted)]",
+        secondary: "bg-[var(--mix-secondary-20-muted)]",
+        destructive: "bg-[var(--mix-destructive-20-muted)]",
+        success: "bg-[var(--mix-success-20-muted)]",
+        info: "bg-[var(--mix-info-20-muted)]",
+        outline: "bg-[var(--mix-foreground-20-muted)]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+function BadgeIcon({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"span"> & VariantProps<typeof badgeIconVariants>) {
   return (
     <span
-      className={cn(
-        "mr-1 inline-flex flex-shrink-0 items-center justify-center rounded-full p-0.5",
-        className
-      )}
+      className={cn(badgeIconVariants({ variant }), className)}
       data-slot="badge-icon"
       {...props}
     />

@@ -14,9 +14,9 @@
 
 .header {
   margin: 0;
-  font-weight: 500;
   letter-spacing: inherit;
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .trigger {

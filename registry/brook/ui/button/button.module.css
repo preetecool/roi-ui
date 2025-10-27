@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius);
-  font-weight: 400;
+  font-weight: 450;
   transition: transform 0.2s var(--ease-out-quad);
   cursor: pointer;
   border: 1px solid transparent;

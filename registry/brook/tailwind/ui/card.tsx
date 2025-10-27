@@ -108,7 +108,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "col-span-full m-0 whitespace-normal text-muted-foreground text-sm",
+        "col-span-full m-0 whitespace-normal text-muted-foreground text-sm leading-5",
         "max-sm:text-[0.9375rem] max-sm:leading-[1.5]",
         className
       )}

@@ -36,6 +36,11 @@
   color: var(--primary-foreground);
   transform: scale(0);
 
+  & > svg {
+    width: 16px;
+    height: 16px;
+  }
+
   &[data-unchecked] {
     display: none;
   }

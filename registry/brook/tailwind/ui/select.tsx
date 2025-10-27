@@ -17,10 +17,10 @@ function SelectTrigger({
     <Select.Trigger
       className={cn(
         "min-w-36 bg-[var(--mix-card-50-bg)]",
-        "hover:not(.disabled):bg-[var(--muted)] hover:not(.disabled):text-[var(--foreground)]",
-        "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
-        "data-[popup-open]:bg-[var(--muted)] data-[popup-open]:text-[var(--foreground)]",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-ring)] focus-visible:outline-offset-2",
+        "data-[popup-open]:bg-[var(--color-muted)] data-[popup-open]:text-[var(--color-foreground)]",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
       nativeButton
@@ -40,7 +40,7 @@ function SelectValue({
     <Select.Value
       className={cn(
         "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left",
-        "data-[placeholder]:text-[var(--muted-foreground)]",
+        "data-[placeholder]:text-[var(--color-muted-foreground)]",
         className
       )}
       {...props}
@@ -105,8 +105,8 @@ function SelectScrollUpArrow({
   return (
     <Select.ScrollUpArrow
       className={cn(
-        "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
-        "hover:bg-[var(--muted)]",
+        "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--color-foreground)] transition-colors duration-200 ease-in-out",
+        "hover:bg-[var(--color-muted)]",
         "data-[state=hidden]:hidden",
         className
       )}
@@ -126,8 +126,8 @@ function SelectPopup({
   return (
     <Select.Popup
       className={cn(
-        "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--mix-card-75-bg)]",
-        "transition-[transform_150ms,opacity_150ms]",
+        "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--mix-card-75-bg)]",
+        "transition-[transform,opacity] duration-150",
         "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
         "data-[side=none]:transform-none data-[side=none]:opacity-100 data-[side=none]:transition-none",
@@ -145,7 +145,7 @@ function SelectArrow({
   return (
     <Select.Arrow
       className={cn(
-        "-z-[1] h-3 w-3 rotate-45 border border-[var(--border)] border-r-0 border-b-0 bg-[var(--mix-card-33-bg)]",
+        "-z-[1] h-3 w-3 rotate-45 border border-[var(--color-border)] border-r-0 border-b-0 bg-[var(--mix-card-33-bg)]",
         className
       )}
       {...props}
@@ -161,8 +161,8 @@ function SelectScrollDownArrow({
   return (
     <Select.ScrollDownArrow
       className={cn(
-        "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
-        "hover:bg-[var(--muted)]",
+        "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--color-foreground)] transition-colors duration-200 ease-in-out",
+        "hover:bg-[var(--color-muted)]",
         "data-[state=hidden]:hidden",
         className
       )}
@@ -192,11 +192,11 @@ function SelectItem({
   return (
     <Select.Item
       className={cn(
-        "flex cursor-pointer items-center justify-between rounded-[calc(var(--radius)-2px)] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none transition-all duration-200 ease-in-out",
-        "hover:not(.itemDisabled):bg-[var(--muted)] hover:not(.itemDisabled):text-[var(--foreground)]",
-        "data-[highlighted]:bg-[var(--muted)] data-[highlighted]:text-[var(--foreground)]",
+        "flex cursor-pointer items-center justify-between rounded-[calc(var(--radius)-2px)] py-2 pr-4 pl-3 text-[var(--color-foreground)] text-sm outline-none transition-all duration-200 ease-in-out",
+        "hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]",
+        "data-[highlighted]:bg-[var(--color-muted)] data-[highlighted]:text-[var(--color-foreground)]",
         "data-[selected]:bg-transparent",
-        ".itemDisabled:cursor-not-allowed .itemDisabled:opacity-50",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
       {...props}
@@ -233,7 +233,7 @@ function SelectGroupLabel({
   return (
     <Select.GroupLabel
       className={cn(
-        "px-3 py-1.5 font-semibold text-[var(--muted-foreground)] text-xs uppercase tracking-wider",
+        "px-3 py-1.5 font-semibold text-[var(--color-muted-foreground)] text-xs uppercase tracking-wider",
         className
       )}
       {...props}
@@ -247,7 +247,7 @@ function SelectSeparator({
 }: React.ComponentProps<typeof Select.Separator>) {
   return (
     <Select.Separator
-      className={cn("my-1 h-px bg-[var(--border)]", className)}
+      className={cn("my-1 h-px bg-[var(--color-border)]", className)}
       {...props}
     />
   );

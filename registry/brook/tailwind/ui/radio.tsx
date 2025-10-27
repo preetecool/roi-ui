@@ -40,8 +40,8 @@ function RadioIndicator({
   return (
     <Radio.Indicator
       className={cn(
-        "h-2 w-2 scale-0 rounded-full bg-[var(--primary)]",
-        "[.root[data-checked]_&]:scale-100",
+        "h-2 w-2 rounded-full bg-[var(--primary)]",
+        "scale-0 data-[checked]:scale-100",
         className
       )}
       {...props}

@@ -16,7 +16,7 @@ const tabs = [
 
 export default function TabsBasic() {
   return (
-    <div className="mx-auto w-full max-w-2xl">
+    <div className="mx-auto w-full max-w-[32rem]">
       <Tabs defaultValue="account">
         <TabsList>
           {tabs.map((tab) => (
