@@ -103,7 +103,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
 
                       <motion.div
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        className={styles.expandedContent}
+                        className={styles.paragrahWrapper}
                         exit={{
                           opacity: 0,
                           y: -40,

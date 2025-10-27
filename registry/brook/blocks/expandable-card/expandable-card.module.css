@@ -58,10 +58,10 @@
 }
 
 .expandedCard {
-  position: relative;
+  position: fixed;
   top: 5vh;
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
   max-height: 100dvh;
   overflow: hidden;
   background-color: var(--mix-card-15-bg);
@@ -94,11 +94,17 @@
   gap: 16px;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
-  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+
+  mask-image: linear-gradient(
+    to bottom,
+    var(--background) calc(100% - 10vh),
+    oklch(from var(--background) l c h / 0.33) calc(100% - calc(8vh / 2)),
+    transparent 100%
+  );
   -webkit-mask-image: linear-gradient(
     to bottom,
-    #000 0%,
-    #000 80%,
+    var(--background) calc(100% - 10vh),
+    oklch(from var(--background) l c h / 0.33) calc(100% - calc(8vh / 2)),
     transparent 100%
   );
 }
@@ -121,7 +127,8 @@
 }
 
 .contentExpanded {
-  max-width: 600px;
+  max-width: 700px;
+  line-height: 2;
   margin: 0 auto;
   padding-top: 28px;
   padding-left: 0;
@@ -138,7 +145,7 @@
 
 .expandedImage {
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
   height: auto;
   object-fit: contain;
 }
@@ -152,8 +159,8 @@
   width: 100%;
 }
 
-.expandedContent {
-  color: var(--foreground);
+.paragrahWrapper {
+  color: oklch(from var(--secondary-foreground) l c h / 0.8);
 }
 
 .closeButtonContainer {
