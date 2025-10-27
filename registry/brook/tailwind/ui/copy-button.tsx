@@ -74,14 +74,10 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
   return (
     <button
       className={cn(
-        "absolute top-2 right-2 rounded-md border border-white/10 p-2",
-        "z-10 cursor-pointer text-muted transition-all duration-200",
         "flex h-[1.875rem] w-[1.875rem] items-center justify-center",
-        "outline-none [-webkit-tap-highlight-color:transparent]",
-        "hover:bg-muted active:bg-muted",
-        "focus-visible:-outline-offset-2 focus-visible:outline-2 focus-visible:outline-ring",
-        "static border-none bg-transparent text-muted-foreground",
-        "hover:bg-accent active:bg-accent",
+        "cursor-pointer rounded-md p-2 transition-all duration-200",
+        "[-webkit-tap-highlight-color:transparent]",
+        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         className
       )}
       data-copied={copied}

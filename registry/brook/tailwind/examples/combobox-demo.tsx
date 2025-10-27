@@ -82,7 +82,7 @@ export default function ComboboxDemo() {
   return (
     <div className="p-8">
       <label
-        className="mb-2 flex flex-col gap-1 text-sm font-medium text-[var(--color-foreground)]"
+        className="mb-2 ml-1 flex flex-col gap-1 text-sm font-medium leading-[17.5px] text-[var(--color-foreground)]"
         htmlFor="cb-input"
       >
         Search and select a user

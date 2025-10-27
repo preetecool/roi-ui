@@ -83,11 +83,12 @@ function CollapsiblePanel({
     <Collapsible.Panel
       className={cn(
         "flex h-[var(--collapsible-panel-height)] flex-col justify-end overflow-hidden",
-        "box-border w-full text-sm leading-5 transition-all duration-150 ease-out",
+        "box-border w-full text-sm leading-5",
         "data-[ending-style]:h-0 data-[starting-style]:h-0",
         "data-[closed]:h-0 data-[closed]:border-none",
-        "data-[panel-open]:animate-[slideDown_150ms_var(--ease-out-expo)]",
-        "data-[closed]:animate-[slideUp_150ms_var(--ease-out-expo)]",
+        "data-[panel-open]:animate-[slideDown_250ms_var(--ease-out-expo)]",
+        "data-[closed]:animate-[slideUp_250ms_var(--ease-out-expo)]",
+        "[&[hidden]]:flex [&[hidden]]:h-0",
         className
       )}
       {...props}

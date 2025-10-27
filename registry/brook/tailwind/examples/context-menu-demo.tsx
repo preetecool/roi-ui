@@ -87,7 +87,7 @@ export default function ContextMenuDemo() {
               </ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem
-                className="isolate text-[var(--color-destructive)] before:absolute before:inset-x-1 before:inset-y-0 before:-z-10 before:content-[''] hover:text-[var(--color-destructive-foreground)] hover:before:bg-[var(--color-destructive)] [&_svg]:text-[var(--color-destructive)] [&:hover_svg]:text-[var(--color-destructive-foreground)]"
+                className="text-[var(--destructive)] [&_svg]:text-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:before:!bg-[var(--destructive)] hover:[&_svg]:text-[var(--destructive-foreground)]"
                 icon={<Trash2 size={14} />}
               >
                 Delete

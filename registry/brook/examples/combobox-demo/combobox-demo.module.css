@@ -7,10 +7,11 @@
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 17.5px;
   font-weight: 500;
   color: var(--foreground);
   margin-bottom: 0.5rem;
+  margin-left: 4px;
 }
 
 .comboboxWrapper {

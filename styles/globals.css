@@ -57,6 +57,8 @@
   --color-info: oklch(0.7091 0.15 264.71);
 
   --color-border: oklch(0.86 0 0);
+  --color-border-60: oklch(from var(--color-border) l c h / 0.6);
+  --color-border-10: oklch(from var(--color-border) l c h / 0.1);
   --color-input: oklch(0.98 0 0);
   --color-ring: oklch(0.6734 0.153764 264.1315);
 
@@ -99,6 +101,8 @@
     --color-accent-foreground: oklch(0.85 0 0);
 
     --color-border: oklch(0.38 0 0);
+    --color-border-60: oklch(from var(--color-border) l c h / 0.6);
+    --color-border-10: oklch(from var(--color-border) l c h / 0.1);
     --color-input: oklch(0.2029 0.003 0);
     --color-ring: oklch(0.45 0.025 270);
 
@@ -488,5 +492,27 @@
     height: 100%;
     min-height: 44px;
     min-width: 44px;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    display: flex;
+  }
+  to {
+    height: var(--collapsible-panel-height);
+    display: flex;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--collapsible-panel-height);
+    display: flex;
+  }
+  to {
+    height: 0;
+    display: flex;
   }
 }

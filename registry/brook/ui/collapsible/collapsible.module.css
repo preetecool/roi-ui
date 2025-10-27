@@ -96,11 +96,11 @@
 }
 
 .panel[data-panel-open] {
-  animation: slideDown 150ms var(--ease-out-expo);
+  animation: slideDown 250ms var(--ease-out-expo);
 }
 
 .panel[data-closed] {
-  animation: slideUp 150ms var(--ease-out-expo);
+  animation: slideUp 250ms var(--ease-out-expo);
 }
 
 @keyframes slideDown {

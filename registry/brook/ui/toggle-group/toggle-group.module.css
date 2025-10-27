@@ -54,11 +54,3 @@
   pointer-events: none;
   opacity: 0.5;
 }
-
-.root[data-orientation="horizontal"] .item:not(:first-child) {
-  margin-left: 0.125rem;
-}
-
-.root[data-orientation="vertical"] .item:not(:first-child) {
-  margin-top: 0.125rem;
-}

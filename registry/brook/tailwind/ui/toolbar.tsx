@@ -54,10 +54,10 @@ function ToolbarLink({
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] text-foreground no-underline",
-        "min-h-8 min-w-8 font-medium text-sm transition-all duration-200",
+        "h-8 min-w-8 font-medium text-sm leading-none transition-all duration-200",
         "hover:bg-accent hover:text-accent-foreground",
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
-        "max-sm:min-h-10 max-sm:min-w-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
+        "max-sm:h-10 max-sm:min-w-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
         className
       )}
       {...props}

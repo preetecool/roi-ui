@@ -41,10 +41,9 @@ export default function DropdownMenuDemo() {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className={cn(
-                "isolate text-destructive",
-                "[&_svg]:text-destructive",
-                "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
-                "hover:text-destructive-foreground hover:before:bg-destructive hover:[&_svg]:text-destructive-foreground"
+                "text-[var(--destructive)]",
+                "[&_svg]:text-[var(--destructive)]",
+                "hover:text-[var(--destructive-foreground)] hover:before:!bg-[var(--destructive)] hover:[&_svg]:text-[var(--destructive-foreground)]"
               )}
               icon={<Trash2 size={14} />}
               render={<li />}

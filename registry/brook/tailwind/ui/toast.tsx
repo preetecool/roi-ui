@@ -126,7 +126,7 @@ function ToastClose({
   return (
     <Toast.Close
       className={cn(
-        "absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded border-none bg-transparent",
+        "absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-sm border-none bg-transparent",
         "text-[var(--foreground)] transition-all duration-150",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         "focus:outline-none",

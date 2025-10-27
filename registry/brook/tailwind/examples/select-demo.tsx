@@ -26,6 +26,7 @@ export default function SelectDemo() {
   return (
     <Select defaultValue="placeholder" items={subscriptionPlans}>
       <SelectTrigger
+        className="min-w-[180px]"
         render={
           <Button
             className="!transition-none flex min-w-[180px]"

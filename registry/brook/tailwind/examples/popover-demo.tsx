@@ -102,7 +102,7 @@ export default function PopoverDemo() {
                   readOnly
                 />
                 <CopyButton
-                  className="!important flex h-10 w-10 items-center justify-center rounded-[var(--radius)] border-[0.5px] border-border/60 bg-muted p-0"
+                  className="h-10 w-10 rounded-[var(--radius)] border border-[var(--color-border-60)] bg-transparent p-0 text-[var(--muted-foreground)] hover:bg-[var(--muted)] active:bg-[var(--muted)]"
                   code="https://roi.com"
                 />
               </div>

@@ -62,13 +62,13 @@ function PopoverPopup({
       className={cn(
         "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
         "transition-[transform_150ms_ease,opacity_150ms_ease]",
-        "outline outline-0.5 outline-[oklch(from_var(--border)_l_c_h_/_0.6)]",
-        "shadow-[oklch(from_var(--border)_l_c_h_/_0.1)_0px_1px_2px,oklch(from_var(--border)_l_c_h_/_0.1)_0px_1px_2px,oklch(from_var(--border)_l_c_h_/_0.1)_0px_1px_1px]",
+        "outline outline-[0.5px] outline-[var(--color-border-60)]",
+        "shadow-[0px_1px_2px_var(--color-border-10),0px_1px_2px_var(--color-border-10),0px_1px_1px_var(--color-border-10)]",
         "z-[1000]",
         "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
         "focus-visible:outline-1 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-1",
-        "[&[data-theme='dark']]:-outline-offset-1 [&[data-theme='dark']]:outline-0.5 [&[data-theme='dark']]:outline-[oklch(from_var(--border)_l_c_h_/_0.7)]",
+        "[&[data-theme='dark']]:-outline-offset-1 [&[data-theme='dark']]:outline-[0.5px] [&[data-theme='dark']]:outline-[var(--color-border-60)]",
         "max-sm:m-4 max-sm:max-w-[calc(100vw-2rem)]",
         className
       )}
@@ -158,13 +158,13 @@ function PopoverContent({
           className={cn(
             "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
             "transition-[transform_150ms_ease,opacity_150ms_ease]",
-            "outline outline-0.5 outline-[oklch(from_var(--border)_l_c_h_/_0.6)]",
-            "shadow-[oklch(from_var(--border)_l_c_h_/_0.1)_0px_1px_2px,oklch(from_var(--border)_l_c_h_/_0.1)_0px_1px_2px,oklch(from_var(--border)_l_c_h_/_0.1)_0px_1px_1px]",
+            "outline outline-[0.5px] outline-[var(--color-border-60)]",
+            "shadow-[0px_1px_2px_var(--color-border-10),0px_1px_2px_var(--color-border-10),0px_1px_1px_var(--color-border-10)]",
             "z-[1000]",
             "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
             "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
             "focus-visible:outline-1 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-1",
-            "[&[data-theme='dark']]:-outline-offset-1 [&[data-theme='dark']]:outline-0.5 [&[data-theme='dark']]:outline-[oklch(from_var(--border)_l_c_h_/_0.7)]",
+            "[&[data-theme='dark']]:-outline-offset-1 [&[data-theme='dark']]:outline-[0.5px] [&[data-theme='dark']]:outline-[var(--color-border-60)]",
             "max-sm:m-4 max-sm:max-w-[calc(100vw-2rem)]",
             className
           )}

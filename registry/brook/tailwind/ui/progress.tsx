@@ -34,7 +34,7 @@ function ProgressTrack({
   return (
     <Progress.Track
       className={cn(
-        "relative h-1.5 w-full overflow-hidden rounded-full bg-[var(--mix-card-75-bg)]",
+        "relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]",
         className
       )}
       {...props}
@@ -49,7 +49,7 @@ function ProgressIndicator({
   return (
     <Progress.Indicator
       className={cn(
-        "h-full w-[var(--progress-indicator-width)] rounded-full bg-[var(--primary)] transition-all duration-150 ease-out",
+        "h-full w-[var(--progress-indicator-width)] rounded-none bg-[var(--primary)] transition-all duration-150 ease-out",
         "[.root[data-indeterminate]_&]:w-[40%] [.root[data-indeterminate]_&]:animate-[indeterminate_2s_infinite_linear]",
         className
       )}

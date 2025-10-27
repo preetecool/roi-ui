@@ -19,7 +19,7 @@ export default function MenubarDemo() {
         <MenubarMenuTrigger
           render={
             <Button
-              className="rounded-[0.4rem] border-0"
+              className="!border-none rounded-[0.4rem]"
               size="sm"
               variant="ghost"
             >
@@ -86,7 +86,7 @@ export default function MenubarDemo() {
         <MenubarMenuTrigger
           render={
             <Button
-              className="rounded-[0.4rem] border-0"
+              className="!border-none rounded-[0.4rem]"
               size="sm"
               variant="ghost"
             >
@@ -149,7 +149,7 @@ export default function MenubarDemo() {
         <MenubarMenuTrigger
           render={
             <Button
-              className="rounded-[0.4rem] border-0"
+              className="!border-none rounded-[0.4rem]"
               size="sm"
               variant="ghost"
             >
@@ -192,7 +192,7 @@ export default function MenubarDemo() {
         <MenubarMenuTrigger
           render={
             <Button
-              className="rounded-[0.4rem] border-0"
+              className="!border-none rounded-[0.4rem]"
               size="sm"
               variant="ghost"
             >

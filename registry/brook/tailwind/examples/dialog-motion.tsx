@@ -47,7 +47,7 @@ export default function DialogFramerMotion() {
           {open && (
             <DialogPopup
               className={cn(
-                "max-w-[400px] rounded-[var(--radius-lg)] border border-border p-6"
+                "fixed max-w-[400px] rounded-[var(--radius-lg)] border border-border p-6"
               )}
               render={
                 <motion.div

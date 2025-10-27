@@ -16,7 +16,7 @@ export default function SliderDemo() {
 
   return (
     <div className="w-[300px] p-8 max-[640px]:w-full max-[640px]:p-4">
-      <div className="mb-2 min-w-[3ch] font-medium font-mono text-foreground text-sm max-[640px]:text-[0.9375rem]">
+      <div className="mb-2 min-w-[3ch] font-medium font-mono text-foreground text-sm leading-[1.5] max-[640px]:text-[0.9375rem]">
         {Math.round(value)}
       </div>
       <Slider
