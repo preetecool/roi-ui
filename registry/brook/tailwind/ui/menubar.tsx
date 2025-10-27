@@ -1,0 +1,164 @@
+"use client";
+
+import { Menubar } from "@base-ui-components/react/menubar";
+import type { ReactNode } from "react";
+import { cn } from "@/lib/tw-utils";
+import {
+  DropdownMenu,
+  DropdownMenuArrow,
+  DropdownMenuItem,
+  DropdownMenuPopup,
+  DropdownMenuPortal,
+  DropdownMenuPositioner,
+  DropdownMenuSeparator,
+  DropdownMenuSubmenuRoot,
+  DropdownMenuSubmenuTrigger,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
+
+function MenubarRoot({
+  className,
+  ...props
+}: React.ComponentProps<typeof Menubar>) {
+  return (
+    <Menubar
+      className={cn(
+        "flex items-center bg-[var(--mix-card-50-bg)]",
+        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)]",
+        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "gap-0.5 p-0.5",
+        "max-sm:gap-1.5 max-sm:p-1.5",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function MenubarMenuRoot({
+  ...props
+}: React.ComponentProps<typeof DropdownMenu>) {
+  return <DropdownMenu {...props} />;
+}
+
+function MenubarMenuTrigger({
+  ...props
+}: React.ComponentProps<typeof DropdownMenuTrigger>) {
+  return <DropdownMenuTrigger {...props} />;
+}
+
+const MenubarMenuPortal = DropdownMenuPortal;
+
+function MenubarMenuPositioner({
+  className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPositioner>) {
+  return (
+    <DropdownMenuPositioner
+      align="start"
+      className={cn("absolute left-0 z-[150]", className)}
+      side="bottom"
+      {...props}
+    />
+  );
+}
+
+function MenubarMenuPopup({
+  className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPopup>) {
+  return (
+    <DropdownMenuPopup
+      className={cn(
+        "min-w-[170px] bg-[var(--mix-card-50-bg)]",
+        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)]",
+        "flex flex-col",
+        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "origin-[top_center] transition-[transform,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
+        "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+        "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+        "max-sm:max-w-[calc(100vw-2rem)] max-sm:p-1.5",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+interface MenubarMenuItemProps
+  extends React.ComponentProps<typeof DropdownMenuItem> {
+  icon?: ReactNode;
+}
+
+function MenubarMenuItem({
+  className,
+  icon,
+  children,
+  ...props
+}: MenubarMenuItemProps) {
+  return (
+    <DropdownMenuItem
+      className={className}
+      icon={icon}
+      style={icon ? undefined : { paddingLeft: "12px" }}
+      {...props}
+    >
+      {children}
+    </DropdownMenuItem>
+  );
+}
+
+function MenubarMenuSeparator({
+  ...props
+}: React.ComponentProps<typeof DropdownMenuSeparator>) {
+  return <DropdownMenuSeparator {...props} />;
+}
+
+function MenubarMenuArrow({
+  ...props
+}: React.ComponentProps<typeof DropdownMenuArrow>) {
+  return <DropdownMenuArrow {...props} />;
+}
+
+function MenubarMenuSubmenuRoot({
+  ...props
+}: React.ComponentProps<typeof DropdownMenuSubmenuRoot>) {
+  return <DropdownMenuSubmenuRoot {...props} />;
+}
+
+function MenubarMenuSubmenuTrigger({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuSubmenuTrigger>) {
+  // Check if children contains an icon element (checking for common icon props)
+  const hasIcon =
+    typeof children === "object" &&
+    children !== null &&
+    "type" in children &&
+    typeof children.type === "function";
+
+  return (
+    <DropdownMenuSubmenuTrigger
+      className={className}
+      style={hasIcon ? undefined : { paddingLeft: "12px" }}
+      {...props}
+    >
+      {children}
+    </DropdownMenuSubmenuTrigger>
+  );
+}
+
+export {
+  MenubarRoot as Menubar,
+  MenubarMenuRoot as MenubarMenu,
+  MenubarMenuArrow,
+  MenubarMenuItem,
+  MenubarMenuPopup,
+  MenubarMenuPortal,
+  MenubarMenuPositioner,
+  MenubarMenuSeparator,
+  MenubarMenuSubmenuRoot,
+  MenubarMenuSubmenuTrigger,
+  MenubarMenuTrigger,
+};
