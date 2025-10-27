@@ -26,6 +26,7 @@ export default function DialogFramerMotion() {
             <Button
               render={
                 <motion.button
+                  className={styles.trigger}
                   id={styles.id}
                   key="button-inner"
                   layoutId="button"
@@ -69,6 +70,7 @@ export default function DialogFramerMotion() {
                   <Button
                     render={
                       <motion.button
+                        className={styles.trigger}
                         id={styles.id}
                         key="button-inner"
                         layoutId="button"

@@ -1,33 +1,9 @@
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius);
-  font-weight: 400;
-  cursor: pointer;
-  border: 1px solid transparent;
-  outline: none;
-  position: relative;
-  overflow: hidden;
-
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-
-  height: 2.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.925rem;
-}
-
-.button:active:not(:disabled) {
-  transform: scale(0.97);
-}
-
-.button:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
+.trigger:hover {
+  background-color: var(--primary) !important;
 }
 
 .popup {
+  position: fixed;
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   border: 1px solid var(--border);
