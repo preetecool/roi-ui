@@ -30,6 +30,7 @@ function CheckboxIndicator({
     <Checkbox.Indicator
       className={cn(
         "flex h-full w-full scale-0 items-center justify-center text-[color:var(--color-primary-foreground)]",
+        "[&>svg]:h-4 [&>svg]:w-4",
         "data-[unchecked]:hidden",
         "[[data-checked]_&]:scale-100",
         className

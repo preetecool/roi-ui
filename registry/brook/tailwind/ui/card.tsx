@@ -16,16 +16,13 @@ const cardVariants = cva(
           "[&_.card-content]:px-6 [&_.card-content]:pt-6 [&_.card-content]:pb-8",
           "[&_.card-content]:transition-transform [&_.card-content]:duration-[250ms] [&_.card-content]:ease-[var(--ease-in-out-quad)]",
           "[&_.card-content]:-mx-6 [&_.card-content]:w-[calc(100%+3rem)] [&_.card-content]:bg-[var(--mix-card-33-bg)]",
-          "[&_.card-image]:-m-[calc(1.5rem+1px)] [&_.card-image]:mb-0 [&_.card-image]:w-[calc(100%+3rem+2px)]",
-          "[&_.card-image]:aspect-video [&_.card-image]:h-[300px] [&_.card-image]:object-cover",
-          "[&_.card-image]:transition-transform [&_.card-image]:duration-[250ms] [&_.card-image]:ease-[var(--ease-in-out-quad)]",
-          "[&_.card-image]:box-border [&_.card-image]:max-w-full [&_.card-image]:rounded-t-[var(--radius)]",
+          "max-md:[&_.card-image]:-mx-6 max-md:[&_.card-image]:w-[calc(100%+3rem)]",
           "[&_.card-footer]:opacity-0 [&_.card-footer]:transition-[opacity,transform]",
           "[&_.card-footer]:duration-[250ms] [&_.card-footer]:ease-[var(--ease-in-out-quad)]",
           "[&_.card-footer]:absolute [&_.card-footer]:right-6 [&_.card-footer]:bottom-0 [&_.card-footer]:left-6",
           "hover:[&_.card-content]:-translate-y-8",
           "hover:[&_.card-footer]:-translate-y-4 hover:[&_.card-footer]:opacity-100",
-          "hover:[&_.card-image]:scale-105",
+          "hover:[&_.card-image]:scale-[1.04]",
         ],
       },
     },
@@ -170,8 +167,10 @@ function CardImage({
     <Image
       alt={alt}
       className={cn(
-        "card-image aspect-video h-[250px] w-full object-cover md:h-[300px]",
-        "md:-mx-0 md:-mt-6 md:mb-0 md:w-full md:max-w-none",
+        "card-image aspect-video w-full max-w-none object-cover box-border",
+        "h-[250px] -mt-6 mb-0 mx-0",
+        "md:h-[300px] md:w-[calc(100%+3rem+2px)] md:-mt-[calc(1.5rem+1px)] md:-mx-[calc(1.5rem+1px)] md:mb-0 md:max-w-[100vw]",
+        "rounded-t-[var(--radius)] transition-transform duration-[250ms] ease-[var(--ease-in-out-quad)]",
         className
       )}
       data-slot="card-image"

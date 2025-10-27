@@ -61,19 +61,19 @@ export default function CardLoginDemo() {
     <Card
       className={cn(
         "w-[400px] rounded-[var(--radius-lg)] border-[0.5px] border-[var(--border)] p-5",
-        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_2px_2px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px]",
-        "sm:w-full sm:p-4"
+        "shadow-[0_1px_1px_oklch(from_var(--border)_l_c_h_/_0.2),0_2px_2px_oklch(from_var(--border)_l_c_h_/_0.2),0_1px_1px_oklch(from_var(--border)_l_c_h_/_0.2)]",
+        "max-sm:w-full max-sm:p-4"
       )}
     >
       <CardHeader>
-        <CardTitle className={cn("ml-1", "sm:text-xl sm:leading-[1.3]")}>
+        <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>
           Sign In
         </CardTitle>
       </CardHeader>
       <CardContent>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <Field className="pb-1">
-            <FieldLabel className={cn("ml-1", "sm:text-sm")}>Email</FieldLabel>
+            <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
             <FieldControl
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
@@ -88,17 +88,17 @@ export default function CardLoginDemo() {
             <div
               className={cn(
                 "mb-2 flex w-full items-center justify-between",
-                "sm:mb-1.5"
+                "max-sm:mb-1.5"
               )}
             >
-              <FieldLabel className={cn("ml-1", "sm:text-sm")}>
+              <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>
                 Password
               </FieldLabel>
               <button
                 className={cn(
-                  "mr-1 cursor-pointer border-none bg-transparent p-0 font-light text-[var(--secondary-foreground)] text-sm transition-colors duration-200",
+                  "mr-1 cursor-pointer border-none bg-transparent p-0 font-light text-[var(--secondary-foreground)] text-sm leading-5 transition-colors duration-200",
                   "hover:text-[var(--foreground)]",
-                  "sm:mr-0 sm:min-h-11 sm:p-2 sm:text-sm"
+                  "max-sm:mr-0 max-sm:min-h-11 max-sm:p-2 max-sm:text-sm"
                 )}
                 type="button"
               >
@@ -116,8 +116,8 @@ export default function CardLoginDemo() {
 
           <label
             className={cn(
-              "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm",
-              "sm:min-h-11 sm:items-center sm:gap-2.5 sm:text-sm"
+              "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm leading-5",
+              "max-sm:min-h-11 max-sm:items-center max-sm:gap-2.5 max-sm:text-sm"
             )}
             htmlFor="remember-me"
           >
@@ -134,7 +134,7 @@ export default function CardLoginDemo() {
               className={cn(
                 "cursor-pointer text-[var(--secondary-foreground)]",
                 "hover:text-[var(--foreground)]",
-                "sm:text-sm"
+                "max-sm:text-sm"
               )}
             >
               Remember me
@@ -151,26 +151,26 @@ export default function CardLoginDemo() {
         <div className="h-px flex-1 bg-[var(--border)]" />
         <span
           className={cn(
-            "px-2 font-normal text-[var(--muted-foreground)] text-xs",
-            "sm:text-[0.8125rem]"
+            "px-2 font-normal text-[var(--muted-foreground)] text-xs leading-5",
+            "max-sm:text-[0.8125rem]"
           )}
         >
           OR
         </span>
         <div className="h-px flex-1 bg-[var(--border)]" />
       </div>
-      <div className={cn("flex flex-col gap-3", "sm:gap-3")}>
+      <div className="flex flex-col gap-3">
         <Button
           className={cn(
             "relative flex w-full gap-2",
-            "sm:min-h-11 sm:gap-2.5 sm:text-[0.9375rem]"
+            "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]"
           )}
           variant="outline"
         >
           <AppleIcon
             className={cn(
               "-ml-2 h-5 w-5",
-              "sm:-ml-1 sm:h-[1.125rem] sm:w-[1.125rem]"
+              "max-sm:-ml-1 max-sm:h-[1.125rem] max-sm:w-[1.125rem]"
             )}
           />
           Apple
@@ -178,16 +178,16 @@ export default function CardLoginDemo() {
         <Button
           className={cn(
             "relative flex w-full gap-2",
-            "sm:min-h-11 sm:gap-2.5 sm:text-[0.9375rem]"
+            "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]"
           )}
           variant="outline"
         >
           <GoogleIcon
-            className={cn("h-5 w-5", "sm:h-[1.125rem] sm:w-[1.125rem]")}
+            className={cn("h-5 w-5", "max-sm:h-[1.125rem] max-sm:w-[1.125rem]")}
           />
           Google
           <Badge
-            className={cn("absolute right-3", "sm:right-2")}
+            className={cn("absolute right-3", "max-sm:right-2")}
             size="sm"
             variant="info"
           >
@@ -197,8 +197,8 @@ export default function CardLoginDemo() {
       </div>
       <div
         className={cn(
-          "-ml-5 -mr-5 -mb-5 -mt-2 w-[calc(100%+40px)] rounded-b-[var(--radius-lg)] bg-[var(--mix-card-35-trans)] py-5 text-center text-sm",
-          "sm:-ml-4 sm:-mr-4 sm:-mb-4 sm:w-[calc(100%+2rem)] sm:py-4 sm:text-[0.9375rem]"
+          "-ml-5 -mr-5 -mb-5 -mt-2 w-[calc(100%+40px)] rounded-b-[var(--radius-lg)] bg-[var(--mix-card-35-trans)] py-5 text-center text-sm leading-5",
+          "max-sm:-ml-4 max-sm:-mr-4 max-sm:-mb-4 max-sm:w-[calc(100%+2rem)] max-sm:py-4 max-sm:text-[0.9375rem]"
         )}
       >
         <span className="text-[var(--muted-foreground)]">No account? </span>

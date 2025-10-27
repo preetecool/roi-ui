@@ -19,7 +19,7 @@ export default function CheckboxGroupDemo() {
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
-          <span className="text-sm">Design</span>
+          <span className="text-sm leading-5">Design</span>
         </label>
 
         <label className="flex items-center gap-2 mb-2 cursor-pointer" htmlFor="development">
@@ -28,7 +28,7 @@ export default function CheckboxGroupDemo() {
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
-          <span className="text-sm">Development</span>
+          <span className="text-sm leading-5">Development</span>
         </label>
 
         <label className="flex items-center gap-2 cursor-pointer" htmlFor="marketing">
@@ -37,7 +37,7 @@ export default function CheckboxGroupDemo() {
               <Check size={16} strokeWidth={3} />
             </CheckboxIndicator>
           </Checkbox>
-          <span className="text-sm">Marketing</span>
+          <span className="text-sm leading-5">Marketing</span>
         </label>
       </CheckboxGroup>
     </div>

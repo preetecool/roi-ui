@@ -1623,6 +1623,66 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "combobox-demo-tailwind": {
+    name: "combobox-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/combobox-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "command-demo-tailwind": {
+    name: "command-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/command-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "context-menu-demo-tailwind": {
+    name: "context-menu-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/context-menu-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "copy-button-demo-tailwind": {
+    name: "copy-button-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/copy-button-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "copy-button-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   "dialog-demo-tailwind": {
     name: "dialog-demo-tailwind",
     type: "example",
@@ -1695,6 +1755,21 @@ export const Index: Record<string, RegistryEntry> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "dropdown-menu-submenu";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "expandable-card-demo-tailwind": {
+    name: "expandable-card-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/expandable-card-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "expandable-card-demo";
       return { default: mod.default || mod[exportName] };
     }),
   },

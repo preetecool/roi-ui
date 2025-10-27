@@ -1,4 +1,3 @@
-import { cn } from "@/lib/tw-utils";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Card,
@@ -11,28 +10,20 @@ import {
 export default function CardImageDemo() {
   return (
     <Card
-      className={cn(
-        "max-w-[360px] rounded-3xl",
-        "sm:max-w-full sm:rounded-2xl"
-      )}
+      className="max-w-full rounded-[16px] sm:max-w-[360px] sm:rounded-[24px]"
       variant="lift"
     >
       <CardImage
         alt="Veiled woman gazing at architecture under the night sky"
-        className={cn("w-auto rounded-xl", "sm:rounded-lg")}
+        className="w-auto rounded-[8px] sm:rounded-[12px]"
         src="/scene_01.png"
       />
 
       <CardContent>
-        <CardTitle className={cn("m-0", "sm:text-lg sm:leading-[1.3]")}>
+        <CardTitle className="m-0 max-sm:text-[1.125rem] max-sm:leading-[1.3]">
           Threshold
         </CardTitle>
-        <p
-          className={cn(
-            "m-0 text-[var(--muted-foreground)]",
-            "sm:text-[0.9375rem] sm:leading-[1.5]"
-          )}
-        >
+        <p className="m-0 text-[var(--muted-foreground)] max-sm:text-[0.9375rem] max-sm:leading-[1.5]">
           Between what we build and what eternally exists standing in quiet
           contemplation.
         </p>

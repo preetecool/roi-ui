@@ -61,7 +61,7 @@ export function CardTraffic() {
       <CardHeader>
         <CardTitle>Website Traffic</CardTitle>
       </CardHeader>
-      <CardContent className="h-[200px] p-0 sm:h-[180px]">
+      <CardContent className="h-[200px] p-0">
         <div style={{ width: "100%", height: "100%" }}>
           <ChartContainer config={chartConfig}>
             <LineChart data={trafficData}>
@@ -94,7 +94,7 @@ export function CardTraffic() {
       <div
         className={cn(
           "-mx-6 -mb-6 grid grid-cols-2 grid-rows-2 border-t-[0.5px] border-t-[oklch(from_var(--border)_l_c_h_/_0.7)]",
-          "sm:-mx-5 sm:-mb-5",
+          "max-sm:-mx-5 max-sm:-mb-5",
           "max-[400px]:-mx-5 max-[400px]:-mb-5 max-[400px]:grid-cols-1 max-[400px]:grid-rows-auto"
         )}
       >
@@ -106,11 +106,11 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm sm:text-sm">
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
               Mobile
             </span>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-[400px]:text-2xl sm:text-[1.75rem]">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
             25,010
           </span>
         </div>
@@ -123,11 +123,11 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm sm:text-sm">
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
               Desktop
             </span>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-[400px]:text-2xl sm:text-[1.75rem]">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
             12,840
           </span>
         </div>
@@ -140,14 +140,14 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm sm:text-sm">
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
               Bounce Rate
             </span>
             <Badge size="sm" variant="success">
               -3.4%
             </Badge>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-[400px]:text-2xl sm:text-[1.75rem]">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
             24.1%
           </span>
         </div>
@@ -160,14 +160,14 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm sm:text-sm">
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
               Conversion
             </span>
             <Badge size="sm" variant="destructive">
               -0.9%
             </Badge>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-[400px]:text-2xl sm:text-[1.75rem]">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
             2.8%
           </span>
         </div>

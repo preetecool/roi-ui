@@ -210,9 +210,7 @@ function LikeButton({
           {particles.map((particle) => (
             <div
               className={cn(
-                "absolute top-1/2 left-1/2 will-change-[transform,opacity]",
-                "animate-[particleOut_0.5s_ease-out_var(--delay)_forwards,particleReturn_0.5s_ease-out_calc(0.65s+var(--return-delay))_forwards]",
-                "translate-x-[-50%] translate-y-[-50%] scale-0 opacity-0"
+                "absolute top-1/2 left-1/2 will-change-[transform,opacity]"
               )}
               key={particle.id}
               style={
@@ -222,6 +220,9 @@ function LikeButton({
                   "--delay": `${particle.delay}s`,
                   "--return-delay": `${particle.returnDelay}s`,
                   "--scale": particle.scale,
+                  opacity: 0,
+                  transform: "translate(-50%, -50%) scale(0)",
+                  animation: `like-button-particle-out 0.5s ease-out var(--delay) forwards, like-button-particle-return 0.5s ease-out calc(0.65s + var(--return-delay)) forwards`,
                 } as React.CSSProperties
               }
             >
@@ -229,19 +230,19 @@ function LikeButton({
                 className={cn(
                   particle.type === "star"
                     ? "relative block before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-foreground before:content-[''] before:[clip-path:polygon(50%_0%,100%_50%,50%_100%,0%_50%)]"
-                    : "rounded-full bg-foreground",
-                  particle.type === "star" && "rotate-[var(--rotation)]"
+                    : "rounded-full bg-foreground"
                 )}
                 style={
                   {
                     "--rotation": `${particle.rotation}deg`,
                     "--size": `${particle.size}px`,
-                    width: "var(--size)",
-                    height: "var(--size)",
+                    "--scale": particle.scale,
+                    width: `${particle.size}px`,
+                    height: `${particle.size}px`,
                     transform:
                       particle.type === "circle"
-                        ? "scale(var(--scale))"
-                        : "rotate(var(--rotation))",
+                        ? `scale(${particle.scale})`
+                        : `rotate(${particle.rotation}deg)`,
                   } as React.CSSProperties
                 }
               />
@@ -262,8 +263,6 @@ function LikeButton({
             "my-1 overflow-visible outline-none will-change-[transform,opacity]",
             "hover:scale-105",
             "focus:outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
-            isThumbAnimating &&
-              "animate-[thumbTilt_1.15s_cubic-bezier(0.455,0.03,0.515,0.955)]",
             "max-md:transform-[translate3d(0,0,0)] max-md:min-h-12 max-md:min-w-12 max-md:p-4 max-md:[-webkit-transform:translate3d(0,0,0)]",
             "max-md:[-webkit-backface-visibility:hidden] max-md:[backface-visibility:hidden] max-md:[transform-origin:center]",
             "max-md:[-webkit-transform-style:preserve-3d] max-md:[transform-style:preserve-3d]"
@@ -279,6 +278,9 @@ function LikeButton({
             opacity: 1,
             transform: "translateZ(0)",
             WebkitTransform: "translateZ(0)",
+            animation: isThumbAnimating
+              ? "like-button-thumb-tilt 1.15s cubic-bezier(0.455, 0.03, 0.515, 0.955)"
+              : undefined,
           }}
           type="button"
         >
@@ -315,7 +317,7 @@ function LikeButton({
       </div>
 
       <style jsx>{`
-        @keyframes particleOut {
+        @keyframes like-button-particle-out {
           0% {
             transform: translate(-50%, -50%) scale(0.5);
             opacity: 0;
@@ -330,7 +332,7 @@ function LikeButton({
           }
         }
 
-        @keyframes particleReturn {
+        @keyframes like-button-particle-return {
           0% {
             transform: translate(
                 calc(-50% + (cos(var(--angle)) * var(--distance))),
@@ -353,7 +355,7 @@ function LikeButton({
           }
         }
 
-        @keyframes thumbTilt {
+        @keyframes like-button-thumb-tilt {
           0% {
             transform: rotate(0deg) scale(1) translateZ(0);
           }
@@ -365,7 +367,7 @@ function LikeButton({
           }
         }
 
-        @-webkit-keyframes thumbTilt {
+        @-webkit-keyframes like-button-thumb-tilt {
           0% {
             -webkit-transform: rotate(0deg) scale(1) translateZ(0);
           }

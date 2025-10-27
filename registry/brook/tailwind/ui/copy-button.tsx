@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 
 const COPIED_RESET_DELAY_MS = 700;
 
-const CopyIcon = ({ size = 14 }: { size?: number }) => (
+const CopyIcon = ({ size = 14, copied = false }: { size?: number; copied?: boolean }) => (
   <svg
     aria-label="copy-icon"
     height={size}
@@ -21,7 +21,10 @@ const CopyIcon = ({ size = 14 }: { size?: number }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      className="origin-center transition-all duration-300 ease-in-out will-change-transform [[data-copied=true]_&]:translate-x-[-4px] [[data-copied=true]_&]:translate-y-[-4px] [[data-copied=true]_&]:scale-80 [[data-copied=true]_&]:opacity-0 [[data-copied=true]_&]:transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
+      className={cn(
+        "origin-center transition-all duration-300 ease-in-out will-change-transform",
+        copied && "translate-x-[-4px] translate-y-[-4px] scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
+      )}
       data-element="front"
       fill="none"
       height="14"
@@ -32,7 +35,10 @@ const CopyIcon = ({ size = 14 }: { size?: number }) => (
       y="8"
     />
     <path
-      className="origin-center transition-all duration-300 ease-in-out will-change-transform [[data-copied=true]_&]:scale-80 [[data-copied=true]_&]:opacity-0 [[data-copied=true]_&]:transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
+      className={cn(
+        "origin-center transition-all duration-300 ease-in-out will-change-transform",
+        copied && "scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
+      )}
       d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
       data-element="back"
       fill="none"
@@ -86,22 +92,22 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       <div
         className={cn(
           "absolute flex items-center justify-center will-change-transform",
-          "rotate-0 scale-100 opacity-100 blur-0 transition-all duration-300 ease-in-out",
-          "data-[copied=true]:opacity-0 data-[copied=true]:transition-opacity data-[copied=true]:delay-[50ms] data-[copied=true]:duration-[250ms] data-[copied=true]:ease-in-out",
-          copied &&
-            "opacity-0 transition-opacity delay-[50ms] duration-[250ms] ease-in-out"
+          "transition-all duration-300 ease-in-out",
+          copied
+            ? "opacity-0 transition-opacity delay-[50ms] duration-[250ms] ease-in-out"
+            : "opacity-100 scale-100 rotate-0 blur-0"
         )}
         data-icon="copy"
       >
-        <CopyIcon size={14} />
+        <CopyIcon size={14} copied={copied} />
       </div>
       <div
         className={cn(
           "absolute flex items-center justify-center will-change-transform",
-          "-rotate-45 scale-0 opacity-0 blur-[4px] transition-all duration-300 ease-in-out",
-          "data-[copied=true]:rotate-0 data-[copied=true]:scale-100 data-[copied=true]:opacity-100 data-[copied=true]:blur-0 data-[copied=true]:transition-all data-[copied=true]:delay-[50ms] data-[copied=true]:duration-[250ms] data-[copied=true]:ease-in-out",
-          copied &&
-            "rotate-0 scale-100 opacity-100 blur-0 transition-all delay-[50ms] duration-[250ms] ease-in-out"
+          "transition-all duration-300 ease-in-out",
+          copied
+            ? "rotate-0 scale-100 opacity-100 blur-0 transition-all delay-[50ms] duration-[250ms] ease-in-out"
+            : "-rotate-45 scale-0 opacity-0 blur-[4px]"
         )}
         data-icon="check"
       >

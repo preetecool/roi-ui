@@ -17,7 +17,7 @@
 }
 
 .statCard {
-  padding: 20px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -39,7 +39,7 @@
   }
 
   .chartContainer {
-    height: 180px;
+    height: 200px;
   }
 
   .statsGrid {
@@ -99,6 +99,7 @@
 
 .statLabel {
   font-size: 14px;
+  line-height: 20px;
   color: var(--muted-foreground);
   font-weight: 500;
 }

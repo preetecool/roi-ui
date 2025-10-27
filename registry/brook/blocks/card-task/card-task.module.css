@@ -46,6 +46,8 @@
   justify-content: flex-center;
   align-items: center;
   gap: 4px;
+  height: 14px;
+  line-height: 14px;
 }
 .tomorrowText {
   color: var(--warning-foreground);

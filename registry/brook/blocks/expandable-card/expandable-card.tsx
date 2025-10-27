@@ -23,34 +23,36 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
   return (
     <div className={styles.wrapper}>
       <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
-        {isOpen && (
-          <Dialog.Backdrop
-            className={styles.overlay}
-            key="overlay"
-            render={
-              <motion.div
-                animate={{
-                  opacity: 1,
-                }}
-                className={styles.overlay}
-                exit={{ opacity: 0, background: "red" }}
-                initial={{ opacity: 0 }}
-                transition={{
-                  delay: 0.035,
-                  duration: 0.17,
-                  // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
-                  ease: [0.455, 0.03, 0.515, 0.955],
-                }}
-              />
-            }
-          />
-        )}
-
+        <AnimatePresence>
+          {isOpen && (
+            <Dialog.Backdrop
+              key="overlay"
+              render={
+                <motion.div
+                  animate={{
+                    opacity: 1,
+                  }}
+                  className={styles.overlay}
+                  exit={{ opacity: 0 }}
+                  hidden={undefined}
+                  initial={{ opacity: 0 }}
+                  transition={{
+                    delay: 0.035,
+                    duration: 0.2,
+                    // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
+                    ease: [0.455, 0.03, 0.515, 0.955],
+                  }}
+                />
+              }
+            />
+          )}
+        </AnimatePresence>
         <Dialog.Portal keepMounted>
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence>
             {isOpen && (
               <div className={styles.modalPositioner} key="positioner">
                 <Dialog.Popup
+                  hidden={undefined}
                   render={
                     <motion.div
                       className={styles.expandedCard}
@@ -66,11 +68,11 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                     <div className={styles.closeButtonContainer}>
                       <Dialog.Close
                         aria-label="Close"
-                        className={styles.closeButton}
                         render={
                           <motion.button
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                            className={styles.closeButton}
+                            exit={{ opacity: 0, display: "flex" }}
                             initial={{ opacity: 0 }}
                             transition={{
                               type: "spring",
@@ -106,12 +108,13 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                         className={styles.paragrahWrapper}
                         exit={{
                           opacity: 0,
+                          display: "block",
                           y: -40,
                           scale: 0.95,
                           transition: { delay: 0.05 },
                         }}
                         initial={{ opacity: 0, y: -40, scale: 0.95 }}
-                        transition={{ duration: 0.2, delay: 0.1 }}
+                        transition={{ duration: 0.2 }}
                       >
                         {item.content}
                       </motion.div>
@@ -122,7 +125,6 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
             )}
           </AnimatePresence>
         </Dialog.Portal>
-
         <Dialog.Trigger
           render={
             <motion.button

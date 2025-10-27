@@ -14,7 +14,7 @@ export default function CheckboxDemo() {
           <Check size={16} strokeWidth={3} />
         </CheckboxIndicator>
       </Checkbox>
-      <span className="text-sm">Accept terms and conditions</span>
+      <span className="text-sm leading-5">Accept terms and conditions</span>
     </label>
   );
 }

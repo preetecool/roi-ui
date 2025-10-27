@@ -124,6 +124,7 @@
 .sm {
   padding: 0.0625rem 0.375rem;
   font-size: 0.625rem;
+  line-height: 15px;
   border-radius: var(--radius);
 }
 

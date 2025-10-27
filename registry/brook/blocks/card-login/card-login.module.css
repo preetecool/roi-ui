@@ -30,6 +30,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
+  line-height: 20px;
   font-weight: 300;
   margin-left: 4px;
   margin-top: 0.5rem;
@@ -61,6 +62,7 @@
   border: none;
   padding: 0;
   font-size: 0.875rem;
+  line-height: 20px;
   color: var(--secondary-foreground);
   cursor: pointer;
   transition: color 0.2s;
@@ -88,6 +90,7 @@
   margin-top: -8px;
   text-align: center;
   font-size: 0.875rem;
+  line-height: 20px;
   padding: 1.25rem 0;
   background-color: var(--mix-card-35-trans);
 
@@ -118,6 +121,7 @@
 .dividerText {
   color: var(--muted-foreground);
   font-size: 0.75rem;
+  line-height: 20px;
   font-weight: 400;
   padding: 0 0.5rem;
 }

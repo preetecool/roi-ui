@@ -4,7 +4,7 @@ import { cn } from "@/lib/tw-utils";
 
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center rounded-[var(--radius)] font-[450]",
+    "group inline-flex items-center justify-center rounded-[var(--radius)] font-[450]",
     "transition-transform duration-200 ease-[var(--ease-out-quad)]",
     "relative cursor-pointer overflow-hidden border border-transparent outline-none",
     "leading-[1.2] tracking-[-0.014em]",
@@ -34,8 +34,8 @@ const buttonVariants = cva(
           "hover:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.66)] hover:disabled:bg-transparent",
         ],
         outline: [
-          "border-[color:oklch(from_var(--color-border)_l_c_h_/_0.7)] bg-[color:oklch(from_var(--color-card)_l_c_h_/_0.5)] text-[color:var(--color-foreground)]",
-          "hover:bg-[color:oklch(from_var(--color-card)_l_c_h_/_0.66)] hover:disabled:bg-[color:oklch(from_var(--color-card)_l_c_h_/_0.5)]",
+          "border-[color:oklch(from_var(--color-border)_l_c_h_/_0.7)] bg-[var(--mix-card-50-bg)] text-[color:var(--color-foreground)]",
+          "hover:bg-[var(--mix-card-66-bg)] hover:disabled:bg-[var(--mix-card-50-bg)]",
         ],
         link: [
           "bg-transparent p-0 text-[color:var(--color-muted-foreground)] no-underline",
@@ -129,21 +129,18 @@ function ArrowPointer({
 }) {
   const arrowClasses = cn(
     "-mt-px -mr-2 relative top-0 ml-2 h-3 w-3.5 overflow-visible",
-    "transition-[transform] duration-200 ease-[var(--ease-in-out-cubic)]",
+    "transition-all duration-200 ease-[var(--ease-in-out-cubic)]",
     pointLeft && "-ml-2 mr-2",
-    pointExternal &&
-      "origin-[8%] transition-transform duration-200 ease-[var(--ease-in-out-cubic)]",
-    "[button:hover_&.arrow-external]:-rotate-45"
+    pointExternal && "origin-[8%] group-hover:-rotate-45"
   );
 
   const pointClasses =
-    "transition-[transform] duration-200 ease-[var(--ease-in-out-cubic)] [button:hover_&]:translate-x-0.5";
+    "transition-all duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
   const shaftClasses =
-    "transition-[transform,opacity] duration-200 ease-[var(--ease-in-out-cubic)] opacity-0 [button:hover_&]:opacity-100 [button:hover_&]:-translate-x-0.5";
+    "transition-all duration-200 ease-[var(--ease-in-out-cubic)] opacity-0 group-hover:opacity-100 group-hover:-translate-x-0.5";
 
-  const pointLeftClasses = "[button:hover_&]:-translate-x-0.5";
-  const shaftLeftClasses =
-    "[button:hover_&]:opacity-100 [button:hover_&]:translate-x-px";
+  const pointLeftClasses = "group-hover:-translate-x-0.5";
+  const shaftLeftClasses = "group-hover:opacity-100 group-hover:translate-x-px";
 
   return (
     <svg

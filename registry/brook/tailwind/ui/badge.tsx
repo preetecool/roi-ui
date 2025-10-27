@@ -31,7 +31,7 @@ const badgeVariants = cva(
         outline: "border-border bg-transparent text-foreground hover:bg-card",
       },
       size: {
-        sm: "rounded-[var(--radius)] px-1.5 py-px text-[0.625rem]",
+        sm: "rounded-[var(--radius)] px-1.5 py-px text-[0.625rem] leading-[15px]",
         md: "rounded-[var(--radius)] px-2 py-0.5 text-xs",
         lg: "rounded-[var(--radius-lg)] px-3 py-1 text-sm",
       },

@@ -7,6 +7,10 @@
  * - @layer utilities: Tailwind utilities
  */
 
+@import "tailwindcss/preflight" layer(base);
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
 .root {
   isolation: isolate;
   background-color: var(--background);
@@ -17,10 +21,6 @@
 @layer theme;
 @layer components;
 @layer utilities;
-
-@import "tailwindcss/preflight" layer(base);
-@import "tailwindcss/theme" layer(theme);
-@import "tailwindcss/utilities" layer(utilities);
 
 @theme {
   /* Border radius */
@@ -117,6 +117,8 @@
   }
 }
 
+.light,
+[data-theme="light"],
 :root {
   --radius: 0.6rem;
   --radius-lg: 1.2rem;
