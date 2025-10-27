@@ -44,7 +44,7 @@ export function AiChat() {
   const [selectedItem, setSelectedItem] = useState<string>(aiModes[0].value);
 
   return (
-    <Form className="w-full max-xl:h-full max-sm:flex max-sm:items-center max-sm:justify-center">
+    <Form className="w-full max-sm:flex max-sm:items-center max-sm:justify-center max-xl:h-full">
       <Card
         className={cn(
           "h-auto w-full flex-1 gap-3 rounded-[var(--radius-lg)] border-[var(--border)] bg-[var(--mix-card-50-bg)] p-3",
