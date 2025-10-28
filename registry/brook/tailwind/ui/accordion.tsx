@@ -10,6 +10,7 @@ function AccordionRoot({
 }: React.ComponentProps<typeof Accordion.Root>) {
   return (
     <Accordion.Root
+      data-slot="accordion-root"
       className={cn(
         "w-[32rem] max-w-[calc(100vw-8rem)] cursor-inherit",
         className
@@ -22,9 +23,10 @@ function AccordionRoot({
 function AccordionItem({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Accordion.Item>) {
+}: React.ComponentProps<typeof Accordion.Item>) {
   return (
     <Accordion.Item
+      data-slot="accordion-item"
       className={cn(
         "border-border/80 border-b-[0.5px] last:border-b-0",
         className
@@ -37,9 +39,10 @@ function AccordionItem({
 function AccordionHeader({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Accordion.Header>) {
+}: React.ComponentProps<typeof Accordion.Header>) {
   return (
     <Accordion.Header
+      data-slot="accordion-header"
       className={cn("m-0 font-medium text-sm tracking-inherit", className)}
       {...props}
     />
@@ -50,9 +53,10 @@ function AccordionTrigger({
   className,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Accordion.Trigger>) {
+}: React.ComponentProps<typeof Accordion.Trigger>) {
   return (
     <Accordion.Trigger
+      data-slot="accordion-trigger"
       className={cn(
         "flex w-full cursor-pointer items-center justify-between border-none bg-transparent px-0 text-left font-normal",
         "h-[41.5px]",
@@ -80,9 +84,10 @@ function AccordionPanel({
   className,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Accordion.Panel>) {
+}: React.ComponentProps<typeof Accordion.Panel>) {
   return (
     <Accordion.Panel
+      data-slot="accordion-panel"
       className={cn(
         "box-border h-[var(--accordion-panel-height)] overflow-hidden transition-[height] duration-150 ease-in-out",
         "data-[ending-style]:h-0 data-[starting-style]:h-0",
