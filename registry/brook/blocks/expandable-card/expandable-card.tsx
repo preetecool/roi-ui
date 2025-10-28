@@ -37,8 +37,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   hidden={undefined}
                   initial={{ opacity: 0 }}
                   transition={{
-                    delay: 0.035,
-                    duration: 0.2,
+                    duration: 0.3,
                     // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.455, 0.03, 0.515, 0.955],
                   }}
@@ -76,7 +75,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                             initial={{ opacity: 0 }}
                             transition={{
                               type: "spring",
-                              duration: 0.2,
+                              duration: 0.3,
                               delay: 0.1,
                             }}
                           />
@@ -98,9 +97,9 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
 
                     <motion.div className={styles.contentExpanded}>
                       <motion.div layoutId={`heading-${item.id}`}>
-                        <motion.h3 className={styles.expandedHeading}>
+                        <h3 className={styles.expandedHeading}>
                           {item.cardHeading}
-                        </motion.h3>
+                        </h3>
                       </motion.div>
 
                       <motion.div
@@ -110,11 +109,10 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                           opacity: 0,
                           display: "block",
                           y: -40,
-                          scale: 0.95,
-                          transition: { delay: 0.05 },
+                          scale: 0.92,
                         }}
-                        initial={{ opacity: 0, y: -40, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
+                        initial={{ opacity: 0, y: -40, scale: 0.92 }}
+                        transition={{ delay: 0.1, duration: 0.3 }}
                       >
                         {item.content}
                       </motion.div>
@@ -146,9 +144,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
 
           <div className={styles.contentContainer}>
             <motion.div layoutId={`heading-${item.id}`}>
-              <motion.h3 className={styles.heading}>
-                {item.cardHeading}
-              </motion.h3>
+              <h3 className={styles.heading}>{item.cardHeading}</h3>
             </motion.div>
 
             <motion.div className={styles.expandIcon}>

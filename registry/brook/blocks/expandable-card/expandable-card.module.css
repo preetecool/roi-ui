@@ -50,10 +50,11 @@
 
 .heading {
   font-size: var(--font-size-2xl);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--secondary-foreground);
   margin: 0;
   transition: 150ms ease-out;
+  line-height: 1.5;
 }
 
 .card:hover .heading {
@@ -172,6 +173,7 @@
   margin: 0;
   align-self: flex-start;
   width: 100%;
+  line-height: 1.5;
 }
 
 .paragrahWrapper {
