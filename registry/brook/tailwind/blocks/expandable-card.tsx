@@ -26,6 +26,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         <AnimatePresence>
           {isOpen && (
             <Dialog.Backdrop
+              hidden={undefined}
               key="overlay"
               render={
                 <motion.div
@@ -34,7 +35,6 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   }}
                   className="fixed inset-0 z-[100] min-h-dvh bg-background opacity-95 transition-[300ms_cubic-bezier(0.45,1.005,0,1.005)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[(-webkit-touch-callout:none)]:absolute"
                   exit={{ opacity: 0 }}
-                  hidden={undefined}
                   initial={{ opacity: 0 }}
                   transition={{
                     duration: 0.3,
@@ -136,7 +136,11 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                           scale: 0.92,
                         }}
                         initial={{ opacity: 0, y: -40, scale: 0.92 }}
-                        transition={{ delay: 0.1, duration: 0.3 }}
+                        transition={{
+                          delay: 0.1,
+                          duration: 0.3,
+                          type: "spring",
+                        }}
                       >
                         {item.content}
                       </motion.div>

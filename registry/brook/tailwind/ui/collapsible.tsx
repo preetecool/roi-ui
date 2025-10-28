@@ -85,7 +85,6 @@ function CollapsiblePanel({
         "flex h-[var(--collapsible-panel-height)] flex-col justify-end overflow-hidden",
         "box-border w-full text-sm leading-5 transition-all duration-150 ease-out",
         "data-[ending-style]:h-0 data-[starting-style]:h-0",
-        "data-[closed]:h-0 data-[closed]:border-none",
         className
       )}
       {...props}
