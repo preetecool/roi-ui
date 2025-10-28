@@ -7,15 +7,15 @@ import styles from "./switch.module.css";
 function SwitchRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Root>) {
-  return <Switch.Root className={cn(styles.root, className)} {...props} />;
+}: Switch.Root.Props) {
+  return <Switch.Root data-slot="switch-root" className={cn(styles.root, className)} {...props} />;
 }
 
 function SwitchThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Thumb>) {
-  return <Switch.Thumb className={cn(styles.thumb, className)} {...props} />;
+}: Switch.Thumb.Props) {
+  return <Switch.Thumb data-slot="switch-thumb" className={cn(styles.thumb, className)} {...props} />;
 }
 
 export { SwitchRoot as Switch, SwitchThumb };

@@ -8,23 +8,23 @@ import styles from "./radio.module.css";
 function RadioGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof RadioGroup>) {
+}: RadioGroup.Props) {
   return <RadioGroup className={cn(styles.group, className)} {...props} />;
 }
 
 function RadioRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Radio.Root>) {
+}: Radio.Root.Props) {
   return <Radio.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function RadioIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Radio.Indicator>) {
+}: Radio.Indicator.Props) {
   return (
-    <Radio.Indicator className={cn(styles.indicator, className)} {...props} />
+    <Radio.Indicator data-slot="radio-indicator" className={cn(styles.indicator, className)} {...props} />
   );
 }
 

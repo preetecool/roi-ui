@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function ScrollAreaRoot({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Root>) {
+}: ScrollArea.Root.Props) {
   return (
     <ScrollArea.Root
+      data-slot="scrollarea-root"
       className={cn(
         "box-border h-[8.5rem] w-96 max-w-[calc(100vw-8rem)]",
         className
@@ -21,9 +22,10 @@ function ScrollAreaRoot({
 function ScrollAreaViewport({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Viewport>) {
+}: ScrollArea.Viewport.Props) {
   return (
     <ScrollArea.Viewport
+      data-slot="scrollarea-viewport"
       className={cn(
         "-outline-offset-1 scrollbar-none h-full overflow-scroll overscroll-contain rounded-md [-ms-overflow-style:none]",
         "[&::-webkit-scrollbar]:hidden",
@@ -38,9 +40,10 @@ function ScrollAreaViewport({
 function ScrollAreaContent({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Content>) {
+}: ScrollArea.Content.Props) {
   return (
     <ScrollArea.Content
+      data-slot="scrollarea-content"
       className={cn("flex flex-col gap-4 py-3 pr-6 pl-4", className)}
       {...props}
     />
@@ -51,9 +54,10 @@ function ScrollAreaScrollbar({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollArea.Scrollbar>) {
+}: ScrollArea.Scrollbar.Props) {
   return (
     <ScrollArea.Scrollbar
+      data-slot="scrollarea-scrollbar"
       className={cn(
         "m-2 flex w-1 touch-none select-none justify-center rounded-md bg-[var(--border)] opacity-0 transition-opacity delay-300 duration-150",
         "data-[scrolling]:opacity-100 data-[scrolling]:delay-0 data-[scrolling]:duration-75",
@@ -71,9 +75,10 @@ function ScrollAreaScrollbar({
 function ScrollAreaThumb({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Thumb>) {
+}: ScrollArea.Thumb.Props) {
   return (
     <ScrollArea.Thumb
+      data-slot="scrollarea-thumb"
       className={cn(
         "w-full rounded-[inherit] bg-[var(--muted-foreground)]",
         className
@@ -86,7 +91,7 @@ function ScrollAreaThumb({
 function ScrollAreaCorner({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Corner>) {
+}: ScrollArea.Corner.Props) {
   return <ScrollArea.Corner className={cn("hidden", className)} {...props} />;
 }
 

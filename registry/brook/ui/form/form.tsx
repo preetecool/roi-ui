@@ -5,7 +5,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./form.module.css";
 
-function FormRoot({ className, ...props }: React.ComponentProps<typeof Form>) {
+function FormRoot({ className, ...props }: Form.Props) {
   return <Form className={cn(styles.root, className)} {...props} />;
 }
 

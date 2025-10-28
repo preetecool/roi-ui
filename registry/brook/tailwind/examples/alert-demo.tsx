@@ -6,7 +6,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/registry/brook/tailwind/ui/alert";
-import { Button } from "@/registry/brook/ui/button/button";
+import { Button } from "@/registry/brook/tailwind/ui/button";
 
 export default function AlertDemo() {
   return (

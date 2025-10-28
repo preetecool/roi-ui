@@ -2,6 +2,8 @@
   width: 32rem;
   max-width: calc(100vw - 8rem);
   cursor: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
@@ -21,6 +23,7 @@
 
 .trigger {
   display: flex;
+  box-sizing: border-box;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -31,62 +34,45 @@
   border: none;
   cursor: pointer;
   color: var(--secondary-foreground);
-  transition: padding 150ms ease-in-out;
-}
 
-.trigger:hover {
-  color: var(--foreground);
-  text-decoration: underline solid;
+  @media (hover: hover) {
+    &:hover {
+      color: var(--foreground);
 
-  svg {
-    color: var(--foreground);
+      svg {
+        color: var(--foreground);
+      }
+    }
   }
-}
-
-.trigger:focus {
-  outline: none;
-}
-
-.trigger:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
-
-.trigger[data-disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.trigger[data-disabled]:hover {
-  background: transparent;
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    z-index: 1;
+  }
 }
 
 .chevron {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-  transition: transform 150ms ease-in-out;
+  transition: transform 150ms ease;
   color: var(--muted-foreground);
-}
 
-.trigger[data-panel-open] {
-  transition: padding-bottom 150ms ease-in-out;
-}
-
-[data-panel-open] > .chevron {
-  transform: rotate(180deg);
+  [data-panel-open] > & {
+    transform: rotate(180deg);
+  }
 }
 
 .panel {
   box-sizing: border-box;
   height: var(--accordion-panel-height);
   overflow: hidden;
-  transition: height 150ms ease-in-out;
-}
-
-.panel[data-starting-style],
-.panel[data-ending-style] {
-  height: 0;
+  line-height: 1.4rem;
+  transition: height 150ms var(--ease-out-expo);
+  &[data-starting-style],
+  &[data-ending-style] {
+    height: 0;
+  }
 }
 
 .content {
@@ -95,5 +81,4 @@
   font-weight: 400;
   line-height: 1.5;
   color: var(--secondary-foreground);
-  position: relative;
 }

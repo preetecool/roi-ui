@@ -5,9 +5,10 @@ import { cn } from "@/lib/tw-utils";
 function NavigationMenuRoot({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Root>) {
+}: NavigationMenu.Root.Props) {
   return (
     <NavigationMenu.Root
+      data-slot="navigationmenu-root"
       className={cn("relative z-[100] flex w-full justify-center", className)}
       {...props}
     />
@@ -17,9 +18,10 @@ function NavigationMenuRoot({
 function NavigationMenuList({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.List>) {
+}: NavigationMenu.List.Props) {
   return (
     <NavigationMenu.List
+      data-slot="navigationmenu-list"
       className={cn(
         "m-0 flex list-none justify-center rounded-lg p-1",
         className
@@ -32,16 +34,17 @@ function NavigationMenuList({
 function NavigationMenuItem({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Item>) {
+}: NavigationMenu.Item.Props) {
   return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 
 function NavigationMenuTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Trigger>) {
+}: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
+      data-slot="navigationmenu-trigger"
       className={cn(
         "flex cursor-pointer select-none items-center justify-between gap-0.5 rounded-md px-3 py-2 font-normal text-sm leading-none outline-none transition-colors duration-200",
         "hover:bg-[var(--mix-card-33-bg)]",
@@ -57,9 +60,10 @@ function NavigationMenuTrigger({
 function NavigationMenuContent({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Content>) {
+}: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
+      data-slot="navigationmenu-content"
       className={cn(
         "box-border rounded-md bg-gradient-to-b from-[oklch(from_var(--accent)_l_c_h_/_0.1)] to-[oklch(from_var(--accent)_l_c_h_/_0.2)]",
         "h-full w-full",
@@ -78,9 +82,10 @@ function NavigationMenuContent({
 function NavigationMenuIcon({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Icon>) {
+}: NavigationMenu.Icon.Props) {
   return (
     <NavigationMenu.Icon
+      data-slot="navigationmenu-icon"
       className={cn(
         "transition-transform duration-200 ease-out",
         "data-[popup-open]:rotate-180",
@@ -94,21 +99,21 @@ function NavigationMenuIcon({
 function NavigationMenuLink({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Link>) {
+}: NavigationMenu.Link.Props) {
   return <NavigationMenu.Link className={cn(className)} {...props} />;
 }
 
 function NavigationMenuPortal({
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Portal>) {
+}: NavigationMenu.Portal.Props) {
   return <NavigationMenu.Portal {...props}>{children}</NavigationMenu.Portal>;
 }
 
 function NavigationMenuBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Backdrop>) {
+}: NavigationMenu.Backdrop.Props) {
   return <NavigationMenu.Backdrop className={cn(className)} {...props} />;
 }
 
@@ -116,9 +121,10 @@ function NavigationMenuPositioner({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Positioner>) {
+}: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
+      data-slot="navigationmenu-positioner"
       className={cn(
         "box-border transition-[top,left,right,bottom] duration-[0.25s] ease-[var(--ease-out-expo)]",
         "h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)]",
@@ -141,9 +147,10 @@ function NavigationMenuPopup({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Popup>) {
+}: NavigationMenu.Popup.Props) {
   return (
     <NavigationMenu.Popup
+      data-slot="navigationmenu-popup"
       className={cn(
         "relative box-border overflow-visible rounded-xl bg-[var(--background)] p-2",
         "h-[var(--popup-height)] w-[var(--popup-width)] origin-top-center",
@@ -167,9 +174,10 @@ function NavigationMenuPopup({
 function NavigationMenuArrow({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Arrow>) {
+}: NavigationMenu.Arrow.Props) {
   return (
     <NavigationMenu.Arrow
+      data-slot="navigationmenu-arrow"
       className={cn(
         "flex transition-[left] duration-[0.25s] ease-[var(--easing)]",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
@@ -210,9 +218,10 @@ function NavigationMenuArrow({
 function NavigationMenuViewport({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Viewport>) {
+}: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
+      data-slot="navigationmenu-viewport"
       className={cn("relative h-full w-full overflow-hidden", className)}
       {...props}
     />

@@ -14,7 +14,7 @@ function AutocompleteRoot({
 function AutocompleteValue({
   ...props
 }: React.ComponentProps<typeof Autocomplete.Value>) {
-  return <Autocomplete.Value {...props} />;
+  return <Autocomplete.Value data-slot="autocomplete-value" {...props} />;
 }
 
 function AutocompleteInput({
@@ -35,6 +35,7 @@ function AutocompleteInput({
         "max-sm:h-11 max-sm:px-4 max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]",
         className
       )}
+      data-slot="autocomplete-input"
       {...props}
     />
   );
@@ -55,6 +56,7 @@ function AutocompleteTrigger({
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
+      data-slot="autocomplete-trigger"
       {...props}
     >
       {children || (
@@ -72,6 +74,7 @@ function AutocompleteIcon({
   return (
     <Autocomplete.Icon
       className={cn("h-4 w-4 flex-shrink-0 opacity-60", className)}
+      data-slot="autocomplete-icon"
       {...props}
     >
       {children || <Search size={16} />}
@@ -94,6 +97,7 @@ function AutocompleteClear({
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
+      data-slot="autocomplete-clear"
       {...props}
     >
       {children || <X size={16} />}
@@ -114,6 +118,7 @@ function AutocompleteBackdrop({
         "data-[open]:opacity-100",
         className
       )}
+      data-slot="autocomplete-backdrop"
       {...props}
     />
   );
@@ -129,6 +134,7 @@ function AutocompletePositioner({
         "absolute z-[150] w-[var(--anchor-width)] outline-none",
         className
       )}
+      data-slot="autocomplete-positioner"
       sideOffset={4}
       {...props}
     />
@@ -153,6 +159,7 @@ function AutocompletePopup({
         "max-sm:max-w-[calc(100vw-2rem)] max-sm:p-2",
         className
       )}
+      data-slot="autocomplete-popup"
       {...props}
     />
   );
@@ -172,6 +179,7 @@ function AutocompleteArrow({
         "data-[side=left]:-right-1 data-[side=left]:border-t-0 data-[side=left]:border-r-0",
         className
       )}
+      data-slot="autocomplete-arrow"
       {...props}
     />
   );
@@ -184,6 +192,7 @@ function AutocompleteStatus({
   return (
     <Autocomplete.Status
       className={cn("px-4 py-2 text-muted-foreground text-sm", className)}
+      data-slot="autocomplete-status"
       {...props}
     />
   );
@@ -194,7 +203,11 @@ function AutocompleteList({
   ...props
 }: React.ComponentProps<typeof Autocomplete.List>) {
   return (
-    <Autocomplete.List className={cn("outline-none", className)} {...props} />
+    <Autocomplete.List
+      className={cn("outline-none", className)}
+      data-slot="autocomplete-list"
+      {...props}
+    />
   );
 }
 
@@ -211,6 +224,7 @@ function AutocompleteEmpty({
         "max-sm:p-5 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="autocomplete-empty"
       {...props}
     >
       {children || "No items found"}
@@ -221,7 +235,9 @@ function AutocompleteEmpty({
 function AutocompleteCollection({
   ...props
 }: React.ComponentProps<typeof Autocomplete.Collection>) {
-  return <Autocomplete.Collection {...props} />;
+  return (
+    <Autocomplete.Collection data-slot="autocomplete-collection" {...props} />
+  );
 }
 
 function AutocompleteRow({
@@ -231,6 +247,7 @@ function AutocompleteRow({
   return (
     <Autocomplete.Row
       className={cn("flex items-center", className)}
+      data-slot="autocomplete-row"
       {...props}
     />
   );
@@ -252,6 +269,7 @@ function AutocompleteItem({
         "max-sm:px-4 max-sm:py-3 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="autocomplete-item"
       {...props}
     />
   );
@@ -261,7 +279,13 @@ function AutocompleteGroup({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Group>) {
-  return <Autocomplete.Group className={cn("py-1", className)} {...props} />;
+  return (
+    <Autocomplete.Group
+      className={cn("py-1", className)}
+      data-slot="autocomplete-group"
+      {...props}
+    />
+  );
 }
 
 function AutocompleteGroupLabel({
@@ -274,6 +298,7 @@ function AutocompleteGroupLabel({
         "px-3 pt-2 pb-1 font-medium text-muted-foreground text-xs uppercase tracking-wide",
         className
       )}
+      data-slot="autocomplete-group-label"
       {...props}
     />
   );
@@ -286,6 +311,7 @@ function AutocompleteSeparator({
   return (
     <Autocomplete.Separator
       className={cn("mx-3 my-1.5 h-px bg-border", className)}
+      data-slot="autocomplete-separator"
       {...props}
     />
   );

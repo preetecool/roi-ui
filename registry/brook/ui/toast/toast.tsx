@@ -6,45 +6,46 @@ import styles from "./toast.module.css";
 
 function ToastProvider({
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Provider>) {
+}: Toast.Provider.Props) {
   return <Toast.Provider {...props} />;
 }
 
 function ToastPortal({
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Portal>) {
+}: Toast.Portal.Props) {
   return <Toast.Portal {...props} />;
 }
 
 function ToastViewport({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Viewport>) {
+}: Toast.Viewport.Props) {
   return (
-    <Toast.Viewport className={cn(styles.viewport, className)} {...props} />
+    <Toast.Viewport data-slot="toast-viewport" className={cn(styles.viewport, className)} {...props} />
   );
 }
 
 function ToastRoot({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Root>) {
+}: Toast.Root.Props) {
   return <Toast.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function ToastTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Title>) {
+}: Toast.Title.Props) {
   return <Toast.Title className={cn(styles.title, className)} {...props} />;
 }
 
 function ToastDescription({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Description>) {
+}: Toast.Description.Props) {
   return (
     <Toast.Description
+      data-slot="toast-description"
       className={cn(styles.description, className)}
       {...props}
     />
@@ -55,13 +56,14 @@ function ToastClose({
   className,
   render,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Close> & {
+}: Toast.Close.Props & {
   render?: (
     props: React.ButtonHTMLAttributes<HTMLButtonElement>
   ) => React.ReactNode;
 }) {
   return (
     <Toast.Close
+      data-slot="toast-close"
       className={cn(styles.close, className)}
       render={render}
       {...props}

@@ -3,7 +3,7 @@
 import { Popover } from "@base-ui-components/react/popover";
 import { cn } from "@/lib/tw-utils";
 
-function PopoverRoot({ ...props }: React.ComponentProps<typeof Popover.Root>) {
+function PopoverRoot({ ...props }: Popover.Root.Props) {
   return <Popover.Root {...props} />;
 }
 
@@ -11,9 +11,10 @@ function PopoverTrigger({
   className,
   render,
   ...props
-}: React.ComponentProps<typeof Popover.Trigger>) {
+}: Popover.Trigger.Props) {
   return (
     <Popover.Trigger
+      data-slot="popover-trigger"
       className={cn(
         "hover:bg-[var(--accent)]",
         "active:bg-[var(--accent)]",
@@ -32,9 +33,10 @@ const PopoverPortal = Popover.Portal;
 function PopoverBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Backdrop>) {
+}: Popover.Backdrop.Props) {
   return (
     <Popover.Backdrop
+      data-slot="popover-backdrop"
       className={cn("fixed inset-0 z-[998] bg-[oklch(0_0_0_/_0.1)]", className)}
       {...props}
     />
@@ -44,9 +46,10 @@ function PopoverBackdrop({
 function PopoverPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Positioner>) {
+}: Popover.Positioner.Props) {
   return (
     <Popover.Positioner
+      data-slot="popover-positioner"
       className={cn("absolute z-[999]", className)}
       {...props}
     />
@@ -56,9 +59,10 @@ function PopoverPositioner({
 function PopoverPopup({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Popup>) {
+}: Popover.Popup.Props) {
   return (
     <Popover.Popup
+      data-slot="popover-popup"
       className={cn(
         "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
         "transition-[transform_150ms_ease,opacity_150ms_ease]",
@@ -80,9 +84,10 @@ function PopoverPopup({
 function PopoverArrow({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Arrow>) {
+}: Popover.Arrow.Props) {
   return (
     <Popover.Arrow
+      data-slot="popover-arrow"
       className={cn(
         "flex",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
@@ -100,9 +105,10 @@ function PopoverArrow({
 function PopoverTitle({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Title>) {
+}: Popover.Title.Props) {
   return (
     <Popover.Title
+      data-slot="popover-title"
       className={cn(
         "m-0 font-medium text-[var(--popover-foreground)] text-base leading-6",
         className
@@ -115,9 +121,10 @@ function PopoverTitle({
 function PopoverDescription({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Description>) {
+}: Popover.Description.Props) {
   return (
     <Popover.Description
+      data-slot="popover-description"
       className={cn(
         "m-0 text-[var(--muted-foreground)] text-base leading-6",
         className
@@ -130,9 +137,10 @@ function PopoverDescription({
 function PopoverClose({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Close>) {
+}: Popover.Close.Props) {
   return (
     <Popover.Close
+      data-slot="popover-close"
       className={cn(
         "all-unset absolute top-1 right-1 box-border inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-[var(--radius)] p-0 text-[var(--muted-foreground)]",
         "transition-[background-color_150ms_ease,color_150ms_ease]",
@@ -150,7 +158,7 @@ function PopoverContent({
   className,
   style,
   ...props
-}: React.ComponentProps<typeof Popover.Popup>) {
+}: Popover.Popup.Props) {
   return (
     <PopoverPortal>
       <PopoverPositioner sideOffset={8}>

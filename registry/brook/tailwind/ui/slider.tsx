@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function SliderRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Root>) {
+}: Slider.Root.Props) {
   return (
     <Slider.Root
+      data-slot="slider-root"
       className={cn(
         "relative flex w-full touch-none select-none items-center justify-center",
         "data-[orientation=vertical]:h-[200px] data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
@@ -22,9 +23,10 @@ function SliderRoot({
 function SliderControl({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Control>) {
+}: Slider.Control.Props) {
   return (
     <Slider.Control
+      data-slot="slider-control"
       className={cn(
         "box-border flex w-full touch-none select-none items-center py-3",
         "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-auto data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-0",
@@ -38,9 +40,10 @@ function SliderControl({
 function SliderTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Track>) {
+}: Slider.Track.Props) {
   return (
     <Slider.Track
+      data-slot="slider-track"
       className={cn(
         "h-1 w-full select-none rounded bg-[var(--mix-card-75-bg)] shadow-[inset_0_0_0_1px_var(--mix-card-75-bg)]",
         "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1",
@@ -55,9 +58,10 @@ function SliderTrack({
 function SliderIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Indicator>) {
+}: Slider.Indicator.Props) {
   return (
     <Slider.Indicator
+      data-slot="slider-indicator"
       className={cn(
         "select-none rounded bg-[var(--primary)] transition-none",
         className
@@ -70,9 +74,10 @@ function SliderIndicator({
 function SliderThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Thumb>) {
+}: Slider.Thumb.Props) {
   return (
     <Slider.Thumb
+      data-slot="slider-thumb"
       className={cn(
         "h-4 w-4 select-none rounded-full bg-[var(--foreground)] outline outline-1 outline-[var(--border)] transition-none",
         "has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--ring)]",
@@ -88,9 +93,10 @@ function SliderThumb({
 function SliderValue({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Value>) {
+}: Slider.Value.Props) {
   return (
     <Slider.Value
+      data-slot="slider-value"
       className={cn(
         "mr-2 block font-medium text-[var(--foreground)] text-sm",
         className

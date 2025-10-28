@@ -4,9 +4,10 @@ import { cn } from "@/lib/tw-utils";
 function TabsRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Root>) {
+}: Tabs.Root.Props) {
   return (
     <Tabs.Root
+      data-slot="tabs-root"
       className={cn(
         "flex flex-col gap-0 data-[orientation=vertical]:flex-row data-[orientation=vertical]:gap-4",
         className
@@ -19,9 +20,10 @@ function TabsRoot({
 function TabsList({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.List>) {
+}: Tabs.List.Props) {
   return (
     <Tabs.List
+      data-slot="tabs-list"
       className={cn(
         "flex items-center justify-start rounded-[var(--radius)] bg-[var(--mix-card-33-bg)]",
         "rounded-br-none rounded-bl-none border-[0.5px] border-[oklch(from_var(--color-border)_l_c_h_/_0.8)]",
@@ -38,9 +40,10 @@ function TabsList({
 function TabsTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Tab>) {
+}: Tabs.Tab.Props) {
   return (
     <Tabs.Tab
+      data-slot="tabs-tab"
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius)]",
         "bg-transparent py-1.5 px-3 font-[450] text-[var(--color-muted-foreground)] text-sm leading-[1.375]",
@@ -61,9 +64,10 @@ function TabsTrigger({
 function TabsContent({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Panel>) {
+}: Tabs.Panel.Props) {
   return (
     <Tabs.Panel
+      data-slot="tabs-panel"
       className={cn(
         "mt-0 rounded-[0_0_var(--radius)_var(--radius)] border-[0.5px] border-[oklch(from_var(--color-border)_l_c_h_/_0.8)]",
         "border-t-0 bg-[var(--mix-card-33-bg)] p-6",
@@ -82,9 +86,10 @@ function TabsContent({
 function TabsIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Indicator>) {
+}: Tabs.Indicator.Props) {
   return (
     <Tabs.Indicator
+      data-slot="tabs-indicator"
       className={cn(
         "absolute rounded-[var(--radius)] bg-primary transition-all duration-150 ease-in-out",
         "top-[calc(var(--active-tab-top)+var(--active-tab-height)-3px)] left-[var(--active-tab-left)]",

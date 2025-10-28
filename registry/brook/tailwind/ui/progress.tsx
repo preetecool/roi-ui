@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function ProgressRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Root>) {
+}: Progress.Root.Props) {
   return (
     <Progress.Root
+      data-slot="progress-root"
       className={cn("flex w-full flex-col gap-2", className)}
       {...props}
     />
@@ -18,9 +19,10 @@ function ProgressRoot({
 function ProgressLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Label>) {
+}: Progress.Label.Props) {
   return (
     <Progress.Label
+      data-slot="progress-label"
       className={cn("font-medium text-[var(--foreground)] text-sm", className)}
       {...props}
     />
@@ -30,9 +32,10 @@ function ProgressLabel({
 function ProgressTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Track>) {
+}: Progress.Track.Props) {
   return (
     <Progress.Track
+      data-slot="progress-track"
       className={cn(
         "relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]",
         className
@@ -45,9 +48,10 @@ function ProgressTrack({
 function ProgressIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Indicator>) {
+}: Progress.Indicator.Props) {
   return (
     <Progress.Indicator
+      data-slot="progress-indicator"
       className={cn(
         "h-full w-[var(--progress-indicator-width)] rounded-none bg-[var(--primary)] transition-all duration-150 ease-out",
         "[.root[data-indeterminate]_&]:w-[40%] [.root[data-indeterminate]_&]:animate-[indeterminate_2s_infinite_linear]",
@@ -61,9 +65,10 @@ function ProgressIndicator({
 function ProgressValue({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Value>) {
+}: Progress.Value.Props) {
   return (
     <Progress.Value
+      data-slot="progress-value"
       className={cn(
         "font-medium text-[var(--muted-foreground)] text-xs",
         className

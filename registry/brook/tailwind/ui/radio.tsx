@@ -7,7 +7,7 @@ import { cn } from "@/lib/tw-utils";
 function RadioGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof RadioGroup>) {
+}: RadioGroup.Props) {
   return (
     <RadioGroup className={cn("flex flex-col gap-2", className)} {...props} />
   );
@@ -16,9 +16,10 @@ function RadioGroupRoot({
 function RadioRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Radio.Root>) {
+}: Radio.Root.Props) {
   return (
     <Radio.Root
+      data-slot="radio-root"
       className={cn(
         "flex aspect-square h-4 w-4 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[var(--border)] bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "hover:border-[oklch(from_var(--secondary-foreground)_l_c_h_/_0.4)]",
@@ -36,9 +37,10 @@ function RadioRoot({
 function RadioIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Radio.Indicator>) {
+}: Radio.Indicator.Props) {
   return (
     <Radio.Indicator
+      data-slot="radio-indicator"
       className={cn(
         "h-2 w-2 rounded-full bg-[var(--primary)]",
         "scale-0 data-[checked]:scale-100",

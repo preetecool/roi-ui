@@ -15,9 +15,10 @@ function ComboboxTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.Trigger>) {
+}: Combobox.Trigger.Props) {
   return (
     <Combobox.Trigger
+      data-slot="combobox-trigger"
       className={cn(
         "box-border flex cursor-pointer items-center justify-center border-none bg-transparent px-2",
         "focus-visible:outline-none",
@@ -38,9 +39,10 @@ function ComboboxTrigger({
 function ComboboxInput({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Input>) {
+}: Combobox.Input.Props) {
   return (
     <Combobox.Input
+      data-slot="combobox-input"
       className={cn(
         "h-10 w-full flex-1 border-none bg-transparent px-3 py-2 text-foreground text-sm outline-none",
         "placeholder:text-muted-foreground",
@@ -57,9 +59,10 @@ function ComboboxClear({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.Clear>) {
+}: Combobox.Clear.Props) {
   return (
     <Combobox.Clear
+      data-slot="combobox-clear"
       className={cn(
         "flex cursor-pointer items-center justify-center rounded-[calc(var(--radius)-2px)] p-1",
         "text-muted-foreground transition-all duration-150",
@@ -78,9 +81,10 @@ const ComboboxPortal = Combobox.Portal;
 function ComboboxPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Positioner>) {
+}: Combobox.Positioner.Props) {
   return (
     <Combobox.Positioner
+      data-slot="combobox-positioner"
       className={cn(
         "absolute top-full left-0 z-[150] mt-1 w-[var(--anchor-width)]",
         className
@@ -94,9 +98,10 @@ function ComboboxPositioner({
 function ComboboxPopup({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Popup>) {
+}: Combobox.Popup.Props) {
   return (
     <Combobox.Popup
+      data-slot="combobox-popup"
       className={cn(
         "max-h-80 overflow-auto rounded-[var(--radius)] border border-border bg-[var(--mix-card-75-bg)]",
         "shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]",
@@ -114,7 +119,7 @@ function ComboboxPopup({
 function ComboboxList({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.List>) {
+}: Combobox.List.Props) {
   return <Combobox.List className={cn(className)} {...props} />;
 }
 
@@ -122,7 +127,7 @@ function ComboboxEmpty({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.Empty>) {
+}: Combobox.Empty.Props) {
   return (
     <Combobox.Empty className={cn(className)} {...props}>
       {children || "No items found"}
@@ -135,11 +140,12 @@ function ComboboxItem({
   children,
   indicatorPosition = "left",
   ...props
-}: React.ComponentProps<typeof Combobox.Item> & {
+}: Combobox.Item.Props & {
   indicatorPosition?: "left" | "right";
 }) {
   return (
     <Combobox.Item
+      data-slot="combobox-item"
       className={cn(
         "relative flex cursor-pointer select-none items-center gap-2 px-3 py-2 text-sm outline-none",
         "[.list:not(:has(.item[data-highlighted]))_&[data-selected]]:relative [.list:not(:has(.item[data-highlighted]))_&[data-selected]]:z-0",
@@ -159,6 +165,7 @@ function ComboboxItem({
     >
       {indicatorPosition === "left" && (
         <Combobox.ItemIndicator
+          data-slot="combobox-itemindicator"
           className={cn(
             "flex h-4 w-4 items-center justify-center opacity-0 transition-opacity duration-150",
             "[[data-selected]_&]:opacity-100"
@@ -170,6 +177,7 @@ function ComboboxItem({
       {children}
       {indicatorPosition === "right" && (
         <Combobox.ItemIndicator
+          data-slot="combobox-itemindicator"
           className={cn(
             "flex h-4 w-4 items-center justify-center opacity-0 transition-opacity duration-150",
             "[[data-selected]_&]:opacity-100"
@@ -186,9 +194,10 @@ function ComboboxItemIndicator({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.ItemIndicator>) {
+}: Combobox.ItemIndicator.Props) {
   return (
     <Combobox.ItemIndicator
+      data-slot="combobox-itemindicator"
       className={cn(
         "flex h-4 w-4 items-center justify-center opacity-0 transition-opacity duration-150",
         "[[data-selected]_&]:opacity-100",
@@ -204,16 +213,17 @@ function ComboboxItemIndicator({
 function ComboboxGroup({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Group>) {
+}: Combobox.Group.Props) {
   return <Combobox.Group className={cn("py-1", className)} {...props} />;
 }
 
 function ComboboxGroupLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.GroupLabel>) {
+}: Combobox.GroupLabel.Props) {
   return (
     <Combobox.GroupLabel
+      data-slot="combobox-grouplabel"
       className={cn(
         "px-3 py-2 font-medium text-muted-foreground text-xs",
         className
@@ -226,9 +236,10 @@ function ComboboxGroupLabel({
 function ComboboxArrow({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Arrow>) {
+}: Combobox.Arrow.Props) {
   return (
     <Combobox.Arrow
+      data-slot="combobox-arrow"
       className={cn(
         "-top-1 absolute left-4 h-2 w-2 rotate-45 border-border border-t border-l bg-card",
         className

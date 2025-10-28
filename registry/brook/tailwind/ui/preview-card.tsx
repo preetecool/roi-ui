@@ -5,16 +5,17 @@ import { cn } from "@/lib/tw-utils";
 
 function PreviewCardRoot({
   ...props
-}: React.ComponentProps<typeof PreviewCard.Root>) {
+}: PreviewCard.Root.Props) {
   return <PreviewCard.Root {...props} />;
 }
 
 function PreviewCardTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Trigger>) {
+}: PreviewCard.Trigger.Props) {
   return (
     <PreviewCard.Trigger
+      data-slot="previewcard-trigger"
       className={cn(
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         className
@@ -26,16 +27,17 @@ function PreviewCardTrigger({
 
 function PreviewCardPortal({
   ...props
-}: React.ComponentProps<typeof PreviewCard.Portal>) {
+}: PreviewCard.Portal.Props) {
   return <PreviewCard.Portal {...props} />;
 }
 
 function PreviewCardBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Backdrop>) {
+}: PreviewCard.Backdrop.Props) {
   return (
     <PreviewCard.Backdrop
+      data-slot="previewcard-backdrop"
       className={cn("fixed inset-0 z-[140]", className)}
       {...props}
     />
@@ -45,9 +47,10 @@ function PreviewCardBackdrop({
 function PreviewCardPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Positioner>) {
+}: PreviewCard.Positioner.Props) {
   return (
     <PreviewCard.Positioner
+      data-slot="previewcard-positioner"
       className={cn("absolute z-[150]", className)}
       {...props}
     />
@@ -57,9 +60,10 @@ function PreviewCardPositioner({
 function PreviewCardPopup({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Popup>) {
+}: PreviewCard.Popup.Props) {
   return (
     <PreviewCard.Popup
+      data-slot="previewcard-popup"
       className={cn(
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--mix-card-33-bg)]",
         "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4 shadow-lg",
@@ -100,9 +104,10 @@ function PreviewCardPopup({
 function PreviewCardArrow({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Arrow>) {
+}: PreviewCard.Arrow.Props) {
   return (
     <PreviewCard.Arrow
+      data-slot="previewcard-arrow"
       className={cn(
         "h-[5px] w-2.5 fill-[var(--mix-card-33-bg)] stroke-1 stroke-border",
         className

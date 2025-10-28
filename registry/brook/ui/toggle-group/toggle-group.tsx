@@ -8,14 +8,14 @@ import styles from "./toggle-group.module.css";
 function ToggleGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof ToggleGroup>) {
+}: ToggleGroup.Props) {
   return <ToggleGroup className={cn(styles.root, className)} {...props} />;
 }
 
 function ToggleGroupItem({
   className,
   ...props
-}: React.ComponentProps<typeof Toggle>) {
+}: Toggle.Props) {
   return <Toggle className={cn(styles.item, className)} {...props} />;
 }
 

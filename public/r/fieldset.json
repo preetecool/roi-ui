@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/fieldset/fieldset.tsx",
-      "content": "\"use client\";\n\nimport { Fieldset } from \"@base-ui-components/react/fieldset\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./fieldset.module.css\";\n\nfunction FieldsetRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof Fieldset.Root>) {\n  return <Fieldset.Root className={cn(styles.root, className)} {...props} />;\n}\n\nfunction FieldsetLegend({\n  className,\n  ...props\n}: React.ComponentProps<typeof Fieldset.Legend>) {\n  return <Fieldset.Legend className={cn(styles.legend, className)} {...props} />;\n}\n\nexport { FieldsetRoot as Fieldset, FieldsetLegend };\n",
+      "content": "\"use client\";\n\nimport { Fieldset } from \"@base-ui-components/react/fieldset\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./fieldset.module.css\";\n\nfunction FieldsetRoot({\n  className,\n  ...props\n}: Fieldset.Root.Props) {\n  return <Fieldset.Root data-slot=\"fieldset-root\" className={cn(styles.root, className)} {...props} />;\n}\n\nfunction FieldsetLegend({\n  className,\n  ...props\n}: Fieldset.Legend.Props) {\n  return <Fieldset.Legend data-slot=\"fieldset-legend\" className={cn(styles.legend, className)} {...props} />;\n}\n\nexport { FieldsetRoot as Fieldset, FieldsetLegend };\n",
       "type": "registry:file",
       "target": "~/components/ui/fieldset/fieldset.tsx"
     },

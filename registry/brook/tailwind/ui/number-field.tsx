@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function NumberFieldRoot({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.Root>) {
+}: NumberField.Root.Props) {
   return (
     <NumberField.Root
+      data-slot="numberfield-root"
       className={cn("relative inline-flex w-full max-w-48 flex-col", className)}
       {...props}
     />
@@ -30,9 +31,10 @@ function NumberFieldGroup({
 function NumberFieldInput({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.Input>) {
+}: NumberField.Input.Props) {
   return (
     <NumberField.Input
+      data-slot="numberfield-input"
       className={cn(
         "h-10 min-w-24 flex-[0_1_6rem] border border-[var(--border)] px-2 text-center text-[var(--foreground)] text-sm outline-none transition-all duration-150 ease-out",
         "bg-[var(--mix-card-50-bg)]",
@@ -50,9 +52,10 @@ function NumberFieldIncrement({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NumberField.Increment>) {
+}: NumberField.Increment.Props) {
   return (
     <NumberField.Increment
+      data-slot="numberfield-increment"
       className={cn(
         "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition-all duration-150 ease-out",
         "rounded-r-[var(--radius)] border-l-0",
@@ -91,9 +94,10 @@ function NumberFieldDecrement({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NumberField.Decrement>) {
+}: NumberField.Decrement.Props) {
   return (
     <NumberField.Decrement
+      data-slot="numberfield-decrement"
       className={cn(
         "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition-all duration-150 ease-out",
         "rounded-l-[var(--radius)] border-r-0",
@@ -131,9 +135,10 @@ function NumberFieldDecrement({
 function NumberFieldScrubArea({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.ScrubArea>) {
+}: NumberField.ScrubArea.Props) {
   return (
     <NumberField.ScrubArea
+      data-slot="numberfield-scrubarea"
       className={cn(
         "absolute top-0 right-0 bottom-0 left-0 z-[1] cursor-col-resize select-none [-webkit-user-select:none]",
         className
@@ -146,9 +151,10 @@ function NumberFieldScrubArea({
 function NumberFieldScrubAreaCursor({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.ScrubAreaCursor>) {
+}: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
+      data-slot="numberfield-scrubareacursor"
       className={cn(
         "pointer-events-none absolute h-full w-0.5 rounded-sm bg-[rgba(59,130,246,0.8)] opacity-0 transition-opacity duration-150 ease-out",
         className

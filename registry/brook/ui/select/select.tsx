@@ -16,6 +16,7 @@ function SelectTrigger({
 }: React.ComponentProps<typeof Select.Trigger>) {
   return (
     <Select.Trigger
+      data-slot="select-trigger"
       className={cn(styles.trigger, className)}
       nativeButton
       {...props}
@@ -60,7 +61,7 @@ function SelectOverlay({
   ...props
 }: React.ComponentProps<typeof Select.Backdrop>) {
   return (
-    <Select.Backdrop className={cn(styles.backdrop, className)} {...props} />
+    <Select.Backdrop data-slot="select-backdrop" className={cn(styles.backdrop, className)} {...props} />
   );
 }
 
@@ -70,6 +71,7 @@ function SelectPositioner({
 }: React.ComponentProps<typeof Select.Positioner>) {
   return (
     <Select.Positioner
+      data-slot="select-positioner"
       className={cn(styles.positioner, className)}
       {...props}
     />
@@ -83,6 +85,7 @@ function SelectScrollUpArrow({
 }: React.ComponentProps<typeof Select.ScrollUpArrow>) {
   return (
     <Select.ScrollUpArrow
+      data-slot="select-scrolluparrow"
       className={cn(styles.scrollArrow, className)}
       {...props}
     >
@@ -114,6 +117,7 @@ function SelectScrollDownArrow({
 }: React.ComponentProps<typeof Select.ScrollDownArrow>) {
   return (
     <Select.ScrollDownArrow
+      data-slot="select-scrolldownarrow"
       className={cn(styles.scrollArrow, className)}
       {...props}
     >
@@ -141,7 +145,7 @@ function SelectItemText({
   ...props
 }: React.ComponentProps<typeof Select.ItemText>) {
   return (
-    <Select.ItemText className={cn(styles.itemText, className)} {...props} />
+    <Select.ItemText data-slot="select-itemtext" className={cn(styles.itemText, className)} {...props} />
   );
 }
 
@@ -150,7 +154,7 @@ function SelectGroup({
   ...props
 }: React.ComponentProps<typeof Select.Group>) {
   return (
-    <Select.Group className={cn(styles.selectGroup, className)} {...props} />
+    <Select.Group data-slot="select-group" className={cn(styles.selectGroup, className)} {...props} />
   );
 }
 
@@ -160,6 +164,7 @@ function SelectGroupLabel({
 }: React.ComponentProps<typeof Select.GroupLabel>) {
   return (
     <Select.GroupLabel
+      data-slot="select-grouplabel"
       className={cn(styles.groupLabel, className)}
       {...props}
     />
@@ -171,7 +176,7 @@ function SelectSeparator({
   ...props
 }: React.ComponentProps<typeof Select.Separator>) {
   return (
-    <Select.Separator className={cn(styles.separator, className)} {...props} />
+    <Select.Separator data-slot="select-separator" className={cn(styles.separator, className)} {...props} />
   );
 }
 
@@ -182,6 +187,7 @@ function SelectItemIndicator({
 }: React.ComponentProps<typeof Select.ItemIndicator>) {
   return (
     <Select.ItemIndicator
+      data-slot="select-itemindicator"
       className={cn(styles.indicator, className)}
       {...props}
     >

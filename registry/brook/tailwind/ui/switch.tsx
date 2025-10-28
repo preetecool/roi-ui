@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function SwitchRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Root>) {
+}: Switch.Root.Props) {
   return (
     <Switch.Root
+      data-slot="switch-root"
       className={cn(
         "relative m-0 inline-flex h-6 w-11 appearance-none items-center rounded-xl p-0.5 transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)]",
         "border-[0.5px] border-[var(--border)] bg-[var(--mix-card-50-bg)]",
@@ -28,9 +29,10 @@ function SwitchRoot({
 function SwitchThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Thumb>) {
+}: Switch.Thumb.Props) {
   return (
     <Switch.Thumb
+      data-slot="switch-thumb"
       className={cn(
         "h-5 w-5 translate-x-0 rounded-full bg-white transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)]",
         "hover:scale-105",

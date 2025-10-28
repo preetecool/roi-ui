@@ -7,16 +7,17 @@ import styles from "./scroll-area.module.css";
 function ScrollAreaRoot({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Root>) {
+}: ScrollArea.Root.Props) {
   return <ScrollArea.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function ScrollAreaViewport({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Viewport>) {
+}: ScrollArea.Viewport.Props) {
   return (
     <ScrollArea.Viewport
+      data-slot="scrollarea-viewport"
       className={cn(styles.viewport, className)}
       {...props}
     />
@@ -26,9 +27,9 @@ function ScrollAreaViewport({
 function ScrollAreaContent({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Content>) {
+}: ScrollArea.Content.Props) {
   return (
-    <ScrollArea.Content className={cn(styles.content, className)} {...props} />
+    <ScrollArea.Content data-slot="scrollarea-content" className={cn(styles.content, className)} {...props} />
   );
 }
 
@@ -36,9 +37,10 @@ function ScrollAreaScrollbar({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollArea.Scrollbar>) {
+}: ScrollArea.Scrollbar.Props) {
   return (
     <ScrollArea.Scrollbar
+      data-slot="scrollarea-scrollbar"
       className={cn(
         styles.scrollbar,
         orientation === "horizontal" && styles.horizontal,
@@ -53,18 +55,18 @@ function ScrollAreaScrollbar({
 function ScrollAreaThumb({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Thumb>) {
+}: ScrollArea.Thumb.Props) {
   return (
-    <ScrollArea.Thumb className={cn(styles.thumb, className)} {...props} />
+    <ScrollArea.Thumb data-slot="scrollarea-thumb" className={cn(styles.thumb, className)} {...props} />
   );
 }
 
 function ScrollAreaCorner({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Corner>) {
+}: ScrollArea.Corner.Props) {
   return (
-    <ScrollArea.Corner className={cn(styles.corner, className)} {...props} />
+    <ScrollArea.Corner data-slot="scrollarea-corner" className={cn(styles.corner, className)} {...props} />
   );
 }
 

@@ -7,9 +7,10 @@ function ToolbarRoot({
   className,
   orientation = "horizontal",
   ...props
-}: React.ComponentProps<typeof Toolbar.Root>) {
+}: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
+      data-slot="toolbar-root"
       className={cn(
         "flex items-center gap-1 rounded-[var(--radius)] bg-[var(--mix-card-33-bg)]",
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.9)]",
@@ -25,9 +26,10 @@ function ToolbarRoot({
 function ToolbarButton({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Button>) {
+}: Toolbar.Button.Props) {
   return (
     <Toolbar.Button
+      data-slot="toolbar-button"
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] border-none bg-transparent",
@@ -48,9 +50,10 @@ function ToolbarButton({
 function ToolbarLink({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Link>) {
+}: Toolbar.Link.Props) {
   return (
     <Toolbar.Link
+      data-slot="toolbar-link"
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] text-foreground no-underline",
@@ -68,9 +71,10 @@ function ToolbarLink({
 function ToolbarInput({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Input>) {
+}: Toolbar.Input.Props) {
   return (
     <Toolbar.Input
+      data-slot="toolbar-input"
       className={cn(
         "flex-1 rounded-[calc(var(--radius)-2px)] px-3 py-1.5",
         "min-h-8 border border-border bg-input text-foreground text-sm",
@@ -88,9 +92,10 @@ function ToolbarInput({
 function ToolbarGroup({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Group>) {
+}: Toolbar.Group.Props) {
   return (
     <Toolbar.Group
+      data-slot="toolbar-group"
       className={cn(
         "flex items-center gap-0.5 p-0.5",
         "rounded-[calc(var(--radius)-2px)] bg-muted",
@@ -105,9 +110,10 @@ function ToolbarGroup({
 function ToolbarSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Separator>) {
+}: Toolbar.Separator.Props) {
   return (
     <Toolbar.Separator
+      data-slot="toolbar-separator"
       className={cn(
         "mx-1 h-6 w-px flex-shrink-0 bg-border",
         "max-sm:h-7",

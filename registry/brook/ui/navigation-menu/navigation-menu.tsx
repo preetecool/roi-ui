@@ -6,34 +6,35 @@ import styles from "./navigation-menu.module.css";
 function NavigationMenuRoot({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Root>) {
+}: NavigationMenu.Root.Props) {
   return (
-    <NavigationMenu.Root className={cn(styles.root, className)} {...props} />
+    <NavigationMenu.Root data-slot="navigationmenu-root" className={cn(styles.root, className)} {...props} />
   );
 }
 
 function NavigationMenuList({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.List>) {
+}: NavigationMenu.List.Props) {
   return (
-    <NavigationMenu.List className={cn(styles.list, className)} {...props} />
+    <NavigationMenu.List data-slot="navigationmenu-list" className={cn(styles.list, className)} {...props} />
   );
 }
 
 function NavigationMenuItem({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Item>) {
+}: NavigationMenu.Item.Props) {
   return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 
 function NavigationMenuTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Trigger>) {
+}: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
+      data-slot="navigationmenu-trigger"
       className={cn(styles.trigger, className)}
       {...props}
     />
@@ -43,9 +44,10 @@ function NavigationMenuTrigger({
 function NavigationMenuContent({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Content>) {
+}: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
+      data-slot="navigationmenu-content"
       className={cn(styles.content, className)}
       {...props}
     />
@@ -55,34 +57,35 @@ function NavigationMenuContent({
 function NavigationMenuIcon({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Icon>) {
+}: NavigationMenu.Icon.Props) {
   return (
-    <NavigationMenu.Icon className={cn(styles.chevron, className)} {...props} />
+    <NavigationMenu.Icon data-slot="navigationmenu-icon" className={cn(styles.chevron, className)} {...props} />
   );
 }
 
 function NavigationMenuLink({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Link>) {
+}: NavigationMenu.Link.Props) {
   return (
-    <NavigationMenu.Link className={cn(styles.link, className)} {...props} />
+    <NavigationMenu.Link data-slot="navigationmenu-link" className={cn(styles.link, className)} {...props} />
   );
 }
 
 function NavigationMenuPortal({
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Portal>) {
+}: NavigationMenu.Portal.Props) {
   return <NavigationMenu.Portal {...props}>{children}</NavigationMenu.Portal>;
 }
 
 function NavigationMenuBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Backdrop>) {
+}: NavigationMenu.Backdrop.Props) {
   return (
     <NavigationMenu.Backdrop
+      data-slot="navigationmenu-backdrop"
       className={cn(styles.backdrop, className)}
       {...props}
     />
@@ -93,9 +96,10 @@ function NavigationMenuPositioner({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Positioner>) {
+}: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
+      data-slot="navigationmenu-positioner"
       className={cn(styles.positioner, className)}
       {...props}
     >
@@ -108,7 +112,7 @@ function NavigationMenuPopup({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Popup>) {
+}: NavigationMenu.Popup.Props) {
   return (
     <NavigationMenu.Popup className={cn(styles.popup, className)} {...props}>
       {children}
@@ -119,7 +123,7 @@ function NavigationMenuPopup({
 function NavigationMenuArrow({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Arrow>) {
+}: NavigationMenu.Arrow.Props) {
   return (
     <NavigationMenu.Arrow className={cn(styles.arrow, className)} {...props}>
       <svg
@@ -152,9 +156,10 @@ function NavigationMenuArrow({
 function NavigationMenuViewport({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Viewport>) {
+}: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
+      data-slot="navigationmenu-viewport"
       className={cn(styles.viewport, className)}
       {...props}
     />

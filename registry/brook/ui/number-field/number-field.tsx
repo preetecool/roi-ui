@@ -7,7 +7,7 @@ import styles from "./number-field.module.css";
 function NumberFieldRoot({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.Root>) {
+}: NumberField.Root.Props) {
   return <NumberField.Root className={cn(styles.root, className)} {...props} />;
 }
 
@@ -21,9 +21,9 @@ function NumberFieldGroup({
 function NumberFieldInput({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.Input>) {
+}: NumberField.Input.Props) {
   return (
-    <NumberField.Input className={cn(styles.input, className)} {...props} />
+    <NumberField.Input data-slot="numberfield-input" className={cn(styles.input, className)} {...props} />
   );
 }
 
@@ -31,9 +31,10 @@ function NumberFieldIncrement({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NumberField.Increment>) {
+}: NumberField.Increment.Props) {
   return (
     <NumberField.Increment
+      data-slot="numberfield-increment"
       className={cn(styles.increment, className)}
       {...props}
     >
@@ -64,9 +65,10 @@ function NumberFieldDecrement({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NumberField.Decrement>) {
+}: NumberField.Decrement.Props) {
   return (
     <NumberField.Decrement
+      data-slot="numberfield-decrement"
       className={cn(styles.decrement, className)}
       {...props}
     >
@@ -96,9 +98,10 @@ function NumberFieldDecrement({
 function NumberFieldScrubArea({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.ScrubArea>) {
+}: NumberField.ScrubArea.Props) {
   return (
     <NumberField.ScrubArea
+      data-slot="numberfield-scrubarea"
       className={cn(styles.scrubArea, className)}
       {...props}
     />
@@ -108,9 +111,10 @@ function NumberFieldScrubArea({
 function NumberFieldScrubAreaCursor({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.ScrubAreaCursor>) {
+}: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
+      data-slot="numberfield-scrubareacursor"
       className={cn(styles.scrubAreaCursor, className)}
       {...props}
     />

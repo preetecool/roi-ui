@@ -8,16 +8,17 @@ import { cn } from "@/lib/tw-utils";
 
 function ContextMenuRoot({
   ...props
-}: React.ComponentProps<typeof ContextMenu.Root>) {
+}: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;
 }
 
 function ContextMenuTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Trigger>) {
+}: ContextMenu.Trigger.Props) {
   return (
     <ContextMenu.Trigger
+      data-slot="contextmenu-trigger"
       className={cn("select-none outline-none", className)}
       {...props}
     />
@@ -29,9 +30,10 @@ const ContextMenuPortal = ContextMenu.Portal;
 function ContextMenuBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Backdrop>) {
+}: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
+      data-slot="contextmenu-backdrop"
       className={cn(
         "fixed inset-0 z-[140] bg-black/80 opacity-0 transition-opacity duration-150",
         "data-[open]:opacity-100",
@@ -45,9 +47,10 @@ function ContextMenuBackdrop({
 function ContextMenuPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Positioner>) {
+}: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
+      data-slot="contextmenu-positioner"
       className={cn("absolute z-[150] outline-none", className)}
       {...props}
     />
@@ -57,9 +60,10 @@ function ContextMenuPositioner({
 function ContextMenuPopup({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Popup>) {
+}: ContextMenu.Popup.Props) {
   return (
     <ContextMenu.Popup
+      data-slot="contextmenu-popup"
       className={cn(
         "box-border min-w-[140px] bg-[var(--mix-card-50-bg)]",
         "rounded-[var(--radius)] border-[0.5px] border-border/60",
@@ -78,9 +82,10 @@ function ContextMenuPopup({
 function ContextMenuArrow({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Arrow>) {
+}: ContextMenu.Arrow.Props) {
   return (
     <ContextMenu.Arrow
+      data-slot="contextmenu-arrow"
       className={cn("fill-background stroke-1 stroke-border", className)}
       {...props}
     />
@@ -88,7 +93,7 @@ function ContextMenuArrow({
 }
 
 interface ContextMenuItemProps
-  extends React.ComponentProps<typeof ContextMenu.Item> {
+  extends ContextMenu.Item.Props {
   icon?: ReactNode;
   inset?: boolean;
   className?: string;
@@ -104,6 +109,7 @@ function ContextMenuItem({
 }: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
+      data-slot="contextmenu-item"
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
         "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
@@ -138,9 +144,10 @@ function ContextMenuCheckboxItem({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.CheckboxItem>) {
+}: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
+      data-slot="contextmenu-checkboxitem"
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
@@ -164,9 +171,10 @@ function ContextMenuRadioItem({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.RadioItem>) {
+}: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
+      data-slot="contextmenu-radioitem"
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
@@ -189,7 +197,7 @@ function ContextMenuRadioItem({
 function ContextMenuRadioGroup({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.RadioGroup>) {
+}: ContextMenu.RadioGroup.Props) {
   return <ContextMenu.RadioGroup className={cn(className)} {...props} />;
 }
 
@@ -214,7 +222,7 @@ function ContextMenuLabel({
 function ContextMenuSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Separator>) {
+}: ContextMenu.Separator.Props) {
   return (
     <div className="py-[5px]">
       <ContextMenu.Separator
@@ -227,7 +235,7 @@ function ContextMenuSeparator({
 
 function ContextMenuSubmenuRoot({
   ...props
-}: React.ComponentProps<typeof ContextMenu.SubmenuRoot>) {
+}: ContextMenu.SubmenuRoot.Props) {
   return <ContextMenu.SubmenuRoot {...props} />;
 }
 
@@ -236,11 +244,12 @@ function ContextMenuSubmenuTrigger({
   inset = false,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.SubmenuTrigger> & {
+}: ContextMenu.SubmenuTrigger.Props & {
   inset?: boolean;
 }) {
   return (
     <ContextMenu.SubmenuTrigger
+      data-slot="contextmenu-submenutrigger"
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
         "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
@@ -269,9 +278,10 @@ function ContextMenuSubmenuTrigger({
 function ContextMenuGroup({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Group>) {
+}: ContextMenu.Group.Props) {
   return (
     <ContextMenu.Group
+      data-slot="contextmenu-group"
       className={cn("overflow-hidden", className)}
       {...props}
     />

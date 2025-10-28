@@ -4,7 +4,7 @@ import { Input } from "@base-ui-components/react/input";
 import { cn } from "@/lib/utils";
 import styles from "./input.module.css";
 
-interface InputProps extends React.ComponentProps<typeof Input> {
+interface InputProps extends Input.Props {
   variant?: "default" | "error";
 }
 

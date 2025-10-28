@@ -19,6 +19,7 @@ function CommandDialog({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) {
   return (
     <CommandPrimitive.Dialog
+      data-slot="commandprimitive-dialog"
       className={cn(styles.dialog, className)}
       {...props}
     />
@@ -31,6 +32,7 @@ function CommandInput({
 }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
   return (
     <CommandPrimitive.Input
+      data-slot="commandprimitive-input"
       className={cn(styles.input, className)}
       {...props}
     />
@@ -42,7 +44,7 @@ function CommandList({
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
   return (
-    <CommandPrimitive.List className={cn(styles.list, className)} {...props} />
+    <CommandPrimitive.List data-slot="commandprimitive-list" className={cn(styles.list, className)} {...props} />
   );
 }
 
@@ -90,6 +92,7 @@ function CommandGroup({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
   return (
     <CommandPrimitive.Group
+      data-slot="commandprimitive-group"
       className={cn(styles.group, className)}
       {...props}
     />
@@ -102,6 +105,7 @@ function CommandEmpty({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
+      data-slot="commandprimitive-empty"
       className={cn(styles.empty, className)}
       {...props}
     />
@@ -114,6 +118,7 @@ function CommandSeparator({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
   return (
     <CommandPrimitive.Separator
+      data-slot="commandprimitive-separator"
       className={cn(styles.separator, className)}
       {...props}
     />
@@ -126,6 +131,7 @@ function CommandLoading({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
   return (
     <CommandPrimitive.Loading
+      data-slot="commandprimitive-loading"
       className={cn(styles.loading, className)}
       {...props}
     />

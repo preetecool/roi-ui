@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function FieldRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Root>) {
+}: Field.Root.Props) {
   return (
     <Field.Root
+      data-slot="field-root"
       className={cn("flex w-full flex-col items-start gap-2", className)}
       validationMode="onBlur"
       {...props}
@@ -19,9 +20,10 @@ function FieldRoot({
 function FieldControl({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Control>) {
+}: Field.Control.Props) {
   return (
     <Field.Control
+      data-slot="field-control"
       className={cn(
         "m-0 box-border h-10 w-full rounded-[var(--radius)] border border-border px-3.5",
         "bg-[var(--mix-card-50-bg)] font-[inherit] text-foreground text-sm",
@@ -40,9 +42,10 @@ function FieldControl({
 function FieldLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Label>) {
+}: Field.Label.Props) {
   return (
     <Field.Label
+      data-slot="field-label"
       className={cn(
         "font-normal text-foreground text-sm leading-5",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
@@ -56,9 +59,10 @@ function FieldLabel({
 function FieldDescription({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Description>) {
+}: Field.Description.Props) {
   return (
     <Field.Description
+      data-slot="field-description"
       className={cn("m-0 text-muted-foreground text-sm leading-5", className)}
       {...props}
     />
@@ -68,9 +72,10 @@ function FieldDescription({
 function FieldError({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Error>) {
+}: Field.Error.Props) {
   return (
     <Field.Error
+      data-slot="field-error"
       className={cn("text-destructive text-sm leading-5", className)}
       {...props}
     />

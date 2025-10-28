@@ -6,9 +6,10 @@ import { cn } from "@/lib/tw-utils";
 function CollapsibleRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Collapsible.Root>) {
+}: Collapsible.Root.Props) {
   return (
     <Collapsible.Root
+      data-slot="collapsible-root"
       className={cn(
         "flex w-full max-w-56 flex-col justify-center text-foreground",
         className
@@ -22,9 +23,10 @@ function CollapsibleTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Collapsible.Trigger>) {
+}: Collapsible.Trigger.Props) {
   return (
     <Collapsible.Trigger
+      data-slot="collapsible-trigger"
       className={cn(
         "m-0 flex items-center justify-between rounded px-2 py-1 outline-none",
         "bg-[var(--mix-card-15-bg)] text-foreground",
@@ -78,9 +80,10 @@ function CollapsibleTrigger({
 function CollapsiblePanel({
   className,
   ...props
-}: React.ComponentProps<typeof Collapsible.Panel>) {
+}: Collapsible.Panel.Props) {
   return (
     <Collapsible.Panel
+      data-slot="collapsible-panel"
       className={cn(
         "flex h-[var(--collapsible-panel-height)] flex-col justify-end overflow-hidden",
         "box-border w-full text-sm leading-5 transition-all duration-150 ease-out",

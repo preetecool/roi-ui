@@ -7,30 +7,31 @@ import styles from "./progress.module.css";
 function ProgressRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Root>) {
+}: Progress.Root.Props) {
   return <Progress.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function ProgressLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Label>) {
+}: Progress.Label.Props) {
   return <Progress.Label className={cn(styles.label, className)} {...props} />;
 }
 
 function ProgressTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Track>) {
+}: Progress.Track.Props) {
   return <Progress.Track className={cn(styles.track, className)} {...props} />;
 }
 
 function ProgressIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Indicator>) {
+}: Progress.Indicator.Props) {
   return (
     <Progress.Indicator
+      data-slot="progress-indicator"
       className={cn(styles.indicator, className)}
       {...props}
     />
@@ -40,7 +41,7 @@ function ProgressIndicator({
 function ProgressValue({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Value>) {
+}: Progress.Value.Props) {
   return <Progress.Value className={cn(styles.value, className)} {...props} />;
 }
 
