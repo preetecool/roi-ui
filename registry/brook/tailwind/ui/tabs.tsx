@@ -86,7 +86,7 @@ function TabsIndicator({
   return (
     <Tabs.Indicator
       className={cn(
-        "absolute rounded-[var(--radius)] bg-[var(--color-primary)] transition-all duration-150 ease-in-out",
+        "absolute rounded-[var(--radius)] bg-primary transition-all duration-150 ease-in-out",
         "top-[calc(var(--active-tab-top)+var(--active-tab-height)-3px)] left-[var(--active-tab-left)]",
         "h-[3px] w-[var(--active-tab-width)]",
         className

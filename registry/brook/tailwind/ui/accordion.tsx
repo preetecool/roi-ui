@@ -93,9 +93,7 @@ function AccordionPanel({
       <div
         className={cn(
           "pr-3 pb-5 pl-0 font-normal text-secondary-foreground text-sm leading-[1.5]",
-          "relative transition-[padding-top] duration-150 ease-in-out",
-          "[[data-open]_&]:pt-3",
-          "[[data-ending-style]_&]:pt-0"
+          "relative"
         )}
       >
         {children}
