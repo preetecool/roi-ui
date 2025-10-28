@@ -6,10 +6,7 @@ import {
 
 export default function CollapsibleDemo() {
   return (
-    <Collapsible
-      className="overflow-hidden rounded-[var(--radius)] border border-[oklch(from_var(--border)_l_c_h_/_0.5)]"
-      defaultOpen={false}
-    >
+    <Collapsible className="overflow-hidden rounded-[var(--radius)] border border-[oklch(from_var(--border)_l_c_h_/_0.5)]">
       <CollapsibleTrigger className="h-full w-full cursor-pointer rounded-none border-none bg-transparent p-4 text-left transition-[background-color] duration-150 hover:bg-[var(--mix-card-50-bg)]">
         <div className="flex flex-col gap-2">
           <span className="font-normal text-[var(--muted-foreground)] text-xs">
