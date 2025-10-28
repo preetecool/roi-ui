@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStyle } from "@/components/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import { StyleSelector } from "@/components/style-selector/style-selector";
@@ -32,10 +32,16 @@ export function ComponentSourceClient({
   const currentVariant = variants.find((v) => v.variant === style) || variants[0];
   const files = currentVariant.files;
 
-  // Reset active tab if it exceeds the current file count
-  if (activeTab >= files.length) {
-    setActiveTab(0);
-  }
+  // Reset active tab when style changes or when activeTab exceeds file count
+  useEffect(() => {
+    if (activeTab >= files.length) {
+      setActiveTab(0);
+    }
+  }, [style, activeTab, files.length]);
+
+  // Safety check: ensure activeTab is valid
+  const safeActiveTab = activeTab < files.length ? activeTab : 0;
+  const currentFile = files[safeActiveTab];
 
   return (
     <div className={styles.container}>
@@ -43,7 +49,7 @@ export function ComponentSourceClient({
         <div className={styles.tabs}>
           {files.map((file, index) => (
             <button
-              className={`${styles.tab} ${index === activeTab ? styles.tabActive : ""}`}
+              className={`${styles.tab} ${index === safeActiveTab ? styles.tabActive : ""}`}
               key={file.name}
               onClick={() => setActiveTab(index)}
               type="button"
@@ -54,7 +60,7 @@ export function ComponentSourceClient({
         </div>
         <div className={styles.headerActions}>
           {variants.length > 1 && <StyleSelector />}
-          <CopyButton code={files[activeTab].content} />
+          <CopyButton code={currentFile.content} />
         </div>
       </div>
 
@@ -63,7 +69,7 @@ export function ComponentSourceClient({
           className={`code-container ${styles.codeContainer}`}
           // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
           dangerouslySetInnerHTML={{
-            __html: files[activeTab].highlightedContent,
+            __html: currentFile.highlightedContent,
           }}
         />
       </div>
