@@ -9,7 +9,7 @@
   min-height: 100dvh;
   z-index: 100;
   inset: 0;
-  background-color: black;
+  background-color: var(--background);
   opacity: 1;
   transition: opacity 300ms cubic-bezier(0.45, 1.005, 0, 1.005);
 
