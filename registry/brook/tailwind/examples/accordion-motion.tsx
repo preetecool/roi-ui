@@ -38,12 +38,12 @@ export default function AccordionFramerMotion() {
             value={item.id}
           >
             <Accordion.Header>
-              <Accordion.Trigger className="flex w-full cursor-pointer items-center gap-4 border-0 bg-transparent text-left font-[350] text-base text-secondary-foreground tracking-tight max-sm:gap-3 max-sm:text-[0.9375rem]">
+              <Accordion.Trigger className="group flex w-full cursor-pointer items-center gap-4 border-0 bg-transparent text-left font-[350] text-base text-secondary-foreground tracking-tight max-sm:gap-3 max-sm:text-[0.9375rem]">
                 <div
                   className={cn(
                     "flex h-8 w-8 items-center justify-center text-muted-foreground transition-[color,rotate] duration-200 ease-[cubic-bezier(0.455,0.03,0.515,0.955)]",
-                    "hover:text-foreground",
-                    "data-[panel-open]:rotate-90",
+                    "group-hover:text-foreground",
+                    "group-data-[panel-open]:rotate-90",
                     "max-sm:h-7 max-sm:w-7 max-sm:flex-shrink-0"
                   )}
                 >
@@ -60,7 +60,7 @@ export default function AccordionFramerMotion() {
                     <path
                       className={cn(
                         "origin-center transition-[opacity,scale] duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)]",
-                        "[.data-\\[panel-open\\]_&]:scale-0 [.data-\\[panel-open\\]_&]:opacity-0"
+                        "group-data-[panel-open]:scale-0 group-data-[panel-open]:opacity-0"
                       )}
                       d="M4 10L16 10"
                       stroke="currentColor"
