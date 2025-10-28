@@ -12,9 +12,8 @@ import {
   InstallationTabsList,
   InstallationTabsTrigger,
 } from "@/components/installation-tabs/installation-tabs";
-
+import { MdxPre } from "@/components/mdx-pre/mdx-pre";
 import { PropTable } from "@/components/prop-table/prop-table";
-import { useStyle } from "@/components/style-provider";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Tabs as CustomTabs,
@@ -52,101 +51,6 @@ type CodeBlockTabsTriggerProps = {
   [key: string]: unknown;
 };
 
-function PreWithStyleSupport(
-  props: ComponentProps<"pre"> & { title?: string }
-) {
-  const { title, children, ...rest } = props;
-  const { style } = useStyle();
-
-  // Check if this is a code block with package-install language
-  let modifiedChildren = children;
-  if (children && typeof children === "object" && "props" in children) {
-    const codeProps = children.props;
-    const className = codeProps?.className || "";
-
-    // Check if it's a package-install block
-    if (className.includes("language-package-install")) {
-      const codeContent = codeProps?.children;
-
-      if (
-        typeof codeContent === "string" &&
-        codeContent.includes("roiui.com/r/")
-      ) {
-        // Only transform URL if style is tailwind
-        const transformedContent =
-          style === "tailwind"
-            ? codeContent.replace(
-                /roiui\.com\/r\/([a-z-]+)\.json/g,
-                "roiui.com/r/$1-tailwind.json"
-              )
-            : codeContent;
-
-        // Clone the children with modified content
-        modifiedChildren = {
-          ...children,
-          props: {
-            ...codeProps,
-            children: transformedContent,
-          },
-        };
-      }
-    }
-  }
-
-  return (
-    <div
-      style={
-        title
-          ? {
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius)",
-              overflow: "hidden",
-            }
-          : undefined
-      }
-    >
-      {title && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "8px 16px",
-            backgroundColor: "var(--card)",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: "400",
-              fontFamily: "monospace",
-              color: "var(--muted-foreground)",
-            }}
-          >
-            {title}
-          </span>
-        </div>
-      )}
-      <div
-        className="code-container"
-        style={{
-          maxHeight: "400px",
-          boxSizing: "border-box",
-          overflow: "auto",
-          position: "relative",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        <pre {...rest} style={{ margin: 0, padding: "1rem" }}>
-          {modifiedChildren}
-        </pre>
-      </div>
-    </div>
-  );
-}
-
 export const mdxComponents = {
   h1: (props: ComponentProps<"h1">) => (
     <h1 style={{ color: "var(--docs-heading)" }} {...props} />
@@ -180,62 +84,7 @@ export const mdxComponents = {
     }
     return <code {...props} />;
   },
-  pre: (props: ComponentProps<"pre"> & { title?: string }) => {
-    const { title, children, ...rest } = props;
-
-    return (
-      <div
-        style={
-          title
-            ? {
-                border: "1px solid var(--border)",
-                borderRadius: "var(--radius)",
-                overflow: "hidden",
-              }
-            : undefined
-        }
-      >
-        {title && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 16px",
-              backgroundColor: "var(--card)",
-              borderBottom: "1px solid var(--border)",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: "400",
-                fontFamily: "monospace",
-                color: "var(--muted-foreground)",
-              }}
-            >
-              {title}
-            </span>
-          </div>
-        )}
-        <div
-          className="code-container"
-          style={{
-            maxHeight: "400px",
-            boxSizing: "border-box",
-            overflow: "auto",
-            position: "relative",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <pre {...rest} style={{ margin: 0, padding: "1rem" }}>
-            {children}
-          </pre>
-        </div>
-      </div>
-    );
-  },
+  pre: MdxPre,
 
   Button,
   CodeBlock,
