@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import type { ComponentProps, ReactElement } from "react";
 import { cloneElement, isValidElement } from "react";
 import { useStyle } from "@/components/style-provider";
@@ -12,7 +13,7 @@ function hasRoiuiUrl(children: unknown): boolean {
     return children.some(hasRoiuiUrl);
   }
   if (isValidElement(children)) {
-    return hasRoiuiUrl(children.props?.children);
+    return hasRoiuiUrl((children.props as { children?: unknown }).children);
   }
   return false;
 }
@@ -48,10 +49,14 @@ function transformChildren(children: unknown, toTailwind: boolean): unknown {
 
   if (isValidElement(children)) {
     const element = children as ReactElement;
+    const transformedChild = transformChildren(
+      (element.props as { children?: unknown }).children,
+      toTailwind
+    );
     return cloneElement(
       element,
       { key: element.key }, // Preserve original key
-      transformChildren(element.props?.children, toTailwind)
+      transformedChild as React.ReactNode
     );
   }
 
@@ -66,9 +71,9 @@ export function MdxPre(props: ComponentProps<"pre"> & { title?: string }) {
   const containsRoiuiUrl = hasRoiuiUrl(children);
 
   // Transform children based on current style
-  const transformedChildren = containsRoiuiUrl
+  const transformedChildren = (containsRoiuiUrl
     ? transformChildren(children, style === "tailwind")
-    : children;
+    : children) as React.ReactNode;
 
   return (
     <div
