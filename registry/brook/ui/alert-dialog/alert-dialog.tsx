@@ -14,7 +14,7 @@ function AlertDialogRoot({
 function AlertDialogTrigger({
   ...props
 }: React.ComponentProps<typeof AlertDialog.Trigger>) {
-  return <AlertDialog.Trigger {...props} />;
+  return <AlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />;
 }
 
 const AlertDialogPortal = AlertDialog.Portal;
@@ -22,9 +22,10 @@ const AlertDialogPortal = AlertDialog.Portal;
 function AlertDialogBackdrop({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Backdrop>) {
+}: React.ComponentProps<typeof AlertDialog.Backdrop>) {
   return (
     <AlertDialog.Backdrop
+      data-slot="alert-dialog-backdrop"
       className={cn(styles.overlay, className)}
       {...props}
     />
@@ -35,11 +36,15 @@ function AlertDialogPopup({
   className,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Popup>) {
+}: React.ComponentProps<typeof AlertDialog.Popup>) {
   return (
     <AlertDialogPortal>
       <AlertDialogBackdrop />
-      <AlertDialog.Popup className={cn(styles.content, className)} {...props}>
+      <AlertDialog.Popup
+        data-slot="alert-dialog-popup"
+        className={cn(styles.content, className)}
+        {...props}
+      >
         {children}
       </AlertDialog.Popup>
     </AlertDialogPortal>
@@ -51,9 +56,13 @@ const AlertDialogContent = AlertDialogPopup;
 function AlertDialogTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof AlertDialog.Title>) {
+}: React.ComponentProps<typeof AlertDialog.Title>) {
   return (
-    <AlertDialog.Title className={cn(styles.title, className)} {...props} />
+    <AlertDialog.Title
+      data-slot="alert-dialog-title"
+      className={cn(styles.title, className)}
+      {...props}
+    />
   );
 }
 
@@ -63,6 +72,7 @@ function AlertDialogDescription({
 }: React.ComponentProps<typeof AlertDialog.Description>) {
   return (
     <AlertDialog.Description
+      data-slot="alert-dialog-description"
       className={cn(styles.description, className)}
       {...props}
     />
@@ -72,7 +82,7 @@ function AlertDialogDescription({
 function AlertDialogClose({
   ...props
 }: React.ComponentProps<typeof AlertDialog.Close>) {
-  return <AlertDialog.Close {...props} />;
+  return <AlertDialog.Close data-slot="alert-dialog-close" {...props} />;
 }
 
 const AlertDialogOverlay = AlertDialogBackdrop;
@@ -81,14 +91,26 @@ function AlertDialogHeader({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn(styles.header, className)} {...props} />;
+  return (
+    <div
+      data-slot="alert-dialog-header"
+      className={cn(styles.header, className)}
+      {...props}
+    />
+  );
 }
 
 function AlertDialogFooter({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={cn(styles.footer, className)} {...props} />;
+  return (
+    <div
+      data-slot="alert-dialog-footer"
+      className={cn(styles.footer, className)}
+      {...props}
+    />
+  );
 }
 
 export {

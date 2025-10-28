@@ -17,14 +17,14 @@ export default function AlertDialogDemo() {
         render={<Button variant="destructive">Delete Account</Button>}
       />
 
-      <AlertDialogContent className="max-w-md">
+      <AlertDialogContent className="w-[clamp(250px,90vw,400px)] max-h-[300px] flex flex-col rounded-2xl p-6 gap-4 max-sm:!left-1/2 max-sm:!right-auto max-sm:!-translate-x-1/2 max-sm:!-translate-y-1/2">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription className="text-muted-foreground">
             This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter className="flex gap-2">
+        <AlertDialogFooter className="mt-8 flex gap-3 [&>*]:flex-1">
           <AlertDialogClose
             render={<Button variant="outline">Cancel</Button>}
           />
