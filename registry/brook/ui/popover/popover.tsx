@@ -4,7 +4,7 @@ import { Popover } from "@base-ui-components/react/popover";
 import { cn } from "@/lib/utils";
 import styles from "./popover.module.css";
 
-function PopoverRoot({ ...props }: React.ComponentProps<typeof Popover.Root>) {
+function PopoverRoot({ ...props }: Popover.Root.Props) {
   return <Popover.Root {...props} />;
 }
 
@@ -12,7 +12,7 @@ function PopoverTrigger({
   className,
   render,
   ...props
-}: React.ComponentProps<typeof Popover.Trigger>) {
+}: Popover.Trigger.Props) {
   return (
     <Popover.Trigger
       className={cn(styles.trigger, className)}
@@ -27,7 +27,7 @@ const PopoverPortal = Popover.Portal;
 function PopoverBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Backdrop>) {
+}: Popover.Backdrop.Props) {
   return (
     <Popover.Backdrop className={cn(styles.backdrop, className)} {...props} />
   );
@@ -36,7 +36,7 @@ function PopoverBackdrop({
 function PopoverPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Positioner>) {
+}: Popover.Positioner.Props) {
   return (
     <Popover.Positioner
       className={cn(styles.positioner, className)}
@@ -48,28 +48,28 @@ function PopoverPositioner({
 function PopoverPopup({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Popup>) {
+}: Popover.Popup.Props) {
   return <Popover.Popup className={cn(styles.popup, className)} {...props} />;
 }
 
 function PopoverArrow({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Arrow>) {
+}: Popover.Arrow.Props) {
   return <Popover.Arrow className={cn(styles.arrow, className)} {...props} />;
 }
 
 function PopoverTitle({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Title>) {
+}: Popover.Title.Props) {
   return <Popover.Title className={cn(styles.title, className)} {...props} />;
 }
 
 function PopoverDescription({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Description>) {
+}: Popover.Description.Props) {
   return (
     <Popover.Description
       className={cn(styles.description, className)}
@@ -81,7 +81,7 @@ function PopoverDescription({
 function PopoverClose({
   className,
   ...props
-}: React.ComponentProps<typeof Popover.Close>) {
+}: Popover.Close.Props) {
   return <Popover.Close className={cn(styles.close, className)} {...props} />;
 }
 
@@ -89,7 +89,7 @@ function PopoverContent({
   className,
   style,
   ...props
-}: React.ComponentProps<typeof Popover.Popup>) {
+}: Popover.Popup.Props) {
   return (
     <PopoverPortal>
       <PopoverPositioner sideOffset={8}>

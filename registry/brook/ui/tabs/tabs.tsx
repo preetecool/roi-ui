@@ -5,35 +5,35 @@ import styles from "./tabs.module.css";
 function TabsRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Root>) {
+}: Tabs.Root.Props) {
   return <Tabs.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function TabsList({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.List>) {
+}: Tabs.List.Props) {
   return <Tabs.List className={cn(styles.list, className)} {...props} />;
 }
 
 function TabsTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Tab>) {
+}: Tabs.Tab.Props) {
   return <Tabs.Tab className={cn(styles.trigger, className)} {...props} />;
 }
 
 function TabsContent({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Panel>) {
+}: Tabs.Panel.Props) {
   return <Tabs.Panel className={cn(styles.content, className)} {...props} />;
 }
 
 function TabsIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Indicator>) {
+}: Tabs.Indicator.Props) {
   return (
     <Tabs.Indicator className={cn(styles.indicator, className)} {...props} />
   );

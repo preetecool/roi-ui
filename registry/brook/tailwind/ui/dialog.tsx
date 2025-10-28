@@ -4,13 +4,13 @@ import { Dialog } from "@base-ui-components/react/dialog";
 import type React from "react";
 import { cn } from "@/lib/tw-utils";
 
-function DialogRoot({ ...props }: React.ComponentProps<typeof Dialog.Root>) {
+function DialogRoot({ ...props }: Dialog.Root.Props) {
   return <Dialog.Root {...props} />;
 }
 
 function DialogTrigger({
   ...props
-}: React.ComponentProps<typeof Dialog.Trigger>) {
+}: Dialog.Trigger.Props) {
   return <Dialog.Trigger {...props} />;
 }
 
@@ -19,7 +19,7 @@ const DialogPortal = Dialog.Portal;
 function DialogOverlay({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Dialog.Backdrop>) {
+}: Dialog.Backdrop.Props) {
   return (
     <Dialog.Backdrop
       className={cn(
@@ -35,7 +35,7 @@ function DialogOverlay({
 function DialogPopup({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Dialog.Popup>) {
+}: Dialog.Popup.Props) {
   return (
     <Dialog.Popup
       className={cn(
@@ -56,7 +56,7 @@ function DialogPopup({
 function DialogTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Dialog.Title>) {
+}: Dialog.Title.Props) {
   return (
     <Dialog.Title
       className={cn(
@@ -71,7 +71,7 @@ function DialogTitle({
 function DialogDescription({
   className,
   ...props
-}: React.ComponentProps<typeof Dialog.Description>) {
+}: Dialog.Description.Props) {
   return (
     <Dialog.Description
       className={cn(
@@ -83,7 +83,7 @@ function DialogDescription({
   );
 }
 
-function DialogClose({ ...props }: React.ComponentProps<typeof Dialog.Close>) {
+function DialogClose({ ...props }: Dialog.Close.Props) {
   return <Dialog.Close {...props} />;
 }
 

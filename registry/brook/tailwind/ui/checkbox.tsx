@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function CheckboxRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Checkbox.Root>) {
+}: Checkbox.Root.Props) {
   return (
     <Checkbox.Root
       className={cn(
@@ -25,7 +25,7 @@ function CheckboxRoot({
 function CheckboxIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Checkbox.Indicator>) {
+}: Checkbox.Indicator.Props) {
   return (
     <Checkbox.Indicator
       className={cn(

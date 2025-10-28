@@ -8,7 +8,7 @@ import styles from "./accordion.module.css";
 function AccordionRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Accordion.Root>) {
+}: Accordion.Root.Props) {
   return (
     <Accordion.Root
       className={cn(styles.root, className)}
@@ -21,7 +21,7 @@ function AccordionRoot({
 function AccordionItem({
   className,
   ...props
-}: React.ComponentProps<typeof Accordion.Item>) {
+}: Accordion.Item.Props) {
   return (
     <Accordion.Item
       className={cn(styles.item, className)}
@@ -34,7 +34,7 @@ function AccordionItem({
 function AccordionHeader({
   className,
   ...props
-}: React.ComponentProps<typeof Accordion.Header>) {
+}: Accordion.Header.Props) {
   return (
     <Accordion.Header
       className={cn(styles.header, className)}
@@ -48,7 +48,7 @@ function AccordionTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Accordion.Trigger>) {
+}: Accordion.Trigger.Props) {
   return (
     <Accordion.Trigger
       className={cn(styles.trigger, className)}
@@ -65,7 +65,7 @@ function AccordionPanel({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Accordion.Panel>) {
+}: Accordion.Panel.Props) {
   return (
     <Accordion.Panel
       className={cn(styles.panel, className)}

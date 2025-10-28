@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function ProgressRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Root>) {
+}: Progress.Root.Props) {
   return (
     <Progress.Root
       className={cn("flex w-full flex-col gap-2", className)}
@@ -18,7 +18,7 @@ function ProgressRoot({
 function ProgressLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Label>) {
+}: Progress.Label.Props) {
   return (
     <Progress.Label
       className={cn("font-medium text-[var(--foreground)] text-sm", className)}
@@ -30,7 +30,7 @@ function ProgressLabel({
 function ProgressTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Track>) {
+}: Progress.Track.Props) {
   return (
     <Progress.Track
       className={cn(
@@ -45,7 +45,7 @@ function ProgressTrack({
 function ProgressIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Indicator>) {
+}: Progress.Indicator.Props) {
   return (
     <Progress.Indicator
       className={cn(
@@ -61,7 +61,7 @@ function ProgressIndicator({
 function ProgressValue({
   className,
   ...props
-}: React.ComponentProps<typeof Progress.Value>) {
+}: Progress.Value.Props) {
   return (
     <Progress.Value
       className={cn(

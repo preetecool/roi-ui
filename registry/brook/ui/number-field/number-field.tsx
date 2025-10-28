@@ -7,7 +7,7 @@ import styles from "./number-field.module.css";
 function NumberFieldRoot({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.Root>) {
+}: NumberField.Root.Props) {
   return <NumberField.Root className={cn(styles.root, className)} {...props} />;
 }
 
@@ -21,7 +21,7 @@ function NumberFieldGroup({
 function NumberFieldInput({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.Input>) {
+}: NumberField.Input.Props) {
   return (
     <NumberField.Input className={cn(styles.input, className)} {...props} />
   );
@@ -31,7 +31,7 @@ function NumberFieldIncrement({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NumberField.Increment>) {
+}: NumberField.Increment.Props) {
   return (
     <NumberField.Increment
       className={cn(styles.increment, className)}
@@ -64,7 +64,7 @@ function NumberFieldDecrement({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NumberField.Decrement>) {
+}: NumberField.Decrement.Props) {
   return (
     <NumberField.Decrement
       className={cn(styles.decrement, className)}
@@ -96,7 +96,7 @@ function NumberFieldDecrement({
 function NumberFieldScrubArea({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.ScrubArea>) {
+}: NumberField.ScrubArea.Props) {
   return (
     <NumberField.ScrubArea
       className={cn(styles.scrubArea, className)}
@@ -108,7 +108,7 @@ function NumberFieldScrubArea({
 function NumberFieldScrubAreaCursor({
   className,
   ...props
-}: React.ComponentProps<typeof NumberField.ScrubAreaCursor>) {
+}: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
       className={cn(styles.scrubAreaCursor, className)}

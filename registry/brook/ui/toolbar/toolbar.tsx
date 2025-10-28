@@ -8,7 +8,7 @@ function ToolbarRoot({
   className,
   orientation = "horizontal",
   ...props
-}: React.ComponentProps<typeof Toolbar.Root>) {
+}: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
       className={cn(
@@ -25,35 +25,35 @@ function ToolbarRoot({
 function ToolbarButton({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Button>) {
+}: Toolbar.Button.Props) {
   return <Toolbar.Button className={cn(styles.button, className)} {...props} />;
 }
 
 function ToolbarLink({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Link>) {
+}: Toolbar.Link.Props) {
   return <Toolbar.Link className={cn(styles.link, className)} {...props} />;
 }
 
 function ToolbarInput({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Input>) {
+}: Toolbar.Input.Props) {
   return <Toolbar.Input className={cn(styles.input, className)} {...props} />;
 }
 
 function ToolbarGroup({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Group>) {
+}: Toolbar.Group.Props) {
   return <Toolbar.Group className={cn(styles.group, className)} {...props} />;
 }
 
 function ToolbarSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof Toolbar.Separator>) {
+}: Toolbar.Separator.Props) {
   return (
     <Toolbar.Separator className={cn(styles.separator, className)} {...props} />
   );

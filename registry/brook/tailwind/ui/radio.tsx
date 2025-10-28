@@ -7,7 +7,7 @@ import { cn } from "@/lib/tw-utils";
 function RadioGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof RadioGroup>) {
+}: RadioGroup.Props) {
   return (
     <RadioGroup className={cn("flex flex-col gap-2", className)} {...props} />
   );
@@ -16,7 +16,7 @@ function RadioGroupRoot({
 function RadioRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Radio.Root>) {
+}: Radio.Root.Props) {
   return (
     <Radio.Root
       className={cn(
@@ -36,7 +36,7 @@ function RadioRoot({
 function RadioIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Radio.Indicator>) {
+}: Radio.Indicator.Props) {
   return (
     <Radio.Indicator
       className={cn(

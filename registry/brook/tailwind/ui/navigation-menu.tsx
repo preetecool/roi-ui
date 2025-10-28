@@ -5,7 +5,7 @@ import { cn } from "@/lib/tw-utils";
 function NavigationMenuRoot({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Root>) {
+}: NavigationMenu.Root.Props) {
   return (
     <NavigationMenu.Root
       className={cn("relative z-[100] flex w-full justify-center", className)}
@@ -17,7 +17,7 @@ function NavigationMenuRoot({
 function NavigationMenuList({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.List>) {
+}: NavigationMenu.List.Props) {
   return (
     <NavigationMenu.List
       className={cn(
@@ -32,14 +32,14 @@ function NavigationMenuList({
 function NavigationMenuItem({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Item>) {
+}: NavigationMenu.Item.Props) {
   return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 
 function NavigationMenuTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Trigger>) {
+}: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
       className={cn(
@@ -57,7 +57,7 @@ function NavigationMenuTrigger({
 function NavigationMenuContent({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Content>) {
+}: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
       className={cn(
@@ -78,7 +78,7 @@ function NavigationMenuContent({
 function NavigationMenuIcon({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Icon>) {
+}: NavigationMenu.Icon.Props) {
   return (
     <NavigationMenu.Icon
       className={cn(
@@ -94,21 +94,21 @@ function NavigationMenuIcon({
 function NavigationMenuLink({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Link>) {
+}: NavigationMenu.Link.Props) {
   return <NavigationMenu.Link className={cn(className)} {...props} />;
 }
 
 function NavigationMenuPortal({
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Portal>) {
+}: NavigationMenu.Portal.Props) {
   return <NavigationMenu.Portal {...props}>{children}</NavigationMenu.Portal>;
 }
 
 function NavigationMenuBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Backdrop>) {
+}: NavigationMenu.Backdrop.Props) {
   return <NavigationMenu.Backdrop className={cn(className)} {...props} />;
 }
 
@@ -116,7 +116,7 @@ function NavigationMenuPositioner({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Positioner>) {
+}: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
       className={cn(
@@ -141,7 +141,7 @@ function NavigationMenuPopup({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Popup>) {
+}: NavigationMenu.Popup.Props) {
   return (
     <NavigationMenu.Popup
       className={cn(
@@ -167,7 +167,7 @@ function NavigationMenuPopup({
 function NavigationMenuArrow({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Arrow>) {
+}: NavigationMenu.Arrow.Props) {
   return (
     <NavigationMenu.Arrow
       className={cn(
@@ -210,7 +210,7 @@ function NavigationMenuArrow({
 function NavigationMenuViewport({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenu.Viewport>) {
+}: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
       className={cn("relative h-full w-full overflow-hidden", className)}

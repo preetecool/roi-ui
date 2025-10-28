@@ -5,17 +5,17 @@ import { cn } from "@/lib/tw-utils";
 
 function TooltipProvider({
   ...props
-}: React.ComponentProps<typeof Tooltip.Provider>) {
+}: Tooltip.Provider.Props) {
   return <Tooltip.Provider {...props} />;
 }
 
-function TooltipRoot({ ...props }: React.ComponentProps<typeof Tooltip.Root>) {
+function TooltipRoot({ ...props }: Tooltip.Root.Props) {
   return <Tooltip.Root {...props} />;
 }
 
 function TooltipTrigger({
   ...props
-}: React.ComponentProps<typeof Tooltip.Trigger>) {
+}: Tooltip.Trigger.Props) {
   return <Tooltip.Trigger {...props} />;
 }
 
@@ -24,7 +24,7 @@ const TooltipPortal = Tooltip.Portal;
 function TooltipPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Tooltip.Positioner>) {
+}: Tooltip.Positioner.Props) {
   return (
     <Tooltip.Positioner className={cn("z-[9999]", className)} {...props} />
   );
@@ -33,7 +33,7 @@ function TooltipPositioner({
 function TooltipPopup({
   className,
   ...props
-}: React.ComponentProps<typeof Tooltip.Popup>) {
+}: Tooltip.Popup.Props) {
   return (
     <Tooltip.Popup
       className={cn(
@@ -56,7 +56,7 @@ function TooltipPopup({
 function TooltipArrow({
   className,
   ...props
-}: React.ComponentProps<typeof Tooltip.Arrow>) {
+}: Tooltip.Arrow.Props) {
   return (
     <Tooltip.Arrow
       className={cn(

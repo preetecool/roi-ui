@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function SliderRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Root>) {
+}: Slider.Root.Props) {
   return (
     <Slider.Root
       className={cn(
@@ -22,7 +22,7 @@ function SliderRoot({
 function SliderControl({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Control>) {
+}: Slider.Control.Props) {
   return (
     <Slider.Control
       className={cn(
@@ -38,7 +38,7 @@ function SliderControl({
 function SliderTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Track>) {
+}: Slider.Track.Props) {
   return (
     <Slider.Track
       className={cn(
@@ -55,7 +55,7 @@ function SliderTrack({
 function SliderIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Indicator>) {
+}: Slider.Indicator.Props) {
   return (
     <Slider.Indicator
       className={cn(
@@ -70,7 +70,7 @@ function SliderIndicator({
 function SliderThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Thumb>) {
+}: Slider.Thumb.Props) {
   return (
     <Slider.Thumb
       className={cn(
@@ -88,7 +88,7 @@ function SliderThumb({
 function SliderValue({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Value>) {
+}: Slider.Value.Props) {
   return (
     <Slider.Value
       className={cn(

@@ -7,7 +7,7 @@ import styles from "./collapsible.module.css";
 function CollapsibleRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Collapsible.Root>) {
+}: Collapsible.Root.Props) {
   return <Collapsible.Root className={cn(styles.root, className)} {...props} />;
 }
 
@@ -15,7 +15,7 @@ function CollapsibleTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Collapsible.Trigger>) {
+}: Collapsible.Trigger.Props) {
   return (
     <Collapsible.Trigger className={cn(styles.trigger, className)} {...props}>
       {children}
@@ -49,7 +49,7 @@ function CollapsibleTrigger({
 function CollapsiblePanel({
   className,
   ...props
-}: React.ComponentProps<typeof Collapsible.Panel>) {
+}: Collapsible.Panel.Props) {
   return (
     <Collapsible.Panel className={cn(styles.panel, className)} {...props} />
   );

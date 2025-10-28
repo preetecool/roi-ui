@@ -7,7 +7,7 @@ import { cn } from "@/lib/tw-utils";
 function AccordionRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Accordion.Root>) {
+}: Accordion.Root.Props) {
   return (
     <Accordion.Root
       className={cn(
@@ -23,7 +23,7 @@ function AccordionRoot({
 function AccordionItem({
   className,
   ...props
-}: React.ComponentProps<typeof Accordion.Item>) {
+}: Accordion.Item.Props) {
   return (
     <Accordion.Item
       className={cn(
@@ -39,7 +39,7 @@ function AccordionItem({
 function AccordionHeader({
   className,
   ...props
-}: React.ComponentProps<typeof Accordion.Header>) {
+}: Accordion.Header.Props) {
   return (
     <Accordion.Header
       className={cn("m-0 font-medium text-sm tracking-inherit", className)}
@@ -53,7 +53,7 @@ function AccordionTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Accordion.Trigger>) {
+}: Accordion.Trigger.Props) {
   return (
     <Accordion.Trigger
       className={cn(
@@ -83,7 +83,7 @@ function AccordionPanel({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Accordion.Panel>) {
+}: Accordion.Panel.Props) {
   return (
     <Accordion.Panel
       className={cn(

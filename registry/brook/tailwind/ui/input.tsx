@@ -29,7 +29,7 @@ const inputVariants = cva(
 );
 
 interface InputProps
-  extends React.ComponentProps<typeof Input>,
+  extends Input.Props,
     VariantProps<typeof inputVariants> {}
 
 function InputRoot({ className, variant = "default", ...props }: InputProps) {

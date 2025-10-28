@@ -5,20 +5,20 @@ import { cn } from "@/lib/tw-utils";
 
 function ToastProvider({
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Provider>) {
+}: Toast.Provider.Props) {
   return <Toast.Provider {...props} />;
 }
 
 function ToastPortal({
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Portal>) {
+}: Toast.Portal.Props) {
   return <Toast.Portal {...props} />;
 }
 
 function ToastViewport({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Viewport>) {
+}: Toast.Viewport.Props) {
   return (
     <Toast.Viewport
       className={cn(
@@ -35,7 +35,7 @@ function ToastRoot({
   className,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Root>) {
+}: Toast.Root.Props) {
   return (
     <Toast.Root
       className={cn(
@@ -83,7 +83,7 @@ function ToastRoot({
 function ToastTitle({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Title>) {
+}: Toast.Title.Props) {
   return (
     <Toast.Title
       className={cn(
@@ -102,7 +102,7 @@ function ToastTitle({
 function ToastDescription({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Description>) {
+}: Toast.Description.Props) {
   return (
     <Toast.Description
       className={cn(
@@ -122,7 +122,7 @@ function ToastClose({
   className,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Toast.Close>) {
+}: Toast.Close.Props) {
   return (
     <Toast.Close
       className={cn(

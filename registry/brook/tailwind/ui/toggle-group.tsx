@@ -7,7 +7,7 @@ import { cn } from "@/lib/tw-utils";
 function ToggleGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof ToggleGroup>) {
+}: ToggleGroup.Props) {
   return (
     <ToggleGroup
       className={cn(
@@ -24,7 +24,7 @@ function ToggleGroupRoot({
 function ToggleGroupItem({
   className,
   ...props
-}: React.ComponentProps<typeof Toggle>) {
+}: Toggle.Props) {
   return (
     <Toggle
       className={cn(

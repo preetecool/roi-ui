@@ -7,13 +7,13 @@ import styles from "./alert-dialog.module.css";
 
 function AlertDialogRoot({
   ...props
-}: React.ComponentProps<typeof AlertDialog.Root>) {
+}: AlertDialog.Root.Props) {
   return <AlertDialog.Root {...props} />;
 }
 
 function AlertDialogTrigger({
   ...props
-}: React.ComponentProps<typeof AlertDialog.Trigger>) {
+}: AlertDialog.Trigger.Props) {
   return <AlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />;
 }
 
@@ -22,7 +22,7 @@ const AlertDialogPortal = AlertDialog.Portal;
 function AlertDialogBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialog.Backdrop>) {
+}: AlertDialog.Backdrop.Props) {
   return (
     <AlertDialog.Backdrop
       data-slot="alert-dialog-backdrop"
@@ -36,7 +36,7 @@ function AlertDialogPopup({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof AlertDialog.Popup>) {
+}: AlertDialog.Popup.Props) {
   return (
     <AlertDialogPortal>
       <AlertDialogBackdrop />
@@ -56,7 +56,7 @@ const AlertDialogContent = AlertDialogPopup;
 function AlertDialogTitle({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialog.Title>) {
+}: AlertDialog.Title.Props) {
   return (
     <AlertDialog.Title
       data-slot="alert-dialog-title"
@@ -69,7 +69,7 @@ function AlertDialogTitle({
 function AlertDialogDescription({
   className,
   ...props
-}: React.ComponentProps<typeof AlertDialog.Description>) {
+}: AlertDialog.Description.Props) {
   return (
     <AlertDialog.Description
       data-slot="alert-dialog-description"
@@ -81,7 +81,7 @@ function AlertDialogDescription({
 
 function AlertDialogClose({
   ...props
-}: React.ComponentProps<typeof AlertDialog.Close>) {
+}: AlertDialog.Close.Props) {
   return <AlertDialog.Close data-slot="alert-dialog-close" {...props} />;
 }
 

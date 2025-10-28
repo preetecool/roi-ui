@@ -7,7 +7,7 @@ import styles from "./checkbox-group.module.css";
 function CheckboxGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof CheckboxGroup>) {
+}: CheckboxGroup.Props) {
   return <CheckboxGroup className={cn(styles.root, className)} {...props} />;
 }
 

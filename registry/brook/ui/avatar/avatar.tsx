@@ -7,21 +7,21 @@ import styles from "./avatar.module.css";
 function AvatarRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Avatar.Root>) {
+}: Avatar.Root.Props) {
   return <Avatar.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function AvatarImage({
   className,
   ...props
-}: React.ComponentProps<typeof Avatar.Image>) {
+}: Avatar.Image.Props) {
   return <Avatar.Image className={cn(styles.image, className)} {...props} />;
 }
 
 function AvatarFallback({
   className,
   ...props
-}: React.ComponentProps<typeof Avatar.Fallback>) {
+}: Avatar.Fallback.Props) {
   return (
     <Avatar.Fallback className={cn(styles.fallback, className)} {...props} />
   );

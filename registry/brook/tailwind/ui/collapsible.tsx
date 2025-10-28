@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function CollapsibleRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Collapsible.Root>) {
+}: Collapsible.Root.Props) {
   return (
     <Collapsible.Root
       className={cn(
@@ -22,7 +22,7 @@ function CollapsibleTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Collapsible.Trigger>) {
+}: Collapsible.Trigger.Props) {
   return (
     <Collapsible.Trigger
       className={cn(
@@ -78,7 +78,7 @@ function CollapsibleTrigger({
 function CollapsiblePanel({
   className,
   ...props
-}: React.ComponentProps<typeof Collapsible.Panel>) {
+}: Collapsible.Panel.Props) {
   return (
     <Collapsible.Panel
       className={cn(

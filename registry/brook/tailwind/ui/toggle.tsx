@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function ToggleRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Toggle>) {
+}: Toggle.Props) {
   return (
     <Toggle
       className={cn(

@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function ScrollAreaRoot({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Root>) {
+}: ScrollArea.Root.Props) {
   return (
     <ScrollArea.Root
       className={cn(
@@ -21,7 +21,7 @@ function ScrollAreaRoot({
 function ScrollAreaViewport({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Viewport>) {
+}: ScrollArea.Viewport.Props) {
   return (
     <ScrollArea.Viewport
       className={cn(
@@ -38,7 +38,7 @@ function ScrollAreaViewport({
 function ScrollAreaContent({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Content>) {
+}: ScrollArea.Content.Props) {
   return (
     <ScrollArea.Content
       className={cn("flex flex-col gap-4 py-3 pr-6 pl-4", className)}
@@ -51,7 +51,7 @@ function ScrollAreaScrollbar({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollArea.Scrollbar>) {
+}: ScrollArea.Scrollbar.Props) {
   return (
     <ScrollArea.Scrollbar
       className={cn(
@@ -71,7 +71,7 @@ function ScrollAreaScrollbar({
 function ScrollAreaThumb({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Thumb>) {
+}: ScrollArea.Thumb.Props) {
   return (
     <ScrollArea.Thumb
       className={cn(
@@ -86,7 +86,7 @@ function ScrollAreaThumb({
 function ScrollAreaCorner({
   className,
   ...props
-}: React.ComponentProps<typeof ScrollArea.Corner>) {
+}: ScrollArea.Corner.Props) {
   return <ScrollArea.Corner className={cn("hidden", className)} {...props} />;
 }
 

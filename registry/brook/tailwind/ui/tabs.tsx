@@ -4,7 +4,7 @@ import { cn } from "@/lib/tw-utils";
 function TabsRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Root>) {
+}: Tabs.Root.Props) {
   return (
     <Tabs.Root
       className={cn(
@@ -19,7 +19,7 @@ function TabsRoot({
 function TabsList({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.List>) {
+}: Tabs.List.Props) {
   return (
     <Tabs.List
       className={cn(
@@ -38,7 +38,7 @@ function TabsList({
 function TabsTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Tab>) {
+}: Tabs.Tab.Props) {
   return (
     <Tabs.Tab
       className={cn(
@@ -61,7 +61,7 @@ function TabsTrigger({
 function TabsContent({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Panel>) {
+}: Tabs.Panel.Props) {
   return (
     <Tabs.Panel
       className={cn(
@@ -82,7 +82,7 @@ function TabsContent({
 function TabsIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Tabs.Indicator>) {
+}: Tabs.Indicator.Props) {
   return (
     <Tabs.Indicator
       className={cn(

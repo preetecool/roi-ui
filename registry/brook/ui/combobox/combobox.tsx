@@ -16,7 +16,7 @@ function ComboboxTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.Trigger>) {
+}: Combobox.Trigger.Props) {
   return (
     <Combobox.Trigger className={cn(styles.trigger, className)} {...props}>
       {children}
@@ -28,7 +28,7 @@ function ComboboxTrigger({
 function ComboboxInput({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Input>) {
+}: Combobox.Input.Props) {
   return <Combobox.Input className={cn(styles.input, className)} {...props} />;
 }
 
@@ -36,7 +36,7 @@ function ComboboxClear({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.Clear>) {
+}: Combobox.Clear.Props) {
   return (
     <Combobox.Clear className={cn(styles.clear, className)} {...props}>
       {children || <X size={16} />}
@@ -49,7 +49,7 @@ const ComboboxPortal = Combobox.Portal;
 function ComboboxPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Positioner>) {
+}: Combobox.Positioner.Props) {
   return (
     <Combobox.Positioner
       className={cn(styles.positioner, className)}
@@ -62,14 +62,14 @@ function ComboboxPositioner({
 function ComboboxPopup({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Popup>) {
+}: Combobox.Popup.Props) {
   return <Combobox.Popup className={cn(styles.popup, className)} {...props} />;
 }
 
 function ComboboxList({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.List>) {
+}: Combobox.List.Props) {
   return <Combobox.List className={cn(styles.list, className)} {...props} />;
 }
 
@@ -77,7 +77,7 @@ function ComboboxEmpty({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.Empty>) {
+}: Combobox.Empty.Props) {
   return (
     <Combobox.Empty className={cn(styles.empty, className)} {...props}>
       {children || "No items found"}
@@ -90,7 +90,7 @@ function ComboboxItem({
   children,
   indicatorPosition = "left",
   ...props
-}: React.ComponentProps<typeof Combobox.Item> & {
+}: Combobox.Item.Props & {
   indicatorPosition?: "left" | "right";
 }) {
   return (
@@ -114,7 +114,7 @@ function ComboboxItemIndicator({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Combobox.ItemIndicator>) {
+}: Combobox.ItemIndicator.Props) {
   return (
     <Combobox.ItemIndicator
       className={cn(styles.itemIndicator, className)}
@@ -128,14 +128,14 @@ function ComboboxItemIndicator({
 function ComboboxGroup({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Group>) {
+}: Combobox.Group.Props) {
   return <Combobox.Group className={cn(styles.group, className)} {...props} />;
 }
 
 function ComboboxGroupLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.GroupLabel>) {
+}: Combobox.GroupLabel.Props) {
   return (
     <Combobox.GroupLabel
       className={cn(styles.groupLabel, className)}
@@ -147,7 +147,7 @@ function ComboboxGroupLabel({
 function ComboboxArrow({
   className,
   ...props
-}: React.ComponentProps<typeof Combobox.Arrow>) {
+}: Combobox.Arrow.Props) {
   return <Combobox.Arrow className={cn(styles.arrow, className)} {...props} />;
 }
 

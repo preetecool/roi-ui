@@ -7,14 +7,14 @@ import styles from "./switch.module.css";
 function SwitchRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Root>) {
+}: Switch.Root.Props) {
   return <Switch.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function SwitchThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Thumb>) {
+}: Switch.Thumb.Props) {
   return <Switch.Thumb className={cn(styles.thumb, className)} {...props} />;
 }
 

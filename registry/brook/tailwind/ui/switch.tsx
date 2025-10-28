@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function SwitchRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Root>) {
+}: Switch.Root.Props) {
   return (
     <Switch.Root
       className={cn(
@@ -28,7 +28,7 @@ function SwitchRoot({
 function SwitchThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Switch.Thumb>) {
+}: Switch.Thumb.Props) {
   return (
     <Switch.Thumb
       className={cn(

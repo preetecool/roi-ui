@@ -7,14 +7,14 @@ import styles from "./slider.module.css";
 function SliderRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Root>) {
+}: Slider.Root.Props) {
   return <Slider.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function SliderControl({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Control>) {
+}: Slider.Control.Props) {
   return (
     <Slider.Control className={cn(styles.control, className)} {...props} />
   );
@@ -23,14 +23,14 @@ function SliderControl({
 function SliderTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Track>) {
+}: Slider.Track.Props) {
   return <Slider.Track className={cn(styles.track, className)} {...props} />;
 }
 
 function SliderIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Indicator>) {
+}: Slider.Indicator.Props) {
   return (
     <Slider.Indicator className={cn(styles.indicator, className)} {...props} />
   );
@@ -39,14 +39,14 @@ function SliderIndicator({
 function SliderThumb({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Thumb>) {
+}: Slider.Thumb.Props) {
   return <Slider.Thumb className={cn(styles.thumb, className)} {...props} />;
 }
 
 function SliderValue({
   className,
   ...props
-}: React.ComponentProps<typeof Slider.Value>) {
+}: Slider.Value.Props) {
   return <Slider.Value className={cn(styles.value, className)} {...props} />;
 }
 

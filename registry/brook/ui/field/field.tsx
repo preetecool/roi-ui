@@ -7,7 +7,7 @@ import styles from "./field.module.css";
 function FieldRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Root>) {
+}: Field.Root.Props) {
   return (
     <Field.Root
       className={cn(styles.root, className)}
@@ -20,21 +20,21 @@ function FieldRoot({
 function FieldControl({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Control>) {
+}: Field.Control.Props) {
   return <Field.Control className={cn(styles.control, className)} {...props} />;
 }
 
 function FieldLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Label>) {
+}: Field.Label.Props) {
   return <Field.Label className={cn(styles.label, className)} {...props} />;
 }
 
 function FieldDescription({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Description>) {
+}: Field.Description.Props) {
   return (
     <Field.Description
       className={cn(styles.description, className)}
@@ -46,7 +46,7 @@ function FieldDescription({
 function FieldError({
   className,
   ...props
-}: React.ComponentProps<typeof Field.Error>) {
+}: Field.Error.Props) {
   return <Field.Error className={cn(styles.error, className)} {...props} />;
 }
 

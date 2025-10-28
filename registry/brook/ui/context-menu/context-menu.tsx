@@ -9,14 +9,14 @@ import styles from "./context-menu.module.css";
 
 function ContextMenuRoot({
   ...props
-}: React.ComponentProps<typeof ContextMenu.Root>) {
+}: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;
 }
 
 function ContextMenuTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Trigger>) {
+}: ContextMenu.Trigger.Props) {
   return (
     <ContextMenu.Trigger className={cn(styles.trigger, className)} {...props} />
   );
@@ -27,7 +27,7 @@ const ContextMenuPortal = ContextMenu.Portal;
 function ContextMenuBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Backdrop>) {
+}: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
       className={cn(styles.backdrop, className)}
@@ -39,7 +39,7 @@ function ContextMenuBackdrop({
 function ContextMenuPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Positioner>) {
+}: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
       className={cn(styles.positioner, className)}
@@ -51,7 +51,7 @@ function ContextMenuPositioner({
 function ContextMenuPopup({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Popup>) {
+}: ContextMenu.Popup.Props) {
   return (
     <ContextMenu.Popup className={cn(styles.popup, className)} {...props} />
   );
@@ -60,13 +60,13 @@ function ContextMenuPopup({
 function ContextMenuArrow({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Arrow>) {
+}: ContextMenu.Arrow.Props) {
   return (
     <ContextMenu.Arrow className={cn(styles.arrow, className)} {...props} />
   );
 }
 
-interface ContextMenuItemProps extends React.ComponentProps<typeof ContextMenu.Item> {
+interface ContextMenuItemProps extends ContextMenu.Item.Props {
   icon?: ReactNode;
   inset?: boolean;
   className?: string;
@@ -95,7 +95,7 @@ function ContextMenuCheckboxItem({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.CheckboxItem>) {
+}: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
       className={cn(styles.checkboxItem, className)}
@@ -113,7 +113,7 @@ function ContextMenuRadioItem({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.RadioItem>) {
+}: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
       className={cn(styles.radioItem, className)}
@@ -130,7 +130,7 @@ function ContextMenuRadioItem({
 function ContextMenuRadioGroup({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.RadioGroup>) {
+}: ContextMenu.RadioGroup.Props) {
   return <ContextMenu.RadioGroup className={cn(className)} {...props} />;
 }
 
@@ -150,7 +150,7 @@ function ContextMenuLabel({
 function ContextMenuSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Separator>) {
+}: ContextMenu.Separator.Props) {
   return (
     <div className={styles.seperatorWrapper}>
       <ContextMenu.Separator
@@ -163,7 +163,7 @@ function ContextMenuSeparator({
 
 function ContextMenuSubmenuRoot({
   ...props
-}: React.ComponentProps<typeof ContextMenu.SubmenuRoot>) {
+}: ContextMenu.SubmenuRoot.Props) {
   return <ContextMenu.SubmenuRoot {...props} />;
 }
 
@@ -172,7 +172,7 @@ function ContextMenuSubmenuTrigger({
   inset = false,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenu.SubmenuTrigger> & {
+}: ContextMenu.SubmenuTrigger.Props & {
   inset?: boolean;
 }) {
   return (
@@ -189,7 +189,7 @@ function ContextMenuSubmenuTrigger({
 function ContextMenuGroup({
   className,
   ...props
-}: React.ComponentProps<typeof ContextMenu.Group>) {
+}: ContextMenu.Group.Props) {
   return (
     <ContextMenu.Group className={cn(styles.group, className)} {...props} />
   );

@@ -5,14 +5,14 @@ import { cn } from "@/lib/tw-utils";
 
 function PreviewCardRoot({
   ...props
-}: React.ComponentProps<typeof PreviewCard.Root>) {
+}: PreviewCard.Root.Props) {
   return <PreviewCard.Root {...props} />;
 }
 
 function PreviewCardTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Trigger>) {
+}: PreviewCard.Trigger.Props) {
   return (
     <PreviewCard.Trigger
       className={cn(
@@ -26,14 +26,14 @@ function PreviewCardTrigger({
 
 function PreviewCardPortal({
   ...props
-}: React.ComponentProps<typeof PreviewCard.Portal>) {
+}: PreviewCard.Portal.Props) {
   return <PreviewCard.Portal {...props} />;
 }
 
 function PreviewCardBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Backdrop>) {
+}: PreviewCard.Backdrop.Props) {
   return (
     <PreviewCard.Backdrop
       className={cn("fixed inset-0 z-[140]", className)}
@@ -45,7 +45,7 @@ function PreviewCardBackdrop({
 function PreviewCardPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Positioner>) {
+}: PreviewCard.Positioner.Props) {
   return (
     <PreviewCard.Positioner
       className={cn("absolute z-[150]", className)}
@@ -57,7 +57,7 @@ function PreviewCardPositioner({
 function PreviewCardPopup({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Popup>) {
+}: PreviewCard.Popup.Props) {
   return (
     <PreviewCard.Popup
       className={cn(
@@ -100,7 +100,7 @@ function PreviewCardPopup({
 function PreviewCardArrow({
   className,
   ...props
-}: React.ComponentProps<typeof PreviewCard.Arrow>) {
+}: PreviewCard.Arrow.Props) {
   return (
     <PreviewCard.Arrow
       className={cn(

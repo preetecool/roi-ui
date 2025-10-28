@@ -8,14 +8,14 @@ import styles from "./dropdown-menu.module.css";
 
 function DropdownMenuRoot({
   ...props
-}: React.ComponentProps<typeof Menu.Root>) {
+}: Menu.Root.Props) {
   return <Menu.Root {...props} />;
 }
 
 function DropdownMenuTrigger({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Menu.Trigger>) {
+}: Menu.Trigger.Props) {
   return <Menu.Trigger {...props} className={cn(styles.trigger, className)} />;
 }
 
@@ -24,7 +24,7 @@ const DropdownMenuPortal = Menu.Portal;
 function DropdownMenuPositioner({
   className,
   ...props
-}: React.ComponentProps<typeof Menu.Positioner>) {
+}: Menu.Positioner.Props) {
   return (
     <Menu.Positioner
       className={cn(styles.positioner, className)}
@@ -37,11 +37,11 @@ function DropdownMenuPositioner({
 function DropdownMenuPopup({
   className,
   ...props
-}: React.ComponentProps<typeof Menu.Popup>) {
+}: Menu.Popup.Props) {
   return <Menu.Popup className={cn(styles.popup, className)} {...props} />;
 }
 
-interface DropdownMenuItemProps extends React.ComponentProps<typeof Menu.Item> {
+interface DropdownMenuItemProps extends Menu.Item.Props {
   icon?: ReactNode;
   className?: string;
   children?: ReactNode;
@@ -64,7 +64,7 @@ function DropdownMenuItem({
 function DropdownMenuSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof Menu.Separator>) {
+}: Menu.Separator.Props) {
   return (
     <div className={styles.seperatorWrapper}>
       <Menu.Separator className={cn(styles.separator, className)} {...props} />
@@ -75,13 +75,13 @@ function DropdownMenuSeparator({
 function DropdownMenuArrow({
   className,
   ...props
-}: React.ComponentProps<typeof Menu.Arrow>) {
+}: Menu.Arrow.Props) {
   return <Menu.Arrow className={cn(styles.arrow, className)} {...props} />;
 }
 
 function DropdownMenuSubmenuRoot({
   ...props
-}: React.ComponentProps<typeof Menu.SubmenuRoot>) {
+}: Menu.SubmenuRoot.Props) {
   return <Menu.SubmenuRoot {...props} />;
 }
 
@@ -89,7 +89,7 @@ function DropdownMenuSubmenuTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof Menu.SubmenuTrigger>) {
+}: Menu.SubmenuTrigger.Props) {
   return (
     <Menu.SubmenuTrigger
       className={cn(styles.submenuTrigger, className)}

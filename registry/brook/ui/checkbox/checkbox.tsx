@@ -7,7 +7,7 @@ import styles from "./checkbox.module.css";
 function CheckboxRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Checkbox.Root>) {
+}: Checkbox.Root.Props) {
   return (
     <Checkbox.Root
       className={cn("hit-area-extend", styles.root, className)}
@@ -19,7 +19,7 @@ function CheckboxRoot({
 function CheckboxIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Checkbox.Indicator>) {
+}: Checkbox.Indicator.Props) {
   return (
     <Checkbox.Indicator
       className={cn(styles.indicator, className)}

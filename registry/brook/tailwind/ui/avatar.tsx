@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function AvatarRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Avatar.Root>) {
+}: Avatar.Root.Props) {
   return (
     <Avatar.Root
       className={cn(
@@ -27,7 +27,7 @@ function AvatarRoot({
 function AvatarImage({
   className,
   ...props
-}: React.ComponentProps<typeof Avatar.Image>) {
+}: Avatar.Image.Props) {
   return (
     <Avatar.Image
       className={cn("h-full w-full rounded-[inherit] object-cover", className)}
@@ -39,7 +39,7 @@ function AvatarImage({
 function AvatarFallback({
   className,
   ...props
-}: React.ComponentProps<typeof Avatar.Fallback>) {
+}: Avatar.Fallback.Props) {
   return (
     <Avatar.Fallback
       className={cn(

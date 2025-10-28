@@ -7,14 +7,14 @@ import styles from "./fieldset.module.css";
 function FieldsetRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Fieldset.Root>) {
+}: Fieldset.Root.Props) {
   return <Fieldset.Root className={cn(styles.root, className)} {...props} />;
 }
 
 function FieldsetLegend({
   className,
   ...props
-}: React.ComponentProps<typeof Fieldset.Legend>) {
+}: Fieldset.Legend.Props) {
   return <Fieldset.Legend className={cn(styles.legend, className)} {...props} />;
 }
 

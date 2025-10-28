@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function CheckboxGroupRoot({
   className,
   ...props
-}: React.ComponentProps<typeof CheckboxGroup>) {
+}: CheckboxGroup.Props) {
   return (
     <CheckboxGroup
       className={cn("flex flex-col gap-3", className)}

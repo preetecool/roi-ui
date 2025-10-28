@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function MeterRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Root>) {
+}: Meter.Root.Props) {
   return (
     <Meter.Root
       className={cn("flex w-full flex-col gap-2", className)}
@@ -18,7 +18,7 @@ function MeterRoot({
 function MeterLabel({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Label>) {
+}: Meter.Label.Props) {
   return (
     <Meter.Label
       className={cn("font-medium text-secondary-foreground text-sm", className)}
@@ -30,7 +30,7 @@ function MeterLabel({
 function MeterTrack({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Track>) {
+}: Meter.Track.Props) {
   return (
     <Meter.Track
       className={cn(
@@ -45,7 +45,7 @@ function MeterTrack({
 function MeterIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Indicator>) {
+}: Meter.Indicator.Props) {
   return (
     <Meter.Indicator
       className={cn(
@@ -65,7 +65,7 @@ function MeterIndicator({
 function MeterValue({
   className,
   ...props
-}: React.ComponentProps<typeof Meter.Value>) {
+}: Meter.Value.Props) {
   return (
     <Meter.Value
       className={cn("font-medium text-muted-foreground text-xs", className)}

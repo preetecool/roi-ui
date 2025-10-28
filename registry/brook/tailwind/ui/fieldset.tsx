@@ -6,7 +6,7 @@ import { cn } from "@/lib/tw-utils";
 function FieldsetRoot({
   className,
   ...props
-}: React.ComponentProps<typeof Fieldset.Root>) {
+}: Fieldset.Root.Props) {
   return (
     <Fieldset.Root
       className={cn("m-0 flex w-full flex-col gap-4 border-0 p-0", className)}
@@ -18,7 +18,7 @@ function FieldsetRoot({
 function FieldsetLegend({
   className,
   ...props
-}: React.ComponentProps<typeof Fieldset.Legend>) {
+}: Fieldset.Legend.Props) {
   return (
     <Fieldset.Legend
       className={cn(
