@@ -10,11 +10,11 @@ function AccordionRoot({
 }: React.ComponentProps<typeof Accordion.Root>) {
   return (
     <Accordion.Root
-      data-slot="accordion-root"
       className={cn(
-        "w-[32rem] max-w-[calc(100vw-8rem)] cursor-inherit flex flex-col",
+        "flex w-[32rem] max-w-[calc(100vw-8rem)] cursor-inherit flex-col",
         className
       )}
+      data-slot="accordion-root"
       {...props}
     />
   );
@@ -26,11 +26,11 @@ function AccordionItem({
 }: React.ComponentProps<typeof Accordion.Item>) {
   return (
     <Accordion.Item
-      data-slot="accordion-item"
       className={cn(
         "border-border/80 border-b-[0.5px] last:border-b-0",
         className
       )}
+      data-slot="accordion-item"
       {...props}
     />
   );
@@ -42,8 +42,8 @@ function AccordionHeader({
 }: React.ComponentProps<typeof Accordion.Header>) {
   return (
     <Accordion.Header
-      data-slot="accordion-header"
       className={cn("m-0 font-medium text-sm tracking-inherit", className)}
+      data-slot="accordion-header"
       {...props}
     />
   );
@@ -56,16 +56,16 @@ function AccordionTrigger({
 }: React.ComponentProps<typeof Accordion.Trigger>) {
   return (
     <Accordion.Trigger
-      data-slot="accordion-trigger"
       className={cn(
-        "flex box-border w-full cursor-pointer items-center justify-between border-none bg-transparent px-0 text-left font-normal",
+        "box-border flex w-full cursor-pointer items-center justify-between border-none bg-transparent px-0 text-left font-normal",
         "h-[41.5px]",
         "text-secondary-foreground",
         "hover:text-foreground hover:underline [&:hover_svg]:text-foreground",
-        "focus:outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 focus-visible:z-[1]",
+        "focus:outline-none focus-visible:z-[1] focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
         className
       )}
+      data-slot="accordion-trigger"
       {...props}
     >
       {children}
@@ -86,13 +86,13 @@ function AccordionPanel({
 }: React.ComponentProps<typeof Accordion.Panel>) {
   return (
     <Accordion.Panel
-      data-slot="accordion-panel"
       className={cn(
         "box-border h-[var(--accordion-panel-height)] overflow-hidden leading-[1.4rem]",
         "transition-[height] duration-150",
         "data-[ending-style]:h-0 data-[starting-style]:h-0",
         className
       )}
+      data-slot="accordion-panel"
       style={{ transitionTimingFunction: "var(--ease-out-expo)" }}
       {...props}
     >
