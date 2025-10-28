@@ -153,6 +153,50 @@ async function loadVariantFiles(
 
   const files: FileData[] = [];
 
+  // Check for CSS modules UI components (subdirectory with tsx and css)
+  if (variant === "css-modules") {
+    const uiSubdirPath = join(basePath, "ui", name);
+    if (existsSync(uiSubdirPath)) {
+      const tsxPath = join(uiSubdirPath, `${name}.tsx`);
+      if (existsSync(tsxPath)) {
+        const content = await readFile(tsxPath, "utf-8");
+        files.push({
+          name: `${name}.tsx`,
+          content,
+          language: "tsx",
+        });
+      }
+
+      const cssPath = join(uiSubdirPath, `${name}.module.css`);
+      if (existsSync(cssPath)) {
+        const content = await readFile(cssPath, "utf-8");
+        files.push({
+          name: `${name}.module.css`,
+          content,
+          language: "css",
+        });
+      }
+
+      if (files.length > 0) {
+        return files;
+      }
+    }
+  }
+
+  // Check for Tailwind UI components (single file)
+  if (variant === "tailwind") {
+    const tailwindUiFilePath = join(basePath, "ui", `${name}.tsx`);
+    if (existsSync(tailwindUiFilePath)) {
+      const content = await readFile(tailwindUiFilePath, "utf-8");
+      files.push({
+        name: `${name}.tsx`,
+        content,
+        language: "tsx",
+      });
+      return files;
+    }
+  }
+
   // Check for examples directory (with and without subdirectory)
   const examplesSubdirPath = join(basePath, "examples", name);
   const examplesFilePath = join(basePath, "examples", `${name}.tsx`);
