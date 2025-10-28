@@ -306,7 +306,7 @@ export function Viewport({
       aria-live="polite"
       className={cn(
         "relative w-full overflow-x-scroll overflow-y-hidden overscroll-x-contain scroll-snap-stop-always",
-        "py-[calc(2px+2px)] scrollbar-none [-ms-overflow-style:none]",
+        "py-[calc(2px+2px)] [scrollbar-width:none] [-ms-overflow-style:none]",
         "[&::-webkit-scrollbar]:hidden",
         className
       )}
@@ -439,7 +439,7 @@ export function Previous({
       aria-controls="carousel-slides"
       aria-label="Scroll to previous items"
       className={cn(
-        "bg-transparent border-none p-0 cursor-pointer inline-flex items-center justify-center",
+        "bg-transparent border-0 p-0 cursor-pointer inline-flex items-center justify-center",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
@@ -474,7 +474,7 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
       aria-controls="carousel-slides"
       aria-label="Scroll to next items"
       className={cn(
-        "bg-transparent border-none p-0 cursor-pointer inline-flex items-center justify-center",
+        "bg-transparent border-0 p-0 cursor-pointer inline-flex items-center justify-center",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}

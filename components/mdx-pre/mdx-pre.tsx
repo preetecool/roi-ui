@@ -34,14 +34,24 @@ function transformChildren(children: unknown, toTailwind: boolean): unknown {
   }
 
   if (Array.isArray(children)) {
-    return children.map((child) => transformChildren(child, toTailwind));
+    return children.map((child, index) => {
+      const transformed = transformChildren(child, toTailwind);
+      // Preserve key if it's a React element, otherwise use index
+      if (isValidElement(child) && isValidElement(transformed)) {
+        return cloneElement(transformed as ReactElement, {
+          key: (child as ReactElement).key ?? index,
+        });
+      }
+      return transformed;
+    });
   }
 
   if (isValidElement(children)) {
+    const element = children as ReactElement;
     return cloneElement(
-      children as ReactElement,
-      {},
-      transformChildren(children.props?.children, toTailwind)
+      element,
+      { key: element.key }, // Preserve original key
+      transformChildren(element.props?.children, toTailwind)
     );
   }
 

@@ -131,27 +131,27 @@ export default function CarouselDemo() {
             ))}
           </Carousel.Content>
         </Carousel.Viewport>
-        <Carousel.Navigation>
+        <Carousel.Navigation className="-ml-[5vw]">
           <Carousel.Previous
-            className="relative w-10 h-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--color-border)_l_c_h_/_0.8)]
-              bg-[color:var(--color-card)] text-[color:var(--color-foreground)] cursor-pointer flex items-center justify-center
+            className="relative w-10 h-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]
+              bg-[color:var(--card)] text-[color:var(--foreground)] cursor-pointer flex items-center justify-center
               shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)] opacity-90
-              hover:opacity-100 hover:bg-[color:var(--color-muted)] hover:scale-105
-              focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2
+              hover:opacity-100 hover:bg-[color:var(--muted)] hover:scale-105
+              focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2
               active:scale-95
-              disabled:opacity-30 disabled:cursor-default disabled:bg-[color:var(--color-muted)] disabled:text-[color:var(--color-muted-foreground)] disabled:pointer-events-none
-              disabled:hover:opacity-30 disabled:hover:scale-100 disabled:hover:bg-[color:var(--color-muted)]
+              disabled:opacity-30 disabled:cursor-default disabled:bg-[color:var(--muted)] disabled:text-[color:var(--muted-foreground)] disabled:pointer-events-none
+              disabled:hover:opacity-30 disabled:hover:scale-100 disabled:hover:bg-[color:var(--muted)]
               motion-reduce:transition-none [&_svg]:w-4 [&_svg]:h-4"
           />
           <Carousel.Next
-            className="relative w-10 h-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--color-border)_l_c_h_/_0.8)]
-              bg-[color:var(--color-card)] text-[color:var(--color-foreground)] cursor-pointer flex items-center justify-center
+            className="relative w-10 h-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]
+              bg-[color:var(--card)] text-[color:var(--foreground)] cursor-pointer flex items-center justify-center
               shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)] opacity-90
-              hover:opacity-100 hover:bg-[color:var(--color-muted)] hover:scale-105
-              focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2
+              hover:opacity-100 hover:bg-[color:var(--muted)] hover:scale-105
+              focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2
               active:scale-95
-              disabled:opacity-30 disabled:cursor-default disabled:bg-[color:var(--color-muted)] disabled:text-[color:var(--color-muted-foreground)] disabled:pointer-events-none
-              disabled:hover:opacity-30 disabled:hover:scale-100 disabled:hover:bg-[color:var(--color-muted)]
+              disabled:opacity-30 disabled:cursor-default disabled:bg-[color:var(--muted)] disabled:text-[color:var(--muted-foreground)] disabled:pointer-events-none
+              disabled:hover:opacity-30 disabled:hover:scale-100 disabled:hover:bg-[color:var(--muted)]
               motion-reduce:transition-none [&_svg]:w-4 [&_svg]:h-4"
           />
         </Carousel.Navigation>
