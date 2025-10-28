@@ -32,7 +32,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   animate={{
                     opacity: 1,
                   }}
-                  className="fixed inset-0 z-[100] min-h-dvh bg-black opacity-100 transition-[300ms_cubic-bezier(0.45,1.005,0,1.005)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[(-webkit-touch-callout:none)]:absolute dark:opacity-95"
+                  className="fixed inset-0 z-[100] min-h-dvh bg-background opacity-95 transition-[300ms_cubic-bezier(0.45,1.005,0,1.005)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[(-webkit-touch-callout:none)]:absolute"
                   exit={{ opacity: 0 }}
                   hidden={undefined}
                   initial={{ opacity: 0 }}
@@ -57,7 +57,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   hidden={undefined}
                   render={
                     <motion.div
-className={cn(
+                      className={cn(
                         "fixed top-[5vh] max-h-dvh w-full max-w-[960px] overflow-hidden",
                         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h/0.6)] bg-[var(--mix-card-15-bg)] p-0",
                         "pointer-events-auto flex flex-col items-center gap-[16px]",
@@ -92,7 +92,7 @@ className={cn(
                           "flex cursor-pointer items-center justify-center bg-transparent text-[var(--muted-foreground)] transition-[150ms_ease-out]",
                           "hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
                         )}
-render={
+                        render={
                           <motion.button
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0, display: "flex" }}
@@ -151,7 +151,7 @@ render={
         <Dialog.Trigger
           render={
             <motion.button
-              className="cursor-pointer flex flex-col items-center w-[320px] border-[0.5px] border-solid border-[oklch(from_var(--border)_l_c_h_/_0.7)] bg-transparent p-0 font-[inherit] text-[inherit] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
+              className="flex w-[320px] cursor-pointer flex-col items-center border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] border-solid bg-transparent p-0 font-[inherit] text-[inherit] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
               layoutId={`card-${item.id}`}
               style={{ borderRadius: "24px" }}
             />
@@ -169,7 +169,7 @@ render={
 
           <div className="flex w-full items-center justify-center p-4">
             <motion.div layoutId={`heading-${item.id}`}>
-              <h3 className="m-0 font-medium text-2xl text-[var(--secondary-foreground)] transition-[150ms_ease-out] leading-[1.5]">
+              <h3 className="m-0 font-medium text-2xl text-[var(--secondary-foreground)] leading-[1.5] transition-[150ms_ease-out]">
                 {item.cardHeading}
               </h3>
             </motion.div>
