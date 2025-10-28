@@ -247,7 +247,7 @@ function SelectSeparator({
 }: React.ComponentProps<typeof Select.Separator>) {
   return (
     <Select.Separator
-      className={cn("my-1 h-px bg-[var(--border)]", className)}
+      className={cn("my-1 h-px bg-[var(--color-border)]", className)}
       {...props}
     />
   );

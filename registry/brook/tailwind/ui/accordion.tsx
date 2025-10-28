@@ -54,12 +54,13 @@ function AccordionTrigger({
   return (
     <Accordion.Trigger
       className={cn(
-        "flex w-full cursor-pointer items-center justify-between border-none bg-transparent px-0 py-3 text-left font-normal",
+        "flex w-full cursor-pointer items-center justify-between border-none bg-transparent px-0 text-left font-normal",
+        "h-[41.5px]",
         "text-secondary-foreground transition-[padding] duration-150 ease-in-out",
         "hover:text-foreground hover:underline [&:hover_svg]:text-foreground",
         "focus:outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
-        "data-[panel-open]:pb-0 data-[panel-open]:transition-[padding-bottom] data-[panel-open]:duration-150 data-[panel-open]:ease-in-out",
+        "data-[panel-open]:transition-[padding-bottom] data-[panel-open]:duration-150 data-[panel-open]:ease-in-out",
         className
       )}
       {...props}

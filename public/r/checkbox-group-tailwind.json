@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group-tailwind",
+  "type": "registry:item",
+  "title": "Checkbox Group (Tailwind)",
+  "description": "A set of checkboxes with shared state management for selecting multiple options.",
+  "files": [
+    {
+      "path": "registry/brook/tailwind/ui/checkbox-group.tsx",
+      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui-components/react/checkbox-group\";\nimport { cn } from \"@/lib/tw-utils\";\n\nfunction CheckboxGroupRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof CheckboxGroup>) {\n  return (\n    <CheckboxGroup\n      className={cn(\"flex flex-col gap-3\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };\n",
+      "type": "registry:file",
+      "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter-tailwind",
+  "type": "registry:item",
+  "title": "Meter (Tailwind)",
+  "description": "A graphical display of a numeric value within a range.",
+  "files": [
+    {
+      "path": "registry/brook/tailwind/ui/meter.tsx",
+      "content": "\"use client\";\n\nimport { Meter } from \"@base-ui-components/react/meter\";\nimport { cn } from \"@/lib/tw-utils\";\n\nfunction MeterRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof Meter.Root>) {\n  return (\n    <Meter.Root\n      className={cn(\"flex w-full flex-col gap-2\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction MeterLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof Meter.Label>) {\n  return (\n    <Meter.Label\n      className={cn(\"font-medium text-secondary-foreground text-sm\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction MeterTrack({\n  className,\n  ...props\n}: React.ComponentProps<typeof Meter.Track>) {\n  return (\n    <Meter.Track\n      className={cn(\n        \"relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction MeterIndicator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Meter.Indicator>) {\n  return (\n    <Meter.Indicator\n      className={cn(\n        \"h-full rounded-none bg-[oklch(from_var(--foreground)_l_c_h_/_0.5)]\",\n        \"transition-all duration-150 ease-out\",\n        \"w-[var(--meter-indicator-width)]\",\n        \"[.root[data-value=high]_&]:bg-destructive\",\n        \"[.root[data-value=medium]_&]:bg-[hsl(45_93%_47%)]\",\n        \"[.root[data-value=low]_&]:bg-primary\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction MeterValue({\n  className,\n  ...props\n}: React.ComponentProps<typeof Meter.Value>) {\n  return (\n    <Meter.Value\n      className={cn(\"font-medium text-muted-foreground text-xs\", className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  MeterRoot as Meter,\n  MeterIndicator,\n  MeterLabel,\n  MeterTrack,\n  MeterValue,\n};\n",
+      "type": "registry:file",
+      "target": "~/components/ui/meter/meter.tsx"
+    }
+  ]
+}
