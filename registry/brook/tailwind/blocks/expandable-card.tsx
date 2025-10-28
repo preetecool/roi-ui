@@ -26,7 +26,6 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         <AnimatePresence>
           {isOpen && (
             <Dialog.Backdrop
-              hidden={undefined}
               key="overlay"
               render={
                 <motion.div
@@ -34,11 +33,11 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                     opacity: 1,
                   }}
                   className="fixed inset-0 z-[100] min-h-dvh bg-black opacity-100 transition-[300ms_cubic-bezier(0.45,1.005,0,1.005)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[(-webkit-touch-callout:none)]:absolute dark:opacity-95"
-                  exit={{ opacity: 0, display: "block" }}
+                  exit={{ opacity: 0 }}
+                  hidden={undefined}
                   initial={{ opacity: 0 }}
                   transition={{
-                    delay: 0.035,
-                    duration: 0.17,
+                    duration: 0.3,
                     // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.455, 0.03, 0.515, 0.955],
                   }}
@@ -58,10 +57,10 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   hidden={undefined}
                   render={
                     <motion.div
-                      className={cn(
+className={cn(
                         "fixed top-[5vh] max-h-dvh w-full max-w-[960px] overflow-hidden",
-                        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-[var(--mix-card-15-bg)] p-0",
-                        "pointer-events-auto flex flex-col items-center gap-4",
+                        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h/0.6)] bg-[var(--mix-card-15-bg)] p-0",
+                        "pointer-events-auto flex flex-col items-center gap-[16px]",
                         "transform-none animate-none opacity-100 transition-none",
                         "scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent"
                       )}
@@ -75,7 +74,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                 >
                   <div
                     className={cn(
-                      "relative flex h-full w-full flex-col items-center gap-4 overflow-y-auto px-6 pt-0 pb-[12vh]",
+                      "relative flex h-full w-full flex-col items-center gap-[16px] overflow-y-auto px-6 pt-0 pb-[12vh]",
                       "scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent"
                     )}
                     style={{
@@ -93,14 +92,14 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                           "flex cursor-pointer items-center justify-center bg-transparent text-[var(--muted-foreground)] transition-[150ms_ease-out]",
                           "hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
                         )}
-                        render={
+render={
                           <motion.button
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                            exit={{ opacity: 0, display: "flex" }}
                             initial={{ opacity: 0 }}
                             transition={{
                               type: "spring",
-                              duration: 0.2,
+                              duration: 0.3,
                               delay: 0.1,
                             }}
                           />
@@ -122,9 +121,9 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
 
                     <motion.div className="mx-auto flex h-auto w-full max-w-[700px] flex-col items-start gap-9 pt-7 pr-0 pb-0 pl-0 text-left leading-[2]">
                       <motion.div layoutId={`heading-${item.id}`}>
-                        <motion.h3 className="m-0 w-full self-start font-semibold text-[48px] text-[var(--foreground)]">
+                        <h3 className="m-0 w-full self-start font-semibold text-[48px] text-[var(--foreground)] leading-[1.5]">
                           {item.cardHeading}
-                        </motion.h3>
+                        </h3>
                       </motion.div>
 
                       <motion.div
@@ -132,12 +131,12 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                         className="text-[oklch(from_var(--secondary-foreground)_l_c_h_/_0.8)]"
                         exit={{
                           opacity: 0,
+                          display: "block",
                           y: -40,
-                          scale: 0.95,
-                          transition: { delay: 0.05 },
+                          scale: 0.92,
                         }}
-                        initial={{ opacity: 0, y: -40, scale: 0.95 }}
-                        transition={{ duration: 0.2, delay: 0.1 }}
+                        initial={{ opacity: 0, y: -40, scale: 0.92 }}
+                        transition={{ delay: 0.1, duration: 0.3 }}
                       >
                         {item.content}
                       </motion.div>
@@ -152,7 +151,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         <Dialog.Trigger
           render={
             <motion.button
-              className="flex w-[320px] cursor-pointer flex-col items-center border-[0.5px] border-solid border-[oklch(from_var(--border)_l_c_h_/_0.7)] bg-transparent p-0 font-[inherit] text-[inherit] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
+              className="cursor-pointer flex flex-col items-center w-[320px] border-[0.5px] border-solid border-[oklch(from_var(--border)_l_c_h_/_0.7)] bg-transparent p-0 font-[inherit] text-[inherit] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
               layoutId={`card-${item.id}`}
               style={{ borderRadius: "24px" }}
             />
@@ -160,7 +159,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         >
           <motion.img
             alt={item.alt}
-            className="h-80 w-full object-cover"
+            className="h-[320px] w-full object-cover"
             height={300}
             layoutId={`image-${item.id}`}
             src={item.imageSrc}
@@ -170,9 +169,9 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
 
           <div className="flex w-full items-center justify-center p-4">
             <motion.div layoutId={`heading-${item.id}`}>
-              <motion.h3 className="m-0 font-semibold text-2xl text-[var(--secondary-foreground)] transition-[150ms_ease-out]">
+              <h3 className="m-0 font-medium text-2xl text-[var(--secondary-foreground)] transition-[150ms_ease-out] leading-[1.5]">
                 {item.cardHeading}
-              </motion.h3>
+              </h3>
             </motion.div>
 
             <motion.div className="ml-auto flex h-9 min-h-9 w-9 min-w-9 shrink-0 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] text-[var(--muted-foreground)] transition-[150ms_ease-out] hover:bg-[var(--card)] hover:text-[var(--foreground)]">
