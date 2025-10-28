@@ -34,6 +34,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  line-height: 1.25 !important;
 }
 
 .value[data-placeholder] {

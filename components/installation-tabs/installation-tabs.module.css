@@ -1,3 +1,14 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.headerContainer > div:first-child {
+  margin-bottom: 0;
+}
+
 .trigger[data-selected] {
   border-bottom-color: var(--foreground);
   background-color: transparent;

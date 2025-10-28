@@ -1211,4 +1211,1065 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "accordion-demo-tailwind": {
+    name: "accordion-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/accordion-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "accordion-motion-tailwind": {
+    name: "accordion-motion-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/accordion-motion"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion-motion";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "alert-demo-tailwind": {
+    name: "alert-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/alert-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "alert-destructive-tailwind": {
+    name: "alert-destructive-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/alert-destructive"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-destructive";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "alert-dialog-demo-tailwind": {
+    name: "alert-dialog-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/alert-dialog-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-dialog-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "alert-info-tailwind": {
+    name: "alert-info-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/alert-info");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-info";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "alert-success-tailwind": {
+    name: "alert-success-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/alert-success"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-success";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "alert-warning-tailwind": {
+    name: "alert-warning-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/alert-warning"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "alert-warning";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "autocomplete-demo-tailwind": {
+    name: "autocomplete-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/autocomplete-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "autocomplete-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "avatar-demo-tailwind": {
+    name: "avatar-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/avatar-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "avatar-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "badge-demo-tailwind": {
+    name: "badge-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/badge-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "badge-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-demo-tailwind": {
+    name: "button-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-destructive-tailwind": {
+    name: "button-destructive-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-destructive"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-destructive";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-disabled-tailwind": {
+    name: "button-disabled-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-disabled"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-disabled";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-external-link-tailwind": {
+    name: "button-external-link-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-external-link"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-external-link";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-ghost-tailwind": {
+    name: "button-ghost-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-ghost"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-ghost";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-outline-tailwind": {
+    name: "button-outline-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-outline"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-outline";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-secondary-tailwind": {
+    name: "button-secondary-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-secondary"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-secondary";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "button-with-arrow-tailwind": {
+    name: "button-with-arrow-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/button-with-arrow"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "button-with-arrow";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "card-demo-tailwind": {
+    name: "card-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/card-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "carousel-demo-tailwind": {
+    name: "carousel-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/carousel-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "carousel-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-area-demo-tailwind": {
+    name: "chart-area-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/chart-area-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-area-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-bar-demo-tailwind": {
+    name: "chart-bar-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/chart-bar-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-bar-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-line-demo-tailwind": {
+    name: "chart-line-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/chart-line-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-line-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "chart-pie-demo-tailwind": {
+    name: "chart-pie-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/chart-pie-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "chart-pie-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "checkbox-demo-tailwind": {
+    name: "checkbox-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/checkbox-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "checkbox-group-demo-tailwind": {
+    name: "checkbox-group-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/checkbox-group-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "checkbox-group-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "collapsible-demo-tailwind": {
+    name: "collapsible-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/collapsible-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "collapsible-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "combobox-demo-tailwind": {
+    name: "combobox-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/combobox-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "combobox-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "command-demo-tailwind": {
+    name: "command-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/command-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "command-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "context-menu-demo-tailwind": {
+    name: "context-menu-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/context-menu-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "context-menu-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "copy-button-demo-tailwind": {
+    name: "copy-button-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/copy-button-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "copy-button-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "dialog-demo-tailwind": {
+    name: "dialog-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/dialog-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "dialog-motion-tailwind": {
+    name: "dialog-motion-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/dialog-motion"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dialog-motion";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "dropdown-menu-demo-tailwind": {
+    name: "dropdown-menu-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/dropdown-menu-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "dropdown-menu-motion-tailwind": {
+    name: "dropdown-menu-motion-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/dropdown-menu-motion"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu-motion";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "dropdown-menu-submenu-tailwind": {
+    name: "dropdown-menu-submenu-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/dropdown-menu-submenu"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "dropdown-menu-submenu";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "expandable-card-demo-tailwind": {
+    name: "expandable-card-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/expandable-card-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "expandable-card-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "field-demo-tailwind": {
+    name: "field-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/field-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "field-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "fieldset-demo-tailwind": {
+    name: "fieldset-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/fieldset-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "fieldset-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "form-demo-tailwind": {
+    name: "form-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/form-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "form-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "input-demo-tailwind": {
+    name: "input-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/input-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "input-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "like-button-demo-tailwind": {
+    name: "like-button-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/like-button-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "like-button-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "menubar-demo-tailwind": {
+    name: "menubar-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/menubar-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "menubar-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "meter-demo-tailwind": {
+    name: "meter-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/meter-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "meter-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "navigation-menu-demo-tailwind": {
+    name: "navigation-menu-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/navigation-menu-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-menu-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "navigation-sub-menu-tailwind": {
+    name: "navigation-sub-menu-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/navigation-sub-menu"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "navigation-sub-menu";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "number-field-demo-tailwind": {
+    name: "number-field-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/number-field-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "number-field-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "popover-demo-tailwind": {
+    name: "popover-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/popover-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "popover-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "preview-card-demo-tailwind": {
+    name: "preview-card-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/preview-card-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "preview-card-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "progress-demo-tailwind": {
+    name: "progress-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/progress-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "progress-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "radio-demo-tailwind": {
+    name: "radio-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/radio-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "radio-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "scroll-area-demo-tailwind": {
+    name: "scroll-area-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/scroll-area-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "scroll-area-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "select-demo-tailwind": {
+    name: "select-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/select-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "select-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  shippingTailwind: {
+    name: "shipping-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/shipping");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "shipping";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "slider-demo-tailwind": {
+    name: "slider-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/slider-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "slider-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "switch-demo-tailwind": {
+    name: "switch-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/switch-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "switch-with-label-tailwind": {
+    name: "switch-with-label-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/switch-with-label"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-with-label";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "tabs-demo-tailwind": {
+    name: "tabs-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/tabs-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "tabs-motion-tailwind": {
+    name: "tabs-motion-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/tabs-motion"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs-motion";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "tabs-vertical-tailwind": {
+    name: "tabs-vertical-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/tabs-vertical"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tabs-vertical";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "toast-demo-tailwind": {
+    name: "toast-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/examples/toast-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toast-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "toggle-demo-tailwind": {
+    name: "toggle-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/toggle-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "toggle-group-demo-tailwind": {
+    name: "toggle-group-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/toggle-group-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toggle-group-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "toolbar-demo-tailwind": {
+    name: "toolbar-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/toolbar-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "toolbar-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "tooltip-demo-tailwind": {
+    name: "tooltip-demo-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/tooltip-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "tooltip-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "ai-chat-tailwind": {
+    name: "ai-chat-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/blocks/ai-chat");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "ai-chat";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "card-history-tailwind": {
+    name: "card-history-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/blocks/card-history");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card-history";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "card-image-tailwind": {
+    name: "card-image-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/blocks/card-image");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card-image";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "card-login-tailwind": {
+    name: "card-login-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/blocks/card-login");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card-login";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "card-task-tailwind": {
+    name: "card-task-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/blocks/card-task");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card-task";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "card-traffic-tailwind": {
+    name: "card-traffic-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/blocks/card-traffic/card-traffic"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "card-traffic";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
+  "expandable-card-tailwind": {
+    name: "expandable-card-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/blocks/expandable-card"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "expandable-card";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
 };

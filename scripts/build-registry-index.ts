@@ -9,6 +9,8 @@ const MAX_IMPORT_LINE_LENGTH = 44; // Keep import statements under 80 chars tota
 async function buildRegistryIndex() {
   const examplesDir = path.join(process.cwd(), "registry/brook/examples");
   const blocksDir = path.join(process.cwd(), "registry/brook/blocks");
+  const tailwindExamplesDir = path.join(process.cwd(), "registry/brook/tailwind/examples");
+  const tailwindBlocksDir = path.join(process.cwd(), "registry/brook/tailwind/blocks");
 
   const examplesEntries = await fs.readdir(examplesDir, {
     withFileTypes: true,
@@ -19,6 +21,20 @@ async function buildRegistryIndex() {
     blocksEntries = await fs.readdir(blocksDir, { withFileTypes: true });
   } catch {
     // blocks directory might not exist
+  }
+
+  let tailwindExamplesEntries: Dirent[] = [];
+  try {
+    tailwindExamplesEntries = await fs.readdir(tailwindExamplesDir, { withFileTypes: true });
+  } catch {
+    // tailwind examples directory might not exist
+  }
+
+  let tailwindBlocksEntries: Dirent[] = [];
+  try {
+    tailwindBlocksEntries = await fs.readdir(tailwindBlocksDir, { withFileTypes: true });
+  } catch {
+    // tailwind blocks directory might not exist
   }
 
   let index = `// @generated
@@ -112,12 +128,88 @@ export const Index: Record<string, RegistryEntry> = {`;
   },`;
   }
 
+  // Process tailwind examples
+  for (const entry of tailwindExamplesEntries) {
+    const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
+
+    // Check if it's a file or folder
+    const isFile = entry.isFile();
+    const componentPath = isFile
+      ? `@/registry/brook/tailwind/examples/${name}`
+      : `@/registry/brook/tailwind/examples/${name}/${name}`;
+
+    // Split long paths for better formatting
+    const importStatement =
+      componentPath.length > MAX_IMPORT_LINE_LENGTH
+        ? `const mod = await import(
+        "${componentPath}"
+      );`
+        : `const mod = await import("${componentPath}");`;
+
+    // Only quote keys if they contain hyphens
+    const key = name.includes("-") ? `"${name}-tailwind"` : `${name}Tailwind`;
+
+    index += `
+  ${key}: {
+    name: "${name}-tailwind",
+    type: "example",
+    component: lazy(async () => {
+      ${importStatement}
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "${name}";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },`;
+  }
+
+  // Process tailwind blocks
+  for (const entry of tailwindBlocksEntries) {
+    const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
+
+    // Check if it's a file or folder
+    const isFile = entry.isFile();
+    const componentPath = isFile
+      ? `@/registry/brook/tailwind/blocks/${name}`
+      : `@/registry/brook/tailwind/blocks/${name}/${name}`;
+
+    // Split long paths for better formatting
+    const importStatement =
+      componentPath.length > MAX_IMPORT_LINE_LENGTH
+        ? `const mod = await import(
+        "${componentPath}"
+      );`
+        : `const mod = await import("${componentPath}");`;
+
+    // Only quote keys if they contain hyphens
+    const key = name.includes("-") ? `"${name}-tailwind"` : `${name}Tailwind`;
+
+    index += `
+  ${key}: {
+    name: "${name}-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      ${importStatement}
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "${name}";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },`;
+  }
+
   index += `
 }
 `;
 
   console.log(`✅ ${examplesEntries.length} examples found`);
   console.log(`✅ ${blocksEntries.length} blocks found`);
+  console.log(`✅ ${tailwindExamplesEntries.length} tailwind examples found`);
+  console.log(`✅ ${tailwindBlocksEntries.length} tailwind blocks found`);
 
   // Write index file
   const outputPath = path.join(process.cwd(), "registry/__index__.tsx");

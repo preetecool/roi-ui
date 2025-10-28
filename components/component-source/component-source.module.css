@@ -53,6 +53,12 @@
   background-color: var(--code-header-bg);
 }
 
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .tabs {
   display: flex;
   gap: 0.25rem;

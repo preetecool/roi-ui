@@ -6,9 +6,11 @@ import {
   loadCodeByName,
   loadCodeBySrc,
   loadMultipleFiles,
+  loadAllVariants,
   transformCode,
 } from "./component-source-helpers";
 import { ComponentSourceTabs } from "./component-source-tabs";
+import { ComponentSourceClient } from "./component-source-client";
 
 type ComponentSourceProps = {
   name?: string;
@@ -30,8 +32,40 @@ export async function ComponentSource({
     return null;
   }
 
-  // Check for multi-file components first (only for name-based lookups)
+  // Check for variants first (only for name-based lookups)
   if (name) {
+    const variants = await loadAllVariants(name);
+
+    if (variants.length > 0) {
+      // Process and highlight all variants and their files
+      const processedVariants = await Promise.all(
+        variants.map(async (variant) => {
+          const processedFiles = await Promise.all(
+            variant.files.map(async (file) => {
+              const transformedContent = transformCode(file.content);
+              const highlightedContent = await highlightCode(
+                transformedContent,
+                file.language
+              );
+              return {
+                name: file.name,
+                content: transformedContent,
+                highlightedContent,
+              };
+            })
+          );
+
+          return {
+            variant: variant.variant,
+            files: processedFiles,
+          };
+        })
+      );
+
+      return <ComponentSourceClient variants={processedVariants} />;
+    }
+
+    // Fallback to old multi-file loading for backwards compatibility
     const multipleFiles = await loadMultipleFiles(name);
 
     if (multipleFiles) {

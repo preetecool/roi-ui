@@ -67,7 +67,8 @@ export default function ChartPieDemo() {
             innerRadius={60}
             nameKey="platform"
             outerRadius={100}
-            strokeWidth={2}
+            stroke="transparent"
+            strokeWidth={0}
           />
         </PieChart>
       </ChartContainer>

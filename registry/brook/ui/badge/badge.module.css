@@ -35,6 +35,18 @@
   color: var(--primary-foreground);
 }
 
+.default::selection {
+  background-color: oklch(1 0 0);
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  .default::selection {
+    background-color: oklch(0 0 0);
+    color: var(--background);
+  }
+}
+
 .secondary {
   border-color: transparent;
   background-color: var(--mix-card-66-bg);
@@ -124,12 +136,14 @@
 .sm {
   padding: 0.0625rem 0.375rem;
   font-size: 0.625rem;
+  line-height: 15px;
   border-radius: var(--radius);
 }
 
 .md {
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
+  line-height: 13px;
   border-radius: var(--radius);
 }
 

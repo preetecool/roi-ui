@@ -9,6 +9,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--foreground);
+  line-height: 1.25;
 }
 
 .value {
@@ -19,17 +20,17 @@
 
 .track {
   position: relative;
-  height: 0.375rem;
+  height: 0.5rem;
   width: 100%;
   background-color: var(--mix-card-75-bg);
-  border-radius: 9999px;
+  border-radius: 0;
   overflow: hidden;
 }
 
 .indicator {
   height: 100%;
   background-color: var(--primary);
-  border-radius: 9999px;
+  border-radius: 0;
   transition: all 150ms ease-out;
   width: var(--progress-indicator-width);
 }

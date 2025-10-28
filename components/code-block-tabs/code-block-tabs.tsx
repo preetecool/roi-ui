@@ -7,6 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/brook/ui/tabs/tabs";
+import { StyleSelector } from "../style-selector/style-selector";
 import styles from "./code-block-tabs.module.css";
 
 type CodeBlockTabsProps = {
@@ -79,7 +80,10 @@ export function CodeBlockTabs({ children }: CodeBlockTabsProps) {
               pnpm
             </TabsTrigger>
           </div>
-          <CopyButton code={currentCommandText} />
+          <div className={styles.rightGroup}>
+            <StyleSelector />
+            <CopyButton code={currentCommandText} />
+          </div>
         </TabsList>
         {filteredChildren}
       </CustomTabs>

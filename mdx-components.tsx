@@ -12,9 +12,9 @@ import {
   InstallationTabsList,
   InstallationTabsTrigger,
 } from "@/components/installation-tabs/installation-tabs";
+import { MdxPre } from "@/components/mdx-pre/mdx-pre";
 import { PropTable } from "@/components/prop-table/prop-table";
 import { Button } from "@/registry/brook/ui/button/button";
-
 import {
   Tabs as CustomTabs,
   TabsContent,
@@ -84,62 +84,7 @@ export const mdxComponents = {
     }
     return <code {...props} />;
   },
-  pre: (props: ComponentProps<"pre"> & { title?: string }) => {
-    const { title, children, ...rest } = props;
-
-    return (
-      <div
-        style={
-          title
-            ? {
-                border: "1px solid var(--border)",
-                borderRadius: "var(--radius)",
-                overflow: "hidden",
-              }
-            : undefined
-        }
-      >
-        {title && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 16px",
-              backgroundColor: "var(--card)",
-              borderBottom: "1px solid var(--border)",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: "400",
-                fontFamily: "monospace",
-                color: "var(--muted-foreground)",
-              }}
-            >
-              {title}
-            </span>
-          </div>
-        )}
-        <div
-          className="code-container"
-          style={{
-            maxHeight: "400px",
-            boxSizing: "border-box",
-            overflow: "auto",
-            position: "relative",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <pre {...rest} style={{ margin: 0, padding: "1rem" }}>
-            {children}
-          </pre>
-        </div>
-      </div>
-    );
-  },
+  pre: MdxPre,
 
   Button,
   CodeBlock,
@@ -151,6 +96,7 @@ export const mdxComponents = {
   InstallationTabsList,
   InstallationTabsTrigger,
   InstallationTabsContent,
+
   Tab: ({ value, children, ...props }: TabProps) => (
     <TabsContent value={value} {...props} className="">
       {children}
@@ -184,7 +130,9 @@ export const mdxComponents = {
       {children}
     </TabsContent>
   ),
-  CodeBlockTabs,
+  CodeBlockTabs: (props: ComponentProps<typeof CodeBlockTabs>) => (
+    <CodeBlockTabs {...props} />
+  ),
   CodeBlockTabsList: ({ children, ...props }: CodeBlockTabsListProps) => (
     <TabsList {...props}>{children}</TabsList>
   ),

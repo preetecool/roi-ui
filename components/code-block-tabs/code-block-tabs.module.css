@@ -23,6 +23,12 @@
   display: flex;
 }
 
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Package manager command styling */
 .container pre code span:first-child {
   color: #b392f0 !important;

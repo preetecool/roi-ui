@@ -17,7 +17,7 @@
 }
 
 .command [cmdk-item] {
-  min-height: 2.5rem;
+  height: 40px;
   padding: 0.625rem 0.375rem !important;
   font-weight: 400;
   border: 1px solid transparent;

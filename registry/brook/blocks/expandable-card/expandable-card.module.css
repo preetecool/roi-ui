@@ -6,10 +6,25 @@
 
 .overlay {
   position: fixed;
-  inset: 0;
-  background-color: var(--background);
+  min-height: 100dvh;
   z-index: 100;
-  pointer-events: auto;
+  inset: 0;
+  background-color: black;
+  opacity: 1;
+  transition: opacity 300ms cubic-bezier(0.45, 1.005, 0, 1.005);
+
+  @supports (-webkit-touch-callout: none) {
+    position: absolute;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.95;
+  }
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
 }
 
 .card {

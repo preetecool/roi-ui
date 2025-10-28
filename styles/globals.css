@@ -1,8 +1,128 @@
+/*
+ * Unified globals for both CSS Modules and Tailwind demos
+ * - @layer all: truly global styles (both demo types)
+ * - @layer base: Tailwind's reset (reverted in CSS modules demos)
+ * - @layer theme: theme tokens
+ * - @layer components: component-specific styles
+ * - @layer utilities: Tailwind utilities
+ */
+
+@import "tailwindcss/preflight" layer(base);
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
 .root {
   isolation: isolate;
   background-color: var(--background);
 }
 
+@layer all;
+@layer base;
+@layer theme;
+@layer components;
+@layer utilities;
+
+@theme {
+  /* Border radius */
+  --radius: 0.6rem;
+  --radius-lg: 1.2rem;
+
+  /* Light mode colors */
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.2365 0.0078 17.71);
+  --color-card: oklch(0.98 0 0);
+  --color-card-light: oklch(0.9759 0.0013 106.42);
+  --color-card-foreground: oklch(0.2365 0.0078 17.71);
+  --color-popover: oklch(0.98 0 0);
+  --color-popover-foreground: oklch(0.18 0 0);
+
+  --color-primary: oklch(0.1855 0 0);
+  --color-primary-foreground: oklch(0.99 0 0);
+
+  --color-secondary: oklch(0.958 0.0025 0);
+  --color-secondary-foreground: oklch(0.4 0 0);
+
+  --color-muted: oklch(0.9759 0.0013 106.42);
+  --color-muted-foreground: oklch(0.6476 0.0012 17.19);
+
+  --color-accent: oklch(0.9579 0.0013 106.42);
+  --color-accent-foreground: oklch(0.32 0.015 280);
+
+  --color-destructive: oklch(0.6553 0.1374 15.66);
+  --color-destructive-foreground: oklch(0.9808 0 24);
+
+  --color-success: oklch(0.722 0.1946 146.7);
+  --color-warning: oklch(0.8782 0.0981 74.65);
+  --color-warning-foreground: oklch(0.6866 0.095 81);
+  --color-info: oklch(0.7091 0.15 264.71);
+
+  --color-border: oklch(0.86 0 0);
+  --color-border-60: oklch(from var(--color-border) l c h / 0.6);
+  --color-border-10: oklch(from var(--color-border) l c h / 0.1);
+  --color-input: oklch(0.98 0 0);
+  --color-ring: oklch(0.6734 0.153764 264.1315);
+
+  /* Chart colors */
+  --color-chart-1: oklch(0.5759 0.1503 264.31);
+  --color-chart-2: oklch(0.77 0.1788 263.5);
+  --color-chart-3: oklch(0.7091 0.15 264.71);
+  --color-chart-4: oklch(0.8782 0.0981 74.65);
+  --color-chart-5: oklch(0.722 0.1946 146.7);
+
+  /* Easing functions */
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+/* Dark mode - override colors outside @theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: oklch(0.15 0 0);
+    --color-foreground: oklch(0.94 0 0);
+    --color-card: oklch(0.19 0 0);
+    --color-card-light: oklch(0.2 0 0);
+    --color-card-foreground: oklch(0.94 0 0);
+    --color-popover: oklch(0.19 0 0);
+    --color-popover-foreground: oklch(0.94 0 0);
+
+    --color-primary: oklch(0.8985 0.0098 0);
+    --color-primary-foreground: oklch(0.08 0 0);
+
+    --color-secondary: oklch(0.25 0 283);
+    --color-secondary-foreground: oklch(0.88 0 0);
+
+    --color-muted: oklch(0.28 0 0);
+    --color-muted-foreground: oklch(0.67 0 0);
+
+    --color-accent: oklch(0.3 0 0);
+    --color-accent-foreground: oklch(0.85 0 0);
+
+    --color-border: oklch(0.38 0 0);
+    --color-border-60: oklch(from var(--color-border) l c h / 0.6);
+    --color-border-10: oklch(from var(--color-border) l c h / 0.1);
+    --color-input: oklch(0.2029 0.003 0);
+    --color-ring: oklch(0.45 0.025 270);
+
+    --color-destructive: oklch(0.5219 0.1656 18.34);
+    --color-destructive-foreground: oklch(0.8988 0.0447 17.32);
+    --color-success: oklch(0.8325 0.2177 151.25);
+    --color-warning: oklch(0.829 0.105 81.04);
+    --color-warning-foreground: oklch(0.5893 0.1083 78.11);
+    --color-info: oklch(0.7091 0.15 264.71);
+
+    --color-chart-1: oklch(0.6487 0.1856 264.84);
+    --color-chart-2: oklch(0.4187 0.2556 267.84);
+    --color-chart-3: oklch(0.7091 0.15 264.71);
+    --color-chart-4: oklch(0.829 0.105 81.04);
+    --color-chart-5: oklch(0.8325 0.2177 151.25);
+  }
+}
+
+.light,
+[data-theme="light"],
 :root {
   --radius: 0.6rem;
   --radius-lg: 1.2rem;
@@ -33,6 +153,7 @@
 
   --shadow-lg:
     0 10px 15px -3px oklch(0 0 0 / 0.05), 0 4px 6px -2px oklch(0 0 0 / 0.02);
+  --shadow-color: oklch(from var(--border) l c h / 0.2);
 
   --destructive: oklch(0.6553 0.1374 15.66);
   --destructive-foreground: oklch(0.9808 0 24);
@@ -237,94 +358,139 @@
   --mix-transparent-88-fg: oklch(0.94 0 0 / 0.88);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Revert Tailwind reset for CSS modules demos */
+@layer base {
+  /* Override Tailwind's bundled line-heights to match CSS modules behavior
+   * Tailwind text-* utilities bundle line-height by default, but CSS modules
+   * components don't set line-height, letting elements inherit or use normal (~1.2)
+   */
+  [data-demo="tailwind"] {
+    --text-xs--line-height: 1;
+    --text-sm--line-height: normal;
+    --text-base--line-height: normal;
+    --text-lg--line-height: normal;
+    --text-xl--line-height: normal;
+    --text-2xl--line-height: normal;
+  }
+
+  /* Apply the custom line-heights to text utilities */
+  [data-demo="tailwind"] .text-xs {
+    line-height: var(--text-xs--line-height);
+  }
+
+  [data-demo="tailwind"] .text-sm {
+    line-height: var(--text-sm--line-height);
+  }
+
+  [data-demo="tailwind"] .text-base {
+    line-height: var(--text-base--line-height);
+  }
+
+  [data-demo="tailwind"] .text-lg {
+    line-height: var(--text-lg--line-height);
+  }
+
+  [data-demo="tailwind"] .text-xl {
+    line-height: var(--text-xl--line-height);
+  }
+
+  [data-demo="tailwind"] .text-2xl {
+    line-height: var(--text-2xl--line-height);
+  }
 }
 
-*:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
+/* Global styles that apply to both demo types */
+@layer all {
+  /* Ensure border-box globally for CSS modules demos since Tailwind preflight is reverted */
+  [data-demo="css-modules"] *,
+  [data-demo="css-modules"] *::before,
+  [data-demo="css-modules"] *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  max-width: 100vw;
-  overflow-x: hidden;
-  color: var(--foreground);
-  color-scheme: light dark;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
-body {
-  background-color: var(--background);
-}
+  html {
+    /* Stable scrollbar */
+    overflow-y: scroll;
+    max-width: 100vw;
+    overflow-x: hidden;
+    color: var(--foreground);
+    color-scheme: light dark;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
 
-html::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+  body {
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background);
+  }
 
-html::-webkit-scrollbar-track {
-  background: transparent;
-}
+  html::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-html::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
+  html::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-html::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
-}
+  html::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  html::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--foreground);
-  font-weight: 600;
-  line-height: 1.2;
-}
+  /* Form elements inherit font-family and font-size in CSS modules demos
+   * Don't use 'font: inherit' as it also inherits font-weight which breaks buttons
+   */
+  [data-demo="css-modules"] input,
+  [data-demo="css-modules"] button,
+  [data-demo="css-modules"] textarea,
+  [data-demo="css-modules"] select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
+  /* Placeholder opacity - match Tailwind preflight behavior */
+  [data-demo="css-modules"] ::placeholder {
+    opacity: 1;
+  }
 
-::selection {
-  background-color: var(--selection-bg);
-  color: var(--selection-text);
-}
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 
-::-moz-selection {
-  background-color: var(--selection-bg);
-  color: var(--selection-text);
-}
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
 
-/* Hit area extension utility */
-.hit-area-extend {
-  position: relative;
-}
+  ::-moz-selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
 
-.hit-area-extend::before {
-  content: "";
-  position: absolute;
-  display: block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  min-height: 44px;
-  min-width: 44px;
+  /* Hit area extension utility */
+  .hit-area-extend {
+    position: relative;
+  }
+
+  .hit-area-extend::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

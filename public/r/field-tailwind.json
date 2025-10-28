@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-tailwind",
+  "type": "registry:item",
+  "title": "Field (Tailwind)",
+  "description": "A form field component with label and validation.",
+  "files": [
+    {
+      "path": "registry/brook/tailwind/ui/field.tsx",
+      "content": "\"use client\";\n\nimport { Field } from \"@base-ui-components/react/field\";\nimport { cn } from \"@/lib/tw-utils\";\n\nfunction FieldRoot({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Root>) {\n  return (\n    <Field.Root\n      className={cn(\"flex w-full flex-col items-start gap-2\", className)}\n      validationMode=\"onBlur\"\n      {...props}\n    />\n  );\n}\n\nfunction FieldControl({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Control>) {\n  return (\n    <Field.Control\n      className={cn(\n        \"m-0 box-border h-10 w-full rounded-[var(--radius)] border border-border px-3.5\",\n        \"bg-[var(--mix-card-50-bg)] font-[inherit] text-foreground text-sm\",\n        \"placeholder:text-muted-foreground placeholder:text-sm\",\n        \"focus:-outline-offset-1 focus:outline-2 focus:outline-ring\",\n        \"data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\",\n        \"data-[invalid]:border-destructive\",\n        \"data-[invalid]:focus:-outline-offset-1 data-[invalid]:focus:outline-2 data-[invalid]:focus:outline-destructive\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction FieldLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Label>) {\n  return (\n    <Field.Label\n      className={cn(\n        \"font-normal text-foreground text-sm leading-5\",\n        \"data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction FieldDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Description>) {\n  return (\n    <Field.Description\n      className={cn(\"m-0 text-muted-foreground text-sm leading-5\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction FieldError({\n  className,\n  ...props\n}: React.ComponentProps<typeof Field.Error>) {\n  return (\n    <Field.Error\n      className={cn(\"text-destructive text-sm leading-5\", className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  FieldRoot as Field,\n  FieldControl,\n  FieldDescription,\n  FieldError,\n  FieldLabel,\n};\n",
+      "type": "registry:file",
+      "target": "~/components/ui/field/field.tsx"
+    }
+  ]
+}
