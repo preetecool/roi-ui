@@ -17,6 +17,7 @@ function ScrollAreaViewport({
 }: ScrollArea.Viewport.Props) {
   return (
     <ScrollArea.Viewport
+      data-slot="scrollarea-viewport"
       className={cn(styles.viewport, className)}
       {...props}
     />
@@ -28,7 +29,7 @@ function ScrollAreaContent({
   ...props
 }: ScrollArea.Content.Props) {
   return (
-    <ScrollArea.Content className={cn(styles.content, className)} {...props} />
+    <ScrollArea.Content data-slot="scrollarea-content" className={cn(styles.content, className)} {...props} />
   );
 }
 
@@ -39,6 +40,7 @@ function ScrollAreaScrollbar({
 }: ScrollArea.Scrollbar.Props) {
   return (
     <ScrollArea.Scrollbar
+      data-slot="scrollarea-scrollbar"
       className={cn(
         styles.scrollbar,
         orientation === "horizontal" && styles.horizontal,
@@ -55,7 +57,7 @@ function ScrollAreaThumb({
   ...props
 }: ScrollArea.Thumb.Props) {
   return (
-    <ScrollArea.Thumb className={cn(styles.thumb, className)} {...props} />
+    <ScrollArea.Thumb data-slot="scrollarea-thumb" className={cn(styles.thumb, className)} {...props} />
   );
 }
 
@@ -64,7 +66,7 @@ function ScrollAreaCorner({
   ...props
 }: ScrollArea.Corner.Props) {
   return (
-    <ScrollArea.Corner className={cn(styles.corner, className)} {...props} />
+    <ScrollArea.Corner data-slot="scrollarea-corner" className={cn(styles.corner, className)} {...props} />
   );
 }
 

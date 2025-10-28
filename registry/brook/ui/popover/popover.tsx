@@ -15,6 +15,7 @@ function PopoverTrigger({
 }: Popover.Trigger.Props) {
   return (
     <Popover.Trigger
+      data-slot="popover-trigger"
       className={cn(styles.trigger, className)}
       render={render}
       {...props}
@@ -29,7 +30,7 @@ function PopoverBackdrop({
   ...props
 }: Popover.Backdrop.Props) {
   return (
-    <Popover.Backdrop className={cn(styles.backdrop, className)} {...props} />
+    <Popover.Backdrop data-slot="popover-backdrop" className={cn(styles.backdrop, className)} {...props} />
   );
 }
 
@@ -72,6 +73,7 @@ function PopoverDescription({
 }: Popover.Description.Props) {
   return (
     <Popover.Description
+      data-slot="popover-description"
       className={cn(styles.description, className)}
       {...props}
     />

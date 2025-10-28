@@ -52,6 +52,7 @@ function ComboboxPositioner({
 }: Combobox.Positioner.Props) {
   return (
     <Combobox.Positioner
+      data-slot="combobox-positioner"
       className={cn(styles.positioner, className)}
       sideOffset={4}
       {...props}
@@ -117,6 +118,7 @@ function ComboboxItemIndicator({
 }: Combobox.ItemIndicator.Props) {
   return (
     <Combobox.ItemIndicator
+      data-slot="combobox-itemindicator"
       className={cn(styles.itemIndicator, className)}
       {...props}
     >
@@ -138,6 +140,7 @@ function ComboboxGroupLabel({
 }: Combobox.GroupLabel.Props) {
   return (
     <Combobox.GroupLabel
+      data-slot="combobox-grouplabel"
       className={cn(styles.groupLabel, className)}
       {...props}
     />

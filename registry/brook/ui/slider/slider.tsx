@@ -16,7 +16,7 @@ function SliderControl({
   ...props
 }: Slider.Control.Props) {
   return (
-    <Slider.Control className={cn(styles.control, className)} {...props} />
+    <Slider.Control data-slot="slider-control" className={cn(styles.control, className)} {...props} />
   );
 }
 
@@ -32,7 +32,7 @@ function SliderIndicator({
   ...props
 }: Slider.Indicator.Props) {
   return (
-    <Slider.Indicator className={cn(styles.indicator, className)} {...props} />
+    <Slider.Indicator data-slot="slider-indicator" className={cn(styles.indicator, className)} {...props} />
   );
 }
 

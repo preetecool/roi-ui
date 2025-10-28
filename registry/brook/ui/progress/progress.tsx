@@ -31,6 +31,7 @@ function ProgressIndicator({
 }: Progress.Indicator.Props) {
   return (
     <Progress.Indicator
+      data-slot="progress-indicator"
       className={cn(styles.indicator, className)}
       {...props}
     />

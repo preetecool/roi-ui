@@ -9,6 +9,7 @@ function FieldRoot({
 }: Field.Root.Props) {
   return (
     <Field.Root
+      data-slot="field-root"
       className={cn("flex w-full flex-col items-start gap-2", className)}
       validationMode="onBlur"
       {...props}
@@ -22,6 +23,7 @@ function FieldControl({
 }: Field.Control.Props) {
   return (
     <Field.Control
+      data-slot="field-control"
       className={cn(
         "m-0 box-border h-10 w-full rounded-[var(--radius)] border border-border px-3.5",
         "bg-[var(--mix-card-50-bg)] font-[inherit] text-foreground text-sm",
@@ -43,6 +45,7 @@ function FieldLabel({
 }: Field.Label.Props) {
   return (
     <Field.Label
+      data-slot="field-label"
       className={cn(
         "font-normal text-foreground text-sm leading-5",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
@@ -59,6 +62,7 @@ function FieldDescription({
 }: Field.Description.Props) {
   return (
     <Field.Description
+      data-slot="field-description"
       className={cn("m-0 text-muted-foreground text-sm leading-5", className)}
       {...props}
     />
@@ -71,6 +75,7 @@ function FieldError({
 }: Field.Error.Props) {
   return (
     <Field.Error
+      data-slot="field-error"
       className={cn("text-destructive text-sm leading-5", className)}
       {...props}
     />

@@ -3,10 +3,7 @@
 import { Checkbox } from "@base-ui-components/react/checkbox";
 import { cn } from "@/lib/tw-utils";
 
-function CheckboxRoot({
-  className,
-  ...props
-}: Checkbox.Root.Props) {
+function CheckboxRoot({ className, ...props }: Checkbox.Root.Props) {
   return (
     <Checkbox.Root
       className={cn(
@@ -17,15 +14,13 @@ function CheckboxRoot({
         "focus-visible:outline focus-visible:outline-1 focus-visible:outline-[var(--color-ring)] focus-visible:outline-offset-1",
         className
       )}
+      data-slot="checkbox-root"
       {...props}
     />
   );
 }
 
-function CheckboxIndicator({
-  className,
-  ...props
-}: Checkbox.Indicator.Props) {
+function CheckboxIndicator({ className, ...props }: Checkbox.Indicator.Props) {
   return (
     <Checkbox.Indicator
       className={cn(
@@ -35,6 +30,7 @@ function CheckboxIndicator({
         "[[data-checked]_&]:scale-100",
         className
       )}
+      data-slot="checkbox-indicator"
       {...props}
     />
   );

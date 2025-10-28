@@ -24,7 +24,7 @@ function RadioIndicator({
   ...props
 }: Radio.Indicator.Props) {
   return (
-    <Radio.Indicator className={cn(styles.indicator, className)} {...props} />
+    <Radio.Indicator data-slot="radio-indicator" className={cn(styles.indicator, className)} {...props} />
   );
 }
 

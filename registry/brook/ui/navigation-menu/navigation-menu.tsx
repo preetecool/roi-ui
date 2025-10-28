@@ -8,7 +8,7 @@ function NavigationMenuRoot({
   ...props
 }: NavigationMenu.Root.Props) {
   return (
-    <NavigationMenu.Root className={cn(styles.root, className)} {...props} />
+    <NavigationMenu.Root data-slot="navigationmenu-root" className={cn(styles.root, className)} {...props} />
   );
 }
 
@@ -17,7 +17,7 @@ function NavigationMenuList({
   ...props
 }: NavigationMenu.List.Props) {
   return (
-    <NavigationMenu.List className={cn(styles.list, className)} {...props} />
+    <NavigationMenu.List data-slot="navigationmenu-list" className={cn(styles.list, className)} {...props} />
   );
 }
 
@@ -34,6 +34,7 @@ function NavigationMenuTrigger({
 }: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
+      data-slot="navigationmenu-trigger"
       className={cn(styles.trigger, className)}
       {...props}
     />
@@ -46,6 +47,7 @@ function NavigationMenuContent({
 }: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
+      data-slot="navigationmenu-content"
       className={cn(styles.content, className)}
       {...props}
     />
@@ -57,7 +59,7 @@ function NavigationMenuIcon({
   ...props
 }: NavigationMenu.Icon.Props) {
   return (
-    <NavigationMenu.Icon className={cn(styles.chevron, className)} {...props} />
+    <NavigationMenu.Icon data-slot="navigationmenu-icon" className={cn(styles.chevron, className)} {...props} />
   );
 }
 
@@ -66,7 +68,7 @@ function NavigationMenuLink({
   ...props
 }: NavigationMenu.Link.Props) {
   return (
-    <NavigationMenu.Link className={cn(styles.link, className)} {...props} />
+    <NavigationMenu.Link data-slot="navigationmenu-link" className={cn(styles.link, className)} {...props} />
   );
 }
 
@@ -83,6 +85,7 @@ function NavigationMenuBackdrop({
 }: NavigationMenu.Backdrop.Props) {
   return (
     <NavigationMenu.Backdrop
+      data-slot="navigationmenu-backdrop"
       className={cn(styles.backdrop, className)}
       {...props}
     />
@@ -96,6 +99,7 @@ function NavigationMenuPositioner({
 }: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
+      data-slot="navigationmenu-positioner"
       className={cn(styles.positioner, className)}
       {...props}
     >
@@ -155,6 +159,7 @@ function NavigationMenuViewport({
 }: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
+      data-slot="navigationmenu-viewport"
       className={cn(styles.viewport, className)}
       {...props}
     />

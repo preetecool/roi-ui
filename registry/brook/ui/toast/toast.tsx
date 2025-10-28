@@ -21,7 +21,7 @@ function ToastViewport({
   ...props
 }: Toast.Viewport.Props) {
   return (
-    <Toast.Viewport className={cn(styles.viewport, className)} {...props} />
+    <Toast.Viewport data-slot="toast-viewport" className={cn(styles.viewport, className)} {...props} />
   );
 }
 
@@ -45,6 +45,7 @@ function ToastDescription({
 }: Toast.Description.Props) {
   return (
     <Toast.Description
+      data-slot="toast-description"
       className={cn(styles.description, className)}
       {...props}
     />
@@ -62,6 +63,7 @@ function ToastClose({
 }) {
   return (
     <Toast.Close
+      data-slot="toast-close"
       className={cn(styles.close, className)}
       render={render}
       {...props}

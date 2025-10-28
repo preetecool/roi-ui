@@ -27,6 +27,7 @@ function DropdownMenuPositioner({
 }: Menu.Positioner.Props) {
   return (
     <Menu.Positioner
+      data-slot="menu-positioner"
       className={cn(styles.positioner, className)}
       side="top"
       {...props}
@@ -92,6 +93,7 @@ function DropdownMenuSubmenuTrigger({
 }: Menu.SubmenuTrigger.Props) {
   return (
     <Menu.SubmenuTrigger
+      data-slot="menu-submenutrigger"
       className={cn(styles.submenuTrigger, className)}
       {...props}
     >

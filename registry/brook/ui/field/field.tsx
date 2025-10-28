@@ -10,6 +10,7 @@ function FieldRoot({
 }: Field.Root.Props) {
   return (
     <Field.Root
+      data-slot="field-root"
       className={cn(styles.root, className)}
       validationMode="onBlur"
       {...props}
@@ -37,6 +38,7 @@ function FieldDescription({
 }: Field.Description.Props) {
   return (
     <Field.Description
+      data-slot="field-description"
       className={cn(styles.description, className)}
       {...props}
     />

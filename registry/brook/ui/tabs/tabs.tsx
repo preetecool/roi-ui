@@ -35,7 +35,7 @@ function TabsIndicator({
   ...props
 }: Tabs.Indicator.Props) {
   return (
-    <Tabs.Indicator className={cn(styles.indicator, className)} {...props} />
+    <Tabs.Indicator data-slot="tabs-indicator" className={cn(styles.indicator, className)} {...props} />
   );
 }
 

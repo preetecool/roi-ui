@@ -3,10 +3,7 @@
 import { Avatar } from "@base-ui-components/react/avatar";
 import { cn } from "@/lib/tw-utils";
 
-function AvatarRoot({
-  className,
-  ...props
-}: Avatar.Root.Props) {
+function AvatarRoot({ className, ...props }: Avatar.Root.Props) {
   return (
     <Avatar.Root
       className={cn(
@@ -19,27 +16,23 @@ function AvatarRoot({
         "data-[shape=square]:rounded-none",
         className
       )}
+      data-slot="avatar-root"
       {...props}
     />
   );
 }
 
-function AvatarImage({
-  className,
-  ...props
-}: Avatar.Image.Props) {
+function AvatarImage({ className, ...props }: Avatar.Image.Props) {
   return (
     <Avatar.Image
       className={cn("h-full w-full rounded-[inherit] object-cover", className)}
+      data-slot="avatar-image"
       {...props}
     />
   );
 }
 
-function AvatarFallback({
-  className,
-  ...props
-}: Avatar.Fallback.Props) {
+function AvatarFallback({ className, ...props }: Avatar.Fallback.Props) {
   return (
     <Avatar.Fallback
       className={cn(
@@ -47,6 +40,7 @@ function AvatarFallback({
         "rounded-[inherit] bg-muted font-medium text-muted-foreground text-sm uppercase",
         className
       )}
+      data-slot="avatar-fallback"
       {...props}
     />
   );

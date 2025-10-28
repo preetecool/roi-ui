@@ -14,6 +14,7 @@ function PopoverTrigger({
 }: Popover.Trigger.Props) {
   return (
     <Popover.Trigger
+      data-slot="popover-trigger"
       className={cn(
         "hover:bg-[var(--accent)]",
         "active:bg-[var(--accent)]",
@@ -35,6 +36,7 @@ function PopoverBackdrop({
 }: Popover.Backdrop.Props) {
   return (
     <Popover.Backdrop
+      data-slot="popover-backdrop"
       className={cn("fixed inset-0 z-[998] bg-[oklch(0_0_0_/_0.1)]", className)}
       {...props}
     />
@@ -47,6 +49,7 @@ function PopoverPositioner({
 }: Popover.Positioner.Props) {
   return (
     <Popover.Positioner
+      data-slot="popover-positioner"
       className={cn("absolute z-[999]", className)}
       {...props}
     />
@@ -59,6 +62,7 @@ function PopoverPopup({
 }: Popover.Popup.Props) {
   return (
     <Popover.Popup
+      data-slot="popover-popup"
       className={cn(
         "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
         "transition-[transform_150ms_ease,opacity_150ms_ease]",
@@ -83,6 +87,7 @@ function PopoverArrow({
 }: Popover.Arrow.Props) {
   return (
     <Popover.Arrow
+      data-slot="popover-arrow"
       className={cn(
         "flex",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
@@ -103,6 +108,7 @@ function PopoverTitle({
 }: Popover.Title.Props) {
   return (
     <Popover.Title
+      data-slot="popover-title"
       className={cn(
         "m-0 font-medium text-[var(--popover-foreground)] text-base leading-6",
         className
@@ -118,6 +124,7 @@ function PopoverDescription({
 }: Popover.Description.Props) {
   return (
     <Popover.Description
+      data-slot="popover-description"
       className={cn(
         "m-0 text-[var(--muted-foreground)] text-base leading-6",
         className
@@ -133,6 +140,7 @@ function PopoverClose({
 }: Popover.Close.Props) {
   return (
     <Popover.Close
+      data-slot="popover-close"
       className={cn(
         "all-unset absolute top-1 right-1 box-border inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-[var(--radius)] p-0 text-[var(--muted-foreground)]",
         "transition-[background-color_150ms_ease,color_150ms_ease]",

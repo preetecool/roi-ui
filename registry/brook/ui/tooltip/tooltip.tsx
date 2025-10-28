@@ -28,6 +28,7 @@ function TooltipPositioner({
 }: Tooltip.Positioner.Props) {
   return (
     <Tooltip.Positioner
+      data-slot="tooltip-positioner"
       className={cn(styles.positioner, className)}
       {...props}
     />

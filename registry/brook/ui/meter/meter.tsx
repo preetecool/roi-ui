@@ -30,7 +30,7 @@ function MeterIndicator({
   ...props
 }: Meter.Indicator.Props) {
   return (
-    <Meter.Indicator className={cn(styles.indicator, className)} {...props} />
+    <Meter.Indicator data-slot="meter-indicator" className={cn(styles.indicator, className)} {...props} />
   );
 }
 

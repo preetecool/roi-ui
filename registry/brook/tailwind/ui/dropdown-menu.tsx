@@ -36,6 +36,7 @@ function DropdownMenuPositioner({
 }: Menu.Positioner.Props) {
   return (
     <Menu.Positioner
+      data-slot="menu-positioner"
       className={cn("absolute left-0 z-[150]", className)}
       side="top"
       {...props}
@@ -49,6 +50,7 @@ function DropdownMenuPopup({
 }: Menu.Popup.Props) {
   return (
     <Menu.Popup
+      data-slot="menu-popup"
       className={cn(
         "min-w-[170px] bg-[var(--mix-card-50-bg)]",
         "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)]",
@@ -78,6 +80,7 @@ function DropdownMenuItem({
 }: DropdownMenuItemProps) {
   return (
     <Menu.Item
+      data-slot="menu-item"
       className={cn(
         "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
         "relative isolate m-0 justify-start",
@@ -124,6 +127,7 @@ function DropdownMenuArrow({
 }: Menu.Arrow.Props) {
   return (
     <Menu.Arrow
+      data-slot="menu-arrow"
       className={cn("fill-background stroke-1 stroke-border", className)}
       {...props}
     />
@@ -143,6 +147,7 @@ function DropdownMenuSubmenuTrigger({
 }: Menu.SubmenuTrigger.Props) {
   return (
     <Menu.SubmenuTrigger
+      data-slot="menu-submenutrigger"
       className={cn(
         "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
         "relative isolate m-0 justify-start",

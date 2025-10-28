@@ -22,7 +22,7 @@ function DialogOverlay({
   ...props
 }: Dialog.Backdrop.Props) {
   return (
-    <Dialog.Backdrop className={cn(styles.overlay, className)} {...props} />
+    <Dialog.Backdrop data-slot="dialog-backdrop" className={cn(styles.overlay, className)} {...props} />
   );
 }
 
@@ -46,6 +46,7 @@ function DialogDescription({
 }: Dialog.Description.Props) {
   return (
     <Dialog.Description
+      data-slot="dialog-description"
       className={cn(styles.description, className)}
       {...props}
     />

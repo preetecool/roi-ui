@@ -51,7 +51,7 @@ function CollapsiblePanel({
   ...props
 }: Collapsible.Panel.Props) {
   return (
-    <Collapsible.Panel className={cn(styles.panel, className)} {...props} />
+    <Collapsible.Panel data-slot="collapsible-panel" className={cn(styles.panel, className)} {...props} />
   );
 }
 

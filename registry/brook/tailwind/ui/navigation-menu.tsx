@@ -8,6 +8,7 @@ function NavigationMenuRoot({
 }: NavigationMenu.Root.Props) {
   return (
     <NavigationMenu.Root
+      data-slot="navigationmenu-root"
       className={cn("relative z-[100] flex w-full justify-center", className)}
       {...props}
     />
@@ -20,6 +21,7 @@ function NavigationMenuList({
 }: NavigationMenu.List.Props) {
   return (
     <NavigationMenu.List
+      data-slot="navigationmenu-list"
       className={cn(
         "m-0 flex list-none justify-center rounded-lg p-1",
         className
@@ -42,6 +44,7 @@ function NavigationMenuTrigger({
 }: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
+      data-slot="navigationmenu-trigger"
       className={cn(
         "flex cursor-pointer select-none items-center justify-between gap-0.5 rounded-md px-3 py-2 font-normal text-sm leading-none outline-none transition-colors duration-200",
         "hover:bg-[var(--mix-card-33-bg)]",
@@ -60,6 +63,7 @@ function NavigationMenuContent({
 }: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
+      data-slot="navigationmenu-content"
       className={cn(
         "box-border rounded-md bg-gradient-to-b from-[oklch(from_var(--accent)_l_c_h_/_0.1)] to-[oklch(from_var(--accent)_l_c_h_/_0.2)]",
         "h-full w-full",
@@ -81,6 +85,7 @@ function NavigationMenuIcon({
 }: NavigationMenu.Icon.Props) {
   return (
     <NavigationMenu.Icon
+      data-slot="navigationmenu-icon"
       className={cn(
         "transition-transform duration-200 ease-out",
         "data-[popup-open]:rotate-180",
@@ -119,6 +124,7 @@ function NavigationMenuPositioner({
 }: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
+      data-slot="navigationmenu-positioner"
       className={cn(
         "box-border transition-[top,left,right,bottom] duration-[0.25s] ease-[var(--ease-out-expo)]",
         "h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)]",
@@ -144,6 +150,7 @@ function NavigationMenuPopup({
 }: NavigationMenu.Popup.Props) {
   return (
     <NavigationMenu.Popup
+      data-slot="navigationmenu-popup"
       className={cn(
         "relative box-border overflow-visible rounded-xl bg-[var(--background)] p-2",
         "h-[var(--popup-height)] w-[var(--popup-width)] origin-top-center",
@@ -170,6 +177,7 @@ function NavigationMenuArrow({
 }: NavigationMenu.Arrow.Props) {
   return (
     <NavigationMenu.Arrow
+      data-slot="navigationmenu-arrow"
       className={cn(
         "flex transition-[left] duration-[0.25s] ease-[var(--easing)]",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
@@ -213,6 +221,7 @@ function NavigationMenuViewport({
 }: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
+      data-slot="navigationmenu-viewport"
       className={cn("relative h-full w-full overflow-hidden", className)}
       {...props}
     />

@@ -10,6 +10,7 @@ function ToolbarRoot({
 }: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
+      data-slot="toolbar-root"
       className={cn(
         "flex items-center gap-1 rounded-[var(--radius)] bg-[var(--mix-card-33-bg)]",
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.9)]",
@@ -28,6 +29,7 @@ function ToolbarButton({
 }: Toolbar.Button.Props) {
   return (
     <Toolbar.Button
+      data-slot="toolbar-button"
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] border-none bg-transparent",
@@ -51,6 +53,7 @@ function ToolbarLink({
 }: Toolbar.Link.Props) {
   return (
     <Toolbar.Link
+      data-slot="toolbar-link"
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] text-foreground no-underline",
@@ -71,6 +74,7 @@ function ToolbarInput({
 }: Toolbar.Input.Props) {
   return (
     <Toolbar.Input
+      data-slot="toolbar-input"
       className={cn(
         "flex-1 rounded-[calc(var(--radius)-2px)] px-3 py-1.5",
         "min-h-8 border border-border bg-input text-foreground text-sm",
@@ -91,6 +95,7 @@ function ToolbarGroup({
 }: Toolbar.Group.Props) {
   return (
     <Toolbar.Group
+      data-slot="toolbar-group"
       className={cn(
         "flex items-center gap-0.5 p-0.5",
         "rounded-[calc(var(--radius)-2px)] bg-muted",
@@ -108,6 +113,7 @@ function ToolbarSeparator({
 }: Toolbar.Separator.Props) {
   return (
     <Toolbar.Separator
+      data-slot="toolbar-separator"
       className={cn(
         "mx-1 h-6 w-px flex-shrink-0 bg-border",
         "max-sm:h-7",

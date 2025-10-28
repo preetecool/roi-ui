@@ -23,7 +23,7 @@ function NumberFieldInput({
   ...props
 }: NumberField.Input.Props) {
   return (
-    <NumberField.Input className={cn(styles.input, className)} {...props} />
+    <NumberField.Input data-slot="numberfield-input" className={cn(styles.input, className)} {...props} />
   );
 }
 
@@ -34,6 +34,7 @@ function NumberFieldIncrement({
 }: NumberField.Increment.Props) {
   return (
     <NumberField.Increment
+      data-slot="numberfield-increment"
       className={cn(styles.increment, className)}
       {...props}
     >
@@ -67,6 +68,7 @@ function NumberFieldDecrement({
 }: NumberField.Decrement.Props) {
   return (
     <NumberField.Decrement
+      data-slot="numberfield-decrement"
       className={cn(styles.decrement, className)}
       {...props}
     >
@@ -99,6 +101,7 @@ function NumberFieldScrubArea({
 }: NumberField.ScrubArea.Props) {
   return (
     <NumberField.ScrubArea
+      data-slot="numberfield-scrubarea"
       className={cn(styles.scrubArea, className)}
       {...props}
     />
@@ -111,6 +114,7 @@ function NumberFieldScrubAreaCursor({
 }: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
+      data-slot="numberfield-scrubareacursor"
       className={cn(styles.scrubAreaCursor, className)}
       {...props}
     />

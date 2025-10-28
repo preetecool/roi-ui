@@ -26,7 +26,7 @@ function TooltipPositioner({
   ...props
 }: Tooltip.Positioner.Props) {
   return (
-    <Tooltip.Positioner className={cn("z-[9999]", className)} {...props} />
+    <Tooltip.Positioner data-slot="tooltip-positioner" className={cn("z-[9999]", className)} {...props} />
   );
 }
 
@@ -59,6 +59,7 @@ function TooltipArrow({
 }: Tooltip.Arrow.Props) {
   return (
     <Tooltip.Arrow
+      data-slot="tooltip-arrow"
       className={cn(
         "absolute z-[1] h-[10px] w-5",
         "data-[side=top]:-bottom-2 data-[side=top]:rotate-180",

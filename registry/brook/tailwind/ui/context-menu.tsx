@@ -18,6 +18,7 @@ function ContextMenuTrigger({
 }: ContextMenu.Trigger.Props) {
   return (
     <ContextMenu.Trigger
+      data-slot="contextmenu-trigger"
       className={cn("select-none outline-none", className)}
       {...props}
     />
@@ -32,6 +33,7 @@ function ContextMenuBackdrop({
 }: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
+      data-slot="contextmenu-backdrop"
       className={cn(
         "fixed inset-0 z-[140] bg-black/80 opacity-0 transition-opacity duration-150",
         "data-[open]:opacity-100",
@@ -48,6 +50,7 @@ function ContextMenuPositioner({
 }: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
+      data-slot="contextmenu-positioner"
       className={cn("absolute z-[150] outline-none", className)}
       {...props}
     />
@@ -60,6 +63,7 @@ function ContextMenuPopup({
 }: ContextMenu.Popup.Props) {
   return (
     <ContextMenu.Popup
+      data-slot="contextmenu-popup"
       className={cn(
         "box-border min-w-[140px] bg-[var(--mix-card-50-bg)]",
         "rounded-[var(--radius)] border-[0.5px] border-border/60",
@@ -81,6 +85,7 @@ function ContextMenuArrow({
 }: ContextMenu.Arrow.Props) {
   return (
     <ContextMenu.Arrow
+      data-slot="contextmenu-arrow"
       className={cn("fill-background stroke-1 stroke-border", className)}
       {...props}
     />
@@ -104,6 +109,7 @@ function ContextMenuItem({
 }: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
+      data-slot="contextmenu-item"
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
         "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
@@ -141,6 +147,7 @@ function ContextMenuCheckboxItem({
 }: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
+      data-slot="contextmenu-checkboxitem"
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
@@ -167,6 +174,7 @@ function ContextMenuRadioItem({
 }: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
+      data-slot="contextmenu-radioitem"
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
@@ -241,6 +249,7 @@ function ContextMenuSubmenuTrigger({
 }) {
   return (
     <ContextMenu.SubmenuTrigger
+      data-slot="contextmenu-submenutrigger"
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
         "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
@@ -272,6 +281,7 @@ function ContextMenuGroup({
 }: ContextMenu.Group.Props) {
   return (
     <ContextMenu.Group
+      data-slot="contextmenu-group"
       className={cn("overflow-hidden", className)}
       {...props}
     />

@@ -15,6 +15,7 @@ function PreviewCardTrigger({
 }: PreviewCard.Trigger.Props) {
   return (
     <PreviewCard.Trigger
+      data-slot="previewcard-trigger"
       className={cn(
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         className
@@ -36,6 +37,7 @@ function PreviewCardBackdrop({
 }: PreviewCard.Backdrop.Props) {
   return (
     <PreviewCard.Backdrop
+      data-slot="previewcard-backdrop"
       className={cn("fixed inset-0 z-[140]", className)}
       {...props}
     />
@@ -48,6 +50,7 @@ function PreviewCardPositioner({
 }: PreviewCard.Positioner.Props) {
   return (
     <PreviewCard.Positioner
+      data-slot="previewcard-positioner"
       className={cn("absolute z-[150]", className)}
       {...props}
     />
@@ -60,6 +63,7 @@ function PreviewCardPopup({
 }: PreviewCard.Popup.Props) {
   return (
     <PreviewCard.Popup
+      data-slot="previewcard-popup"
       className={cn(
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--mix-card-33-bg)]",
         "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4 shadow-lg",
@@ -103,6 +107,7 @@ function PreviewCardArrow({
 }: PreviewCard.Arrow.Props) {
   return (
     <PreviewCard.Arrow
+      data-slot="previewcard-arrow"
       className={cn(
         "h-[5px] w-2.5 fill-[var(--mix-card-33-bg)] stroke-1 stroke-border",
         className

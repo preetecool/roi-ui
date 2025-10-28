@@ -21,6 +21,7 @@ function ToastViewport({
 }: Toast.Viewport.Props) {
   return (
     <Toast.Viewport
+      data-slot="toast-viewport"
       className={cn(
         "fixed top-auto right-4 bottom-4 left-auto z-[1000] m-auto w-[250px]",
         "sm:right-8 sm:bottom-8 sm:w-[300px]",
@@ -38,6 +39,7 @@ function ToastRoot({
 }: Toast.Root.Props) {
   return (
     <Toast.Root
+      data-slot="toast-root"
       className={cn(
         "[--gap:0.75rem]",
         "[--peek:0.75rem]",
@@ -86,6 +88,7 @@ function ToastTitle({
 }: Toast.Title.Props) {
   return (
     <Toast.Title
+      data-slot="toast-title"
       className={cn(
         "m-0 font-medium text-[0.975rem] text-[var(--foreground)] leading-5",
         "[[data-type=success]_&]:text-[#047857]",
@@ -105,6 +108,7 @@ function ToastDescription({
 }: Toast.Description.Props) {
   return (
     <Toast.Description
+      data-slot="toast-description"
       className={cn(
         "m-0 mt-1 text-[0.925rem] text-[var(--foreground)] leading-5",
         "[[data-type=success]_&]:text-[#065f46]",
@@ -125,6 +129,7 @@ function ToastClose({
 }: Toast.Close.Props) {
   return (
     <Toast.Close
+      data-slot="toast-close"
       className={cn(
         "absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-sm border-none bg-transparent",
         "text-[var(--foreground)] transition-all duration-150",

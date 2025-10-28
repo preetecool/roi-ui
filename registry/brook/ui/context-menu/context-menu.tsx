@@ -18,7 +18,7 @@ function ContextMenuTrigger({
   ...props
 }: ContextMenu.Trigger.Props) {
   return (
-    <ContextMenu.Trigger className={cn(styles.trigger, className)} {...props} />
+    <ContextMenu.Trigger data-slot="contextmenu-trigger" className={cn(styles.trigger, className)} {...props} />
   );
 }
 
@@ -30,6 +30,7 @@ function ContextMenuBackdrop({
 }: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
+      data-slot="contextmenu-backdrop"
       className={cn(styles.backdrop, className)}
       {...props}
     />
@@ -42,6 +43,7 @@ function ContextMenuPositioner({
 }: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
+      data-slot="contextmenu-positioner"
       className={cn(styles.positioner, className)}
       {...props}
     />
@@ -53,7 +55,7 @@ function ContextMenuPopup({
   ...props
 }: ContextMenu.Popup.Props) {
   return (
-    <ContextMenu.Popup className={cn(styles.popup, className)} {...props} />
+    <ContextMenu.Popup data-slot="contextmenu-popup" className={cn(styles.popup, className)} {...props} />
   );
 }
 
@@ -62,7 +64,7 @@ function ContextMenuArrow({
   ...props
 }: ContextMenu.Arrow.Props) {
   return (
-    <ContextMenu.Arrow className={cn(styles.arrow, className)} {...props} />
+    <ContextMenu.Arrow data-slot="contextmenu-arrow" className={cn(styles.arrow, className)} {...props} />
   );
 }
 
@@ -82,6 +84,7 @@ function ContextMenuItem({
 }: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
+      data-slot="contextmenu-item"
       className={cn(styles.item, inset && styles.inset, className)}
       {...props}
     >
@@ -98,6 +101,7 @@ function ContextMenuCheckboxItem({
 }: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
+      data-slot="contextmenu-checkboxitem"
       className={cn(styles.checkboxItem, className)}
       {...props}
     >
@@ -116,6 +120,7 @@ function ContextMenuRadioItem({
 }: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
+      data-slot="contextmenu-radioitem"
       className={cn(styles.radioItem, className)}
       {...props}
     >
@@ -177,6 +182,7 @@ function ContextMenuSubmenuTrigger({
 }) {
   return (
     <ContextMenu.SubmenuTrigger
+      data-slot="contextmenu-submenutrigger"
       className={cn(styles.submenuTrigger, inset && styles.inset, className)}
       {...props}
     >
@@ -191,7 +197,7 @@ function ContextMenuGroup({
   ...props
 }: ContextMenu.Group.Props) {
   return (
-    <ContextMenu.Group className={cn(styles.group, className)} {...props} />
+    <ContextMenu.Group data-slot="contextmenu-group" className={cn(styles.group, className)} {...props} />
   );
 }
 

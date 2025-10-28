@@ -11,6 +11,7 @@ function ToolbarRoot({
 }: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
+      data-slot="toolbar-root"
       className={cn(
         styles.root,
         orientation === "vertical" && styles.vertical,
@@ -55,7 +56,7 @@ function ToolbarSeparator({
   ...props
 }: Toolbar.Separator.Props) {
   return (
-    <Toolbar.Separator className={cn(styles.separator, className)} {...props} />
+    <Toolbar.Separator data-slot="toolbar-separator" className={cn(styles.separator, className)} {...props} />
   );
 }
 
