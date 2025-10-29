@@ -10,7 +10,6 @@
   z-index: 100;
   inset: 0;
   background-color: var(--background);
-  opacity: 1;
 }
 
 .card {
@@ -42,6 +41,7 @@
   margin: 0;
   transition: 150ms ease-out;
   line-height: 1.5;
+  letter-spacing: -0.02em;
 }
 
 .card:hover .heading {
@@ -155,12 +155,13 @@
 
 .expandedHeading {
   font-size: 48px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--foreground);
   margin: 0;
   align-self: flex-start;
   width: 100%;
   line-height: 1.5;
+  letter-spacing: -0.02em;
 }
 
 .paragrahWrapper {
