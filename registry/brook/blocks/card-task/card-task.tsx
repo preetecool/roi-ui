@@ -243,14 +243,14 @@ export function CardTask() {
       </Card>
 
       <AlertDialog onOpenChange={setAlertOpen} open={alertOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent className={styles.alertContent}>
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Task</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogDescription className={styles.alertDescription}>
               Are you sure you want to delete this task?
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
+          <AlertDialogFooter className={styles.alertFooter}>
             <AlertDialogClose
               render={<Button variant="outline">Cancel</Button>}
             />

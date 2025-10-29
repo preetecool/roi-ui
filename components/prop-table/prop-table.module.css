@@ -187,17 +187,17 @@
 .code {
   font-size: 12px;
   font-family: "Geist Mono", monospace;
-  color: oklch(85% 0.1 264);
+  color: var(--prop-code-color);
 }
 
 .typeCode {
   font-size: 12px;
   font-family: "Geist Mono", monospace;
-  color: #a3be8c;
+  color: var(--prop-type-color);
 }
 
 .typeClass {
-  color: #4ec9b0;
+  color: var(--prop-type-class-color);
 }
 
 .separator {
@@ -205,19 +205,19 @@
 }
 
 .stringValue {
-  color: #a3be8c;
+  color: var(--prop-string-color);
 }
 
 .booleanValue {
-  color: #569cd6;
+  color: var(--prop-boolean-color);
 }
 
 .numberValue {
-  color: #4ec9b0;
+  color: var(--prop-number-color);
 }
 
 .functionValue {
-  color: #c586c0;
+  color: var(--prop-function-color);
 }
 
 .defaultEmpty {

@@ -42,6 +42,7 @@ export function ComponentPreviewClient({
     <div
       className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
       data-demo={style}
+      data-align={align}
     >
       <Component key={key} />
       {replayButton && (

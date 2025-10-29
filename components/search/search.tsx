@@ -111,6 +111,8 @@ export function Search({ tree }: SearchProps) {
       "task",
       "image card",
       "transaction history",
+      "copy button",
+      "like button",
     ];
 
     if (componentExamples.some((example) => nameLower.includes(example))) {
@@ -123,8 +125,6 @@ export function Search({ tree }: SearchProps) {
       "accordion",
       "badge error",
       "badge success",
-      "copy button",
-      "like button",
       "dropdown menu motion",
     ];
 

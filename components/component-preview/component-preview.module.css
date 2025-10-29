@@ -4,22 +4,26 @@
 
 .preview {
   position: relative;
-  display: grid;
-  place-items: start;
+  display: flex;
+  justify-content: center;
+  align-items: start;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-height: 450px;
+  padding: 2.5rem;
   border: solid oklch(from var(--border) l c h / 0.7);
   border-width: 0.5px 0.5px 0 0.5px;
 }
 
-.preview.center {
-  place-items: center;
+.preview[data-align="center"] {
+  align-items: center;
 }
 
-.preview.end {
-  place-items: end;
+.preview[data-align="end"] {
+  align-items: end;
+}
+
+.preview[data-align="start"] {
+  align-items: start;
 }
 
 @media (max-width: 640px) {

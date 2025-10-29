@@ -1,10 +1,9 @@
 "use client";
 
 import type { PageTree } from "fumadocs-core/server";
-import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
+import { Kbd } from "@/registry/brook/ui/kbd/kbd";
 import { Logo } from "../logo";
 import { MobileNav } from "../mobile-nav/mobile-nav";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
@@ -15,36 +14,19 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ pageTree }: SiteHeaderProps) {
-  const [isMobile, setIsMobile] = useState(false);
-  const { scrollY } = useScroll();
-
-  const MOBILE_BREAKPOINT = 1024;
-  const SCROLL_THRESHOLD = 100;
-  const HEADER_TOP_OFFSET = 30;
-
-  useEffect(() => {
-    const checkMobile = () =>
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const top = useTransform(
-    scrollY,
-    [0, SCROLL_THRESHOLD],
-    isMobile ? [0, 0] : [HEADER_TOP_OFFSET, 0]
-  );
+  const triggerSearch = () => {
+    const event = new KeyboardEvent("keydown", {
+      key: "k",
+      metaKey: true,
+      bubbles: true,
+    });
+    document.dispatchEvent(event);
+  };
 
   return (
-    <motion.header
-      className={styles.header}
-      style={{
-        top,
-      }}
-    >
+    <header className={styles.header}>
       <div className={styles.container}>
-        <motion.div className={styles.innerWrapper}>
+        <div className={styles.innerWrapper}>
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
               <Link className={styles.logoLink} href="/">
@@ -72,6 +54,42 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
           </nav>
 
           <div className={styles.actions}>
+            <Button
+              className={`${styles.searchButton} ${styles.desktopOnly}`}
+              onClick={triggerSearch}
+              variant="ghost"
+            >
+              <svg
+                aria-hidden="true"
+                className={styles.searchIcon}
+                fill="none"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 12C9.76142 12 12 9.76142 12 7C12 4.23858 9.76142 2 7 2C4.23858 2 2 4.23858 2 7C2 9.76142 4.23858 12 7 12Z"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M14 14L10.5 10.5"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                />
+              </svg>
+              <span className={styles.searchText}>Search</span>
+              <div className={styles.searchKbd}>
+                <Kbd size="sm">⌘</Kbd>
+                <Kbd size="sm">K</Kbd>
+              </div>
+            </Button>
+            <div className={`${styles.separator} ${styles.desktopOnly}`} />
             <Button
               aria-label="View source on GitHub"
               className={`${styles.githubLink} ${styles.desktopOnly}`}
@@ -111,8 +129,8 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

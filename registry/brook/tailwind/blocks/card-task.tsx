@@ -270,14 +270,19 @@ export function CardTask() {
       </Card>
 
       <AlertDialog onOpenChange={setAlertOpen} open={alertOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent
+          className={cn(
+            "flex w-[clamp(250px,90vw,400px)] max-h-[300px] flex-col gap-4 rounded-2xl p-6",
+            "max-sm:!left-1/2 max-sm:!right-auto max-sm:!translate-x-[-50%] max-sm:!translate-y-[-50%]"
+          )}
+        >
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Task</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogDescription className="text-[var(--muted-foreground)]">
               Are you sure you want to delete this task?
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
+          <AlertDialogFooter className="mt-8 flex gap-3 [&>*]:flex-1">
             <AlertDialogClose
               render={<Button variant="outline">Cancel</Button>}
             />

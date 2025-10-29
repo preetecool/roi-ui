@@ -1,5 +1,5 @@
 import { DocsSidebar } from "@/components/docs-sidebar/docs-sidebar";
-import { SiteFooter } from "@/components/site-footer/site-footer";
+import { Search } from "@/components/search/search";
 import { SiteHeader } from "@/components/site-header/site-header";
 import { StyleProvider } from "@/components/style-provider";
 import { source } from "@/lib/source";
@@ -12,17 +12,15 @@ export default function DocsLayout({
 }) {
   return (
     <StyleProvider>
-      <div className={styles.mobileHeader}>
+      <Search tree={source.pageTree} />
+      <div className={styles.header}>
         <SiteHeader pageTree={source.pageTree} />
       </div>
-      <div className={styles.docsWrapper}>
-        <div className={styles.docsGrid}>
-          <div className={styles.sidebar}>
-            <DocsSidebar tree={source.pageTree} />
-          </div>
-          {children}
+      <div className={styles.docsContainer}>
+        <div className={styles.sidebar}>
+          <DocsSidebar tree={source.pageTree} />
         </div>
-        <SiteFooter />
+        <div className={styles.content}>{children}</div>
       </div>
     </StyleProvider>
   );
