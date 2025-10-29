@@ -1,0 +1,65 @@
+.collapsedButtons {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .collapsedButtons {
+    display: flex;
+  }
+}
+
+.collapsedButtonsInner {
+  display: flex;
+  align-items: center;
+  background-color: var(--mix-card-75-bg);
+  border: 0.5px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  padding: 2px;
+}
+
+.collapsedButtonsInner .collapsedButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0.5px solid transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 0;
+}
+
+.collapsedButtonsInner .collapsedButton svg {
+  color: var(--muted-foreground);
+}
+
+.collapsedButtonsInner .collapsedButton:hover {
+  color: var(--foreground);
+  background-color: var(--accent);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.5);
+  box-shadow:
+    0 1px 2px oklch(from var(--foreground) l c h / 0.05),
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.3);
+}
+
+.collapsedButtonsInner .collapsedButton:hover svg {
+  color: var(--foreground);
+}
+
+.collapsedButtonsInner .collapsedButton:active {
+  transform: scale(0.95);
+}
+
+.collapseIconFill {
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-out-expo);
+}
+
+.collapseIconFillActive {
+  opacity: 1;
+}

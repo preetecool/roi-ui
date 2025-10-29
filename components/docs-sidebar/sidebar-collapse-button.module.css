@@ -1,0 +1,33 @@
+#collapseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 0.375rem;
+  border-radius: 0;
+}
+
+#collapseButton:hover {
+  color: var(--foreground);
+  background-color: oklch(from var(--accent) l c h / 0.6);
+}
+
+.collapseIcon {
+  color: var(--muted-foreground);
+}
+
+#collapseButton:hover .collapseIcon {
+  color: var(--foreground);
+}
+
+.collapseIconFill {
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-out-expo);
+}
+
+.collapseIconFillActive {
+  opacity: 1;
+}
