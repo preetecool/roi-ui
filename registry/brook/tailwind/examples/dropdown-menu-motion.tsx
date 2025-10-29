@@ -46,7 +46,7 @@ export default function DropdownMenuFramerMotion() {
                   "data-[pressed]:border-0 data-[pressed]:bg-transparent data-[pressed]:opacity-0",
                   "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
                   "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
-                  "max-sm:-ml-16 max-sm:-mb-16 max-sm:h-11 max-sm:w-11"
+                  "max-sm:h-11 max-sm:w-11"
                 )}
                 layoutId="menu-wrapper"
               />
@@ -91,14 +91,6 @@ export default function DropdownMenuFramerMotion() {
                               </div>
                             )}
                             <Menu.Item
-                              className={cn(
-                                item.label === "Logout" &&
-                                  "isolate text-destructive [&_svg]:text-destructive",
-                                item.label === "Logout" &&
-                                  "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
-                                item.label === "Logout" &&
-                                  "hover:text-destructive-foreground hover:before:bg-destructive hover:[&_svg]:text-destructive-foreground"
-                              )}
                               nativeButton
                               render={
                                 <motion.button
@@ -113,7 +105,11 @@ export default function DropdownMenuFramerMotion() {
                                     "active:scale-[0.98]",
                                     "[&_svg]:ml-1 [&_svg]:flex [&_svg]:items-center [&_svg]:justify-center [&_svg]:text-muted-foreground",
                                     "hover:[&_svg]:text-secondary-foreground hover:[&_svg]:opacity-100",
-                                    "max-sm:min-h-11 max-sm:gap-3 max-sm:text-sm max-sm:[&_svg]:h-4 max-sm:[&_svg]:w-4"
+                                    "max-sm:min-h-11 max-sm:gap-3 max-sm:text-sm max-sm:[&_svg]:h-4 max-sm:[&_svg]:w-4",
+                                    item.label === "Logout" &&
+                                      "text-[var(--destructive)] [&_svg]:text-[var(--destructive)]",
+                                    item.label === "Logout" &&
+                                      "hover:text-[var(--destructive-foreground)] hover:before:!bg-[var(--destructive)] hover:[&_svg]:text-[var(--destructive-foreground)]"
                                   )}
                                 />
                               }

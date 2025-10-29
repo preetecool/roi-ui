@@ -128,3 +128,166 @@
 .alertFooter > * {
   flex: 1;
 }
+
+.dialogFooter {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.dialogFooter > * {
+  flex: 1;
+}
+
+.collaboratorAvatar {
+  position: relative;
+  display: inline-block;
+}
+
+.collaboratorAvatarImage {
+  border-radius: 50%;
+  transition: border 150ms ease;
+}
+
+.collaboratorAvatarImageNew {
+  border: 2px solid var(--success);
+}
+
+.collaboratorAvatarImageOriginal {
+  border: 2px solid transparent;
+}
+
+.removeButton {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  border: 2px solid var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 150ms ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.removeButton.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.removeButton.alwaysVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.collaboratorAvatar:hover .removeButton {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.removeButton:hover {
+  transform: scale(1.1);
+  background: oklch(from var(--destructive) calc(l * 0.9) c h);
+}
+
+.removeButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.comboboxWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--mix-card-50-bg);
+  transition: all 150ms ease;
+}
+
+.comboboxWrapper:has(:focus-visible) {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.dialogPopup {
+  max-width: 410px;
+}
+
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.collaboratorList {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.addCollaboratorSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.addCollaboratorLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.comboboxPopup {
+  width: var(--anchor-width);
+}
+
+.userItemContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.userAvatar {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.userInfo {
+  text-align: left;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.avatarSize {
+  width: 32px;
+  height: 32px;
+}

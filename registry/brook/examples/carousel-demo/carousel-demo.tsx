@@ -92,6 +92,7 @@ export default function CarouselDemo() {
     <Carousel.Bleed>
       <Carousel.Root
         align="start"
+        className={styles.carouselRoot}
         gap={8}
         totalItems={features.length}
         variant="inset"

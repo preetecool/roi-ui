@@ -1,5 +1,5 @@
 .transactionItem {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid oklch(from var(--border) l c h / 0.4);
   display: flex;
   justify-content: space-between;
   align-items: center;

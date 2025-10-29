@@ -25,7 +25,7 @@
   border: 0.5px solid oklch(from var(--border) l c h / 0.6);
   padding: 1.5rem;
   border-radius: var(--radius);
-  background-color: var(--background);
+  background-color: var(--mix-card-5-bg);
   transform: translate(-50%, -50%);
   transition: all 150ms;
 }

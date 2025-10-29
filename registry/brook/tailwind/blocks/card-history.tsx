@@ -56,7 +56,7 @@ export function CardHistory() {
       <CardContent>
         {items.map(({ id, from, date, amount }) => (
           <div
-            className="flex items-center justify-between border-[var(--border)] border-t pt-5 pr-1 pb-2 pl-1 text-[0.85rem]"
+            className="flex items-center justify-between border-t border-t-[color:oklch(from_var(--border)_l_c_h_/_0.4)] pt-5 pr-1 pb-2 pl-1 text-[0.85rem]"
             key={id}
           >
             <div className="flex flex-col gap-1">

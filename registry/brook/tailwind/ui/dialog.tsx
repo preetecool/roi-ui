@@ -8,41 +8,32 @@ function DialogRoot({ ...props }: Dialog.Root.Props) {
   return <Dialog.Root {...props} />;
 }
 
-function DialogTrigger({
-  ...props
-}: Dialog.Trigger.Props) {
+function DialogTrigger({ ...props }: Dialog.Trigger.Props) {
   return <Dialog.Trigger {...props} />;
 }
 
 const DialogPortal = Dialog.Portal;
 
-function DialogOverlay({
-  className,
-  ...props
-}: Dialog.Backdrop.Props) {
+function DialogOverlay({ className, ...props }: Dialog.Backdrop.Props) {
   return (
     <Dialog.Backdrop
-      data-slot="dialog-backdrop"
       className={cn(
         "fixed inset-0 z-[var(--dialog-z)] bg-[var(--dialog-overlay)] transition-opacity duration-150",
         "data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
         className
       )}
+      data-slot="dialog-backdrop"
       {...props}
     />
   );
 }
 
-function DialogPopup({
-  className,
-  ...props
-}: Dialog.Popup.Props) {
+function DialogPopup({ className, ...props }: Dialog.Popup.Props) {
   return (
     <Dialog.Popup
-      data-slot="dialog-popup"
       className={cn(
         "-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-[101] grid w-full gap-4 overflow-y-auto",
-        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-background p-6",
+        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-[var(--mix-card-5-bg)] p-6",
         "shadow-[0_8px_11px_-2px_oklch(from_var(--foreground)_l_c_h_/_0.01),0_4px_6px_-2px_oklch(from_var(--foreground)_l_c_h_/_0.01),inset_0_0_0_1px_oklch(from_var(--background)_l_c_h_/_0.01)]",
         "transition-all duration-150",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
@@ -50,38 +41,33 @@ function DialogPopup({
         "max-sm:w-[calc(100vw-2rem)]",
         className
       )}
+      data-slot="dialog-popup"
       {...props}
     />
   );
 }
 
-function DialogTitle({
-  className,
-  ...props
-}: Dialog.Title.Props) {
+function DialogTitle({ className, ...props }: Dialog.Title.Props) {
   return (
     <Dialog.Title
-      data-slot="dialog-title"
       className={cn(
         "m-0 font-semibold text-foreground text-lg leading-none tracking-[-0.008em]",
         className
       )}
+      data-slot="dialog-title"
       {...props}
     />
   );
 }
 
-function DialogDescription({
-  className,
-  ...props
-}: Dialog.Description.Props) {
+function DialogDescription({ className, ...props }: Dialog.Description.Props) {
   return (
     <Dialog.Description
-      data-slot="dialog-description"
       className={cn(
         "m-0 text-muted-foreground text-sm leading-normal",
         className
       )}
+      data-slot="dialog-description"
       {...props}
     />
   );

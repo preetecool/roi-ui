@@ -91,6 +91,7 @@ export default function CarouselDemo() {
     <Carousel.Bleed>
       <Carousel.Root
         align="start"
+        className="max-sm:-ml-[10vw]"
         gap={8}
         totalItems={features.length}
         variant="inset"
@@ -111,7 +112,7 @@ export default function CarouselDemo() {
                   </div>
                   <div className="h-1/2 grid grid-cols-[1fr_auto] p-4 -m-[1rem] mt-0 gap-4 border-t-[0.5px] border-[color:oklch(from_var(--color-border)_l_c_h_/_0.5)] max-sm:p-4">
                     <div className="flex flex-col gap-2 max-sm:gap-1.5">
-                      <CardTitle className="m-0 text-lg leading-[18px] max-sm:text-[1.0625rem]">
+                      <CardTitle className="m-0 text-lg max-sm:text-[1.0625rem]">
                         {feature.title}
                       </CardTitle>
                       <CardDescription>{feature.description}</CardDescription>
@@ -131,7 +132,7 @@ export default function CarouselDemo() {
             ))}
           </Carousel.Content>
         </Carousel.Viewport>
-        <Carousel.Navigation className="-ml-[5vw]">
+        <Carousel.Navigation>
           <Carousel.Previous
             className="relative w-10 h-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]
               bg-[color:var(--card)] text-[color:var(--foreground)] cursor-pointer flex items-center justify-center

@@ -2,7 +2,7 @@
 
 import { Calendar, ListTodo, MessageCircleMore, Users } from "lucide-react";
 import { useState } from "react";
-import { Badge } from "@/registry/brook/ui/badge/badge";
+import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import {
   Card,
   CardAction,
@@ -11,9 +11,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/brook/ui/card/card";
+} from "@/registry/brook/tailwind/ui/card";
 import { AvatarGroup } from "./avatar-group";
-import styles from "./card-task.module.css";
 import { CollaboratorDialog } from "./collaborator-dialog";
 import { DeleteTaskAlertDialog } from "./delete-task-alert-dialog";
 import { TaskCardDropdownMenu } from "./task-card-dropdown-menu";
@@ -101,9 +100,10 @@ export function CardTask() {
 
   return (
     <>
-      <Card className={styles.taskCard}>
+      <Card className="w-full max-w-[300px] gap-4 p-4 xl:min-h-auto">
         <CardHeader>
           <CardTitle style={{ fontSize: "1rem" }}>
+            {" "}
             Update Documentation
           </CardTitle>
           <CardDescription>
@@ -117,8 +117,8 @@ export function CardTask() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div className={styles.contentContainer}>
-            <div className={styles.badgeContainer}>
+          <div className="flex w-full items-center justify-between">
+            <div className="flex items-center gap-2">
               <Badge size="sm" variant="destructive">
                 <span>Urgent</span>
               </Badge>
@@ -130,7 +130,7 @@ export function CardTask() {
           </div>
         </CardContent>
 
-        <CardFooter className={styles.taskFooter}>
+        <CardFooter className="mt-0 mb-0 flex flex-col gap-[0.65rem]">
           <div
             style={{
               padding: "5px 0",
@@ -148,25 +148,25 @@ export function CardTask() {
               }}
             />
           </div>
-          <div className={styles.footerContainer}>
-            <div className={styles.footerLeftGroup}>
-              <div className={styles.footerItem}>
+          <div className="flex w-full justify-between text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)] text-xs">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-1">
                 <Users size="14" />
 
                 <span>{currentCollaborators.length}</span>
               </div>
-              <div className={styles.footerItem}>
+              <div className="flex items-center justify-center gap-1">
                 <MessageCircleMore size="14" />
                 <span>4</span>
               </div>
-              <div className={styles.footerItem}>
+              <div className="flex items-center justify-center gap-1">
                 <ListTodo size="14" />
                 <span>4/5</span>
               </div>
             </div>
-            <div className={styles.footerItem}>
+            <div className="flex items-center justify-center gap-1">
               <Calendar size="14" />
-              <span className={styles.tomorrowText}>1d </span>
+              <span className="text-[var(--warning-foreground)]">1d </span>
             </div>
           </div>
         </CardFooter>

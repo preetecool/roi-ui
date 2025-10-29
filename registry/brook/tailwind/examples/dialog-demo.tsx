@@ -23,7 +23,7 @@ export default function DialogDemo() {
         <DialogPopup
           className={cn(
             "flex max-h-[400px] w-[clamp(250px,90vw,400px)] flex-col gap-4 rounded-2xl p-6",
-            "max-sm:!-translate-x-1/2 max-sm:right-auto max-sm:left-1/2"
+            "max-sm:!-translate-x-1/2 max-sm:right-auto max-sm:left-1/2 max-sm:max-h-[500px]"
           )}
         >
           <DialogHeader>

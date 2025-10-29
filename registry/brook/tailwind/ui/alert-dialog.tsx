@@ -47,8 +47,8 @@ function AlertDialogPopup({
         data-slot="alert-dialog-popup"
         className={cn(
           "fixed top-1/2 left-1/2 z-[101] grid max-h-[85vh] w-full max-w-[32rem] overflow-y-auto",
-          "gap-4 rounded-[var(--radius)] border-[0.5px] border-border/60 p-6",
-          "-translate-x-1/2 -translate-y-1/2 bg-background",
+          "gap-4 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] p-6",
+          "-translate-x-1/2 -translate-y-1/2 bg-[var(--mix-card-5-bg)]",
           "transition-all duration-150",
           "data-[starting-style]:opacity-0 data-[starting-style]:-translate-x-1/2 data-[starting-style]:-translate-y-1/2 data-[starting-style]:scale-95",
           "data-[ending-style]:opacity-0 data-[ending-style]:-translate-x-1/2 data-[ending-style]:-translate-y-1/2 data-[ending-style]:scale-95",
