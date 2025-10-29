@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 10000;
   animation: fadeIn 0.15s ease;
   transition: opacity 0.15s ease;
 
@@ -38,7 +38,7 @@
   transform: translateX(-50%);
   width: 90%;
   max-width: 560px;
-  z-index: 1001;
+  z-index: 10001;
   /*animation: slideIn 0.2s ease;*/
   background-color: var(--background);
 
