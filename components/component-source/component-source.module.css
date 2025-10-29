@@ -1,8 +1,12 @@
 .container {
-  background-color: transparent;
+  background-color: var(--code-header-bg);
   overflow: hidden;
   padding-bottom: 8px;
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
+}
+
+.container pre {
+  background-color: var(--code-header-bg) !important;
 }
 
 .container.embedded {

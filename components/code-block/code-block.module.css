@@ -30,10 +30,14 @@
   overflow: auto;
   padding-top: 1rem;
   padding-bottom: 1rem;
-
+  background-color: var(--code-header-bg);
   position: relative;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.content pre {
+  background-color: var(--code-header-bg) !important;
 }
 
 .content::-webkit-scrollbar {

@@ -2,9 +2,12 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.5rem;
   width: fit-content;
-  color: oklch(from var(--secondary-foreground) l c h / 0.95);
+  color: var(--docs-heading);
+  border-radius: 4px;
+  outline: none;
+  padding: 0.125rem 0;
 }
 
 .heading-with-anchor:hover,
@@ -14,20 +17,35 @@
   background-color: transparent;
 }
 
+.heading-with-anchor:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .heading-anchor-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition:
-    opacity 0.2s var(--ease-out-expo),
-    transform 0.3s var(--ease-out-expo);
+    opacity 0.15s var(--ease-out-expo),
+    transform 0.2s var(--ease-out-expo),
+    color 0.15s var(--ease-out-expo);
   color: var(--muted-foreground);
+  transform: scale(0.95);
+  will-change: opacity, transform;
 }
 
 .heading-with-anchor:hover .heading-anchor-icon,
-.heading-with-anchor[data-popup-open] .heading-anchor-icon {
+.heading-with-anchor[data-popup-open] .heading-anchor-icon,
+.heading-with-anchor:focus-visible .heading-anchor-icon {
   opacity: 1;
-  transform: translateX(4px);
+  transform: translateX(3px) scale(1);
   color: var(--foreground);
+}
+
+.heading-with-anchor:active .heading-anchor-icon {
+  color: var(--foreground);
+  opacity: 1;
 }
