@@ -4,6 +4,10 @@
   "type": "registry:block",
   "title": "Card Image (Tailwind)",
   "description": "A card component with image, title, description, and button.",
+  "registryDependencies": [
+    "https://roiui.com/r/button-tailwind.json",
+    "https://roiui.com/r/card-tailwind.json"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/blocks/card-image.tsx",

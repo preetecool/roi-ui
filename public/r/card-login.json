@@ -1,9 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-login",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Card Login",
   "description": "A login card component with email/password fields and social login options.",
+  "registryDependencies": [
+    "https://roiui.com/r/badge.json",
+    "https://roiui.com/r/button.json",
+    "https://roiui.com/r/card.json",
+    "https://roiui.com/r/checkbox.json",
+    "https://roiui.com/r/field.json"
+  ],
   "files": [
     {
       "path": "registry/brook/blocks/card-login/card-login.tsx",

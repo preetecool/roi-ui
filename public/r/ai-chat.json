@@ -1,9 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-chat",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "AI Chat",
   "description": "An AI chat input component with mode selector and action buttons.",
+  "registryDependencies": [
+    "https://roiui.com/r/button.json",
+    "https://roiui.com/r/card.json",
+    "https://roiui.com/r/field.json",
+    "https://roiui.com/r/form.json",
+    "https://roiui.com/r/select.json"
+  ],
   "files": [
     {
       "path": "registry/brook/blocks/ai-chat/ai-chat.tsx",

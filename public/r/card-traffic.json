@@ -1,11 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-traffic",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Card Traffic",
   "description": "A website traffic card component with line chart and statistics.",
   "dependencies": [
     "recharts"
+  ],
+  "registryDependencies": [
+    "https://roiui.com/r/badge.json",
+    "https://roiui.com/r/card.json",
+    "https://roiui.com/r/chart.json"
   ],
   "files": [
     {

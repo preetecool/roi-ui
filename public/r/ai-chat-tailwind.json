@@ -4,6 +4,13 @@
   "type": "registry:block",
   "title": "AI Chat (Tailwind)",
   "description": "An AI chat input component with mode selector and action buttons.",
+  "registryDependencies": [
+    "https://roiui.com/r/button-tailwind.json",
+    "https://roiui.com/r/card-tailwind.json",
+    "https://roiui.com/r/field-tailwind.json",
+    "https://roiui.com/r/form-tailwind.json",
+    "https://roiui.com/r/select-tailwind.json"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/blocks/ai-chat.tsx",

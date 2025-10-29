@@ -361,7 +361,7 @@
     },
     {
       "name": "expandable-card",
-      "type": "registry:block",
+      "type": "registry:item",
       "dependencies": [
         "motion"
       ],
@@ -799,7 +799,14 @@
     },
     {
       "name": "card-login",
-      "type": "registry:block",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/checkbox.json",
+        "https://roiui.com/r/field.json"
+      ],
       "title": "Card Login",
       "description": "A login card component with email/password fields and social login options.",
       "files": [
@@ -817,7 +824,18 @@
     },
     {
       "name": "card-task",
-      "type": "registry:block",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/alert-dialog.json",
+        "https://roiui.com/r/avatar.json",
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/combobox.json",
+        "https://roiui.com/r/dialog.json",
+        "https://roiui.com/r/dropdown-menu.json",
+        "https://roiui.com/r/tooltip.json"
+      ],
       "title": "Card Task",
       "description": "A task card component with badges, avatars, and action menu.",
       "files": [
@@ -855,9 +873,14 @@
     },
     {
       "name": "card-traffic",
-      "type": "registry:block",
+      "type": "registry:item",
       "dependencies": [
         "recharts"
+      ],
+      "registryDependencies": [
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/chart.json"
       ],
       "title": "Card Traffic",
       "description": "A website traffic card component with line chart and statistics.",
@@ -881,7 +904,11 @@
     },
     {
       "name": "card-image",
-      "type": "registry:block",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json"
+      ],
       "title": "Card Image",
       "description": "A card component with image, title, description, and button.",
       "files": [
@@ -899,7 +926,14 @@
     },
     {
       "name": "ai-chat",
-      "type": "registry:block",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/field.json",
+        "https://roiui.com/r/form.json",
+        "https://roiui.com/r/select.json"
+      ],
       "title": "AI Chat",
       "description": "An AI chat input component with mode selector and action buttons.",
       "files": [
@@ -912,6 +946,28 @@
           "path": "registry/brook/blocks/ai-chat/ai-chat.module.css",
           "type": "registry:file",
           "target": "~/components/blocks/ai-chat/ai-chat.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card-history",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json"
+      ],
+      "title": "Card History",
+      "description": "A card component displaying history or timeline information.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-history/card-history.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-history/card-history.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-history/card-history.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-history/card-history.module.css"
         }
       ]
     },
@@ -1471,6 +1527,13 @@
     {
       "name": "ai-chat-tailwind",
       "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/field-tailwind.json",
+        "https://roiui.com/r/form-tailwind.json",
+        "https://roiui.com/r/select-tailwind.json"
+      ],
       "title": "AI Chat (Tailwind)",
       "description": "An AI chat input component with mode selector and action buttons.",
       "files": [
@@ -1484,6 +1547,10 @@
     {
       "name": "card-history-tailwind",
       "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json"
+      ],
       "title": "Card History (Tailwind)",
       "description": "A card component displaying history or timeline information.",
       "files": [
@@ -1497,6 +1564,10 @@
     {
       "name": "card-image-tailwind",
       "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json"
+      ],
       "title": "Card Image (Tailwind)",
       "description": "A card component with image, title, description, and button.",
       "files": [
@@ -1510,6 +1581,13 @@
     {
       "name": "card-login-tailwind",
       "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/checkbox-tailwind.json",
+        "https://roiui.com/r/field-tailwind.json"
+      ],
       "title": "Card Login (Tailwind)",
       "description": "A login card component with email/password fields and social login options.",
       "files": [
@@ -1523,6 +1601,17 @@
     {
       "name": "card-task-tailwind",
       "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/alert-dialog-tailwind.json",
+        "https://roiui.com/r/avatar-tailwind.json",
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/combobox-tailwind.json",
+        "https://roiui.com/r/dialog-tailwind.json",
+        "https://roiui.com/r/dropdown-menu-tailwind.json",
+        "https://roiui.com/r/tooltip-tailwind.json"
+      ],
       "title": "Card Task (Tailwind)",
       "description": "A task card component with badges, avatars, and action menu.",
       "files": [
@@ -1558,6 +1647,11 @@
       "type": "registry:block",
       "dependencies": [
         "recharts"
+      ],
+      "registryDependencies": [
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/chart-tailwind.json"
       ],
       "title": "Card Traffic (Tailwind)",
       "description": "A website traffic card component with line chart and statistics.",
