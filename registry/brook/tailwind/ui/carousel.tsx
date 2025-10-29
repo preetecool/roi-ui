@@ -278,7 +278,7 @@ export function Bleed({ className, children, ...props }: CarouselBleedProps) {
     <BleedRefContext.Provider value={bleedRef}>
       <div
         className={cn(
-          "w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]",
+          "w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] max-sm:left-[calc(50%-20vw)]",
           className
         )}
         ref={bleedRef}
