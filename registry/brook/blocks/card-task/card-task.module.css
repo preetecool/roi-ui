@@ -96,3 +96,35 @@
     min-height: auto;
   }
 }
+
+.alertContent {
+  width: clamp(250px, 90vw, 400px);
+  max-height: 300px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .alertContent {
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+.alertDescription {
+  color: var(--muted-foreground);
+}
+
+.alertFooter {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.alertFooter > * {
+  flex: 1;
+}
