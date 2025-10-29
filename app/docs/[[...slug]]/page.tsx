@@ -193,6 +193,7 @@ export default async function Page(props: {
                 pointLeft
                 render={<Link href={neighbours.previous.url} />}
                 showArrow
+                size="sm"
                 variant="ghost"
               >
                 {neighbours.previous.data.title}
@@ -206,6 +207,7 @@ export default async function Page(props: {
                 className={styles.buttonCustomStyle}
                 render={<Link href={neighbours.next.url} />}
                 showArrow
+                size="sm"
                 variant="ghost"
               >
                 {neighbours.next.data.title}
