@@ -159,12 +159,14 @@ export function CollaboratorDialog({
                 items={users}
                 itemToStringLabel={(item) => item?.label || ""}
                 itemToStringValue={(item) => item?.value || ""}
-                multiple
+                // @ts-expect-error - Base UI Combobox multiple prop type inference issue
+                multiple={true}
                 onValueChange={(value) => {
                   if (value && Array.isArray(value)) {
                     onSelectedCollaboratorsChange(value as User[]);
                   }
                 }}
+                // @ts-expect-error - Base UI Combobox value type with multiple=true
                 value={selectedCollaborators}
               >
                 <div className={styles.comboboxWrapper} ref={comboboxAnchorRef}>

@@ -6,10 +6,10 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./combobox.module.css";
 
-function ComboboxRoot<ItemValue>({
-  ...props
-}: React.ComponentProps<typeof Combobox.Root<ItemValue>>) {
-  return <Combobox.Root<ItemValue> {...props} />;
+function ComboboxRoot<ItemValue, Multiple extends boolean | undefined = undefined>(
+  props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>
+) {
+  return <Combobox.Root<ItemValue, Multiple> {...props} />;
 }
 
 function ComboboxTrigger({
