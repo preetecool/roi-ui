@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 2.5rem + 2vw, 4rem);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  scroll-margin-top: 5rem;
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.sectionDescription {
+  color: var(--muted-foreground);
+  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 0.9375rem);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 65ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.grid a {
+  justify-content: flex-start;
+  text-align: left;
+  color: var(--secondary-foreground);
+  font-weight: 450;
+  font-size: calc(1em + 2px);
+  padding-left: 0;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
