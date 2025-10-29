@@ -4,6 +4,20 @@
   width: 100%;
   height: 100%;
   background-color: var(--background);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 4rem,
+    black calc(100% - 4rem),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 4rem,
+    black calc(100% - 4rem),
+    transparent 100%
+  );
 }
 
 .group {
@@ -68,23 +82,11 @@
 
 .content {
   padding: 1rem;
+  padding-bottom: 4rem;
+  margin-top: 0.5rem;
   overflow-y: auto;
   flex: 1;
   scrollbar-width: none;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 4rem,
-    black calc(100% - 4rem),
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 4rem,
-    black calc(100% - 4rem),
-    transparent 100%
-  );
 }
 
 .content::-webkit-scrollbar {
