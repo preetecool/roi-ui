@@ -76,6 +76,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       className={cn(
         "flex h-[1.875rem] w-[1.875rem] items-center justify-center",
         "cursor-pointer rounded-md p-2 transition-all duration-200",
+        "text-muted-foreground hover:bg-muted hover:text-foreground",
         "[-webkit-tap-highlight-color:transparent]",
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         className
