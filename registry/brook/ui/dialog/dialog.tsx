@@ -9,45 +9,35 @@ function DialogRoot({ ...props }: Dialog.Root.Props) {
   return <Dialog.Root {...props} />;
 }
 
-function DialogTrigger({
-  ...props
-}: Dialog.Trigger.Props) {
+function DialogTrigger({ ...props }: Dialog.Trigger.Props) {
   return <Dialog.Trigger {...props} />;
 }
 
 const DialogPortal = Dialog.Portal;
 
-function DialogOverlay({
-  className,
-  ...props
-}: Dialog.Backdrop.Props) {
+function DialogOverlay({ className, ...props }: Dialog.Backdrop.Props) {
   return (
-    <Dialog.Backdrop data-slot="dialog-backdrop" className={cn(styles.overlay, className)} {...props} />
+    <Dialog.Backdrop
+      className={cn(styles.overlay, className)}
+      data-slot="dialog-backdrop"
+      {...props}
+    />
   );
 }
 
-function DialogPopup({
-  className,
-  ...props
-}: Dialog.Popup.Props) {
+function DialogPopup({ className, ...props }: Dialog.Popup.Props) {
   return <Dialog.Popup className={cn(styles.content, className)} {...props} />;
 }
 
-function DialogTitle({
-  className,
-  ...props
-}: Dialog.Title.Props) {
+function DialogTitle({ className, ...props }: Dialog.Title.Props) {
   return <Dialog.Title className={cn(styles.title, className)} {...props} />;
 }
 
-function DialogDescription({
-  className,
-  ...props
-}: Dialog.Description.Props) {
+function DialogDescription({ className, ...props }: Dialog.Description.Props) {
   return (
     <Dialog.Description
-      data-slot="dialog-description"
       className={cn(styles.description, className)}
+      data-slot="dialog-description"
       {...props}
     />
   );

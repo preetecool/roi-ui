@@ -2233,7 +2233,9 @@ export const Index: Record<string, RegistryEntry> = {
     name: "card-task-tailwind",
     type: "block",
     component: lazy(async () => {
-      const mod = await import("@/registry/brook/tailwind/blocks/card-task");
+      const mod = await import(
+        "@/registry/brook/tailwind/blocks/card-task/card-task"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

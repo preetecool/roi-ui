@@ -165,6 +165,8 @@
 
 @supports (background: color-mix(in oklab, white, black)) {
   :root {
+    --mix-card-5-bg: color-mix(in oklab, var(--card) 5%, var(--background));
+    --mix-card-10-bg: color-mix(in oklab, var(--card) 10%, var(--background));
     --mix-card-15-bg: color-mix(in oklab, var(--card) 15%, var(--background));
     --mix-card-20-bg: color-mix(in oklab, var(--card) 20%, var(--background));
     --mix-card-33-bg: color-mix(in oklab, var(--card) 33%, var(--background));
@@ -284,7 +286,8 @@
   --chart-3: oklch(0.7091 0.15 264.71);
   --chart-4: oklch(0.829 0.105 81.04);
   --chart-5: oklch(0.8325 0.2177 151.25);
-
+  --mix-card-5-bg: oklch(0.17 0 0);
+  --mix-card-10-bg: oklch(0.175 0 0);
   --mix-card-15-bg: oklch(0.18 0 0);
   --mix-card-20-bg: oklch(0.185 0 0);
   --mix-card-33-bg: oklch(0.195 0 0);
@@ -415,11 +418,6 @@
   /* Placeholder opacity - match Tailwind preflight behavior */
   [data-demo="css-modules"] ::placeholder {
     opacity: 1;
-  }
-
-  *:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
   }
 
   ::selection {
