@@ -31,9 +31,9 @@
 
 /* Package manager command styling */
 .container pre code span:first-child {
-  color: #b392f0 !important;
+  color: var(--code-command-color) !important;
 }
 
 .container pre code span:not(:first-child) {
-  color: #9ecbff !important;
+  color: var(--code-arg-color) !important;
 }

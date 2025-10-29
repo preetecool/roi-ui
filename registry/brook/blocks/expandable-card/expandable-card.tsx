@@ -37,7 +37,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.25,
                     // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.455, 0.03, 0.515, 0.955],
                   }}

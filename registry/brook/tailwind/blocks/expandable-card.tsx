@@ -33,13 +33,13 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                   animate={{
                     opacity: 1,
                   }}
-                  className="fixed inset-0 z-[100] min-h-dvh bg-background opacity-95 transition-[300ms_cubic-bezier(0.45,1.005,0,1.005)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[(-webkit-touch-callout:none)]:absolute"
+                  className="fixed inset-0 z-[100] min-h-dvh bg-background opacity-100"
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
                   transition={{
                     duration: 0.3,
                     // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
-                    ease: [0.455, 0.03, 0.515, 0.955],
+                    ease: [0.45, 1.005, 0, 1.005],
                   }}
                 />
               }
@@ -155,7 +155,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         <Dialog.Trigger
           render={
             <motion.button
-              className="flex w-[320px] cursor-pointer flex-col items-center border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] border-solid bg-transparent p-0 font-[inherit] text-[inherit] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
+              className="flex w-[320px] cursor-pointer flex-col items-center overflow-hidden border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] border-solid bg-transparent p-0 font-[inherit] text-[inherit] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
               layoutId={`card-${item.id}`}
               style={{ borderRadius: "24px" }}
             />
