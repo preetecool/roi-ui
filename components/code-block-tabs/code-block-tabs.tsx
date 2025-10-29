@@ -71,12 +71,12 @@ export function CodeBlockTabs({ children }: CodeBlockTabsProps) {
   return (
     <div className={styles.container} ref={containerRef}>
       <CustomTabs defaultValue="npm" onValueChange={setActiveTab}>
-        <TabsList className={styles.tabsList}>
+        <TabsList id={styles.tabsList}>
           <div className={styles.tabsGroup}>
-            <TabsTrigger className={styles.trigger} value="npm">
+            <TabsTrigger id={styles.trigger} value="npm">
               npm
             </TabsTrigger>
-            <TabsTrigger className={styles.trigger} value="pnpm">
+            <TabsTrigger id={styles.trigger} value="pnpm">
               pnpm
             </TabsTrigger>
           </div>

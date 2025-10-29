@@ -1,19 +1,24 @@
 .container {
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
   overflow: hidden;
+  background-color: var(--code-header-bg);
 }
 
-.trigger {
-  border-radius: 0;
+.container pre {
+  background-color: var(--code-header-bg) !important;
 }
 
-.tabsList {
+#trigger {
+  border-radius: 2px;
+}
+
+#tabsList {
   border-radius: 0;
   border: none;
   border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
   background-color: var(--code-header-bg);
   display: flex;
-  justify-content: space-between !important;
+  justify-content: space-between;
   align-items: center;
   min-height: 2.5rem;
   position: relative;
