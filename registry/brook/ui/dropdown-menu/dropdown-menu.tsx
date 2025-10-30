@@ -103,6 +103,42 @@ function DropdownMenuSubmenuTrigger({
   );
 }
 
+function DropdownMenuRadioGroup({
+  className,
+  ...props
+}: Menu.RadioGroup.Props) {
+  return <Menu.RadioGroup className={className} {...props} />;
+}
+
+interface DropdownMenuRadioItemProps extends Menu.RadioItem.Props {
+  className?: string;
+  children?: ReactNode;
+}
+
+function DropdownMenuRadioItem({
+  className,
+  children,
+  ...props
+}: DropdownMenuRadioItemProps) {
+  return (
+    <Menu.RadioItem className={cn(styles.item, className)} {...props}>
+      {children}
+    </Menu.RadioItem>
+  );
+}
+
+function DropdownMenuRadioItemIndicator({
+  className,
+  ...props
+}: Menu.RadioItemIndicator.Props) {
+  return (
+    <Menu.RadioItemIndicator
+      className={cn(styles.radioIndicator, className)}
+      {...props}
+    />
+  );
+}
+
 export {
   DropdownMenuRoot as DropdownMenu,
   DropdownMenuArrow,
@@ -110,6 +146,9 @@ export {
   DropdownMenuPopup,
   DropdownMenuPortal,
   DropdownMenuPositioner,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuRadioItemIndicator,
   DropdownMenuSeparator,
   DropdownMenuSubmenuRoot,
   DropdownMenuSubmenuTrigger,

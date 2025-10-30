@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toolbar-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Toolbar (Tailwind)",
   "description": "A toolbar component for grouping action buttons and controls.",
   "files": [

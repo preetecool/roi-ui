@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "preview-card-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Preview Card (Tailwind)",
   "description": "A floating preview card component.",
   "files": [

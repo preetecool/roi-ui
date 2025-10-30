@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Chart (Tailwind)",
   "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
   "dependencies": [

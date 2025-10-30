@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "select-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Select (Tailwind)",
   "description": "A customizable select component for choosing from a list of options.",
   "files": [

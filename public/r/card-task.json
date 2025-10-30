@@ -1,9 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-task",
-  "type": "registry:item",
+  "type": "registry:block",
   "title": "Card Task",
   "description": "A task card component with badges, avatars, and action menu.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://roiui.com/r/alert-dialog.json",
     "https://roiui.com/r/avatar.json",

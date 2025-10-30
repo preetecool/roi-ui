@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "menubar-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Menubar (Tailwind)",
   "description": "A horizontal menu bar component.",
   "files": [

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "copy-button-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Copy Button (Tailwind)",
   "description": "A button component with animated copy-to-clipboard functionality.",
   "dependencies": [

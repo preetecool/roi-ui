@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "like-button-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Like Button (Tailwind)",
   "description": "A button component for liking content.",
   "files": [

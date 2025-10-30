@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toast-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Toast (Tailwind)",
   "description": "A succinct message notification.",
   "files": [

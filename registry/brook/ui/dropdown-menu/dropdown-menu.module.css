@@ -145,3 +145,12 @@
 .submenuTrigger:hover .submenuIcon {
   color: var(--secondary-foreground);
 }
+
+.radioIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  margin-left: auto;
+  flex-shrink: 0;
+}
