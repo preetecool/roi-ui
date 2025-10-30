@@ -6,9 +6,7 @@ import type React from "react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/tw-utils";
 
-function ContextMenuRoot({
-  ...props
-}: ContextMenu.Root.Props) {
+function ContextMenuRoot({ ...props }: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;
 }
 
@@ -18,8 +16,8 @@ function ContextMenuTrigger({
 }: ContextMenu.Trigger.Props) {
   return (
     <ContextMenu.Trigger
-      data-slot="contextmenu-trigger"
       className={cn("select-none outline-none", className)}
+      data-slot="contextmenu-trigger"
       {...props}
     />
   );
@@ -33,12 +31,12 @@ function ContextMenuBackdrop({
 }: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
-      data-slot="contextmenu-backdrop"
       className={cn(
         "fixed inset-0 z-[140] bg-black/80 opacity-0 transition-opacity duration-150",
         "data-[open]:opacity-100",
         className
       )}
+      data-slot="contextmenu-backdrop"
       {...props}
     />
   );
@@ -50,50 +48,45 @@ function ContextMenuPositioner({
 }: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
-      data-slot="contextmenu-positioner"
       className={cn("absolute z-[150] outline-none", className)}
+      data-slot="contextmenu-positioner"
       {...props}
     />
   );
 }
 
-function ContextMenuPopup({
-  className,
-  ...props
-}: ContextMenu.Popup.Props) {
+function ContextMenuPopup({ className, ...props }: ContextMenu.Popup.Props) {
   return (
     <ContextMenu.Popup
-      data-slot="contextmenu-popup"
       className={cn(
         "box-border min-w-[140px] bg-[var(--mix-card-50-bg)]",
         "rounded-[var(--radius)] border-[0.5px] border-border/60",
         "flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
-        "origin-[top_center] transition-[transform,opacity] duration-150 ease-[var(--ease-out-expo)]",
+        "origin-[top_center] transition-[transform,scale,opacity] duration-[150ms] ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+        "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
+        "data-[side=none]:data-[ending-style]:transition-none",
         "max-sm:max-w-[calc(100vw-2rem)] max-sm:p-1.5",
         className
       )}
+      data-slot="contextmenu-popup"
       {...props}
     />
   );
 }
 
-function ContextMenuArrow({
-  className,
-  ...props
-}: ContextMenu.Arrow.Props) {
+function ContextMenuArrow({ className, ...props }: ContextMenu.Arrow.Props) {
   return (
     <ContextMenu.Arrow
-      data-slot="contextmenu-arrow"
       className={cn("fill-background stroke-1 stroke-border", className)}
+      data-slot="contextmenu-arrow"
       {...props}
     />
   );
 }
 
-interface ContextMenuItemProps
-  extends ContextMenu.Item.Props {
+interface ContextMenuItemProps extends ContextMenu.Item.Props {
   icon?: ReactNode;
   inset?: boolean;
   className?: string;
@@ -111,7 +104,6 @@ function ContextMenuItem({
 }: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
-      data-slot="contextmenu-item"
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
         "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
@@ -129,12 +121,13 @@ function ContextMenuItem({
         variant === "destructive" && [
           "text-[var(--destructive)]",
           "[&_.context-menu-icon]:text-[var(--destructive)]",
-          "hover:before:!bg-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:[&_.context-menu-icon]:text-[var(--destructive-foreground)]"
+          "hover:before:!bg-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:[&_.context-menu-icon]:text-[var(--destructive-foreground)] hover:[&_.context-menu-shortcut]:text-[var(--destructive-foreground)]",
         ],
         inset && "pl-8",
         "max-sm:min-h-11 max-sm:gap-3 max-sm:px-2.5 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="contextmenu-item"
       {...props}
     >
       {icon && (
@@ -154,7 +147,6 @@ function ContextMenuCheckboxItem({
 }: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
-      data-slot="contextmenu-checkboxitem"
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
@@ -164,6 +156,7 @@ function ContextMenuCheckboxItem({
         "max-sm:min-h-11 max-sm:px-3 max-sm:py-2.5 max-sm:pl-9 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="contextmenu-checkboxitem"
       {...props}
     >
       <span className="absolute left-2 flex h-4 w-4 items-center justify-center max-sm:left-3 max-sm:h-[1.125rem] max-sm:w-[1.125rem]">
@@ -181,7 +174,6 @@ function ContextMenuRadioItem({
 }: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
-      data-slot="contextmenu-radioitem"
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
@@ -191,6 +183,7 @@ function ContextMenuRadioItem({
         "max-sm:min-h-11 max-sm:px-3 max-sm:py-2.5 max-sm:pl-9 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="contextmenu-radioitem"
       {...props}
     >
       <span className="absolute left-2 flex h-4 w-4 items-center justify-center max-sm:left-3 max-sm:h-[1.125rem] max-sm:w-[1.125rem]">
@@ -240,9 +233,7 @@ function ContextMenuSeparator({
   );
 }
 
-function ContextMenuSubmenuRoot({
-  ...props
-}: ContextMenu.SubmenuRoot.Props) {
+function ContextMenuSubmenuRoot({ ...props }: ContextMenu.SubmenuRoot.Props) {
   return <ContextMenu.SubmenuRoot {...props} />;
 }
 
@@ -256,7 +247,6 @@ function ContextMenuSubmenuTrigger({
 }) {
   return (
     <ContextMenu.SubmenuTrigger
-      data-slot="contextmenu-submenutrigger"
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
         "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
@@ -267,11 +257,12 @@ function ContextMenuSubmenuTrigger({
         "data-[highlighted]:before:bg-accent/70",
         "hover:before:bg-accent/70",
         "[&:hover_.submenu-icon]:text-secondary-foreground",
-        "[&>svg]:text-muted-foreground [&:hover>svg]:text-secondary-foreground",
+        "[&:hover>svg]:text-secondary-foreground [&>svg]:text-muted-foreground",
         inset && "pl-8",
         "max-sm:min-h-11 max-sm:px-2.5 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="contextmenu-submenutrigger"
       {...props}
     >
       {children}
@@ -283,14 +274,11 @@ function ContextMenuSubmenuTrigger({
   );
 }
 
-function ContextMenuGroup({
-  className,
-  ...props
-}: ContextMenu.Group.Props) {
+function ContextMenuGroup({ className, ...props }: ContextMenu.Group.Props) {
   return (
     <ContextMenu.Group
-      data-slot="contextmenu-group"
       className={cn("overflow-hidden", className)}
+      data-slot="contextmenu-group"
       {...props}
     />
   );

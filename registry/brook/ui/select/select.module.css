@@ -9,7 +9,7 @@
   background-color: var(--mix-card-50-bg);
 }
 .trigger:hover:not(.disabled) {
-  background-color: var(--muted);
+  background-color: var(--accent);
   color: var(--foreground);
 }
 
@@ -138,7 +138,7 @@
 }
 
 .item:hover:not(.itemDisabled) {
-  background-color: var(--muted);
+  background-color: var(--accent);
   color: var(--foreground);
 }
 

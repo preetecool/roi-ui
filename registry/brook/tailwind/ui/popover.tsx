@@ -55,12 +55,14 @@ function PopoverPopup({ className, ...props }: Popover.Popup.Props) {
     <Popover.Popup
       className={cn(
         "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
-        "transition-[transform_150ms_ease,opacity_150ms_ease]",
+        "transition-[transform,scale,opacity] duration-[150ms] ease-in-out",
         "outline outline-[0.5px] outline-[var(--color-border-60)]",
         "shadow-[0px_1px_2px_var(--color-border-10),0px_1px_2px_var(--color-border-10),0px_1px_1px_var(--color-border-10)]",
         "z-[1000]",
         "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+        "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
+        "data-[side=none]:data-[ending-style]:transition-none",
         "focus-visible:outline-1 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-1",
         "[&[data-theme='dark']]:-outline-offset-1 [&[data-theme='dark']]:outline-[0.5px] [&[data-theme='dark']]:outline-[var(--color-border-60)]",
         "max-sm:m-4 max-sm:max-w-[calc(100vw-2rem)]",
@@ -143,12 +145,14 @@ function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
         <PopoverPopup
           className={cn(
             "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
-            "transition-[transform_150ms_ease,opacity_150ms_ease]",
+            "transition-[transform,scale,opacity] duration-[150ms] ease-in-out",
             "outline outline-[0.5px] outline-[var(--color-border-60)]",
             "shadow-[0px_1px_2px_var(--color-border-10),0px_1px_2px_var(--color-border-10),0px_1px_1px_var(--color-border-10)]",
             "z-[1000]",
             "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
             "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+            "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
+            "data-[side=none]:data-[ending-style]:transition-none",
             "focus-visible:outline-1 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-1",
             "[&[data-theme='dark']]:-outline-offset-1 [&[data-theme='dark']]:outline-[0.5px] [&[data-theme='dark']]:outline-[var(--color-border-60)]",
             "max-sm:m-4 max-sm:max-w-[calc(100vw-2rem)]",

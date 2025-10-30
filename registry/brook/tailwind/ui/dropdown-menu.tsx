@@ -47,9 +47,11 @@ function DropdownMenuPopup({ className, ...props }: Menu.Popup.Props) {
         "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)]",
         "flex flex-col",
         "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
-        "origin-[top_center] transition-[transform,opacity] duration-150 ease-[var(--ease-out-expo)]",
+        "origin-[top_center] transition-[transform,scale,opacity] duration-[150ms] ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+        "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
+        "data-[side=none]:data-[ending-style]:transition-none",
         className
       )}
       data-slot="menu-popup"
