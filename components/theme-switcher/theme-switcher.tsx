@@ -2,11 +2,17 @@
 
 import { SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./theme-switcher.module.css";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -25,7 +31,7 @@ export function ThemeSwitcher() {
 
   return (
     <Button
-      aria-label={ariaLabel}
+      aria-label={mounted ? ariaLabel : "Toggle theme"}
       className={styles.button}
       onClick={handleThemeToggle}
       size="icon"

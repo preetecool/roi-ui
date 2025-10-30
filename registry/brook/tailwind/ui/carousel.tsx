@@ -411,7 +411,7 @@ export function Item({
       aria-roledescription="slide"
       className={cn(
         "relative flex-shrink-0",
-        "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-[-2px]",
+        "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-[1px]",
         className
       )}
       onKeyDown={handleKeyDown}

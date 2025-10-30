@@ -4,7 +4,6 @@ import { Toggle } from "@/registry/brook/ui/toggle/toggle";
 
 function UnlockIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, button has aria-label
     <svg
       fill="none"
       height="16"
@@ -24,7 +23,6 @@ function UnlockIcon() {
 
 function LockIcon() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Icon is decorative, button has aria-label
     <svg
       fill="none"
       height="16"

@@ -1,12 +1,3 @@
-.carouselRoot {
-}
-
-@media (max-width: 640px) {
-  .carouselRoot {
-    margin-left: -10vw;
-  }
-}
-
 #card {
   height: 300px;
   width: 330px;
@@ -99,4 +90,3 @@
 .button:hover {
   color: var(--foreground);
 }
-

@@ -82,7 +82,8 @@
 
 .slide:focus-visible {
   outline: 2px solid var(--ring);
-  outline-offset: -2px;
+  outline-offset: 1px;
+  border-radius: var(--radius);
 }
 
 .navContainer {

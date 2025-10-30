@@ -16,8 +16,8 @@ function SelectTrigger({
 }: React.ComponentProps<typeof Select.Trigger>) {
   return (
     <Select.Trigger
-      data-slot="select-trigger"
       className={cn(styles.trigger, className)}
+      data-slot="select-trigger"
       nativeButton
       {...props}
     >
@@ -61,7 +61,11 @@ function SelectOverlay({
   ...props
 }: React.ComponentProps<typeof Select.Backdrop>) {
   return (
-    <Select.Backdrop data-slot="select-backdrop" className={cn(styles.backdrop, className)} {...props} />
+    <Select.Backdrop
+      className={cn(styles.backdrop, className)}
+      data-slot="select-backdrop"
+      {...props}
+    />
   );
 }
 
@@ -71,8 +75,8 @@ function SelectPositioner({
 }: React.ComponentProps<typeof Select.Positioner>) {
   return (
     <Select.Positioner
-      data-slot="select-positioner"
       className={cn(styles.positioner, className)}
+      data-slot="select-positioner"
       {...props}
     />
   );
@@ -85,8 +89,8 @@ function SelectScrollUpArrow({
 }: React.ComponentProps<typeof Select.ScrollUpArrow>) {
   return (
     <Select.ScrollUpArrow
-      data-slot="select-scrolluparrow"
       className={cn(styles.scrollArrow, className)}
+      data-slot="select-scrolluparrow"
       {...props}
     >
       {children || (
@@ -117,8 +121,8 @@ function SelectScrollDownArrow({
 }: React.ComponentProps<typeof Select.ScrollDownArrow>) {
   return (
     <Select.ScrollDownArrow
-      data-slot="select-scrolldownarrow"
       className={cn(styles.scrollArrow, className)}
+      data-slot="select-scrolldownarrow"
       {...props}
     >
       {children || <ChevronDown size={16} />}
@@ -145,7 +149,11 @@ function SelectItemText({
   ...props
 }: React.ComponentProps<typeof Select.ItemText>) {
   return (
-    <Select.ItemText data-slot="select-itemtext" className={cn(styles.itemText, className)} {...props} />
+    <Select.ItemText
+      className={cn(styles.itemText, className)}
+      data-slot="select-itemtext"
+      {...props}
+    />
   );
 }
 
@@ -154,7 +162,11 @@ function SelectGroup({
   ...props
 }: React.ComponentProps<typeof Select.Group>) {
   return (
-    <Select.Group data-slot="select-group" className={cn(styles.selectGroup, className)} {...props} />
+    <Select.Group
+      className={cn(styles.selectGroup, className)}
+      data-slot="select-group"
+      {...props}
+    />
   );
 }
 
@@ -164,8 +176,8 @@ function SelectGroupLabel({
 }: React.ComponentProps<typeof Select.GroupLabel>) {
   return (
     <Select.GroupLabel
-      data-slot="select-grouplabel"
       className={cn(styles.groupLabel, className)}
+      data-slot="select-grouplabel"
       {...props}
     />
   );
@@ -176,7 +188,11 @@ function SelectSeparator({
   ...props
 }: React.ComponentProps<typeof Select.Separator>) {
   return (
-    <Select.Separator data-slot="select-separator" className={cn(styles.separator, className)} {...props} />
+    <Select.Separator
+      className={cn(styles.separator, className)}
+      data-slot="select-separator"
+      {...props}
+    />
   );
 }
 
@@ -187,8 +203,8 @@ function SelectItemIndicator({
 }: React.ComponentProps<typeof Select.ItemIndicator>) {
   return (
     <Select.ItemIndicator
-      data-slot="select-itemindicator"
       className={cn(styles.indicator, className)}
+      data-slot="select-itemindicator"
       {...props}
     >
       {children || <Check size={16} />}
