@@ -17,9 +17,10 @@
 }
 
 .command [cmdk-item] {
-  height: 40px;
+  min-height: 2.5rem;
   padding: 0.625rem 0.375rem !important;
   font-weight: 400;
+  line-height: normal;
   border: 1px solid transparent;
 }
 
@@ -77,6 +78,7 @@
 
 .commandFooterText {
   font-size: 0.75rem;
+  line-height: 1rem;
   color: var(--muted-foreground);
   font-weight: 400;
 }

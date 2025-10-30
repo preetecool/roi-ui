@@ -15,29 +15,30 @@
   background-color: var(--accent);
 }
 
-.badgeArrow {
+/* Arrow animations for ArrowPointer in badge context */
+.badge svg {
   width: 14px;
   height: 12px;
   overflow: visible;
   transition: transform 150ms ease-in-out;
 }
 
-.badgeArrowPoint {
+.badge svg path:first-child {
   transition: all 150ms ease-in;
   transform: translateX(0);
 }
 
-.badgeArrowShaft {
+.badge svg path:last-child {
   transition: all 150ms ease-in;
   opacity: 0;
   transform: translateX(0);
 }
 
-.badge:hover .badgeArrowPoint {
+.badge:hover svg path:first-child {
   transform: translateX(2px);
 }
 
-.badge:hover .badgeArrowShaft {
+.badge:hover svg path:last-child {
   opacity: 1;
   transform: translateX(-1px);
 }

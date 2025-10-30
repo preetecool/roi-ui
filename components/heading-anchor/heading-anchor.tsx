@@ -1,7 +1,7 @@
 "use client";
 
 import { Link as LinkIcon } from "lucide-react";
-import { type ComponentProps, useState } from "react";
+import { type ComponentProps, useMemo, useState } from "react";
 import {
   Popover,
   PopoverPopup,
@@ -19,6 +19,12 @@ const ICON_SIZE_H4 = 14;
 const HEADING_LEVEL_2 = 2;
 const HEADING_LEVEL_3 = 3;
 
+const ICON_SIZE_BY_LEVEL: Record<2 | 3 | 4, number> = {
+  2: ICON_SIZE_H2,
+  3: ICON_SIZE_H3,
+  4: ICON_SIZE_H4,
+};
+
 export function HeadingAnchor({
   level,
   children,
@@ -27,15 +33,20 @@ export function HeadingAnchor({
   const [tooltipText, setTooltipText] = useState("Copy URL");
   const [open, setOpen] = useState(false);
 
-  const id =
-    children
-      ?.toString()
-      .replace(/ /g, "-")
-      .replace(/'/g, "")
-      .replace(/\?/g, "")
-      .toLowerCase() || "";
+  const id = useMemo(() => {
+    const text = children?.toString() || "";
+    return text
+      .split(" ")
+      .join("-")
+      .split("'")
+      .join("")
+      .split("?")
+      .join("")
+      .toLowerCase();
+  }, [children]);
 
   const Component = `h${level}` as const;
+  const iconSize = ICON_SIZE_BY_LEVEL[level];
 
   const handleClick = async () => {
     setOpen(false);
@@ -58,18 +69,6 @@ export function HeadingAnchor({
 
     window.history.pushState(null, "", `#${id}`);
   };
-
-  const getIconSize = () => {
-    if (level === HEADING_LEVEL_2) {
-      return ICON_SIZE_H2;
-    }
-    if (level === HEADING_LEVEL_3) {
-      return ICON_SIZE_H3;
-    }
-    return ICON_SIZE_H4;
-  };
-
-  const iconSize = getIconSize();
 
   return (
     <Popover onOpenChange={setOpen} open={open} openOnHover>

@@ -1,16 +1,16 @@
 import { highlightCode } from "@/lib/highlight-code";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./component-source.module.css";
+import { ComponentSourceClient } from "./component-source-client";
 import {
   getDisplayTitle,
+  loadAllVariants,
   loadCodeByName,
   loadCodeBySrc,
   loadMultipleFiles,
-  loadAllVariants,
   transformCode,
 } from "./component-source-helpers";
 import { ComponentSourceTabs } from "./component-source-tabs";
-import { ComponentSourceClient } from "./component-source-client";
 
 type ComponentSourceProps = {
   name?: string;

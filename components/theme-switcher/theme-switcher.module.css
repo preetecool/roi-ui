@@ -8,6 +8,7 @@
   color: var(--muted-foreground);
   text-decoration: none;
   transition: all 0.2s ease;
+  border-radius: 2px;
 }
 
 .button:hover {

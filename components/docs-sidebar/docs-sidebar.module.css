@@ -32,6 +32,7 @@
   font-weight: 400;
   color: var(--secondary-foreground);
   padding: 0.5rem;
+  margin: 0;
 }
 
 .group:not(:first-child) .groupLabel {
@@ -41,6 +42,13 @@
 .groupContent {
   display: flex;
   flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.groupContent li {
+  display: contents;
 }
 
 .menuButton {

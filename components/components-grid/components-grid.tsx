@@ -66,44 +66,50 @@ const blocks = [
 export function ComponentsGrid() {
   return (
     <div className={styles.container}>
-      <section className={styles.section} aria-labelledby="ui-components-heading">
+      <section
+        aria-labelledby="ui-components-heading"
+        className={styles.section}
+      >
         <h2 className={styles.sectionTitle} id="ui-components-heading">
           UI Components
         </h2>
         <p className={styles.sectionDescription}>
-          Foundational components for building interfaces. Fully accessible and customizable.
+          Foundational components for building interfaces. Fully accessible and
+          customizable.
         </p>
-        <div className={styles.grid} role="list">
+        <ul className={styles.grid}>
           {uiComponents.map((component) => (
-            <Button
-              key={component.slug}
-              render={<Link href={`/docs/ui/${component.slug}`} />}
-              variant="link"
-            >
-              {component.name}
-            </Button>
+            <li key={component.slug}>
+              <Button
+                render={<Link href={`/docs/ui/${component.slug}`} />}
+                variant="link"
+              >
+                {component.name}
+              </Button>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      <section className={styles.section} aria-labelledby="blocks-heading">
+      <section aria-labelledby="blocks-heading" className={styles.section}>
         <h2 className={styles.sectionTitle} id="blocks-heading">
           Blocks
         </h2>
         <p className={styles.sectionDescription}>
           Pre-built component compositions ready to use in your application.
         </p>
-        <div className={styles.grid} role="list">
+        <ul className={styles.grid}>
           {blocks.map((block) => (
-            <Button
-              key={block.slug}
-              render={<Link href={`/docs/blocks/${block.slug}`} />}
-              variant="link"
-            >
-              {block.name}
-            </Button>
+            <li key={block.slug}>
+              <Button
+                render={<Link href={`/docs/blocks/${block.slug}`} />}
+                variant="link"
+              >
+                {block.name}
+              </Button>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </div>
   );

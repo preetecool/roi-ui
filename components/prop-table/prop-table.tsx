@@ -31,20 +31,88 @@ const CLASS_TYPES = [
   "FormEvent",
 ];
 
-// Regex patterns at top level for performance
-const SEPARATOR_PATTERN = /([|&()<>[\],\s]+)/;
-const SEPARATOR_TEST_PATTERN = /^[|&()<>[\],\s]+$/;
-const PASCAL_CASE_PATTERN = /^[A-Z][a-zA-Z]*$/;
-const STRING_LITERAL_PATTERN = /^"(.+)"$/;
-const NUMBER_PATTERN = /^-?\d+(\.\d+)?$/;
+const SEPARATORS = ["|", "&", "(", ")", "<", ">", "[", "]", ",", " "];
+
+function isSeparator(char: string): boolean {
+  return SEPARATORS.includes(char);
+}
+
+function isPascalCase(text: string): boolean {
+  if (text.length === 0) {
+    return false;
+  }
+  const firstChar = text[0];
+  const isFirstCharUppercase =
+    firstChar === firstChar.toUpperCase() &&
+    firstChar !== firstChar.toLowerCase();
+  const hasOnlyLetters = text
+    .split("")
+    .every(
+      (char) => (char >= "a" && char <= "z") || (char >= "A" && char <= "Z")
+    );
+  return isFirstCharUppercase && hasOnlyLetters;
+}
+
+function isNumber(value: string): boolean {
+  if (value.length === 0) {
+    return false;
+  }
+
+  // Handle negative numbers
+  let startIndex = 0;
+  if (value[0] === "-") {
+    if (value.length === 1) {
+      return false;
+    }
+    startIndex = 1;
+  }
+
+  let hasDecimal = false;
+  for (let i = startIndex; i < value.length; i++) {
+    const char = value[i];
+    if (char === ".") {
+      if (hasDecimal) {
+        return false; // Multiple decimals
+      }
+      hasDecimal = true;
+    } else if (char < "0" || char > "9") {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function splitTypeString(typeString: string): string[] {
+  const parts: string[] = [];
+  let current = "";
+
+  for (const char of typeString) {
+    if (isSeparator(char)) {
+      if (current) {
+        parts.push(current);
+        current = "";
+      }
+      parts.push(char);
+    } else {
+      current += char;
+    }
+  }
+
+  if (current) {
+    parts.push(current);
+  }
+
+  return parts;
+}
 
 function highlightType(typeString: string) {
-  const parts = typeString.split(SEPARATOR_PATTERN);
+  const parts = splitTypeString(typeString);
 
   return parts.map((part, index) => {
     const key = `${part}-${index}`;
 
-    if (SEPARATOR_TEST_PATTERN.test(part)) {
+    if (isSeparator(part)) {
       return (
         <span className={styles.separator} key={key}>
           {part}
@@ -54,7 +122,7 @@ function highlightType(typeString: string) {
 
     // Check if it's a class type (PascalCase)
     // Matches: ReactNode, HTMLElement, etc.
-    if (CLASS_TYPES.includes(part) || PASCAL_CASE_PATTERN.test(part)) {
+    if (CLASS_TYPES.includes(part) || isPascalCase(part)) {
       return (
         <span className={styles.typeClass} key={key}>
           {part}
@@ -93,9 +161,18 @@ function highlightType(typeString: string) {
 
 // Extract simple type (first type before |)
 function getSimpleType(typeString: string): string {
-  const firstType = typeString.split("|")[0].trim();
+  const pipeIndex = typeString.indexOf("|");
+  const firstType =
+    pipeIndex !== -1
+      ? typeString.slice(0, pipeIndex).trim()
+      : typeString.trim();
+
   // Remove quotes if it's a string literal type
-  return firstType.replace(STRING_LITERAL_PATTERN, "string");
+  if (firstType.startsWith('"') && firstType.endsWith('"')) {
+    return "string";
+  }
+
+  return firstType;
 }
 
 // Render default value with appropriate styling
@@ -112,8 +189,7 @@ function renderDefaultValue(defaultValue?: string) {
     return <span className={styles.booleanValue}>{defaultValue}</span>;
   }
 
-  // Check if it's a number (including negative numbers and decimals)
-  if (NUMBER_PATTERN.test(defaultValue)) {
+  if (isNumber(defaultValue)) {
     return <span className={styles.numberValue}>{defaultValue}</span>;
   }
 
@@ -122,73 +198,76 @@ function renderDefaultValue(defaultValue?: string) {
 
 export function PropTable({ data }: PropTableProps) {
   return (
-    <div className={styles.container}>
+    <section aria-labelledby="props-heading" className={styles.container}>
+      <h3 className={styles.visuallyHidden} id="props-heading">
+        Component props
+      </h3>
       <div className={styles.header}>
         <div className={styles.headerCell}>Prop</div>
         <div className={styles.headerCell}>Type</div>
         <div className={styles.headerCell}>Default</div>
       </div>
-      {data.map((row, index) => (
-        <Collapsible
-          className={styles.collapsible}
-          key={`prop-${row.prop}-${index}`}
-        >
-          <CollapsibleTrigger className={styles.trigger}>
-            <div className={styles.summaryGrid}>
-              <code className={styles.code}>{row.prop}</code>
-              <code className={styles.typeCode}>
-                {highlightType(getSimpleType(row.type))}
-              </code>
-              <div className={styles.defaultCell}>
-                {row.default ? (
-                  <code className={styles.code}>
-                    {renderDefaultValue(row.default)}
-                  </code>
-                ) : (
-                  renderDefaultValue()
-                )}
-              </div>
-            </div>
-          </CollapsibleTrigger>
-          <CollapsiblePanel className={styles.panel} hiddenUntilFound>
-            <div className={styles.panelRow}>
-              <div className={styles.detailLabel}>Name</div>
-              <div className={styles.detailValue}>
+      <div className={styles.body}>
+        {data.map((row, index) => (
+          <Collapsible
+            className={styles.collapsible}
+            key={`prop-${row.prop}-${index}`}
+          >
+            <CollapsibleTrigger className={styles.trigger}>
+              <div className={styles.summaryGrid}>
                 <code className={styles.code}>{row.prop}</code>
-              </div>
-              <div />
-            </div>
-
-            <div className={styles.panelRow}>
-              <div className={styles.detailLabel}>Description</div>
-              <div className={styles.detailValueSpan}>{row.description}</div>
-            </div>
-
-            <div className={styles.panelRow}>
-              <div className={styles.detailLabel}>Type</div>
-              <div className={styles.detailValueSpan}>
                 <code className={styles.typeCode}>
-                  {highlightType(row.type)}
+                  {highlightType(getSimpleType(row.type))}
                 </code>
+                <div className={styles.defaultCell}>
+                  {row.default ? (
+                    <code className={styles.code}>
+                      {renderDefaultValue(row.default)}
+                    </code>
+                  ) : (
+                    renderDefaultValue()
+                  )}
+                </div>
               </div>
-            </div>
+            </CollapsibleTrigger>
+            <CollapsiblePanel className={styles.panel} hiddenUntilFound>
+              <div className={styles.panelRow}>
+                <div className={styles.detailLabel}>Name</div>
+                <div className={styles.detailValue}>
+                  <code className={styles.code}>{row.prop}</code>
+                </div>
+              </div>
 
-            <div className={styles.panelRow}>
-              <div className={styles.detailLabel}>Default</div>
-              <div className={styles.detailValue}>
-                {row.default ? (
-                  <code className={styles.code}>
-                    {renderDefaultValue(row.default)}
-                  </code>
-                ) : (
-                  renderDefaultValue()
-                )}
+              <div className={styles.panelRow}>
+                <div className={styles.detailLabel}>Description</div>
+                <div className={styles.detailValueSpan}>{row.description}</div>
               </div>
-              <div />
-            </div>
-          </CollapsiblePanel>
-        </Collapsible>
-      ))}
-    </div>
+
+              <div className={styles.panelRow}>
+                <div className={styles.detailLabel}>Type</div>
+                <div className={styles.detailValueSpan}>
+                  <code className={styles.typeCode}>
+                    {highlightType(row.type)}
+                  </code>
+                </div>
+              </div>
+
+              <div className={styles.panelRow}>
+                <div className={styles.detailLabel}>Default</div>
+                <div className={styles.detailValue}>
+                  {row.default ? (
+                    <code className={styles.code}>
+                      {renderDefaultValue(row.default)}
+                    </code>
+                  ) : (
+                    renderDefaultValue()
+                  )}
+                </div>
+              </div>
+            </CollapsiblePanel>
+          </Collapsible>
+        ))}
+      </div>
+    </section>
   );
 }

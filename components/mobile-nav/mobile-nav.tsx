@@ -4,7 +4,8 @@ import { Dialog } from "@base-ui-components/react";
 
 import type { PageTree } from "fumadocs-core/server";
 import { X } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import styles from "./mobile-nav.module.css";
@@ -23,7 +24,6 @@ type MobileNavProps = {
 
 export function MobileNav({ tree }: MobileNavProps) {
   const pathname = usePathname();
-  const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -60,22 +60,28 @@ export function MobileNav({ tree }: MobileNavProps) {
                 </div>
                 <div className={styles.menuSection}>
                   <div className={styles.groupTitle}>Menu</div>
-                  <Dialog.Close
+                  <Link
+                    aria-current={pathname === "/" ? "page" : undefined}
                     className={`${styles.pageLink} ${pathname === "/" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                    onClick={() => router.push("/")}
+                    href="/"
+                    onClick={() => setOpen(false)}
                   >
                     Home
-                  </Dialog.Close>
+                  </Link>
                 </div>
 
                 <nav className={styles.treeNav}>
-                  {tree?.children?.map((item, index) => (
-                    <MobileSidebarGroup
-                      item={item as NodeWithChildren}
-                      key={item.$id || `item-${index}`}
-                      pathname={pathname}
-                    />
-                  ))}
+                  <ul className={styles.navList}>
+                    {tree?.children?.map((item, index) => (
+                      <li key={item.$id || `item-${index}`}>
+                        <MobileSidebarGroup
+                          item={item as NodeWithChildren}
+                          onNavigate={() => setOpen(false)}
+                          pathname={pathname}
+                        />
+                      </li>
+                    ))}
+                  </ul>
                 </nav>
 
                 <div className={styles.iconsRow}>
@@ -116,23 +122,25 @@ export function MobileNav({ tree }: MobileNavProps) {
 function MobileSidebarGroup({
   item,
   pathname,
+  onNavigate,
 }: {
   item: NodeWithChildren;
   pathname: string;
+  onNavigate: () => void;
 }) {
-  const router = useRouter();
   const hasChildren = item.children && item.children.length > 0;
   const isActive = pathname === item.url;
 
   if (!hasChildren && item.type === "page" && item.url) {
-    const url = item.url;
     return (
-      <Dialog.Close
+      <Link
+        aria-current={isActive ? "page" : undefined}
         className={`${styles.pageLink} ${isActive ? styles.pageLinkActive : styles.pageLinkInactive}`}
-        onClick={() => router.push(url)}
+        href={item.url}
+        onClick={onNavigate}
       >
         {item.name}
-      </Dialog.Close>
+      </Link>
     );
   }
 
@@ -140,15 +148,17 @@ function MobileSidebarGroup({
     <div className={styles.groupContainer}>
       <div className={styles.groupTitle}>{item.name}</div>
 
-      <div className={styles.groupChildren}>
+      <ul className={styles.groupChildren}>
         {item.children?.map((child, index) => (
-          <MobileSidebarGroup
-            item={child}
-            key={child.$id || `child-${index}`}
-            pathname={pathname}
-          />
+          <li key={child.$id || `child-${index}`}>
+            <MobileSidebarGroup
+              item={child}
+              onNavigate={onNavigate}
+              pathname={pathname}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

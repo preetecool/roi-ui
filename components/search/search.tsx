@@ -3,7 +3,8 @@
 import type { PageTree } from "fumadocs-core/server";
 import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import {
   Command,
   CommandEmpty,
@@ -13,11 +14,103 @@ import {
   CommandList,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import styles from "./search.module.css";
+
+const CLOSE_ANIMATION_DELAY = 150;
+const FOCUS_DELAY = 0;
 
 type SearchProps = {
   tree: PageTree.Root;
+};
+
+const formatHeading = (text: string) =>
+  text
+    .split(" / ")
+    .map((part) => {
+      if (part.toLowerCase() === "ui") {
+        return "UI";
+      }
+      return part
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(" ");
+    })
+    .join(" / ");
+
+const buildHeadingPath = (parentName: string, nodeName: string) =>
+  parentName ? `${parentName} / ${nodeName}` : nodeName;
+
+const extractPagesFromChildren = (
+  children: PageTree.Node[]
+): Array<{ name: string; url: string }> => {
+  const pages: Array<{ name: string; url: string }> = [];
+
+  for (const child of children) {
+    if (child.type === "page" && child.url) {
+      pages.push({
+        name: child.name?.toString() || "",
+        url: child.url,
+      });
+    }
+  }
+
+  return pages;
+};
+
+const collectChildFolderGroups = (
+  children: PageTree.Node[],
+  currentPath: string
+): Array<{
+  heading: string;
+  pages: Array<{ name: string; url: string }>;
+}> => {
+  const groups: Array<{
+    heading: string;
+    pages: Array<{ name: string; url: string }>;
+  }> = [];
+
+  for (const child of children) {
+    if (child.type === "folder") {
+      const childGroups = collectGroups(child, currentPath);
+      groups.push(...childGroups);
+    }
+  }
+
+  return groups;
+};
+
+const collectGroups = (
+  node: PageTree.Node,
+  parentName = ""
+): Array<{
+  heading: string;
+  pages: Array<{ name: string; url: string }>;
+}> => {
+  const groups: Array<{
+    heading: string;
+    pages: Array<{ name: string; url: string }>;
+  }> = [];
+
+  if (node.type !== "folder" || !node.children) {
+    return groups;
+  }
+
+  const nodeName = node.name?.toString() || "";
+  const pages = extractPagesFromChildren(node.children);
+
+  if (pages.length > 0) {
+    const rawHeading = buildHeadingPath(parentName, nodeName);
+    const heading = formatHeading(rawHeading);
+    groups.push({ heading, pages });
+  }
+
+  const currentPath = buildHeadingPath(parentName, nodeName);
+  const childGroups = collectChildFolderGroups(node.children, currentPath);
+  groups.push(...childGroups);
+
+  return groups;
 };
 
 const ArrowIcon = () => (
@@ -72,13 +165,12 @@ export function Search({ tree }: SearchProps) {
     if (isOpen) {
       setTimeout(() => {
         inputRef.current?.focus();
-      }, 0);
+      }, FOCUS_DELAY);
     }
   }, [isOpen]);
 
   const handleClose = () => {
     setIsClosing(true);
-    const CLOSE_ANIMATION_DELAY = 150;
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
@@ -96,7 +188,8 @@ export function Search({ tree }: SearchProps) {
     if (
       nameLower === "introduction" ||
       nameLower === "quick start" ||
-      nameLower === "about roi ui"
+      nameLower === "about roi ui" ||
+      nameLower === "components"
     ) {
       return <ArrowIcon />;
     }
@@ -142,98 +235,9 @@ export function Search({ tree }: SearchProps) {
     return <FileText size={16} />;
   };
 
-  const formatHeading = (text: string) =>
-    text
-      .split(" / ")
-      .map((part) => {
-        if (part.toLowerCase() === "ui") {
-          return "UI";
-        }
-        return part
-          .split(" ")
-          .map(
-            (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-          )
-          .join(" ");
-      })
-      .join(" / ");
-
-  const buildHeadingPath = (parentName: string, nodeName: string) =>
-    parentName ? `${parentName} / ${nodeName}` : nodeName;
-
-  const extractPagesFromChildren = (
-    children: PageTree.Node[]
-  ): Array<{ name: string; url: string }> => {
-    const pages: Array<{ name: string; url: string }> = [];
-
-    for (const child of children) {
-      if (child.type === "page" && child.url) {
-        pages.push({
-          name: child.name?.toString() || "",
-          url: child.url,
-        });
-      }
-    }
-
-    return pages;
-  };
-
-  const collectChildFolderGroups = (
-    children: PageTree.Node[],
-    currentPath: string
-  ): Array<{
-    heading: string;
-    pages: Array<{ name: string; url: string }>;
-  }> => {
-    const groups: Array<{
-      heading: string;
-      pages: Array<{ name: string; url: string }>;
-    }> = [];
-
-    for (const child of children) {
-      if (child.type === "folder") {
-        const childGroups = collectGroups(child, currentPath);
-        groups.push(...childGroups);
-      }
-    }
-
-    return groups;
-  };
-
-  const collectGroups = (
-    node: PageTree.Node,
-    parentName = ""
-  ): Array<{
-    heading: string;
-    pages: Array<{ name: string; url: string }>;
-  }> => {
-    const groups: Array<{
-      heading: string;
-      pages: Array<{ name: string; url: string }>;
-    }> = [];
-
-    if (node.type !== "folder" || !node.children) {
-      return groups;
-    }
-
-    const nodeName = node.name?.toString() || "";
-    const pages = extractPagesFromChildren(node.children);
-
-    if (pages.length > 0) {
-      const rawHeading = buildHeadingPath(parentName, nodeName);
-      const heading = formatHeading(rawHeading);
-      groups.push({ heading, pages });
-    }
-
-    const currentPath = buildHeadingPath(parentName, nodeName);
-    const childGroups = collectChildFolderGroups(node.children, currentPath);
-    groups.push(...childGroups);
-
-    return groups;
-  };
-
-  const allGroups = tree.children.flatMap((topLevel) =>
-    collectGroups(topLevel)
+  const allGroups = useMemo(
+    () => tree.children.flatMap((topLevel) => collectGroups(topLevel)),
+    [tree.children]
   );
 
   if (!isOpen) {

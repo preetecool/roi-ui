@@ -2,10 +2,10 @@
 
 import {
   createContext,
-  useContext,
-  useState,
-  useEffect,
   type ReactNode,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
 
 type StyleVariant = "css-modules" | "tailwind";
@@ -22,9 +22,9 @@ export function StyleProvider({ children }: { children: ReactNode }) {
 
   // Load saved preference from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("preferred-style") as
-      | StyleVariant
-      | null;
+    const saved = localStorage.getItem(
+      "preferred-style"
+    ) as StyleVariant | null;
     if (saved && (saved === "css-modules" || saved === "tailwind")) {
       setStyle(saved);
     }
