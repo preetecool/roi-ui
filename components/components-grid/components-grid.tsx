@@ -66,12 +66,16 @@ const blocks = [
 export function ComponentsGrid() {
   return (
     <div className={styles.container}>
-      <section className={styles.section} aria-labelledby="ui-components-heading">
+      <section
+        aria-labelledby="ui-components-heading"
+        className={styles.section}
+      >
         <h2 className={styles.sectionTitle} id="ui-components-heading">
           UI Components
         </h2>
         <p className={styles.sectionDescription}>
-          Foundational components for building interfaces. Fully accessible and customizable.
+          Foundational components for building interfaces. Fully accessible and
+          customizable.
         </p>
         <div className={styles.grid} role="list">
           {uiComponents.map((component) => (
@@ -86,7 +90,7 @@ export function ComponentsGrid() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="blocks-heading">
+      <section aria-labelledby="blocks-heading" className={styles.section}>
         <h2 className={styles.sectionTitle} id="blocks-heading">
           Blocks
         </h2>
