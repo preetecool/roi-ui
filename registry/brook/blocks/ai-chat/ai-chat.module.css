@@ -20,6 +20,10 @@
   border-radius: 50%;
 }
 
+.iconButton svg {
+  color: var(--muted-foreground);
+}
+
 .iconButton:first-child svg {
   transform: rotate(-45deg);
 }
@@ -52,6 +56,10 @@
   gap: 0.5rem;
   align-items: center;
   width: 100%;
+}
+
+.triggerContent svg {
+  color: var(--muted-foreground);
 }
 
 .popup {

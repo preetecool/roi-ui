@@ -56,10 +56,10 @@ export function AiChat() {
         <CardContent>
           <Field
             className={cn(
-              "[&_textarea]:resize-none [&_textarea]:!border-0 [&_textarea]:bg-transparent [&_textarea]:!p-1",
-              "[&_textarea]:!h-[50px] [&_textarea]:!min-h-[50px] [&_textarea]:outline-none [&_textarea]:!outline-0 [&_textarea]:!px-1",
+              "[&_textarea]:!border-0 [&_textarea]:!p-1 [&_textarea]:resize-none [&_textarea]:bg-transparent",
+              "[&_textarea]:!h-[50px] [&_textarea]:!min-h-[50px] [&_textarea]:!outline-0 [&_textarea]:!px-1 [&_textarea]:outline-none",
               "[&_textarea]:!leading-normal",
-              "max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16 max-xl:[&_textarea]:!p-2"
+              "max-xl:[&_textarea]:!p-2 max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16"
             )}
           >
             <FieldControl
@@ -77,7 +77,7 @@ export function AiChat() {
         <CardFooter className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <Button
-              className="rounded-full p-2 [&>svg:first-child]:rotate-[-45deg]"
+              className="rounded-full p-2 [&>svg:first-child]:rotate-[-45deg] [&>svg]:text-muted-foreground"
               size="icon"
               style={{ width: "32px", height: "32px", borderRadius: "50%" }}
               type="button"
@@ -101,7 +101,12 @@ export function AiChat() {
                     const IconComponent = selectedMode?.icon;
                     return (
                       <div className="flex w-full items-center gap-2">
-                        {IconComponent && <IconComponent size={14} />}
+                        {IconComponent && (
+                          <IconComponent
+                            className="text-muted-foreground"
+                            size={14}
+                          />
+                        )}
                         <span>{selectedMode?.label}</span>
                       </div>
                     );
@@ -115,7 +120,10 @@ export function AiChat() {
                     {aiModes.map(({ label, value, icon: IconComponent }) => (
                       <SelectItem key={value} value={value}>
                         <div className="flex w-full items-center gap-2">
-                          <IconComponent size={14} />
+                          <IconComponent
+                            className="text-muted-foreground"
+                            size={14}
+                          />
                           <SelectItemText>{label}</SelectItemText>
                           <SelectItemIndicator />
                         </div>
@@ -128,7 +136,7 @@ export function AiChat() {
           </div>
 
           <Button
-            className="rounded-full p-2"
+            className="rounded-full p-2 [&>svg]:text-muted-foreground"
             size="icon"
             style={{ borderRadius: "50%", width: "36px", height: "36px" }}
             type="submit"

@@ -212,6 +212,10 @@ function SelectItemIndicator({
   );
 }
 
+function SelectSpacer() {
+  return <div style={{ height: "4px", width: "100%" }} />;
+}
+
 export {
   SelectRoot as Select,
   SelectArrow,
@@ -230,6 +234,7 @@ export {
   SelectScrollDownArrow,
   SelectScrollUpArrow,
   SelectSeparator,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 };
