@@ -1,7 +1,7 @@
 "use client";
 
 import type { PageTree } from "fumadocs-core/server";
-import { Gauge } from "lucide-react";
+import { Gauge, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/logo";
@@ -58,6 +58,9 @@ function getIconForItem(itemName: string) {
         width={16}
       />
     );
+  }
+  if (name === "components") {
+    return <Puzzle size={16} />;
   }
 
   return null;
