@@ -5,9 +5,10 @@ import { Check, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/tw-utils";
 
-function ComboboxRoot<ItemValue, Multiple extends boolean | undefined = undefined>(
-  props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>
-) {
+function ComboboxRoot<
+  ItemValue,
+  Multiple extends boolean | undefined = undefined,
+>(props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>) {
   return <Combobox.Root<ItemValue, Multiple> {...props} />;
 }
 
@@ -42,7 +43,7 @@ function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
       className={cn(
         "h-10 w-full flex-1 border-none bg-transparent px-3 py-2 text-foreground text-sm outline-none",
         "placeholder:text-muted-foreground",
-        "focus:outline-none focus-visible:outline-none",
+        "!focus-visible:outline-none !focus:outline-none",
         "max-sm:h-11 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]",
         className
       )}
