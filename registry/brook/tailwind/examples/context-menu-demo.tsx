@@ -47,7 +47,7 @@ export default function ContextMenuDemo() {
               <ContextMenuSubmenuRoot>
                 <ContextMenuSubmenuTrigger>
                   <Share2
-                    className="ml-1 text-[var(--color-muted-foreground)]"
+                    className="ml-1"
                     size={14}
                   />
                   Share

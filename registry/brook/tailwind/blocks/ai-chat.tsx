@@ -56,9 +56,10 @@ export function AiChat() {
         <CardContent>
           <Field
             className={cn(
-              "[&_textarea]:resize-none [&_textarea]:border-none [&_textarea]:bg-transparent [&_textarea]:p-1",
-              "[&_textarea]:h-auto [&_textarea]:min-h-10 [&_textarea]:outline-none",
-              "max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16 max-xl:[&_textarea]:p-2"
+              "[&_textarea]:resize-none [&_textarea]:!border-0 [&_textarea]:bg-transparent [&_textarea]:!p-1",
+              "[&_textarea]:!h-[50px] [&_textarea]:!min-h-[50px] [&_textarea]:outline-none [&_textarea]:!outline-0 [&_textarea]:!px-1",
+              "[&_textarea]:!leading-normal",
+              "max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16 max-xl:[&_textarea]:!p-2"
             )}
           >
             <FieldControl

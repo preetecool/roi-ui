@@ -51,7 +51,6 @@ export default function ContextMenuDemo() {
                     size={14}
                     style={{
                       marginLeft: "4px",
-                      color: "var(--muted-foreground)",
                     }}
                   />
                   Share

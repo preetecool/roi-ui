@@ -71,11 +71,13 @@
 
 .rowLabel {
   font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--muted-foreground);
 }
 
 .rowValue {
   font-size: 0.875rem;
+  line-height: 1.25rem;
   font-weight: 500;
   color: var(--foreground);
   font-variant-numeric: tabular-nums;

@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html className={GeistSans.className} lang="en" suppressHydrationWarning>
       <head>
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/icon.svg" rel="icon" type="image/svg+xml" />
         <link href="/favicon.ico" rel="icon" sizes="any" />
         <link href="/favicon.svg" rel="shortcut icon" />
       </head>

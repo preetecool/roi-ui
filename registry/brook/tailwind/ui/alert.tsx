@@ -51,7 +51,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "alert-title col-start-2 m-0 font-normal text-secondary-foreground text-sm tracking-[-0.02em]",
+        "alert-title col-start-2 m-0 font-normal text-secondary-foreground text-sm leading-5 tracking-[-0.02em]",
         "max-sm:font-medium max-sm:text-[0.9375rem]",
         className
       )}

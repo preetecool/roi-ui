@@ -6,7 +6,7 @@
         fill: #d9dee4;
         stroke: #8291ac;
         stroke-miterlimit: 10;
-        stroke-width: 8px;
+        stroke-width: 20px;
       }
     </style>
   </defs>

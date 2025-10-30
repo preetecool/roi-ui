@@ -13,7 +13,7 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-foreground text-primary-foreground",
+        default: "bg-foreground text-primary-foreground selection:!bg-[oklch(0_0_0)] selection:!text-foreground [&_*]:selection:!bg-[oklch(0_0_0)] [&_*]:selection:!text-foreground",
         secondary:
           "border-transparent bg-[var(--mix-card-66-bg)] text-secondary-foreground",
         destructive: [
