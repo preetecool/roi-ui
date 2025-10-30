@@ -41,24 +41,6 @@
   padding: 0 0.5rem;
 }
 
-.linkListItem {
-  all: unset;
-  cursor: pointer;
-  display: block;
-  outline: none;
-  text-decoration: none;
-  user-select: none;
-  border-radius: 6px;
-
-  line-height: 1;
-  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
-  transition: background-color 0.2s ease;
-}
-
-.linkListItem:hover {
-  background-color: oklch(from var(--secondary) l c h / 0.6);
-}
-
 .linkListItemHeading {
   font-weight: 400;
   font-size: 0.875rem;
@@ -146,35 +128,4 @@
   100% {
     transform: translate(50%, -50%) rotate(180deg);
   }
-}
-
-.trigger {
-  all: unset;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2px;
-  padding: 0.5rem 0.75rem;
-  outline: none;
-  user-select: none;
-  font-weight: 400;
-  line-height: 1;
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.trigger:hover {
-  background-color: var(--mix-card-33-bg);
-}
-
-.trigger:focus-visible {
-  position: relative;
-  outline: 2px solid var(--ring);
-  outline-offset: -1px;
-}
-
-.trigger[data-popup-open] {
-  background-color: var(--mix-card-33-bg);
 }
