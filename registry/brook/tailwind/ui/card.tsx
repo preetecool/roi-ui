@@ -14,12 +14,13 @@ const cardVariants = cva(
         lift: [
           "gap-0 overflow-hidden pb-0",
           "[&_.card-content]:px-6 [&_.card-content]:pt-6 [&_.card-content]:pb-8",
-          "[&_.card-content]:transition-transform [&_.card-content]:duration-[250ms] [&_.card-content]:ease-[var(--ease-in-out-quad)]",
+          "[&_.card-content]:transition-all [&_.card-content]:duration-[250ms] [&_.card-content]:ease-[var(--ease-in-out-quad)]",
           "[&_.card-content]:-mx-6 [&_.card-content]:w-[calc(100%+3rem)] [&_.card-content]:bg-[var(--mix-card-33-bg)]",
           "max-md:[&_.card-image]:-mx-6 max-md:[&_.card-image]:w-[calc(100%+3rem)]",
-          "[&_.card-footer]:opacity-0 [&_.card-footer]:transition-[opacity,transform]",
-          "[&_.card-footer]:duration-[250ms] [&_.card-footer]:ease-[var(--ease-in-out-quad)]",
+          "[&_.card-footer]:opacity-0 [&_.card-footer]:transition-all",
+          "[&_.card-footer]:!duration-[250ms] [&_.card-footer]:!ease-[var(--ease-in-out-quad)]",
           "[&_.card-footer]:absolute [&_.card-footer]:right-6 [&_.card-footer]:bottom-0 [&_.card-footer]:left-6",
+          "[&_.card-image]:transition-all [&_.card-image]:duration-[250ms] [&_.card-image]:ease-[var(--ease-in-out-quad)]",
           "hover:[&_.card-content]:-translate-y-8",
           "hover:[&_.card-footer]:-translate-y-4 hover:[&_.card-footer]:opacity-100",
           "hover:[&_.card-image]:scale-[1.04]",
@@ -167,9 +168,9 @@ function CardImage({
     <Image
       alt={alt}
       className={cn(
-        "card-image aspect-video w-full max-w-none object-cover box-border",
-        "h-[250px] -mt-6 mb-0 mx-0",
-        "md:h-[300px] md:w-[calc(100%+3rem+2px)] md:-mt-[calc(1.5rem+1px)] md:-mx-[calc(1.5rem+1px)] md:mb-0 md:max-w-[100vw]",
+        "card-image box-border aspect-video w-full max-w-none object-cover",
+        "-mt-6 mx-0 mb-0 h-[250px]",
+        "md:-mt-[calc(1.5rem+1px)] md:-mx-[calc(1.5rem+1px)] md:mb-0 md:h-[300px] md:w-[calc(100%+3rem+2px)] md:max-w-[100vw]",
         "rounded-t-[var(--radius)] transition-transform duration-[250ms] ease-[var(--ease-in-out-quad)]",
         className
       )}

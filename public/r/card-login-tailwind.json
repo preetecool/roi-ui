@@ -4,6 +4,13 @@
   "type": "registry:block",
   "title": "Card Login (Tailwind)",
   "description": "A login card component with email/password fields and social login options.",
+  "registryDependencies": [
+    "https://roiui.com/r/badge-tailwind.json",
+    "https://roiui.com/r/button-tailwind.json",
+    "https://roiui.com/r/card-tailwind.json",
+    "https://roiui.com/r/checkbox-tailwind.json",
+    "https://roiui.com/r/field-tailwind.json"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/blocks/card-login.tsx",

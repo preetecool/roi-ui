@@ -317,47 +317,6 @@
   --mix-transparent-88-fg: oklch(0.94 0 0 / 0.88);
 }
 
-/* Revert Tailwind reset for CSS modules demos */
-@layer base {
-  /* Override Tailwind's bundled line-heights to match CSS modules behavior
-   * Tailwind text-* utilities bundle line-height by default, but CSS modules
-   * components don't set line-height, letting elements inherit or use normal (~1.2)
-   */
-  [data-demo="tailwind"] {
-    --text-xs--line-height: 1;
-    --text-sm--line-height: normal;
-    --text-base--line-height: normal;
-    --text-lg--line-height: normal;
-    --text-xl--line-height: normal;
-    --text-2xl--line-height: normal;
-  }
-
-  /* Apply the custom line-heights to text utilities */
-  [data-demo="tailwind"] .text-xs {
-    line-height: var(--text-xs--line-height);
-  }
-
-  [data-demo="tailwind"] .text-sm {
-    line-height: var(--text-sm--line-height);
-  }
-
-  [data-demo="tailwind"] .text-base {
-    line-height: var(--text-base--line-height);
-  }
-
-  [data-demo="tailwind"] .text-lg {
-    line-height: var(--text-lg--line-height);
-  }
-
-  [data-demo="tailwind"] .text-xl {
-    line-height: var(--text-xl--line-height);
-  }
-
-  [data-demo="tailwind"] .text-2xl {
-    line-height: var(--text-2xl--line-height);
-  }
-}
-
 /* Global styles that apply to both demo types */
 @layer all {
   /* Ensure border-box globally for CSS modules demos since Tailwind preflight is reverted */

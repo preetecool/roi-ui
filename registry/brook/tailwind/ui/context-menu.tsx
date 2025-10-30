@@ -260,6 +260,7 @@ function ContextMenuSubmenuTrigger({
         "data-[highlighted]:before:bg-accent/70",
         "hover:before:bg-accent/70",
         "[&:hover_.submenu-icon]:text-secondary-foreground",
+        "[&>svg]:text-muted-foreground [&:hover>svg]:text-secondary-foreground",
         inset && "pl-8",
         "max-sm:min-h-11 max-sm:px-2.5 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className

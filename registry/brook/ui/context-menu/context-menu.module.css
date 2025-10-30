@@ -276,6 +276,14 @@
   color: var(--secondary-foreground);
 }
 
+.submenuTrigger > svg {
+  color: var(--muted-foreground);
+}
+
+.submenuTrigger:hover > svg {
+  color: var(--secondary-foreground);
+}
+
 .group {
   overflow: hidden;
 }

@@ -7,6 +7,11 @@
   "dependencies": [
     "recharts"
   ],
+  "registryDependencies": [
+    "https://roiui.com/r/badge-tailwind.json",
+    "https://roiui.com/r/card-tailwind.json",
+    "https://roiui.com/r/chart-tailwind.json"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/blocks/card-traffic/card-traffic.tsx",

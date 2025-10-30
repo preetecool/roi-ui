@@ -35,16 +35,10 @@
   color: var(--primary-foreground);
 }
 
-.default::selection {
-  background-color: oklch(1 0 0);
+.default::selection,
+.default *::selection {
+  background-color: oklch(0 0 0);
   color: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  .default::selection {
-    background-color: oklch(0 0 0);
-    color: var(--background);
-  }
 }
 
 .secondary {

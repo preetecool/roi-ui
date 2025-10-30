@@ -1,9 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-image",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Card Image",
   "description": "A card component with image, title, description, and button.",
+  "registryDependencies": [
+    "https://roiui.com/r/button.json",
+    "https://roiui.com/r/card.json"
+  ],
   "files": [
     {
       "path": "registry/brook/blocks/card-image/card-image.tsx",
