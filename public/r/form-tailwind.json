@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "form-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Form (Tailwind)",
   "description": "A form component for handling user input.",
   "files": [

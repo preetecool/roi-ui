@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dialog-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Dialog (Tailwind)",
   "description": "A modal dialog component.",
   "files": [

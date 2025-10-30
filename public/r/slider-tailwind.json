@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slider-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Slider (Tailwind)",
   "description": "A slider component for selecting values from a range.",
   "files": [

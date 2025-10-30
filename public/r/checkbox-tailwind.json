@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Checkbox (Tailwind)",
   "description": "A control that allows users to select one or more options from a set.",
   "files": [

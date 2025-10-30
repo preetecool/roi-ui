@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collapsible-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Collapsible (Tailwind)",
   "description": "An expandable/collapsible panel controlled by a button.",
   "files": [

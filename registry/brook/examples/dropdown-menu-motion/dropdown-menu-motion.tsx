@@ -29,7 +29,7 @@ export default function DropdownMenuFramerMotion() {
       <MotionConfig
         transition={{
           type: "spring",
-          bounce: 0.1,
+          bounce: 0,
           duration: 0.4,
           // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
           ease: [0.19, 1, 0.22, 1],
@@ -37,10 +37,12 @@ export default function DropdownMenuFramerMotion() {
       >
         <Menu.Root onOpenChange={setOpen} open={open}>
           <Menu.Trigger
+            hidden={undefined}
             render={
               <motion.button
                 className={styles.button}
                 layoutId="menu-wrapper"
+                style={{ borderRadius: "50%" }}
               />
             }
           >
@@ -49,7 +51,7 @@ export default function DropdownMenuFramerMotion() {
 
           <AnimatePresence>
             {open && (
-              <Menu.Portal container={containerRef} key="portal">
+              <Menu.Portal container={containerRef} keepMounted key="portal">
                 <Menu.Positioner
                   anchor={containerRef}
                   render={<motion.div className={styles.positioner} layout />}
@@ -58,10 +60,11 @@ export default function DropdownMenuFramerMotion() {
                 >
                   <motion.div layoutId="menu-wrapper">
                     <Menu.Popup
+                      hidden={undefined}
                       render={
                         <motion.div
                           className={styles.popup}
-                          style={{ borderRadius: "0.3rem" }}
+                          style={{ borderRadius: "0.6rem" }}
                         />
                       }
                     >

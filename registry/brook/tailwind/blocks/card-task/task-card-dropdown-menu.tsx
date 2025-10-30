@@ -51,12 +51,15 @@ export function TaskCardDropdownMenu({
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className={cn(
-                "isolate text-[var(--destructive)]",
+                "relative isolate text-[var(--destructive)]",
                 "[&_svg]:text-[var(--destructive)]",
-                "before:-z-[1] before:absolute before:inset-0 before:inset-x-1 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
-                "hover:before:bg-[var(--destructive)]",
-                "hover:text-[var(--destructive-foreground)]",
-                "hover:[&_svg]:text-[var(--destructive-foreground)]"
+                "before:!absolute before:!left-1 before:!right-1 before:!top-0 before:!bottom-0 before:!-z-[1] before:!rounded-[0.3rem] before:!bg-transparent before:!content-['']",
+                "hover:before:!bg-[var(--destructive)]",
+                "data-[highlighted]:before:!bg-[var(--destructive)]",
+                "hover:!text-[var(--destructive-foreground)]",
+                "data-[highlighted]:!text-[var(--destructive-foreground)]",
+                "hover:[&_svg]:!text-[var(--destructive-foreground)]",
+                "data-[highlighted]:[&_svg]:!text-[var(--destructive-foreground)]"
               )}
               icon={<Trash size="14" />}
               onClick={onDeleteTask}

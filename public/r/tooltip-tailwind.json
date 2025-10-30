@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Tooltip (Tailwind)",
   "description": "A popup that displays information on hover.",
   "files": [

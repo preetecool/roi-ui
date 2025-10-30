@@ -1211,6 +1211,21 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "profile-menu": {
+    name: "profile-menu",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/blocks/profile-menu/profile-menu"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "profile-menu";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   "accordion-demo-tailwind": {
     name: "accordion-demo-tailwind",
     type: "example",

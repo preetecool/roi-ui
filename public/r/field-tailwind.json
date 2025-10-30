@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "field-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Field (Tailwind)",
   "description": "A form field component with label and validation.",
   "files": [

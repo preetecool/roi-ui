@@ -168,6 +168,53 @@ function DropdownMenuSubmenuTrigger({
   );
 }
 
+function DropdownMenuRadioGroup({
+  ...props
+}: Menu.RadioGroup.Props) {
+  return <Menu.RadioGroup {...props} />;
+}
+
+function DropdownMenuRadioItem({
+  className,
+  children,
+  ...props
+}: Menu.RadioItem.Props) {
+  return (
+    <Menu.RadioItem
+      data-slot="menu-radioitem"
+      className={cn(
+        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
+        "relative isolate m-0 justify-start",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
+        "data-[popup-open]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "data-[highlighted]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "hover:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "focus:outline-none focus:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </Menu.RadioItem>
+  );
+}
+
+function DropdownMenuRadioItemIndicator({
+  className,
+  ...props
+}: Menu.RadioItemIndicator.Props) {
+  return (
+    <Menu.RadioItemIndicator
+      className={cn(
+        "ml-auto flex items-center justify-center text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
 export {
   DropdownMenuRoot as DropdownMenu,
   DropdownMenuArrow,
@@ -175,6 +222,9 @@ export {
   DropdownMenuPopup,
   DropdownMenuPortal,
   DropdownMenuPositioner,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuRadioItemIndicator,
   DropdownMenuSeparator,
   DropdownMenuSubmenuRoot,
   DropdownMenuSubmenuTrigger,

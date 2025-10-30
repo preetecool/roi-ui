@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "number-field-tailwind",
-  "type": "registry:item",
+  "type": "registry:ui",
   "title": "Number Field (Tailwind)",
   "description": "A numeric input element with increment/decrement buttons and a scrub area.",
   "files": [
