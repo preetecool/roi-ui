@@ -46,16 +46,25 @@ interface DropdownMenuItemProps extends Menu.Item.Props {
   icon?: ReactNode;
   className?: string;
   children?: ReactNode;
+  variant?: "default" | "destructive";
 }
 
 function DropdownMenuItem({
   className,
   icon,
   children,
+  variant = "default",
   ...props
 }: DropdownMenuItemProps) {
   return (
-    <Menu.Item className={cn(styles.item, className)} {...props}>
+    <Menu.Item
+      className={cn(
+        styles.item,
+        variant === "destructive" && styles.itemDestructive,
+        className
+      )}
+      {...props}
+    >
       {icon && <span className={styles.icon}>{icon}</span>}
       {children}
     </Menu.Item>
@@ -139,6 +148,10 @@ function DropdownMenuRadioItemIndicator({
   );
 }
 
+function DropdownMenuSpacer() {
+  return <div style={{ height: "4px", width: "100%" }} />;
+}
+
 export {
   DropdownMenuRoot as DropdownMenu,
   DropdownMenuArrow,
@@ -150,6 +163,7 @@ export {
   DropdownMenuRadioItem,
   DropdownMenuRadioItemIndicator,
   DropdownMenuSeparator,
+  DropdownMenuSpacer,
   DropdownMenuSubmenuRoot,
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,

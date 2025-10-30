@@ -7,9 +7,9 @@ import {
   DropdownMenuPortal,
   DropdownMenuPositioner,
   DropdownMenuSeparator,
+  DropdownMenuSpacer,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import styles from "./dropdown-menu-demo.module.css";
 
 export default function DropdownMenuDemo() {
   return (
@@ -17,16 +17,14 @@ export default function DropdownMenuDemo() {
       <DropdownMenuTrigger
         render={
           <Button variant="outline">
-            <div className={styles.triggerContent}>
-              <span> Actions </span>
-            </div>
+            <span> Actions </span>
           </Button>
         }
       />
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup render={<ul />}>
-            <div style={{ height: "4px", width: "100%" }} />
+            <DropdownMenuSpacer />
             <DropdownMenuItem icon={<Edit size={14} />} render={<li />}>
               Edit...
             </DropdownMenuItem>
@@ -40,13 +38,13 @@ export default function DropdownMenuDemo() {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className={styles.deleteItem}
               icon={<Trash2 size={14} />}
               render={<li />}
+              variant="destructive"
             >
               Delete
             </DropdownMenuItem>
-            <div style={{ height: "4px", width: "100%" }} />
+            <DropdownMenuSpacer />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>

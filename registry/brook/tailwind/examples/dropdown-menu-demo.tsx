@@ -1,5 +1,4 @@
 import { Archive, Copy, Edit, Trash2 } from "lucide-react";
-import { cn } from "@/lib/tw-utils";
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -7,6 +6,7 @@ import {
   DropdownMenuPortal,
   DropdownMenuPositioner,
   DropdownMenuSeparator,
+  DropdownMenuSpacer,
   DropdownMenuTrigger,
 } from "@/registry/brook/tailwind/ui/dropdown-menu";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -17,16 +17,14 @@ export default function DropdownMenuDemo() {
       <DropdownMenuTrigger
         render={
           <Button variant="outline">
-            <div className="flex items-center">
-              <span> Actions </span>
-            </div>
+            <span> Actions </span>
           </Button>
         }
       />
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup render={<ul />}>
-            <div style={{ height: "4px", width: "100%" }} />
+            <DropdownMenuSpacer />
             <DropdownMenuItem icon={<Edit size={14} />} render={<li />}>
               Edit...
             </DropdownMenuItem>
@@ -40,17 +38,13 @@ export default function DropdownMenuDemo() {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className={cn(
-                "text-[var(--destructive)]",
-                "[&_svg]:text-[var(--destructive)]",
-                "hover:text-[var(--destructive-foreground)] hover:before:!bg-[var(--destructive)] hover:[&_svg]:text-[var(--destructive-foreground)]"
-              )}
               icon={<Trash2 size={14} />}
               render={<li />}
+              variant="destructive"
             >
               Delete
             </DropdownMenuItem>
-            <div style={{ height: "4px", width: "100%" }} />
+            <DropdownMenuSpacer />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>
