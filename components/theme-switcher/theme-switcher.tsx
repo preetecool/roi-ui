@@ -16,14 +16,7 @@ export function ThemeSwitcher() {
 
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
-
-    if (typeof document !== "undefined" && document.startViewTransition) {
-      document.startViewTransition(() => {
-        setTheme(newTheme);
-      });
-    } else {
-      setTheme(newTheme);
-    }
+    setTheme(newTheme);
   };
 
   const ariaLabel =

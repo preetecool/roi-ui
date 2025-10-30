@@ -91,7 +91,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
                       height={600}
                       layoutId={`image-${item.id}`}
                       src={item.imageSrc}
-                      style={{ borderRadius: "16px" }}
+                      style={{ borderRadius: "24px" }}
                       width={600}
                     />
 
@@ -143,7 +143,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
             height={300}
             layoutId={`image-${item.id}`}
             src={item.imageSrc}
-            style={{ borderRadius: "12px" }}
+            style={{ borderRadius: "24px" }}
             width={300}
           />
 
