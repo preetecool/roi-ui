@@ -12,6 +12,7 @@
   overflow: hidden;
   line-height: 1.2;
   letter-spacing: -0.014em;
+  will-change: transform;
 }
 .base:active:not(:disabled):not(.loading) {
   transform: scale(0.97);

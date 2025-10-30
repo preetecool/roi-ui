@@ -137,6 +137,26 @@
   opacity: 1;
 }
 
+.itemDestructive {
+  color: var(--destructive);
+}
+
+.itemDestructive .icon {
+  color: var(--destructive);
+}
+
+.itemDestructive:hover::before {
+  background-color: var(--destructive);
+}
+
+.itemDestructive:hover {
+  color: var(--destructive-foreground);
+}
+
+.itemDestructive:hover .icon {
+  color: var(--destructive-foreground);
+}
+
 .inset {
   padding-left: 2rem;
 }

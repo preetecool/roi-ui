@@ -98,6 +98,7 @@ interface ContextMenuItemProps
   inset?: boolean;
   className?: string;
   children?: ReactNode;
+  variant?: "default" | "destructive";
 }
 
 function ContextMenuItem({
@@ -105,6 +106,7 @@ function ContextMenuItem({
   icon,
   children,
   inset = false,
+  variant = "default",
   ...props
 }: ContextMenuItemProps) {
   return (
@@ -124,6 +126,11 @@ function ContextMenuItem({
         "data-[disabled]:hover:bg-transparent",
         "[&:hover_.context-menu-shortcut]:text-secondary-foreground",
         "[&:hover_.context-menu-icon]:text-secondary-foreground [&:hover_.context-menu-icon]:opacity-100",
+        variant === "destructive" && [
+          "text-[var(--destructive)]",
+          "[&_.context-menu-icon]:text-[var(--destructive)]",
+          "hover:before:!bg-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:[&_.context-menu-icon]:text-[var(--destructive-foreground)]"
+        ],
         inset && "pl-8",
         "max-sm:min-h-11 max-sm:gap-3 max-sm:px-2.5 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
@@ -305,6 +312,10 @@ function ContextMenuShortcut({
   );
 }
 
+function ContextMenuSpacer() {
+  return <div className="h-1 w-full" />;
+}
+
 export {
   ContextMenuRoot as ContextMenu,
   ContextMenuArrow,
@@ -320,6 +331,7 @@ export {
   ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
+  ContextMenuSpacer,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
   ContextMenuTrigger,
