@@ -74,7 +74,7 @@ function MenubarMenuPopup({
         "rounded-[var(--radius)] border-[0.5px] border-[var(--color-border-60)]",
         "flex flex-col",
         "shadow-[0px_0.5px_0.5px_var(--shadow-color),0px_0.5px_0.5px_var(--shadow-color),0px_0.5px_0.5px_var(--shadow-color)]",
-        "origin-[top_center] transition-[transform,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
+        "origin-[top_center] transition-[transform,opacity] duration-150 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "max-sm:max-w-[calc(100vw-2rem)] max-sm:p-1.5",

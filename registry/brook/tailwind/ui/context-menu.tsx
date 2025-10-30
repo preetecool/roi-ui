@@ -68,7 +68,7 @@ function ContextMenuPopup({
         "box-border min-w-[140px] bg-[var(--mix-card-50-bg)]",
         "rounded-[var(--radius)] border-[0.5px] border-border/60",
         "flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
-        "origin-[top_center] transition-[transform,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
+        "origin-[top_center] transition-[transform,opacity] duration-150 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "max-sm:max-w-[calc(100vw-2rem)] max-sm:p-1.5",
