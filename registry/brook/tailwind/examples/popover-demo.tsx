@@ -98,7 +98,7 @@ export default function PopoverDemo() {
               <div className="flex items-stretch gap-2">
                 <Input
                   className="flex-1 border-[0.5px] border-border/60 bg-transparent"
-                  defaultValue="https://roi.com"
+                  defaultValue="https://roiui.com"
                   readOnly
                 />
                 <CopyButton

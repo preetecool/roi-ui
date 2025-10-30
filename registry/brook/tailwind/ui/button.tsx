@@ -131,7 +131,7 @@ function ArrowPointer({
     "-mt-px -mr-2 relative top-0 ml-2 h-3 w-3.5 overflow-visible",
     "transition-all duration-200 ease-[var(--ease-in-out-cubic)]",
     pointLeft && "-ml-2 mr-2",
-    pointExternal && "origin-[8%] group-hover:-rotate-45"
+    pointExternal && "group-hover:-rotate-45 origin-[8%]"
   );
 
   const pointClasses =

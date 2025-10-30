@@ -6,6 +6,8 @@ import {
   MenubarMenuPortal,
   MenubarMenuPositioner,
   MenubarMenuSeparator,
+  MenubarMenuShortcut,
+  MenubarMenuSpacer,
   MenubarMenuSubmenuRoot,
   MenubarMenuSubmenuTrigger,
   MenubarMenuTrigger,
@@ -30,31 +32,19 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  New File
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘N
-                  </span>
-                </div>
+                New File
+                <MenubarMenuShortcut>⌘N</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Open
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘O
-                  </span>
-                </div>
+                Open
+                <MenubarMenuShortcut>⌘O</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuSeparator />
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Save
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘S
-                  </span>
-                </div>
+                Save
+                <MenubarMenuShortcut>⌘S</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>Save As...</MenubarMenuItem>
               <MenubarMenuSeparator />
@@ -64,11 +54,11 @@ export default function MenubarDemo() {
                 <MenubarMenuPortal>
                   <MenubarMenuPositioner align="start" side="right">
                     <MenubarMenuPopup>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                       <MenubarMenuItem>PDF</MenubarMenuItem>
                       <MenubarMenuItem>PNG</MenubarMenuItem>
                       <MenubarMenuItem>SVG</MenubarMenuItem>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                     </MenubarMenuPopup>
                   </MenubarMenuPositioner>
                 </MenubarMenuPortal>
@@ -76,7 +66,7 @@ export default function MenubarDemo() {
 
               <MenubarMenuSeparator />
               <MenubarMenuItem>Print</MenubarMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -97,49 +87,29 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Undo
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘Z
-                  </span>
-                </div>
+                Undo
+                <MenubarMenuShortcut>⌘Z</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Redo
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘⇧Z
-                  </span>
-                </div>
+                Redo
+                <MenubarMenuShortcut>⌘⇧Z</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuSeparator />
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Cut
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘X
-                  </span>
-                </div>
+                Cut
+                <MenubarMenuShortcut>⌘X</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Copy
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘C
-                  </span>
-                </div>
+                Copy
+                <MenubarMenuShortcut>⌘C</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className="flex w-full items-center justify-between">
-                  Paste
-                  <span className="mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60 max-sm:hidden">
-                    ⌘V
-                  </span>
-                </div>
+                Paste
+                <MenubarMenuShortcut>⌘V</MenubarMenuShortcut>
               </MenubarMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -160,7 +130,7 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>Toggle Sidebar</MenubarMenuItem>
               <MenubarMenuItem>Toggle Fullscreen</MenubarMenuItem>
               <MenubarMenuSeparator />
@@ -174,15 +144,15 @@ export default function MenubarDemo() {
                 <MenubarMenuPortal>
                   <MenubarMenuPositioner align="start" side="right">
                     <MenubarMenuPopup>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                       <MenubarMenuItem>Single Page</MenubarMenuItem>
                       <MenubarMenuItem>Two Pages</MenubarMenuItem>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                     </MenubarMenuPopup>
                   </MenubarMenuPositioner>
                 </MenubarMenuPortal>
               </MenubarMenuSubmenuRoot>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -203,11 +173,11 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>About</MenubarMenuItem>
               <MenubarMenuItem>Documentation</MenubarMenuItem>
               <MenubarMenuItem disabled>Keyboard Shortcuts</MenubarMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>

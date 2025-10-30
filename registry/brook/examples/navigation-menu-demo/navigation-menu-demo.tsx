@@ -12,6 +12,7 @@ import {
   NavigationMenuPositioner,
   NavigationMenuTrigger,
   NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "@/registry/brook/ui/navigation-menu/navigation-menu";
 import styles from "./navigation-menu-demo.module.css";
 
@@ -26,7 +27,7 @@ function ListItem({
   href?: string;
 }) {
   return (
-    <li className={styles.linkListItem}>
+    <li>
       <NavigationMenuLink render={<Link href={href} />}>
         <h3 className={styles.linkListItemHeading}>{title}</h3>
         <p className={styles.linkListItemText}>{children}</p>
@@ -40,9 +41,7 @@ export default function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className={styles.trigger}>
-            Products
-          </NavigationMenuTrigger>
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className={`${styles.linkList} ${styles.one}`}>
               <ListItem title="UI">Building blocks</ListItem>
@@ -93,9 +92,7 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className={styles.trigger}>
-            About
-          </NavigationMenuTrigger>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className={styles.twoColContainer}>
               <ul className={styles.linkListCol}>
@@ -113,7 +110,7 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            className={styles.trigger}
+            className={navigationMenuTriggerStyle()}
             render={<Link href="#" />}
           >
             Help

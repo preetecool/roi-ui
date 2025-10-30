@@ -73,6 +73,7 @@ interface ContextMenuItemProps extends ContextMenu.Item.Props {
   inset?: boolean;
   className?: string;
   children?: ReactNode;
+  variant?: "default" | "destructive";
 }
 
 function ContextMenuItem({
@@ -80,12 +81,18 @@ function ContextMenuItem({
   icon,
   children,
   inset = false,
+  variant = "default",
   ...props
 }: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
       data-slot="contextmenu-item"
-      className={cn(styles.item, inset && styles.inset, className)}
+      className={cn(
+        styles.item,
+        inset && styles.inset,
+        variant === "destructive" && styles.itemDestructive,
+        className
+      )}
       {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}
@@ -208,6 +215,10 @@ function ContextMenuShortcut({
   return <span className={cn(styles.shortcut, className)} {...props} />;
 }
 
+function ContextMenuSpacer() {
+  return <div style={{ height: "4px", width: "100%" }} />;
+}
+
 export {
   ContextMenuRoot as ContextMenu,
   ContextMenuArrow,
@@ -223,6 +234,7 @@ export {
   ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
+  ContextMenuSpacer,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
   ContextMenuTrigger,

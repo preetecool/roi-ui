@@ -87,14 +87,23 @@
     oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   transform-origin: "top center";
   transition:
-    transform 250ms var(--ease-out-expo),
-    opacity 250ms var(--ease-out-expo);
+    transform 150ms var(--ease-out-expo),
+    opacity 150ms var(--ease-out-expo);
 }
 
 .menuPopup[data-starting-style],
 .menuPopup[data-ending-style] {
   opacity: 0;
   transform: scale(0.95);
+}
+
+.shortcut {
+  margin-left: auto;
+  margin-right: 4px;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  letter-spacing: 0.025em;
+  opacity: 0.6;
 }
 
 @media (max-width: 640px) {
@@ -112,5 +121,9 @@
   .menuPopup {
     padding: 0.375rem;
     max-width: calc(100vw - 2rem);
+  }
+
+  .shortcut {
+    display: none;
   }
 }

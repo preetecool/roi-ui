@@ -53,7 +53,7 @@
   background-image: linear-gradient(
     180deg,
     oklch(from var(--accent) l c h / 0.1) 0%,
-    oklch(from var(--accent) l c h / 0.2) 100%
+    oklch(from var(--accent) l c h / 0.4) 100%
   );
   box-sizing: border-box;
 
@@ -91,8 +91,8 @@
   transform-origin: top center;
   box-shadow:
     0 0 0 1px oklch(from var(--muted) l c h / 0.3),
-    0px 1px 1px oklch(from var(--muted) l c h / 0.15),
-    0px 4px 8px oklch(from var(--muted) l c h / 0.15);
+    0px 1px 1px oklch(from var(--muted) l c h / 0.2),
+    0px 4px 8px oklch(from var(--muted) l c h / 0.2);
 
   transition:
     width 250ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -190,6 +190,31 @@
   height: 100%;
 }
 
+.link {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  border-radius: 6px;
+  line-height: 1;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  transition: background-color 0.2s ease;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: oklch(from var(--secondary) l c h / 0.6);
+    }
+  }
+
+  &:focus-visible {
+    position: relative;
+    outline: 2px solid var(--ring);
+    outline-offset: -1px;
+  }
+}
+
 .chevron {
   transition: transform 0.2s ease;
 
@@ -231,7 +256,6 @@
   stroke: oklch(from var(--muted) l c h / 0.3);
 }
 
-/* Popup directional animations */
 @keyframes enterFromRight {
   from {
     opacity: 0;
@@ -268,7 +292,6 @@
   }
 }
 
-/* Content smoother directional animations */
 @keyframes contentEnterFromRight {
   from {
     opacity: 0;

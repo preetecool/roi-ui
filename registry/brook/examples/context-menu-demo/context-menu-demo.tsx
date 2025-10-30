@@ -17,6 +17,7 @@ import {
   ContextMenuPositioner,
   ContextMenuSeparator,
   ContextMenuShortcut,
+  ContextMenuSpacer,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
   ContextMenuTrigger,
@@ -34,7 +35,7 @@ export default function ContextMenuDemo() {
         <ContextMenuPortal>
           <ContextMenuPositioner>
             <ContextMenuPopup className={styles.popup}>
-              <div style={{ height: "4px", width: "100%" }} />
+              <ContextMenuSpacer />
               <ContextMenuItem icon={<FileText size={14} />}>
                 New File
                 <ContextMenuShortcut>⌘+N</ContextMenuShortcut>
@@ -58,7 +59,7 @@ export default function ContextMenuDemo() {
                 <ContextMenuPortal>
                   <ContextMenuPositioner>
                     <ContextMenuPopup>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <ContextMenuSpacer />
                       <ContextMenuItem style={{ paddingLeft: "12px" }}>
                         Email Link
                       </ContextMenuItem>
@@ -69,7 +70,7 @@ export default function ContextMenuDemo() {
                       <ContextMenuItem icon={<MoreHorizontal size={14} />}>
                         More...
                       </ContextMenuItem>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <ContextMenuSpacer />
                     </ContextMenuPopup>
                   </ContextMenuPositioner>
                 </ContextMenuPortal>
@@ -90,13 +91,13 @@ export default function ContextMenuDemo() {
               </ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem
-                className={styles.deleteItem}
                 icon={<Trash2 size={14} />}
+                variant="destructive"
               >
                 Delete
                 <ContextMenuShortcut>⌫</ContextMenuShortcut>
               </ContextMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <ContextMenuSpacer />
             </ContextMenuPopup>
           </ContextMenuPositioner>
         </ContextMenuPortal>

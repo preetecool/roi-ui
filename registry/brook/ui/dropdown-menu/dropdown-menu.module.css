@@ -36,8 +36,8 @@
     oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   transform-origin: "top center";
   transition:
-    transform 250ms var(--ease-out-expo),
-    opacity 250ms var(--ease-out-expo);
+    transform 150ms var(--ease-out-expo),
+    opacity 150ms var(--ease-out-expo);
 }
 .popup[data-starting-style],
 .popup[data-ending-style] {
@@ -126,6 +126,26 @@
 
 .item[data-disabled]:hover {
   background: transparent;
+}
+
+.itemDestructive {
+  color: var(--destructive);
+}
+
+.itemDestructive .icon {
+  color: var(--destructive);
+}
+
+.itemDestructive:hover::before {
+  background-color: var(--destructive);
+}
+
+.itemDestructive:hover {
+  color: var(--destructive-foreground);
+}
+
+.itemDestructive:hover .icon {
+  color: var(--destructive-foreground);
 }
 
 .arrow {

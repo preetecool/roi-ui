@@ -12,6 +12,7 @@ import {
   NavigationMenuPositioner,
   NavigationMenuTrigger,
   NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "@/registry/brook/tailwind/ui/navigation-menu";
 
 function ListItem({
@@ -46,9 +47,7 @@ export default function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="focus-visible:-outline-offset-1 flex cursor-pointer select-none items-center justify-between gap-0.5 rounded-[var(--radius)] px-3 py-2 font-normal text-sm leading-none outline-none transition-colors hover:bg-[--mix-card-33-bg] focus-visible:relative focus-visible:outline-2 focus-visible:outline-[--ring] data-[popup-open]:bg-[--mix-card-33-bg]">
-            Products
-          </NavigationMenuTrigger>
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[350px] list-none grid-cols-2 grid-rows-[repeat(3,1fr)] gap-x-2.5 gap-y-0 p-2 max-[768px]:max-w-[300px] max-[768px]:grid-cols-1 max-[768px]:grid-rows-auto">
               <ListItem title="UI">Building blocks</ListItem>
@@ -98,9 +97,7 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="focus-visible:-outline-offset-1 flex cursor-pointer select-none items-center justify-between gap-0.5 rounded-[var(--radius)] px-3 py-2 font-normal text-sm leading-none outline-none transition-colors hover:bg-[--mix-card-33-bg] focus-visible:relative focus-visible:outline-2 focus-visible:outline-[--ring] data-[popup-open]:bg-[--mix-card-33-bg]">
-            About
-          </NavigationMenuTrigger>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="before:-translate-x-2 relative grid w-[400px] grid-cols-2 gap-x-4 p-2 before:absolute before:top-0 before:bottom-0 before:left-1/2 before:w-[0.5px] before:bg-border/60 before:content-[''] max-[768px]:max-w-[260px] max-[768px]:grid-cols-1 max-[768px]:before:hidden">
               <ul className="m-0 flex list-none flex-col px-2">
@@ -118,7 +115,7 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            className="focus-visible:-outline-offset-1 flex cursor-pointer select-none items-center justify-between gap-0.5 rounded-[var(--radius)] px-3 py-2 font-normal text-sm leading-none outline-none transition-colors hover:bg-[--mix-card-33-bg] focus-visible:relative focus-visible:outline-2 focus-visible:outline-[--ring] data-[popup-open]:bg-[--mix-card-33-bg]"
+            className={navigationMenuTriggerStyle()}
             render={<Link href="#" />}
           >
             Help

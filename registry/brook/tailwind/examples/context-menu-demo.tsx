@@ -17,6 +17,7 @@ import {
   ContextMenuPositioner,
   ContextMenuSeparator,
   ContextMenuShortcut,
+  ContextMenuSpacer,
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
   ContextMenuTrigger,
@@ -33,7 +34,7 @@ export default function ContextMenuDemo() {
         <ContextMenuPortal>
           <ContextMenuPositioner>
             <ContextMenuPopup className="min-w-[16rem]">
-              <div className="h-1 w-full" />
+              <ContextMenuSpacer />
               <ContextMenuItem icon={<FileText size={14} />}>
                 New File
                 <ContextMenuShortcut>⌘+N</ContextMenuShortcut>
@@ -55,7 +56,7 @@ export default function ContextMenuDemo() {
                 <ContextMenuPortal>
                   <ContextMenuPositioner>
                     <ContextMenuPopup>
-                      <div className="h-1 w-full" />
+                      <ContextMenuSpacer />
                       <ContextMenuItem className="pl-3">
                         Email Link
                       </ContextMenuItem>
@@ -66,7 +67,7 @@ export default function ContextMenuDemo() {
                       <ContextMenuItem icon={<MoreHorizontal size={14} />}>
                         More...
                       </ContextMenuItem>
-                      <div className="h-1 w-full" />
+                      <ContextMenuSpacer />
                     </ContextMenuPopup>
                   </ContextMenuPositioner>
                 </ContextMenuPortal>
@@ -87,13 +88,13 @@ export default function ContextMenuDemo() {
               </ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem
-                className="text-[var(--destructive)] [&_svg]:text-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:before:!bg-[var(--destructive)] hover:[&_svg]:text-[var(--destructive-foreground)]"
                 icon={<Trash2 size={14} />}
+                variant="destructive"
               >
                 Delete
                 <ContextMenuShortcut>⌫</ContextMenuShortcut>
               </ContextMenuItem>
-              <div className="h-1 w-full" />
+              <ContextMenuSpacer />
             </ContextMenuPopup>
           </ContextMenuPositioner>
         </ContextMenuPortal>

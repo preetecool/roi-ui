@@ -7,6 +7,8 @@ import {
   MenubarMenuPortal,
   MenubarMenuPositioner,
   MenubarMenuSeparator,
+  MenubarMenuShortcut,
+  MenubarMenuSpacer,
   MenubarMenuSubmenuRoot,
   MenubarMenuSubmenuTrigger,
   MenubarMenuTrigger,
@@ -27,25 +29,19 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  New File
-                  <span className={styles.shortcut}>⌘N</span>
-                </div>
+                New File
+                <MenubarMenuShortcut>⌘N</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Open
-                  <span className={styles.shortcut}>⌘O</span>
-                </div>
+                Open
+                <MenubarMenuShortcut>⌘O</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuSeparator />
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Save
-                  <span className={styles.shortcut}>⌘S</span>
-                </div>
+                Save
+                <MenubarMenuShortcut>⌘S</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>Save As...</MenubarMenuItem>
               <MenubarMenuSeparator />
@@ -55,11 +51,11 @@ export default function MenubarDemo() {
                 <MenubarMenuPortal>
                   <MenubarMenuPositioner align="start" side="right">
                     <MenubarMenuPopup>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                       <MenubarMenuItem>PDF</MenubarMenuItem>
                       <MenubarMenuItem>PNG</MenubarMenuItem>
                       <MenubarMenuItem>SVG</MenubarMenuItem>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                     </MenubarMenuPopup>
                   </MenubarMenuPositioner>
                 </MenubarMenuPortal>
@@ -67,7 +63,7 @@ export default function MenubarDemo() {
 
               <MenubarMenuSeparator />
               <MenubarMenuItem>Print</MenubarMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -84,39 +80,29 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Undo
-                  <span className={styles.shortcut}>⌘Z</span>
-                </div>
+                Undo
+                <MenubarMenuShortcut>⌘Z</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Redo
-                  <span className={styles.shortcut}>⌘⇧Z</span>
-                </div>
+                Redo
+                <MenubarMenuShortcut>⌘⇧Z</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuSeparator />
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Cut
-                  <span className={styles.shortcut}>⌘X</span>
-                </div>
+                Cut
+                <MenubarMenuShortcut>⌘X</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Copy
-                  <span className={styles.shortcut}>⌘C</span>
-                </div>
+                Copy
+                <MenubarMenuShortcut>⌘C</MenubarMenuShortcut>
               </MenubarMenuItem>
               <MenubarMenuItem>
-                <div className={styles.menuItemContent}>
-                  Paste
-                  <span className={styles.shortcut}>⌘V</span>
-                </div>
+                Paste
+                <MenubarMenuShortcut>⌘V</MenubarMenuShortcut>
               </MenubarMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -133,7 +119,7 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>Toggle Sidebar</MenubarMenuItem>
               <MenubarMenuItem>Toggle Fullscreen</MenubarMenuItem>
               <MenubarMenuSeparator />
@@ -147,15 +133,15 @@ export default function MenubarDemo() {
                 <MenubarMenuPortal>
                   <MenubarMenuPositioner align="start" side="right">
                     <MenubarMenuPopup>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                       <MenubarMenuItem>Single Page</MenubarMenuItem>
                       <MenubarMenuItem>Two Pages</MenubarMenuItem>
-                      <div style={{ height: "4px", width: "100%" }} />
+                      <MenubarMenuSpacer />
                     </MenubarMenuPopup>
                   </MenubarMenuPositioner>
                 </MenubarMenuPortal>
               </MenubarMenuSubmenuRoot>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>
@@ -172,11 +158,11 @@ export default function MenubarDemo() {
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
               <MenubarMenuItem>About</MenubarMenuItem>
               <MenubarMenuItem>Documentation</MenubarMenuItem>
               <MenubarMenuItem disabled>Keyboard Shortcuts</MenubarMenuItem>
-              <div style={{ height: "4px", width: "100%" }} />
+              <MenubarMenuSpacer />
             </MenubarMenuPopup>
           </MenubarMenuPositioner>
         </MenubarMenuPortal>

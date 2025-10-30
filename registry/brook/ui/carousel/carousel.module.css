@@ -93,19 +93,60 @@
 }
 
 .navButton {
-  /* Minimal unstyled button - styling should be done in demos/examples */
-  background: none;
-  border: none;
-  padding: 0;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  background: var(--card);
+  color: var(--foreground);
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s var(--ease-out-quad);
+  opacity: 0.9;
+}
+
+.navButton:hover {
+  opacity: 1;
+  background: var(--muted);
+  transform: scale(1.05);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.navButton:active {
+  transform: scale(0.95);
 }
 
 .navButton:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.3;
+  cursor: default;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.navButton:disabled:hover {
+  opacity: 0.3;
+  transform: none;
+  background: var(--muted);
+}
+
+.navButton svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navButton {
+    transition: none;
+  }
 }
 
 .indicators {

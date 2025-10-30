@@ -36,8 +36,8 @@
     oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
   transform-origin: "top center";
   transition:
-    transform 250ms var(--ease-out-expo),
-    opacity 250ms var(--ease-out-expo);
+    transform 150ms var(--ease-out-expo),
+    opacity 150ms var(--ease-out-expo);
 
   &[data-starting-style],
   &[data-ending-style] {
@@ -135,6 +135,26 @@
 
 .item:hover .icon {
   opacity: 1;
+}
+
+.itemDestructive {
+  color: var(--destructive);
+}
+
+.itemDestructive .icon {
+  color: var(--destructive);
+}
+
+.itemDestructive:hover::before {
+  background-color: var(--destructive);
+}
+
+.itemDestructive:hover {
+  color: var(--destructive-foreground);
+}
+
+.itemDestructive:hover .icon {
+  color: var(--destructive-foreground);
 }
 
 .inset {

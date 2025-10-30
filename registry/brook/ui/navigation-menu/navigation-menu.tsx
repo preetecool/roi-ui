@@ -8,7 +8,11 @@ function NavigationMenuRoot({
   ...props
 }: NavigationMenu.Root.Props) {
   return (
-    <NavigationMenu.Root data-slot="navigationmenu-root" className={cn(styles.root, className)} {...props} />
+    <NavigationMenu.Root
+      className={cn(styles.root, className)}
+      data-slot="navigationmenu-root"
+      {...props}
+    />
   );
 }
 
@@ -17,7 +21,11 @@ function NavigationMenuList({
   ...props
 }: NavigationMenu.List.Props) {
   return (
-    <NavigationMenu.List data-slot="navigationmenu-list" className={cn(styles.list, className)} {...props} />
+    <NavigationMenu.List
+      className={cn(styles.list, className)}
+      data-slot="navigationmenu-list"
+      {...props}
+    />
   );
 }
 
@@ -34,8 +42,8 @@ function NavigationMenuTrigger({
 }: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
-      data-slot="navigationmenu-trigger"
       className={cn(styles.trigger, className)}
+      data-slot="navigationmenu-trigger"
       {...props}
     />
   );
@@ -47,8 +55,8 @@ function NavigationMenuContent({
 }: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
-      data-slot="navigationmenu-content"
       className={cn(styles.content, className)}
+      data-slot="navigationmenu-content"
       {...props}
     />
   );
@@ -59,7 +67,11 @@ function NavigationMenuIcon({
   ...props
 }: NavigationMenu.Icon.Props) {
   return (
-    <NavigationMenu.Icon data-slot="navigationmenu-icon" className={cn(styles.chevron, className)} {...props} />
+    <NavigationMenu.Icon
+      className={cn(styles.chevron, className)}
+      data-slot="navigationmenu-icon"
+      {...props}
+    />
   );
 }
 
@@ -68,7 +80,11 @@ function NavigationMenuLink({
   ...props
 }: NavigationMenu.Link.Props) {
   return (
-    <NavigationMenu.Link data-slot="navigationmenu-link" className={cn(styles.link, className)} {...props} />
+    <NavigationMenu.Link
+      className={className || styles.link}
+      data-slot="navigationmenu-link"
+      {...props}
+    />
   );
 }
 
@@ -85,8 +101,8 @@ function NavigationMenuBackdrop({
 }: NavigationMenu.Backdrop.Props) {
   return (
     <NavigationMenu.Backdrop
-      data-slot="navigationmenu-backdrop"
       className={cn(styles.backdrop, className)}
+      data-slot="navigationmenu-backdrop"
       {...props}
     />
   );
@@ -99,8 +115,8 @@ function NavigationMenuPositioner({
 }: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
-      data-slot="navigationmenu-positioner"
       className={cn(styles.positioner, className)}
+      data-slot="navigationmenu-positioner"
       {...props}
     >
       {children}
@@ -159,12 +175,14 @@ function NavigationMenuViewport({
 }: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
-      data-slot="navigationmenu-viewport"
       className={cn(styles.viewport, className)}
+      data-slot="navigationmenu-viewport"
       {...props}
     />
   );
 }
+
+const navigationMenuTriggerStyle = () => styles.trigger;
 
 export {
   NavigationMenuRoot as NavigationMenu,
@@ -180,4 +198,5 @@ export {
   NavigationMenuPopup,
   NavigationMenuArrow,
   NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 };

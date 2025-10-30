@@ -317,9 +317,7 @@
   --mix-transparent-88-fg: oklch(0.94 0 0 / 0.88);
 }
 
-/* Global styles that apply to both demo types */
 @layer all {
-  /* Ensure border-box globally for CSS modules demos since Tailwind preflight is reverted */
   [data-demo="css-modules"] *,
   [data-demo="css-modules"] *::before,
   [data-demo="css-modules"] *::after {
@@ -362,9 +360,6 @@
     background: var(--muted-foreground);
   }
 
-  /* Form elements inherit font-family and font-size in CSS modules demos
-   * Don't use 'font: inherit' as it also inherits font-weight which breaks buttons
-   */
   [data-demo="css-modules"] input,
   [data-demo="css-modules"] button,
   [data-demo="css-modules"] textarea,
@@ -374,9 +369,12 @@
     line-height: inherit;
   }
 
-  /* Placeholder opacity - match Tailwind preflight behavior */
   [data-demo="css-modules"] ::placeholder {
     opacity: 1;
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--ring);
   }
 
   ::selection {

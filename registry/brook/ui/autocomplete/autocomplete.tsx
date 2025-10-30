@@ -24,8 +24,8 @@ function AutocompleteInput({
 }: React.ComponentProps<typeof Autocomplete.Input>) {
   return (
     <Autocomplete.Input
-      data-slot="autocomplete-input"
       className={cn(styles.input, className)}
+      data-slot="autocomplete-input"
       {...props}
     />
   );
@@ -38,8 +38,8 @@ function AutocompleteTrigger({
 }: React.ComponentProps<typeof Autocomplete.Trigger>) {
   return (
     <Autocomplete.Trigger
-      data-slot="autocomplete-trigger"
       className={cn(styles.trigger, className)}
+      data-slot="autocomplete-trigger"
       {...props}
     >
       {children || <Search className={styles.icon} size={16} />}
@@ -54,8 +54,8 @@ function AutocompleteIcon({
 }: React.ComponentProps<typeof Autocomplete.Icon>) {
   return (
     <Autocomplete.Icon
-      data-slot="autocomplete-icon"
       className={cn(styles.icon, className)}
+      data-slot="autocomplete-icon"
       {...props}
     >
       {children || <Search size={16} />}
@@ -70,8 +70,8 @@ function AutocompleteClear({
 }: React.ComponentProps<typeof Autocomplete.Clear>) {
   return (
     <Autocomplete.Clear
-      data-slot="autocomplete-clear"
       className={cn(styles.clear, className)}
+      data-slot="autocomplete-clear"
       {...props}
     >
       {children || <X size={16} />}
@@ -87,8 +87,8 @@ function AutocompleteBackdrop({
 }: React.ComponentProps<typeof Autocomplete.Backdrop>) {
   return (
     <Autocomplete.Backdrop
-      data-slot="autocomplete-backdrop"
       className={cn(styles.backdrop, className)}
+      data-slot="autocomplete-backdrop"
       {...props}
     />
   );
@@ -100,8 +100,8 @@ function AutocompletePositioner({
 }: React.ComponentProps<typeof Autocomplete.Positioner>) {
   return (
     <Autocomplete.Positioner
-      data-slot="autocomplete-positioner"
       className={cn(styles.positioner, className)}
+      data-slot="autocomplete-positioner"
       sideOffset={4}
       {...props}
     />
@@ -114,8 +114,8 @@ function AutocompletePopup({
 }: React.ComponentProps<typeof Autocomplete.Popup>) {
   return (
     <Autocomplete.Popup
-      data-slot="autocomplete-popup"
       className={cn(styles.popup, className)}
+      data-slot="autocomplete-popup"
       {...props}
     />
   );
@@ -127,8 +127,8 @@ function AutocompleteArrow({
 }: React.ComponentProps<typeof Autocomplete.Arrow>) {
   return (
     <Autocomplete.Arrow
-      data-slot="autocomplete-arrow"
       className={cn(styles.arrow, className)}
+      data-slot="autocomplete-arrow"
       {...props}
     />
   );
@@ -140,8 +140,8 @@ function AutocompleteStatus({
 }: React.ComponentProps<typeof Autocomplete.Status>) {
   return (
     <Autocomplete.Status
-      data-slot="autocomplete-status"
       className={cn(styles.status, className)}
+      data-slot="autocomplete-status"
       {...props}
     />
   );
@@ -153,8 +153,8 @@ function AutocompleteList({
 }: React.ComponentProps<typeof Autocomplete.List>) {
   return (
     <Autocomplete.List
-      data-slot="autocomplete-list"
       className={cn(styles.list, className)}
+      data-slot="autocomplete-list"
       {...props}
     />
   );
@@ -167,8 +167,8 @@ function AutocompleteEmpty({
 }: React.ComponentProps<typeof Autocomplete.Empty>) {
   return (
     <Autocomplete.Empty
-      data-slot="autocomplete-empty"
       className={cn(styles.empty, className)}
+      data-slot="autocomplete-empty"
       {...props}
     >
       {children || "No items found"}
@@ -190,8 +190,8 @@ function AutocompleteRow({
 }: React.ComponentProps<typeof Autocomplete.Row>) {
   return (
     <Autocomplete.Row
-      data-slot="autocomplete-row"
       className={cn(styles.row, className)}
+      data-slot="autocomplete-row"
       {...props}
     />
   );
@@ -203,8 +203,8 @@ function AutocompleteItem({
 }: React.ComponentProps<typeof Autocomplete.Item>) {
   return (
     <Autocomplete.Item
-      data-slot="autocomplete-item"
       className={cn(styles.item, className)}
+      data-slot="autocomplete-item"
       {...props}
     />
   );
@@ -216,8 +216,8 @@ function AutocompleteGroup({
 }: React.ComponentProps<typeof Autocomplete.Group>) {
   return (
     <Autocomplete.Group
-      data-slot="autocomplete-group"
       className={cn(styles.group, className)}
+      data-slot="autocomplete-group"
       {...props}
     />
   );
@@ -229,8 +229,8 @@ function AutocompleteGroupLabel({
 }: React.ComponentProps<typeof Autocomplete.GroupLabel>) {
   return (
     <Autocomplete.GroupLabel
-      data-slot="autocomplete-group-label"
       className={cn(styles.groupLabel, className)}
+      data-slot="autocomplete-group-label"
       {...props}
     />
   );
@@ -242,8 +242,8 @@ function AutocompleteSeparator({
 }: React.ComponentProps<typeof Autocomplete.Separator>) {
   return (
     <Autocomplete.Separator
-      data-slot="autocomplete-separator"
       className={cn(styles.separator, className)}
+      data-slot="autocomplete-separator"
       {...props}
     />
   );
