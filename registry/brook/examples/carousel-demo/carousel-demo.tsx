@@ -126,8 +126,8 @@ export default function CarouselDemo() {
           </Carousel.Content>
         </Carousel.Viewport>
         <Carousel.Navigation>
-          <Carousel.Previous className={styles.navButton} />
-          <Carousel.Next className={styles.navButton} />
+          <Carousel.Previous />
+          <Carousel.Next />
         </Carousel.Navigation>
       </Carousel.Root>
     </Carousel.Bleed>

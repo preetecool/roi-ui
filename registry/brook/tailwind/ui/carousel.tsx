@@ -234,7 +234,7 @@ export function Root({
     <CarouselContext.Provider value={value}>
       <div
         className={cn(
-          "relative w-full mx-auto rounded-lg overflow-visible",
+          "relative mx-auto w-full overflow-visible rounded-lg",
           align === "center" && "flex flex-col items-center",
           className
         )}
@@ -251,7 +251,7 @@ export function Root({
         <div
           aria-atomic="true"
           aria-live="polite"
-          className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0"
+          className="-m-px absolute h-px w-px overflow-hidden whitespace-nowrap border-0 p-0"
           style={{ clip: "rect(0, 0, 0, 0)" }}
         >
           Item {currentIndex + 1} of {totalItems}
@@ -278,7 +278,7 @@ export function Bleed({ className, children, ...props }: CarouselBleedProps) {
     <BleedRefContext.Provider value={bleedRef}>
       <div
         className={cn(
-          "w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] max-sm:left-[calc(50%-20vw)]",
+          "-ml-[50vw] -mr-[50vw] relative right-1/2 left-1/2 w-screen max-sm:left-[calc(50%-20vw)]",
           className
         )}
         ref={bleedRef}
@@ -305,8 +305,8 @@ export function Viewport({
       aria-atomic="false"
       aria-live="polite"
       className={cn(
-        "relative w-full overflow-x-scroll overflow-y-hidden overscroll-x-contain scroll-snap-stop-always",
-        "py-[calc(2px+2px)] [scrollbar-width:none] [-ms-overflow-style:none]",
+        "scroll-snap-stop-always relative w-full overflow-y-hidden overflow-x-scroll overscroll-x-contain",
+        "py-[calc(2px+2px)] [-ms-overflow-style:none] [scrollbar-width:none]",
         "[&::-webkit-scrollbar]:hidden",
         className
       )}
@@ -332,8 +332,8 @@ export function Content({
     <div
       className={cn(
         "flex items-stretch",
-        "before:content-[''] before:flex-shrink-0 before:w-[var(--inset-padding-left,0)]",
-        "after:content-[''] after:flex-shrink-0 after:w-[var(--inset-padding-right,0)]",
+        "before:w-[var(--inset-padding-left,0)] before:flex-shrink-0 before:content-['']",
+        "after:w-[var(--inset-padding-right,0)] after:flex-shrink-0 after:content-['']",
         className
       )}
       style={
@@ -410,7 +410,7 @@ export function Item({
       aria-label={`${index + 1} of ${totalItems}`}
       aria-roledescription="slide"
       className={cn(
-        "flex-shrink-0 relative",
+        "relative flex-shrink-0",
         "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-[-2px]",
         className
       )}
@@ -439,8 +439,15 @@ export function Previous({
       aria-controls="carousel-slides"
       aria-label="Scroll to previous items"
       className={cn(
-        "bg-transparent border-0 p-0 cursor-pointer inline-flex items-center justify-center",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
+        "flex cursor-pointer items-center justify-center bg-[color:var(--card)] text-[color:var(--foreground)]",
+        "opacity-90 shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)]",
+        "hover:scale-105 hover:bg-[color:var(--muted)] hover:opacity-100",
+        "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
+        "active:scale-95",
+        "disabled:pointer-events-none disabled:cursor-default disabled:bg-[color:var(--muted)] disabled:text-[color:var(--muted-foreground)] disabled:opacity-30",
+        "disabled:hover:scale-100 disabled:hover:bg-[color:var(--muted)] disabled:hover:opacity-30",
+        "motion-reduce:transition-none [&_svg]:h-4 [&_svg]:w-4",
         className
       )}
       disabled={!canGoPrev}
@@ -474,8 +481,15 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
       aria-controls="carousel-slides"
       aria-label="Scroll to next items"
       className={cn(
-        "bg-transparent border-0 p-0 cursor-pointer inline-flex items-center justify-center",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
+        "flex cursor-pointer items-center justify-center bg-[color:var(--card)] text-[color:var(--foreground)]",
+        "opacity-90 shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)]",
+        "hover:scale-105 hover:bg-[color:var(--muted)] hover:opacity-100",
+        "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
+        "active:scale-95",
+        "disabled:pointer-events-none disabled:cursor-default disabled:bg-[color:var(--muted)] disabled:text-[color:var(--muted-foreground)] disabled:opacity-30",
+        "disabled:hover:scale-100 disabled:hover:bg-[color:var(--muted)] disabled:hover:opacity-30",
+        "motion-reduce:transition-none [&_svg]:h-4 [&_svg]:w-4",
         className
       )}
       disabled={!canGoNext}
@@ -514,7 +528,7 @@ export function Navigation({
 
   return (
     <div
-      className={cn("flex justify-center gap-2 mt-12", className)}
+      className={cn("mt-12 flex justify-center gap-2", className)}
       style={
         variant === "inset"
           ? ({
@@ -548,7 +562,7 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
     <div
       aria-label="Choose slide to display"
       className={cn(
-        "absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10",
+        "-translate-x-1/2 absolute bottom-4 left-1/2 z-10 flex gap-2",
         className
       )}
       role="tablist"
@@ -560,13 +574,13 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
           aria-label={`Scroll to item ${index + 1}`}
           aria-selected={currentIndex === index}
           className={cn(
-            "w-3 h-3 rounded-full border-none cursor-pointer relative",
+            "relative h-3 w-3 cursor-pointer rounded-full border-none",
             "bg-white/50 transition-all duration-200 ease-in-out",
-            "hover:bg-white/70 hover:scale-110",
+            "hover:scale-110 hover:bg-white/70",
             "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",
             "motion-reduce:transition-none",
             currentIndex === index &&
-              "bg-[color:var(--color-primary)] scale-[1.2] hover:bg-[color:var(--color-primary)]"
+              "scale-[1.2] bg-[color:var(--color-primary)] hover:bg-[color:var(--color-primary)]"
           )}
           // biome-ignore lint/suspicious/noArrayIndexKey: Indicators are stable and don't reorder
           key={`indicator-${index}`}
