@@ -15,15 +15,15 @@ function SelectTrigger({
 }: React.ComponentProps<typeof Select.Trigger>) {
   return (
     <Select.Trigger
-      data-slot="select-trigger"
       className={cn(
-        "min-w-36 bg-[var(--mix-card-50-bg)]",
-        "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
-        "data-[popup-open]:bg-[var(--muted)] data-[popup-open]:text-[var(--foreground)]",
-        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+        "min-w-36 bg-(--mix-card-50-bg)",
+        "`hover:text-(--foreground) hover:bg-muted",
+        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
+        "data-popup-open:bg-muted data-popup-open:text-(--foreground",
+        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
         className
       )}
+      data-slot="select-trigger"
       nativeButton
       {...props}
     >
@@ -39,12 +39,12 @@ function SelectValue({
 }: React.ComponentProps<typeof Select.Value>) {
   return (
     <Select.Value
-      data-slot="select-value"
       className={cn(
         "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left",
-        "data-[placeholder]:text-[var(--muted-foreground)]",
+        "`data-placeholder:text-muted-foreground",
         className
       )}
+      data-slot="select-value"
       {...props}
     >
       {children}
@@ -59,12 +59,12 @@ function SelectIcon({
 }: React.ComponentProps<typeof Select.Icon>) {
   return (
     <Select.Icon
-      data-slot="select-icon"
       className={cn(
         "ml-2 h-4 w-4 shrink-0 opacity-50 transition-transform duration-200 ease-in-out",
         "[.trigger[data-popup-open]_&]:rotate-180",
         className
       )}
+      data-slot="select-icon"
       {...props}
     >
       {children || <ChevronDown size={16} />}
@@ -84,11 +84,11 @@ function SelectOverlay({
 }: React.ComponentProps<typeof Select.Backdrop>) {
   return (
     <Select.Backdrop
-      data-slot="select-backdrop"
       className={cn(
-        "fixed inset-0 z-[140] bg-[rgba(0,0,0,0.5)] transition-opacity duration-150",
+        "fixed inset-0 z-140 bg-[rgba(0,0,0,0.5)] transition-opacity duration-150",
         className
       )}
+      data-slot="select-backdrop"
       {...props}
     />
   );
@@ -98,7 +98,7 @@ function SelectPositioner({
   className,
   ...props
 }: React.ComponentProps<typeof Select.Positioner>) {
-  return <Select.Positioner className={cn("z-[150]", className)} {...props} />;
+  return <Select.Positioner className={cn("z-150", className)} {...props} />;
 }
 
 function SelectScrollUpArrow({
@@ -108,13 +108,13 @@ function SelectScrollUpArrow({
 }: React.ComponentProps<typeof Select.ScrollUpArrow>) {
   return (
     <Select.ScrollUpArrow
-      data-slot="select-scrolluparrow"
       className={cn(
-        "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
-        "hover:bg-[var(--muted)]",
+        "flex h-6 cursor-pointer items-center justify-center border-none bg-(--mix-card-33-bg) text-(--foreground) transition-colors duration-200 ease-in-out",
+        "hover:bg-muted",
         "data-[state=hidden]:hidden",
         className
       )}
+      data-slot="select-scrolluparrow"
       {...props}
     >
       {children || (
@@ -130,15 +130,16 @@ function SelectPopup({
 }: React.ComponentProps<typeof Select.Popup>) {
   return (
     <Select.Popup
-      data-slot="select-popup"
       className={cn(
         "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--mix-card-75-bg)]",
-        "transition-[transform,opacity] duration-150",
-        "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
-        "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
-        "data-[side=none]:transform-none data-[side=none]:opacity-100 data-[side=none]:transition-none",
+        "transition-[transform,opacity] duration-150 ease-in-out",
+        "data-starting-style:scale-90 data-starting-style:opacity-0",
+        "data-ending-style:scale-90 data-ending-style:opacity-0",
+        "data-[side=none]:scale-100 data-[side=none]:opacity-100 data-[side=none]:transition-none",
         className
       )}
+      data-slot="select-popup"
+      style={{ transition: "all 0.2s var(--ease-out-expo)" }}
       {...props}
     />
   );
@@ -150,11 +151,11 @@ function SelectArrow({
 }: React.ComponentProps<typeof Select.Arrow>) {
   return (
     <Select.Arrow
-      data-slot="select-arrow"
       className={cn(
         "-z-[1] h-3 w-3 rotate-45 border border-[var(--border)] border-r-0 border-b-0 bg-[var(--mix-card-33-bg)]",
         className
       )}
+      data-slot="select-arrow"
       {...props}
     />
   );
@@ -167,13 +168,13 @@ function SelectScrollDownArrow({
 }: React.ComponentProps<typeof Select.ScrollDownArrow>) {
   return (
     <Select.ScrollDownArrow
-      data-slot="select-scrolldownarrow"
       className={cn(
         "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
         "hover:bg-[var(--muted)]",
         "data-[state=hidden]:hidden",
         className
       )}
+      data-slot="select-scrolldownarrow"
       {...props}
     >
       {children || <ChevronDown size={16} />}
@@ -187,8 +188,8 @@ function SelectList({
 }: React.ComponentProps<typeof Select.List>) {
   return (
     <Select.List
-      data-slot="select-list"
       className={cn("scroll-py-6 px-1 py-1", className)}
+      data-slot="select-list"
       {...props}
     />
   );
@@ -200,7 +201,6 @@ function SelectItem({
 }: React.ComponentProps<typeof Select.Item>) {
   return (
     <Select.Item
-      data-slot="select-item"
       className={cn(
         "flex cursor-pointer items-center justify-between rounded-[calc(var(--radius)-2px)] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none transition-all duration-200 ease-in-out",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
@@ -209,6 +209,7 @@ function SelectItem({
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}
+      data-slot="select-item"
       {...props}
     />
   );
@@ -220,11 +221,11 @@ function SelectItemText({
 }: React.ComponentProps<typeof Select.ItemText>) {
   return (
     <Select.ItemText
-      data-slot="select-itemtext"
       className={cn(
         "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left",
         className
       )}
+      data-slot="select-itemtext"
       {...props}
     />
   );
@@ -243,11 +244,11 @@ function SelectGroupLabel({
 }: React.ComponentProps<typeof Select.GroupLabel>) {
   return (
     <Select.GroupLabel
-      data-slot="select-grouplabel"
       className={cn(
         "px-3 py-1.5 font-semibold text-[var(--muted-foreground)] text-xs uppercase tracking-wider",
         className
       )}
+      data-slot="select-grouplabel"
       {...props}
     />
   );
@@ -259,8 +260,8 @@ function SelectSeparator({
 }: React.ComponentProps<typeof Select.Separator>) {
   return (
     <Select.Separator
-      data-slot="select-separator"
       className={cn("my-1 h-px bg-[var(--color-border)]", className)}
+      data-slot="select-separator"
       {...props}
     />
   );
@@ -273,12 +274,14 @@ function SelectItemIndicator({
 }: React.ComponentProps<typeof Select.ItemIndicator>) {
   return (
     <Select.ItemIndicator
-      data-slot="select-itemindicator"
       className={cn(
-        "ml-2 h-4 w-4 shrink-0 opacity-0 transition-opacity duration-200 ease-in-out",
+        "ml-2 h-4 w-4 shrink-0 opacity-0",
+
+        "transition-opacity duration-200 ease-in-out",
         "[[data-selected]_&]:opacity-100",
         className
       )}
+      data-slot="select-itemindicator"
       {...props}
     >
       {children || <Check size={16} />}

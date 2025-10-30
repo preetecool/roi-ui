@@ -317,6 +317,10 @@
   --mix-transparent-88-fg: oklch(0.94 0 0 / 0.88);
 }
 
+:focus-visible {
+  outline: 1px solid var(--ring);
+}
+
 @layer all {
   [data-demo="css-modules"] *,
   [data-demo="css-modules"] *::before,
@@ -371,10 +375,6 @@
 
   [data-demo="css-modules"] ::placeholder {
     opacity: 1;
-  }
-
-  :focus-visible {
-    outline: 1px solid var(--ring);
   }
 
   ::selection {
