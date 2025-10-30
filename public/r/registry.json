@@ -1,0 +1,1708 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Roi UI",
+  "homepage": "https://roiui.com",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "tw-utils",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/tw-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:item",
+      "title": "Accordion",
+      "description": "A collapsible content component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/accordion/accordion.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/accordion/accordion.tsx"
+        },
+        {
+          "path": "registry/brook/ui/accordion/accordion.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/accordion/accordion.module.css"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:item",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/alert-dialog/alert-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/alert-dialog/alert-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/ui/alert-dialog/alert-dialog.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/alert-dialog/alert-dialog.module.css"
+        }
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "type": "registry:item",
+      "title": "Autocomplete",
+      "description": "An input that suggests options as you type.",
+      "files": [
+        {
+          "path": "registry/brook/ui/autocomplete/autocomplete.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.tsx"
+        },
+        {
+          "path": "registry/brook/ui/autocomplete/autocomplete.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.module.css"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:item",
+      "title": "Alert",
+      "description": "A component for displaying important messages to users.",
+      "files": [
+        {
+          "path": "registry/brook/ui/alert/alert.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/alert/alert.tsx"
+        },
+        {
+          "path": "registry/brook/ui/alert/alert.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/alert/alert.module.css"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:item",
+      "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
+      "files": [
+        {
+          "path": "registry/brook/ui/avatar/avatar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/avatar/avatar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/avatar/avatar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/avatar/avatar.module.css"
+        }
+      ]
+    },
+    {
+      "name": "background",
+      "type": "registry:item",
+      "title": "Background",
+      "description": "A background component with various visual effects.",
+      "files": [
+        {
+          "path": "registry/brook/ui/background/background.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/background/background.tsx"
+        },
+        {
+          "path": "registry/brook/ui/background/background.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/background/background.module.css"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:item",
+      "title": "Badge",
+      "description": "A small count and labeling component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/badge/badge.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/badge/badge.tsx"
+        },
+        {
+          "path": "registry/brook/ui/badge/badge.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/badge/badge.module.css"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:item",
+      "title": "Button",
+      "description": "A button component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/button/button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/button/button.tsx"
+        },
+        {
+          "path": "registry/brook/ui/button/button.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/button/button.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:item",
+      "title": "Card",
+      "description": "A container component for displaying content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/card/card.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/card/card.tsx"
+        },
+        {
+          "path": "registry/brook/ui/card/card.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/card/card.module.css"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:item",
+      "title": "Carousel",
+      "description": "A slideshow component for cycling through content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/carousel/carousel.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/carousel/carousel.tsx"
+        },
+        {
+          "path": "registry/brook/ui/carousel/carousel.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/carousel/carousel.module.css"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:item",
+      "title": "Checkbox",
+      "description": "A control that allows users to select one or more options from a set.",
+      "files": [
+        {
+          "path": "registry/brook/ui/checkbox/checkbox.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox/checkbox.tsx"
+        },
+        {
+          "path": "registry/brook/ui/checkbox/checkbox.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox/checkbox.module.css"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:item",
+      "title": "Checkbox Group",
+      "description": "A set of checkboxes with shared state management for selecting multiple options.",
+      "files": [
+        {
+          "path": "registry/brook/ui/checkbox-group/checkbox-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
+        },
+        {
+          "path": "registry/brook/ui/checkbox-group/checkbox-group.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox-group/checkbox-group.module.css"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:item",
+      "title": "Collapsible",
+      "description": "An expandable/collapsible panel controlled by a button.",
+      "files": [
+        {
+          "path": "registry/brook/ui/collapsible/collapsible.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/collapsible/collapsible.tsx"
+        },
+        {
+          "path": "registry/brook/ui/collapsible/collapsible.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/collapsible/collapsible.module.css"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:item",
+      "title": "Combobox",
+      "description": "A searchable select component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/combobox/combobox.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/combobox/combobox.tsx"
+        },
+        {
+          "path": "registry/brook/ui/combobox/combobox.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/combobox/combobox.module.css"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:item",
+      "title": "Command",
+      "description": "A command palette component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/command/command.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/command/command.tsx"
+        },
+        {
+          "path": "registry/brook/ui/command/command.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/command/command.module.css"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:item",
+      "title": "Context Menu",
+      "description": "A menu component triggered by right-click or long press.",
+      "files": [
+        {
+          "path": "registry/brook/ui/context-menu/context-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/context-menu/context-menu.tsx"
+        },
+        {
+          "path": "registry/brook/ui/context-menu/context-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/context-menu/context-menu.module.css"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:item",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "title": "Copy Button",
+      "description": "A button component with animated copy-to-clipboard functionality.",
+      "files": [
+        {
+          "path": "registry/brook/ui/copy-button/copy-button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/copy-button/copy-button.tsx"
+        },
+        {
+          "path": "registry/brook/ui/copy-button/copy-button.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/copy-button/copy-button.module.css"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:item",
+      "title": "Dialog",
+      "description": "A modal dialog component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/dialog/dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/dialog/dialog.tsx"
+        },
+        {
+          "path": "registry/brook/ui/dialog/dialog.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/dialog/dialog.module.css"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:item",
+      "title": "Dropdown Menu",
+      "description": "A dropdown menu component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/dropdown-menu/dropdown-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/dropdown-menu/dropdown-menu.tsx"
+        },
+        {
+          "path": "registry/brook/ui/dropdown-menu/dropdown-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/dropdown-menu/dropdown-menu.module.css"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:item",
+      "dependencies": [
+        "motion"
+      ],
+      "title": "Expandable Card",
+      "description": "A card component that can expand to show more content.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/expandable-card/expandable-card.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card/expandable-card.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card/expandable-card.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card/expandable-card.module.css"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:item",
+      "title": "Field",
+      "description": "A form field component with label and validation.",
+      "files": [
+        {
+          "path": "registry/brook/ui/field/field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/field/field.tsx"
+        },
+        {
+          "path": "registry/brook/ui/field/field.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/field/field.module.css"
+        }
+      ]
+    },
+    {
+      "name": "fieldset",
+      "type": "registry:item",
+      "title": "Fieldset",
+      "description": "A native fieldset element with an easily stylable legend.",
+      "files": [
+        {
+          "path": "registry/brook/ui/fieldset/fieldset.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/fieldset/fieldset.tsx"
+        },
+        {
+          "path": "registry/brook/ui/fieldset/fieldset.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/fieldset/fieldset.module.css"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:item",
+      "title": "Form",
+      "description": "A form component for handling user input.",
+      "files": [
+        {
+          "path": "registry/brook/ui/form/form.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/form/form.tsx"
+        },
+        {
+          "path": "registry/brook/ui/form/form.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/form/form.module.css"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:item",
+      "title": "Input",
+      "description": "An input component for user text entry.",
+      "files": [
+        {
+          "path": "registry/brook/ui/input/input.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/input/input.tsx"
+        },
+        {
+          "path": "registry/brook/ui/input/input.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/input/input.module.css"
+        }
+      ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:item",
+      "title": "Like Button",
+      "description": "A button component for liking content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/like-button/like-button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/like-button/like-button.tsx"
+        },
+        {
+          "path": "registry/brook/ui/like-button/like-button.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/like-button/like-button.module.css"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:item",
+      "title": "Menubar",
+      "description": "A horizontal menu bar component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/menubar/menubar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/menubar/menubar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/menubar/menubar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/menubar/menubar.module.css"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "registry:item",
+      "title": "Meter",
+      "description": "A graphical display of a numeric value within a range.",
+      "files": [
+        {
+          "path": "registry/brook/ui/meter/meter.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/meter/meter.tsx"
+        },
+        {
+          "path": "registry/brook/ui/meter/meter.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/meter/meter.module.css"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:item",
+      "title": "Navigation Menu",
+      "description": "A navigation menu component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/navigation-menu/navigation-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/navigation-menu/navigation-menu.tsx"
+        },
+        {
+          "path": "registry/brook/ui/navigation-menu/navigation-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/navigation-menu/navigation-menu.module.css"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:item",
+      "title": "Popover",
+      "description": "A floating content container.",
+      "files": [
+        {
+          "path": "registry/brook/ui/popover/popover.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/popover/popover.tsx"
+        },
+        {
+          "path": "registry/brook/ui/popover/popover.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/popover/popover.module.css"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:item",
+      "title": "Radio",
+      "description": "A customizable radio button component for selecting one option from a group.",
+      "files": [
+        {
+          "path": "registry/brook/ui/radio/radio.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/radio/radio.tsx"
+        },
+        {
+          "path": "registry/brook/ui/radio/radio.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/radio/radio.module.css"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:item",
+      "title": "Scroll Area",
+      "description": "A native scroll container with custom scrollbars.",
+      "files": [
+        {
+          "path": "registry/brook/ui/scroll-area/scroll-area.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/scroll-area/scroll-area.tsx"
+        },
+        {
+          "path": "registry/brook/ui/scroll-area/scroll-area.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/scroll-area/scroll-area.module.css"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:item",
+      "title": "Select",
+      "description": "A customizable select component for choosing from a list of options.",
+      "files": [
+        {
+          "path": "registry/brook/ui/select/select.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/select/select.tsx"
+        },
+        {
+          "path": "registry/brook/ui/select/select.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/select/select.module.css"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:item",
+      "title": "Slider",
+      "description": "A slider component for selecting values from a range.",
+      "files": [
+        {
+          "path": "registry/brook/ui/slider/slider.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.tsx"
+        },
+        {
+          "path": "registry/brook/ui/slider/slider.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.module.css"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:item",
+      "title": "Switch",
+      "description": "A toggle switch component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/switch/switch.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/switch/switch.tsx"
+        },
+        {
+          "path": "registry/brook/ui/switch/switch.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/switch/switch.module.css"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:item",
+      "title": "Tabs",
+      "description": "A set of layered sections of content.",
+      "files": [
+        {
+          "path": "registry/brook/ui/tabs/tabs.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/tabs/tabs.tsx"
+        },
+        {
+          "path": "registry/brook/ui/tabs/tabs.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/tabs/tabs.module.css"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:item",
+      "title": "Toast",
+      "description": "A succinct message notification.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toast/toast.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toast/toast.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toast/toast.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toast/toast.module.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:item",
+      "title": "Toggle",
+      "description": "A two-state button that can be turned on or off.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toggle/toggle.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle/toggle.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toggle/toggle.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle/toggle.module.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:item",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off with shared state management.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toggle-group/toggle-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle-group/toggle-group.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toggle-group/toggle-group.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle-group/toggle-group.module.css"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:item",
+      "title": "Tooltip",
+      "description": "A popup that displays information on hover.",
+      "files": [
+        {
+          "path": "registry/brook/ui/tooltip/tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/tooltip/tooltip.tsx"
+        },
+        {
+          "path": "registry/brook/ui/tooltip/tooltip.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/tooltip/tooltip.module.css"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:item",
+      "dependencies": [
+        "recharts"
+      ],
+      "title": "Chart",
+      "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
+      "files": [
+        {
+          "path": "registry/brook/ui/chart/chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/chart/chart.tsx"
+        },
+        {
+          "path": "registry/brook/ui/chart/chart.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/chart/chart.module.css"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:item",
+      "title": "Progress",
+      "description": "Displays the status of a task that takes a long time.",
+      "files": [
+        {
+          "path": "registry/brook/ui/progress/progress.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/progress/progress.tsx"
+        },
+        {
+          "path": "registry/brook/ui/progress/progress.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/progress/progress.module.css"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:item",
+      "title": "Number Field",
+      "description": "A numeric input element with increment/decrement buttons and a scrub area.",
+      "files": [
+        {
+          "path": "registry/brook/ui/number-field/number-field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/number-field/number-field.tsx"
+        },
+        {
+          "path": "registry/brook/ui/number-field/number-field.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/number-field/number-field.module.css"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:item",
+      "title": "Slider",
+      "description": "A range input component for selecting values within a given range.",
+      "files": [
+        {
+          "path": "registry/brook/ui/slider/slider.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.tsx"
+        },
+        {
+          "path": "registry/brook/ui/slider/slider.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card-login",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/checkbox.json",
+        "https://roiui.com/r/field.json"
+      ],
+      "title": "Card Login",
+      "description": "A login card component with email/password fields and social login options.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-login/card-login.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-login/card-login.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-login/card-login.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-login/card-login.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card-task",
+      "type": "registry:block",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://roiui.com/r/alert-dialog.json",
+        "https://roiui.com/r/avatar.json",
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/combobox.json",
+        "https://roiui.com/r/dialog.json",
+        "https://roiui.com/r/dropdown-menu.json",
+        "https://roiui.com/r/tooltip.json"
+      ],
+      "title": "Card Task",
+      "description": "A task card component with badges, avatars, and action menu.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-task/card-task.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/card-task.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-task/card-task.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/card-task.module.css"
+        },
+        {
+          "path": "registry/brook/blocks/card-task/avatar-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/avatar-group.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-task/delete-task-alert-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/delete-task-alert-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-task/task-card-dropdown-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/task-card-dropdown-menu.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-task/collaborator-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/collaborator-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-traffic",
+      "type": "registry:item",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/chart.json"
+      ],
+      "title": "Card Traffic",
+      "description": "A website traffic card component with line chart and statistics.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-traffic/card-traffic.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/card-traffic.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-traffic/card-traffic.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/card-traffic.module.css"
+        },
+        {
+          "path": "registry/brook/blocks/card-traffic/data.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/data.ts"
+        }
+      ]
+    },
+    {
+      "name": "card-image",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json"
+      ],
+      "title": "Card Image",
+      "description": "A card component with image, title, description, and button.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-image/card-image.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image/card-image.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-image/card-image.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image/card-image.module.css"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/field.json",
+        "https://roiui.com/r/form.json",
+        "https://roiui.com/r/select.json"
+      ],
+      "title": "AI Chat",
+      "description": "An AI chat input component with mode selector and action buttons.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/ai-chat/ai-chat.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/ai-chat/ai-chat.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/ai-chat/ai-chat.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/ai-chat/ai-chat.module.css"
+        }
+      ]
+    },
+    {
+      "name": "card-history",
+      "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json"
+      ],
+      "title": "Card History",
+      "description": "A card component displaying history or timeline information.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-history/card-history.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-history/card-history.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-history/card-history.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-history/card-history.module.css"
+        }
+      ]
+    },
+    {
+      "name": "accordion-tailwind",
+      "type": "registry:ui",
+      "title": "Accordion (Tailwind)",
+      "description": "A collapsible content component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/accordion.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/accordion/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-tailwind",
+      "type": "registry:ui",
+      "title": "Alert (Tailwind)",
+      "description": "A component for displaying important messages to users.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/alert.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/alert/alert.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog-tailwind",
+      "type": "registry:ui",
+      "title": "Alert Dialog (Tailwind)",
+      "description": "A modal dialog that interrupts the user with important content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/alert-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/alert-dialog/alert-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "autocomplete-tailwind",
+      "type": "registry:ui",
+      "title": "Autocomplete (Tailwind)",
+      "description": "An input that suggests options as you type.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/autocomplete.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/autocomplete/autocomplete.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-tailwind",
+      "type": "registry:ui",
+      "title": "Avatar (Tailwind)",
+      "description": "An image element with a fallback for representing the user.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/avatar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/avatar/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "background-tailwind",
+      "type": "registry:ui",
+      "title": "Background (Tailwind)",
+      "description": "A background component with various visual effects.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/background.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/background/background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge-tailwind",
+      "type": "registry:ui",
+      "title": "Badge (Tailwind)",
+      "description": "A small count and labeling component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/badge.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/badge/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-tailwind",
+      "type": "registry:ui",
+      "title": "Button (Tailwind)",
+      "description": "A button component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/button/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-tailwind",
+      "type": "registry:ui",
+      "title": "Card (Tailwind)",
+      "description": "A container component for displaying content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/card.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/card/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-tailwind",
+      "type": "registry:ui",
+      "title": "Checkbox (Tailwind)",
+      "description": "A control that allows users to select one or more options from a set.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/checkbox.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group-tailwind",
+      "type": "registry:ui",
+      "title": "Checkbox Group (Tailwind)",
+      "description": "A set of checkboxes with shared state management for selecting multiple options.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/checkbox-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible-tailwind",
+      "type": "registry:ui",
+      "title": "Collapsible (Tailwind)",
+      "description": "An expandable/collapsible panel controlled by a button.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/collapsible.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/collapsible/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "combobox-tailwind",
+      "type": "registry:ui",
+      "title": "Combobox (Tailwind)",
+      "description": "A searchable select component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/combobox.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/combobox/combobox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "command-tailwind",
+      "type": "registry:ui",
+      "title": "Command (Tailwind)",
+      "description": "A command palette component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/command.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/command/command.tsx"
+        }
+      ]
+    },
+    {
+      "name": "context-menu-tailwind",
+      "type": "registry:ui",
+      "title": "Context Menu (Tailwind)",
+      "description": "A menu component triggered by right-click or long press.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/context-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/context-menu/context-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copy-button-tailwind",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "title": "Copy Button (Tailwind)",
+      "description": "A button component with animated copy-to-clipboard functionality.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/copy-button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/copy-button/copy-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog-tailwind",
+      "type": "registry:ui",
+      "title": "Dialog (Tailwind)",
+      "description": "A modal dialog component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/dialog/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-tailwind",
+      "type": "registry:ui",
+      "title": "Dropdown Menu (Tailwind)",
+      "description": "A dropdown menu component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/dropdown-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/dropdown-menu/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field-tailwind",
+      "type": "registry:ui",
+      "title": "Field (Tailwind)",
+      "description": "A form field component with label and validation.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/field/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fieldset-tailwind",
+      "type": "registry:ui",
+      "title": "Fieldset (Tailwind)",
+      "description": "A native fieldset element with an easily stylable legend.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/fieldset.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/fieldset/fieldset.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-tailwind",
+      "type": "registry:ui",
+      "title": "Form (Tailwind)",
+      "description": "A form component for handling user input.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/form.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/form/form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-tailwind",
+      "type": "registry:ui",
+      "title": "Input (Tailwind)",
+      "description": "An input component for user text entry.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/input.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/input/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "like-button-tailwind",
+      "type": "registry:ui",
+      "title": "Like Button (Tailwind)",
+      "description": "A button component for liking content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/like-button.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/like-button/like-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "menubar-tailwind",
+      "type": "registry:ui",
+      "title": "Menubar (Tailwind)",
+      "description": "A horizontal menu bar component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/menubar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/menubar/menubar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "meter-tailwind",
+      "type": "registry:ui",
+      "title": "Meter (Tailwind)",
+      "description": "A graphical display of a numeric value within a range.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/meter.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/meter/meter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu-tailwind",
+      "type": "registry:ui",
+      "title": "Navigation Menu (Tailwind)",
+      "description": "A navigation menu component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/navigation-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/navigation-menu/navigation-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-field-tailwind",
+      "type": "registry:ui",
+      "title": "Number Field (Tailwind)",
+      "description": "A numeric input element with increment/decrement buttons and a scrub area.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/number-field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/number-field/number-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "popover-tailwind",
+      "type": "registry:ui",
+      "title": "Popover (Tailwind)",
+      "description": "A floating content container.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/popover.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/popover/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "preview-card-tailwind",
+      "type": "registry:ui",
+      "title": "Preview Card (Tailwind)",
+      "description": "A floating preview card component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/preview-card.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/preview-card/preview-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-tailwind",
+      "type": "registry:ui",
+      "title": "Progress (Tailwind)",
+      "description": "Displays the status of a task that takes a long time.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/progress.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/progress/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-tailwind",
+      "type": "registry:ui",
+      "title": "Radio (Tailwind)",
+      "description": "A customizable radio button component for selecting one option from a group.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/radio.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/radio/radio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area-tailwind",
+      "type": "registry:ui",
+      "title": "Scroll Area (Tailwind)",
+      "description": "A native scroll container with custom scrollbars.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/scroll-area.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/scroll-area/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select-tailwind",
+      "type": "registry:ui",
+      "title": "Select (Tailwind)",
+      "description": "A customizable select component for choosing from a list of options.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/select.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/select/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slider-tailwind",
+      "type": "registry:ui",
+      "title": "Slider (Tailwind)",
+      "description": "A slider component for selecting values from a range.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/slider.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/slider/slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch-tailwind",
+      "type": "registry:ui",
+      "title": "Switch (Tailwind)",
+      "description": "A toggle switch component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/switch.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/switch/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs-tailwind",
+      "type": "registry:ui",
+      "title": "Tabs (Tailwind)",
+      "description": "A set of layered sections of content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/tabs.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/tabs/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast-tailwind",
+      "type": "registry:ui",
+      "title": "Toast (Tailwind)",
+      "description": "A succinct message notification.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/toast.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toast/toast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-tailwind",
+      "type": "registry:ui",
+      "title": "Toggle (Tailwind)",
+      "description": "A two-state button that can be turned on or off.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/toggle.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-tailwind",
+      "type": "registry:ui",
+      "title": "Toggle Group (Tailwind)",
+      "description": "A set of two-state buttons that can be toggled on or off with shared state management.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/toggle-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toggle-group/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-tailwind",
+      "type": "registry:ui",
+      "title": "Tooltip (Tailwind)",
+      "description": "A popup that displays information on hover.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/tooltip.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/tooltip/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toolbar-tailwind",
+      "type": "registry:ui",
+      "title": "Toolbar (Tailwind)",
+      "description": "A toolbar component for grouping action buttons and controls.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/toolbar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toolbar/toolbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chart-tailwind",
+      "type": "registry:ui",
+      "dependencies": [
+        "recharts"
+      ],
+      "title": "Chart (Tailwind)",
+      "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/chart.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/chart/chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat-tailwind",
+      "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/field-tailwind.json",
+        "https://roiui.com/r/form-tailwind.json",
+        "https://roiui.com/r/select-tailwind.json"
+      ],
+      "title": "AI Chat (Tailwind)",
+      "description": "An AI chat input component with mode selector and action buttons.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/ai-chat.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/ai-chat/ai-chat.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-history-tailwind",
+      "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json"
+      ],
+      "title": "Card History (Tailwind)",
+      "description": "A card component displaying history or timeline information.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/card-history.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-history/card-history.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-image-tailwind",
+      "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json"
+      ],
+      "title": "Card Image (Tailwind)",
+      "description": "A card component with image, title, description, and button.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/card-image.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image/card-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-login-tailwind",
+      "type": "registry:block",
+      "registryDependencies": [
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/checkbox-tailwind.json",
+        "https://roiui.com/r/field-tailwind.json"
+      ],
+      "title": "Card Login (Tailwind)",
+      "description": "A login card component with email/password fields and social login options.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/card-login.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-login/card-login.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-task-tailwind",
+      "type": "registry:block",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://roiui.com/r/alert-dialog-tailwind.json",
+        "https://roiui.com/r/avatar-tailwind.json",
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/combobox-tailwind.json",
+        "https://roiui.com/r/dialog-tailwind.json",
+        "https://roiui.com/r/dropdown-menu-tailwind.json",
+        "https://roiui.com/r/tooltip-tailwind.json"
+      ],
+      "title": "Card Task (Tailwind)",
+      "description": "A task card component with badges, avatars, and action menu.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/card-task/card-task.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/card-task.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/card-task/avatar-group.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/avatar-group.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/card-task/delete-task-alert-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/delete-task-alert-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/card-task/task-card-dropdown-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/task-card-dropdown-menu.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/card-task/collaborator-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-task/collaborator-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-traffic-tailwind",
+      "type": "registry:block",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/chart-tailwind.json"
+      ],
+      "title": "Card Traffic (Tailwind)",
+      "description": "A website traffic card component with line chart and statistics.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/card-traffic/card-traffic.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/card-traffic.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/card-traffic/data.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-traffic/data.ts"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card-tailwind",
+      "type": "registry:block",
+      "dependencies": [
+        "motion"
+      ],
+      "title": "Expandable Card (Tailwind)",
+      "description": "A card component that can expand to show more content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card/expandable-card.tsx"
+        }
+      ]
+    }
+  ]
+}
