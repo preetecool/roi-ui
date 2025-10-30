@@ -97,6 +97,15 @@
   transform: scale(0.95);
 }
 
+.shortcut {
+  margin-left: auto;
+  margin-right: 4px;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  letter-spacing: 0.025em;
+  opacity: 0.6;
+}
+
 @media (max-width: 640px) {
   .root {
     padding: 0.375rem;
@@ -112,5 +121,9 @@
   .menuPopup {
     padding: 0.375rem;
     max-width: calc(100vw - 2rem);
+  }
+
+  .shortcut {
+    display: none;
   }
 }

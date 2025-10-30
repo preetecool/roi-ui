@@ -149,6 +149,26 @@ function MenubarMenuSubmenuTrigger({
   );
 }
 
+function MenubarMenuShortcut({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) {
+  return (
+    <span
+      className={cn(
+        "mr-1 ml-auto text-muted-foreground text-xs tracking-wider opacity-60",
+        "max-sm:hidden",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function MenubarMenuSpacer() {
+  return <div style={{ height: "4px", width: "100%" }} />;
+}
+
 export {
   MenubarRoot as Menubar,
   MenubarMenuRoot as MenubarMenu,
@@ -158,6 +178,8 @@ export {
   MenubarMenuPortal,
   MenubarMenuPositioner,
   MenubarMenuSeparator,
+  MenubarMenuShortcut,
+  MenubarMenuSpacer,
   MenubarMenuSubmenuRoot,
   MenubarMenuSubmenuTrigger,
   MenubarMenuTrigger,
