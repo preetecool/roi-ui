@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  BarChart,
-  Cloud,
-  Lock,
-  Palette,
-  Plus,
-  RefreshCw,
-  Settings,
-  Shield,
-  Users,
-  Zap,
-} from "lucide-react";
+import { Palette, Plus, Shield, Users, Zap } from "lucide-react";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Card,
@@ -50,40 +39,6 @@ export default function CarouselDemo() {
       title: "Collaboration",
       description:
         "Work together seamlessly with real-time collaboration tools.",
-    },
-    {
-      id: "analytics",
-      icon: <BarChart strokeWidth={1.5} />,
-      title: "Analytics",
-      description:
-        "Gain actionable insights with comprehensive dashboards and reporting.",
-    },
-    {
-      id: "cloud",
-      icon: <Cloud strokeWidth={1.5} />,
-      title: "Integration",
-      description:
-        "Connect with popular cloud services and scale automatically.",
-    },
-    {
-      id: "privacy",
-      icon: <Lock strokeWidth={1.5} />,
-      title: "Privacy",
-      description:
-        "Your data stays yours. Full control over privacy settings and data ownership.",
-    },
-    {
-      id: "sync",
-      icon: <RefreshCw strokeWidth={1.5} />,
-      title: "Sync",
-      description: "Changes sync instantly across all devices in real-time.",
-    },
-    {
-      id: "configuration",
-      icon: <Settings strokeWidth={1.5} />,
-      title: "Configuration",
-      description:
-        "Simple setup and intuitive controls get you running in minutes, not hours.",
     },
   ];
 
