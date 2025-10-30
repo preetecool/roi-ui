@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStyle } from "@/components/style-provider";
-import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import { StyleSelector } from "@/components/style-selector/style-selector";
+import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./component-source.module.css";
 import type { StyleVariant } from "./component-source-helpers";
 
@@ -29,7 +29,8 @@ export function ComponentSourceClient({
   const [activeTab, setActiveTab] = useState(0);
 
   // Find the current variant based on the global style preference
-  const currentVariant = variants.find((v) => v.variant === style) || variants[0];
+  const currentVariant =
+    variants.find((v) => v.variant === style) || variants[0];
   const files = currentVariant.files;
 
   // Reset active tab when style changes or when activeTab exceeds file count
@@ -43,15 +44,36 @@ export function ComponentSourceClient({
   const safeActiveTab = activeTab < files.length ? activeTab : 0;
   const currentFile = files[safeActiveTab];
 
+  const handleKeyDown = (event: React.KeyboardEvent, index: number) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      setActiveTab((index + 1) % files.length);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      setActiveTab((index - 1 + files.length) % files.length);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setActiveTab(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setActiveTab(files.length - 1);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.tabsHeader}>
-        <div className={styles.tabs}>
+        <div className={styles.tabs} role="tablist" aria-label="Code files">
           {files.map((file, index) => (
             <button
+              aria-controls={`tabpanel-${index}`}
+              aria-selected={index === safeActiveTab}
               className={`${styles.tab} ${index === safeActiveTab ? styles.tabActive : ""}`}
               key={file.name}
               onClick={() => setActiveTab(index)}
+              onKeyDown={(e) => handleKeyDown(e, index)}
+              role="tab"
+              tabIndex={index === safeActiveTab ? 0 : -1}
               type="button"
             >
               {file.name}
@@ -64,7 +86,12 @@ export function ComponentSourceClient({
         </div>
       </div>
 
-      <div className={styles.codeContent}>
+      <div
+        aria-labelledby={`tab-${safeActiveTab}`}
+        className={styles.codeContent}
+        id={`tabpanel-${safeActiveTab}`}
+        role="tabpanel"
+      >
         <div
           className={`code-container ${styles.codeContainer}`}
           // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting

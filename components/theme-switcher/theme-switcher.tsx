@@ -11,11 +11,7 @@ export function ThemeSwitcher() {
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
 
-    if (
-      typeof document !== "undefined" &&
-      "startViewTransition" in document &&
-      typeof document.startViewTransition === "function"
-    ) {
+    if (typeof document !== "undefined" && document.startViewTransition) {
       document.startViewTransition(() => {
         setTheme(newTheme);
       });
@@ -24,12 +20,15 @@ export function ThemeSwitcher() {
     }
   };
 
+  const ariaLabel =
+    theme === "light" ? "Switch to dark mode" : "Switch to light mode";
+
   return (
     <Button
+      aria-label={ariaLabel}
       className={styles.button}
       onClick={handleThemeToggle}
       size="icon"
-      title="Toggle theme"
       variant="ghost"
     >
       <SunMoon size={18} />

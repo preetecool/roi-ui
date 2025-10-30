@@ -39,9 +39,7 @@
   width: 90%;
   max-width: 560px;
   z-index: 10001;
-  /*animation: slideIn 0.2s ease;*/
   background-color: var(--background);
-
   border: 0.5px solid oklch(from var(--border) l c h / 0.5);
   box-shadow: var(--shadow-lg);
 }

@@ -11,7 +11,6 @@ export function SiteFooter() {
             id={styles.link}
             render={
               <a
-                aria-label="Follow on X/Twitter"
                 href="https://x.com/preetecool"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -26,8 +25,7 @@ export function SiteFooter() {
             id={styles.link}
             render={
               <a
-                aria-label="View on GitHub"
-                href="https://github.com/preetecool"
+                href="https://github.com/preetecool/roi-ui"
                 rel="noopener noreferrer"
                 target="_blank"
               >

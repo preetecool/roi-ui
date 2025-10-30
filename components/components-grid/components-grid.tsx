@@ -77,17 +77,18 @@ export function ComponentsGrid() {
           Foundational components for building interfaces. Fully accessible and
           customizable.
         </p>
-        <div className={styles.grid} role="list">
+        <ul className={styles.grid}>
           {uiComponents.map((component) => (
-            <Button
-              key={component.slug}
-              render={<Link href={`/docs/ui/${component.slug}`} />}
-              variant="link"
-            >
-              {component.name}
-            </Button>
+            <li key={component.slug}>
+              <Button
+                render={<Link href={`/docs/ui/${component.slug}`} />}
+                variant="link"
+              >
+                {component.name}
+              </Button>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section aria-labelledby="blocks-heading" className={styles.section}>
@@ -97,17 +98,18 @@ export function ComponentsGrid() {
         <p className={styles.sectionDescription}>
           Pre-built component compositions ready to use in your application.
         </p>
-        <div className={styles.grid} role="list">
+        <ul className={styles.grid}>
           {blocks.map((block) => (
-            <Button
-              key={block.slug}
-              render={<Link href={`/docs/blocks/${block.slug}`} />}
-              variant="link"
-            >
-              {block.name}
-            </Button>
+            <li key={block.slug}>
+              <Button
+                render={<Link href={`/docs/blocks/${block.slug}`} />}
+                variant="link"
+              >
+                {block.name}
+              </Button>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </div>
   );

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-header.module.css";
 
 const COMPONENTS = [
@@ -22,62 +22,40 @@ const COMPONENTS = [
   { path: "badge", anchor: "#success" },
 ];
 
-const ArrowPointer = () => (
-  <svg
-    aria-hidden="true"
-    className={styles.badgeArrow}
-    fill="none"
-    viewBox="0 0 14 10"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g fillRule="nonzero">
-      <path
-        className={styles.badgeArrowPoint}
-        d="M1 1l4 4-4 4"
-        stroke="currentColor"
-        strokeLinecap="butt"
-        strokeLinejoin="miter"
-        strokeWidth="1.5"
-      />
-      <path
-        className={styles.badgeArrowShaft}
-        d="M1.5 5h4.8"
-        stroke="currentColor"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-        strokeWidth="1.5"
-      />
-    </g>
-  </svg>
-);
+const HEADING = "Functional & delighful components";
+const SUBHEADING =
+  "React components built with Base UI primitives and Motion for seamless, accessible interactions";
+const UI_COMPONENTS = [
+  "accordion",
+  "badge",
+  "tabs",
+  "dialog",
+  "dropdown-menu-motion",
+];
 
-const getRandomComponent = () => {
+function getRandomComponent() {
   const randomComponent =
     COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
 
   return randomComponent;
-};
+}
 
-const getComponentUrl = (component: { path: string; anchor: string }) => {
+function getComponentUrl(component: { path: string; anchor: string }) {
   // UI components are in /docs/ui/, others are in /docs/blocks/
-  const uiComponents = ["accordion", "badge", "tabs", "dialog", "dropdown-menu-motion"];
-  const basePath = uiComponents.includes(component.path)
+  const basePath = UI_COMPONENTS.includes(component.path)
     ? "/docs/ui"
     : "/docs/blocks";
 
   // Special handling for dropdown-menu-motion
   if (component.path === "dropdown-menu-motion") {
-    return `/docs/ui/dropdown-menu#with-motion`;
+    return "/docs/ui/dropdown-menu#with-motion";
   }
 
   return `${basePath}/${component.path}${component.anchor}`;
-};
+}
 
 export const HomeHeader = () => {
   const [reset, _setReset] = useState(0);
-  const HEADING = "Functional & delighful components";
-  const SUBHEADING =
-    "React components built with Base UI primitives and Motion for seamless, accessible interactions";
 
   const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
 
@@ -86,10 +64,13 @@ export const HomeHeader = () => {
   }, []);
 
   return (
-    <div className={styles.container} key={reset}>
+    <section aria-label="Hero section" className={styles.container} key={reset}>
       <Badge className={styles.badge} variant="outline">
-        <Link href="/docs/ui/tabs#animated">
-          <span>New animated tabs component</span>
+        <Link
+          aria-label="View new animated tabs component"
+          href="/docs/ui/tabs#animated"
+        >
+          <span aria-hidden="true">New animated tabs component</span>
         </Link>
         <ArrowPointer />
       </Badge>
@@ -116,6 +97,6 @@ export const HomeHeader = () => {
           I&apos;m Feeling Lucky
         </Button>
       </div>
-    </div>
+    </section>
   );
 };

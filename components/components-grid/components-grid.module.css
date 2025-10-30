@@ -34,6 +34,13 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 0.5rem;
   width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.grid li {
+  display: contents;
 }
 
 .grid a {

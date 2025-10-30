@@ -51,6 +51,7 @@
   color: var(--secondary-foreground);
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  border-radius: 2px;
 }
 
 .actions {
@@ -72,6 +73,7 @@
   transition: all 0.2s ease;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  border-radius: 2px;
 }
 
 .githubLink:hover {

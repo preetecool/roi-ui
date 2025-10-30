@@ -38,6 +38,23 @@
   }
 }
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
 .collapsible {
   border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
   max-width: none;
@@ -154,14 +171,6 @@
     padding-bottom: 0;
     border-bottom: none;
   }
-}
-
-.panelItem {
-  display: contents;
-}
-
-.descriptionRow {
-  display: contents;
 }
 
 .detailLabel {

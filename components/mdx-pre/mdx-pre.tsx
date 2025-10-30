@@ -4,6 +4,7 @@ import type React from "react";
 import type { ComponentProps, ReactElement } from "react";
 import { cloneElement, isValidElement } from "react";
 import { useStyle } from "@/components/style-provider";
+import styles from "./mdx-pre.module.css";
 
 function hasRoiuiUrl(children: unknown): boolean {
   if (typeof children === "string") {
@@ -76,52 +77,14 @@ export function MdxPre(props: ComponentProps<"pre"> & { title?: string }) {
     : children) as React.ReactNode;
 
   return (
-    <div
-      style={
-        title
-          ? {
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius)",
-              overflow: "hidden",
-            }
-          : undefined
-      }
-    >
+    <div className={title ? styles.container : undefined}>
       {title && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "8px 16px",
-            backgroundColor: "var(--card)",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: "400",
-              fontFamily: "monospace",
-              color: "var(--muted-foreground)",
-            }}
-          >
-            {title}
-          </span>
+        <div className={styles.header}>
+          <span className={styles.title}>{title}</span>
         </div>
       )}
-      <div
-        className="code-container"
-        style={{
-          maxHeight: "400px",
-          boxSizing: "border-box",
-          overflow: "auto",
-          position: "relative",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        <pre {...rest} style={{ margin: 0, padding: "1rem" }}>
+      <div className={`code-container ${styles.codeContainer}`}>
+        <pre {...rest} className={styles.pre}>
           {transformedChildren}
         </pre>
       </div>

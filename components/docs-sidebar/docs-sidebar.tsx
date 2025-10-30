@@ -26,19 +26,19 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className={styles.sidebar}>
-        <div className={styles.content}>
-          {tree.children.map((item, index) => (
-            <div className={styles.group} key={item.$id || `item-${index}`}>
-              <DocsSidebarGroup
-                item={item as SidebarItem}
-                level={0}
-                pathname={pathname}
-              />
-            </div>
-          ))}
-        </div>
-      </nav>
+    <nav aria-label="Documentation navigation" className={styles.sidebar}>
+      <div className={styles.content}>
+        {tree.children.map((item, index) => (
+          <div className={styles.group} key={item.$id || `item-${index}`}>
+            <DocsSidebarGroup
+              item={item as SidebarItem}
+              level={0}
+              pathname={pathname}
+            />
+          </div>
+        ))}
+      </div>
+    </nav>
   );
 }
 
@@ -79,6 +79,7 @@ function DocsSidebarGroup({
   if (!hasChildren && item.type === "page" && item.url) {
     return (
       <Link
+        aria-current={isActive ? "page" : undefined}
         className={`${styles.menuButton} ${isActive ? styles.menuButtonActive : ""}`}
         href={item.url}
       >
@@ -96,20 +97,21 @@ function DocsSidebarGroup({
   if (level === 0 && hasChildren) {
     return (
       <>
-        <div className={styles.groupLabel}>
+        <h3 className={styles.groupLabel}>
           {getIconForItem(item.name as string)}
           {item.name}
-        </div>
-        <div className={styles.groupContent}>
+        </h3>
+        <ul className={styles.groupContent}>
           {item.children?.map((child, index) => (
-            <DocsSidebarGroup
-              item={child}
-              key={child.$id || `child-${index}`}
-              level={level + 1}
-              pathname={pathname}
-            />
+            <li key={child.$id || `child-${index}`}>
+              <DocsSidebarGroup
+                item={child}
+                level={level + 1}
+                pathname={pathname}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </>
     );
   }

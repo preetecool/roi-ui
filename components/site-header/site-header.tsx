@@ -29,7 +29,11 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
         <div className={styles.innerWrapper}>
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
-              <Link className={styles.logoLink} href="/">
+              <Link
+                aria-label="ROI UI Home"
+                className={styles.logoLink}
+                href="/"
+              >
                 <Logo
                   fillColor="var(--foreground)"
                   height={24}
@@ -49,6 +53,15 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
                 variant="ghost"
               >
                 Docs
+              </Button>
+              <Button
+                aria-label="Navigate to /components page"
+                className={styles.navLink}
+                render={<Link href="/docs/components" />}
+                size="sm"
+                variant="ghost"
+              >
+                Components
               </Button>
             </div>
           </nav>
@@ -104,7 +117,6 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
               variant="ghost"
             >
               <svg
-                aria-label="GitHub"
                 height="18"
                 role="img"
                 viewBox="0 0 98 96"

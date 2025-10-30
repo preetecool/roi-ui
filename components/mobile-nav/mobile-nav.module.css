@@ -233,6 +233,19 @@
   gap: 1.5rem;
 }
 
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navList li {
+  display: contents;
+}
+
 .groupContainer {
   display: flex;
   flex-direction: column;
@@ -254,6 +267,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.groupChildren li {
+  display: contents;
 }
 
 .pageLink {
