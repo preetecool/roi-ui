@@ -35,6 +35,7 @@ type Particle = {
   rotation: number;
   size: number;
   scale: number;
+  color: string;
 };
 
 /**
@@ -44,6 +45,9 @@ type Particle = {
  * @param isPlaying - Auto-play the animation continuously (default: false)
  * @param onClick - Callback function when the button is clicked
  * @param className - Optional CSS class names
+ * @param particleCount - Number of particles to generate (default: 6)
+ * @param colors - Array of colors for particles (default: ["var(--foreground)"])
+ * @param colorMode - How to apply colors: "alternating" or "random" (default: "alternating")
  *
  * @example
  * ```tsx
@@ -51,16 +55,29 @@ type Particle = {
  *
  * // Auto-playing version
  * <LikeButton isPlaying={true} />
+ *
+ * // Custom particles with colors
+ * <LikeButton
+ *   particleCount={10}
+ *   colors={["#ff0000", "#00ff00", "#0000ff"]}
+ *   colorMode="random"
+ * />
  * ```
  */
 function LikeButton({
   isPlaying = false,
   onClick,
   className,
+  particleCount = 5,
+  colors = ["var(--foreground)"],
+  colorMode = "alternating",
 }: {
   isPlaying?: boolean;
   onClick?: () => void;
   className?: string;
+  particleCount?: number;
+  colors?: string[];
+  colorMode?: "alternating" | "random";
 }) {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [isThumbAnimating, setIsThumbAnimating] = useState(false);
@@ -70,7 +87,12 @@ function LikeButton({
   const [isAnimating, setIsAnimating] = useState(false);
 
   const createParticle = useCallback(
-    (angleOffset: number, type: "star" | "circle", size: number): Particle => {
+    (
+      angleOffset: number,
+      type: "star" | "circle",
+      size: number,
+      color: string
+    ): Particle => {
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
@@ -89,7 +111,7 @@ function LikeButton({
       }
 
       return {
-        id: Date.now() + angleOffset + size,
+        id: Date.now() + angleOffset + size + Math.random(),
         type,
         angle,
         distance: 40,
@@ -98,34 +120,44 @@ function LikeButton({
         rotation: angleOffset * ROTATION_MULTIPLIER,
         size,
         scale: SCALE_BASE + size / SCALE_DIVISOR,
+        color,
       };
     },
     []
   );
 
-  const createParticleSet = useCallback(
-    (): Particle[] => [
-      createParticle(PARTICLE_ANGLE_LEFT, "star", PARTICLE_SIZE_STAR_LARGE),
-      createParticle(PARTICLE_ANGLE_CENTER, "star", PARTICLE_SIZE_STAR_MEDIUM),
-      createParticle(PARTICLE_ANGLE_RIGHT, "star", PARTICLE_SIZE_STAR_LARGE),
-      createParticle(
-        PARTICLE_ANGLE_LEFT_SMALL,
-        "circle",
-        PARTICLE_SIZE_CIRCLE_LARGE
-      ),
-      createParticle(
-        PARTICLE_ANGLE_CENTER,
-        "circle",
-        PARTICLE_SIZE_CIRCLE_LARGE
-      ),
-      createParticle(
-        PARTICLE_ANGLE_RIGHT_SMALL,
-        "circle",
-        PARTICLE_SIZE_CIRCLE_MEDIUM
-      ),
-    ],
-    [createParticle]
-  );
+  const createParticleSet = useCallback((): Particle[] => {
+    const particles: Particle[] = [];
+    const angleSpread = 120; // Total spread in degrees (60 on each side)
+    const angleStep = particleCount > 1 ? angleSpread / (particleCount - 1) : 0;
+    const startAngle = -angleSpread / 2;
+
+    for (let i = 0; i < particleCount; i++) {
+      const angleOffset = startAngle + i * angleStep;
+      const type: "star" | "circle" = i % 2 === 0 ? "star" : "circle";
+      const size =
+        type === "star"
+          ? i % 3 === 0
+            ? PARTICLE_SIZE_STAR_LARGE
+            : PARTICLE_SIZE_STAR_MEDIUM
+          : i % 3 === 0
+            ? PARTICLE_SIZE_CIRCLE_LARGE
+            : PARTICLE_SIZE_CIRCLE_MEDIUM;
+
+      // Select color based on colorMode
+      let color: string;
+      if (colorMode === "random") {
+        color = colors[Math.floor(Math.random() * colors.length)];
+      } else {
+        // alternating
+        color = colors[i % colors.length];
+      }
+
+      particles.push(createParticle(angleOffset, type, size, color));
+    }
+
+    return particles;
+  }, [particleCount, colors, colorMode, createParticle]);
 
   const startThumbAnimation = useCallback(() => {
     setIsThumbAnimating(true);
@@ -225,6 +257,7 @@ function LikeButton({
                   {
                     "--rotation": `${particle.rotation}deg`,
                     "--size": `${particle.size}px`,
+                    "--particle-color": particle.color,
                   } as React.CSSProperties
                 }
               />

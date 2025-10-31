@@ -40,5 +40,23 @@ filename="anatomy"
             type: "string",
             description: "Additional CSS classes to apply to the like button container",
         },
+        {
+            prop: "particleCount",
+            type: "number",
+            default: "6",
+            description: "Number of particles to generate on animation. Particles are distributed evenly across a 120° spread",
+        },
+        {
+            prop: "colors",
+            type: "string[]",
+            default: '["var(--foreground)"]',
+            description: "Array of color values for particles. Can be any valid CSS color (hex, rgb, CSS variables, etc.)",
+        },
+        {
+            prop: "colorMode",
+            type: '"alternating" | "random"',
+            default: '"alternating"',
+            description: "How colors are applied to particles. 'alternating' cycles through the color array sequentially, 'random' picks a random color for each particle",
+        },
     ]}
 />
