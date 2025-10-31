@@ -6,6 +6,9 @@
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideInUp 1s var(--ease-out-expo) 1.9s forwards;
 }
 
 .heading {
@@ -31,7 +34,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid oklch(from var(--border) l c h / 0.4);
+  border: 1px solid oklch(from var(--border) l c h / 0.1);
   background: var(--mix-card-15-bg);
 }
 
@@ -89,5 +92,16 @@
     grid-column: 1;
     grid-row: auto;
     min-height: 200px;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

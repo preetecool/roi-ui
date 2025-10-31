@@ -6,7 +6,7 @@ import { Search } from "@/components/search/search";
 import { SiteFooter } from "@/components/site-footer/site-footer";
 import { SiteHeader } from "@/components/site-header/site-header";
 import { BentoGrid } from "./bento-grid/bento-grid";
-import { HomeHeader } from "./home-header/home-header";
+import { Hero } from "./hero/hero";
 import styles from "./home-page.module.css";
 
 type HomePageProps = {
@@ -23,7 +23,7 @@ HeaderWrapper.displayName = "HeaderWrapper";
 
 const HomeContent = memo(() => (
   <div className={styles.homeContent}>
-    <HomeHeader />
+    <Hero />
     <BentoGrid />
   </div>
 ));

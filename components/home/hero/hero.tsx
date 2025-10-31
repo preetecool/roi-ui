@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
-import styles from "./home-header.module.css";
+import styles from "./hero.module.css";
 
 const COMPONENTS = [
   { path: "tabs", anchor: "#animated" },
@@ -46,15 +46,10 @@ function getComponentUrl(component: { path: string; anchor: string }) {
     ? "/docs/ui"
     : "/docs/blocks";
 
-  // Special handling for dropdown-menu-motion
-  if (component.path === "dropdown-menu-motion") {
-    return "/docs/ui/dropdown-menu#with-motion";
-  }
-
   return `${basePath}/${component.path}${component.anchor}`;
 }
 
-export const HomeHeader = () => {
+export const Hero = () => {
   const [reset, _setReset] = useState(0);
 
   const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);

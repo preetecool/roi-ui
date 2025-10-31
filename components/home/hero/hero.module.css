@@ -15,7 +15,6 @@
   background-color: var(--accent);
 }
 
-/* Arrow animations for ArrowPointer in badge context */
 .badge svg {
   width: 14px;
   height: 12px;
@@ -68,7 +67,7 @@
   min-height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .subheading {
