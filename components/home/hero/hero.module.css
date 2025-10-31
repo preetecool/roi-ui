@@ -102,6 +102,13 @@
   white-space: nowrap;
 }
 
+.ditheringWrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: fadeIn 2s var(--ease-out-expo) 0.4s forwards;
+}
+
 @keyframes reveal {
   from {
     transform: translateY(100%);
@@ -116,7 +123,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;

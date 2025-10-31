@@ -28,7 +28,7 @@ export const DitheringCube = ({
     if (!canvas) return;
 
     // Try WebGL 2 first
-    let gl =
+    const gl =
       canvas.getContext("webgl2", {
         alpha: true,
         premultipliedAlpha: false,
@@ -229,7 +229,7 @@ export const DitheringCube = ({
     const vertexShader = gl.createShader(gl.VERTEX_SHADER);
     const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 
-    if (!vertexShader || !fragmentShader) {
+    if (!(vertexShader && fragmentShader)) {
       console.error("Failed to create shaders");
       return;
     }
@@ -325,7 +325,7 @@ export const DitheringCube = ({
 
     // Render loop
     const render = () => {
-      if (!gl || !programRef.current) return;
+      if (!(gl && programRef.current)) return;
 
       const currentTime = (Date.now() - startTimeRef.current) / 1000;
 
@@ -361,13 +361,13 @@ export const DitheringCube = ({
       ref={canvasRef}
       style={{
         position: "absolute",
-        top: "50%",
-        right: "-10%",
+        top: "30%",
+        right: "-5%",
         transform: "translateY(-50%)",
-        width: "60%",
+        width: "45%",
         aspectRatio: "1",
         height: "auto",
-        maxHeight: "120%",
+        maxHeight: "90%",
         opacity: 0.4,
         pointerEvents: "none",
       }}

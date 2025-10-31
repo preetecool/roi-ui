@@ -23,9 +23,9 @@ const COMPONENTS = [
   { path: "badge", anchor: "#success" },
 ];
 
-const HEADING = "Functional & delighful components";
+const HEADING = "React components and blocks";
 const SUBHEADING =
-  "React components built with Base UI primitives and Motion for seamless, accessible interactions";
+  "Components and blocks made with Base UI primitives and motion. CSS module and Tailwind available.";
 const UI_COMPONENTS = [
   "accordion",
   "badge",
@@ -61,12 +61,14 @@ export const Hero = () => {
 
   return (
     <section aria-label="Hero section" className={styles.container} key={reset}>
-      <DitheringCube
-        colorFront="#18181b"
-        colorBack="#fafafa"
-        speed={0.25}
-        pixelSize={2}
-      />
+      <div className={styles.ditheringWrapper}>
+        <DitheringCube
+          colorBack="#fafafa"
+          colorFront="#18181b"
+          pixelSize={2}
+          speed={0.25}
+        />
+      </div>
       <Badge className={styles.badge} variant="outline">
         <Link
           aria-label="View new animated tabs component"
