@@ -11,9 +11,10 @@ import styles from "./site-header.module.css";
 
 type SiteHeaderProps = {
   pageTree?: PageTree.Root;
+  isHomePage?: boolean;
 };
 
-export function SiteHeader({ pageTree }: SiteHeaderProps) {
+export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
   const triggerSearch = () => {
     const event = new KeyboardEvent("keydown", {
       key: "k",
@@ -25,8 +26,18 @@ export function SiteHeader({ pageTree }: SiteHeaderProps) {
 
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.innerWrapper}>
+      <div
+        className={styles.container}
+        style={isHomePage ? { padding: 0 } : undefined}
+      >
+        <div
+          className={styles.innerWrapper}
+          style={
+            isHomePage
+              ? { paddingLeft: 0, paddingRight: 0 }
+              : undefined
+          }
+        >
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
               <Link

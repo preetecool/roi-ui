@@ -1,0 +1,32 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainWrapper {
+  flex: 1;
+}
+
+.headerWrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contentWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding-top: clamp(100px, 15vw, 150px);
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+  padding-left: max(24px, 5vw);
+  padding-right: max(24px, 5vw);
+}
+
+.homeContent {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+}
