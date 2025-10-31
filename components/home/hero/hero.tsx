@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
+import { DitheringCube } from "./dithering-cube";
 import styles from "./hero.module.css";
 
 const COMPONENTS = [
@@ -60,6 +61,12 @@ export const Hero = () => {
 
   return (
     <section aria-label="Hero section" className={styles.container} key={reset}>
+      <DitheringCube
+        colorFront="#18181b"
+        colorBack="#fafafa"
+        speed={0.25}
+        pixelSize={2}
+      />
       <Badge className={styles.badge} variant="outline">
         <Link
           aria-label="View new animated tabs component"

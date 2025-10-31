@@ -9,6 +9,8 @@
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.4s forwards;
   transition: all 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .badge:hover {
@@ -47,6 +49,8 @@
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.1;
+  position: relative;
+  z-index: 1;
 }
 
 .wordContainer {
@@ -68,6 +72,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
+  isolation: isolate;
 }
 
 .subheading {
@@ -77,6 +83,8 @@
   margin-top: 16px;
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.75s forwards;
+  position: relative;
+  z-index: 1;
 }
 
 .buttonWrapper {
@@ -86,6 +94,8 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .buttonWrapper button {
