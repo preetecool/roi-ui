@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "background-tailwind",
-  "type": "registry:ui",
+  "type": "registry:item",
   "title": "Background (Tailwind)",
   "description": "A background component with various visual effects.",
   "files": [

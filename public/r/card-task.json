@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-task",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Card Task",
   "description": "A task card component with badges, avatars, and action menu.",
   "dependencies": [

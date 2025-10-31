@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "fieldset-tailwind",
-  "type": "registry:ui",
+  "type": "registry:item",
   "title": "Fieldset (Tailwind)",
   "description": "A native fieldset element with an easily stylable legend.",
   "files": [
