@@ -1108,6 +1108,19 @@
       ]
     },
     {
+      "name": "carousel-tailwind",
+      "type": "registry:item",
+      "title": "Carousel (Tailwind)",
+      "description": "A slideshow component for cycling through content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/carousel.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/carousel/carousel.tsx"
+        }
+      ]
+    },
+    {
       "name": "checkbox-tailwind",
       "type": "registry:item",
       "title": "Checkbox (Tailwind)",

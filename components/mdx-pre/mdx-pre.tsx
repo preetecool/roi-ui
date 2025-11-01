@@ -9,7 +9,7 @@ import styles from "./mdx-pre.module.css";
 function hasRoiuiUrl(children: unknown): boolean {
   if (typeof children === "string") {
     return (children.includes("roiui.com/r/") && children.includes(".json")) ||
-           children.includes("@roiui/utils");
+           children.includes("@roiui/");
   }
   if (Array.isArray(children)) {
     return children.some(hasRoiuiUrl);
@@ -34,10 +34,22 @@ function transformChildren(children: unknown, toTailwind: boolean): unknown {
           );
     }
     // Handle @roiui/utils transformation
-    if (children.includes("@roiui/utils")) {
+    if (children.includes("@roiui/utils") || children.includes("@roiui/tw-utils")) {
       return toTailwind
         ? children.replace(/@roiui\/utils\b/g, "@roiui/tw-utils")
         : children.replace(/@roiui\/tw-utils\b/g, "@roiui/utils");
+    }
+    // Handle @roiui/component-tailwind transformation
+    if (children.includes("@roiui/") && children.includes("-tailwind")) {
+      return toTailwind
+        ? children // Already in tailwind format
+        : children.replace(/@roiui\/([a-z-]+)-tailwind\b/g, "@roiui/$1");
+    }
+    // Handle @roiui/component transformation (CSS Modules format)
+    if (children.includes("@roiui/") && !children.includes("-tailwind") && !children.includes("tw-utils")) {
+      return toTailwind
+        ? children.replace(/@roiui\/([a-z-]+)\b/g, "@roiui/$1-tailwind")
+        : children; // Already in CSS Modules format
     }
     return children;
   }
