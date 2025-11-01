@@ -69,7 +69,11 @@ export const Hero = () => {
           speed={0.25}
         />
       </div>
-      <Badge className={styles.badge} variant="outline">
+      <Badge
+        className={styles.badge}
+        style={{ borderRadius: 2 }}
+        variant="outline"
+      >
         <Link
           aria-label="View new animated tabs component"
           href="/docs/ui/tabs#animated"
@@ -93,9 +97,15 @@ export const Hero = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button render={<Link href="/docs/start" />}>Get Started</Button>
+        <Button
+          render={<Link href="/docs/start" />}
+          style={{ borderRadius: 2 }}
+        >
+          Get Started
+        </Button>
         <Button
           render={<Link href={getComponentUrl(randomComponent)} />}
+          style={{ borderRadius: 2 }}
           variant="ghost"
         >
           I&apos;m Feeling Lucky
