@@ -150,21 +150,20 @@ export function CardTask() {
           </div>
           <div className={styles.footerContainer}>
             <div className={styles.footerLeftGroup}>
-              <div className={styles.footerItem}>
+              <div className={styles.iconBubble}>
                 <Users size="14" />
-
                 <span>{currentCollaborators.length}</span>
               </div>
-              <div className={styles.footerItem}>
+              <div className={styles.iconBubble}>
                 <MessageCircleMore size="14" />
                 <span>4</span>
               </div>
-              <div className={styles.footerItem}>
+              <div className={styles.iconBubble}>
                 <ListTodo size="14" />
                 <span>4/5</span>
               </div>
             </div>
-            <div className={styles.footerItem}>
+            <div className={styles.iconBubble}>
               <Calendar size="14" />
               <span className={styles.tomorrowText}>1d </span>
             </div>

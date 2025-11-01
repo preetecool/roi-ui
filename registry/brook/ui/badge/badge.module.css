@@ -43,7 +43,7 @@
 
 .secondary {
   border-color: transparent;
-  background-color: var(--mix-card-66-bg);
+  background-color: var(--card);
   color: var(--secondary-foreground);
 }
 
@@ -145,4 +145,13 @@
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   border-radius: var(--radius-lg);
+}
+
+/* Light mode specific: white background, black text on selection */
+.light .default::selection,
+.light .default *::selection,
+[data-theme="light"] .default::selection,
+[data-theme="light"] .default *::selection {
+  background-color: #fff;
+  color: #000;
 }

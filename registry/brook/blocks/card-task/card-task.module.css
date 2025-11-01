@@ -49,6 +49,23 @@
   height: 14px;
   line-height: 14px;
 }
+
+.iconBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background-color: var(--mix-card-33-bg);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.2);
+  transition: all 150ms ease;
+}
+
+.iconBubble:hover {
+  background-color: var(--mix-card-50-bg);
+  border-color: var(--border);
+}
 .tomorrowText {
   color: var(--warning-foreground);
 }

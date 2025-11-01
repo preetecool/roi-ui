@@ -150,21 +150,20 @@ export function CardTask() {
           </div>
           <div className="flex w-full justify-between text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)] text-xs">
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center gap-1">
+              <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
                 <Users size="14" />
-
                 <span>{currentCollaborators.length}</span>
               </div>
-              <div className="flex items-center justify-center gap-1">
+              <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
                 <MessageCircleMore size="14" />
                 <span>4</span>
               </div>
-              <div className="flex items-center justify-center gap-1">
+              <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
                 <ListTodo size="14" />
                 <span>4/5</span>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1">
+            <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
               <Calendar size="14" />
               <span className="text-[var(--warning-foreground)]">1d </span>
             </div>
