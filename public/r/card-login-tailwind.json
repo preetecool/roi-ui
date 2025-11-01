@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-login-tailwind",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Card Login (Tailwind)",
   "description": "A login card component with email/password fields and social login options.",
   "registryDependencies": [

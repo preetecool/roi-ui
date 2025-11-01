@@ -8,7 +8,8 @@ import styles from "./mdx-pre.module.css";
 
 function hasRoiuiUrl(children: unknown): boolean {
   if (typeof children === "string") {
-    return children.includes("roiui.com/r/") && children.includes(".json");
+    return (children.includes("roiui.com/r/") && children.includes(".json")) ||
+           children.includes("@roiui/utils");
   }
   if (Array.isArray(children)) {
     return children.some(hasRoiuiUrl);
@@ -31,6 +32,12 @@ function transformChildren(children: unknown, toTailwind: boolean): unknown {
             /roiui\.com\/r\/([a-z-]+-tailwind)\.json/g,
             (_, name) => `roiui.com/r/${name.replace("-tailwind", "")}.json`
           );
+    }
+    // Handle @roiui/utils transformation
+    if (children.includes("@roiui/utils")) {
+      return toTailwind
+        ? children.replace(/@roiui\/utils\b/g, "@roiui/utils-tw")
+        : children.replace(/@roiui\/utils-tw\b/g, "@roiui/utils");
     }
     return children;
   }

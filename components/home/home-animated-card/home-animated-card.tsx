@@ -13,22 +13,18 @@ const cardData = {
   image: "/scene_00.png",
 };
 
-export const HomeAnimatedCard = () => {
+type HomeAnimatedCardProps = {
+  isExpanded?: boolean;
+};
+
+export const HomeAnimatedCard = ({ isExpanded = false }: HomeAnimatedCardProps) => {
   const [visible, setVisible] = useState(false);
-  const [cardOpen, setCardOpen] = useState(false);
   const [ref, bounds] = useMeasure();
-  const CARD_OPEN_DELAY_MS = 2150;
   const EASE_START = 0.19;
   const EASE_MID = 0.22;
 
   useEffect(() => {
-    setTimeout(() => {
-      setVisible(true);
-    }, 0);
-
-    setTimeout(() => {
-      setCardOpen(true);
-    }, CARD_OPEN_DELAY_MS);
+    setVisible(true);
   }, []);
 
   return (
@@ -57,7 +53,7 @@ export const HomeAnimatedCard = () => {
           }}
         >
           <div ref={ref}>
-            {visible && cardOpen && (
+            {visible && isExpanded && (
               <motion.div
                 className={styles.cardExpanded}
                 layoutId="card"
@@ -97,7 +93,7 @@ export const HomeAnimatedCard = () => {
               </motion.div>
             )}
 
-            {visible && !cardOpen && (
+            {visible && !isExpanded && (
               <motion.div
                 animate={{ opacity: 1 }}
                 className={styles.cardCollapsed}

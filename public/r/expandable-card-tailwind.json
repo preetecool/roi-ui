@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "expandable-card-tailwind",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Expandable Card (Tailwind)",
   "description": "A card component that can expand to show more content.",
   "dependencies": [

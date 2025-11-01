@@ -5,17 +5,18 @@
   "items": [
     {
       "name": "utils",
-      "type": "registry:lib",
+      "type": "registry:item",
       "files": [
         {
           "path": "lib/utils.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
         }
       ]
     },
     {
       "name": "tw-utils",
-      "type": "registry:lib",
+      "type": "registry:item",
       "dependencies": [
         "clsx",
         "tailwind-merge"
@@ -23,7 +24,8 @@
       "files": [
         {
           "path": "lib/tw-utils.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
         }
       ]
     },
@@ -838,7 +840,7 @@
     },
     {
       "name": "card-task",
-      "type": "registry:block",
+      "type": "registry:item",
       "dependencies": [
         "lucide-react"
       ],
@@ -990,7 +992,7 @@
     },
     {
       "name": "accordion-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Accordion (Tailwind)",
       "description": "A collapsible content component.",
       "files": [
@@ -1003,7 +1005,7 @@
     },
     {
       "name": "alert-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Alert (Tailwind)",
       "description": "A component for displaying important messages to users.",
       "files": [
@@ -1016,7 +1018,7 @@
     },
     {
       "name": "alert-dialog-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Alert Dialog (Tailwind)",
       "description": "A modal dialog that interrupts the user with important content.",
       "files": [
@@ -1029,7 +1031,7 @@
     },
     {
       "name": "autocomplete-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Autocomplete (Tailwind)",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -1042,7 +1044,7 @@
     },
     {
       "name": "avatar-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Avatar (Tailwind)",
       "description": "An image element with a fallback for representing the user.",
       "files": [
@@ -1055,7 +1057,7 @@
     },
     {
       "name": "background-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Background (Tailwind)",
       "description": "A background component with various visual effects.",
       "files": [
@@ -1068,7 +1070,7 @@
     },
     {
       "name": "badge-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Badge (Tailwind)",
       "description": "A small count and labeling component.",
       "files": [
@@ -1081,7 +1083,7 @@
     },
     {
       "name": "button-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Button (Tailwind)",
       "description": "A button component.",
       "files": [
@@ -1094,7 +1096,7 @@
     },
     {
       "name": "card-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Card (Tailwind)",
       "description": "A container component for displaying content.",
       "files": [
@@ -1107,7 +1109,7 @@
     },
     {
       "name": "checkbox-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Checkbox (Tailwind)",
       "description": "A control that allows users to select one or more options from a set.",
       "files": [
@@ -1120,7 +1122,7 @@
     },
     {
       "name": "checkbox-group-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Checkbox Group (Tailwind)",
       "description": "A set of checkboxes with shared state management for selecting multiple options.",
       "files": [
@@ -1133,7 +1135,7 @@
     },
     {
       "name": "collapsible-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Collapsible (Tailwind)",
       "description": "An expandable/collapsible panel controlled by a button.",
       "files": [
@@ -1146,7 +1148,7 @@
     },
     {
       "name": "combobox-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Combobox (Tailwind)",
       "description": "A searchable select component.",
       "files": [
@@ -1159,7 +1161,7 @@
     },
     {
       "name": "command-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Command (Tailwind)",
       "description": "A command palette component.",
       "files": [
@@ -1172,7 +1174,7 @@
     },
     {
       "name": "context-menu-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Context Menu (Tailwind)",
       "description": "A menu component triggered by right-click or long press.",
       "files": [
@@ -1185,7 +1187,7 @@
     },
     {
       "name": "copy-button-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "dependencies": [
         "motion",
         "lucide-react"
@@ -1202,7 +1204,7 @@
     },
     {
       "name": "dialog-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Dialog (Tailwind)",
       "description": "A modal dialog component.",
       "files": [
@@ -1215,7 +1217,7 @@
     },
     {
       "name": "dropdown-menu-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Dropdown Menu (Tailwind)",
       "description": "A dropdown menu component.",
       "files": [
@@ -1228,7 +1230,7 @@
     },
     {
       "name": "field-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Field (Tailwind)",
       "description": "A form field component with label and validation.",
       "files": [
@@ -1241,7 +1243,7 @@
     },
     {
       "name": "fieldset-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Fieldset (Tailwind)",
       "description": "A native fieldset element with an easily stylable legend.",
       "files": [
@@ -1254,7 +1256,7 @@
     },
     {
       "name": "form-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Form (Tailwind)",
       "description": "A form component for handling user input.",
       "files": [
@@ -1267,7 +1269,7 @@
     },
     {
       "name": "input-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Input (Tailwind)",
       "description": "An input component for user text entry.",
       "files": [
@@ -1280,7 +1282,7 @@
     },
     {
       "name": "like-button-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Like Button (Tailwind)",
       "description": "A button component for liking content.",
       "files": [
@@ -1293,7 +1295,7 @@
     },
     {
       "name": "menubar-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Menubar (Tailwind)",
       "description": "A horizontal menu bar component.",
       "files": [
@@ -1306,7 +1308,7 @@
     },
     {
       "name": "meter-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Meter (Tailwind)",
       "description": "A graphical display of a numeric value within a range.",
       "files": [
@@ -1319,7 +1321,7 @@
     },
     {
       "name": "navigation-menu-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Navigation Menu (Tailwind)",
       "description": "A navigation menu component.",
       "files": [
@@ -1332,7 +1334,7 @@
     },
     {
       "name": "number-field-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Number Field (Tailwind)",
       "description": "A numeric input element with increment/decrement buttons and a scrub area.",
       "files": [
@@ -1345,7 +1347,7 @@
     },
     {
       "name": "popover-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Popover (Tailwind)",
       "description": "A floating content container.",
       "files": [
@@ -1358,7 +1360,7 @@
     },
     {
       "name": "preview-card-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Preview Card (Tailwind)",
       "description": "A floating preview card component.",
       "files": [
@@ -1371,7 +1373,7 @@
     },
     {
       "name": "progress-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Progress (Tailwind)",
       "description": "Displays the status of a task that takes a long time.",
       "files": [
@@ -1384,7 +1386,7 @@
     },
     {
       "name": "radio-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Radio (Tailwind)",
       "description": "A customizable radio button component for selecting one option from a group.",
       "files": [
@@ -1397,7 +1399,7 @@
     },
     {
       "name": "scroll-area-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Scroll Area (Tailwind)",
       "description": "A native scroll container with custom scrollbars.",
       "files": [
@@ -1410,7 +1412,7 @@
     },
     {
       "name": "select-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Select (Tailwind)",
       "description": "A customizable select component for choosing from a list of options.",
       "files": [
@@ -1423,7 +1425,7 @@
     },
     {
       "name": "slider-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Slider (Tailwind)",
       "description": "A slider component for selecting values from a range.",
       "files": [
@@ -1436,7 +1438,7 @@
     },
     {
       "name": "switch-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Switch (Tailwind)",
       "description": "A toggle switch component.",
       "files": [
@@ -1449,7 +1451,7 @@
     },
     {
       "name": "tabs-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Tabs (Tailwind)",
       "description": "A set of layered sections of content.",
       "files": [
@@ -1462,7 +1464,7 @@
     },
     {
       "name": "toast-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Toast (Tailwind)",
       "description": "A succinct message notification.",
       "files": [
@@ -1475,7 +1477,7 @@
     },
     {
       "name": "toggle-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Toggle (Tailwind)",
       "description": "A two-state button that can be turned on or off.",
       "files": [
@@ -1488,7 +1490,7 @@
     },
     {
       "name": "toggle-group-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Toggle Group (Tailwind)",
       "description": "A set of two-state buttons that can be toggled on or off with shared state management.",
       "files": [
@@ -1501,7 +1503,7 @@
     },
     {
       "name": "tooltip-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Tooltip (Tailwind)",
       "description": "A popup that displays information on hover.",
       "files": [
@@ -1514,7 +1516,7 @@
     },
     {
       "name": "toolbar-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Toolbar (Tailwind)",
       "description": "A toolbar component for grouping action buttons and controls.",
       "files": [
@@ -1527,7 +1529,7 @@
     },
     {
       "name": "chart-tailwind",
-      "type": "registry:ui",
+      "type": "registry:item",
       "dependencies": [
         "recharts"
       ],
@@ -1543,7 +1545,7 @@
     },
     {
       "name": "ai-chat-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "registryDependencies": [
         "https://roiui.com/r/button-tailwind.json",
         "https://roiui.com/r/card-tailwind.json",
@@ -1563,7 +1565,7 @@
     },
     {
       "name": "card-history-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "registryDependencies": [
         "https://roiui.com/r/button-tailwind.json",
         "https://roiui.com/r/card-tailwind.json"
@@ -1580,7 +1582,7 @@
     },
     {
       "name": "card-image-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "registryDependencies": [
         "https://roiui.com/r/button-tailwind.json",
         "https://roiui.com/r/card-tailwind.json"
@@ -1597,7 +1599,7 @@
     },
     {
       "name": "card-login-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "registryDependencies": [
         "https://roiui.com/r/badge-tailwind.json",
         "https://roiui.com/r/button-tailwind.json",
@@ -1617,7 +1619,7 @@
     },
     {
       "name": "card-task-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "dependencies": [
         "lucide-react"
       ],
@@ -1664,7 +1666,7 @@
     },
     {
       "name": "card-traffic-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "dependencies": [
         "recharts"
       ],
@@ -1690,7 +1692,7 @@
     },
     {
       "name": "expandable-card-tailwind",
-      "type": "registry:block",
+      "type": "registry:item",
       "dependencies": [
         "motion"
       ],

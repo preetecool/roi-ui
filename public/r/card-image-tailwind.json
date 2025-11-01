@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-image-tailwind",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "Card Image (Tailwind)",
   "description": "A card component with image, title, description, and button.",
   "registryDependencies": [

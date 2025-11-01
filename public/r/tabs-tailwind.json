@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tabs-tailwind",
-  "type": "registry:ui",
+  "type": "registry:item",
   "title": "Tabs (Tailwind)",
   "description": "A set of layered sections of content.",
   "files": [

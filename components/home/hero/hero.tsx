@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
-import styles from "./home-header.module.css";
+import { DitheringCube } from "./dithering-cube";
+import styles from "./hero.module.css";
 
 const COMPONENTS = [
   { path: "tabs", anchor: "#animated" },
@@ -22,9 +23,9 @@ const COMPONENTS = [
   { path: "badge", anchor: "#success" },
 ];
 
-const HEADING = "Functional & delighful components";
+const HEADING = "React components and blocks";
 const SUBHEADING =
-  "React components built with Base UI primitives and Motion for seamless, accessible interactions";
+  "Components and blocks made with Base UI primitives and motion. CSS module and Tailwind available.";
 const UI_COMPONENTS = [
   "accordion",
   "badge",
@@ -46,15 +47,10 @@ function getComponentUrl(component: { path: string; anchor: string }) {
     ? "/docs/ui"
     : "/docs/blocks";
 
-  // Special handling for dropdown-menu-motion
-  if (component.path === "dropdown-menu-motion") {
-    return "/docs/ui/dropdown-menu#with-motion";
-  }
-
   return `${basePath}/${component.path}${component.anchor}`;
 }
 
-export const HomeHeader = () => {
+export const Hero = () => {
   const [reset, _setReset] = useState(0);
 
   const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
@@ -65,7 +61,19 @@ export const HomeHeader = () => {
 
   return (
     <section aria-label="Hero section" className={styles.container} key={reset}>
-      <Badge className={styles.badge} variant="outline">
+      <div className={styles.ditheringWrapper}>
+        <DitheringCube
+          colorBack="#fafafa"
+          colorFront="#18181b"
+          pixelSize={2}
+          speed={0.25}
+        />
+      </div>
+      <Badge
+        className={styles.badge}
+        style={{ borderRadius: 2 }}
+        variant="outline"
+      >
         <Link
           aria-label="View new animated tabs component"
           href="/docs/ui/tabs#animated"
@@ -89,9 +97,15 @@ export const HomeHeader = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button render={<Link href="/docs/start" />}>Get Started</Button>
+        <Button
+          render={<Link href="/docs/start" />}
+          style={{ borderRadius: 2 }}
+        >
+          Get Started
+        </Button>
         <Button
           render={<Link href={getComponentUrl(randomComponent)} />}
+          style={{ borderRadius: 2 }}
           variant="ghost"
         >
           I&apos;m Feeling Lucky

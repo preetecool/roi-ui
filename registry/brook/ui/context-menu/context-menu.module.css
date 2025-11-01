@@ -157,6 +157,14 @@
   color: var(--destructive-foreground);
 }
 
+.itemDestructive .shortcut {
+  color: var(--destructive);
+}
+
+.itemDestructive:hover .shortcut {
+  color: var(--destructive-foreground);
+}
+
 .inset {
   padding-left: 2rem;
 }

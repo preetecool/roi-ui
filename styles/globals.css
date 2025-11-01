@@ -13,7 +13,6 @@
 
 .root {
   isolation: isolate;
-  background-color: var(--background);
 }
 
 @layer all;

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dropdown-menu-tailwind",
-  "type": "registry:ui",
+  "type": "registry:item",
   "title": "Dropdown Menu (Tailwind)",
   "description": "A dropdown menu component.",
   "files": [

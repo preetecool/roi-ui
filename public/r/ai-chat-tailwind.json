@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-chat-tailwind",
-  "type": "registry:block",
+  "type": "registry:item",
   "title": "AI Chat (Tailwind)",
   "description": "An AI chat input component with mode selector and action buttons.",
   "registryDependencies": [

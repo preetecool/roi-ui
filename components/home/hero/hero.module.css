@@ -9,13 +9,14 @@
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.4s forwards;
   transition: all 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .badge:hover {
   background-color: var(--accent);
 }
 
-/* Arrow animations for ArrowPointer in badge context */
 .badge svg {
   width: 14px;
   height: 12px;
@@ -48,6 +49,8 @@
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.1;
+  position: relative;
+  z-index: 1;
 }
 
 .wordContainer {
@@ -65,6 +68,12 @@
 
 .container {
   text-align: left;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  isolation: isolate;
 }
 
 .subheading {
@@ -74,6 +83,8 @@
   margin-top: 16px;
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.75s forwards;
+  position: relative;
+  z-index: 1;
 }
 
 .buttonWrapper {
@@ -83,10 +94,19 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .buttonWrapper button {
   white-space: nowrap;
+}
+
+.ditheringWrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: fadeIn 2s var(--ease-out-expo) 0.4s forwards;
 }
 
 @keyframes reveal {
@@ -103,7 +123,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;

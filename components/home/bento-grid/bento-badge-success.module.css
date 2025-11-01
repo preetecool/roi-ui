@@ -1,0 +1,33 @@
+@keyframes badge-bounce {
+  0% {
+    scale: 0.96;
+  }
+  60% {
+    scale: 1.04;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes check-draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.badgeBounce {
+  will-change: transform;
+  animation: badge-bounce 1.5s ease infinite;
+}
+
+.checkPath {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: check-draw 1.5s ease infinite;
+}
