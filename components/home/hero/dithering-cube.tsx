@@ -2,12 +2,17 @@
 
 import { useEffect, useRef } from "react";
 
-interface DitheringCubeProps {
+const HEX_COLOR_REGEX = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+const RGB_MAX_VALUE = 255;
+const MS_TO_SECONDS = 1000;
+const QUAD_VERTICES = 4;
+
+type DitheringCubeProps = {
   colorFront?: string;
   colorBack?: string;
   speed?: number;
   pixelSize?: number;
-}
+};
 
 export const DitheringCube = ({
   colorFront = "#000000",
@@ -20,12 +25,15 @@ export const DitheringCube = ({
     null
   );
   const programRef = useRef<WebGLProgram | null>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const startTimeRef = useRef<number>(Date.now());
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: WebGL setup requires complex initialization
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
 
     // Try WebGL 2 first
     const gl =
@@ -39,7 +47,6 @@ export const DitheringCube = ({
       });
 
     if (!gl) {
-      console.error("WebGL not supported");
       return;
     }
 
@@ -230,7 +237,6 @@ export const DitheringCube = ({
     const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 
     if (!(vertexShader && fragmentShader)) {
-      console.error("Failed to create shaders");
       return;
     }
 
@@ -238,10 +244,6 @@ export const DitheringCube = ({
     gl.compileShader(vertexShader);
 
     if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS)) {
-      console.error(
-        "Vertex shader compilation error:",
-        gl.getShaderInfoLog(vertexShader)
-      );
       return;
     }
 
@@ -249,17 +251,12 @@ export const DitheringCube = ({
     gl.compileShader(fragmentShader);
 
     if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
-      console.error(
-        "Fragment shader compilation error:",
-        gl.getShaderInfoLog(fragmentShader)
-      );
       return;
     }
 
     // Create program
     const program = gl.createProgram();
     if (!program) {
-      console.error("Failed to create program");
       return;
     }
 
@@ -268,10 +265,10 @@ export const DitheringCube = ({
     gl.linkProgram(program);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error("Program linking error:", gl.getProgramInfoLog(program));
       return;
     }
 
+    // biome-ignore lint/correctness/useHookAtTopLevel: This is WebGL's useProgram method, not a React hook
     gl.useProgram(program);
     programRef.current = program;
 
@@ -297,19 +294,21 @@ export const DitheringCube = ({
 
     // Helper to convert hex to RGB
     const hexToRgb = (hex: string): [number, number, number] => {
-      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      const result = HEX_COLOR_REGEX.exec(hex);
       return result
         ? [
-            Number.parseInt(result[1], 16) / 255,
-            Number.parseInt(result[2], 16) / 255,
-            Number.parseInt(result[3], 16) / 255,
+            Number.parseInt(result[1], 16) / RGB_MAX_VALUE,
+            Number.parseInt(result[2], 16) / RGB_MAX_VALUE,
+            Number.parseInt(result[3], 16) / RGB_MAX_VALUE,
           ]
         : [0, 0, 0];
     };
 
     // Resize handler
     const resize = () => {
-      if (!canvas) return;
+      if (!canvas) {
+        return;
+      }
 
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
@@ -325,9 +324,11 @@ export const DitheringCube = ({
 
     // Render loop
     const render = () => {
-      if (!(gl && programRef.current)) return;
+      if (!(gl && programRef.current)) {
+        return;
+      }
 
-      const currentTime = (Date.now() - startTimeRef.current) / 1000;
+      const currentTime = (Date.now() - startTimeRef.current) / MS_TO_SECONDS;
 
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
       gl.uniform1f(timeLocation, currentTime * speed);
@@ -338,7 +339,7 @@ export const DitheringCube = ({
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, QUAD_VERTICES);
 
       animationFrameRef.current = requestAnimationFrame(render);
     };
