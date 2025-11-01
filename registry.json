@@ -9,7 +9,7 @@
       "files": [
         {
           "path": "lib/utils.ts",
-          "type": "registry:lib",
+          "type": "registry:file",
           "target": "~/lib/utils.ts"
         }
       ]
@@ -24,7 +24,7 @@
       "files": [
         {
           "path": "lib/tw-utils.ts",
-          "type": "registry:lib",
+          "type": "registry:file",
           "target": "~/lib/utils.ts"
         }
       ]
@@ -1104,6 +1104,19 @@
           "path": "registry/brook/tailwind/ui/card.tsx",
           "type": "registry:file",
           "target": "~/components/ui/card/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "carousel-tailwind",
+      "type": "registry:item",
+      "title": "Carousel (Tailwind)",
+      "description": "A slideshow component for cycling through content.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/carousel.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/carousel/carousel.tsx"
         }
       ]
     },
