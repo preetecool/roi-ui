@@ -5,17 +5,18 @@
   "items": [
     {
       "name": "utils",
-      "type": "registry:lib",
+      "type": "registry:item",
       "files": [
         {
           "path": "lib/utils.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
         }
       ]
     },
     {
       "name": "tw-utils",
-      "type": "registry:lib",
+      "type": "registry:item",
       "dependencies": [
         "clsx",
         "tailwind-merge"
@@ -23,7 +24,8 @@
       "files": [
         {
           "path": "lib/tw-utils.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
         }
       ]
     },
