@@ -9,7 +9,7 @@
       "files": [
         {
           "path": "lib/utils.ts",
-          "type": "registry:lib",
+          "type": "registry:file",
           "target": "~/lib/utils.ts"
         }
       ]
@@ -24,7 +24,7 @@
       "files": [
         {
           "path": "lib/tw-utils.ts",
-          "type": "registry:lib",
+          "type": "registry:file",
           "target": "~/lib/utils.ts"
         }
       ]

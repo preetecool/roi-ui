@@ -36,8 +36,8 @@ function transformChildren(children: unknown, toTailwind: boolean): unknown {
     // Handle @roiui/utils transformation
     if (children.includes("@roiui/utils")) {
       return toTailwind
-        ? children.replace(/@roiui\/utils\b/g, "@roiui/utils-tw")
-        : children.replace(/@roiui\/utils-tw\b/g, "@roiui/utils");
+        ? children.replace(/@roiui\/utils\b/g, "@roiui/tw-utils")
+        : children.replace(/@roiui\/tw-utils\b/g, "@roiui/utils");
     }
     return children;
   }
