@@ -13,23 +13,6 @@
   margin-bottom: 0;
 }
 
-.header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px 4px 2px 10px;
-  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
-  background-color: var(--code-header-bg);
-}
-
-.title {
-  font-size: 0.75rem;
-  font-family: monospace;
-  font-weight: 500;
-  color: var(--muted-foreground);
-}
-
 .codeContent {
   position: relative;
 }
@@ -43,47 +26,4 @@
 .noSourceText {
   font-size: 0.875rem;
   color: var(--muted-foreground);
-}
-
-.tabsHeader {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px 4px 2px 10px;
-  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
-  background-color: var(--code-header-bg);
-}
-
-.headerActions {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.tabs {
-  display: flex;
-  gap: 0.25rem;
-  flex: 1;
-}
-
-.tab {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.75rem;
-  font-family: monospace;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  background: none;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-.tab:hover:not(:active):not(.tabActive) {
-  background-color: oklch(from var(--accent) l c h / 0.33);
-}
-
-.tabActive {
-  color: var(--secondary-foreground);
-  background-color: var(--muted);
 }

@@ -7,10 +7,12 @@ import {
   loadAllVariants,
   loadCodeByName,
   loadCodeBySrc,
-  loadMultipleFiles,
+} from "./helpers/file-loaders";
+import {
+  processFiles,
+  processVariants,
   transformCode,
-} from "./component-source-helpers";
-import { ComponentSourceTabs } from "./component-source-tabs";
+} from "./helpers/process-files";
 
 type ComponentSourceProps = {
   name?: string;
@@ -32,60 +34,13 @@ export async function ComponentSource({
     return null;
   }
 
-  // Check for variants first (only for name-based lookups)
+  // Check for variants (only for name-based lookups)
   if (name) {
     const variants = await loadAllVariants(name);
 
     if (variants.length > 0) {
-      // Process and highlight all variants and their files
-      const processedVariants = await Promise.all(
-        variants.map(async (variant) => {
-          const processedFiles = await Promise.all(
-            variant.files.map(async (file) => {
-              const transformedContent = transformCode(file.content);
-              const highlightedContent = await highlightCode(
-                transformedContent,
-                file.language
-              );
-              return {
-                name: file.name,
-                content: transformedContent,
-                highlightedContent,
-              };
-            })
-          );
-
-          return {
-            variant: variant.variant,
-            files: processedFiles,
-          };
-        })
-      );
-
+      const processedVariants = await processVariants(variants);
       return <ComponentSourceClient variants={processedVariants} />;
-    }
-
-    // Fallback to old multi-file loading for backwards compatibility
-    const multipleFiles = await loadMultipleFiles(name);
-
-    if (multipleFiles) {
-      // Process and highlight all files
-      const processedFiles = await Promise.all(
-        multipleFiles.map(async (file) => {
-          const transformedContent = transformCode(file.content);
-          const highlightedContent = await highlightCode(
-            transformedContent,
-            file.language
-          );
-          return {
-            name: file.name,
-            content: transformedContent,
-            highlightedContent,
-          };
-        })
-      );
-
-      return <ComponentSourceTabs files={processedFiles} />;
     }
   }
 
