@@ -3,13 +3,15 @@
 import {
   createContext,
   type ReactNode,
+  useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { useIsoLayoutEffect } from "@/hooks/use-iso-layout-effect";
 
-type StyleVariant = "css-modules" | "tailwind";
+export type StyleVariant = "css-modules" | "tailwind";
 
 type StyleContextType = {
   style: StyleVariant;
@@ -18,16 +20,29 @@ type StyleContextType = {
 
 const StyleContext = createContext<StyleContextType | undefined>(undefined);
 
-export function StyleProvider({ children }: { children: ReactNode }) {
-  const [style, setStyle] = useState<StyleVariant>("css-modules");
+const LOCAL_STORAGE_KEY = "preferred-style";
+
+type StyleProviderProps = {
+  children: ReactNode;
+  defaultValue?: StyleVariant;
+};
+
+export function StyleProvider({
+  children,
+  defaultValue = "css-modules",
+}: StyleProviderProps) {
+  const [style, setValue] = useState<StyleVariant>(defaultValue);
+
+  const handleSetStyle = useCallback((newStyle: StyleVariant) => {
+    setValue(newStyle);
+    localStorage.setItem(LOCAL_STORAGE_KEY, newStyle);
+  }, []);
 
   // Load saved preference from localStorage before first paint to prevent flash
   useIsoLayoutEffect(() => {
-    const saved = localStorage.getItem(
-      "preferred-style"
-    ) as StyleVariant | null;
-    if (saved && (saved === "css-modules" || saved === "tailwind")) {
-      setStyle(saved);
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (saved === "css-modules" || saved === "tailwind") {
+      setValue(saved as StyleVariant);
     }
   }, []);
 
@@ -35,13 +50,16 @@ export function StyleProvider({ children }: { children: ReactNode }) {
     document.documentElement.setAttribute("data-style", style);
   }, [style]);
 
-  const handleSetStyle = (newStyle: StyleVariant) => {
-    setStyle(newStyle);
-    localStorage.setItem("preferred-style", newStyle);
-  };
+  const contextValue = useMemo(
+    () => ({
+      style,
+      setStyle: handleSetStyle,
+    }),
+    [style, handleSetStyle]
+  );
 
   return (
-    <StyleContext.Provider value={{ style, setStyle: handleSetStyle }}>
+    <StyleContext.Provider value={contextValue}>
       {children}
     </StyleContext.Provider>
   );

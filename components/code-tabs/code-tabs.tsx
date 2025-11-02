@@ -15,7 +15,9 @@ import styles from "./code-tabs.module.css";
 type CodeTabsProps = {
   children: React.ReactNode;
   defaultValue?: string;
+  value?: string;
   variant?: "installation" | "package";
+  onValueChange?: (value: string) => void;
 };
 
 type CodeTabsListProps = React.ComponentProps<typeof BaseTabsList> & {
@@ -56,7 +58,9 @@ const CodeTabsContext = React.createContext<{
 export function CodeTabs({
   children,
   defaultValue = "cli",
+  value,
   variant = "installation",
+  onValueChange,
 }: CodeTabsProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -66,7 +70,13 @@ export function CodeTabs({
         className={variant === "package" ? styles.packageContainer : undefined}
         ref={containerRef}
       >
-        <Tabs defaultValue={defaultValue}>{children}</Tabs>
+        <Tabs
+          defaultValue={defaultValue}
+          onValueChange={onValueChange}
+          value={value}
+        >
+          {children}
+        </Tabs>
       </div>
     </CodeTabsContext.Provider>
   );

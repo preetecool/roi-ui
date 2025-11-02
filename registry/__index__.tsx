@@ -7,14 +7,16 @@ import { lazy } from "react";
 
 type RegistryEntry = {
   name: string;
-  type: "example" | "block";
-  component: ComponentType;
+  type: "example" | "block" | "ui";
+  component?: ComponentType;
+  files?: string[];
 };
 
 export const Index: Record<string, RegistryEntry> = {
   "accordion-demo": {
     name: "accordion-demo",
     type: "example",
+    files: ["registry/brook/examples/accordion-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/accordion-demo");
       const exportName =
@@ -28,6 +30,10 @@ export const Index: Record<string, RegistryEntry> = {
   "accordion-motion": {
     name: "accordion-motion",
     type: "example",
+    files: [
+      "registry/brook/examples/accordion-motion/accordion-motion.module.css",
+      "registry/brook/examples/accordion-motion/accordion-motion.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/accordion-motion/accordion-motion"
@@ -43,6 +49,10 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-demo": {
     name: "alert-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/alert-demo/alert-demo.module.css",
+      "registry/brook/examples/alert-demo/alert-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/alert-demo/alert-demo"
@@ -58,6 +68,10 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-destructive": {
     name: "alert-destructive",
     type: "example",
+    files: [
+      "registry/brook/examples/alert-destructive/alert-destructive.module.css",
+      "registry/brook/examples/alert-destructive/alert-destructive.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/alert-destructive/alert-destructive"
@@ -73,6 +87,10 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-dialog-demo": {
     name: "alert-dialog-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/alert-dialog-demo/alert-dialog-demo.module.css",
+      "registry/brook/examples/alert-dialog-demo/alert-dialog-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo"
@@ -88,6 +106,10 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-info": {
     name: "alert-info",
     type: "example",
+    files: [
+      "registry/brook/examples/alert-info/alert-info.module.css",
+      "registry/brook/examples/alert-info/alert-info.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/alert-info/alert-info"
@@ -103,6 +125,10 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-success": {
     name: "alert-success",
     type: "example",
+    files: [
+      "registry/brook/examples/alert-success/alert-success.module.css",
+      "registry/brook/examples/alert-success/alert-success.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/alert-success/alert-success"
@@ -118,6 +144,10 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-warning": {
     name: "alert-warning",
     type: "example",
+    files: [
+      "registry/brook/examples/alert-warning/alert-warning.module.css",
+      "registry/brook/examples/alert-warning/alert-warning.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/alert-warning/alert-warning"
@@ -133,6 +163,10 @@ export const Index: Record<string, RegistryEntry> = {
   "autocomplete-demo": {
     name: "autocomplete-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/autocomplete-demo/autocomplete-demo.module.css",
+      "registry/brook/examples/autocomplete-demo/autocomplete-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/autocomplete-demo/autocomplete-demo"
@@ -148,6 +182,7 @@ export const Index: Record<string, RegistryEntry> = {
   "avatar-demo": {
     name: "avatar-demo",
     type: "example",
+    files: ["registry/brook/examples/avatar-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/avatar-demo");
       const exportName =
@@ -161,6 +196,7 @@ export const Index: Record<string, RegistryEntry> = {
   "avatar-motion": {
     name: "avatar-motion",
     type: "example",
+    files: ["registry/brook/examples/avatar-motion/avatar-motion.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/avatar-motion/avatar-motion"
@@ -176,6 +212,10 @@ export const Index: Record<string, RegistryEntry> = {
   "background-demo": {
     name: "background-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/background-demo/background-demo.module.css",
+      "registry/brook/examples/background-demo/background-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/background-demo/background-demo"
@@ -191,6 +231,10 @@ export const Index: Record<string, RegistryEntry> = {
   "badge-demo": {
     name: "badge-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/badge-demo/badge-demo.module.css",
+      "registry/brook/examples/badge-demo/badge-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/badge-demo/badge-demo"
@@ -206,6 +250,10 @@ export const Index: Record<string, RegistryEntry> = {
   "badge-error": {
     name: "badge-error",
     type: "example",
+    files: [
+      "registry/brook/examples/badge-error/badge-error.module.css",
+      "registry/brook/examples/badge-error/badge-error.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/badge-error/badge-error"
@@ -221,6 +269,10 @@ export const Index: Record<string, RegistryEntry> = {
   "badge-external-links": {
     name: "badge-external-links",
     type: "example",
+    files: [
+      "registry/brook/examples/badge-external-links/badge-external-links.module.css",
+      "registry/brook/examples/badge-external-links/badge-external-links.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/badge-external-links/badge-external-links"
@@ -236,6 +288,10 @@ export const Index: Record<string, RegistryEntry> = {
   "badge-sizes": {
     name: "badge-sizes",
     type: "example",
+    files: [
+      "registry/brook/examples/badge-sizes/badge-sizes.module.css",
+      "registry/brook/examples/badge-sizes/badge-sizes.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/badge-sizes/badge-sizes"
@@ -251,6 +307,10 @@ export const Index: Record<string, RegistryEntry> = {
   "badge-success": {
     name: "badge-success",
     type: "example",
+    files: [
+      "registry/brook/examples/badge-success/badge-success.module.css",
+      "registry/brook/examples/badge-success/badge-success.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/badge-success/badge-success"
@@ -266,6 +326,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-demo": {
     name: "button-demo",
     type: "example",
+    files: ["registry/brook/examples/button-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-demo");
       const exportName =
@@ -279,6 +340,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-destructive": {
     name: "button-destructive",
     type: "example",
+    files: ["registry/brook/examples/button-destructive.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-destructive");
       const exportName =
@@ -292,6 +354,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-disabled": {
     name: "button-disabled",
     type: "example",
+    files: ["registry/brook/examples/button-disabled.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-disabled");
       const exportName =
@@ -305,6 +368,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-external-link": {
     name: "button-external-link",
     type: "example",
+    files: ["registry/brook/examples/button-external-link.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/button-external-link"
@@ -320,6 +384,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-ghost": {
     name: "button-ghost",
     type: "example",
+    files: ["registry/brook/examples/button-ghost.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-ghost");
       const exportName =
@@ -333,6 +398,10 @@ export const Index: Record<string, RegistryEntry> = {
   "button-loading": {
     name: "button-loading",
     type: "example",
+    files: [
+      "registry/brook/examples/button-loading/button-loading.module.css",
+      "registry/brook/examples/button-loading/button-loading.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/button-loading/button-loading"
@@ -348,6 +417,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-outline": {
     name: "button-outline",
     type: "example",
+    files: ["registry/brook/examples/button-outline.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-outline");
       const exportName =
@@ -361,6 +431,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-secondary": {
     name: "button-secondary",
     type: "example",
+    files: ["registry/brook/examples/button-secondary.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-secondary");
       const exportName =
@@ -374,6 +445,10 @@ export const Index: Record<string, RegistryEntry> = {
   "button-sizes": {
     name: "button-sizes",
     type: "example",
+    files: [
+      "registry/brook/examples/button-sizes/button-sizes.module.css",
+      "registry/brook/examples/button-sizes/button-sizes.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/button-sizes/button-sizes"
@@ -389,6 +464,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-with-arrow": {
     name: "button-with-arrow",
     type: "example",
+    files: ["registry/brook/examples/button-with-arrow.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/button-with-arrow");
       const exportName =
@@ -402,6 +478,10 @@ export const Index: Record<string, RegistryEntry> = {
   "card-demo": {
     name: "card-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/card-demo/card-demo.module.css",
+      "registry/brook/examples/card-demo/card-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/card-demo/card-demo");
       const exportName =
@@ -415,6 +495,10 @@ export const Index: Record<string, RegistryEntry> = {
   "card-pricing-card": {
     name: "card-pricing-card",
     type: "example",
+    files: [
+      "registry/brook/examples/card-pricing-card/card-pricing-card.module.css",
+      "registry/brook/examples/card-pricing-card/card-pricing-card.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/card-pricing-card/card-pricing-card"
@@ -430,6 +514,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-settings": {
     name: "card-settings",
     type: "example",
+    files: ["registry/brook/examples/card-settings/card-settings.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/card-settings/card-settings"
@@ -445,6 +530,10 @@ export const Index: Record<string, RegistryEntry> = {
   "carousel-demo": {
     name: "carousel-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/carousel-demo/carousel-demo.module.css",
+      "registry/brook/examples/carousel-demo/carousel-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/carousel-demo/carousel-demo"
@@ -460,6 +549,10 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-area-demo": {
     name: "chart-area-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/chart-area-demo/chart-area-demo.module.css",
+      "registry/brook/examples/chart-area-demo/chart-area-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/chart-area-demo/chart-area-demo"
@@ -475,6 +568,10 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-bar-demo": {
     name: "chart-bar-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/chart-bar-demo/chart-bar-demo.module.css",
+      "registry/brook/examples/chart-bar-demo/chart-bar-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/chart-bar-demo/chart-bar-demo"
@@ -490,6 +587,10 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-line-demo": {
     name: "chart-line-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/chart-line-demo/chart-line-demo.module.css",
+      "registry/brook/examples/chart-line-demo/chart-line-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/chart-line-demo/chart-line-demo"
@@ -505,6 +606,10 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-pie-demo": {
     name: "chart-pie-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/chart-pie-demo/chart-pie-demo.module.css",
+      "registry/brook/examples/chart-pie-demo/chart-pie-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/chart-pie-demo/chart-pie-demo"
@@ -520,6 +625,10 @@ export const Index: Record<string, RegistryEntry> = {
   "checkbox-demo": {
     name: "checkbox-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/checkbox-demo/checkbox-demo.module.css",
+      "registry/brook/examples/checkbox-demo/checkbox-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/checkbox-demo/checkbox-demo"
@@ -535,6 +644,10 @@ export const Index: Record<string, RegistryEntry> = {
   "checkbox-group-demo": {
     name: "checkbox-group-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/checkbox-group-demo/checkbox-group-demo.module.css",
+      "registry/brook/examples/checkbox-group-demo/checkbox-group-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/checkbox-group-demo/checkbox-group-demo"
@@ -550,6 +663,10 @@ export const Index: Record<string, RegistryEntry> = {
   "collapsible-demo": {
     name: "collapsible-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/collapsible-demo/collapsible-demo.module.css",
+      "registry/brook/examples/collapsible-demo/collapsible-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/collapsible-demo/collapsible-demo"
@@ -565,6 +682,10 @@ export const Index: Record<string, RegistryEntry> = {
   "combobox-demo": {
     name: "combobox-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/combobox-demo/combobox-demo.module.css",
+      "registry/brook/examples/combobox-demo/combobox-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/combobox-demo/combobox-demo"
@@ -580,6 +701,10 @@ export const Index: Record<string, RegistryEntry> = {
   "command-demo": {
     name: "command-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/command-demo/command-demo.module.css",
+      "registry/brook/examples/command-demo/command-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/command-demo/command-demo"
@@ -595,6 +720,10 @@ export const Index: Record<string, RegistryEntry> = {
   "context-menu-demo": {
     name: "context-menu-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/context-menu-demo/context-menu-demo.module.css",
+      "registry/brook/examples/context-menu-demo/context-menu-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/context-menu-demo/context-menu-demo"
@@ -610,6 +739,7 @@ export const Index: Record<string, RegistryEntry> = {
   "copy-button-demo": {
     name: "copy-button-demo",
     type: "example",
+    files: ["registry/brook/examples/copy-button-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/copy-button-demo");
       const exportName =
@@ -623,6 +753,10 @@ export const Index: Record<string, RegistryEntry> = {
   "dialog-demo": {
     name: "dialog-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/dialog-demo/dialog-demo.module.css",
+      "registry/brook/examples/dialog-demo/dialog-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/dialog-demo/dialog-demo"
@@ -638,6 +772,10 @@ export const Index: Record<string, RegistryEntry> = {
   "dialog-motion": {
     name: "dialog-motion",
     type: "example",
+    files: [
+      "registry/brook/examples/dialog-motion/dialog-motion.module.css",
+      "registry/brook/examples/dialog-motion/dialog-motion.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/dialog-motion/dialog-motion"
@@ -653,6 +791,9 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-demo": {
     name: "dropdown-menu-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo"
@@ -668,6 +809,10 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-motion": {
     name: "dropdown-menu-motion",
     type: "example",
+    files: [
+      "registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.module.css",
+      "registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion"
@@ -683,6 +828,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-submenu": {
     name: "dropdown-menu-submenu",
     type: "example",
+    files: ["registry/brook/examples/dropdown-menu-submenu.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/dropdown-menu-submenu"
@@ -698,6 +844,7 @@ export const Index: Record<string, RegistryEntry> = {
   "expandable-card-demo": {
     name: "expandable-card-demo",
     type: "example",
+    files: ["registry/brook/examples/expandable-card-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/expandable-card-demo"
@@ -713,6 +860,10 @@ export const Index: Record<string, RegistryEntry> = {
   "field-demo": {
     name: "field-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/field-demo/field-demo.module.css",
+      "registry/brook/examples/field-demo/field-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/field-demo/field-demo"
@@ -728,6 +879,10 @@ export const Index: Record<string, RegistryEntry> = {
   "fieldset-demo": {
     name: "fieldset-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/fieldset-demo/fieldset-demo.module.css",
+      "registry/brook/examples/fieldset-demo/fieldset-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/fieldset-demo/fieldset-demo"
@@ -743,6 +898,7 @@ export const Index: Record<string, RegistryEntry> = {
   "form-demo": {
     name: "form-demo",
     type: "example",
+    files: ["registry/brook/examples/form-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/form-demo");
       const exportName =
@@ -756,6 +912,10 @@ export const Index: Record<string, RegistryEntry> = {
   "input-demo": {
     name: "input-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/input-demo/input-demo.module.css",
+      "registry/brook/examples/input-demo/input-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/input-demo/input-demo"
@@ -771,6 +931,7 @@ export const Index: Record<string, RegistryEntry> = {
   "like-button-demo": {
     name: "like-button-demo",
     type: "example",
+    files: ["registry/brook/examples/like-button-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/like-button-demo");
       const exportName =
@@ -784,6 +945,10 @@ export const Index: Record<string, RegistryEntry> = {
   "menubar-demo": {
     name: "menubar-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/menubar-demo/menubar-demo.module.css",
+      "registry/brook/examples/menubar-demo/menubar-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/menubar-demo/menubar-demo"
@@ -799,6 +964,10 @@ export const Index: Record<string, RegistryEntry> = {
   "meter-demo": {
     name: "meter-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/meter-demo/meter-demo.module.css",
+      "registry/brook/examples/meter-demo/meter-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/meter-demo/meter-demo"
@@ -814,6 +983,10 @@ export const Index: Record<string, RegistryEntry> = {
   "navigation-menu-demo": {
     name: "navigation-menu-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/navigation-menu-demo/navigation-menu-demo.module.css",
+      "registry/brook/examples/navigation-menu-demo/navigation-menu-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/navigation-menu-demo/navigation-menu-demo"
@@ -829,6 +1002,10 @@ export const Index: Record<string, RegistryEntry> = {
   "navigation-sub-menu": {
     name: "navigation-sub-menu",
     type: "example",
+    files: [
+      "registry/brook/examples/navigation-sub-menu/navigation-sub-menu.module.css",
+      "registry/brook/examples/navigation-sub-menu/navigation-sub-menu.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/navigation-sub-menu/navigation-sub-menu"
@@ -844,6 +1021,10 @@ export const Index: Record<string, RegistryEntry> = {
   "number-field-demo": {
     name: "number-field-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/number-field-demo/number-field-demo.module.css",
+      "registry/brook/examples/number-field-demo/number-field-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/number-field-demo/number-field-demo"
@@ -859,6 +1040,10 @@ export const Index: Record<string, RegistryEntry> = {
   "popover-demo": {
     name: "popover-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/popover-demo/popover-demo.module.css",
+      "registry/brook/examples/popover-demo/popover-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/popover-demo/popover-demo"
@@ -874,6 +1059,10 @@ export const Index: Record<string, RegistryEntry> = {
   "preview-card-demo": {
     name: "preview-card-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/preview-card-demo/preview-card-demo.module.css",
+      "registry/brook/examples/preview-card-demo/preview-card-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/preview-card-demo/preview-card-demo"
@@ -889,6 +1078,10 @@ export const Index: Record<string, RegistryEntry> = {
   "progress-demo": {
     name: "progress-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/progress-demo/progress-demo.module.css",
+      "registry/brook/examples/progress-demo/progress-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/progress-demo/progress-demo"
@@ -904,6 +1097,10 @@ export const Index: Record<string, RegistryEntry> = {
   "radio-demo": {
     name: "radio-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/radio-demo/radio-demo.module.css",
+      "registry/brook/examples/radio-demo/radio-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/radio-demo/radio-demo"
@@ -919,6 +1116,10 @@ export const Index: Record<string, RegistryEntry> = {
   "scroll-area-demo": {
     name: "scroll-area-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/scroll-area-demo/scroll-area-demo.module.css",
+      "registry/brook/examples/scroll-area-demo/scroll-area-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/scroll-area-demo/scroll-area-demo"
@@ -934,6 +1135,10 @@ export const Index: Record<string, RegistryEntry> = {
   "select-demo": {
     name: "select-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/select-demo/select-demo.module.css",
+      "registry/brook/examples/select-demo/select-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/select-demo/select-demo"
@@ -949,6 +1154,10 @@ export const Index: Record<string, RegistryEntry> = {
   shipping: {
     name: "shipping",
     type: "example",
+    files: [
+      "registry/brook/examples/shipping/shipping.module.css",
+      "registry/brook/examples/shipping/shipping.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/shipping/shipping");
       const exportName =
@@ -962,6 +1171,10 @@ export const Index: Record<string, RegistryEntry> = {
   "slider-demo": {
     name: "slider-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/slider-demo/slider-demo.module.css",
+      "registry/brook/examples/slider-demo/slider-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/slider-demo/slider-demo"
@@ -977,6 +1190,10 @@ export const Index: Record<string, RegistryEntry> = {
   "switch-demo": {
     name: "switch-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/switch-demo/switch-demo.module.css",
+      "registry/brook/examples/switch-demo/switch-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/switch-demo/switch-demo"
@@ -992,6 +1209,10 @@ export const Index: Record<string, RegistryEntry> = {
   "switch-with-label": {
     name: "switch-with-label",
     type: "example",
+    files: [
+      "registry/brook/examples/switch-with-label/switch-with-label.module.css",
+      "registry/brook/examples/switch-with-label/switch-with-label.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/switch-with-label/switch-with-label"
@@ -1007,6 +1228,10 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-demo": {
     name: "tabs-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/tabs-demo/tabs-demo.module.css",
+      "registry/brook/examples/tabs-demo/tabs-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/tabs-demo/tabs-demo");
       const exportName =
@@ -1020,6 +1245,10 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-motion": {
     name: "tabs-motion",
     type: "example",
+    files: [
+      "registry/brook/examples/tabs-motion/tabs-motion.module.css",
+      "registry/brook/examples/tabs-motion/tabs-motion.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/tabs-motion/tabs-motion"
@@ -1035,6 +1264,7 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-vertical": {
     name: "tabs-vertical",
     type: "example",
+    files: ["registry/brook/examples/tabs-vertical.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/tabs-vertical");
       const exportName =
@@ -1048,6 +1278,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toast-demo": {
     name: "toast-demo",
     type: "example",
+    files: ["registry/brook/examples/toast-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/toast-demo");
       const exportName =
@@ -1061,6 +1292,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-demo": {
     name: "toggle-demo",
     type: "example",
+    files: ["registry/brook/examples/toggle-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/toggle-demo");
       const exportName =
@@ -1074,6 +1306,10 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-group-demo": {
     name: "toggle-group-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/toggle-group-demo/toggle-group-demo.module.css",
+      "registry/brook/examples/toggle-group-demo/toggle-group-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/toggle-group-demo/toggle-group-demo"
@@ -1089,6 +1325,10 @@ export const Index: Record<string, RegistryEntry> = {
   "toolbar-demo": {
     name: "toolbar-demo",
     type: "example",
+    files: [
+      "registry/brook/examples/toolbar-demo/toolbar-demo.module.css",
+      "registry/brook/examples/toolbar-demo/toolbar-demo.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/examples/toolbar-demo/toolbar-demo"
@@ -1104,6 +1344,7 @@ export const Index: Record<string, RegistryEntry> = {
   "tooltip-demo": {
     name: "tooltip-demo",
     type: "example",
+    files: ["registry/brook/examples/tooltip-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/examples/tooltip-demo");
       const exportName =
@@ -1117,6 +1358,10 @@ export const Index: Record<string, RegistryEntry> = {
   "ai-chat": {
     name: "ai-chat",
     type: "block",
+    files: [
+      "registry/brook/blocks/ai-chat/ai-chat.module.css",
+      "registry/brook/blocks/ai-chat/ai-chat.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/blocks/ai-chat/ai-chat");
       const exportName =
@@ -1130,6 +1375,10 @@ export const Index: Record<string, RegistryEntry> = {
   "card-history": {
     name: "card-history",
     type: "block",
+    files: [
+      "registry/brook/blocks/card-history/card-history.module.css",
+      "registry/brook/blocks/card-history/card-history.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/blocks/card-history/card-history"
@@ -1145,6 +1394,10 @@ export const Index: Record<string, RegistryEntry> = {
   "card-image": {
     name: "card-image",
     type: "block",
+    files: [
+      "registry/brook/blocks/card-image/card-image.module.css",
+      "registry/brook/blocks/card-image/card-image.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/blocks/card-image/card-image");
       const exportName =
@@ -1158,6 +1411,10 @@ export const Index: Record<string, RegistryEntry> = {
   "card-login": {
     name: "card-login",
     type: "block",
+    files: [
+      "registry/brook/blocks/card-login/card-login.module.css",
+      "registry/brook/blocks/card-login/card-login.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/blocks/card-login/card-login");
       const exportName =
@@ -1171,6 +1428,14 @@ export const Index: Record<string, RegistryEntry> = {
   "card-task": {
     name: "card-task",
     type: "block",
+    files: [
+      "registry/brook/blocks/card-task/avatar-group.tsx",
+      "registry/brook/blocks/card-task/card-task.module.css",
+      "registry/brook/blocks/card-task/card-task.tsx",
+      "registry/brook/blocks/card-task/collaborator-dialog.tsx",
+      "registry/brook/blocks/card-task/delete-task-alert-dialog.tsx",
+      "registry/brook/blocks/card-task/task-card-dropdown-menu.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/blocks/card-task/card-task");
       const exportName =
@@ -1184,6 +1449,10 @@ export const Index: Record<string, RegistryEntry> = {
   "card-traffic": {
     name: "card-traffic",
     type: "block",
+    files: [
+      "registry/brook/blocks/card-traffic/card-traffic.module.css",
+      "registry/brook/blocks/card-traffic/card-traffic.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/blocks/card-traffic/card-traffic"
@@ -1199,6 +1468,10 @@ export const Index: Record<string, RegistryEntry> = {
   "expandable-card": {
     name: "expandable-card",
     type: "block",
+    files: [
+      "registry/brook/blocks/expandable-card/expandable-card.module.css",
+      "registry/brook/blocks/expandable-card/expandable-card.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/blocks/expandable-card/expandable-card"
@@ -1214,6 +1487,10 @@ export const Index: Record<string, RegistryEntry> = {
   "profile-menu": {
     name: "profile-menu",
     type: "block",
+    files: [
+      "registry/brook/blocks/profile-menu/profile-menu.module.css",
+      "registry/brook/blocks/profile-menu/profile-menu.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/blocks/profile-menu/profile-menu"
@@ -1226,9 +1503,375 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  accordion: {
+    name: "accordion",
+    type: "ui",
+    files: [
+      "registry/brook/ui/accordion/accordion.module.css",
+      "registry/brook/ui/accordion/accordion.tsx",
+    ],
+  },
+  alert: {
+    name: "alert",
+    type: "ui",
+    files: [
+      "registry/brook/ui/alert/alert.module.css",
+      "registry/brook/ui/alert/alert.tsx",
+    ],
+  },
+  "alert-dialog": {
+    name: "alert-dialog",
+    type: "ui",
+    files: [
+      "registry/brook/ui/alert-dialog/alert-dialog.module.css",
+      "registry/brook/ui/alert-dialog/alert-dialog.tsx",
+    ],
+  },
+  "arrow-icon": {
+    name: "arrow-icon",
+    type: "ui",
+    files: ["registry/brook/ui/arrow-icon/arrow-icon.tsx"],
+  },
+  autocomplete: {
+    name: "autocomplete",
+    type: "ui",
+    files: [
+      "registry/brook/ui/autocomplete/autocomplete.module.css",
+      "registry/brook/ui/autocomplete/autocomplete.tsx",
+    ],
+  },
+  avatar: {
+    name: "avatar",
+    type: "ui",
+    files: [
+      "registry/brook/ui/avatar/avatar.module.css",
+      "registry/brook/ui/avatar/avatar.tsx",
+    ],
+  },
+  background: {
+    name: "background",
+    type: "ui",
+    files: [
+      "registry/brook/ui/background/background.module.css",
+      "registry/brook/ui/background/background.tsx",
+    ],
+  },
+  badge: {
+    name: "badge",
+    type: "ui",
+    files: [
+      "registry/brook/ui/badge/badge.module.css",
+      "registry/brook/ui/badge/badge.tsx",
+    ],
+  },
+  button: {
+    name: "button",
+    type: "ui",
+    files: [
+      "registry/brook/ui/button/button.module.css",
+      "registry/brook/ui/button/button.tsx",
+    ],
+  },
+  card: {
+    name: "card",
+    type: "ui",
+    files: [
+      "registry/brook/ui/card/card.module.css",
+      "registry/brook/ui/card/card.tsx",
+    ],
+  },
+  carousel: {
+    name: "carousel",
+    type: "ui",
+    files: [
+      "registry/brook/ui/carousel/carousel.module.css",
+      "registry/brook/ui/carousel/carousel.tsx",
+    ],
+  },
+  chart: {
+    name: "chart",
+    type: "ui",
+    files: [
+      "registry/brook/ui/chart/chart.module.css",
+      "registry/brook/ui/chart/chart.tsx",
+    ],
+  },
+  checkbox: {
+    name: "checkbox",
+    type: "ui",
+    files: [
+      "registry/brook/ui/checkbox/checkbox.module.css",
+      "registry/brook/ui/checkbox/checkbox.tsx",
+    ],
+  },
+  "checkbox-group": {
+    name: "checkbox-group",
+    type: "ui",
+    files: [
+      "registry/brook/ui/checkbox-group/checkbox-group.module.css",
+      "registry/brook/ui/checkbox-group/checkbox-group.tsx",
+    ],
+  },
+  collapsible: {
+    name: "collapsible",
+    type: "ui",
+    files: [
+      "registry/brook/ui/collapsible/collapsible.module.css",
+      "registry/brook/ui/collapsible/collapsible.tsx",
+    ],
+  },
+  combobox: {
+    name: "combobox",
+    type: "ui",
+    files: [
+      "registry/brook/ui/combobox/combobox.module.css",
+      "registry/brook/ui/combobox/combobox.tsx",
+    ],
+  },
+  command: {
+    name: "command",
+    type: "ui",
+    files: [
+      "registry/brook/ui/command/command.module.css",
+      "registry/brook/ui/command/command.tsx",
+    ],
+  },
+  "context-menu": {
+    name: "context-menu",
+    type: "ui",
+    files: [
+      "registry/brook/ui/context-menu/context-menu.module.css",
+      "registry/brook/ui/context-menu/context-menu.tsx",
+    ],
+  },
+  "copy-button": {
+    name: "copy-button",
+    type: "ui",
+    files: [
+      "registry/brook/ui/copy-button/copy-button.module.css",
+      "registry/brook/ui/copy-button/copy-button.tsx",
+    ],
+  },
+  dialog: {
+    name: "dialog",
+    type: "ui",
+    files: [
+      "registry/brook/ui/dialog/dialog.module.css",
+      "registry/brook/ui/dialog/dialog.tsx",
+    ],
+  },
+  "dropdown-menu": {
+    name: "dropdown-menu",
+    type: "ui",
+    files: [
+      "registry/brook/ui/dropdown-menu/dropdown-menu.module.css",
+      "registry/brook/ui/dropdown-menu/dropdown-menu.tsx",
+    ],
+  },
+  field: {
+    name: "field",
+    type: "ui",
+    files: [
+      "registry/brook/ui/field/field.module.css",
+      "registry/brook/ui/field/field.tsx",
+    ],
+  },
+  fieldset: {
+    name: "fieldset",
+    type: "ui",
+    files: [
+      "registry/brook/ui/fieldset/fieldset.module.css",
+      "registry/brook/ui/fieldset/fieldset.tsx",
+    ],
+  },
+  form: {
+    name: "form",
+    type: "ui",
+    files: [
+      "registry/brook/ui/form/form.module.css",
+      "registry/brook/ui/form/form.tsx",
+    ],
+  },
+  input: {
+    name: "input",
+    type: "ui",
+    files: [
+      "registry/brook/ui/input/input.module.css",
+      "registry/brook/ui/input/input.tsx",
+    ],
+  },
+  kbd: {
+    name: "kbd",
+    type: "ui",
+    files: [
+      "registry/brook/ui/kbd/kbd.module.css",
+      "registry/brook/ui/kbd/kbd.tsx",
+    ],
+  },
+  "like-button": {
+    name: "like-button",
+    type: "ui",
+    files: [
+      "registry/brook/ui/like-button/like-button.module.css",
+      "registry/brook/ui/like-button/like-button.tsx",
+    ],
+  },
+  menubar: {
+    name: "menubar",
+    type: "ui",
+    files: [
+      "registry/brook/ui/menubar/menubar.module.css",
+      "registry/brook/ui/menubar/menubar.tsx",
+    ],
+  },
+  meter: {
+    name: "meter",
+    type: "ui",
+    files: [
+      "registry/brook/ui/meter/meter.module.css",
+      "registry/brook/ui/meter/meter.tsx",
+    ],
+  },
+  "navigation-menu": {
+    name: "navigation-menu",
+    type: "ui",
+    files: [
+      "registry/brook/ui/navigation-menu/navigation-menu.module.css",
+      "registry/brook/ui/navigation-menu/navigation-menu.tsx",
+    ],
+  },
+  "number-field": {
+    name: "number-field",
+    type: "ui",
+    files: [
+      "registry/brook/ui/number-field/number-field.module.css",
+      "registry/brook/ui/number-field/number-field.tsx",
+    ],
+  },
+  popover: {
+    name: "popover",
+    type: "ui",
+    files: [
+      "registry/brook/ui/popover/popover.module.css",
+      "registry/brook/ui/popover/popover.tsx",
+    ],
+  },
+  "preview-card": {
+    name: "preview-card",
+    type: "ui",
+    files: [
+      "registry/brook/ui/preview-card/preview-card.module.css",
+      "registry/brook/ui/preview-card/preview-card.tsx",
+    ],
+  },
+  progress: {
+    name: "progress",
+    type: "ui",
+    files: [
+      "registry/brook/ui/progress/progress.module.css",
+      "registry/brook/ui/progress/progress.tsx",
+    ],
+  },
+  radio: {
+    name: "radio",
+    type: "ui",
+    files: [
+      "registry/brook/ui/radio/radio.module.css",
+      "registry/brook/ui/radio/radio.tsx",
+    ],
+  },
+  "scroll-area": {
+    name: "scroll-area",
+    type: "ui",
+    files: [
+      "registry/brook/ui/scroll-area/scroll-area.module.css",
+      "registry/brook/ui/scroll-area/scroll-area.tsx",
+    ],
+  },
+  select: {
+    name: "select",
+    type: "ui",
+    files: [
+      "registry/brook/ui/select/select.module.css",
+      "registry/brook/ui/select/select.tsx",
+    ],
+  },
+  sidebar: {
+    name: "sidebar",
+    type: "ui",
+    files: [
+      "registry/brook/ui/sidebar/sidebar.module.css",
+      "registry/brook/ui/sidebar/sidebar.tsx",
+    ],
+  },
+  slider: {
+    name: "slider",
+    type: "ui",
+    files: [
+      "registry/brook/ui/slider/slider.module.css",
+      "registry/brook/ui/slider/slider.tsx",
+    ],
+  },
+  switch: {
+    name: "switch",
+    type: "ui",
+    files: [
+      "registry/brook/ui/switch/switch.module.css",
+      "registry/brook/ui/switch/switch.tsx",
+    ],
+  },
+  tabs: {
+    name: "tabs",
+    type: "ui",
+    files: [
+      "registry/brook/ui/tabs/tabs.module.css",
+      "registry/brook/ui/tabs/tabs.tsx",
+    ],
+  },
+  toast: {
+    name: "toast",
+    type: "ui",
+    files: [
+      "registry/brook/ui/toast/toast.module.css",
+      "registry/brook/ui/toast/toast.tsx",
+    ],
+  },
+  toggle: {
+    name: "toggle",
+    type: "ui",
+    files: [
+      "registry/brook/ui/toggle/toggle.module.css",
+      "registry/brook/ui/toggle/toggle.tsx",
+    ],
+  },
+  "toggle-group": {
+    name: "toggle-group",
+    type: "ui",
+    files: [
+      "registry/brook/ui/toggle-group/toggle-group.module.css",
+      "registry/brook/ui/toggle-group/toggle-group.tsx",
+    ],
+  },
+  toolbar: {
+    name: "toolbar",
+    type: "ui",
+    files: [
+      "registry/brook/ui/toolbar/toolbar.module.css",
+      "registry/brook/ui/toolbar/toolbar.tsx",
+    ],
+  },
+  tooltip: {
+    name: "tooltip",
+    type: "ui",
+    files: [
+      "registry/brook/ui/tooltip/tooltip.module.css",
+      "registry/brook/ui/tooltip/tooltip.tsx",
+    ],
+  },
   "accordion-demo-tailwind": {
     name: "accordion-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/accordion-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/accordion-demo"
@@ -1244,6 +1887,7 @@ export const Index: Record<string, RegistryEntry> = {
   "accordion-motion-tailwind": {
     name: "accordion-motion-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/accordion-motion.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/accordion-motion"
@@ -1259,6 +1903,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-demo-tailwind": {
     name: "alert-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/alert-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/alert-demo");
       const exportName =
@@ -1272,6 +1917,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-destructive-tailwind": {
     name: "alert-destructive-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/alert-destructive.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/alert-destructive"
@@ -1287,6 +1933,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-dialog-demo-tailwind": {
     name: "alert-dialog-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/alert-dialog-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/alert-dialog-demo"
@@ -1302,6 +1949,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-info-tailwind": {
     name: "alert-info-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/alert-info.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/alert-info");
       const exportName =
@@ -1315,6 +1963,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-success-tailwind": {
     name: "alert-success-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/alert-success.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/alert-success"
@@ -1330,6 +1979,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-warning-tailwind": {
     name: "alert-warning-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/alert-warning.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/alert-warning"
@@ -1345,6 +1995,7 @@ export const Index: Record<string, RegistryEntry> = {
   "autocomplete-demo-tailwind": {
     name: "autocomplete-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/autocomplete-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/autocomplete-demo"
@@ -1360,6 +2011,7 @@ export const Index: Record<string, RegistryEntry> = {
   "avatar-demo-tailwind": {
     name: "avatar-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/avatar-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/avatar-demo"
@@ -1375,6 +2027,7 @@ export const Index: Record<string, RegistryEntry> = {
   "badge-demo-tailwind": {
     name: "badge-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/badge-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/badge-demo");
       const exportName =
@@ -1388,6 +2041,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-demo-tailwind": {
     name: "button-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-demo"
@@ -1403,6 +2057,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-destructive-tailwind": {
     name: "button-destructive-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-destructive.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-destructive"
@@ -1418,6 +2073,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-disabled-tailwind": {
     name: "button-disabled-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-disabled.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-disabled"
@@ -1433,6 +2089,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-external-link-tailwind": {
     name: "button-external-link-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-external-link.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-external-link"
@@ -1448,6 +2105,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-ghost-tailwind": {
     name: "button-ghost-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-ghost.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-ghost"
@@ -1463,6 +2121,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-outline-tailwind": {
     name: "button-outline-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-outline.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-outline"
@@ -1478,6 +2137,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-secondary-tailwind": {
     name: "button-secondary-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-secondary.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-secondary"
@@ -1493,6 +2153,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-with-arrow-tailwind": {
     name: "button-with-arrow-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/button-with-arrow.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/button-with-arrow"
@@ -1508,6 +2169,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-demo-tailwind": {
     name: "card-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/card-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/card-demo");
       const exportName =
@@ -1521,6 +2183,7 @@ export const Index: Record<string, RegistryEntry> = {
   "carousel-demo-tailwind": {
     name: "carousel-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/carousel-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/carousel-demo"
@@ -1536,6 +2199,7 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-area-demo-tailwind": {
     name: "chart-area-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/chart-area-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/chart-area-demo"
@@ -1551,6 +2215,7 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-bar-demo-tailwind": {
     name: "chart-bar-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/chart-bar-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/chart-bar-demo"
@@ -1566,6 +2231,7 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-line-demo-tailwind": {
     name: "chart-line-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/chart-line-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/chart-line-demo"
@@ -1581,6 +2247,7 @@ export const Index: Record<string, RegistryEntry> = {
   "chart-pie-demo-tailwind": {
     name: "chart-pie-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/chart-pie-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/chart-pie-demo"
@@ -1596,6 +2263,7 @@ export const Index: Record<string, RegistryEntry> = {
   "checkbox-demo-tailwind": {
     name: "checkbox-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/checkbox-demo"
@@ -1611,6 +2279,7 @@ export const Index: Record<string, RegistryEntry> = {
   "checkbox-group-demo-tailwind": {
     name: "checkbox-group-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-group-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/checkbox-group-demo"
@@ -1626,6 +2295,7 @@ export const Index: Record<string, RegistryEntry> = {
   "collapsible-demo-tailwind": {
     name: "collapsible-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/collapsible-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/collapsible-demo"
@@ -1641,6 +2311,7 @@ export const Index: Record<string, RegistryEntry> = {
   "combobox-demo-tailwind": {
     name: "combobox-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/combobox-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/combobox-demo"
@@ -1656,6 +2327,7 @@ export const Index: Record<string, RegistryEntry> = {
   "command-demo-tailwind": {
     name: "command-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/command-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/command-demo"
@@ -1671,6 +2343,7 @@ export const Index: Record<string, RegistryEntry> = {
   "context-menu-demo-tailwind": {
     name: "context-menu-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/context-menu-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/context-menu-demo"
@@ -1686,6 +2359,7 @@ export const Index: Record<string, RegistryEntry> = {
   "copy-button-demo-tailwind": {
     name: "copy-button-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/copy-button-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/copy-button-demo"
@@ -1701,6 +2375,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dialog-demo-tailwind": {
     name: "dialog-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/dialog-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/dialog-demo"
@@ -1716,6 +2391,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dialog-motion-tailwind": {
     name: "dialog-motion-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/dialog-motion.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/dialog-motion"
@@ -1731,6 +2407,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-demo-tailwind": {
     name: "dropdown-menu-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/dropdown-menu-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/dropdown-menu-demo"
@@ -1746,6 +2423,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-motion-tailwind": {
     name: "dropdown-menu-motion-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/dropdown-menu-motion.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/dropdown-menu-motion"
@@ -1761,6 +2439,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-submenu-tailwind": {
     name: "dropdown-menu-submenu-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/dropdown-menu-submenu.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/dropdown-menu-submenu"
@@ -1776,6 +2455,7 @@ export const Index: Record<string, RegistryEntry> = {
   "expandable-card-demo-tailwind": {
     name: "expandable-card-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/expandable-card-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/expandable-card-demo"
@@ -1791,6 +2471,7 @@ export const Index: Record<string, RegistryEntry> = {
   "field-demo-tailwind": {
     name: "field-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/field-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/field-demo");
       const exportName =
@@ -1804,6 +2485,7 @@ export const Index: Record<string, RegistryEntry> = {
   "fieldset-demo-tailwind": {
     name: "fieldset-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/fieldset-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/fieldset-demo"
@@ -1819,6 +2501,7 @@ export const Index: Record<string, RegistryEntry> = {
   "form-demo-tailwind": {
     name: "form-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/form-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/form-demo");
       const exportName =
@@ -1832,6 +2515,7 @@ export const Index: Record<string, RegistryEntry> = {
   "input-demo-tailwind": {
     name: "input-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/input-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/input-demo");
       const exportName =
@@ -1845,6 +2529,7 @@ export const Index: Record<string, RegistryEntry> = {
   "like-button-demo-tailwind": {
     name: "like-button-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/like-button-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/like-button-demo"
@@ -1860,6 +2545,7 @@ export const Index: Record<string, RegistryEntry> = {
   "menubar-demo-tailwind": {
     name: "menubar-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/menubar-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/menubar-demo"
@@ -1875,6 +2561,7 @@ export const Index: Record<string, RegistryEntry> = {
   "meter-demo-tailwind": {
     name: "meter-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/meter-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/meter-demo");
       const exportName =
@@ -1888,6 +2575,7 @@ export const Index: Record<string, RegistryEntry> = {
   "navigation-menu-demo-tailwind": {
     name: "navigation-menu-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/navigation-menu-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/navigation-menu-demo"
@@ -1903,6 +2591,7 @@ export const Index: Record<string, RegistryEntry> = {
   "navigation-sub-menu-tailwind": {
     name: "navigation-sub-menu-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/navigation-sub-menu.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/navigation-sub-menu"
@@ -1918,6 +2607,7 @@ export const Index: Record<string, RegistryEntry> = {
   "number-field-demo-tailwind": {
     name: "number-field-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/number-field-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/number-field-demo"
@@ -1933,6 +2623,7 @@ export const Index: Record<string, RegistryEntry> = {
   "popover-demo-tailwind": {
     name: "popover-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/popover-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/popover-demo"
@@ -1948,6 +2639,7 @@ export const Index: Record<string, RegistryEntry> = {
   "preview-card-demo-tailwind": {
     name: "preview-card-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/preview-card-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/preview-card-demo"
@@ -1963,6 +2655,7 @@ export const Index: Record<string, RegistryEntry> = {
   "progress-demo-tailwind": {
     name: "progress-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/progress-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/progress-demo"
@@ -1978,6 +2671,7 @@ export const Index: Record<string, RegistryEntry> = {
   "radio-demo-tailwind": {
     name: "radio-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/radio-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/radio-demo");
       const exportName =
@@ -1991,6 +2685,7 @@ export const Index: Record<string, RegistryEntry> = {
   "scroll-area-demo-tailwind": {
     name: "scroll-area-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/scroll-area-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/scroll-area-demo"
@@ -2006,6 +2701,7 @@ export const Index: Record<string, RegistryEntry> = {
   "select-demo-tailwind": {
     name: "select-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/select-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/select-demo"
@@ -2021,6 +2717,7 @@ export const Index: Record<string, RegistryEntry> = {
   shippingTailwind: {
     name: "shipping-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/shipping.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/shipping");
       const exportName =
@@ -2034,6 +2731,7 @@ export const Index: Record<string, RegistryEntry> = {
   "slider-demo-tailwind": {
     name: "slider-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/slider-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/slider-demo"
@@ -2049,6 +2747,7 @@ export const Index: Record<string, RegistryEntry> = {
   "switch-demo-tailwind": {
     name: "switch-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/switch-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/switch-demo"
@@ -2064,6 +2763,7 @@ export const Index: Record<string, RegistryEntry> = {
   "switch-with-label-tailwind": {
     name: "switch-with-label-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/switch-with-label.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/switch-with-label"
@@ -2079,6 +2779,7 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-demo-tailwind": {
     name: "tabs-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/tabs-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/tabs-demo");
       const exportName =
@@ -2092,6 +2793,7 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-motion-tailwind": {
     name: "tabs-motion-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/tabs-motion.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/tabs-motion"
@@ -2107,6 +2809,7 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-vertical-tailwind": {
     name: "tabs-vertical-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/tabs-vertical.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/tabs-vertical"
@@ -2122,6 +2825,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toast-demo-tailwind": {
     name: "toast-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/toast-demo.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/examples/toast-demo");
       const exportName =
@@ -2135,6 +2839,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-demo-tailwind": {
     name: "toggle-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/toggle-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/toggle-demo"
@@ -2150,6 +2855,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-group-demo-tailwind": {
     name: "toggle-group-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/toggle-group-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/toggle-group-demo"
@@ -2165,6 +2871,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toolbar-demo-tailwind": {
     name: "toolbar-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/toolbar-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/toolbar-demo"
@@ -2180,6 +2887,7 @@ export const Index: Record<string, RegistryEntry> = {
   "tooltip-demo-tailwind": {
     name: "tooltip-demo-tailwind",
     type: "example",
+    files: ["registry/brook/tailwind/examples/tooltip-demo.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/examples/tooltip-demo"
@@ -2195,6 +2903,7 @@ export const Index: Record<string, RegistryEntry> = {
   "ai-chat-tailwind": {
     name: "ai-chat-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/ai-chat.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/blocks/ai-chat");
       const exportName =
@@ -2208,6 +2917,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-history-tailwind": {
     name: "card-history-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/card-history.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/blocks/card-history");
       const exportName =
@@ -2221,6 +2931,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-image-tailwind": {
     name: "card-image-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/card-image.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/blocks/card-image");
       const exportName =
@@ -2234,6 +2945,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-login-tailwind": {
     name: "card-login-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/card-login.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/blocks/card-login");
       const exportName =
@@ -2247,6 +2959,13 @@ export const Index: Record<string, RegistryEntry> = {
   "card-task-tailwind": {
     name: "card-task-tailwind",
     type: "block",
+    files: [
+      "registry/brook/tailwind/blocks/card-task/avatar-group.tsx",
+      "registry/brook/tailwind/blocks/card-task/card-task.tsx",
+      "registry/brook/tailwind/blocks/card-task/collaborator-dialog.tsx",
+      "registry/brook/tailwind/blocks/card-task/delete-task-alert-dialog.tsx",
+      "registry/brook/tailwind/blocks/card-task/task-card-dropdown-menu.tsx",
+    ],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/blocks/card-task/card-task"
@@ -2262,6 +2981,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-traffic-tailwind": {
     name: "card-traffic-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/card-traffic/card-traffic.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/blocks/card-traffic/card-traffic"
@@ -2277,6 +2997,7 @@ export const Index: Record<string, RegistryEntry> = {
   "expandable-card-tailwind": {
     name: "expandable-card-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/expandable-card.tsx"],
     component: lazy(async () => {
       const mod = await import(
         "@/registry/brook/tailwind/blocks/expandable-card"
@@ -2292,6 +3013,7 @@ export const Index: Record<string, RegistryEntry> = {
   "profile-menu-tailwind": {
     name: "profile-menu-tailwind",
     type: "block",
+    files: ["registry/brook/tailwind/blocks/profile-menu.tsx"],
     component: lazy(async () => {
       const mod = await import("@/registry/brook/tailwind/blocks/profile-menu");
       const exportName =
@@ -2301,5 +3023,225 @@ export const Index: Record<string, RegistryEntry> = {
         ) || "profile-menu";
       return { default: mod.default || mod[exportName] };
     }),
+  },
+  accordionTailwind: {
+    name: "accordion-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/accordion.tsx"],
+  },
+  "alert-dialog-tailwind": {
+    name: "alert-dialog-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/alert-dialog.tsx"],
+  },
+  alertTailwind: {
+    name: "alert-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/alert.tsx"],
+  },
+  autocompleteTailwind: {
+    name: "autocomplete-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/autocomplete.tsx"],
+  },
+  avatarTailwind: {
+    name: "avatar-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/avatar.tsx"],
+  },
+  backgroundTailwind: {
+    name: "background-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/background.tsx"],
+  },
+  badgeTailwind: {
+    name: "badge-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/badge.tsx"],
+  },
+  buttonTailwind: {
+    name: "button-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/button.tsx"],
+  },
+  cardTailwind: {
+    name: "card-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/card.tsx"],
+  },
+  carouselTailwind: {
+    name: "carousel-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/carousel.tsx"],
+  },
+  chartTailwind: {
+    name: "chart-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/chart.tsx"],
+  },
+  "checkbox-group-tailwind": {
+    name: "checkbox-group-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/checkbox-group.tsx"],
+  },
+  checkboxTailwind: {
+    name: "checkbox-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/checkbox.tsx"],
+  },
+  collapsibleTailwind: {
+    name: "collapsible-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/collapsible.tsx"],
+  },
+  comboboxTailwind: {
+    name: "combobox-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/combobox.tsx"],
+  },
+  commandTailwind: {
+    name: "command-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/command.tsx"],
+  },
+  "context-menu-tailwind": {
+    name: "context-menu-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/context-menu.tsx"],
+  },
+  "copy-button-tailwind": {
+    name: "copy-button-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/copy-button.tsx"],
+  },
+  dialogTailwind: {
+    name: "dialog-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/dialog.tsx"],
+  },
+  "dropdown-menu-tailwind": {
+    name: "dropdown-menu-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/dropdown-menu.tsx"],
+  },
+  fieldTailwind: {
+    name: "field-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/field.tsx"],
+  },
+  fieldsetTailwind: {
+    name: "fieldset-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/fieldset.tsx"],
+  },
+  formTailwind: {
+    name: "form-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/form.tsx"],
+  },
+  inputTailwind: {
+    name: "input-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/input.tsx"],
+  },
+  kbdTailwind: {
+    name: "kbd-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/kbd.tsx"],
+  },
+  "like-button-tailwind": {
+    name: "like-button-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/like-button.tsx"],
+  },
+  menubarTailwind: {
+    name: "menubar-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/menubar.tsx"],
+  },
+  meterTailwind: {
+    name: "meter-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/meter.tsx"],
+  },
+  "navigation-menu-tailwind": {
+    name: "navigation-menu-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/navigation-menu.tsx"],
+  },
+  "number-field-tailwind": {
+    name: "number-field-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/number-field.tsx"],
+  },
+  popoverTailwind: {
+    name: "popover-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/popover.tsx"],
+  },
+  "preview-card-tailwind": {
+    name: "preview-card-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/preview-card.tsx"],
+  },
+  progressTailwind: {
+    name: "progress-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/progress.tsx"],
+  },
+  radioTailwind: {
+    name: "radio-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/radio.tsx"],
+  },
+  "scroll-area-tailwind": {
+    name: "scroll-area-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/scroll-area.tsx"],
+  },
+  selectTailwind: {
+    name: "select-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/select.tsx"],
+  },
+  sliderTailwind: {
+    name: "slider-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/slider.tsx"],
+  },
+  switchTailwind: {
+    name: "switch-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/switch.tsx"],
+  },
+  tabsTailwind: {
+    name: "tabs-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/tabs.tsx"],
+  },
+  toastTailwind: {
+    name: "toast-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/toast.tsx"],
+  },
+  "toggle-group-tailwind": {
+    name: "toggle-group-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/toggle-group.tsx"],
+  },
+  toggleTailwind: {
+    name: "toggle-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/toggle.tsx"],
+  },
+  toolbarTailwind: {
+    name: "toolbar-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/toolbar.tsx"],
+  },
+  tooltipTailwind: {
+    name: "tooltip-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/tooltip.tsx"],
   },
 };
