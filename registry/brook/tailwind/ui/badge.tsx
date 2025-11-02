@@ -14,7 +14,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "selection:!bg-[oklch(0_0_0)] selection:!text-foreground [&_*]:selection:!bg-[oklch(0_0_0)] [&_*]:selection:!text-foreground light:selection:!bg-white light:selection:!text-black light:[&_*]:selection:!bg-white light:[&_*]:selection:!text-black bg-foreground text-primary-foreground",
+          "selection:!bg-[oklch(0_0_0)] selection:!text-foreground [&_*]:selection:!bg-[oklch(0_0_0)] [&_*]:selection:!text-foreground [.light_&]:selection:!bg-white [.light_&]:selection:!text-black [.light_&_*]:selection:!bg-white [.light_&_*]:selection:!text-black [[data-theme='light']_&]:selection:!bg-white [[data-theme='light']_&]:selection:!text-black [[data-theme='light']_&_*]:selection:!bg-white [[data-theme='light']_&_*]:selection:!text-black bg-foreground text-primary-foreground",
         secondary:
           "border-transparent bg-[var(--mix-card-66-bg)] text-secondary-foreground",
         destructive: [
