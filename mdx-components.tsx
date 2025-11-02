@@ -7,6 +7,7 @@ import {
   CodeTabsList,
   CodeTabsTrigger,
 } from "@/components/code-tabs/code-tabs";
+import { PackageManagerCodeTabs } from "@/components/code-tabs/package-manager-code-tabs";
 import { ComponentPreview } from "@/components/component-preview/component-preview";
 import { ComponentSource } from "@/components/component-source/component-source";
 import { GlobalsCSS } from "@/components/globals-css";
@@ -81,10 +82,8 @@ export const mdxComponents = {
   InstallationTabsTrigger: CodeTabsTrigger,
   InstallationTabsContent: CodeTabsContent,
 
-  // Package manager tabs (npm/pnpm)
-  CodeBlockTabs: (props: ComponentProps<typeof CodeTabs>) => (
-    <CodeTabs defaultValue="npm" variant="package" {...props} />
-  ),
+  // Package manager tabs (npm/pnpm) - synced with PackageManagerProvider
+  CodeBlockTabs: PackageManagerCodeTabs,
 
   Tab: ({ value, children, ...props }: TabProps) => (
     <TabsContent value={value} {...props} className="">
