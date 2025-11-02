@@ -2,7 +2,7 @@
 
 import { Accordion } from "@base-ui-components/react/accordion";
 import { useState } from "react";
-import styles from "./accordion-motion.module.css";
+import styles from "./accordion-animation.module.css";
 
 const accordionItems = [
   {
@@ -28,12 +28,39 @@ const accordionItems = [
 export default function AccordionFramerMotion() {
   const [value, setValue] = useState<string[]>(["item-1"]);
 
+  const getExpandedIndices = () => {
+    return value
+      .map((v) => accordionItems.findIndex((item) => item.id === v))
+      .filter((i) => i !== -1);
+  };
+
+  const getItemClassName = (index: number) => {
+    const expandedIndices = getExpandedIndices();
+    const isExpanded = expandedIndices.includes(index);
+    const isBeforeExpanded = expandedIndices.includes(index + 1);
+    const isAfterExpanded = expandedIndices.includes(index - 1);
+
+    const classes = [styles.accordionItem];
+
+    if (isExpanded) {
+      classes.push(styles.expanded);
+    }
+    if (isBeforeExpanded) {
+      classes.push(styles.beforeExpanded);
+    }
+    if (isAfterExpanded) {
+      classes.push(styles.afterExpanded);
+    }
+
+    return classes.join(" ");
+  };
+
   return (
     <div className={styles.container}>
       <Accordion.Root onValueChange={setValue} value={value}>
-        {accordionItems.map((item) => (
+        {accordionItems.map((item, index) => (
           <Accordion.Item
-            className={styles.accordionItem}
+            className={getItemClassName(index)}
             key={item.id}
             value={item.id}
           >

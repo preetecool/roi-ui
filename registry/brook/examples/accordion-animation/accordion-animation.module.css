@@ -3,15 +3,75 @@
   max-width: calc(100vw - 8rem);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .accordionItem {
-  border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: var(--mix-card-66-bg);
-  margin-bottom: 1rem;
   padding: 1rem;
+  border-bottom: 0.5px solid var(--border);
+  transition:
+    margin 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955),
+    border-radius 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955),
+    border-color 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+/* Default state - first item has top rounded, last item has bottom rounded */
+.accordionItem:first-child {
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.accordionItem:last-child {
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+
+.accordionItem:first-child:last-child {
+  border-radius: 1.5rem;
+}
+
+.accordionItem:last-child {
+  border-bottom-color: transparent;
+}
+
+/* Expanded item gets full rounded corners and unsticks with margins */
+.accordionItem.expanded {
+  border-radius: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom-color: transparent;
+}
+
+.accordionItem.expanded:first-child {
+  margin-top: 0;
+}
+
+.accordionItem.expanded:last-child {
+  margin-bottom: 0;
+}
+
+/* Item sandwiched between two expanded items gets full rounded corners */
+.accordionItem.beforeExpanded.afterExpanded:not(.expanded) {
+  border-radius: 1.5rem;
+  border-bottom-color: transparent;
+}
+
+/* Item before expanded gets rounded bottom (unless it's also expanded) */
+.accordionItem.beforeExpanded:not(.expanded):not(.afterExpanded) {
+  border-radius: 0 0 1.5rem 1.5rem;
+  border-bottom-color: transparent;
+}
+
+.accordionItem.beforeExpanded:not(.expanded):not(.afterExpanded):first-child {
+  border-radius: 1.5rem;
+}
+
+/* Item after expanded gets rounded top (unless it's also expanded) */
+.accordionItem.afterExpanded:not(.expanded):not(.beforeExpanded) {
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.accordionItem.afterExpanded:not(.expanded):not(.beforeExpanded):last-child {
+  border-radius: 1.5rem;
 }
 
 .trigger {
@@ -77,20 +137,6 @@
 .content {
   overflow: hidden;
   width: 100%;
-  opacity: 1;
-  filter: blur(0px);
-  scale: 1;
-  transition:
-    opacity 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955),
-    filter 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955),
-    scale 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-
-.panel[data-starting-style] .content,
-.panel[data-ending-style] .content {
-  opacity: 0;
-  filter: blur(2px);
-  scale: 0.95;
 }
 
 .contentInner {
@@ -106,12 +152,10 @@
   .container {
     width: 100%;
     max-width: 100%;
-    gap: 0.75rem;
   }
 
   .accordionItem {
     padding: 1rem;
-    margin-bottom: 0.75rem;
   }
 
   .trigger {
