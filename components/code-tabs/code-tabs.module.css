@@ -84,7 +84,6 @@
   padding: 0;
 }
 
-.manualContent p {
-  margin-top: 1rem;
+.installationContent[data-manual="true"] p {
   margin-bottom: 1rem;
 }
