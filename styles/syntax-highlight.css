@@ -18,8 +18,8 @@ html[data-theme="dark"] {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
-  width: 2.5rem;
-  padding: 0 2.5rem 0 1.25rem;
+  width: calc(0.25rem * 10);
+  padding: 0 2.5rem 0 0.25rem;
   text-align: right;
   color: var(--linenumber);
   user-select: none;

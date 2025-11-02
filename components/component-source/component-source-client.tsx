@@ -63,7 +63,7 @@ export function ComponentSourceClient({
   return (
     <div className={styles.container}>
       <div className={styles.tabsHeader}>
-        <div className={styles.tabs} role="tablist" aria-label="Code files">
+        <div aria-label="Code files" className={styles.tabs} role="tablist">
           {files.map((file, index) => (
             <button
               aria-controls={`tabpanel-${index}`}

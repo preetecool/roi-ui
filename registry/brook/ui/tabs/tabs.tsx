@@ -5,7 +5,7 @@ import styles from "./tabs.module.css";
 function TabsRoot({ className, ...props }: Tabs.Root.Props) {
   return (
     <Tabs.Root
-      className={cn(styles.root, className)}
+      className={cn(className, styles.root)}
       {...props}
       data-slot="tabs-root"
     />
@@ -15,7 +15,7 @@ function TabsRoot({ className, ...props }: Tabs.Root.Props) {
 function TabsList({ className, ...props }: Tabs.List.Props) {
   return (
     <Tabs.List
-      className={cn(styles.list, className)}
+      className={cn(className, styles.list)}
       {...props}
       data-slot="tabs-list"
     />
@@ -25,7 +25,7 @@ function TabsList({ className, ...props }: Tabs.List.Props) {
 function TabsTrigger({ className, ...props }: Tabs.Tab.Props) {
   return (
     <Tabs.Tab
-      className={cn(styles.trigger, className)}
+      className={cn(className, styles.trigger)}
       {...props}
       data-slot="tabs-trigger"
     />
@@ -35,7 +35,7 @@ function TabsTrigger({ className, ...props }: Tabs.Tab.Props) {
 function TabsContent({ className, ...props }: Tabs.Panel.Props) {
   return (
     <Tabs.Panel
-      className={cn(styles.content, className)}
+      className={cn(className, styles.content)}
       {...props}
       data-slot="tabs-content"
     />
@@ -45,7 +45,7 @@ function TabsContent({ className, ...props }: Tabs.Panel.Props) {
 function TabsIndicator({ className, ...props }: Tabs.Indicator.Props) {
   return (
     <Tabs.Indicator
-      className={cn(styles.indicator, className)}
+      className={cn(className, styles.indicator)}
       data-slot="tabs-indicator"
       {...props}
     />

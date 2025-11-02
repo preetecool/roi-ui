@@ -28,8 +28,6 @@
   max-height: 400px;
   box-sizing: border-box;
   overflow: auto;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   background-color: var(--code-header-bg);
   position: relative;
   scrollbar-width: none;

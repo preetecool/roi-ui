@@ -50,7 +50,7 @@
   cursor: pointer;
   position: relative;
   margin-right: 0.25rem;
-  border: 0.5px solid transparent;
+  border: 1px solid transparent;
   flex-shrink: 0;
 }
 

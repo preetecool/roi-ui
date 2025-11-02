@@ -92,16 +92,19 @@ export function CodeTabsList({
     : "";
 
   React.useEffect(() => {
-    if (!shouldShowCopy) return;
-
+    if (!shouldShowCopy) {
+      return;
+    }
     setTimeout(() => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+        return;
+      }
       const text = findFirstVisibleCodeText(containerRef.current);
       if (text) {
         setCommandText(text);
       }
     }, ASYNC_DELAY_ENSURE_DOM_RENDER);
-  }, [style, shouldShowCopy, containerRef]);
+  }, [shouldShowCopy, containerRef]);
 
   if (isPackageVariant) {
     return (
@@ -148,19 +151,11 @@ export function CodeTabsContent({
   value,
   ...props
 }: React.ComponentProps<typeof BaseTabsContent>) {
-  const { variant } = React.use(CodeTabsContext);
   const isManual = value === "manual";
-
-  const className =
-    variant === "installation"
-      ? isManual
-        ? styles.manualContent
-        : styles.installationContent
-      : undefined;
 
   return (
     <BaseTabsContent
-      className={className}
+      className={styles.installationContent}
       data-manual={isManual ? "true" : undefined}
       value={value}
       {...props}

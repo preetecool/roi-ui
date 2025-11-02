@@ -1,4 +1,3 @@
-/* Container for package variant */
 .packageContainer {
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
   overflow: hidden;
@@ -7,19 +6,17 @@
 }
 
 .packageContainer pre {
-  background-color: var(--code-header-bg) !important;
-  margin: 0;
+  background-color: var(--code-header-bg);
 }
 
 .packageContainer pre code span:first-child {
-  color: var(--code-command-color) !important;
+  color: var(--code-command-color);
 }
 
 .packageContainer pre code span:not(:first-child) {
-  color: var(--code-arg-color) !important;
+  color: var(--code-arg-color);
 }
 
-/* Package variant TabsList */
 .packageList {
   border-radius: 0;
   border: none;
@@ -46,7 +43,6 @@
   border-radius: 2px;
 }
 
-/* Installation variant TabsList */
 .installationList {
   background-color: transparent;
   border: none;
@@ -56,32 +52,36 @@
 }
 
 .installationTrigger {
-  background-color: transparent;
-  border: none;
+  background-color: none;
   padding: 0 0 0.25rem 0;
-  border-bottom: 2px solid transparent;
+  margin: 0;
   border-radius: 0;
 }
 
+.installationTrigger,
 .installationTrigger[data-selected] {
+  border-color: transparent;
+}
+
+.installationTrigger[data-selected] {
+  border-radius: 0;
+  background-color: transparent;
   border-bottom-color: var(--foreground);
+}
+
+.installationContent {
+  margin: 0;
+  padding: 0;
+  border: none;
   background-color: transparent;
 }
 
-/* Installation content - no background or padding */
-.installationContent {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  background-color: transparent !important;
-}
-
 .installationContent pre {
-  padding: 0 !important;
+  padding: 0;
 }
 
 .installationContent .code-container pre {
-  padding: 0 !important;
+  padding: 0;
 }
 
 .manualContent p {
