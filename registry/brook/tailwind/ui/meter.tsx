@@ -1,57 +1,44 @@
 "use client";
 
 import { Meter } from "@base-ui-components/react/meter";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function MeterRoot({
-  className,
-  ...props
-}: Meter.Root.Props) {
+function MeterRoot({ className, ...props }: Meter.Root.Props) {
   return (
     <Meter.Root
-      data-slot="meter-root"
       className={cn("flex w-full flex-col gap-2", className)}
+      data-slot="meter-root"
       {...props}
     />
   );
 }
 
-function MeterLabel({
-  className,
-  ...props
-}: Meter.Label.Props) {
+function MeterLabel({ className, ...props }: Meter.Label.Props) {
   return (
     <Meter.Label
-      data-slot="meter-label"
       className={cn("font-medium text-secondary-foreground text-sm", className)}
+      data-slot="meter-label"
       {...props}
     />
   );
 }
 
-function MeterTrack({
-  className,
-  ...props
-}: Meter.Track.Props) {
+function MeterTrack({ className, ...props }: Meter.Track.Props) {
   return (
     <Meter.Track
-      data-slot="meter-track"
       className={cn(
         "relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]",
         className
       )}
+      data-slot="meter-track"
       {...props}
     />
   );
 }
 
-function MeterIndicator({
-  className,
-  ...props
-}: Meter.Indicator.Props) {
+function MeterIndicator({ className, ...props }: Meter.Indicator.Props) {
   return (
     <Meter.Indicator
-      data-slot="meter-indicator"
       className={cn(
         "h-full rounded-none bg-[oklch(from_var(--foreground)_l_c_h_/_0.5)]",
         "transition-all duration-150 ease-out",
@@ -61,19 +48,17 @@ function MeterIndicator({
         "[.root[data-value=low]_&]:bg-primary",
         className
       )}
+      data-slot="meter-indicator"
       {...props}
     />
   );
 }
 
-function MeterValue({
-  className,
-  ...props
-}: Meter.Value.Props) {
+function MeterValue({ className, ...props }: Meter.Value.Props) {
   return (
     <Meter.Value
-      data-slot="meter-value"
       className={cn("font-medium text-muted-foreground text-xs", className)}
+      data-slot="meter-value"
       {...props}
     />
   );

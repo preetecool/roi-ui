@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import {
   Dialog,
   DialogClose,

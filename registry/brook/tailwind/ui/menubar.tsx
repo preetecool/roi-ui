@@ -2,7 +2,7 @@
 
 import { Menubar } from "@base-ui-components/react/menubar";
 import type { ReactNode } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import {
   DropdownMenu,
   DropdownMenuArrow,

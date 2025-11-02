@@ -1,6 +1,6 @@
 "use client";
 import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function NavigationMenuRoot({
   className,

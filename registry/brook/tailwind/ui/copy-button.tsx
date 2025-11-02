@@ -2,11 +2,17 @@
 
 import { Check } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const COPIED_RESET_DELAY_MS = 700;
 
-const CopyIcon = ({ size = 14, copied = false }: { size?: number; copied?: boolean }) => (
+const CopyIcon = ({
+  size = 14,
+  copied = false,
+}: {
+  size?: number;
+  copied?: boolean;
+}) => (
   <svg
     aria-label="copy-icon"
     height={size}
@@ -23,7 +29,8 @@ const CopyIcon = ({ size = 14, copied = false }: { size?: number; copied?: boole
     <rect
       className={cn(
         "origin-center transition-all duration-300 ease-in-out will-change-transform",
-        copied && "translate-x-[-4px] translate-y-[-4px] scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
+        copied &&
+          "translate-x-[-4px] translate-y-[-4px] scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
       )}
       data-element="front"
       fill="none"
@@ -37,7 +44,8 @@ const CopyIcon = ({ size = 14, copied = false }: { size?: number; copied?: boole
     <path
       className={cn(
         "origin-center transition-all duration-300 ease-in-out will-change-transform",
-        copied && "scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
+        copied &&
+          "scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
       )}
       d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
       data-element="back"
@@ -92,11 +100,11 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
           "transition-all duration-300 ease-in-out",
           copied
             ? "opacity-0 transition-opacity delay-[50ms] duration-[250ms] ease-in-out"
-            : "opacity-100 scale-100 rotate-0 blur-0"
+            : "rotate-0 scale-100 opacity-100 blur-0"
         )}
         data-icon="copy"
       >
-        <CopyIcon size={14} copied={copied} />
+        <CopyIcon copied={copied} size={14} />
       </div>
       <div
         className={cn(

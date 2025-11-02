@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useRef, useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const menuItems = [
   { label: "Profile", icon: User },
@@ -109,7 +109,7 @@ export default function DropdownMenuFramerMotion() {
                                     item.label === "Logout" &&
                                       "text-[var(--destructive)] [&_svg]:text-[var(--destructive)]",
                                     item.label === "Logout" &&
-                                      "hover:text-[var(--destructive-foreground)] hover:before:!bg-[var(--destructive)] hover:[&_svg]:text-[var(--destructive-foreground)]"
+                                      "hover:before:!bg-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:[&_svg]:text-[var(--destructive-foreground)]"
                                   )}
                                 />
                               }

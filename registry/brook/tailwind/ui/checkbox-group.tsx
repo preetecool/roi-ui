@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckboxGroup } from "@base-ui-components/react/checkbox-group";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function CheckboxGroupRoot({ className, ...props }: CheckboxGroup.Props) {
   return (

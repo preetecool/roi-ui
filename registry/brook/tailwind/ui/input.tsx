@@ -2,7 +2,7 @@
 
 import { Input } from "@base-ui-components/react/input";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const inputVariants = cva(
   [
@@ -28,9 +28,7 @@ const inputVariants = cva(
   }
 );
 
-interface InputProps
-  extends Input.Props,
-    VariantProps<typeof inputVariants> {}
+interface InputProps extends Input.Props, VariantProps<typeof inputVariants> {}
 
 function InputRoot({ className, variant = "default", ...props }: InputProps) {
   return (

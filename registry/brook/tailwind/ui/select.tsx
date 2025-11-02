@@ -2,7 +2,7 @@
 
 import { Select } from "@base-ui-components/react/select";
 import { Check, ChevronDown } from "lucide-react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {
   return <Select.Root {...props} />;

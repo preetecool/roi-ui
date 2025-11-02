@@ -1,7 +1,7 @@
 "use client";
 
 import { Popover } from "@base-ui-components/react/popover";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function PopoverRoot({ ...props }: Popover.Root.Props) {
   return <Popover.Root {...props} />;

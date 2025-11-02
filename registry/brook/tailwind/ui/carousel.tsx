@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 type CarouselContextValue = {
   currentIndex: number;

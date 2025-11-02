@@ -1,7 +1,7 @@
 "use client";
 
 import { MessageCircle, Phone, Truck } from "lucide-react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import { Badge, BadgeIcon } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import { Card } from "@/registry/brook/tailwind/ui/card";

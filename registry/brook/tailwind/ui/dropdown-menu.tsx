@@ -3,7 +3,7 @@
 import { Menu } from "@base-ui-components/react/menu";
 import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function DropdownMenuRoot({ ...props }: Menu.Root.Props) {
   return <Menu.Root {...props} />;

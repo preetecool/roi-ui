@@ -1,11 +1,9 @@
 "use client";
 
 import { Tooltip } from "@base-ui-components/react/tooltip";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function TooltipProvider({
-  ...props
-}: Tooltip.Provider.Props) {
+function TooltipProvider({ ...props }: Tooltip.Provider.Props) {
   return <Tooltip.Provider {...props} />;
 }
 
@@ -13,27 +11,23 @@ function TooltipRoot({ ...props }: Tooltip.Root.Props) {
   return <Tooltip.Root {...props} />;
 }
 
-function TooltipTrigger({
-  ...props
-}: Tooltip.Trigger.Props) {
+function TooltipTrigger({ ...props }: Tooltip.Trigger.Props) {
   return <Tooltip.Trigger {...props} />;
 }
 
 const TooltipPortal = Tooltip.Portal;
 
-function TooltipPositioner({
-  className,
-  ...props
-}: Tooltip.Positioner.Props) {
+function TooltipPositioner({ className, ...props }: Tooltip.Positioner.Props) {
   return (
-    <Tooltip.Positioner data-slot="tooltip-positioner" className={cn("z-[9999]", className)} {...props} />
+    <Tooltip.Positioner
+      className={cn("z-[9999]", className)}
+      data-slot="tooltip-positioner"
+      {...props}
+    />
   );
 }
 
-function TooltipPopup({
-  className,
-  ...props
-}: Tooltip.Popup.Props) {
+function TooltipPopup({ className, ...props }: Tooltip.Popup.Props) {
   return (
     <Tooltip.Popup
       className={cn(
@@ -53,13 +47,9 @@ function TooltipPopup({
   );
 }
 
-function TooltipArrow({
-  className,
-  ...props
-}: Tooltip.Arrow.Props) {
+function TooltipArrow({ className, ...props }: Tooltip.Arrow.Props) {
   return (
     <Tooltip.Arrow
-      data-slot="tooltip-arrow"
       className={cn(
         "absolute z-[1] h-[10px] w-5",
         "data-[side=top]:-bottom-2 data-[side=top]:rotate-180",
@@ -69,6 +59,7 @@ function TooltipArrow({
         "[&_svg]:block [&_svg]:h-full [&_svg]:w-full",
         className
       )}
+      data-slot="tooltip-arrow"
       {...props}
     >
       <ArrowSvg />

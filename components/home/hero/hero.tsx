@@ -25,7 +25,7 @@ const COMPONENTS = [
 
 const HEADING = "React components and blocks";
 const SUBHEADING =
-  "Components and blocks made with Base UI primitives and motion. CSS module and Tailwind available.";
+  "Components and blocks made with Base UI primitives and motion. CSS modules and Tailwind available.";
 const UI_COMPONENTS = [
   "accordion",
   "badge",

@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 // Constants for animation calculations
 const DEGREES_TO_RADIANS = 180;
@@ -254,14 +254,15 @@ function LikeButton({
                   "--scale": particle.scale,
                   opacity: 0,
                   transform: "translate(-50%, -50%) scale(0)",
-                  animation: `like-button-particle-out 0.5s ease-out var(--delay) forwards, like-button-particle-return 0.5s ease-out calc(0.65s + var(--return-delay)) forwards`,
+                  animation:
+                    "like-button-particle-out 0.5s ease-out var(--delay) forwards, like-button-particle-return 0.5s ease-out calc(0.65s + var(--return-delay)) forwards",
                 } as React.CSSProperties
               }
             >
               <div
                 className={cn(
                   particle.type === "star"
-                    ? "relative block before:absolute before:top-0 before:left-0 before:h-full before:w-full before:content-[''] before:[clip-path:polygon(50%_0%,100%_50%,50%_100%,0%_50%)] before:[background:var(--particle-color,var(--foreground))]"
+                    ? "relative block before:absolute before:top-0 before:left-0 before:h-full before:w-full before:content-[''] before:[background:var(--particle-color,var(--foreground))] before:[clip-path:polygon(50%_0%,100%_50%,50%_100%,0%_50%)]"
                     : "rounded-full"
                 )}
                 style={
@@ -276,7 +277,8 @@ function LikeButton({
                       particle.type === "circle"
                         ? `scale(${particle.scale})`
                         : `rotate(${particle.rotation}deg)`,
-                    backgroundColor: particle.type === "circle" ? particle.color : undefined,
+                    backgroundColor:
+                      particle.type === "circle" ? particle.color : undefined,
                   } as React.CSSProperties
                 }
               />

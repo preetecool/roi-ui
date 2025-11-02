@@ -1,7 +1,7 @@
 "use client";
 import type React from "react";
 import { useEffect, useRef } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const vertexShader = `
   attribute vec2 a_position;

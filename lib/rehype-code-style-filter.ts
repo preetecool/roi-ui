@@ -1,4 +1,4 @@
-import type { Element, ElementContent, Parent, Root, Properties } from "hast";
+import type { Element, ElementContent, Parent, Properties, Root } from "hast";
 import { visit } from "unist-util-visit";
 
 export default function rehypeCodeStyleFilter() {
@@ -24,8 +24,8 @@ export default function rehypeCodeStyleFilter() {
           // Extract text content from code block
           let textContent = "";
           if (code.children && code.children.length > 0) {
-            const extractText = (children: any[]): string => {
-              return children
+            const extractText = (children: any[]): string =>
+              children
                 .map((child) => {
                   if (child.type === "text") return child.value;
                   if (child.type === "element" && child.children) {
@@ -34,12 +34,14 @@ export default function rehypeCodeStyleFilter() {
                   return "";
                 })
                 .join("");
-            };
             textContent = extractText(code.children);
           }
 
           // Check for style condition from remark plugin (if= meta attribute)
-          const styleCondition = (code.data as any)?.styleCondition;
+          // The remark plugin sets styleCondition on the code block node (which becomes <pre>)
+          const styleCondition =
+            (node.data as any)?.styleCondition ||
+            (code.data as any)?.styleCondition;
           if (styleCondition) {
             wrapperProperties["data-if"] = styleCondition;
           } else {

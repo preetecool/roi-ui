@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import {
   Avatar,
   AvatarFallback,

@@ -4,7 +4,7 @@ import { ContextMenu } from "@base-ui-components/react/context-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
 import type { ReactNode } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function ContextMenuRoot({ ...props }: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;

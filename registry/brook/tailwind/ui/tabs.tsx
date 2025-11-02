@@ -1,5 +1,5 @@
 import { Tabs } from "@base-ui-components/react/tabs";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function TabsRoot({ className, ...props }: Tabs.Root.Props) {
   return (

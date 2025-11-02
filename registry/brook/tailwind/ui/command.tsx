@@ -3,7 +3,7 @@
 import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function CommandRoot({
   className,
@@ -29,7 +29,6 @@ function CommandDialog({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) {
   return (
     <CommandPrimitive.Dialog
-      data-slot="commandprimitive-dialog"
       className={cn(
         "[&[cmdk-dialog]]:fixed [&[cmdk-dialog]]:inset-0 [&[cmdk-dialog]]:z-50",
         "[&[cmdk-dialog]]:flex [&[cmdk-dialog]]:items-center [&[cmdk-dialog]]:bg-black/80",
@@ -42,6 +41,7 @@ function CommandDialog({
         "max-sm:[&[cmdk-dialog]_.root]:m-4 max-sm:[&[cmdk-dialog]_.root]:max-w-[calc(100vw-2rem)]",
         className
       )}
+      data-slot="commandprimitive-dialog"
       {...props}
     />
   );
@@ -53,7 +53,6 @@ function CommandInput({
 }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
   return (
     <CommandPrimitive.Input
-      data-slot="commandprimitive-input"
       className={cn(
         "[&[cmdk-input]]:flex [&[cmdk-input]]:h-11 [&[cmdk-input]]:w-full",
         "[&[cmdk-input]]:border-none [&[cmdk-input]]:bg-transparent",
@@ -68,6 +67,7 @@ function CommandInput({
         "max-sm:[&[cmdk-input]]:placeholder:text-[0.9375rem]",
         className
       )}
+      data-slot="commandprimitive-input"
       {...props}
     />
   );
@@ -79,13 +79,13 @@ function CommandList({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
   return (
     <CommandPrimitive.List
-      data-slot="commandprimitive-list"
       className={cn(
         "[&[cmdk-list]]:max-h-[300px] [&[cmdk-list]]:overflow-auto [&[cmdk-list]]:p-1",
         "[&[cmdk-list]]:scrollbar-thin",
         "max-sm:[&[cmdk-list]]:max-h-[250px] max-sm:[&[cmdk-list]]:p-1.5",
         className
       )}
+      data-slot="commandprimitive-list"
       {...props}
     />
   );
@@ -121,7 +121,6 @@ function CommandItem({
 
   return (
     <CommandPrimitive.Item
-      data-slot="commandprimitive-item"
       className={cn(
         "[&[cmdk-item]]:relative [&[cmdk-item]]:flex [&[cmdk-item]]:cursor-pointer",
         "[&[cmdk-item]]:select-none [&[cmdk-item]]:items-center",
@@ -143,6 +142,7 @@ function CommandItem({
         "max-sm:[&[cmdk-item]_svg:not(.keyboard-shortcut_svg)]:w-[1.125rem]",
         className
       )}
+      data-slot="commandprimitive-item"
       {...props}
     >
       {processedChildren}
@@ -169,7 +169,6 @@ function CommandGroup({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
   return (
     <CommandPrimitive.Group
-      data-slot="commandprimitive-group"
       className={cn(
         "[&[cmdk-group]]:overflow-hidden [&[cmdk-group]]:py-1 [&[cmdk-group]]:text-foreground",
         "[&[cmdk-group]_[cmdk-group-heading]]:px-2 [&[cmdk-group]_[cmdk-group-heading]]:text-[0.71875rem]",
@@ -179,6 +178,7 @@ function CommandGroup({
         "max-sm:[&[cmdk-group]_[cmdk-group-heading]]:px-2.5",
         className
       )}
+      data-slot="commandprimitive-group"
       {...props}
     />
   );
@@ -190,13 +190,13 @@ function CommandEmpty({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
-      data-slot="commandprimitive-empty"
       className={cn(
         "[&[cmdk-empty]]:p-6 [&[cmdk-empty]]:text-center [&[cmdk-empty]]:text-muted-foreground",
         "[&[cmdk-empty]]:text-sm",
         "max-sm:[&[cmdk-empty]]:px-4 max-sm:[&[cmdk-empty]]:py-7 max-sm:[&[cmdk-empty]]:text-[0.9375rem]",
         className
       )}
+      data-slot="commandprimitive-empty"
       {...props}
     />
   );
@@ -208,12 +208,12 @@ function CommandSeparator({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
   return (
     <CommandPrimitive.Separator
-      data-slot="commandprimitive-separator"
       className={cn(
         "[&[cmdk-separator]]:h-px [&[cmdk-separator]]:w-full",
         "[&[cmdk-separator]]:my-1 [&[cmdk-separator]]:bg-border/40",
         className
       )}
+      data-slot="commandprimitive-separator"
       {...props}
     />
   );
@@ -225,13 +225,13 @@ function CommandLoading({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
   return (
     <CommandPrimitive.Loading
-      data-slot="commandprimitive-loading"
       className={cn(
         "[&[cmdk-loading]]:flex [&[cmdk-loading]]:items-center [&[cmdk-loading]]:p-4",
         "[&[cmdk-loading]]:justify-center [&[cmdk-loading]]:text-muted-foreground",
         "[&[cmdk-loading]]:text-sm",
         className
       )}
+      data-slot="commandprimitive-loading"
       {...props}
     />
   );

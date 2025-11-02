@@ -1,7 +1,7 @@
 "use client";
 import { Check } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
@@ -66,14 +66,18 @@ export default function CardLoginDemo() {
       )}
     >
       <CardHeader>
-        <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>
+        <CardTitle
+          className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}
+        >
           Sign In
         </CardTitle>
       </CardHeader>
       <CardContent>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <Field className="pb-1">
-            <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
+            <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>
+              Email
+            </FieldLabel>
             <FieldControl
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"

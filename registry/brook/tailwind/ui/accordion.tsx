@@ -2,12 +2,9 @@
 
 import { Accordion } from "@base-ui-components/react/accordion";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function AccordionRoot({
-  className,
-  ...props
-}: Accordion.Root.Props) {
+function AccordionRoot({ className, ...props }: Accordion.Root.Props) {
   return (
     <Accordion.Root
       className={cn(
@@ -20,10 +17,7 @@ function AccordionRoot({
   );
 }
 
-function AccordionItem({
-  className,
-  ...props
-}: Accordion.Item.Props) {
+function AccordionItem({ className, ...props }: Accordion.Item.Props) {
   return (
     <Accordion.Item
       className={cn(
@@ -36,10 +30,7 @@ function AccordionItem({
   );
 }
 
-function AccordionHeader({
-  className,
-  ...props
-}: Accordion.Header.Props) {
+function AccordionHeader({ className, ...props }: Accordion.Header.Props) {
   return (
     <Accordion.Header
       className={cn("m-0 font-medium text-sm tracking-inherit", className)}
