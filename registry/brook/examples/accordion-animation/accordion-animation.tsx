@@ -2,7 +2,7 @@
 
 import { Accordion } from "@base-ui-components/react/accordion";
 import { useState } from "react";
-import styles from "./accordion-motion.module.css";
+import styles from "./accordion-animation.module.css";
 
 const accordionItems = [
   {

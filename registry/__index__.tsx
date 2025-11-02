@@ -13,6 +13,25 @@ type RegistryEntry = {
 };
 
 export const Index: Record<string, RegistryEntry> = {
+  "accordion-animation": {
+    name: "accordion-animation",
+    type: "example",
+    files: [
+      "registry/brook/examples/accordion-animation/accordion-animation.module.css",
+      "registry/brook/examples/accordion-animation/accordion-animation.tsx",
+    ],
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/examples/accordion-animation/accordion-animation"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion-animation";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   "accordion-demo": {
     name: "accordion-demo",
     type: "example",
@@ -24,25 +43,6 @@ export const Index: Record<string, RegistryEntry> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "accordion-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
-  "accordion-motion": {
-    name: "accordion-motion",
-    type: "example",
-    files: [
-      "registry/brook/examples/accordion-motion/accordion-motion.module.css",
-      "registry/brook/examples/accordion-motion/accordion-motion.tsx",
-    ],
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/examples/accordion-motion/accordion-motion"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion-motion";
       return { default: mod.default || mod[exportName] };
     }),
   },
@@ -1868,6 +1868,22 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/ui/tooltip/tooltip.tsx",
     ],
   },
+  "accordion-animation-tailwind": {
+    name: "accordion-animation-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/accordion-animation.tsx"],
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/accordion-animation"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "accordion-animation";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   "accordion-demo-tailwind": {
     name: "accordion-demo-tailwind",
     type: "example",
@@ -1881,22 +1897,6 @@ export const Index: Record<string, RegistryEntry> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "accordion-demo";
-      return { default: mod.default || mod[exportName] };
-    }),
-  },
-  "accordion-motion-tailwind": {
-    name: "accordion-motion-tailwind",
-    type: "example",
-    files: ["registry/brook/tailwind/examples/accordion-motion.tsx"],
-    component: lazy(async () => {
-      const mod = await import(
-        "@/registry/brook/tailwind/examples/accordion-motion"
-      );
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || "accordion-motion";
       return { default: mod.default || mod[exportName] };
     }),
   },
