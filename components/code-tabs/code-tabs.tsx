@@ -104,7 +104,7 @@ export function CodeTabsList({
         setCommandText(text);
       }
     }, ASYNC_DELAY_ENSURE_DOM_RENDER);
-  }, [shouldShowCopy, containerRef]);
+  }, [shouldShowCopy, containerRef, style]);
 
   if (isPackageVariant) {
     return (
