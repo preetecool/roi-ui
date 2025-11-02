@@ -1,57 +1,13 @@
-import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { basename, join } from "node:path";
-import { getRegistryType } from "@/lib/registry";
-
-/**
- * Helper: Find first existing file from a list of paths
- */
-function findExistingFile(paths: string[]): string | null {
-  return paths.find((path) => existsSync(path)) || null;
-}
-
-/**
- * Helper: Get all component files (tsx + optional css) from a directory
- */
-function getComponentFiles(
-  dirPath: string,
-  name: string,
-  includeCss = true
-): { path: string; language: string }[] {
-  const files: { path: string; language: string }[] = [];
-
-  const tsxPath = join(dirPath, `${name}.tsx`);
-  if (existsSync(tsxPath)) {
-    files.push({ path: tsxPath, language: "tsx" });
-  }
-
-  if (includeCss) {
-    const cssPath = join(dirPath, `${name}.module.css`);
-    if (existsSync(cssPath)) {
-      files.push({ path: cssPath, language: "css" });
-    }
-  }
-
-  return files;
-}
-
-/**
- * Fallback: Generate UI component paths when not found in __index__
- * Only needed for UI components like button, dialog, etc.
- */
-function generateUIComponentPaths(name: string): string[] {
-  const basePath = join(process.cwd(), "registry", "brook", "ui");
-
-  return [join(basePath, name, `${name}.tsx`), join(basePath, `${name}.tsx`)];
-}
+import { basename, extname, join } from "node:path";
+import type { StyleVariant } from "@/components/style-provider";
+import { getComponentVariants, getRegistryFiles } from "@/lib/registry";
 
 export type FileData = {
   name: string;
   content: string;
   language: string;
 };
-
-export type StyleVariant = "css-modules" | "tailwind";
 
 export type VariantFileData = {
   variant: StyleVariant;
@@ -73,39 +29,28 @@ async function readFileSafe(
 }
 
 /**
- * Loads code by component name from registry
- * Uses __index__ to determine type and avoid unnecessary path searching
+ * Loads code by component name using __index__
  */
 export async function loadCodeByName(name: string): Promise<string> {
-  // Check index first to know if it's example or block
-  const type = getRegistryType(name);
+  const files = getRegistryFiles(name);
 
-  let paths: string[];
-
-  if (type) {
-    // Use index to narrow down search - only check the correct directory
-    const dir = type === "example" ? "examples" : "blocks";
-    paths = [
-      join(process.cwd(), "registry", "brook", dir, name, `${name}.tsx`),
-      join(process.cwd(), "registry", "brook", dir, `${name}.tsx`),
-    ];
-  } else {
-    // Fallback for UI components (not in index)
-    paths = generateUIComponentPaths(name);
+  if (!files || files.length === 0) {
+    return `Component source not found: ${name}`;
   }
 
-  const filePath = findExistingFile(paths);
+  // Get the first .tsx file from registry
+  const tsxFile = files.find((f) => f.endsWith(".tsx"));
 
-  if (!filePath) {
+  if (!tsxFile) {
     return `Component source not found: ${name}.tsx`;
   }
 
+  const filePath = join(process.cwd(), tsxFile);
   return await readFileSafe(
     filePath,
     `Component source not found: ${name}.tsx`
   );
 }
-
 
 /**
  * Loads code from a source path
@@ -127,60 +72,50 @@ export function getDisplayTitle(
 }
 
 /**
- * Load both CSS modules and Tailwind variants of a component
+ * Load both CSS modules and Tailwind variants of a component using registry
  */
 export async function loadAllVariants(
   name: string
 ): Promise<VariantFileData[]> {
-  const variantTypes: StyleVariant[] = ["css-modules", "tailwind"];
+  const variants = getComponentVariants(name);
+  const results: VariantFileData[] = [];
 
-  const variants = await Promise.all(
-    variantTypes.map(async (variant) => {
-      const files = await loadVariantFiles(name, variant);
-      return files.length > 0 ? { variant, files } : null;
-    })
-  );
-
-  return variants.filter((v): v is VariantFileData => v !== null);
-}
-
-/**
- * Load files for a specific variant (CSS modules or Tailwind)
- */
-async function loadVariantFiles(
-  name: string,
-  variant: StyleVariant
-): Promise<FileData[]> {
-  const basePath =
-    variant === "css-modules"
-      ? join(process.cwd(), "registry", "brook")
-      : join(process.cwd(), "registry", "brook", "tailwind");
-
-  const includeCss = variant === "css-modules";
-
-  // Define search directories in priority order
-  const searchDirs = [
-    join(basePath, "ui", name),
-    join(basePath, "ui"),
-    join(basePath, "examples", name),
-    join(basePath, "examples"),
-    join(basePath, "blocks", name),
-    join(basePath, "blocks"),
-  ];
-
-  for (const dir of searchDirs) {
-    const componentFiles = getComponentFiles(dir, name, includeCss);
-
-    if (componentFiles.length > 0) {
-      return await Promise.all(
-        componentFiles.map(async ({ path, language }) => ({
-          name: basename(path),
-          content: await readFile(path, "utf-8"),
-          language,
-        }))
-      );
+  // Load CSS Modules variant
+  if (variants.cssModules && variants.cssModules.length > 0) {
+    const files = await loadFilesFromRegistry(variants.cssModules);
+    if (files.length > 0) {
+      results.push({ variant: "css-modules", files });
     }
   }
 
-  return [];
+  // Load Tailwind variant
+  if (variants.tailwind && variants.tailwind.length > 0) {
+    const files = await loadFilesFromRegistry(variants.tailwind);
+    if (files.length > 0) {
+      results.push({ variant: "tailwind", files });
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Load files from registry file paths
+ */
+async function loadFilesFromRegistry(
+  registryFiles: string[]
+): Promise<FileData[]> {
+  return await Promise.all(
+    registryFiles.map(async (filePath) => {
+      const fullPath = join(process.cwd(), filePath);
+      const ext = extname(filePath).slice(1); // Remove leading dot
+      const language = ext === "css" ? "css" : "tsx";
+
+      return {
+        name: basename(filePath),
+        content: await readFile(fullPath, "utf-8"),
+        language,
+      };
+    })
+  );
 }

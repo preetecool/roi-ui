@@ -8,11 +8,7 @@ import {
   loadCodeByName,
   loadCodeBySrc,
 } from "./helpers/file-loaders";
-import {
-  processFiles,
-  processVariants,
-  transformCode,
-} from "./helpers/process-files";
+import { processVariants, transformCode } from "./helpers/process-files";
 
 type ComponentSourceProps = {
   name?: string;

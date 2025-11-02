@@ -9,7 +9,7 @@ import {
 } from "react";
 import { useIsoLayoutEffect } from "@/hooks/use-iso-layout-effect";
 
-type StyleVariant = "css-modules" | "tailwind";
+export type StyleVariant = "css-modules" | "tailwind";
 
 type StyleContextType = {
   style: StyleVariant;
