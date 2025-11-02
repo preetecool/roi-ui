@@ -9,7 +9,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import {
   Avatar,
   AvatarFallback,
@@ -59,8 +59,8 @@ export default function ProfileMenuDemo() {
         render={
           <Button
             className={cn(
-              "flex h-auto min-h-[44px] min-w-[180px] items-center gap-2.5 px-4 py-1.5 touch-manipulation [-webkit-tap-highlight-color:transparent]",
-              "focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--ring)]"
+              "flex h-auto min-h-[44px] min-w-[180px] touch-manipulation items-center gap-2.5 px-4 py-1.5 [-webkit-tap-highlight-color:transparent]",
+              "focus-visible:-outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
             )}
             variant="outline"
           >
@@ -100,7 +100,11 @@ export default function ProfileMenuDemo() {
                   </div>
                 </div>
               </div>
-              <Badge className="mt-0.5 flex-shrink-0" size="sm" variant="secondary">
+              <Badge
+                className="mt-0.5 flex-shrink-0"
+                size="sm"
+                variant="secondary"
+              >
                 free
               </Badge>
             </div>
@@ -113,7 +117,10 @@ export default function ProfileMenuDemo() {
                 className="flex items-center gap-2"
                 render={<li />}
               >
-                <Building2 className="ml-1 flex-shrink-0 text-[var(--muted-foreground)]" size={14} />
+                <Building2
+                  className="ml-1 flex-shrink-0 text-[var(--muted-foreground)]"
+                  size={14}
+                />
                 Organizations
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>

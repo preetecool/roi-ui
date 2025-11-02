@@ -15,7 +15,7 @@
       ]
     },
     {
-      "name": "tw-utils",
+      "name": "utils-tailwind",
       "type": "registry:item",
       "dependencies": [
         "clsx",
@@ -23,7 +23,7 @@
       ],
       "files": [
         {
-          "path": "lib/tw-utils.ts",
+          "path": "lib/utils-tailwind.ts",
           "type": "registry:file",
           "target": "~/lib/utils.ts"
         }

@@ -13,25 +13,49 @@ links:
 <InstallationTabs>
 
 <InstallationTabsList>
-    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
-    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
 </InstallationTabsList>
 
 <InstallationTabsContent value="cli">
 
-```package-install
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
 npx shadcn@latest add @roiui/progress
 ```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/progress-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/progress
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/progress-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
 
 </InstallationTabsContent>
 
 <InstallationTabsContent value="manual" data-manual="true">
-
-Install dependencies:
-
-```package-install
-npm install @base-ui-components/react
-```
 
 Copy and paste the following files:
 

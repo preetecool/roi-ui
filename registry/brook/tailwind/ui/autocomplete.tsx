@@ -3,7 +3,7 @@
 import { Autocomplete } from "@base-ui-components/react/autocomplete";
 import { Search, X } from "lucide-react";
 import type React from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function AutocompleteRoot({
   ...props

@@ -17,9 +17,39 @@ description: A small status descriptor for UI elements, commonly used for extern
 
 <InstallationTabsContent value="cli">
 
-```package-install
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
 npx shadcn@latest add @roiui/badge
 ```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/badge-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/badge
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/badge-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
 
 </InstallationTabsContent>
 

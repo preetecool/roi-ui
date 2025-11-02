@@ -2,7 +2,7 @@
 
 import { Dialog } from "@base-ui-components/react/dialog";
 import type React from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function DialogRoot({ ...props }: Dialog.Root.Props) {
   return <Dialog.Root {...props} />;

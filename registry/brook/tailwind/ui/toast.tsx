@@ -2,7 +2,7 @@
 
 import { Toast } from "@base-ui-components/react/toast";
 import { X } from "lucide-react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const toastManager = Toast.createToastManager();
 

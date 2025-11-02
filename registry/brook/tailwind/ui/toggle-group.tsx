@@ -2,12 +2,9 @@
 
 import { Toggle } from "@base-ui-components/react/toggle";
 import { ToggleGroup } from "@base-ui-components/react/toggle-group";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function ToggleGroupRoot({
-  className,
-  ...props
-}: ToggleGroup.Props) {
+function ToggleGroupRoot({ className, ...props }: ToggleGroup.Props) {
   return (
     <ToggleGroup
       className={cn(
@@ -21,10 +18,7 @@ function ToggleGroupRoot({
   );
 }
 
-function ToggleGroupItem({
-  className,
-  ...props
-}: Toggle.Props) {
+function ToggleGroupItem({ className, ...props }: Toggle.Props) {
   return (
     <Toggle
       className={cn(

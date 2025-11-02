@@ -1,5 +1,5 @@
 import { Calendar, MoreHorizontal, Trash, UserPlus } from "lucide-react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   DropdownMenu,

@@ -11,7 +11,7 @@ import {
   useMemo,
 } from "react";
 import { Legend, ResponsiveContainer, Tooltip } from "recharts";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const THEMES = { light: "", dark: ".dark" } as const;
 

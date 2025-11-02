@@ -1,7 +1,7 @@
 "use client";
 
 import { Checkbox } from "@base-ui-components/react/checkbox";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function CheckboxRoot({ className, ...props }: Checkbox.Root.Props) {
   return (

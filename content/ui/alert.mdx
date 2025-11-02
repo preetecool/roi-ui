@@ -16,9 +16,39 @@ description: A component for displaying important messages to users.
 
 <InstallationTabsContent value="cli">
 
-```package-install
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
 npx shadcn@latest add @roiui/alert
 ```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/alert-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/alert
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/alert-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
 
 </InstallationTabsContent>
 

@@ -1,29 +1,22 @@
 import { Tabs } from "@base-ui-components/react/tabs";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function TabsRoot({
-  className,
-  ...props
-}: Tabs.Root.Props) {
+function TabsRoot({ className, ...props }: Tabs.Root.Props) {
   return (
     <Tabs.Root
-      data-slot="tabs-root"
       className={cn(
         "flex flex-col gap-0 data-[orientation=vertical]:flex-row data-[orientation=vertical]:gap-4",
         className
       )}
+      data-slot="tabs-root"
       {...props}
     />
   );
 }
 
-function TabsList({
-  className,
-  ...props
-}: Tabs.List.Props) {
+function TabsList({ className, ...props }: Tabs.List.Props) {
   return (
     <Tabs.List
-      data-slot="tabs-list"
       className={cn(
         "flex items-center justify-start rounded-[var(--radius)] bg-[var(--mix-card-33-bg)]",
         "rounded-br-none rounded-bl-none border-[0.5px] border-[oklch(from_var(--color-border)_l_c_h_/_0.8)]",
@@ -32,21 +25,18 @@ function TabsList({
         "data-[orientation=vertical]:w-[200px] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
         className
       )}
+      data-slot="tabs-list"
       {...props}
     />
   );
 }
 
-function TabsTrigger({
-  className,
-  ...props
-}: Tabs.Tab.Props) {
+function TabsTrigger({ className, ...props }: Tabs.Tab.Props) {
   return (
     <Tabs.Tab
-      data-slot="tabs-tab"
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius)]",
-        "bg-transparent py-1.5 px-3 font-[450] text-[var(--color-muted-foreground)] text-sm leading-[1.375]",
+        "bg-transparent px-3 py-1.5 font-[450] text-[var(--color-muted-foreground)] text-sm leading-[1.375]",
         "relative mr-1 flex-shrink-0 cursor-pointer border-[0.5px] border-transparent",
         "max-sm:text-[0.8125rem]",
         "hover:text-[var(--color-foreground)]",
@@ -56,18 +46,15 @@ function TabsTrigger({
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
         className
       )}
+      data-slot="tabs-tab"
       {...props}
     />
   );
 }
 
-function TabsContent({
-  className,
-  ...props
-}: Tabs.Panel.Props) {
+function TabsContent({ className, ...props }: Tabs.Panel.Props) {
   return (
     <Tabs.Panel
-      data-slot="tabs-panel"
       className={cn(
         "mt-0 rounded-[0_0_var(--radius)_var(--radius)] border-[0.5px] border-[oklch(from_var(--color-border)_l_c_h_/_0.8)]",
         "border-t-0 bg-[var(--mix-card-33-bg)] p-6",
@@ -78,24 +65,22 @@ function TabsContent({
         "[&_p]:m-0",
         className
       )}
+      data-slot="tabs-panel"
       {...props}
     />
   );
 }
 
-function TabsIndicator({
-  className,
-  ...props
-}: Tabs.Indicator.Props) {
+function TabsIndicator({ className, ...props }: Tabs.Indicator.Props) {
   return (
     <Tabs.Indicator
-      data-slot="tabs-indicator"
       className={cn(
         "absolute rounded-[var(--radius)] bg-primary transition-all duration-150 ease-in-out",
         "top-[calc(var(--active-tab-top)+var(--active-tab-height)-3px)] left-[var(--active-tab-left)]",
         "h-[3px] w-[var(--active-tab-width)]",
         className
       )}
+      data-slot="tabs-indicator"
       {...props}
     />
   );

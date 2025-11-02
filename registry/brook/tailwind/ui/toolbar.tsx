@@ -1,7 +1,7 @@
 "use client";
 
 import { Toolbar } from "@base-ui-components/react/toolbar";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function ToolbarRoot({
   className,
@@ -10,26 +10,22 @@ function ToolbarRoot({
 }: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
-      data-slot="toolbar-root"
       className={cn(
         "flex items-center gap-1 rounded-[var(--radius)] bg-[var(--mix-card-33-bg)]",
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.9)]",
         orientation === "vertical" && "flex-col items-stretch",
         className
       )}
+      data-slot="toolbar-root"
       orientation={orientation}
       {...props}
     />
   );
 }
 
-function ToolbarButton({
-  className,
-  ...props
-}: Toolbar.Button.Props) {
+function ToolbarButton({ className, ...props }: Toolbar.Button.Props) {
   return (
     <Toolbar.Button
-      data-slot="toolbar-button"
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] border-none bg-transparent",
@@ -42,18 +38,15 @@ function ToolbarButton({
         "max-sm:min-h-10 max-sm:min-w-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="toolbar-button"
       {...props}
     />
   );
 }
 
-function ToolbarLink({
-  className,
-  ...props
-}: Toolbar.Link.Props) {
+function ToolbarLink({ className, ...props }: Toolbar.Link.Props) {
   return (
     <Toolbar.Link
-      data-slot="toolbar-link"
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] text-foreground no-underline",
@@ -63,18 +56,15 @@ function ToolbarLink({
         "max-sm:h-10 max-sm:min-w-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="toolbar-link"
       {...props}
     />
   );
 }
 
-function ToolbarInput({
-  className,
-  ...props
-}: Toolbar.Input.Props) {
+function ToolbarInput({ className, ...props }: Toolbar.Input.Props) {
   return (
     <Toolbar.Input
-      data-slot="toolbar-input"
       className={cn(
         "flex-1 rounded-[calc(var(--radius)-2px)] px-3 py-1.5",
         "min-h-8 border border-border bg-input text-foreground text-sm",
@@ -84,41 +74,36 @@ function ToolbarInput({
         "max-sm:min-h-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
         className
       )}
+      data-slot="toolbar-input"
       {...props}
     />
   );
 }
 
-function ToolbarGroup({
-  className,
-  ...props
-}: Toolbar.Group.Props) {
+function ToolbarGroup({ className, ...props }: Toolbar.Group.Props) {
   return (
     <Toolbar.Group
-      data-slot="toolbar-group"
       className={cn(
         "flex items-center gap-0.5 p-0.5",
         "rounded-[calc(var(--radius)-2px)] bg-muted",
         "max-sm:gap-0.75 max-sm:p-0.75",
         className
       )}
+      data-slot="toolbar-group"
       {...props}
     />
   );
 }
 
-function ToolbarSeparator({
-  className,
-  ...props
-}: Toolbar.Separator.Props) {
+function ToolbarSeparator({ className, ...props }: Toolbar.Separator.Props) {
   return (
     <Toolbar.Separator
-      data-slot="toolbar-separator"
       className={cn(
         "mx-1 h-6 w-px flex-shrink-0 bg-border",
         "max-sm:h-7",
         className
       )}
+      data-slot="toolbar-separator"
       {...props}
     />
   );

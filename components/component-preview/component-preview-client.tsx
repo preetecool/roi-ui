@@ -22,7 +22,6 @@ export function ComponentPreviewClient({
   const [key, setKey] = useState(0);
   const { style } = useStyle();
 
-  // Determine component name based on style preference
   const componentName =
     style === "tailwind" && Index[`${name}-tailwind`]
       ? `${name}-tailwind`
@@ -41,8 +40,8 @@ export function ComponentPreviewClient({
   return (
     <div
       className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
-      data-demo={style}
       data-align={align}
+      data-demo={style}
     >
       <Component key={key} />
       {replayButton && (

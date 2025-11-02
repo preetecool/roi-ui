@@ -10,35 +10,54 @@ description: A button component with animated copy-to-clipboard functionality.
 <InstallationTabs>
 
 <InstallationTabsList>
-    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
-    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
 </InstallationTabsList>
 
 <InstallationTabsContent value="cli">
 
-```package-install
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
 npx shadcn@latest add @roiui/copy-button
 ```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/copy-button-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/copy-button
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/copy-button-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
 
 </InstallationTabsContent>
 
 <InstallationTabsContent value="manual" data-manual="true">
 
-Copy and paste the TSX file:
+Copy and paste the following files:
 
 <ComponentSource
-    src="registry/brook/ui/copy-button/copy-button.tsx"
-    title="components/ui/copy-button.tsx"
-    collapsible={true}
-/>
-
-Copy and paste the CSS file:
-
-<ComponentSource
-    src="registry/brook/ui/copy-button/copy-button.module.css"
-    title="components/ui/copy-button.module.css"
-    language="css"
-    collapsible={true}
+    name="copy-button"
 />
 
 </InstallationTabsContent>

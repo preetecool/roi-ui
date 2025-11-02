@@ -1,3 +1,4 @@
+import { StyleProvider } from "@/components/style-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/docs-styles.css";
 import "@/styles/globals.css";
@@ -32,15 +33,17 @@ export default function RootLayout({
       </head>
       <body>
         <div className="root">
-          <ThemeProvider
-            defaultTheme="dark"
-            disableTransitionOnChange
-            enableSystem
-            storageKey="theme"
-          >
-            {children}
-            <Analytics />
-          </ThemeProvider>
+          <StyleProvider>
+            <ThemeProvider
+              defaultTheme="dark"
+              disableTransitionOnChange
+              enableSystem
+              storageKey="theme"
+            >
+              {children}
+              <Analytics />
+            </ThemeProvider>
+          </StyleProvider>
         </div>
       </body>
     </html>

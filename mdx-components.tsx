@@ -1,18 +1,16 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { CodeBlock } from "@/components/code-block/code-block";
-import { CodeBlockTabs } from "@/components/code-block-tabs/code-block-tabs";
+import {
+  CodeTabs,
+  CodeTabsContent,
+  CodeTabsList,
+  CodeTabsTrigger,
+} from "@/components/code-tabs/code-tabs";
 import { ComponentPreview } from "@/components/component-preview/component-preview";
 import { ComponentSource } from "@/components/component-source/component-source";
 import { GlobalsCSS } from "@/components/globals-css";
 import { HeadingAnchor } from "@/components/heading-anchor/heading-anchor";
-import {
-  InstallationTabs,
-  InstallationTabsContent,
-  InstallationTabsList,
-  InstallationTabsTrigger,
-} from "@/components/installation-tabs/installation-tabs";
-import { MdxPre } from "@/components/mdx-pre/mdx-pre";
 import { PropTable } from "@/components/prop-table/prop-table";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
@@ -30,23 +28,6 @@ type TabProps = {
 
 type TabsProps = {
   items?: string[];
-  children: ReactNode;
-  [key: string]: unknown;
-};
-
-type CodeBlockTabProps = {
-  value: string;
-  children: ReactNode;
-  [key: string]: unknown;
-};
-
-type CodeBlockTabsListProps = {
-  children: ReactNode;
-  [key: string]: unknown;
-};
-
-type CodeBlockTabsTriggerProps = {
-  value: string;
   children: ReactNode;
   [key: string]: unknown;
 };
@@ -84,7 +65,6 @@ export const mdxComponents = {
     }
     return <code {...props} />;
   },
-  pre: MdxPre,
 
   Button,
   CodeBlock,
@@ -92,10 +72,19 @@ export const mdxComponents = {
   ComponentSource,
   PropTable,
   GlobalsCSS,
-  InstallationTabs,
-  InstallationTabsList,
-  InstallationTabsTrigger,
-  InstallationTabsContent,
+
+  // Installation tabs (CLI/Manual)
+  InstallationTabs: (props: ComponentProps<typeof CodeTabs>) => (
+    <CodeTabs variant="installation" {...props} />
+  ),
+  InstallationTabsList: CodeTabsList,
+  InstallationTabsTrigger: CodeTabsTrigger,
+  InstallationTabsContent: CodeTabsContent,
+
+  // Package manager tabs (npm/pnpm)
+  CodeBlockTabs: (props: ComponentProps<typeof CodeTabs>) => (
+    <CodeTabs defaultValue="npm" variant="package" {...props} />
+  ),
 
   Tab: ({ value, children, ...props }: TabProps) => (
     <TabsContent value={value} {...props} className="">
@@ -114,37 +103,9 @@ export const mdxComponents = {
       {children}
     </CustomTabs>
   ),
-  CodeBlockTab: ({ value, children, ...props }: CodeBlockTabProps) => (
-    <TabsContent
-      value={value}
-      {...props}
-      style={{
-        margin: 0,
-        padding: 0,
-        border: "none",
-        borderRadius: 0,
-        backgroundColor: "transparent",
-        position: "relative",
-      }}
-    >
-      {children}
-    </TabsContent>
-  ),
-  CodeBlockTabs: (props: ComponentProps<typeof CodeBlockTabs>) => (
-    <CodeBlockTabs {...props} />
-  ),
-  CodeBlockTabsList: ({ children, ...props }: CodeBlockTabsListProps) => (
-    <TabsList {...props}>{children}</TabsList>
-  ),
-  CodeBlockTabsTrigger: ({
-    value,
-    children,
-    ...props
-  }: CodeBlockTabsTriggerProps) => (
-    <TabsTrigger value={value} {...props}>
-      {children}
-    </TabsTrigger>
-  ),
+  CodeBlockTab: CodeTabsContent,
+  CodeBlockTabsList: CodeTabsList,
+  CodeBlockTabsTrigger: CodeTabsTrigger,
   Link: (props: ComponentProps<typeof Link>) => (
     <Link
       style={{

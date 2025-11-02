@@ -1,19 +1,16 @@
 "use client";
 
 import { Collapsible } from "@base-ui-components/react/collapsible";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function CollapsibleRoot({
-  className,
-  ...props
-}: Collapsible.Root.Props) {
+function CollapsibleRoot({ className, ...props }: Collapsible.Root.Props) {
   return (
     <Collapsible.Root
-      data-slot="collapsible-root"
       className={cn(
         "flex w-full max-w-56 flex-col justify-center text-foreground",
         className
       )}
+      data-slot="collapsible-root"
       {...props}
     />
   );
@@ -26,7 +23,6 @@ function CollapsibleTrigger({
 }: Collapsible.Trigger.Props) {
   return (
     <Collapsible.Trigger
-      data-slot="collapsible-trigger"
       className={cn(
         "m-0 flex items-center justify-between rounded px-2 py-1 outline-none",
         "bg-[var(--mix-card-15-bg)] text-foreground",
@@ -39,6 +35,7 @@ function CollapsibleTrigger({
         "data-[disabled]:hover:bg-muted",
         className
       )}
+      data-slot="collapsible-trigger"
       {...props}
     >
       {children}
@@ -77,19 +74,16 @@ function CollapsibleTrigger({
   );
 }
 
-function CollapsiblePanel({
-  className,
-  ...props
-}: Collapsible.Panel.Props) {
+function CollapsiblePanel({ className, ...props }: Collapsible.Panel.Props) {
   return (
     <Collapsible.Panel
-      data-slot="collapsible-panel"
       className={cn(
         "flex h-[var(--collapsible-panel-height)] flex-col justify-end overflow-hidden",
         "box-border w-full text-sm leading-5 transition-all duration-150 ease-out",
         "data-[ending-style]:h-0 data-[starting-style]:h-0",
         className
       )}
+      data-slot="collapsible-panel"
       {...props}
     />
   );

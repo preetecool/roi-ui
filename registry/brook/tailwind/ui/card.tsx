@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import Image from "next/image";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const cardVariants = cva(
   [

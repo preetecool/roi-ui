@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "lib/utils.ts",
-      "content": "export function cn<TState = Record<string, unknown>>(\n  ...inputs: (\n    | string\n    | undefined\n    | null\n    | false\n    | (() => string)\n    | ((state: TState) => string)\n  )[]\n) {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return clsx(inputs);\n}\n",
       "type": "registry:file",
       "target": "~/lib/utils.ts"
     }

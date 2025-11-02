@@ -37,11 +37,14 @@
     "shadcn": "2.9.3-canary.0",
     "shiki": "^3.7.0",
     "tailwind-merge": "^3.3.1",
+    "unist-util-visit": "^5.0.0",
     "zod": "^4.0.10"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.6",
     "@tailwindcss/postcss": "4.1.16",
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4",
     "@types/node": "^20",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",

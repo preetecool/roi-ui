@@ -1,11 +1,9 @@
 "use client";
 
 import { PreviewCard } from "@base-ui-components/react/preview-card";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
-function PreviewCardRoot({
-  ...props
-}: PreviewCard.Root.Props) {
+function PreviewCardRoot({ ...props }: PreviewCard.Root.Props) {
   return <PreviewCard.Root {...props} />;
 }
 
@@ -15,19 +13,17 @@ function PreviewCardTrigger({
 }: PreviewCard.Trigger.Props) {
   return (
     <PreviewCard.Trigger
-      data-slot="previewcard-trigger"
       className={cn(
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         className
       )}
+      data-slot="previewcard-trigger"
       {...props}
     />
   );
 }
 
-function PreviewCardPortal({
-  ...props
-}: PreviewCard.Portal.Props) {
+function PreviewCardPortal({ ...props }: PreviewCard.Portal.Props) {
   return <PreviewCard.Portal {...props} />;
 }
 
@@ -37,8 +33,8 @@ function PreviewCardBackdrop({
 }: PreviewCard.Backdrop.Props) {
   return (
     <PreviewCard.Backdrop
-      data-slot="previewcard-backdrop"
       className={cn("fixed inset-0 z-[140]", className)}
+      data-slot="previewcard-backdrop"
       {...props}
     />
   );
@@ -50,20 +46,16 @@ function PreviewCardPositioner({
 }: PreviewCard.Positioner.Props) {
   return (
     <PreviewCard.Positioner
-      data-slot="previewcard-positioner"
       className={cn("absolute z-[150]", className)}
+      data-slot="previewcard-positioner"
       {...props}
     />
   );
 }
 
-function PreviewCardPopup({
-  className,
-  ...props
-}: PreviewCard.Popup.Props) {
+function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
   return (
     <PreviewCard.Popup
-      data-slot="previewcard-popup"
       className={cn(
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--mix-card-33-bg)]",
         "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4 shadow-lg",
@@ -72,6 +64,7 @@ function PreviewCardPopup({
         "data-[state=closed]:animate-[scaleOut_0.15s_ease-in]",
         className
       )}
+      data-slot="previewcard-popup"
       {...props}
     >
       {props.children}
@@ -101,17 +94,14 @@ function PreviewCardPopup({
   );
 }
 
-function PreviewCardArrow({
-  className,
-  ...props
-}: PreviewCard.Arrow.Props) {
+function PreviewCardArrow({ className, ...props }: PreviewCard.Arrow.Props) {
   return (
     <PreviewCard.Arrow
-      data-slot="previewcard-arrow"
       className={cn(
         "h-[5px] w-2.5 fill-[var(--mix-card-33-bg)] stroke-1 stroke-border",
         className
       )}
+      data-slot="previewcard-arrow"
       {...props}
     />
   );

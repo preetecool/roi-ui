@@ -2,7 +2,7 @@
 
 import { Form } from "@base-ui-components/react/form";
 import type React from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 function FormRoot({ className, ...props }: Form.Props) {
   return <Form className={cn("mt-4 w-full", className)} {...props} />;

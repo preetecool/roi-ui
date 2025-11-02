@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import codeTabsStyles from "@/components/code-tabs/code-tabs-shared.module.css";
+import { withCodeTabsStyle } from "@/components/code-tabs/with-code-tabs-style";
 import { useStyle } from "@/components/style-provider";
 import { StyleSelector } from "@/components/style-selector/style-selector";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
-import styles from "./component-source.module.css";
-import type { StyleVariant } from "./component-source-helpers";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/brook/ui/tabs/tabs";
+import type { StyleVariant } from "./helpers/file-loaders";
 
 type ProcessedFile = {
   name: string;
@@ -22,6 +29,9 @@ type ComponentSourceClientProps = {
   variants: ProcessedVariant[];
 };
 
+// Create styled component using HOC
+const CodeTabsContent = withCodeTabsStyle(TabsContent, codeTabsStyles.content);
+
 export function ComponentSourceClient({
   variants,
 }: ComponentSourceClientProps) {
@@ -33,73 +43,42 @@ export function ComponentSourceClient({
     variants.find((v) => v.variant === style) || variants[0];
   const files = currentVariant.files;
 
-  // Reset active tab when style changes or when activeTab exceeds file count
   useEffect(() => {
     if (activeTab >= files.length) {
       setActiveTab(0);
     }
   }, [style, activeTab, files.length]);
 
-  // Safety check: ensure activeTab is valid
   const safeActiveTab = activeTab < files.length ? activeTab : 0;
   const currentFile = files[safeActiveTab];
 
-  const handleKeyDown = (event: React.KeyboardEvent, index: number) => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      setActiveTab((index + 1) % files.length);
-    } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      setActiveTab((index - 1 + files.length) % files.length);
-    } else if (event.key === "Home") {
-      event.preventDefault();
-      setActiveTab(0);
-    } else if (event.key === "End") {
-      event.preventDefault();
-      setActiveTab(files.length - 1);
-    }
-  };
-
   return (
-    <div className={styles.container}>
-      <div className={styles.tabsHeader}>
-        <div className={styles.tabs} role="tablist" aria-label="Code files">
-          {files.map((file, index) => (
-            <button
-              aria-controls={`tabpanel-${index}`}
-              aria-selected={index === safeActiveTab}
-              className={`${styles.tab} ${index === safeActiveTab ? styles.tabActive : ""}`}
-              key={file.name}
-              onClick={() => setActiveTab(index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              role="tab"
-              tabIndex={index === safeActiveTab ? 0 : -1}
-              type="button"
-            >
-              {file.name}
-            </button>
-          ))}
+    <div className={codeTabsStyles.wrapper}>
+      <Tabs onValueChange={setActiveTab} value={safeActiveTab}>
+        <div className={codeTabsStyles.header}>
+          <TabsList>
+            {files.map((file, index) => (
+              <TabsTrigger key={file.name} value={index}>
+                {file.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          <div className={codeTabsStyles.actions}>
+            {variants.length > 1 && <StyleSelector />}
+            <CopyButton code={currentFile.content} />
+          </div>
         </div>
-        <div className={styles.headerActions}>
-          {variants.length > 1 && <StyleSelector />}
-          <CopyButton code={currentFile.content} />
-        </div>
-      </div>
 
-      <div
-        aria-labelledby={`tab-${safeActiveTab}`}
-        className={styles.codeContent}
-        id={`tabpanel-${safeActiveTab}`}
-        role="tabpanel"
-      >
-        <div
-          className={`code-container ${styles.codeContainer}`}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
-          dangerouslySetInnerHTML={{
-            __html: currentFile.highlightedContent,
-          }}
-        />
-      </div>
+        {files.map((file, index) => (
+          <CodeTabsContent key={file.name} value={index}>
+            <div
+              className="code-container"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
+              dangerouslySetInnerHTML={{ __html: file.highlightedContent }}
+            />
+          </CodeTabsContent>
+        ))}
+      </Tabs>
     </div>
   );
 }

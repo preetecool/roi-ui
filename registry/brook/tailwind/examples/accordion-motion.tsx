@@ -2,7 +2,7 @@
 
 import { Accordion } from "@base-ui-components/react/accordion";
 import { useState } from "react";
-import { cn } from "@/lib/tw-utils";
+import { cn } from "@/lib/utils-tailwind";
 
 const accordionItems = [
   {
