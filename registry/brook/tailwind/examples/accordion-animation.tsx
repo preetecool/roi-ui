@@ -28,17 +28,67 @@ const accordionItems = [
 export default function AccordionFramerMotion() {
   const [value, setValue] = useState<string[]>(["item-1"]);
 
+  const getExpandedIndices = () => {
+    return value
+      .map((v) => accordionItems.findIndex((item) => item.id === v))
+      .filter((i) => i !== -1);
+  };
+
+  const getItemClassName = (index: number) => {
+    const expandedIndices = getExpandedIndices();
+    const isExpanded = expandedIndices.includes(index);
+    const isBeforeExpanded = expandedIndices.includes(index + 1);
+    const isAfterExpanded = expandedIndices.includes(index - 1);
+    const isFirst = index === 0;
+    const isLast = index === accordionItems.length - 1;
+    const isSandwiched = isBeforeExpanded && isAfterExpanded && !isExpanded;
+
+    return cn(
+      // Base styles
+      "overflow-hidden bg-[var(--mix-card-66-bg)] p-4",
+      "border-b-[0.5px] border-b-border",
+      "transition-[margin,border-radius,border-color] duration-200 ease-[cubic-bezier(0.455,0.03,0.515,0.955)]",
+
+      // Default border-radius for first/last items
+      isFirst && !isExpanded && !isBeforeExpanded && "rounded-t-3xl",
+      isLast && !isExpanded && !isAfterExpanded && "rounded-b-3xl",
+      isFirst && isLast && !isExpanded && "rounded-3xl",
+
+      // Remove border for last item
+      isLast && "border-b-transparent",
+
+      // Expanded item styles
+      isExpanded && "rounded-3xl my-2 border-b-transparent",
+      isExpanded && isFirst && "mt-0",
+      isExpanded && isLast && "mb-0",
+
+      // Sandwiched item (between two expanded items)
+      isSandwiched && "rounded-3xl border-b-transparent",
+
+      // Before expanded (not sandwiched, not expanded)
+      isBeforeExpanded && !isExpanded && !isAfterExpanded && "rounded-b-3xl border-b-transparent",
+      isBeforeExpanded && !isExpanded && !isAfterExpanded && isFirst && "rounded-3xl",
+
+      // After expanded (not sandwiched, not expanded)
+      isAfterExpanded && !isExpanded && !isBeforeExpanded && "rounded-t-3xl",
+      isAfterExpanded && !isExpanded && !isBeforeExpanded && isLast && "rounded-3xl",
+
+      // Mobile styles
+      "max-sm:p-4"
+    );
+  };
+
   return (
-    <div className="flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col gap-4 max-sm:w-full max-sm:max-w-full max-sm:gap-3">
+    <div className="flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col max-sm:w-full max-sm:max-w-full">
       <Accordion.Root onValueChange={setValue} value={value}>
-        {accordionItems.map((item) => (
+        {accordionItems.map((item, index) => (
           <Accordion.Item
-            className="mb-4 overflow-hidden rounded-[var(--radius-lg)] bg-[var(--mix-card-66-bg)] p-4 max-sm:mb-3"
+            className={getItemClassName(index)}
             key={item.id}
             value={item.id}
           >
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full cursor-pointer items-center gap-4 border-0 bg-transparent text-left font-[350] text-base text-secondary-foreground tracking-tight max-sm:gap-3 max-sm:text-[0.9375rem]">
+              <Accordion.Trigger className="group flex w-full cursor-pointer items-center gap-4 border-0 bg-transparent text-left font-[350] text-base text-secondary-foreground tracking-[-0.02em] max-sm:gap-3 max-sm:text-[0.9375rem]">
                 <div
                   className={cn(
                     "flex h-8 w-8 items-center justify-center text-muted-foreground transition-[color,rotate] duration-200 ease-[cubic-bezier(0.455,0.03,0.515,0.955)]",
@@ -85,14 +135,7 @@ export default function AccordionFramerMotion() {
                 "data-[ending-style]:h-0 data-[starting-style]:h-0"
               )}
             >
-              <div
-                className={cn(
-                  "w-full scale-100 overflow-hidden opacity-100 blur-0",
-                  "transition-[opacity,filter,scale] duration-150 ease-[cubic-bezier(0.455,0.03,0.515,0.955)]",
-                  "[.data-\\[starting-style\\]_&]:scale-95 [.data-\\[starting-style\\]_&]:opacity-0 [.data-\\[starting-style\\]_&]:blur-[2px]",
-                  "[.data-\\[ending-style\\]_&]:scale-95 [.data-\\[ending-style\\]_&]:opacity-0 [.data-\\[ending-style\\]_&]:blur-[2px]"
-                )}
-              >
+              <div className="w-full overflow-hidden">
                 <div className="mt-1 ml-12 pr-12 text-[oklch(from_var(--foreground)_l_c_h_/_0.75)] text-sm leading-relaxed max-sm:ml-10 max-sm:pr-0 max-sm:text-[0.9375rem] max-sm:leading-normal">
                   {item.content}
                 </div>
