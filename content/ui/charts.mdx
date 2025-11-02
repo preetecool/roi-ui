@@ -10,30 +10,54 @@ links:
 
 <ComponentPreview name="chart-line-demo" replayButton={true} />
 
-<h3 className="installation-heading">Installation</h3>
+## Installation
 
 <InstallationTabs>
 
 <InstallationTabsList>
-    <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
-    <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
 </InstallationTabsList>
 
 <InstallationTabsContent value="cli">
 
-```package-install
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
 npx shadcn@latest add @roiui/chart
 ```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/chart-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/chart
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/chart-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
 
 </InstallationTabsContent>
 
 <InstallationTabsContent value="manual" data-manual="true">
-
-Install dependencies:
-
-```package-install
-npm install recharts
-```
 
 Copy and paste the following files:
 

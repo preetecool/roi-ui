@@ -7,6 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useIsoLayoutEffect } from "@/hooks/use-iso-layout-effect";
 
 type StyleVariant = "css-modules" | "tailwind";
 
@@ -20,8 +21,8 @@ const StyleContext = createContext<StyleContextType | undefined>(undefined);
 export function StyleProvider({ children }: { children: ReactNode }) {
   const [style, setStyle] = useState<StyleVariant>("css-modules");
 
-  // Load saved preference from localStorage
-  useEffect(() => {
+  // Load saved preference from localStorage before first paint to prevent flash
+  useIsoLayoutEffect(() => {
     const saved = localStorage.getItem(
       "preferred-style"
     ) as StyleVariant | null;

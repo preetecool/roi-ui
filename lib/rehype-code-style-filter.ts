@@ -38,12 +38,18 @@ export default function rehypeCodeStyleFilter() {
             textContent = extractText(code.children);
           }
 
-          // Detect style based on command content
-          if (textContent.includes("shadcn@latest add")) {
-            if (textContent.includes("-tailwind")) {
-              wrapperProperties["data-if"] = "tailwind";
-            } else if (textContent.match(/@roiui\/\w+(?!-tailwind)/)) {
-              wrapperProperties["data-if"] = "css-modules";
+          // Check for style condition from remark plugin (if= meta attribute)
+          const styleCondition = (code.data as any)?.styleCondition;
+          if (styleCondition) {
+            wrapperProperties["data-if"] = styleCondition;
+          } else {
+            // Fallback: Detect style based on command content
+            if (textContent.includes("shadcn@latest add")) {
+              if (textContent.includes("-tailwind")) {
+                wrapperProperties["data-if"] = "tailwind";
+              } else if (textContent.match(/@roiui\/\w+(?!-tailwind)/)) {
+                wrapperProperties["data-if"] = "css-modules";
+              }
             }
           }
 
