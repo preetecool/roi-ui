@@ -4,7 +4,6 @@
   justify-content: space-between;
   gap: 0.25rem;
   min-width: 125px;
-  margin-right: 8px;
   height: 31px;
   padding: 0 12px;
   color: var(--muted-foreground);
