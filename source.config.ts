@@ -1,5 +1,5 @@
 import rehypeShiki from "@shikijs/rehype";
-import { rehypeToc } from "fumadocs-core/mdx-plugins";
+import { rehypeToc, remarkNpm } from "fumadocs-core/mdx-plugins";
 import {
   defineConfig,
   defineDocs,
@@ -8,9 +8,12 @@ import {
 import { getSingletonHighlighter } from "shiki";
 import { z } from "zod";
 import { transformers } from "@/lib/highlight-code";
+import remarkStyleFilter from "./lib/remark-style-filter";
+import rehypeCodeStyleFilter from "./lib/rehype-code-style-filter";
 
 export default defineConfig({
   mdxOptions: {
+    remarkPlugins: [remarkStyleFilter, remarkNpm],
     rehypePlugins: [
       rehypeToc,
       [
@@ -38,6 +41,7 @@ export default defineConfig({
           inline: "tailing-curly-colon",
         },
       ],
+      rehypeCodeStyleFilter,
     ],
   },
 });

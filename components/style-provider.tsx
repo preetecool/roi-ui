@@ -30,7 +30,10 @@ export function StyleProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Save preference to localStorage
+  useEffect(() => {
+    document.documentElement.setAttribute("data-style", style);
+  }, [style]);
+
   const handleSetStyle = (newStyle: StyleVariant) => {
     setStyle(newStyle);
     localStorage.setItem("preferred-style", newStyle);
