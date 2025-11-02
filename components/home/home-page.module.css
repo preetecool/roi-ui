@@ -14,6 +14,13 @@
   width: 100%;
 }
 
+@media (max-width: 1023px) {
+  .headerWrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 .contentWrapper {
   height: 100%;
   width: 100%;

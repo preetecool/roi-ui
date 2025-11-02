@@ -39,7 +39,14 @@ async function getComponentFiles(dir: string, name: string): Promise<string[]> {
     }
   }
 
-  return files;
+  // Sort files so .tsx comes before .module.css
+  return files.sort((a, b) => {
+    const aIsTsx = a.endsWith('.tsx');
+    const bIsTsx = b.endsWith('.tsx');
+    if (aIsTsx && !bIsTsx) return -1;
+    if (!aIsTsx && bIsTsx) return 1;
+    return 0;
+  });
 }
 
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: Script complexity is acceptable for code generation

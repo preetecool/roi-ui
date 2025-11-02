@@ -3,8 +3,9 @@
 import type { PageTree } from "fumadocs-core/server";
 import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
+import { ArrowPointer } from "@/registry/brook/ui/button/button";
 import {
   Command,
   CommandEmpty,
@@ -14,229 +15,98 @@ import {
   CommandList,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
+import { ICON_CONFIG } from "./search.config";
 import styles from "./search.module.css";
+import { buildSearchGroups } from "./search.utils";
+import { useKeyboardShortcut } from "./hooks/use-keyboard-shortcut";
+import { useSearchDialog } from "./hooks/use-search-dialog";
 
-const CLOSE_ANIMATION_DELAY = 150;
-const FOCUS_DELAY = 0;
+export type SearchPage = {
+  name: string;
+  url: string;
+};
 
-type SearchProps = {
+export type SearchGroup = {
+  heading: string;
+  pages: SearchPage[];
+};
+
+export type SearchProps = {
   tree: PageTree.Root;
 };
 
-const formatHeading = (text: string) =>
-  text
-    .split(" / ")
-    .map((part) => {
-      if (part.toLowerCase() === "ui") {
-        return "UI";
-      }
-      return part
-        .split(" ")
-        .map(
-          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-        )
-        .join(" ");
-    })
-    .join(" / ");
+export type IconType = "arrow" | "component" | "puzzle" | "file";
 
-const buildHeadingPath = (parentName: string, nodeName: string) =>
-  parentName ? `${parentName} / ${nodeName}` : nodeName;
+export type IconConfig = {
+  type: IconType;
+  patterns: string[];
+  urlPatterns?: string[];
+};
 
-const extractPagesFromChildren = (
-  children: PageTree.Node[]
-): Array<{ name: string; url: string }> => {
-  const pages: Array<{ name: string; url: string }> = [];
+/**
+ * Determines the appropriate icon type based on page name and URL patterns
+ */
+const getIconType = (url: string, name: string): IconType => {
+  const nameLower = name.toLowerCase();
 
-  for (const child of children) {
-    if (child.type === "page" && child.url) {
-      pages.push({
-        name: child.name?.toString() || "",
-        url: child.url,
-      });
+  for (const config of ICON_CONFIG) {
+    const nameMatch = config.patterns.some((pattern) =>
+      nameLower.includes(pattern)
+    );
+
+    const urlMatch =
+      !config.urlPatterns ||
+      config.urlPatterns.some((pattern) => url.includes(pattern));
+
+    if (nameMatch && urlMatch) {
+      return config.type;
+    }
+
+    if (config.patterns.length === 0 && urlMatch) {
+      return config.type;
     }
   }
 
-  return pages;
+  return "file";
 };
 
-const collectChildFolderGroups = (
-  children: PageTree.Node[],
-  currentPath: string
-): Array<{
-  heading: string;
-  pages: Array<{ name: string; url: string }>;
-}> => {
-  const groups: Array<{
-    heading: string;
-    pages: Array<{ name: string; url: string }>;
-  }> = [];
-
-  for (const child of children) {
-    if (child.type === "folder") {
-      const childGroups = collectGroups(child, currentPath);
-      groups.push(...childGroups);
-    }
+/**
+ * Renders the appropriate icon component based on icon type
+ */
+const renderIcon = (iconType: IconType) => {
+  switch (iconType) {
+    case "arrow":
+      return <ArrowPointer />;
+    case "component":
+      return <Component size={16} />;
+    case "puzzle":
+      return <Puzzle size={16} />;
+    case "file":
+      return <FileText size={16} />;
+    default:
+      return <FileText size={16} />;
   }
-
-  return groups;
 };
 
-const collectGroups = (
-  node: PageTree.Node,
-  parentName = ""
-): Array<{
-  heading: string;
-  pages: Array<{ name: string; url: string }>;
-}> => {
-  const groups: Array<{
-    heading: string;
-    pages: Array<{ name: string; url: string }>;
-  }> = [];
-
-  if (node.type !== "folder" || !node.children) {
-    return groups;
-  }
-
-  const nodeName = node.name?.toString() || "";
-  const pages = extractPagesFromChildren(node.children);
-
-  if (pages.length > 0) {
-    const rawHeading = buildHeadingPath(parentName, nodeName);
-    const heading = formatHeading(rawHeading);
-    groups.push({ heading, pages });
-  }
-
-  const currentPath = buildHeadingPath(parentName, nodeName);
-  const childGroups = collectChildFolderGroups(node.children, currentPath);
-  groups.push(...childGroups);
-
-  return groups;
-};
-
-const ArrowIcon = () => (
-  <svg
-    aria-hidden="true"
-    fill="none"
-    height="10"
-    viewBox="0 0 14 10"
-    width="14"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g fillRule="nonzero">
-      <path
-        className={styles.arrowPoint}
-        d="M1 1l4 4-4 4"
-        stroke="currentColor"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-        strokeWidth="2"
-      />
-      <path
-        className={styles.arrowShaft}
-        d="M1.8 5h4.8"
-        stroke="currentColor"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-        strokeWidth="2"
-      />
-    </g>
-  </svg>
-);
-
+/**
+ * Search dialog component for documentation navigation
+ * Supports keyboard shortcuts (Cmd/Ctrl + K) and fuzzy search
+ */
 export function Search({ tree }: SearchProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const { isOpen, isClosing, inputRef, open, close } = useSearchDialog();
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setIsOpen(true);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, FOCUS_DELAY);
-    }
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
-    }, CLOSE_ANIMATION_DELAY);
-  };
+  // Register Cmd/Ctrl + K keyboard shortcut
+  useKeyboardShortcut({ key: "k", metaKey: true, ctrlKey: true }, open);
 
   const handleSelect = (url: string) => {
     router.push(url);
-    handleClose();
+    close();
   };
 
-  const getIcon = (url: string, name: string) => {
-    const nameLower = name.toLowerCase();
-
-    if (
-      nameLower === "introduction" ||
-      nameLower === "quick start" ||
-      nameLower === "about roi ui" ||
-      nameLower === "components"
-    ) {
-      return <ArrowIcon />;
-    }
-
-    const componentExamples = [
-      "expandable card",
-      "login card",
-      "task card",
-      "transaction card",
-      "website traffic",
-      "chat",
-      "task",
-      "image card",
-      "transaction history",
-      "copy button",
-      "like button",
-    ];
-
-    if (componentExamples.some((example) => nameLower.includes(example))) {
-      return <Component size={16} />;
-    }
-
-    const puzzleExamples = [
-      "dialog",
-      "tabs",
-      "accordion",
-      "badge error",
-      "badge success",
-      "dropdown menu motion",
-    ];
-
-    if (
-      url.includes("/examples/") &&
-      puzzleExamples.some((example) => nameLower.includes(example))
-    ) {
-      return <Puzzle size={16} />;
-    }
-
-    if (url.includes("/components/") || url.includes("/ui/")) {
-      return <Puzzle size={16} />;
-    }
-
-    return <FileText size={16} />;
-  };
-
+  // Build search groups from page tree (memoized for performance)
   const allGroups = useMemo(
-    () => tree.children.flatMap((topLevel) => collectGroups(topLevel)),
+    () => buildSearchGroups(tree.children),
     [tree.children]
   );
 
@@ -249,11 +119,11 @@ export function Search({ tree }: SearchProps) {
       <button
         aria-label="Close search"
         className={`${styles.overlay} ${isClosing ? styles.overlayClosing : ""}`}
-        onClick={handleClose}
+        onClick={close}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            handleClose();
+            close();
           }
         }}
         tabIndex={0}
@@ -271,18 +141,23 @@ export function Search({ tree }: SearchProps) {
                 heading={group.heading}
                 key={`${group.heading}-${idx}`}
               >
-                {group.pages.map((page) => (
-                  <CommandItem
-                    key={page.url}
-                    onSelect={() => handleSelect(page.url)}
-                    value={`${group.heading} ${page.name}`}
-                  >
-                    {getIcon(page.url, page.name)}
-                    <div className={styles.commandItemContent}>
-                      <div className={styles.commandItemTitle}>{page.name}</div>
-                    </div>
-                  </CommandItem>
-                ))}
+                {group.pages.map((page) => {
+                  const iconType = getIconType(page.url, page.name);
+                  return (
+                    <CommandItem
+                      key={page.url}
+                      onSelect={() => handleSelect(page.url)}
+                      value={`${group.heading} ${page.name}`}
+                    >
+                      {renderIcon(iconType)}
+                      <div className={styles.commandItemContent}>
+                        <div className={styles.commandItemTitle}>
+                          {page.name}
+                        </div>
+                      </div>
+                    </CommandItem>
+                  );
+                })}
               </CommandGroup>
             ))}
           </CommandList>
