@@ -1,10 +1,6 @@
 import { createMDX } from "fumadocs-mdx/next";
 
-const nextConfig = {
-  images: {
-    domains: ["images.unsplash.com"],
-  },
-};
+const nextConfig = {};
 
 const withMDX = createMDX();
 

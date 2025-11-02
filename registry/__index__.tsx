@@ -2289,4 +2289,17 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "profile-menu-tailwind": {
+    name: "profile-menu-tailwind",
+    type: "block",
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/tailwind/blocks/profile-menu");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "profile-menu";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
 };
