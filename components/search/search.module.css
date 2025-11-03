@@ -1,51 +1,40 @@
-.overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10000;
-  animation: fadeIn 0.15s ease;
-  transition: opacity 0.15s ease;
-
-  border: none;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.overlayClosing {
-  animation: fadeOut 0.15s ease forwards;
-}
-
 .commandWrapper {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
+  width: 100%;
   max-width: 560px;
-  z-index: 10001;
-  background-color: var(--background);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.5);
-  box-shadow: var(--shadow-lg);
+  border-radius: 0;
+  border: none;
+  padding: 0;
+}
+
+.commandWrapper:focus-visible,
+.commandWrapper:focus,
+.commandWrapper:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
+}
+
+[data-theme="dark"] .commandWrapper:focus-visible,
+[data-theme="dark"] .commandWrapper:focus,
+[data-theme="dark"] .commandWrapper:focus-within {
+  box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
+}
+
+[data-slot="dialog-popup"]:focus-visible,
+[data-slot="dialog-popup"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
+}
+
+[data-theme="dark"] [data-slot="dialog-popup"]:focus-visible,
+[data-theme="dark"] [data-slot="dialog-popup"]:focus {
+  box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
 .commandWrapper [cmdk-root] {
   padding: 0 0.25rem;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
 }
 
 .commandWrapper [cmdk-input] {
@@ -69,7 +58,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: var(--radius);
+  border-radius: 0;
   background-color: transparent;
   border: 1px solid transparent;
   z-index: -1;
@@ -89,7 +78,15 @@
   border: 0.5px solid oklch(from var(--border) l c h / 0.8);
 }
 
+.commandWrapper [cmdk-item]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
 .commandWrapper [cmdk-list] {
+  flex: 1;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--mix-border-50-trans) transparent;
 }
@@ -109,32 +106,6 @@
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar-thumb:hover {
   background: var(--mix-border-70-trans);
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-@keyframes slideOut {
-  from {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px);
-  }
-}
-
-.commandWrapperClosing {
-  animation: slideOut 0.15s var(--ease-out-expo) forwards;
 }
 
 .commandItemContent {
@@ -160,26 +131,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.arrowPoint {
-  transition: 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-
-.arrowShaft {
-  transition: 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  opacity: 0;
-}
-
-.commandWrapper [cmdk-item]:hover .arrowPoint,
-.commandWrapper [cmdk-item][data-selected="true"] .arrowPoint {
-  transform: translateX(2px);
-}
-
-.commandWrapper [cmdk-item]:hover .arrowShaft,
-.commandWrapper [cmdk-item][data-selected="true"] .arrowShaft {
-  opacity: 1;
-  transform: translateX(-2px);
 }
 
 .commandFooter {
@@ -208,4 +159,60 @@
 
 .commandFooterKbd {
   font-size: 0.9375rem;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  background-color: var(--mix-card-50-bg);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border-radius: 0;
+  min-width: 200px;
+  height: 36px;
+}
+
+.searchButton:hover {
+  background-color: oklch(from var(--accent) l c h / 0.5);
+  color: var(--foreground);
+}
+
+.searchIcon {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.searchButton:hover .searchIcon {
+  color: var(--foreground);
+}
+
+.searchText {
+  flex: 1;
+  text-align: left;
+  font-weight: 400;
+}
+
+.searchKbd {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .searchButton {
+    min-width: auto;
+  }
+
+  .searchText {
+    display: none;
+  }
+
+  .searchKbd {
+    display: none;
+  }
 }

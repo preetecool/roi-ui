@@ -2,7 +2,6 @@
 
 import type { PageTree } from "fumadocs-core/server";
 import { memo } from "react";
-import { Search } from "@/components/search/search";
 import { SiteFooter } from "@/components/site-footer/site-footer";
 import { SiteHeader } from "@/components/site-header/site-header";
 import { BentoGrid } from "./bento-grid/bento-grid";
@@ -40,15 +39,12 @@ ContentWrapper.displayName = "ContentWrapper";
 
 export default function HomePage({ pageTree }: HomePageProps) {
   return (
-    <>
-      <Search tree={pageTree} />
-      <div className={styles.container}>
-        <HeaderWrapper pageTree={pageTree} />
-        <div className={styles.mainWrapper}>
-          <ContentWrapper />
-        </div>
-        <SiteFooter />
+    <div className={styles.container}>
+      <HeaderWrapper pageTree={pageTree} />
+      <div className={styles.mainWrapper}>
+        <ContentWrapper />
       </div>
-    </>
+      <SiteFooter />
+    </div>
   );
 }
