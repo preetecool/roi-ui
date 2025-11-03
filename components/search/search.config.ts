@@ -21,8 +21,6 @@ export const ICON_CONFIG: readonly IconConfig[] = [
       "task",
       "image card",
       "transaction history",
-      "copy button",
-      "like button",
       "profile menu",
     ],
   },

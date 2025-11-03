@@ -1151,6 +1151,20 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "separator-demo": {
+    name: "separator-demo",
+    type: "example",
+    files: ["registry/brook/examples/separator-demo.tsx"],
+    component: lazy(async () => {
+      const mod = await import("@/registry/brook/examples/separator-demo");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   shipping: {
     name: "shipping",
     type: "example",
@@ -1794,6 +1808,14 @@ export const Index: Record<string, RegistryEntry> = {
     files: [
       "registry/brook/ui/select/select.tsx",
       "registry/brook/ui/select/select.module.css",
+    ],
+  },
+  separator: {
+    name: "separator",
+    type: "ui",
+    files: [
+      "registry/brook/ui/separator/separator.tsx",
+      "registry/brook/ui/separator/separator.module.css",
     ],
   },
   sidebar: {
@@ -2714,6 +2736,22 @@ export const Index: Record<string, RegistryEntry> = {
       return { default: mod.default || mod[exportName] };
     }),
   },
+  "separator-demo-tailwind": {
+    name: "separator-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/separator-demo.tsx"],
+    component: lazy(async () => {
+      const mod = await import(
+        "@/registry/brook/tailwind/examples/separator-demo"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "separator-demo";
+      return { default: mod.default || mod[exportName] };
+    }),
+  },
   shippingTailwind: {
     name: "shipping-tailwind",
     type: "example",
@@ -3203,6 +3241,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "select-tailwind",
     type: "ui",
     files: ["registry/brook/tailwind/ui/select.tsx"],
+  },
+  separatorTailwind: {
+    name: "separator-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/separator.tsx"],
   },
   sliderTailwind: {
     name: "slider-tailwind",

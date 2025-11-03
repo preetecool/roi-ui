@@ -348,9 +348,12 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "grid min-w-32 items-start gap-1.5 rounded-[var(--radius)] border border-border bg-background px-2.5 py-1.5 text-xs shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),_0_4px_6px_-4px_rgb(0_0_0_/_0.1)]",
+        "grid min-w-32 items-start gap-1.5 rounded-[var(--radius)] bg-background px-2.5 py-1.5 text-xs shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),_0_4px_6px_-4px_rgb(0_0_0_/_0.1)]",
         className
       )}
+      style={{
+        border: "0.5px solid oklch(from var(--border) l c h / 0.6)",
+      }}
     >
       {nestLabel ? null : tooltipLabel}
       <div className="grid gap-1.5">

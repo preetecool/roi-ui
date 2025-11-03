@@ -613,6 +613,24 @@
       ]
     },
     {
+      "name": "separator",
+      "type": "registry:item",
+      "title": "Separator",
+      "description": "A separator element accessible to screen readers.",
+      "files": [
+        {
+          "path": "registry/brook/ui/separator/separator.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/separator/separator.tsx"
+        },
+        {
+          "path": "registry/brook/ui/separator/separator.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/separator/separator.module.css"
+        }
+      ]
+    },
+    {
       "name": "slider",
       "type": "registry:item",
       "title": "Slider",
@@ -1433,6 +1451,19 @@
           "path": "registry/brook/tailwind/ui/select.tsx",
           "type": "registry:file",
           "target": "~/components/ui/select/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator-tailwind",
+      "type": "registry:item",
+      "title": "Separator (Tailwind)",
+      "description": "A separator element accessible to screen readers.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/separator.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/separator/separator.tsx"
         }
       ]
     },
