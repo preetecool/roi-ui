@@ -29,9 +29,12 @@ const SUBHEADING =
 const UI_COMPONENTS = [
   "accordion",
   "badge",
-  "tabs",
+  "copy-button",
   "dialog",
   "dropdown-menu-motion",
+  "like-button",
+  "separator",
+  "tabs",
 ];
 
 function getRandomComponent() {

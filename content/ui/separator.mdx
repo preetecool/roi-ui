@@ -1,0 +1,76 @@
+---
+title: Separator
+description: A separator element accessible to screen readers.
+links:
+  doc: https://base-ui.com/react/components/separator
+  api: https://base-ui.com/react/components/separator#api-reference
+---
+
+<ComponentPreview name="separator-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
+npx shadcn@latest add @roiui/separator
+```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/separator-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/separator
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/separator-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the following files:
+
+<ComponentSource
+    name="separator"
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+  filename="anatomy"
+  language="tsx"
+  code={`<Separator />`}
+/>

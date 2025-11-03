@@ -18,7 +18,7 @@ import {
 import { trafficData } from "./data";
 
 const CHART_START_YEAR = 2025;
-const CHART_START_MONTH = 6; // July (0-indexed)
+const CHART_START_MONTH = 6;
 const CHART_START_DAY = 14;
 
 const formatDate = (value: unknown) => {
