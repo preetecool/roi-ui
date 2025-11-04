@@ -19,6 +19,15 @@
   gap: 0.5rem;
 }
 
+.header > span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  color: var(--muted-foreground);
+}
+
 .header [data-slot="tabs-list"] {
   border: none;
   background-color: transparent;
@@ -28,6 +37,10 @@
 
 .header [data-slot="tabs-trigger"] {
   border-radius: 2px;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  font-size: 12px;
 }
 
 .header [data-slot="tabs-trigger"]:not([data-selected]) {

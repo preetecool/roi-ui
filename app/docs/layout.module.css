@@ -30,23 +30,9 @@ html[data-theme="light"] {
   }
 }
 
-/* Global tap highlight for docs */
 :global(*) {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-}
-
-/* Conditional rendering based on style preference */
-.code-container[data-if] {
-  display: none !important;
-}
-
-:global([data-style="css-modules"]).code-container[data-if="css-modules"] {
-  display: block !important;
-}
-
-:global([data-style="tailwind"]).code-container[data-if="tailwind"] {
-  display: block !important;
 }
 
 .header {
