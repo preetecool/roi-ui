@@ -29,9 +29,9 @@ export default function TabsBasic() {
         <TabsContent value="account">
           <div className="flex flex-col gap-6">
             <div>
-              <h3 className="font-semibold text-lg leading-7">
+              <span className="!m-0 !text-[18px] font-semibold leading-7">
                 Account Settings
-              </h3>
+              </span>
               <p className="text-muted-foreground text-sm leading-5">
                 Make changes to your account here. Click save when you&apos;re
                 done.
@@ -49,7 +49,9 @@ export default function TabsBasic() {
         <TabsContent value="password">
           <div className="flex flex-col gap-6">
             <div>
-              <h3 className="font-semibold text-lg leading-7">Password</h3>
+              <span className="!m-0 !text-[18px] font-semibold leading-7">
+                Password
+              </span>
               <p className="text-muted-foreground text-sm leading-5">
                 Change your password here. After saving, you&apos;ll be logged
                 out.
@@ -67,9 +69,9 @@ export default function TabsBasic() {
         <TabsContent value="team">
           <div className="flex flex-col gap-6">
             <div>
-              <h3 className="font-semibold text-lg leading-7">
+              <span className="!m-0 !text-[18px] font-semibold leading-7">
                 Team Management
-              </h3>
+              </span>
               <p className="text-muted-foreground text-sm leading-5">
                 Invite and manage your team members here.
               </p>

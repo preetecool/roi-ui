@@ -4,7 +4,7 @@ import { useDocsSearch } from "fumadocs-core/search/client";
 import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import type { source } from "@/lib/source";
+import type { PageTree } from "@/lib/source-types";
 import {
   Command,
   CommandEmpty,
@@ -27,7 +27,7 @@ import { SearchResults } from "./search-results";
 import { SearchTrigger } from "./search-trigger";
 
 export type SearchProps = {
-  tree?: typeof source.pageTree;
+  tree?: PageTree;
 };
 
 /**

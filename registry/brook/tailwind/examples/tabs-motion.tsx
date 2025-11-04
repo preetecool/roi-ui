@@ -138,9 +138,9 @@ export default function TabsFramerMotion() {
                   variants={contentVariants}
                 >
                   <div>
-                    <h3 className="font-semibold text-lg leading-7">
+                    <span className="!m-0 !text-[18px] font-semibold leading-7">
                       {activeTabData.heading}
-                    </h3>
+                    </span>
                     <p className="mt-0 mb-0 text-muted-foreground text-sm leading-5">
                       {activeTabData.description}
                     </p>

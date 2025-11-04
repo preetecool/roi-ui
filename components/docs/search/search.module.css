@@ -19,14 +19,14 @@
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
-[data-slot="dialog-popup"]:focus-visible,
-[data-slot="dialog-popup"]:focus {
+:global([data-slot="dialog-popup"]:focus-visible),
+:global([data-slot="dialog-popup"]:focus) {
   outline: none;
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 
-[data-theme="dark"] [data-slot="dialog-popup"]:focus-visible,
-[data-theme="dark"] [data-slot="dialog-popup"]:focus {
+:global([data-theme="dark"] [data-slot="dialog-popup"]:focus-visible),
+:global([data-theme="dark"] [data-slot="dialog-popup"]:focus) {
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
