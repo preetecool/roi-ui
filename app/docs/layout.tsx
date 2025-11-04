@@ -1,6 +1,6 @@
-import { DocsProvider } from "@/components/docs-provider";
-import { DocsSidebar } from "@/components/docs-sidebar/docs-sidebar";
-import { SiteHeader } from "@/components/site-header/site-header";
+import { DocsProvider } from "@/components/providers/docs-provider";
+import { DocsSidebar } from "@/components/docs/sidebar/docs-sidebar";
+import { SiteHeader } from "@/components/layout/site-header/site-header";
 import { source } from "@/lib/source";
 import styles from "./layout.module.css";
 

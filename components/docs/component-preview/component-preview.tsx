@@ -1,4 +1,4 @@
-import { ComponentSource } from "@/components/component-source/component-source";
+import { ComponentSource } from "@/components/docs/component-source/component-source";
 import { Index } from "@/registry/__index__";
 import styles from "./component-preview.module.css";
 import { ComponentPreviewClient } from "./component-preview-client";

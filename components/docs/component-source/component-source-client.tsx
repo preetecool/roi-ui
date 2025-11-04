@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import codeTabsStyles from "@/components/code-tabs/code-tabs-shared.module.css";
-import { withCodeTabsStyle } from "@/components/code-tabs/with-code-tabs-style";
-import { useStyle, type StyleVariant } from "@/components/style-provider";
-import { StyleSelector } from "@/components/style-selector/style-selector";
+import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
+import { withCodeTabsStyle } from "@/components/docs/code-tabs/with-code-tabs-style";
+import {
+  useStyle,
+  type StyleVariant,
+} from "@/components/providers/style-provider";
+import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import {
   Tabs,

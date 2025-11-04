@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { TableOfContents } from "@/components/toc/toc";
+import { TableOfContents } from "@/components/docs/toc/toc";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";

@@ -1,8 +1,8 @@
 "use client";
 
 import type { ComponentProps } from "react";
-import type { PackageManager } from "@/components/package-manager-provider";
-import { usePackageManager } from "@/components/package-manager-provider";
+import type { PackageManager } from "@/components/providers/package-manager-provider";
+import { usePackageManager } from "@/components/providers/package-manager-provider";
 import { CodeTabs } from "./code-tabs";
 
 /**

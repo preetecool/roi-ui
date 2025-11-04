@@ -1,5 +1,5 @@
-import { StyleProvider } from "@/components/style-provider";
-import { ThemeProvider } from "@/components/theme-provider";
+import { StyleProvider } from "@/components/providers/style-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import "@/styles/docs-styles.css";
 import "@/styles/globals.css";
 import "@/styles/syntax-highlight.css";

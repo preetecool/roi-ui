@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { useStyle } from "@/components/style-provider";
-import { StyleSelector } from "@/components/style-selector/style-selector";
+import { useStyle } from "@/components/providers/style-provider";
+import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import {
   TabsContent as BaseTabsContent,
@@ -25,7 +25,8 @@ type CodeTabsListProps = React.ComponentProps<typeof BaseTabsList> & {
   showStyleSelector?: boolean;
 };
 
-const ASYNC_DELAY_ENSURE_DOM_RENDER = 50;
+// Small delay to ensure DOM is fully rendered before extracting code text
+const DOM_RENDER_DELAY_MS = 50;
 
 function isVisibleElement(element: Element): boolean {
   const rect = element.getBoundingClientRect();
@@ -47,6 +48,10 @@ function findFirstVisibleCodeText(container: HTMLElement): string | null {
   return null;
 }
 
+/**
+ * Context for compound component pattern
+ * Shares variant and container ref between CodeTabs parent and its children
+ */
 const CodeTabsContext = React.createContext<{
   variant: "installation" | "package";
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -113,7 +118,7 @@ export function CodeTabsList({
       if (text) {
         setCommandText(text);
       }
-    }, ASYNC_DELAY_ENSURE_DOM_RENDER);
+    }, DOM_RENDER_DELAY_MS);
   }, [shouldShowCopy, containerRef, style]);
 
   if (isPackageVariant) {

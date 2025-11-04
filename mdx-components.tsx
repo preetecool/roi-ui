@@ -1,18 +1,19 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
-import { CodeBlock } from "@/components/code-block/code-block";
+import { CodeBlock } from "@/components/docs/code-block/code-block";
 import {
   CodeTabs,
   CodeTabsContent,
   CodeTabsList,
   CodeTabsTrigger,
-} from "@/components/code-tabs/code-tabs";
-import { PackageManagerCodeTabs } from "@/components/code-tabs/package-manager-code-tabs";
-import { ComponentPreview } from "@/components/component-preview/component-preview";
-import { ComponentSource } from "@/components/component-source/component-source";
-import { GlobalsCSS } from "@/components/globals-css";
-import { HeadingAnchor } from "@/components/heading-anchor/heading-anchor";
-import { PropTable } from "@/components/prop-table/prop-table";
+} from "@/components/docs/code-tabs/code-tabs";
+import { PackageManagerCodeTabs } from "@/components/docs/code-tabs/package-manager-code-tabs";
+import { ComponentPreview } from "@/components/docs/component-preview/component-preview";
+import { ComponentSource } from "@/components/docs/component-source/component-source";
+import { ComponentsGrid } from "@/components/docs/components-grid/components-grid";
+import { GlobalsCSS } from "@/components/docs/globals-css";
+import { HeadingAnchor } from "@/components/docs/heading-anchor/heading-anchor";
+import { PropTable } from "@/components/docs/prop-table/prop-table";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Tabs as CustomTabs,
@@ -71,6 +72,7 @@ export const mdxComponents = {
   CodeBlock,
   ComponentPreview,
   ComponentSource,
+  ComponentsGrid,
   PropTable,
   GlobalsCSS,
 

@@ -4,7 +4,7 @@ import type { PageTree } from "fumadocs-core/server";
 import { Gauge, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/shared/logo";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./docs-sidebar.module.css";
 

@@ -2,7 +2,7 @@
 
 import { RotateCcw } from "lucide-react";
 import { useState } from "react";
-import { useStyle } from "@/components/style-provider";
+import { useStyle } from "@/components/providers/style-provider";
 import { Index } from "@/registry/__index__";
 import styles from "./component-preview.module.css";
 
