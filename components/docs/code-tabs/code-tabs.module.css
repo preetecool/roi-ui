@@ -76,11 +76,12 @@
   background-color: transparent;
 }
 
-.installationContent pre {
+/* Only remove padding from direct pre children, not nested ones */
+.installationContent > pre {
   padding: 0;
 }
 
-.installationContent .code-container pre {
+.installationContent > .code-container pre {
   padding: 0;
 }
 

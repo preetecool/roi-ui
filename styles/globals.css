@@ -26,6 +26,12 @@
   --radius: 0.6rem;
   --radius-lg: 1.2rem;
 
+  /* Layout dimensions */
+  --sidebar-width-icon: 3rem;
+
+  /* Typography */
+  --font-size-2xl: 1.5rem;
+
   /* Reference theme-switching variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);

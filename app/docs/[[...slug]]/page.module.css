@@ -156,3 +156,176 @@
     align-self: flex-start;
   }
 }
+
+/* MDX Content Styles */
+
+.contentWrapper > h1,
+.contentWrapper > div > h1 {
+  margin-top: 0;
+  margin-bottom: var(--space-lg);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.contentWrapper > h2,
+.contentWrapper > div > h2,
+.contentWrapper > * + h2 {
+  margin-top: 60px;
+  margin-bottom: var(--space-lg);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.contentWrapper > h3,
+.contentWrapper > div > h3,
+.contentWrapper > * + h3 {
+  margin-top: var(--space-xl);
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.contentWrapper > h3:first-child,
+.contentWrapper > div > h3:first-child {
+  margin-top: 0;
+}
+
+.contentWrapper > h2 + h3 {
+  margin-top: var(--space-md);
+}
+
+.contentWrapper > h4,
+.contentWrapper > div > h4,
+.contentWrapper > * + h4 {
+  margin-top: var(--space-lg);
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.contentWrapper > h3 + h4 {
+  margin-top: var(--space-md);
+}
+
+.contentWrapper > h5,
+.contentWrapper > div > h5,
+.contentWrapper > * + h5 {
+  margin-top: var(--space-lg);
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.contentWrapper > h6,
+.contentWrapper > div > h6,
+.contentWrapper > * + h6 {
+  margin-top: var(--space-md);
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.contentWrapper > p {
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.contentWrapper > p:last-child {
+  margin-bottom: 0;
+}
+
+.contentWrapper > ul,
+.contentWrapper > ol {
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-md);
+}
+
+.contentWrapper > ul > li,
+.contentWrapper > ol > li {
+  margin-bottom: var(--space-xs);
+  line-height: 1.6;
+}
+
+.contentWrapper > ul > li:last-child,
+.contentWrapper > ol > li:last-child {
+  margin-bottom: 0;
+}
+
+.contentWrapper .code-container {
+  max-height: 400px;
+  box-sizing: border-box;
+  overflow: auto;
+  position: relative;
+  margin: 0;
+}
+
+.contentWrapper .code-container pre {
+  margin: 0;
+  padding: 1rem;
+}
+
+.contentWrapper code:not(pre code) {
+  border-radius: 4px;
+}
+
+.contentWrapper > table {
+  width: 100%;
+}
+
+.contentWrapper > blockquote {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+  border-left: 4px solid var(--border);
+}
+
+.contentWrapper > * + blockquote {
+  margin-top: var(--space-md);
+}
+
+.contentWrapper > figure {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.contentWrapper > * + figure {
+  margin-top: var(--space-xl);
+}
+
+.contentWrapper > hr {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+  border: none;
+  height: 1px;
+  background-color: var(--border);
+}

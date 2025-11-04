@@ -181,7 +181,7 @@ export default async function Page(props: {
           ) : null}
         </div>
 
-        <div className={`${styles.contentWrapper} docs-content`}>
+        <div className={styles.contentWrapper}>
           <MDX components={mdxComponents} />
         </div>
 
