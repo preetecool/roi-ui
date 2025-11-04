@@ -139,7 +139,9 @@ export default function TabsFramerMotion() {
                   variants={contentVariants}
                 >
                   <div>
-                    <h3 className={styles.heading}>{activeTabData.heading}</h3>
+                    <span className={styles.heading}>
+                      {activeTabData.heading}
+                    </span>
                     <p className={styles.description}>
                       {activeTabData.description}
                     </p>

@@ -21,7 +21,8 @@ export function ComponentPreview({
   const item = Index[name];
   const isChartComponent = name.includes("chart");
 
-  if (!item?.component) {
+  // Check if component exists in registry (metadata only)
+  if (!item || item.type === "ui") {
     return (
       <div className={styles.container}>
         <div
@@ -29,7 +30,7 @@ export function ComponentPreview({
         >
           <p className={styles.errorMessage}>
             Component <code className={styles.errorCode}>{name}</code> not found
-            in registry.
+            in registry or is not previewable.
           </p>
         </div>
       </div>

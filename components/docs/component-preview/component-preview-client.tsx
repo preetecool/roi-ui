@@ -3,6 +3,7 @@
 import { RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { useStyle } from "@/components/providers/style-provider";
+import { ComponentLoaders } from "@/registry/__loaders__";
 import { Index } from "@/registry/__index__";
 import styles from "./component-preview.module.css";
 
@@ -27,7 +28,8 @@ export function ComponentPreviewClient({
       ? `${name}-tailwind`
       : name;
 
-  const Component = Index[componentName]?.component;
+  // Dynamically load component from loaders (separate bundle chunk)
+  const Component = ComponentLoaders[componentName];
 
   const handleReplay = () => {
     setKey((prev) => prev + 1);

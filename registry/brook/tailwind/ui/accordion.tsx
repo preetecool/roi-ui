@@ -50,6 +50,7 @@ function AccordionTrigger({
       className={cn(
         "box-border flex w-full cursor-pointer items-center justify-between border-none bg-transparent px-0 text-left font-normal",
         "h-[41.5px]",
+        "text-[14px]",
         "text-secondary-foreground",
         "hover:text-foreground hover:underline [&:hover_svg]:text-foreground",
         "focus:outline-none focus-visible:z-[1] focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",

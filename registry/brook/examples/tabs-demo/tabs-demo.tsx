@@ -30,7 +30,7 @@ export default function TabsBasic() {
         <TabsContent value="account">
           <div className={styles.tabContent}>
             <div>
-              <h3 className={styles.heading}>Account Settings</h3>
+              <span className={styles.heading}>Account Settings</span>
               <p className={styles.description}>
                 Make changes to your account here. Click save when you&apos;re
                 done.
@@ -48,7 +48,7 @@ export default function TabsBasic() {
         <TabsContent value="password">
           <div className={styles.tabContent}>
             <div>
-              <h3 className={styles.heading}>Password</h3>
+              <span className={styles.heading}>Password</span>
               <p className={styles.description}>
                 Change your password here. After saving, you&apos;ll be logged
                 out.
@@ -66,7 +66,7 @@ export default function TabsBasic() {
         <TabsContent value="team">
           <div className={styles.tabContent}>
             <div>
-              <h3 className={styles.heading}>Team Management</h3>
+              <span className={styles.heading}>Team Management</span>
               <p className={styles.description}>
                 Invite and manage your team members here.
               </p>

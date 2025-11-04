@@ -1,5 +1,5 @@
 /* Docs-specific layout variables */
-:root {
+:global(:root) {
   --sidebar-width: 260px;
   --header-height: 64px;
   --docs-heading: oklch(0.9 0 0);
@@ -14,18 +14,18 @@
   --space-3xl: 80px;
 }
 
-html[data-theme="light"] {
+:global(html[data-theme="light"]) {
   --docs-heading: oklch(0.2 0 0);
 }
 
 @media (max-width: 1023px) {
-  :root {
+  :global(:root) {
     --header-height: 52px;
   }
 }
 
 @media (min-width: 1024px) {
-  :root {
+  :global(:root) {
     --sidebar-width: 280px;
   }
 }

@@ -85,3 +85,12 @@
 .replayButton:active {
   transform: scale(0.95);
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
