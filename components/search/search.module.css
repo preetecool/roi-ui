@@ -43,6 +43,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .commandWrapper [cmdk-item] {
@@ -85,10 +86,12 @@
 }
 
 .commandWrapper [cmdk-list] {
-  flex: 1;
+  flex: 1 1 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--mix-border-50-trans) transparent;
+  min-height: 0;
+  max-height: none;
 }
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar {
@@ -143,6 +146,7 @@
   background-color: var(--mix-muted-20-trans);
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
+  flex-shrink: 0;
 }
 
 .commandFooterItem {
