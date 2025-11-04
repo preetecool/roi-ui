@@ -13,9 +13,8 @@ function CommandRoot({
     <CommandPrimitive
       className={cn(
         "[&[cmdk-root]]:flex [&[cmdk-root]]:w-full [&[cmdk-root]]:flex-col",
-        "[&[cmdk-root]]:h-full [&[cmdk-root]]:max-h-[400px] [&[cmdk-root]]:overflow-hidden",
+        "[&[cmdk-root]]:overflow-hidden",
         "[&[cmdk-root]]:border-[0.5px] [&[cmdk-root]]:border-border/70 [&[cmdk-root]]:text-foreground",
-        "max-sm:[&[cmdk-root]]:h-auto",
         className
       )}
       {...props}
@@ -23,29 +22,6 @@ function CommandRoot({
   );
 }
 
-function CommandDialog({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) {
-  return (
-    <CommandPrimitive.Dialog
-      className={cn(
-        "[&[cmdk-dialog]]:fixed [&[cmdk-dialog]]:inset-0 [&[cmdk-dialog]]:z-50",
-        "[&[cmdk-dialog]]:flex [&[cmdk-dialog]]:items-center [&[cmdk-dialog]]:bg-black/80",
-        "[&[cmdk-dialog]]:justify-center [&[cmdk-dialog]]:p-4",
-        "[&[cmdk-dialog]]:animate-[command-dialog-in_200ms_ease-out]",
-        "[&[cmdk-dialog]_.root]:w-full [&[cmdk-dialog]_.root]:max-w-[32rem]",
-        "[&[cmdk-dialog]_.root]:rounded-[var(--radius)] [&[cmdk-dialog]_.root]:shadow-lg",
-        "[&[cmdk-dialog]_.root]:border-[0.5px] [&[cmdk-dialog]_.root]:border-border/50",
-        "[&[cmdk-dialog]_.root]:bg-card",
-        "max-sm:[&[cmdk-dialog]_.root]:m-4 max-sm:[&[cmdk-dialog]_.root]:max-w-[calc(100vw-2rem)]",
-        className
-      )}
-      data-slot="commandprimitive-dialog"
-      {...props}
-    />
-  );
-}
 
 function CommandInput({
   className,
@@ -126,9 +102,9 @@ function CommandItem({
         "[&[cmdk-item]]:select-none [&[cmdk-item]]:items-center",
         "[&[cmdk-item]]:px-2 [&[cmdk-item]]:py-2 [&[cmdk-item]]:text-sm",
         "[&[cmdk-item]]:mt-2 [&[cmdk-item]]:gap-2 [&[cmdk-item]]:outline-none",
-        "[&[cmdk-item]]:isolate",
+        "[&[cmdk-item]]:isolate [&[cmdk-item]]:rounded-none",
         "[&[cmdk-item]]:before:absolute [&[cmdk-item]]:before:inset-0 [&[cmdk-item]]:before:content-['']",
-        "[&[cmdk-item]]:before:-z-10 [&[cmdk-item]]:before:bg-transparent",
+        "[&[cmdk-item]]:before:-z-10 [&[cmdk-item]]:before:bg-transparent [&[cmdk-item]]:before:rounded-none",
         "[&[cmdk-item]]:hover:before:bg-[var(--mix-card-80-muted)]",
         "[&[cmdk-item][data-selected=true]]:before:bg-[var(--mix-card-80-muted)]",
         "[&[cmdk-item][data-disabled=true]]:pointer-events-none [&[cmdk-item][data-disabled=true]]:opacity-50",
@@ -239,7 +215,6 @@ function CommandLoading({
 
 export {
   CommandRoot as Command,
-  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,

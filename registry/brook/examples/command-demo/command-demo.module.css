@@ -1,4 +1,5 @@
 .command {
+  height: 440px;
   border: 1px solid var(--border);
   /*border-radius: var(--radius-lg);*/
   box-shadow: var(--shadow-lg);
@@ -7,6 +8,9 @@
 
 .command [cmdk-root] {
   padding: 0 0.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .commandInput {
@@ -38,6 +42,8 @@
 }
 
 .command [cmdk-list] {
+  flex: 1;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--mix-card-50-bg) transparent;
 }

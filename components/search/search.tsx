@@ -1,88 +1,44 @@
 "use client";
 
-import type { PageTree } from "fumadocs-core/server";
+import { useDocsSearch } from "fumadocs-core/search/client";
 import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useMemo } from "react";
-import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
-import { ArrowPointer } from "@/registry/brook/ui/button/button";
+import { useRef, useState } from "react";
+import type { source } from "@/lib/source";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
 } from "@/registry/brook/ui/command/command";
-import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import { ICON_CONFIG } from "./search.config";
-import styles from "./search.module.css";
-import { buildSearchGroups } from "./search.utils";
+import {
+  Dialog,
+  DialogOverlay,
+  DialogPopup,
+  DialogPortal,
+  DialogTrigger,
+} from "@/registry/brook/ui/dialog/dialog";
 import { useKeyboardShortcut } from "./hooks/use-keyboard-shortcut";
-import { useSearchDialog } from "./hooks/use-search-dialog";
-
-export type SearchPage = {
-  name: string;
-  url: string;
-};
-
-export type SearchGroup = {
-  heading: string;
-  pages: SearchPage[];
-};
+import styles from "./search.module.css";
+import { SearchFooter } from "./search-footer";
+import { SearchItem } from "./search-item";
+import { SearchResults } from "./search-results";
+import { SearchTrigger } from "./search-trigger";
 
 export type SearchProps = {
-  tree: PageTree.Root;
-};
-
-export type IconType = "arrow" | "component" | "puzzle" | "file";
-
-export type IconConfig = {
-  type: IconType;
-  patterns: string[];
-  urlPatterns?: string[];
+  tree?: typeof source.pageTree;
 };
 
 /**
- * Determines the appropriate icon type based on page name and URL patterns
+ * Determines the appropriate icon based on URL path
  */
-const getIconType = (url: string, name: string): IconType => {
-  const nameLower = name.toLowerCase();
-
-  for (const config of ICON_CONFIG) {
-    const nameMatch = config.patterns.some((pattern) =>
-      nameLower.includes(pattern)
-    );
-
-    const urlMatch =
-      !config.urlPatterns ||
-      config.urlPatterns.some((pattern) => url.includes(pattern));
-
-    if (nameMatch && urlMatch) {
-      return config.type;
-    }
-
-    if (config.patterns.length === 0 && urlMatch) {
-      return config.type;
-    }
-  }
-
-  return "file";
-};
-
-/**
- * Renders the appropriate icon component based on icon type
- */
-const renderIcon = (iconType: IconType) => {
-  switch (iconType) {
-    case "arrow":
-      return <ArrowPointer />;
-    case "component":
-      return <Component size={16} />;
-    case "puzzle":
+const getIcon = (url: string) => {
+  switch (true) {
+    case url.includes("/ui/"):
       return <Puzzle size={16} />;
-    case "file":
-      return <FileText size={16} />;
+    case url.includes("/blocks/"):
+      return <Component size={16} />;
     default:
       return <FileText size={16} />;
   }
@@ -90,87 +46,102 @@ const renderIcon = (iconType: IconType) => {
 
 /**
  * Search dialog component for documentation navigation
- * Supports keyboard shortcuts (Cmd/Ctrl + K) and fuzzy search
+ * Supports keyboard shortcuts (Cmd/Ctrl + K) and full-text search via API
  */
 export function Search({ tree }: SearchProps) {
   const router = useRouter();
-  const { isOpen, isClosing, inputRef, open, close } = useSearchDialog();
+  const [open, setOpen] = useState(false);
+  const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Use fumadocs search with API endpoint
+  const { search, setSearch, query } = useDocsSearch({
+    type: "fetch",
+  });
 
   // Register Cmd/Ctrl + K keyboard shortcut
-  useKeyboardShortcut({ key: "k", metaKey: true, ctrlKey: true }, open);
+  useKeyboardShortcut({ key: "k", metaKey: true, ctrlKey: true }, () =>
+    setOpen(true)
+  );
 
   const handleSelect = (url: string) => {
     router.push(url);
-    close();
+    setOpen(false);
   };
 
-  // Build search groups from page tree (memoized for performance)
-  const allGroups = useMemo(
-    () => buildSearchGroups(tree.children),
-    [tree.children]
-  );
+  const handleSearchChange = (value: string) => {
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
 
-  if (!isOpen) {
-    return null;
-  }
+    searchTimeoutRef.current = setTimeout(() => {
+      setSearch(value);
+    }, 300);
+  };
 
   return (
-    <>
-      <button
-        aria-label="Close search"
-        className={`${styles.overlay} ${isClosing ? styles.overlayClosing : ""}`}
-        onClick={close}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            close();
-          }
-        }}
-        tabIndex={0}
-        type="button"
-      />
-      <div
-        className={`${styles.commandWrapper} ${isClosing ? styles.commandWrapperClosing : ""}`}
-      >
-        <Command>
-          <CommandInput placeholder="Search documentation..." ref={inputRef} />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            {allGroups.map((group, idx) => (
-              <CommandGroup
-                heading={group.heading}
-                key={`${group.heading}-${idx}`}
-              >
-                {group.pages.map((page) => {
-                  const iconType = getIconType(page.url, page.name);
-                  return (
-                    <CommandItem
-                      key={page.url}
-                      onSelect={() => handleSelect(page.url)}
-                      value={`${group.heading} ${page.name}`}
-                    >
-                      {renderIcon(iconType)}
-                      <div className={styles.commandItemContent}>
-                        <div className={styles.commandItemTitle}>
-                          {page.name}
-                        </div>
-                      </div>
-                    </CommandItem>
-                  );
-                })}
-              </CommandGroup>
-            ))}
-          </CommandList>
-          <div className={styles.commandFooter}>
-            <div className={styles.commandFooterItem}>
-              <Kbd className={styles.commandFooterKbd} size="md">
-                <EnterArrowIcon />
-              </Kbd>
-              <span className={styles.commandFooterText}>Go to page</span>
-            </div>
-          </div>
-        </Command>
-      </div>
-    </>
+    <Dialog onOpenChange={setOpen} open={open}>
+      <DialogTrigger render={<SearchTrigger />} />
+      <DialogPortal>
+        <DialogOverlay />
+        <DialogPopup className={styles.commandWrapper}>
+          <Command
+            filter={(value, searchValue, keywords) => {
+              handleSearchChange(searchValue);
+              const extendValue = value + " " + (keywords?.join(" ") || "");
+              if (
+                extendValue.toLowerCase().includes(searchValue.toLowerCase())
+              ) {
+                return 1;
+              }
+              return 0;
+            }}
+          >
+            <CommandInput placeholder="Search documentation..." />
+            <CommandList>
+              <CommandEmpty>
+                {query.isLoading ? "Searching..." : "No results found."}
+              </CommandEmpty>
+
+              {tree?.children.map((group) => (
+                <CommandGroup heading={group.name} key={group.$id}>
+                  {group.type === "folder" &&
+                    group.children.map((item) => {
+                      if (item.type === "page") {
+                        return (
+                          <SearchItem
+                            key={item.url}
+                            onSelect={() => handleSelect(item.url)}
+                            value={
+                              item.name?.toString()
+                                ? `${group.name} ${item.name}`
+                                : ""
+                            }
+                          >
+                            {getIcon(item.url)}
+                            <div className={styles.commandItemContent}>
+                              <div className={styles.commandItemTitle}>
+                                {item.name}
+                              </div>
+                            </div>
+                          </SearchItem>
+                        );
+                      }
+                      return null;
+                    })}
+                </CommandGroup>
+              ))}
+
+              <SearchResults
+                open={open}
+                query={query}
+                search={search}
+                setOpen={setOpen}
+              />
+            </CommandList>
+            <SearchFooter />
+          </Command>
+        </DialogPopup>
+      </DialogPortal>
+    </Dialog>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { Dialog } from "@base-ui-components/react/dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
@@ -14,15 +15,22 @@ function CommandRoot({
 }
 
 function CommandDialog({
-  className,
+  children,
+  open,
+  onOpenChange,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Dialog>) {
+}: Dialog.Root.Props & {
+  children?: React.ReactNode;
+}) {
   return (
-    <CommandPrimitive.Dialog
-      data-slot="commandprimitive-dialog"
-      className={cn(styles.dialog, className)}
-      {...props}
-    />
+    <Dialog.Root onOpenChange={onOpenChange} open={open} {...props}>
+      <Dialog.Portal>
+        <Dialog.Backdrop className={cn(styles.dialogOverlay)} />
+        <Dialog.Popup className={cn(styles.dialogContent)}>
+          {children}
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }
 
@@ -32,8 +40,8 @@ function CommandInput({
 }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
   return (
     <CommandPrimitive.Input
-      data-slot="commandprimitive-input"
       className={cn(styles.input, className)}
+      data-slot="commandprimitive-input"
       {...props}
     />
   );
@@ -44,7 +52,11 @@ function CommandList({
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
   return (
-    <CommandPrimitive.List data-slot="commandprimitive-list" className={cn(styles.list, className)} {...props} />
+    <CommandPrimitive.List
+      className={cn(styles.list, className)}
+      data-slot="commandprimitive-list"
+      {...props}
+    />
   );
 }
 
@@ -92,8 +104,8 @@ function CommandGroup({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
   return (
     <CommandPrimitive.Group
-      data-slot="commandprimitive-group"
       className={cn(styles.group, className)}
+      data-slot="commandprimitive-group"
       {...props}
     />
   );
@@ -105,8 +117,8 @@ function CommandEmpty({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
-      data-slot="commandprimitive-empty"
       className={cn(styles.empty, className)}
+      data-slot="commandprimitive-empty"
       {...props}
     />
   );
@@ -118,8 +130,8 @@ function CommandSeparator({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
   return (
     <CommandPrimitive.Separator
-      data-slot="commandprimitive-separator"
       className={cn(styles.separator, className)}
+      data-slot="commandprimitive-separator"
       {...props}
     />
   );
@@ -131,8 +143,8 @@ function CommandLoading({
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
   return (
     <CommandPrimitive.Loading
-      data-slot="commandprimitive-loading"
       className={cn(styles.loading, className)}
+      data-slot="commandprimitive-loading"
       {...props}
     />
   );

@@ -3,9 +3,9 @@
 import type { PageTree } from "fumadocs-core/server";
 import Link from "next/link";
 import { Button } from "@/registry/brook/ui/button/button";
-import { Kbd } from "@/registry/brook/ui/kbd/kbd";
 import { Logo } from "../logo";
 import { MobileNav } from "../mobile-nav/mobile-nav";
+import { Search } from "../search/search";
 import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import styles from "./site-header.module.css";
 
@@ -15,15 +15,6 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
-  const triggerSearch = () => {
-    const event = new KeyboardEvent("keydown", {
-      key: "k",
-      metaKey: true,
-      bubbles: true,
-    });
-    document.dispatchEvent(event);
-  };
-
   return (
     <header className={styles.header}>
       <div
@@ -32,11 +23,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
       >
         <div
           className={styles.innerWrapper}
-          style={
-            isHomePage
-              ? { paddingLeft: 0, paddingRight: 0 }
-              : undefined
-          }
+          style={isHomePage ? { paddingLeft: 0, paddingRight: 0 } : undefined}
         >
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
@@ -78,41 +65,9 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
           </nav>
 
           <div className={styles.actions}>
-            <Button
-              className={`${styles.searchButton} ${styles.desktopOnly}`}
-              onClick={triggerSearch}
-              variant="ghost"
-            >
-              <svg
-                aria-hidden="true"
-                className={styles.searchIcon}
-                fill="none"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 12C9.76142 12 12 9.76142 12 7C12 4.23858 9.76142 2 7 2C4.23858 2 2 4.23858 2 7C2 9.76142 4.23858 12 7 12Z"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M14 14L10.5 10.5"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                />
-              </svg>
-              <span className={styles.searchText}>Search</span>
-              <div className={styles.searchKbd}>
-                <Kbd size="sm">⌘</Kbd>
-                <Kbd size="sm">K</Kbd>
-              </div>
-            </Button>
+            <div className={styles.desktopOnly}>
+              <Search tree={pageTree} />
+            </div>
             <div className={`${styles.separator} ${styles.desktopOnly}`} />
             <Button
               aria-label="View source on GitHub"
