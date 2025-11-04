@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { basename, extname, join } from "node:path";
-import type { StyleVariant } from "@/components/style-provider";
+import type { StyleVariant } from "@/components/providers/style-provider";
 import { getComponentVariants, getRegistryFiles } from "@/lib/registry";
 
 export type FileData = {

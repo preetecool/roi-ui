@@ -1,9 +1,8 @@
 "use client";
 
 import type { PageTree } from "fumadocs-core/server";
-import { memo } from "react";
-import { SiteFooter } from "@/components/site-footer/site-footer";
-import { SiteHeader } from "@/components/site-header/site-header";
+import { SiteFooter } from "@/components/layout/site-footer/site-footer";
+import { SiteHeader } from "@/components/layout/site-header/site-header";
 import { BentoGrid } from "./bento-grid/bento-grid";
 import { Hero } from "./hero/hero";
 import styles from "./home-page.module.css";
@@ -12,37 +11,19 @@ type HomePageProps = {
   pageTree: PageTree.Root;
 };
 
-const HeaderWrapper = memo<{ pageTree: PageTree.Root }>(({ pageTree }) => (
-  <div className={styles.headerWrapper}>
-    <SiteHeader isHomePage pageTree={pageTree} />
-  </div>
-));
-
-HeaderWrapper.displayName = "HeaderWrapper";
-
-const HomeContent = memo(() => (
-  <div className={styles.homeContent}>
-    <Hero />
-    <BentoGrid />
-  </div>
-));
-
-HomeContent.displayName = "HomeContent";
-
-const ContentWrapper = memo(() => (
-  <div className={styles.contentWrapper}>
-    <HomeContent />
-  </div>
-));
-
-ContentWrapper.displayName = "ContentWrapper";
-
 export default function HomePage({ pageTree }: HomePageProps) {
   return (
     <div className={styles.container}>
-      <HeaderWrapper pageTree={pageTree} />
+      <div className={styles.headerWrapper}>
+        <SiteHeader isHomePage pageTree={pageTree} />
+      </div>
       <div className={styles.mainWrapper}>
-        <ContentWrapper />
+        <div className={styles.contentWrapper}>
+          <div className={styles.homeContent}>
+            <Hero />
+            <BentoGrid />
+          </div>
+        </div>
       </div>
       <SiteFooter />
     </div>

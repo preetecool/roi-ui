@@ -16,7 +16,9 @@
 .filename {
   font-size: 0.75rem;
   font-weight: 400;
-  font-family: monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
   color: var(--muted-foreground);
 }
 

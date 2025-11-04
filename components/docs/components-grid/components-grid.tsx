@@ -1,20 +1,14 @@
-"use client";
-
 import Link from "next/link";
-import type { source } from "@/lib/source";
+import { source } from "@/lib/source";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./components-grid.module.css";
 
-export type ComponentsGridProps = {
-  tree?: typeof source.pageTree;
-};
-
-export function ComponentsGrid({ tree }: ComponentsGridProps) {
+export function ComponentsGrid() {
   // Find UI and Blocks sections from the tree
-  const uiSection = tree?.children.find(
+  const uiSection = source.pageTree.children.find(
     (group) => group.type === "folder" && group.name === "UI"
   );
-  const blocksSection = tree?.children.find(
+  const blocksSection = source.pageTree.children.find(
     (group) => group.type === "folder" && group.name === "Blocks"
   );
 

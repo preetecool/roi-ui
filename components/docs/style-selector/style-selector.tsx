@@ -1,6 +1,6 @@
 "use client";
 
-import { useStyle } from "@/components/style-provider";
+import { useStyle } from "@/components/providers/style-provider";
 import {
   Select,
   SelectIcon,

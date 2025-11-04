@@ -1,12 +1,3 @@
-/*
- * Unified globals for both CSS Modules and Tailwind demos
- * - @layer all: truly global styles (both demo types)
- * - @layer base: Tailwind's reset (reverted in CSS modules demos)
- * - @layer theme: theme tokens
- * - @layer components: component-specific styles
- * - @layer utilities: Tailwind utilities
- */
-
 @import "tailwindcss/preflight" layer(base);
 @import "tailwindcss/theme" layer(theme);
 @import "tailwindcss/utilities" layer(utilities);
@@ -25,6 +16,12 @@
   /* Border radius */
   --radius: 0.6rem;
   --radius-lg: 1.2rem;
+
+  /* Layout dimensions */
+  --sidebar-width-icon: 3rem;
+
+  /* Typography */
+  --font-size-2xl: 1.5rem;
 
   /* Reference theme-switching variables */
   --color-background: var(--background);
