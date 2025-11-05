@@ -685,6 +685,24 @@
       ]
     },
     {
+      "name": "table",
+      "type": "registry:item",
+      "title": "Table",
+      "description": "A responsive table component for displaying structured tabular data.",
+      "files": [
+        {
+          "path": "registry/brook/ui/table/table.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/table/table.tsx"
+        },
+        {
+          "path": "registry/brook/ui/table/table.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/table/table.module.css"
+        }
+      ]
+    },
+    {
       "name": "toast",
       "type": "registry:item",
       "title": "Toast",
@@ -1503,6 +1521,19 @@
           "path": "registry/brook/tailwind/ui/tabs.tsx",
           "type": "registry:file",
           "target": "~/components/ui/tabs/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "table-tailwind",
+      "type": "registry:item",
+      "title": "Table (Tailwind)",
+      "description": "A responsive table component for displaying structured tabular data.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/table.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/table/table.tsx"
         }
       ]
     },
