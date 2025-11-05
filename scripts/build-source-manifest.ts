@@ -58,15 +58,70 @@ async function extractFrontmatter(filePath: string): Promise<Frontmatter> {
 
   const frontmatter: Frontmatter = {};
   const lines = frontmatterMatch[1].split("\n");
+  let currentKey: string | null = null;
+  let currentValue: string = "";
+  let inNestedObject = false;
+  let nestedObject: any = {};
+  let nestedKey: string | null = null;
 
-  for (const line of lines) {
-    const match = line.match(/^(\w+):\s*(.+)$/);
-    if (match) {
-      const [, key, value] = match;
-      if (key === "title" || key === "description") {
-        frontmatter[key] = value.replace(/^["']|["']$/g, "");
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    // Check for top-level key
+    const topLevelMatch = line.match(/^(\w+):\s*(.*)$/);
+
+    if (topLevelMatch && !line.startsWith(" ") && !line.startsWith("\t")) {
+      // Save previous key if exists
+      if (currentKey && currentValue) {
+        if (currentKey === "title" || currentKey === "description") {
+          frontmatter[currentKey] = currentValue
+            .trim()
+            .replace(/^["']|["']$/g, "");
+        }
       }
+      if (inNestedObject && nestedKey) {
+        (frontmatter as any)[nestedKey] = nestedObject;
+        nestedObject = {};
+        inNestedObject = false;
+      }
+
+      const [, key, value] = topLevelMatch;
+      currentKey = key;
+      currentValue = value;
+
+      // Check if this starts a nested object (no value on same line)
+      // but only for 'links', 'components', etc - not for description
+      if (
+        (!value || value.trim() === "") &&
+        key !== "description" &&
+        key !== "title"
+      ) {
+        inNestedObject = true;
+        nestedKey = key;
+        currentKey = null;
+        currentValue = "";
+      }
+    } else if (line.match(/^\s+\w+:/) && inNestedObject) {
+      // Nested object property
+      const nestedMatch = line.match(/^\s+(\w+):\s*(.*)$/);
+      if (nestedMatch) {
+        const [, key, value] = nestedMatch;
+        nestedObject[key] = value.trim().replace(/^["']|["']$/g, "");
+      }
+    } else if (line.match(/^\s+/) && currentKey && !inNestedObject) {
+      // Continuation of multi-line value (for description, title, etc)
+      currentValue += " " + line.trim();
     }
+  }
+
+  // Save last key
+  if (currentKey && currentValue) {
+    if (currentKey === "title" || currentKey === "description") {
+      frontmatter[currentKey] = currentValue.trim().replace(/^["']|["']$/g, "");
+    }
+  }
+  if (inNestedObject && nestedKey) {
+    (frontmatter as any)[nestedKey] = nestedObject;
   }
 
   return frontmatter;

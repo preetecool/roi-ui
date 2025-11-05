@@ -93,6 +93,10 @@ export const pagesManifest: PageMetadata[] = [
     title: "Accordion",
     description:
       "A component that expands or collapses vertically stacked content.",
+    links: {
+      doc: "https://base-ui.com/react/components/accordion",
+      api: "https://base-ui.com/react/components/accordion#api-reference",
+    },
   },
   {
     slug: ["ui", "alert"],
@@ -105,26 +109,38 @@ export const pagesManifest: PageMetadata[] = [
     url: "/docs/ui/alert-dialog",
     title: "Alert Dialog",
     description: "A modal dialog that requires user response to proceed.",
+    links: {
+      doc: "https://base-ui.com/react/components/alert-dialog",
+      api: "https://base-ui.com/react/components/alert-dialog#api-reference",
+    },
   },
   {
     slug: ["ui", "autocomplete"],
     url: "/docs/ui/autocomplete",
     title: "Autocomplete",
     description: "An input that suggests options as you type.",
+    links: {
+      doc: "https://base-ui.com/react/components/autocomplete",
+      api: "https://base-ui.com/react/components/autocomplete#api-reference",
+    },
   },
   {
     slug: ["ui", "avatar"],
     url: "/docs/ui/avatar",
     title: "Avatar",
     description:
-      "An avatar component for displaying user profile pictures, initials, or fallback",
+      "An avatar component for displaying user profile pictures, initials, or fallback content.",
+    links: {
+      doc: "https://base-ui.com/react/components/avatar",
+      api: "https://base-ui.com/react/components/avatar#api-reference",
+    },
   },
   {
     slug: ["ui", "badge"],
     url: "/docs/ui/badge",
     title: "Badge",
     description:
-      "A small status descriptor for UI elements, commonly used for external links and",
+      "A small status descriptor for UI elements, commonly used for external links and labels.",
   },
   {
     slug: ["ui", "button"],
@@ -153,6 +169,10 @@ export const pagesManifest: PageMetadata[] = [
     title: "Charts",
     description:
       "Composable chart components for data visualization using Recharts",
+    links: {
+      doc: "https://recharts.org/",
+      api: "https://recharts.github.io/en-US/api/",
+    },
   },
   {
     slug: ["ui", "checkbox"],
@@ -160,17 +180,31 @@ export const pagesManifest: PageMetadata[] = [
     title: "Checkbox",
     description:
       "A control that allows users to select one or more options from a set.",
+    links: {
+      doc: "https://base-ui.com/react/components/checkbox",
+      api: "https://base-ui.com/react/components/checkbox#api-reference",
+    },
   },
   {
     slug: ["ui", "checkbox-group"],
     url: "/docs/ui/checkbox-group",
     title: "Checkbox Group",
+    description:
+      "A set of checkboxes with shared state management for selecting multiple options.",
+    links: {
+      doc: "https://base-ui.com/react/components/checkbox-group",
+      api: "https://base-ui.com/react/components/checkbox-group#api-reference",
+    },
   },
   {
     slug: ["ui", "collapsible"],
     url: "/docs/ui/collapsible",
     title: "Collapsible",
     description: "An expandable/collapsible panel controlled by a button.",
+    links: {
+      doc: "https://base-ui.com/react/components/collapsible",
+      api: "https://base-ui.com/react/components/collapsible#api-reference",
+    },
   },
   {
     slug: ["ui", "combobox"],
@@ -178,6 +212,10 @@ export const pagesManifest: PageMetadata[] = [
     title: "Combobox",
     description:
       "Filterable select for choosing from a predefined list of items.",
+    links: {
+      doc: "https://base-ui.com/react/components/combobox",
+      api: "https://base-ui.com/react/components/combobox#api-reference",
+    },
   },
   {
     slug: ["ui", "command"],
@@ -185,12 +223,20 @@ export const pagesManifest: PageMetadata[] = [
     title: "Command",
     description:
       "A command menu component for command interfaces. Built with cmdk.",
+    links: {
+      doc: "https://github.com/pacocoursey/cmdk",
+      api: "https://www.npmjs.com/package/cmdk",
+    },
   },
   {
     slug: ["ui", "context-menu"],
     url: "/docs/ui/context-menu",
     title: "Context Menu",
     description: "A menu component triggered by right-click or long press.",
+    links: {
+      doc: "https://base-ui.com/react/components/context-menu",
+      api: "https://base-ui.com/react/components/context-menu#api-reference",
+    },
   },
   {
     slug: ["ui", "copy-button"],
@@ -205,12 +251,20 @@ export const pagesManifest: PageMetadata[] = [
     title: "Dialog",
     description:
       "A modal dialog component for displaying content in an overlay.",
+    links: {
+      doc: "https://base-ui.com/react/components/dialog",
+      api: "https://base-ui.com/react/components/dialog#api-reference",
+    },
   },
   {
     slug: ["ui", "dropdown-menu"],
     url: "/docs/ui/dropdown-menu",
     title: "Dropdown Menu",
     description: "A dropdown menu to display actions.",
+    links: {
+      doc: "https://base-ui.com/react/components/menu",
+      api: "https://base-ui.com/react/components/menu#api-reference",
+    },
   },
   {
     slug: ["ui", "field"],
@@ -218,12 +272,20 @@ export const pagesManifest: PageMetadata[] = [
     title: "Field",
     description:
       "A complete form field component with label, description, and error handling.",
+    links: {
+      doc: "https://base-ui.com/react/components/field",
+      api: "https://base-ui.com/react/components/field#api-reference",
+    },
   },
   {
     slug: ["ui", "fieldset"],
     url: "/docs/ui/fieldset",
     title: "Fieldset",
     description: "A native fieldset element with an easily stylable legend.",
+    links: {
+      doc: "https://base-ui.com/react/components/fieldset",
+      api: "https://base-ui.com/react/components/fieldset#api-reference",
+    },
   },
   {
     slug: ["ui", "form"],
@@ -231,12 +293,20 @@ export const pagesManifest: PageMetadata[] = [
     title: "Form",
     description:
       "A form component that provides validation and error handling for form inputs.",
+    links: {
+      doc: "https://base-ui.com/react/components/form",
+      api: "https://base-ui.com/react/components/form#api-reference",
+    },
   },
   {
     slug: ["ui", "input"],
     url: "/docs/ui/input",
     title: "Input",
     description: "An input field.",
+    links: {
+      doc: "https://base-ui.com/react/components/input",
+      api: "https://base-ui.com/react/components/input#api-reference",
+    },
   },
   {
     slug: ["ui", "like-button"],
@@ -251,18 +321,30 @@ export const pagesManifest: PageMetadata[] = [
     title: "Menubar",
     description:
       "A menubar component that provides a horizontal interface for applications.",
+    links: {
+      doc: "https://base-ui.com/react/components/menubar",
+      api: "https://base-ui.com/react/components/menubar#api-reference",
+    },
   },
   {
     slug: ["ui", "meter"],
     url: "/docs/ui/meter",
     title: "Meter",
     description: "A graphical display of a numeric value within a range.",
+    links: {
+      doc: "https://base-ui.com/react/components/meter",
+      api: "https://base-ui.com/react/components/meter#api-reference",
+    },
   },
   {
     slug: ["ui", "navigation-menu"],
     url: "/docs/ui/navigation-menu",
     title: "Navigation Menu",
     description: "A navigation menu linking to diffrent pages.",
+    links: {
+      doc: "https://base-ui.com/react/components/navigation-menu",
+      api: "https://base-ui.com/react/components/navigation-menu#api-reference",
+    },
   },
   {
     slug: ["ui", "number-field"],
@@ -270,22 +352,42 @@ export const pagesManifest: PageMetadata[] = [
     title: "Number Field",
     description:
       "A numeric input element with increment/decrement buttons and a scrub area.",
+    links: {
+      doc: "https://base-ui.com/react/components/number-field",
+      api: "https://base-ui.com/react/components/number-field#api-reference",
+    },
   },
   {
     slug: ["ui", "popover"],
     url: "/docs/ui/popover",
     title: "Popover",
+    description:
+      "A component for displaying contextual information or actions in a floating panel.",
+    links: {
+      doc: "https://base-ui.com/react/components/popover",
+      api: "https://base-ui.com/react/components/popover#api-reference",
+    },
   },
   {
     slug: ["ui", "preview-card"],
     url: "/docs/ui/preview-card",
     title: "Preview Card",
+    description:
+      "A popup that appears when a link is hovered, showing a preview for sighted users.",
+    links: {
+      doc: "https://base-ui.com/react/components/preview-card",
+      api: "https://base-ui.com/react/components/preview-card#api-reference",
+    },
   },
   {
     slug: ["ui", "progress"],
     url: "/docs/ui/progress",
     title: "Progress",
     description: "Displays the status of a task that takes a long time.",
+    links: {
+      doc: "https://base-ui.com/react/components/progress",
+      api: "https://base-ui.com/react/components/progress#api-reference",
+    },
   },
   {
     slug: ["ui", "radio"],
@@ -293,12 +395,20 @@ export const pagesManifest: PageMetadata[] = [
     title: "Radio",
     description:
       "A customizable radio button component for selecting one option from a group.",
+    links: {
+      doc: "https://base-ui.com/react/components/radio",
+      api: "https://base-ui.com/react/components/radio#api-reference",
+    },
   },
   {
     slug: ["ui", "scroll-area"],
     url: "/docs/ui/scroll-area",
     title: "Scroll Area",
     description: "A native scroll container with custom scrollbars.",
+    links: {
+      doc: "https://base-ui.com/react/components/scroll-area",
+      api: "https://base-ui.com/react/components/scroll-area#api-reference",
+    },
   },
   {
     slug: ["ui", "select"],
@@ -306,61 +416,103 @@ export const pagesManifest: PageMetadata[] = [
     title: "Select",
     description:
       "A customizable select component for choosing from a list of options.",
+    links: {
+      doc: "https://base-ui.com/react/components/select",
+      api: "https://base-ui.com/react/components/select#api-reference",
+    },
   },
   {
     slug: ["ui", "separator"],
     url: "/docs/ui/separator",
     title: "Separator",
     description: "A separator element accessible to screen readers.",
+    links: {
+      doc: "https://base-ui.com/react/components/separator",
+      api: "https://base-ui.com/react/components/separator#api-reference",
+    },
   },
   {
     slug: ["ui", "slider"],
     url: "/docs/ui/slider",
     title: "Slider",
     description: "A slider component for selecting values from a range.",
+    links: {
+      doc: "https://base-ui.com/react/components/slider",
+      api: "https://base-ui.com/react/components/slider#api-reference",
+    },
   },
   {
     slug: ["ui", "switch"],
     url: "/docs/ui/switch",
     title: "Switch",
     description: "A component to toggle states.",
+    links: {
+      doc: "https://base-ui.com/react/components/switch",
+      api: "https://base-ui.com/react/components/switch#api-reference",
+    },
   },
   {
     slug: ["ui", "tabs"],
     url: "/docs/ui/tabs",
     title: "Tabs",
     description:
-      "A set of layered sections of content that are displayed one at a",
+      "A set of layered sections of content that are displayed one at a time.",
+    links: {
+      doc: "https://base-ui.com/react/components/tabs",
+      api: "https://base-ui.com/react/components/tabs#api-reference",
+    },
   },
   {
     slug: ["ui", "toast"],
     url: "/docs/ui/toast",
     title: "Toast",
     description: "A toast notification component.",
+    links: {
+      doc: "https://base-ui.com/react/components/toast",
+      api: "https://base-ui.com/react/components/toast#api-reference",
+    },
   },
   {
     slug: ["ui", "toggle"],
     url: "/docs/ui/toggle",
     title: "Toggle",
     description: "A two-state button that can be turned on or off.",
+    links: {
+      doc: "https://base-ui.com/react/components/toggle",
+      api: "https://base-ui.com/react/components/toggle#api-reference",
+    },
   },
   {
     slug: ["ui", "toggle-group"],
     url: "/docs/ui/toggle-group",
     title: "Toggle Group",
+    description:
+      "A set of two-state buttons that can be toggled on or off with shared state management.",
+    links: {
+      doc: "https://base-ui.com/react/components/toggle-group",
+      api: "https://base-ui.com/react/components/toggle-group#api-reference",
+    },
   },
   {
     slug: ["ui", "toolbar"],
     url: "/docs/ui/toolbar",
     title: "Toolbar",
     description:
-      "A container for grouping a set of buttons and controls with keyboard navigation",
+      "A container for grouping a set of buttons and controls with keyboard navigation support.",
+    links: {
+      doc: "https://base-ui.com/react/components/toolbar",
+      api: "https://base-ui.com/react/components/toolbar#api-reference",
+    },
   },
   {
     slug: ["ui", "tooltip"],
     url: "/docs/ui/tooltip",
     title: "Tooltip",
     description: "A component to display information on hover.",
+    links: {
+      doc: "https://base-ui.com/react/components/tooltip",
+      api: "https://base-ui.com/react/components/tooltip#api-reference",
+    },
   },
 ];
 
