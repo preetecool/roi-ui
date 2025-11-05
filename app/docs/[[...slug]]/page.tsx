@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TableOfContents } from "@/components/docs/toc/toc";
-import { source } from "@/lib/source";
+import { source, getPageWithContent } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./page.module.css";
@@ -19,7 +19,7 @@ export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const page = await getPageWithContent(params.slug);
 
   if (!page) {
     notFound();
@@ -62,25 +62,18 @@ export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const page = await getPageWithContent(params.slug);
   if (!page) {
     notFound();
   }
 
   const doc = page.data;
 
-  // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body;
-  // @ts-expect-error - revisit fumadocs types.
   const links = doc.links;
-  // @ts-expect-error - revisit fumadocs types.
   const components = doc.components;
-  // @ts-expect-error - revisit fumadocs types.
   const motion = doc.motion;
-  // @ts-expect-error - revisit fumadocs types.
-  const exportedToc = doc.toc;
-
-  const toc = exportedToc;
+  const toc = doc.toc;
 
   const allPages = source.getPages();
   const currentIndex = allPages.findIndex((p) => p.url === page.url);
