@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "node scripts/build-source-manifest.ts && next dev --turbopack",
+    "build": "node scripts/build-source-manifest.ts && next build",
     "start": "next start",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
     "registry:build": "shadcn build && cp registry.json public/r/registry.json",
-    "registry:index": "node scripts/build-registry-index.ts"
+    "registry:index": "node scripts/build-registry-index.ts",
+    "source:manifest": "node scripts/build-source-manifest.ts"
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.4",

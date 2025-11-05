@@ -63,7 +63,7 @@ export default function CommandDemo() {
           </CommandItem>
         </CommandGroup>
       </CommandList>
-      <div className="flex items-center gap-3 px-4 py-3 -mx-1 -mb-1 border-t-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.5)] bg-[var(--mix-muted-20-trans)]">
+      <div className="flex items-center gap-3 px-4 py-3 mt-auto -mx-1 -mb-1 border-t-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.5)] bg-[var(--mix-muted-20-trans)]">
         <div className="flex items-center gap-2">
           <Kbd className="text-[0.9375rem]" size="md">
             <EnterArrowIcon />
