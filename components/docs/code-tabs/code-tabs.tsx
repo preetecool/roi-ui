@@ -123,13 +123,15 @@ export function CodeTabsList({
 
   if (isPackageVariant) {
     return (
-      <BaseTabsList className={styles.packageList} {...props}>
-        <div className={styles.tabsGroup}>{children}</div>
+      <div className={styles.packageListWrapper}>
+        <BaseTabsList className={styles.packageList} {...props}>
+          {children}
+        </BaseTabsList>
         <div className={styles.toolbar}>
           {shouldShowStyleSelector && <StyleSelector />}
           {shouldShowCopy && <CopyButton code={currentCommandText} />}
         </div>
-      </BaseTabsList>
+      </div>
     );
   }
 

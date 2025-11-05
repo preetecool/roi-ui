@@ -30,7 +30,11 @@ export function StyleSelector() {
       onValueChange={(value) => setStyle(value as "css-modules" | "tailwind")}
       value={style}
     >
-      <SelectTrigger className={styles.trigger} nativeButton={false}>
+      <SelectTrigger
+        aria-label="Select style framework"
+        className={styles.trigger}
+        nativeButton={false}
+      >
         <SelectValue>
           {(value) => {
             const selected = styleOptions.find((opt) => opt.value === value);

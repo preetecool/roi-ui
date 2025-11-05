@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils-tailwind";
 const buttonVariants = cva(
   [
     "group inline-flex items-center justify-center rounded-[var(--radius)] font-[450]",
-    "transition-transform duration-200 ease-[var(--ease-out-quad)]",
+    "transition-transform duration-200 ease-[var(--ease-out-quad)] will-change-transform",
     "relative cursor-pointer overflow-hidden border border-transparent outline-none",
     "leading-[1.2] tracking-[-0.014em]",
     "active:scale-[0.97] active:disabled:scale-100 active:[&.loading]:scale-100",
