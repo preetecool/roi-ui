@@ -68,6 +68,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
 
   return (
     <button
+      aria-label={copied ? "Copied to clipboard" : "Copy code to clipboard"}
       className={cn(styles.root, styles.header, className)}
       data-copied={copied}
       data-slot="copy-button"

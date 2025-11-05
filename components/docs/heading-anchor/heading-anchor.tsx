@@ -72,24 +72,20 @@ export function HeadingAnchor({
 
   return (
     <Popover onOpenChange={setOpen} open={open} openOnHover>
-      <PopoverTrigger
-        nativeButton={false}
-        render={
-          <Component
-            className="heading-with-anchor"
-            id={id}
-            onClick={handleClick}
-            {...props}
+      <Component className="heading-with-anchor" id={id} {...props}>
+        <PopoverTrigger
+          aria-label={tooltipText}
+          className="heading-anchor-trigger"
+          onClick={handleClick}
+        >
+          {children}
+          <LinkIcon
+            className="heading-anchor-icon"
+            size={iconSize}
+            strokeWidth={1.5}
           />
-        }
-      >
-        {children}
-        <LinkIcon
-          className="heading-anchor-icon"
-          size={iconSize}
-          strokeWidth={1.5}
-        />
-      </PopoverTrigger>
+        </PopoverTrigger>
+      </Component>
       <PopoverPortal>
         <PopoverPositioner side="top" sideOffset={5}>
           <PopoverPopup>{tooltipText}</PopoverPopup>

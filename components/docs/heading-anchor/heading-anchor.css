@@ -1,23 +1,29 @@
 .heading-with-anchor {
   position: relative;
+  width: fit-content;
+  color: var(--docs-heading);
+}
+
+.heading-anchor-trigger {
+  all: unset;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   width: fit-content;
-  color: var(--docs-heading);
+  color: inherit;
   border-radius: 4px;
   outline: none;
   padding: 0.125rem 0;
+  cursor: pointer;
 }
 
-.heading-with-anchor:hover,
-.heading-with-anchor[data-popup-open] {
+.heading-anchor-trigger:hover,
+.heading-anchor-trigger[data-popup-open] {
   color: var(--foreground);
-  cursor: pointer;
   background-color: transparent;
 }
 
-.heading-with-anchor:focus-visible {
+.heading-anchor-trigger:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
   border-radius: 4px;
@@ -37,15 +43,15 @@
   will-change: opacity, transform;
 }
 
-.heading-with-anchor:hover .heading-anchor-icon,
-.heading-with-anchor[data-popup-open] .heading-anchor-icon,
-.heading-with-anchor:focus-visible .heading-anchor-icon {
+.heading-anchor-trigger:hover .heading-anchor-icon,
+.heading-anchor-trigger[data-popup-open] .heading-anchor-icon,
+.heading-anchor-trigger:focus-visible .heading-anchor-icon {
   opacity: 1;
   transform: translateX(3px) scale(1);
   color: var(--foreground);
 }
 
-.heading-with-anchor:active .heading-anchor-icon {
+.heading-anchor-trigger:active .heading-anchor-icon {
   color: var(--foreground);
   opacity: 1;
 }
