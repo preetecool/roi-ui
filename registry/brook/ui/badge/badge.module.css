@@ -43,7 +43,7 @@
 
 .secondary {
   border-color: transparent;
-  background-color: var(--card);
+  background-color: var(--mix-card-66-bg);
   color: var(--secondary-foreground);
 }
 
@@ -137,7 +137,7 @@
 .md {
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
-  line-height: 13px;
+  line-height: 14px;
   border-radius: var(--radius);
 }
 
