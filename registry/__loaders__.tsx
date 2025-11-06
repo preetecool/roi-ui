@@ -6,18 +6,10 @@ import type { ComponentType } from "react";
 import { lazy } from "react";
 
 export const ComponentLoaders: Record<string, ComponentType> = {
-  "accordion-animation": lazy(async () => {
-    const mod = await import(
-      "@/registry/brook/examples/accordion-animation/accordion-animation"
-    );
-    const exportName =
-      Object.keys(mod).find(
-        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "accordion-animation";
-    return { default: mod.default || mod[exportName] };
-  }),
   "accordion-demo": lazy(async () => {
-    const mod = await import("@/registry/brook/examples/accordion-demo");
+    const mod = await import(
+      "@/registry/brook/examples/accordion-demo/accordion-demo"
+    );
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"

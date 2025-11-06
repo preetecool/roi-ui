@@ -191,7 +191,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
  * <TableHeader>
  *   <TableRow>
  *     <TableHead>Name</TableHead>
- *     <TableHead className="text-right">Amount</TableHead>
+ *     <TableHead align="right">Amount</TableHead>
  *   </TableRow>
  * </TableHeader>
  * ```
@@ -213,7 +213,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
  * ```tsx
  * <TableRow>
  *   <TableCell>John Doe</TableCell>
- *   <TableCell className="font-medium">$123.45</TableCell>
+ *   <TableCell align="right">$123.45</TableCell>
  * </TableRow>
  * ```
  */

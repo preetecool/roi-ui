@@ -32,6 +32,7 @@
   caption-side: bottom;
   border-collapse: collapse;
   font-size: 0.925rem;
+  line-height: 1.5;
   table-layout: auto;
 }
 
@@ -85,6 +86,7 @@
   color: var(--muted-foreground);
   letter-spacing: -0.01em;
   white-space: nowrap;
+  line-height: 1.5;
 }
 
 .head[align="center"] {
@@ -100,6 +102,7 @@
   padding: 0.75rem 1rem;
   color: var(--foreground);
   vertical-align: middle;
+  line-height: 1.5;
 }
 
 .cell[align="center"] {
