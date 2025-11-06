@@ -1,8 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./home-animated-dialog.module.css";
 
@@ -30,38 +29,8 @@ export const HomeAnimatedDialog = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [triggerClicked, setTriggerClicked] = useState(false);
 
-  const TRIGGER_CLICK_DELAY = 2700;
-  const DIALOG_OPEN_DELAY = 2900;
-
-  useEffect(() => {
-    // Dialog auto-open
-    const clickTimer = setTimeout(() => {
-      setTriggerClicked(true);
-    }, TRIGGER_CLICK_DELAY);
-
-    const openTimer = setTimeout(() => {
-      setDialogOpen(true);
-      setTriggerClicked(false);
-    }, DIALOG_OPEN_DELAY);
-
-    return () => {
-      clearTimeout(clickTimer);
-      clearTimeout(openTimer);
-    };
-  }, []);
-
   return (
-    <motion.div
-      animate={{ transform: "translateY(0px) rotate(4deg)", opacity: 1 }}
-      className={styles.hideOnMobile}
-      initial={{ transform: "translateY(40px) rotate(4deg)", opacity: 0 }}
-      style={{ transformOrigin: "top left" }}
-      transition={{
-        transform: { type: "spring", bounce: 0.4, duration: 0.8, delay: 1.65 },
-        // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
-        opacity: { duration: 0.4, ease: [0.19, 1, 0.22, 1], delay: 1.65 },
-      }}
-    >
+    <div className={styles.hideOnMobile}>
       {!dialogOpen && (
         <AnimatePresence>
           <motion.div
@@ -84,7 +53,17 @@ export const HomeAnimatedDialog = () => {
             }}
           >
             <div style={{ opacity: 1 }}>
-              <Button size="sm" variant="outline">
+              <Button
+                onClick={() => {
+                  setTriggerClicked(true);
+                  setTimeout(() => {
+                    setDialogOpen(true);
+                    setTriggerClicked(false);
+                  }, 200);
+                }}
+                size="sm"
+                variant="outline"
+              >
                 Button
               </Button>
             </div>
@@ -129,16 +108,14 @@ export const HomeAnimatedDialog = () => {
           <motion.div className={styles.actions} layout>
             <AnimatePresence>
               <motion.div layoutId="button" transition={buttonTransition}>
-                <Button size="sm" variant="outline">
-                  <Link href="/docs/ui/dialog#with-animations">
-                    View Component
-                  </Link>
+                <Button onClick={() => setDialogOpen(false)} size="sm" variant="outline">
+                  Button
                 </Button>
               </motion.div>
             </AnimatePresence>
           </motion.div>
         </motion.div>
       )}
-    </motion.div>
+    </div>
   );
 };

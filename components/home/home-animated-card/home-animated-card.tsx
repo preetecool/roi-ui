@@ -17,7 +17,9 @@ type HomeAnimatedCardProps = {
   isExpanded?: boolean;
 };
 
-export const HomeAnimatedCard = ({ isExpanded = false }: HomeAnimatedCardProps) => {
+export const HomeAnimatedCard = ({
+  isExpanded = false,
+}: HomeAnimatedCardProps) => {
   const [visible, setVisible] = useState(false);
   const [ref, bounds] = useMeasure();
   const EASE_START = 0.19;
@@ -62,7 +64,7 @@ export const HomeAnimatedCard = ({ isExpanded = false }: HomeAnimatedCardProps) 
                 <motion.img
                   alt={cardData.title}
                   className={styles.imageExpanded}
-                  height={300}
+                  height={260}
                   layoutId="image"
                   src={cardData.image}
                   style={{ borderRadius: "12px" }}
