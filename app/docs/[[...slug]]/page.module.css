@@ -105,6 +105,8 @@
   font-size: 0.75rem;
   font-weight: 500;
   border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .badgeButton svg {
@@ -112,6 +114,7 @@
   height: 9px;
   margin-left: 6px;
   margin-right: -4px;
+  margin-top: 0;
 }
 
 .toc {

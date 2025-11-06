@@ -11,20 +11,14 @@ type RegistryEntry = {
 };
 
 export const Index: Record<string, RegistryEntry> = {
-  "accordion-animation": {
-    name: "accordion-animation",
-    type: "example",
-    files: [
-      "registry/brook/examples/accordion-animation/accordion-animation.tsx",
-      "registry/brook/examples/accordion-animation/accordion-animation.module.css",
-    ],
-    path: "@/registry/brook/examples/accordion-animation/accordion-animation",
-  },
   "accordion-demo": {
     name: "accordion-demo",
     type: "example",
-    files: ["registry/brook/examples/accordion-demo.tsx"],
-    path: "@/registry/brook/examples/accordion-demo",
+    files: [
+      "registry/brook/examples/accordion-demo/accordion-demo.tsx",
+      "registry/brook/examples/accordion-demo/accordion-demo.module.css",
+    ],
+    path: "@/registry/brook/examples/accordion-demo/accordion-demo",
   },
   "alert-demo": {
     name: "alert-demo",

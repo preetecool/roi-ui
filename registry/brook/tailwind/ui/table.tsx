@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils-tailwind";
 
 const tableVariants = cva(
   [
-    "w-full table-auto caption-bottom border-collapse font-[0.925rem]",
+    "w-full table-auto caption-bottom border-collapse font-[0.925rem] leading-[1.5]",
     // Font smoothing
     "antialiased",
   ],
@@ -114,7 +114,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   return (
     <thead
       className={cn(
-        "sticky top-0 z-10 border-border border-b bg-card",
+        "sticky top-0 z-10 border-b border-b-border bg-card",
         className
       )}
       data-slot="table-header"
@@ -229,9 +229,9 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   return (
     <th
       className={cn(
-        "whitespace-nowrap px-4 py-3 text-left font-medium text-muted-foreground tracking-[-0.01em]",
-        "text-center:[&[align='center']]",
-        "text-right:[&[align='right']]",
+        "whitespace-nowrap px-4 py-3 text-left font-medium text-muted-foreground tracking-[-0.01em] leading-[1.5]",
+        "[&[align='center']]:text-center",
+        "[&[align='right']]:text-right",
         className
       )}
       data-slot="table-head"
@@ -255,9 +255,9 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   return (
     <td
       className={cn(
-        "px-4 py-3 align-middle text-foreground",
-        "text-center:[&[align='center']]",
-        "text-right:[&[align='right']]",
+        "px-4 py-3 align-middle text-foreground leading-[1.5]",
+        "[&[align='center']]:text-center",
+        "[&[align='right']]:text-right",
         className
       )}
       data-slot="table-cell"

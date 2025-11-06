@@ -2,7 +2,7 @@
 
 import { Accordion } from "@base-ui-components/react/accordion";
 import { useState } from "react";
-import styles from "./accordion-animation.module.css";
+import styles from "./accordion-demo.module.css";
 
 const accordionItems = [
   {
@@ -25,7 +25,7 @@ const accordionItems = [
   },
 ];
 
-export default function AccordionFramerMotion() {
+export default function AccordionDemo() {
   const [value, setValue] = useState<string[]>(["item-1"]);
 
   const getExpandedIndices = () => {

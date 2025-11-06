@@ -8,7 +8,7 @@ import styles from "./hero.module.css";
 
 const COMPONENTS = [
   { path: "tabs", anchor: "#animated" },
-  { path: "accordion", anchor: "#with-animations" },
+  { path: "accordion", anchor: "" },
   { path: "like-button", anchor: "" },
   { path: "ai-chat", anchor: "" },
   { path: "card-task", anchor: "" },
@@ -18,7 +18,6 @@ const COMPONENTS = [
   { path: "card-traffic", anchor: "" },
   { path: "card-history", anchor: "" },
   { path: "dialog", anchor: "#with-animations" },
-  { path: "dropdown-menu-motion", anchor: "" },
   { path: "badge", anchor: "#error" },
   { path: "badge", anchor: "#success" },
 ];
@@ -31,7 +30,6 @@ const UI_COMPONENTS = [
   "badge",
   "copy-button",
   "dialog",
-  "dropdown-menu-motion",
   "like-button",
   "separator",
   "tabs",
