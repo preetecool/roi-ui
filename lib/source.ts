@@ -1,5 +1,5 @@
-import { pagesManifest, pageTree } from "./source-manifest";
 import type { ComponentType } from "react";
+import { pagesManifest, pageTree } from "./source-manifest";
 
 /**
  * Dynamic page loader with bundle splitting
@@ -90,6 +90,7 @@ function getImportFunction(slugs: string[] | undefined) {
     "ui/separator": () => import("@/content/ui/separator.mdx"),
     "ui/slider": () => import("@/content/ui/slider.mdx"),
     "ui/switch": () => import("@/content/ui/switch.mdx"),
+    "ui/table": () => import("@/content/ui/table.mdx"),
     "ui/tabs": () => import("@/content/ui/tabs.mdx"),
     "ui/toast": () => import("@/content/ui/toast.mdx"),
     "ui/toggle-group": () => import("@/content/ui/toggle-group.mdx"),
@@ -122,7 +123,7 @@ function getPage(slugs: string[] | undefined): Page | undefined {
     return p.slug.join("/") === slugs.join("/");
   });
 
-  if (!metadata) return undefined;
+  if (!metadata) return;
 
   const pathStr = metadata.slug.join("/") || "index";
   const name =
@@ -169,10 +170,10 @@ async function getPageWithContent(
     return p.slug.join("/") === slugs.join("/");
   });
 
-  if (!metadata) return undefined;
+  if (!metadata) return;
 
   const importFn = getImportFunction(slugs);
-  if (!importFn) return undefined;
+  if (!importFn) return;
 
   try {
     const module = await importFn();
@@ -208,7 +209,7 @@ async function getPageWithContent(
     };
   } catch (error) {
     console.error(`Error loading page: ${metadata.url}`, error);
-    return undefined;
+    return;
   }
 }
 
@@ -278,7 +279,7 @@ function getPageByHref(href: string) {
   const cleanHref = href.split("#")[0]; // Remove hash
   const metadata = pagesManifest.find((p) => p.url === cleanHref);
 
-  if (!metadata) return undefined;
+  if (!metadata) return;
 
   const pathStr = metadata.slug.join("/") || "index";
   const name =

@@ -452,6 +452,13 @@ export const pagesManifest: PageMetadata[] = [
     },
   },
   {
+    slug: ["ui", "table"],
+    url: "/docs/ui/table",
+    title: "Table",
+    description:
+      "A responsive table component for displaying structured tabular data.",
+  },
+  {
     slug: ["ui", "tabs"],
     url: "/docs/ui/tabs",
     title: "Tabs",
@@ -771,6 +778,12 @@ export const pageTree = {
           type: "page" as const,
           name: "Switch",
           url: "/docs/ui/switch",
+          external: false,
+        },
+        {
+          type: "page" as const,
+          name: "Table",
+          url: "/docs/ui/table",
           external: false,
         },
         {

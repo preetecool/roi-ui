@@ -646,6 +646,14 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "switch-with-label";
     return { default: mod.default || mod[exportName] };
   }),
+  "table-demo": lazy(async () => {
+    const mod = await import("@/registry/brook/examples/table-demo");
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "table-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
   "tabs-demo": lazy(async () => {
     const mod = await import("@/registry/brook/examples/tabs-demo/tabs-demo");
     const exportName =
@@ -1336,6 +1344,14 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "switch-with-label";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "table-demo-tailwind": lazy(async () => {
+    const mod = await import("@/registry/brook/tailwind/examples/table-demo");
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "table-demo";
     return { default: mod.default || mod[exportName] };
   }),
   "tabs-demo-tailwind": lazy(async () => {

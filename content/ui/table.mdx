@@ -1,0 +1,216 @@
+---
+title: Table
+description: A responsive table component for displaying structured tabular data.
+---
+
+<ComponentPreview name="table-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
+npx shadcn@latest add @roiui/table
+```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/table-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/table
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/table-tailwind
+```
+
+</CodeBlockTab>
+
+</CodeBlockTabs>
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the following files:
+
+<ComponentSource
+    name="table"
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock filename="anatomy" language="tsx" code={`<Table>
+  <TableCaption>Optional caption</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Header</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Cell</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell>Footer</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>`} />
+
+
+
+
+
+## Props
+
+### Table
+
+<PropTable
+  data={[
+    {
+      prop: "variant",
+      type: '"default" | "bordered" | "striped"',
+      default: '"default"',
+      description: "The visual style variant of the table",
+    },
+    {
+      prop: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "The size/padding of table cells",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the table",
+    },
+  ]}
+/>
+
+### TableHeader
+
+<PropTable
+  data={[
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the table header",
+    },
+  ]}
+/>
+
+### TableBody
+
+<PropTable
+  data={[
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the table body",
+    },
+  ]}
+/>
+
+### TableFooter
+
+<PropTable
+  data={[
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the table footer",
+    },
+  ]}
+/>
+
+### TableRow
+
+<PropTable
+  data={[
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the row",
+    },
+    {
+      prop: "onClick",
+      type: "function",
+      description: "Click handler for interactive rows",
+    },
+  ]}
+/>
+
+### TableHead
+
+<PropTable
+  data={[
+    {
+      prop: "align",
+      type: '"left" | "center" | "right"',
+      default: '"left"',
+      description: "Text alignment for the header cell",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the header cell",
+    },
+  ]}
+/>
+
+### TableCell
+
+<PropTable
+  data={[
+    {
+      prop: "align",
+      type: '"left" | "center" | "right"',
+      default: '"left"',
+      description: "Text alignment for the data cell",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the data cell",
+    },
+  ]}
+/>
+
+### TableCaption
+
+<PropTable
+  data={[
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the caption",
+    },
+  ]}
+/>

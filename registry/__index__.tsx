@@ -577,6 +577,12 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/switch-with-label/switch-with-label",
   },
+  "table-demo": {
+    name: "table-demo",
+    type: "example",
+    files: ["registry/brook/examples/table-demo.tsx"],
+    path: "@/registry/brook/examples/table-demo",
+  },
   "tabs-demo": {
     name: "tabs-demo",
     type: "example",
@@ -1038,6 +1044,14 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/ui/switch/switch.module.css",
     ],
   },
+  table: {
+    name: "table",
+    type: "ui",
+    files: [
+      "registry/brook/ui/table/table.tsx",
+      "registry/brook/ui/table/table.module.css",
+    ],
+  },
   tabs: {
     name: "tabs",
     type: "ui",
@@ -1440,6 +1454,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/switch-with-label.tsx"],
     path: "@/registry/brook/tailwind/examples/switch-with-label",
   },
+  "table-demo-tailwind": {
+    name: "table-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/table-demo.tsx"],
+    path: "@/registry/brook/tailwind/examples/table-demo",
+  },
   "tabs-demo-tailwind": {
     name: "tabs-demo-tailwind",
     type: "example",
@@ -1736,6 +1756,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "switch-tailwind",
     type: "ui",
     files: ["registry/brook/tailwind/ui/switch.tsx"],
+  },
+  tableTailwind: {
+    name: "table-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/table.tsx"],
   },
   tabsTailwind: {
     name: "tabs-tailwind",
