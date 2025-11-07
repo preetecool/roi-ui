@@ -16,7 +16,7 @@ export default function CardImageDemo() {
       <CardImage
         alt="Veiled woman gazing at architecture under the night sky"
         className="w-auto rounded-[8px] sm:rounded-[12px]"
-        src="/scene_01.png"
+        src="/scene_01.svg"
       />
 
       <CardContent>

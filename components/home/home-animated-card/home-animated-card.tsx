@@ -10,7 +10,7 @@ const cardData = {
   description: "Beautiful Nights",
   longDescription:
     "Gazing at the night sky capturing the essence of tranquility.",
-  image: "/scene_00.png",
+  image: "/scene_00.svg",
 };
 
 type HomeAnimatedCardProps = {

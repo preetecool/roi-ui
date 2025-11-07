@@ -1,16 +1,14 @@
 "use client";
 
-import type React from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
 import styles from "./search.module.css";
 
 type SearchTriggerProps = {
   onClick?: () => void;
-  render?: React.ReactElement;
 };
 
-export function SearchTrigger({ onClick, render }: SearchTriggerProps) {
+export function SearchTrigger({ onClick }: SearchTriggerProps) {
   return (
     <Button className={styles.searchButton} onClick={onClick} variant="ghost">
       <svg

@@ -257,8 +257,7 @@ function getPages(): Page[] {
  */
 function generateParams<
   TSlug extends string = "slug",
-  TLang extends string = "lang",
->(slug?: TSlug, lang?: TLang) {
+>(slug?: TSlug) {
   const slugKey = (slug || "slug") as TSlug;
   return pagesManifest.map((page) => ({
     [slugKey]: page.slug.length === 0 ? [] : page.slug,

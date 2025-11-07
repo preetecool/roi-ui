@@ -14,7 +14,7 @@ export default function CardImageDemo() {
       <CardImage
         alt="Veiled woman gazing at architecture under the night sky"
         className={styles.cardImage}
-        src="/scene_01.png"
+        src="/scene_01.svg"
       />
 
       <CardContent>

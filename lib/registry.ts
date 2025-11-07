@@ -19,20 +19,3 @@ export function getComponentVariants(
     tailwind: getRegistryFiles(`${name}-tailwind`),
   };
 }
-
-/**
- * Get a registry item by name (for component rendering)
- */
-export function getRegistryItem(name: string) {
-  return Index[name] || null;
-}
-
-/**
- * Get the type of a registry entry (example, block, or ui)
- */
-export function getRegistryType(
-  name: string
-): "example" | "block" | "ui" | null {
-  const item = Index[name];
-  return item ? item.type : null;
-}

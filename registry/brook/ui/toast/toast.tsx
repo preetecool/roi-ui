@@ -130,7 +130,4 @@ function ToastList() {
   ));
 }
 
-// biome-ignore lint/performance/noBarrelFile: Re-exporting icon as part of component API
-export { X as CloseIcon } from "lucide-react";
-
 export { ToastProvider, toastManager };

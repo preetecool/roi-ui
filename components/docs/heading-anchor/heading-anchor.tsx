@@ -16,8 +16,6 @@ const TEXT_RESET_DELAY = 200;
 const ICON_SIZE_H2 = 18;
 const ICON_SIZE_H3 = 16;
 const ICON_SIZE_H4 = 14;
-const HEADING_LEVEL_2 = 2;
-const HEADING_LEVEL_3 = 3;
 
 const ICON_SIZE_BY_LEVEL: Record<2 | 3 | 4, number> = {
   2: ICON_SIZE_H2,
