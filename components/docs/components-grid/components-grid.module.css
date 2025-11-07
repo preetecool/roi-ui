@@ -37,19 +37,24 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-left: 0 !important;
 }
 
 .grid li {
   display: contents;
 }
 
-.grid a {
+.grid a[data-slot="button"] {
   justify-content: flex-start;
   text-align: left;
   color: var(--secondary-foreground);
   font-weight: 450;
   font-size: calc(1em + 2px);
   padding-left: 0;
+}
+
+.grid a[data-slot="button"]:active:not(:disabled) {
+  transform: none;
 }
 
 @media (min-width: 640px) {

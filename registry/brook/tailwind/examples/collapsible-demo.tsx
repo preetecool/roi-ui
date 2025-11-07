@@ -12,7 +12,7 @@ export default function CollapsibleDemo() {
           <span className="font-normal text-[var(--muted-foreground)] text-xs leading-[12px]">
             Total Revenue
           </span>
-          <span className="font-[550] text-2xl leading-[30px] text-[var(--foreground)] tracking-[-0.02em]">
+          <span className="font-[550] text-2xl text-[var(--foreground)] leading-[30px] tracking-[-0.02em]">
             $45,231
           </span>
           <span className="font-normal text-[var(--success)] text-xs leading-[12px]">
@@ -26,7 +26,7 @@ export default function CollapsibleDemo() {
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Product Sales
             </span>
-            <span className="font-medium text-[var(--foreground)] text-sm leading-5 tabular-nums">
+            <span className="font-medium text-[var(--foreground)] text-sm tabular-nums leading-5">
               $28,450
             </span>
           </div>
@@ -34,7 +34,7 @@ export default function CollapsibleDemo() {
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Subscriptions
             </span>
-            <span className="font-medium text-[var(--foreground)] text-sm leading-5 tabular-nums">
+            <span className="font-medium text-[var(--foreground)] text-sm tabular-nums leading-5">
               $12,340
             </span>
           </div>
@@ -42,7 +42,7 @@ export default function CollapsibleDemo() {
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Services
             </span>
-            <span className="font-medium text-[var(--foreground)] text-sm leading-5 tabular-nums">
+            <span className="font-medium text-[var(--foreground)] text-sm tabular-nums leading-5">
               $3,220
             </span>
           </div>
@@ -50,7 +50,7 @@ export default function CollapsibleDemo() {
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Other
             </span>
-            <span className="font-medium text-[var(--foreground)] text-sm leading-5 tabular-nums">
+            <span className="font-medium text-[var(--foreground)] text-sm tabular-nums leading-5">
               $1,221
             </span>
           </div>

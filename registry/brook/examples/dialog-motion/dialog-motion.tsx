@@ -61,7 +61,9 @@ export default function DialogFramerMotion() {
                         animate={{
                           opacity: 1,
                           y: 0,
+                          x: 0,
                           scale: 1,
+                          filter: "blur(0px)",
                           transition: {
                             duration: 0.3,
                             delay: 0.2,
@@ -72,12 +74,22 @@ export default function DialogFramerMotion() {
                         }}
                         exit={{
                           opacity: 0,
+                          filter: "blur(4px)",
+                          x: 20,
+                          y: 20,
+                          scale: 0.85,
                           transition: {
-                            duration: 0.15,
+                            duration: 0.3,
                             type: "spring",
                           },
                         }}
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        initial={{
+                          opacity: 0,
+                          x: 20,
+                          y: 20,
+                          scale: 0.85,
+                          filter: "blur(4px)",
+                        }}
                       />
                     }
                   >
@@ -90,7 +102,9 @@ export default function DialogFramerMotion() {
                         animate={{
                           opacity: 1,
                           y: 0,
+                          x: 0,
                           scale: 1,
+                          filter: "blur(0px)",
                           transition: {
                             duration: 0.3,
                             delay: 0.2,
@@ -101,12 +115,22 @@ export default function DialogFramerMotion() {
                         }}
                         exit={{
                           opacity: 0,
+                          x: 20,
+                          y: 20,
+                          scale: 0.85,
+                          filter: "blur(4px)",
                           transition: {
-                            duration: 0.15,
+                            duration: 0.3,
                             type: "spring",
                           },
                         }}
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        initial={{
+                          opacity: 0,
+                          x: 20,
+                          y: 20,
+                          scale: 0.85,
+                          filter: "blur(4px)",
+                        }}
                       />
                     }
                   >
@@ -120,11 +144,12 @@ export default function DialogFramerMotion() {
                         <motion.button
                           animate={{
                             opacity: 1,
-                            y: 0,
+                            x: 0,
                             scale: 1,
+                            filter: "blur(0px)",
                             transition: {
                               duration: 0.3,
-                              delay: 0.2,
+                              delay: 0.15,
 
                               type: "spring",
                               bounce: 0,
@@ -132,12 +157,19 @@ export default function DialogFramerMotion() {
                           }}
                           exit={{
                             opacity: 0,
+                            filter: "blur(4px)",
+                            // x: -20,
                             transition: {
-                              duration: 0.15,
+                              duration: 0.3,
                               type: "spring",
                             },
                           }}
-                          initial={{ opacity: 0, y: -5, scale: 0.95 }}
+                          initial={{
+                            opacity: 0,
+                            x: -20,
+                            scale: 0.95,
+                            filter: "blur(4px)",
+                          }}
                         />
                       }
                     >
