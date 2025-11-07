@@ -4,7 +4,7 @@ import ExpandableCard, {
 
 const item: ExpandableCardItem = {
   id: 1,
-  imageSrc: "/scene_02.png",
+  imageSrc: "/scene_02.svg",
   cardHeading: "Stardust",
   alt: "Man by the brook, under a bridge,  looking at the sunrise",
   content: (
