@@ -77,9 +77,6 @@ function AccordionPanel({
   );
 }
 
-// biome-ignore lint/performance/noBarrelFile: Re-exporting icon as part of component API
-export { ChevronDown as ChevronDownIcon } from "lucide-react";
-
 export {
   AccordionRoot as Accordion,
   AccordionHeader,

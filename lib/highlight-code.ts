@@ -104,19 +104,3 @@ export async function highlightCode(
 
   return html;
 }
-
-export async function getShikiHighlighter(_options?: unknown) {
-  const highlighter = await getHighlighter();
-
-  return highlighter;
-}
-
-// Dispose function for cleanup
-export function disposeHighlighter() {
-  if (globalThis.__SHIKI_HIGHLIGHTER__) {
-    globalThis.__SHIKI_HIGHLIGHTER__.dispose();
-    globalThis.__SHIKI_HIGHLIGHTER__ = undefined;
-    globalThis.__SHIKI_PROMISE__ = undefined;
-    globalThis.__SHIKI_INSTANCE_COUNT__ = 0;
-  }
-}
