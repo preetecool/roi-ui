@@ -44,47 +44,45 @@ export default function CarouselDemo() {
   ];
 
   return (
-    <Carousel.Bleed>
-      <Carousel.Root
-        align="start"
-        className={styles.carouselRoot}
-        gap={8}
-        totalItems={features.length}
-        variant="inset"
-      >
-        <Carousel.Viewport>
-          <Carousel.Content>
-            {features.map((feature, index) => (
-              <Carousel.Item index={index} key={feature.id}>
-                <Card id={styles.card}>
-                  <div className={styles.iconSection}>
-                    <CardIcon id={styles.icon}>{feature.icon}</CardIcon>
+    <Carousel.Root
+      align="start"
+      className={styles.carouselRoot}
+      gap={8}
+      totalItems={features.length}
+      variant="inset"
+    >
+      <Carousel.Viewport>
+        <Carousel.Content>
+          {features.map((feature, index) => (
+            <Carousel.Item index={index} key={feature.id}>
+              <Card id={styles.card}>
+                <div className={styles.iconSection}>
+                  <CardIcon id={styles.icon}>{feature.icon}</CardIcon>
+                </div>
+                <div className={styles.cardContent}>
+                  <div className={styles.contentText}>
+                    <CardTitle className={styles.cardTitle}>
+                      {feature.title}
+                    </CardTitle>
+                    <CardDescription>{feature.description}</CardDescription>
                   </div>
-                  <div className={styles.cardContent}>
-                    <div className={styles.contentText}>
-                      <CardTitle className={styles.cardTitle}>
-                        {feature.title}
-                      </CardTitle>
-                      <CardDescription>{feature.description}</CardDescription>
-                    </div>
-                    <Button
-                      className={`${styles.button} hit-area-extend`}
-                      size="icon"
-                      variant="outline"
-                    >
-                      <Plus strokeWidth={1.5} />
-                    </Button>
-                  </div>
-                </Card>
-              </Carousel.Item>
-            ))}
-          </Carousel.Content>
-        </Carousel.Viewport>
-        <Carousel.Navigation>
-          <Carousel.Previous />
-          <Carousel.Next />
-        </Carousel.Navigation>
-      </Carousel.Root>
-    </Carousel.Bleed>
+                  <Button
+                    className={`${styles.button} hit-area-extend`}
+                    size="icon"
+                    variant="outline"
+                  >
+                    <Plus strokeWidth={1.5} />
+                  </Button>
+                </div>
+              </Card>
+            </Carousel.Item>
+          ))}
+        </Carousel.Content>
+      </Carousel.Viewport>
+      <Carousel.Navigation>
+        <Carousel.Previous />
+        <Carousel.Next />
+      </Carousel.Navigation>
+    </Carousel.Root>
   );
 }
