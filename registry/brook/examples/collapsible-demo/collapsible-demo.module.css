@@ -17,7 +17,7 @@
 }
 
 .trigger:hover {
-  background-color: var(--mix-card-50-bg);
+  background-color: var(--mix-card-75-bg);
 }
 
 .mainStat {
@@ -63,10 +63,6 @@
   padding: 0.75rem 0.5rem;
   border-radius: var(--radius);
   transition: background-color 150ms;
-}
-
-.row:hover {
-  background-color: var(--mix-card-50-bg);
 }
 
 .rowLabel {

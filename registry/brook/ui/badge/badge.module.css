@@ -31,6 +31,7 @@
 }
 
 .default {
+  border-color: transparent;
   background-color: var(--foreground);
   color: var(--primary-foreground);
 }
@@ -43,12 +44,12 @@
 
 .secondary {
   border-color: transparent;
-  background-color: var(--mix-card-66-bg);
+  background-color: var(--card);
   color: var(--secondary-foreground);
 }
 
 .destructive {
-  border-color: var(--border);
+  border-color: transparent;
   background-color: var(--mix-card-66-bg);
   color: var(--destructive);
 }
@@ -60,7 +61,7 @@
 }
 
 .success {
-  border-color: var(--border);
+  border-color: transparent;
   background-color: var(--mix-card-66-bg);
   color: var(--success);
 }
@@ -72,7 +73,7 @@
 }
 
 .info {
-  border-color: var(--border);
+  border-color: transparent;
   background-color: var(--mix-card-66-bg);
   color: var(--info);
 }

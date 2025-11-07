@@ -45,7 +45,7 @@
   flex: 1 1 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--mix-card-50-bg) transparent;
+  scrollbar-color: var(--mix-border-50-trans) transparent;
   min-height: 0;
   max-height: none;
 }
