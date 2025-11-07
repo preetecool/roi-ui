@@ -41,7 +41,7 @@ export function AiChat() {
 
   return (
     <Form className={styles.form}>
-      <Card id={styles.card}>
+      <Card className={styles.card}>
         <CardContent>
           <Field className={styles.field}>
             <FieldControl
@@ -74,7 +74,15 @@ export function AiChat() {
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger render={<Button size="sm" variant="outline" />}>
+              <SelectTrigger
+                render={
+                  <Button
+                    size="sm"
+                    style={{ maxWidth: "100px" }}
+                    variant="outline"
+                  />
+                }
+              >
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find(

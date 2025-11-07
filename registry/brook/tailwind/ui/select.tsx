@@ -16,7 +16,7 @@ function SelectTrigger({
   return (
     <Select.Trigger
       className={cn(
-        "min-w-36 bg-(--mix-card-50-bg)",
+        "min-w-36 max-md:min-w-28 bg-(--mix-card-50-bg)",
         "`hover:text-(--foreground) hover:bg-muted",
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "data-popup-open:bg-muted data-popup-open:text-(--foreground",
