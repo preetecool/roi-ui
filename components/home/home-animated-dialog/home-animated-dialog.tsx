@@ -30,7 +30,7 @@ export const HomeAnimatedDialog = () => {
   const [triggerClicked, setTriggerClicked] = useState(false);
 
   return (
-    <div className={styles.hideOnMobile}>
+    <div>
       {!dialogOpen && (
         <AnimatePresence>
           <motion.div
