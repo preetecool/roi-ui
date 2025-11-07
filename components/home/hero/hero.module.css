@@ -130,3 +130,62 @@
     transform: translateY(0);
   }
 }
+
+.carouselRoot {
+  margin-top: 48px;
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.6s forwards;
+}
+
+.card {
+  height: 450px;
+  width: 330px;
+  position: relative;
+  padding: 1.5rem;
+  border: 0.5px solid oklch(from var(--border) l c h / 0.5);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    135deg,
+    var(--mix-card-66-bg) 0%,
+    var(--background) 50%
+  );
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 300px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    height: 400px;
+    max-width: 280px;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.componentName {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  letter-spacing: -0.01em;
+}
+
+.cardComponentContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}

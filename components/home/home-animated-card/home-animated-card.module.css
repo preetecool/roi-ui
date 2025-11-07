@@ -6,7 +6,7 @@
 .cardExpanded {
   background-color: var(--mix-card-33-bg);
   padding: 12px;
-  width: 300px;
+  width: 260px;
   overflow: hidden;
   box-shadow:
     0 0.753698px 0.452219px -0.583333px #0000000f,

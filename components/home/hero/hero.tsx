@@ -1,9 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { AiChat } from "@/registry/brook/blocks/ai-chat/ai-chat";
+import { LikeButton } from "@/registry/brook/ui/like-button/like-button";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
-import { DitheringCube } from "./dithering-cube";
+import { Card } from "@/registry/brook/ui/card/card";
+import { Carousel } from "@/registry/brook/ui/carousel/carousel";
+import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
+import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog";
+import { BentoBadgeSuccess } from "../bento-grid/bento-badge-success";
 import styles from "./hero.module.css";
 
 const COMPONENTS = [
@@ -35,6 +41,34 @@ const UI_COMPONENTS = [
   "tabs",
 ];
 
+const CAROUSEL_COMPONENTS = [
+  {
+    id: "expandable-card",
+    name: "Expandable Card",
+    component: <HomeAnimatedCard />,
+  },
+  {
+    id: "like-button",
+    name: "Like Button",
+    component: <LikeButton />,
+  },
+  {
+    id: "dialog",
+    name: "Dialog",
+    component: <HomeAnimatedDialog />,
+  },
+  {
+    id: "badge",
+    name: "Badge",
+    component: <BentoBadgeSuccess />,
+  },
+  {
+    id: "ai-chat",
+    name: "AI Chat",
+    component: <AiChat />,
+  },
+];
+
 function getRandomComponent() {
   const randomComponent =
     COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
@@ -53,8 +87,8 @@ function getComponentUrl(component: { path: string; anchor: string }) {
 
 export const Hero = () => {
   const [reset, _setReset] = useState(0);
-
   const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setRandomComponent(getRandomComponent());
@@ -62,14 +96,6 @@ export const Hero = () => {
 
   return (
     <section aria-label="Hero section" className={styles.container} key={reset}>
-      <div className={styles.ditheringWrapper}>
-        <DitheringCube
-          colorBack="#fafafa"
-          colorFront="#18181b"
-          pixelSize={2}
-          speed={0.25}
-        />
-      </div>
       <Badge
         className={styles.badge}
         style={{ borderRadius: 2 }}
@@ -112,6 +138,46 @@ export const Hero = () => {
           I&apos;m Feeling Lucky
         </Button>
       </div>
+      <Carousel.Bleed>
+        <Carousel.Root
+          align="start"
+          className={styles.carouselRoot}
+          gap={8}
+          totalItems={CAROUSEL_COMPONENTS.length}
+          variant="inset"
+        >
+          <Carousel.Viewport>
+            <Carousel.Content>
+              {CAROUSEL_COMPONENTS.map((item, index) => (
+                <Carousel.Item index={index} key={item.id}>
+                  <Card
+                    className={styles.card}
+                    onMouseEnter={() => setHoveredCardIndex(index)}
+                    onMouseLeave={() => setHoveredCardIndex(null)}
+                  >
+                    <div className={styles.cardHeader}>
+                      <span className={styles.componentName}>
+                        {String(index + 1).padStart(2, '0')} / {item.name}
+                      </span>
+                    </div>
+                    <div className={styles.cardComponentContent}>
+                      {item.id === "expandable-card" ? (
+                        <HomeAnimatedCard isExpanded={hoveredCardIndex === index} />
+                      ) : (
+                        item.component
+                      )}
+                    </div>
+                  </Card>
+                </Carousel.Item>
+              ))}
+            </Carousel.Content>
+          </Carousel.Viewport>
+          <Carousel.Navigation>
+            <Carousel.Previous />
+            <Carousel.Next />
+          </Carousel.Navigation>
+        </Carousel.Root>
+      </Carousel.Bleed>
     </section>
   );
 };

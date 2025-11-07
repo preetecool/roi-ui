@@ -8,6 +8,12 @@
   min-width: 9rem;
   background-color: var(--mix-card-50-bg);
 }
+
+@media (max-width: 768px) {
+  .trigger {
+    min-width: 7rem;
+  }
+}
 .trigger:hover:not(.disabled) {
   background-color: var(--accent);
   color: var(--foreground);

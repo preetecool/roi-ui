@@ -3,7 +3,6 @@
 import type { PageTree } from "fumadocs-core/server";
 import { SiteFooter } from "@/components/layout/site-footer/site-footer";
 import { SiteHeader } from "@/components/layout/site-header/site-header";
-import { BentoGrid } from "./bento-grid/bento-grid";
 import { Hero } from "./hero/hero";
 import styles from "./home-page.module.css";
 
@@ -21,7 +20,6 @@ export default function HomePage({ pageTree }: HomePageProps) {
         <div className={styles.contentWrapper}>
           <div className={styles.homeContent}>
             <Hero />
-            <BentoGrid />
           </div>
         </div>
       </div>

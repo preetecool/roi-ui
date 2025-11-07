@@ -28,12 +28,6 @@
   right: 50%;
 }
 
-@media (max-width: 640px) {
-  .bleed {
-    left: calc(50% - 20vw);
-  }
-}
-
 .carousel:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
