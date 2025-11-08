@@ -135,6 +135,10 @@
   margin-top: 48px;
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.6s forwards;
+
+  & [data-slot="carousel"] {
+    border-radius: 2px;
+  }
 }
 
 .card {

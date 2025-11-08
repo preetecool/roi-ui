@@ -49,7 +49,10 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Products</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[350px] list-none grid-cols-2 grid-rows-[repeat(3,1fr)] gap-x-2.5 gap-y-0 p-2 max-[768px]:max-w-[300px] max-[768px]:grid-cols-1 max-[768px]:grid-rows-auto">
+            <ul
+              className="grid w-[350px] list-none grid-cols-2 grid-rows-[repeat(3,1fr)] gap-x-2.5 gap-y-0 p-2 max-[768px]:max-w-[300px] max-[768px]:grid-cols-1 max-[768px]:grid-rows-auto"
+              data-columns="two"
+            >
               <ListItem title="UI">Building blocks</ListItem>
               <ListItem title="Blocks">Ready made components</ListItem>
               <ListItem title="Templates">Full app starters</ListItem>

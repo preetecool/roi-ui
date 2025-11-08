@@ -64,7 +64,7 @@ export const HomeAnimatedCard = ({
                 <motion.img
                   alt={cardData.title}
                   className={styles.imageExpanded}
-                  height={260}
+                  height={220}
                   layoutId="image"
                   src={cardData.image}
                   style={{ borderRadius: "12px" }}

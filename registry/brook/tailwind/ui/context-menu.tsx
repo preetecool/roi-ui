@@ -116,24 +116,21 @@ function ContextMenuItem({
         "focus:outline-none focus:before:bg-accent/70",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         "data-[disabled]:hover:bg-transparent",
-        variant !== "destructive" && [
-          "[&:hover_.context-menu-shortcut]:text-secondary-foreground",
-          "[&:hover_.context-menu-icon]:text-secondary-foreground [&:hover_.context-menu-icon]:opacity-100",
-        ],
-        variant === "destructive" && [
-          "text-[var(--destructive)]",
-          "[&_.context-menu-icon]:text-[var(--destructive)]",
-          "[&_.context-menu-shortcut]:text-[var(--destructive)]",
-          "hover:before:!bg-[var(--destructive)]",
-          "hover:!text-[var(--destructive-foreground)]",
-          "hover:[&_.context-menu-icon]:!text-[var(--destructive-foreground)]",
-          "hover:[&_.context-menu-shortcut]:!text-[var(--destructive-foreground)]",
-        ],
+        "[&:hover_.context-menu-shortcut]:text-secondary-foreground",
+        "[&:hover_.context-menu-icon]:text-secondary-foreground [&:hover_.context-menu-icon]:opacity-100",
+        "data-[variant=destructive]:text-[var(--destructive)]",
+        "data-[variant=destructive]:[&_.context-menu-icon]:text-[var(--destructive)]",
+        "data-[variant=destructive]:[&_.context-menu-shortcut]:text-[var(--destructive)]",
+        "data-[variant=destructive]:hover:before:!bg-[var(--destructive)]",
+        "data-[variant=destructive]:hover:!text-[var(--destructive-foreground)]",
+        "data-[variant=destructive]:hover:[&_.context-menu-icon]:!text-[var(--destructive-foreground)]",
+        "data-[variant=destructive]:hover:[&_.context-menu-shortcut]:!text-[var(--destructive-foreground)]",
         inset && "pl-8",
         "max-sm:min-h-11 max-sm:gap-3 max-sm:px-2.5 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
       )}
       data-slot="contextmenu-item"
+      data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
       {icon && (
@@ -156,7 +153,6 @@ function ContextMenuCheckboxItem({
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
-        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "hover:bg-muted hover:text-accent-foreground data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
         "data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         "max-sm:min-h-11 max-sm:px-3 max-sm:py-2.5 max-sm:pl-9 max-sm:text-[0.9375rem]",
@@ -183,7 +179,6 @@ function ContextMenuRadioItem({
       className={cn(
         "relative flex items-center gap-2 px-2 py-1.5 pl-8 text-sm",
         "cursor-pointer select-none rounded-[calc(var(--radius)-2px)] outline-none",
-        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "hover:bg-muted hover:text-accent-foreground data-[highlighted]:bg-muted data-[highlighted]:text-accent-foreground",
         "data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         "max-sm:min-h-11 max-sm:px-3 max-sm:py-2.5 max-sm:pl-9 max-sm:text-[0.9375rem]",
@@ -262,6 +257,7 @@ function ContextMenuSubmenuTrigger({
         "data-[popup-open]:before:bg-accent/70",
         "data-[highlighted]:before:bg-accent/70",
         "hover:before:bg-accent/70",
+        "focus:outline-none focus:before:bg-accent/70",
         "[&:hover_.submenu-icon]:text-secondary-foreground",
         "[&:hover>svg]:text-secondary-foreground [&>svg]:text-muted-foreground",
         inset && "pl-8",

@@ -1,20 +1,22 @@
-@media (hover: hover) {
-  .trigger:hover {
+.trigger {
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--accent);
+    }
+  }
+
+  &:active {
     background-color: var(--accent);
   }
-}
 
-.trigger:active {
-  background-color: var(--accent);
-}
+  &[data-popup-open] {
+    background-color: var(--accent);
+  }
 
-.trigger[data-popup-open] {
-  background-color: var(--accent);
-}
-
-.trigger:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: -1px;
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: -1px;
+  }
 }
 
 .backdrop {
@@ -46,47 +48,52 @@
     oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
     oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
   z-index: 1000;
-}
 
-.popup[data-starting-style],
-.popup[data-ending-style] {
-  opacity: 0;
-  transform: scale(0.9);
-}
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 
-.popup:focus-visible {
-  outline: 1px solid var(--ring);
-  outline-offset: 1px;
+  &:focus-visible {
+    outline: 1px solid var(--ring);
+    outline-offset: 1px;
+  }
+
+  @media (max-width: 640px) {
+    max-width: calc(100vw - 2rem);
+    margin: 1rem;
+  }
 }
 
 .arrow {
   display: flex;
-}
 
-.arrow[data-side="top"] {
-  bottom: -8px;
-  rotate: 180deg;
-}
+  &[data-side="top"] {
+    bottom: -8px;
+    rotate: 180deg;
+  }
 
-.arrow[data-side="bottom"] {
-  top: -8px;
-  rotate: 0deg;
-}
+  &[data-side="bottom"] {
+    top: -8px;
+    rotate: 0deg;
+  }
 
-.arrow[data-side="left"] {
-  right: -13px;
-  rotate: 90deg;
-}
+  &[data-side="left"] {
+    right: -13px;
+    rotate: 90deg;
+  }
 
-.arrow[data-side="right"] {
-  left: -13px;
-  rotate: -90deg;
-}
+  &[data-side="right"] {
+    left: -13px;
+    rotate: -90deg;
+  }
 
-.arrow svg {
-  fill: var(--mix-card-33-bg);
-  stroke: var(--border);
-  stroke-width: 1px;
+  & svg {
+    fill: var(--mix-card-33-bg);
+    stroke: var(--border);
+    stroke-width: 1px;
+  }
 }
 
 .title {
@@ -122,21 +129,21 @@
   transition:
     background-color 150ms ease,
     color 150ms ease;
-}
 
-.close:hover {
-  background-color: var(--muted);
-  color: var(--foreground);
-}
+  &:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
 
-.close:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 
-.close svg {
-  width: 1rem;
-  height: 1rem;
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .actions {
@@ -146,14 +153,7 @@
   margin-top: 1rem;
 }
 
-[data-theme="dark"] .popup {
+:global([data-theme="dark"]) .popup {
   outline: 0.5px solid oklch(from var(--border) l c h / 0.7);
   outline-offset: -1px;
-}
-
-@media (max-width: 640px) {
-  .popup {
-    max-width: calc(100vw - 2rem);
-    margin: 1rem;
-  }
 }

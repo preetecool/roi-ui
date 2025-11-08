@@ -1,16 +1,77 @@
 .command {
   height: 440px;
   border: 1px solid var(--border);
-  /*border-radius: var(--radius-lg);*/
   box-shadow: var(--shadow-lg);
   background-color: var(--background);
-}
 
-.command [cmdk-root] {
-  padding: 0 0.25rem 0.25rem 0.25rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  [cmdk-root] {
+    padding: 0 0.25rem 0.25rem 0.25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 640px) {
+      padding: 0;
+    }
+  }
+
+  [cmdk-item] {
+    min-height: 2.5rem;
+    padding: 0.625rem 0.375rem !important;
+    font-weight: 400;
+    line-height: normal;
+    border: 1px solid transparent;
+
+    svg {
+      color: var(--muted-foreground);
+    }
+
+    &:hover,
+    &[data-selected="true"] {
+      background-color: var(--mix-card-50-bg);
+    }
+
+    @media (max-width: 640px) {
+      min-height: 2.75rem;
+      padding: 0.75rem 0.625rem;
+      font-size: 0.9375rem;
+    }
+  }
+
+  [cmdk-group] [cmdk-group-heading] {
+    text-transform: none !important;
+
+    @media (max-width: 640px) {
+      font-size: 0.8125rem;
+      padding: 0 0.625rem;
+    }
+  }
+
+  [cmdk-list] {
+    flex: 1 1 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mix-border-50-trans) transparent;
+    min-height: 0;
+    max-height: none;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--mix-border-50-trans);
+      border-radius: 3px;
+
+      &:hover {
+        background: var(--mix-border-70-trans);
+      }
+    }
+  }
 }
 
 .commandInput {
@@ -18,53 +79,12 @@
   padding-left: 1rem;
   padding-right: 1rem;
   margin-bottom: 0.5rem;
-}
 
-.command [cmdk-item] {
-  min-height: 2.5rem;
-  padding: 0.625rem 0.375rem !important;
-  font-weight: 400;
-  line-height: normal;
-  border: 1px solid transparent;
-}
-
-.command [cmdk-item] svg {
-  color: var(--muted-foreground);
-}
-
-.command [cmdk-group] [cmdk-group-heading] {
-  text-transform: none !important;
-}
-
-.command [cmdk-item]:hover,
-.command [cmdk-item][data-selected="true"] {
-  background-color: var(--mix-card-50-bg);
-}
-
-.command [cmdk-list] {
-  flex: 1 1 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--mix-border-50-trans) transparent;
-  min-height: 0;
-  max-height: none;
-}
-
-.command [cmdk-list]::-webkit-scrollbar {
-  width: 6px;
-}
-
-.command [cmdk-list]::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.command [cmdk-list]::-webkit-scrollbar-thumb {
-  background: var(--mix-border-50-trans);
-  border-radius: 3px;
-}
-
-.command [cmdk-list]::-webkit-scrollbar-thumb:hover {
-  background: var(--mix-border-70-trans);
+  @media (max-width: 640px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.9375rem;
+  }
 }
 
 .commandFooter {
@@ -76,6 +96,11 @@
   border-top: 0.5px solid oklch(from var(--border) l c h / 0.5);
   background-color: var(--mix-muted-20-trans);
   flex-shrink: 0;
+
+  @media (max-width: 640px) {
+    padding: 0.625rem 1rem;
+    margin: 0;
+  }
 }
 
 .commandFooterItem {
@@ -89,44 +114,16 @@
   line-height: 1rem;
   color: var(--muted-foreground);
   font-weight: 400;
+
+  @media (max-width: 640px) {
+    font-size: 0.8125rem;
+  }
 }
 
 .commandFooterKbd {
   font-size: 0.9375rem;
-}
 
-@media (max-width: 640px) {
-  .command [cmdk-root] {
-    padding: 0;
-  }
-
-  .commandInput {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-size: 0.9375rem;
-  }
-
-  .command [cmdk-item] {
-    min-height: 2.75rem;
-    padding: 0.75rem 0.625rem;
-    font-size: 0.9375rem;
-  }
-
-  .command [cmdk-group] [cmdk-group-heading] {
-    font-size: 0.8125rem;
-    padding: 0 0.625rem;
-  }
-
-  .commandFooter {
-    padding: 0.625rem 1rem;
-    margin: 0;
-  }
-
-  .commandFooterText {
-    font-size: 0.8125rem;
-  }
-
-  .commandFooterKbd {
+  @media (max-width: 640px) {
     font-size: 1rem;
   }
 }

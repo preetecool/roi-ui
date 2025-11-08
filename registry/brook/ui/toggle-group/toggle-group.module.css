@@ -3,14 +3,14 @@
   border-radius: var(--radius);
   background-color: var(--mix-card-33-bg);
   padding: 0.125rem;
-}
 
-.root[data-orientation="horizontal"] {
-  flex-direction: row;
-}
+  &[data-orientation="horizontal"] {
+    flex-direction: row;
+  }
 
-.root[data-orientation="vertical"] {
-  flex-direction: column;
+  &[data-orientation="vertical"] {
+    flex-direction: column;
+  }
 }
 
 .item {
@@ -27,30 +27,30 @@
   background-color: transparent;
   color: var(--muted-foreground);
   cursor: pointer;
-}
 
-.item:hover {
-  background-color: oklch(from var(--accent) l c h / 0.6);
-  color: var(--foreground);
-}
+  &:hover {
+    background-color: oklch(from var(--accent) l c h / 0.6);
+    color: var(--foreground);
+  }
 
-.item[data-focused] {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--ring) / 0.2;
-}
+  &[data-focused] {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+  }
 
-.item[data-pressed] {
-  background-color: var(--mix-accent-66-bg);
-  color: var(--foreground);
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
+  &[data-pressed] {
+    background-color: var(--mix-accent-66-bg);
+    color: var(--foreground);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 
-.item[data-pressed]:hover {
-  background-color: var(--mix-accent-75-bg);
-  color: var(--foreground);
-}
+    &:hover {
+      background-color: var(--mix-accent-75-bg);
+      color: var(--foreground);
+    }
+  }
 
-.item[data-disabled] {
-  pointer-events: none;
-  opacity: 0.5;
+  &[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }

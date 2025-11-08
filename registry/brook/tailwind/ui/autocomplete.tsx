@@ -4,6 +4,7 @@ import { Autocomplete } from "@base-ui-components/react/autocomplete";
 import { Search, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
+import { Input } from "@/registry/brook/tailwind/ui/input";
 
 function AutocompleteRoot({
   ...props
@@ -22,22 +23,7 @@ function AutocompleteInput({
   ...props
 }: React.ComponentProps<typeof Autocomplete.Input>) {
   return (
-    <Autocomplete.Input
-      className={cn(
-        "flex h-10 w-full rounded-[var(--radius)] border border-border",
-        "bg-[var(--mix-card-50-bg)] px-3 text-sm transition-all duration-150 ease-out",
-        "text-foreground placeholder:text-muted-foreground placeholder:text-sm",
-        "data-[focused]:border-ring data-[focused]:shadow-[0_0_0_2px_rgba(var(--ring),0.2)] data-[focused]:outline-none",
-        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
-        "data-[invalid]:border-destructive",
-        "data-[invalid]:data-[focused]:border-destructive data-[invalid]:data-[focused]:shadow-[0_0_0_2px_rgba(var(--destructive),0.2)] data-[invalid]:focus:border-destructive",
-        "data-[valid]:border-success",
-        "max-sm:h-11 max-sm:px-4 max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]",
-        className
-      )}
-      data-slot="autocomplete-input"
-      {...props}
-    />
+    <Autocomplete.Input className={className} render={<Input />} {...props} />
   );
 }
 

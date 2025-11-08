@@ -11,12 +11,17 @@
   margin: 0 auto;
   border-radius: 0.5rem;
   overflow: visible;
-}
 
-.carouselCenter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  &[data-align="center"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .bleed {
@@ -26,11 +31,6 @@
   position: relative;
   left: 50%;
   right: 50%;
-}
-
-.carousel:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
 }
 
 .viewport {
@@ -46,38 +46,38 @@
   );
   scrollbar-width: none;
   -ms-overflow-style: none;
-}
 
-.viewport::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .container {
   display: flex;
   align-items: stretch;
-}
 
-.container::before {
-  content: "";
-  flex-shrink: 0;
-  width: var(--inset-padding-left, 0);
-}
+  &::before {
+    content: "";
+    flex-shrink: 0;
+    width: var(--inset-padding-left, 0);
+  }
 
-.container::after {
-  content: "";
-  flex-shrink: 0;
-  width: var(--inset-padding-right, 0);
+  &::after {
+    content: "";
+    flex-shrink: 0;
+    width: var(--inset-padding-right, 0);
+  }
 }
 
 .slide {
   flex-shrink: 0;
   position: relative;
-}
 
-.slide:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 1px;
-  border-radius: var(--radius);
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 1px;
+    border-radius: var(--radius);
+  }
 }
 
 .navContainer {
@@ -102,44 +102,42 @@
   box-shadow: var(--shadow-md);
   transition: all 0.2s var(--ease-out-quad);
   opacity: 0.9;
-}
 
-.navButton:hover {
-  opacity: 1;
-  background: var(--muted);
-  transform: scale(1.05);
-}
+  &:hover {
+    opacity: 1;
+    background: var(--muted);
+    transform: scale(1.05);
+  }
 
-.navButton:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 
-.navButton:active {
-  transform: scale(0.95);
-}
+  &:active {
+    transform: scale(0.95);
+  }
 
-.navButton:disabled {
-  opacity: 0.3;
-  cursor: default;
-  background: var(--muted);
-  color: var(--muted-foreground);
-  pointer-events: none;
-}
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+    background: var(--muted);
+    color: var(--muted-foreground);
+    pointer-events: none;
 
-.navButton:disabled:hover {
-  opacity: 0.3;
-  transform: none;
-  background: var(--muted);
-}
+    &:hover {
+      opacity: 0.3;
+      transform: none;
+      background: var(--muted);
+    }
+  }
 
-.navButton svg {
-  width: 1rem;
-  height: 1rem;
-}
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .navButton {
+  @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }
@@ -163,25 +161,29 @@
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
-}
 
-.indicator:hover {
-  background: rgba(255, 255, 255, 0.7);
-  transform: scale(1.1);
-}
+  &:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+  }
 
-.indicator:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 
-.indicatorActive {
-  background: var(--primary);
-  transform: scale(1.2);
-}
+  &[data-active] {
+    background: var(--primary);
+    transform: scale(1.2);
 
-.indicatorActive:hover {
-  background: var(--primary);
+    &:hover {
+      background: var(--primary);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .srOnly {
@@ -194,10 +196,4 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .indicator {
-    transition: none;
-  }
 }

@@ -58,11 +58,8 @@ function DropdownMenuItem({
 }: DropdownMenuItemProps) {
   return (
     <Menu.Item
-      className={cn(
-        styles.item,
-        variant === "destructive" && styles.itemDestructive,
-        className
-      )}
+      className={cn(styles.item, className)}
+      data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}

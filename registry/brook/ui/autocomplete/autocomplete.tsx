@@ -4,6 +4,7 @@ import { Autocomplete } from "@base-ui-components/react/autocomplete";
 import { Search, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./autocomplete.module.css";
 
 function AutocompleteRoot({
@@ -23,11 +24,7 @@ function AutocompleteInput({
   ...props
 }: React.ComponentProps<typeof Autocomplete.Input>) {
   return (
-    <Autocomplete.Input
-      className={cn(styles.input, className)}
-      data-slot="autocomplete-input"
-      {...props}
-    />
+    <Autocomplete.Input className={className} render={<Input />} {...props} />
   );
 }
 

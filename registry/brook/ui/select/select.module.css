@@ -7,31 +7,34 @@
 .trigger {
   min-width: 9rem;
   background-color: var(--mix-card-50-bg);
-}
 
-@media (max-width: 768px) {
-  .trigger {
+  &:hover:not(.disabled) {
+    background-color: var(--accent);
+    color: var(--foreground);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  &[data-popup-open] {
+    background-color: var(--muted);
+    color: var(--foreground);
+
+    & .icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
     min-width: 7rem;
   }
-}
-.trigger:hover:not(.disabled) {
-  background-color: var(--accent);
-  color: var(--foreground);
-}
-
-.trigger:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
-
-.trigger[data-popup-open] {
-  background-color: var(--muted);
-  color: var(--foreground);
-}
-
-.trigger.disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
 }
 
 .value {
@@ -41,10 +44,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.25 !important;
-}
 
-.value[data-placeholder] {
-  color: var(--muted-foreground);
+  &[data-placeholder] {
+    color: var(--muted-foreground);
+  }
 }
 
 .icon {
@@ -54,10 +57,6 @@
   flex-shrink: 0;
   opacity: 0.5;
   transition: transform 0.2s ease-in-out;
-}
-
-.trigger[data-popup-open] .icon {
-  transform: rotate(180deg);
 }
 
 .positioner {
@@ -111,14 +110,14 @@
   cursor: pointer;
   color: var(--foreground);
   transition: background-color 0.2s ease-in-out;
-}
 
-.scrollArrow:hover {
-  background-color: var(--muted);
-}
+  &:hover {
+    background-color: var(--muted);
+  }
 
-.scrollArrow[data-state="hidden"] {
-  display: none;
+  &[data-state="hidden"] {
+    display: none;
+  }
 }
 
 .list {
@@ -141,25 +140,29 @@
   border-radius: calc(var(--radius) - 2px);
   transition: all 0.2s ease-in-out;
   outline: none;
-}
 
-.item:hover:not(.itemDisabled) {
-  background-color: var(--accent);
-  color: var(--foreground);
-}
+  &:hover:not(.itemDisabled) {
+    background-color: var(--accent);
+    color: var(--foreground);
+  }
 
-.item[data-highlighted] {
-  background-color: var(--muted);
-  color: var(--foreground);
-}
+  &[data-highlighted] {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
 
-.item[data-selected] {
-  background-color: transparent;
-}
+  &[data-selected] {
+    background-color: transparent;
 
-.item.itemDisabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+    & .indicator {
+      opacity: 1;
+    }
+  }
+
+  &.itemDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
 .itemText {
@@ -177,10 +180,6 @@
   flex-shrink: 0;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
-}
-
-.item[data-selected] .indicator {
-  opacity: 1;
 }
 
 .separator {
