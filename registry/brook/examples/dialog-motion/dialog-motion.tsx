@@ -1,9 +1,74 @@
 "use client";
 
 import { Dialog } from "@base-ui-components/react/dialog";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, type Variants } from "motion/react";
 import { useRef, useState } from "react";
 import styles from "./dialog-motion.module.css";
+
+const contentVariants: Variants = {
+  hidden: {
+    opacity: 0,
+
+    scale: 0.8,
+    filter: "blur(4px)",
+    transformOrigin: "right center",
+  },
+  visible: {
+    opacity: 1,
+    transformOrigin: "right center",
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.36,
+      delay: 0.15,
+      type: "spring",
+      bounce: 0,
+      ease: "anticipate",
+    },
+  },
+  exit: {
+    opacity: 0,
+    filter: "blur(4px)",
+
+    scale: 0.97,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+    },
+  },
+};
+
+const closeButtonVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(4px)",
+    scale: 0.97,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    rotate: 0,
+    originX: -12,
+    transition: {
+      duration: 0.36,
+      delay: 0.15,
+      type: "spring",
+      bounce: 0,
+      ease: "anticipate",
+    },
+  },
+  exit: {
+    opacity: 0,
+
+    filter: "blur(4px)",
+    scale: 0.97,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+    },
+  },
+};
 
 export default function DialogFramerMotion() {
   const [open, setOpen] = useState(false);
@@ -21,7 +86,7 @@ export default function DialogFramerMotion() {
           className={styles.trigger}
           render={<motion.button layoutId="button" />}
         >
-          Button
+          Upgrade
         </Dialog.Trigger>
       </div>
 
@@ -58,83 +123,27 @@ export default function DialogFramerMotion() {
                     className={styles.title}
                     render={
                       <motion.span
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                          x: 0,
-                          scale: 1,
-                          filter: "blur(0px)",
-                          transition: {
-                            duration: 0.3,
-                            delay: 0.2,
-
-                            type: "spring",
-                            bounce: 0,
-                          },
-                        }}
-                        exit={{
-                          opacity: 0,
-                          filter: "blur(4px)",
-                          x: 20,
-                          y: 20,
-                          scale: 0.85,
-                          transition: {
-                            duration: 0.3,
-                            type: "spring",
-                          },
-                        }}
-                        initial={{
-                          opacity: 0,
-                          x: 20,
-                          y: 20,
-                          scale: 0.85,
-                          filter: "blur(4px)",
-                        }}
+                        animate="visible"
+                        exit="exit"
+                        initial="hidden"
+                        variants={contentVariants}
                       />
                     }
                   >
-                    Title
+                    Plan Plus
                   </Dialog.Title>
                   <Dialog.Description
                     className={styles.description}
                     render={
                       <motion.p
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                          x: 0,
-                          scale: 1,
-                          filter: "blur(0px)",
-                          transition: {
-                            duration: 0.3,
-                            delay: 0.2,
-
-                            type: "spring",
-                            bounce: 0,
-                          },
-                        }}
-                        exit={{
-                          opacity: 0,
-                          x: 20,
-                          y: 20,
-                          scale: 0.85,
-                          filter: "blur(4px)",
-                          transition: {
-                            duration: 0.3,
-                            type: "spring",
-                          },
-                        }}
-                        initial={{
-                          opacity: 0,
-                          x: 20,
-                          y: 20,
-                          scale: 0.85,
-                          filter: "blur(4px)",
-                        }}
+                        animate="visible"
+                        exit="exit"
+                        initial="hidden"
+                        variants={contentVariants}
                       />
                     }
                   >
-                    This is a description of the dialog.
+                    Upgrade your plan for full access.
                   </Dialog.Description>
 
                   <div className={styles.actions}>
@@ -142,34 +151,11 @@ export default function DialogFramerMotion() {
                       className={styles.closeButton}
                       render={
                         <motion.button
-                          animate={{
-                            opacity: 1,
-                            x: 0,
-                            scale: 1,
-                            filter: "blur(0px)",
-                            transition: {
-                              duration: 0.3,
-                              delay: 0.15,
-
-                              type: "spring",
-                              bounce: 0,
-                            },
-                          }}
-                          exit={{
-                            opacity: 0,
-                            filter: "blur(4px)",
-                            // x: -20,
-                            transition: {
-                              duration: 0.3,
-                              type: "spring",
-                            },
-                          }}
-                          initial={{
-                            opacity: 0,
-                            x: -20,
-                            scale: 0.95,
-                            filter: "blur(4px)",
-                          }}
+                          animate="visible"
+                          exit="exit"
+                          initial="hidden"
+                          style={{ originX: -20, originY: -20 }}
+                          variants={closeButtonVariants}
                         />
                       }
                     >
@@ -179,7 +165,7 @@ export default function DialogFramerMotion() {
                       className={styles.actionButton}
                       layoutId="button"
                     >
-                      Button
+                      Upgrade
                     </motion.button>
                   </div>
                 </div>
