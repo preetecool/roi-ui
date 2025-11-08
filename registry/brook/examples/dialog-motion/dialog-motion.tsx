@@ -8,8 +8,9 @@ import styles from "./dialog-motion.module.css";
 const contentVariants: Variants = {
   hidden: {
     opacity: 0,
-
-    scale: 0.8,
+    x: 30,
+    y: 30,
+    scale: 0.7,
     filter: "blur(4px)",
     transformOrigin: "right center",
   },
@@ -18,9 +19,11 @@ const contentVariants: Variants = {
     transformOrigin: "right center",
     scale: 1,
     filter: "blur(0px)",
+    x: 0,
+    y: 0,
     transition: {
-      duration: 0.36,
-      delay: 0.15,
+      duration: 0.38,
+      delay: 0.12,
       type: "spring",
       bounce: 0,
       ease: "anticipate",
@@ -51,8 +54,8 @@ const closeButtonVariants: Variants = {
     rotate: 0,
     originX: -12,
     transition: {
-      duration: 0.36,
-      delay: 0.15,
+      duration: 0.38,
+      delay: 0.12,
       type: "spring",
       bounce: 0,
       ease: "anticipate",
