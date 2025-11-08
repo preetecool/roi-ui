@@ -79,8 +79,6 @@ export function Root({
   const [insetPaddingRight, setInsetPaddingRight] = useState(0);
 
   const maxIndex = totalItems - 1;
-  const canGoNext = currentIndex < maxIndex;
-  const canGoPrev = currentIndex > 0;
 
   const setCurrentIndex = useCallback(
     (index: number) => {
@@ -152,6 +150,11 @@ export function Root({
     return Math.max(1, visibleCount);
   }, []);
 
+  // Calculate if we can navigate based on whether the next jump would go beyond bounds
+  const visibleItemsForNav = getVisibleItemsCount();
+  const canGoNext = currentIndex + visibleItemsForNav <= maxIndex;
+  const canGoPrev = currentIndex > 0;
+
   const nextSlide = useCallback(() => {
     const visibleItems = getVisibleItemsCount();
     const newIndex = Math.min(currentIndex + visibleItems, maxIndex);
@@ -177,6 +180,43 @@ export function Root({
     canGoPrev,
     viewportRef,
   };
+
+  // Sync currentIndex with scroll position
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) {
+      return;
+    }
+
+    const handleScroll = () => {
+      const slides = viewport.querySelectorAll('[role="group"]');
+      if (slides.length === 0) {
+        return;
+      }
+
+      const viewportRect = viewport.getBoundingClientRect();
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide, index) => {
+        const slideRect = slide.getBoundingClientRect();
+        // Calculate distance from slide's left edge to viewport's left edge
+        const distance = Math.abs(slideRect.left - viewportRect.left);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex !== currentIndex) {
+        setCurrentIndexInternal(closestIndex);
+      }
+    };
+
+    viewport.addEventListener("scroll", handleScroll, { passive: true });
+    return () => viewport.removeEventListener("scroll", handleScroll);
+  }, [currentIndex, setCurrentIndexInternal]);
 
   // Calculate inset padding based on parent container
   useEffect(() => {
@@ -234,11 +274,8 @@ export function Root({
   return (
     <CarouselContext.Provider value={value}>
       <div
-        className={cn(
-          styles.carousel,
-          align === "center" && styles.carouselCenter,
-          className
-        )}
+        className={cn(styles.carousel, className)}
+        data-align={align}
         data-slot="carousel"
         style={
           {
@@ -523,10 +560,8 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
           aria-controls="carousel-slides"
           aria-label={`Scroll to item ${index + 1}`}
           aria-selected={currentIndex === index}
-          className={cn(
-            styles.indicator,
-            currentIndex === index && styles.indicatorActive
-          )}
+          className={styles.indicator}
+          data-active={currentIndex === index ? "" : undefined}
           // biome-ignore lint/suspicious/noArrayIndexKey: Indicators are stable and don't reorder
           key={`indicator-${index}`}
           onClick={() => goToIndex(index)}

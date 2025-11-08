@@ -1,6 +1,8 @@
-.trigger:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
+.trigger {
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
 .backdrop {
@@ -27,14 +29,14 @@
   z-index: 150;
   animation: scaleIn 0.2s ease-out;
   transform-origin: var(--transform-origin);
-}
 
-.popup[data-state="open"] {
-  animation: scaleIn 0.2s ease-out;
-}
+  &[data-state="open"] {
+    animation: scaleIn 0.2s ease-out;
+  }
 
-.popup[data-state="closed"] {
-  animation: scaleOut 0.15s ease-in;
+  &[data-state="closed"] {
+    animation: scaleOut 0.15s ease-in;
+  }
 }
 
 .arrow {

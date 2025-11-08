@@ -1,25 +1,9 @@
 .container {
   padding: 2rem;
-}
 
-.header {
-  margin-bottom: 1.5rem;
-}
-
-.title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.description {
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-}
-
-.autocompleteWrapper {
-  width: 300px;
-  position: relative;
+  @media (max-width: 640px) {
+    padding: 1rem;
+  }
 }
 
 .label {
@@ -27,48 +11,64 @@
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 17.5px;
   font-weight: 500;
   color: var(--foreground);
-}
+  margin-bottom: 0.5rem;
+  margin-left: 4px;
 
-.inputWrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  @media (max-width: 640px) {
+    font-size: 0.9375rem;
+  }
 }
 
 .input {
-  width: 100%;
+  width: 300px;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 }
 
-.popup {
-  width: 100% !important;
-  min-width: 300px;
-}
-
-.item {
+.userContainer {
   display: flex;
   align-items: center;
-  width: 100%;
+  gap: 1rem;
+  flex: 1;
+
+  @media (max-width: 640px) {
+    gap: 0.75rem;
+  }
+}
+
+.avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @media (max-width: 640px) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+.userInfo {
   text-align: left;
 }
 
-@media (max-width: 640px) {
-  .container {
-    padding: 0rem;
-  }
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
 
-  .autocompleteWrapper {
-    width: 100%;
-  }
-
-  .label {
+  @media (max-width: 640px) {
     font-size: 0.9375rem;
   }
+}
 
-  .popup {
-    min-width: auto;
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+
+  @media (max-width: 640px) {
+    font-size: 0.8125rem;
   }
 }

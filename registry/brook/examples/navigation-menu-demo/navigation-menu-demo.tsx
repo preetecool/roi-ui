@@ -43,7 +43,7 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Products</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className={`${styles.linkList} ${styles.one}`}>
+            <ul className={styles.linkList} data-columns="two">
               <ListItem title="UI">Building blocks</ListItem>
               <ListItem title="Blocks">Ready made components</ListItem>
               <ListItem title="Templates">Full app starters</ListItem>

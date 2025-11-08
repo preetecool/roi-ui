@@ -3,6 +3,11 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
+
+  &[data-indeterminate] .indicator {
+    width: 40%;
+    animation: indeterminate 2s infinite linear;
+  }
 }
 
 .label {
@@ -33,11 +38,6 @@
   border-radius: 0;
   transition: all 150ms ease-out;
   width: var(--progress-indicator-width);
-}
-
-.root[data-indeterminate] .indicator {
-  width: 40%;
-  animation: indeterminate 2s infinite linear;
 }
 
 @keyframes indeterminate {

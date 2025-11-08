@@ -6,10 +6,8 @@
   flex-direction: column;
   padding: 1.5rem;
   gap: 1rem;
-}
 
-@media (max-width: 640px) {
-  .popup {
+  @media (max-width: 640px) {
     left: 50% !important;
     right: auto !important;
     transform: translate(-50%, -50%) !important;
@@ -42,8 +40,8 @@
   margin-top: 32px;
   display: flex;
   gap: 12px;
-}
 
-.footer > * {
-  flex: 1;
+  & > * {
+    flex: 1;
+  }
 }

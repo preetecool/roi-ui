@@ -55,9 +55,9 @@ export default function CarouselDemo() {
         <Carousel.Content>
           {features.map((feature, index) => (
             <Carousel.Item index={index} key={feature.id}>
-              <Card id={styles.card}>
+              <Card className={styles.card}>
                 <div className={styles.iconSection}>
-                  <CardIcon id={styles.icon}>{feature.icon}</CardIcon>
+                  <CardIcon className={styles.icon}>{feature.icon}</CardIcon>
                 </div>
                 <div className={styles.cardContent}>
                   <div className={styles.contentText}>

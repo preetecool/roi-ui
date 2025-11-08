@@ -12,11 +12,8 @@ function ToolbarRoot({
   return (
     <Toolbar.Root
       data-slot="toolbar-root"
-      className={cn(
-        styles.root,
-        orientation === "vertical" && styles.vertical,
-        className
-      )}
+      data-orientation={orientation}
+      className={cn(styles.root, className)}
       orientation={orientation}
       {...props}
     />

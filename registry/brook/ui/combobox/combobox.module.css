@@ -7,11 +7,11 @@
   border-radius: var(--radius);
   background: var(--mix-card-75-bg);
   transition: all 150ms ease;
-}
 
-.wrapper:has(:focus-visible) {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
+  &:has(:focus-visible) {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
 .trigger {
@@ -23,15 +23,15 @@
   align-items: center;
   padding: 0 0.5rem;
   cursor: pointer;
-}
 
-.trigger:focus-visible {
-  outline: none;
-}
+  &:focus-visible {
+    outline: none;
+  }
 
-.trigger[data-disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .input {
@@ -43,16 +43,25 @@
   color: var(--foreground);
   width: 100%;
   padding: 0.5rem 0.75rem;
-
   height: 2.5rem;
-}
 
-.input::placeholder {
-  color: var(--muted-foreground);
-}
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
 
-.input:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
+
+  @media (max-width: 640px) {
+    height: 2.75rem;
+    font-size: 0.9375rem;
+    padding: 0.5rem 1rem;
+
+    &::placeholder {
+      font-size: 0.9375rem;
+    }
+  }
 }
 
 .clear {
@@ -64,11 +73,11 @@
   cursor: pointer;
   color: var(--muted-foreground);
   transition: all 150ms ease;
-}
 
-.clear:hover {
-  color: var(--foreground);
-  background: var(--accent);
+  &:hover {
+    color: var(--foreground);
+    background: var(--accent);
+  }
 }
 
 .icon {
@@ -101,12 +110,17 @@
   animation: slideDown 150ms ease-out;
   width: 100%;
   padding: 0.25rem;
-}
 
-.popup[data-starting-style],
-.popup[data-ending-style] {
-  opacity: 0;
-  transform: translateY(-0.5rem);
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+
+  @media (max-width: 640px) {
+    max-width: calc(100vw - 2rem);
+    padding: 0.25rem;
+  }
 }
 
 @keyframes slideDown {
@@ -130,39 +144,50 @@
   cursor: pointer;
   user-select: none;
   outline: 0;
+
+  &[data-highlighted] {
+    z-index: 1;
+    position: relative;
+
+    &::before {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      inset: 0;
+      border-radius: calc(var(--radius) - 2px);
+      background: var(--mix-accent-33-trans);
+    }
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &[data-selected] {
+    .itemIndicator {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.9375rem;
+  }
 }
 
 .list:not(:has(.item[data-highlighted])) .item[data-selected] {
   z-index: 0;
   position: relative;
-}
 
-.list:not(:has(.item[data-highlighted])) .item[data-selected]::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  inset: 0;
-  border-radius: calc(var(--radius) - 2px);
-  background: var(--mix-accent-33-trans);
-}
-
-.item[data-highlighted] {
-  z-index: 1;
-  position: relative;
-}
-
-.item[data-highlighted]::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  inset: 0;
-  border-radius: calc(var(--radius) - 2px);
-  background: var(--mix-accent-33-trans);
-}
-
-.item[data-disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
+  &::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius) - 2px);
+    background: var(--mix-accent-33-trans);
+  }
 }
 
 .itemText {
@@ -177,10 +202,6 @@
   width: 1rem;
   opacity: 0;
   transition: opacity 150ms ease;
-}
-
-.item[data-selected] .itemIndicator {
-  opacity: 1;
 }
 
 .group {
@@ -211,30 +232,8 @@
   text-align: center;
   font-size: 0.875rem;
   color: var(--muted-foreground);
-}
 
-@media (max-width: 640px) {
-  .input {
-    height: 2.75rem;
-    font-size: 0.9375rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .input::placeholder {
-    font-size: 0.9375rem;
-  }
-
-  .popup {
-    max-width: calc(100vw - 2rem);
-    padding: 0.25rem;
-  }
-
-  .item {
-    padding: 0.625rem 0.75rem;
-    font-size: 0.9375rem;
-  }
-
-  .noItems {
+  @media (max-width: 640px) {
     padding: 1.5rem 1rem;
     font-size: 0.9375rem;
   }

@@ -4,11 +4,11 @@
   z-index: var(--dialog-z);
   background-color: var(--dialog-overlay);
   transition: opacity 150ms;
-}
 
-.overlay[data-starting-style],
-.overlay[data-ending-style] {
-  opacity: 0;
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
 }
 
 .content {
@@ -28,12 +28,27 @@
   background-color: var(--mix-card-5-bg);
   transform: translate(-50%, -50%);
   transition: all 150ms;
-}
 
-.content[data-starting-style],
-.content[data-ending-style] {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.95);
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+
+  @media (max-width: 640px) {
+    width: calc(100vw - 2rem);
+    max-width: none;
+    left: 1rem;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+      transform: translateY(-50%) scale(0.95);
+    }
+  }
 }
 
 .header {
@@ -41,24 +56,22 @@
   flex-direction: column;
   gap: 0.75rem;
   text-align: left;
-}
 
-.header h2 {
-  margin: 0;
-}
+  & h2 {
+    margin: 0;
+  }
 
-.header p {
-  margin: 0;
+  & p {
+    margin: 0;
+  }
 }
 
 .footer {
   display: flex;
   flex-direction: column-reverse;
   gap: 0.5rem;
-}
 
-@media (min-width: 640px) {
-  .footer {
+  @media (min-width: 640px) {
     flex-direction: row;
     justify-content: flex-end;
   }
@@ -90,30 +103,13 @@
   font-size: 0.875rem;
   font-weight: 500;
   transition: all 150ms ease-out;
-}
 
-.close:hover {
-  background-color: var(--muted);
-}
-
-.close:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
-
-@media (max-width: 640px) {
-  .content {
-    width: calc(100vw - 2rem);
-    max-width: none;
-    left: 1rem;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
+  &:hover {
+    background-color: var(--muted);
   }
 
-  .content[data-starting-style],
-  .content[data-ending-style] {
-    opacity: 0;
-    transform: translateY(-50%) scale(0.9);
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }

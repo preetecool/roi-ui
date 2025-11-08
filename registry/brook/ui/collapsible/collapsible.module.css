@@ -24,27 +24,35 @@
   cursor: pointer;
   transition: all 150ms ease-out;
   border: 1px solid var(--border);
-}
 
-.trigger:hover {
-  background-color: var(--mix-card-50-bg);
-}
+  &:hover {
+    background-color: var(--mix-card-50-bg);
+  }
 
-.trigger:active {
-  background-color: var(--mix-card-15-bg);
-}
+  &:active {
+    background-color: var(--mix-card-15-bg);
+  }
 
-.trigger:focus-visible {
-  outline: 2px solid var(--ring);
-}
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+  }
 
-.trigger[data-disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
 
-.trigger[data-disabled]:hover {
-  background-color: var(--muted);
+    &:hover {
+      background-color: var(--muted);
+    }
+  }
+
+  &[data-panel-open] .chevron path:first-child {
+    transform: translate(0, -10px);
+  }
+
+  &[data-panel-open] .chevron path:last-child {
+    transform: translate(0, 10px);
+  }
 }
 
 .chevron {
@@ -52,24 +60,16 @@
   height: 0.75rem;
   flex-shrink: 0;
   color: var(--muted-foreground);
-}
 
-.chevron path:first-child {
-  transition: transform 200ms var(--ease-out-expo);
-  transform-origin: center;
-}
+  & path:first-child {
+    transition: transform 200ms var(--ease-out-expo);
+    transform-origin: center;
+  }
 
-.chevron path:last-child {
-  transition: transform 200ms var(--ease-out-expo);
-  transform-origin: center;
-}
-
-.trigger[data-panel-open] .chevron path:first-child {
-  transform: translate(0, -10px);
-}
-
-.trigger[data-panel-open] .chevron path:last-child {
-  transform: translate(0, 10px);
+  & path:last-child {
+    transition: transform 200ms var(--ease-out-expo);
+    transform-origin: center;
+  }
 }
 
 .panel {
@@ -83,24 +83,21 @@
   transition: all 150ms ease-out;
   width: 100%;
   box-sizing: border-box;
-}
 
-.panel[data-starting-style],
-.panel[data-ending-style] {
-  height: 0;
-}
+  &[data-starting-style],
+  &[data-ending-style] {
+    height: 0;
+  }
 
-.panel[data-closed] {
-  height: 0;
-  border: none;
-}
+  &[data-closed] {
+    height: 0;
+    border: none;
+    animation: slideUp 250ms var(--ease-out-expo);
+  }
 
-.panel[data-panel-open] {
-  animation: slideDown 250ms var(--ease-out-expo);
-}
-
-.panel[data-closed] {
-  animation: slideUp 250ms var(--ease-out-expo);
+  &[data-panel-open] {
+    animation: slideDown 250ms var(--ease-out-expo);
+  }
 }
 
 @keyframes slideDown {

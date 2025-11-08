@@ -18,30 +18,30 @@
   font-size: 0.875rem;
   background-color: var(--mix-card-50-bg);
   color: var(--foreground);
-}
 
-.control::placeholder {
-  color: var(--muted-foreground);
-  font-size: 0.875rem;
-}
+  &::placeholder {
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
 
-.control:focus {
-  outline: 2px solid var(--ring);
-  outline-offset: -1px;
-}
+  &:focus {
+    outline: 2px solid var(--ring);
+    outline-offset: -1px;
+  }
 
-.control[data-disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 
-.control[data-invalid] {
-  border-color: var(--destructive);
-}
+  &[data-invalid] {
+    border-color: var(--destructive);
 
-.control[data-invalid]:focus {
-  outline: 2px solid var(--destructive);
-  outline-offset: -1px;
+    &:focus {
+      outline: 2px solid var(--destructive);
+      outline-offset: -1px;
+    }
+  }
 }
 
 .label {
@@ -49,11 +49,11 @@
   line-height: 1.25rem;
   font-weight: 400;
   color: var(--foreground);
-}
 
-.label[data-disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .description {

@@ -4,13 +4,23 @@
   column-gap: 10px;
   list-style: none;
   padding: 0.5rem;
-}
 
-.linkList.one {
-  width: 350px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  row-gap: 0;
+  &[data-columns="two"] {
+    width: 350px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 0;
+
+    @media (max-width: 768px) {
+      max-width: 300px;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+
+      & .previewCard {
+        display: none;
+      }
+    }
+  }
 }
 
 .twoColContainer {
@@ -20,17 +30,26 @@
   padding: 0.5rem;
   column-gap: 1rem;
   position: relative;
-}
 
-.twoColContainer::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 0.5px;
-  background-color: oklch(from var(--border) l c h / 0.6);
-  transform: translateX(-0.5rem);
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 0.5px;
+    background-color: oklch(from var(--border) l c h / 0.6);
+    transform: translateX(-0.5rem);
+  }
+
+  @media (max-width: 768px) {
+    max-width: 260px;
+    grid-template-columns: 1fr;
+
+    &::before {
+      display: none;
+    }
+  }
 }
 
 .linkListCol {
@@ -65,27 +84,6 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .linkList.one {
-    max-width: 300px;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .linkList.one .previewCard {
-    display: none;
-  }
-
-  .twoColContainer {
-    max-width: 260px;
-    grid-template-columns: 1fr;
-  }
-
-  .twoColContainer::before {
-    display: none;
-  }
-}
-
 .previewContent {
   position: relative;
   width: 100%;
@@ -112,9 +110,6 @@
   width: 150%;
   height: 100%;
   pointer-events: none;
-}
-
-.previewSvg {
   animation: sway 5s ease-in-out infinite;
 }
 

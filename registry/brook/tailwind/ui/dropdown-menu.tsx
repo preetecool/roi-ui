@@ -84,19 +84,22 @@ function DropdownMenuItem({
         "data-[highlighted]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "hover:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "focus:outline-none focus:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
-        variant === "destructive" && [
-          "text-[var(--destructive)]",
-          "[&_span]:text-[var(--destructive)]",
-          "hover:before:!bg-[var(--destructive)] hover:text-[var(--destructive-foreground)] hover:[&_span]:text-[var(--destructive-foreground)]",
-        ],
+        "[&:hover_span]:text-secondary-foreground [&:hover_span]:opacity-100",
+        "data-[variant=destructive]:text-[var(--destructive)]",
+        "data-[variant=destructive]:[&_span]:text-[var(--destructive)]",
+        "data-[variant=destructive]:hover:before:!bg-[var(--destructive)]",
+        "data-[variant=destructive]:hover:text-[var(--destructive-foreground)]",
+        "data-[variant=destructive]:hover:[&_span]:text-[var(--destructive-foreground)]",
         className
       )}
       data-slot="menu-item"
+      data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
       {icon && (
-        <span className="ml-1 flex items-center justify-center text-muted-foreground group-hover:text-secondary-foreground">
+        <span className="ml-1 flex items-center justify-center text-muted-foreground">
           {icon}
         </span>
       )}
@@ -147,6 +150,8 @@ function DropdownMenuSubmenuTrigger({
         "data-[popup-open]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "data-[highlighted]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "hover:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "focus:outline-none focus-visible:outline-none",
+        "[&:hover_.submenu-icon]:text-secondary-foreground",
         className
       )}
       data-slot="menu-submenutrigger"
@@ -154,7 +159,7 @@ function DropdownMenuSubmenuTrigger({
     >
       {children}
       <ChevronRight
-        className="ml-auto h-4 w-4 text-muted-foreground opacity-60 group-hover:text-secondary-foreground"
+        className="submenu-icon ml-auto h-4 w-4 text-muted-foreground opacity-60"
         size={16}
       />
     </Menu.SubmenuTrigger>
@@ -180,6 +185,7 @@ function DropdownMenuRadioItem({
         "data-[highlighted]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "hover:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "focus:outline-none focus:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
         className
       )}

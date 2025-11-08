@@ -12,29 +12,29 @@
   color: var(--foreground);
   cursor: pointer;
   transition: all 150ms ease-out;
-}
 
-.root:hover {
-  background-color: var(--muted);
-}
+  &:hover {
+    background-color: var(--muted);
+  }
 
-.root[data-focused] {
-  outline: none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 2px var(--ring) / 0.2;
-}
+  &[data-focused] {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+  }
 
-.root[data-pressed] {
-  background-color: var(--mix-card-66-bg);
-  color: var(--foreground);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.9);
-}
+  &[data-pressed] {
+    background-color: var(--mix-card-66-bg);
+    color: var(--foreground);
+    border: 0.5px solid oklch(from var(--border) l c h / 0.9);
 
-.root[data-pressed]:hover {
-  background-color: var(--mix-card-85-bg);
-}
+    &:hover {
+      background-color: var(--mix-card-85-bg);
+    }
+  }
 
-.root[data-disabled] {
-  pointer-events: none;
-  opacity: 0.5;
+  &[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }

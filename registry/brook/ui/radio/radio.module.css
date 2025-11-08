@@ -16,29 +16,33 @@
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-}
 
-.root:hover {
-  border-color: oklch(from var(--secondary-foreground) l c h / 0.4);
-}
+  &:hover {
+    border-color: oklch(from var(--secondary-foreground) l c h / 0.4);
+  }
 
-.root[data-focused] {
-  outline: none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 2px var(--ring);
-}
+  &[data-focused] {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px var(--ring);
+  }
 
-.root[data-checked] {
-  border-color: oklch(from var(--secondary-foreground) l c h / 0.6);
-}
+  &[data-checked] {
+    border-color: oklch(from var(--secondary-foreground) l c h / 0.6);
 
-.root[data-checked]:hover {
-  border-color: oklch(from var(--secondary-foreground) l c h / 0.8);
-}
+    &:hover {
+      border-color: oklch(from var(--secondary-foreground) l c h / 0.8);
+    }
 
-.root[data-disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
+    & .indicator {
+      transform: scale(1);
+    }
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
 .indicator {
@@ -47,8 +51,4 @@
   border-radius: 50%;
   background-color: var(--primary);
   transform: scale(0);
-}
-
-.root[data-checked] .indicator {
-  transform: scale(1);
 }

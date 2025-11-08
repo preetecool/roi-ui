@@ -3,6 +3,18 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
+
+  &[data-value="high"] .indicator {
+    background-color: var(--destructive);
+  }
+
+  &[data-value="medium"] .indicator {
+    background-color: hsl(45 93% 47%);
+  }
+
+  &[data-value="low"] .indicator {
+    background-color: var(--primary);
+  }
 }
 
 .label {
@@ -32,17 +44,4 @@
   border-radius: 0;
   transition: all 150ms ease-out;
   width: var(--meter-indicator-width);
-}
-
-/* Status color variations */
-.root[data-value="high"] .indicator {
-  background-color: var(--destructive);
-}
-
-.root[data-value="medium"] .indicator {
-  background-color: hsl(45 93% 47%);
-}
-
-.root[data-value="low"] .indicator {
-  background-color: var(--primary);
 }

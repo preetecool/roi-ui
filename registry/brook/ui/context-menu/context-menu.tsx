@@ -90,9 +90,9 @@ function ContextMenuItem({
       className={cn(
         styles.item,
         inset && styles.inset,
-        variant === "destructive" && styles.itemDestructive,
         className
       )}
+      data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}

@@ -1,4 +1,4 @@
-#card {
+.card {
   height: 300px;
   width: 330px;
   position: relative;
@@ -11,35 +11,19 @@
     var(--mix-card-66-bg) 0%,
     var(--background) 50%
   );
-}
 
-@media (max-width: 768px) {
-  #card {
+  @media (max-width: 768px) {
     max-width: 230px;
   }
-}
 
-@media (max-width: 640px) {
-  #card {
+  @media (max-width: 640px) {
     height: 340px;
     max-width: 280px;
     padding: 1rem;
   }
-
-  .cardContent {
-    padding: 1rem;
-  }
-
-  .contentText {
-    gap: 0.375rem;
-  }
-
-  .cardTitle {
-    font-size: 1.0625rem;
-  }
 }
 
-#icon {
+.icon {
   background-color: var(--mix-card-66-bg);
   border-color: var(--border);
   color: var(--muted-foreground);
@@ -60,19 +44,30 @@
   margin: 0 -1rem -1rem -1rem;
   gap: 1rem;
   border-top: 0.5px solid oklch(from var(--border) l c h / 0.5);
+
+  @media (max-width: 640px) {
+    padding: 1rem;
+  }
 }
 
 .contentText {
   display: flex;
   flex-direction: column;
-
   gap: 0.5rem;
+
+  @media (max-width: 640px) {
+    gap: 0.375rem;
+  }
 }
 
 .cardTitle {
   margin: 0;
   font-size: 1.125rem;
   line-height: 1;
+
+  @media (max-width: 640px) {
+    font-size: 1.0625rem;
+  }
 }
 
 .button {
@@ -85,8 +80,8 @@
   align-self: end;
   color: var(--muted-foreground);
   border: 0.5px solid oklch(from var(--border) l c h / 0.5);
-}
 
-.button:hover {
-  color: var(--foreground);
+  &:hover {
+    color: var(--foreground);
+  }
 }
