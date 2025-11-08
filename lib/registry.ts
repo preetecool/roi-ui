@@ -14,8 +14,13 @@ export function getRegistryFiles(name: string): string[] | null {
 export function getComponentVariants(
   name: string
 ): { cssModules: string[] | null; tailwind: string[] | null } {
+  // Handle both camelCase (popoverTailwind) and kebab-case ("navigation-menu-tailwind") registry keys
+  const tailwindKey = name.includes("-")
+    ? `${name}-tailwind`  // kebab-case: "navigation-menu-tailwind"
+    : `${name}Tailwind`;   // camelCase: popoverTailwind
+
   return {
     cssModules: getRegistryFiles(name),
-    tailwind: getRegistryFiles(`${name}-tailwind`),
+    tailwind: getRegistryFiles(tailwindKey),
   };
 }
