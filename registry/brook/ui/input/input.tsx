@@ -10,7 +10,16 @@ interface InputProps extends Input.Props {
 
 function InputRoot({ className, variant = "default", ...props }: InputProps) {
   return (
-    <Input className={cn(styles.base, styles[variant], className)} {...props} />
+    <Input
+      className={(state: Input.State) =>
+        cn(
+          styles.base,
+          styles[variant],
+          typeof className === "function" ? className(state) : className
+        )
+      }
+      {...props}
+    />
   );
 }
 

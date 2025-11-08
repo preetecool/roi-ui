@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/input/input.tsx",
-      "content": "\"use client\";\n\nimport { Input } from \"@base-ui-components/react/input\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./input.module.css\";\n\ninterface InputProps extends Input.Props {\n  variant?: \"default\" | \"error\";\n}\n\nfunction InputRoot({ className, variant = \"default\", ...props }: InputProps) {\n  return (\n    <Input className={cn(styles.base, styles[variant], className)} {...props} />\n  );\n}\n\nexport { InputRoot as Input };\n",
+      "content": "\"use client\";\n\nimport { Input } from \"@base-ui-components/react/input\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./input.module.css\";\n\ninterface InputProps extends Input.Props {\n  variant?: \"default\" | \"error\";\n}\n\nfunction InputRoot({ className, variant = \"default\", ...props }: InputProps) {\n  return (\n    <Input\n      className={(state: Input.State) =>\n        cn(\n          styles.base,\n          styles[variant],\n          typeof className === \"function\" ? className(state) : className\n        )\n      }\n      {...props}\n    />\n  );\n}\n\nexport { InputRoot as Input };\n",
       "type": "registry:file",
       "target": "~/components/ui/input/input.tsx"
     },

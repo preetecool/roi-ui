@@ -32,8 +32,16 @@ interface InputProps extends Input.Props, VariantProps<typeof inputVariants> {}
 
 function InputRoot({ className, variant = "default", ...props }: InputProps) {
   return (
-    <Input className={cn(inputVariants({ variant }), className)} {...props} />
+    <Input
+      className={(state: Input.State) =>
+        cn(
+          inputVariants({ variant }),
+          typeof className === "function" ? className(state) : className
+        )
+      }
+      {...props}
+    />
   );
 }
 
-export { InputRoot as Input };
+export { InputRoot as Input, type InputProps };

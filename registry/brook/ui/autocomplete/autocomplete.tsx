@@ -23,7 +23,9 @@ function AutocompleteInput({
   className,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Input>) {
-  return <Autocomplete.Input render={<Input className={className} />} {...props} />;
+  return (
+    <Autocomplete.Input className={className} render={<Input />} {...props} />
+  );
 }
 
 function AutocompleteTrigger({
