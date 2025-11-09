@@ -15,7 +15,7 @@ const kbdVariants = cva(
     variants: {
       size: {
         sm: "h-5 min-w-5 rounded-[calc(var(--radius)*0.75)] px-1 text-[0.625rem]",
-        md: "h-6 min-w-6 rounded-[var(--radius)] px-1.5 text-xs",
+        md: "h-6 min-w-6 rounded-[2px] px-1.5 text-xs",
         lg: "h-8 min-w-8 rounded-[var(--radius-lg)] px-2 text-sm",
       },
     },
