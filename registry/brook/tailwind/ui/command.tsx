@@ -1,5 +1,6 @@
 "use client";
 
+import { Dialog } from "@base-ui-components/react/dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
@@ -12,13 +13,54 @@ function CommandRoot({
   return (
     <CommandPrimitive
       className={cn(
-        "[&[cmdk-root]]:flex [&[cmdk-root]]:w-full [&[cmdk-root]]:flex-col",
-        "[&[cmdk-root]]:overflow-hidden",
-        "[&[cmdk-root]]:border-[0.5px] [&[cmdk-root]]:border-border/70 [&[cmdk-root]]:text-foreground",
+        "flex w-full flex-col overflow-hidden text-foreground",
+        "[&[cmdk-root]]:border-[0.5px] [&[cmdk-root]]:border-border/70",
+        "max-sm:h-auto",
         className
       )}
       {...props}
     />
+  );
+}
+
+function CommandDialog({
+  children,
+  open,
+  onOpenChange,
+  ...props
+}: Dialog.Root.Props & {
+  children?: React.ReactNode;
+}) {
+  return (
+    <Dialog.Root onOpenChange={onOpenChange} open={open} {...props}>
+      <Dialog.Portal>
+        <Dialog.Backdrop
+          className={cn(
+            "fixed inset-0 z-50",
+            "bg-[oklch(0_0_0_/_0.5)]",
+            "animate-[fade-in_200ms_ease-out]",
+            "dark:bg-[oklch(0_0_0_/_0.7)]"
+          )}
+        />
+        <Dialog.Popup
+          className={cn(
+            "fixed left-1/2 top-1/2 z-50",
+            "-translate-x-1/2 -translate-y-1/2",
+            "max-w-2xl w-[calc(100%-2rem)]",
+            "animate-[dialog-in_200ms_ease-out]",
+            "max-sm:w-[calc(100%-2rem)]",
+            "[&_[cmdk-root]]:shadow-[var(--shadow-lg)]",
+            "[&_[cmdk-root]]:rounded-[var(--radius)]",
+            "[&_[cmdk-root]]:border-[0.5px]",
+            "[&_[cmdk-root]]:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
+            "[&_[cmdk-root]]:bg-card",
+            "max-sm:[&_[cmdk-root]]:max-w-full"
+          )}
+        >
+          {children}
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }
 
@@ -32,15 +74,16 @@ function CommandInput({
       className={cn(
         "[&[cmdk-input]]:flex [&[cmdk-input]]:h-11 [&[cmdk-input]]:w-full",
         "[&[cmdk-input]]:border-none [&[cmdk-input]]:bg-transparent",
-        "[&[cmdk-input]]:px-3 [&[cmdk-input]]:py-3 [&[cmdk-input]]:text-sm",
+        "[&[cmdk-input]]:px-4 [&[cmdk-input]]:py-3 [&[cmdk-input]]:text-sm",
         "[&[cmdk-input]]:text-foreground [&[cmdk-input]]:outline-none",
         "[&[cmdk-input]]:caret-primary",
         "[&[cmdk-input]]:placeholder:text-muted-foreground",
         "[&[cmdk-input]]:focus:outline-none",
         "[&[cmdk-root]:focus-within_&[cmdk-input]]:outline-none",
         "max-sm:[&[cmdk-input]]:h-12 max-sm:[&[cmdk-input]]:text-[0.9375rem]",
-        "max-sm:[&[cmdk-input]]:px-3 max-sm:[&[cmdk-input]]:py-3",
+        "max-sm:[&[cmdk-input]]:px-4 max-sm:[&[cmdk-input]]:py-3",
         "max-sm:[&[cmdk-input]]:placeholder:text-[0.9375rem]",
+        "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0",
         className
       )}
       data-slot="commandprimitive-input"
@@ -86,7 +129,7 @@ function CommandItem({
             >;
             return cloneElement(typedChild, {
               className: cn(
-                "flex items-center justify-center border-[0.5px] border-border/50 bg-muted p-1.5",
+                "flex items-center justify-center border-[0.5px] border-border/50 bg-muted p-[0.4rem]",
                 typedChild.props.className
               ),
             });
@@ -100,11 +143,11 @@ function CommandItem({
       className={cn(
         "[&[cmdk-item]]:relative [&[cmdk-item]]:flex [&[cmdk-item]]:cursor-pointer",
         "[&[cmdk-item]]:select-none [&[cmdk-item]]:items-center",
-        "[&[cmdk-item]]:px-2 [&[cmdk-item]]:py-2 [&[cmdk-item]]:text-sm",
+        "[&[cmdk-item]]:p-2 [&[cmdk-item]]:text-sm",
         "[&[cmdk-item]]:mt-2 [&[cmdk-item]]:gap-2 [&[cmdk-item]]:outline-none",
-        "[&[cmdk-item]]:isolate [&[cmdk-item]]:rounded-none",
+        "[&[cmdk-item]]:isolate",
         "[&[cmdk-item]]:before:absolute [&[cmdk-item]]:before:inset-0 [&[cmdk-item]]:before:content-['']",
-        "[&[cmdk-item]]:before:-z-10 [&[cmdk-item]]:before:bg-transparent [&[cmdk-item]]:before:rounded-none",
+        "[&[cmdk-item]]:before:-z-10 [&[cmdk-item]]:before:bg-transparent",
         "[&[cmdk-item]]:hover:before:bg-[var(--mix-card-80-muted)]",
         "[&[cmdk-item][data-selected=true]]:before:bg-[var(--mix-card-80-muted)]",
         "[&[cmdk-item][data-disabled=true]]:pointer-events-none [&[cmdk-item][data-disabled=true]]:opacity-50",
@@ -128,7 +171,7 @@ function CommandItem({
             "ml-auto border-[0.5px] border-border/50 bg-background px-1 py-0.5",
             "font-medium font-mono text-muted-foreground text-xs",
             "flex items-center gap-1",
-            "max-sm:px-1.5 max-sm:py-0.5 max-sm:text-[0.8125rem]"
+            "max-sm:px-1.5 max-sm:py-[0.1875rem] max-sm:text-[0.8125rem]"
           )}
         >
           <Command className="flex-shrink-0" size={11} />
@@ -185,7 +228,7 @@ function CommandSeparator({
   return (
     <CommandPrimitive.Separator
       className={cn(
-        "[&[cmdk-separator]]:h-px [&[cmdk-separator]]:w-full",
+        "[&[cmdk-separator]]:h-[0.5px] [&[cmdk-separator]]:w-full",
         "[&[cmdk-separator]]:my-1 [&[cmdk-separator]]:bg-border/40",
         className
       )}
@@ -215,6 +258,7 @@ function CommandLoading({
 
 export {
   CommandRoot as Command,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
