@@ -1,14 +1,10 @@
 "use client";
 
 import { Accordion } from "@base-ui-components/react/accordion";
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import styles from "./accordion.module.css";
 
-function AccordionRoot({
-  className,
-  ...props
-}: Accordion.Root.Props) {
+function AccordionRoot({ className, ...props }: Accordion.Root.Props) {
   return (
     <Accordion.Root
       className={cn(styles.root, className)}
@@ -18,10 +14,7 @@ function AccordionRoot({
   );
 }
 
-function AccordionItem({
-  className,
-  ...props
-}: Accordion.Item.Props) {
+function AccordionItem({ className, ...props }: Accordion.Item.Props) {
   return (
     <Accordion.Item
       className={cn(styles.item, className)}
@@ -31,10 +24,7 @@ function AccordionItem({
   );
 }
 
-function AccordionHeader({
-  className,
-  ...props
-}: Accordion.Header.Props) {
+function AccordionHeader({ className, ...props }: Accordion.Header.Props) {
   return (
     <Accordion.Header
       className={cn(styles.header, className)}
@@ -55,8 +45,32 @@ function AccordionTrigger({
       data-slot="accordion-trigger"
       {...props}
     >
-      {children}
-      <ChevronDown className={styles.chevron} />
+      <div className={styles.icon}>
+        <svg
+          aria-label="Accordion toggle icon"
+          fill="none"
+          height="18"
+          role="img"
+          viewBox="0 0 20 20"
+          width="18"
+        >
+          <title>Toggle accordion</title>
+          <path
+            className={styles.horizontalLine}
+            d="M4 10L16 10"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeWidth="2"
+          />
+          <path
+            d="M10 4L10 16"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeWidth="2"
+          />
+        </svg>
+      </div>
+      <div>{children}</div>
     </Accordion.Trigger>
   );
 }
@@ -72,7 +86,9 @@ function AccordionPanel({
       data-slot="accordion-panel"
       {...props}
     >
-      <div className={styles.content}>{children}</div>
+      <div className={styles.content}>
+        <div className={styles.contentInner}>{children}</div>
+      </div>
     </Accordion.Panel>
   );
 }

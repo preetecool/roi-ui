@@ -14,10 +14,7 @@ export const Index: Record<string, RegistryEntry> = {
   "accordion-demo": {
     name: "accordion-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/accordion-demo/accordion-demo.tsx",
-      "registry/brook/examples/accordion-demo/accordion-demo.module.css",
-    ],
+    files: ["registry/brook/examples/accordion-demo/accordion-demo.tsx"],
     path: "@/registry/brook/examples/accordion-demo/accordion-demo",
   },
   "alert-demo": {

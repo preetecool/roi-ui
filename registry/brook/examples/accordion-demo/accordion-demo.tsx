@@ -1,8 +1,12 @@
 "use client";
 
-import { Accordion } from "@base-ui-components/react/accordion";
-import { useState } from "react";
-import styles from "./accordion-demo.module.css";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
+} from "@/registry/brook/ui/accordion/accordion";
 
 const accordionItems = [
   {
@@ -26,83 +30,16 @@ const accordionItems = [
 ];
 
 export default function AccordionDemo() {
-  const [value, setValue] = useState<string[]>(["item-1"]);
-
-  const getExpandedIndices = () => {
-    return value
-      .map((v) => accordionItems.findIndex((item) => item.id === v))
-      .filter((i) => i !== -1);
-  };
-
-  const getItemClassName = (index: number) => {
-    const expandedIndices = getExpandedIndices();
-    const isExpanded = expandedIndices.includes(index);
-    const isBeforeExpanded = expandedIndices.includes(index + 1);
-    const isAfterExpanded = expandedIndices.includes(index - 1);
-
-    const classes = [styles.accordionItem];
-
-    if (isExpanded) {
-      classes.push(styles.expanded);
-    }
-    if (isBeforeExpanded) {
-      classes.push(styles.beforeExpanded);
-    }
-    if (isAfterExpanded) {
-      classes.push(styles.afterExpanded);
-    }
-
-    return classes.join(" ");
-  };
-
   return (
-    <div className={styles.container}>
-      <Accordion.Root onValueChange={setValue} value={value}>
-        {accordionItems.map((item, index) => (
-          <Accordion.Item
-            className={getItemClassName(index)}
-            key={item.id}
-            value={item.id}
-          >
-            <Accordion.Header>
-              <Accordion.Trigger className={styles.trigger}>
-                <div className={styles.icon}>
-                  <svg
-                    aria-label="Accordion toggle icon"
-                    fill="none"
-                    height="18"
-                    role="img"
-                    viewBox="0 0 20 20"
-                    width="18"
-                  >
-                    <title>Toggle accordion</title>
-                    <path
-                      className={styles.horizontalLine}
-                      d="M4 10L16 10"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M10 4L10 16"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
-                <div>{item.title}</div>
-              </Accordion.Trigger>
-            </Accordion.Header>
-
-            <Accordion.Panel className={styles.panel}>
-              <div className={styles.content}>
-                <div className={styles.contentInner}>{item.content}</div>
-              </div>
-            </Accordion.Panel>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
-    </div>
+    <Accordion defaultValue={["item-1"]}>
+      {accordionItems.map((item) => (
+        <AccordionItem key={item.id} value={item.id}>
+          <AccordionHeader>
+            <AccordionTrigger>{item.title}</AccordionTrigger>
+          </AccordionHeader>
+          <AccordionPanel>{item.content}</AccordionPanel>
+        </AccordionItem>
+      ))}
+    </Accordion>
   );
 }
