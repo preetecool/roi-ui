@@ -66,7 +66,7 @@ function LikeButton({
   isPlaying = false,
   onClick,
   className,
-  particleCount = 6,
+  particleCount = 5,
   colors = ["var(--foreground)"],
   colorMode = "alternating",
 }: {
@@ -235,7 +235,7 @@ function LikeButton({
         className
       )}
     >
-      <div className="relative flex w-full max-w-[240px] flex-col items-center justify-center overflow-visible px-5 py-5">
+      <div className="relative flex w-full max-w-[240px] flex-col items-center justify-center overflow-visible p-5">
         <div className="pointer-events-none absolute inset-x-[-40px] inset-y-[-60px] z-[1] overflow-visible">
           {particles.map((particle) => (
             <div
@@ -253,7 +253,7 @@ function LikeButton({
                   opacity: 0,
                   transform: "translate(-50%, -50%) scale(0)",
                   animation:
-                    "like-button-particle-out 0.5s ease-out var(--delay) forwards, like-button-particle-return 0.5s ease-out calc(0.65s + var(--return-delay)) forwards",
+                    "particleOut 0.5s ease-out var(--delay) forwards, particleReturn 0.5s ease-out calc(0.65s + var(--return-delay)) forwards",
                 } as React.CSSProperties
               }
             >
@@ -287,7 +287,7 @@ function LikeButton({
         <button
           aria-label={isLiked ? "Unlike" : "Like"}
           className={cn(
-            "rounded-full p-4 transition-transform duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
+            "rounded-full p-4 transition-transform duration-[250ms] ease-linear",
             "relative z-10 flex cursor-pointer items-center justify-center border-0 bg-transparent",
             "touch-[manipulation] select-none [-webkit-touch-callout:none] [-webkit-user-select:none]",
             "[-webkit-tap-highlight-color:transparent] [tap-highlight-color:transparent]",
@@ -295,7 +295,7 @@ function LikeButton({
             "[-webkit-perspective:1000] [perspective:1000]",
             "[-webkit-backface-visibility:hidden] [backface-visibility:hidden]",
             "my-1 overflow-visible outline-none will-change-[transform,opacity]",
-            "hover:scale-105",
+            "[@media(hover:hover)]:hover:scale-105",
             "focus:outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
             "max-md:transform-[translate3d(0,0,0)] max-md:min-h-12 max-md:min-w-12 max-md:p-4 max-md:[-webkit-transform:translate3d(0,0,0)]",
             "max-md:[-webkit-backface-visibility:hidden] max-md:[backface-visibility:hidden] max-md:[transform-origin:center]",
@@ -313,7 +313,10 @@ function LikeButton({
             transform: "translateZ(0)",
             WebkitTransform: "translateZ(0)",
             animation: isThumbAnimating
-              ? "like-button-thumb-tilt 1.15s cubic-bezier(0.455, 0.03, 0.515, 0.955)"
+              ? "thumbTilt 1.15s var(--ease-in-out-quad)"
+              : undefined,
+            WebkitAnimation: isThumbAnimating
+              ? "thumbTilt 1.15s cubic-bezier(0.4, 0, 0.2, 1)"
               : undefined,
           }}
           type="button"
@@ -321,7 +324,7 @@ function LikeButton({
           <svg
             aria-label="Like"
             className={cn(
-              "h-6 w-6 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "h-6 w-6 transition-all duration-[250ms] ease-linear",
               "transform-[translateZ(0)] will-change-[transform,opacity] [-webkit-transform:translateZ(0)]",
               isPlaying && "scale-110",
               "max-md:[-webkit-backface-visibility:hidden] max-md:[backface-visibility:hidden] max-md:[transform-origin:center]",
@@ -351,7 +354,7 @@ function LikeButton({
       </div>
 
       <style jsx>{`
-        @keyframes like-button-particle-out {
+        @keyframes particleOut {
           0% {
             transform: translate(-50%, -50%) scale(0.5);
             opacity: 0;
@@ -366,7 +369,7 @@ function LikeButton({
           }
         }
 
-        @keyframes like-button-particle-return {
+        @keyframes particleReturn {
           0% {
             transform: translate(
                 calc(-50% + (cos(var(--angle)) * var(--distance))),
@@ -389,7 +392,7 @@ function LikeButton({
           }
         }
 
-        @keyframes like-button-thumb-tilt {
+        @keyframes thumbTilt {
           0% {
             transform: rotate(0deg) scale(1) translateZ(0);
           }
@@ -401,7 +404,7 @@ function LikeButton({
           }
         }
 
-        @-webkit-keyframes like-button-thumb-tilt {
+        @-webkit-keyframes thumbTilt {
           0% {
             -webkit-transform: rotate(0deg) scale(1) translateZ(0);
           }
