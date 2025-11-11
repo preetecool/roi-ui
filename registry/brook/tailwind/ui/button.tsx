@@ -8,7 +8,7 @@ const buttonVariants = cva(
     "transition-transform duration-200 ease-[var(--ease-out-quad)] will-change-transform",
     "relative cursor-pointer overflow-hidden border border-transparent outline-none",
     "leading-[1.2] tracking-[-0.014em]",
-    "active:scale-[0.97] active:disabled:scale-100 active:[&.loading]:scale-100",
+    "",
     "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",
     "disabled:cursor-not-allowed disabled:opacity-70",
     "[&.loading]:cursor-not-allowed [&.loading]:opacity-70",
@@ -20,6 +20,7 @@ const buttonVariants = cva(
           "bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)]",
           "shadow-[0_0.5px_0.5px_rgba(0,0,0,0.1)]",
           "hover:bg-[color:oklch(from_var(--color-primary)_l_c_h_/_0.8)] hover:disabled:bg-[color:var(--color-primary)]",
+          "active:scale-[0.97] active:disabled:scale-100 active:[&.loading]:scale-100",
         ],
         secondary: [
           "bg-[color:var(--color-secondary)] text-[color:var(--color-secondary-foreground)]",
@@ -32,6 +33,7 @@ const buttonVariants = cva(
         ghost: [
           "bg-transparent text-[color:var(--color-foreground)]",
           "hover:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.66)] hover:disabled:bg-transparent",
+          "data-[popup-open]:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.7)]",
         ],
         outline: [
           "border-[color:oklch(from_var(--color-border)_l_c_h_/_0.7)] bg-[var(--mix-card-50-bg)] text-[color:var(--color-foreground)]",

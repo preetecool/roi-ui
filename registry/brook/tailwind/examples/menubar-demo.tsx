@@ -12,23 +12,12 @@ import {
   MenubarMenuSubmenuTrigger,
   MenubarMenuTrigger,
 } from "@/registry/brook/tailwind/ui/menubar";
-import { Button } from "@/registry/brook/ui/button/button";
 
 export default function MenubarDemo() {
   return (
     <Menubar>
       <MenubarMenu>
-        <MenubarMenuTrigger
-          render={
-            <Button
-              className="!border-none rounded-[0.4rem]"
-              size="sm"
-              variant="ghost"
-            >
-              File
-            </Button>
-          }
-        />
+        <MenubarMenuTrigger>File</MenubarMenuTrigger>
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
@@ -73,17 +62,7 @@ export default function MenubarDemo() {
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarMenuTrigger
-          render={
-            <Button
-              className="!border-none rounded-[0.4rem]"
-              size="sm"
-              variant="ghost"
-            >
-              Edit
-            </Button>
-          }
-        />
+        <MenubarMenuTrigger>Edit</MenubarMenuTrigger>
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
@@ -116,17 +95,7 @@ export default function MenubarDemo() {
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarMenuTrigger
-          render={
-            <Button
-              className="!border-none rounded-[0.4rem]"
-              size="sm"
-              variant="ghost"
-            >
-              View
-            </Button>
-          }
-        />
+        <MenubarMenuTrigger>View</MenubarMenuTrigger>
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>
@@ -159,17 +128,7 @@ export default function MenubarDemo() {
       </MenubarMenu>
 
       <MenubarMenu>
-        <MenubarMenuTrigger
-          render={
-            <Button
-              className="!border-none rounded-[0.4rem]"
-              size="sm"
-              variant="ghost"
-            >
-              Help
-            </Button>
-          }
-        />
+        <MenubarMenuTrigger>Help</MenubarMenuTrigger>
         <MenubarMenuPortal>
           <MenubarMenuPositioner sideOffset={8}>
             <MenubarMenuPopup>

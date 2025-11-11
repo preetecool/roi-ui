@@ -104,7 +104,7 @@ export default function PopoverDemo() {
                 />
                 <CopyButton
                   className={styles.copyButton}
-                  code="https://roi.com"
+                  code="https://roiui.com"
                 />
               </div>
             </PopoverPopup>

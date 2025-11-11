@@ -13,9 +13,8 @@
   letter-spacing: -0.014em;
   will-change: transform;
 }
-.base:active:not(:disabled):not(.loading) {
-  transform: scale(0.97);
-}
+
+/* Scale animation removed from base - only applied to primary variant */
 
 .base:focus-visible {
   outline: 2px solid var(--ring);
@@ -43,6 +42,10 @@
 
 .primary:hover:not(:disabled) {
   background-color: oklch(from var(--primary) l c h / 0.8);
+}
+
+.primary:active:not(:disabled):not(.loading) {
+  transform: scale(0.97);
 }
 
 .secondary {

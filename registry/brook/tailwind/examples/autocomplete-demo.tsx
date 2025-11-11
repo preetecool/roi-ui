@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/tailwind/ui/avatar";
+import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import {
   Autocomplete,
   AutocompleteEmpty,
@@ -17,61 +13,58 @@ import {
   AutocompletePositioner,
 } from "@/registry/brook/tailwind/ui/autocomplete";
 
-type User = {
+type Question = {
   value: string;
-  label: string;
-  email: string;
-  avatar: string;
+  question: string;
+  category: string;
 };
 
-const users: User[] = [
+const questions: Question[] = [
   {
-    value: "preetecool",
-    label: "preetecool",
-    email: "@preetecool",
-    avatar: "https://github.com/preetecool.png",
+    value: "reset-password",
+    question: "How do I reset my password?",
+    category: "Account",
   },
   {
-    value: "john-doe",
-    label: "John Doe",
-    email: "john@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
+    value: "payment-methods",
+    question: "What payment methods do you accept?",
+    category: "Billing",
   },
   {
-    value: "jane-smith",
-    label: "Jane Smith",
-    email: "jane@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
+    value: "cancel-subscription",
+    question: "How do I cancel my subscription?",
+    category: "Billing",
+  },
+  { value: "export-data", question: "Can I export my data?", category: "Data" },
+  {
+    value: "api-access",
+    question: "How do I get API access?",
+    category: "Developer",
   },
   {
-    value: "mike-johnson",
-    label: "Mike Johnson",
-    email: "mike@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
+    value: "contact-support",
+    question: "How do I contact support?",
+    category: "Support",
   },
   {
-    value: "sarah-wilson",
-    label: "Sarah Wilson",
-    email: "sarah@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face",
+    value: "refund-policy",
+    question: "What is your refund policy?",
+    category: "Billing",
   },
   {
-    value: "alex-brown",
-    label: "Alex Brown",
-    email: "alex@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=face",
+    value: "data-privacy",
+    question: "How is my data protected?",
+    category: "Privacy",
   },
   {
-    value: "emma-davis",
-    label: "Emma Davis",
-    email: "emma@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=32&h=32&fit=crop&crop=face",
+    value: "team-members",
+    question: "How do I add team members?",
+    category: "Account",
+  },
+  {
+    value: "integrations",
+    question: "What integrations are available?",
+    category: "Features",
   },
 ];
 
@@ -84,46 +77,43 @@ export default function AutocompleteDemo() {
         className="mb-2 ml-1 flex flex-col gap-1 text-sm font-medium leading-[17.5px] text-[var(--color-foreground)] max-sm:text-[0.9375rem]"
         htmlFor="ac-input"
       >
-        Search and select a user
+        Search for help or ask a question
       </label>
 
       <Autocomplete
-        items={users}
-        itemToStringValue={(item) => (item as User).label}
+        items={questions}
+        itemToStringValue={(item) => (item as Question).question}
         onValueChange={setValue}
         value={value}
       >
         <AutocompleteInput
           className="w-[300px] max-sm:w-full"
           id="ac-input"
-          placeholder="Search users..."
+          placeholder="Type your question or search FAQs..."
         />
 
         <AutocompletePortal>
           <AutocompletePositioner>
             <AutocompletePopup>
-              <AutocompleteEmpty>No user found.</AutocompleteEmpty>
+              <AutocompleteEmpty>
+                No matching questions found. Type your own question!
+              </AutocompleteEmpty>
               <AutocompleteList>
-                {(user: User) => (
-                  <AutocompleteItem key={user.value} value={user}>
-                    <div className="flex flex-1 items-center gap-4 max-sm:gap-3">
-                      <Avatar className="h-6 w-6 max-sm:h-7 max-sm:w-7">
-                        <AvatarImage alt={user.label} src={user.avatar} />
-                        <AvatarFallback>
-                          {user.label
-                            .split(" ")
-                            .map((n: string) => n[0])
-                            .join("")}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="text-left">
-                        <div className="text-sm font-medium max-sm:text-[0.9375rem]">
-                          {user.label}
-                        </div>
-                        <div className="text-xs text-[var(--color-muted-foreground)] max-sm:text-[0.8125rem]">
-                          {user.email}
+                {(question: Question) => (
+                  <AutocompleteItem key={question.value} value={question}>
+                    <div className="flex flex-1 items-center gap-3 max-sm:gap-2.5">
+                      <div className="min-w-0 flex-1 text-left">
+                        <div className="text-sm font-normal leading-[1.4] max-sm:text-[0.9375rem]">
+                          {question.question}
                         </div>
                       </div>
+                      <Badge
+                        className="flex-shrink-0"
+                        size="sm"
+                        variant="secondary"
+                      >
+                        {question.category}
+                      </Badge>
                     </div>
                   </AutocompleteItem>
                 )}
