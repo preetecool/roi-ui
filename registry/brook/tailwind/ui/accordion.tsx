@@ -63,7 +63,7 @@ function AccordionTrigger({
   return (
     <Accordion.Trigger
       className={cn(
-        "flex w-full cursor-pointer items-center gap-4 border-none bg-transparent text-left",
+        "group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent text-left",
         "text-base font-[350] tracking-[-0.02em] text-secondary-foreground",
         className
       )}
@@ -76,7 +76,7 @@ function AccordionTrigger({
           "transition-[color,rotate] duration-[200ms,150ms] ease-[ease,var(--ease-in-out-quad)]",
           "rotate-0",
           "[[data-panel-open]_&]:rotate-90",
-          "[.group:hover_&]:text-foreground"
+          "group-hover:text-foreground"
         )}
       >
         <svg
