@@ -4,6 +4,7 @@ import { useDocsSearch } from "fumadocs-core/search/client";
 import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { useKeyboardShortcut } from "@/hooks/use-keyboard-shortcut";
 import type { PageTree } from "@/lib/source-types";
 import {
   Command,
@@ -19,8 +20,6 @@ import {
   DialogPortal,
   DialogTrigger,
 } from "@/registry/brook/ui/dialog/dialog";
-import { useKeyboardShortcut } from "@/hooks/use-keyboard-shortcut";
-import "./search-global.css";
 import styles from "./search.module.css";
 import { SearchFooter } from "./search-footer";
 import { SearchItem } from "./search-item";
