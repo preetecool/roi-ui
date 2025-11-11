@@ -1,29 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
-import { highlightCode } from "@/lib/highlight-code";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 
 type GlobalsCSSClientProps = {
   cssModulesContent: string;
   tailwindContent: string;
+  highlightedCssModules: string;
+  highlightedTailwind: string;
 };
 
 export function GlobalsCSSClient({
   cssModulesContent,
   tailwindContent,
+  highlightedCssModules,
+  highlightedTailwind,
 }: GlobalsCSSClientProps) {
   const { style } = useStyle();
-  const [highlightedCode, setHighlightedCode] = useState("");
 
   const content = style === "tailwind" ? tailwindContent : cssModulesContent;
-
-  useEffect(() => {
-    highlightCode(content, "css").then(setHighlightedCode);
-  }, [content]);
+  const highlightedCode =
+    style === "tailwind" ? highlightedTailwind : highlightedCssModules;
 
   return (
     <div className={codeTabsStyles.wrapper}>
