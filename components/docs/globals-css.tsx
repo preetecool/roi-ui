@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { highlightCode } from "@/lib/highlight-code";
 import { GlobalsCSSClient } from "./globals-css-client";
 
 function filterCssForStyle(
@@ -62,7 +63,7 @@ function filterCssForStyle(
   return filteredLines.join("\n");
 }
 
-export function GlobalsCSS() {
+export async function GlobalsCSS() {
   const cssContent = readFileSync(
     join(process.cwd(), "styles/globals.css"),
     "utf8"
@@ -72,10 +73,16 @@ export function GlobalsCSS() {
   const cssModulesContent = filterCssForStyle(cssContent, "css-modules");
   const tailwindContent = filterCssForStyle(cssContent, "tailwind");
 
+  // Pre-highlight both versions at build time
+  const highlightedCssModules = await highlightCode(cssModulesContent, "css");
+  const highlightedTailwind = await highlightCode(tailwindContent, "css");
+
   return (
     <GlobalsCSSClient
       cssModulesContent={cssModulesContent}
       tailwindContent={tailwindContent}
+      highlightedCssModules={highlightedCssModules}
+      highlightedTailwind={highlightedTailwind}
     />
   );
 }
