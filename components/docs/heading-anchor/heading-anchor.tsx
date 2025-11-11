@@ -13,9 +13,9 @@ import "./heading-anchor.css";
 
 const COPIED_DISPLAY_DURATION = 800;
 const TEXT_RESET_DELAY = 200;
-const ICON_SIZE_H2 = 18;
-const ICON_SIZE_H3 = 16;
-const ICON_SIZE_H4 = 14;
+const ICON_SIZE_H2 = 16;
+const ICON_SIZE_H3 = 14;
+const ICON_SIZE_H4 = 12;
 
 const ICON_SIZE_BY_LEVEL: Record<2 | 3 | 4, number> = {
   2: ICON_SIZE_H2,
@@ -76,17 +76,17 @@ export function HeadingAnchor({
           className="heading-anchor-trigger"
           onClick={handleClick}
         >
-          {children}
           <LinkIcon
             className="heading-anchor-icon"
             size={iconSize}
             strokeWidth={1.5}
           />
+          {children}
         </PopoverTrigger>
       </Component>
       <PopoverPortal>
         <PopoverPositioner side="top" sideOffset={5}>
-          <PopoverPopup>{tooltipText}</PopoverPopup>
+          <PopoverPopup className="heading-anchor-popover">{tooltipText}</PopoverPopup>
         </PopoverPositioner>
       </PopoverPortal>
     </Popover>
