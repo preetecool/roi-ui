@@ -22,7 +22,7 @@ export default function CollapsibleDemo() {
       </CollapsibleTrigger>
       <CollapsiblePanel>
         <div className="flex flex-col gap-0 border-[oklch(from_var(--border)_l_c_h_/_0.5)] border-t p-2">
-          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150 hover:bg-[var(--mix-card-50-bg)]">
+          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150">
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Product Sales
             </span>
@@ -30,7 +30,7 @@ export default function CollapsibleDemo() {
               $28,450
             </span>
           </div>
-          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150 hover:bg-[var(--mix-card-50-bg)]">
+          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150">
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Subscriptions
             </span>
@@ -38,7 +38,7 @@ export default function CollapsibleDemo() {
               $12,340
             </span>
           </div>
-          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150 hover:bg-[var(--mix-card-50-bg)]">
+          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150">
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Services
             </span>
@@ -46,7 +46,7 @@ export default function CollapsibleDemo() {
               $3,220
             </span>
           </div>
-          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150 hover:bg-[var(--mix-card-50-bg)]">
+          <div className="flex items-center justify-between rounded-[var(--radius)] px-2 py-3 transition-[background-color] duration-150">
             <span className="text-[var(--muted-foreground)] text-sm leading-5">
               Other
             </span>

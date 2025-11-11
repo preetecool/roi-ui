@@ -6,10 +6,13 @@
   padding: 0;
 }
 
+.commandWrapper {
+  outline: none;
+}
+
 .commandWrapper:focus-visible,
 .commandWrapper:focus,
 .commandWrapper:focus-within {
-  outline: none;
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 

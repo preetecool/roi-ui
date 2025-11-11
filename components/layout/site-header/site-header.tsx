@@ -2,12 +2,12 @@
 
 import type { PageTree } from "fumadocs-core/server";
 import Link from "next/link";
-import { Button } from "@/registry/brook/ui/button/button";
+import { Search } from "@/components/docs/search/search";
+import { MobileNav } from "@/components/layout/mobile-nav/mobile-nav";
+import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
 import { GitHubIcon } from "@/components/shared/github-icon";
 import { Logo } from "@/components/shared/logo";
-import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
-import { MobileNav } from "@/components/layout/mobile-nav/mobile-nav";
-import { Search } from "@/components/docs/search/search";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./site-header.module.css";
 
 type SiteHeaderProps = {

@@ -76,7 +76,7 @@
   position: fixed;
   inset: 0;
   left: 50%;
-  top: -10px;
+  top: 0;
   z-index: 200;
   width: calc(100% - 2rem);
   transform: translate(-50%, 0);

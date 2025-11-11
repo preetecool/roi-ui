@@ -15,6 +15,7 @@
   outline: none;
   padding: 0.125rem 0;
   cursor: pointer;
+  position: relative;
 }
 
 .heading-anchor-trigger:hover,
@@ -41,17 +42,25 @@
   color: var(--muted-foreground);
   transform: scale(0.95);
   will-change: opacity, transform;
+  position: absolute;
+  left: 0;
+  transform-origin: center;
 }
 
 .heading-anchor-trigger:hover .heading-anchor-icon,
 .heading-anchor-trigger[data-popup-open] .heading-anchor-icon,
 .heading-anchor-trigger:focus-visible .heading-anchor-icon {
   opacity: 1;
-  transform: translateX(3px) scale(1);
+  transform: translateX(-100%) translateX(-0.5rem) scale(1);
   color: var(--foreground);
 }
 
 .heading-anchor-trigger:active .heading-anchor-icon {
   color: var(--foreground);
   opacity: 1;
+}
+
+.heading-anchor-popover {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
 }

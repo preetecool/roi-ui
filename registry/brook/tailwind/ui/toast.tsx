@@ -52,6 +52,7 @@ function ToastRoot({ className, ...props }: Toast.Root.Props) {
         "data-[expanded]:[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--offset-y)))]",
         "data-[limited]:opacity-0",
         "data-[starting-style]:[transform:translateY(150%)]",
+        "data-[starting-style]:opacity-0",
         "[&[data-ending-style]:not([data-limited]):not([data-swipe-direction])]:[transform:translateY(150%)]",
         "data-[ending-style]:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
         "data-[expanded]:data-[ending-style]:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
@@ -63,7 +64,7 @@ function ToastRoot({ className, ...props }: Toast.Root.Props) {
         "data-[expanded]:data-[ending-style]:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-150%))]",
         "h-[var(--height)]",
         "data-[expanded]:h-[var(--toast-height)]",
-        "[transition:transform_0.6s_cubic-bezier(0.22,1,0.36,1),opacity_0.5s,height_0.17s_var(--ease-out-expo)]",
+        "[transition:transform_0.5s_ease,opacity_0.5s,height_0.3s_var(--ease-out-expo)]",
         className
       )}
       data-slot="toast-root"
@@ -76,7 +77,7 @@ function ToastContent({ className, ...props }: Toast.Content.Props) {
   return (
     <Toast.Content
       className={cn(
-        "overflow-hidden transition-opacity [transition-duration:350ms]",
+        "overflow-hidden transition-opacity [transition-duration:500ms]",
         "data-[behind]:pointer-events-none data-[behind]:opacity-0",
         "data-[expanded]:pointer-events-auto data-[expanded]:opacity-100",
         className
