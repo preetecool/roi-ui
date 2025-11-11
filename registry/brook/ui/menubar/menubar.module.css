@@ -48,7 +48,7 @@
 
   &:hover::before,
   &:focus::before,
-  &[data-state="open"]::before {
+  &[data-popup-open]::before {
     background-color: oklch(from var(--accent) l c h / 0.7);
   }
 

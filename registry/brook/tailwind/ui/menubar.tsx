@@ -42,9 +42,22 @@ function MenubarMenuRoot({
 }
 
 function MenubarMenuTrigger({
+  className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuTrigger>) {
-  return <DropdownMenuTrigger {...props} />;
+  return (
+    <DropdownMenuTrigger
+      className={cn(
+        "inline-flex items-center justify-center rounded-[0.4rem] border-none",
+        "h-8 px-3 text-sm font-medium bg-transparent",
+        "leading-[1.2] tracking-[-0.014em]",
+        "data-[popup-open]:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
+        "hover:bg-[oklch(from_var(--accent)_l_c_h_/_0.66)]",
+        className
+      )}
+      {...props}
+    />
+  );
 }
 
 const MenubarMenuPortal = DropdownMenuPortal;
