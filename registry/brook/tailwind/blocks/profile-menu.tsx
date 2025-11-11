@@ -63,6 +63,7 @@ export default function ProfileMenuDemo() {
               "focus-visible:-outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
             )}
             variant="outline"
+            data-slot="dropdown-trigger"
           >
             <Avatar className="h-8 w-8 flex-shrink-0">
               <AvatarImage alt="@preetecool" src="/preetecool.png" />

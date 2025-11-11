@@ -57,7 +57,11 @@ export default function ProfileMenuDemo() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button className={styles.triggerButton} variant="outline">
+          <Button
+            className={styles.triggerButton}
+            data-slot="dropdown-trigger"
+            variant="outline"
+          >
             <Avatar className={styles.triggerAvatar}>
               <AvatarImage alt="@preetecool" src="/preetecool.png" />
               <AvatarFallback>PC</AvatarFallback>
