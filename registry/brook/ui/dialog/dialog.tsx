@@ -26,7 +26,13 @@ function DialogOverlay({ className, ...props }: Dialog.Backdrop.Props) {
 }
 
 function DialogPopup({ className, ...props }: Dialog.Popup.Props) {
-  return <Dialog.Popup className={cn(styles.content, className)} {...props} />;
+  return (
+    <Dialog.Popup
+      className={cn(styles.content, className)}
+      data-slot="dialog-popup"
+      {...props}
+    />
+  );
 }
 
 function DialogTitle({ className, ...props }: Dialog.Title.Props) {
