@@ -1,10 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import type { PageTree } from "fumadocs-core/server";
 import { SiteFooter } from "@/components/layout/site-footer/site-footer";
-import { SiteHeader } from "@/components/layout/site-header/site-header";
 import { Hero } from "./hero/hero";
 import styles from "./home-page.module.css";
+
+const SiteHeader = dynamic(
+  () =>
+    import("@/components/layout/site-header/site-header").then(
+      (mod) => mod.SiteHeader
+    ),
+  { ssr: false }
+);
 
 type HomePageProps = {
   pageTree: PageTree.Root;

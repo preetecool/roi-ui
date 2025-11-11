@@ -1,7 +1,6 @@
 "use client";
 
 import { Dialog } from "@base-ui-components/react";
-
 import type { PageTree } from "fumadocs-core/server";
 import { X } from "lucide-react";
 import Link from "next/link";
@@ -46,7 +45,59 @@ export function MobileNav({ tree }: MobileNavProps) {
           style={{ backgroundColor: "transparent" }}
         />
         <Dialog.Popup className={`${styles.drawer}`}>
-          <div className={styles.viewport}>
+          <MobileNavContent
+            pathname={pathname}
+            setOpen={setOpen}
+            tree={tree}
+          />
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
+function MobileNavContent({
+  tree,
+  pathname,
+  setOpen,
+}: {
+  tree: PageTree.Root;
+  pathname: string;
+  setOpen: (open: boolean) => void;
+}) {
+  return (
+    <>
+      <div className={styles.viewport}
+        onTouchStart={(event) => {
+          const viewport = event.currentTarget;
+
+          if (viewport.scrollTop <= 0) {
+            viewport.addEventListener(
+              'touchend',
+              function handleTouchEnd() {
+                if (viewport.scrollTop < -32) {
+                  const y = viewport.scrollTop;
+
+                  viewport.addEventListener(
+                    'scroll',
+                    function handleNextScroll() {
+                      if (viewport.scrollTop < y) {
+                        viewport.style.translate = `0px -${y}px`;
+                        viewport.style.transition = `400ms`;
+                        setOpen(false);
+                      } else if (viewport.scrollTop === y) {
+                        viewport.addEventListener('scroll', handleNextScroll, { once: true });
+                      }
+                    },
+                    { once: true },
+                  );
+                }
+              },
+              { once: true },
+            );
+          }
+        }}
+      >
             <div className={styles.viewportInner}>
               <Dialog.Close
                 className={styles.backdropTapArea}
@@ -100,9 +151,7 @@ export function MobileNav({ tree }: MobileNavProps) {
               </div>
             </div>
           </div>
-        </Dialog.Popup>
-      </Dialog.Portal>
-    </Dialog.Root>
+    </>
   );
 }
 

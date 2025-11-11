@@ -1,0 +1,9 @@
+:root {
+  --header-height: 64px;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --header-height: 52px;
+  }
+}
