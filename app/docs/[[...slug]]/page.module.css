@@ -34,7 +34,7 @@
 
 .pageTitle {
   scroll-margin-top: 5rem;
-  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -158,23 +158,44 @@
 }
 
 .contentWrapper h2 {
-  margin-top: 60px;
+  margin-top: 36px;
   margin-bottom: var(--space-lg);
-  font-size: 28px;
+  font-size: clamp(1.17rem, 1rem + 0.67vw, 1.5rem);
   line-height: 1.25;
   letter-spacing: -0.015em;
+}
+
+.contentWrapper [class*="code-tabs-shared-module"] + h2,
+.contentWrapper [class*="component-preview-module"] + h2,
+.contentWrapper div:has([class*="tabs-module"]) + h2,
+.contentWrapper [class*="code-block-module"] + h2 {
+  margin-top: 60px;
+}
+
+.contentWrapper h2:has(+ p + [class*="component-preview-module"]) {
+  margin-bottom: 6px;
 }
 
 .contentWrapper h3 {
   margin-top: var(--space-xl);
   margin-bottom: 6px;
-  font-size: 22px;
+  font-size: clamp(0.97rem, 0.83rem + 0.56vw, 1.25rem);
   line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
+.contentWrapper h3:has(+ [class*="component-preview-module"]) {
+  margin-bottom: 16px;
+}
+
 .contentWrapper h2 + h3 {
   margin-top: var(--space-md);
+}
+
+.contentWrapper [class*="code-tabs-module"] + h3,
+.contentWrapper [class*="code-block-module"] + h3,
+.contentWrapper [class*="component-preview-module"] + h3 {
+  margin-top: 60px;
 }
 
 .contentWrapper h4 {
