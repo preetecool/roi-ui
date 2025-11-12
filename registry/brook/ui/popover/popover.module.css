@@ -1,15 +1,25 @@
 .trigger {
   @media (hover: hover) {
-    &:hover:not([data-popup-open]) {
+    &:hover {
       background-color: var(--accent);
     }
   }
 
-  &:active:not([data-popup-open]) {
+  &:active {
     background-color: var(--accent);
   }
 
   &[data-popup-open] {
+    background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &[data-popup-open]:hover {
+      background-color: var(--accent);
+    }
+  }
+
+  &[data-popup-open]:active {
     background-color: var(--accent);
   }
 

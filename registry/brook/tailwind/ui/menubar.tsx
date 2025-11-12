@@ -52,7 +52,8 @@ function MenubarMenuTrigger({
         "h-8 px-3 text-sm font-medium bg-transparent",
         "leading-[1.2] tracking-[-0.014em]",
         "data-[popup-open]:bg-[var(--accent)]",
-        "hover:not([data-popup-open]):bg-[var(--accent)]",
+        "hover:bg-[var(--accent)]",
+        "hover:data-[popup-open]:bg-[var(--accent)]",
         className
       )}
       {...props}

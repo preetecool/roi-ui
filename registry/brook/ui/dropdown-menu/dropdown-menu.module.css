@@ -11,9 +11,12 @@
   &[data-popup-open] {
     background-color: var(--muted);
     color: var(--foreground);
+  }
 
-    & > * {
-      pointer-events: none;
+  @media (hover: hover) {
+    &[data-popup-open]:hover {
+      background-color: var(--muted);
+      color: var(--foreground);
     }
   }
 

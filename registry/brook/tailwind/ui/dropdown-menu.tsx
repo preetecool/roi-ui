@@ -16,7 +16,7 @@ function DropdownMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
       className={cn(
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "data-[popup-open]:bg-muted data-[popup-open]:text-foreground",
-        "data-[popup-open]:[&>*]:pointer-events-none",
+        "hover:data-[popup-open]:bg-muted hover:data-[popup-open]:text-foreground",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
       )}

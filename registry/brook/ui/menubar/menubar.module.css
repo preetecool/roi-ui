@@ -46,10 +46,19 @@
     transition: background-color 250ms var(--ease-out-expo);
   }
 
-  &:hover:not([data-popup-open])::before,
   &:focus::before,
   &[data-popup-open]::before {
     background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
+
+    &[data-popup-open]:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus {

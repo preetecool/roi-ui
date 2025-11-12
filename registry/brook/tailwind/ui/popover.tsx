@@ -15,9 +15,11 @@ function PopoverTrigger({
   return (
     <Popover.Trigger
       className={cn(
-        "hover:not([data-popup-open]):bg-[var(--accent)]",
-        "active:not([data-popup-open]):bg-[var(--accent)]",
+        "hover:bg-[var(--accent)]",
+        "active:bg-[var(--accent)]",
         "data-[popup-open]:bg-[var(--accent)]",
+        "hover:data-[popup-open]:bg-[var(--accent)]",
+        "active:data-[popup-open]:bg-[var(--accent)]",
         "focus-visible:-outline-offset-1 focus-visible:outline-2 focus-visible:outline-[var(--ring)]",
         className
       )}
