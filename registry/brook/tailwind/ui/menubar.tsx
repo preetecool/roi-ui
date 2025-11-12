@@ -25,7 +25,7 @@ function MenubarRoot({
       className={cn(
         "flex items-center bg-[var(--mix-card-50-bg)]",
         "rounded-[var(--radius)] border-[0.5px] border-[var(--color-border-60)]",
-        "shadow-[0px_0.5px_0.5px_var(--shadow-color),0px_0.5px_0.5px_var(--shadow-color),0px_0.5px_0.5px_var(--shadow-color)]",
+        "shadow-[var(--shadow-border-stack)]",
         "gap-0.5 p-0.5",
         "max-sm:gap-1.5 max-sm:p-1.5",
         className
@@ -87,7 +87,7 @@ function MenubarMenuPopup({
         "min-w-[170px] bg-[var(--popover)]",
         "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
         "flex flex-col",
-        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "shadow-[var(--shadow-border-stack)]",
         "origin-[top_center] transition-[transform,scale,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",

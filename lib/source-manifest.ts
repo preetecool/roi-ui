@@ -340,7 +340,7 @@ export const pagesManifest: PageMetadata[] = [
     slug: ["ui", "navigation-menu"],
     url: "/docs/ui/navigation-menu",
     title: "Navigation Menu",
-    description: "A navigation menu linking to diffrent pages.",
+    description: "A linear inspired navigation menu linking to diffrent pages.",
     links: {
       doc: "https://base-ui.com/react/components/navigation-menu",
       api: "https://base-ui.com/react/components/navigation-menu#api-reference",

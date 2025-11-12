@@ -1,4 +1,3 @@
-import { Archive, Copy, Edit, Trash2 } from "lucide-react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   DropdownMenu,
@@ -17,7 +16,7 @@ export default function DropdownMenuDemo() {
       <DropdownMenuTrigger
         render={
           <Button variant="outline">
-            <span> Actions </span>
+            <span>Sort by</span>
           </Button>
         }
       />
@@ -25,25 +24,13 @@ export default function DropdownMenuDemo() {
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup render={<ul />}>
             <DropdownMenuSpacer />
-            <DropdownMenuItem icon={<Edit size={14} />} render={<li />}>
-              Edit...
-            </DropdownMenuItem>
-
-            <DropdownMenuItem icon={<Copy size={14} />} render={<li />}>
-              Copy...
-            </DropdownMenuItem>
-
-            <DropdownMenuItem icon={<Archive size={14} />} render={<li />}>
-              Archive
-            </DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Name</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Date Created</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Date Modified</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Size</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              icon={<Trash2 size={14} />}
-              render={<li />}
-              variant="destructive"
-            >
-              Delete
-            </DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Type</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Priority</DropdownMenuItem>
             <DropdownMenuSpacer />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>

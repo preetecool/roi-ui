@@ -135,10 +135,10 @@ function AutocompletePopup({
     <Autocomplete.Popup
       className={cn(
         "mt-px box-border rounded-[var(--radius)] p-1",
-        "bg-[var(--mix-card-75-bg)] text-popover-foreground",
+        "bg-[var(--popover)] text-popover-foreground",
         "max-h-[min(var(--available-height),23rem)] w-[var(--anchor-width)] max-w-[var(--available-width)]",
         "overflow-y-auto overscroll-contain [scroll-padding-block:0.5rem]",
-        "border border-border shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]",
+        "border border-border shadow-[var(--shadow-border-stack)]",
         "origin-[var(--transform-origin)] animate-[slideDownAndFade_150ms_ease-out]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
@@ -250,7 +250,7 @@ function AutocompleteItem({
         "data-[highlighted]:relative data-[highlighted]:z-10",
         "data-[highlighted]:before:-z-10 data-[highlighted]:before:absolute data-[highlighted]:before:content-['']",
         "data-[highlighted]:before:inset-0 data-[highlighted]:before:rounded-[calc(var(--radius)-2px)]",
-        "data-[highlighted]:before:bg-[var(--mix-accent-33-trans)]",
+        "data-[highlighted]:before:bg-[var(--accent)]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         "max-sm:px-4 max-sm:py-3 max-sm:text-[0.9375rem]",
         className
