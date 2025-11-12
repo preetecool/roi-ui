@@ -20,27 +20,30 @@
 }
 
 .popup {
-  background-color: var(--mix-card-33-bg);
+  background-color: var(--popover);
   border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-radius: var(--radius-lg);
   padding: 1rem;
   max-width: 320px;
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   z-index: 150;
-  animation: scaleIn 0.2s ease-out;
+  animation: scaleIn 0.25s var(--ease-out-expo);
   transform-origin: var(--transform-origin);
 
   &[data-state="open"] {
-    animation: scaleIn 0.2s ease-out;
+    animation: scaleIn 0.25s var(--ease-out-expo);
   }
 
   &[data-state="closed"] {
-    animation: scaleOut 0.15s ease-in;
+    animation: scaleOut 0.25s var(--ease-out-expo);
   }
 }
 
 .arrow {
-  fill: var(--mix-card-33-bg);
+  fill: var(--popover);
   stroke: var(--border);
   stroke-width: 1px;
   width: 10px;

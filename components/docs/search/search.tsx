@@ -102,32 +102,29 @@ export function Search({ tree }: SearchProps) {
                 {query.isLoading ? "Searching..." : "No results found."}
               </CommandEmpty>
 
-              {tree?.children.map((group) => (
-                <CommandGroup heading={group.name} key={group.$id}>
+              {tree?.children.map((group, index) => (
+                <CommandGroup heading={group.name} key={group.url || `group-${index}`}>
                   {group.type === "folder" &&
-                    group.children.map((item) => {
-                      if (item.type === "page") {
-                        return (
-                          <SearchItem
-                            key={item.url}
-                            onSelect={() => handleSelect(item.url)}
-                            value={
-                              item.name?.toString()
-                                ? `${group.name} ${item.name}`
-                                : ""
-                            }
-                          >
-                            {getIcon(item.url)}
-                            <div className={styles.commandItemContent}>
-                              <div className={styles.commandItemTitle}>
-                                {item.name}
-                              </div>
+                    group.children
+                      .filter((item) => item.type === "page")
+                      .map((item) => (
+                        <SearchItem
+                          key={item.url}
+                          onSelect={() => handleSelect(item.url)}
+                          value={
+                            item.name?.toString()
+                              ? `${group.name} ${item.name}`
+                              : ""
+                          }
+                        >
+                          {getIcon(item.url)}
+                          <div className={styles.commandItemContent}>
+                            <div className={styles.commandItemTitle}>
+                              {item.name}
                             </div>
-                          </SearchItem>
-                        );
-                      }
-                      return null;
-                    })}
+                          </div>
+                        </SearchItem>
+                      ))}
                 </CommandGroup>
               ))}
 

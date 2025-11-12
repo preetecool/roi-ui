@@ -1,11 +1,11 @@
 .trigger {
   @media (hover: hover) {
-    &:hover {
+    &:hover:not([data-popup-open]) {
       background-color: var(--accent);
     }
   }
 
-  &:active {
+  &:active:not([data-popup-open]) {
     background-color: var(--accent);
   }
 
@@ -36,17 +36,17 @@
   box-sizing: border-box;
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
-  background-color: var(--mix-card-33-bg);
+  background-color: var(--popover);
   color: var(--popover-foreground);
   transform-origin: var(--transform-origin);
   transition:
-    transform 150ms ease,
-    opacity 150ms ease;
-  outline: 0.5px solid oklch(from var(--border) l c h / 0.6);
+    transform 250ms var(--ease-out-expo),
+    opacity 250ms var(--ease-out-expo);
+  outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
   box-shadow:
-    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
-    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
-    oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   z-index: 1000;
 
   &[data-starting-style],
@@ -90,7 +90,7 @@
   }
 
   & svg {
-    fill: var(--mix-card-33-bg);
+    fill: var(--popover);
     stroke: var(--border);
     stroke-width: 1px;
   }
@@ -154,6 +154,6 @@
 }
 
 :global([data-theme="dark"]) .popup {
-  outline: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
   outline-offset: -1px;
 }

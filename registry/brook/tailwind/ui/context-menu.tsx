@@ -59,10 +59,10 @@ function ContextMenuPopup({ className, ...props }: ContextMenu.Popup.Props) {
   return (
     <ContextMenu.Popup
       className={cn(
-        "box-border min-w-[140px] bg-[var(--mix-card-50-bg)]",
-        "rounded-[var(--radius)] border-[0.5px] border-border/60",
-        "flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
-        "origin-[top_center] transition-[transform,scale,opacity] duration-[150ms] ease-[var(--ease-out-expo)]",
+        "box-border min-w-[140px] bg-[var(--popover)]",
+        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
+        "flex flex-col shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "origin-[top_center] transition-[transform,scale,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
@@ -110,10 +110,10 @@ function ContextMenuItem({
         "relative isolate",
         "before:absolute before:inset-x-1 before:inset-y-0 before:content-['']",
         "before:-z-10 before:rounded-[0.3rem] before:bg-transparent",
-        "data-[popup-open]:before:bg-accent/70",
-        "data-[highlighted]:before:bg-accent/70",
-        "hover:before:bg-accent/70",
-        "focus:outline-none focus:before:bg-accent/70",
+        "data-[popup-open]:before:bg-[var(--accent)]",
+        "data-[highlighted]:before:bg-[var(--accent)]",
+        "hover:before:bg-[var(--accent)]",
+        "focus:outline-none focus:before:bg-[var(--accent)]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         "data-[disabled]:hover:bg-transparent",
         "[&:hover_.context-menu-shortcut]:text-secondary-foreground",
@@ -227,7 +227,7 @@ function ContextMenuSeparator({
   return (
     <div className="py-[5px]">
       <ContextMenu.Separator
-        className={cn("h-px border-border/60 border-b-[0.5px]", className)}
+        className={cn("h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]", className)}
         {...props}
       />
     </div>
@@ -254,10 +254,10 @@ function ContextMenuSubmenuTrigger({
         "relative isolate",
         "before:absolute before:inset-x-1 before:inset-y-0 before:content-['']",
         "before:-z-10 before:rounded-[0.3rem] before:bg-transparent",
-        "data-[popup-open]:before:bg-accent/70",
-        "data-[highlighted]:before:bg-accent/70",
-        "hover:before:bg-accent/70",
-        "focus:outline-none focus:before:bg-accent/70",
+        "data-[popup-open]:before:bg-[var(--accent)]",
+        "data-[highlighted]:before:bg-[var(--accent)]",
+        "hover:before:bg-[var(--accent)]",
+        "focus:outline-none focus:before:bg-[var(--accent)]",
         "[&:hover_.submenu-icon]:text-secondary-foreground",
         "[&:hover>svg]:text-secondary-foreground [&>svg]:text-muted-foreground",
         inset && "pl-8",
