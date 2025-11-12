@@ -51,8 +51,9 @@ function MenubarMenuTrigger({
         "inline-flex items-center justify-center rounded-[0.4rem] border-none",
         "h-8 px-3 text-sm font-medium bg-transparent",
         "leading-[1.2] tracking-[-0.014em]",
-        "data-[popup-open]:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
-        "hover:bg-[oklch(from_var(--accent)_l_c_h_/_0.66)]",
+        "data-[popup-open]:bg-[var(--accent)]",
+        "hover:bg-[var(--accent)]",
+        "hover:data-[popup-open]:bg-[var(--accent)]",
         className
       )}
       {...props}
@@ -83,11 +84,11 @@ function MenubarMenuPopup({
   return (
     <DropdownMenuPopup
       className={cn(
-        "min-w-[170px] bg-[var(--mix-card-50-bg)]",
-        "rounded-[var(--radius)] border-[0.5px] border-[var(--color-border-60)]",
+        "min-w-[170px] bg-[var(--popover)]",
+        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
         "flex flex-col",
-        "shadow-[0px_0.5px_0.5px_var(--shadow-color),0px_0.5px_0.5px_var(--shadow-color),0px_0.5px_0.5px_var(--shadow-color)]",
-        "origin-[top_center] transition-[transform,scale,opacity] duration-[150ms] ease-[var(--ease-out-expo)]",
+        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "origin-[top_center] transition-[transform,scale,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",

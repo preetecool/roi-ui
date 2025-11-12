@@ -46,10 +46,19 @@
     transition: background-color 250ms var(--ease-out-expo);
   }
 
-  &:hover::before,
   &:focus::before,
   &[data-popup-open]::before {
-    background-color: oklch(from var(--accent) l c h / 0.7);
+    background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
+
+    &[data-popup-open]:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus {
@@ -81,8 +90,8 @@
 
 .menuPopup {
   min-width: 170px;
-  background-color: var(--mix-card-50-bg);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  background-color: var(--popover);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
@@ -92,8 +101,8 @@
     oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   transform-origin: "top center";
   transition:
-    transform 150ms var(--ease-out-expo),
-    opacity 150ms var(--ease-out-expo);
+    transform 250ms var(--ease-out-expo),
+    opacity 250ms var(--ease-out-expo);
 
   &[data-starting-style],
   &[data-ending-style] {

@@ -25,19 +25,19 @@
 .popup {
   box-sizing: border-box;
   min-width: 140px;
-  background-color: var(--mix-card-50-bg);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  background-color: var(--popover);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   box-shadow:
-    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
-    oklch(from var(--border) l c h / 0.1) 0px 1px 2px,
-    oklch(from var(--border) l c h / 0.1) 0px 1px 1px;
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
+    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   transform-origin: "top center";
   transition:
-    transform 150ms var(--ease-out-expo),
-    opacity 150ms var(--ease-out-expo);
+    transform 250ms var(--ease-out-expo),
+    opacity 250ms var(--ease-out-expo);
 
   &[data-starting-style],
   &[data-ending-style] {
@@ -57,7 +57,7 @@
 
 .separator {
   height: 1px;
-  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.8);
 }
 
 .arrow {
@@ -96,7 +96,7 @@
   &[data-highlighted]::before,
   &:hover::before,
   &:focus::before {
-    background-color: oklch(from var(--accent) l c h / 0.7);
+    background-color: var(--accent);
   }
 
   &:focus,
@@ -271,7 +271,7 @@
   &[data-highlighted]::before,
   &:hover::before,
   &:focus::before {
-    background-color: oklch(from var(--accent) l c h / 0.7);
+    background-color: var(--accent);
   }
 
   &:focus,

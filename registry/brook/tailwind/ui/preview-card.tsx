@@ -57,11 +57,12 @@ function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
   return (
     <PreviewCard.Popup
       className={cn(
-        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--mix-card-33-bg)]",
-        "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4 shadow-lg",
+        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--popover)]",
+        "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4",
+        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
         "origin-[var(--transform-origin)]",
-        "data-[state=open]:animate-[scaleIn_0.2s_ease-out]",
-        "data-[state=closed]:animate-[scaleOut_0.15s_ease-in]",
+        "data-[state=open]:animate-[scaleIn_0.25s_var(--ease-out-expo)]",
+        "data-[state=closed]:animate-[scaleOut_0.25s_var(--ease-out-expo)]",
         className
       )}
       data-slot="previewcard-popup"
@@ -98,7 +99,7 @@ function PreviewCardArrow({ className, ...props }: PreviewCard.Arrow.Props) {
   return (
     <PreviewCard.Arrow
       className={cn(
-        "h-[5px] w-2.5 fill-[var(--mix-card-33-bg)] stroke-1 stroke-border",
+        "h-[5px] w-2.5 fill-[var(--popover)] stroke-1 stroke-border",
         className
       )}
       data-slot="previewcard-arrow"

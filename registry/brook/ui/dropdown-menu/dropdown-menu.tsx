@@ -6,16 +6,11 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./dropdown-menu.module.css";
 
-function DropdownMenuRoot({
-  ...props
-}: Menu.Root.Props) {
+function DropdownMenuRoot({ ...props }: Menu.Root.Props) {
   return <Menu.Root {...props} />;
 }
 
-function DropdownMenuTrigger({
-  className,
-  ...props
-}: Menu.Trigger.Props) {
+function DropdownMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
   return <Menu.Trigger {...props} className={cn(styles.trigger, className)} />;
 }
 
@@ -27,18 +22,15 @@ function DropdownMenuPositioner({
 }: Menu.Positioner.Props) {
   return (
     <Menu.Positioner
-      data-slot="menu-positioner"
       className={cn(styles.positioner, className)}
+      data-slot="menu-positioner"
       side="top"
       {...props}
     />
   );
 }
 
-function DropdownMenuPopup({
-  className,
-  ...props
-}: Menu.Popup.Props) {
+function DropdownMenuPopup({ className, ...props }: Menu.Popup.Props) {
   return <Menu.Popup className={cn(styles.popup, className)} {...props} />;
 }
 
@@ -68,10 +60,7 @@ function DropdownMenuItem({
   );
 }
 
-function DropdownMenuSeparator({
-  className,
-  ...props
-}: Menu.Separator.Props) {
+function DropdownMenuSeparator({ className, ...props }: Menu.Separator.Props) {
   return (
     <div className={styles.seperatorWrapper}>
       <Menu.Separator className={cn(styles.separator, className)} {...props} />
@@ -79,16 +68,11 @@ function DropdownMenuSeparator({
   );
 }
 
-function DropdownMenuArrow({
-  className,
-  ...props
-}: Menu.Arrow.Props) {
+function DropdownMenuArrow({ className, ...props }: Menu.Arrow.Props) {
   return <Menu.Arrow className={cn(styles.arrow, className)} {...props} />;
 }
 
-function DropdownMenuSubmenuRoot({
-  ...props
-}: Menu.SubmenuRoot.Props) {
+function DropdownMenuSubmenuRoot({ ...props }: Menu.SubmenuRoot.Props) {
   return <Menu.SubmenuRoot {...props} />;
 }
 
@@ -99,8 +83,8 @@ function DropdownMenuSubmenuTrigger({
 }: Menu.SubmenuTrigger.Props) {
   return (
     <Menu.SubmenuTrigger
-      data-slot="menu-submenutrigger"
       className={cn(styles.submenuTrigger, className)}
+      data-slot="menu-submenutrigger"
       {...props}
     >
       {children}
