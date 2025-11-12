@@ -53,10 +53,7 @@
     transform 250ms var(--ease-out-expo),
     opacity 250ms var(--ease-out-expo);
   outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
-  box-shadow:
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
+  box-shadow: var(--shadow-border-stack);
   z-index: 1000;
 
   &[data-starting-style],

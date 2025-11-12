@@ -135,7 +135,7 @@
   padding: 0.25rem;
   border-radius: var(--radius);
   margin-top: 1px;
-  background-color: var(--mix-card-75-bg);
+  background-color: var(--popover);
   color: var(--popover-foreground);
   width: var(--anchor-width);
   max-height: min(var(--available-height), 23rem);
@@ -144,9 +144,7 @@
   scroll-padding-block: 0.5rem;
   overscroll-behavior: contain;
   border: 1px solid var(--border);
-  box-shadow:
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow-border-stack);
   transform-origin: var(--transform-origin);
   animation: slideDownAndFade 150ms ease-out;
 
@@ -262,7 +260,7 @@
       position: absolute;
       inset: 0;
       border-radius: calc(var(--radius) - 2px);
-      background: var(--mix-accent-33-trans);
+      background: var(--accent);
     }
   }
 

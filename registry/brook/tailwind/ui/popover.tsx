@@ -59,7 +59,7 @@ function PopoverPopup({ className, ...props }: Popover.Popup.Props) {
         "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--popover)] px-4 py-2 text-[var(--popover-foreground)]",
         "transition-[transform,scale,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
         "outline outline-[0.5px] outline-[oklch(from_var(--border)_l_c_h_/_0.8)]",
-        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "shadow-[var(--shadow-border-stack)]",
         "z-[1000]",
         "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",

@@ -30,10 +30,7 @@
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  box-shadow:
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
+  box-shadow: var(--shadow-border-stack);
   transform-origin: "top center";
   transition:
     transform 250ms var(--ease-out-expo),

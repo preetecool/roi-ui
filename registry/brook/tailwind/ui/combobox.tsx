@@ -97,7 +97,7 @@ function ComboboxPopup({ className, ...props }: Combobox.Popup.Props) {
   return (
     <Combobox.Popup
       className={cn(
-        "max-h-80 overflow-auto rounded-[var(--radius)] border border-border bg-[var(--mix-card-75-bg)]",
+        "max-h-80 overflow-auto rounded-[var(--radius)] border border-border bg-[var(--popover)]",
         "shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]",
         "w-full animate-[slideDown_150ms_ease-out] p-1 outline-none",
         "data-[starting-style]:-translate-y-2 data-[starting-style]:opacity-0",
@@ -147,7 +147,7 @@ function ComboboxItem({
         "data-[highlighted]:relative data-[highlighted]:z-10",
         "data-[highlighted]:before:-z-10 data-[highlighted]:before:absolute data-[highlighted]:before:content-['']",
         "data-[highlighted]:before:inset-0 data-[highlighted]:before:rounded-[calc(var(--radius)-2px)]",
-        "data-[highlighted]:before:bg-[var(--mix-accent-33-trans)]",
+        "data-[highlighted]:before:bg-[var(--accent)]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         "max-sm:px-3 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
