@@ -103,7 +103,7 @@ export function Search({ tree }: SearchProps) {
               </CommandEmpty>
 
               {tree?.children.map((group, index) => (
-                <CommandGroup heading={group.name} key={group.url || `group-${index}`}>
+                <CommandGroup heading={group.name} key={`group-${index}`}>
                   {group.type === "folder" &&
                     group.children
                       .filter((item) => item.type === "page")

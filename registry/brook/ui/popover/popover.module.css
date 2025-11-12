@@ -70,6 +70,11 @@
     outline-offset: 1px;
   }
 
+  [data-theme="dark"] & {
+    outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
+    outline-offset: -1px;
+  }
+
   @media (max-width: 640px) {
     max-width: calc(100vw - 2rem);
     margin: 1rem;
@@ -161,9 +166,4 @@
   justify-content: end;
   gap: 1rem;
   margin-top: 1rem;
-}
-
-:global([data-theme="dark"]) .popup {
-  outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
-  outline-offset: -1px;
 }
