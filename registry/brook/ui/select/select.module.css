@@ -65,7 +65,7 @@
 
 .popup {
   width: var(--anchor-width);
-  background: var(--mix-card-75-bg);
+  background: var(--popover);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transform-origin: var(--transform-origin);
@@ -138,12 +138,11 @@
   color: var(--foreground);
   cursor: pointer;
   border-radius: calc(var(--radius) - 2px);
-  transition: all 0.2s ease-in-out;
+
   outline: none;
 
   &:hover:not(.itemDisabled) {
     background-color: var(--accent);
-    color: var(--foreground);
   }
 
   &[data-highlighted] {

@@ -16,11 +16,11 @@ function SelectTrigger({
   return (
     <Select.Trigger
       className={cn(
-        "min-w-36 max-md:min-w-28 bg-(--mix-card-50-bg)",
-        "`hover:text-(--foreground) hover:bg-muted",
-        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
-        "data-popup-open:bg-muted data-popup-open:text-(--foreground",
-        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+        "min-w-36 bg-[var(--mix-card-50-bg)] max-md:min-w-28",
+        "hover:not-disabled:bg-[var(--accent)] hover:not-disabled:text-[var(--foreground)]",
+        "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
+        "data-[popup-open]:bg-[var(--muted)] data-[popup-open]:text-[var(--foreground)]",
+        "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       data-slot="select-trigger"
@@ -40,8 +40,8 @@ function SelectValue({
   return (
     <Select.Value
       className={cn(
-        "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left",
-        "`data-placeholder:text-muted-foreground",
+        "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left !leading-[1.25]",
+        "data-[placeholder]:text-[var(--muted-foreground)]",
         className
       )}
       data-slot="select-value"
@@ -109,8 +109,8 @@ function SelectScrollUpArrow({
   return (
     <Select.ScrollUpArrow
       className={cn(
-        "flex h-6 cursor-pointer items-center justify-center border-none bg-(--mix-card-33-bg) text-(--foreground) transition-colors duration-200 ease-in-out",
-        "hover:bg-muted",
+        "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
+        "hover:bg-[var(--muted)]",
         "data-[state=hidden]:hidden",
         className
       )}
@@ -131,7 +131,7 @@ function SelectPopup({
   return (
     <Select.Popup
       className={cn(
-        "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--mix-card-75-bg)]",
+        "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--popover)]",
         "transition-[transform,scale,opacity] duration-150 ease-in-out",
         "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
@@ -202,11 +202,11 @@ function SelectItem({
   return (
     <Select.Item
       className={cn(
-        "flex cursor-pointer items-center justify-between rounded-[calc(var(--radius)-2px)] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none transition-all duration-200 ease-in-out",
-        "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
+        "flex cursor-pointer items-center justify-between rounded-[calc(var(--radius)-2px)] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none",
+        "hover:not-disabled:bg-[var(--accent)]",
         "data-[highlighted]:bg-[var(--muted)] data-[highlighted]:text-[var(--foreground)]",
         "data-[selected]:bg-transparent",
-        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+        "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       data-slot="select-item"

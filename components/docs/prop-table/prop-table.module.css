@@ -82,14 +82,11 @@
   justify-content: space-between;
   gap: 16px;
   border: none;
+  border-radius: 0;
 }
 
 .trigger:hover {
-  background-color: var(--mix-card-50-bg);
-}
-
-.trigger[data-panel-open] {
-  background-color: var(--mix-card-50-bg);
+  background-color: var(--accent);
 }
 
 .trigger:focus-visible {
@@ -135,7 +132,7 @@
 
 .panel {
   padding: 16px;
-  background-color: var(--card);
+  background-color: var(--mix-card-50-bg);
   display: flex;
   flex-direction: column;
   gap: 12px;
