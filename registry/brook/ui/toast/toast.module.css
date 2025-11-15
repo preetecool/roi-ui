@@ -50,7 +50,7 @@
   -webkit-user-select: none;
   user-select: none;
   transition:
-    transform 0.5s ease,
+    transform 0.35s ease,
     opacity 0.5s,
     height 0.3s var(--ease-out-expo);
   cursor: default;
