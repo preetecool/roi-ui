@@ -64,7 +64,7 @@ function ToastRoot({ className, ...props }: Toast.Root.Props) {
         "data-[expanded]:data-[ending-style]:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-150%))]",
         "h-[var(--height)]",
         "data-[expanded]:h-[var(--toast-height)]",
-        "[transition:transform_0.5s_ease,opacity_0.5s,height_0.3s_var(--ease-out-expo)]",
+        "[transition:transform_0.35s_ease,opacity_0.5s,height_0.3s_var(--ease-out-expo)]",
         className
       )}
       data-slot="toast-root"

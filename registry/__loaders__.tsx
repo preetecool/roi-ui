@@ -381,7 +381,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {
     return { default: mod.default || mod[exportName] };
   }),
   "copy-button-demo": lazy(async () => {
-    const mod = await import("@/registry/brook/examples/copy-button-demo");
+    const mod = await import(
+      "@/registry/brook/examples/copy-button-demo/copy-button-demo"
+    );
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"

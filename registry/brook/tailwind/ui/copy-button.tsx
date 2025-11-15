@@ -28,9 +28,9 @@ const CopyIcon = ({
   >
     <rect
       className={cn(
-        "origin-center transition-all duration-300 ease-in-out will-change-transform",
+        "origin-center transition-all duration-[250ms] ease-in-out will-change-transform",
         copied &&
-          "translate-x-[-4px] translate-y-[-4px] scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
+          "translate-x-[-4px] translate-y-[-4px] scale-[0.8] opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
       )}
       data-element="front"
       fill="none"
@@ -43,9 +43,9 @@ const CopyIcon = ({
     />
     <path
       className={cn(
-        "origin-center transition-all duration-300 ease-in-out will-change-transform",
+        "origin-center transition-all duration-[250ms] ease-in-out will-change-transform",
         copied &&
-          "scale-80 opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
+          "scale-[0.8] opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
       )}
       d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
       data-element="back"
@@ -83,10 +83,12 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
     <button
       className={cn(
         "flex h-[1.875rem] w-[1.875rem] items-center justify-center",
-        "cursor-pointer rounded-md p-2 transition-all duration-200",
-        "text-muted-foreground hover:bg-muted hover:text-foreground",
-        "[-webkit-tap-highlight-color:transparent]",
-        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
+        "cursor-pointer rounded-md border-none bg-transparent p-2 transition-all duration-[250ms]",
+        "text-[var(--muted-foreground)]",
+        "[-webkit-tap-highlight-color:transparent] outline-none",
+        "hover:bg-[var(--accent)]",
+        "active:bg-[var(--accent)]",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-[-2px]",
         className
       )}
       data-copied={copied}
@@ -97,7 +99,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       <div
         className={cn(
           "absolute flex items-center justify-center will-change-transform",
-          "transition-all duration-300 ease-in-out",
+          "transition-all duration-[250ms] ease-in-out",
           copied
             ? "opacity-0 transition-opacity delay-[50ms] duration-[250ms] ease-in-out"
             : "rotate-0 scale-100 opacity-100 blur-0"
@@ -109,7 +111,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       <div
         className={cn(
           "absolute flex items-center justify-center will-change-transform",
-          "transition-all duration-300 ease-in-out",
+          "transition-all duration-[250ms] ease-in-out",
           copied
             ? "rotate-0 scale-100 opacity-100 blur-0 transition-all delay-[50ms] duration-[250ms] ease-in-out"
             : "-rotate-45 scale-0 opacity-0 blur-[4px]"
