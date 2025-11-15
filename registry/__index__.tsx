@@ -338,8 +338,11 @@ export const Index: Record<string, RegistryEntry> = {
   "copy-button-demo": {
     name: "copy-button-demo",
     type: "example",
-    files: ["registry/brook/examples/copy-button-demo.tsx"],
-    path: "@/registry/brook/examples/copy-button-demo",
+    files: [
+      "registry/brook/examples/copy-button-demo/copy-button-demo.tsx",
+      "registry/brook/examples/copy-button-demo/copy-button-demo.module.css",
+    ],
+    path: "@/registry/brook/examples/copy-button-demo/copy-button-demo",
   },
   "dialog-demo": {
     name: "dialog-demo",
