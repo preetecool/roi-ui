@@ -32,7 +32,7 @@ const buttonVariants = cva(
         ],
         ghost: [
           "bg-transparent text-[color:var(--color-foreground)]",
-          "hover:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.66)] hover:disabled:bg-transparent",
+          "hover:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.6)] hover:disabled:bg-transparent",
           "data-[popup-open]:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.7)]",
         ],
         outline: [
