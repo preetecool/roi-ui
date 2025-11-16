@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
-    "registry:build": "shadcn build && cp registry.json public/r/registry.json",
+    "registry:build": "shadcn build && node scripts/fix-registry-imports.ts && cp registry.json public/r/registry.json",
     "registry:index": "node scripts/build-registry-index.ts",
     "source:manifest": "node scripts/build-source-manifest.ts"
   },
