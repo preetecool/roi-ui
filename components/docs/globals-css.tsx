@@ -80,9 +80,9 @@ export async function GlobalsCSS() {
   return (
     <GlobalsCSSClient
       cssModulesContent={cssModulesContent}
-      tailwindContent={tailwindContent}
       highlightedCssModules={highlightedCssModules}
       highlightedTailwind={highlightedTailwind}
+      tailwindContent={tailwindContent}
     />
   );
 }

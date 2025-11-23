@@ -4,8 +4,8 @@ export default function SeparatorDemo() {
   return (
     <div className="w-full max-w-md space-y-4">
       <div>
-        <h3 className="text-lg font-semibold">Account Settings</h3>
-        <p className="text-sm text-muted-foreground">
+        <h3 className="font-semibold text-lg">Account Settings</h3>
+        <p className="text-muted-foreground text-sm">
           Manage your account preferences
         </p>
       </div>
@@ -13,8 +13,8 @@ export default function SeparatorDemo() {
       <Separator />
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Profile</h4>
-        <p className="text-sm text-muted-foreground">
+        <h4 className="font-medium text-sm">Profile</h4>
+        <p className="text-muted-foreground text-sm">
           Update your photo and personal details
         </p>
       </div>
@@ -22,8 +22,8 @@ export default function SeparatorDemo() {
       <Separator />
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Security</h4>
-        <p className="text-sm text-muted-foreground">
+        <h4 className="font-medium text-sm">Security</h4>
+        <p className="text-muted-foreground text-sm">
           Manage your password and authentication
         </p>
       </div>

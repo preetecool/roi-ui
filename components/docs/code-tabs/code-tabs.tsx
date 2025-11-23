@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { useStyle } from "@/components/providers/style-provider";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
+import { useStyle } from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import {
   TabsContent as BaseTabsContent,

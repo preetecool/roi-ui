@@ -4,51 +4,36 @@ import { Field } from "@base-ui-components/react/field";
 import { cn } from "@/lib/utils";
 import styles from "./field.module.css";
 
-function FieldRoot({
-  className,
-  ...props
-}: Field.Root.Props) {
+function FieldRoot({ className, ...props }: Field.Root.Props) {
   return (
     <Field.Root
-      data-slot="field-root"
       className={cn(styles.root, className)}
+      data-slot="field-root"
       validationMode="onBlur"
       {...props}
     />
   );
 }
 
-function FieldControl({
-  className,
-  ...props
-}: Field.Control.Props) {
+function FieldControl({ className, ...props }: Field.Control.Props) {
   return <Field.Control className={cn(styles.control, className)} {...props} />;
 }
 
-function FieldLabel({
-  className,
-  ...props
-}: Field.Label.Props) {
+function FieldLabel({ className, ...props }: Field.Label.Props) {
   return <Field.Label className={cn(styles.label, className)} {...props} />;
 }
 
-function FieldDescription({
-  className,
-  ...props
-}: Field.Description.Props) {
+function FieldDescription({ className, ...props }: Field.Description.Props) {
   return (
     <Field.Description
-      data-slot="field-description"
       className={cn(styles.description, className)}
+      data-slot="field-description"
       {...props}
     />
   );
 }
 
-function FieldError({
-  className,
-  ...props
-}: Field.Error.Props) {
+function FieldError({ className, ...props }: Field.Error.Props) {
   return <Field.Error className={cn(styles.error, className)} {...props} />;
 }
 

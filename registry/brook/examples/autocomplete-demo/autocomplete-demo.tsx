@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Badge } from "@/registry/brook/ui/badge/badge";
 import {
   Autocomplete,
   AutocompleteEmpty,
@@ -12,6 +11,7 @@ import {
   AutocompletePortal,
   AutocompletePositioner,
 } from "@/registry/brook/ui/autocomplete/autocomplete";
+import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./autocomplete-demo.module.css";
 
 type Question = {

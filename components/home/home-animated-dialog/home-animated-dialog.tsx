@@ -108,7 +108,11 @@ export const HomeAnimatedDialog = () => {
           <motion.div className={styles.actions} layout>
             <AnimatePresence>
               <motion.div layoutId="button" transition={buttonTransition}>
-                <Button onClick={() => setDialogOpen(false)} size="sm" variant="outline">
+                <Button
+                  onClick={() => setDialogOpen(false)}
+                  size="sm"
+                  variant="outline"
+                >
                   Button
                 </Button>
               </motion.div>

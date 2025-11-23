@@ -240,7 +240,10 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
  * </Table>
  * ```
  */
-function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+function TableCaption({
+  className,
+  ...props
+}: React.ComponentProps<"caption">) {
   return (
     <caption
       className={cn(styles.caption, className)}

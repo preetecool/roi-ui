@@ -227,7 +227,10 @@ function ContextMenuSeparator({
   return (
     <div className="py-[5px]">
       <ContextMenu.Separator
-        className={cn("h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]", className)}
+        className={cn(
+          "h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]",
+          className
+        )}
         {...props}
       />
     </div>

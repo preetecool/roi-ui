@@ -4,10 +4,7 @@ import { NumberField } from "@base-ui-components/react/number-field";
 import { cn } from "@/lib/utils";
 import styles from "./number-field.module.css";
 
-function NumberFieldRoot({
-  className,
-  ...props
-}: NumberField.Root.Props) {
+function NumberFieldRoot({ className, ...props }: NumberField.Root.Props) {
   return <NumberField.Root className={cn(styles.root, className)} {...props} />;
 }
 
@@ -18,12 +15,13 @@ function NumberFieldGroup({
   return <div className={cn(styles.group, className)} {...props} />;
 }
 
-function NumberFieldInput({
-  className,
-  ...props
-}: NumberField.Input.Props) {
+function NumberFieldInput({ className, ...props }: NumberField.Input.Props) {
   return (
-    <NumberField.Input data-slot="numberfield-input" className={cn(styles.input, className)} {...props} />
+    <NumberField.Input
+      className={cn(styles.input, className)}
+      data-slot="numberfield-input"
+      {...props}
+    />
   );
 }
 
@@ -34,8 +32,8 @@ function NumberFieldIncrement({
 }: NumberField.Increment.Props) {
   return (
     <NumberField.Increment
-      data-slot="numberfield-increment"
       className={cn(styles.increment, className)}
+      data-slot="numberfield-increment"
       {...props}
     >
       {children || (
@@ -68,8 +66,8 @@ function NumberFieldDecrement({
 }: NumberField.Decrement.Props) {
   return (
     <NumberField.Decrement
-      data-slot="numberfield-decrement"
       className={cn(styles.decrement, className)}
+      data-slot="numberfield-decrement"
       {...props}
     >
       {children || (
@@ -101,8 +99,8 @@ function NumberFieldScrubArea({
 }: NumberField.ScrubArea.Props) {
   return (
     <NumberField.ScrubArea
-      data-slot="numberfield-scrubarea"
       className={cn(styles.scrubArea, className)}
+      data-slot="numberfield-scrubarea"
       {...props}
     />
   );
@@ -114,8 +112,8 @@ function NumberFieldScrubAreaCursor({
 }: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
-      data-slot="numberfield-scrubareacursor"
       className={cn(styles.scrubAreaCursor, className)}
+      data-slot="numberfield-scrubareacursor"
       {...props}
     />
   );

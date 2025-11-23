@@ -43,11 +43,11 @@
   font-size: 12px;
 }
 
-.header [data-slot="tabs-trigger"]:not([data-selected]) {
+.header [data-slot="tabs-trigger"]:not([data-active]) {
   border: 1px solid oklch(from var(--border) l c h / 0.5);
 }
 
-.header [data-slot="tabs-trigger"][data-selected] {
+.header [data-slot="tabs-trigger"][data-active] {
   color: var(--foreground);
   border: 1px solid var(--border);
 }

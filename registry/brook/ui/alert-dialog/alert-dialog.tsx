@@ -5,15 +5,11 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./alert-dialog.module.css";
 
-function AlertDialogRoot({
-  ...props
-}: AlertDialog.Root.Props) {
+function AlertDialogRoot({ ...props }: AlertDialog.Root.Props) {
   return <AlertDialog.Root {...props} />;
 }
 
-function AlertDialogTrigger({
-  ...props
-}: AlertDialog.Trigger.Props) {
+function AlertDialogTrigger({ ...props }: AlertDialog.Trigger.Props) {
   return <AlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />;
 }
 
@@ -25,8 +21,8 @@ function AlertDialogBackdrop({
 }: AlertDialog.Backdrop.Props) {
   return (
     <AlertDialog.Backdrop
-      data-slot="alert-dialog-backdrop"
       className={cn(styles.overlay, className)}
+      data-slot="alert-dialog-backdrop"
       {...props}
     />
   );
@@ -41,8 +37,8 @@ function AlertDialogPopup({
     <AlertDialogPortal>
       <AlertDialogBackdrop />
       <AlertDialog.Popup
-        data-slot="alert-dialog-popup"
         className={cn(styles.content, className)}
+        data-slot="alert-dialog-popup"
         {...props}
       >
         {children}
@@ -53,14 +49,11 @@ function AlertDialogPopup({
 
 const AlertDialogContent = AlertDialogPopup;
 
-function AlertDialogTitle({
-  className,
-  ...props
-}: AlertDialog.Title.Props) {
+function AlertDialogTitle({ className, ...props }: AlertDialog.Title.Props) {
   return (
     <AlertDialog.Title
-      data-slot="alert-dialog-title"
       className={cn(styles.title, className)}
+      data-slot="alert-dialog-title"
       {...props}
     />
   );
@@ -72,16 +65,14 @@ function AlertDialogDescription({
 }: AlertDialog.Description.Props) {
   return (
     <AlertDialog.Description
-      data-slot="alert-dialog-description"
       className={cn(styles.description, className)}
+      data-slot="alert-dialog-description"
       {...props}
     />
   );
 }
 
-function AlertDialogClose({
-  ...props
-}: AlertDialog.Close.Props) {
+function AlertDialogClose({ ...props }: AlertDialog.Close.Props) {
   return <AlertDialog.Close data-slot="alert-dialog-close" {...props} />;
 }
 
@@ -93,8 +84,8 @@ function AlertDialogHeader({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="alert-dialog-header"
       className={cn(styles.header, className)}
+      data-slot="alert-dialog-header"
       {...props}
     />
   );
@@ -106,8 +97,8 @@ function AlertDialogFooter({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="alert-dialog-footer"
       className={cn(styles.footer, className)}
+      data-slot="alert-dialog-footer"
       {...props}
     />
   );

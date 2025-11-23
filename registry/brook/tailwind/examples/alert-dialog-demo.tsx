@@ -17,7 +17,7 @@ export default function AlertDialogDemo() {
         render={<Button variant="destructive">Delete Account</Button>}
       />
 
-      <AlertDialogContent className="w-[clamp(250px,90vw,400px)] max-h-[300px] flex flex-col rounded-2xl p-6 gap-4 max-sm:!left-1/2 max-sm:!right-auto max-sm:!-translate-x-1/2 max-sm:!-translate-y-1/2">
+      <AlertDialogContent className="max-sm:!left-1/2 max-sm:!right-auto max-sm:!-translate-x-1/2 max-sm:!-translate-y-1/2 flex max-h-[300px] w-[clamp(250px,90vw,400px)] flex-col gap-4 rounded-2xl p-6">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription className="text-muted-foreground">

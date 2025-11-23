@@ -85,7 +85,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
         "flex h-[1.875rem] w-[1.875rem] items-center justify-center",
         "cursor-pointer rounded-md border-none bg-transparent p-2 transition-all duration-[250ms]",
         "text-[var(--muted-foreground)]",
-        "[-webkit-tap-highlight-color:transparent] outline-none",
+        "outline-none [-webkit-tap-highlight-color:transparent]",
         "hover:bg-[var(--accent)]",
         "active:bg-[var(--accent)]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-[-2px]",

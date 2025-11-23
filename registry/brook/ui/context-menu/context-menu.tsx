@@ -7,9 +7,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./context-menu.module.css";
 
-function ContextMenuRoot({
-  ...props
-}: ContextMenu.Root.Props) {
+function ContextMenuRoot({ ...props }: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;
 }
 
@@ -18,7 +16,11 @@ function ContextMenuTrigger({
   ...props
 }: ContextMenu.Trigger.Props) {
   return (
-    <ContextMenu.Trigger data-slot="contextmenu-trigger" className={cn(styles.trigger, className)} {...props} />
+    <ContextMenu.Trigger
+      className={cn(styles.trigger, className)}
+      data-slot="contextmenu-trigger"
+      {...props}
+    />
   );
 }
 
@@ -30,8 +32,8 @@ function ContextMenuBackdrop({
 }: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
-      data-slot="contextmenu-backdrop"
       className={cn(styles.backdrop, className)}
+      data-slot="contextmenu-backdrop"
       {...props}
     />
   );
@@ -43,28 +45,30 @@ function ContextMenuPositioner({
 }: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
-      data-slot="contextmenu-positioner"
       className={cn(styles.positioner, className)}
+      data-slot="contextmenu-positioner"
       {...props}
     />
   );
 }
 
-function ContextMenuPopup({
-  className,
-  ...props
-}: ContextMenu.Popup.Props) {
+function ContextMenuPopup({ className, ...props }: ContextMenu.Popup.Props) {
   return (
-    <ContextMenu.Popup data-slot="contextmenu-popup" className={cn(styles.popup, className)} {...props} />
+    <ContextMenu.Popup
+      className={cn(styles.popup, className)}
+      data-slot="contextmenu-popup"
+      {...props}
+    />
   );
 }
 
-function ContextMenuArrow({
-  className,
-  ...props
-}: ContextMenu.Arrow.Props) {
+function ContextMenuArrow({ className, ...props }: ContextMenu.Arrow.Props) {
   return (
-    <ContextMenu.Arrow data-slot="contextmenu-arrow" className={cn(styles.arrow, className)} {...props} />
+    <ContextMenu.Arrow
+      className={cn(styles.arrow, className)}
+      data-slot="contextmenu-arrow"
+      {...props}
+    />
   );
 }
 
@@ -86,12 +90,8 @@ function ContextMenuItem({
 }: ContextMenuItemProps) {
   return (
     <ContextMenu.Item
+      className={cn(styles.item, inset && styles.inset, className)}
       data-slot="contextmenu-item"
-      className={cn(
-        styles.item,
-        inset && styles.inset,
-        className
-      )}
       data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
@@ -108,8 +108,8 @@ function ContextMenuCheckboxItem({
 }: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
-      data-slot="contextmenu-checkboxitem"
       className={cn(styles.checkboxItem, className)}
+      data-slot="contextmenu-checkboxitem"
       {...props}
     >
       <span className={styles.itemIndicator}>
@@ -127,8 +127,8 @@ function ContextMenuRadioItem({
 }: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
-      data-slot="contextmenu-radioitem"
       className={cn(styles.radioItem, className)}
+      data-slot="contextmenu-radioitem"
       {...props}
     >
       <span className={styles.itemIndicator}>
@@ -173,9 +173,7 @@ function ContextMenuSeparator({
   );
 }
 
-function ContextMenuSubmenuRoot({
-  ...props
-}: ContextMenu.SubmenuRoot.Props) {
+function ContextMenuSubmenuRoot({ ...props }: ContextMenu.SubmenuRoot.Props) {
   return <ContextMenu.SubmenuRoot {...props} />;
 }
 
@@ -189,8 +187,8 @@ function ContextMenuSubmenuTrigger({
 }) {
   return (
     <ContextMenu.SubmenuTrigger
-      data-slot="contextmenu-submenutrigger"
       className={cn(styles.submenuTrigger, inset && styles.inset, className)}
+      data-slot="contextmenu-submenutrigger"
       {...props}
     >
       {children}
@@ -199,12 +197,13 @@ function ContextMenuSubmenuTrigger({
   );
 }
 
-function ContextMenuGroup({
-  className,
-  ...props
-}: ContextMenu.Group.Props) {
+function ContextMenuGroup({ className, ...props }: ContextMenu.Group.Props) {
   return (
-    <ContextMenu.Group data-slot="contextmenu-group" className={cn(styles.group, className)} {...props} />
+    <ContextMenu.Group
+      className={cn(styles.group, className)}
+      data-slot="contextmenu-group"
+      {...props}
+    />
   );
 }
 

@@ -44,9 +44,9 @@ function CommandDialog({
         />
         <Dialog.Popup
           className={cn(
-            "fixed left-1/2 top-1/2 z-50",
+            "fixed top-1/2 left-1/2 z-50",
             "-translate-x-1/2 -translate-y-1/2",
-            "max-w-2xl w-[calc(100%-2rem)]",
+            "w-[calc(100%-2rem)] max-w-2xl",
             "animate-[dialog-in_200ms_ease-out]",
             "max-sm:w-[calc(100%-2rem)]",
             "[&_[cmdk-root]]:shadow-[var(--shadow-lg)]",
@@ -63,7 +63,6 @@ function CommandDialog({
     </Dialog.Root>
   );
 }
-
 
 function CommandInput({
   className,
@@ -83,7 +82,7 @@ function CommandInput({
         "max-sm:[&[cmdk-input]]:h-12 max-sm:[&[cmdk-input]]:text-[0.9375rem]",
         "max-sm:[&[cmdk-input]]:px-4 max-sm:[&[cmdk-input]]:py-3",
         "max-sm:[&[cmdk-input]]:placeholder:text-[0.9375rem]",
-        "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0",
+        "outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0",
         className
       )}
       data-slot="commandprimitive-input"

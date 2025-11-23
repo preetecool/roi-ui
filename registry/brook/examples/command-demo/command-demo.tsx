@@ -7,6 +7,7 @@ import {
   Terminal,
   User,
 } from "lucide-react";
+import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import {
   Command,
   CommandEmpty,
@@ -17,7 +18,6 @@ import {
   CommandSeparator,
 } from "@/registry/brook/ui/command/command";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
-import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import styles from "./command-demo.module.css";
 
 export default function CommandDemo() {

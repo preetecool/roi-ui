@@ -107,72 +107,72 @@ export default function DialogFramerMotion() {
       <AnimatePresence>
         {open && (
           <Dialog.Portal container={containerRef} keepMounted>
-              <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <motion.div
-                  className="absolute inset-0 z-0 border border-border bg-card shadow-lg"
-                  layoutId="wrapper"
-                  style={{ borderRadius: 12 }}
-                />
-                <Dialog.Popup
-                  className="relative z-10 h-48 w-[364px] rounded-xl bg-transparent p-4 outline-none"
-                  hidden={undefined}
-                >
-                  <div className="flex h-full flex-col">
-                    <Dialog.Title
-                      className="m-0 mb-2 border-b-0 p-0 text-lg"
-                      render={
-                        <motion.span
-                          animate="visible"
-                          exit="exit"
-                          initial="hidden"
-                          variants={contentVariants}
-                        />
-                      }
-                    >
-                      Plan Plus
-                    </Dialog.Title>
-                    <Dialog.Description
-                      className="m-0 flex-1"
-                      render={
-                        <motion.p
-                          animate="visible"
-                          exit="exit"
-                          initial="hidden"
-                          variants={contentVariants}
-                        />
-                      }
-                    >
-                      Upgrade your plan for full access.
-                    </Dialog.Description>
+            <div className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2">
+              <motion.div
+                className="absolute inset-0 z-0 border border-border bg-card shadow-lg"
+                layoutId="wrapper"
+                style={{ borderRadius: 12 }}
+              />
+              <Dialog.Popup
+                className="relative z-10 h-48 w-[364px] rounded-xl bg-transparent p-4 outline-none"
+                hidden={undefined}
+              >
+                <div className="flex h-full flex-col">
+                  <Dialog.Title
+                    className="m-0 mb-2 border-b-0 p-0 text-lg"
+                    render={
+                      <motion.span
+                        animate="visible"
+                        exit="exit"
+                        initial="hidden"
+                        variants={contentVariants}
+                      />
+                    }
+                  >
+                    Plan Plus
+                  </Dialog.Title>
+                  <Dialog.Description
+                    className="m-0 flex-1"
+                    render={
+                      <motion.p
+                        animate="visible"
+                        exit="exit"
+                        initial="hidden"
+                        variants={contentVariants}
+                      />
+                    }
+                  >
+                    Upgrade your plan for full access.
+                  </Dialog.Description>
 
-                    <div className="mt-auto flex justify-end gap-3">
-                      <Dialog.Close
-                        className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-foreground transition-colors hover:bg-accent"
-                        render={
-                          <motion.button
-                            animate="visible"
-                            exit="exit"
-                            initial="hidden"
-                            style={{ originX: -20, originY: -20 }}
-                            variants={closeButtonVariants}
-                          />
-                        }
-                      >
-                        Close
-                      </Dialog.Close>
-                      <motion.button
-                        className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-foreground transition-colors hover:bg-accent"
-                        layoutId="button"
-                      >
-                        Upgrade
-                      </motion.button>
-                    </div>
+                  <div className="mt-auto flex justify-end gap-3">
+                    <Dialog.Close
+                      className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-foreground transition-colors hover:bg-accent"
+                      render={
+                        <motion.button
+                          animate="visible"
+                          exit="exit"
+                          initial="hidden"
+                          style={{ originX: -20, originY: -20 }}
+                          variants={closeButtonVariants}
+                        />
+                      }
+                    >
+                      Close
+                    </Dialog.Close>
+                    <motion.button
+                      className="cursor-pointer rounded-md border border-border bg-card px-3 py-2 text-foreground transition-colors hover:bg-accent"
+                      layoutId="button"
+                    >
+                      Upgrade
+                    </motion.button>
                   </div>
-                </Dialog.Popup>
-              </div>
-            </Dialog.Portal>
-          )}
-        </AnimatePresence>
-      </Dialog.Root>
+                </div>
+              </Dialog.Popup>
+            </div>
+          </Dialog.Portal>
+        )}
+      </AnimatePresence>
+    </Dialog.Root>
   );
 }

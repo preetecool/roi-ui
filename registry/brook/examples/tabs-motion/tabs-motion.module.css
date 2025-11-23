@@ -14,7 +14,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.tabTrigger[data-selected] {
+.tabTrigger[data-active] {
   background-color: transparent !important;
   border: 1px solid transparent !important;
 }

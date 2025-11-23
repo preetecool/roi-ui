@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Expandable Card",
   "description": "A card component that can expand to show more content.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/brook/blocks/expandable-card/expandable-card.tsx",

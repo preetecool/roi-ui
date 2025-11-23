@@ -63,11 +63,11 @@
 }
 
 .installationTrigger,
-.installationTrigger[data-selected] {
+.installationTrigger[data-active] {
   border-color: transparent;
 }
 
-.installationTrigger[data-selected] {
+.installationTrigger[data-active] {
   border-radius: 0;
   background-color: transparent;
   border-bottom-color: var(--foreground);

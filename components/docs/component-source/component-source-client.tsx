@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 import { withCodeTabsStyle } from "@/components/docs/code-tabs/with-code-tabs-style";
-import {
-  useStyle,
-  type StyleVariant,
-} from "@/components/providers/style-provider";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
+import {
+  type StyleVariant,
+  useStyle,
+} from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import {
   Tabs,

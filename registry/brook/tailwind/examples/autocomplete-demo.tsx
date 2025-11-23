@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import {
   Autocomplete,
   AutocompleteEmpty,
@@ -12,6 +11,7 @@ import {
   AutocompletePortal,
   AutocompletePositioner,
 } from "@/registry/brook/tailwind/ui/autocomplete";
+import { Badge } from "@/registry/brook/tailwind/ui/badge";
 
 type Question = {
   value: string;
@@ -74,7 +74,7 @@ export default function AutocompleteDemo() {
   return (
     <div className="p-8 max-sm:p-4">
       <label
-        className="mb-2 ml-1 flex flex-col gap-1 text-sm font-medium leading-[17.5px] text-[var(--color-foreground)] max-sm:text-[0.9375rem]"
+        className="mb-2 ml-1 flex flex-col gap-1 font-medium text-[var(--color-foreground)] text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
         htmlFor="ac-input"
       >
         Search for help or ask a question
@@ -103,7 +103,7 @@ export default function AutocompleteDemo() {
                   <AutocompleteItem key={question.value} value={question}>
                     <div className="flex flex-1 items-center gap-3 max-sm:gap-2.5">
                       <div className="min-w-0 flex-1 text-left">
-                        <div className="text-sm font-normal leading-[1.4] max-sm:text-[0.9375rem]">
+                        <div className="font-normal text-sm leading-[1.4] max-sm:text-[0.9375rem]">
                           {question.question}
                         </div>
                       </div>

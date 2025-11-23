@@ -62,8 +62,8 @@ export default function ProfileMenuDemo() {
               "flex h-auto min-h-[44px] min-w-[180px] touch-manipulation items-center gap-2.5 px-4 py-1.5 [-webkit-tap-highlight-color:transparent]",
               "focus-visible:-outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
             )}
-            variant="outline"
             data-slot="dropdown-trigger"
+            variant="outline"
           >
             <Avatar className="h-8 w-8 flex-shrink-0">
               <AvatarImage alt="@preetecool" src="/preetecool.png" />

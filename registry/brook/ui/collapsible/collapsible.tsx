@@ -4,10 +4,7 @@ import { Collapsible } from "@base-ui-components/react/collapsible";
 import { cn } from "@/lib/utils";
 import styles from "./collapsible.module.css";
 
-function CollapsibleRoot({
-  className,
-  ...props
-}: Collapsible.Root.Props) {
+function CollapsibleRoot({ className, ...props }: Collapsible.Root.Props) {
   return <Collapsible.Root className={cn(styles.root, className)} {...props} />;
 }
 
@@ -46,12 +43,13 @@ function CollapsibleTrigger({
   );
 }
 
-function CollapsiblePanel({
-  className,
-  ...props
-}: Collapsible.Panel.Props) {
+function CollapsiblePanel({ className, ...props }: Collapsible.Panel.Props) {
   return (
-    <Collapsible.Panel data-slot="collapsible-panel" className={cn(styles.panel, className)} {...props} />
+    <Collapsible.Panel
+      className={cn(styles.panel, className)}
+      data-slot="collapsible-panel"
+      {...props}
+    />
   );
 }
 

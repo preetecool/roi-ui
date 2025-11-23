@@ -28,11 +28,10 @@ const accordionItems = [
 export default function AccordionFramerMotion() {
   const [value, setValue] = useState<string[]>(["item-1"]);
 
-  const getExpandedIndices = () => {
-    return value
+  const getExpandedIndices = () =>
+    value
       .map((v) => accordionItems.findIndex((item) => item.id === v))
       .filter((i) => i !== -1);
-  };
 
   const getItemClassName = (index: number) => {
     const expandedIndices = getExpandedIndices();
@@ -58,7 +57,7 @@ export default function AccordionFramerMotion() {
       isLast && "border-b-transparent",
 
       // Expanded item styles
-      isExpanded && "rounded-3xl my-2 border-b-transparent",
+      isExpanded && "my-2 rounded-3xl border-b-transparent",
       isExpanded && isFirst && "mt-0",
       isExpanded && isLast && "mb-0",
 
@@ -66,12 +65,23 @@ export default function AccordionFramerMotion() {
       isSandwiched && "rounded-3xl border-b-transparent",
 
       // Before expanded (not sandwiched, not expanded)
-      isBeforeExpanded && !isExpanded && !isAfterExpanded && "rounded-b-3xl border-b-transparent",
-      isBeforeExpanded && !isExpanded && !isAfterExpanded && isFirst && "rounded-3xl",
+      isBeforeExpanded &&
+        !isExpanded &&
+        !isAfterExpanded &&
+        "rounded-b-3xl border-b-transparent",
+      isBeforeExpanded &&
+        !isExpanded &&
+        !isAfterExpanded &&
+        isFirst &&
+        "rounded-3xl",
 
       // After expanded (not sandwiched, not expanded)
       isAfterExpanded && !isExpanded && !isBeforeExpanded && "rounded-t-3xl",
-      isAfterExpanded && !isExpanded && !isBeforeExpanded && isLast && "rounded-3xl",
+      isAfterExpanded &&
+        !isExpanded &&
+        !isBeforeExpanded &&
+        isLast &&
+        "rounded-3xl",
 
       // Mobile styles
       "max-sm:p-4"

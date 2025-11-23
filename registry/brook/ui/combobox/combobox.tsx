@@ -6,9 +6,10 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./combobox.module.css";
 
-function ComboboxRoot<ItemValue, Multiple extends boolean | undefined = undefined>(
-  props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>
-) {
+function ComboboxRoot<
+  ItemValue,
+  Multiple extends boolean | undefined = undefined,
+>(props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>) {
   return <Combobox.Root<ItemValue, Multiple> {...props} />;
 }
 
@@ -25,10 +26,7 @@ function ComboboxTrigger({
   );
 }
 
-function ComboboxInput({
-  className,
-  ...props
-}: Combobox.Input.Props) {
+function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
   return <Combobox.Input className={cn(styles.input, className)} {...props} />;
 }
 
@@ -52,25 +50,19 @@ function ComboboxPositioner({
 }: Combobox.Positioner.Props) {
   return (
     <Combobox.Positioner
-      data-slot="combobox-positioner"
       className={cn(styles.positioner, className)}
+      data-slot="combobox-positioner"
       sideOffset={4}
       {...props}
     />
   );
 }
 
-function ComboboxPopup({
-  className,
-  ...props
-}: Combobox.Popup.Props) {
+function ComboboxPopup({ className, ...props }: Combobox.Popup.Props) {
   return <Combobox.Popup className={cn(styles.popup, className)} {...props} />;
 }
 
-function ComboboxList({
-  className,
-  ...props
-}: Combobox.List.Props) {
+function ComboboxList({ className, ...props }: Combobox.List.Props) {
   return <Combobox.List className={cn(styles.list, className)} {...props} />;
 }
 
@@ -118,8 +110,8 @@ function ComboboxItemIndicator({
 }: Combobox.ItemIndicator.Props) {
   return (
     <Combobox.ItemIndicator
-      data-slot="combobox-itemindicator"
       className={cn(styles.itemIndicator, className)}
+      data-slot="combobox-itemindicator"
       {...props}
     >
       {children || <Check size={16} />}
@@ -127,10 +119,7 @@ function ComboboxItemIndicator({
   );
 }
 
-function ComboboxGroup({
-  className,
-  ...props
-}: Combobox.Group.Props) {
+function ComboboxGroup({ className, ...props }: Combobox.Group.Props) {
   return <Combobox.Group className={cn(styles.group, className)} {...props} />;
 }
 
@@ -140,17 +129,14 @@ function ComboboxGroupLabel({
 }: Combobox.GroupLabel.Props) {
   return (
     <Combobox.GroupLabel
-      data-slot="combobox-grouplabel"
       className={cn(styles.groupLabel, className)}
+      data-slot="combobox-grouplabel"
       {...props}
     />
   );
 }
 
-function ComboboxArrow({
-  className,
-  ...props
-}: Combobox.Arrow.Props) {
+function ComboboxArrow({ className, ...props }: Combobox.Arrow.Props) {
   return <Combobox.Arrow className={cn(styles.arrow, className)} {...props} />;
 }
 

@@ -3,8 +3,8 @@
 import { RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { useStyle } from "@/components/providers/style-provider";
-import { ComponentLoaders } from "@/registry/__loaders__";
 import { Index } from "@/registry/__index__";
+import { ComponentLoaders } from "@/registry/__loaders__";
 import styles from "./component-preview.module.css";
 
 type ComponentPreviewClientProps = {
