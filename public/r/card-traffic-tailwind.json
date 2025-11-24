@@ -4,7 +4,9 @@
   "type": "registry:item",
   "title": "Card Traffic (Tailwind)",
   "description": "A website traffic card component with line chart and statistics.",
-  "dependencies": ["recharts"],
+  "dependencies": [
+    "recharts"
+  ],
   "registryDependencies": [
     "https://roiui.com/r/badge-tailwind.json",
     "https://roiui.com/r/card-tailwind.json",

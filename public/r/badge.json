@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Badge",
   "description": "A small count and labeling component.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/badge/badge.tsx",

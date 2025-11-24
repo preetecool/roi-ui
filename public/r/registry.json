@@ -83,6 +83,7 @@
     {
       "name": "alert",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Alert",
       "description": "A component for displaying important messages to users.",
       "files": [
@@ -137,6 +138,7 @@
     {
       "name": "badge",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Badge",
       "description": "A small count and labeling component.",
       "files": [
@@ -155,6 +157,7 @@
     {
       "name": "button",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Button",
       "description": "A button component.",
       "files": [
@@ -173,6 +176,7 @@
     {
       "name": "card",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Card",
       "description": "A container component for displaying content.",
       "files": [
@@ -679,6 +683,7 @@
     {
       "name": "table",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Table",
       "description": "A responsive table component for displaying structured tabular data.",
       "files": [
@@ -1028,6 +1033,7 @@
     {
       "name": "alert-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Alert (Tailwind)",
       "description": "A component for displaying important messages to users.",
       "files": [
@@ -1093,6 +1099,7 @@
     {
       "name": "badge-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Badge (Tailwind)",
       "description": "A small count and labeling component.",
       "files": [
@@ -1106,6 +1113,7 @@
     {
       "name": "button-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Button (Tailwind)",
       "description": "A button component.",
       "files": [
@@ -1119,6 +1127,7 @@
     {
       "name": "card-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Card (Tailwind)",
       "description": "A container component for displaying content.",
       "files": [
@@ -1302,6 +1311,7 @@
     {
       "name": "input-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Input (Tailwind)",
       "description": "An input component for user text entry.",
       "files": [
@@ -1510,6 +1520,7 @@
     {
       "name": "table-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Table (Tailwind)",
       "description": "A responsive table component for displaying structured tabular data.",
       "files": [

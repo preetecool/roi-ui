@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Card (Tailwind)",
   "description": "A container component for displaying content.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/card.tsx",

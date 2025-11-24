@@ -4,7 +4,9 @@
   "type": "registry:item",
   "title": "Card Task (Tailwind)",
   "description": "A task card component with badges, avatars, and action menu.",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://roiui.com/r/alert-dialog-tailwind.json",
     "https://roiui.com/r/avatar-tailwind.json",

@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Alert",
   "description": "A component for displaying important messages to users.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/alert/alert.tsx",

@@ -4,7 +4,9 @@
   "type": "registry:item",
   "title": "Card Task",
   "description": "A task card component with badges, avatars, and action menu.",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://roiui.com/r/alert-dialog.json",
     "https://roiui.com/r/avatar.json",

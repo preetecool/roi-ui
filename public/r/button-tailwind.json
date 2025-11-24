@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Button (Tailwind)",
   "description": "A button component.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/button.tsx",
