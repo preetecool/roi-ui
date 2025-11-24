@@ -127,7 +127,8 @@
       color: var(--destructive);
     }
 
-    &:hover {
+    &:hover,
+    &[data-highlighted] {
       color: var(--destructive-foreground);
 
       &::before {
