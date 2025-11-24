@@ -322,15 +322,15 @@ function getLanguages() {
 /**
  * Get node page (not implemented for custom source)
  */
-function getNodePage(_node: any, _language?: string) {
-  return;
+function getNodePage(_node: any, _language?: string): Page | undefined {
+  return undefined;
 }
 
 /**
  * Get node meta (not implemented for custom source)
  */
-function getNodeMeta(_node: any, _language?: string) {
-  return;
+function getNodeMeta(_node: any, _language?: string): undefined {
+  return undefined;
 }
 
 /**
