@@ -135,7 +135,7 @@ export default function NavigationMenuDemo() {
                   <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-md bg-gradient-to-b from-accent/5 to-accent/10 p-6">
                     <svg
                       aria-label="Preview Shape"
-                      className="-translate-y-1/2 pointer-events-none absolute top-1/2 right-0 h-full w-[150%] translate-x-1/2 rotate-180 animate-[sway_5s_ease-in-out_infinite] [&_ellipse]:transition-[fill] [&_ellipse]:duration-400 [&_ellipse]:ease-in-out [&_stop]:transition-[stop-color] [&_stop]:duration-400 [&_stop]:ease-in-out"
+                      className="pointer-events-none absolute top-1/2 right-0 h-full w-[150%] animate-[sway_5s_ease-in-out_infinite] [&_ellipse]:transition-[fill] [&_ellipse]:duration-400 [&_ellipse]:ease-in-out [&_stop]:transition-[stop-color] [&_stop]:duration-400 [&_stop]:ease-in-out"
                       role="img"
                       viewBox="0 0 200 200"
                     >
