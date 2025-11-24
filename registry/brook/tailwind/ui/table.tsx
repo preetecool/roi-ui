@@ -229,7 +229,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   return (
     <th
       className={cn(
-        "whitespace-nowrap px-4 py-3 text-left font-medium text-muted-foreground tracking-[-0.01em] leading-[1.5]",
+        "whitespace-nowrap px-4 py-3 text-left font-medium text-muted-foreground leading-[1.5] tracking-[-0.01em]",
         "[&[align='center']]:text-center",
         "[&[align='right']]:text-right",
         className

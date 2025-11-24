@@ -2,14 +2,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiChat } from "@/registry/brook/blocks/ai-chat/ai-chat";
-import { LikeButton } from "@/registry/brook/ui/like-button/like-button";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { Card } from "@/registry/brook/ui/card/card";
 import { Carousel } from "@/registry/brook/ui/carousel/carousel";
+import { LikeButton } from "@/registry/brook/ui/like-button/like-button";
+import { BentoBadgeSuccess } from "../bento-grid/bento-badge-success";
 import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog";
-import { BentoBadgeSuccess } from "../bento-grid/bento-badge-success";
 import styles from "./hero.module.css";
 
 const COMPONENTS = [
@@ -157,12 +157,14 @@ export const Hero = () => {
                   >
                     <div className={styles.cardHeader}>
                       <span className={styles.componentName}>
-                        {String(index + 1).padStart(2, '0')} / {item.name}
+                        {String(index + 1).padStart(2, "0")} / {item.name}
                       </span>
                     </div>
                     <div className={styles.cardComponentContent}>
                       {item.id === "expandable-card" ? (
-                        <HomeAnimatedCard isExpanded={hoveredCardIndex === index} />
+                        <HomeAnimatedCard
+                          isExpanded={hoveredCardIndex === index}
+                        />
                       ) : (
                         item.component
                       )}

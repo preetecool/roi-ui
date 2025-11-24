@@ -49,7 +49,7 @@ function MenubarMenuTrigger({
     <DropdownMenuTrigger
       className={cn(
         "inline-flex items-center justify-center rounded-[0.4rem] border-none",
-        "h-8 px-3 text-sm font-medium bg-transparent",
+        "h-8 bg-transparent px-3 font-medium text-sm",
         "leading-[1.2] tracking-[-0.014em]",
         "data-[popup-open]:bg-[var(--accent)]",
         "hover:bg-[var(--accent)]",

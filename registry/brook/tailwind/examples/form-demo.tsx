@@ -17,7 +17,6 @@ export default function FormDemo() {
   return (
     <Form
       errors={errors}
-      onClearErrors={setErrors}
       onSubmit={async (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);

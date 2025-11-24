@@ -21,9 +21,7 @@ export const useKeyboardShortcut = (
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const metaOrCtrlPressed = options.metaKey || options.ctrlKey;
-      const modifierMatch = metaOrCtrlPressed
-        ? e.metaKey || e.ctrlKey
-        : true;
+      const modifierMatch = metaOrCtrlPressed ? e.metaKey || e.ctrlKey : true;
 
       const shiftMatch = options.shiftKey ? e.shiftKey : !e.shiftKey;
       const altMatch = options.altKey ? e.altKey : !e.altKey;
@@ -36,5 +34,12 @@ export const useKeyboardShortcut = (
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [options.key, options.metaKey, options.ctrlKey, options.shiftKey, options.altKey, handler]);
+  }, [
+    options.key,
+    options.metaKey,
+    options.ctrlKey,
+    options.shiftKey,
+    options.altKey,
+    handler,
+  ]);
 };

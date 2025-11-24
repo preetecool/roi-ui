@@ -255,9 +255,7 @@ function getPages(): Page[] {
  * Generate static params for Next.js
  * Only reads from lightweight manifest, no MDX bundles loaded
  */
-function generateParams<
-  TSlug extends string = "slug",
->(slug?: TSlug) {
+function generateParams<TSlug extends string = "slug">(slug?: TSlug) {
   const slugKey = (slug || "slug") as TSlug;
   return pagesManifest.map((page) => ({
     [slugKey]: page.slug.length === 0 ? [] : page.slug,
@@ -324,14 +322,14 @@ function getLanguages() {
 /**
  * Get node page (not implemented for custom source)
  */
-function getNodePage(_node: any, _language?: string) {
+function getNodePage(_node: any, _language?: string): Page | undefined {
   return undefined;
 }
 
 /**
  * Get node meta (not implemented for custom source)
  */
-function getNodeMeta(_node: any, _language?: string) {
+function getNodeMeta(_node: any, _language?: string): undefined {
   return undefined;
 }
 

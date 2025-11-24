@@ -8,7 +8,7 @@ import {
 
 export default function CheckboxDemo() {
   return (
-    <label className="flex items-center gap-2 cursor-pointer" htmlFor="terms">
+    <label className="flex cursor-pointer items-center gap-2" htmlFor="terms">
       <Checkbox id="terms">
         <CheckboxIndicator>
           <Check size={16} strokeWidth={3} />

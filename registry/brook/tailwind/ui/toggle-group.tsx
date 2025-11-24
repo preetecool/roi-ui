@@ -8,7 +8,7 @@ function ToggleGroupRoot({ className, ...props }: ToggleGroup.Props) {
   return (
     <ToggleGroup
       className={cn(
-        "inline-flex rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] p-0.5 gap-px",
+        "inline-flex gap-px rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] p-0.5",
         "data-[orientation=horizontal]:flex-row",
         "data-[orientation=vertical]:flex-col",
         className

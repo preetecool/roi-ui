@@ -20,17 +20,17 @@ function AccordionItem({ className, ...props }: Accordion.Item.Props) {
   return (
     <Accordion.Item
       className={cn(
-        "overflow-hidden bg-[var(--mix-card-75-bg)] p-4 border-b-[0.5px] border-border",
+        "overflow-hidden border-border border-b-[0.5px] bg-[var(--mix-card-75-bg)] p-4",
         "transition-[margin,border-radius,border-color] duration-200 ease-[var(--ease-in-out-quad)]",
         // Default state - first item has top rounded, last item has bottom rounded
         "first:rounded-t-3xl",
         "last:rounded-b-3xl last:border-b-transparent",
         "first:last:rounded-3xl",
         // Expanded item gets full rounded corners and unsticks with margins
-        "data-[open]:rounded-3xl data-[open]:my-2 data-[open]:border-b-transparent",
-        "data-[open]:first:mt-0 data-[open]:last:mb-0",
+        "data-[open]:my-2 data-[open]:rounded-3xl data-[open]:border-b-transparent",
+        "data-[open]:last:mb-0 data-[open]:first:mt-0",
         // Item before an expanded item gets rounded bottom only
-        "[&:has(+*[data-open]):not([data-open])]:rounded-b-3xl [&:has(+*[data-open]):not([data-open])]:rounded-t-none [&:has(+*[data-open]):not([data-open])]:border-b-transparent",
+        "[&:has(+*[data-open]):not([data-open])]:rounded-t-none [&:has(+*[data-open]):not([data-open])]:rounded-b-3xl [&:has(+*[data-open]):not([data-open])]:border-b-transparent",
         "[&:has(+*[data-open]):not([data-open]):first-child]:rounded-3xl",
         // Item after an expanded item gets rounded top only
         "[*[data-open]+&:not([data-open])]:rounded-t-3xl [*[data-open]+&:not([data-open])]:rounded-b-none",
@@ -64,7 +64,7 @@ function AccordionTrigger({
     <Accordion.Trigger
       className={cn(
         "group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent text-left",
-        "text-base font-[350] tracking-[-0.02em] text-secondary-foreground",
+        "font-[350] text-base text-secondary-foreground tracking-[-0.02em]",
         className
       )}
       data-slot="accordion-trigger"
@@ -90,8 +90,8 @@ function AccordionTrigger({
           <title>Toggle accordion</title>
           <path
             className={cn(
-              "transition-[opacity,scale] duration-150 ease-[var(--ease-in-out-quad)] origin-center",
-              "[[data-panel-open]_&]:opacity-0 [[data-panel-open]_&]:scale-0"
+              "origin-center transition-[opacity,scale] duration-150 ease-[var(--ease-in-out-quad)]",
+              "[[data-panel-open]_&]:scale-0 [[data-panel-open]_&]:opacity-0"
             )}
             d="M4 10L16 10"
             stroke="currentColor"
@@ -128,7 +128,7 @@ function AccordionPanel({
       {...props}
     >
       <div className="w-full overflow-hidden">
-        <div className="ml-12 pr-12 text-sm leading-[1.6] text-foreground/75 max-sm:ml-10 max-sm:pr-0 max-sm:text-[0.9375rem] max-sm:leading-[1.5]">
+        <div className="ml-12 pr-12 text-foreground/75 text-sm leading-[1.6] max-sm:ml-10 max-sm:pr-0 max-sm:text-[0.9375rem] max-sm:leading-[1.5]">
           {children}
         </div>
       </div>

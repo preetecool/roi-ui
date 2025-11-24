@@ -59,7 +59,7 @@ async function extractFrontmatter(filePath: string): Promise<Frontmatter> {
   const frontmatter: Frontmatter = {};
   const lines = frontmatterMatch[1].split("\n");
   let currentKey: string | null = null;
-  let currentValue: string = "";
+  let currentValue = "";
   let inNestedObject = false;
   let nestedObject: any = {};
   let nestedKey: string | null = null;
@@ -72,12 +72,14 @@ async function extractFrontmatter(filePath: string): Promise<Frontmatter> {
 
     if (topLevelMatch && !line.startsWith(" ") && !line.startsWith("\t")) {
       // Save previous key if exists
-      if (currentKey && currentValue) {
-        if (currentKey === "title" || currentKey === "description") {
-          frontmatter[currentKey] = currentValue
-            .trim()
-            .replace(/^["']|["']$/g, "");
-        }
+      if (
+        currentKey &&
+        currentValue &&
+        (currentKey === "title" || currentKey === "description")
+      ) {
+        frontmatter[currentKey] = currentValue
+          .trim()
+          .replace(/^["']|["']$/g, "");
       }
       if (inNestedObject && nestedKey) {
         (frontmatter as any)[nestedKey] = nestedObject;
@@ -115,10 +117,12 @@ async function extractFrontmatter(filePath: string): Promise<Frontmatter> {
   }
 
   // Save last key
-  if (currentKey && currentValue) {
-    if (currentKey === "title" || currentKey === "description") {
-      frontmatter[currentKey] = currentValue.trim().replace(/^["']|["']$/g, "");
-    }
+  if (
+    currentKey &&
+    currentValue &&
+    (currentKey === "title" || currentKey === "description")
+  ) {
+    frontmatter[currentKey] = currentValue.trim().replace(/^["']|["']$/g, "");
   }
   if (inNestedObject && nestedKey) {
     (frontmatter as any)[nestedKey] = nestedObject;
@@ -132,7 +136,7 @@ async function extractFrontmatter(filePath: string): Promise<Frontmatter> {
  */
 async function processDirectory(
   baseDir: string,
-  relativePath: string = ""
+  relativePath = ""
 ): Promise<{ pages: PageMetadata[]; meta?: MetaJson }> {
   const fullPath = path.join(baseDir, relativePath);
   const pages: PageMetadata[] = [];

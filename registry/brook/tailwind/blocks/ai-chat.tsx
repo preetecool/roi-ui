@@ -92,7 +92,10 @@ export function AiChat() {
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger className="max-md:!min-w-[120px]" render={<Button size="sm" variant="outline" />}>
+              <SelectTrigger
+                className="max-md:!min-w-[120px]"
+                render={<Button size="sm" variant="outline" />}
+              >
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find(
@@ -107,7 +110,9 @@ export function AiChat() {
                             size={14}
                           />
                         )}
-                        <span className="max-md:text-sm">{selectedMode?.label}</span>
+                        <span className="max-md:text-sm">
+                          {selectedMode?.label}
+                        </span>
                       </div>
                     );
                   }}
@@ -116,7 +121,7 @@ export function AiChat() {
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner alignItemWithTrigger={false} sideOffset={8}>
-                  <SelectPopup className="box-border w-36 min-w-36 max-w-36 p-1 max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px]">
+                  <SelectPopup className="max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px] box-border w-36 min-w-36 max-w-36 p-1">
                     {aiModes.map(({ label, value, icon: IconComponent }) => (
                       <SelectItem key={value} value={value}>
                         <div className="flex w-full items-center gap-2">
@@ -124,7 +129,9 @@ export function AiChat() {
                             className="text-muted-foreground max-md:hidden"
                             size={14}
                           />
-                          <SelectItemText className="max-md:text-sm">{label}</SelectItemText>
+                          <SelectItemText className="max-md:text-sm">
+                            {label}
+                          </SelectItemText>
                           <SelectItemIndicator />
                         </div>
                       </SelectItem>
@@ -138,7 +145,13 @@ export function AiChat() {
           <Button
             className="shrink-0 rounded-full p-2 [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
             size="icon"
-            style={{ borderRadius: "50%", width: "36px", height: "36px", minWidth: "36px", minHeight: "36px" }}
+            style={{
+              borderRadius: "50%",
+              width: "36px",
+              height: "36px",
+              minWidth: "36px",
+              minHeight: "36px",
+            }}
             type="submit"
             variant="outline"
           >

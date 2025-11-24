@@ -17,10 +17,7 @@
     {
       "name": "utils-tailwind",
       "type": "registry:item",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "lib/utils-tailwind.ts",
@@ -86,6 +83,7 @@
     {
       "name": "alert",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Alert",
       "description": "A component for displaying important messages to users.",
       "files": [
@@ -140,6 +138,7 @@
     {
       "name": "badge",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Badge",
       "description": "A small count and labeling component.",
       "files": [
@@ -158,6 +157,7 @@
     {
       "name": "button",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Button",
       "description": "A button component.",
       "files": [
@@ -176,6 +176,7 @@
     {
       "name": "card",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Card",
       "description": "A container component for displaying content.",
       "files": [
@@ -320,10 +321,7 @@
     {
       "name": "copy-button",
       "type": "registry:item",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
+      "dependencies": ["motion", "lucide-react"],
       "title": "Copy Button",
       "description": "A button component with animated copy-to-clipboard functionality.",
       "files": [
@@ -378,9 +376,7 @@
     {
       "name": "expandable-card",
       "type": "registry:item",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "title": "Expandable Card",
       "description": "A card component that can expand to show more content.",
       "files": [
@@ -687,6 +683,7 @@
     {
       "name": "table",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Table",
       "description": "A responsive table component for displaying structured tabular data.",
       "files": [
@@ -777,9 +774,7 @@
     {
       "name": "chart",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Chart",
       "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
       "files": [
@@ -877,9 +872,7 @@
     {
       "name": "card-task",
       "type": "registry:item",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://roiui.com/r/alert-dialog.json",
         "https://roiui.com/r/avatar.json",
@@ -929,9 +922,7 @@
     {
       "name": "card-traffic",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "registryDependencies": [
         "https://roiui.com/r/badge.json",
         "https://roiui.com/r/card.json",
@@ -1042,6 +1033,7 @@
     {
       "name": "alert-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Alert (Tailwind)",
       "description": "A component for displaying important messages to users.",
       "files": [
@@ -1107,6 +1099,7 @@
     {
       "name": "badge-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Badge (Tailwind)",
       "description": "A small count and labeling component.",
       "files": [
@@ -1120,6 +1113,7 @@
     {
       "name": "button-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Button (Tailwind)",
       "description": "A button component.",
       "files": [
@@ -1133,6 +1127,7 @@
     {
       "name": "card-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Card (Tailwind)",
       "description": "A container component for displaying content.",
       "files": [
@@ -1237,10 +1232,7 @@
     {
       "name": "copy-button-tailwind",
       "type": "registry:item",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
+      "dependencies": ["motion", "lucide-react"],
       "title": "Copy Button (Tailwind)",
       "description": "A button component with animated copy-to-clipboard functionality.",
       "files": [
@@ -1319,6 +1311,7 @@
     {
       "name": "input-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Input (Tailwind)",
       "description": "An input component for user text entry.",
       "files": [
@@ -1527,6 +1520,7 @@
     {
       "name": "table-tailwind",
       "type": "registry:item",
+      "dependencies": ["class-variance-authority"],
       "title": "Table (Tailwind)",
       "description": "A responsive table component for displaying structured tabular data.",
       "files": [
@@ -1605,9 +1599,7 @@
     {
       "name": "chart-tailwind",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "title": "Chart (Tailwind)",
       "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
       "files": [
@@ -1695,9 +1687,7 @@
     {
       "name": "card-task-tailwind",
       "type": "registry:item",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://roiui.com/r/alert-dialog-tailwind.json",
         "https://roiui.com/r/avatar-tailwind.json",
@@ -1742,9 +1732,7 @@
     {
       "name": "card-traffic-tailwind",
       "type": "registry:item",
-      "dependencies": [
-        "recharts"
-      ],
+      "dependencies": ["recharts"],
       "registryDependencies": [
         "https://roiui.com/r/badge-tailwind.json",
         "https://roiui.com/r/card-tailwind.json",
@@ -1768,9 +1756,7 @@
     {
       "name": "expandable-card-tailwind",
       "type": "registry:item",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "title": "Expandable Card (Tailwind)",
       "description": "A card component that can expand to show more content.",
       "files": [

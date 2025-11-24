@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Alert (Tailwind)",
   "description": "A component for displaying important messages to users.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/alert.tsx",

@@ -27,7 +27,7 @@ export default function ContextMenuDemo() {
   return (
     <div className="mx-auto max-w-[600px] p-8">
       <ContextMenu>
-        <ContextMenuTrigger className="flex w-full cursor-context-menu items-center justify-center rounded-[var(--radius)] border-2 border-dashed border-[var(--color-border)] p-32 text-sm text-[var(--color-muted-foreground)] outline-none transition-all duration-150 hover:border-[var(--color-ring)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-ring)] focus-visible:outline-offset-2">
+        <ContextMenuTrigger className="flex w-full cursor-context-menu items-center justify-center rounded-[var(--radius)] border-2 border-[var(--color-border)] border-dashed p-32 text-[var(--color-muted-foreground)] text-sm outline-none transition-all duration-150 hover:border-[var(--color-ring)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-ring)] focus-visible:outline-offset-2">
           Right click
         </ContextMenuTrigger>
 
@@ -47,10 +47,7 @@ export default function ContextMenuDemo() {
 
               <ContextMenuSubmenuRoot>
                 <ContextMenuSubmenuTrigger>
-                  <Share2
-                    className="ml-1"
-                    size={14}
-                  />
+                  <Share2 className="ml-1" size={14} />
                   Share
                 </ContextMenuSubmenuTrigger>
                 <ContextMenuPortal>

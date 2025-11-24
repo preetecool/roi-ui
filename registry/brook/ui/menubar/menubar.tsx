@@ -129,12 +129,7 @@ function MenubarMenuShortcut({
   className,
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) {
-  return (
-    <span
-      className={cn(styles.shortcut, className)}
-      {...props}
-    />
-  );
+  return <span className={cn(styles.shortcut, className)} {...props} />;
 }
 
 function MenubarMenuSpacer() {

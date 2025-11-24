@@ -42,7 +42,7 @@ function TabsTrigger({ className, ...props }: Tabs.Tab.Props) {
         "hover:text-[var(--color-foreground)]",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-ring)]",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-[selected]:border data-[selected]:border-[var(--color-border)] data-[selected]:bg-[var(--color-muted)] data-[selected]:text-[var(--color-foreground)]",
+        "data-[active]:border data-[active]:border-[var(--color-border)] data-[active]:bg-[var(--color-muted)] data-[active]:text-[var(--color-foreground)]",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
         className
       )}

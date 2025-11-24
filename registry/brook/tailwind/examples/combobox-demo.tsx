@@ -48,7 +48,7 @@ export default function ComboboxDemo() {
   return (
     <div className="p-8 max-sm:p-4">
       <label
-        className="mb-2 ml-1 flex flex-col gap-1 text-sm font-medium leading-[17.5px] text-[var(--color-foreground)] max-sm:text-[0.9375rem]"
+        className="mb-2 ml-1 flex flex-col gap-1 font-medium text-[var(--color-foreground)] text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
         htmlFor="cb-input"
       >
         Select your country

@@ -33,8 +33,11 @@ const BAR_RADIUS: [number, number, number, number] = [4, 4, 0, 0];
 
 export default function ChartBarDemo() {
   return (
-    <div className="w-full h-full flex flex-col">
-      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
+    <div className="flex h-full w-full flex-col">
+      <ChartContainer
+        className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]"
+        config={chartConfig}
+      >
         <BarChart
           data={chartData}
           margin={{ top: 5, right: 5, left: 0, bottom: 0 }}

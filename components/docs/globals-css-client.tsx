@@ -1,9 +1,9 @@
 "use client";
 
+import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
-import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 
 type GlobalsCSSClientProps = {
   cssModulesContent: string;

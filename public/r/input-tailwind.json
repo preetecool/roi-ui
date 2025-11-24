@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Input (Tailwind)",
   "description": "An input component for user text entry.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/input.tsx",

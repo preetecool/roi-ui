@@ -9,7 +9,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import styles from "./card-task.module.css";
 
 type TaskCardDropdownMenuProps = {
   onAddCollaborator: () => void;
@@ -50,10 +49,10 @@ export function TaskCardDropdownMenu({
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className={styles.destructiveMenuItem}
               icon={<Trash size="14" />}
               onClick={onDeleteTask}
               render={<li />}
+              variant="destructive"
             >
               Delete task
             </DropdownMenuItem>

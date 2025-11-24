@@ -40,7 +40,7 @@ function SelectValue({
   return (
     <Select.Value
       className={cn(
-        "flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left !leading-[1.25]",
+        "!leading-[1.25] flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left",
         "data-[placeholder]:text-[var(--muted-foreground)]",
         className
       )}

@@ -18,8 +18,9 @@ export default function PreviewCardDemo() {
         Hover over the link below to see a preview card:
       </p>
 
-      <PreviewCard closeDelay={200}>
+      <PreviewCard>
         <PreviewCardTrigger
+          closeDelay={200}
           href="https://github.com/base-ui"
           rel="noopener noreferrer"
           render={

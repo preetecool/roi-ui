@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Badge (Tailwind)",
   "description": "A small count and labeling component.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/badge.tsx",

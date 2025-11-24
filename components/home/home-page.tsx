@@ -1,7 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import type { PageTree } from "fumadocs-core/server";
+import dynamic from "next/dynamic";
 import { SiteFooter } from "@/components/layout/site-footer/site-footer";
 import { Hero } from "./hero/hero";
 import styles from "./home-page.module.css";

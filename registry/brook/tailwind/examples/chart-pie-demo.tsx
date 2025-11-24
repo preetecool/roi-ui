@@ -41,8 +41,11 @@ const chartConfig = {
 
 export default function ChartPieDemo() {
   return (
-    <div className="w-full h-full flex flex-col">
-      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
+    <div className="flex h-full w-full flex-col">
+      <ChartContainer
+        className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]"
+        config={chartConfig}
+      >
         <PieChart>
           <ChartTooltip
             content={
