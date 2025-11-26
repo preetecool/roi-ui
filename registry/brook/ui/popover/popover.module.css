@@ -1,26 +1,26 @@
 .trigger {
   @media (hover: hover) {
     &:hover {
-      background-color: var(--accent);
+      background-color: var(--mix-card-66-bg);
     }
   }
 
   &:active {
-    background-color: var(--accent);
+    background-color: var(--mix-card-66-bg);
   }
 
   &[data-popup-open] {
-    background-color: var(--accent);
+    background-color: var(--mix-card-66-bg);
   }
 
   @media (hover: hover) {
     &[data-popup-open]:hover {
-      background-color: var(--accent);
+      background-color: var(--mix-card-66-bg);
     }
   }
 
   &[data-popup-open]:active {
-    background-color: var(--accent);
+    background-color: var(--mix-card-66-bg);
   }
 
   &:focus-visible {
@@ -46,7 +46,7 @@
   box-sizing: border-box;
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
-  background-color: var(--popover);
+  background-color: oklch(from var(--popover) l c h / 0.6);
   color: var(--popover-foreground);
   transform-origin: var(--transform-origin);
   transition:
@@ -69,7 +69,6 @@
 
   [data-theme="dark"] & {
     outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
-    outline-offset: -1px;
   }
 
   @media (max-width: 640px) {
