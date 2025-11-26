@@ -1,11 +1,12 @@
-import type { loader } from "fumadocs-core/source";
+import type { source } from "./source";
 
-/**
- * Types-only file for client components
- * This prevents bundling the entire source in client bundles
- */
-
-// Re-export only the types from the source
-export type Source = ReturnType<typeof loader>;
+export type Source = typeof source;
 export type PageTree = Source["pageTree"];
 export type Page = ReturnType<Source["getPage"]>;
+
+export namespace PageTree {
+  export type Root = Source["pageTree"];
+  export type Node = Root["children"][number];
+  export type Item = Extract<Node, { type: "page" }>;
+  export type Folder = Extract<Node, { type: "folder" }>;
+}

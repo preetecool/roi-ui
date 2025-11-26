@@ -1,10 +1,16 @@
 "use client";
-import type { TOCItemType } from "fumadocs-core/server";
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import styles from "./toc.module.css";
 
+type TOCItem = {
+  title: ReactNode;
+  url: string;
+  depth: number;
+};
+
 type TableOfContentsProps = {
-  toc?: TOCItemType[];
+  toc?: TOCItem[];
 };
 
 export function TableOfContents({ toc }: TableOfContentsProps) {

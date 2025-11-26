@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TableOfContents } from "@/components/docs/toc/toc";
-import { getPageWithContent, source } from "@/lib/source";
+import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./page.module.css";
@@ -19,7 +19,7 @@ export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const page = await getPageWithContent(params.slug);
+  const page = source.getPage(params.slug);
 
   if (!page) {
     notFound();
@@ -62,7 +62,7 @@ export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
   const params = await props.params;
-  const page = await getPageWithContent(params.slug);
+  const page = source.getPage(params.slug);
   if (!page) {
     notFound();
   }

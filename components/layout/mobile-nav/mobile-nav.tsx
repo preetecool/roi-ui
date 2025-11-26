@@ -1,13 +1,13 @@
 "use client";
 
 import { Dialog } from "@base-ui-components/react";
-import type { PageTree } from "fumadocs-core/server";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
 import { GitHubIcon } from "@/components/shared/github-icon";
+import type { PageTree } from "@/lib/source-types";
 import styles from "./mobile-nav.module.css";
 
 type NodeWithChildren = {
@@ -123,7 +123,7 @@ function MobileNavContent({
 
             <nav className={styles.treeNav}>
               <ul className={styles.navList}>
-                {tree?.children?.map((item, index) => (
+                {tree?.children?.map((item: PageTree.Node, index: number) => (
                   <li key={item.$id || `item-${index}`}>
                     <MobileSidebarGroup
                       item={item as NodeWithChildren}

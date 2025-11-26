@@ -27,7 +27,7 @@ import { SearchResults } from "./search-results";
 import { SearchTrigger } from "./search-trigger";
 
 export type SearchProps = {
-  tree?: PageTree;
+  tree?: PageTree.Root;
 };
 
 /**
@@ -102,12 +102,19 @@ export function Search({ tree }: SearchProps) {
                 {query.isLoading ? "Searching..." : "No results found."}
               </CommandEmpty>
 
-              {tree?.children.map((group, index) => (
-                <CommandGroup heading={group.name} key={`group-${index}`}>
-                  {group.type === "folder" &&
-                    group.children
-                      .filter((item) => item.type === "page")
-                      .map((item) => (
+              {tree?.children.map((group: PageTree.Node, index: number) => {
+                if (group.type !== "folder") return null;
+                return (
+                  <CommandGroup
+                    heading={group.name as string}
+                    key={`group-${index}`}
+                  >
+                    {(group.children as PageTree.Node[])
+                      .filter(
+                        (item: PageTree.Node): item is PageTree.Item =>
+                          item.type === "page"
+                      )
+                      .map((item: PageTree.Item) => (
                         <SearchItem
                           key={item.url}
                           onSelect={() => handleSelect(item.url)}
@@ -125,8 +132,9 @@ export function Search({ tree }: SearchProps) {
                           </div>
                         </SearchItem>
                       ))}
-                </CommandGroup>
-              ))}
+                  </CommandGroup>
+                );
+              })}
 
               <SearchResults
                 open={open}
