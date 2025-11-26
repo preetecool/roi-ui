@@ -15,11 +15,11 @@ function PopoverTrigger({
   return (
     <Popover.Trigger
       className={cn(
-        "hover:bg-[var(--accent)]",
-        "active:bg-[var(--accent)]",
-        "data-[popup-open]:bg-[var(--accent)]",
-        "hover:data-[popup-open]:bg-[var(--accent)]",
-        "active:data-[popup-open]:bg-[var(--accent)]",
+        "hover:bg-[var(--mix-card-66-bg)]",
+        "active:bg-[var(--mix-card-66-bg)]",
+        "data-[popup-open]:bg-[var(--mix-card-66-bg)]",
+        "hover:data-[popup-open]:bg-[var(--mix-card-66-bg)]",
+        "active:data-[popup-open]:bg-[var(--mix-card-66-bg)]",
         "focus-visible:-outline-offset-1 focus-visible:outline-2 focus-visible:outline-[var(--ring)]",
         className
       )}
