@@ -23,7 +23,8 @@
       "@/components/*": ["./components/*"],
       "@/mdx-components": ["./mdx-components"],
       "@/registry/*": ["./registry/*"],
-      "@/.source": ["./.source"]
+      "@/.source": ["./.source"],
+      "fumadocs-mdx:collections/*": ["./.source/*"]
     },
     "strictNullChecks": true
   },

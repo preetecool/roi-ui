@@ -1,6 +1,6 @@
 "use client";
 
-import type { PageTree } from "fumadocs-core/server";
+import type { PageTree } from "@/lib/source-types";
 import { Gauge, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,13 +22,15 @@ type DocsSidebarProps = {
   tree: PageTree.Root;
 };
 
+type TreeNode = PageTree.Node;
+
 export function DocsSidebar({ tree }: DocsSidebarProps) {
   const pathname = usePathname();
 
   return (
     <nav aria-label="Documentation navigation" className={styles.sidebar}>
       <div className={styles.content}>
-        {tree.children.map((item, index) => (
+        {tree.children.map((item: TreeNode, index: number) => (
           <div className={styles.group} key={item.$id || `item-${index}`}>
             <DocsSidebarGroup
               item={item as SidebarItem}

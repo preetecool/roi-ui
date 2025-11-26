@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/build-source-manifest.ts && next dev --turbopack",
-    "build": "node scripts/build-source-manifest.ts && next build",
+    "dev": "next dev --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
     "registry:build": "shadcn build && node scripts/fix-registry-imports.ts && cp registry.json public/r/registry.json",
-    "registry:index": "node scripts/build-registry-index.ts",
-    "source:manifest": "node scripts/build-source-manifest.ts"
+    "registry:index": "node scripts/build-registry-index.ts"
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.6",
@@ -24,8 +23,8 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "critters": "^0.0.25",
-    "fumadocs-core": "^15.6.0",
-    "fumadocs-mdx": "^11.6.10",
+    "fumadocs-core": "^16.1.0",
+    "fumadocs-mdx": "^14.0.3",
     "geist": "^1.4.2",
     "lucide-react": "^0.525.0",
     "motion": "^12.23.9",
