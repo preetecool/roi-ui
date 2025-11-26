@@ -194,7 +194,10 @@
 
 .contentWrapper [class*="code-tabs-module"] + h3,
 .contentWrapper [class*="code-block-module"] + h3,
-.contentWrapper [class*="component-preview-module"] + h3 {
+.contentWrapper [class*="component-preview-module"] + h3,
+.contentWrapper div:has([class*="code-tabs-module"]) + div > h3:first-child,
+.contentWrapper div:has([class*="code-block-module"]) + div > h3:first-child,
+.contentWrapper div:has([class*="component-preview-module"]) + div > h3:first-child {
   margin-top: 60px;
 }
 
