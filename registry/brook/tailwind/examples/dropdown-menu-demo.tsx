@@ -16,7 +16,7 @@ export default function DropdownMenuDemo() {
       <DropdownMenuTrigger
         render={
           <Button variant="outline">
-            <span>Sort by</span>
+            <span>Actions</span>
           </Button>
         }
       />
@@ -24,13 +24,12 @@ export default function DropdownMenuDemo() {
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup render={<ul />}>
             <DropdownMenuSpacer />
-            <DropdownMenuItem render={<li />}>Name</DropdownMenuItem>
-            <DropdownMenuItem render={<li />}>Date Created</DropdownMenuItem>
-            <DropdownMenuItem render={<li />}>Date Modified</DropdownMenuItem>
-            <DropdownMenuItem render={<li />}>Size</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Edit</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Duplicate</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Share</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem render={<li />}>Type</DropdownMenuItem>
-            <DropdownMenuItem render={<li />}>Priority</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Archive</DropdownMenuItem>
+            <DropdownMenuItem render={<li />}>Delete</DropdownMenuItem>
             <DropdownMenuSpacer />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
