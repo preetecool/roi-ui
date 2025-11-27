@@ -22,7 +22,7 @@
   }
 }
 
-.input {
+input.input {
   width: 300px;
 
   @media (max-width: 640px) {
