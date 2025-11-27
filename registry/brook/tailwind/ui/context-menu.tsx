@@ -106,10 +106,10 @@ function ContextMenuItem({
     <ContextMenu.Item
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
-        "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
+        "m-0 cursor-pointer justify-start rounded-[0.3125rem] text-foreground",
         "relative isolate",
         "before:absolute before:inset-x-1 before:inset-y-0 before:content-['']",
-        "before:-z-10 before:rounded-[0.3rem] before:bg-transparent",
+        "before:-z-10 before:rounded-[0.3125rem] before:bg-transparent",
         "data-[popup-open]:before:bg-[var(--accent)]",
         "data-[highlighted]:before:bg-[var(--accent)]",
         "hover:before:bg-[var(--accent)]",
@@ -253,10 +253,10 @@ function ContextMenuSubmenuTrigger({
     <ContextMenu.SubmenuTrigger
       className={cn(
         "flex h-8 items-center gap-3 px-2 pr-1.5 font-normal text-sm leading-tight",
-        "m-0 cursor-pointer justify-start rounded-[0.3rem] text-foreground",
+        "m-0 cursor-pointer justify-start rounded-[0.3125rem] text-foreground",
         "relative isolate",
         "before:absolute before:inset-x-1 before:inset-y-0 before:content-['']",
-        "before:-z-10 before:rounded-[0.3rem] before:bg-transparent",
+        "before:-z-10 before:rounded-[0.3125rem] before:bg-transparent",
         "data-[popup-open]:before:bg-[var(--accent)]",
         "data-[highlighted]:before:bg-[var(--accent)]",
         "hover:before:bg-[var(--accent)]",

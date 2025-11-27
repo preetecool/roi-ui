@@ -202,7 +202,7 @@ function SelectItem({
   return (
     <Select.Item
       className={cn(
-        "flex cursor-pointer items-center justify-between rounded-[calc(var(--radius)-2px)] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none",
+        "flex cursor-pointer items-center justify-between rounded-[0.3125rem] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none",
         "hover:not-disabled:bg-[var(--accent)]",
         "data-[highlighted]:bg-[var(--muted)] data-[highlighted]:text-[var(--foreground)]",
         "data-[selected]:bg-transparent",

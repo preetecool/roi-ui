@@ -137,7 +137,7 @@
   font-size: 0.875rem;
   color: var(--foreground);
   cursor: pointer;
-  border-radius: calc(var(--radius) - 2px);
+  border-radius: 0.3125rem;
 
   outline: none;
 

@@ -78,9 +78,9 @@ function DropdownMenuItem({
   return (
     <Menu.Item
       className={cn(
-        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
+        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3125rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
         "relative isolate m-0 justify-start",
-        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3125rem] before:bg-transparent before:content-['']",
         "data-[popup-open]:before:bg-[var(--accent)]",
         "data-[highlighted]:before:bg-[var(--accent)]",
         "hover:before:bg-[var(--accent)]",
@@ -146,9 +146,9 @@ function DropdownMenuSubmenuTrigger({
   return (
     <Menu.SubmenuTrigger
       className={cn(
-        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
+        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3125rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
         "relative isolate m-0 justify-start",
-        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3125rem] before:bg-transparent before:content-['']",
         "data-[popup-open]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "data-[highlighted]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
         "hover:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.7)]",
@@ -180,9 +180,9 @@ function DropdownMenuRadioItem({
   return (
     <Menu.RadioItem
       className={cn(
-        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
+        "flex h-8 cursor-pointer items-center gap-3 rounded-[0.3125rem] px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
         "relative isolate m-0 justify-start",
-        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3rem] before:bg-transparent before:content-['']",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[0.3125rem] before:bg-transparent before:content-['']",
         "data-[popup-open]:before:bg-[var(--accent)]",
         "data-[highlighted]:before:bg-[var(--accent)]",
         "hover:before:bg-[var(--accent)]",
