@@ -178,7 +178,7 @@ const demoUsers: User[] = [
   },
 ];
 
-export function CardTaskDemo() {
+export default function CardTaskDemo() {
   const [collaborators, setCollaborators] = useState<User[]>([demoUsers[0]]);
 
   return (
