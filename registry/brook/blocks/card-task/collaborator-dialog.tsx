@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Avatar,
   AvatarFallback,
@@ -37,43 +37,47 @@ import {
   TooltipTrigger,
 } from "@/registry/brook/ui/tooltip/tooltip";
 import styles from "./card-task.module.css";
-
-type User = {
-  value: string;
-  label: string;
-  email: string;
-  avatar: string;
-};
+import type { User } from "./card-task";
 
 type CollaboratorDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  users: User[];
+  availableUsers: User[];
   currentCollaborators: User[];
-  selectedCollaborators: User[];
-  onSelectedCollaboratorsChange: (collaborators: User[]) => void;
-  onConfirm: () => void;
+  onConfirm: (collaborators: User[]) => void;
 };
 
 export function CollaboratorDialog({
   open,
   onOpenChange,
-  users,
+  availableUsers,
   currentCollaborators,
-  selectedCollaborators,
-  onSelectedCollaboratorsChange,
   onConfirm,
 }: CollaboratorDialogProps) {
   const comboboxAnchorRef = useRef<HTMLDivElement>(null);
+  const [selectedCollaborators, setSelectedCollaborators] =
+    useState<User[]>(currentCollaborators);
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (nextOpen) {
+      setSelectedCollaborators([...currentCollaborators]);
+    }
+    onOpenChange(nextOpen);
+  };
+
+  const handleConfirm = () => {
+    onConfirm(selectedCollaborators);
+    onOpenChange(false);
+  };
 
   const handleRemoveCollaborator = (userValue: string) => {
-    onSelectedCollaboratorsChange(
+    setSelectedCollaborators(
       selectedCollaborators.filter((c) => c.value !== userValue)
     );
   };
 
   return (
-    <Dialog onOpenChange={onOpenChange} open={open}>
+    <Dialog onOpenChange={handleOpenChange} open={open}>
       <DialogPortal>
         <DialogOverlay />
         <DialogPopup className={styles.dialogPopup}>
@@ -156,13 +160,13 @@ export function CollaboratorDialog({
                 Add New Collaborator
               </div>
               <Combobox<User, true>
-                items={users}
+                items={availableUsers}
                 itemToStringLabel={(item: User | null) => item?.label || ""}
                 itemToStringValue={(item: User | null) => item?.value || ""}
                 multiple={true}
                 onValueChange={(value) => {
                   if (value && Array.isArray(value)) {
-                    onSelectedCollaboratorsChange(value);
+                    setSelectedCollaborators(value);
                   }
                 }}
                 value={selectedCollaborators}
@@ -217,7 +221,7 @@ export function CollaboratorDialog({
 
           <DialogFooter className={styles.dialogFooter}>
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
-            <Button onClick={onConfirm}>Confirm</Button>
+            <Button onClick={handleConfirm}>Confirm</Button>
           </DialogFooter>
         </DialogPopup>
       </DialogPortal>

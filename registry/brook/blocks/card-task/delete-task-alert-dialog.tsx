@@ -13,11 +13,13 @@ import styles from "./card-task.module.css";
 type DeleteTaskAlertDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onDelete: () => void;
 };
 
 export function DeleteTaskAlertDialog({
   open,
   onOpenChange,
+  onDelete,
 }: DeleteTaskAlertDialogProps) {
   return (
     <AlertDialog onOpenChange={onOpenChange} open={open}>
@@ -32,7 +34,7 @@ export function DeleteTaskAlertDialog({
           <AlertDialogClose
             render={<Button variant="outline">Cancel</Button>}
           />
-          <Button onClick={() => onOpenChange(false)} variant="destructive">
+          <Button onClick={onDelete} variant="destructive">
             Delete
           </Button>
         </AlertDialogFooter>

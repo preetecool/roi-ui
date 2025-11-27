@@ -18,13 +18,17 @@
   align-items: center;
 }
 
-.divider {
+.dividerWrapper {
+  padding: 5px 0;
   width: calc(100% + 32px);
-  height: 1px;
-  background: oklch(from var(--border) l c h / 0.5);
   margin-left: -16px;
   margin-right: -16px;
-  margin-top: auto;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.6);
 }
 
 .footerContainer {

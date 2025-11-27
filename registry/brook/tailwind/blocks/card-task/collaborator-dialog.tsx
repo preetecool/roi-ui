@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import {
   Avatar,
@@ -37,43 +37,47 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/registry/brook/tailwind/ui/tooltip";
-
-type User = {
-  value: string;
-  label: string;
-  email: string;
-  avatar: string;
-};
+import type { User } from "./card-task";
 
 type CollaboratorDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  users: User[];
+  availableUsers: User[];
   currentCollaborators: User[];
-  selectedCollaborators: User[];
-  onSelectedCollaboratorsChange: (collaborators: User[]) => void;
-  onConfirm: () => void;
+  onConfirm: (collaborators: User[]) => void;
 };
 
 export function CollaboratorDialog({
   open,
   onOpenChange,
-  users,
+  availableUsers,
   currentCollaborators,
-  selectedCollaborators,
-  onSelectedCollaboratorsChange,
   onConfirm,
 }: CollaboratorDialogProps) {
   const comboboxAnchorRef = useRef<HTMLDivElement>(null);
+  const [selectedCollaborators, setSelectedCollaborators] =
+    useState<User[]>(currentCollaborators);
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (nextOpen) {
+      setSelectedCollaborators([...currentCollaborators]);
+    }
+    onOpenChange(nextOpen);
+  };
+
+  const handleConfirm = () => {
+    onConfirm(selectedCollaborators);
+    onOpenChange(false);
+  };
 
   const handleRemoveCollaborator = (userValue: string) => {
-    onSelectedCollaboratorsChange(
+    setSelectedCollaborators(
       selectedCollaborators.filter((c) => c.value !== userValue)
     );
   };
 
   return (
-    <Dialog onOpenChange={onOpenChange} open={open}>
+    <Dialog onOpenChange={handleOpenChange} open={open}>
       <DialogPortal>
         <DialogOverlay />
         <DialogPopup className="max-w-[410px]">
@@ -87,7 +91,7 @@ export function CollaboratorDialog({
           <div className="flex flex-col gap-4">
             {/* Current Collaborators */}
             <div>
-              <div className="mb-2 block font-medium text-sm">
+              <div className="mb-2 block text-sm font-medium">
                 Current Collaborators
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -126,7 +130,7 @@ export function CollaboratorDialog({
                               </Avatar>
                               <button
                                 className={cn(
-                                  "-top-1 -right-1 absolute flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-full border-2 border-[var(--background)] bg-[var(--destructive)] font-semibold text-[10px] text-[var(--destructive-foreground)] leading-none transition-all hover:scale-110 hover:bg-[oklch(from_var(--destructive)_calc(l*0.9)_c_h)]",
+                                  "-right-1 -top-1 absolute flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-full border-2 border-[var(--background)] bg-[var(--destructive)] text-[10px] font-semibold leading-none text-[var(--destructive-foreground)] transition-all hover:scale-110 hover:bg-[oklch(from_var(--destructive)_calc(l*0.9)_c_h)]",
                                   "focus-visible:pointer-events-auto focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
                                   isLast && !isFirst
                                     ? "pointer-events-auto opacity-100"
@@ -159,15 +163,15 @@ export function CollaboratorDialog({
 
             {/* Add New Collaborator */}
             <div className="flex flex-col gap-2">
-              <div className="font-medium text-sm">Add New Collaborator</div>
+              <div className="text-sm font-medium">Add New Collaborator</div>
               <Combobox<User, true>
-                items={users}
+                items={availableUsers}
                 itemToStringLabel={(item: User | null) => item?.label || ""}
                 itemToStringValue={(item: User | null) => item?.value || ""}
                 multiple={true}
                 onValueChange={(value) => {
                   if (value && Array.isArray(value)) {
-                    onSelectedCollaboratorsChange(value);
+                    setSelectedCollaborators(value);
                   }
                 }}
                 value={selectedCollaborators}
@@ -205,10 +209,10 @@ export function CollaboratorDialog({
                                 </AvatarFallback>
                               </Avatar>
                               <div className="text-left">
-                                <div className="font-medium text-sm">
+                                <div className="text-sm font-medium">
                                   {user.label}
                                 </div>
-                                <div className="text-[var(--muted-foreground)] text-xs">
+                                <div className="text-xs text-[var(--muted-foreground)]">
                                   {user.email}
                                 </div>
                               </div>
@@ -225,7 +229,7 @@ export function CollaboratorDialog({
 
           <DialogFooter className="mt-8 flex gap-3 [&>*]:flex-1">
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
-            <Button onClick={onConfirm}>Confirm</Button>
+            <Button onClick={handleConfirm}>Confirm</Button>
           </DialogFooter>
         </DialogPopup>
       </DialogPortal>

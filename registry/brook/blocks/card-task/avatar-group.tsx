@@ -12,13 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/registry/brook/ui/tooltip/tooltip";
-
-type User = {
-  value: string;
-  label: string;
-  email: string;
-  avatar: string;
-};
+import type { User } from "./card-task";
 
 type AvatarGroupProps = {
   users: User[];

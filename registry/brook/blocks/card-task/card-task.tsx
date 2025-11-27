@@ -18,14 +18,137 @@ import { CollaboratorDialog } from "./collaborator-dialog";
 import { DeleteTaskAlertDialog } from "./delete-task-alert-dialog";
 import { TaskCardDropdownMenu } from "./task-card-dropdown-menu";
 
-type User = {
+export type User = {
   value: string;
   label: string;
   email: string;
   avatar: string;
 };
 
-const users: User[] = [
+type TaskCardProps = {
+  title: string;
+  description: string;
+  tags: Array<{
+    label: string;
+    variant?: "default" | "destructive";
+  }>;
+  collaborators: User[];
+  onCollaboratorsChange?: (collaborators: User[]) => void;
+  availableUsers?: User[];
+  stats: {
+    comments: number;
+    subtasks: string;
+  };
+  dueDate: {
+    label: string;
+    variant?: "default" | "warning";
+  };
+  onDelete?: () => void;
+};
+
+export function CardTask({
+  title,
+  description,
+  tags,
+  collaborators,
+  onCollaboratorsChange,
+  availableUsers = [],
+  stats,
+  dueDate,
+  onDelete,
+}: TaskCardProps) {
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [collaboratorDialogOpen, setCollaboratorDialogOpen] = useState(false);
+
+  const handleCollaboratorsConfirm = (newCollaborators: User[]) => {
+    onCollaboratorsChange?.(newCollaborators);
+  };
+
+  const handleDelete = () => {
+    onDelete?.();
+    setAlertOpen(false);
+  };
+
+  return (
+    <>
+      <Card className={styles.taskCard}>
+        <CardHeader>
+          <CardTitle style={{ fontSize: "1rem" }}>{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+          <CardAction>
+            <TaskCardDropdownMenu
+              onAddCollaborator={() => setCollaboratorDialogOpen(true)}
+              onDeleteTask={() => setAlertOpen(true)}
+            />
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <div className={styles.contentContainer}>
+            <div className={styles.badgeContainer}>
+              {tags.map((tag) => (
+                <Badge key={tag.label} size="sm" variant={tag.variant}>
+                  <span>{tag.label}</span>
+                </Badge>
+              ))}
+            </div>
+            <AvatarGroup users={collaborators} />
+          </div>
+        </CardContent>
+
+        <CardFooter className={styles.taskFooter}>
+          <div className={styles.dividerWrapper}>
+            <div className={styles.divider} />
+          </div>
+          <div className={styles.footerContainer}>
+            <div className={styles.footerLeftGroup}>
+              <div className={styles.iconBubble}>
+                <Users size="14" />
+                <span>{collaborators.length}</span>
+              </div>
+              <div className={styles.iconBubble}>
+                <MessageCircleMore size="14" />
+                <span>{stats.comments}</span>
+              </div>
+              <div className={styles.iconBubble}>
+                <ListTodo size="14" />
+                <span>{stats.subtasks}</span>
+              </div>
+            </div>
+            <div className={styles.iconBubble}>
+              <Calendar size="14" />
+              <span
+                className={
+                  dueDate.variant === "warning" ? styles.tomorrowText : undefined
+                }
+              >
+                {dueDate.label}
+              </span>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+
+      <DeleteTaskAlertDialog
+        onDelete={handleDelete}
+        onOpenChange={setAlertOpen}
+        open={alertOpen}
+      />
+
+      {availableUsers.length > 0 && (
+        <CollaboratorDialog
+          availableUsers={availableUsers}
+          currentCollaborators={collaborators}
+          onConfirm={handleCollaboratorsConfirm}
+          onOpenChange={setCollaboratorDialogOpen}
+          open={collaboratorDialogOpen}
+        />
+      )}
+    </>
+  );
+}
+
+// Demo data for examples/documentation
+const demoUsers: User[] = [
   {
     value: "preetecool",
     label: "preetecool",
@@ -55,133 +178,23 @@ const users: User[] = [
   },
 ];
 
-export function CardTask() {
-  const [alertOpen, setAlertOpen] = useState(false);
-  const [collaboratorDialogOpen, setCollaboratorDialogOpen] = useState(false);
-  const [currentCollaborators, setCurrentCollaborators] = useState<User[]>([
-    users[0],
-  ]);
-  const [selectedCollaborators, setSelectedCollaborators] = useState<User[]>([
-    users[0],
-  ]);
-  const [newlyAddedCollaborators, setNewlyAddedCollaborators] = useState<
-    string[]
-  >([]);
-
-  const handleConfirm = () => {
-    const previousCollaborators = currentCollaborators;
-    setCurrentCollaborators(selectedCollaborators);
-
-    // Track newly added: items that weren't in the previous list OR were removed and re-added
-    const newlyAdded = selectedCollaborators
-      .filter((s) => !previousCollaborators.find((c) => c.value === s.value))
-      .map((s) => s.value);
-
-    // Preserve previously newly-added items that are still selected
-    const stillNewlyAdded = newlyAddedCollaborators.filter((value) =>
-      selectedCollaborators.find((s) => s.value === value)
-    );
-
-    // Combine: keep old newly-added + add new ones
-    setNewlyAddedCollaborators([
-      ...new Set([...stillNewlyAdded, ...newlyAdded]),
-    ]);
-    setCollaboratorDialogOpen(false);
-  };
-
-  const handleDialogOpen = (open: boolean) => {
-    if (open) {
-      // Reset selected to current when opening
-      setSelectedCollaborators([...currentCollaborators]);
-      // Clear newly added collaborators when opening
-      setNewlyAddedCollaborators([]);
-    }
-    setCollaboratorDialogOpen(open);
-  };
+export function CardTaskDemo() {
+  const [collaborators, setCollaborators] = useState<User[]>([demoUsers[0]]);
 
   return (
-    <>
-      <Card className={styles.taskCard}>
-        <CardHeader>
-          <CardTitle style={{ fontSize: "1rem" }}>
-            Update Documentation
-          </CardTitle>
-          <CardDescription>
-            Update the card component documentation to reflect the new style
-          </CardDescription>
-          <CardAction>
-            <TaskCardDropdownMenu
-              onAddCollaborator={() => handleDialogOpen(true)}
-              onDeleteTask={() => setAlertOpen(true)}
-            />
-          </CardAction>
-        </CardHeader>
-        <CardContent>
-          <div className={styles.contentContainer}>
-            <div className={styles.badgeContainer}>
-              <Badge size="sm" variant="destructive">
-                <span>Urgent</span>
-              </Badge>
-              <Badge size="sm">
-                <span>Docs</span>
-              </Badge>
-            </div>
-            <AvatarGroup users={currentCollaborators} />
-          </div>
-        </CardContent>
-
-        <CardFooter className={styles.taskFooter}>
-          <div
-            style={{
-              padding: "5px 0",
-              width: "calc(100% + 32px)",
-              marginLeft: "-16px",
-              marginRight: "-16px",
-            }}
-          >
-            <div
-              style={{
-                height: "1px",
-                width: "100%",
-                borderBottom:
-                  "0.5px solid oklch(from var(--border) l c h / 0.6)",
-              }}
-            />
-          </div>
-          <div className={styles.footerContainer}>
-            <div className={styles.footerLeftGroup}>
-              <div className={styles.iconBubble}>
-                <Users size="14" />
-                <span>{currentCollaborators.length}</span>
-              </div>
-              <div className={styles.iconBubble}>
-                <MessageCircleMore size="14" />
-                <span>4</span>
-              </div>
-              <div className={styles.iconBubble}>
-                <ListTodo size="14" />
-                <span>4/5</span>
-              </div>
-            </div>
-            <div className={styles.iconBubble}>
-              <Calendar size="14" />
-              <span className={styles.tomorrowText}>1d </span>
-            </div>
-          </div>
-        </CardFooter>
-      </Card>
-
-      <DeleteTaskAlertDialog onOpenChange={setAlertOpen} open={alertOpen} />
-
-      <CollaboratorDialog
-        currentCollaborators={currentCollaborators}
-        onConfirm={handleConfirm}
-        onOpenChange={handleDialogOpen}
-        onSelectedCollaboratorsChange={setSelectedCollaborators}
-        open={collaboratorDialogOpen}
-        selectedCollaborators={selectedCollaborators}
-        users={users}
-      />
-    </>
+    <CardTask
+      availableUsers={demoUsers}
+      collaborators={collaborators}
+      description="Update the card component documentation to reflect the new style"
+      dueDate={{ label: "1d", variant: "warning" }}
+      onCollaboratorsChange={setCollaborators}
+      onDelete={() => console.log("Task deleted")}
+      stats={{ comments: 4, subtasks: "4/5" }}
+      tags={[
+        { label: "Urgent", variant: "destructive" },
+        { label: "Docs" },
+      ]}
+      title="Update Documentation"
+    />
   );
 }
