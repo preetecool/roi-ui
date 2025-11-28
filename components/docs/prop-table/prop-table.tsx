@@ -130,32 +130,29 @@ function highlightType(typeString: string) {
       );
     }
 
-    if (part === "boolean") {
-      return (
-        <span className={styles.booleanValue} key={key}>
-          {part}
-        </span>
-      );
+    switch (part) {
+      case "boolean":
+        return (
+          <span className={styles.booleanValue} key={key}>
+            {part}
+          </span>
+        );
+      case "number":
+        return (
+          <span className={styles.numberValue} key={key}>
+            {part}
+          </span>
+        );
+      case "function":
+      case "void":
+        return (
+          <span className={styles.functionValue} key={key}>
+            {part}
+          </span>
+        );
+      default:
+        return <span key={key}>{part}</span>;
     }
-
-    if (part === "number") {
-      return (
-        <span className={styles.numberValue} key={key}>
-          {part}
-        </span>
-      );
-    }
-
-    if (part === "function" || part === "void") {
-      return (
-        <span className={styles.functionValue} key={key}>
-          {part}
-        </span>
-      );
-    }
-
-    // Default color for primitives like string, etc
-    return <span key={key}>{part}</span>;
   });
 }
 

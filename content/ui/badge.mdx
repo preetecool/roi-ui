@@ -86,3 +86,41 @@ Copy and paste the following files:
 ## Anatomy
 
 <CodeBlock filename="anatomy" language="tsx" code={`<Badge>Badge text</Badge>`} />
+
+## Props
+
+### Badge
+
+<PropTable
+  data={[
+    {
+      prop: "variant",
+      type: '"default" | "secondary" | "destructive" | "outline" | "success" | "info"',
+      default: '"default"',
+      description: "The visual style variant of the badge",
+    },
+    {
+      prop: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "The size of the badge",
+    },
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the badge",
+    },
+  ]}
+/>
+
+### BadgeIcon
+
+<PropTable
+  data={[
+    {
+      prop: "className",
+      type: "string",
+      description: "Additional CSS classes to apply to the icon container",
+    },
+  ]}
+/>
