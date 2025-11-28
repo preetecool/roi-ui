@@ -26,10 +26,10 @@ function ToggleGroupItem({ className, ...props }: Toggle.Props) {
         "h-9 w-9 p-0 font-medium text-sm",
         "border-none bg-transparent text-[var(--muted-foreground)]",
         "cursor-pointer",
-        "hover:bg-[oklch(from_var(--accent)_l_c_h_/_0.6)] hover:text-[var(--foreground)]",
+        "hover:bg-[var(--accent)] hover:text-[var(--foreground)]",
         "data-[focused]:shadow-[0_0_0_2px_var(--ring)/0.2] data-[focused]:outline-none",
-        "data-[pressed]:bg-[var(--mix-accent-66-bg)] data-[pressed]:text-[var(--foreground)] data-[pressed]:shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)]",
-        "data-[pressed]:hover:bg-[var(--mix-accent-75-bg)] data-[pressed]:hover:text-[var(--foreground)]",
+        "data-[pressed]:bg-[var(--accent)] data-[pressed]:text-[var(--foreground)]",
+        "data-[pressed]:hover:bg-[var(--accent)] data-[pressed]:hover:text-[var(--foreground)]",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className
       )}

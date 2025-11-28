@@ -30,7 +30,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: oklch(from var(--accent) l c h / 0.6);
+    background-color: var(--accent);
     color: var(--foreground);
   }
 
@@ -40,12 +40,11 @@
   }
 
   &[data-pressed] {
-    background-color: var(--mix-accent-66-bg);
+    background-color: var(--accent);
     color: var(--foreground);
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 
     &:hover {
-      background-color: var(--mix-accent-75-bg);
+      background-color: var(--accent);
       color: var(--foreground);
     }
   }
