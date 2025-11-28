@@ -1,0 +1,96 @@
+.popup {
+  box-sizing: border-box;
+  min-width: 180px;
+  background-color: var(--popover);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-border-stack);
+  padding: 4px 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline: 12px 6px;
+  font-weight: 400;
+  height: 32px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: var(--foreground);
+  border-radius: 0.3125rem;
+  justify-content: flex-start;
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  inset: 0 4px;
+  border-radius: 0.3125rem;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.item:hover::before {
+  background-color: var(--accent);
+}
+
+.item:hover .icon {
+  color: var(--secondary-foreground);
+  opacity: 1;
+}
+
+.item:hover .shortcut {
+  color: var(--secondary-foreground);
+}
+
+.itemDestructive {
+  color: var(--destructive);
+}
+
+.itemDestructive .icon {
+  color: var(--destructive);
+}
+
+.itemDestructive:hover {
+  color: var(--destructive-foreground);
+}
+
+.itemDestructive:hover::before {
+  background-color: var(--destructive);
+}
+
+.itemDestructive:hover .icon,
+.itemDestructive:hover .shortcut {
+  color: var(--destructive-foreground);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+}
+
+.shortcut {
+  margin-left: auto;
+  margin-right: 4px;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  letter-spacing: 0.025em;
+  opacity: 0.6;
+}
+
+.separatorWrapper {
+  padding: 5px 0;
+}
+
+.separator {
+  height: 1px;
+  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.8);
+}

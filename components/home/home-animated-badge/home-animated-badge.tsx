@@ -1,12 +1,12 @@
 "use client";
 
 import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
-import styles from "./bento-badge-success.module.css";
+import styles from "./home-animated-badge.module.css";
 
-export function BentoBadgeSuccess() {
+export function HomeAnimatedBadge() {
   return (
     <div className={styles.badgeBounce}>
-      <Badge size="lg" variant="success">
+      <Badge size="lg" style={{ border: "0.5px solid oklch(1 0 0 / 0.15)" }} variant="success">
         <BadgeIcon>
           <svg
             aria-hidden="true"
