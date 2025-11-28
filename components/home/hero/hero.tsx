@@ -6,8 +6,8 @@ import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { Card } from "@/registry/brook/ui/card/card";
 import { Carousel } from "@/registry/brook/ui/carousel/carousel";
-import { LikeButton } from "@/registry/brook/ui/like-button/like-button";
-import { BentoBadgeSuccess } from "../bento-grid/bento-badge-success";
+import { HomeAnimatedBadge } from "../home-animated-badge/home-animated-badge";
+import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog";
 import styles from "./hero.module.css";
@@ -48,9 +48,9 @@ const CAROUSEL_COMPONENTS = [
     component: <HomeAnimatedCard />,
   },
   {
-    id: "like-button",
-    name: "Like Button",
-    component: <LikeButton />,
+    id: "context-menu",
+    name: "Context Menu",
+    component: <HomeContextMenu />,
   },
   {
     id: "dialog",
@@ -60,7 +60,7 @@ const CAROUSEL_COMPONENTS = [
   {
     id: "badge",
     name: "Badge",
-    component: <BentoBadgeSuccess />,
+    component: <HomeAnimatedBadge />,
   },
   {
     id: "ai-chat",
