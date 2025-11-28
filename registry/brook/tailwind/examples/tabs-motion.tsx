@@ -94,7 +94,7 @@ export default function TabsFramerMotion() {
         <TabsList className="relative">
           {tabs.map((tab) => (
             <TabsTrigger
-              className="data-[selected]:!bg-transparent data-[selected]:!border-transparent relative bg-transparent [-webkit-tap-highlight-color:transparent]"
+              className="data-[active]:!bg-transparent data-[active]:!border-transparent relative bg-transparent [-webkit-tap-highlight-color:transparent]"
               data-framer-motion="true"
               key={tab.id}
               tabIndex={0}
