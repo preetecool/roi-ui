@@ -129,25 +129,30 @@ function AutocompletePositioner({
 
 function AutocompletePopup({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Popup>) {
   return (
     <Autocomplete.Popup
       className={cn(
-        "mt-px box-border rounded-[var(--radius)] p-1",
+        "box-border flex flex-col rounded-[var(--radius)]",
         "bg-[var(--popover)] text-popover-foreground",
         "max-h-[min(var(--available-height),23rem)] w-[var(--anchor-width)] max-w-[var(--available-width)]",
         "overflow-y-auto overscroll-contain [scroll-padding-block:0.5rem]",
-        "border border-border shadow-[var(--shadow-border-stack)]",
-        "origin-[var(--transform-origin)] animate-[slideDownAndFade_150ms_ease-out]",
+        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]",
+        "origin-[var(--transform-origin)] transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
-        "max-sm:max-w-[calc(100vw-2rem)] max-sm:p-2",
+        "max-sm:max-w-[calc(100vw-2rem)]",
         className
       )}
       data-slot="autocomplete-popup"
       {...props}
-    />
+    >
+      <div style={{ height: "4px", width: "100%" }} />
+      {children}
+      <div style={{ height: "4px", width: "100%" }} />
+    </Autocomplete.Popup>
   );
 }
 
@@ -190,7 +195,7 @@ function AutocompleteList({
 }: React.ComponentProps<typeof Autocomplete.List>) {
   return (
     <Autocomplete.List
-      className={cn("outline-none", className)}
+      className={cn("flex flex-col gap-px outline-none", className)}
       data-slot="autocomplete-list"
       {...props}
     />
@@ -246,13 +251,13 @@ function AutocompleteItem({
   return (
     <Autocomplete.Item
       className={cn(
-        "relative z-0 flex cursor-pointer select-none items-center gap-2 px-3 py-2 text-sm outline-none",
-        "data-[highlighted]:relative data-[highlighted]:z-10",
-        "data-[highlighted]:before:-z-10 data-[highlighted]:before:absolute data-[highlighted]:before:content-['']",
-        "data-[highlighted]:before:inset-0 data-[highlighted]:before:rounded-[calc(var(--radius)-2px)]",
+        "relative isolate m-0 flex h-8 cursor-pointer items-center justify-start gap-3",
+        "rounded-[0.3125rem] px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
+        "before:absolute before:inset-y-0 before:inset-x-1 before:-z-10 before:rounded-[0.3125rem] before:bg-transparent before:content-['']",
+        "hover:before:bg-[var(--accent)] focus:before:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
         "data-[highlighted]:before:bg-[var(--accent)]",
-        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
-        "max-sm:px-4 max-sm:py-3 max-sm:text-[0.9375rem]",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
+        "max-sm:min-h-[2.75rem] max-sm:gap-3 max-sm:px-3 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
       )}
       data-slot="autocomplete-item"
@@ -296,7 +301,10 @@ function AutocompleteSeparator({
 }: React.ComponentProps<typeof Autocomplete.Separator>) {
   return (
     <Autocomplete.Separator
-      className={cn("mx-3 my-1.5 h-px bg-border", className)}
+      className={cn(
+        "h-px border-b-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
+        className
+      )}
       data-slot="autocomplete-separator"
       {...props}
     />

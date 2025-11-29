@@ -58,8 +58,18 @@ function ComboboxPositioner({
   );
 }
 
-function ComboboxPopup({ className, ...props }: Combobox.Popup.Props) {
-  return <Combobox.Popup className={cn(styles.popup, className)} {...props} />;
+function ComboboxPopup({
+  className,
+  children,
+  ...props
+}: Combobox.Popup.Props) {
+  return (
+    <Combobox.Popup className={cn(styles.popup, className)} {...props}>
+      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      {children}
+      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+    </Combobox.Popup>
+  );
 }
 
 function ComboboxList({ className, ...props }: Combobox.List.Props) {
