@@ -142,7 +142,7 @@ function AutocompletePopup({
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]",
         "origin-[var(--transform-origin)] transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
-        "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+        "data-[ending-style]:transition-none",
         "max-sm:max-w-[calc(100vw-2rem)]",
         className
       )}
