@@ -252,7 +252,7 @@ function AutocompleteItem({
     <Autocomplete.Item
       className={cn(
         "relative isolate m-0 flex h-8 cursor-pointer items-center justify-start gap-3",
-        "rounded-[0.3125rem] px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
+        "rounded-[0.3125rem] pl-3 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
         "before:absolute before:inset-y-0 before:inset-x-1 before:-z-10 before:rounded-[0.3125rem] before:bg-transparent before:content-['']",
         "hover:before:bg-[var(--accent)] focus:before:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
         "data-[highlighted]:before:bg-[var(--accent)]",

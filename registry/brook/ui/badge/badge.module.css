@@ -44,13 +44,13 @@
 
 .secondary {
   border-color: transparent;
-  background-color: var(--card);
+  background-color: var(--secondary);
   color: var(--secondary-foreground);
 }
 
 .destructive {
   border-color: transparent;
-  background-color: var(--mix-card-66-bg);
+  background-color: var(--secondary);
   color: var(--destructive);
 }
 
@@ -62,7 +62,7 @@
 
 .success {
   border-color: transparent;
-  background-color: var(--mix-card-66-bg);
+  background-color: var(--secondary);
   color: var(--success);
 }
 
@@ -74,7 +74,7 @@
 
 .info {
   border-color: transparent;
-  background-color: var(--mix-card-66-bg);
+  background-color: var(--secondary);
   color: var(--info);
 }
 
