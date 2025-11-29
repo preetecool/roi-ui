@@ -4,6 +4,7 @@ import { Combobox } from "@base-ui-components/react/combobox";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./combobox.module.css";
 
 function ComboboxRoot<
@@ -27,7 +28,7 @@ function ComboboxTrigger({
 }
 
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
-  return <Combobox.Input className={cn(styles.input, className)} {...props} />;
+  return <Combobox.Input className={className} render={<Input />} {...props} />;
 }
 
 function ComboboxClear({

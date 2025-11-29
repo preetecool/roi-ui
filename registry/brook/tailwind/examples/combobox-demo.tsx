@@ -60,10 +60,7 @@ export default function ComboboxDemo() {
           itemToStringLabel={(item) => item?.name || ""}
           itemToStringValue={(item) => item?.code || ""}
         >
-          <div
-            className="relative flex w-full items-center rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--mix-card-50-bg)] transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--color-ring)] has-[:focus-visible]:outline-offset-2"
-            ref={anchorRef}
-          >
+          <div className="relative w-full" ref={anchorRef}>
             <ComboboxInput id="cb-input" placeholder="Search countries..." />
             <ComboboxTrigger />
           </div>

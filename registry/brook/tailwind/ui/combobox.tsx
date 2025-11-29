@@ -4,6 +4,7 @@ import { Combobox } from "@base-ui-components/react/combobox";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
+import { Input } from "@/registry/brook/tailwind/ui/input";
 
 function ComboboxRoot<
   ItemValue,
@@ -20,7 +21,9 @@ function ComboboxTrigger({
   return (
     <Combobox.Trigger
       className={cn(
-        "box-border flex cursor-pointer items-center justify-center border-none bg-transparent px-2",
+        "absolute top-1/2 right-2 -translate-y-1/2",
+        "flex cursor-pointer items-center justify-center p-1 border-none bg-transparent",
+        "opacity-50 hover:opacity-100",
         "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
@@ -29,10 +32,7 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <ChevronsUpDown
-        className="ml-2 h-4 w-4 flex-shrink-0 opacity-50"
-        size={16}
-      />
+      <ChevronsUpDown className="h-4 w-4 flex-shrink-0" size={16} />
     </Combobox.Trigger>
   );
 }
@@ -40,14 +40,9 @@ function ComboboxTrigger({
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
   return (
     <Combobox.Input
-      className={cn(
-        "h-10 w-full flex-1 border-none bg-transparent px-3 py-2 text-foreground text-sm outline-none",
-        "placeholder:text-muted-foreground",
-        "focus:!outline-none focus-visible:!outline-none",
-        "max-sm:h-11 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]",
-        className
-      )}
+      className={className}
       data-slot="combobox-input"
+      render={<Input />}
       {...props}
     />
   );
