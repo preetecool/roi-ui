@@ -74,7 +74,13 @@ function ComboboxPopup({
 }
 
 function ComboboxList({ className, ...props }: Combobox.List.Props) {
-  return <Combobox.List className={cn(styles.list, className)} {...props} />;
+  return (
+    <Combobox.List
+      className={cn(styles.list, className)}
+      data-slot="combobox-list"
+      {...props}
+    />
+  );
 }
 
 function ComboboxEmpty({

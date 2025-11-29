@@ -121,6 +121,7 @@ function ComboboxList({ className, ...props }: Combobox.List.Props) {
   return (
     <Combobox.List
       className={cn("flex flex-col gap-px outline-none", className)}
+      data-slot="combobox-list"
       {...props}
     />
   );
@@ -157,7 +158,7 @@ function ComboboxItem({
   return (
     <Combobox.Item
       className={cn(
-        "mx-1 flex h-8 cursor-pointer items-center justify-start gap-3",
+        "mx-1 flex min-h-8 cursor-pointer items-center justify-start gap-3",
         "rounded-[0.3125rem] px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
         "bg-transparent hover:bg-[var(--accent)] focus:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
         "data-[selected]:bg-[var(--mix-accent-33-trans)] data-[highlighted]:bg-[var(--accent)]",

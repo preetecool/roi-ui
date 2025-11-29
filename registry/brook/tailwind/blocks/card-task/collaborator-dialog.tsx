@@ -176,10 +176,7 @@ export function CollaboratorDialog({
                 }}
                 value={selectedCollaborators}
               >
-                <div
-                  className="relative flex w-full items-center rounded-[var(--radius)] border border-[var(--border)] bg-[var(--mix-card-50-bg)] transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--ring)] has-[:focus-visible]:outline-offset-2"
-                  ref={comboboxAnchorRef}
-                >
+                <div className="relative w-full" ref={comboboxAnchorRef}>
                   <ComboboxInput placeholder="Search users..." />
                   <ComboboxTrigger />
                 </div>
@@ -191,6 +188,7 @@ export function CollaboratorDialog({
                       <ComboboxList>
                         {(user: User) => (
                           <ComboboxItem
+                            className="h-10"
                             indicatorPosition="right"
                             key={user.value}
                             value={user}
