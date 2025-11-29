@@ -16,6 +16,8 @@
   font-size: 0.875rem;
 }
 
+.base:focus,
+.base:focus-visible,
 .base[data-focused] {
   outline: none;
   border-color: var(--ring);

@@ -183,6 +183,7 @@ export function CollaboratorDialog({
                       <ComboboxList>
                         {(user: User) => (
                           <ComboboxItem
+                            className={styles.comboboxItem}
                             indicatorPosition="right"
                             key={user.value}
                             value={user}

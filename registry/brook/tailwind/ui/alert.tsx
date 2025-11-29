@@ -78,4 +78,18 @@ function AlertDescription({
   );
 }
 
-export { Alert, AlertDescription, AlertTitle };
+function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "col-start-3 row-[1/span_2] flex h-full items-center justify-center gap-1",
+        "max-sm:col-span-full max-sm:row-auto max-sm:mt-2 max-sm:justify-stretch max-sm:[&>*]:w-full",
+        className
+      )}
+      data-slot="alert-action"
+      {...props}
+    />
+  );
+}
+
+export { Alert, AlertAction, AlertDescription, AlertTitle };

@@ -6,7 +6,7 @@ const buttonVariants = cva(
   [
     "group inline-flex items-center justify-center rounded-[var(--radius)] font-[450]",
     "transition-transform duration-200 ease-[var(--ease-out-quad)] will-change-transform",
-    "relative cursor-pointer overflow-hidden border border-transparent outline-none",
+    "relative cursor-pointer overflow-hidden border border-transparent",
     "leading-[1.2] tracking-[-0.014em]",
     "",
     "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",

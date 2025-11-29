@@ -18,15 +18,15 @@ const badgeVariants = cva(
         secondary:
           "border-transparent bg-[var(--card)] text-secondary-foreground",
         destructive: [
-          "border-border bg-[var(--mix-card-66-bg)] text-destructive",
+          "border-transparent bg-[var(--secondary)] text-destructive",
           "focus-visible:shadow-[0_0_0_3px_var(--destructive),inset_0_0_0_1px_var(--destructive)]",
         ],
         success: [
-          "border-border bg-[var(--mix-card-66-bg)] text-success",
+          "border-transparent bg-[var(--secondary)] text-success",
           "focus-visible:shadow-[0_0_0_3px_var(--success),inset_0_0_0_1px_var(--success)]",
         ],
         info: [
-          "border-border bg-[var(--mix-card-66-bg)] text-info",
+          "border-transparent bg-[var(--secondary)] text-info",
           "focus-visible:shadow-[0_0_0_3px_var(--info),inset_0_0_0_1px_var(--info)]",
         ],
         outline: "border-border bg-transparent text-foreground hover:bg-card",

@@ -4,6 +4,7 @@ import { Combobox } from "@base-ui-components/react/combobox";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
+import { Input } from "@/registry/brook/tailwind/ui/input";
 
 function ComboboxRoot<
   ItemValue,
@@ -20,7 +21,9 @@ function ComboboxTrigger({
   return (
     <Combobox.Trigger
       className={cn(
-        "box-border flex cursor-pointer items-center justify-center border-none bg-transparent px-2",
+        "absolute top-1/2 right-2 -translate-y-1/2",
+        "flex cursor-pointer items-center justify-center p-1 border-none bg-transparent",
+        "opacity-50 hover:opacity-100",
         "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
@@ -29,10 +32,7 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <ChevronsUpDown
-        className="ml-2 h-4 w-4 flex-shrink-0 opacity-50"
-        size={16}
-      />
+      <ChevronsUpDown className="h-4 w-4 flex-shrink-0" size={16} />
     </Combobox.Trigger>
   );
 }
@@ -40,14 +40,9 @@ function ComboboxTrigger({
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
   return (
     <Combobox.Input
-      className={cn(
-        "h-10 w-full flex-1 border-none bg-transparent px-3 py-2 text-foreground text-sm outline-none",
-        "placeholder:text-muted-foreground",
-        "focus:!outline-none focus-visible:!outline-none",
-        "max-sm:h-11 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]",
-        className
-      )}
+      className={className}
       data-slot="combobox-input"
+      render={<Input />}
       {...props}
     />
   );
@@ -108,7 +103,7 @@ function ComboboxPopup({
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]",
         "origin-[var(--transform-origin)] transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
-        "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+        "data-[ending-style]:transition-none",
         "max-sm:max-w-[calc(100vw-2rem)]",
         className
       )}
@@ -126,6 +121,7 @@ function ComboboxList({ className, ...props }: Combobox.List.Props) {
   return (
     <Combobox.List
       className={cn("flex flex-col gap-px outline-none", className)}
+      data-slot="combobox-list"
       {...props}
     />
   );
@@ -137,7 +133,15 @@ function ComboboxEmpty({
   ...props
 }: Combobox.Empty.Props) {
   return (
-    <Combobox.Empty className={cn(className)} {...props}>
+    <Combobox.Empty
+      className={cn(
+        "empty:p-0 empty:m-0",
+        "py-8 px-4 text-center text-sm text-muted-foreground",
+        "max-sm:py-6 max-sm:px-4 max-sm:text-[0.9375rem]",
+        className
+      )}
+      {...props}
+    >
       {children || "No items found"}
     </Combobox.Empty>
   );
@@ -154,7 +158,7 @@ function ComboboxItem({
   return (
     <Combobox.Item
       className={cn(
-        "mx-1 flex h-8 cursor-pointer items-center justify-start gap-3",
+        "mx-1 flex min-h-8 cursor-pointer items-center justify-start gap-3",
         "rounded-[0.3125rem] px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
         "bg-transparent hover:bg-[var(--accent)] focus:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
         "data-[selected]:bg-[var(--mix-accent-33-trans)] data-[highlighted]:bg-[var(--accent)]",

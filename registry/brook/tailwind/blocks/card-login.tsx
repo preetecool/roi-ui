@@ -21,6 +21,7 @@ import {
   FieldError,
   FieldLabel,
 } from "@/registry/brook/tailwind/ui/field";
+import { Input } from "@/registry/brook/tailwind/ui/input";
 
 const EMAIL_REGEX = /\S+@\S+\.\S+/;
 const MIN_PASSWORD_LENGTH = 6;
@@ -81,6 +82,7 @@ export default function CardLoginDemo() {
             <FieldControl
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              render={<Input />}
               type="email"
               value={email}
             />
@@ -112,6 +114,7 @@ export default function CardLoginDemo() {
             <FieldControl
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              render={<Input />}
               type="password"
               value={password}
             />

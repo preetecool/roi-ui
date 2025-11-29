@@ -229,18 +229,7 @@
 
 .comboboxWrapper {
   position: relative;
-  display: flex;
-  align-items: center;
   width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--mix-card-50-bg);
-  transition: all 150ms ease;
-}
-
-.comboboxWrapper:has(:focus-visible) {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
 }
 
 .dialogPopup {
@@ -280,6 +269,10 @@
 
 .comboboxPopup {
   width: var(--anchor-width);
+}
+
+.comboboxItem {
+  height: 40px;
 }
 
 .userItemContainer {

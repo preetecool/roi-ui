@@ -150,10 +150,13 @@
     transform 250ms var(--ease-out-expo),
     opacity 250ms var(--ease-out-expo);
 
-  &[data-starting-style],
-  &[data-ending-style] {
+  &[data-starting-style] {
     opacity: 0;
     transform: scale(0.95);
+  }
+
+  &[data-ending-style] {
+    transition: none;
   }
 
   @media (max-width: 640px) {
@@ -246,7 +249,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding-inline: 8px 6px;
+  padding-inline: 12px 6px;
   font-weight: 400;
   height: 32px;
   font-size: 12px;

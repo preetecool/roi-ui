@@ -47,6 +47,7 @@ import {
   FieldControl,
   FieldLabel,
 } from "@/registry/brook/tailwind/ui/field";
+import { Input } from "@/registry/brook/tailwind/ui/input";
 
 export default function ProfileMenuDemo() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -231,6 +232,7 @@ export default function ProfileMenuDemo() {
               <FieldControl
                 onChange={(e) => setOrgName(e.target.value)}
                 placeholder="Enter organization name"
+                render={<Input />}
                 type="text"
                 value={orgName}
               />

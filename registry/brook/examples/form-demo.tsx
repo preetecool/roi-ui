@@ -9,6 +9,7 @@ import {
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
 import { Form, FormActions } from "@/registry/brook/ui/form/form";
+import { Input } from "@/registry/brook/ui/input/input";
 
 export default function FormDemo() {
   const [errors, setErrors] = useState({});
@@ -38,6 +39,7 @@ export default function FormDemo() {
         <FieldControl
           pattern="https?://[^/]+\.com(/.*)?$"
           placeholder="https://example.com"
+          render={<Input />}
           required
           type="url"
         />

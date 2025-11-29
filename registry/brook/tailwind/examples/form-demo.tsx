@@ -8,6 +8,7 @@ import {
   FieldLabel,
 } from "@/registry/brook/tailwind/ui/field";
 import { Form, FormActions } from "@/registry/brook/tailwind/ui/form";
+import { Input } from "@/registry/brook/tailwind/ui/input";
 import { Button } from "@/registry/brook/ui/button/button";
 
 export default function FormDemo() {
@@ -38,6 +39,7 @@ export default function FormDemo() {
         <FieldControl
           pattern="https?://[^/]+\.com(/.*)?$"
           placeholder="https://example.com"
+          render={<Input />}
           required
           type="url"
         />

@@ -20,6 +20,7 @@ import {
   FieldError,
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
+import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./card-login.module.css";
 
 const EMAIL_REGEX = /\S+@\S+\.\S+/;
@@ -69,6 +70,7 @@ export default function CardLoginDemo() {
             <FieldControl
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              render={<Input />}
               type="email"
               value={email}
             />
@@ -86,6 +88,7 @@ export default function CardLoginDemo() {
             <FieldControl
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              render={<Input />}
               type="password"
               value={password}
             />
