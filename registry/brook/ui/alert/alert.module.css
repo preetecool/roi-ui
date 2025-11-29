@@ -46,6 +46,16 @@
   color: var(--muted-foreground);
 }
 
+.action {
+  grid-column-start: 3;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.25rem;
+}
+
 .default {
   color: var(--foreground);
 }
@@ -123,5 +133,16 @@
   .description {
     font-size: 0.875rem;
     line-height: 1.5;
+  }
+
+  .action {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-top: 0.5rem;
+    justify-content: stretch;
+  }
+
+  .action > * {
+    width: 100%;
   }
 }

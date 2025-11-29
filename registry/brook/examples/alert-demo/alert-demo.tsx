@@ -3,6 +3,7 @@
 import { Mail } from "lucide-react";
 import {
   Alert,
+  AlertAction,
   AlertDescription,
   AlertTitle,
 } from "@/registry/brook/ui/alert/alert";
@@ -16,11 +17,11 @@ export default function AlertDemo() {
         <Mail size={14} stroke="var(--muted-foreground)" />
         <AlertTitle>New Message</AlertTitle>
         <AlertDescription> You&apos;ve got a new message.</AlertDescription>
-        <div className={styles.buttonContainer}>
+        <AlertAction>
           <Button size="sm" variant="secondary">
             View Inbox
           </Button>
-        </div>
+        </AlertAction>
       </Alert>
     </div>
   );
