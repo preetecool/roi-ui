@@ -134,7 +134,7 @@ function SelectPopup({
         "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--popover)]",
         "transition-[transform,scale,opacity] duration-150 ease-in-out",
         "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
-        "data-[ending-style]:scale-90 data-[ending-style]:opacity-0",
+        "data-[ending-style]:transition-none",
         "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
         "data-[side=none]:data-[ending-style]:transition-none",
         className
