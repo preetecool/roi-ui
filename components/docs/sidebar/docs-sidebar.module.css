@@ -66,7 +66,7 @@
   transition: all 0.15s ease;
 }
 
-.menuButton:hover {
+.menuButton:hover:not(.menuButtonActive) {
   color: var(--foreground);
   background-color: oklch(from var(--accent) l c h / 0.4);
 }
