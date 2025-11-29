@@ -242,7 +242,8 @@
   transform: rotate(45deg);
 }
 
-.noItems {
+.noItems,
+.empty {
   padding: 2rem 1rem;
   text-align: center;
   font-size: 0.875rem;

@@ -137,7 +137,14 @@ function ComboboxEmpty({
   ...props
 }: Combobox.Empty.Props) {
   return (
-    <Combobox.Empty className={cn(className)} {...props}>
+    <Combobox.Empty
+      className={cn(
+        "py-8 px-4 text-center text-sm text-muted-foreground",
+        "max-sm:py-6 max-sm:px-4 max-sm:text-[0.9375rem]",
+        className
+      )}
+      {...props}
+    >
       {children || "No items found"}
     </Combobox.Empty>
   );
