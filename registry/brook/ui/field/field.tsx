@@ -8,19 +8,20 @@ function FieldRoot({ className, ...props }: Field.Root.Props) {
   return (
     <Field.Root
       className={cn(styles.root, className)}
-      data-slot="field-root"
-      validationMode="onBlur"
+      data-slot="field"
       {...props}
     />
   );
 }
 
-function FieldControl({ className, ...props }: Field.Control.Props) {
-  return <Field.Control className={cn(styles.control, className)} {...props} />;
-}
-
 function FieldLabel({ className, ...props }: Field.Label.Props) {
-  return <Field.Label className={cn(styles.label, className)} {...props} />;
+  return (
+    <Field.Label
+      className={cn(styles.label, className)}
+      data-slot="field-label"
+      {...props}
+    />
+  );
 }
 
 function FieldDescription({ className, ...props }: Field.Description.Props) {
@@ -34,8 +35,17 @@ function FieldDescription({ className, ...props }: Field.Description.Props) {
 }
 
 function FieldError({ className, ...props }: Field.Error.Props) {
-  return <Field.Error className={cn(styles.error, className)} {...props} />;
+  return (
+    <Field.Error
+      className={cn(styles.error, className)}
+      data-slot="field-error"
+      {...props}
+    />
+  );
 }
+
+const FieldControl = Field.Control;
+const FieldValidity = Field.Validity;
 
 export {
   FieldRoot as Field,
@@ -43,4 +53,5 @@ export {
   FieldDescription,
   FieldError,
   FieldLabel,
+  FieldValidity,
 };

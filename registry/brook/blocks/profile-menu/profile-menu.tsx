@@ -46,6 +46,7 @@ import {
   FieldControl,
   FieldLabel,
 } from "@/registry/brook/ui/field/field";
+import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./profile-menu.module.css";
 
 export default function ProfileMenuDemo() {
@@ -210,6 +211,7 @@ export default function ProfileMenuDemo() {
               <FieldControl
                 onChange={(e) => setOrgName(e.target.value)}
                 placeholder="Enter organization name"
+                render={<Input />}
                 type="text"
                 value={orgName}
               />

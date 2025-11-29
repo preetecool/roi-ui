@@ -7,6 +7,7 @@ import {
   Fieldset,
   FieldsetLegend,
 } from "@/registry/brook/ui/fieldset/fieldset";
+import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./fieldset-demo.module.css";
 
 export default function FieldsetDemo() {
@@ -16,12 +17,12 @@ export default function FieldsetDemo() {
 
       <Field className={styles.field}>
         <FieldLabel>Full Name</FieldLabel>
-        <FieldControl placeholder="John Doe" />
+        <FieldControl placeholder="John Doe" render={<Input />} />
       </Field>
 
       <Field className={styles.field}>
         <FieldLabel>Street Address</FieldLabel>
-        <FieldControl placeholder="123 Main Street" />
+        <FieldControl placeholder="123 Main Street" render={<Input />} />
       </Field>
     </Fieldset>
   );

@@ -298,8 +298,10 @@
   --chart-5: oklch(0.8325 0.2177 151.25);
 }
 
-:focus-visible {
-  outline: 1px solid var(--ring);
+@layer base {
+  :focus-visible {
+    outline: 1px solid var(--ring);
+  }
 }
 
 @layer all {
