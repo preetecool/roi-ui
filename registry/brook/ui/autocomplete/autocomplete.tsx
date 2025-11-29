@@ -107,6 +107,7 @@ function AutocompletePositioner({
 
 function AutocompletePopup({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof Autocomplete.Popup>) {
   return (
@@ -114,7 +115,11 @@ function AutocompletePopup({
       className={cn(styles.popup, className)}
       data-slot="autocomplete-popup"
       {...props}
-    />
+    >
+      <div style={{ height: "4px", width: "100%" }} />
+      {children}
+      <div style={{ height: "4px", width: "100%" }} />
+    </Autocomplete.Popup>
   );
 }
 
