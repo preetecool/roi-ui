@@ -274,7 +274,7 @@
 
   --border: oklch(0.38 0 0);
   --input: oklch(0.2029 0.003 0);
-  --ring: oklch(0.45 0.025 270);
+  --ring: oklch(0.48 0.025 270);
 
   --shadow-lg:
     0 10px 15px -3px oklch(0 0 0 / 0.25), 0 4px 6px -2px oklch(0 0 0 / 0.15);
