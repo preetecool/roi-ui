@@ -44,6 +44,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo",
   },
+  "alert-dialog-nested": {
+    name: "alert-dialog-nested",
+    type: "example",
+    files: [
+      "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.tsx",
+      "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.module.css",
+    ],
+    path: "@/registry/brook/examples/alert-dialog-nested/alert-dialog-nested",
+  },
   "alert-info": {
     name: "alert-info",
     type: "example",
@@ -1123,6 +1132,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/alert-dialog-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/alert-dialog-demo",
+  },
+  "alert-dialog-nested-tailwind": {
+    name: "alert-dialog-nested-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/alert-dialog-nested.tsx"],
+    path: "@/registry/brook/tailwind/examples/alert-dialog-nested",
   },
   "alert-info-tailwind": {
     name: "alert-info-tailwind",

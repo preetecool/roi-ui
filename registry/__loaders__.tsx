@@ -44,6 +44,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "alert-dialog-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "alert-dialog-nested": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/alert-dialog-nested/alert-dialog-nested"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "alert-dialog-nested";
+    return { default: mod.default || mod[exportName] };
+  }),
   "alert-info": lazy(async () => {
     const mod = await import("@/registry/brook/examples/alert-info/alert-info");
     const exportName =
@@ -836,6 +846,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "alert-dialog-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "alert-dialog-nested-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/alert-dialog-nested"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "alert-dialog-nested";
     return { default: mod.default || mod[exportName] };
   }),
   "alert-info-tailwind": lazy(async () => {
