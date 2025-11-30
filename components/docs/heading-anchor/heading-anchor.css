@@ -18,8 +18,7 @@
   position: relative;
 }
 
-.heading-anchor-trigger:hover,
-.heading-anchor-trigger[data-popup-open] {
+.heading-anchor-trigger:hover {
   color: var(--foreground);
   background-color: transparent;
 }
@@ -48,7 +47,6 @@
 }
 
 .heading-anchor-trigger:hover .heading-anchor-icon,
-.heading-anchor-trigger[data-popup-open] .heading-anchor-icon,
 .heading-anchor-trigger:focus-visible .heading-anchor-icon {
   opacity: 1;
   transform: translateX(-100%) translateX(-0.5rem) scale(1);

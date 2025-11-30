@@ -2,9 +2,11 @@
 
 import { Toast } from "@base-ui-components/react/toast";
 import { X } from "lucide-react";
+import type * as React from "react";
 import { cn } from "@/lib/utils-tailwind";
 
 const toastManager = Toast.createToastManager();
+const anchoredToastManager = Toast.createToastManager();
 
 function ToastProvider({ children, ...props }: Toast.Provider.Props) {
   return (
@@ -192,4 +194,65 @@ function ToastList() {
   ));
 }
 
-export { ToastProvider, toastManager };
+function AnchoredToasts() {
+  const { toasts } = Toast.useToastManager();
+
+  return (
+    <Toast.Portal>
+      <Toast.Viewport className="outline-0">
+        {toasts.map((toast) => {
+          const positionerProps = toast.positionerProps;
+
+          if (!positionerProps?.anchor) {
+            return null;
+          }
+
+          return (
+            <Toast.Positioner
+              className="z-50 max-w-[min(16rem,var(--available-width))]"
+              key={toast.id}
+              sideOffset={positionerProps.sideOffset ?? 4}
+              toast={toast}
+            >
+              <Toast.Root
+                className={cn(
+                  "relative text-balance border-[0.5px] border-[var(--border)]",
+                  "bg-[var(--popover)] bg-clip-padding text-[var(--popover-foreground)]",
+                  "text-xs rounded-[calc(var(--radius)-2px)]",
+                  "shadow-[0_4px_6px_-1px_oklch(from_var(--foreground)_l_c_h_/_0.05)]",
+                  "transition-[scale,opacity] duration-150",
+                  "before:pointer-events-none before:absolute before:inset-0",
+                  "before:rounded-[calc(var(--radius)-3px)]",
+                  "before:shadow-[inset_0_1px_0_oklch(from_var(--background)_l_c_h_/_0.04)]",
+                  "data-[starting-style]:scale-[0.98] data-[starting-style]:opacity-0",
+                  "data-[ending-style]:scale-[0.98] data-[ending-style]:opacity-0"
+                )}
+                toast={toast}
+              >
+                <Toast.Content className="pointer-events-auto px-2 py-1">
+                  <Toast.Title className="m-0 whitespace-nowrap font-normal" />
+                </Toast.Content>
+              </Toast.Root>
+            </Toast.Positioner>
+          );
+        })}
+      </Toast.Viewport>
+    </Toast.Portal>
+  );
+}
+
+function AnchoredToastProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <Toast.Provider toastManager={anchoredToastManager}>
+      {children}
+      <AnchoredToasts />
+    </Toast.Provider>
+  );
+}
+
+export {
+  ToastProvider,
+  toastManager,
+  AnchoredToastProvider,
+  anchoredToastManager,
+};
