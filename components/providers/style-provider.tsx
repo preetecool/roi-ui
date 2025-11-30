@@ -5,7 +5,6 @@ import {
   type ReactNode,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -46,7 +45,7 @@ export function StyleProvider({
     }
   }, []);
 
-  useEffect(() => {
+  useIsoLayoutEffect(() => {
     document.documentElement.setAttribute("data-style", style);
   }, [style]);
 

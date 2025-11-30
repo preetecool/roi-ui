@@ -25,6 +25,26 @@ type MobileNavProps = {
 export function MobileNav({ tree }: MobileNavProps) {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <button
+        aria-label="Toggle navigation menu"
+        className={styles.menuButton}
+        type="button"
+      >
+        <div className={styles.menuButtonInner}>
+          <span className={styles.menuLine} />
+          <span className={styles.menuLine} />
+        </div>
+      </button>
+    );
+  }
 
   return (
     <Dialog.Root onOpenChange={setOpen} open={open}>
