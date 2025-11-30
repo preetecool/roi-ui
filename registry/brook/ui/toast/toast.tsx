@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import styles from "./toast.module.css";
 
 const toastManager = Toast.createToastManager();
+const anchoredToastManager = Toast.createToastManager();
 
 function ToastProvider({ children, ...props }: Toast.Provider.Props) {
   return (
@@ -130,4 +131,51 @@ function ToastList() {
   ));
 }
 
-export { ToastProvider, toastManager };
+function AnchoredToasts() {
+  const { toasts } = Toast.useToastManager();
+
+  return (
+    <Toast.Portal>
+      <Toast.Viewport className={styles.anchoredViewport}>
+        {toasts.map((toast) => {
+          const positionerProps = toast.positionerProps;
+
+          if (!positionerProps?.anchor) {
+            return null;
+          }
+
+          return (
+            <Toast.Positioner
+              className={styles.anchoredPositioner}
+              key={toast.id}
+              sideOffset={positionerProps.sideOffset ?? 4}
+              toast={toast}
+            >
+              <Toast.Root className={styles.anchoredRoot} toast={toast}>
+                <Toast.Content className={styles.anchoredContent}>
+                  <Toast.Title className={styles.anchoredTitle} />
+                </Toast.Content>
+              </Toast.Root>
+            </Toast.Positioner>
+          );
+        })}
+      </Toast.Viewport>
+    </Toast.Portal>
+  );
+}
+
+function AnchoredToastProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <Toast.Provider toastManager={anchoredToastManager}>
+      {children}
+      <AnchoredToasts />
+    </Toast.Provider>
+  );
+}
+
+export {
+  ToastProvider,
+  toastManager,
+  AnchoredToastProvider,
+  anchoredToastManager,
+};

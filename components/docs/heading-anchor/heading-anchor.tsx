@@ -1,18 +1,11 @@
 "use client";
 
 import { Link as LinkIcon } from "lucide-react";
-import { type ComponentProps, useMemo, useState } from "react";
-import {
-  Popover,
-  PopoverPopup,
-  PopoverPortal,
-  PopoverPositioner,
-  PopoverTrigger,
-} from "@/registry/brook/ui/popover/popover";
+import { type ComponentProps, useMemo, useRef } from "react";
+import { anchoredToastManager } from "@/registry/brook/ui/toast/toast";
 import "./heading-anchor.css";
 
 const COPIED_DISPLAY_DURATION = 800;
-const TEXT_RESET_DELAY = 200;
 const ICON_SIZE_H2 = 16;
 const ICON_SIZE_H3 = 14;
 const ICON_SIZE_H4 = 12;
@@ -28,8 +21,7 @@ export function HeadingAnchor({
   children,
   ...props
 }: ComponentProps<"h2"> & { level: 2 | 3 | 4 }) {
-  const [tooltipText, setTooltipText] = useState("Copy URL");
-  const [open, setOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const id = useMemo(() => {
     const text = children?.toString() || "";
@@ -47,20 +39,19 @@ export function HeadingAnchor({
   const iconSize = ICON_SIZE_BY_LEVEL[level];
 
   const handleClick = async () => {
-    setOpen(false);
-
     const url = `${window.location.origin}${window.location.pathname}#${id}`;
 
     try {
       await navigator.clipboard.writeText(url);
-      setTooltipText("Copied!");
-      setOpen(true);
-      setTimeout(() => {
-        setOpen(false);
-        setTimeout(() => {
-          setTooltipText("Copy URL");
-        }, TEXT_RESET_DELAY);
-      }, COPIED_DISPLAY_DURATION);
+      anchoredToastManager.add({
+        title: "Copied!",
+        timeout: COPIED_DISPLAY_DURATION,
+        positionerProps: {
+          anchor: buttonRef.current,
+          side: "top",
+          sideOffset: 6,
+        },
+      });
     } catch {
       // Silently fail if clipboard is unavailable
     }
@@ -69,29 +60,21 @@ export function HeadingAnchor({
   };
 
   return (
-    <Popover onOpenChange={setOpen} open={open}>
-      <Component className="heading-with-anchor" id={id} {...props}>
-        <PopoverTrigger
-          aria-label={tooltipText}
-          className="heading-anchor-trigger"
-          onClick={handleClick}
-          openOnHover
-        >
-          <LinkIcon
-            className="heading-anchor-icon"
-            size={iconSize}
-            strokeWidth={1.5}
-          />
-          {children}
-        </PopoverTrigger>
-      </Component>
-      <PopoverPortal>
-        <PopoverPositioner side="top" sideOffset={5}>
-          <PopoverPopup className="heading-anchor-popover">
-            {tooltipText}
-          </PopoverPopup>
-        </PopoverPositioner>
-      </PopoverPortal>
-    </Popover>
+    <Component className="heading-with-anchor" id={id} {...props}>
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-label="Copy URL"
+        className="heading-anchor-trigger"
+        onClick={handleClick}
+      >
+        <LinkIcon
+          className="heading-anchor-icon"
+          size={iconSize}
+          strokeWidth={1.5}
+        />
+        {children}
+      </button>
+    </Component>
   );
 }
