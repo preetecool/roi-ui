@@ -1,7 +1,7 @@
 "use client";
 
 import { RotateCcw } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStyle } from "@/components/providers/style-provider";
 import { Index } from "@/registry/__index__";
 import { ComponentLoaders } from "@/registry/__loaders__";
@@ -21,7 +21,12 @@ export function ComponentPreviewClient({
   replayButton,
 }: ComponentPreviewClientProps) {
   const [key, setKey] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const { style } = useStyle();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const componentName =
     style === "tailwind" && Index[`${name}-tailwind`]
@@ -35,8 +40,13 @@ export function ComponentPreviewClient({
     setKey((prev) => prev + 1);
   };
 
-  if (!Component) {
-    return null;
+  if (!mounted || !Component) {
+    return (
+      <div
+        className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+        data-align={align}
+      />
+    );
   }
 
   return (

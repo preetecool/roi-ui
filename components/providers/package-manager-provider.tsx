@@ -5,7 +5,6 @@ import {
   type ReactNode,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -48,7 +47,7 @@ export function PackageManagerProvider({
     }
   }, []);
 
-  useEffect(() => {
+  useIsoLayoutEffect(() => {
     document.documentElement.setAttribute(
       "data-package-manager",
       packageManager

@@ -33,7 +33,6 @@ export function StyleSelector() {
       <SelectTrigger
         aria-label="Select style framework"
         className={styles.trigger}
-        nativeButton={false}
       >
         <SelectValue>
           {(value) => {
