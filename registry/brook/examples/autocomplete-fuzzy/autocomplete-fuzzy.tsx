@@ -101,11 +101,12 @@ function highlightText(text: string, query: string): React.ReactNode {
   return result;
 }
 
-function fuzzyFilter(item: Question, query: string): boolean {
+function fuzzyFilter(itemValue: unknown, query: string): boolean {
   if (!query) {
     return true;
   }
 
+  const item = itemValue as Question;
   const results = matchSorter([item], query, {
     keys: [
       "question",
