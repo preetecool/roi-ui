@@ -44,6 +44,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo",
   },
+  "alert-dialog-nested": {
+    name: "alert-dialog-nested",
+    type: "example",
+    files: [
+      "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.tsx",
+      "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.module.css",
+    ],
+    path: "@/registry/brook/examples/alert-dialog-nested/alert-dialog-nested",
+  },
   "alert-info": {
     name: "alert-info",
     type: "example",
@@ -71,6 +80,24 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/alert-warning/alert-warning",
   },
+  "autocomplete-auto-highlight": {
+    name: "autocomplete-auto-highlight",
+    type: "example",
+    files: [
+      "registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight.tsx",
+      "registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight.module.css",
+    ],
+    path: "@/registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight",
+  },
+  "autocomplete-clearable": {
+    name: "autocomplete-clearable",
+    type: "example",
+    files: [
+      "registry/brook/examples/autocomplete-clearable/autocomplete-clearable.tsx",
+      "registry/brook/examples/autocomplete-clearable/autocomplete-clearable.module.css",
+    ],
+    path: "@/registry/brook/examples/autocomplete-clearable/autocomplete-clearable",
+  },
   "autocomplete-demo": {
     name: "autocomplete-demo",
     type: "example",
@@ -79,6 +106,24 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/examples/autocomplete-demo/autocomplete-demo.module.css",
     ],
     path: "@/registry/brook/examples/autocomplete-demo/autocomplete-demo",
+  },
+  "autocomplete-fuzzy": {
+    name: "autocomplete-fuzzy",
+    type: "example",
+    files: [
+      "registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy.tsx",
+      "registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy.module.css",
+    ],
+    path: "@/registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy",
+  },
+  "autocomplete-grouped": {
+    name: "autocomplete-grouped",
+    type: "example",
+    files: [
+      "registry/brook/examples/autocomplete-grouped/autocomplete-grouped.tsx",
+      "registry/brook/examples/autocomplete-grouped/autocomplete-grouped.module.css",
+    ],
+    path: "@/registry/brook/examples/autocomplete-grouped/autocomplete-grouped",
   },
   "avatar-demo": {
     name: "avatar-demo",
@@ -1124,6 +1169,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/alert-dialog-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/alert-dialog-demo",
   },
+  "alert-dialog-nested-tailwind": {
+    name: "alert-dialog-nested-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/alert-dialog-nested.tsx"],
+    path: "@/registry/brook/tailwind/examples/alert-dialog-nested",
+  },
   "alert-info-tailwind": {
     name: "alert-info-tailwind",
     type: "example",
@@ -1142,11 +1193,35 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/alert-warning.tsx"],
     path: "@/registry/brook/tailwind/examples/alert-warning",
   },
+  "autocomplete-auto-highlight-tailwind": {
+    name: "autocomplete-auto-highlight-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/autocomplete-auto-highlight.tsx"],
+    path: "@/registry/brook/tailwind/examples/autocomplete-auto-highlight",
+  },
+  "autocomplete-clearable-tailwind": {
+    name: "autocomplete-clearable-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/autocomplete-clearable.tsx"],
+    path: "@/registry/brook/tailwind/examples/autocomplete-clearable",
+  },
   "autocomplete-demo-tailwind": {
     name: "autocomplete-demo-tailwind",
     type: "example",
     files: ["registry/brook/tailwind/examples/autocomplete-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/autocomplete-demo",
+  },
+  "autocomplete-fuzzy-tailwind": {
+    name: "autocomplete-fuzzy-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/autocomplete-fuzzy.tsx"],
+    path: "@/registry/brook/tailwind/examples/autocomplete-fuzzy",
+  },
+  "autocomplete-grouped-tailwind": {
+    name: "autocomplete-grouped-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/autocomplete-grouped.tsx"],
+    path: "@/registry/brook/tailwind/examples/autocomplete-grouped",
   },
   "avatar-demo-tailwind": {
     name: "avatar-demo-tailwind",

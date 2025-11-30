@@ -1,0 +1,68 @@
+.container {
+  padding: 2rem;
+
+  @media (max-width: 640px) {
+    padding: 1rem;
+  }
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 17.5px;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  margin-left: 4px;
+
+  @media (max-width: 640px) {
+    font-size: 0.9375rem;
+  }
+}
+
+input.input {
+  width: 300px;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.empty {
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+.item {
+  height: auto;
+  padding-block: 0.5rem;
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+}
+
+.itemQuestion {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+.itemCategory {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.highlight {
+  background-color: transparent;
+  color: var(--info);
+  font-weight: 500;
+}

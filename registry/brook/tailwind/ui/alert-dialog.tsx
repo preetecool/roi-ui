@@ -105,7 +105,7 @@ function AlertDialogHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-3 text-left [&_h2]:m-0 [&_p]:m-0",
+        "flex flex-col gap-2 text-left [&_h2]:m-0 [&_p]:m-0",
         className
       )}
       data-slot="alert-dialog-header"
