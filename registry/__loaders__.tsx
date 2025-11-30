@@ -82,6 +82,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "alert-warning";
     return { default: mod.default || mod[exportName] };
   }),
+  "autocomplete-auto-highlight": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-auto-highlight";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "autocomplete-clearable": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/autocomplete-clearable/autocomplete-clearable"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-clearable";
+    return { default: mod.default || mod[exportName] };
+  }),
   "autocomplete-demo": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/autocomplete-demo/autocomplete-demo"
@@ -90,6 +110,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "autocomplete-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "autocomplete-fuzzy": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-fuzzy";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "autocomplete-grouped": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/autocomplete-grouped/autocomplete-grouped"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-grouped";
     return { default: mod.default || mod[exportName] };
   }),
   "avatar-demo": lazy(async () => {
@@ -886,6 +926,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "alert-warning";
     return { default: mod.default || mod[exportName] };
   }),
+  "autocomplete-auto-highlight-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/autocomplete-auto-highlight"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-auto-highlight";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "autocomplete-clearable-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/autocomplete-clearable"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-clearable";
+    return { default: mod.default || mod[exportName] };
+  }),
   "autocomplete-demo-tailwind": lazy(async () => {
     const mod = await import(
       "@/registry/brook/tailwind/examples/autocomplete-demo"
@@ -894,6 +954,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "autocomplete-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "autocomplete-fuzzy-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/autocomplete-fuzzy"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-fuzzy";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "autocomplete-grouped-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/autocomplete-grouped"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "autocomplete-grouped";
     return { default: mod.default || mod[exportName] };
   }),
   "avatar-demo-tailwind": lazy(async () => {
