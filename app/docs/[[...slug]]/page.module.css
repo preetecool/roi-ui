@@ -138,7 +138,8 @@
 /* MDX Content Styles */
 
 /* Shared heading styles */
-.contentWrapper > :is(h1, h2, h3, h4, h5, h6) {
+.contentWrapper > :is(h1, h2, h3, h4, h5, h6),
+.contentWrapper > div > :is(h3, h4, h5, h6) {
   font-weight: 500;
   color: var(--docs-heading);
   text-wrap: balance;
@@ -176,7 +177,8 @@
   margin-bottom: 6px;
 }
 
-.contentWrapper > h3 {
+.contentWrapper > h3,
+.contentWrapper > div > h3 {
   margin-top: var(--space-xl);
   margin-bottom: 6px;
   font-size: clamp(0.97rem, 0.83rem + 0.56vw, 1.25rem);
@@ -184,7 +186,8 @@
   letter-spacing: -0.01em;
 }
 
-.contentWrapper > h3:has(+ [class*="component-preview-module"]) {
+.contentWrapper > h3:has(+ [class*="component-preview-module"]),
+.contentWrapper > div > h3:has(+ [class*="component-preview-module"]) {
   margin-bottom: 16px;
 }
 
