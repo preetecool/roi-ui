@@ -451,7 +451,7 @@ export function Item({
       aria-label={`${index + 1} of ${totalItems}`}
       aria-roledescription="slide"
       className={cn(
-        "relative flex-shrink-0",
+        "relative flex-shrink-0 rounded-[var(--radius)]",
         "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-[1px]",
         className
       )}
