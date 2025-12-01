@@ -10,12 +10,15 @@
   font-size: clamp(0.875rem, 0.8rem + 0.25vw, 0.9375rem);
 }
 
-.contentWrapper p,
-.contentWrapper li,
-.contentWrapper td,
-.contentWrapper th,
-.contentWrapper blockquote,
-.contentWrapper code:not(pre code) {
+.prose p {
+  line-height: 1.75rem;
+}
+
+.prose li,
+.prose td,
+.prose th,
+.prose blockquote,
+.prose code:not(pre code) {
   line-height: 1.65;
 }
 
@@ -79,6 +82,161 @@
   flex-direction: column;
 }
 
+/* Prose typography - applies to MDX content, reset in component previews */
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 500;
+  color: var(--docs-heading);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+
+.prose h1 {
+  margin-bottom: var(--space-lg);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.prose h2 {
+  margin-top: 36px;
+  margin-bottom: var(--space-md);
+  font-size: clamp(1.17rem, 1rem + 0.67vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.prose p + h2 {
+  margin-top: 24px;
+}
+
+.prose [class*="code-tabs-shared-module"] + h2,
+.prose [class*="component-preview-module"] + h2,
+.prose div:has([class*="tabs-module"]) + h2,
+.prose [class*="code-block-module"] + h2 {
+  margin-top: 60px;
+}
+
+.prose h2:has(+ p + [class*="component-preview-module"]) {
+  margin-bottom: 6px;
+}
+
+.prose h3 {
+  margin-top: var(--space-xl);
+  margin-bottom: 6px;
+  font-size: clamp(0.97rem, 0.83rem + 0.56vw, 1.25rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.prose h3:has(+ [class*="component-preview-module"]) {
+  margin-bottom: 16px;
+}
+
+.prose h2 + h3 {
+  margin-top: var(--space-md);
+}
+
+.prose [class*="code-tabs-module"] + h3,
+.prose [class*="code-block-module"] + h3,
+.prose [class*="component-preview-module"] + h3,
+.prose div:has([class*="code-tabs-module"]) + div > h3:first-child,
+.prose div:has([class*="code-block-module"]) + div > h3:first-child,
+.prose div:has([class*="component-preview-module"]) + div > h3:first-child {
+  margin-top: 60px;
+}
+
+.prose h4 {
+  margin-top: var(--space-lg);
+  margin-bottom: 6px;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+}
+
+.prose h3 + h4 {
+  margin-top: var(--space-md);
+}
+
+.prose h5 {
+  margin-top: var(--space-lg);
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.prose h6 {
+  margin-top: var(--space-md);
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.prose p {
+  margin-bottom: 20px;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose :is(ul, ol) {
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-md);
+}
+
+.prose :is(ul, ol) li {
+  margin-bottom: var(--space-xs);
+}
+
+.prose :is(ul, ol) li:last-child {
+  margin-bottom: 0;
+}
+
+.prose .code-container {
+  max-height: 400px;
+  overflow: auto;
+  margin: 0;
+}
+
+.prose .code-container pre {
+  margin: 0;
+  padding: 1rem;
+}
+
+.prose code:not(pre code) {
+  border-radius: 4px;
+}
+
+.prose table {
+  width: 100%;
+}
+
+.prose blockquote {
+  margin-block: var(--space-md);
+  padding-left: var(--space-md);
+  border-left: 4px solid var(--border);
+}
+
+.prose blockquote:last-child {
+  margin-bottom: var(--space-lg);
+}
+
+.prose figure {
+  margin-block: var(--space-xl);
+}
+
+.prose hr {
+  margin-block: var(--space-2xl);
+  border: none;
+  height: 1px;
+  background-color: var(--border);
+}
+
 .bottomNavigation {
   display: flex;
   justify-content: space-between;
@@ -135,155 +293,3 @@
   }
 }
 
-/* MDX Content Styles */
-
-/* Shared heading styles */
-.contentWrapper :is(h1, h2, h3, h4, h5, h6) {
-  font-weight: 500;
-  color: var(--docs-heading);
-  text-wrap: balance;
-  scroll-margin-top: calc(var(--header-height) + 2rem);
-}
-
-.contentWrapper :is(h1, h2, h3, h4, h5, h6):first-child {
-  margin-top: 0;
-}
-
-.contentWrapper h1 {
-  margin-bottom: var(--space-lg);
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-
-.contentWrapper h2 {
-  margin-top: 36px;
-  margin-bottom: var(--space-lg);
-  font-size: clamp(1.17rem, 1rem + 0.67vw, 1.5rem);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-}
-
-.contentWrapper [class*="code-tabs-shared-module"] + h2,
-.contentWrapper [class*="component-preview-module"] + h2,
-.contentWrapper div:has([class*="tabs-module"]) + h2,
-.contentWrapper [class*="code-block-module"] + h2 {
-  margin-top: 60px;
-}
-
-.contentWrapper h2:has(+ p + [class*="component-preview-module"]) {
-  margin-bottom: 6px;
-}
-
-.contentWrapper h3 {
-  margin-top: var(--space-xl);
-  margin-bottom: 6px;
-  font-size: clamp(0.97rem, 0.83rem + 0.56vw, 1.25rem);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
-
-.contentWrapper h3:has(+ [class*="component-preview-module"]) {
-  margin-bottom: 16px;
-}
-
-.contentWrapper h2 + h3 {
-  margin-top: var(--space-md);
-}
-
-.contentWrapper [class*="code-tabs-module"] + h3,
-.contentWrapper [class*="code-block-module"] + h3,
-.contentWrapper [class*="component-preview-module"] + h3,
-.contentWrapper div:has([class*="code-tabs-module"]) + div > h3:first-child,
-.contentWrapper div:has([class*="code-block-module"]) + div > h3:first-child,
-.contentWrapper div:has([class*="component-preview-module"]) + div > h3:first-child {
-  margin-top: 60px;
-}
-
-.contentWrapper h4 {
-  margin-top: var(--space-lg);
-  margin-bottom: 6px;
-  font-size: 18px;
-  line-height: 1.4;
-  letter-spacing: -0.005em;
-}
-
-.contentWrapper h3 + h4 {
-  margin-top: var(--space-md);
-}
-
-.contentWrapper h5 {
-  margin-top: var(--space-lg);
-  margin-bottom: 4px;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.contentWrapper h6 {
-  margin-top: var(--space-md);
-  margin-bottom: 4px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.contentWrapper p {
-  margin-bottom: var(--space-md);
-}
-
-.contentWrapper p:last-child {
-  margin-bottom: 0;
-}
-
-.contentWrapper :is(ul, ol) {
-  margin-bottom: var(--space-md);
-  padding-left: var(--space-md);
-}
-
-.contentWrapper :is(ul, ol) li {
-  margin-bottom: var(--space-xs);
-}
-
-.contentWrapper :is(ul, ol) li:last-child {
-  margin-bottom: 0;
-}
-
-.contentWrapper .code-container {
-  max-height: 400px;
-  overflow: auto;
-  margin: 0;
-}
-
-.contentWrapper .code-container pre {
-  margin: 0;
-  padding: 1rem;
-}
-
-.contentWrapper code:not(pre code) {
-  border-radius: 4px;
-}
-
-.contentWrapper table {
-  width: 100%;
-}
-
-.contentWrapper blockquote {
-  margin-block: var(--space-md);
-  padding-left: var(--space-md);
-  border-left: 4px solid var(--border);
-}
-
-.contentWrapper blockquote:last-child {
-  margin-bottom: var(--space-lg);
-}
-
-.contentWrapper figure {
-  margin-block: var(--space-xl);
-}
-
-.contentWrapper hr {
-  margin-block: var(--space-2xl);
-  border: none;
-  height: 1px;
-  background-color: var(--border);
-}

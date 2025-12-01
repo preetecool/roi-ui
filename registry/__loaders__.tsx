@@ -16,6 +16,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "accordion-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "accordion-minimal": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/accordion-minimal/accordion-minimal"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "accordion-minimal";
+    return { default: mod.default || mod[exportName] };
+  }),
   "alert-demo": lazy(async () => {
     const mod = await import("@/registry/brook/examples/alert-demo/alert-demo");
     const exportName =
@@ -380,6 +390,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "chart-pie-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "checkbox-card": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/checkbox-card/checkbox-card"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "checkbox-card";
+    return { default: mod.default || mod[exportName] };
+  }),
   "checkbox-demo": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/checkbox-demo/checkbox-demo"
@@ -388,6 +408,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "checkbox-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "checkbox-description": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/checkbox-description/checkbox-description"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "checkbox-description";
     return { default: mod.default || mod[exportName] };
   }),
   "checkbox-group-demo": lazy(async () => {
@@ -910,6 +940,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "accordion-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "accordion-minimal-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/accordion-minimal"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "accordion-minimal";
+    return { default: mod.default || mod[exportName] };
+  }),
   "alert-demo-tailwind": lazy(async () => {
     const mod = await import("@/registry/brook/tailwind/examples/alert-demo");
     const exportName =
@@ -1184,6 +1224,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "chart-pie-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "checkbox-card-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/checkbox-card"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "checkbox-card";
+    return { default: mod.default || mod[exportName] };
+  }),
   "checkbox-demo-tailwind": lazy(async () => {
     const mod = await import(
       "@/registry/brook/tailwind/examples/checkbox-demo"
@@ -1192,6 +1242,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "checkbox-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "checkbox-description-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/checkbox-description"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "checkbox-description";
     return { default: mod.default || mod[exportName] };
   }),
   "checkbox-group-demo-tailwind": lazy(async () => {

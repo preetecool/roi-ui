@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid oklch(from var(--border) l c h / 0.7);
+  background-color: oklch(from var(--card) l c h / 0.5);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+  max-width: 24rem;
+
+  &:hover {
+    background-color: oklch(from var(--card) l c h / 0.7);
+  }
+
+  &:has(.checkbox[data-checked]) {
+    border-color: var(--border);
+    background-color: oklch(from var(--card) l c h / 0.8);
+  }
+}
+
+.checkbox {
+  margin-top: 0.125rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}

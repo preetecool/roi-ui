@@ -85,8 +85,8 @@ export default async function Page(props: {
 
   return (
     <>
-      <div className={styles.pageContent}>
-        <div className={styles.pageHeader}>
+      <article className={styles.pageContent}>
+        <header className={styles.pageHeader}>
           <div className={styles.headerContent}>
             <div className={styles.titleSection}>
               <h1 className={styles.pageTitle}>{doc.title}</h1>
@@ -172,13 +172,13 @@ export default async function Page(props: {
               )}
             </div>
           ) : null}
-        </div>
+        </header>
 
-        <div className={styles.contentWrapper}>
+        <div className={`${styles.contentWrapper} ${styles.prose}`}>
           <MDX components={mdxComponents} />
         </div>
 
-        <div className={styles.bottomNavigation}>
+        <nav className={styles.bottomNavigation}>
           <div className={styles.prevButton}>
             {neighbours.previous && (
               <Button
@@ -207,12 +207,12 @@ export default async function Page(props: {
               </Button>
             )}
           </div>
-        </div>
-      </div>
+        </nav>
+      </article>
 
-      <div className={styles.toc}>
+      <aside className={styles.toc}>
         <TableOfContents toc={toc} />
-      </div>
+      </aside>
     </>
   );
 }

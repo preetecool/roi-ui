@@ -17,6 +17,15 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/examples/accordion-demo/accordion-demo.tsx"],
     path: "@/registry/brook/examples/accordion-demo/accordion-demo",
   },
+  "accordion-minimal": {
+    name: "accordion-minimal",
+    type: "example",
+    files: [
+      "registry/brook/examples/accordion-minimal/accordion-minimal.tsx",
+      "registry/brook/examples/accordion-minimal/accordion-minimal.module.css",
+    ],
+    path: "@/registry/brook/examples/accordion-minimal/accordion-minimal",
+  },
   "alert-demo": {
     name: "alert-demo",
     type: "example",
@@ -335,6 +344,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/chart-pie-demo/chart-pie-demo",
   },
+  "checkbox-card": {
+    name: "checkbox-card",
+    type: "example",
+    files: [
+      "registry/brook/examples/checkbox-card/checkbox-card.tsx",
+      "registry/brook/examples/checkbox-card/checkbox-card.module.css",
+    ],
+    path: "@/registry/brook/examples/checkbox-card/checkbox-card",
+  },
   "checkbox-demo": {
     name: "checkbox-demo",
     type: "example",
@@ -343,6 +361,15 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/examples/checkbox-demo/checkbox-demo.module.css",
     ],
     path: "@/registry/brook/examples/checkbox-demo/checkbox-demo",
+  },
+  "checkbox-description": {
+    name: "checkbox-description",
+    type: "example",
+    files: [
+      "registry/brook/examples/checkbox-description/checkbox-description.tsx",
+      "registry/brook/examples/checkbox-description/checkbox-description.module.css",
+    ],
+    path: "@/registry/brook/examples/checkbox-description/checkbox-description",
   },
   "checkbox-group-demo": {
     name: "checkbox-group-demo",
@@ -1196,6 +1223,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/accordion-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/accordion-demo",
   },
+  "accordion-minimal-tailwind": {
+    name: "accordion-minimal-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/accordion-minimal.tsx"],
+    path: "@/registry/brook/tailwind/examples/accordion-minimal",
+  },
   "alert-demo-tailwind": {
     name: "alert-demo-tailwind",
     type: "example",
@@ -1370,11 +1403,23 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/chart-pie-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/chart-pie-demo",
   },
+  "checkbox-card-tailwind": {
+    name: "checkbox-card-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-card.tsx"],
+    path: "@/registry/brook/tailwind/examples/checkbox-card",
+  },
   "checkbox-demo-tailwind": {
     name: "checkbox-demo-tailwind",
     type: "example",
     files: ["registry/brook/tailwind/examples/checkbox-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/checkbox-demo",
+  },
+  "checkbox-description-tailwind": {
+    name: "checkbox-description-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-description.tsx"],
+    path: "@/registry/brook/tailwind/examples/checkbox-description",
   },
   "checkbox-group-demo-tailwind": {
     name: "checkbox-group-demo-tailwind",
