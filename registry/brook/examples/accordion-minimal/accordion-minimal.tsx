@@ -1,6 +1,12 @@
 "use client";
 
-import { Accordion } from "@base-ui-components/react/accordion";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
+} from "@/registry/brook/ui/accordion/accordion";
 import styles from "./accordion-minimal.module.css";
 
 const accordionItems = [
@@ -26,44 +32,19 @@ const accordionItems = [
 
 export default function AccordionMinimal() {
   return (
-    <Accordion.Root className={styles.root} defaultValue={["item-1"]} multiple>
+    <Accordion className={styles.root} defaultValue={["item-1"]} multiple>
       {accordionItems.map((item) => (
-        <Accordion.Item className={styles.item} key={item.id} value={item.id}>
-          <Accordion.Header className={styles.header}>
-            <Accordion.Trigger className={styles.trigger}>
-              <div className={styles.icon}>
-                <svg
-                  aria-label="Accordion toggle icon"
-                  fill="none"
-                  height="18"
-                  role="img"
-                  viewBox="0 0 20 20"
-                  width="18"
-                >
-                  <title>Toggle accordion</title>
-                  <path
-                    className={styles.horizontalLine}
-                    d="M4 10L16 10"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M10 4L10 16"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-              <div>{item.title}</div>
-            </Accordion.Trigger>
-          </Accordion.Header>
-          <Accordion.Panel className={styles.panel}>
-            <div className={styles.content}>{item.content}</div>
-          </Accordion.Panel>
-        </Accordion.Item>
+        <AccordionItem className={styles.item} key={item.id} value={item.id}>
+          <AccordionHeader className={styles.header}>
+            <AccordionTrigger className={styles.trigger}>
+              {item.title}
+            </AccordionTrigger>
+          </AccordionHeader>
+          <AccordionPanel className={styles.panel}>
+            {item.content}
+          </AccordionPanel>
+        </AccordionItem>
       ))}
-    </Accordion.Root>
+    </Accordion>
   );
 }

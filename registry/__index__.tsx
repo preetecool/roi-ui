@@ -344,6 +344,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/chart-pie-demo/chart-pie-demo",
   },
+  "checkbox-card": {
+    name: "checkbox-card",
+    type: "example",
+    files: [
+      "registry/brook/examples/checkbox-card/checkbox-card.tsx",
+      "registry/brook/examples/checkbox-card/checkbox-card.module.css",
+    ],
+    path: "@/registry/brook/examples/checkbox-card/checkbox-card",
+  },
   "checkbox-demo": {
     name: "checkbox-demo",
     type: "example",
@@ -352,6 +361,15 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/examples/checkbox-demo/checkbox-demo.module.css",
     ],
     path: "@/registry/brook/examples/checkbox-demo/checkbox-demo",
+  },
+  "checkbox-description": {
+    name: "checkbox-description",
+    type: "example",
+    files: [
+      "registry/brook/examples/checkbox-description/checkbox-description.tsx",
+      "registry/brook/examples/checkbox-description/checkbox-description.module.css",
+    ],
+    path: "@/registry/brook/examples/checkbox-description/checkbox-description",
   },
   "checkbox-group-demo": {
     name: "checkbox-group-demo",
@@ -1385,11 +1403,23 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/chart-pie-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/chart-pie-demo",
   },
+  "checkbox-card-tailwind": {
+    name: "checkbox-card-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-card.tsx"],
+    path: "@/registry/brook/tailwind/examples/checkbox-card",
+  },
   "checkbox-demo-tailwind": {
     name: "checkbox-demo-tailwind",
     type: "example",
     files: ["registry/brook/tailwind/examples/checkbox-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/checkbox-demo",
+  },
+  "checkbox-description-tailwind": {
+    name: "checkbox-description-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-description.tsx"],
+    path: "@/registry/brook/tailwind/examples/checkbox-description",
   },
   "checkbox-group-demo-tailwind": {
     name: "checkbox-group-demo-tailwind",
