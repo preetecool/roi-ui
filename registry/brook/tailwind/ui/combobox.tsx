@@ -56,6 +56,7 @@ function ComboboxClear({
   return (
     <Combobox.Clear
       className={cn(
+        "absolute top-1/2 right-2 -translate-y-1/2",
         "flex cursor-pointer items-center justify-center rounded-[calc(var(--radius)-2px)] p-1",
         "text-muted-foreground transition-all duration-150",
         "hover:bg-accent hover:text-foreground",
@@ -268,9 +269,92 @@ function ComboboxNoItems({
   );
 }
 
+function ComboboxChips({
+  className,
+  ref,
+  ...props
+}: Combobox.Chips.Props & { ref?: React.Ref<HTMLDivElement> }) {
+  return (
+    <Combobox.Chips
+      className={cn(
+        "box-border flex w-full flex-wrap items-center gap-1",
+        "rounded-[var(--radius)] border border-border bg-[var(--mix-card-50-bg)] p-1 px-1.5",
+        "focus-within:border-ring focus-within:shadow-[0_0_0_2px_oklch(from_var(--ring)_l_c_h_/_0.2)]",
+        className
+      )}
+      data-slot="combobox-chips"
+      ref={ref}
+      {...props}
+    />
+  );
+}
+
+function ComboboxChip({
+  className,
+  ...props
+}: Combobox.Chip.Props) {
+  return (
+    <Combobox.Chip
+      className={cn(
+        "flex cursor-default items-center gap-1 overflow-hidden rounded-[calc(var(--radius)-2px)]",
+        "bg-muted text-foreground text-sm",
+        "py-0.5 pr-0.5 pl-2 outline-0",
+        "focus-within:bg-primary focus-within:text-primary-foreground",
+        "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground",
+        "max-sm:text-[0.9375rem]",
+        className
+      )}
+      data-slot="combobox-chip"
+      {...props}
+    />
+  );
+}
+
+function ComboboxChipRemove({
+  className,
+  children,
+  ...props
+}: Combobox.ChipRemove.Props) {
+  return (
+    <Combobox.ChipRemove
+      className={cn(
+        "flex cursor-pointer items-center justify-center rounded-[calc(var(--radius)-4px)] border-none bg-none p-1",
+        "text-inherit hover:bg-[oklch(from_var(--foreground)_l_c_h_/_0.1)]",
+        className
+      )}
+      data-slot="combobox-chipremove"
+      {...props}
+    >
+      {children || <X size={14} />}
+    </Combobox.ChipRemove>
+  );
+}
+
+function ComboboxChipsInput({ className, ...props }: Combobox.Input.Props) {
+  return (
+    <Combobox.Input
+      className={cn(
+        "box-border h-8 min-w-12 flex-1 rounded-[var(--radius)] border-none bg-transparent",
+        "m-0 pl-2 font-[inherit] text-foreground text-sm",
+        "placeholder:text-muted-foreground focus:outline-none",
+        "max-sm:text-[0.9375rem]",
+        className
+      )}
+      data-slot="combobox-chipsinput"
+      {...props}
+    />
+  );
+}
+
+const ComboboxValue = Combobox.Value;
+
 export {
   ComboboxRoot as Combobox,
   ComboboxArrow,
+  ComboboxChip,
+  ComboboxChipRemove,
+  ComboboxChips,
+  ComboboxChipsInput,
   ComboboxClear,
   ComboboxEmpty,
   ComboboxGroup,
@@ -284,4 +368,5 @@ export {
   ComboboxPortal,
   ComboboxPositioner,
   ComboboxTrigger,
+  ComboboxValue,
 };

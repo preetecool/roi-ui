@@ -169,9 +169,46 @@ function ComboboxNoItems({
   );
 }
 
+function ComboboxChips({
+  className,
+  ref,
+  ...props
+}: Combobox.Chips.Props & { ref?: React.Ref<HTMLDivElement> }) {
+  return <Combobox.Chips className={cn(styles.chips, className)} ref={ref} {...props} />;
+}
+
+function ComboboxChip({
+  className,
+  ...props
+}: Combobox.Chip.Props) {
+  return <Combobox.Chip className={cn(styles.chip, className)} {...props} />;
+}
+
+function ComboboxChipRemove({
+  className,
+  children,
+  ...props
+}: Combobox.ChipRemove.Props) {
+  return (
+    <Combobox.ChipRemove className={cn(styles.chipRemove, className)} {...props}>
+      {children || <X size={14} />}
+    </Combobox.ChipRemove>
+  );
+}
+
+function ComboboxChipsInput({ className, ...props }: Combobox.Input.Props) {
+  return <Combobox.Input className={cn(styles.chipsInput, className)} {...props} />;
+}
+
+const ComboboxValue = Combobox.Value;
+
 export {
   ComboboxRoot as Combobox,
   ComboboxArrow,
+  ComboboxChip,
+  ComboboxChipRemove,
+  ComboboxChips,
+  ComboboxChipsInput,
   ComboboxClear,
   ComboboxEmpty,
   ComboboxGroup,
@@ -185,4 +222,5 @@ export {
   ComboboxPortal,
   ComboboxPositioner,
   ComboboxTrigger,
+  ComboboxValue,
 };

@@ -37,7 +37,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
                   fillColor="var(--foreground)"
                   height={24}
                   strokeColor="var(--card)"
-                  strokeWidth={20}
+                  strokeWidth={12}
                   width={24}
                 />
               </Link>
