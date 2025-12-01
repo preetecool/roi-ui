@@ -362,6 +362,24 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/collapsible-demo/collapsible-demo",
   },
+  "combobox-auto-highlight": {
+    name: "combobox-auto-highlight",
+    type: "example",
+    files: [
+      "registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight.tsx",
+      "registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight.module.css",
+    ],
+    path: "@/registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight",
+  },
+  "combobox-clearable": {
+    name: "combobox-clearable",
+    type: "example",
+    files: [
+      "registry/brook/examples/combobox-clearable/combobox-clearable.tsx",
+      "registry/brook/examples/combobox-clearable/combobox-clearable.module.css",
+    ],
+    path: "@/registry/brook/examples/combobox-clearable/combobox-clearable",
+  },
   "combobox-demo": {
     name: "combobox-demo",
     type: "example",
@@ -370,6 +388,24 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/examples/combobox-demo/combobox-demo.module.css",
     ],
     path: "@/registry/brook/examples/combobox-demo/combobox-demo",
+  },
+  "combobox-grouped": {
+    name: "combobox-grouped",
+    type: "example",
+    files: [
+      "registry/brook/examples/combobox-grouped/combobox-grouped.tsx",
+      "registry/brook/examples/combobox-grouped/combobox-grouped.module.css",
+    ],
+    path: "@/registry/brook/examples/combobox-grouped/combobox-grouped",
+  },
+  "combobox-multiple": {
+    name: "combobox-multiple",
+    type: "example",
+    files: [
+      "registry/brook/examples/combobox-multiple/combobox-multiple.tsx",
+      "registry/brook/examples/combobox-multiple/combobox-multiple.module.css",
+    ],
+    path: "@/registry/brook/examples/combobox-multiple/combobox-multiple",
   },
   "command-demo": {
     name: "command-demo",
@@ -1352,11 +1388,35 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/collapsible-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/collapsible-demo",
   },
+  "combobox-auto-highlight-tailwind": {
+    name: "combobox-auto-highlight-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/combobox-auto-highlight.tsx"],
+    path: "@/registry/brook/tailwind/examples/combobox-auto-highlight",
+  },
+  "combobox-clearable-tailwind": {
+    name: "combobox-clearable-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/combobox-clearable.tsx"],
+    path: "@/registry/brook/tailwind/examples/combobox-clearable",
+  },
   "combobox-demo-tailwind": {
     name: "combobox-demo-tailwind",
     type: "example",
     files: ["registry/brook/tailwind/examples/combobox-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/combobox-demo",
+  },
+  "combobox-grouped-tailwind": {
+    name: "combobox-grouped-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/combobox-grouped.tsx"],
+    path: "@/registry/brook/tailwind/examples/combobox-grouped",
+  },
+  "combobox-multiple-tailwind": {
+    name: "combobox-multiple-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/combobox-multiple.tsx"],
+    path: "@/registry/brook/tailwind/examples/combobox-multiple",
   },
   "command-demo-tailwind": {
     name: "command-demo-tailwind",

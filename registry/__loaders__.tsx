@@ -410,6 +410,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "collapsible-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "combobox-auto-highlight": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-auto-highlight";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "combobox-clearable": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/combobox-clearable/combobox-clearable"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-clearable";
+    return { default: mod.default || mod[exportName] };
+  }),
   "combobox-demo": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/combobox-demo/combobox-demo"
@@ -418,6 +438,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "combobox-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "combobox-grouped": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/combobox-grouped/combobox-grouped"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-grouped";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "combobox-multiple": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/combobox-multiple/combobox-multiple"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-multiple";
     return { default: mod.default || mod[exportName] };
   }),
   "command-demo": lazy(async () => {
@@ -1174,6 +1214,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "collapsible-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "combobox-auto-highlight-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/combobox-auto-highlight"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-auto-highlight";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "combobox-clearable-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/combobox-clearable"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-clearable";
+    return { default: mod.default || mod[exportName] };
+  }),
   "combobox-demo-tailwind": lazy(async () => {
     const mod = await import(
       "@/registry/brook/tailwind/examples/combobox-demo"
@@ -1182,6 +1242,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "combobox-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "combobox-grouped-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/combobox-grouped"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-grouped";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "combobox-multiple-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/combobox-multiple"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "combobox-multiple";
     return { default: mod.default || mod[exportName] };
   }),
   "command-demo-tailwind": lazy(async () => {
