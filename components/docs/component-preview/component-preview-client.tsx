@@ -51,7 +51,7 @@ export function ComponentPreviewClient({
 
   return (
     <div
-      className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+      className={`${styles.preview} ${styles.proseReset} ${isChartComponent ? styles.chartPreview : ""}`}
       data-align={align}
       data-demo={style}
     >
