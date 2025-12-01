@@ -16,6 +16,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "accordion-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "accordion-minimal": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/accordion-minimal/accordion-minimal"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "accordion-minimal";
+    return { default: mod.default || mod[exportName] };
+  }),
   "alert-demo": lazy(async () => {
     const mod = await import("@/registry/brook/examples/alert-demo/alert-demo");
     const exportName =
@@ -908,6 +918,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "accordion-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "accordion-minimal-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/accordion-minimal"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "accordion-minimal";
     return { default: mod.default || mod[exportName] };
   }),
   "alert-demo-tailwind": lazy(async () => {

@@ -17,6 +17,15 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/examples/accordion-demo/accordion-demo.tsx"],
     path: "@/registry/brook/examples/accordion-demo/accordion-demo",
   },
+  "accordion-minimal": {
+    name: "accordion-minimal",
+    type: "example",
+    files: [
+      "registry/brook/examples/accordion-minimal/accordion-minimal.tsx",
+      "registry/brook/examples/accordion-minimal/accordion-minimal.module.css",
+    ],
+    path: "@/registry/brook/examples/accordion-minimal/accordion-minimal",
+  },
   "alert-demo": {
     name: "alert-demo",
     type: "example",
@@ -1195,6 +1204,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/accordion-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/accordion-demo",
+  },
+  "accordion-minimal-tailwind": {
+    name: "accordion-minimal-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/accordion-minimal.tsx"],
+    path: "@/registry/brook/tailwind/examples/accordion-minimal",
   },
   "alert-demo-tailwind": {
     name: "alert-demo-tailwind",

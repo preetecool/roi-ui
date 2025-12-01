@@ -138,18 +138,18 @@
 /* MDX Content Styles */
 
 /* Shared heading styles */
-.contentWrapper :is(h1, h2, h3, h4, h5, h6) {
+.contentWrapper > :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 500;
   color: var(--docs-heading);
   text-wrap: balance;
   scroll-margin-top: calc(var(--header-height) + 2rem);
 }
 
-.contentWrapper :is(h1, h2, h3, h4, h5, h6):first-child {
+.contentWrapper > :is(h1, h2, h3, h4, h5, h6):first-child {
   margin-top: 0;
 }
 
-.contentWrapper h1 {
+.contentWrapper > h1 {
   margin-bottom: var(--space-lg);
   font-weight: 600;
   font-size: 36px;
@@ -157,7 +157,7 @@
   letter-spacing: -0.02em;
 }
 
-.contentWrapper h2 {
+.contentWrapper > h2 {
   margin-top: 36px;
   margin-bottom: var(--space-lg);
   font-size: clamp(1.17rem, 1rem + 0.67vw, 1.5rem);
@@ -172,11 +172,11 @@
   margin-top: 60px;
 }
 
-.contentWrapper h2:has(+ p + [class*="component-preview-module"]) {
+.contentWrapper > h2:has(+ p + [class*="component-preview-module"]) {
   margin-bottom: 6px;
 }
 
-.contentWrapper h3 {
+.contentWrapper > h3 {
   margin-top: var(--space-xl);
   margin-bottom: 6px;
   font-size: clamp(0.97rem, 0.83rem + 0.56vw, 1.25rem);
@@ -184,11 +184,11 @@
   letter-spacing: -0.01em;
 }
 
-.contentWrapper h3:has(+ [class*="component-preview-module"]) {
+.contentWrapper > h3:has(+ [class*="component-preview-module"]) {
   margin-bottom: 16px;
 }
 
-.contentWrapper h2 + h3 {
+.contentWrapper > h2 + h3 {
   margin-top: var(--space-md);
 }
 
@@ -201,7 +201,7 @@
   margin-top: 60px;
 }
 
-.contentWrapper h4 {
+.contentWrapper > h4 {
   margin-top: var(--space-lg);
   margin-bottom: 6px;
   font-size: 18px;
@@ -209,33 +209,33 @@
   letter-spacing: -0.005em;
 }
 
-.contentWrapper h3 + h4 {
+.contentWrapper > h3 + h4 {
   margin-top: var(--space-md);
 }
 
-.contentWrapper h5 {
+.contentWrapper > h5 {
   margin-top: var(--space-lg);
   margin-bottom: 4px;
   font-size: 16px;
   line-height: 1.5;
 }
 
-.contentWrapper h6 {
+.contentWrapper > h6 {
   margin-top: var(--space-md);
   margin-bottom: 4px;
   font-size: 14px;
   line-height: 1.5;
 }
 
-.contentWrapper p {
+.contentWrapper > p {
   margin-bottom: var(--space-md);
 }
 
-.contentWrapper p:last-child {
+.contentWrapper > p:last-child {
   margin-bottom: 0;
 }
 
-.contentWrapper :is(ul, ol) {
+.contentWrapper > :is(ul, ol) {
   margin-bottom: var(--space-md);
   padding-left: var(--space-md);
 }
