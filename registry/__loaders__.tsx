@@ -140,6 +140,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "avatar-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "avatar-group": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/avatar-group/avatar-group"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "avatar-group";
+    return { default: mod.default || mod[exportName] };
+  }),
   "avatar-motion": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/avatar-motion/avatar-motion"
@@ -982,6 +992,14 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "avatar-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "avatar-group-tailwind": lazy(async () => {
+    const mod = await import("@/registry/brook/tailwind/examples/avatar-group");
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "avatar-group";
     return { default: mod.default || mod[exportName] };
   }),
   "badge-demo-tailwind": lazy(async () => {

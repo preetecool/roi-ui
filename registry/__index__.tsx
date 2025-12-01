@@ -131,6 +131,15 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/examples/avatar-demo.tsx"],
     path: "@/registry/brook/examples/avatar-demo",
   },
+  "avatar-group": {
+    name: "avatar-group",
+    type: "example",
+    files: [
+      "registry/brook/examples/avatar-group/avatar-group.tsx",
+      "registry/brook/examples/avatar-group/avatar-group.module.css",
+    ],
+    path: "@/registry/brook/examples/avatar-group/avatar-group",
+  },
   "avatar-motion": {
     name: "avatar-motion",
     type: "example",
@@ -1228,6 +1237,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/avatar-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/avatar-demo",
+  },
+  "avatar-group-tailwind": {
+    name: "avatar-group-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/avatar-group.tsx"],
+    path: "@/registry/brook/tailwind/examples/avatar-group",
   },
   "badge-demo-tailwind": {
     name: "badge-demo-tailwind",
