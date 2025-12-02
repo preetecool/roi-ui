@@ -41,7 +41,7 @@ export async function CodeBlock({
       <details className={styles.details}>
         <summary className={styles.summary}>{buttonText}</summary>
 
-        <div className={styles.container} style={{ marginTop: "1rem" }}>
+        <div className={`${styles.container} ${styles.containerCollapsible}`}>
           {codeContent}
         </div>
       </details>

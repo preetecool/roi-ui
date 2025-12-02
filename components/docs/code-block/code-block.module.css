@@ -72,3 +72,7 @@
 .summary::-webkit-details-marker {
   display: none;
 }
+
+.containerCollapsible {
+  margin-top: 1rem;
+}
