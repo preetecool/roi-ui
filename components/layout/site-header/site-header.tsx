@@ -45,7 +45,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
               </Link>
             </div>
 
-            <div className={`${styles.navLinks} lg:flex`}>
+            <div className={styles.navLinks}>
               <Button
                 aria-label="Navigate to /docs page"
                 className={styles.navLink}
