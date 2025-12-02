@@ -51,7 +51,7 @@ export function MobileNav({ tree }: MobileNavProps) {
     <Dialog.Root onOpenChange={setOpen} open={open}>
       <Dialog.Trigger
         aria-label="Toggle navigation menu"
-        className={`${styles.menuButton}`}
+        className={styles.menuButton}
         data-open={open}
       >
         <div className={styles.menuButtonInner}>
@@ -62,10 +62,10 @@ export function MobileNav({ tree }: MobileNavProps) {
 
       <Dialog.Portal>
         <Dialog.Backdrop
-          className={`${styles.overlay}`}
+          className={styles.overlay}
           style={{ backgroundColor: "transparent" }}
         />
-        <Dialog.Popup className={`${styles.drawer}`}>
+        <Dialog.Popup className={styles.drawer}>
           <MobileNavContent pathname={pathname} setOpen={setOpen} tree={tree} />
         </Dialog.Popup>
       </Dialog.Portal>
