@@ -56,7 +56,10 @@ export function ComponentSourceClient({
 
   return (
     <div className={codeTabsStyles.wrapper}>
-      <Tabs onValueChange={setActiveTab} value={safeActiveTab}>
+      <Tabs
+        onValueChange={(val: number) => setActiveTab(val)}
+        value={safeActiveTab}
+      >
         <div className={codeTabsStyles.header}>
           <TabsList>
             {files.map((file, index) => (

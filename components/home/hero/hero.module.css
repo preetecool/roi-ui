@@ -4,7 +4,7 @@
   align-items: center;
   margin-bottom: 1.75rem;
   height: 26px;
-  border-radius: var(--radius-lg);
+  border-radius: 2px;
   cursor: pointer;
   opacity: 0;
   animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.4s forwards;
@@ -98,8 +98,9 @@
   z-index: 1;
 }
 
-.buttonWrapper button {
+.buttonWrapper [data-slot="button"] {
   white-space: nowrap;
+  border-radius: 2px;
 }
 
 .ditheringWrapper {

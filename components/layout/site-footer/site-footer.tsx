@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div className={styles.content}>
           Built by{" "}
           <Button
-            id={styles.link}
+            className={styles.link}
             render={
               <a
                 href="https://x.com/preetecool"
@@ -22,7 +22,7 @@ export function SiteFooter() {
           />{" "}
           Available on{" "}
           <Button
-            id={styles.link}
+            className={styles.link}
             render={
               <a
                 href="https://github.com/preetecool/roi-ui"

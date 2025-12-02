@@ -3,7 +3,7 @@
 import { useDocsSearch } from "fumadocs-core/search/client";
 import { Component, FileText, Puzzle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useKeyboardShortcut } from "@/hooks/use-keyboard-shortcut";
 import type { PageTree } from "@/lib/source-types";
 import {
@@ -52,6 +52,15 @@ export function Search({ tree }: SearchProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Cleanup timeout on unmount to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Use fumadocs search with API endpoint
   const { search, setSearch, query } = useDocsSearch({
@@ -102,12 +111,12 @@ export function Search({ tree }: SearchProps) {
                 {query.isLoading ? "Searching..." : "No results found."}
               </CommandEmpty>
 
-              {tree?.children.map((group: PageTree.Node, index: number) => {
+              {tree?.children.map((group: PageTree.Node) => {
                 if (group.type !== "folder") return null;
                 return (
                   <CommandGroup
                     heading={group.name as string}
-                    key={`group-${index}`}
+                    key={group.$id || String(group.name)}
                   >
                     {(group.children as PageTree.Node[])
                       .filter(

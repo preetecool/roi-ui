@@ -3,6 +3,7 @@
 import { RotateCcw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useStyle } from "@/components/providers/style-provider";
+import { cn } from "@/lib/utils";
 import { Index } from "@/registry/__index__";
 import { ComponentLoaders } from "@/registry/__loaders__";
 import styles from "./component-preview.module.css";
@@ -43,7 +44,11 @@ export function ComponentPreviewClient({
   if (!mounted || !Component) {
     return (
       <div
-        className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
+        className={cn(
+          styles.preview,
+          styles[align],
+          isChartComponent && styles.chartPreview
+        )}
         data-align={align}
       />
     );
@@ -51,7 +56,11 @@ export function ComponentPreviewClient({
 
   return (
     <div
-      className={`${styles.preview} ${styles.proseReset} ${isChartComponent ? styles.chartPreview : ""}`}
+      className={cn(
+        styles.preview,
+        styles.proseReset,
+        isChartComponent && styles.chartPreview
+      )}
       data-align={align}
       data-demo={style}
     >

@@ -40,7 +40,7 @@
   width: 100%;
   min-height: 450px;
   padding: 2.5rem;
-  border: solid oklch(from var(--border) l c h / 0.7);
+  border: solid var(--border-subtle);
   border-width: 0.5px 0.5px 0 0.5px;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .description {
-  border-top: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border-top: 0.5px solid var(--border-subtle);
   background-color: var(--muted);
   padding: 1rem;
 }
@@ -100,7 +100,7 @@
   width: 2rem;
   height: 2rem;
   background-color: transparent;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius);
   color: var(--muted-foreground);
   cursor: pointer;

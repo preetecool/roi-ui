@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./toc.module.css";
 
 type TOCItem = {
@@ -13,25 +13,41 @@ type TableOfContentsProps = {
   toc?: TOCItem[];
 };
 
+const NESTED_ITEM_INDENT_PX = 12;
+
 export function TableOfContents({ toc }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
-  const NESTED_ITEM_INDENT = 12;
+  const visibleHeadingsRef = useRef<Set<string>>(new Set());
+  const headingsRef = useRef<Element[]>([]);
 
   useEffect(() => {
+    const headings = Array.from(
+      document.querySelectorAll("h2[id], h3[id], h4[id], h5[id], h6[id]")
+    );
+    headingsRef.current = headings;
+
     const observer = new IntersectionObserver(
       (entries) => {
+        // Update the set of visible headings
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setActiveId(`#${entry.target.id}`);
+            visibleHeadingsRef.current.add(entry.target.id);
+          } else {
+            visibleHeadingsRef.current.delete(entry.target.id);
+          }
+        }
+
+        // Find the topmost visible heading based on DOM order
+        for (const heading of headingsRef.current) {
+          if (visibleHeadingsRef.current.has(heading.id)) {
+            setActiveId(`#${heading.id}`);
+            break;
           }
         }
       },
       { rootMargin: "-50px 0px 0px 0px" }
     );
 
-    const headings = document.querySelectorAll(
-      "h2[id], h3[id], h4[id], h5[id], h6[id]"
-    );
     for (const heading of headings) {
       observer.observe(heading);
     }
@@ -66,7 +82,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
               style={{
                 paddingLeft:
                   item.depth > 2
-                    ? `${(item.depth - 2) * NESTED_ITEM_INDENT}px`
+                    ? `${(item.depth - 2) * NESTED_ITEM_INDENT_PX}px`
                     : "0px",
               }}
             >

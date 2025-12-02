@@ -1,10 +1,10 @@
-.heading-with-anchor {
+.headingWithAnchor {
   position: relative;
   width: fit-content;
   color: var(--docs-heading);
 }
 
-.heading-anchor-trigger {
+.trigger {
   all: unset;
   display: inline-flex;
   align-items: center;
@@ -18,18 +18,18 @@
   position: relative;
 }
 
-.heading-anchor-trigger:hover {
+.trigger:hover {
   color: var(--foreground);
   background-color: transparent;
 }
 
-.heading-anchor-trigger:focus-visible {
+.trigger:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-.heading-anchor-icon {
+.icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -46,19 +46,19 @@
   transform-origin: center;
 }
 
-.heading-anchor-trigger:hover .heading-anchor-icon,
-.heading-anchor-trigger:focus-visible .heading-anchor-icon {
+.trigger:hover .icon,
+.trigger:focus-visible .icon {
   opacity: 1;
   transform: translateX(-100%) translateX(-0.5rem) scale(1);
   color: var(--foreground);
 }
 
-.heading-anchor-trigger:active .heading-anchor-icon {
+.trigger:active .icon {
   color: var(--foreground);
   opacity: 1;
 }
 
-.heading-anchor-popover {
+.popover {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
 }

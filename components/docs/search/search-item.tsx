@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { CommandItem } from "@/registry/brook/ui/command/command";
 import styles from "./search.module.css";
 
@@ -17,43 +17,30 @@ export function SearchItem({
 }: SearchItemProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Use a callback ref to get the actual DOM element
-  const setRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (!(node && onHighlight)) return;
-
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (
-            mutation.type === "attributes" &&
-            mutation.attributeName === "aria-selected"
-          ) {
-            const isSelected = node.getAttribute("aria-selected") === "true";
-            if (isSelected) {
-              onHighlight();
-            }
-          }
-        });
-      });
-
-      observer.observe(node, {
-        attributes: true,
-        attributeFilter: ["aria-selected"],
-      });
-
-      // Cleanup
-      return () => observer.disconnect();
-    },
-    [onHighlight]
-  );
-
   useEffect(() => {
-    // Find the CommandItem element (which is the parent of our children)
-    if (ref.current && onHighlight) {
-      const cleanup = setRef(ref.current.parentElement as HTMLDivElement);
-      return cleanup;
-    }
-  }, [onHighlight, setRef]);
+    if (!ref.current || !onHighlight) return;
+    const parent = ref.current.parentElement as HTMLDivElement;
+    if (!parent) return;
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "aria-selected"
+        ) {
+          const isSelected = parent.getAttribute("aria-selected") === "true";
+          if (isSelected) onHighlight();
+        }
+      });
+    });
+
+    observer.observe(parent, {
+      attributes: true,
+      attributeFilter: ["aria-selected"],
+    });
+
+    return () => observer.disconnect();
+  }, [onHighlight]);
 
   return (
     <CommandItem

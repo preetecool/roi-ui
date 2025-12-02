@@ -19,7 +19,7 @@
   font-size: 0.875rem;
 }
 
-#link {
+.link {
   color: var(--foreground);
   height: 100%;
   font-weight: 300;
