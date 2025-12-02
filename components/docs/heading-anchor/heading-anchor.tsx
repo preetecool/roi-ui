@@ -3,7 +3,7 @@
 import { Link as LinkIcon } from "lucide-react";
 import { type ComponentProps, useMemo, useRef } from "react";
 import { anchoredToastManager } from "@/registry/brook/ui/toast/toast";
-import "./heading-anchor.css";
+import styles from "./heading-anchor.module.css";
 
 const COPIED_DISPLAY_DURATION = 800;
 const ICON_SIZE_H2 = 16;
@@ -60,19 +60,15 @@ export function HeadingAnchor({
   };
 
   return (
-    <Component className="heading-with-anchor" id={id} {...props}>
+    <Component className={styles.headingWithAnchor} id={id} {...props}>
       <button
         ref={buttonRef}
         type="button"
         aria-label="Copy URL"
-        className="heading-anchor-trigger"
+        className={styles.trigger}
         onClick={handleClick}
       >
-        <LinkIcon
-          className="heading-anchor-icon"
-          size={iconSize}
-          strokeWidth={1.5}
-        />
+        <LinkIcon className={styles.icon} size={iconSize} strokeWidth={1.5} />
         {children}
       </button>
     </Component>
