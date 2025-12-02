@@ -56,7 +56,7 @@
 }
 
 .installationTrigger {
-  background-color: none;
+  background-color: transparent;
   padding: 0 0 0.25rem 0;
   margin: 0;
   border-radius: 0;
