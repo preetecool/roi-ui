@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
 import { GitHubIcon } from "@/components/shared/github-icon";
+import { useSwipeToClose } from "@/hooks/use-swipe-to-close";
 import type { PageTree } from "@/lib/source-types";
 import styles from "./mobile-nav.module.css";
 
@@ -81,42 +82,13 @@ function MobileNavContent({
   pathname: string;
   setOpen: (open: boolean) => void;
 }) {
+  const { handleTouchStart } = useSwipeToClose({
+    onClose: () => setOpen(false),
+  });
+
   return (
     <>
-      <div
-        className={styles.viewport}
-        onTouchStart={(event) => {
-          const viewport = event.currentTarget;
-
-          if (viewport.scrollTop <= 0) {
-            viewport.addEventListener(
-              "touchend",
-              function handleTouchEnd() {
-                if (viewport.scrollTop < -32) {
-                  const y = viewport.scrollTop;
-
-                  viewport.addEventListener(
-                    "scroll",
-                    function handleNextScroll() {
-                      if (viewport.scrollTop < y) {
-                        viewport.style.translate = `0px -${y}px`;
-                        viewport.style.transition = "400ms";
-                        setOpen(false);
-                      } else if (viewport.scrollTop === y) {
-                        viewport.addEventListener("scroll", handleNextScroll, {
-                          once: true,
-                        });
-                      }
-                    },
-                    { once: true }
-                  );
-                }
-              },
-              { once: true }
-            );
-          }
-        }}
-      >
+      <div className={styles.viewport} onTouchStart={handleTouchStart}>
         <div className={styles.viewportInner}>
           <Dialog.Close
             className={styles.backdropTapArea}
