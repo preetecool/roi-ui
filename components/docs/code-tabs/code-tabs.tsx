@@ -101,10 +101,13 @@ export function CodeTabsList({
   const shouldShowCopy = showCopy || isPackageVariant;
   const shouldShowStyleSelector = showStyleSelector || isPackageVariant;
 
-  const styleSuffix = style === "tailwind" ? "-tailwind" : "";
-  const currentCommandText = commandText
-    ? commandText.replace(/-tailwind|-css-modules/g, styleSuffix)
-    : "";
+  const currentCommandText = React.useMemo(() => {
+    if (!commandText) return "";
+    const styleSuffix = style === "tailwind" ? "-tailwind" : "";
+    return commandText
+      .replace("-tailwind", styleSuffix)
+      .replace("-css-modules", styleSuffix);
+  }, [commandText, style]);
 
   React.useEffect(() => {
     if (!shouldShowCopy) return;
