@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AiChat } from "@/registry/brook/blocks/ai-chat/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
@@ -45,28 +45,12 @@ const CAROUSEL_COMPONENTS = [
   {
     id: "expandable-card",
     name: "Expandable Card",
-    component: <HomeAnimatedCard />,
+    Component: HomeAnimatedCard,
   },
-  {
-    id: "context-menu",
-    name: "Context Menu",
-    component: <HomeContextMenu />,
-  },
-  {
-    id: "dialog",
-    name: "Dialog",
-    component: <HomeAnimatedDialog />,
-  },
-  {
-    id: "badge",
-    name: "Badge",
-    component: <HomeAnimatedBadge />,
-  },
-  {
-    id: "ai-chat",
-    name: "AI Chat",
-    component: <AiChat />,
-  },
+  { id: "context-menu", name: "Context Menu", Component: HomeContextMenu },
+  { id: "dialog", name: "Dialog", Component: HomeAnimatedDialog },
+  { id: "badge", name: "Badge", Component: HomeAnimatedBadge },
+  { id: "ai-chat", name: "AI Chat", Component: AiChat },
 ];
 
 function getRandomComponent() {
@@ -95,11 +79,7 @@ export const Hero = () => {
 
   return (
     <section aria-label="Hero section" className={styles.container}>
-      <Badge
-        className={styles.badge}
-        style={{ borderRadius: 2 }}
-        variant="outline"
-      >
+      <Badge className={styles.badge} variant="outline">
         <Link
           aria-label="View new animated tabs component"
           href="/docs/ui/tabs#animated"
@@ -110,7 +90,7 @@ export const Hero = () => {
       </Badge>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span className={styles.wordContainer} key={word}>
+          <span className={styles.wordContainer} key={`word-${index}`}>
             <span
               className={styles.wordWrapper}
               style={{ "--index": index } as React.CSSProperties}
@@ -123,15 +103,9 @@ export const Hero = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button
-          render={<Link href="/docs/start" />}
-          style={{ borderRadius: 2 }}
-        >
-          Get Started
-        </Button>
+        <Button render={<Link href="/docs/start" />}>Get Started</Button>
         <Button
           render={<Link href={getComponentUrl(randomComponent)} />}
-          style={{ borderRadius: 2 }}
           variant="ghost"
         >
           I&apos;m Feeling Lucky
@@ -165,7 +139,7 @@ export const Hero = () => {
                           isExpanded={hoveredCardIndex === index}
                         />
                       ) : (
-                        item.component
+                        <item.Component />
                       )}
                     </div>
                   </Card>
