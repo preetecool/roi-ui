@@ -116,7 +116,7 @@ export function Search({ tree }: SearchProps) {
                 return (
                   <CommandGroup
                     heading={group.name as string}
-                    key={`group-${index}`}
+                    key={group.$id || String(group.name)}
                   >
                     {(group.children as PageTree.Node[])
                       .filter(
