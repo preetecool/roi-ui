@@ -1,0 +1,87 @@
+.popup.popup {
+  --gap: 0.5rem;
+
+  position: fixed;
+  top: var(--gap);
+  bottom: var(--gap);
+  left: auto;
+  right: auto;
+  width: 400px;
+  max-width: calc(90vw - var(--gap) * 2);
+  height: calc(100dvh - var(--gap) * 2);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+  transform: translateX(0);
+  transition: all 400ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.popup[data-side="left"] {
+  left: var(--gap);
+  right: auto;
+}
+
+.popup[data-side="right"] {
+  right: var(--gap);
+  left: auto;
+}
+
+.popup[data-side="left"][data-starting-style],
+.popup[data-side="left"][data-ending-style] {
+  transform: translateX(calc(-100% - var(--gap)));
+}
+
+.popup[data-side="right"][data-starting-style],
+.popup[data-side="right"][data-ending-style] {
+  transform: translateX(calc(100% + var(--gap)));
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  color: var(--muted-foreground);
+  transition: background-color 150ms;
+}
+
+.closeButton:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.footer > * {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
