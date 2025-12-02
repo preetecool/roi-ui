@@ -19,7 +19,7 @@ type PropTableProps = {
   data: PropRow[];
 };
 
-const CLASS_TYPES = [
+const CLASS_TYPES = new Set([
   "ReactNode",
   "ReactElement",
   "HTMLElement",
@@ -29,12 +29,12 @@ const CLASS_TYPES = [
   "KeyboardEvent",
   "FocusEvent",
   "FormEvent",
-];
+]);
 
-const SEPARATORS = ["|", "&", "(", ")", "<", ">", "[", "]", ",", " "];
+const SEPARATORS = new Set(["|", "&", "(", ")", "<", ">", "[", "]", ",", " "]);
 
 function isSeparator(char: string): boolean {
-  return SEPARATORS.includes(char);
+  return SEPARATORS.has(char);
 }
 
 function isPascalCase(text: string): boolean {
@@ -122,7 +122,7 @@ function highlightType(typeString: string) {
 
     // Check if it's a class type (PascalCase)
     // Matches: ReactNode, HTMLElement, etc.
-    if (CLASS_TYPES.includes(part) || isPascalCase(part)) {
+    if (CLASS_TYPES.has(part) || isPascalCase(part)) {
       return (
         <span className={styles.typeClass} key={key}>
           {part}
