@@ -479,6 +479,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/dialog-motion/dialog-motion",
   },
+  "dialog-sheet": {
+    name: "dialog-sheet",
+    type: "example",
+    files: [
+      "registry/brook/examples/dialog-sheet/dialog-sheet.tsx",
+      "registry/brook/examples/dialog-sheet/dialog-sheet.module.css",
+    ],
+    path: "@/registry/brook/examples/dialog-sheet/dialog-sheet",
+  },
   "dropdown-menu-demo": {
     name: "dropdown-menu-demo",
     type: "example",
@@ -1492,6 +1501,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/dialog-motion.tsx"],
     path: "@/registry/brook/tailwind/examples/dialog-motion",
+  },
+  "dialog-sheet-tailwind": {
+    name: "dialog-sheet-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/dialog-sheet.tsx"],
+    path: "@/registry/brook/tailwind/examples/dialog-sheet",
   },
   "dropdown-menu-demo-tailwind": {
     name: "dropdown-menu-demo-tailwind",

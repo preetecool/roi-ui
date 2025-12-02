@@ -540,6 +540,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "dialog-motion";
     return { default: mod.default || mod[exportName] };
   }),
+  "dialog-sheet": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/dialog-sheet/dialog-sheet"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "dialog-sheet";
+    return { default: mod.default || mod[exportName] };
+  }),
   "dropdown-menu-demo": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo"
@@ -1368,6 +1378,14 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "dialog-motion";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "dialog-sheet-tailwind": lazy(async () => {
+    const mod = await import("@/registry/brook/tailwind/examples/dialog-sheet");
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "dialog-sheet";
     return { default: mod.default || mod[exportName] };
   }),
   "dropdown-menu-demo-tailwind": lazy(async () => {
