@@ -107,19 +107,16 @@ export function CodeTabsList({
     : "";
 
   React.useEffect(() => {
-    if (!shouldShowCopy) {
-      return;
-    }
-    setTimeout(() => {
-      if (!containerRef.current) {
-        return;
-      }
+    if (!shouldShowCopy) return;
+
+    const timeoutId = setTimeout(() => {
+      if (!containerRef.current) return;
       const text = findFirstVisibleCodeText(containerRef.current);
-      if (text) {
-        setCommandText(text);
-      }
+      if (text) setCommandText(text);
     }, DOM_RENDER_DELAY_MS);
-  }, [shouldShowCopy, containerRef, style]);
+
+    return () => clearTimeout(timeoutId);
+  }, [shouldShowCopy, style]);
 
   if (isPackageVariant) {
     return (
