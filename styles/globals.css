@@ -80,6 +80,11 @@
   --radius: 0.6rem;
   --radius-lg: 1.2rem;
 
+  /* Subtle border colors for 0.5px borders */
+  --border-subtle: oklch(from var(--border) l c h / 0.7);
+  --border-subtle-light: oklch(from var(--border) l c h / 0.5);
+  --border-subtle-strong: oklch(from var(--border) l c h / 0.8);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.2365 0.0078 17.71);
   --card: oklch(0.978 0 0);
@@ -253,6 +258,11 @@
 
 .dark,
 [data-theme="dark"] {
+  /* Subtle border colors for 0.5px borders */
+  --border-subtle: oklch(from var(--border) l c h / 0.7);
+  --border-subtle-light: oklch(from var(--border) l c h / 0.5);
+  --border-subtle-strong: oklch(from var(--border) l c h / 0.8);
+
   --background: oklch(0.15 0 0);
   --foreground: oklch(0.94 0 0);
   --card: oklch(0.26 0 0);

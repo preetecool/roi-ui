@@ -1,5 +1,5 @@
 .packageContainer {
-  border: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border: 0.5px solid var(--border-subtle);
   overflow: hidden;
   background-color: var(--code-header-bg);
   margin: 0;
@@ -20,7 +20,7 @@
 .packageListWrapper {
   border-radius: 0;
   border: none;
-  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border-bottom: 0.5px solid var(--border-subtle);
   background-color: var(--code-header-bg);
   display: flex;
   justify-content: space-between;

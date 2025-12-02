@@ -1,7 +1,7 @@
 .wrapper {
   background-color: var(--code-header-bg);
   overflow: hidden;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border: 0.5px solid var(--border-subtle);
 }
 
 .wrapper pre {
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 2px 4px 2px 8px;
-  border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
+  border-bottom: 0.5px solid var(--border-subtle);
   background-color: var(--code-header-bg);
   gap: 0.5rem;
 }
