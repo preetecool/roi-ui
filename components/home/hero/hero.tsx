@@ -86,7 +86,6 @@ function getComponentUrl(component: { path: string; anchor: string }) {
 }
 
 export const Hero = () => {
-  const [reset, _setReset] = useState(0);
   const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
 
@@ -95,7 +94,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section aria-label="Hero section" className={styles.container} key={reset}>
+    <section aria-label="Hero section" className={styles.container}>
       <Badge
         className={styles.badge}
         style={{ borderRadius: 2 }}
