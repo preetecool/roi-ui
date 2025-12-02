@@ -1,27 +1,17 @@
 "use client";
 
-import {
-  createContext,
-  type ReactNode,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
-import { useIsoLayoutEffect } from "@/hooks/use-iso-layout-effect";
+import type { ReactNode } from "react";
+import { createPreferenceProvider } from "./create-preference-provider";
 
 export type PackageManager = "npm" | "pnpm";
 
-type PackageManagerContextType = {
-  packageManager: PackageManager;
-  setPackageManager: (pm: PackageManager) => void;
-};
+const VALID_PACKAGE_MANAGERS = ["npm", "pnpm"] as const;
 
-const PackageManagerContext = createContext<
-  PackageManagerContextType | undefined
->(undefined);
-
-const LOCAL_STORAGE_KEY = "preferred-package-manager";
+const { Provider, usePreference } = createPreferenceProvider<PackageManager>({
+  storageKey: "preferred-package-manager",
+  validValues: VALID_PACKAGE_MANAGERS,
+  dataAttribute: "data-package-manager",
+});
 
 type PackageManagerProviderProps = {
   children: ReactNode;
@@ -32,49 +22,10 @@ export function PackageManagerProvider({
   children,
   defaultValue = "npm",
 }: PackageManagerProviderProps) {
-  const [packageManager, setValue] = useState<PackageManager>(defaultValue);
-
-  const handleSetPackageManager = useCallback((newPm: PackageManager) => {
-    setValue(newPm);
-    localStorage.setItem(LOCAL_STORAGE_KEY, newPm);
-  }, []);
-
-  // Load saved preference from localStorage before first paint to prevent flash
-  useIsoLayoutEffect(() => {
-    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (saved === "npm" || saved === "pnpm") {
-      setValue(saved);
-    }
-  }, []);
-
-  useIsoLayoutEffect(() => {
-    document.documentElement.setAttribute(
-      "data-package-manager",
-      packageManager
-    );
-  }, [packageManager]);
-
-  const contextValue = useMemo(
-    () => ({
-      packageManager,
-      setPackageManager: handleSetPackageManager,
-    }),
-    [packageManager, handleSetPackageManager]
-  );
-
-  return (
-    <PackageManagerContext.Provider value={contextValue}>
-      {children}
-    </PackageManagerContext.Provider>
-  );
+  return <Provider defaultValue={defaultValue}>{children}</Provider>;
 }
 
 export function usePackageManager() {
-  const context = useContext(PackageManagerContext);
-  if (context === undefined) {
-    throw new Error(
-      "usePackageManager must be used within a PackageManagerProvider"
-    );
-  }
-  return context;
+  const { value, setValue } = usePreference();
+  return { packageManager: value, setPackageManager: setValue };
 }

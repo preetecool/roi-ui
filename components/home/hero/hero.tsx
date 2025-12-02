@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiChat } from "@/registry/brook/blocks/ai-chat/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";

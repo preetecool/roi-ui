@@ -111,7 +111,7 @@ export function Search({ tree }: SearchProps) {
                 {query.isLoading ? "Searching..." : "No results found."}
               </CommandEmpty>
 
-              {tree?.children.map((group: PageTree.Node, index: number) => {
+              {tree?.children.map((group: PageTree.Node) => {
                 if (group.type !== "folder") return null;
                 return (
                   <CommandGroup
