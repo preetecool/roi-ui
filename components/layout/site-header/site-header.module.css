@@ -21,6 +21,10 @@
   backdrop-filter: blur(8px);
 }
 
+.containerHomePage {
+  padding: 0;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -111,6 +115,11 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+}
+
+.innerWrapperHomePage {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (max-width: 1023px) {

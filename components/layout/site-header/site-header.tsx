@@ -7,6 +7,7 @@ import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher
 import { GitHubIcon } from "@/components/shared/github-icon";
 import { Logo } from "@/components/shared/logo";
 import type { PageTree } from "@/lib/source-types";
+import { cn } from "@/lib/utils";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./site-header.module.css";
 
@@ -19,12 +20,13 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
       <div
-        className={styles.container}
-        style={isHomePage ? { padding: 0 } : undefined}
+        className={cn(styles.container, isHomePage && styles.containerHomePage)}
       >
         <div
-          className={styles.innerWrapper}
-          style={isHomePage ? { paddingLeft: 0, paddingRight: 0 } : undefined}
+          className={cn(
+            styles.innerWrapper,
+            isHomePage && styles.innerWrapperHomePage
+          )}
         >
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
