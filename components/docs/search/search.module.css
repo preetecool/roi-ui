@@ -166,7 +166,7 @@
   font-size: 0.9375rem;
 }
 
-.searchButton.searchButton {
+.searchButton[data-slot="button"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -180,7 +180,7 @@
   height: 36px;
 }
 
-.searchButton.searchButton:hover {
+.searchButton[data-slot="button"]:hover {
   background-color: oklch(from var(--accent) l c h / 0.5);
   color: var(--foreground);
 }
