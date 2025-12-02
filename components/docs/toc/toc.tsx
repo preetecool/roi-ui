@@ -13,11 +13,12 @@ type TableOfContentsProps = {
   toc?: TOCItem[];
 };
 
+const NESTED_ITEM_INDENT_PX = 12;
+
 export function TableOfContents({ toc }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const visibleHeadingsRef = useRef<Set<string>>(new Set());
   const headingsRef = useRef<Element[]>([]);
-  const NESTED_ITEM_INDENT = 12;
 
   useEffect(() => {
     const headings = Array.from(
@@ -81,7 +82,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
               style={{
                 paddingLeft:
                   item.depth > 2
-                    ? `${(item.depth - 2) * NESTED_ITEM_INDENT}px`
+                    ? `${(item.depth - 2) * NESTED_ITEM_INDENT_PX}px`
                     : "0px",
               }}
             >
