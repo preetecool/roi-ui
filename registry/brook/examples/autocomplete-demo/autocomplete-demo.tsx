@@ -108,7 +108,7 @@ export default function AutocompleteDemo() {
                       <Badge
                         className={styles.badge}
                         size="sm"
-                        variant="secondary"
+                        variant="outline"
                       >
                         {question.category}
                       </Badge>
