@@ -2,6 +2,7 @@ import { Button } from "@/registry/brook/ui/button/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardImage,
   CardTitle,
@@ -19,10 +20,11 @@ export default function CardImageDemo() {
 
       <CardContent>
         <CardTitle className={styles.title}>Threshold</CardTitle>
-        <p className={styles.description}>
+
+        <CardDescription>
           Between what we build and what eternally exists standing in quiet
           contemplation.
-        </p>
+        </CardDescription>
       </CardContent>
 
       <CardFooter>
