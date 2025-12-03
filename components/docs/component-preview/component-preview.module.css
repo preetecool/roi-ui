@@ -15,21 +15,21 @@
   font-weight: revert;
   line-height: revert;
   letter-spacing: revert;
-  margin: revert;
+  margin: 0;
   color: inherit;
 }
 
 .proseReset p {
-  margin: revert;
+  margin: 0;
 }
 
 .proseReset :is(ul, ol) {
-  margin: revert;
-  padding: revert;
+  margin: 0;
+  padding: 0;
 }
 
 .proseReset li {
-  margin: revert;
+  margin: 0;
 }
 
 .preview {
