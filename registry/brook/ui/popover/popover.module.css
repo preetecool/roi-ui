@@ -37,12 +37,14 @@
 }
 
 .positioner {
-  position: absolute;
   z-index: 999;
+  width: var(--positioner-width);
+  height: var(--positioner-height);
+  max-width: var(--available-width);
 }
 
 .popup {
-  position: relative;
+  position: relative !important;
   box-sizing: border-box;
   padding: 0.5rem 1rem;
   border-radius: var(--radius);

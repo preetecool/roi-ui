@@ -45,7 +45,13 @@ function PopoverPositioner({ className, ...props }: Popover.Positioner.Props) {
 }
 
 function PopoverPopup({ className, ...props }: Popover.Popup.Props) {
-  return <Popover.Popup className={cn(styles.popup, className)} {...props} />;
+  return (
+    <Popover.Popup
+      className={cn(styles.popup, className)}
+      data-slot="popover-popup"
+      {...props}
+    />
+  );
 }
 
 function PopoverArrow({ className, ...props }: Popover.Arrow.Props) {
