@@ -126,7 +126,12 @@ export default function ProfileMenuDemo() {
                 Organizations
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner align="start" side="right">
+                <DropdownMenuPositioner
+                  align="start"
+                  alignOffset={-4}
+                  side="right"
+                  sideOffset={-4}
+                >
                   <DropdownMenuPopup render={<ul />}>
                     <div style={{ height: "4px", width: "100%" }} />
                     <DropdownMenuRadioGroup

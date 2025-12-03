@@ -33,7 +33,12 @@ export default function DropdownMenuSubmenu() {
                 <span style={{ marginLeft: "4px" }}>More Options</span>
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner align="start" side="right">
+                <DropdownMenuPositioner
+                  align="start"
+                  alignOffset={-4}
+                  side="right"
+                  sideOffset={-4}
+                >
                   <DropdownMenuPopup>
                     <div style={{ height: "4px", width: "100%" }} />
                     <DropdownMenuItem>

@@ -41,7 +41,12 @@ export default function MenubarDemo() {
               <MenubarMenuSubmenuRoot>
                 <MenubarMenuSubmenuTrigger>Export</MenubarMenuSubmenuTrigger>
                 <MenubarMenuPortal>
-                  <MenubarMenuPositioner align="start" side="right">
+                  <MenubarMenuPositioner
+                    align="start"
+                    alignOffset={-4}
+                    side="right"
+                    sideOffset={-4}
+                  >
                     <MenubarMenuPopup>
                       <MenubarMenuSpacer />
                       <MenubarMenuItem>PDF</MenubarMenuItem>
@@ -111,7 +116,12 @@ export default function MenubarDemo() {
               <MenubarMenuSubmenuRoot>
                 <MenubarMenuSubmenuTrigger>Layout</MenubarMenuSubmenuTrigger>
                 <MenubarMenuPortal>
-                  <MenubarMenuPositioner align="start" side="right">
+                  <MenubarMenuPositioner
+                    align="start"
+                    alignOffset={-4}
+                    side="right"
+                    sideOffset={-4}
+                  >
                     <MenubarMenuPopup>
                       <MenubarMenuSpacer />
                       <MenubarMenuItem>Single Page</MenubarMenuItem>

@@ -51,7 +51,7 @@ export default function ContextMenuDemo() {
                   Share
                 </ContextMenuSubmenuTrigger>
                 <ContextMenuPortal>
-                  <ContextMenuPositioner>
+                  <ContextMenuPositioner alignOffset={-4} sideOffset={-4}>
                     <ContextMenuPopup>
                       <ContextMenuSpacer />
                       <ContextMenuItem className="pl-3">

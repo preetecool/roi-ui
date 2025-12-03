@@ -508,8 +508,11 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-submenu": {
     name: "dropdown-menu-submenu",
     type: "example",
-    files: ["registry/brook/examples/dropdown-menu-submenu.tsx"],
-    path: "@/registry/brook/examples/dropdown-menu-submenu",
+    files: [
+      "registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu.tsx",
+      "registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu.module.css",
+    ],
+    path: "@/registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu",
   },
   "expandable-card-demo": {
     name: "expandable-card-demo",

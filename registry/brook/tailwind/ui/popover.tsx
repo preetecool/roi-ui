@@ -56,7 +56,7 @@ function PopoverPopup({ className, ...props }: Popover.Popup.Props) {
   return (
     <Popover.Popup
       className={cn(
-        "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--popover)] px-4 py-2 text-[var(--popover-foreground)]",
+        "!relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--popover)] px-4 py-2 text-[var(--popover-foreground)]",
         "transition-[transform,scale,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
         "outline outline-[0.5px] outline-[oklch(from_var(--border)_l_c_h_/_0.8)]",
         "shadow-[var(--shadow-border-stack)]",
@@ -146,7 +146,7 @@ function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
       <PopoverPositioner sideOffset={8}>
         <PopoverPopup
           className={cn(
-            "relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
+            "!relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--mix-card-33-bg)] px-4 py-2 text-[var(--popover-foreground)]",
             "transition-[transform,scale,opacity] duration-[150ms] ease-in-out",
             "outline outline-[0.5px] outline-[var(--color-border-60)]",
             "shadow-[0px_1px_2px_var(--color-border-10),0px_1px_2px_var(--color-border-10),0px_1px_1px_var(--color-border-10)]",

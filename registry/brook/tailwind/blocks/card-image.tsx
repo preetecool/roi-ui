@@ -2,6 +2,7 @@ import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardImage,
   CardTitle,
@@ -23,10 +24,10 @@ export default function CardImageDemo() {
         <CardTitle className="m-0 max-sm:text-[1.125rem] max-sm:leading-[1.3]">
           Threshold
         </CardTitle>
-        <p className="m-0 text-[var(--muted-foreground)] max-sm:text-[0.9375rem] max-sm:leading-[1.5]">
+        <CardDescription className="mt-0">
           Between what we build and what eternally exists standing in quiet
           contemplation.
-        </p>
+        </CardDescription>
       </CardContent>
 
       <CardFooter>
