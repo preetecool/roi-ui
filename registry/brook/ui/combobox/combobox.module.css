@@ -122,12 +122,22 @@
   color: var(--foreground);
   cursor: pointer;
   user-select: none;
-  border-radius: 0.3125rem;
   background-color: transparent;
+  position: relative;
+  isolation: isolate;
 
-  &[data-highlighted],
-  &:hover,
-  &:focus {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius) - 4px);
+    background-color: transparent;
+    z-index: -1;
+  }
+
+  &[data-highlighted]::before,
+  &:hover::before,
+  &:focus::before {
     background-color: var(--accent);
   }
 
@@ -140,7 +150,7 @@
     opacity: 0.5;
     cursor: not-allowed;
 
-    &:hover {
+    &:hover::before {
       background: transparent;
     }
   }
@@ -167,7 +177,7 @@
   outline: none;
 }
 
-.list:not(:has(.item[data-highlighted])) .item[data-selected] {
+.list:not(:has(.item[data-highlighted])) .item[data-selected]::before {
   background: var(--mix-accent-33-trans);
 }
 
