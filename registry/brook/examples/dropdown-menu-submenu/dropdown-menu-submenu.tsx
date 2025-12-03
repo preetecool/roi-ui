@@ -10,6 +10,7 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
+import styles from "./dropdown-menu-submenu.module.css";
 
 export default function DropdownMenuSubmenu() {
   return (
@@ -20,41 +21,46 @@ export default function DropdownMenuSubmenu() {
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup>
-            <div style={{ height: "4px", width: "100%" }} />
+            <div className={styles.spacer} />
             <DropdownMenuItem>
-              <span style={{ marginLeft: "4px" }}>Profile</span>
+              <span className={styles.menuItemText}>Profile</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <span style={{ marginLeft: "4px" }}>Settings</span>
+              <span className={styles.menuItemText}>Settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuSubmenuRoot>
               <DropdownMenuSubmenuTrigger>
-                <span style={{ marginLeft: "4px" }}>More Options</span>
+                <span className={styles.menuItemText}>More Options</span>
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner align="start" side="right">
+                <DropdownMenuPositioner
+                  align="start"
+                  alignOffset={-4}
+                  side="right"
+                  sideOffset={-4}
+                >
                   <DropdownMenuPopup>
-                    <div style={{ height: "4px", width: "100%" }} />
+                    <div className={styles.spacer} />
                     <DropdownMenuItem>
-                      <span style={{ marginLeft: "4px" }}>Export</span>
+                      <span className={styles.menuItemText}>Export</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <span style={{ marginLeft: "4px" }}>Import</span>
+                      <span className={styles.menuItemText}>Import</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <span style={{ marginLeft: "4px" }}>Share</span>
+                      <span className={styles.menuItemText}>Share</span>
                     </DropdownMenuItem>
-                    <div style={{ height: "4px", width: "100%" }} />
+                    <div className={styles.spacer} />
                   </DropdownMenuPopup>
                 </DropdownMenuPositioner>
               </DropdownMenuPortal>
             </DropdownMenuSubmenuRoot>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <span style={{ marginLeft: "4px" }}>Logout</span>
+              <span className={styles.menuItemText}>Logout</span>
             </DropdownMenuItem>
-            <div style={{ height: "4px", width: "100%" }} />
+            <div className={styles.spacer} />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>

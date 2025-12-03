@@ -571,7 +571,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {
     return { default: mod.default || mod[exportName] };
   }),
   "dropdown-menu-submenu": lazy(async () => {
-    const mod = await import("@/registry/brook/examples/dropdown-menu-submenu");
+    const mod = await import(
+      "@/registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu"
+    );
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
