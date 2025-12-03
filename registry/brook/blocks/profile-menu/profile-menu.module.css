@@ -155,6 +155,15 @@
   flex: 1;
 }
 
+.spacer {
+  height: 4px;
+  width: 100%;
+}
+
+.menuItemText {
+  margin-left: 4px;
+}
+
 @media (max-width: 640px) {
   .popup {
     min-width: 260px;

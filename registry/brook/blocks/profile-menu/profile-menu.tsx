@@ -77,7 +77,7 @@ export default function ProfileMenuDemo() {
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup className={styles.popup} render={<ul />}>
-            <div style={{ height: "4px", width: "100%" }} />
+            <div className={styles.spacer} />
 
             {/* Profile Section */}
             <div className={styles.profileSection}>
@@ -110,7 +110,7 @@ export default function ProfileMenuDemo() {
               <DropdownMenuPortal>
                 <DropdownMenuPositioner align="start" side="right">
                   <DropdownMenuPopup render={<ul />}>
-                    <div style={{ height: "4px", width: "100%" }} />
+                    <div className={styles.spacer} />
                     <DropdownMenuRadioGroup
                       onValueChange={setSelectedOrg}
                       value={selectedOrg}
@@ -120,7 +120,7 @@ export default function ProfileMenuDemo() {
                         render={<li />}
                         value="acme"
                       >
-                        <span style={{ marginLeft: "4px" }}>Acme Corp</span>
+                        <span className={styles.menuItemText}>Acme Corp</span>
                         <DropdownMenuRadioItemIndicator>
                           <Check size={14} />
                         </DropdownMenuRadioItemIndicator>
@@ -130,7 +130,9 @@ export default function ProfileMenuDemo() {
                         render={<li />}
                         value="tech"
                       >
-                        <span style={{ marginLeft: "4px" }}>Tech Startup</span>
+                        <span className={styles.menuItemText}>
+                          Tech Startup
+                        </span>
                         <DropdownMenuRadioItemIndicator>
                           <Check size={14} />
                         </DropdownMenuRadioItemIndicator>
@@ -140,7 +142,9 @@ export default function ProfileMenuDemo() {
                         render={<li />}
                         value="design"
                       >
-                        <span style={{ marginLeft: "4px" }}>Design Studio</span>
+                        <span className={styles.menuItemText}>
+                          Design Studio
+                        </span>
                         <DropdownMenuRadioItemIndicator>
                           <Check size={14} />
                         </DropdownMenuRadioItemIndicator>
@@ -151,9 +155,9 @@ export default function ProfileMenuDemo() {
                       onClick={() => setIsDialogOpen(true)}
                       render={<li />}
                     >
-                      <span style={{ marginLeft: "4px" }}>Add new...</span>
+                      <span className={styles.menuItemText}>Add new...</span>
                     </DropdownMenuItem>
-                    <div style={{ height: "4px", width: "100%" }} />
+                    <div className={styles.spacer} />
                   </DropdownMenuPopup>
                 </DropdownMenuPositioner>
               </DropdownMenuPortal>
@@ -185,7 +189,7 @@ export default function ProfileMenuDemo() {
               Log Out
             </DropdownMenuItem>
 
-            <div style={{ height: "4px", width: "100%" }} />
+            <div className={styles.spacer} />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>

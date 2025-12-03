@@ -1018,6 +1018,34 @@
       ]
     },
     {
+      "name": "profile-menu",
+      "type": "registry:item",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/avatar.json",
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/dialog.json",
+        "https://roiui.com/r/dropdown-menu.json",
+        "https://roiui.com/r/field.json",
+        "https://roiui.com/r/input.json"
+      ],
+      "title": "Profile Menu",
+      "description": "A dropdown menu component for user profile management.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/profile-menu/profile-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/profile-menu/profile-menu.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/profile-menu/profile-menu.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/profile-menu/profile-menu.module.css"
+        }
+      ]
+    },
+    {
       "name": "accordion-tailwind",
       "type": "registry:item",
       "title": "Accordion (Tailwind)",
@@ -1764,6 +1792,29 @@
           "path": "registry/brook/tailwind/blocks/expandable-card.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/expandable-card/expandable-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "profile-menu-tailwind",
+      "type": "registry:item",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/avatar-tailwind.json",
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/dialog-tailwind.json",
+        "https://roiui.com/r/dropdown-menu-tailwind.json",
+        "https://roiui.com/r/field-tailwind.json",
+        "https://roiui.com/r/input-tailwind.json"
+      ],
+      "title": "Profile Menu (Tailwind)",
+      "description": "A dropdown menu component for user profile management.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/profile-menu.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/profile-menu/profile-menu.tsx"
         }
       ]
     }
