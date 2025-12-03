@@ -25,7 +25,6 @@
   padding: 0.25rem 0.75rem;
   background: transparent;
   border: none;
-  border-radius: 0.125rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--foreground);
@@ -37,7 +36,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 0.3125rem;
+    border-radius: calc(var(--radius) - 2px);
     background-color: transparent;
     z-index: -1;
     transition: background-color 250ms var(--ease-out-expo);

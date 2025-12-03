@@ -72,7 +72,6 @@
   line-height: 1.2;
   color: var(--foreground);
   cursor: pointer;
-  border-radius: 0.3125rem;
   justify-content: flex-start;
   margin: 0rem;
   position: relative;
@@ -86,7 +85,7 @@
     content: "";
     position: absolute;
     inset: 0 4px;
-    border-radius: 0.3125rem;
+    border-radius: calc(var(--radius) - 4px);
     background-color: transparent;
     z-index: -1;
   }
@@ -120,24 +119,12 @@
     }
   }
 
-  &[data-variant="destructive"] {
+  &[data-variant="destructive"]:hover,
+  &[data-variant="destructive"][data-highlighted] {
     color: var(--destructive);
 
     & .icon {
       color: var(--destructive);
-    }
-
-    &:hover,
-    &[data-highlighted] {
-      color: var(--destructive-foreground);
-
-      &::before {
-        background-color: var(--destructive);
-      }
-
-      & .icon {
-        color: var(--destructive-foreground);
-      }
     }
   }
 }
@@ -161,7 +148,6 @@
   line-height: 1.2;
   color: var(--foreground);
   cursor: pointer;
-  border-radius: 0.3rem;
   justify-content: flex-start;
   margin: 0rem;
   position: relative;
@@ -171,7 +157,7 @@
     content: "";
     position: absolute;
     inset: 0 4px;
-    border-radius: 0.3rem;
+    border-radius: calc(var(--radius) - 4px);
     background-color: transparent;
     z-index: -1;
   }

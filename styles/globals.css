@@ -15,7 +15,7 @@
 
 @theme inline {
   /* Border radius */
-  --radius: 0.5rem;
+  --radius: 0.563rem;
   --radius-lg: 1.2rem;
 
   /* Layout dimensions */
@@ -114,8 +114,9 @@
     0 10px 15px -3px oklch(0 0 0 / 0.05), 0 4px 6px -2px oklch(0 0 0 / 0.02);
   --shadow-color: oklch(from var(--border) l c h / 0.2);
   --shadow-border-stack:
-    oklch(0 0 0 / 0.02) 0px 3px 8px, oklch(0 0 0 / 0.02) 0px 2px 4px,
-    oklch(0 0 0 / 0.02) 0px 1px 1px;
+    oklch(0 0 0 / 0.02) 0px 3px 8px 1px,
+    oklch(0 0 0 / 0.02) 0px 2px 4px -1px,
+    oklch(0 0 0 / 0.02) 0px 1px 1px 0;
 
   --destructive: oklch(0.6553 0.1374 15.66);
   --destructive-foreground: oklch(0.9808 0 24);
