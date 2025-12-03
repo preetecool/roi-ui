@@ -159,11 +159,12 @@ function ComboboxItem({
   return (
     <Combobox.Item
       className={cn(
-        "mx-1 flex min-h-8 cursor-pointer items-center justify-start gap-3",
-        "rounded-[0.3125rem] px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
-        "bg-transparent hover:bg-[var(--accent)] focus:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
-        "data-[selected]:bg-[var(--mix-accent-33-trans)] data-[highlighted]:bg-[var(--accent)]",
-        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
+        "relative isolate mx-1 flex min-h-8 cursor-pointer items-center justify-start gap-3",
+        "px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
+        "before:absolute before:inset-0 before:-z-10 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
+        "hover:before:bg-[var(--accent)] focus:before:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
+        "data-[selected]:before:bg-[var(--mix-accent-33-trans)] data-[highlighted]:before:bg-[var(--accent)]",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:before:bg-transparent",
         "max-sm:min-h-[2.75rem] max-sm:gap-3 max-sm:px-3 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
       )}
@@ -289,10 +290,7 @@ function ComboboxChips({
   );
 }
 
-function ComboboxChip({
-  className,
-  ...props
-}: Combobox.Chip.Props) {
+function ComboboxChip({ className, ...props }: Combobox.Chip.Props) {
   return (
     <Combobox.Chip
       className={cn(

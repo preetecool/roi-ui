@@ -20,7 +20,6 @@
   font-size: 0.875rem;
   line-height: 1.2;
   color: var(--foreground);
-  border-radius: 0.3125rem;
   justify-content: flex-start;
   margin: 0;
   position: relative;
@@ -31,7 +30,7 @@
   content: "";
   position: absolute;
   inset: 0 4px;
-  border-radius: 0.3125rem;
+  border-radius: calc(var(--radius) - 4px);
   background-color: transparent;
   z-index: -1;
 }
@@ -49,25 +48,12 @@
   color: var(--secondary-foreground);
 }
 
-.itemDestructive {
-  color: var(--destructive);
-}
-
-.itemDestructive .icon {
-  color: var(--destructive);
-}
-
 .itemDestructive:hover {
-  color: var(--destructive-foreground);
+  color: var(--destructive);
 }
 
-.itemDestructive:hover::before {
-  background-color: var(--destructive);
-}
-
-.itemDestructive:hover .icon,
-.itemDestructive:hover .shortcut {
-  color: var(--destructive-foreground);
+.itemDestructive:hover .icon {
+  color: var(--destructive);
 }
 
 .icon {

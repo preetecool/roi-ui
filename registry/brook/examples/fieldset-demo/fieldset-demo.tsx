@@ -1,8 +1,4 @@
-import {
-  Field,
-  FieldControl,
-  FieldLabel,
-} from "@/registry/brook/ui/field/field";
+import { Field, FieldLabel } from "@/registry/brook/ui/field/field";
 import {
   Fieldset,
   FieldsetLegend,
@@ -15,14 +11,14 @@ export default function FieldsetDemo() {
     <Fieldset className={styles.fieldset}>
       <FieldsetLegend>Shipping Address</FieldsetLegend>
 
-      <Field className={styles.field}>
+      <Field>
         <FieldLabel>Full Name</FieldLabel>
-        <FieldControl placeholder="John Doe" render={<Input />} />
+        <Input placeholder="John Doe" />
       </Field>
 
-      <Field className={styles.field}>
+      <Field>
         <FieldLabel>Street Address</FieldLabel>
-        <FieldControl placeholder="123 Main Street" render={<Input />} />
+        <Input placeholder="123 Main Street" />
       </Field>
     </Fieldset>
   );

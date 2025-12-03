@@ -1,8 +1,4 @@
-import {
-  Field,
-  FieldControl,
-  FieldLabel,
-} from "@/registry/brook/tailwind/ui/field";
+import { Field, FieldLabel } from "@/registry/brook/tailwind/ui/field";
 import {
   Fieldset,
   FieldsetLegend,
@@ -14,14 +10,14 @@ export default function FieldsetDemo() {
     <Fieldset className="max-w-80">
       <FieldsetLegend>Shipping Address</FieldsetLegend>
 
-      <Field className="w-full">
+      <Field>
         <FieldLabel>Full Name</FieldLabel>
-        <FieldControl placeholder="John Doe" render={<Input />} />
+        <Input placeholder="John Doe" />
       </Field>
 
-      <Field className="w-full">
+      <Field>
         <FieldLabel>Street Address</FieldLabel>
-        <FieldControl placeholder="123 Main Street" render={<Input />} />
+        <Input placeholder="123 Main Street" />
       </Field>
     </Fieldset>
   );

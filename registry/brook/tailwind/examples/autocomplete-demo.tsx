@@ -110,7 +110,7 @@ export default function AutocompleteDemo() {
                       <Badge
                         className="flex-shrink-0"
                         size="sm"
-                        variant="secondary"
+                        variant="outline"
                       >
                         {question.category}
                       </Badge>

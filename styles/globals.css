@@ -15,7 +15,7 @@
 
 @theme inline {
   /* Border radius */
-  --radius: 0.5rem;
+  --radius: 0.563rem;
   --radius-lg: 1.2rem;
 
   /* Layout dimensions */
@@ -88,9 +88,9 @@
   --background: oklch(1 0 0);
   --foreground: oklch(0.2365 0.0078 17.71);
   --card: oklch(0.978 0 0);
-  --card-light: oklch(0.9959 0.0013 106);
+  --card-light: oklch(0.9959 0 106);
   --popover-foreground: oklch(0.18 0 0);
-  --popover: oklch(0.9959 0.0013 106);
+  --popover: oklch(0.9959 0 106);
   --dialog-overlay: oklch(0 0 0 / 0.4);
   --dialog-z: 100;
 
@@ -100,10 +100,10 @@
   --secondary: oklch(0.95 0.0025 0);
   --secondary-foreground: oklch(0.4 0 0);
 
-  --muted: oklch(0.95 0.0013 106.42);
+  --muted: oklch(0.95 0 106.42);
   --muted-foreground: oklch(0.6476 0.0012 17.19);
 
-  --accent: oklch(0.965 0.0013 106.42);
+  --accent: oklch(0.965 0 0);
   --accent-foreground: oklch(0.32 0.015 280);
 
   --border: oklch(0.86 0 0);
@@ -114,8 +114,9 @@
     0 10px 15px -3px oklch(0 0 0 / 0.05), 0 4px 6px -2px oklch(0 0 0 / 0.02);
   --shadow-color: oklch(from var(--border) l c h / 0.2);
   --shadow-border-stack:
-    oklch(0 0 0 / 0.02) 0px 3px 8px, oklch(0 0 0 / 0.02) 0px 2px 4px,
-    oklch(0 0 0 / 0.02) 0px 1px 1px;
+    oklch(0 0 0 / 0.02) 0px 3px 8px 1px,
+    oklch(0 0 0 / 0.02) 0px 2px 4px -1px,
+    oklch(0 0 0 / 0.02) 0px 1px 1px 0;
 
   --destructive: oklch(0.6553 0.1374 15.66);
   --destructive-foreground: oklch(0.9808 0 24);
