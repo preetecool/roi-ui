@@ -688,6 +688,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "number-field-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "popover-animated": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/popover-animated/popover-animated"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "popover-animated";
+    return { default: mod.default || mod[exportName] };
+  }),
   "popover-demo": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/popover-demo/popover-demo"
@@ -1538,6 +1548,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "number-field-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "popover-animated-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/popover-animated"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "popover-animated";
     return { default: mod.default || mod[exportName] };
   }),
   "popover-demo-tailwind": lazy(async () => {

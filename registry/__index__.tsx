@@ -613,6 +613,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/number-field-demo/number-field-demo",
   },
+  "popover-animated": {
+    name: "popover-animated",
+    type: "example",
+    files: [
+      "registry/brook/examples/popover-animated/popover-animated.tsx",
+      "registry/brook/examples/popover-animated/popover-animated.module.css",
+    ],
+    path: "@/registry/brook/examples/popover-animated/popover-animated",
+  },
   "popover-demo": {
     name: "popover-demo",
     type: "example",
@@ -1609,6 +1618,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/number-field-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/number-field-demo",
+  },
+  "popover-animated-tailwind": {
+    name: "popover-animated-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/popover-animated.tsx"],
+    path: "@/registry/brook/tailwind/examples/popover-animated",
   },
   "popover-demo-tailwind": {
     name: "popover-demo-tailwind",
