@@ -380,6 +380,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/checkbox-group-demo/checkbox-group-demo",
   },
+  "checkbox-group-parent": {
+    name: "checkbox-group-parent",
+    type: "example",
+    files: [
+      "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.tsx",
+      "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.module.css",
+    ],
+    path: "@/registry/brook/examples/checkbox-group-parent/checkbox-group-parent",
+  },
   "collapsible-demo": {
     name: "collapsible-demo",
     type: "example",
@@ -1438,6 +1447,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/checkbox-group-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/checkbox-group-demo",
+  },
+  "checkbox-group-parent-tailwind": {
+    name: "checkbox-group-parent-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-group-parent.tsx"],
+    path: "@/registry/brook/tailwind/examples/checkbox-group-parent",
   },
   "collapsible-demo-tailwind": {
     name: "collapsible-demo-tailwind",
