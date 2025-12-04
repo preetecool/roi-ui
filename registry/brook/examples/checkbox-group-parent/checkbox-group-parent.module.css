@@ -1,0 +1,23 @@
+.container {
+  max-width: 24rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 0.875rem;
+  line-height: 20px;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding-left: 1.5rem;
+}

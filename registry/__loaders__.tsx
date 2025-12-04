@@ -430,6 +430,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "checkbox-group-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "checkbox-group-parent": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/checkbox-group-parent/checkbox-group-parent"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "checkbox-group-parent";
+    return { default: mod.default || mod[exportName] };
+  }),
   "collapsible-demo": lazy(async () => {
     const mod = await import(
       "@/registry/brook/examples/collapsible-demo/collapsible-demo"
@@ -676,6 +686,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "number-field-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "popover-animated": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/examples/popover-animated/popover-animated"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "popover-animated";
     return { default: mod.default || mod[exportName] };
   }),
   "popover-demo": lazy(async () => {
@@ -1276,6 +1296,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "checkbox-group-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "checkbox-group-parent-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/checkbox-group-parent"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "checkbox-group-parent";
+    return { default: mod.default || mod[exportName] };
+  }),
   "collapsible-demo-tailwind": lazy(async () => {
     const mod = await import(
       "@/registry/brook/tailwind/examples/collapsible-demo"
@@ -1518,6 +1548,16 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "number-field-demo";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "popover-animated-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/popover-animated"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "popover-animated";
     return { default: mod.default || mod[exportName] };
   }),
   "popover-demo-tailwind": lazy(async () => {

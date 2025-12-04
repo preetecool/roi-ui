@@ -16,7 +16,8 @@
     background-color: transparent;
   }
 
-  &[data-checked] {
+  &[data-checked],
+  &[data-indeterminate] {
     border: 1px solid var(--border);
     background-color: var(--primary);
   }
@@ -34,18 +35,13 @@
   width: 100%;
   height: 100%;
   color: var(--primary-foreground);
-  transform: scale(0);
 
   & > svg {
     width: 16px;
     height: 16px;
   }
 
-  &[data-unchecked] {
+  &[data-unchecked]:not([data-indeterminate]) {
     display: none;
   }
-}
-
-.root[data-checked] .indicator {
-  transform: scale(1);
 }

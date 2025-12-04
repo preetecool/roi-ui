@@ -1,26 +1,8 @@
 .trigger {
-  @media (hover: hover) {
-    &:hover {
-      background-color: var(--mix-card-66-bg);
-    }
-  }
-
-  &:active {
-    background-color: var(--mix-card-66-bg);
-  }
-
-  &[data-popup-open] {
-    background-color: var(--mix-card-66-bg);
-  }
-
-  @media (hover: hover) {
-    &[data-popup-open]:hover {
-      background-color: var(--mix-card-66-bg);
-    }
-  }
-
-  &[data-popup-open]:active {
-    background-color: var(--mix-card-66-bg);
+  &[data-popup-open],
+  &[data-popup-open]:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
   }
 
   &:focus-visible {
@@ -37,40 +19,54 @@
 }
 
 .positioner {
-  z-index: 999;
+  z-index: 50;
   width: var(--positioner-width);
   height: var(--positioner-height);
   max-width: var(--available-width);
+  transition-property: top, left, right, bottom, transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+
+  &[data-instant] {
+    transition: none;
+  }
 }
 
 .popup {
-  position: relative !important;
+  position: relative;
+  display: flex;
   box-sizing: border-box;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  background-color: oklch(from var(--popover) l c h / 0.6);
+  width: var(--popup-width, auto);
+  height: var(--popup-height, auto);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background-color: var(--popover);
+  background-clip: padding-box;
   color: var(--popover-foreground);
   transform-origin: var(--transform-origin);
-  transition:
-    transform 250ms var(--ease-out-expo),
-    opacity 250ms var(--ease-out-expo);
-  outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
-  box-shadow: var(--shadow-border-stack);
-  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  transition-property: width, height, scale, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+
+  &::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--radius-lg) - 1px);
+    box-shadow: 0 1px oklch(from var(--foreground) l c h / 4%);
+  }
 
   &[data-starting-style],
   &[data-ending-style] {
+    scale: 0.98;
     opacity: 0;
-    transform: scale(0.9);
   }
 
   &:focus-visible {
     outline: 1px solid var(--ring);
     outline-offset: 1px;
-  }
-
-  [data-theme="dark"] & {
-    outline: 0.5px solid oklch(from var(--border) l c h / 0.8);
   }
 
   @media (max-width: 640px) {
@@ -79,8 +75,61 @@
   }
 }
 
+.viewport {
+  --viewport-inline-padding: 1rem;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: var(--available-height);
+  overflow: clip;
+  padding: 1rem var(--viewport-inline-padding);
+  outline: none;
+
+  &[data-instant] {
+    transition: none;
+  }
+
+  &:not([data-transitioning]) {
+    overflow-y: auto;
+  }
+
+  & [data-current],
+  & [data-previous] {
+    width: calc(var(--popup-width) - 2 * var(--viewport-inline-padding) - 2px);
+    transform: translateX(0);
+    opacity: 1;
+    transition:
+      transform 200ms ease-out,
+      opacity 200ms ease-out;
+  }
+
+  /* Slide right: previous exits left, current enters from right */
+  &[data-activation-direction~="right"] [data-previous][data-ending-style] {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  &[data-activation-direction~="right"] [data-current][data-starting-style] {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  /* Slide left: previous exits right, current enters from left */
+  &[data-activation-direction~="left"] [data-previous][data-ending-style] {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  &[data-activation-direction~="left"] [data-current][data-starting-style] {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+}
+
 .arrow {
   display: flex;
+  transition: left 200ms ease-out;
 
   &[data-side="top"] {
     bottom: -8px;
@@ -103,24 +152,24 @@
   }
 
   & svg {
-    fill: var(--popover);
-    stroke: var(--border);
+    fill: var(--border);
+    /*stroke: var(--border);*/
     stroke-width: 1px;
   }
 }
 
 .title {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1;
+  font-weight: 600;
   color: var(--popover-foreground);
 }
 
 .description {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--muted-foreground);
 }
 

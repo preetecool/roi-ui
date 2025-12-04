@@ -380,6 +380,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/checkbox-group-demo/checkbox-group-demo",
   },
+  "checkbox-group-parent": {
+    name: "checkbox-group-parent",
+    type: "example",
+    files: [
+      "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.tsx",
+      "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.module.css",
+    ],
+    path: "@/registry/brook/examples/checkbox-group-parent/checkbox-group-parent",
+  },
   "collapsible-demo": {
     name: "collapsible-demo",
     type: "example",
@@ -603,6 +612,15 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/examples/number-field-demo/number-field-demo.module.css",
     ],
     path: "@/registry/brook/examples/number-field-demo/number-field-demo",
+  },
+  "popover-animated": {
+    name: "popover-animated",
+    type: "example",
+    files: [
+      "registry/brook/examples/popover-animated/popover-animated.tsx",
+      "registry/brook/examples/popover-animated/popover-animated.module.css",
+    ],
+    path: "@/registry/brook/examples/popover-animated/popover-animated",
   },
   "popover-demo": {
     name: "popover-demo",
@@ -1439,6 +1457,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/checkbox-group-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/checkbox-group-demo",
   },
+  "checkbox-group-parent-tailwind": {
+    name: "checkbox-group-parent-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/checkbox-group-parent.tsx"],
+    path: "@/registry/brook/tailwind/examples/checkbox-group-parent",
+  },
   "collapsible-demo-tailwind": {
     name: "collapsible-demo-tailwind",
     type: "example",
@@ -1594,6 +1618,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/number-field-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/number-field-demo",
+  },
+  "popover-animated-tailwind": {
+    name: "popover-animated-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/popover-animated.tsx"],
+    path: "@/registry/brook/tailwind/examples/popover-animated",
   },
   "popover-demo-tailwind": {
     name: "popover-demo-tailwind",
