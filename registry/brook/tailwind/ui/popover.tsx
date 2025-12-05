@@ -1,19 +1,18 @@
 "use client";
 
 import * as React from "react";
-import { Popover as PopoverPrimitive } from "@base-ui-components/react/popover";
+import { Popover } from "@base-ui-components/react/popover";
 import { cn } from "@/lib/utils-tailwind";
 
-const createPopoverHandle = PopoverPrimitive.createHandle;
+const createPopoverHandle = Popover.createHandle;
 
-const PopoverRoot = PopoverPrimitive.Root;
+function PopoverRoot({ ...props }: Popover.Root.Props) {
+  return <Popover.Root {...props} />;
+}
 
-function PopoverTrigger({
-  className,
-  ...props
-}: PopoverPrimitive.Trigger.Props) {
+function PopoverTrigger({ className, ...props }: Popover.Trigger.Props) {
   return (
-    <PopoverPrimitive.Trigger
+    <Popover.Trigger
       className={cn(
         "data-[popup-open]:bg-accent data-[popup-open]:text-accent-foreground",
         className
@@ -24,14 +23,11 @@ function PopoverTrigger({
   );
 }
 
-const PopoverPortal = PopoverPrimitive.Portal;
+const PopoverPortal = Popover.Portal;
 
-function PopoverBackdrop({
-  className,
-  ...props
-}: PopoverPrimitive.Backdrop.Props) {
+function PopoverBackdrop({ className, ...props }: Popover.Backdrop.Props) {
   return (
-    <PopoverPrimitive.Backdrop
+    <Popover.Backdrop
       className={cn("fixed inset-0 z-[998] bg-[oklch(0_0_0_/_0.1)]", className)}
       data-slot="popover-backdrop"
       {...props}
@@ -39,12 +35,9 @@ function PopoverBackdrop({
   );
 }
 
-function PopoverPositioner({
-  className,
-  ...props
-}: PopoverPrimitive.Positioner.Props) {
+function PopoverPositioner({ className, ...props }: Popover.Positioner.Props) {
   return (
-    <PopoverPrimitive.Positioner
+    <Popover.Positioner
       className={cn(
         "z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] transition-[top,left,right,bottom,transform] duration-200 ease-out data-[instant]:transition-none",
         className
@@ -64,16 +57,16 @@ function PopoverPopup({
   alignOffset = 0,
   arrow = true,
   ...props
-}: PopoverPrimitive.Popup.Props & {
-  side?: PopoverPrimitive.Positioner.Props["side"];
-  align?: PopoverPrimitive.Positioner.Props["align"];
-  sideOffset?: PopoverPrimitive.Positioner.Props["sideOffset"];
-  alignOffset?: PopoverPrimitive.Positioner.Props["alignOffset"];
+}: Popover.Popup.Props & {
+  side?: Popover.Positioner.Props["side"];
+  align?: Popover.Positioner.Props["align"];
+  sideOffset?: Popover.Positioner.Props["sideOffset"];
+  alignOffset?: Popover.Positioner.Props["alignOffset"];
   arrow?: boolean;
 }) {
   return (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Positioner
+    <Popover.Portal>
+      <Popover.Positioner
         align={align}
         alignOffset={alignOffset}
         className="z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] transition-[top,left,right,bottom,transform] duration-200 ease-out data-[instant]:transition-none"
@@ -81,7 +74,7 @@ function PopoverPopup({
         side={side}
         sideOffset={sideOffset}
       >
-        <PopoverPrimitive.Popup
+        <Popover.Popup
           className={cn(
             "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-lg border border-border bg-popover text-popover-foreground shadow-lg transition-[width,height,scale,opacity] duration-200 ease-out data-[starting-style]:scale-[0.98] data-[starting-style]:opacity-0 data-[ending-style]:scale-[0.98] data-[ending-style]:opacity-0",
             className
@@ -90,19 +83,19 @@ function PopoverPopup({
           {...props}
         >
           {arrow && (
-            <PopoverPrimitive.Arrow className="z-[1] flex transition-[left] duration-200 ease-out data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180 data-[side=bottom]:top-[-8px] data-[side=bottom]:rotate-0 data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90">
+            <Popover.Arrow className="z-[1] flex transition-[left] duration-200 ease-out data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180 data-[side=bottom]:top-[-8px] data-[side=bottom]:rotate-0 data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90">
               <ArrowSvg />
-            </PopoverPrimitive.Arrow>
+            </Popover.Arrow>
           )}
-          <PopoverPrimitive.Viewport
+          <Popover.Viewport
             className="relative size-full max-h-[var(--available-height)] overflow-clip px-[var(--viewport-inline-padding)] py-4 outline-none [--viewport-inline-padding:1rem] data-[instant]:transition-none [&_[data-current]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding)-2px)] [&_[data-previous]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding)-2px)] [&_[data-current]]:translate-x-0 [&_[data-previous]]:translate-x-0 [&_[data-current]]:opacity-100 [&_[data-previous]]:opacity-100 [&_[data-current]]:transition-[transform,opacity] [&_[data-previous]]:transition-[transform,opacity] [&_[data-current]]:duration-200 [&_[data-previous]]:duration-200 [&_[data-current]]:ease-out [&_[data-previous]]:ease-out [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:translate-x-[-50%] [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:opacity-0 [&[data-activation-direction~=right]_[data-current][data-starting-style]]:translate-x-[50%] [&[data-activation-direction~=right]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:translate-x-[50%] [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:opacity-0 [&[data-activation-direction~=left]_[data-current][data-starting-style]]:translate-x-[-50%] [&[data-activation-direction~=left]_[data-current][data-starting-style]]:opacity-0 not-data-[transitioning]:overflow-y-auto"
             data-slot="popover-viewport"
           >
             {children}
-          </PopoverPrimitive.Viewport>
-        </PopoverPrimitive.Popup>
-      </PopoverPrimitive.Positioner>
-    </PopoverPrimitive.Portal>
+          </Popover.Viewport>
+        </Popover.Popup>
+      </Popover.Positioner>
+    </Popover.Portal>
   );
 }
 
@@ -125,9 +118,9 @@ function ArrowSvg(props: React.ComponentProps<"svg">) {
   );
 }
 
-function PopoverArrow({ className, ...props }: PopoverPrimitive.Arrow.Props) {
+function PopoverArrow({ className, ...props }: Popover.Arrow.Props) {
   return (
-    <PopoverPrimitive.Arrow
+    <Popover.Arrow
       className={cn(
         "z-[1] flex transition-[left] duration-200 ease-out",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
@@ -142,9 +135,9 @@ function PopoverArrow({ className, ...props }: PopoverPrimitive.Arrow.Props) {
   );
 }
 
-function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
+function PopoverTitle({ className, ...props }: Popover.Title.Props) {
   return (
-    <PopoverPrimitive.Title
+    <Popover.Title
       className={cn("font-semibold text-lg leading-none", className)}
       data-slot="popover-title"
       {...props}
@@ -155,9 +148,9 @@ function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
 function PopoverDescription({
   className,
   ...props
-}: PopoverPrimitive.Description.Props) {
+}: Popover.Description.Props) {
   return (
-    <PopoverPrimitive.Description
+    <Popover.Description
       className={cn("text-muted-foreground text-sm", className)}
       data-slot="popover-description"
       {...props}
@@ -165,9 +158,9 @@ function PopoverDescription({
   );
 }
 
-function PopoverClose({ className, ...props }: PopoverPrimitive.Close.Props) {
+function PopoverClose({ className, ...props }: Popover.Close.Props) {
   return (
-    <PopoverPrimitive.Close
+    <Popover.Close
       className={cn(
         "absolute top-1 right-1 box-border inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-[var(--radius)] p-0 text-muted-foreground",
         "transition-[background-color_150ms_ease,color_150ms_ease]",
@@ -182,12 +175,9 @@ function PopoverClose({ className, ...props }: PopoverPrimitive.Close.Props) {
   );
 }
 
-function PopoverViewport({
-  className,
-  ...props
-}: PopoverPrimitive.Viewport.Props) {
+function PopoverViewport({ className, ...props }: Popover.Viewport.Props) {
   return (
-    <PopoverPrimitive.Viewport
+    <Popover.Viewport
       className={cn("relative", className)}
       data-slot="popover-viewport"
       {...props}
@@ -195,15 +185,11 @@ function PopoverViewport({
   );
 }
 
-function PopoverContent({
-  className,
-  style,
-  ...props
-}: PopoverPrimitive.Popup.Props) {
+function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
   return (
     <PopoverPortal>
       <PopoverPositioner sideOffset={8}>
-        <PopoverPrimitive.Popup
+        <Popover.Popup
           className={cn(
             "!relative box-border origin-[var(--transform-origin)] rounded-lg border border-border bg-popover px-4 py-2 text-popover-foreground",
             "transition-[transform,scale,opacity] duration-200 ease-out",

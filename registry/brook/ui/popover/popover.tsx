@@ -1,19 +1,18 @@
 "use client";
 
-import { Popover as PopoverPrimitive } from "@base-ui-components/react/popover";
+import { Popover } from "@base-ui-components/react/popover";
 import { cn } from "@/lib/utils";
 import styles from "./popover.module.css";
 
-const createPopoverHandle = PopoverPrimitive.createHandle;
+const createPopoverHandle = Popover.createHandle;
 
-const PopoverRoot = PopoverPrimitive.Root;
+function PopoverRoot({ ...props }: Popover.Root.Props) {
+  return <Popover.Root {...props} />;
+}
 
-function PopoverTrigger({
-  className,
-  ...props
-}: PopoverPrimitive.Trigger.Props) {
+function PopoverTrigger({ className, ...props }: Popover.Trigger.Props) {
   return (
-    <PopoverPrimitive.Trigger
+    <Popover.Trigger
       className={cn(styles.trigger, className)}
       data-slot="popover-trigger"
       {...props}
@@ -21,14 +20,11 @@ function PopoverTrigger({
   );
 }
 
-const PopoverPortal = PopoverPrimitive.Portal;
+const PopoverPortal = Popover.Portal;
 
-function PopoverBackdrop({
-  className,
-  ...props
-}: PopoverPrimitive.Backdrop.Props) {
+function PopoverBackdrop({ className, ...props }: Popover.Backdrop.Props) {
   return (
-    <PopoverPrimitive.Backdrop
+    <Popover.Backdrop
       className={cn(styles.backdrop, className)}
       data-slot="popover-backdrop"
       {...props}
@@ -36,12 +32,9 @@ function PopoverBackdrop({
   );
 }
 
-function PopoverPositioner({
-  className,
-  ...props
-}: PopoverPrimitive.Positioner.Props) {
+function PopoverPositioner({ className, ...props }: Popover.Positioner.Props) {
   return (
-    <PopoverPrimitive.Positioner
+    <Popover.Positioner
       className={cn(styles.positioner, className)}
       data-slot="popover-positioner"
       {...props}
@@ -58,16 +51,16 @@ function PopoverPopup({
   alignOffset = 0,
   arrow = true,
   ...props
-}: PopoverPrimitive.Popup.Props & {
-  side?: PopoverPrimitive.Positioner.Props["side"];
-  align?: PopoverPrimitive.Positioner.Props["align"];
-  sideOffset?: PopoverPrimitive.Positioner.Props["sideOffset"];
-  alignOffset?: PopoverPrimitive.Positioner.Props["alignOffset"];
+}: Popover.Popup.Props & {
+  side?: Popover.Positioner.Props["side"];
+  align?: Popover.Positioner.Props["align"];
+  sideOffset?: Popover.Positioner.Props["sideOffset"];
+  alignOffset?: Popover.Positioner.Props["alignOffset"];
   arrow?: boolean;
 }) {
   return (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Positioner
+    <Popover.Portal>
+      <Popover.Positioner
         align={align}
         alignOffset={alignOffset}
         className={styles.positioner}
@@ -75,25 +68,25 @@ function PopoverPopup({
         side={side}
         sideOffset={sideOffset}
       >
-        <PopoverPrimitive.Popup
+        <Popover.Popup
           className={cn(styles.popup, className)}
           data-slot="popover-popup"
           {...props}
         >
           {arrow && (
-            <PopoverPrimitive.Arrow className={styles.arrow}>
+            <Popover.Arrow className={styles.arrow}>
               <ArrowSvg />
-            </PopoverPrimitive.Arrow>
+            </Popover.Arrow>
           )}
-          <PopoverPrimitive.Viewport
+          <Popover.Viewport
             className={styles.viewport}
             data-slot="popover-viewport"
           >
             {children}
-          </PopoverPrimitive.Viewport>
-        </PopoverPrimitive.Popup>
-      </PopoverPrimitive.Positioner>
-    </PopoverPrimitive.Portal>
+          </Popover.Viewport>
+        </Popover.Popup>
+      </Popover.Positioner>
+    </Popover.Portal>
   );
 }
 
@@ -116,9 +109,9 @@ function ArrowSvg(props: React.ComponentProps<"svg">) {
   );
 }
 
-function PopoverArrow({ className, ...props }: PopoverPrimitive.Arrow.Props) {
+function PopoverArrow({ className, ...props }: Popover.Arrow.Props) {
   return (
-    <PopoverPrimitive.Arrow
+    <Popover.Arrow
       className={cn(styles.arrow, className)}
       data-slot="popover-arrow"
       {...props}
@@ -126,9 +119,9 @@ function PopoverArrow({ className, ...props }: PopoverPrimitive.Arrow.Props) {
   );
 }
 
-function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
+function PopoverTitle({ className, ...props }: Popover.Title.Props) {
   return (
-    <PopoverPrimitive.Title
+    <Popover.Title
       className={cn(styles.title, className)}
       data-slot="popover-title"
       {...props}
@@ -139,9 +132,9 @@ function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
 function PopoverDescription({
   className,
   ...props
-}: PopoverPrimitive.Description.Props) {
+}: Popover.Description.Props) {
   return (
-    <PopoverPrimitive.Description
+    <Popover.Description
       className={cn(styles.description, className)}
       data-slot="popover-description"
       {...props}
@@ -149,9 +142,9 @@ function PopoverDescription({
   );
 }
 
-function PopoverClose({ className, ...props }: PopoverPrimitive.Close.Props) {
+function PopoverClose({ className, ...props }: Popover.Close.Props) {
   return (
-    <PopoverPrimitive.Close
+    <Popover.Close
       className={cn(styles.close, className)}
       data-slot="popover-close"
       {...props}
@@ -159,12 +152,9 @@ function PopoverClose({ className, ...props }: PopoverPrimitive.Close.Props) {
   );
 }
 
-function PopoverViewport({
-  className,
-  ...props
-}: PopoverPrimitive.Viewport.Props) {
+function PopoverViewport({ className, ...props }: Popover.Viewport.Props) {
   return (
-    <PopoverPrimitive.Viewport
+    <Popover.Viewport
       className={cn(styles.viewport, className)}
       data-slot="popover-viewport"
       {...props}
@@ -172,15 +162,11 @@ function PopoverViewport({
   );
 }
 
-function PopoverContent({
-  className,
-  style,
-  ...props
-}: PopoverPrimitive.Popup.Props) {
+function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
   return (
     <PopoverPortal>
       <PopoverPositioner sideOffset={8}>
-        <PopoverPrimitive.Popup
+        <Popover.Popup
           className={cn(styles.popup, className)}
           style={style}
           data-slot="popover-popup"
