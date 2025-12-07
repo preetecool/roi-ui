@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { highlightCode } from "@/lib/highlight-code";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./component-source.module.css";
@@ -26,6 +27,8 @@ export async function ComponentSource({
   language = "tsx",
   embedded = false,
 }: ComponentSourceProps) {
+  "use cache";
+  cacheLife("max");
   if (!(name || src)) {
     return null;
   }

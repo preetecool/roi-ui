@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { highlightCode } from "@/lib/highlight-code";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./code-block.module.css";
@@ -17,6 +18,8 @@ export async function CodeBlock({
   collapsible = false,
   buttonText = "Show code",
 }: CodeBlockProps) {
+  "use cache";
+  cacheLife("max");
   const highlightedCode = await highlightCode(code, language);
 
   const codeContent = (
