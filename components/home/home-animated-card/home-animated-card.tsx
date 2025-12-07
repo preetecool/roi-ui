@@ -21,7 +21,7 @@ export const HomeAnimatedCard = ({
   <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
     <div className={styles.container}>
       <AnimatePresence>
-        {isExpanded && (
+        {isExpanded ? (
           <motion.div
             className={styles.cardExpanded}
             layoutId="card"
@@ -59,7 +59,7 @@ export const HomeAnimatedCard = ({
               </motion.p>
             </motion.div>
           </motion.div>
-        )}
+        ) : null}
 
         {!isExpanded && (
           <motion.div

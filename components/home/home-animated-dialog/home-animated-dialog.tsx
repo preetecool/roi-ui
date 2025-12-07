@@ -36,7 +36,6 @@ export const HomeAnimatedDialog = () => {
           <motion.div
             animate={{
               opacity: 1,
-              // biome-ignore lint/style/noMagicNumbers: button pressed scale
               scale: triggerClicked ? 0.97 : 1,
               backgroundColor: triggerClicked ? "var(--accent)" : "transparent",
             }}
@@ -47,7 +46,6 @@ export const HomeAnimatedDialog = () => {
               borderRadius: "var(--radius)",
             }}
             transition={{
-              // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
               opacity: { duration: 0.6, delay: 0, ease: [0.19, 1, 0.22, 1] },
               scale: { duration: 0.2 },
             }}
@@ -71,7 +69,7 @@ export const HomeAnimatedDialog = () => {
         </AnimatePresence>
       )}
 
-      {dialogOpen && (
+      {dialogOpen ? (
         <motion.div
           animate="visible"
           className={styles.dialogBox}
@@ -114,7 +112,7 @@ export const HomeAnimatedDialog = () => {
             </AnimatePresence>
           </motion.div>
         </motion.div>
-      )}
+      ) : null}
     </div>
   );
 };

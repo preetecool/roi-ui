@@ -20,12 +20,15 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
       <div
-        className={cn(styles.container, isHomePage && styles.containerHomePage)}
+        className={cn(
+          styles.container,
+          isHomePage ? styles.containerHomePage : null
+        )}
       >
         <div
           className={cn(
             styles.innerWrapper,
-            isHomePage && styles.innerWrapperHomePage
+            isHomePage ? styles.innerWrapperHomePage : null
           )}
         >
           <nav className={styles.nav}>
@@ -91,11 +94,11 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
             <div className={styles.desktopOnly}>
               <ThemeSwitcher />
             </div>
-            {pageTree && (
+            {pageTree ? (
               <div className={styles.mobileMenuWrapper}>
                 <MobileNav tree={pageTree} />
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

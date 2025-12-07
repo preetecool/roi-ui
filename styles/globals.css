@@ -323,8 +323,9 @@
   }
 
   html {
-    /* Stable scrollbar */
+    /* Stable scrollbar - prevents layout shift when portals lock body scroll */
     overflow-y: scroll;
+    scrollbar-gutter: stable;
     max-width: 100vw;
     overflow-x: hidden;
     color: var(--foreground);

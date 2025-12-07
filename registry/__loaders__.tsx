@@ -845,7 +845,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {
     return { default: mod.default || mod[exportName] };
   }),
   "toggle-demo": lazy(async () => {
-    const mod = await import("@/registry/brook/examples/toggle-demo");
+    const mod = await import(
+      "@/registry/brook/examples/toggle-demo/toggle-demo"
+    );
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"

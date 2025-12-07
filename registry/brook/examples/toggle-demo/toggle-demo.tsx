@@ -1,6 +1,7 @@
 "use client";
 
 import { Toggle } from "@/registry/brook/ui/toggle/toggle";
+import styles from "./toggle-demo.module.css";
 
 function UnlockIcon() {
   return (
@@ -42,23 +43,25 @@ function LockIcon() {
 
 export default function ToggleDemo() {
   return (
-    <Toggle
-      aria-label="Toggle lock"
-      render={(props, state) => {
-        if (state.pressed) {
+    <div className={styles.container}>
+      <Toggle
+        aria-label="Toggle lock"
+        render={(props, state) => {
+          if (state.pressed) {
+            return (
+              <button type="button" {...props}>
+                <LockIcon />
+              </button>
+            );
+          }
+
           return (
             <button type="button" {...props}>
-              <LockIcon />
+              <UnlockIcon />
             </button>
           );
-        }
-
-        return (
-          <button type="button" {...props}>
-            <UnlockIcon />
-          </button>
-        );
-      }}
-    />
+        }}
+      />
+    </div>
   );
 }

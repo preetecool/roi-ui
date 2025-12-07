@@ -62,11 +62,11 @@ export function HeadingAnchor({
   return (
     <Component className={styles.headingWithAnchor} id={id} {...props}>
       <button
-        ref={buttonRef}
-        type="button"
         aria-label="Copy URL"
         className={styles.trigger}
         onClick={handleClick}
+        ref={buttonRef}
+        type="button"
       >
         <LinkIcon className={styles.icon} size={iconSize} strokeWidth={1.5} />
         {children}
