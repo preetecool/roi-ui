@@ -7,10 +7,6 @@ import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./page.module.css";
 
-export const revalidate = false;
-export const dynamic = "force-static";
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return source.generateParams();
 }

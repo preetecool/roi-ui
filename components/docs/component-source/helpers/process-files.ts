@@ -1,13 +1,13 @@
 import { highlightCode } from "@/lib/highlight-code";
 import type { FileData, VariantFileData } from "./file-loaders";
 
-type ProcessedFile = {
+export type ProcessedFile = {
   name: string;
   content: string;
   highlightedContent: string;
 };
 
-type ProcessedVariant = {
+export type ProcessedVariant = {
   variant: "css-modules" | "tailwind";
   files: ProcessedFile[];
 };

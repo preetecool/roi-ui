@@ -2,13 +2,13 @@ import { highlightCode } from "@/lib/highlight-code";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./component-source.module.css";
 import { ComponentSourceClient } from "./component-source-client";
+import { getCachedVariants } from "./helpers/cached-processors";
 import {
   getDisplayTitle,
-  loadAllVariants,
   loadCodeByName,
   loadCodeBySrc,
 } from "./helpers/file-loaders";
-import { processVariants, transformCode } from "./helpers/process-files";
+import { transformCode } from "./helpers/process-files";
 
 type ComponentSourceProps = {
   name?: string;
@@ -32,10 +32,9 @@ export async function ComponentSource({
 
   // Check for variants (only for name-based lookups)
   if (name) {
-    const variants = await loadAllVariants(name);
+    const processedVariants = await getCachedVariants(name);
 
-    if (variants.length > 0) {
-      const processedVariants = await processVariants(variants);
+    if (processedVariants.length > 0) {
       return <ComponentSourceClient variants={processedVariants} />;
     }
   }
