@@ -7,9 +7,9 @@ import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { Card } from "@/registry/brook/ui/card/card";
 import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import { HomeAnimatedBadge } from "../home-animated-badge/home-animated-badge";
-import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog";
+import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import styles from "./hero.module.css";
 
 const COMPONENTS = [
@@ -90,7 +90,7 @@ export const Hero = () => {
       </Badge>
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
-          <span className={styles.wordContainer} key={`word-${index}`}>
+          <span className={styles.wordContainer} key={`word-${word}`}>
             <span
               className={styles.wordWrapper}
               style={{ "--index": index } as React.CSSProperties}

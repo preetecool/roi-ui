@@ -87,62 +87,60 @@ function MobileNavContent({
   });
 
   return (
-    <>
-      <div className={styles.viewport} onTouchStart={handleTouchStart}>
-        <div className={styles.viewportInner}>
-          <Dialog.Close
-            className={styles.backdropTapArea}
-            nativeButton={false}
-            render={<div />}
-          />
-          <div className={styles.panel}>
-            <div className={styles.closeContainer}>
-              <Dialog.Close className={styles.closeButton}>
-                <X size={16} />
-              </Dialog.Close>
-            </div>
-            <div className={styles.menuSection}>
-              <div className={styles.groupTitle}>Menu</div>
-              <Link
-                aria-current={pathname === "/" ? "page" : undefined}
-                className={`${styles.pageLink} ${pathname === "/" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-                href="/"
-                onClick={() => setOpen(false)}
-              >
-                Home
-              </Link>
-            </div>
+    <div className={styles.viewport} onTouchStart={handleTouchStart}>
+      <div className={styles.viewportInner}>
+        <Dialog.Close
+          className={styles.backdropTapArea}
+          nativeButton={false}
+          render={<div />}
+        />
+        <div className={styles.panel}>
+          <div className={styles.closeContainer}>
+            <Dialog.Close className={styles.closeButton}>
+              <X size={16} />
+            </Dialog.Close>
+          </div>
+          <div className={styles.menuSection}>
+            <div className={styles.groupTitle}>Menu</div>
+            <Link
+              aria-current={pathname === "/" ? "page" : undefined}
+              className={`${styles.pageLink} ${pathname === "/" ? styles.pageLinkActive : styles.pageLinkInactive}`}
+              href="/"
+              onClick={() => setOpen(false)}
+            >
+              Home
+            </Link>
+          </div>
 
-            <nav className={styles.treeNav}>
-              <ul className={styles.navList}>
-                {tree?.children?.map((item: PageTree.Node, index: number) => (
-                  <li key={item.$id || `item-${index}`}>
-                    <MobileSidebarGroup
-                      item={item as NodeWithChildren}
-                      onNavigate={() => setOpen(false)}
-                      pathname={pathname}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </nav>
+          <nav className={styles.treeNav}>
+            <ul className={styles.navList}>
+              {tree?.children?.map((item: PageTree.Node, index: number) => (
+                <li key={item.$id || `item-${index}`}>
+                  <MobileSidebarGroup
+                    item={item as NodeWithChildren}
+                    onNavigate={() => setOpen(false)}
+                    pathname={pathname}
+                  />
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <div className={styles.iconsRow}>
-              <a
-                aria-label="View source on GitHub"
-                className={styles.iconLink}
-                href="https://github.com/preetecool/roi-ui"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <GitHubIcon size={20} />
-              </a>
-              <ThemeSwitcher />
-            </div>
+          <div className={styles.iconsRow}>
+            <a
+              aria-label="View source on GitHub"
+              className={styles.iconLink}
+              href="https://github.com/preetecool/roi-ui"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <GitHubIcon size={20} />
+            </a>
+            <ThemeSwitcher />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
