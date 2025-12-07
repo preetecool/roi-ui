@@ -42,7 +42,7 @@ function LockIcon() {
 
 export default function ToggleDemo() {
   return (
-    <div className="rounded-lg border border-[oklch(from_var(--border)_l_c_h_/_0.5)] p-0.5">
+    <div className="rounded-[0.5rem] border border-[oklch(from_var(--border)_l_c_h_/_0.5)] p-[2px]">
       <Toggle
         aria-label="Toggle lock"
         render={(props, state) => {
