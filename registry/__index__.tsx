@@ -757,8 +757,11 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-demo": {
     name: "toggle-demo",
     type: "example",
-    files: ["registry/brook/examples/toggle-demo.tsx"],
-    path: "@/registry/brook/examples/toggle-demo",
+    files: [
+      "registry/brook/examples/toggle-demo/toggle-demo.tsx",
+      "registry/brook/examples/toggle-demo/toggle-demo.module.css",
+    ],
+    path: "@/registry/brook/examples/toggle-demo/toggle-demo",
   },
   "toggle-group-demo": {
     name: "toggle-group-demo",

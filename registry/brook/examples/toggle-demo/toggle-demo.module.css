@@ -1,0 +1,5 @@
+.container {
+  border: 1px solid oklch(from var(--border) l c h / 0.5);
+  padding: 2px;
+  border-radius: 8px;
+}

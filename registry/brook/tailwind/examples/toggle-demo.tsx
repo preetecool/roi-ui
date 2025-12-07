@@ -42,23 +42,25 @@ function LockIcon() {
 
 export default function ToggleDemo() {
   return (
-    <Toggle
-      aria-label="Toggle lock"
-      render={(props, state) => {
-        if (state.pressed) {
+    <div className="rounded-lg border border-[oklch(from_var(--border)_l_c_h_/_0.5)] p-0.5">
+      <Toggle
+        aria-label="Toggle lock"
+        render={(props, state) => {
+          if (state.pressed) {
+            return (
+              <button type="button" {...props}>
+                <LockIcon />
+              </button>
+            );
+          }
+
           return (
             <button type="button" {...props}>
-              <LockIcon />
+              <UnlockIcon />
             </button>
           );
-        }
-
-        return (
-          <button type="button" {...props}>
-            <UnlockIcon />
-          </button>
-        );
-      }}
-    />
+        }}
+      />
+    </div>
   );
 }
