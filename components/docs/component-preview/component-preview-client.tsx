@@ -41,13 +41,13 @@ export function ComponentPreviewClient({
     setKey((prev) => prev + 1);
   };
 
-  if (!mounted || !Component) {
+  if (!(mounted && Component)) {
     return (
       <div
         className={cn(
           styles.preview,
           styles[align],
-          isChartComponent && styles.chartPreview
+          isChartComponent ? styles.chartPreview : null
         )}
         data-align={align}
       />
@@ -59,13 +59,13 @@ export function ComponentPreviewClient({
       className={cn(
         styles.preview,
         styles.proseReset,
-        isChartComponent && styles.chartPreview
+        isChartComponent ? styles.chartPreview : null
       )}
       data-align={align}
       data-demo={style}
     >
       <Component key={key} />
-      {replayButton && (
+      {replayButton ? (
         <button
           aria-label="Replay animation"
           className={styles.replayButton}
@@ -74,7 +74,7 @@ export function ComponentPreviewClient({
         >
           <RotateCcw size={16} />
         </button>
-      )}
+      ) : null}
     </div>
   );
 }

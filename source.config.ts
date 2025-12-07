@@ -7,7 +7,7 @@ import {
 } from "fumadocs-mdx/config";
 import { getSingletonHighlighter } from "shiki";
 import { z } from "zod";
-import { transformers } from "@/lib/highlight-code";
+import { transformers } from "@/lib/shiki-transformers";
 import rehypeCodeStyleFilter from "./lib/rehype-code-style-filter";
 
 export default defineConfig({

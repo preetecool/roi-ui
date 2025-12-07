@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { cacheLife } from "next/cache";
 import { highlightCode } from "@/lib/highlight-code";
 import { GlobalsCSSClient } from "./globals-css-client";
 
@@ -64,6 +65,9 @@ function filterCssForStyle(
 }
 
 export async function GlobalsCSS() {
+  "use cache";
+  cacheLife("max");
+
   const cssContent = readFileSync(
     join(process.cwd(), "styles/globals.css"),
     "utf8"

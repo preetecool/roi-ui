@@ -46,13 +46,13 @@ export function ComponentPreview({
         replayButton={replayButton}
       />
 
-      {description && (
+      {description ? (
         <div className={styles.description}>
           <p className={styles.descriptionText}>{description}</p>
         </div>
-      )}
+      ) : null}
 
-      {showCode && <ComponentSource embedded name={name} />}
+      {showCode ? <ComponentSource embedded name={name} /> : null}
     </div>
   );
 }
