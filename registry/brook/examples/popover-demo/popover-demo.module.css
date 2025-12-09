@@ -11,10 +11,12 @@
 
 .popup {
   width: 320px;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 16px;
 }
 
 .header {
