@@ -98,12 +98,12 @@
   opacity: 0;
   transition:
     transform 0.1s ease,
-    opacity 0.1s ease 50ms;
+    opacity 0.2s ease 50ms;
 }
 
 .root[data-copied="true"] .iconContainer[data-icon="copy"] {
   opacity: 0;
-  transition: opacity 0.25s ease 50ms;
+  transition: opacity 0.2s ease 50ms;
 }
 
 .root[data-copied="true"] .iconContainer[data-icon="check"] {
@@ -111,5 +111,5 @@
   scale: 1;
   rotate: 0deg;
   filter: blur(0px);
-  transition: all 0.25s ease 50ms;
+  transition: all 0.2s ease 50ms;
 }
