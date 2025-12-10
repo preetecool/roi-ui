@@ -41,6 +41,9 @@
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
     monospace;
   font-size: 12px;
+  &:first-child {
+    margin-right: 0;
+  }
 }
 
 .header [data-slot="tabs-trigger"]:not([data-active]) {
