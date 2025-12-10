@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Combobox",
   "description": "A searchable select component.",
+  "registryDependencies": [
+    "https://roiui.com/r/input.json"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/combobox/combobox.tsx",

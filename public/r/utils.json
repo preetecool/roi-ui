@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils",
   "type": "registry:item",
+  "dependencies": [
+    "clsx"
+  ],
   "files": [
     {
       "path": "lib/utils.ts",

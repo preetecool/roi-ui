@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Combobox (Tailwind)",
   "description": "A searchable select component.",
+  "registryDependencies": [
+    "https://roiui.com/r/input-tailwind.json"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/combobox.tsx",

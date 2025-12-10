@@ -6,6 +6,7 @@
     {
       "name": "utils",
       "type": "registry:item",
+      "dependencies": ["clsx"],
       "files": [
         {
           "path": "lib/utils.ts",
@@ -65,6 +66,9 @@
     {
       "name": "autocomplete",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input.json"
+      ],
       "title": "Autocomplete",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -267,6 +271,9 @@
     {
       "name": "combobox",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input.json"
+      ],
       "title": "Combobox",
       "description": "A searchable select component.",
       "files": [
@@ -1106,6 +1113,9 @@
     {
       "name": "autocomplete-tailwind",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input-tailwind.json"
+      ],
       "title": "Autocomplete (Tailwind)",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -1239,6 +1249,9 @@
     {
       "name": "combobox-tailwind",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input-tailwind.json"
+      ],
       "title": "Combobox (Tailwind)",
       "description": "A searchable select component.",
       "files": [
