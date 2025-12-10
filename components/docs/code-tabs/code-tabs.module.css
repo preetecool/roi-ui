@@ -27,6 +27,7 @@
   align-items: center;
   min-height: 2.5rem;
   position: relative;
+  padding-right: 4px;
 }
 
 .packageList {

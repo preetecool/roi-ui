@@ -1124,6 +1124,24 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       ) || "badge-demo";
     return { default: mod.default || mod[exportName] };
   }),
+  "badge-error-tailwind": lazy(async () => {
+    const mod = await import("@/registry/brook/tailwind/examples/badge-error");
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "badge-error";
+    return { default: mod.default || mod[exportName] };
+  }),
+  "badge-success-tailwind": lazy(async () => {
+    const mod = await import(
+      "@/registry/brook/tailwind/examples/badge-success"
+    );
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "badge-success";
+    return { default: mod.default || mod[exportName] };
+  }),
   "button-demo-tailwind": lazy(async () => {
     const mod = await import("@/registry/brook/tailwind/examples/button-demo");
     const exportName =

@@ -107,33 +107,16 @@ function Badge({
  * </Badge>
  * ```
  */
-const badgeIconVariants = cva(
-  "mr-1 inline-flex flex-shrink-0 items-center justify-center rounded-full p-0.5",
-  {
-    variants: {
-      variant: {
-        default: "bg-[var(--mix-foreground-20-muted)]",
-        secondary: "bg-[var(--mix-secondary-20-muted)]",
-        destructive: "bg-[var(--mix-destructive-20-muted)]",
-        success: "bg-[var(--mix-success-20-muted)]",
-        info: "bg-[var(--mix-info-20-muted)]",
-        outline: "bg-[var(--mix-foreground-20-muted)]",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
-
 function BadgeIcon({
   className,
-  variant,
   ...props
-}: React.ComponentProps<"span"> & VariantProps<typeof badgeIconVariants>) {
+}: React.ComponentProps<"span">) {
   return (
     <span
-      className={cn(badgeIconVariants({ variant }), className)}
+      className={cn(
+        "mr-1 inline-flex flex-shrink-0 items-center justify-center rounded-full p-0.5",
+        className
+      )}
       data-slot="badge-icon"
       {...props}
     />

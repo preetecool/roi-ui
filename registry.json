@@ -6,6 +6,7 @@
     {
       "name": "utils",
       "type": "registry:item",
+      "dependencies": ["clsx"],
       "files": [
         {
           "path": "lib/utils.ts",
@@ -65,6 +66,9 @@
     {
       "name": "autocomplete",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input.json"
+      ],
       "title": "Autocomplete",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -267,6 +271,9 @@
     {
       "name": "combobox",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input.json"
+      ],
       "title": "Combobox",
       "description": "A searchable select component.",
       "files": [
@@ -754,6 +761,24 @@
       ]
     },
     {
+      "name": "toolbar",
+      "type": "registry:item",
+      "title": "Toolbar",
+      "description": "A toolbar component for grouping action buttons and controls.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toolbar/toolbar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toolbar/toolbar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toolbar/toolbar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toolbar/toolbar.module.css"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:item",
       "title": "Tooltip",
@@ -1088,6 +1113,9 @@
     {
       "name": "autocomplete-tailwind",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input-tailwind.json"
+      ],
       "title": "Autocomplete (Tailwind)",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -1221,6 +1249,9 @@
     {
       "name": "combobox-tailwind",
       "type": "registry:item",
+      "registryDependencies": [
+        "https://roiui.com/r/input-tailwind.json"
+      ],
       "title": "Combobox (Tailwind)",
       "description": "A searchable select component.",
       "files": [

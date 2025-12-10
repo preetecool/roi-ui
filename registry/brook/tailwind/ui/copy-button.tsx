@@ -27,29 +27,43 @@ const CopyIcon = ({
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      className={cn(
-        "origin-center transition-all duration-[250ms] ease-in-out will-change-transform",
-        copied &&
-          "translate-x-[-4px] translate-y-[-4px] scale-[0.8] opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_0.1s]"
-      )}
+      className="origin-center will-change-transform"
       data-element="front"
       fill="none"
       height="14"
       rx="2"
       ry="2"
+      style={
+        copied
+          ? {
+              transform: "translate(-4px, -4px) scale(0.8)",
+              opacity: 0,
+              transition: "transform 0.1s ease, opacity 0.1s ease 0.1s",
+            }
+          : {
+              transition: "all 0.25s ease",
+            }
+      }
       width="14"
       x="8"
       y="8"
     />
     <path
-      className={cn(
-        "origin-center transition-all duration-[250ms] ease-in-out will-change-transform",
-        copied &&
-          "scale-[0.8] opacity-0 transition-[transform_0.1s_ease,opacity_0.1s_ease_50ms]"
-      )}
+      className="origin-center will-change-transform"
       d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
       data-element="back"
       fill="none"
+      style={
+        copied
+          ? {
+              transform: "scale(0.8)",
+              opacity: 0,
+              transition: "transform 0.1s ease, opacity 0.2s ease 50ms",
+            }
+          : {
+              transition: "all 0.25s ease",
+            }
+      }
     />
   </svg>
 );
@@ -97,26 +111,45 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       type="button"
     >
       <div
-        className={cn(
-          "absolute flex items-center justify-center will-change-transform",
-          "transition-all duration-[250ms] ease-in-out",
-          copied
-            ? "opacity-0 transition-opacity delay-[50ms] duration-[250ms] ease-in-out"
-            : "rotate-0 scale-100 opacity-100 blur-0"
-        )}
+        className="absolute flex items-center justify-center will-change-transform"
         data-icon="copy"
+        style={
+          copied
+            ? {
+                opacity: 0,
+                transition: "opacity 0.2s ease 50ms",
+              }
+            : {
+                opacity: 1,
+                scale: 1,
+                rotate: "0deg",
+                filter: "blur(0px)",
+                transition: "all 0.25s ease",
+              }
+        }
       >
         <CopyIcon copied={copied} size={14} />
       </div>
       <div
-        className={cn(
-          "absolute flex items-center justify-center will-change-transform",
-          "transition-all duration-[250ms] ease-in-out",
-          copied
-            ? "rotate-0 scale-100 opacity-100 blur-0 transition-all delay-[50ms] duration-[250ms] ease-in-out"
-            : "-rotate-45 scale-0 opacity-0 blur-[4px]"
-        )}
+        className="absolute flex items-center justify-center will-change-transform"
         data-icon="check"
+        style={
+          copied
+            ? {
+                opacity: 1,
+                scale: 1,
+                rotate: "0deg",
+                filter: "blur(0px)",
+                transition: "all 0.2s ease 50ms",
+              }
+            : {
+                opacity: 0,
+                scale: 0,
+                rotate: "-45deg",
+                filter: "blur(4px)",
+                transition: "all 0.25s ease",
+              }
+        }
       >
         <Check size={14} />
       </div>

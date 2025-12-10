@@ -104,30 +104,6 @@
   margin-right: 0.25rem;
 }
 
-.defaultIcon {
-  background-color: var(--mix-foreground-20-muted);
-}
-
-.secondaryIcon {
-  background-color: var(--mix-secondary-20-muted);
-}
-
-.destructiveIcon {
-  background-color: var(--mix-destructive-20-muted);
-}
-
-.successIcon {
-  background-color: var(--mix-success-20-muted);
-}
-
-.infoIcon {
-  background-color: var(--mix-info-20-muted);
-}
-
-.outlineIcon {
-  background-color: var(--mix-foreground-20-muted);
-}
-
 .sm {
   padding: 0.0625rem 0.375rem;
   font-size: 0.625rem;

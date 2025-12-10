@@ -4,6 +4,9 @@
   "type": "registry:item",
   "title": "Autocomplete",
   "description": "An input that suggests options as you type.",
+  "registryDependencies": [
+    "https://roiui.com/r/input.json"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/autocomplete/autocomplete.tsx",
