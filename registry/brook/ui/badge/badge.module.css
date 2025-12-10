@@ -104,10 +104,6 @@
   margin-right: 0.25rem;
 }
 
-.infoIcon {
-  background-color: var(--mix-info-20-muted);
-}
-
 .sm {
   padding: 0.0625rem 0.375rem;
   font-size: 0.625rem;
