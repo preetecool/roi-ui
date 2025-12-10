@@ -1352,6 +1352,18 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/badge-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/badge-demo",
   },
+  "badge-error-tailwind": {
+    name: "badge-error-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/badge-error.tsx"],
+    path: "@/registry/brook/tailwind/examples/badge-error",
+  },
+  "badge-success-tailwind": {
+    name: "badge-success-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/badge-success.tsx"],
+    path: "@/registry/brook/tailwind/examples/badge-success",
+  },
   "button-demo-tailwind": {
     name: "button-demo-tailwind",
     type: "example",
