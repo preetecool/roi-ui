@@ -61,7 +61,7 @@
   align-items: center;
 }
 
-.content {
+.content[data-slot="tabs-content"] {
   margin: 0;
   padding: 0;
   border: none;
