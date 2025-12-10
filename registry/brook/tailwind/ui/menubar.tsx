@@ -24,7 +24,7 @@ function MenubarRoot({
     <Menubar
       className={cn(
         "flex items-center bg-[var(--mix-card-50-bg)]",
-        "rounded-[var(--radius)] border-[0.5px] border-[var(--color-border-60)]",
+        "rounded-[var(--radius)] border-[0.5px] border-[var(--border-subtle)]",
         "shadow-[var(--shadow-border-stack)]",
         "gap-0.5 p-0.5",
         "max-sm:gap-1.5 max-sm:p-1.5",

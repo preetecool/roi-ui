@@ -28,8 +28,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
-  --color-card-light: var(--card-light);
-  --color-card-foreground: var(--foreground);
   --color-popover: var(--card);
   --color-popover-foreground: var(--popover-foreground);
 
@@ -54,22 +52,12 @@
   --color-info: var(--info);
 
   --color-border: var(--border);
-  --color-border-60: oklch(from var(--color-border) l c h / 0.6);
-  --color-border-10: oklch(from var(--color-border) l c h / 0.1);
   --color-input: var(--input);
   --color-ring: var(--ring);
-
-  /* Chart colors */
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
 
   /* Easing functions */
   --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
@@ -77,18 +65,15 @@
 .light,
 [data-theme="light"],
 :root {
-  --radius: 0.6rem;
+  --radius: 0.563rem;
   --radius-lg: 1.2rem;
 
   /* Subtle border colors for 0.5px borders */
   --border-subtle: oklch(from var(--border) l c h / 0.7);
-  --border-subtle-light: oklch(from var(--border) l c h / 0.5);
-  --border-subtle-strong: oklch(from var(--border) l c h / 0.8);
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.2365 0.0078 17.71);
   --card: oklch(0.978 0 0);
-  --card-light: oklch(0.9959 0 106);
   --popover-foreground: oklch(0.18 0 0);
   --popover: oklch(0.9959 0 106);
   --dialog-overlay: oklch(0 0 0 / 0.4);
@@ -134,12 +119,6 @@
   --chart-3: oklch(0.7091 0.15 264.71);
   --chart-4: oklch(0.8782 0.0981 74.65);
   --chart-5: oklch(0.722 0.1946 146.7);
-
-  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 @layer fallbacks {
@@ -154,17 +133,6 @@
     --mix-card-75-bg: oklch(0.925 0 0);
     --mix-card-80-muted: oklch(0.918 0 0);
     --mix-card-85-bg: oklch(0.92 0 0);
-    --mix-muted-20-trans: oklch(0.92 0 0 / 0.2);
-    --mix-border-50-trans: oklch(0.94 0 0 / 0.5);
-    --mix-border-70-trans: oklch(0.93 0 0 / 0.7);
-    --mix-accent-33-trans: oklch(0.8 0 0 / 0.33);
-    --mix-accent-66-bg: oklch(0.84 0 0);
-    --mix-accent-75-bg: oklch(0.83 0 0);
-    --mix-foreground-6-trans: oklch(0.35 0 0 / 0.06);
-    --mix-foreground-20-muted: oklch(0.82 0 0);
-    --mix-destructive-20-muted: oklch(0.86 0.03 15);
-    --mix-secondary-20-muted: oklch(0.916 0 0);
-    --mix-success-20-muted: oklch(0.84 0.04 146);
   }
 
   .dark,
@@ -177,17 +145,6 @@
     --mix-card-75-bg: oklch(0.225 0 0);
     --mix-card-80-muted: oklch(0.255 0 0);
     --mix-card-85-bg: oklch(0.23 0 0);
-    --mix-muted-20-trans: oklch(0.19 0 0 / 0.2);
-    --mix-border-50-trans: oklch(0.2 0 0 / 0.5);
-    --mix-border-70-trans: oklch(0.22 0 0 / 0.7);
-    --mix-accent-33-trans: oklch(0.32 0 0 / 0.33);
-    --mix-accent-66-bg: oklch(0.25 0 0);
-    --mix-accent-75-bg: oklch(0.23 0 0);
-    --mix-foreground-6-trans: oklch(0.94 0 0 / 0.06);
-    --mix-foreground-20-muted: oklch(0.68 0 0);
-    --mix-destructive-20-muted: oklch(0.36 0.05 18);
-    --mix-secondary-20-muted: oklch(0.265 0 0);
-    --mix-success-20-muted: oklch(0.48 0.04 151);
   }
 }
 
@@ -202,57 +159,6 @@
       --mix-card-75-bg: color-mix(in oklab, var(--card) 75%, var(--background));
       --mix-card-85-bg: color-mix(in oklab, var(--card) 85%, var(--background));
       --mix-card-80-muted: color-mix(in oklab, var(--card) 80%, var(--muted));
-      --mix-muted-20-trans: color-mix(in oklab, var(--muted) 20%, transparent);
-      --mix-border-50-trans: color-mix(
-        in oklab,
-        var(--border) 50%,
-        transparent
-      );
-      --mix-border-70-trans: color-mix(
-        in oklab,
-        var(--border) 70%,
-        transparent
-      );
-      --mix-accent-33-trans: color-mix(
-        in oklab,
-        var(--accent) 33%,
-        transparent
-      );
-      --mix-accent-66-bg: color-mix(
-        in oklab,
-        var(--accent) 66%,
-        var(--background)
-      );
-      --mix-accent-75-bg: color-mix(
-        in oklab,
-        var(--accent) 75%,
-        var(--background)
-      );
-      --mix-foreground-6-trans: color-mix(
-        in oklab,
-        var(--foreground) 6%,
-        transparent
-      );
-      --mix-foreground-20-muted: color-mix(
-        in oklab,
-        var(--foreground) 20%,
-        var(--muted)
-      );
-      --mix-destructive-20-muted: color-mix(
-        in oklab,
-        var(--destructive) 20%,
-        var(--muted)
-      );
-      --mix-secondary-20-muted: color-mix(
-        in oklab,
-        var(--secondary) 20%,
-        var(--muted)
-      );
-      --mix-success-20-muted: color-mix(
-        in oklab,
-        var(--success) 20%,
-        var(--muted)
-      );
     }
   }
 }
@@ -261,13 +167,10 @@
 [data-theme="dark"] {
   /* Subtle border colors for 0.5px borders */
   --border-subtle: oklch(from var(--border) l c h / 0.7);
-  --border-subtle-light: oklch(from var(--border) l c h / 0.5);
-  --border-subtle-strong: oklch(from var(--border) l c h / 0.8);
 
   --background: oklch(0.15 0 0);
   --foreground: oklch(0.94 0 0);
   --card: oklch(0.26 0 0);
-  --card-light: oklch(0.2 0 0);
   --popover: oklch(0.24 0 0);
   --popover-foreground: oklch(0.94 0 0);
 
@@ -316,12 +219,6 @@
 }
 
 @layer all {
-  [data-demo="css-modules"] *,
-  [data-demo="css-modules"] *::before,
-  [data-demo="css-modules"] *::after {
-    box-sizing: border-box;
-  }
-
   html {
     /* Stable scrollbar - prevents layout shift when portals lock body scroll */
     overflow-y: scroll;
@@ -357,19 +254,6 @@
 
   html::-webkit-scrollbar-thumb:hover {
     background: var(--muted-foreground);
-  }
-
-  [data-demo="css-modules"] input,
-  [data-demo="css-modules"] button,
-  [data-demo="css-modules"] textarea,
-  [data-demo="css-modules"] select {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-  }
-
-  [data-demo="css-modules"] ::placeholder {
-    opacity: 1;
   }
 
   ::selection {

@@ -106,7 +106,6 @@
   &:hover {
     opacity: 1;
     background: var(--muted);
-    transform: scale(1.05);
   }
 
   &:focus-visible {

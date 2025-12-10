@@ -112,12 +112,7 @@ const badgeIconVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[var(--mix-foreground-20-muted)]",
-        secondary: "bg-[var(--mix-secondary-20-muted)]",
-        destructive: "bg-[var(--mix-destructive-20-muted)]",
-        success: "bg-[var(--mix-success-20-muted)]",
         info: "bg-[var(--mix-info-20-muted)]",
-        outline: "bg-[var(--mix-foreground-20-muted)]",
       },
     },
     defaultVariants: {

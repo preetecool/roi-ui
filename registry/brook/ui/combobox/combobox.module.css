@@ -178,7 +178,7 @@
 }
 
 .list:not(:has(.item[data-highlighted])) .item[data-selected]::before {
-  background: var(--mix-accent-33-trans);
+  background: oklch(from var(--accent) l c h / 0.33);
 }
 
 .itemText {

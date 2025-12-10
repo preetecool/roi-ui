@@ -21,8 +21,8 @@ function ComboboxTrigger({
   return (
     <Combobox.Trigger
       className={cn(
-        "absolute top-1/2 right-2 -translate-y-1/2",
-        "flex cursor-pointer items-center justify-center p-1 border-none bg-transparent",
+        "-translate-y-1/2 absolute top-1/2 right-2",
+        "flex cursor-pointer items-center justify-center border-none bg-transparent p-1",
         "opacity-50 hover:opacity-100",
         "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
@@ -56,7 +56,7 @@ function ComboboxClear({
   return (
     <Combobox.Clear
       className={cn(
-        "absolute top-1/2 right-2 -translate-y-1/2",
+        "-translate-y-1/2 absolute top-1/2 right-2",
         "flex cursor-pointer items-center justify-center rounded-[calc(var(--radius)-2px)] p-1",
         "text-muted-foreground transition-all duration-150",
         "hover:bg-accent hover:text-foreground",
@@ -136,9 +136,9 @@ function ComboboxEmpty({
   return (
     <Combobox.Empty
       className={cn(
-        "empty:p-0 empty:m-0",
-        "py-8 px-4 text-center text-sm text-muted-foreground",
-        "max-sm:py-6 max-sm:px-4 max-sm:text-[0.9375rem]",
+        "empty:m-0 empty:p-0",
+        "px-4 py-8 text-center text-muted-foreground text-sm",
+        "max-sm:px-4 max-sm:py-6 max-sm:text-[0.9375rem]",
         className
       )}
       {...props}
@@ -160,10 +160,10 @@ function ComboboxItem({
     <Combobox.Item
       className={cn(
         "relative isolate mx-1 flex min-h-8 cursor-pointer items-center justify-start gap-3",
-        "px-2 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
-        "before:absolute before:inset-0 before:-z-10 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
-        "hover:before:bg-[var(--accent)] focus:before:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
-        "data-[selected]:before:bg-[var(--mix-accent-33-trans)] data-[highlighted]:before:bg-[var(--accent)]",
+        "px-2 pr-1.5 font-normal text-foreground text-xs leading-[1.2]",
+        "before:-z-10 before:absolute before:inset-0 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
+        "hover:before:bg-[var(--accent)] focus:outline-none focus:before:bg-[var(--accent)] focus-visible:outline-none",
+        "data-[highlighted]:before:bg-[var(--accent)] data-[selected]:before:bg-[oklch(from_var(--accent)_l_c_h_/_0.33)]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:before:bg-transparent",
         "max-sm:min-h-[2.75rem] max-sm:gap-3 max-sm:px-3 max-sm:py-2.5 max-sm:text-[0.9375rem]",
         className
@@ -175,7 +175,7 @@ function ComboboxItem({
         <Combobox.ItemIndicator
           className={cn(
             "flex h-4 w-4 items-center justify-center opacity-0 transition-opacity duration-150",
-            "[[data-selected]_&]:opacity-100 [[data-selected]_&]:m-1"
+            "[[data-selected]_&]:m-1 [[data-selected]_&]:opacity-100"
           )}
           data-slot="combobox-itemindicator"
         >
@@ -187,7 +187,7 @@ function ComboboxItem({
         <Combobox.ItemIndicator
           className={cn(
             "flex h-4 w-4 items-center justify-center opacity-0 transition-opacity duration-150",
-            "[[data-selected]_&]:opacity-100 [[data-selected]_&]:m-1"
+            "[[data-selected]_&]:m-1 [[data-selected]_&]:opacity-100"
           )}
           data-slot="combobox-itemindicator"
         >
@@ -207,7 +207,7 @@ function ComboboxItemIndicator({
     <Combobox.ItemIndicator
       className={cn(
         "flex h-4 w-4 items-center justify-center opacity-0 transition-opacity duration-150",
-        "[[data-selected]_&]:opacity-100 [[data-selected]_&]:m-1",
+        "[[data-selected]_&]:m-1 [[data-selected]_&]:opacity-100",
         className
       )}
       data-slot="combobox-itemindicator"

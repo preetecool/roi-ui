@@ -90,7 +90,7 @@
   flex: 1 1 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--mix-border-50-trans) transparent;
+  scrollbar-color: oklch(from var(--border) l c h / 0.5) transparent;
   min-height: 0;
   max-height: none;
 }
@@ -104,12 +104,12 @@
 }
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar-thumb {
-  background: var(--mix-border-50-trans);
+  background: oklch(from var(--border) l c h / 0.5);
   border-radius: 3px;
 }
 
 .commandWrapper [cmdk-list]::-webkit-scrollbar-thumb:hover {
-  background: var(--mix-border-70-trans);
+  background: oklch(from var(--border) l c h / 0.7);
 }
 
 .commandItemContent {
@@ -144,7 +144,7 @@
   padding: 0.75rem 1rem;
   margin: 0 -0.25rem -0.25rem -0.25rem;
   border-top: 0.5px solid oklch(from var(--border) l c h / 0.5);
-  background-color: var(--mix-muted-20-trans);
+  background-color: oklch(from var(--muted) l c h / 0.2);
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
   flex-shrink: 0;
