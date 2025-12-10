@@ -754,6 +754,24 @@
       ]
     },
     {
+      "name": "toolbar",
+      "type": "registry:item",
+      "title": "Toolbar",
+      "description": "A toolbar component for grouping action buttons and controls.",
+      "files": [
+        {
+          "path": "registry/brook/ui/toolbar/toolbar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/toolbar/toolbar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/toolbar/toolbar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/toolbar/toolbar.module.css"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:item",
       "title": "Tooltip",
