@@ -1,7 +1,7 @@
 "use client";
 
-import { useRender } from "@base-ui-components/react/use-render";
-import { useControlled } from "@base-ui-components/utils/useControlled";
+import { useRender } from "@base-ui/react/use-render";
+import { useControlled } from "@base-ui/utils/useControlled";
 import type { CSSProperties } from "react";
 import {
   createContext,

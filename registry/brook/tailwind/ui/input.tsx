@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@base-ui-components/react/input";
+import { Input } from "@base-ui/react/input";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils-tailwind";
 

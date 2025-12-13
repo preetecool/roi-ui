@@ -1,6 +1,6 @@
 "use client";
 
-import { Fieldset } from "@base-ui-components/react/fieldset";
+import { Fieldset } from "@base-ui/react/fieldset";
 import { cn } from "@/lib/utils-tailwind";
 
 function FieldsetRoot({ className, ...props }: Fieldset.Root.Props) {

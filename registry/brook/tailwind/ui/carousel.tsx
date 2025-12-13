@@ -1,6 +1,6 @@
 "use client";
 
-import { useControlled } from "@base-ui-components/utils/useControlled";
+import { useControlled } from "@base-ui/utils/useControlled";
 import {
   createContext,
   useCallback,

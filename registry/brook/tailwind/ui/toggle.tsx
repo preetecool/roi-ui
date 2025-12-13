@@ -1,6 +1,6 @@
 "use client";
 
-import { Toggle } from "@base-ui-components/react/toggle";
+import { Toggle } from "@base-ui/react/toggle";
 import { cn } from "@/lib/utils-tailwind";
 
 function ToggleRoot({ className, ...props }: Toggle.Props) {

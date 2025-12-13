@@ -1,5 +1,5 @@
 "use client";
-import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import { cn } from "@/lib/utils";
 import styles from "./navigation-menu.module.css";
 

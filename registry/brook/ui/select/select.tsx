@@ -1,6 +1,6 @@
 "use client";
 
-import { Select } from "@base-ui-components/react/select";
+import { Select } from "@base-ui/react/select";
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import styles from "./select.module.css";

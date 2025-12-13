@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollArea } from "@base-ui-components/react/scroll-area";
+import { ScrollArea } from "@base-ui/react/scroll-area";
 import { cn } from "@/lib/utils-tailwind";
 
 function ScrollAreaRoot({ className, ...props }: ScrollArea.Root.Props) {

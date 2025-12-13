@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@base-ui-components/react/input";
+import { Input } from "@base-ui/react/input";
 import { cn } from "@/lib/utils";
 import styles from "./input.module.css";
 

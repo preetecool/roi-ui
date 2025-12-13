@@ -1,6 +1,6 @@
 "use client";
 
-import { Meter } from "@base-ui-components/react/meter";
+import { Meter } from "@base-ui/react/meter";
 import { cn } from "@/lib/utils-tailwind";
 
 function MeterRoot({ className, ...props }: Meter.Root.Props) {

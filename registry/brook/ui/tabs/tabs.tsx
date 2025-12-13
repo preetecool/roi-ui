@@ -1,4 +1,4 @@
-import { Tabs } from "@base-ui-components/react/tabs";
+import { Tabs } from "@base-ui/react/tabs";
 import { cn } from "@/lib/utils";
 import styles from "./tabs.module.css";
 

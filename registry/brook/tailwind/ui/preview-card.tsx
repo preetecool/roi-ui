@@ -1,6 +1,6 @@
 "use client";
 
-import { PreviewCard } from "@base-ui-components/react/preview-card";
+import { PreviewCard } from "@base-ui/react/preview-card";
 import { cn } from "@/lib/utils-tailwind";
 
 function PreviewCardRoot({ ...props }: PreviewCard.Root.Props) {

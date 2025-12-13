@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/tailwind/ui/separator.tsx",
-      "content": "\"use client\";\n\nimport { Separator } from \"@base-ui-components/react/separator\";\nimport { cn } from \"@/lib/utils\";\n\nfunction SeparatorRoot({ className, ...props }: Separator.Props) {\n  return (\n    <Separator\n      className={cn(\n        \"border-none\",\n        \"data-[orientation=horizontal]:h-[0.5px] data-[orientation=horizontal]:w-full\",\n        \"data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[0.5px]\",\n        className\n      )}\n      data-slot=\"separator\"\n      style={{\n        backgroundColor: \"oklch(from var(--border) l c h / 0.7)\",\n      }}\n      {...props}\n    />\n  );\n}\n\nexport { SeparatorRoot as Separator };\n",
+      "content": "\"use client\";\n\nimport { Separator } from \"@base-ui/react/separator\";\nimport { cn } from \"@/lib/utils\";\n\nfunction SeparatorRoot({ className, ...props }: Separator.Props) {\n  return (\n    <Separator\n      className={cn(\n        \"border-none\",\n        \"data-[orientation=horizontal]:h-[0.5px] data-[orientation=horizontal]:w-full\",\n        \"data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[0.5px]\",\n        className\n      )}\n      data-slot=\"separator\"\n      style={{\n        backgroundColor: \"oklch(from var(--border) l c h / 0.7)\",\n      }}\n      {...props}\n    />\n  );\n}\n\nexport { SeparatorRoot as Separator };\n",
       "type": "registry:file",
       "target": "~/components/ui/separator/separator.tsx"
     }

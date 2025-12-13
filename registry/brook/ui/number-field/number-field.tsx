@@ -1,6 +1,6 @@
 "use client";
 
-import { NumberField } from "@base-ui-components/react/number-field";
+import { NumberField } from "@base-ui/react/number-field";
 import { cn } from "@/lib/utils";
 import styles from "./number-field.module.css";
 

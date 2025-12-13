@@ -1,7 +1,7 @@
 "use client";
 
-import { Radio } from "@base-ui-components/react/radio";
-import { RadioGroup } from "@base-ui-components/react/radio-group";
+import { Radio } from "@base-ui/react/radio";
+import { RadioGroup } from "@base-ui/react/radio-group";
 import { cn } from "@/lib/utils-tailwind";
 
 function RadioGroupRoot({ className, ...props }: RadioGroup.Props) {

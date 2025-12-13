@@ -1,6 +1,6 @@
 "use client";
 
-import { Slider } from "@base-ui-components/react/slider";
+import { Slider } from "@base-ui/react/slider";
 import { cn } from "@/lib/utils-tailwind";
 
 function SliderRoot({ className, ...props }: Slider.Root.Props) {

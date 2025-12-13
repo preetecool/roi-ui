@@ -1,6 +1,6 @@
 "use client";
 
-import { Progress } from "@base-ui-components/react/progress";
+import { Progress } from "@base-ui/react/progress";
 import { cn } from "@/lib/utils";
 import styles from "./progress.module.css";
 

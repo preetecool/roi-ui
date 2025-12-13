@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react";
+import { Dialog } from "@base-ui/react";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

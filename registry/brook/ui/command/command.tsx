@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
+import { Dialog } from "@base-ui/react/dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
