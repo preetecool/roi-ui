@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Popover } from "@base-ui-components/react/popover";
+import { Popover } from "@base-ui/react/popover";
 import { cn } from "@/lib/utils-tailwind";
 
 const createPopoverHandle = Popover.createHandle;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Autocomplete } from "@base-ui-components/react/autocomplete";
+import { Autocomplete } from "@base-ui/react/autocomplete";
 import { Search, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Form } from "@base-ui-components/react/form";
+import { Form } from "@base-ui/react/form";
 import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
 

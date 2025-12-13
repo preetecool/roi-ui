@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/tailwind/ui/checkbox-group.tsx",
-      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui-components/react/checkbox-group\";\nimport { cn } from \"@/lib/utils\";\n\nfunction CheckboxGroupRoot({ className, ...props }: CheckboxGroup.Props) {\n  return (\n    <CheckboxGroup\n      className={cn(\"flex flex-col gap-3\", className)}\n      data-slot=\"checkbox-group-root\"\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };\n",
+      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui/react/checkbox-group\";\nimport { cn } from \"@/lib/utils\";\n\nfunction CheckboxGroupRoot({ className, ...props }: CheckboxGroup.Props) {\n  return (\n    <CheckboxGroup\n      className={cn(\"flex flex-col gap-3\", className)}\n      data-slot=\"checkbox-group-root\"\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };\n",
       "type": "registry:file",
       "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
     }

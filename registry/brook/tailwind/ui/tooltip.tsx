@@ -1,6 +1,6 @@
 "use client";
 
-import { Tooltip } from "@base-ui-components/react/tooltip";
+import { Tooltip } from "@base-ui/react/tooltip";
 import { cn } from "@/lib/utils-tailwind";
 
 function TooltipProvider({ ...props }: Tooltip.Provider.Props) {

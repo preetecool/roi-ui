@@ -1,6 +1,6 @@
 "use client";
 
-import { Switch } from "@base-ui-components/react/switch";
+import { Switch } from "@base-ui/react/switch";
 import { cn } from "@/lib/utils";
 import styles from "./switch.module.css";
 

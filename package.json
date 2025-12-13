@@ -13,8 +13,8 @@
     "registry:index": "node scripts/build-registry-index.ts"
   },
   "dependencies": {
-    "@base-ui-components/react": "1.0.0-rc.0",
-    "@base-ui-components/utils": "^0.1.2",
+    "@base-ui/react": "1.0.0",
+    "@base-ui/utils": "^0.2.3",
     "@next/bundle-analyzer": "^16.0.1",
     "@radix-ui/react-dialog": "^1.1.15",
     "@shikijs/rehype": "^3.12.2",

@@ -1,7 +1,7 @@
 "use client";
 
-import { Toggle } from "@base-ui-components/react/toggle";
-import { ToggleGroup } from "@base-ui-components/react/toggle-group";
+import { Toggle } from "@base-ui/react/toggle";
+import { ToggleGroup } from "@base-ui/react/toggle-group";
 import { cn } from "@/lib/utils-tailwind";
 
 function ToggleGroupRoot({ className, ...props }: ToggleGroup.Props) {

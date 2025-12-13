@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar } from "@base-ui-components/react/avatar";
+import { Avatar } from "@base-ui/react/avatar";
 import { cn } from "@/lib/utils-tailwind";
 
 function AvatarRoot({ className, ...props }: Avatar.Root.Props) {

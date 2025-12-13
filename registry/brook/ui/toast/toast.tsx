@@ -1,6 +1,6 @@
 "use client";
 
-import { Toast } from "@base-ui-components/react/toast";
+import { Toast } from "@base-ui/react/toast";
 import { X } from "lucide-react";
 import type * as React from "react";
 import { cn } from "@/lib/utils";

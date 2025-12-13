@@ -1,6 +1,6 @@
 "use client";
 
-import { Collapsible } from "@base-ui-components/react/collapsible";
+import { Collapsible } from "@base-ui/react/collapsible";
 import { cn } from "@/lib/utils";
 import styles from "./collapsible.module.css";
 

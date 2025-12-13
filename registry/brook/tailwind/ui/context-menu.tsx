@@ -1,6 +1,6 @@
 "use client";
 
-import { ContextMenu } from "@base-ui-components/react/context-menu";
+import { ContextMenu } from "@base-ui/react/context-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
 import type { ReactNode } from "react";

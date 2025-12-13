@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
+import { Dialog } from "@base-ui/react/dialog";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./dialog.module.css";

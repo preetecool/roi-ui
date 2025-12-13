@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/checkbox-group/checkbox-group.tsx",
-      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui-components/react/checkbox-group\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox-group.module.css\";\n\nfunction CheckboxGroupRoot({ className, ...props }: CheckboxGroup.Props) {\n  return (\n    <CheckboxGroup\n      className={cn(styles.root, className)}\n      data-slot=\"checkbox-group-root\"\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };\n",
+      "content": "\"use client\";\n\nimport { CheckboxGroup } from \"@base-ui/react/checkbox-group\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox-group.module.css\";\n\nfunction CheckboxGroupRoot({ className, ...props }: CheckboxGroup.Props) {\n  return (\n    <CheckboxGroup\n      className={cn(styles.root, className)}\n      data-slot=\"checkbox-group-root\"\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroupRoot as CheckboxGroup };\n",
       "type": "registry:file",
       "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
     },

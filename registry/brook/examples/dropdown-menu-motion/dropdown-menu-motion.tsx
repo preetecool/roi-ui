@@ -1,5 +1,5 @@
 "use client";
-import { Menu } from "@base-ui-components/react";
+import { Menu } from "@base-ui/react";
 import {
   CreditCard,
   Ellipsis,
