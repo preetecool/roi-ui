@@ -3,6 +3,11 @@
   "extends": [
     "ultracite/core"
   ],
+  "formatter": {
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "indentStyle": "space"
+  },
   "linter": {
     "rules": {
       "performance": {

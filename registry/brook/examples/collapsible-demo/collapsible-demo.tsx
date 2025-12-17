@@ -1,8 +1,4 @@
-import {
-  Collapsible,
-  CollapsiblePanel,
-  CollapsibleTrigger,
-} from "@/registry/brook/ui/collapsible/collapsible";
+import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from "@/registry/brook/ui/collapsible/collapsible";
 import styles from "./collapsible-demo.module.css";
 
 export default function CollapsibleDemo() {

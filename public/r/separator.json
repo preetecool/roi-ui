@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/brook/ui/separator/separator.tsx",
-      "content": "\"use client\";\n\nimport { Separator } from \"@base-ui/react/separator\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./separator.module.css\";\n\nfunction SeparatorRoot({ className, ...props }: Separator.Props) {\n  return (\n    <Separator\n      className={cn(styles.root, className)}\n      data-slot=\"separator\"\n      {...props}\n    />\n  );\n}\n\nexport { SeparatorRoot as Separator };\n",
+      "content": "\"use client\";\n\nimport { Separator } from \"@base-ui/react/separator\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./separator.module.css\";\n\nfunction SeparatorRoot({ className, ...props }: Separator.Props) {\n  return <Separator className={cn(styles.root, className)} data-slot=\"separator\" {...props} />;\n}\n\nexport { SeparatorRoot as Separator };\n",
       "type": "registry:file",
       "target": "~/components/ui/separator/separator.tsx"
     },

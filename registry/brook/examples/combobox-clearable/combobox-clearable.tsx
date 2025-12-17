@@ -55,11 +55,7 @@ export default function ComboboxClearable() {
                 <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
                 <ComboboxList>
                   {(item: Framework) => (
-                    <ComboboxItem
-                      indicatorPosition="right"
-                      key={item.value}
-                      value={item}
-                    >
+                    <ComboboxItem indicatorPosition="right" key={item.value} value={item}>
                       <span style={{ flex: 1 }}>{item.label}</span>
                     </ComboboxItem>
                   )}

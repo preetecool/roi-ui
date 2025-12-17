@@ -10,10 +10,7 @@ function ContextMenuRoot({ ...props }: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;
 }
 
-function ContextMenuTrigger({
-  className,
-  ...props
-}: ContextMenu.Trigger.Props) {
+function ContextMenuTrigger({ className, ...props }: ContextMenu.Trigger.Props) {
   return (
     <ContextMenu.Trigger
       className={cn("select-none outline-none", className)}
@@ -25,10 +22,7 @@ function ContextMenuTrigger({
 
 const ContextMenuPortal = ContextMenu.Portal;
 
-function ContextMenuBackdrop({
-  className,
-  ...props
-}: ContextMenu.Backdrop.Props) {
+function ContextMenuBackdrop({ className, ...props }: ContextMenu.Backdrop.Props) {
   return (
     <ContextMenu.Backdrop
       className={cn(
@@ -42,10 +36,7 @@ function ContextMenuBackdrop({
   );
 }
 
-function ContextMenuPositioner({
-  className,
-  ...props
-}: ContextMenu.Positioner.Props) {
+function ContextMenuPositioner({ className, ...props }: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
       className={cn("absolute z-[150] outline-none", className)}
@@ -129,20 +120,14 @@ function ContextMenuItem({
       {...props}
     >
       {icon && (
-        <span className="context-menu-icon ml-1 flex items-center justify-center text-muted-foreground">
-          {icon}
-        </span>
+        <span className="context-menu-icon ml-1 flex items-center justify-center text-muted-foreground">{icon}</span>
       )}
       {children}
     </ContextMenu.Item>
   );
 }
 
-function ContextMenuCheckboxItem({
-  className,
-  children,
-  ...props
-}: ContextMenu.CheckboxItem.Props) {
+function ContextMenuCheckboxItem({ className, children, ...props }: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
       className={cn(
@@ -164,11 +149,7 @@ function ContextMenuCheckboxItem({
   );
 }
 
-function ContextMenuRadioItem({
-  className,
-  children,
-  ...props
-}: ContextMenu.RadioItem.Props) {
+function ContextMenuRadioItem({ className, children, ...props }: ContextMenu.RadioItem.Props) {
   return (
     <ContextMenu.RadioItem
       className={cn(
@@ -190,10 +171,7 @@ function ContextMenuRadioItem({
   );
 }
 
-function ContextMenuRadioGroup({
-  className,
-  ...props
-}: ContextMenu.RadioGroup.Props) {
+function ContextMenuRadioGroup({ className, ...props }: ContextMenu.RadioGroup.Props) {
   return <ContextMenu.RadioGroup className={cn(className)} {...props} />;
 }
 
@@ -215,17 +193,11 @@ function ContextMenuLabel({
   );
 }
 
-function ContextMenuSeparator({
-  className,
-  ...props
-}: ContextMenu.Separator.Props) {
+function ContextMenuSeparator({ className, ...props }: ContextMenu.Separator.Props) {
   return (
     <div className="py-[5px]">
       <ContextMenu.Separator
-        className={cn(
-          "h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]",
-          className
-        )}
+        className={cn("h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]", className)}
         {...props}
       />
     </div>
@@ -275,19 +247,10 @@ function ContextMenuSubmenuTrigger({
 }
 
 function ContextMenuGroup({ className, ...props }: ContextMenu.Group.Props) {
-  return (
-    <ContextMenu.Group
-      className={cn("overflow-hidden", className)}
-      data-slot="contextmenu-group"
-      {...props}
-    />
-  );
+  return <ContextMenu.Group className={cn("overflow-hidden", className)} data-slot="contextmenu-group" {...props} />;
 }
 
-function ContextMenuShortcut({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>) {
+function ContextMenuShortcut({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn(

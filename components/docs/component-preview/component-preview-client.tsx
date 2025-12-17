@@ -15,12 +15,7 @@ type ComponentPreviewClientProps = {
   replayButton: boolean;
 };
 
-export function ComponentPreviewClient({
-  name,
-  align,
-  isChartComponent,
-  replayButton,
-}: ComponentPreviewClientProps) {
+export function ComponentPreviewClient({ name, align, isChartComponent, replayButton }: ComponentPreviewClientProps) {
   const [key, setKey] = useState(0);
   const [mounted, setMounted] = useState(false);
   const { style } = useStyle();
@@ -29,10 +24,7 @@ export function ComponentPreviewClient({
     setMounted(true);
   }, []);
 
-  const componentName =
-    style === "tailwind" && Index[`${name}-tailwind`]
-      ? `${name}-tailwind`
-      : name;
+  const componentName = style === "tailwind" && Index[`${name}-tailwind`] ? `${name}-tailwind` : name;
 
   // Dynamically load component from loaders (separate bundle chunk)
   const Component = ComponentLoaders[componentName];
@@ -44,11 +36,7 @@ export function ComponentPreviewClient({
   if (!(mounted && Component)) {
     return (
       <div
-        className={cn(
-          styles.preview,
-          styles[align],
-          isChartComponent ? styles.chartPreview : null
-        )}
+        className={cn(styles.preview, styles[align], isChartComponent ? styles.chartPreview : null)}
         data-align={align}
       />
     );
@@ -56,22 +44,13 @@ export function ComponentPreviewClient({
 
   return (
     <div
-      className={cn(
-        styles.preview,
-        styles.proseReset,
-        isChartComponent ? styles.chartPreview : null
-      )}
+      className={cn(styles.preview, styles.proseReset, isChartComponent ? styles.chartPreview : null)}
       data-align={align}
       data-demo={style}
     >
       <Component key={key} />
       {replayButton ? (
-        <button
-          aria-label="Replay animation"
-          className={styles.replayButton}
-          onClick={handleReplay}
-          type="button"
-        >
+        <button aria-label="Replay animation" className={styles.replayButton} onClick={handleReplay} type="button">
           <RotateCcw size={16} />
         </button>
       ) : null}

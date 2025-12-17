@@ -1,13 +1,7 @@
 "use client";
 
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/registry/brook/tailwind/ui/card";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
 
 const items = [
   {
@@ -61,13 +55,9 @@ export function CardHistory() {
           >
             <div className="flex flex-col gap-1">
               <div className="font-normal text-[var(--foreground)]">{from}</div>
-              <div className="font-light text-[var(--muted-foreground)]">
-                {date}
-              </div>
+              <div className="font-light text-[var(--muted-foreground)]">{date}</div>
             </div>
-            <div className="font-light text-[var(--muted-foreground)]">
-              {amount}
-            </div>
+            <div className="font-light text-[var(--muted-foreground)]">{amount}</div>
           </div>
         ))}
       </CardContent>

@@ -64,14 +64,8 @@ const X_AXIS_TICKS = [1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025];
 export default function ChartLineDemo() {
   return (
     <div className="flex h-full w-full flex-col">
-      <ChartContainer
-        className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]"
-        config={chartConfig}
-      >
-        <LineChart
-          data={chartData}
-          margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
-        >
+      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
+        <LineChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
             axisLine={false}
@@ -81,13 +75,7 @@ export default function ChartLineDemo() {
             tickMargin={8}
             ticks={X_AXIS_TICKS}
           />
-          <YAxis
-            axisLine={false}
-            domain={[0, "auto"]}
-            tickLine={false}
-            tickMargin={8}
-            width={40}
-          />
+          <YAxis axisLine={false} domain={[0, "auto"]} tickLine={false} tickMargin={8} width={40} />
           <ChartTooltip content={<ChartTooltipContent labelKey="date" />} />
           <Line
             animationDuration={800}

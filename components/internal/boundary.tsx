@@ -123,14 +123,7 @@ function getBoundaryStyles(options: GetBoundaryStylesOptions): BoundaryStyles {
   };
 }
 
-export default function Boundary({
-  children,
-  rendering,
-  hydration,
-  label,
-  showLabel = true,
-  cached = false,
-}: Props) {
+export default function Boundary({ children, rendering, hydration, label, showLabel = true, cached = false }: Props) {
   const { mode } = useBoundaryMode();
   const containerRef = useRef<HTMLDivElement>(null);
   const isSmall = useElementSize(containerRef);
@@ -169,18 +162,11 @@ export default function Boundary({
   const hasLabel = Boolean(showLabel && labelText);
 
   return (
-    <div
-      className={`${styles.boundary} ${styles.container} ${containerClass}`}
-      ref={containerRef}
-    >
+    <div className={`${styles.boundary} ${styles.container} ${containerClass}`} ref={containerRef}>
       {hasLabel ? (
         <div className={styles.labelContainer}>
-          <div className={`${styles.label} ${labelStyles[colorVariant]}`}>
-            {labelText}
-          </div>
-          {showCachedBadge ? (
-            <div className={styles.cachedBadge}>cached</div>
-          ) : null}
+          <div className={`${styles.label} ${labelStyles[colorVariant]}`}>{labelText}</div>
+          {showCachedBadge ? <div className={styles.cachedBadge}>cached</div> : null}
         </div>
       ) : null}
       {children}

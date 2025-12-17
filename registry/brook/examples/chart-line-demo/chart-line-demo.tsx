@@ -1,12 +1,7 @@
 "use client";
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import {
-  type ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/registry/brook/ui/chart/chart";
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/registry/brook/ui/chart/chart";
 import styles from "./chart-line-demo.module.css";
 
 const chartData = [
@@ -66,10 +61,7 @@ export default function ChartLineDemo() {
   return (
     <div className={styles.container}>
       <ChartContainer className={styles.chartContainer} config={chartConfig}>
-        <LineChart
-          data={chartData}
-          margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
-        >
+        <LineChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
             axisLine={false}
@@ -79,13 +71,7 @@ export default function ChartLineDemo() {
             tickMargin={8}
             ticks={X_AXIS_TICKS}
           />
-          <YAxis
-            axisLine={false}
-            domain={[0, "auto"]}
-            tickLine={false}
-            tickMargin={8}
-            width={40}
-          />
+          <YAxis axisLine={false} domain={[0, "auto"]} tickLine={false} tickMargin={8} width={40} />
           <ChartTooltip content={<ChartTooltipContent labelKey="date" />} />
           <Line
             animationDuration={800}

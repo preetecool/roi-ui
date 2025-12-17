@@ -18,11 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className={GeistSans.className} lang="en" suppressHydrationWarning>
       <head>
@@ -33,12 +29,7 @@ export default function RootLayout({
       <body>
         <div className="root">
           <StyleProvider>
-            <ThemeProvider
-              defaultTheme="dark"
-              disableTransitionOnChange
-              enableSystem
-              storageKey="theme"
-            >
+            <ThemeProvider defaultTheme="dark" disableTransitionOnChange enableSystem storageKey="theme">
               {children}
               <Analytics />
             </ThemeProvider>

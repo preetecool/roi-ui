@@ -1,5 +1,6 @@
 "use client";
 
+import { matchSorter } from "match-sorter";
 import type React from "react";
 import { useState } from "react";
 import {
@@ -13,7 +14,6 @@ import {
   AutocompletePositioner,
   AutocompleteValue,
 } from "@/registry/brook/ui/autocomplete/autocomplete";
-import { matchSorter } from "match-sorter";
 import styles from "./autocomplete-fuzzy.module.css";
 
 interface Question {
@@ -135,11 +135,7 @@ export default function AutocompleteFuzzy() {
         onValueChange={setValue}
         value={value}
       >
-        <AutocompleteInput
-          className={styles.input}
-          id="fuzzy-input"
-          placeholder="Try 'billing' or 'password'..."
-        />
+        <AutocompleteInput className={styles.input} id="fuzzy-input" placeholder="Try 'billing' or 'password'..." />
 
         <AutocompletePortal>
           <AutocompletePositioner>
@@ -149,20 +145,12 @@ export default function AutocompleteFuzzy() {
               </AutocompleteEmpty>
               <AutocompleteList>
                 {(item: Question) => (
-                  <AutocompleteItem
-                    className={styles.item}
-                    key={item.value}
-                    value={item}
-                  >
+                  <AutocompleteItem className={styles.item} key={item.value} value={item}>
                     <AutocompleteValue>
                       {(inputValue) => (
                         <div className={styles.itemContent}>
-                          <div className={styles.itemQuestion}>
-                            {highlightText(item.question, inputValue)}
-                          </div>
-                          <div className={styles.itemCategory}>
-                            {highlightText(item.category, inputValue)}
-                          </div>
+                          <div className={styles.itemQuestion}>{highlightText(item.question, inputValue)}</div>
+                          <div className={styles.itemCategory}>{highlightText(item.category, inputValue)}</div>
                         </div>
                       )}
                     </AutocompleteValue>

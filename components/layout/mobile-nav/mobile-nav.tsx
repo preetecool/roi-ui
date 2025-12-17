@@ -34,11 +34,7 @@ export function MobileNav({ tree }: MobileNavProps) {
 
   if (!mounted) {
     return (
-      <button
-        aria-label="Toggle navigation menu"
-        className={styles.menuButton}
-        type="button"
-      >
+      <button aria-label="Toggle navigation menu" className={styles.menuButton} type="button">
         <div className={styles.menuButtonInner}>
           <span className={styles.menuLine} />
           <span className={styles.menuLine} />
@@ -49,11 +45,7 @@ export function MobileNav({ tree }: MobileNavProps) {
 
   return (
     <Dialog.Root onOpenChange={setOpen} open={open}>
-      <Dialog.Trigger
-        aria-label="Toggle navigation menu"
-        className={styles.menuButton}
-        data-open={open}
-      >
+      <Dialog.Trigger aria-label="Toggle navigation menu" className={styles.menuButton} data-open={open}>
         <div className={styles.menuButtonInner}>
           <span className={styles.menuLine} />
           <span className={styles.menuLine} />
@@ -61,10 +53,7 @@ export function MobileNav({ tree }: MobileNavProps) {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Backdrop
-          className={styles.overlay}
-          style={{ backgroundColor: "transparent" }}
-        />
+        <Dialog.Backdrop className={styles.overlay} style={{ backgroundColor: "transparent" }} />
         <Dialog.Popup className={styles.drawer}>
           <MobileNavContent pathname={pathname} setOpen={setOpen} tree={tree} />
         </Dialog.Popup>
@@ -89,11 +78,7 @@ function MobileNavContent({
   return (
     <div className={styles.viewport} onTouchStart={handleTouchStart}>
       <div className={styles.viewportInner}>
-        <Dialog.Close
-          className={styles.backdropTapArea}
-          nativeButton={false}
-          render={<div />}
-        />
+        <Dialog.Close className={styles.backdropTapArea} nativeButton={false} render={<div />} />
         <div className={styles.panel}>
           <div className={styles.closeContainer}>
             <Dialog.Close className={styles.closeButton}>
@@ -176,11 +161,7 @@ function MobileSidebarGroup({
       <ul className={styles.groupChildren}>
         {item.children?.map((child, index) => (
           <li key={child.$id || `child-${index}`}>
-            <MobileSidebarGroup
-              item={child}
-              onNavigate={onNavigate}
-              pathname={pathname}
-            />
+            <MobileSidebarGroup item={child} onNavigate={onNavigate} pathname={pathname} />
           </li>
         ))}
       </ul>

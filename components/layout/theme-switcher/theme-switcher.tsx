@@ -19,8 +19,7 @@ export function ThemeSwitcher() {
     setTheme(newTheme);
   };
 
-  const ariaLabel =
-    theme === "light" ? "Switch to dark mode" : "Switch to light mode";
+  const ariaLabel = theme === "light" ? "Switch to dark mode" : "Switch to light mode";
 
   return (
     <Button

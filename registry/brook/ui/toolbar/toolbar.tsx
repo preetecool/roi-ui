@@ -4,11 +4,7 @@ import { Toolbar } from "@base-ui/react/toolbar";
 import { cn } from "@/lib/utils";
 import styles from "./toolbar.module.css";
 
-function ToolbarRoot({
-  className,
-  orientation = "horizontal",
-  ...props
-}: Toolbar.Root.Props) {
+function ToolbarRoot({ className, orientation = "horizontal", ...props }: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
       className={cn(styles.root, className)}
@@ -37,20 +33,7 @@ function ToolbarGroup({ className, ...props }: Toolbar.Group.Props) {
 }
 
 function ToolbarSeparator({ className, ...props }: Toolbar.Separator.Props) {
-  return (
-    <Toolbar.Separator
-      className={cn(styles.separator, className)}
-      data-slot="toolbar-separator"
-      {...props}
-    />
-  );
+  return <Toolbar.Separator className={cn(styles.separator, className)} data-slot="toolbar-separator" {...props} />;
 }
 
-export {
-  ToolbarRoot as Toolbar,
-  ToolbarButton,
-  ToolbarGroup,
-  ToolbarInput,
-  ToolbarLink,
-  ToolbarSeparator,
-};
+export { ToolbarRoot as Toolbar, ToolbarButton, ToolbarGroup, ToolbarInput, ToolbarLink, ToolbarSeparator };

@@ -366,35 +366,17 @@ const Background: React.FC<BackgroundProps> = ({
     const timeLocation = gl.getUniformLocation(program, "u_time");
     const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
 
-    const primaryColorLocation = gl.getUniformLocation(
-      program,
-      "u_primaryColor"
-    );
-    const secondaryColorLocation = gl.getUniformLocation(
-      program,
-      "u_secondaryColor"
-    );
-    const backgroundColorLocation = gl.getUniformLocation(
-      program,
-      "u_backgroundColor"
-    );
-    const backgroundOpacityLocation = gl.getUniformLocation(
-      program,
-      "u_backgroundOpacity"
-    );
+    const primaryColorLocation = gl.getUniformLocation(program, "u_primaryColor");
+    const secondaryColorLocation = gl.getUniformLocation(program, "u_secondaryColor");
+    const backgroundColorLocation = gl.getUniformLocation(program, "u_backgroundColor");
+    const backgroundOpacityLocation = gl.getUniformLocation(program, "u_backgroundOpacity");
 
-    const animationSpeedLocation = gl.getUniformLocation(
-      program,
-      "u_animationSpeed"
-    );
+    const animationSpeedLocation = gl.getUniformLocation(program, "u_animationSpeed");
     const noiseScaleLocation = gl.getUniformLocation(program, "u_noiseScale");
     const intensityLocation = gl.getUniformLocation(program, "u_intensity");
 
     const octavesLocation = gl.getUniformLocation(program, "u_octaves");
-    const warpStrengthLocation = gl.getUniformLocation(
-      program,
-      "u_warpStrength"
-    );
+    const warpStrengthLocation = gl.getUniformLocation(program, "u_warpStrength");
 
     const MILLISECONDS_TO_SECONDS = 0.001;
     const TRIANGLE_STRIP_VERTICES = 4;
@@ -403,8 +385,7 @@ const Background: React.FC<BackgroundProps> = ({
       if (!startTimeRef.current) {
         startTimeRef.current = time;
       }
-      const elapsedTime =
-        (time - startTimeRef.current) * MILLISECONDS_TO_SECONDS;
+      const elapsedTime = (time - startTimeRef.current) * MILLISECONDS_TO_SECONDS;
 
       // biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is WebGL API, not a React hook
       gl.useProgram(program);
@@ -412,24 +393,9 @@ const Background: React.FC<BackgroundProps> = ({
       gl.uniform1f(timeLocation, elapsedTime);
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
 
-      gl.uniform3f(
-        primaryColorLocation,
-        primaryColor[0],
-        primaryColor[1],
-        primaryColor[2]
-      );
-      gl.uniform3f(
-        secondaryColorLocation,
-        secondaryColor[0],
-        secondaryColor[1],
-        secondaryColor[2]
-      );
-      gl.uniform3f(
-        backgroundColorLocation,
-        backgroundColor[0],
-        backgroundColor[1],
-        backgroundColor[2]
-      );
+      gl.uniform3f(primaryColorLocation, primaryColor[0], primaryColor[1], primaryColor[2]);
+      gl.uniform3f(secondaryColorLocation, secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+      gl.uniform3f(backgroundColorLocation, backgroundColor[0], backgroundColor[1], backgroundColor[2]);
       gl.uniform1f(backgroundOpacityLocation, backgroundOpacity);
 
       gl.uniform1f(animationSpeedLocation, animationSpeed);

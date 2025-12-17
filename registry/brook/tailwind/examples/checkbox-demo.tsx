@@ -1,10 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import {
-  Checkbox,
-  CheckboxIndicator,
-} from "@/registry/brook/tailwind/ui/checkbox";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/tailwind/ui/checkbox";
 
 export default function CheckboxDemo() {
   return (

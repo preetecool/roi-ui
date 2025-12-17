@@ -49,10 +49,7 @@ function SliderTrack({ className, ...props }: Slider.Track.Props) {
 function SliderIndicator({ className, ...props }: Slider.Indicator.Props) {
   return (
     <Slider.Indicator
-      className={cn(
-        "select-none rounded bg-[var(--primary)] transition-none",
-        className
-      )}
+      className={cn("select-none rounded bg-[var(--primary)] transition-none", className)}
       data-slot="slider-indicator"
       {...props}
     />
@@ -78,22 +75,11 @@ function SliderThumb({ className, ...props }: Slider.Thumb.Props) {
 function SliderValue({ className, ...props }: Slider.Value.Props) {
   return (
     <Slider.Value
-      className={cn(
-        "mr-2 block font-medium text-[var(--foreground)] text-sm",
-        className
-      )}
+      className={cn("mr-2 block font-medium text-[var(--foreground)] text-sm", className)}
       data-slot="slider-value"
       {...props}
     />
   );
 }
 
-export {
-  SliderRoot as Slider,
-  SliderControl,
-  SliderIndicator,
-  SliderRoot,
-  SliderThumb,
-  SliderTrack,
-  SliderValue,
-};
+export { SliderRoot as Slider, SliderControl, SliderIndicator, SliderRoot, SliderThumb, SliderTrack, SliderValue };

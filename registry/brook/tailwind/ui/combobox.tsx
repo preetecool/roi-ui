@@ -6,18 +6,13 @@ import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
-function ComboboxRoot<
-  ItemValue,
-  Multiple extends boolean | undefined = undefined,
->(props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>) {
+function ComboboxRoot<ItemValue, Multiple extends boolean | undefined = undefined>(
+  props: React.ComponentProps<typeof Combobox.Root<ItemValue, Multiple>>
+) {
   return <Combobox.Root<ItemValue, Multiple> {...props} />;
 }
 
-function ComboboxTrigger({
-  className,
-  children,
-  ...props
-}: Combobox.Trigger.Props) {
+function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Props) {
   return (
     <Combobox.Trigger
       className={cn(
@@ -38,21 +33,10 @@ function ComboboxTrigger({
 }
 
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
-  return (
-    <Combobox.Input
-      className={className}
-      data-slot="combobox-input"
-      render={<Input />}
-      {...props}
-    />
-  );
+  return <Combobox.Input className={className} data-slot="combobox-input" render={<Input />} {...props} />;
 }
 
-function ComboboxClear({
-  className,
-  children,
-  ...props
-}: Combobox.Clear.Props) {
+function ComboboxClear({ className, children, ...props }: Combobox.Clear.Props) {
   return (
     <Combobox.Clear
       className={cn(
@@ -72,16 +56,10 @@ function ComboboxClear({
 
 const ComboboxPortal = Combobox.Portal;
 
-function ComboboxPositioner({
-  className,
-  ...props
-}: Combobox.Positioner.Props) {
+function ComboboxPositioner({ className, ...props }: Combobox.Positioner.Props) {
   return (
     <Combobox.Positioner
-      className={cn(
-        "absolute top-full left-0 z-[150] mt-1 w-[var(--anchor-width)]",
-        className
-      )}
+      className={cn("absolute top-full left-0 z-[150] mt-1 w-[var(--anchor-width)]", className)}
       data-slot="combobox-positioner"
       sideOffset={4}
       {...props}
@@ -89,11 +67,7 @@ function ComboboxPositioner({
   );
 }
 
-function ComboboxPopup({
-  className,
-  children,
-  ...props
-}: Combobox.Popup.Props) {
+function ComboboxPopup({ className, children, ...props }: Combobox.Popup.Props) {
   return (
     <Combobox.Popup
       className={cn(
@@ -128,11 +102,7 @@ function ComboboxList({ className, ...props }: Combobox.List.Props) {
   );
 }
 
-function ComboboxEmpty({
-  className,
-  children,
-  ...props
-}: Combobox.Empty.Props) {
+function ComboboxEmpty({ className, children, ...props }: Combobox.Empty.Props) {
   return (
     <Combobox.Empty
       className={cn(
@@ -198,11 +168,7 @@ function ComboboxItem({
   );
 }
 
-function ComboboxItemIndicator({
-  className,
-  children,
-  ...props
-}: Combobox.ItemIndicator.Props) {
+function ComboboxItemIndicator({ className, children, ...props }: Combobox.ItemIndicator.Props) {
   return (
     <Combobox.ItemIndicator
       className={cn(
@@ -222,16 +188,10 @@ function ComboboxGroup({ className, ...props }: Combobox.Group.Props) {
   return <Combobox.Group className={cn("py-1", className)} {...props} />;
 }
 
-function ComboboxGroupLabel({
-  className,
-  ...props
-}: Combobox.GroupLabel.Props) {
+function ComboboxGroupLabel({ className, ...props }: Combobox.GroupLabel.Props) {
   return (
     <Combobox.GroupLabel
-      className={cn(
-        "px-3 py-2 font-medium text-muted-foreground text-xs",
-        className
-      )}
+      className={cn("px-3 py-2 font-medium text-muted-foreground text-xs", className)}
       data-slot="combobox-grouplabel"
       {...props}
     />
@@ -241,21 +201,14 @@ function ComboboxGroupLabel({
 function ComboboxArrow({ className, ...props }: Combobox.Arrow.Props) {
   return (
     <Combobox.Arrow
-      className={cn(
-        "-top-1 absolute left-4 h-2 w-2 rotate-45 border-border border-t border-l bg-card",
-        className
-      )}
+      className={cn("-top-1 absolute left-4 h-2 w-2 rotate-45 border-border border-t border-l bg-card", className)}
       data-slot="combobox-arrow"
       {...props}
     />
   );
 }
 
-function ComboboxNoItems({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div">) {
+function ComboboxNoItems({ className, children, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -270,11 +223,7 @@ function ComboboxNoItems({
   );
 }
 
-function ComboboxChips({
-  className,
-  ref,
-  ...props
-}: Combobox.Chips.Props & { ref?: React.Ref<HTMLDivElement> }) {
+function ComboboxChips({ className, ref, ...props }: Combobox.Chips.Props & { ref?: React.Ref<HTMLDivElement> }) {
   return (
     <Combobox.Chips
       className={cn(
@@ -308,11 +257,7 @@ function ComboboxChip({ className, ...props }: Combobox.Chip.Props) {
   );
 }
 
-function ComboboxChipRemove({
-  className,
-  children,
-  ...props
-}: Combobox.ChipRemove.Props) {
+function ComboboxChipRemove({ className, children, ...props }: Combobox.ChipRemove.Props) {
   return (
     <Combobox.ChipRemove
       className={cn(

@@ -1,19 +1,7 @@
 "use client";
-import {
-  BookOpen,
-  Building2,
-  Check,
-  CreditCard,
-  HelpCircle,
-  LogOut,
-  Zap,
-} from "lucide-react";
+import { BookOpen, Building2, Check, CreditCard, HelpCircle, LogOut, Zap } from "lucide-react";
 import { useState } from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/ui/avatar/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
@@ -41,11 +29,7 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import {
-  Field,
-  FieldControl,
-  FieldLabel,
-} from "@/registry/brook/ui/field/field";
+import { Field, FieldControl, FieldLabel } from "@/registry/brook/ui/field/field";
 import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./profile-menu.module.css";
 
@@ -58,11 +42,7 @@ export default function ProfileMenuDemo() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button
-            className={styles.triggerButton}
-            data-slot="dropdown-trigger"
-            variant="outline"
-          >
+          <Button className={styles.triggerButton} data-slot="dropdown-trigger" variant="outline">
             <Avatar className={styles.triggerAvatar}>
               <AvatarImage alt="@preetecool" src="/preetecool.png" />
               <AvatarFallback>PC</AvatarFallback>
@@ -100,66 +80,36 @@ export default function ProfileMenuDemo() {
 
             {/* Organizations Submenu */}
             <DropdownMenuSubmenuRoot>
-              <DropdownMenuSubmenuTrigger
-                className={styles.submenuTriggerWithIcon}
-                render={<li />}
-              >
+              <DropdownMenuSubmenuTrigger className={styles.submenuTriggerWithIcon} render={<li />}>
                 <Building2 className={styles.submenuIcon} size={14} />
                 Organizations
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner
-                  align="start"
-                  alignOffset={-4}
-                  side="right"
-                  sideOffset={-4}
-                >
+                <DropdownMenuPositioner align="start" alignOffset={-4} side="right" sideOffset={-4}>
                   <DropdownMenuPopup render={<ul />}>
                     <div className={styles.spacer} />
-                    <DropdownMenuRadioGroup
-                      onValueChange={setSelectedOrg}
-                      value={selectedOrg}
-                    >
-                      <DropdownMenuRadioItem
-                        className={styles.radioItem}
-                        render={<li />}
-                        value="acme"
-                      >
+                    <DropdownMenuRadioGroup onValueChange={setSelectedOrg} value={selectedOrg}>
+                      <DropdownMenuRadioItem className={styles.radioItem} render={<li />} value="acme">
                         <span className={styles.menuItemText}>Acme Corp</span>
                         <DropdownMenuRadioItemIndicator>
                           <Check size={14} />
                         </DropdownMenuRadioItemIndicator>
                       </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem
-                        className={styles.radioItem}
-                        render={<li />}
-                        value="tech"
-                      >
-                        <span className={styles.menuItemText}>
-                          Tech Startup
-                        </span>
+                      <DropdownMenuRadioItem className={styles.radioItem} render={<li />} value="tech">
+                        <span className={styles.menuItemText}>Tech Startup</span>
                         <DropdownMenuRadioItemIndicator>
                           <Check size={14} />
                         </DropdownMenuRadioItemIndicator>
                       </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem
-                        className={styles.radioItem}
-                        render={<li />}
-                        value="design"
-                      >
-                        <span className={styles.menuItemText}>
-                          Design Studio
-                        </span>
+                      <DropdownMenuRadioItem className={styles.radioItem} render={<li />} value="design">
+                        <span className={styles.menuItemText}>Design Studio</span>
                         <DropdownMenuRadioItemIndicator>
                           <Check size={14} />
                         </DropdownMenuRadioItemIndicator>
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={() => setIsDialogOpen(true)}
-                      render={<li />}
-                    >
+                    <DropdownMenuItem onClick={() => setIsDialogOpen(true)} render={<li />}>
                       <span className={styles.menuItemText}>Add new...</span>
                     </DropdownMenuItem>
                     <div className={styles.spacer} />
@@ -200,23 +150,16 @@ export default function ProfileMenuDemo() {
       </DropdownMenuPortal>
 
       {/* Add Organization Dialog */}
-      <Dialog
-        onOpenChange={(open) => setIsDialogOpen(open)}
-        open={isDialogOpen}
-      >
+      <Dialog onOpenChange={(open) => setIsDialogOpen(open)} open={isDialogOpen}>
         <DialogPortal>
           <DialogOverlay />
           <DialogPopup className={styles.dialogPopup}>
             <DialogHeader>
               <DialogTitle>Add New Organization</DialogTitle>
-              <DialogDescription>
-                Enter the name of your new organization.
-              </DialogDescription>
+              <DialogDescription>Enter the name of your new organization.</DialogDescription>
             </DialogHeader>
             <Field className={styles.field}>
-              <FieldLabel className={styles.fieldLabel}>
-                Organization Name
-              </FieldLabel>
+              <FieldLabel className={styles.fieldLabel}>Organization Name</FieldLabel>
               <FieldControl
                 onChange={(e) => setOrgName(e.target.value)}
                 placeholder="Enter organization name"

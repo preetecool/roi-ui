@@ -1,10 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import {
-  Checkbox,
-  CheckboxIndicator,
-} from "@/registry/brook/ui/checkbox/checkbox";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
 import styles from "./checkbox-demo.module.css";
 
 export default function CheckboxDemo() {

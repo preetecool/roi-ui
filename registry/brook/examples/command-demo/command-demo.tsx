@@ -1,12 +1,4 @@
-import {
-  Calendar,
-  CreditCard,
-  FileText,
-  Mail,
-  Smile,
-  Terminal,
-  User,
-} from "lucide-react";
+import { Calendar, CreditCard, FileText, Mail, Smile, Terminal, User } from "lucide-react";
 import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import {
   Command,
@@ -23,10 +15,7 @@ import styles from "./command-demo.module.css";
 export default function CommandDemo() {
   return (
     <Command className={styles.command}>
-      <CommandInput
-        className={styles.commandInput}
-        placeholder="Type a command or search..."
-      />
+      <CommandInput className={styles.commandInput} placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">

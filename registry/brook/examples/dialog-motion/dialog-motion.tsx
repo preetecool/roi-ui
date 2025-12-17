@@ -80,15 +80,8 @@ export default function DialogFramerMotion() {
   return (
     <Dialog.Root onOpenChange={setOpen} open={open}>
       <div className={styles.triggerWrapper}>
-        <motion.div
-          className={styles.morphWrapper}
-          layoutId="wrapper"
-          style={{ borderRadius: 8 }}
-        />
-        <Dialog.Trigger
-          className={styles.trigger}
-          render={<motion.button layoutId="button" />}
-        >
+        <motion.div className={styles.morphWrapper} layoutId="wrapper" style={{ borderRadius: 8 }} />
+        <Dialog.Trigger className={styles.trigger} render={<motion.button layoutId="button" />}>
           Upgrade
         </Dialog.Trigger>
       </div>
@@ -115,36 +108,18 @@ export default function DialogFramerMotion() {
         {open && (
           <Dialog.Portal container={containerRef} keepMounted>
             <div className={styles.popupWrapper}>
-              <motion.div
-                className={styles.popupMorphWrapper}
-                layoutId="wrapper"
-                style={{ borderRadius: 12 }}
-              />
+              <motion.div className={styles.popupMorphWrapper} layoutId="wrapper" style={{ borderRadius: 12 }} />
               <Dialog.Popup className={styles.popup} hidden={undefined}>
                 <div className={styles.popupContent}>
                   <Dialog.Title
                     className={styles.title}
-                    render={
-                      <motion.span
-                        animate="visible"
-                        exit="exit"
-                        initial="hidden"
-                        variants={contentVariants}
-                      />
-                    }
+                    render={<motion.span animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
                   >
                     Plan Plus
                   </Dialog.Title>
                   <Dialog.Description
                     className={styles.description}
-                    render={
-                      <motion.p
-                        animate="visible"
-                        exit="exit"
-                        initial="hidden"
-                        variants={contentVariants}
-                      />
-                    }
+                    render={<motion.p animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
                   >
                     Upgrade your plan for full access.
                   </Dialog.Description>
@@ -164,10 +139,7 @@ export default function DialogFramerMotion() {
                     >
                       Close
                     </Dialog.Close>
-                    <motion.button
-                      className={styles.actionButton}
-                      layoutId="button"
-                    >
+                    <motion.button className={styles.actionButton} layoutId="button">
                       Upgrade
                     </motion.button>
                   </div>

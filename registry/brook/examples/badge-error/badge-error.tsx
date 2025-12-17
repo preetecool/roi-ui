@@ -20,11 +20,7 @@ export default function BadgeError() {
             width="16"
           >
             <circle cx="12" cy="12" r="10" />
-            <path
-              className={styles.iconPath}
-              d="m4.9 4.9 14.2 14.2"
-              pathLength="1"
-            />
+            <path className={styles.iconPath} d="m4.9 4.9 14.2 14.2" pathLength="1" />
           </svg>
         </BadgeIcon>
         Error

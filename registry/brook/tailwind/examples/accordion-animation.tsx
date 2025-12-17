@@ -14,8 +14,7 @@ const accordionItems = [
   {
     id: "item-2",
     title: "How does billing work?",
-    content:
-      "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
+    content: "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
   },
   {
     id: "item-3",
@@ -29,9 +28,7 @@ export default function AccordionFramerMotion() {
   const [value, setValue] = useState<string[]>(["item-1"]);
 
   const getExpandedIndices = () =>
-    value
-      .map((v) => accordionItems.findIndex((item) => item.id === v))
-      .filter((i) => i !== -1);
+    value.map((v) => accordionItems.findIndex((item) => item.id === v)).filter((i) => i !== -1);
 
   const getItemClassName = (index: number) => {
     const expandedIndices = getExpandedIndices();
@@ -65,23 +62,12 @@ export default function AccordionFramerMotion() {
       isSandwiched && "rounded-3xl border-b-transparent",
 
       // Before expanded (not sandwiched, not expanded)
-      isBeforeExpanded &&
-        !isExpanded &&
-        !isAfterExpanded &&
-        "rounded-b-3xl border-b-transparent",
-      isBeforeExpanded &&
-        !isExpanded &&
-        !isAfterExpanded &&
-        isFirst &&
-        "rounded-3xl",
+      isBeforeExpanded && !isExpanded && !isAfterExpanded && "rounded-b-3xl border-b-transparent",
+      isBeforeExpanded && !isExpanded && !isAfterExpanded && isFirst && "rounded-3xl",
 
       // After expanded (not sandwiched, not expanded)
       isAfterExpanded && !isExpanded && !isBeforeExpanded && "rounded-t-3xl",
-      isAfterExpanded &&
-        !isExpanded &&
-        !isBeforeExpanded &&
-        isLast &&
-        "rounded-3xl",
+      isAfterExpanded && !isExpanded && !isBeforeExpanded && isLast && "rounded-3xl",
 
       // Mobile styles
       "max-sm:p-4"
@@ -92,11 +78,7 @@ export default function AccordionFramerMotion() {
     <div className="flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col max-sm:w-full max-sm:max-w-full">
       <Accordion.Root onValueChange={setValue} value={value}>
         {accordionItems.map((item, index) => (
-          <Accordion.Item
-            className={getItemClassName(index)}
-            key={item.id}
-            value={item.id}
-          >
+          <Accordion.Item className={getItemClassName(index)} key={item.id} value={item.id}>
             <Accordion.Header>
               <Accordion.Trigger className="group flex w-full cursor-pointer items-center gap-4 border-0 bg-transparent text-left font-[350] text-base text-secondary-foreground tracking-[-0.02em] max-sm:gap-3 max-sm:text-[0.9375rem]">
                 <div
@@ -127,12 +109,7 @@ export default function AccordionFramerMotion() {
                       strokeLinecap="round"
                       strokeWidth="2"
                     />
-                    <path
-                      d="M10 4L10 16"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                    />
+                    <path d="M10 4L10 16" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
                   </svg>
                 </div>
                 <div>{item.title}</div>

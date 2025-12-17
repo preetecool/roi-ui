@@ -1,10 +1,4 @@
-import {
-  Meter,
-  MeterIndicator,
-  MeterLabel,
-  MeterTrack,
-  MeterValue,
-} from "@/registry/brook/tailwind/ui/meter";
+import { Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue } from "@/registry/brook/tailwind/ui/meter";
 
 export default function MeterDemo() {
   return (

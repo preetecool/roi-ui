@@ -85,12 +85,7 @@ function LikeButton({
   const [isAnimating, setIsAnimating] = useState(false);
 
   const createParticle = useCallback(
-    (
-      angleOffset: number,
-      type: "star" | "circle",
-      size: number,
-      color: string
-    ): Particle => {
+    (angleOffset: number, type: "star" | "circle", size: number, color: string): Particle => {
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
@@ -246,11 +241,7 @@ function LikeButton({
               }
             >
               <div
-                className={
-                  particle.type === "star"
-                    ? styles.starShape
-                    : styles.circleShape
-                }
+                className={particle.type === "star" ? styles.starShape : styles.circleShape}
                 style={
                   {
                     "--rotation": `${particle.rotation}deg`,

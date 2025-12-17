@@ -15,32 +15,17 @@ function AlertDialogTrigger({ ...props }: AlertDialog.Trigger.Props) {
 
 const AlertDialogPortal = AlertDialog.Portal;
 
-function AlertDialogBackdrop({
-  className,
-  ...props
-}: AlertDialog.Backdrop.Props) {
+function AlertDialogBackdrop({ className, ...props }: AlertDialog.Backdrop.Props) {
   return (
-    <AlertDialog.Backdrop
-      className={cn(styles.overlay, className)}
-      data-slot="alert-dialog-backdrop"
-      {...props}
-    />
+    <AlertDialog.Backdrop className={cn(styles.overlay, className)} data-slot="alert-dialog-backdrop" {...props} />
   );
 }
 
-function AlertDialogPopup({
-  className,
-  children,
-  ...props
-}: AlertDialog.Popup.Props) {
+function AlertDialogPopup({ className, children, ...props }: AlertDialog.Popup.Props) {
   return (
     <AlertDialogPortal>
       <AlertDialogBackdrop />
-      <AlertDialog.Popup
-        className={cn(styles.content, className)}
-        data-slot="alert-dialog-popup"
-        {...props}
-      >
+      <AlertDialog.Popup className={cn(styles.content, className)} data-slot="alert-dialog-popup" {...props}>
         {children}
       </AlertDialog.Popup>
     </AlertDialogPortal>
@@ -50,19 +35,10 @@ function AlertDialogPopup({
 const AlertDialogContent = AlertDialogPopup;
 
 function AlertDialogTitle({ className, ...props }: AlertDialog.Title.Props) {
-  return (
-    <AlertDialog.Title
-      className={cn(styles.title, className)}
-      data-slot="alert-dialog-title"
-      {...props}
-    />
-  );
+  return <AlertDialog.Title className={cn(styles.title, className)} data-slot="alert-dialog-title" {...props} />;
 }
 
-function AlertDialogDescription({
-  className,
-  ...props
-}: AlertDialog.Description.Props) {
+function AlertDialogDescription({ className, ...props }: AlertDialog.Description.Props) {
   return (
     <AlertDialog.Description
       className={cn(styles.description, className)}
@@ -78,30 +54,12 @@ function AlertDialogClose({ ...props }: AlertDialog.Close.Props) {
 
 const AlertDialogOverlay = AlertDialogBackdrop;
 
-function AlertDialogHeader({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.header, className)}
-      data-slot="alert-dialog-header"
-      {...props}
-    />
-  );
+function AlertDialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.header, className)} data-slot="alert-dialog-header" {...props} />;
 }
 
-function AlertDialogFooter({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.footer, className)}
-      data-slot="alert-dialog-footer"
-      {...props}
-    />
-  );
+function AlertDialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.footer, className)} data-slot="alert-dialog-footer" {...props} />;
 }
 
 export {

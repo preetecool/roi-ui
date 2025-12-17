@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/brook/ui/tabs/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 
 export default function TabsVertical() {
   return (
@@ -23,8 +18,7 @@ export default function TabsVertical() {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Account Settings</h3>
             <p className="text-muted-foreground text-sm">
-              Make changes to your account here. Click save when you&apos;re
-              done.
+              Make changes to your account here. Click save when you&apos;re done.
             </p>
             <div className="flex gap-2">
               <Button size="sm">Save Changes</Button>
@@ -39,8 +33,7 @@ export default function TabsVertical() {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Password</h3>
             <p className="text-muted-foreground text-sm">
-              Change your password here. After saving, you&apos;ll be logged
-              out.
+              Change your password here. After saving, you&apos;ll be logged out.
             </p>
             <div className="flex gap-2">
               <Button size="sm">Update Password</Button>
@@ -54,9 +47,7 @@ export default function TabsVertical() {
         <TabsContent value="team">
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Team Management</h3>
-            <p className="text-muted-foreground text-sm">
-              Invite and manage your team members here.
-            </p>
+            <p className="text-muted-foreground text-sm">Invite and manage your team members here.</p>
             <div className="flex gap-2">
               <Button size="sm">Invite Member</Button>
               <Button size="sm" variant="outline">
@@ -69,9 +60,7 @@ export default function TabsVertical() {
         <TabsContent value="billing">
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Billing & Usage</h3>
-            <p className="text-muted-foreground text-sm">
-              View your billing information and payment methods.
-            </p>
+            <p className="text-muted-foreground text-sm">View your billing information and payment methods.</p>
             <div className="flex gap-2">
               <Button size="sm">Upgrade Plan</Button>
               <Button size="sm" variant="outline">

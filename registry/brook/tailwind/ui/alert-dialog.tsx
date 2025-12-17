@@ -14,10 +14,7 @@ function AlertDialogTrigger({ ...props }: AlertDialog.Trigger.Props) {
 
 const AlertDialogPortal = AlertDialog.Portal;
 
-function AlertDialogBackdrop({
-  className,
-  ...props
-}: AlertDialog.Backdrop.Props) {
+function AlertDialogBackdrop({ className, ...props }: AlertDialog.Backdrop.Props) {
   return (
     <AlertDialog.Backdrop
       className={cn(
@@ -31,11 +28,7 @@ function AlertDialogBackdrop({
   );
 }
 
-function AlertDialogPopup({
-  className,
-  children,
-  ...props
-}: AlertDialog.Popup.Props) {
+function AlertDialogPopup({ className, children, ...props }: AlertDialog.Popup.Props) {
   return (
     <AlertDialogPortal>
       <AlertDialogBackdrop />
@@ -66,26 +59,17 @@ const AlertDialogContent = AlertDialogPopup;
 function AlertDialogTitle({ className, ...props }: AlertDialog.Title.Props) {
   return (
     <AlertDialog.Title
-      className={cn(
-        "m-0 font-semibold text-foreground text-lg leading-none tracking-tight",
-        className
-      )}
+      className={cn("m-0 font-semibold text-foreground text-lg leading-none tracking-tight", className)}
       data-slot="alert-dialog-title"
       {...props}
     />
   );
 }
 
-function AlertDialogDescription({
-  className,
-  ...props
-}: AlertDialog.Description.Props) {
+function AlertDialogDescription({ className, ...props }: AlertDialog.Description.Props) {
   return (
     <AlertDialog.Description
-      className={cn(
-        "m-0 text-secondary-foreground text-sm leading-[1.5]",
-        className
-      )}
+      className={cn("m-0 text-secondary-foreground text-sm leading-[1.5]", className)}
       data-slot="alert-dialog-description"
       {...props}
     />
@@ -98,33 +82,20 @@ function AlertDialogClose({ ...props }: AlertDialog.Close.Props) {
 
 const AlertDialogOverlay = AlertDialogBackdrop;
 
-function AlertDialogHeader({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "flex flex-col gap-2 text-left [&_h2]:m-0 [&_p]:m-0",
-        className
-      )}
+      className={cn("flex flex-col gap-2 text-left [&_h2]:m-0 [&_p]:m-0", className)}
       data-slot="alert-dialog-header"
       {...props}
     />
   );
 }
 
-function AlertDialogFooter({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "flex flex-col-reverse gap-2",
-        "sm:flex-row sm:justify-end",
-        className
-      )}
+      className={cn("flex flex-col-reverse gap-2", "sm:flex-row sm:justify-end", className)}
       data-slot="alert-dialog-footer"
       {...props}
     />

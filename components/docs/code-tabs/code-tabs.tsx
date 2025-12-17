@@ -71,15 +71,8 @@ export function CodeTabs({
 
   return (
     <CodeTabsContext.Provider value={{ variant, containerRef }}>
-      <div
-        className={variant === "package" ? styles.packageContainer : undefined}
-        ref={containerRef}
-      >
-        <Tabs
-          defaultValue={defaultValue}
-          onValueChange={onValueChange}
-          value={value}
-        >
+      <div className={variant === "package" ? styles.packageContainer : undefined} ref={containerRef}>
+        <Tabs defaultValue={defaultValue} onValueChange={onValueChange} value={value}>
           {children}
         </Tabs>
       </div>
@@ -87,12 +80,7 @@ export function CodeTabs({
   );
 }
 
-export function CodeTabsList({
-  children,
-  showCopy = false,
-  showStyleSelector = false,
-  ...props
-}: CodeTabsListProps) {
+export function CodeTabsList({ children, showCopy = false, showStyleSelector = false, ...props }: CodeTabsListProps) {
   const { variant, containerRef } = React.use(CodeTabsContext);
   const [commandText, setCommandText] = React.useState("");
   const { style } = useStyle();
@@ -104,9 +92,7 @@ export function CodeTabsList({
   const currentCommandText = React.useMemo(() => {
     if (!commandText) return "";
     const styleSuffix = style === "tailwind" ? "-tailwind" : "";
-    return commandText
-      .replace("-tailwind", styleSuffix)
-      .replace("-css-modules", styleSuffix);
+    return commandText.replace("-tailwind", styleSuffix).replace("-css-modules", styleSuffix);
   }, [commandText, style]);
 
   React.useEffect(() => {
@@ -142,10 +128,7 @@ export function CodeTabsList({
   );
 }
 
-export function CodeTabsTrigger({
-  children,
-  ...props
-}: React.ComponentProps<typeof BaseTabsTrigger>) {
+export function CodeTabsTrigger({ children, ...props }: React.ComponentProps<typeof BaseTabsTrigger>) {
   const { variant } = React.use(CodeTabsContext);
 
   if (variant === "package") {
@@ -163,11 +146,7 @@ export function CodeTabsTrigger({
   );
 }
 
-export function CodeTabsContent({
-  children,
-  value,
-  ...props
-}: React.ComponentProps<typeof BaseTabsContent>) {
+export function CodeTabsContent({ children, value, ...props }: React.ComponentProps<typeof BaseTabsContent>) {
   const isManual = value === "manual";
 
   return (

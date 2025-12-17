@@ -140,6 +140,10 @@
   & [data-slot="carousel"] {
     border-radius: 2px;
   }
+
+  & [role="group"]:focus-visible {
+    border-radius: 2px;
+  }
 }
 
 .card {

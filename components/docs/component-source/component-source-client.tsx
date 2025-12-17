@@ -4,17 +4,9 @@ import { useEffect, useState } from "react";
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 import { withCodeTabsStyle } from "@/components/docs/code-tabs/with-code-tabs-style";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
-import {
-  type StyleVariant,
-  useStyle,
-} from "@/components/providers/style-provider";
+import { type StyleVariant, useStyle } from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/brook/ui/tabs/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 
 type ProcessedFile = {
   name: string;
@@ -34,15 +26,12 @@ type ComponentSourceClientProps = {
 // Create styled component using HOC
 const CodeTabsContent = withCodeTabsStyle(TabsContent, codeTabsStyles.content);
 
-export function ComponentSourceClient({
-  variants,
-}: ComponentSourceClientProps) {
+export function ComponentSourceClient({ variants }: ComponentSourceClientProps) {
   const { style } = useStyle();
   const [activeTab, setActiveTab] = useState(0);
 
   // Find the current variant based on the global style preference
-  const currentVariant =
-    variants.find((v) => v.variant === style) || variants[0];
+  const currentVariant = variants.find((v) => v.variant === style) || variants[0];
   const files = currentVariant.files;
 
   useEffect(() => {
@@ -56,10 +45,7 @@ export function ComponentSourceClient({
 
   return (
     <div className={codeTabsStyles.wrapper}>
-      <Tabs
-        onValueChange={(val: number) => setActiveTab(val)}
-        value={safeActiveTab}
-      >
+      <Tabs onValueChange={(val: number) => setActiveTab(val)} value={safeActiveTab}>
         <div className={codeTabsStyles.header}>
           <TabsList>
             {files.map((file, index) => (

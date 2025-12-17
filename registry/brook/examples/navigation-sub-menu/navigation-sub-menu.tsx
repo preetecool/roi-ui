@@ -34,9 +34,7 @@ export default function NavigationSubMenu() {
               <li className={styles.linkListItem}>
                 <NavigationMenuLink render={<Link href="#" />}>
                   <h3 className={styles.linkListItemHeading}>Button</h3>
-                  <p className={styles.linkListItemText}>
-                    Interactive button component
-                  </p>
+                  <p className={styles.linkListItemText}>Interactive button component</p>
                 </NavigationMenuLink>
               </li>
 
@@ -55,9 +53,7 @@ export default function NavigationSubMenu() {
                         <div className={styles.linkItemWithIcon}>
                           <div>
                             <h3 className={styles.linkListItemHeading}>More</h3>
-                            <p className={styles.linkListItemText}>
-                              Additional components
-                            </p>
+                            <p className={styles.linkListItemText}>Additional components</p>
                           </div>
                           <NavigationMenuIcon>
                             <ChevronDown size={16} />
@@ -70,42 +66,26 @@ export default function NavigationSubMenu() {
                       <ul className={styles.subMenuList}>
                         <li className={styles.linkListItem}>
                           <NavigationMenuLink render={<Link href="#" />}>
-                            <h3 className={styles.linkListItemHeading}>
-                              Dialog
-                            </h3>
-                            <p className={styles.linkListItemText}>
-                              Modal dialogs
-                            </p>
+                            <h3 className={styles.linkListItemHeading}>Dialog</h3>
+                            <p className={styles.linkListItemText}>Modal dialogs</p>
                           </NavigationMenuLink>
                         </li>
                         <li className={styles.linkListItem}>
                           <NavigationMenuLink render={<Link href="#" />}>
-                            <h3 className={styles.linkListItemHeading}>
-                              Popover
-                            </h3>
-                            <p className={styles.linkListItemText}>
-                              Floating content
-                            </p>
+                            <h3 className={styles.linkListItemHeading}>Popover</h3>
+                            <p className={styles.linkListItemText}>Floating content</p>
                           </NavigationMenuLink>
                         </li>
                         <li className={styles.linkListItem}>
                           <NavigationMenuLink render={<Link href="#" />}>
-                            <h3 className={styles.linkListItemHeading}>
-                              Tooltip
-                            </h3>
-                            <p className={styles.linkListItemText}>
-                              Helpful hints
-                            </p>
+                            <h3 className={styles.linkListItemHeading}>Tooltip</h3>
+                            <p className={styles.linkListItemText}>Helpful hints</p>
                           </NavigationMenuLink>
                         </li>
                         <li className={styles.linkListItem}>
                           <NavigationMenuLink render={<Link href="#" />}>
-                            <h3 className={styles.linkListItemHeading}>
-                              Accordion
-                            </h3>
-                            <p className={styles.linkListItemText}>
-                              Collapsible sections
-                            </p>
+                            <h3 className={styles.linkListItemHeading}>Accordion</h3>
+                            <p className={styles.linkListItemText}>Collapsible sections</p>
                           </NavigationMenuLink>
                         </li>
                       </ul>
@@ -113,11 +93,7 @@ export default function NavigationSubMenu() {
                   </NavigationMenuItem>
 
                   <NavigationMenuPortal>
-                    <NavigationMenuPositioner
-                      alignOffset={-50}
-                      side="right"
-                      sideOffset={8}
-                    >
+                    <NavigationMenuPositioner alignOffset={-50} side="right" sideOffset={8}>
                       <NavigationMenuPopup>
                         <NavigationMenuArrow />
                         <NavigationMenuViewport />
@@ -130,9 +106,7 @@ export default function NavigationSubMenu() {
               <li className={styles.linkListItem}>
                 <NavigationMenuLink render={<Link href="#" />}>
                   <h3 className={styles.linkListItemHeading}>Table</h3>
-                  <p className={styles.linkListItemText}>
-                    Data tables and grids
-                  </p>
+                  <p className={styles.linkListItemText}>Data tables and grids</p>
                 </NavigationMenuLink>
               </li>
             </ul>

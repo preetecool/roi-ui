@@ -3,15 +3,7 @@
 import { useRender } from "@base-ui/react/use-render";
 import { useControlled } from "@base-ui/utils/useControlled";
 import type { CSSProperties } from "react";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import styles from "./sidebar.module.css";
@@ -34,23 +26,15 @@ type RovingTabindexContextValue = {
   elements: { current: Map<string, HTMLElement> };
 };
 
-const RovingTabindexContext = createContext<
-  RovingTabindexContextValue | undefined
->(undefined);
+const RovingTabindexContext = createContext<RovingTabindexContextValue | undefined>(undefined);
 
 // Helper functions for roving tabindex navigation
-function getNextFocusableId(
-  items: RovingTabindexItem[],
-  id: string
-): RovingTabindexItem | undefined {
+function getNextFocusableId(items: RovingTabindexItem[], id: string): RovingTabindexItem | undefined {
   const currIndex = items.findIndex((item) => item.id === id);
   return items.at(currIndex === items.length - 1 ? 0 : currIndex + 1);
 }
 
-function getPrevFocusableId(
-  items: RovingTabindexItem[],
-  id: string
-): RovingTabindexItem | undefined {
+function getPrevFocusableId(items: RovingTabindexItem[], id: string): RovingTabindexItem | undefined {
   const currIndex = items.findIndex((item) => item.id === id);
   return items.at(currIndex === 0 ? -1 : currIndex - 1);
 }
@@ -65,9 +49,7 @@ type SidebarContextValue = {
   toggleSidebar: () => void;
 };
 
-const SidebarContext = createContext<SidebarContextValue | undefined>(
-  undefined
-);
+const SidebarContext = createContext<SidebarContextValue | undefined>(undefined);
 
 /**
  * Hook to access sidebar context
@@ -159,18 +141,14 @@ function SidebarProvider({
   );
 
   const toggleSidebar = useCallback(
-    () =>
-      isMobile ? setOpenMobile((isOpen) => !isOpen) : handleOpenChange(!open),
+    () => (isMobile ? setOpenMobile((isOpen) => !isOpen) : handleOpenChange(!open)),
     [isMobile, handleOpenChange, open]
   );
 
   // Keyboard shortcut
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-        (event.metaKey || event.ctrlKey)
-      ) {
+      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         toggleSidebar();
       }
@@ -271,12 +249,7 @@ function Sidebar({
 
   if (collapsible === "none") {
     return (
-      <aside
-        className={cn(styles.sidebar, className)}
-        data-collapsible="none"
-        data-slot="sidebar"
-        {...props}
-      >
+      <aside className={cn(styles.sidebar, className)} data-collapsible="none" data-slot="sidebar" {...props}>
         {children}
       </aside>
     );
@@ -312,11 +285,7 @@ function Sidebar({
         onMouseLeave={() => setIsHovering(false)}
         role="none"
       >
-        <aside
-          className={cn(styles.sidebar, className)}
-          data-slot="sidebar"
-          {...props}
-        >
+        <aside className={cn(styles.sidebar, className)} data-slot="sidebar" {...props}>
           {children}
         </aside>
       </div>
@@ -339,12 +308,7 @@ function Sidebar({
 /**
  * SidebarTrigger - Button to toggle sidebar
  */
-function SidebarTrigger({
-  render,
-  className,
-  onClick,
-  ...props
-}: useRender.ComponentProps<"button">) {
+function SidebarTrigger({ render, className, onClick, ...props }: useRender.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebar();
 
   return useRender({
@@ -387,106 +351,52 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
  * SidebarHeader - Sticky header at the top
  */
 function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.header, className)}
-      data-slot="sidebar-header"
-      {...props}
-    />
-  );
+  return <div className={cn(styles.header, className)} data-slot="sidebar-header" {...props} />;
 }
 
 /**
  * SidebarContent - Scrollable content area
  */
 function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.content, className)}
-      data-slot="sidebar-content"
-      {...props}
-    />
-  );
+  return <div className={cn(styles.content, className)} data-slot="sidebar-content" {...props} />;
 }
 
 /**
  * SidebarGroup - Section within content
  */
 function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.group, className)}
-      data-slot="sidebar-group"
-      {...props}
-    />
-  );
+  return <div className={cn(styles.group, className)} data-slot="sidebar-group" {...props} />;
 }
 
 /**
  * SidebarGroupLabel - Label for a group
  */
-function SidebarGroupLabel({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.groupLabel, className)}
-      data-slot="sidebar-group-label"
-      {...props}
-    />
-  );
+function SidebarGroupLabel({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.groupLabel, className)} data-slot="sidebar-group-label" {...props} />;
 }
 
 /**
  * SidebarGroupContent - Content wrapper for a group
  */
-function SidebarGroupContent({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.groupContent, className)}
-      data-slot="sidebar-group-content"
-      {...props}
-    />
-  );
+function SidebarGroupContent({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.groupContent, className)} data-slot="sidebar-group-content" {...props} />;
 }
 
 /**
  * SidebarFooter - Sticky footer at the bottom
  */
 function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.footer, className)}
-      data-slot="sidebar-footer"
-      {...props}
-    />
-  );
+  return <div className={cn(styles.footer, className)} data-slot="sidebar-footer" {...props} />;
 }
 
 /**
  * SidebarClose - Close button
  */
-function SidebarClose({
-  render,
-  className,
-  onClick,
-  children,
-  ...props
-}: useRender.ComponentProps<"button">) {
+function SidebarClose({ render, className, onClick, children, ...props }: useRender.ComponentProps<"button">) {
   const { setOpen, setOpenMobile, isMobile } = useSidebar();
 
   const defaultIcon = (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      height="16"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg aria-hidden="true" fill="none" height="16" viewBox="0 0 24 24" width="16">
       <path
         d="M18 6L6 18M6 6l12 12"
         stroke="currentColor"
@@ -532,16 +442,10 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
     if (!menuRef.current) {
       return [];
     }
-    const elementsFromDOM = Array.from(
-      menuRef.current.querySelectorAll<HTMLElement>(
-        "[data-roving-tabindex-item]"
-      )
-    );
+    const elementsFromDOM = Array.from(menuRef.current.querySelectorAll<HTMLElement>("[data-roving-tabindex-item]"));
 
     return Array.from(elements.current)
-      .sort(
-        (a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1])
-      )
+      .sort((a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]))
       .map(([id, element]) => ({ id, element }));
   }, []);
 
@@ -590,13 +494,7 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
  * SidebarMenuItem - Individual menu item
  */
 function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
-  return (
-    <li
-      className={cn(styles.menuItem, className)}
-      data-slot="sidebar-menu-item"
-      {...props}
-    />
-  );
+  return <li className={cn(styles.menuItem, className)} data-slot="sidebar-menu-item" {...props} />;
 }
 
 const ID_START_INDEX = 2;
@@ -682,11 +580,7 @@ function SidebarMenuButton({
       type: "button",
       "data-slot": "sidebar-menu-button",
       "data-active": isActive ? "" : undefined,
-      className: cn(
-        styles.menuButton,
-        isActive && styles.menuButtonActive,
-        className
-      ),
+      className: cn(styles.menuButton, isActive && styles.menuButtonActive, className),
       onKeyDown: handleKeyDown,
       onMouseDown: handleMouseDown,
       onFocus: handleFocus,
@@ -697,11 +591,7 @@ function SidebarMenuButton({
 /**
  * SidebarMenuAction - Action button for menu items
  */
-function SidebarMenuAction({
-  render,
-  className,
-  ...props
-}: useRender.ComponentProps<"button">) {
+function SidebarMenuAction({ render, className, ...props }: useRender.ComponentProps<"button">) {
   return useRender({
     defaultTagName: "button",
     render,
@@ -718,29 +608,14 @@ function SidebarMenuAction({
  * SidebarMenuSub - Submenu container
  */
 function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
-  return (
-    <ul
-      className={cn(styles.menuSub, className)}
-      data-slot="sidebar-menu-sub"
-      {...props}
-    />
-  );
+  return <ul className={cn(styles.menuSub, className)} data-slot="sidebar-menu-sub" {...props} />;
 }
 
 /**
  * SidebarMenuSubItem - Submenu item
  */
-function SidebarMenuSubItem({
-  className,
-  ...props
-}: React.ComponentProps<"li">) {
-  return (
-    <li
-      className={cn(styles.menuSubItem, className)}
-      data-slot="sidebar-menu-sub-item"
-      {...props}
-    />
-  );
+function SidebarMenuSubItem({ className, ...props }: React.ComponentProps<"li">) {
+  return <li className={cn(styles.menuSubItem, className)} data-slot="sidebar-menu-sub-item" {...props} />;
 }
 
 /**
@@ -761,11 +636,7 @@ function SidebarMenuSubButton({
       ...props,
       "data-slot": "sidebar-menu-sub-button",
       "data-active": isActive ? "" : undefined,
-      className: cn(
-        styles.menuSubButton,
-        isActive && styles.menuSubButtonActive,
-        className
-      ),
+      className: cn(styles.menuSubButton, isActive && styles.menuSubButtonActive, className),
     },
   });
 }

@@ -19,8 +19,7 @@ const accordionItems = [
   {
     id: "item-2",
     title: "How does billing work?",
-    content:
-      "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
+    content: "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
   },
   {
     id: "item-3",
@@ -36,13 +35,9 @@ export default function AccordionMinimal() {
       {accordionItems.map((item) => (
         <AccordionItem className={styles.item} key={item.id} value={item.id}>
           <AccordionHeader className={styles.header}>
-            <AccordionTrigger className={styles.trigger}>
-              {item.title}
-            </AccordionTrigger>
+            <AccordionTrigger className={styles.trigger}>{item.title}</AccordionTrigger>
           </AccordionHeader>
-          <AccordionPanel className={styles.panel}>
-            {item.content}
-          </AccordionPanel>
+          <AccordionPanel className={styles.panel}>{item.content}</AccordionPanel>
         </AccordionItem>
       ))}
     </Accordion>

@@ -28,7 +28,4 @@ async function getVariantsCached(name: string): Promise<ProcessedVariant[]> {
  * In development: no caching for instant updates
  * In production: cached with component-specific tags
  */
-export const getCachedVariants =
-  process.env.NODE_ENV === "development"
-    ? getVariantsUncached
-    : getVariantsCached;
+export const getCachedVariants = process.env.NODE_ENV === "development" ? getVariantsUncached : getVariantsCached;

@@ -50,10 +50,7 @@ function DialogPopup({ className, ...props }: Dialog.Popup.Props) {
 function DialogTitle({ className, ...props }: Dialog.Title.Props) {
   return (
     <Dialog.Title
-      className={cn(
-        "m-0 font-semibold text-foreground text-lg leading-none tracking-[-0.008em]",
-        className
-      )}
+      className={cn("m-0 font-semibold text-foreground text-lg leading-none tracking-[-0.008em]", className)}
       data-slot="dialog-title"
       {...props}
     />
@@ -63,10 +60,7 @@ function DialogTitle({ className, ...props }: Dialog.Title.Props) {
 function DialogDescription({ className, ...props }: Dialog.Description.Props) {
   return (
     <Dialog.Description
-      className={cn(
-        "m-0 text-muted-foreground text-sm leading-normal",
-        className
-      )}
+      className={cn("m-0 text-muted-foreground text-sm leading-normal", className)}
       data-slot="dialog-description"
       {...props}
     />

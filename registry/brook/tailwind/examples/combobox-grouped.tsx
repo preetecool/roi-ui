@@ -84,11 +84,7 @@ export default function ComboboxGrouped() {
                     <ComboboxGroup key={group.label}>
                       <ComboboxGroupLabel>{group.label}</ComboboxGroupLabel>
                       {group.items.map((item) => (
-                        <ComboboxItem
-                          indicatorPosition="right"
-                          key={item.value}
-                          value={item}
-                        >
+                        <ComboboxItem indicatorPosition="right" key={item.value} value={item}>
                           <span className="flex-1">{item.label}</span>
                         </ComboboxItem>
                       ))}

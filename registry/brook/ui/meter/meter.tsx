@@ -17,23 +17,11 @@ function MeterTrack({ className, ...props }: Meter.Track.Props) {
 }
 
 function MeterIndicator({ className, ...props }: Meter.Indicator.Props) {
-  return (
-    <Meter.Indicator
-      className={cn(styles.indicator, className)}
-      data-slot="meter-indicator"
-      {...props}
-    />
-  );
+  return <Meter.Indicator className={cn(styles.indicator, className)} data-slot="meter-indicator" {...props} />;
 }
 
 function MeterValue({ className, ...props }: Meter.Value.Props) {
   return <Meter.Value className={cn(styles.value, className)} {...props} />;
 }
 
-export {
-  MeterRoot as Meter,
-  MeterIndicator,
-  MeterLabel,
-  MeterTrack,
-  MeterValue,
-};
+export { MeterRoot as Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue };

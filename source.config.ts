@@ -1,10 +1,6 @@
 import rehypeShiki from "@shikijs/rehype";
 import { rehypeToc } from "fumadocs-core/mdx-plugins";
-import {
-  defineConfig,
-  defineDocs,
-  frontmatterSchema,
-} from "fumadocs-mdx/config";
+import { defineConfig, defineDocs, frontmatterSchema } from "fumadocs-mdx/config";
 import { getSingletonHighlighter } from "shiki";
 import { z } from "zod";
 import { transformers } from "@/lib/shiki-transformers";
@@ -20,15 +16,7 @@ export default defineConfig({
           getHighlighter: () =>
             getSingletonHighlighter({
               themes: ["github-light", "github-dark"],
-              langs: [
-                "tsx",
-                "jsx",
-                "css",
-                "bash",
-                "json",
-                "typescript",
-                "javascript",
-              ],
+              langs: ["tsx", "jsx", "css", "bash", "json", "typescript", "javascript"],
             }),
           themes: {
             dark: "github-dark",

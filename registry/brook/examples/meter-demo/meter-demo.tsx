@@ -1,10 +1,4 @@
-import {
-  Meter,
-  MeterIndicator,
-  MeterLabel,
-  MeterTrack,
-  MeterValue,
-} from "@/registry/brook/ui/meter/meter";
+import { Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue } from "@/registry/brook/ui/meter/meter";
 import styles from "./meter-demo.module.css";
 
 export default function MeterDemo() {

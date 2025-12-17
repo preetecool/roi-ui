@@ -63,13 +63,7 @@ function Badge({
   size,
   ...props
 }: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
-  return (
-    <span
-      className={cn(badgeVariants({ variant, size }), className)}
-      data-slot="badge"
-      {...props}
-    />
-  );
+  return <span className={cn(badgeVariants({ variant, size }), className)} data-slot="badge" {...props} />;
 }
 
 /**
@@ -88,13 +82,7 @@ function Badge({
  * ```
  */
 function BadgeIcon({ className, ...props }: React.ComponentProps<"span">) {
-  return (
-    <span
-      className={cn(styles.iconContainer, className)}
-      data-slot="badge-icon"
-      {...props}
-    />
-  );
+  return <span className={cn(styles.iconContainer, className)} data-slot="badge-icon" {...props} />;
 }
 
 export { Badge, BadgeIcon };

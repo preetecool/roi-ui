@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/registry/brook/tailwind/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/registry/brook/tailwind/ui/table";
 
 export default function TableDemo() {
   const invoices = [

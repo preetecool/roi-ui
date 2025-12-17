@@ -1,10 +1,10 @@
 "use client";
 
-import type { PageTree } from "@/lib/source-types";
 import { Gauge, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
+import type { PageTree } from "@/lib/source-types";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./docs-sidebar.module.css";
 
@@ -32,11 +32,7 @@ export function DocsSidebar({ tree }: DocsSidebarProps) {
       <div className={styles.content}>
         {tree.children.map((item: TreeNode, index: number) => (
           <div className={styles.group} key={item.$id || `item-${index}`}>
-            <DocsSidebarGroup
-              item={item as SidebarItem}
-              level={0}
-              pathname={pathname}
-            />
+            <DocsSidebarGroup item={item as SidebarItem} level={0} pathname={pathname} />
           </div>
         ))}
       </div>
@@ -51,15 +47,7 @@ function getIconForItem(itemName: string) {
     return <Gauge size={16} />;
   }
   if (name === "about roi ui" || name === "intro") {
-    return (
-      <Logo
-        fillColor="transparent"
-        height={16}
-        strokeColor="currentColor"
-        strokeWidth={20}
-        width={16}
-      />
-    );
+    return <Logo fillColor="transparent" height={16} strokeColor="currentColor" strokeWidth={20} width={16} />;
   }
   if (name === "components") {
     return <Puzzle size={16} />;
@@ -68,15 +56,7 @@ function getIconForItem(itemName: string) {
   return null;
 }
 
-function DocsSidebarGroup({
-  item,
-  pathname,
-  level = 0,
-}: {
-  item: SidebarItem;
-  pathname: string;
-  level?: number;
-}) {
+function DocsSidebarGroup({ item, pathname, level = 0 }: { item: SidebarItem; pathname: string; level?: number }) {
   const hasChildren = Boolean(item.children && item.children.length > 0);
   const isActive = pathname === item.url;
 
@@ -109,11 +89,7 @@ function DocsSidebarGroup({
         <ul className={styles.groupContent}>
           {item.children?.map((child, index) => (
             <li key={child.$id || `child-${index}`}>
-              <DocsSidebarGroup
-                item={child}
-                level={level + 1}
-                pathname={pathname}
-              />
+              <DocsSidebarGroup item={child} level={level + 1} pathname={pathname} />
             </li>
           ))}
         </ul>

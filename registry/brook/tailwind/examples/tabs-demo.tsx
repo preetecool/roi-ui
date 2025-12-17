@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/brook/tailwind/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/tailwind/ui/tabs";
 
 const tabs = [
   { id: "account", label: "Account" },
@@ -29,12 +24,9 @@ export default function TabsBasic() {
         <TabsContent value="account">
           <div className="flex flex-col gap-6">
             <div>
-              <span className="!m-0 !text-[18px] font-semibold leading-7">
-                Account Settings
-              </span>
+              <span className="!m-0 !text-[18px] font-semibold leading-7">Account Settings</span>
               <p className="text-muted-foreground text-sm leading-5">
-                Make changes to your account here. Click save when you&apos;re
-                done.
+                Make changes to your account here. Click save when you&apos;re done.
               </p>
             </div>
             <div className="flex gap-2 max-[640px]:flex-col">
@@ -49,12 +41,9 @@ export default function TabsBasic() {
         <TabsContent value="password">
           <div className="flex flex-col gap-6">
             <div>
-              <span className="!m-0 !text-[18px] font-semibold leading-7">
-                Password
-              </span>
+              <span className="!m-0 !text-[18px] font-semibold leading-7">Password</span>
               <p className="text-muted-foreground text-sm leading-5">
-                Change your password here. After saving, you&apos;ll be logged
-                out.
+                Change your password here. After saving, you&apos;ll be logged out.
               </p>
             </div>
             <div className="flex gap-2 max-[640px]:flex-col">
@@ -69,12 +58,8 @@ export default function TabsBasic() {
         <TabsContent value="team">
           <div className="flex flex-col gap-6">
             <div>
-              <span className="!m-0 !text-[18px] font-semibold leading-7">
-                Team Management
-              </span>
-              <p className="text-muted-foreground text-sm leading-5">
-                Invite and manage your team members here.
-              </p>
+              <span className="!m-0 !text-[18px] font-semibold leading-7">Team Management</span>
+              <p className="text-muted-foreground text-sm leading-5">Invite and manage your team members here.</p>
             </div>
             <div className="flex gap-2 max-[640px]:flex-col">
               <Button size="sm">Invite Member</Button>

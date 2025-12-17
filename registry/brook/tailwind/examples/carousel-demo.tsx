@@ -2,12 +2,7 @@
 
 import { Palette, Plus, Shield, Users, Zap } from "lucide-react";
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardIcon,
-  CardTitle,
-} from "@/registry/brook/tailwind/ui/card";
+import { Card, CardDescription, CardIcon, CardTitle } from "@/registry/brook/tailwind/ui/card";
 import { Carousel } from "@/registry/brook/tailwind/ui/carousel";
 
 export default function CarouselDemo() {
@@ -16,40 +11,30 @@ export default function CarouselDemo() {
       id: "performance",
       icon: <Zap strokeWidth={1.5} />,
       title: "Performance",
-      description:
-        "Instant loading and millisecond response times for optimal user experience.",
+      description: "Instant loading and millisecond response times for optimal user experience.",
     },
     {
       id: "security",
       icon: <Shield strokeWidth={1.5} />,
       title: "Security",
-      description:
-        "Bank-level encryption keeps your data protected and compliant.",
+      description: "Bank-level encryption keeps your data protected and compliant.",
     },
     {
       id: "customization",
       icon: <Palette strokeWidth={1.5} />,
       title: "Customize",
-      description:
-        "Tailor every aspect to match your brand with flexible theming and configuration options.",
+      description: "Tailor every aspect to match your brand with flexible theming and configuration options.",
     },
     {
       id: "collaboration",
       icon: <Users strokeWidth={1.5} />,
       title: "Collaboration",
-      description:
-        "Work together seamlessly with real-time collaboration tools.",
+      description: "Work together seamlessly with real-time collaboration tools.",
     },
   ];
 
   return (
-    <Carousel.Root
-      align="start"
-      className="max-sm:-ml-[10vw]"
-      gap={8}
-      totalItems={features.length}
-      variant="inset"
-    >
+    <Carousel.Root align="start" className="max-sm:-ml-[10vw]" gap={8} totalItems={features.length} variant="inset">
       <Carousel.Viewport>
         <Carousel.Content>
           {features.map((feature, index) => (
@@ -62,9 +47,7 @@ export default function CarouselDemo() {
                 </div>
                 <div className="-m-[1rem] mt-0 grid h-1/2 grid-cols-[1fr_auto] gap-4 border-[color:oklch(from_var(--color-border)_l_c_h_/_0.5)] border-t-[0.5px] p-4 max-sm:p-4">
                   <div className="flex flex-col gap-2 max-sm:gap-1.5">
-                    <CardTitle className="m-0 text-lg leading-none max-sm:text-[1.0625rem]">
-                      {feature.title}
-                    </CardTitle>
+                    <CardTitle className="m-0 text-lg leading-none max-sm:text-[1.0625rem]">{feature.title}</CardTitle>
                     <CardDescription>{feature.description}</CardDescription>
                   </div>
                   <Button

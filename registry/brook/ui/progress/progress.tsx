@@ -17,23 +17,11 @@ function ProgressTrack({ className, ...props }: Progress.Track.Props) {
 }
 
 function ProgressIndicator({ className, ...props }: Progress.Indicator.Props) {
-  return (
-    <Progress.Indicator
-      className={cn(styles.indicator, className)}
-      data-slot="progress-indicator"
-      {...props}
-    />
-  );
+  return <Progress.Indicator className={cn(styles.indicator, className)} data-slot="progress-indicator" {...props} />;
 }
 
 function ProgressValue({ className, ...props }: Progress.Value.Props) {
   return <Progress.Value className={cn(styles.value, className)} {...props} />;
 }
 
-export {
-  ProgressRoot as Progress,
-  ProgressIndicator,
-  ProgressLabel,
-  ProgressTrack,
-  ProgressValue,
-};
+export { ProgressRoot as Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue };

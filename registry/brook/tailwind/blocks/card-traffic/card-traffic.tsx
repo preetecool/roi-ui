@@ -3,12 +3,7 @@
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/registry/brook/tailwind/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
 import {
   type ChartConfig,
   ChartContainer,
@@ -24,11 +19,7 @@ const CHART_START_DAY = 14;
 const formatDate = (value: unknown) => {
   const dayNumber = Math.round(Number(value));
 
-  const startDate = new Date(
-    CHART_START_YEAR,
-    CHART_START_MONTH,
-    CHART_START_DAY
-  );
+  const startDate = new Date(CHART_START_YEAR, CHART_START_MONTH, CHART_START_DAY);
   const currentDate = new Date(startDate);
   currentDate.setDate(startDate.getDate() + (dayNumber - 1));
 
@@ -106,9 +97,7 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
-              Mobile
-            </span>
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Mobile</span>
           </div>
           <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
             25,010
@@ -123,9 +112,7 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
-              Desktop
-            </span>
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Desktop</span>
           </div>
           <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
             12,840
@@ -140,9 +127,7 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
-              Bounce Rate
-            </span>
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Bounce Rate</span>
             <Badge size="sm" variant="success">
               -3.4%
             </Badge>
@@ -160,9 +145,7 @@ export function CardTraffic() {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">
-              Conversion
-            </span>
+            <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Conversion</span>
             <Badge size="sm" variant="destructive">
               -0.9%
             </Badge>

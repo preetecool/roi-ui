@@ -20,9 +20,7 @@ console.log(`Scanning ${files.length} files...`);
 for (const file of files) {
   try {
     const content = readFileSync(file, "utf-8");
-    const updatedContent = content
-      .split("@/lib/utils-tailwind")
-      .join("@/lib/utils");
+    const updatedContent = content.split("@/lib/utils-tailwind").join("@/lib/utils");
 
     if (content !== updatedContent) {
       writeFileSync(file, updatedContent, "utf-8");

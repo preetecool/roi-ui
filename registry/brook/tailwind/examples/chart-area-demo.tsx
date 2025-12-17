@@ -32,26 +32,12 @@ const chartConfig = {
 export default function ChartAreaDemo() {
   return (
     <div className="flex h-full w-full flex-col">
-      <ChartContainer
-        className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]"
-        config={chartConfig}
-      >
-        <AreaChart
-          data={chartData}
-          margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
-        >
+      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
+        <AreaChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="fillRevenue" x1="0" x2="0" y1="0" y2="1">
-              <stop
-                offset="0%"
-                stopColor="var(--color-revenue)"
-                stopOpacity={0.3}
-              />
-              <stop
-                offset="100%"
-                stopColor="var(--color-revenue)"
-                stopOpacity={0.1}
-              />
+              <stop offset="0%" stopColor="var(--color-revenue)" stopOpacity={0.3} />
+              <stop offset="100%" stopColor="var(--color-revenue)" stopOpacity={0.1} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -62,13 +48,7 @@ export default function ChartAreaDemo() {
             tickLine={false}
             tickMargin={8}
           />
-          <YAxis
-            axisLine={false}
-            domain={[0, "auto"]}
-            tickLine={false}
-            tickMargin={8}
-            width={40}
-          />
+          <YAxis axisLine={false} domain={[0, "auto"]} tickLine={false} tickMargin={8} width={40} />
           <ChartTooltip content={<ChartTooltipContent labelKey="year" />} />
           <Area
             animationDuration={800}

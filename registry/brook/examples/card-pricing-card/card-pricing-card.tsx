@@ -22,12 +22,7 @@ export function CardPricingCard() {
         <CardHeader>
           <div className={styles.headerContainer}>
             <div className={styles.logoContainer}>
-              <Logo
-                fillColor=" var(--muted-foreground)"
-                height={36}
-                strokeColor="var(--card)"
-                width={36}
-              />
+              <Logo fillColor=" var(--muted-foreground)" height={36} strokeColor="var(--card)" width={36} />
             </div>
             <CardTitle>Roi UI</CardTitle>
             <CardDescription>Free/Forever</CardDescription>
@@ -37,34 +32,26 @@ export function CardPricingCard() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
             <div className={styles.featureContainer}>
               <div className={styles.checkIcon}>
                 <Check size={10} strokeWidth={3} />
               </div>
-              <span className={styles.featureText}>
-                Over 30 components to help you build
-              </span>
+              <span className={styles.featureText}>Over 30 components to help you build</span>
             </div>
 
             <div className={styles.featureContainer}>
               <div className={styles.checkIcon}>
                 <Check size={10} strokeWidth={3} />
               </div>
-              <span className={styles.featureText}>
-                Components with stunning animations
-              </span>
+              <span className={styles.featureText}>Components with stunning animations</span>
             </div>
 
             <div className={styles.featureContainer}>
               <div className={styles.checkIcon}>
                 <Check size={10} strokeWidth={3} />
               </div>
-              <span className={styles.featureText}>
-                Using Base UI primitives
-              </span>
+              <span className={styles.featureText}>Using Base UI primitives</span>
             </div>
           </div>
         </CardContent>

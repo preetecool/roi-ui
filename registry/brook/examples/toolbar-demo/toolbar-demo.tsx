@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/brook/ui/toggle-group/toggle-group";
-import {
-  Toolbar,
-  ToolbarLink,
-  ToolbarSeparator,
-} from "@/registry/brook/ui/toolbar/toolbar";
+import { ToggleGroup, ToggleGroupItem } from "@/registry/brook/ui/toggle-group/toggle-group";
+import { Toolbar, ToolbarLink, ToolbarSeparator } from "@/registry/brook/ui/toolbar/toolbar";
 import {
   Tooltip,
   TooltipArrow,
@@ -22,14 +15,7 @@ import styles from "./toolbar-demo.module.css";
 
 function BoldIcon() {
   return (
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg fill="none" height="16" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="16">
       <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" />
       <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" />
     </svg>
@@ -38,14 +24,7 @@ function BoldIcon() {
 
 function ItalicIcon() {
   return (
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg fill="none" height="16" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="16">
       <line x1="19" x2="10" y1="4" y2="4" />
       <line x1="14" x2="5" y1="20" y2="20" />
       <line x1="15" x2="9" y1="4" y2="20" />
@@ -55,14 +34,7 @@ function ItalicIcon() {
 
 function UnderlineIcon() {
   return (
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg fill="none" height="16" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="16">
       <path d="M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3" />
       <line x1="4" x2="20" y1="21" y2="21" />
     </svg>
@@ -71,14 +43,7 @@ function UnderlineIcon() {
 
 function AlignLeftIcon() {
   return (
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg fill="none" height="16" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="16">
       <line x1="21" x2="3" y1="6" y2="6" />
       <line x1="15" x2="3" y1="12" y2="12" />
       <line x1="17" x2="3" y1="18" y2="18" />
@@ -88,14 +53,7 @@ function AlignLeftIcon() {
 
 function AlignCenterIcon() {
   return (
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg fill="none" height="16" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="16">
       <line x1="18" x2="6" y1="6" y2="6" />
       <line x1="21" x2="3" y1="12" y2="12" />
       <line x1="18" x2="6" y1="18" y2="18" />
@@ -105,14 +63,7 @@ function AlignCenterIcon() {
 
 function AlignRightIcon() {
   return (
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg fill="none" height="16" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="16">
       <line x1="21" x2="9" y1="6" y2="6" />
       <line x1="21" x2="3" y1="12" y2="12" />
       <line x1="21" x2="7" y1="18" y2="18" />

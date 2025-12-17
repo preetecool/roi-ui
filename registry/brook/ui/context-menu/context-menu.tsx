@@ -11,38 +11,19 @@ function ContextMenuRoot({ ...props }: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props} />;
 }
 
-function ContextMenuTrigger({
-  className,
-  ...props
-}: ContextMenu.Trigger.Props) {
-  return (
-    <ContextMenu.Trigger
-      className={cn(styles.trigger, className)}
-      data-slot="contextmenu-trigger"
-      {...props}
-    />
-  );
+function ContextMenuTrigger({ className, ...props }: ContextMenu.Trigger.Props) {
+  return <ContextMenu.Trigger className={cn(styles.trigger, className)} data-slot="contextmenu-trigger" {...props} />;
 }
 
 const ContextMenuPortal = ContextMenu.Portal;
 
-function ContextMenuBackdrop({
-  className,
-  ...props
-}: ContextMenu.Backdrop.Props) {
+function ContextMenuBackdrop({ className, ...props }: ContextMenu.Backdrop.Props) {
   return (
-    <ContextMenu.Backdrop
-      className={cn(styles.backdrop, className)}
-      data-slot="contextmenu-backdrop"
-      {...props}
-    />
+    <ContextMenu.Backdrop className={cn(styles.backdrop, className)} data-slot="contextmenu-backdrop" {...props} />
   );
 }
 
-function ContextMenuPositioner({
-  className,
-  ...props
-}: ContextMenu.Positioner.Props) {
+function ContextMenuPositioner({ className, ...props }: ContextMenu.Positioner.Props) {
   return (
     <ContextMenu.Positioner
       className={cn(styles.positioner, className)}
@@ -53,23 +34,11 @@ function ContextMenuPositioner({
 }
 
 function ContextMenuPopup({ className, ...props }: ContextMenu.Popup.Props) {
-  return (
-    <ContextMenu.Popup
-      className={cn(styles.popup, className)}
-      data-slot="contextmenu-popup"
-      {...props}
-    />
-  );
+  return <ContextMenu.Popup className={cn(styles.popup, className)} data-slot="contextmenu-popup" {...props} />;
 }
 
 function ContextMenuArrow({ className, ...props }: ContextMenu.Arrow.Props) {
-  return (
-    <ContextMenu.Arrow
-      className={cn(styles.arrow, className)}
-      data-slot="contextmenu-arrow"
-      {...props}
-    />
-  );
+  return <ContextMenu.Arrow className={cn(styles.arrow, className)} data-slot="contextmenu-arrow" {...props} />;
 }
 
 interface ContextMenuItemProps extends ContextMenu.Item.Props {
@@ -101,11 +70,7 @@ function ContextMenuItem({
   );
 }
 
-function ContextMenuCheckboxItem({
-  className,
-  children,
-  ...props
-}: ContextMenu.CheckboxItem.Props) {
+function ContextMenuCheckboxItem({ className, children, ...props }: ContextMenu.CheckboxItem.Props) {
   return (
     <ContextMenu.CheckboxItem
       className={cn(styles.checkboxItem, className)}
@@ -120,17 +85,9 @@ function ContextMenuCheckboxItem({
   );
 }
 
-function ContextMenuRadioItem({
-  className,
-  children,
-  ...props
-}: ContextMenu.RadioItem.Props) {
+function ContextMenuRadioItem({ className, children, ...props }: ContextMenu.RadioItem.Props) {
   return (
-    <ContextMenu.RadioItem
-      className={cn(styles.radioItem, className)}
-      data-slot="contextmenu-radioitem"
-      {...props}
-    >
+    <ContextMenu.RadioItem className={cn(styles.radioItem, className)} data-slot="contextmenu-radioitem" {...props}>
       <span className={styles.itemIndicator}>
         <Circle fill="currentColor" size={8} />
       </span>
@@ -139,10 +96,7 @@ function ContextMenuRadioItem({
   );
 }
 
-function ContextMenuRadioGroup({
-  className,
-  ...props
-}: ContextMenu.RadioGroup.Props) {
+function ContextMenuRadioGroup({ className, ...props }: ContextMenu.RadioGroup.Props) {
   return <ContextMenu.RadioGroup className={cn(className)} {...props} />;
 }
 
@@ -151,24 +105,13 @@ function ContextMenuLabel({
   inset = false,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & { inset?: boolean }) {
-  return (
-    <div
-      className={cn(styles.label, inset && styles.inset, className)}
-      {...props}
-    />
-  );
+  return <div className={cn(styles.label, inset && styles.inset, className)} {...props} />;
 }
 
-function ContextMenuSeparator({
-  className,
-  ...props
-}: ContextMenu.Separator.Props) {
+function ContextMenuSeparator({ className, ...props }: ContextMenu.Separator.Props) {
   return (
     <div className={styles.seperatorWrapper}>
-      <ContextMenu.Separator
-        className={cn(styles.separator, className)}
-        {...props}
-      />
+      <ContextMenu.Separator className={cn(styles.separator, className)} {...props} />
     </div>
   );
 }
@@ -198,19 +141,10 @@ function ContextMenuSubmenuTrigger({
 }
 
 function ContextMenuGroup({ className, ...props }: ContextMenu.Group.Props) {
-  return (
-    <ContextMenu.Group
-      className={cn(styles.group, className)}
-      data-slot="contextmenu-group"
-      {...props}
-    />
-  );
+  return <ContextMenu.Group className={cn(styles.group, className)} data-slot="contextmenu-group" {...props} />;
 }
 
-function ContextMenuShortcut({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>) {
+function ContextMenuShortcut({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   return <span className={cn(styles.shortcut, className)} {...props} />;
 }
 

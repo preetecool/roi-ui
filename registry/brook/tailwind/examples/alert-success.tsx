@@ -1,11 +1,7 @@
 "use client";
 
 import { CheckCircle } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/brook/tailwind/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/ui/alert";
 
 export default function AlertSuccess() {
   return (
@@ -13,9 +9,7 @@ export default function AlertSuccess() {
       <Alert variant="success">
         <CheckCircle size={16} />
         <AlertTitle>Success</AlertTitle>
-        <AlertDescription>
-          Your account has been created successfully.
-        </AlertDescription>
+        <AlertDescription>Your account has been created successfully.</AlertDescription>
       </Alert>
     </div>
   );

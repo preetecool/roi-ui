@@ -21,10 +21,8 @@ export function SearchResults({ setOpen, query, search }: SearchResultsProps) {
     query.data && Array.isArray(query.data)
       ? query.data.filter(
           (item, index, self) =>
-            !(
-              item.type === "text" &&
-              item.content.trim().split(/\s+/).length <= 1
-            ) && index === self.findIndex((t) => t.content === item.content)
+            !(item.type === "text" && item.content.trim().split(/\s+/).length <= 1) &&
+            index === self.findIndex((t) => t.content === item.content)
         )
       : [];
 

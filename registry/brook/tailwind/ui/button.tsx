@@ -66,13 +66,7 @@ const buttonVariants = cva(
 
 function Spinner() {
   return (
-    <svg
-      className="mr-2 animate-[spin_1s_linear_infinite]"
-      fill="none"
-      height="16"
-      viewBox="0 0 24 24"
-      width="16"
-    >
+    <svg className="mr-2 animate-[spin_1s_linear_infinite]" fill="none" height="16" viewBox="0 0 24 24" width="16">
       <circle
         cx="12"
         cy="12"
@@ -122,13 +116,7 @@ function Spinner() {
  * <ArrowPointer pointExternal />
  * ```
  */
-function ArrowPointer({
-  pointLeft = false,
-  pointExternal = false,
-}: {
-  pointLeft?: boolean;
-  pointExternal?: boolean;
-}) {
+function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?: boolean; pointExternal?: boolean }) {
   const arrowClasses = cn(
     "-mt-px -mr-2 relative top-0 ml-2 h-3 w-3.5 overflow-visible",
     "transition-all duration-200 ease-[var(--ease-in-out-cubic)]",
@@ -136,8 +124,7 @@ function ArrowPointer({
     pointExternal && "group-hover:-rotate-45 origin-[8%]"
   );
 
-  const pointClasses =
-    "transition-all duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
+  const pointClasses = "transition-all duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
   const shaftClasses =
     "transition-all duration-200 ease-[var(--ease-in-out-cubic)] opacity-0 group-hover:opacity-100 group-hover:-translate-x-0.5";
 
@@ -145,12 +132,7 @@ function ArrowPointer({
   const shaftLeftClasses = "group-hover:opacity-100 group-hover:translate-x-px";
 
   return (
-    <svg
-      className={arrowClasses}
-      fill="none"
-      viewBox="0 0 14 10"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={arrowClasses} fill="none" viewBox="0 0 14 10" xmlns="http://www.w3.org/2000/svg">
       <g fillRule="nonzero">
         <path
           className={cn(pointClasses, pointLeft && pointLeftClasses)}
@@ -173,9 +155,7 @@ function ArrowPointer({
   );
 }
 
-interface ButtonProps
-  extends useRender.ComponentProps<"button">,
-    VariantProps<typeof buttonVariants> {
+interface ButtonProps extends useRender.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
   showArrow?: boolean;
   pointLeft?: boolean;
   pointExternal?: boolean;
@@ -196,13 +176,9 @@ function Button({
   const decoratedChildren = (
     <>
       {loading && <Spinner />}
-      {!loading && showArrow && pointLeft && (
-        <ArrowPointer pointExternal={pointExternal} pointLeft />
-      )}
+      {!loading && showArrow && pointLeft && <ArrowPointer pointExternal={pointExternal} pointLeft />}
       {props.children}
-      {!loading && showArrow && !pointLeft && (
-        <ArrowPointer pointExternal={pointExternal} />
-      )}
+      {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
     </>
   );
 
@@ -212,11 +188,7 @@ function Button({
     props: {
       ...props,
       "data-slot": "button",
-      className: cn(
-        buttonVariants({ variant, size }),
-        loading && "loading",
-        className
-      ),
+      className: cn(buttonVariants({ variant, size }), loading && "loading", className),
       disabled: props.disabled || loading,
       children: decoratedChildren,
     },

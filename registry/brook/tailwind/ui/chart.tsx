@@ -19,10 +19,7 @@ export type ChartConfig = {
   [k in string]: {
     label?: ReactNode;
     icon?: ComponentType;
-  } & (
-    | { color?: string; theme?: never }
-    | { color?: never; theme: Record<keyof typeof THEMES, string> }
-  );
+  } & ({ color?: string; theme?: never } | { color?: never; theme: Record<keyof typeof THEMES, string> });
 };
 
 type ChartContextProps = {
@@ -112,9 +109,7 @@ function ChartContainer({
 }
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
-  const colorConfig = Object.entries(config).filter(
-    ([, itemConfig]) => itemConfig.theme || itemConfig.color
-  );
+  const colorConfig = Object.entries(config).filter(([, itemConfig]) => itemConfig.theme || itemConfig.color);
 
   if (!colorConfig.length) {
     return null;
@@ -130,9 +125,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 ${prefix} [data-chart=${id}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color;
+    const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
     return color ? `  --color-${key}: ${color};` : null;
   })
   .join("\n")}
@@ -179,13 +172,7 @@ function TooltipItem({
     type?: string;
   };
   index: number;
-  formatter?: (
-    value: number | string,
-    name: string,
-    item: unknown,
-    index: number,
-    payload: unknown
-  ) => ReactNode;
+  formatter?: (value: number | string, name: string, item: unknown, index: number, payload: unknown) => ReactNode;
   itemConfig?: { icon?: ComponentType; label?: ReactNode };
   indicator: "line" | "dot" | "dashed";
   indicatorColor?: string;
@@ -226,16 +213,11 @@ function TooltipItem({
         )
       )}
       <div
-        className={cn(
-          "flex min-w-0 flex-1 items-center justify-between gap-2 leading-none",
-          nestLabel && "items-end"
-        )}
+        className={cn("flex min-w-0 flex-1 items-center justify-between gap-2 leading-none", nestLabel && "items-end")}
       >
         <div className="grid min-w-0 flex-1 gap-1.5">
           {nestLabel ? tooltipLabel : null}
-          <span className="max-w-[150px] break-words text-muted-foreground">
-            {itemConfig?.label || item.name}
-          </span>
+          <span className="max-w-[150px] break-words text-muted-foreground">{itemConfig?.label || item.name}</span>
         </div>
         {formattedValue && (
           <span className="shrink-0 whitespace-nowrap font-medium font-mono text-foreground tabular-nums">
@@ -295,13 +277,7 @@ function ChartTooltipContent({
   hideIndicator?: boolean;
   labelFormatter?: (value: unknown, payload: unknown[]) => ReactNode;
   labelClassName?: string;
-  formatter?: (
-    value: number | string,
-    name: string,
-    item: unknown,
-    index: number,
-    payload: unknown
-  ) => ReactNode;
+  formatter?: (value: number | string, name: string, item: unknown, index: number, payload: unknown) => ReactNode;
   color?: string;
   nameKey?: string;
   labelKey?: string;
@@ -317,11 +293,7 @@ function ChartTooltipContent({
     const value = getTooltipLabelValue(labelKey, label, config, item);
 
     if (labelFormatter) {
-      return (
-        <div className={cn("font-medium", labelClassName)}>
-          {labelFormatter(value, payload)}
-        </div>
-      );
+      return <div className={cn("font-medium", labelClassName)}>{labelFormatter(value, payload)}</div>;
     }
 
     if (!value) {
@@ -329,15 +301,7 @@ function ChartTooltipContent({
     }
 
     return <div className={cn("font-medium", labelClassName)}>{value}</div>;
-  }, [
-    label,
-    labelFormatter,
-    payload,
-    hideLabel,
-    labelClassName,
-    config,
-    labelKey,
-  ]);
+  }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey]);
 
   if (!(active && payload?.length)) {
     return null;
@@ -364,26 +328,19 @@ function ChartTooltipContent({
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
 
             // Get color from config (handling both color and theme)
-            const configColor = itemConfig?.theme
-              ? undefined
-              : itemConfig?.color;
+            const configColor = itemConfig?.theme ? undefined : itemConfig?.color;
 
             const indicatorColor: string | undefined =
               color ||
               item.color ||
               (typeof item.fill === "string" ? item.fill : undefined) ||
-              (typeof item.payload?.fill === "string"
-                ? (item.payload.fill as string)
-                : undefined) ||
+              (typeof item.payload?.fill === "string" ? (item.payload.fill as string) : undefined) ||
               configColor ||
               (item.dataKey ? `var(--color-${item.dataKey})` : undefined);
 
             return (
               <div
-                className={cn(
-                  "flex w-full flex-wrap items-stretch gap-2",
-                  indicator === "dot" && "items-center"
-                )}
+                className={cn("flex w-full flex-wrap items-stretch gap-2", indicator === "dot" && "items-center")}
                 key={item.dataKey}
               >
                 <TooltipItem
@@ -433,21 +390,13 @@ function ChartLegendContent({
   }
 
   return (
-    <div
-      className={cn(
-        "flex items-center justify-center gap-4",
-        verticalAlign === "top" ? "pb-3" : "pt-3",
-        className
-      )}
-    >
+    <div className={cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}>
       {payload
         .filter((item) => item.type !== "none")
         .map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
-          const legendColor =
-            item.color ||
-            (item.dataKey ? `var(--color-${item.dataKey})` : undefined);
+          const legendColor = item.color || (item.dataKey ? `var(--color-${item.dataKey})` : undefined);
 
           return (
             <div className="flex items-center gap-1.5" key={item.value}>
@@ -472,50 +421,29 @@ function ChartLegendContent({
 }
 
 // Helper to extract item config from a payload.
-function getPayloadConfigFromPayload(
-  config: ChartConfig,
-  payload: unknown,
-  key: string
-) {
+function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key: string) {
   if (typeof payload !== "object" || payload === null) {
     return;
   }
 
   const payloadPayload =
-    "payload" in payload &&
-    typeof payload.payload === "object" &&
-    payload.payload !== null
+    "payload" in payload && typeof payload.payload === "object" && payload.payload !== null
       ? payload.payload
       : undefined;
 
   let configLabelKey: string = key;
 
-  if (
-    key in payload &&
-    typeof payload[key as keyof typeof payload] === "string"
-  ) {
+  if (key in payload && typeof payload[key as keyof typeof payload] === "string") {
     configLabelKey = payload[key as keyof typeof payload] as string;
   } else if (
     payloadPayload &&
     key in payloadPayload &&
     typeof payloadPayload[key as keyof typeof payloadPayload] === "string"
   ) {
-    configLabelKey = payloadPayload[
-      key as keyof typeof payloadPayload
-    ] as string;
+    configLabelKey = payloadPayload[key as keyof typeof payloadPayload] as string;
   }
 
-  return configLabelKey in config
-    ? config[configLabelKey]
-    : config[key as keyof typeof config];
+  return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config];
 }
 
-export {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
-  ChartStyle,
-  useChart,
-};
+export { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, ChartStyle, useChart };

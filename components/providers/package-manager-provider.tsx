@@ -18,10 +18,7 @@ type PackageManagerProviderProps = {
   defaultValue?: PackageManager;
 };
 
-export function PackageManagerProvider({
-  children,
-  defaultValue = "npm",
-}: PackageManagerProviderProps) {
+export function PackageManagerProvider({ children, defaultValue = "npm" }: PackageManagerProviderProps) {
   return <Provider defaultValue={defaultValue}>{children}</Provider>;
 }
 

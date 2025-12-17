@@ -20,11 +20,7 @@ export default function BadgeSuccess() {
             viewBox="0 0 16 16"
             width="16"
           >
-            <path
-              className={styles.checkPath}
-              d="m3 8 3 3 7-7"
-              pathLength="1"
-            />
+            <path className={styles.checkPath} d="m3 8 3 3 7-7" pathLength="1" />
           </svg>
         </BadgeIcon>
         Success

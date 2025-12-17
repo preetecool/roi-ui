@@ -6,20 +6,14 @@ import { cn } from "@/lib/utils-tailwind";
 function ScrollAreaRoot({ className, ...props }: ScrollArea.Root.Props) {
   return (
     <ScrollArea.Root
-      className={cn(
-        "box-border h-[8.5rem] w-96 max-w-[calc(100vw-8rem)]",
-        className
-      )}
+      className={cn("box-border h-[8.5rem] w-96 max-w-[calc(100vw-8rem)]", className)}
       data-slot="scrollarea-root"
       {...props}
     />
   );
 }
 
-function ScrollAreaViewport({
-  className,
-  ...props
-}: ScrollArea.Viewport.Props) {
+function ScrollAreaViewport({ className, ...props }: ScrollArea.Viewport.Props) {
   return (
     <ScrollArea.Viewport
       className={cn(
@@ -44,11 +38,7 @@ function ScrollAreaContent({ className, ...props }: ScrollArea.Content.Props) {
   );
 }
 
-function ScrollAreaScrollbar({
-  className,
-  orientation = "vertical",
-  ...props
-}: ScrollArea.Scrollbar.Props) {
+function ScrollAreaScrollbar({ className, orientation = "vertical", ...props }: ScrollArea.Scrollbar.Props) {
   return (
     <ScrollArea.Scrollbar
       className={cn(
@@ -69,10 +59,7 @@ function ScrollAreaScrollbar({
 function ScrollAreaThumb({ className, ...props }: ScrollArea.Thumb.Props) {
   return (
     <ScrollArea.Thumb
-      className={cn(
-        "w-full rounded-[inherit] bg-[var(--muted-foreground)]",
-        className
-      )}
+      className={cn("w-full rounded-[inherit] bg-[var(--muted-foreground)]", className)}
       data-slot="scrollarea-thumb"
       {...props}
     />

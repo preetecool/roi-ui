@@ -71,18 +71,10 @@ export default function ComboboxDemo() {
                 <ComboboxEmpty>No country found.</ComboboxEmpty>
                 <ComboboxList>
                   {(country: Country) => (
-                    <ComboboxItem
-                      indicatorPosition="right"
-                      key={country.code}
-                      value={country}
-                    >
+                    <ComboboxItem indicatorPosition="right" key={country.code} value={country}>
                       <div className="flex flex-1 items-center gap-3">
-                        <span className="text-xl leading-none">
-                          {country.flag}
-                        </span>
-                        <span className="text-sm max-sm:text-[0.9375rem]">
-                          {country.name}
-                        </span>
+                        <span className="text-xl leading-none">{country.flag}</span>
+                        <span className="text-sm max-sm:text-[0.9375rem]">{country.name}</span>
                       </div>
                     </ComboboxItem>
                   )}

@@ -26,10 +26,7 @@ function DropdownMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
 
 const DropdownMenuPortal = Menu.Portal;
 
-function DropdownMenuPositioner({
-  className,
-  ...props
-}: Menu.Positioner.Props) {
+function DropdownMenuPositioner({ className, ...props }: Menu.Positioner.Props) {
   return (
     <Menu.Positioner
       className={cn("absolute left-0 z-[150]", className)}
@@ -68,13 +65,7 @@ interface DropdownMenuItemProps extends Menu.Item.Props {
   variant?: "default" | "destructive";
 }
 
-function DropdownMenuItem({
-  className,
-  icon,
-  children,
-  variant = "default",
-  ...props
-}: DropdownMenuItemProps) {
+function DropdownMenuItem({ className, icon, children, variant = "default", ...props }: DropdownMenuItemProps) {
   return (
     <Menu.Item
       className={cn(
@@ -97,11 +88,7 @@ function DropdownMenuItem({
       data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
-      {icon && (
-        <span className="ml-1 flex items-center justify-center text-muted-foreground">
-          {icon}
-        </span>
-      )}
+      {icon && <span className="ml-1 flex items-center justify-center text-muted-foreground">{icon}</span>}
       {children}
     </Menu.Item>
   );
@@ -111,10 +98,7 @@ function DropdownMenuSeparator({ className, ...props }: Menu.Separator.Props) {
   return (
     <div className="py-[5px]">
       <Menu.Separator
-        className={cn(
-          "h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]",
-          className
-        )}
+        className={cn("h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]", className)}
         {...props}
       />
     </div>
@@ -123,11 +107,7 @@ function DropdownMenuSeparator({ className, ...props }: Menu.Separator.Props) {
 
 function DropdownMenuArrow({ className, ...props }: Menu.Arrow.Props) {
   return (
-    <Menu.Arrow
-      className={cn("fill-background stroke-1 stroke-border", className)}
-      data-slot="menu-arrow"
-      {...props}
-    />
+    <Menu.Arrow className={cn("fill-background stroke-1 stroke-border", className)} data-slot="menu-arrow" {...props} />
   );
 }
 
@@ -135,11 +115,7 @@ function DropdownMenuSubmenuRoot({ ...props }: Menu.SubmenuRoot.Props) {
   return <Menu.SubmenuRoot {...props} />;
 }
 
-function DropdownMenuSubmenuTrigger({
-  className,
-  children,
-  ...props
-}: Menu.SubmenuTrigger.Props) {
+function DropdownMenuSubmenuTrigger({ className, children, ...props }: Menu.SubmenuTrigger.Props) {
   return (
     <Menu.SubmenuTrigger
       className={cn(
@@ -157,10 +133,7 @@ function DropdownMenuSubmenuTrigger({
       {...props}
     >
       {children}
-      <ChevronRight
-        className="submenu-icon ml-auto h-4 w-4 text-muted-foreground opacity-60"
-        size={16}
-      />
+      <ChevronRight className="submenu-icon ml-auto h-4 w-4 text-muted-foreground opacity-60" size={16} />
     </Menu.SubmenuTrigger>
   );
 }
@@ -169,11 +142,7 @@ function DropdownMenuRadioGroup({ ...props }: Menu.RadioGroup.Props) {
   return <Menu.RadioGroup {...props} />;
 }
 
-function DropdownMenuRadioItem({
-  className,
-  children,
-  ...props
-}: Menu.RadioItem.Props) {
+function DropdownMenuRadioItem({ className, children, ...props }: Menu.RadioItem.Props) {
   return (
     <Menu.RadioItem
       className={cn(
@@ -196,16 +165,10 @@ function DropdownMenuRadioItem({
   );
 }
 
-function DropdownMenuRadioItemIndicator({
-  className,
-  ...props
-}: Menu.RadioItemIndicator.Props) {
+function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemIndicator.Props) {
   return (
     <Menu.RadioItemIndicator
-      className={cn(
-        "ml-auto flex items-center justify-center text-muted-foreground",
-        className
-      )}
+      className={cn("ml-auto flex items-center justify-center text-muted-foreground", className)}
       {...props}
     />
   );

@@ -1,8 +1,4 @@
-import {
-  Radio,
-  RadioGroup,
-  RadioIndicator,
-} from "@/registry/brook/tailwind/ui/radio";
+import { Radio, RadioGroup, RadioIndicator } from "@/registry/brook/tailwind/ui/radio";
 
 export default function RadioDemo() {
   return (
@@ -14,10 +10,7 @@ export default function RadioDemo() {
           <Radio id="pleasant" value="pleasant">
             <RadioIndicator />
           </Radio>
-          <label
-            className="cursor-pointer text-sm leading-[1.5]"
-            htmlFor="pleasant"
-          >
+          <label className="cursor-pointer text-sm leading-[1.5]" htmlFor="pleasant">
             Pleasant
           </label>
         </div>
@@ -26,10 +19,7 @@ export default function RadioDemo() {
           <Radio id="neutral" value="neutral">
             <RadioIndicator />
           </Radio>
-          <label
-            className="cursor-pointer text-sm leading-[1.5]"
-            htmlFor="neutral"
-          >
+          <label className="cursor-pointer text-sm leading-[1.5]" htmlFor="neutral">
             Neutral
           </label>
         </div>
@@ -38,10 +28,7 @@ export default function RadioDemo() {
           <Radio id="unpleasant" value="unpleasant">
             <RadioIndicator />
           </Radio>
-          <label
-            className="cursor-pointer text-sm leading-[1.5]"
-            htmlFor="unpleasant"
-          >
+          <label className="cursor-pointer text-sm leading-[1.5]" htmlFor="unpleasant">
             Unpleasant
           </label>
         </div>

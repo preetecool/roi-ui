@@ -6,13 +6,7 @@ import { cn } from "@/lib/utils-tailwind";
 
 const COPIED_RESET_DELAY_MS = 700;
 
-const CopyIcon = ({
-  size = 14,
-  copied = false,
-}: {
-  size?: number;
-  copied?: boolean;
-}) => (
+const CopyIcon = ({ size = 14, copied = false }: { size?: number; copied?: boolean }) => (
   <svg
     aria-label="copy-icon"
     height={size}

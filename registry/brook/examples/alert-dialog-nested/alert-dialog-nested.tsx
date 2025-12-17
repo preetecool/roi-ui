@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { AlertDialog } from "@base-ui/react/alert-dialog";
 import { Dialog } from "@base-ui/react/dialog";
+import * as React from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./alert-dialog-nested.module.css";
 
@@ -13,7 +13,6 @@ export default function AlertDialogNested() {
 
   return (
     <Dialog.Root
-      open={dialogOpen}
       onOpenChange={(open) => {
         if (!open && textareaValue) {
           setConfirmationOpen(true);
@@ -22,6 +21,7 @@ export default function AlertDialogNested() {
           setDialogOpen(open);
         }
       }}
+      open={dialogOpen}
     >
       <Dialog.Trigger render={<Button>New Post</Button>} />
       <Dialog.Portal>
@@ -37,11 +37,11 @@ export default function AlertDialogNested() {
             }}
           >
             <textarea
-              required
               className={styles.textarea}
-              placeholder="What's on your mind?"
-              value={textareaValue}
               onChange={(event) => setTextareaValue(event.target.value)}
+              placeholder="What's on your mind?"
+              required
+              value={textareaValue}
             />
             <div className={styles.actions}>
               <Dialog.Close render={<Button variant="outline">Cancel</Button>} />
@@ -51,24 +51,20 @@ export default function AlertDialogNested() {
         </Dialog.Popup>
       </Dialog.Portal>
 
-      <AlertDialog.Root open={confirmationOpen} onOpenChange={setConfirmationOpen}>
+      <AlertDialog.Root onOpenChange={setConfirmationOpen} open={confirmationOpen}>
         <AlertDialog.Portal>
           <AlertDialog.Popup className={styles.confirmPopup}>
-            <AlertDialog.Title className={styles.title}>
-              Discard post?
-            </AlertDialog.Title>
-            <AlertDialog.Description className={styles.description}>
-              Your post will be lost.
-            </AlertDialog.Description>
+            <AlertDialog.Title className={styles.title}>Discard post?</AlertDialog.Title>
+            <AlertDialog.Description className={styles.description}>Your post will be lost.</AlertDialog.Description>
             <div className={styles.actions}>
               <AlertDialog.Close render={<Button variant="outline">Go back</Button>} />
               <Button
-                variant="destructive"
                 onClick={() => {
                   setTextareaValue("");
                   setConfirmationOpen(false);
                   setDialogOpen(false);
                 }}
+                variant="destructive"
               >
                 Discard
               </Button>

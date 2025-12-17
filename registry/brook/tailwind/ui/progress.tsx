@@ -4,13 +4,7 @@ import { Progress } from "@base-ui/react/progress";
 import { cn } from "@/lib/utils-tailwind";
 
 function ProgressRoot({ className, ...props }: Progress.Root.Props) {
-  return (
-    <Progress.Root
-      className={cn("flex w-full flex-col gap-2", className)}
-      data-slot="progress-root"
-      {...props}
-    />
-  );
+  return <Progress.Root className={cn("flex w-full flex-col gap-2", className)} data-slot="progress-root" {...props} />;
 }
 
 function ProgressLabel({ className, ...props }: Progress.Label.Props) {
@@ -26,10 +20,7 @@ function ProgressLabel({ className, ...props }: Progress.Label.Props) {
 function ProgressTrack({ className, ...props }: Progress.Track.Props) {
   return (
     <Progress.Track
-      className={cn(
-        "relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]",
-        className
-      )}
+      className={cn("relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]", className)}
       data-slot="progress-track"
       {...props}
     />
@@ -53,20 +44,11 @@ function ProgressIndicator({ className, ...props }: Progress.Indicator.Props) {
 function ProgressValue({ className, ...props }: Progress.Value.Props) {
   return (
     <Progress.Value
-      className={cn(
-        "font-medium text-[var(--muted-foreground)] text-xs",
-        className
-      )}
+      className={cn("font-medium text-[var(--muted-foreground)] text-xs", className)}
       data-slot="progress-value"
       {...props}
     />
   );
 }
 
-export {
-  ProgressRoot as Progress,
-  ProgressIndicator,
-  ProgressLabel,
-  ProgressTrack,
-  ProgressValue,
-};
+export { ProgressRoot as Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue };

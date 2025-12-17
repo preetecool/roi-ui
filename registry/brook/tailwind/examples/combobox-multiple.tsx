@@ -60,10 +60,7 @@ export default function ComboboxMultiple() {
                       <ComboboxChipRemove aria-label="Remove" />
                     </ComboboxChip>
                   ))}
-                  <ComboboxChipsInput
-                    id={id}
-                    placeholder={value.length > 0 ? "" : "e.g. TypeScript"}
-                  />
+                  <ComboboxChipsInput id={id} placeholder={value.length > 0 ? "" : "e.g. TypeScript"} />
                 </>
               )}
             </ComboboxValue>
@@ -75,11 +72,7 @@ export default function ComboboxMultiple() {
                 <ComboboxEmpty>No languages found.</ComboboxEmpty>
                 <ComboboxList>
                   {(language: Language) => (
-                    <ComboboxItem
-                      indicatorPosition="right"
-                      key={language.id}
-                      value={language}
-                    >
+                    <ComboboxItem indicatorPosition="right" key={language.id} value={language}>
                       <span className="flex-1">{language.value}</span>
                     </ComboboxItem>
                   )}

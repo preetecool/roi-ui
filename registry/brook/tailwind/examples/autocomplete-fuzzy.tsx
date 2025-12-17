@@ -1,5 +1,6 @@
 "use client";
 
+import { matchSorter } from "match-sorter";
 import type React from "react";
 import { useState } from "react";
 import {
@@ -13,7 +14,6 @@ import {
   AutocompletePositioner,
   AutocompleteValue,
 } from "@/registry/brook/tailwind/ui/autocomplete";
-import { matchSorter } from "match-sorter";
 
 interface Question {
   value: string;
@@ -87,7 +87,7 @@ function highlightText(text: string, query: string): React.ReactNode {
   for (let i = 0; i < text.length; i++) {
     if (queryIndex < trimmed.length && textLower[i] === trimmed[queryIndex]) {
       result.push(
-        <mark className="bg-transparent text-[var(--info)] font-medium" key={i}>
+        <mark className="bg-transparent font-medium text-[var(--info)]" key={i}>
           {text[i]}
         </mark>
       );
@@ -151,18 +151,14 @@ export default function AutocompleteFuzzy() {
               </AutocompleteEmpty>
               <AutocompleteList>
                 {(item: Question) => (
-                  <AutocompleteItem
-                    className="h-auto py-2"
-                    key={item.value}
-                    value={item}
-                  >
+                  <AutocompleteItem className="h-auto py-2" key={item.value} value={item}>
                     <AutocompleteValue>
                       {(inputValue) => (
                         <div className="flex flex-1 flex-col gap-0.5">
-                          <div className="text-[0.8125rem] font-normal leading-[1.4] text-foreground">
+                          <div className="font-normal text-[0.8125rem] text-foreground leading-[1.4]">
                             {highlightText(item.question, inputValue)}
                           </div>
-                          <div className="text-xs text-muted-foreground">
+                          <div className="text-muted-foreground text-xs">
                             {highlightText(item.category, inputValue)}
                           </div>
                         </div>

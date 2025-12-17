@@ -10,13 +10,7 @@ import {
 
 export default function NumberFieldDemo() {
   return (
-    <NumberField
-      className="max-w-48"
-      defaultValue={10}
-      max={100}
-      min={0}
-      step={1}
-    >
+    <NumberField className="max-w-48" defaultValue={10} max={100} min={0} step={1}>
       <NumberFieldScrubArea>
         <NumberFieldScrubAreaCursor />
       </NumberFieldScrubArea>

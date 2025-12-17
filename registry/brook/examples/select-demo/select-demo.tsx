@@ -26,18 +26,10 @@ const subscriptionPlans = [
 export default function SelectDemo() {
   return (
     <Select defaultValue="placeholder" items={subscriptionPlans}>
-      <SelectTrigger
-        render={
-          <Button className={styles.trigger} size="sm" variant="outline" />
-        }
-      >
+      <SelectTrigger render={<Button className={styles.trigger} size="sm" variant="outline" />}>
         <SelectValue>
           {(value) => (
-            <span
-              className={
-                value === "placeholder" ? styles.placeholder : undefined
-              }
-            >
+            <span className={value === "placeholder" ? styles.placeholder : undefined}>
               {subscriptionPlans.find((item) => item.value === value)?.label}
             </span>
           )}
@@ -49,9 +41,7 @@ export default function SelectDemo() {
           <SelectPopup>
             <SelectList>
               <SelectItem disabled value="placeholder">
-                <SelectItemText className={styles.itemText}>
-                  Select a Plan
-                </SelectItemText>
+                <SelectItemText className={styles.itemText}>Select a Plan</SelectItemText>
               </SelectItem>
               <SelectItem value="Starter">
                 <SelectItemText>Starter</SelectItemText>

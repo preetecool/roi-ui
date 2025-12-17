@@ -66,9 +66,7 @@
     {
       "name": "autocomplete",
       "type": "registry:item",
-      "registryDependencies": [
-        "https://roiui.com/r/input.json"
-      ],
+      "registryDependencies": ["https://roiui.com/r/input.json"],
       "title": "Autocomplete",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -271,9 +269,7 @@
     {
       "name": "combobox",
       "type": "registry:item",
-      "registryDependencies": [
-        "https://roiui.com/r/input.json"
-      ],
+      "registryDependencies": ["https://roiui.com/r/input.json"],
       "title": "Combobox",
       "description": "A searchable select component.",
       "files": [
@@ -921,26 +917,6 @@
           "path": "registry/brook/blocks/card-task/card-task.module.css",
           "type": "registry:file",
           "target": "~/components/blocks/card-task/card-task.module.css"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/avatar-group.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/avatar-group.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/delete-task-alert-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/delete-task-alert-dialog.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/task-card-dropdown-menu.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/task-card-dropdown-menu.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/collaborator-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/collaborator-dialog.tsx"
         }
       ]
     },
@@ -1113,9 +1089,7 @@
     {
       "name": "autocomplete-tailwind",
       "type": "registry:item",
-      "registryDependencies": [
-        "https://roiui.com/r/input-tailwind.json"
-      ],
+      "registryDependencies": ["https://roiui.com/r/input-tailwind.json"],
       "title": "Autocomplete (Tailwind)",
       "description": "An input that suggests options as you type.",
       "files": [
@@ -1249,9 +1223,7 @@
     {
       "name": "combobox-tailwind",
       "type": "registry:item",
-      "registryDependencies": [
-        "https://roiui.com/r/input-tailwind.json"
-      ],
+      "registryDependencies": ["https://roiui.com/r/input-tailwind.json"],
       "title": "Combobox (Tailwind)",
       "description": "A searchable select component.",
       "files": [
@@ -1765,26 +1737,6 @@
           "path": "registry/brook/tailwind/blocks/card-task/card-task.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/card-task/card-task.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/avatar-group.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/avatar-group.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/delete-task-alert-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/delete-task-alert-dialog.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/task-card-dropdown-menu.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/task-card-dropdown-menu.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/collaborator-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/collaborator-dialog.tsx"
         }
       ]
     },

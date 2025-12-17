@@ -1,10 +1,7 @@
 "use client";
 
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import {
-  ToastProvider,
-  toastManager,
-} from "@/registry/brook/tailwind/ui/toast";
+import { ToastProvider, toastManager } from "@/registry/brook/tailwind/ui/toast";
 
 export default function ToastDemo() {
   return (

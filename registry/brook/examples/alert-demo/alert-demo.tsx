@@ -1,12 +1,7 @@
 "use client";
 
 import { Mail } from "lucide-react";
-import {
-  Alert,
-  AlertAction,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/brook/ui/alert/alert";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/registry/brook/ui/alert/alert";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./alert-demo.module.css";
 

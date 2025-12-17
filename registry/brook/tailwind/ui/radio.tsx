@@ -5,9 +5,7 @@ import { RadioGroup } from "@base-ui/react/radio-group";
 import { cn } from "@/lib/utils-tailwind";
 
 function RadioGroupRoot({ className, ...props }: RadioGroup.Props) {
-  return (
-    <RadioGroup className={cn("flex flex-col gap-2", className)} {...props} />
-  );
+  return <RadioGroup className={cn("flex flex-col gap-2", className)} {...props} />;
 }
 
 function RadioRoot({ className, ...props }: Radio.Root.Props) {
@@ -31,11 +29,7 @@ function RadioRoot({ className, ...props }: Radio.Root.Props) {
 function RadioIndicator({ className, ...props }: Radio.Indicator.Props) {
   return (
     <Radio.Indicator
-      className={cn(
-        "h-2 w-2 rounded-full bg-[var(--primary)]",
-        "scale-0 data-[checked]:scale-100",
-        className
-      )}
+      className={cn("h-2 w-2 rounded-full bg-[var(--primary)]", "scale-0 data-[checked]:scale-100", className)}
       data-slot="radio-indicator"
       {...props}
     />

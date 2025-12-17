@@ -1,20 +1,8 @@
 "use client";
-import {
-  BookOpen,
-  Building2,
-  Check,
-  CreditCard,
-  HelpCircle,
-  LogOut,
-  Zap,
-} from "lucide-react";
+import { BookOpen, Building2, Check, CreditCard, HelpCircle, LogOut, Zap } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/tailwind/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
@@ -42,11 +30,7 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/tailwind/ui/dropdown-menu";
-import {
-  Field,
-  FieldControl,
-  FieldLabel,
-} from "@/registry/brook/tailwind/ui/field";
+import { Field, FieldControl, FieldLabel } from "@/registry/brook/tailwind/ui/field";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
 export default function ProfileMenuDemo() {
@@ -102,11 +86,7 @@ export default function ProfileMenuDemo() {
                   </div>
                 </div>
               </div>
-              <Badge
-                className="mt-0.5 flex-shrink-0"
-                size="sm"
-                variant="secondary"
-              >
+              <Badge className="mt-0.5 flex-shrink-0" size="sm" variant="secondary">
                 free
               </Badge>
             </div>
@@ -115,29 +95,15 @@ export default function ProfileMenuDemo() {
 
             {/* Organizations Submenu */}
             <DropdownMenuSubmenuRoot>
-              <DropdownMenuSubmenuTrigger
-                className="flex items-center gap-2"
-                render={<li />}
-              >
-                <Building2
-                  className="ml-1 flex-shrink-0 text-[var(--muted-foreground)]"
-                  size={14}
-                />
+              <DropdownMenuSubmenuTrigger className="flex items-center gap-2" render={<li />}>
+                <Building2 className="ml-1 flex-shrink-0 text-[var(--muted-foreground)]" size={14} />
                 Organizations
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner
-                  align="start"
-                  alignOffset={-4}
-                  side="right"
-                  sideOffset={-4}
-                >
+                <DropdownMenuPositioner align="start" alignOffset={-4} side="right" sideOffset={-4}>
                   <DropdownMenuPopup render={<ul />}>
                     <div style={{ height: "4px", width: "100%" }} />
-                    <DropdownMenuRadioGroup
-                      onValueChange={setSelectedOrg}
-                      value={selectedOrg}
-                    >
+                    <DropdownMenuRadioGroup onValueChange={setSelectedOrg} value={selectedOrg}>
                       <DropdownMenuRadioItem
                         className="flex items-center justify-between pr-3"
                         render={<li />}
@@ -170,10 +136,7 @@ export default function ProfileMenuDemo() {
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={() => setIsDialogOpen(true)}
-                      render={<li />}
-                    >
+                    <DropdownMenuItem onClick={() => setIsDialogOpen(true)} render={<li />}>
                       <span className="ml-1">Add new...</span>
                     </DropdownMenuItem>
                     <div style={{ height: "4px", width: "100%" }} />
@@ -214,18 +177,10 @@ export default function ProfileMenuDemo() {
       </DropdownMenuPortal>
 
       {/* Add Organization Dialog */}
-      <Dialog
-        onOpenChange={(open) => setIsDialogOpen(open)}
-        open={isDialogOpen}
-      >
+      <Dialog onOpenChange={(open) => setIsDialogOpen(open)} open={isDialogOpen}>
         <DialogPortal>
           <DialogOverlay />
-          <DialogPopup
-            className={cn(
-              "flex w-[400px] flex-col gap-4 rounded-2xl p-6",
-              "max-sm:w-[90vw] max-sm:p-5"
-            )}
-          >
+          <DialogPopup className={cn("flex w-[400px] flex-col gap-4 rounded-2xl p-6", "max-sm:w-[90vw] max-sm:p-5")}>
             <DialogHeader>
               <DialogTitle>Add New Organization</DialogTitle>
               <DialogDescription className="text-[var(--muted-foreground)]">

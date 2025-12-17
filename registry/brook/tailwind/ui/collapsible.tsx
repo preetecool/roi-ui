@@ -6,21 +6,14 @@ import { cn } from "@/lib/utils-tailwind";
 function CollapsibleRoot({ className, ...props }: Collapsible.Root.Props) {
   return (
     <Collapsible.Root
-      className={cn(
-        "flex w-full max-w-56 flex-col justify-center text-foreground",
-        className
-      )}
+      className={cn("flex w-full max-w-56 flex-col justify-center text-foreground", className)}
       data-slot="collapsible-root"
       {...props}
     />
   );
 }
 
-function CollapsibleTrigger({
-  className,
-  children,
-  ...props
-}: Collapsible.Trigger.Props) {
+function CollapsibleTrigger({ className, children, ...props }: Collapsible.Trigger.Props) {
   return (
     <Collapsible.Trigger
       className={cn(
@@ -55,20 +48,8 @@ function CollapsibleTrigger({
         viewBox="0 0 24 24"
         width="16"
       >
-        <path
-          d="m7 15 5 5 5-5"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        />
-        <path
-          d="m7 9 5-5 5 5"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        />
+        <path d="m7 15 5 5 5-5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+        <path d="m7 9 5-5 5 5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
       </svg>
     </Collapsible.Trigger>
   );

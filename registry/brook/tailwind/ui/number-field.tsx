@@ -13,16 +13,8 @@ function NumberFieldRoot({ className, ...props }: NumberField.Root.Props) {
   );
 }
 
-function NumberFieldGroup({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("relative z-[2] flex items-center gap-0", className)}
-      {...props}
-    />
-  );
+function NumberFieldGroup({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("relative z-[2] flex items-center gap-0", className)} {...props} />;
 }
 
 function NumberFieldInput({ className, ...props }: NumberField.Input.Props) {
@@ -42,11 +34,7 @@ function NumberFieldInput({ className, ...props }: NumberField.Input.Props) {
   );
 }
 
-function NumberFieldIncrement({
-  className,
-  children,
-  ...props
-}: NumberField.Increment.Props) {
+function NumberFieldIncrement({ className, children, ...props }: NumberField.Increment.Props) {
   return (
     <NumberField.Increment
       className={cn(
@@ -84,11 +72,7 @@ function NumberFieldIncrement({
   );
 }
 
-function NumberFieldDecrement({
-  className,
-  children,
-  ...props
-}: NumberField.Decrement.Props) {
+function NumberFieldDecrement({ className, children, ...props }: NumberField.Decrement.Props) {
   return (
     <NumberField.Decrement
       className={cn(
@@ -113,23 +97,14 @@ function NumberFieldDecrement({
           viewBox="0 0 24 24"
           width="16"
         >
-          <path
-            d="M5 12h14"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
+          <path d="M5 12h14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
         </svg>
       )}
     </NumberField.Decrement>
   );
 }
 
-function NumberFieldScrubArea({
-  className,
-  ...props
-}: NumberField.ScrubArea.Props) {
+function NumberFieldScrubArea({ className, ...props }: NumberField.ScrubArea.Props) {
   return (
     <NumberField.ScrubArea
       className={cn(
@@ -142,10 +117,7 @@ function NumberFieldScrubArea({
   );
 }
 
-function NumberFieldScrubAreaCursor({
-  className,
-  ...props
-}: NumberField.ScrubAreaCursor.Props) {
+function NumberFieldScrubAreaCursor({ className, ...props }: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
       className={cn(

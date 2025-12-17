@@ -1,10 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import {
-  Checkbox,
-  CheckboxIndicator,
-} from "@/registry/brook/ui/checkbox/checkbox";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
 import styles from "./checkbox-description.module.css";
 
 export default function CheckboxDescription() {
@@ -18,9 +15,7 @@ export default function CheckboxDescription() {
         </Checkbox>
         <span className={styles.title}>Accept terms and conditions</span>
       </label>
-      <span className={styles.description}>
-        You agree to our Terms of Service and Privacy Policy.
-      </span>
+      <span className={styles.description}>You agree to our Terms of Service and Privacy Policy.</span>
     </div>
   );
 }

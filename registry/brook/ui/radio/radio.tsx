@@ -14,13 +14,7 @@ function RadioRoot({ className, ...props }: Radio.Root.Props) {
 }
 
 function RadioIndicator({ className, ...props }: Radio.Indicator.Props) {
-  return (
-    <Radio.Indicator
-      className={cn(styles.indicator, className)}
-      data-slot="radio-indicator"
-      {...props}
-    />
-  );
+  return <Radio.Indicator className={cn(styles.indicator, className)} data-slot="radio-indicator" {...props} />;
 }
 
 export { RadioRoot as Radio, RadioGroupRoot as RadioGroup, RadioIndicator };

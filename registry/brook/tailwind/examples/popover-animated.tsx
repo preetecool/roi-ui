@@ -2,11 +2,7 @@
 
 import { Bell, User } from "lucide-react";
 import type * as React from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/tailwind/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   createPopoverHandle,
@@ -23,9 +19,7 @@ function NotificationsContent() {
   return (
     <>
       <PopoverTitle>Notifications</PopoverTitle>
-      <PopoverDescription>
-        You have no new notifications at this time.
-      </PopoverDescription>
+      <PopoverDescription>You have no new notifications at this time.</PopoverDescription>
     </>
   );
 }
@@ -39,9 +33,7 @@ function ProfileContent() {
           <AvatarFallback>PC</AvatarFallback>
         </Avatar>
         <div className="min-w-0 flex-1">
-          <h4 className="m-0 truncate font-medium text-sm leading-5">
-            preetecool
-          </h4>
+          <h4 className="m-0 truncate font-medium text-sm leading-5">preetecool</h4>
           <span className="text-muted-foreground text-xs">Design Engineer</span>
         </div>
       </div>
@@ -72,9 +64,7 @@ export default function PopoverAnimated() {
       <Popover handle={popoverHandle}>
         {({ payload }) => {
           const Payload = payload as React.ComponentType | undefined;
-          return (
-            <PopoverPopup>{Payload !== undefined && <Payload />}</PopoverPopup>
-          );
+          return <PopoverPopup>{Payload !== undefined && <Payload />}</PopoverPopup>;
         }}
       </Popover>
     </div>

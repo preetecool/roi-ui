@@ -14,21 +14,15 @@ import styles from "./alert-dialog-demo.module.css";
 export default function AlertDialogDemo() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="destructive">Delete Account</Button>}
-      />
+      <AlertDialogTrigger render={<Button variant="destructive">Delete Account</Button>} />
 
       <AlertDialogContent className={styles.content}>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription className={styles.description}>
-            This action cannot be undone.
-          </AlertDialogDescription>
+          <AlertDialogDescription className={styles.description}>This action cannot be undone.</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className={styles.footer}>
-          <AlertDialogClose
-            render={<Button variant="outline">Cancel</Button>}
-          />
+          <AlertDialogClose render={<Button variant="outline">Cancel</Button>} />
           <Button variant="destructive">Delete Account</Button>
         </AlertDialogFooter>
       </AlertDialogContent>

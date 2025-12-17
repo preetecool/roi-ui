@@ -21,5 +21,4 @@ const noop = () => {};
  * - Synchronously reading/writing DOM properties that affect layout
  * - Any client-only side effects that must run before browser paint
  */
-export const useIsoLayoutEffect =
-  typeof document !== "undefined" ? useLayoutEffect : noop;
+export const useIsoLayoutEffect = typeof document !== "undefined" ? useLayoutEffect : noop;

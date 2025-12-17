@@ -14,10 +14,7 @@ type KeyboardShortcutOptions = {
  * Custom hook for handling keyboard shortcuts
  * Automatically cleans up event listener on unmount
  */
-export const useKeyboardShortcut = (
-  options: KeyboardShortcutOptions,
-  handler: KeyboardShortcutHandler
-): void => {
+export const useKeyboardShortcut = (options: KeyboardShortcutOptions, handler: KeyboardShortcutHandler): void => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const metaOrCtrlPressed = options.metaKey || options.ctrlKey;
@@ -34,12 +31,5 @@ export const useKeyboardShortcut = (
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [
-    options.key,
-    options.metaKey,
-    options.ctrlKey,
-    options.shiftKey,
-    options.altKey,
-    handler,
-  ]);
+  }, [options.key, options.metaKey, options.ctrlKey, options.shiftKey, options.altKey, handler]);
 };

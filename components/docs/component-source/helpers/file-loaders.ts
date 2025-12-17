@@ -17,10 +17,7 @@ export type VariantFileData = {
 /**
  * Reads file content safely, returning error message if not found
  */
-async function readFileSafe(
-  filePath: string,
-  errorMessage: string
-): Promise<string> {
+async function readFileSafe(filePath: string, errorMessage: string): Promise<string> {
   try {
     return await readFile(filePath, "utf-8");
   } catch {
@@ -46,10 +43,7 @@ export async function loadCodeByName(name: string): Promise<string> {
   }
 
   const filePath = join(process.cwd(), tsxFile);
-  return await readFileSafe(
-    filePath,
-    `Component source not found: ${name}.tsx`
-  );
+  return await readFileSafe(filePath, `Component source not found: ${name}.tsx`);
 }
 
 /**
@@ -63,20 +57,14 @@ export async function loadCodeBySrc(src: string): Promise<string> {
 /**
  * Gets display title with fallback logic
  */
-export function getDisplayTitle(
-  title: string | undefined,
-  name: string | undefined,
-  src: string | undefined
-): string {
+export function getDisplayTitle(title: string | undefined, name: string | undefined, src: string | undefined): string {
   return title || (name && `${name}.tsx`) || (src && basename(src)) || "Code";
 }
 
 /**
  * Load both CSS modules and Tailwind variants of a component using registry
  */
-export async function loadAllVariants(
-  name: string
-): Promise<VariantFileData[]> {
+export async function loadAllVariants(name: string): Promise<VariantFileData[]> {
   const variants = getComponentVariants(name);
   const results: VariantFileData[] = [];
 
@@ -102,9 +90,7 @@ export async function loadAllVariants(
 /**
  * Load files from registry file paths
  */
-async function loadFilesFromRegistry(
-  registryFiles: string[]
-): Promise<FileData[]> {
+async function loadFilesFromRegistry(registryFiles: string[]): Promise<FileData[]> {
   return await Promise.all(
     registryFiles.map(async (filePath) => {
       const fullPath = join(process.cwd(), filePath);

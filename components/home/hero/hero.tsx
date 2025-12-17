@@ -29,17 +29,8 @@ const COMPONENTS = [
 ];
 
 const HEADING = "React components and blocks";
-const SUBHEADING =
-  "Components and blocks made with Base UI primitives and motion. CSS modules and Tailwind available.";
-const UI_COMPONENTS = [
-  "accordion",
-  "badge",
-  "copy-button",
-  "dialog",
-  "like-button",
-  "separator",
-  "tabs",
-];
+const SUBHEADING = "Components and blocks made with Base UI primitives and motion. CSS modules and Tailwind available.";
+const UI_COMPONENTS = ["accordion", "badge", "copy-button", "dialog", "like-button", "separator", "tabs"];
 
 const CAROUSEL_COMPONENTS = [
   {
@@ -54,17 +45,14 @@ const CAROUSEL_COMPONENTS = [
 ];
 
 function getRandomComponent() {
-  const randomComponent =
-    COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
+  const randomComponent = COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
 
   return randomComponent;
 }
 
 function getComponentUrl(component: { path: string; anchor: string }) {
   // UI components are in /docs/ui/, others are in /docs/blocks/
-  const basePath = UI_COMPONENTS.includes(component.path)
-    ? "/docs/ui"
-    : "/docs/blocks";
+  const basePath = UI_COMPONENTS.includes(component.path) ? "/docs/ui" : "/docs/blocks";
 
   return `${basePath}/${component.path}${component.anchor}`;
 }
@@ -80,10 +68,7 @@ export const Hero = () => {
   return (
     <section aria-label="Hero section" className={styles.container}>
       <Badge className={styles.badge} variant="outline">
-        <Link
-          aria-label="View new animated tabs component"
-          href="/docs/ui/tabs#animated"
-        >
+        <Link aria-label="View new animated tabs component" href="/docs/ui/tabs#animated">
           <span aria-hidden="true">New animated tabs component</span>
         </Link>
         <ArrowPointer />
@@ -91,10 +76,7 @@ export const Hero = () => {
       <h1 className={styles.h1}>
         {HEADING.split(" ").map((word, index) => (
           <span className={styles.wordContainer} key={`word-${word}`}>
-            <span
-              className={styles.wordWrapper}
-              style={{ "--index": index } as React.CSSProperties}
-            >
+            <span className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
               {word}
               {index < HEADING.split(" ").length - 1 && " "}
             </span>
@@ -104,10 +86,7 @@ export const Hero = () => {
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
         <Button render={<Link href="/docs/start" />}>Get Started</Button>
-        <Button
-          render={<Link href={getComponentUrl(randomComponent)} />}
-          variant="ghost"
-        >
+        <Button render={<Link href={getComponentUrl(randomComponent)} />} variant="ghost">
           I&apos;m Feeling Lucky
         </Button>
       </div>
@@ -135,9 +114,7 @@ export const Hero = () => {
                     </div>
                     <div className={styles.cardComponentContent}>
                       {item.id === "expandable-card" ? (
-                        <HomeAnimatedCard
-                          isExpanded={hoveredCardIndex === index}
-                        />
+                        <HomeAnimatedCard isExpanded={hoveredCardIndex === index} />
                       ) : (
                         <item.Component />
                       )}

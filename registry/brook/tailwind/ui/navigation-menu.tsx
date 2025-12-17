@@ -2,10 +2,7 @@
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import { cn } from "@/lib/utils-tailwind";
 
-function NavigationMenuRoot({
-  className,
-  ...props
-}: NavigationMenu.Root.Props) {
+function NavigationMenuRoot({ className, ...props }: NavigationMenu.Root.Props) {
   return (
     <NavigationMenu.Root
       className={cn("relative z-[100] flex w-full justify-center", className)}
@@ -15,33 +12,21 @@ function NavigationMenuRoot({
   );
 }
 
-function NavigationMenuList({
-  className,
-  ...props
-}: NavigationMenu.List.Props) {
+function NavigationMenuList({ className, ...props }: NavigationMenu.List.Props) {
   return (
     <NavigationMenu.List
-      className={cn(
-        "m-0 flex list-none justify-center rounded-lg p-1",
-        className
-      )}
+      className={cn("m-0 flex list-none justify-center rounded-lg p-1", className)}
       data-slot="navigationmenu-list"
       {...props}
     />
   );
 }
 
-function NavigationMenuItem({
-  className,
-  ...props
-}: NavigationMenu.Item.Props) {
+function NavigationMenuItem({ className, ...props }: NavigationMenu.Item.Props) {
   return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 
-function NavigationMenuTrigger({
-  className,
-  ...props
-}: NavigationMenu.Trigger.Props) {
+function NavigationMenuTrigger({ className, ...props }: NavigationMenu.Trigger.Props) {
   return (
     <NavigationMenu.Trigger
       className={cn(
@@ -57,10 +42,7 @@ function NavigationMenuTrigger({
   );
 }
 
-function NavigationMenuContent({
-  className,
-  ...props
-}: NavigationMenu.Content.Props) {
+function NavigationMenuContent({ className, ...props }: NavigationMenu.Content.Props) {
   return (
     <NavigationMenu.Content
       className={cn(
@@ -79,27 +61,17 @@ function NavigationMenuContent({
   );
 }
 
-function NavigationMenuIcon({
-  className,
-  ...props
-}: NavigationMenu.Icon.Props) {
+function NavigationMenuIcon({ className, ...props }: NavigationMenu.Icon.Props) {
   return (
     <NavigationMenu.Icon
-      className={cn(
-        "transition-transform duration-200 ease-out",
-        "data-[popup-open]:rotate-180",
-        className
-      )}
+      className={cn("transition-transform duration-200 ease-out", "data-[popup-open]:rotate-180", className)}
       data-slot="navigationmenu-icon"
       {...props}
     />
   );
 }
 
-function NavigationMenuLink({
-  className,
-  ...props
-}: NavigationMenu.Link.Props) {
+function NavigationMenuLink({ className, ...props }: NavigationMenu.Link.Props) {
   return (
     <NavigationMenu.Link
       className={
@@ -112,25 +84,15 @@ function NavigationMenuLink({
   );
 }
 
-function NavigationMenuPortal({
-  children,
-  ...props
-}: NavigationMenu.Portal.Props) {
+function NavigationMenuPortal({ children, ...props }: NavigationMenu.Portal.Props) {
   return <NavigationMenu.Portal {...props}>{children}</NavigationMenu.Portal>;
 }
 
-function NavigationMenuBackdrop({
-  className,
-  ...props
-}: NavigationMenu.Backdrop.Props) {
+function NavigationMenuBackdrop({ className, ...props }: NavigationMenu.Backdrop.Props) {
   return <NavigationMenu.Backdrop className={cn(className)} {...props} />;
 }
 
-function NavigationMenuPositioner({
-  className,
-  children,
-  ...props
-}: NavigationMenu.Positioner.Props) {
+function NavigationMenuPositioner({ className, children, ...props }: NavigationMenu.Positioner.Props) {
   return (
     <NavigationMenu.Positioner
       className={cn(
@@ -152,11 +114,7 @@ function NavigationMenuPositioner({
   );
 }
 
-function NavigationMenuPopup({
-  className,
-  children,
-  ...props
-}: NavigationMenu.Popup.Props) {
+function NavigationMenuPopup({ className, children, ...props }: NavigationMenu.Popup.Props) {
   return (
     <NavigationMenu.Popup
       className={cn(
@@ -180,10 +138,7 @@ function NavigationMenuPopup({
   );
 }
 
-function NavigationMenuArrow({
-  className,
-  ...props
-}: NavigationMenu.Arrow.Props) {
+function NavigationMenuArrow({ className, ...props }: NavigationMenu.Arrow.Props) {
   return (
     <NavigationMenu.Arrow
       className={cn(
@@ -197,13 +152,7 @@ function NavigationMenuArrow({
       data-slot="navigationmenu-arrow"
       {...props}
     >
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="8"
-        viewBox="0 0 16 8"
-        width="16"
-      >
+      <svg aria-hidden="true" fill="none" height="8" viewBox="0 0 16 8" width="16">
         <path className="fill-[var(--background)]" d="M8 0L16 8H0L8 0Z" />
         <path
           className="stroke-[oklch(from_var(--muted)_l_c_h_/_0.3)]"
@@ -224,10 +173,7 @@ function NavigationMenuArrow({
   );
 }
 
-function NavigationMenuViewport({
-  className,
-  ...props
-}: NavigationMenu.Viewport.Props) {
+function NavigationMenuViewport({ className, ...props }: NavigationMenu.Viewport.Props) {
   return (
     <NavigationMenu.Viewport
       className={cn("relative h-full w-full overflow-hidden", className)}

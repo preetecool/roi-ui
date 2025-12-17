@@ -1,8 +1,4 @@
-import {
-  Radio,
-  RadioGroup,
-  RadioIndicator,
-} from "@/registry/brook/ui/radio/radio";
+import { Radio, RadioGroup, RadioIndicator } from "@/registry/brook/ui/radio/radio";
 import styles from "./radio-demo.module.css";
 
 export default function RadioDemo() {

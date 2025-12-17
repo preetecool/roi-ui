@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  type ReactNode,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from "react";
 import { useIsoLayoutEffect } from "@/hooks/use-iso-layout-effect";
 
 type PreferenceContextType<T extends string> = {
@@ -26,13 +19,9 @@ type CreatePreferenceProviderOptions<T extends string> = {
   dataAttribute: string;
 };
 
-export function createPreferenceProvider<T extends string>(
-  options: CreatePreferenceProviderOptions<T>
-) {
+export function createPreferenceProvider<T extends string>(options: CreatePreferenceProviderOptions<T>) {
   const { storageKey, validValues, dataAttribute } = options;
-  const Context = createContext<PreferenceContextType<T> | undefined>(
-    undefined
-  );
+  const Context = createContext<PreferenceContextType<T> | undefined>(undefined);
 
   function Provider({ children, defaultValue }: PreferenceProviderProps<T>) {
     const [value, setValueState] = useState<T>(defaultValue);
@@ -54,10 +43,7 @@ export function createPreferenceProvider<T extends string>(
       document.documentElement.setAttribute(dataAttribute, value);
     }, [value]);
 
-    const contextValue = useMemo(
-      () => ({ value, setValue }),
-      [value, setValue]
-    );
+    const contextValue = useMemo(() => ({ value, setValue }), [value, setValue]);
 
     return <Context.Provider value={contextValue}>{children}</Context.Provider>;
   }
@@ -65,9 +51,7 @@ export function createPreferenceProvider<T extends string>(
   function usePreference() {
     const context = useContext(Context);
     if (context === undefined) {
-      throw new Error(
-        `usePreference must be used within a Provider (storageKey: ${storageKey})`
-      );
+      throw new Error(`usePreference must be used within a Provider (storageKey: ${storageKey})`);
     }
     return context;
   }

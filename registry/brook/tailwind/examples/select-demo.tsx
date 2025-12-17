@@ -27,21 +27,11 @@ export default function SelectDemo() {
     <Select defaultValue="placeholder" items={subscriptionPlans}>
       <SelectTrigger
         className="min-w-[180px]"
-        render={
-          <Button
-            className="!transition-none flex min-w-[180px]"
-            size="sm"
-            variant="outline"
-          />
-        }
+        render={<Button className="!transition-none flex min-w-[180px]" size="sm" variant="outline" />}
       >
         <SelectValue>
           {(value) => (
-            <span
-              className={
-                value === "placeholder" ? "text-muted-foreground" : undefined
-              }
-            >
+            <span className={value === "placeholder" ? "text-muted-foreground" : undefined}>
               {subscriptionPlans.find((item) => item.value === value)?.label}
             </span>
           )}
@@ -53,9 +43,7 @@ export default function SelectDemo() {
           <SelectPopup>
             <SelectList>
               <SelectItem disabled value="placeholder">
-                <SelectItemText className="text-muted-foreground">
-                  Select a Plan
-                </SelectItemText>
+                <SelectItemText className="text-muted-foreground">Select a Plan</SelectItemText>
               </SelectItem>
               <SelectItem value="Starter">
                 <SelectItemText>Starter</SelectItemText>

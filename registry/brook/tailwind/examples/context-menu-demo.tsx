@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Copy,
-  FileText,
-  FolderPlus,
-  MoreHorizontal,
-  Scissors,
-  Share2,
-  Trash2,
-} from "lucide-react";
+import { Copy, FileText, FolderPlus, MoreHorizontal, Scissors, Share2, Trash2 } from "lucide-react";
 import {
   ContextMenu,
   ContextMenuItem,
@@ -54,16 +46,10 @@ export default function ContextMenuDemo() {
                   <ContextMenuPositioner alignOffset={-4} sideOffset={-4}>
                     <ContextMenuPopup>
                       <ContextMenuSpacer />
-                      <ContextMenuItem className="pl-3">
-                        Email Link
-                      </ContextMenuItem>
-                      <ContextMenuItem className="pl-3">
-                        Copy Link
-                      </ContextMenuItem>
+                      <ContextMenuItem className="pl-3">Email Link</ContextMenuItem>
+                      <ContextMenuItem className="pl-3">Copy Link</ContextMenuItem>
                       <ContextMenuSeparator />
-                      <ContextMenuItem icon={<MoreHorizontal size={14} />}>
-                        More...
-                      </ContextMenuItem>
+                      <ContextMenuItem icon={<MoreHorizontal size={14} />}>More...</ContextMenuItem>
                       <ContextMenuSpacer />
                     </ContextMenuPopup>
                   </ContextMenuPositioner>
@@ -84,10 +70,7 @@ export default function ContextMenuDemo() {
                 <ContextMenuShortcut>⌘+V</ContextMenuShortcut>
               </ContextMenuItem>
               <ContextMenuSeparator />
-              <ContextMenuItem
-                icon={<Trash2 size={14} />}
-                variant="destructive"
-              >
+              <ContextMenuItem icon={<Trash2 size={14} />} variant="destructive">
                 Delete
                 <ContextMenuShortcut>⌫</ContextMenuShortcut>
               </ContextMenuItem>

@@ -4,10 +4,7 @@ import { cacheLife } from "next/cache";
 import { highlightCode } from "@/lib/highlight-code";
 import { GlobalsCSSClient } from "./globals-css-client";
 
-function filterCssForStyle(
-  css: string,
-  style: "css-modules" | "tailwind"
-): string {
+function filterCssForStyle(css: string, style: "css-modules" | "tailwind"): string {
   const lines = css.split("\n");
 
   if (style === "tailwind") {
@@ -68,10 +65,7 @@ export async function GlobalsCSS() {
   "use cache";
   cacheLife("max");
 
-  const cssContent = readFileSync(
-    join(process.cwd(), "styles/globals.css"),
-    "utf8"
-  );
+  const cssContent = readFileSync(join(process.cwd(), "styles/globals.css"), "utf8");
 
   // Pre-render both versions at build time
   const cssModulesContent = filterCssForStyle(cssContent, "css-modules");

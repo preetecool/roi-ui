@@ -14,8 +14,7 @@ const tabs = [
     id: "account",
     label: "Account",
     heading: "Account Settings",
-    description:
-      "Make changes to your account here. Click save when you're done.",
+    description: "Make changes to your account here. Click save when you're done.",
     buttons: [
       { label: "Save Changes", variant: "primary" as const },
       { label: "Cancel", variant: "outline" as const },
@@ -25,8 +24,7 @@ const tabs = [
     id: "password",
     label: "Password",
     heading: "Password",
-    description:
-      "Change your password here. After saving, you'll be logged out.",
+    description: "Change your password here. After saving, you'll be logged out.",
     buttons: [
       { label: "Update Password", variant: "primary" as const },
       { label: "Cancel", variant: "outline" as const },
@@ -36,8 +34,7 @@ const tabs = [
     id: "team",
     label: "Team",
     heading: "Team Management",
-    description:
-      "Invite and manage your team members. Set permissions, roles, and access levels for each team member.",
+    description: "Invite and manage your team members. Set permissions, roles, and access levels for each team member.",
     buttons: [
       { label: "Invite Member", variant: "primary" as const },
       { label: "Manage Roles", variant: "outline" as const },
@@ -121,11 +118,7 @@ export default function TabsFramerMotion() {
           transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
         >
           <div className={styles.contentWrapper} ref={ref}>
-            <AnimatePresence
-              custom={direction}
-              initial={false}
-              mode="popLayout"
-            >
+            <AnimatePresence custom={direction} initial={false} mode="popLayout">
               {activeTabData && (
                 <motion.div
                   animate="active"
@@ -139,20 +132,12 @@ export default function TabsFramerMotion() {
                   variants={contentVariants}
                 >
                   <div>
-                    <span className={styles.heading}>
-                      {activeTabData.heading}
-                    </span>
-                    <p className={styles.description}>
-                      {activeTabData.description}
-                    </p>
+                    <span className={styles.heading}>{activeTabData.heading}</span>
+                    <p className={styles.description}>{activeTabData.description}</p>
                   </div>
                   <div className={styles.buttonGroup}>
                     {activeTabData.buttons.map((button) => (
-                      <Button
-                        key={button.label}
-                        size="sm"
-                        variant={button.variant}
-                      >
+                      <Button key={button.label} size="sm" variant={button.variant}>
                         {button.label}
                       </Button>
                     ))}

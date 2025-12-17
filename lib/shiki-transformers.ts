@@ -31,7 +31,4 @@ export const lineNumbersTransformer: ShikiTransformer = {
   },
 };
 
-export const transformers = [
-  packageManagerTransformer,
-  lineNumbersTransformer,
-] as ShikiTransformer[];
+export const transformers = [packageManagerTransformer, lineNumbersTransformer] as ShikiTransformer[];
