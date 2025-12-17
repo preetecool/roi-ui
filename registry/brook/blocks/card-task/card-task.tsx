@@ -116,23 +116,13 @@ export function CardTask({
             </div>
             <div className={styles.iconBubble}>
               <Calendar size="14" />
-              <span
-                className={
-                  dueDate.variant === "warning" ? styles.tomorrowText : undefined
-                }
-              >
-                {dueDate.label}
-              </span>
+              <span className={dueDate.variant === "warning" ? styles.tomorrowText : undefined}>{dueDate.label}</span>
             </div>
           </div>
         </CardFooter>
       </Card>
 
-      <DeleteTaskAlertDialog
-        onDelete={handleDelete}
-        onOpenChange={setAlertOpen}
-        open={alertOpen}
-      />
+      <DeleteTaskAlertDialog onDelete={handleDelete} onOpenChange={setAlertOpen} open={alertOpen} />
 
       {availableUsers.length > 0 && (
         <CollaboratorDialog
@@ -159,22 +149,19 @@ const demoUsers: User[] = [
     value: "john-doe",
     label: "John Doe",
     email: "john@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "jane-smith",
     label: "Jane Smith",
     email: "jane@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "mike-johnson",
     label: "Mike Johnson",
     email: "mike@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
   },
 ];
 
@@ -190,10 +177,7 @@ export default function CardTaskDemo() {
       onCollaboratorsChange={setCollaborators}
       onDelete={() => console.log("Task deleted")}
       stats={{ comments: 4, subtasks: "4/5" }}
-      tags={[
-        { label: "Urgent", variant: "destructive" },
-        { label: "Docs" },
-      ]}
+      tags={[{ label: "Urgent", variant: "destructive" }, { label: "Docs" }]}
       title="Update Documentation"
     />
   );

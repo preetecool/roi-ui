@@ -85,12 +85,7 @@ function LikeButton({
   const [isAnimating, setIsAnimating] = useState(false);
 
   const createParticle = useCallback(
-    (
-      angleOffset: number,
-      type: "star" | "circle",
-      size: number,
-      color: string
-    ): Particle => {
+    (angleOffset: number, type: "star" | "circle", size: number, color: string): Particle => {
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
@@ -239,9 +234,7 @@ function LikeButton({
         <div className="pointer-events-none absolute inset-x-[-40px] inset-y-[-60px] z-[1] overflow-visible">
           {particles.map((particle) => (
             <div
-              className={cn(
-                "absolute top-1/2 left-1/2 will-change-[transform,opacity]"
-              )}
+              className={cn("absolute top-1/2 left-1/2 will-change-[transform,opacity]")}
               key={particle.id}
               style={
                 {
@@ -272,11 +265,8 @@ function LikeButton({
                     width: `${particle.size}px`,
                     height: `${particle.size}px`,
                     transform:
-                      particle.type === "circle"
-                        ? `scale(${particle.scale})`
-                        : `rotate(${particle.rotation}deg)`,
-                    backgroundColor:
-                      particle.type === "circle" ? particle.color : undefined,
+                      particle.type === "circle" ? `scale(${particle.scale})` : `rotate(${particle.rotation}deg)`,
+                    backgroundColor: particle.type === "circle" ? particle.color : undefined,
                   } as React.CSSProperties
                 }
               />
@@ -312,12 +302,8 @@ function LikeButton({
             opacity: 1,
             transform: "translateZ(0)",
             WebkitTransform: "translateZ(0)",
-            animation: isThumbAnimating
-              ? "thumbTilt 1.15s var(--ease-in-out-quad)"
-              : undefined,
-            WebkitAnimation: isThumbAnimating
-              ? "thumbTilt 1.15s cubic-bezier(0.4, 0, 0.2, 1)"
-              : undefined,
+            animation: isThumbAnimating ? "thumbTilt 1.15s var(--ease-in-out-quad)" : undefined,
+            WebkitAnimation: isThumbAnimating ? "thumbTilt 1.15s cubic-bezier(0.4, 0, 0.2, 1)" : undefined,
           }}
           type="button"
         >

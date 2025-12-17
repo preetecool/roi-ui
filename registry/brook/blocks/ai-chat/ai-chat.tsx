@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  ArrowUp,
-  AudioLines,
-  GraduationCap,
-  Lightbulb,
-  Paperclip,
-  WandSparkles,
-  Zap,
-} from "lucide-react";
+import { ArrowUp, AudioLines, GraduationCap, Lightbulb, Paperclip, WandSparkles, Zap } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
@@ -74,20 +66,10 @@ export function AiChat() {
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger
-                render={
-                  <Button
-                    size="sm"
-                    style={{ maxWidth: "100px" }}
-                    variant="outline"
-                  />
-                }
-              >
+              <SelectTrigger render={<Button size="sm" style={{ maxWidth: "100px" }} variant="outline" />}>
                 <SelectValue>
                   {(value) => {
-                    const selectedMode = aiModes.find(
-                      (mode) => mode.value === value
-                    );
+                    const selectedMode = aiModes.find((mode) => mode.value === value);
                     const IconComponent = selectedMode?.icon;
                     return (
                       <div className={styles.triggerContent}>
@@ -124,11 +106,7 @@ export function AiChat() {
             type="submit"
             variant="outline"
           >
-            {inputValue.trim() ? (
-              <ArrowUp size={16} />
-            ) : (
-              <AudioLines size={16} />
-            )}
+            {inputValue.trim() ? <ArrowUp size={16} /> : <AudioLines size={16} />}
           </Button>
         </CardFooter>
       </Card>

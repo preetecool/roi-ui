@@ -2,11 +2,7 @@
 
 import * as React from "react";
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import {
-  Field,
-  FieldError,
-  FieldLabel,
-} from "@/registry/brook/tailwind/ui/field";
+import { Field, FieldError, FieldLabel } from "@/registry/brook/tailwind/ui/field";
 import { Form } from "@/registry/brook/tailwind/ui/form";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
@@ -25,13 +21,7 @@ export default function FormDemo() {
     <Form className="max-w-64" onSubmit={onSubmit}>
       <Field>
         <FieldLabel>Email</FieldLabel>
-        <Input
-          disabled={loading}
-          name="email"
-          placeholder="you@example.com"
-          required
-          type="email"
-        />
+        <Input disabled={loading} name="email" placeholder="you@example.com" required type="email" />
         <FieldError>Please enter a valid email.</FieldError>
       </Field>
       <Button className="mt-4 w-full" disabled={loading} type="submit">

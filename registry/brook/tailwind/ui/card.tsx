@@ -61,27 +61,14 @@ const cardVariants = cva(
  * </Card>
  * ```
  */
-function Card({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof cardVariants>) {
-  return (
-    <div
-      className={cn(cardVariants({ variant }), className)}
-      data-slot="card"
-      {...props}
-    />
-  );
+function Card({ className, variant, ...props }: React.ComponentProps<"div"> & VariantProps<typeof cardVariants>) {
+  return <div className={cn(cardVariants({ variant }), className)} data-slot="card" {...props} />;
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "grid max-w-full grid-cols-[1fr_auto] items-center gap-2",
-        className
-      )}
+      className={cn("grid max-w-full grid-cols-[1fr_auto] items-center gap-2", className)}
       data-slot="card-header"
       {...props}
     />
@@ -91,11 +78,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
 function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "m-0 font-medium text-xl leading-none tracking-tight",
-        "max-sm:text-lg",
-        className
-      )}
+      className={cn("m-0 font-medium text-xl leading-none tracking-tight", "max-sm:text-lg", className)}
       data-slot="card-title"
       {...props}
     />
@@ -117,23 +100,11 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("card-content flex flex-col gap-3", className)}
-      data-slot="card-content"
-      {...props}
-    />
-  );
+  return <div className={cn("card-content flex flex-col gap-3", className)} data-slot="card-content" {...props} />;
 }
 
 function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("card-footer flex items-center", className)}
-      data-slot="card-footer"
-      {...props}
-    />
-  );
+  return <div className={cn("card-footer flex items-center", className)} data-slot="card-footer" {...props} />;
 }
 
 /**
@@ -160,10 +131,7 @@ function CardImage({
   className?: string;
   src: string;
   alt: string;
-} & Omit<
-  React.ComponentProps<typeof Image>,
-  "src" | "alt" | "width" | "height" | "children"
->) {
+} & Omit<React.ComponentProps<typeof Image>, "src" | "alt" | "width" | "height" | "children">) {
   return (
     <Image
       alt={alt}
@@ -202,10 +170,7 @@ function CardImage({
  * </Card>
  * ```
  */
-function CardImageContent({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function CardImageContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -219,11 +184,7 @@ function CardImageContent({
   );
 }
 
-function CardIcon({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div">) {
+function CardIcon({ className, children, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -245,10 +206,7 @@ function CardIcon({
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "col-start-2 row-start-1 self-start justify-self-end",
-        className
-      )}
+      className={cn("col-start-2 row-start-1 self-start justify-self-end", className)}
       data-slot="card-action"
       {...props}
     />

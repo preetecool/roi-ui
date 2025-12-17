@@ -44,9 +44,7 @@ export async function CodeBlock({
       <details className={styles.details}>
         <summary className={styles.summary}>{buttonText}</summary>
 
-        <div className={`${styles.container} ${styles.containerCollapsible}`}>
-          {codeContent}
-        </div>
+        <div className={`${styles.container} ${styles.containerCollapsible}`}>{codeContent}</div>
       </details>
     );
   }

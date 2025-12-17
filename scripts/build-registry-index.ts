@@ -49,14 +49,8 @@ async function buildOptimizedRegistry() {
   const examplesDir = path.join(process.cwd(), "registry/brook/examples");
   const blocksDir = path.join(process.cwd(), "registry/brook/blocks");
   const uiDir = path.join(process.cwd(), "registry/brook/ui");
-  const tailwindExamplesDir = path.join(
-    process.cwd(),
-    "registry/brook/tailwind/examples"
-  );
-  const tailwindBlocksDir = path.join(
-    process.cwd(),
-    "registry/brook/tailwind/blocks"
-  );
+  const tailwindExamplesDir = path.join(process.cwd(), "registry/brook/tailwind/examples");
+  const tailwindBlocksDir = path.join(process.cwd(), "registry/brook/tailwind/blocks");
   const tailwindUiDir = path.join(process.cwd(), "registry/brook/tailwind/ui");
 
   const examplesEntries = await fs.readdir(examplesDir, {
@@ -133,9 +127,7 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   for (const entry of examplesEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
     const isFile = entry.isFile();
-    const componentPath = isFile
-      ? `@/registry/brook/examples/${name}`
-      : `@/registry/brook/examples/${name}/${name}`;
+    const componentPath = isFile ? `@/registry/brook/examples/${name}` : `@/registry/brook/examples/${name}/${name}`;
 
     const files = await getComponentFiles(examplesDir, entry.name);
     const filesArray = files.length > 0 ? `["${files.join('", "')}"]` : "[]";
@@ -174,9 +166,7 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   for (const entry of blocksEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
     const isFile = entry.isFile();
-    const componentPath = isFile
-      ? `@/registry/brook/blocks/${name}`
-      : `@/registry/brook/blocks/${name}/${name}`;
+    const componentPath = isFile ? `@/registry/brook/blocks/${name}` : `@/registry/brook/blocks/${name}/${name}`;
 
     const files = await getComponentFiles(blocksDir, entry.name);
     const filesArray = files.length > 0 ? `["${files.join('", "')}"]` : "[]";
@@ -351,10 +341,7 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   console.log("✅ Built registry/__index__.tsx (metadata only)");
 
   // Write component loaders (separate file, loaded on-demand)
-  const loadersOutputPath = path.join(
-    process.cwd(),
-    "registry/__loaders__.tsx"
-  );
+  const loadersOutputPath = path.join(process.cwd(), "registry/__loaders__.tsx");
   await fs.writeFile(loadersOutputPath, loadersIndex);
   console.log("✅ Built registry/__loaders__.tsx (components)");
 

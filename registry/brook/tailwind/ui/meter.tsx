@@ -4,13 +4,7 @@ import { Meter } from "@base-ui/react/meter";
 import { cn } from "@/lib/utils-tailwind";
 
 function MeterRoot({ className, ...props }: Meter.Root.Props) {
-  return (
-    <Meter.Root
-      className={cn("flex w-full flex-col gap-2", className)}
-      data-slot="meter-root"
-      {...props}
-    />
-  );
+  return <Meter.Root className={cn("flex w-full flex-col gap-2", className)} data-slot="meter-root" {...props} />;
 }
 
 function MeterLabel({ className, ...props }: Meter.Label.Props) {
@@ -26,10 +20,7 @@ function MeterLabel({ className, ...props }: Meter.Label.Props) {
 function MeterTrack({ className, ...props }: Meter.Track.Props) {
   return (
     <Meter.Track
-      className={cn(
-        "relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]",
-        className
-      )}
+      className={cn("relative h-2 w-full overflow-hidden rounded-none bg-[var(--mix-card-75-bg)]", className)}
       data-slot="meter-track"
       {...props}
     />
@@ -64,10 +55,4 @@ function MeterValue({ className, ...props }: Meter.Value.Props) {
   );
 }
 
-export {
-  MeterRoot as Meter,
-  MeterIndicator,
-  MeterLabel,
-  MeterTrack,
-  MeterValue,
-};
+export { MeterRoot as Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue };

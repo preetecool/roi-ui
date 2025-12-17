@@ -21,8 +21,7 @@ export function GlobalsCSSClient({
   const { style } = useStyle();
 
   const content = style === "tailwind" ? tailwindContent : cssModulesContent;
-  const highlightedCode =
-    style === "tailwind" ? highlightedTailwind : highlightedCssModules;
+  const highlightedCode = style === "tailwind" ? highlightedTailwind : highlightedCssModules;
 
   return (
     <div className={codeTabsStyles.wrapper}>

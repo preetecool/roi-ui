@@ -85,11 +85,7 @@ function Table({
       className="relative w-full overflow-x-auto rounded-[var(--radius)] [-webkit-overflow-scrolling:touch] [scrollbar-color:var(--border)_var(--muted)] [scrollbar-width:thin]"
       data-slot="table-container"
     >
-      <table
-        className={cn(tableVariants({ variant, size }), className)}
-        data-slot="table"
-        {...props}
-      />
+      <table className={cn(tableVariants({ variant, size }), className)} data-slot="table" {...props} />
     </div>
   );
 }
@@ -113,10 +109,7 @@ function Table({
 function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   return (
     <thead
-      className={cn(
-        "sticky top-0 z-10 border-b border-b-border bg-card",
-        className
-      )}
+      className={cn("sticky top-0 z-10 border-b border-b-border bg-card", className)}
       data-slot="table-header"
       {...props}
     />
@@ -140,13 +133,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
  * ```
  */
 function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
-  return (
-    <tbody
-      className={cn("bg-card", className)}
-      data-slot="table-body"
-      {...props}
-    />
-  );
+  return <tbody className={cn("bg-card", className)} data-slot="table-body" {...props} />;
 }
 
 /**
@@ -279,10 +266,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
  * </Table>
  * ```
  */
-function TableCaption({
-  className,
-  ...props
-}: React.ComponentProps<"caption">) {
+function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
   return (
     <caption
       className={cn("mt-4 text-left text-muted-foreground text-sm", className)}

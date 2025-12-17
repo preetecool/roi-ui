@@ -6,10 +6,7 @@ import { Command } from "lucide-react";
 import { Children, cloneElement, isValidElement } from "react";
 import { cn } from "@/lib/utils-tailwind";
 
-function CommandRoot({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive>) {
+function CommandRoot({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive>) {
   return (
     <CommandPrimitive
       className={cn(
@@ -64,10 +61,7 @@ function CommandDialog({
   );
 }
 
-function CommandInput({
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
+function CommandInput({ className, ...props }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
   return (
     <CommandPrimitive.Input
       className={cn(
@@ -91,10 +85,7 @@ function CommandInput({
   );
 }
 
-function CommandList({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
+function CommandList({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
   return (
     <CommandPrimitive.List
       className={cn(
@@ -123,9 +114,7 @@ function CommandItem({
     icon && Children.count(children) > 0
       ? Children.map(children, (child, index) => {
           if (index === 0 && isValidElement(child)) {
-            const typedChild = child as React.ReactElement<
-              React.HTMLAttributes<HTMLElement>
-            >;
+            const typedChild = child as React.ReactElement<React.HTMLAttributes<HTMLElement>>;
             return cloneElement(typedChild, {
               className: cn(
                 "flex items-center justify-center border-[0.5px] border-border/50 bg-muted p-[0.4rem]",
@@ -181,10 +170,7 @@ function CommandItem({
   );
 }
 
-function CommandGroup({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
+function CommandGroup({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
   return (
     <CommandPrimitive.Group
       className={cn(
@@ -202,10 +188,7 @@ function CommandGroup({
   );
 }
 
-function CommandEmpty({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
+function CommandEmpty({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
       className={cn(
@@ -220,10 +203,7 @@ function CommandEmpty({
   );
 }
 
-function CommandSeparator({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
+function CommandSeparator({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
   return (
     <CommandPrimitive.Separator
       className={cn(
@@ -237,10 +217,7 @@ function CommandSeparator({
   );
 }
 
-function CommandLoading({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
+function CommandLoading({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
   return (
     <CommandPrimitive.Loading
       className={cn(

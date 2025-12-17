@@ -1,11 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { Check, Minus } from "lucide-react";
-import {
-  Checkbox,
-  CheckboxIndicator,
-} from "@/registry/brook/tailwind/ui/checkbox";
+import * as React from "react";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/tailwind/ui/checkbox";
 import { CheckboxGroup } from "@/registry/brook/tailwind/ui/checkbox-group";
 
 const allValues = ["design", "development", "marketing"];
@@ -15,22 +12,14 @@ export default function CheckboxGroupParent() {
 
   return (
     <div className="max-w-96">
-      <CheckboxGroup
-        value={value}
-        onValueChange={setValue}
-        allValues={allValues}
-      >
+      <CheckboxGroup allValues={allValues} onValueChange={setValue} value={value}>
         <label className="flex cursor-pointer items-center gap-2">
           <Checkbox name="interests" parent>
             <CheckboxIndicator
               keepMounted
               render={(props, state) => (
                 <span {...props}>
-                  {state.indeterminate ? (
-                    <Minus size={16} strokeWidth={3} />
-                  ) : (
-                    <Check size={16} strokeWidth={3} />
-                  )}
+                  {state.indeterminate ? <Minus size={16} strokeWidth={3} /> : <Check size={16} strokeWidth={3} />}
                 </span>
               )}
             />

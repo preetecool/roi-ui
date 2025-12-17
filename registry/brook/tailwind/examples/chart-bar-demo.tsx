@@ -34,47 +34,22 @@ const BAR_RADIUS: [number, number, number, number] = [4, 4, 0, 0];
 export default function ChartBarDemo() {
   return (
     <div className="flex h-full w-full flex-col">
-      <ChartContainer
-        className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]"
-        config={chartConfig}
-      >
-        <BarChart
-          data={chartData}
-          margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
-        >
+      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
+        <BarChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis
-            axisLine={false}
-            dataKey="month"
-            tickLine={false}
-            tickMargin={8}
-          />
-          <YAxis
-            axisLine={false}
-            domain={[0, "auto"]}
-            tickLine={false}
-            tickMargin={8}
-            width={40}
-          />
+          <XAxis axisLine={false} dataKey="month" tickLine={false} tickMargin={8} />
+          <YAxis axisLine={false} domain={[0, "auto"]} tickLine={false} tickMargin={8} width={40} />
           <ChartTooltip
             content={
               <ChartTooltipContent
                 formatter={(value) => {
-                  const numValue =
-                    typeof value === "number"
-                      ? value
-                      : Number.parseFloat(String(value));
+                  const numValue = typeof value === "number" ? value : Number.parseFloat(String(value));
                   return `$${numValue.toLocaleString()}k`;
                 }}
               />
             }
           />
-          <Bar
-            animationDuration={ANIMATION_DURATION}
-            dataKey="sales"
-            fill="var(--color-sales)"
-            radius={BAR_RADIUS}
-          />
+          <Bar animationDuration={ANIMATION_DURATION} dataKey="sales" fill="var(--color-sales)" radius={BAR_RADIUS} />
         </BarChart>
       </ChartContainer>
     </div>

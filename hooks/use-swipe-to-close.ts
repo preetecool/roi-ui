@@ -17,10 +17,7 @@ type UseSwipeToCloseOptions = {
  * 2. User pulls down past the threshold (e.g., -32px)
  * 3. On release, if threshold is exceeded, triggers close with animation
  */
-export function useSwipeToClose({
-  threshold = 32,
-  onClose,
-}: UseSwipeToCloseOptions) {
+export function useSwipeToClose({ threshold = 32, onClose }: UseSwipeToCloseOptions) {
   const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = useCallback(
     (event) => {
       const viewport = event.currentTarget;

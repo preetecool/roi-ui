@@ -1,12 +1,4 @@
-import {
-  Calendar,
-  CreditCard,
-  FileText,
-  Mail,
-  Smile,
-  Terminal,
-  User,
-} from "lucide-react";
+import { Calendar, CreditCard, FileText, Mail, Smile, Terminal, User } from "lucide-react";
 import {
   Command,
   CommandEmpty,

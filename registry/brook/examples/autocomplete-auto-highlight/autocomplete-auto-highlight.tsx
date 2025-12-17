@@ -40,11 +40,7 @@ export default function AutocompleteAutoHighlight() {
         onValueChange={setValue}
         value={value}
       >
-        <AutocompleteInput
-          className={styles.input}
-          id="auto-highlight-input"
-          placeholder="Start typing..."
-        />
+        <AutocompleteInput className={styles.input} id="auto-highlight-input" placeholder="Start typing..." />
 
         <AutocompletePortal>
           <AutocompletePositioner>

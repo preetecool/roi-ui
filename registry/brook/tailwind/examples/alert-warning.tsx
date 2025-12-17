@@ -1,11 +1,7 @@
 "use client";
 
 import { AlertTriangle } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/brook/tailwind/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/ui/alert";
 
 export default function AlertWarning() {
   return (

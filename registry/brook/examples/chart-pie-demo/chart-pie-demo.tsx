@@ -49,10 +49,7 @@ export default function ChartPieDemo() {
             content={
               <ChartTooltipContent
                 formatter={(value) => {
-                  const numValue =
-                    typeof value === "number"
-                      ? value
-                      : Number.parseFloat(String(value));
+                  const numValue = typeof value === "number" ? value : Number.parseFloat(String(value));
                   return `${numValue.toFixed(1)}%`;
                 }}
                 nameKey="platform"

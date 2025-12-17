@@ -69,11 +69,7 @@ export default function AutocompleteGrouped() {
         onValueChange={setValue}
         value={value}
       >
-        <AutocompleteInput
-          className="w-[300px] max-sm:w-full"
-          id="grouped-input"
-          placeholder="Search items..."
-        />
+        <AutocompleteInput className="w-[300px] max-sm:w-full" id="grouped-input" placeholder="Search items..." />
 
         <AutocompletePortal>
           <AutocompletePositioner>

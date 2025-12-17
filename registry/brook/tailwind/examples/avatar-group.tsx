@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/tailwind/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 
 const users = [
   { name: "Emma Wilson", avatar: "/avatars/emma.png" },
@@ -28,18 +24,15 @@ export default function AvatarGroup() {
     <div className="p-8 max-sm:p-4">
       <div className="flex items-center">
         {displayUsers.map((user) => (
-          <div key={user.name} className="-ml-2 first:ml-0 rounded-full">
+          <div className="-ml-2 rounded-full first:ml-0" key={user.name}>
             <Avatar className="size-10 border-2 border-background">
-              <AvatarImage
-                alt={`Profile picture of ${user.name}`}
-                src={user.avatar}
-              />
+              <AvatarImage alt={`Profile picture of ${user.name}`} src={user.avatar} />
               <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
             </Avatar>
           </div>
         ))}
         {remainingCount > 0 && (
-          <div className="-ml-2 size-10 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-xs font-semibold border-2 border-background">
+          <div className="-ml-2 flex size-10 items-center justify-center rounded-full border-2 border-background bg-muted font-semibold text-muted-foreground text-xs">
             +{remainingCount}
           </div>
         )}

@@ -3,11 +3,7 @@
 import { Toolbar } from "@base-ui/react/toolbar";
 import { cn } from "@/lib/utils-tailwind";
 
-function ToolbarRoot({
-  className,
-  orientation = "horizontal",
-  ...props
-}: Toolbar.Root.Props) {
+function ToolbarRoot({ className, orientation = "horizontal", ...props }: Toolbar.Root.Props) {
   return (
     <Toolbar.Root
       className={cn(
@@ -98,22 +94,11 @@ function ToolbarGroup({ className, ...props }: Toolbar.Group.Props) {
 function ToolbarSeparator({ className, ...props }: Toolbar.Separator.Props) {
   return (
     <Toolbar.Separator
-      className={cn(
-        "mx-1 h-6 w-px flex-shrink-0 bg-border",
-        "max-sm:h-7",
-        className
-      )}
+      className={cn("mx-1 h-6 w-px flex-shrink-0 bg-border", "max-sm:h-7", className)}
       data-slot="toolbar-separator"
       {...props}
     />
   );
 }
 
-export {
-  ToolbarRoot as Toolbar,
-  ToolbarButton,
-  ToolbarGroup,
-  ToolbarInput,
-  ToolbarLink,
-  ToolbarSeparator,
-};
+export { ToolbarRoot as Toolbar, ToolbarButton, ToolbarGroup, ToolbarInput, ToolbarLink, ToolbarSeparator };

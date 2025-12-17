@@ -11,10 +11,7 @@ import { CodeTabs } from "./code-tabs";
  * and updates the preference when the user switches tabs
  */
 export function PackageManagerCodeTabs(
-  props: Omit<
-    ComponentProps<typeof CodeTabs>,
-    "variant" | "defaultValue" | "value" | "onValueChange"
-  >
+  props: Omit<ComponentProps<typeof CodeTabs>, "variant" | "defaultValue" | "value" | "onValueChange">
 ) {
   const { packageManager, setPackageManager } = usePackageManager();
 
@@ -24,12 +21,5 @@ export function PackageManagerCodeTabs(
     }
   };
 
-  return (
-    <CodeTabs
-      onValueChange={handleValueChange}
-      value={packageManager}
-      variant="package"
-      {...props}
-    />
-  );
+  return <CodeTabs onValueChange={handleValueChange} value={packageManager} variant="package" {...props} />;
 }

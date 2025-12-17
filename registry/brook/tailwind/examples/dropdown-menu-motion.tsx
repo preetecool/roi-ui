@@ -1,13 +1,6 @@
 "use client";
 import { Menu } from "@base-ui/react";
-import {
-  CreditCard,
-  Ellipsis,
-  LogOut,
-  Settings,
-  User,
-  Users,
-} from "lucide-react";
+import { CreditCard, Ellipsis, LogOut, Settings, User, Users } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
@@ -60,9 +53,7 @@ export default function DropdownMenuFramerMotion() {
               <Menu.Portal container={containerRef} key="portal">
                 <Menu.Positioner
                   anchor={containerRef}
-                  render={
-                    <motion.div className="absolute left-0 z-[150]" layout />
-                  }
+                  render={<motion.div className="absolute left-0 z-[150]" layout />}
                   side="top"
                   sideOffset={20}
                 >

@@ -5,36 +5,22 @@ import styles from "./components-grid.module.css";
 
 export function ComponentsGrid() {
   // Find UI and Blocks sections from the tree
-  const uiSection = source.pageTree.children.find(
-    (group) => group.type === "folder" && group.name === "UI"
-  );
-  const blocksSection = source.pageTree.children.find(
-    (group) => group.type === "folder" && group.name === "Blocks"
-  );
+  const uiSection = source.pageTree.children.find((group) => group.type === "folder" && group.name === "UI");
+  const blocksSection = source.pageTree.children.find((group) => group.type === "folder" && group.name === "Blocks");
 
-  const uiComponents =
-    uiSection?.type === "folder"
-      ? uiSection.children.filter((item) => item.type === "page")
-      : [];
+  const uiComponents = uiSection?.type === "folder" ? uiSection.children.filter((item) => item.type === "page") : [];
 
-  const blocks =
-    blocksSection?.type === "folder"
-      ? blocksSection.children.filter((item) => item.type === "page")
-      : [];
+  const blocks = blocksSection?.type === "folder" ? blocksSection.children.filter((item) => item.type === "page") : [];
 
   return (
     <div className={styles.container}>
       {uiComponents.length > 0 && (
-        <section
-          aria-labelledby="ui-components-heading"
-          className={styles.section}
-        >
+        <section aria-labelledby="ui-components-heading" className={styles.section}>
           <h2 className={styles.sectionTitle} id="ui-components-heading">
             UI Components
           </h2>
           <p className={styles.sectionDescription}>
-            Foundational components for building interfaces. Fully accessible
-            and customizable.
+            Foundational components for building interfaces. Fully accessible and customizable.
           </p>
           <ul className={styles.grid}>
             {uiComponents.map((component) => {

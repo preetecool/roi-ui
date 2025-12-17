@@ -1,8 +1,5 @@
 import { Field, FieldLabel } from "@/registry/brook/tailwind/ui/field";
-import {
-  Fieldset,
-  FieldsetLegend,
-} from "@/registry/brook/tailwind/ui/fieldset";
+import { Fieldset, FieldsetLegend } from "@/registry/brook/tailwind/ui/fieldset";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
 export default function FieldsetDemo() {

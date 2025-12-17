@@ -1,10 +1,6 @@
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/tailwind/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Combobox,
@@ -55,8 +51,7 @@ export function CollaboratorDialog({
   onConfirm,
 }: CollaboratorDialogProps) {
   const comboboxAnchorRef = useRef<HTMLDivElement>(null);
-  const [selectedCollaborators, setSelectedCollaborators] =
-    useState<User[]>(currentCollaborators);
+  const [selectedCollaborators, setSelectedCollaborators] = useState<User[]>(currentCollaborators);
 
   const handleOpenChange = (nextOpen: boolean) => {
     if (nextOpen) {
@@ -71,9 +66,7 @@ export function CollaboratorDialog({
   };
 
   const handleRemoveCollaborator = (userValue: string) => {
-    setSelectedCollaborators(
-      selectedCollaborators.filter((c) => c.value !== userValue)
-    );
+    setSelectedCollaborators(selectedCollaborators.filter((c) => c.value !== userValue));
   };
 
   return (
@@ -83,23 +76,17 @@ export function CollaboratorDialog({
         <DialogPopup className="max-w-[410px]">
           <DialogHeader>
             <DialogTitle>Add Collaborator</DialogTitle>
-            <DialogDescription>
-              Invite a team member to collaborate on this task.
-            </DialogDescription>
+            <DialogDescription>Invite a team member to collaborate on this task.</DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col gap-4">
             {/* Current Collaborators */}
             <div>
-              <div className="mb-2 block text-sm font-medium">
-                Current Collaborators
-              </div>
+              <div className="mb-2 block font-medium text-sm">Current Collaborators</div>
               <div className="flex flex-wrap items-center gap-2">
                 <TooltipProvider>
                   {selectedCollaborators?.map((collaborator, index) => {
-                    const isNewlyAdded = !currentCollaborators.some(
-                      (c) => c.value === collaborator.value
-                    );
+                    const isNewlyAdded = !currentCollaborators.some((c) => c.value === collaborator.value);
                     const lastIndex = selectedCollaborators.length - 1;
                     const isLast = index === lastIndex;
                     const isFirst = index === 0;
@@ -112,15 +99,10 @@ export function CollaboratorDialog({
                               <Avatar
                                 className={cn(
                                   "h-8 w-8 rounded-full border-2 transition-[border]",
-                                  isNewlyAdded
-                                    ? "border-[var(--success)]"
-                                    : "border-transparent"
+                                  isNewlyAdded ? "border-[var(--success)]" : "border-transparent"
                                 )}
                               >
-                                <AvatarImage
-                                  alt={collaborator.label}
-                                  src={collaborator.avatar}
-                                />
+                                <AvatarImage alt={collaborator.label} src={collaborator.avatar} />
                                 <AvatarFallback>
                                   {collaborator.label
                                     ?.split(" ")
@@ -130,15 +112,13 @@ export function CollaboratorDialog({
                               </Avatar>
                               <button
                                 className={cn(
-                                  "-right-1 -top-1 absolute flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-full border-2 border-[var(--background)] bg-[var(--destructive)] text-[10px] font-semibold leading-none text-[var(--destructive-foreground)] transition-all hover:scale-110 hover:bg-[oklch(from_var(--destructive)_calc(l*0.9)_c_h)]",
+                                  "-right-1 -top-1 absolute flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-full border-2 border-[var(--background)] bg-[var(--destructive)] font-semibold text-[10px] text-[var(--destructive-foreground)] leading-none transition-all hover:scale-110 hover:bg-[oklch(from_var(--destructive)_calc(l*0.9)_c_h)]",
                                   "focus-visible:pointer-events-auto focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
                                   isLast && !isFirst
                                     ? "pointer-events-auto opacity-100"
                                     : "pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100"
                                 )}
-                                onClick={() =>
-                                  handleRemoveCollaborator(collaborator.value)
-                                }
+                                onClick={() => handleRemoveCollaborator(collaborator.value)}
                                 type="button"
                               >
                                 ×
@@ -163,7 +143,7 @@ export function CollaboratorDialog({
 
             {/* Add New Collaborator */}
             <div className="flex flex-col gap-2">
-              <div className="text-sm font-medium">Add New Collaborator</div>
+              <div className="font-medium text-sm">Add New Collaborator</div>
               <Combobox<User, true>
                 items={availableUsers}
                 itemToStringLabel={(item: User | null) => item?.label || ""}
@@ -187,18 +167,10 @@ export function CollaboratorDialog({
                       <ComboboxEmpty>No user found.</ComboboxEmpty>
                       <ComboboxList>
                         {(user: User) => (
-                          <ComboboxItem
-                            className="h-10"
-                            indicatorPosition="right"
-                            key={user.value}
-                            value={user}
-                          >
+                          <ComboboxItem className="h-10" indicatorPosition="right" key={user.value} value={user}>
                             <div className="flex flex-1 items-center gap-4">
                               <Avatar className="h-6 w-6">
-                                <AvatarImage
-                                  alt={user.label}
-                                  src={user.avatar}
-                                />
+                                <AvatarImage alt={user.label} src={user.avatar} />
                                 <AvatarFallback>
                                   {user.label
                                     .split(" ")
@@ -207,12 +179,8 @@ export function CollaboratorDialog({
                                 </AvatarFallback>
                               </Avatar>
                               <div className="text-left">
-                                <div className="text-sm font-medium">
-                                  {user.label}
-                                </div>
-                                <div className="text-xs text-[var(--muted-foreground)]">
-                                  {user.email}
-                                </div>
+                                <div className="font-medium text-sm">{user.label}</div>
+                                <div className="text-[var(--muted-foreground)] text-xs">{user.email}</div>
                               </div>
                             </div>
                           </ComboboxItem>

@@ -18,10 +18,7 @@ type StyleProviderProps = {
   defaultValue?: StyleVariant;
 };
 
-export function StyleProvider({
-  children,
-  defaultValue = "css-modules",
-}: StyleProviderProps) {
+export function StyleProvider({ children, defaultValue = "css-modules" }: StyleProviderProps) {
   return <Provider defaultValue={defaultValue}>{children}</Provider>;
 }
 

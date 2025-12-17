@@ -56,11 +56,7 @@ export default function ComboboxAutoHighlight() {
                 <ComboboxEmpty>No countries found.</ComboboxEmpty>
                 <ComboboxList>
                   {(item: Country) => (
-                    <ComboboxItem
-                      indicatorPosition="right"
-                      key={item.value}
-                      value={item}
-                    >
+                    <ComboboxItem indicatorPosition="right" key={item.value} value={item}>
                       <span className="flex-1">{item.label}</span>
                     </ComboboxItem>
                   )}

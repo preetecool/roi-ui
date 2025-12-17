@@ -95,9 +95,7 @@ export default function AutocompleteDemo() {
         <AutocompletePortal>
           <AutocompletePositioner>
             <AutocompletePopup>
-              <AutocompleteEmpty>
-                No matching questions found. Type your own question!
-              </AutocompleteEmpty>
+              <AutocompleteEmpty>No matching questions found. Type your own question!</AutocompleteEmpty>
               <AutocompleteList>
                 {(question: Question) => (
                   <AutocompleteItem key={question.value} value={question}>
@@ -107,11 +105,7 @@ export default function AutocompleteDemo() {
                           {question.question}
                         </div>
                       </div>
-                      <Badge
-                        className="flex-shrink-0"
-                        size="sm"
-                        variant="outline"
-                      >
+                      <Badge className="flex-shrink-0" size="sm" variant="outline">
                         {question.category}
                       </Badge>
                     </div>

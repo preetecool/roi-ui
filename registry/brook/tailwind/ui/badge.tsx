@@ -15,8 +15,7 @@ const badgeVariants = cva(
       variant: {
         default:
           "selection:!bg-[oklch(0_0_0)] selection:!text-foreground [&_*]:selection:!bg-[oklch(0_0_0)] [&_*]:selection:!text-foreground [.light_&]:selection:!bg-white [.light_&]:selection:!text-black [.light_&_*]:selection:!bg-white [.light_&_*]:selection:!text-black [[data-theme='light']_&]:selection:!bg-white [[data-theme='light']_&]:selection:!text-black [[data-theme='light']_&_*]:selection:!bg-white [[data-theme='light']_&_*]:selection:!text-black bg-foreground text-primary-foreground",
-        secondary:
-          "border-transparent bg-[var(--secondary)] text-secondary-foreground",
+        secondary: "border-transparent bg-[var(--secondary)] text-secondary-foreground",
         destructive: [
           "border-transparent bg-[var(--secondary)] text-destructive",
           "focus-visible:shadow-[0_0_0_3px_var(--destructive),inset_0_0_0_1px_var(--destructive)]",
@@ -83,13 +82,7 @@ function Badge({
   size,
   ...props
 }: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
-  return (
-    <span
-      className={cn(badgeVariants({ variant, size }), className)}
-      data-slot="badge"
-      {...props}
-    />
-  );
+  return <span className={cn(badgeVariants({ variant, size }), className)} data-slot="badge" {...props} />;
 }
 
 /**
@@ -107,16 +100,10 @@ function Badge({
  * </Badge>
  * ```
  */
-function BadgeIcon({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
+function BadgeIcon({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
-      className={cn(
-        "mr-1 inline-flex flex-shrink-0 items-center justify-center rounded-full p-0.5",
-        className
-      )}
+      className={cn("mr-1 inline-flex flex-shrink-0 items-center justify-center rounded-full p-0.5", className)}
       data-slot="badge-icon"
       {...props}
     />

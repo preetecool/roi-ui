@@ -67,11 +67,7 @@ function Table({
 }: React.ComponentProps<"table"> & VariantProps<typeof tableVariants>) {
   return (
     <div className={styles.container} data-slot="table-container">
-      <table
-        className={cn(tableVariants({ variant, size }), className)}
-        data-slot="table"
-        {...props}
-      />
+      <table className={cn(tableVariants({ variant, size }), className)} data-slot="table" {...props} />
     </div>
   );
 }
@@ -93,13 +89,7 @@ function Table({
  * ```
  */
 function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
-  return (
-    <thead
-      className={cn(styles.header, className)}
-      data-slot="table-header"
-      {...props}
-    />
-  );
+  return <thead className={cn(styles.header, className)} data-slot="table-header" {...props} />;
 }
 
 /**
@@ -119,13 +109,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
  * ```
  */
 function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
-  return (
-    <tbody
-      className={cn(styles.body, className)}
-      data-slot="table-body"
-      {...props}
-    />
-  );
+  return <tbody className={cn(styles.body, className)} data-slot="table-body" {...props} />;
 }
 
 /**
@@ -146,13 +130,7 @@ function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
  * ```
  */
 function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
-  return (
-    <tfoot
-      className={cn(styles.footer, className)}
-      data-slot="table-footer"
-      {...props}
-    />
-  );
+  return <tfoot className={cn(styles.footer, className)} data-slot="table-footer" {...props} />;
 }
 
 /**
@@ -173,13 +151,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
  * ```
  */
 function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
-  return (
-    <tr
-      className={cn(styles.row, className)}
-      data-slot="table-row"
-      {...props}
-    />
-  );
+  return <tr className={cn(styles.row, className)} data-slot="table-row" {...props} />;
 }
 
 /**
@@ -197,13 +169,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
  * ```
  */
 function TableHead({ className, ...props }: React.ComponentProps<"th">) {
-  return (
-    <th
-      className={cn(styles.head, className)}
-      data-slot="table-head"
-      {...props}
-    />
-  );
+  return <th className={cn(styles.head, className)} data-slot="table-head" {...props} />;
 }
 
 /**
@@ -218,13 +184,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
  * ```
  */
 function TableCell({ className, ...props }: React.ComponentProps<"td">) {
-  return (
-    <td
-      className={cn(styles.cell, className)}
-      data-slot="table-cell"
-      {...props}
-    />
-  );
+  return <td className={cn(styles.cell, className)} data-slot="table-cell" {...props} />;
 }
 
 /**
@@ -240,17 +200,8 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
  * </Table>
  * ```
  */
-function TableCaption({
-  className,
-  ...props
-}: React.ComponentProps<"caption">) {
-  return (
-    <caption
-      className={cn(styles.caption, className)}
-      data-slot="table-caption"
-      {...props}
-    />
-  );
+function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+  return <caption className={cn(styles.caption, className)} data-slot="table-caption" {...props} />;
 }
 
 const Root = Table;

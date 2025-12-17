@@ -1,13 +1,7 @@
 "use client";
 
 import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/registry/brook/ui/card/card";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
 import styles from "./card-history.module.css";
 
 const items = [

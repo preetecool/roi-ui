@@ -17,12 +17,10 @@ const alertVariants = cva(
     variants: {
       variant: {
         default: "text-foreground",
-        destructive:
-          "text-destructive [&_.alert-description]:text-destructive [&_.alert-title]:text-destructive",
+        destructive: "text-destructive [&_.alert-description]:text-destructive [&_.alert-title]:text-destructive",
         warning:
           "text-warning-foreground [&_.alert-description]:text-warning-foreground [&_.alert-title]:text-warning-foreground",
-        success:
-          "text-success [&_.alert-description]:text-success [&_.alert-title]:text-success",
+        success: "text-success [&_.alert-description]:text-success [&_.alert-title]:text-success",
         info: "text-info [&_.alert-description]:text-info [&_.alert-title]:text-info",
       },
     },
@@ -32,19 +30,8 @@ const alertVariants = cva(
   }
 );
 
-function Alert({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  return (
-    <div
-      className={cn(alertVariants({ variant }), className)}
-      data-slot="alert"
-      role="alert"
-      {...props}
-    />
-  );
+function Alert({ className, variant, ...props }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+  return <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />;
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
@@ -61,10 +48,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(

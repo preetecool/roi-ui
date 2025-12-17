@@ -1,11 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import {
-  Collapsible,
-  CollapsiblePanel,
-  CollapsibleTrigger,
-} from "@/registry/brook/ui/collapsible/collapsible";
+import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from "@/registry/brook/ui/collapsible/collapsible";
 import styles from "./prop-table.module.css";
 
 type PropRow = {
@@ -42,14 +38,8 @@ function isPascalCase(text: string): boolean {
     return false;
   }
   const firstChar = text[0];
-  const isFirstCharUppercase =
-    firstChar === firstChar.toUpperCase() &&
-    firstChar !== firstChar.toLowerCase();
-  const hasOnlyLetters = text
-    .split("")
-    .every(
-      (char) => (char >= "a" && char <= "z") || (char >= "A" && char <= "Z")
-    );
+  const isFirstCharUppercase = firstChar === firstChar.toUpperCase() && firstChar !== firstChar.toLowerCase();
+  const hasOnlyLetters = text.split("").every((char) => (char >= "a" && char <= "z") || (char >= "A" && char <= "Z"));
   return isFirstCharUppercase && hasOnlyLetters;
 }
 
@@ -159,10 +149,7 @@ function highlightType(typeString: string) {
 // Extract simple type (first type before |)
 function getSimpleType(typeString: string): string {
   const pipeIndex = typeString.indexOf("|");
-  const firstType =
-    pipeIndex !== -1
-      ? typeString.slice(0, pipeIndex).trim()
-      : typeString.trim();
+  const firstType = pipeIndex !== -1 ? typeString.slice(0, pipeIndex).trim() : typeString.trim();
 
   // Remove quotes if it's a string literal type
   if (firstType.startsWith('"') && firstType.endsWith('"')) {
@@ -206,21 +193,14 @@ export function PropTable({ data }: PropTableProps) {
       </div>
       <div className={styles.body}>
         {data.map((row, index) => (
-          <Collapsible
-            className={styles.collapsible}
-            key={`prop-${row.prop}-${index}`}
-          >
+          <Collapsible className={styles.collapsible} key={`prop-${row.prop}-${index}`}>
             <CollapsibleTrigger className={styles.trigger}>
               <div className={styles.summaryGrid}>
                 <code className={styles.code}>{row.prop}</code>
-                <code className={styles.typeCode}>
-                  {highlightType(getSimpleType(row.type))}
-                </code>
+                <code className={styles.typeCode}>{highlightType(getSimpleType(row.type))}</code>
                 <div className={styles.defaultCell}>
                   {row.default ? (
-                    <code className={styles.code}>
-                      {renderDefaultValue(row.default)}
-                    </code>
+                    <code className={styles.code}>{renderDefaultValue(row.default)}</code>
                   ) : (
                     renderDefaultValue()
                   )}
@@ -243,9 +223,7 @@ export function PropTable({ data }: PropTableProps) {
               <div className={styles.panelRow}>
                 <div className={styles.detailLabel}>Type</div>
                 <div className={styles.detailValueSpan}>
-                  <code className={styles.typeCode}>
-                    {highlightType(row.type)}
-                  </code>
+                  <code className={styles.typeCode}>{highlightType(row.type)}</code>
                 </div>
               </div>
 
@@ -253,9 +231,7 @@ export function PropTable({ data }: PropTableProps) {
                 <div className={styles.detailLabel}>Default</div>
                 <div className={styles.detailValue}>
                   {row.default ? (
-                    <code className={styles.code}>
-                      {renderDefaultValue(row.default)}
-                    </code>
+                    <code className={styles.code}>{renderDefaultValue(row.default)}</code>
                   ) : (
                     renderDefaultValue()
                   )}

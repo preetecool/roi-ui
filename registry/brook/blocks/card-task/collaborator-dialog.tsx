@@ -1,9 +1,5 @@
 import { useRef, useState } from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/ui/avatar/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Combobox,
@@ -36,8 +32,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/registry/brook/ui/tooltip/tooltip";
-import styles from "./card-task.module.css";
 import type { User } from "./card-task";
+import styles from "./card-task.module.css";
 
 type CollaboratorDialogProps = {
   open: boolean;
@@ -55,8 +51,7 @@ export function CollaboratorDialog({
   onConfirm,
 }: CollaboratorDialogProps) {
   const comboboxAnchorRef = useRef<HTMLDivElement>(null);
-  const [selectedCollaborators, setSelectedCollaborators] =
-    useState<User[]>(currentCollaborators);
+  const [selectedCollaborators, setSelectedCollaborators] = useState<User[]>(currentCollaborators);
 
   const handleOpenChange = (nextOpen: boolean) => {
     if (nextOpen) {
@@ -71,9 +66,7 @@ export function CollaboratorDialog({
   };
 
   const handleRemoveCollaborator = (userValue: string) => {
-    setSelectedCollaborators(
-      selectedCollaborators.filter((c) => c.value !== userValue)
-    );
+    setSelectedCollaborators(selectedCollaborators.filter((c) => c.value !== userValue));
   };
 
   return (
@@ -83,9 +76,7 @@ export function CollaboratorDialog({
         <DialogPopup className={styles.dialogPopup}>
           <DialogHeader>
             <DialogTitle>Add Collaborator</DialogTitle>
-            <DialogDescription>
-              Invite a team member to collaborate on this task.
-            </DialogDescription>
+            <DialogDescription>Invite a team member to collaborate on this task.</DialogDescription>
           </DialogHeader>
 
           <div className={styles.dialogContent}>
@@ -95,9 +86,7 @@ export function CollaboratorDialog({
               <div className={styles.collaboratorList}>
                 <TooltipProvider>
                   {selectedCollaborators?.map((collaborator, index) => {
-                    const isNewlyAdded = !currentCollaborators.some(
-                      (c) => c.value === collaborator.value
-                    );
+                    const isNewlyAdded = !currentCollaborators.some((c) => c.value === collaborator.value);
                     const lastIndex = selectedCollaborators.length - 1;
                     const isLast = index === lastIndex;
                     const isFirst = index === 0;
@@ -114,10 +103,7 @@ export function CollaboratorDialog({
                                     : styles.collaboratorAvatarImageOriginal
                                 }`}
                               >
-                                <AvatarImage
-                                  alt={collaborator.label}
-                                  src={collaborator.avatar}
-                                />
+                                <AvatarImage alt={collaborator.label} src={collaborator.avatar} />
                                 <AvatarFallback>
                                   {collaborator.label
                                     ?.split(" ")
@@ -126,12 +112,8 @@ export function CollaboratorDialog({
                                 </AvatarFallback>
                               </Avatar>
                               <button
-                                className={`${styles.removeButton} ${
-                                  isLast && !isFirst ? styles.alwaysVisible : ""
-                                }`}
-                                onClick={() =>
-                                  handleRemoveCollaborator(collaborator.value)
-                                }
+                                className={`${styles.removeButton} ${isLast && !isFirst ? styles.alwaysVisible : ""}`}
+                                onClick={() => handleRemoveCollaborator(collaborator.value)}
                                 type="button"
                               >
                                 ×
@@ -156,9 +138,7 @@ export function CollaboratorDialog({
 
             {/* Add New Collaborator */}
             <div className={styles.addCollaboratorSection}>
-              <div className={styles.addCollaboratorLabel}>
-                Add New Collaborator
-              </div>
+              <div className={styles.addCollaboratorLabel}>Add New Collaborator</div>
               <Combobox<User, true>
                 items={availableUsers}
                 itemToStringLabel={(item: User | null) => item?.label || ""}
@@ -190,10 +170,7 @@ export function CollaboratorDialog({
                           >
                             <div className={styles.userItemContainer}>
                               <Avatar className={styles.userAvatar}>
-                                <AvatarImage
-                                  alt={user.label}
-                                  src={user.avatar}
-                                />
+                                <AvatarImage alt={user.label} src={user.avatar} />
                                 <AvatarFallback>
                                   {user.label
                                     .split(" ")
@@ -202,12 +179,8 @@ export function CollaboratorDialog({
                                 </AvatarFallback>
                               </Avatar>
                               <div className={styles.userInfo}>
-                                <div className={styles.userName}>
-                                  {user.label}
-                                </div>
-                                <div className={styles.userEmail}>
-                                  {user.email}
-                                </div>
+                                <div className={styles.userName}>{user.label}</div>
+                                <div className={styles.userEmail}>{user.email}</div>
                               </div>
                             </div>
                           </ComboboxItem>

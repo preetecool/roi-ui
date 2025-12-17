@@ -16,17 +16,9 @@ function DropdownMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
 
 const DropdownMenuPortal = Menu.Portal;
 
-function DropdownMenuPositioner({
-  className,
-  ...props
-}: Menu.Positioner.Props) {
+function DropdownMenuPositioner({ className, ...props }: Menu.Positioner.Props) {
   return (
-    <Menu.Positioner
-      className={cn(styles.positioner, className)}
-      data-slot="menu-positioner"
-      side="top"
-      {...props}
-    />
+    <Menu.Positioner className={cn(styles.positioner, className)} data-slot="menu-positioner" side="top" {...props} />
   );
 }
 
@@ -41,13 +33,7 @@ interface DropdownMenuItemProps extends Menu.Item.Props {
   variant?: "default" | "destructive";
 }
 
-function DropdownMenuItem({
-  className,
-  icon,
-  children,
-  variant = "default",
-  ...props
-}: DropdownMenuItemProps) {
+function DropdownMenuItem({ className, icon, children, variant = "default", ...props }: DropdownMenuItemProps) {
   return (
     <Menu.Item
       className={cn(styles.item, className)}
@@ -76,27 +62,16 @@ function DropdownMenuSubmenuRoot({ ...props }: Menu.SubmenuRoot.Props) {
   return <Menu.SubmenuRoot {...props} />;
 }
 
-function DropdownMenuSubmenuTrigger({
-  className,
-  children,
-  ...props
-}: Menu.SubmenuTrigger.Props) {
+function DropdownMenuSubmenuTrigger({ className, children, ...props }: Menu.SubmenuTrigger.Props) {
   return (
-    <Menu.SubmenuTrigger
-      className={cn(styles.submenuTrigger, className)}
-      data-slot="menu-submenutrigger"
-      {...props}
-    >
+    <Menu.SubmenuTrigger className={cn(styles.submenuTrigger, className)} data-slot="menu-submenutrigger" {...props}>
       {children}
       <ChevronRight className={styles.submenuIcon} size={16} />
     </Menu.SubmenuTrigger>
   );
 }
 
-function DropdownMenuRadioGroup({
-  className,
-  ...props
-}: Menu.RadioGroup.Props) {
+function DropdownMenuRadioGroup({ className, ...props }: Menu.RadioGroup.Props) {
   return <Menu.RadioGroup className={className} {...props} />;
 }
 
@@ -105,11 +80,7 @@ interface DropdownMenuRadioItemProps extends Menu.RadioItem.Props {
   children?: ReactNode;
 }
 
-function DropdownMenuRadioItem({
-  className,
-  children,
-  ...props
-}: DropdownMenuRadioItemProps) {
+function DropdownMenuRadioItem({ className, children, ...props }: DropdownMenuRadioItemProps) {
   return (
     <Menu.RadioItem className={cn(styles.item, className)} {...props}>
       {children}
@@ -117,16 +88,8 @@ function DropdownMenuRadioItem({
   );
 }
 
-function DropdownMenuRadioItemIndicator({
-  className,
-  ...props
-}: Menu.RadioItemIndicator.Props) {
-  return (
-    <Menu.RadioItemIndicator
-      className={cn(styles.radioIndicator, className)}
-      {...props}
-    />
-  );
+function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemIndicator.Props) {
+  return <Menu.RadioItemIndicator className={cn(styles.radioIndicator, className)} {...props} />;
 }
 
 function DropdownMenuSpacer() {

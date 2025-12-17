@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/tailwind/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 import {
   Tooltip,
   TooltipArrow,
@@ -31,14 +27,8 @@ export function AvatarGroup({ users, maxDisplay = 3 }: AvatarGroupProps) {
             <TooltipTrigger
               render={
                 <div className={index > 0 ? "-ml-[6px]" : ""}>
-                  <Avatar
-                    className="border-2 border-[var(--card)]"
-                    style={{ width: "24px", height: "24px" }}
-                  >
-                    <AvatarImage
-                      alt={`profile image for ${user.label}`}
-                      src={user.avatar}
-                    />
+                  <Avatar className="border-2 border-[var(--card)]" style={{ width: "24px", height: "24px" }}>
+                    <AvatarImage alt={`profile image for ${user.label}`} src={user.avatar} />
                     <AvatarFallback>
                       {user.label
                         ?.split(" ")

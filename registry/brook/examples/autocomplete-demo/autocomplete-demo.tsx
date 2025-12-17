@@ -84,32 +84,20 @@ export default function AutocompleteDemo() {
         onValueChange={setValue}
         value={value}
       >
-        <AutocompleteInput
-          className={styles.input}
-          id="ac-input"
-          placeholder="Type your question or search FAQs..."
-        />
+        <AutocompleteInput className={styles.input} id="ac-input" placeholder="Type your question or search FAQs..." />
 
         <AutocompletePortal>
           <AutocompletePositioner>
             <AutocompletePopup>
-              <AutocompleteEmpty>
-                No matching questions found. Type your own question!
-              </AutocompleteEmpty>
+              <AutocompleteEmpty>No matching questions found. Type your own question!</AutocompleteEmpty>
               <AutocompleteList>
                 {(question: Question) => (
                   <AutocompleteItem key={question.value} value={question}>
                     <div className={styles.itemContainer}>
                       <div className={styles.itemInfo}>
-                        <div className={styles.itemName}>
-                          {question.question}
-                        </div>
+                        <div className={styles.itemName}>{question.question}</div>
                       </div>
-                      <Badge
-                        className={styles.badge}
-                        size="sm"
-                        variant="outline"
-                      >
+                      <Badge className={styles.badge} size="sm" variant="outline">
                         {question.category}
                       </Badge>
                     </div>

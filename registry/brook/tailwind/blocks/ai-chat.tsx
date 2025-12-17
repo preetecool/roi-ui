@@ -1,22 +1,10 @@
 "use client";
 
-import {
-  ArrowUp,
-  AudioLines,
-  GraduationCap,
-  Lightbulb,
-  Paperclip,
-  WandSparkles,
-  Zap,
-} from "lucide-react";
+import { ArrowUp, AudioLines, GraduationCap, Lightbulb, Paperclip, WandSparkles, Zap } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-} from "@/registry/brook/tailwind/ui/card";
+import { Card, CardContent, CardFooter } from "@/registry/brook/tailwind/ui/card";
 import { Field, FieldControl } from "@/registry/brook/tailwind/ui/field";
 import { Form } from "@/registry/brook/tailwind/ui/form";
 import {
@@ -92,27 +80,15 @@ export function AiChat() {
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger
-                className="max-md:!min-w-[120px]"
-                render={<Button size="sm" variant="outline" />}
-              >
+              <SelectTrigger className="max-md:!min-w-[120px]" render={<Button size="sm" variant="outline" />}>
                 <SelectValue>
                   {(value) => {
-                    const selectedMode = aiModes.find(
-                      (mode) => mode.value === value
-                    );
+                    const selectedMode = aiModes.find((mode) => mode.value === value);
                     const IconComponent = selectedMode?.icon;
                     return (
                       <div className="flex w-full items-center gap-2">
-                        {IconComponent && (
-                          <IconComponent
-                            className="text-muted-foreground max-md:hidden"
-                            size={14}
-                          />
-                        )}
-                        <span className="max-md:text-sm">
-                          {selectedMode?.label}
-                        </span>
+                        {IconComponent && <IconComponent className="text-muted-foreground max-md:hidden" size={14} />}
+                        <span className="max-md:text-sm">{selectedMode?.label}</span>
                       </div>
                     );
                   }}
@@ -125,13 +101,8 @@ export function AiChat() {
                     {aiModes.map(({ label, value, icon: IconComponent }) => (
                       <SelectItem key={value} value={value}>
                         <div className="flex w-full items-center gap-2">
-                          <IconComponent
-                            className="text-muted-foreground max-md:hidden"
-                            size={14}
-                          />
-                          <SelectItemText className="max-md:text-sm">
-                            {label}
-                          </SelectItemText>
+                          <IconComponent className="text-muted-foreground max-md:hidden" size={14} />
+                          <SelectItemText className="max-md:text-sm">{label}</SelectItemText>
                           <SelectItemIndicator />
                         </div>
                       </SelectItem>
@@ -155,11 +126,7 @@ export function AiChat() {
             type="submit"
             variant="outline"
           >
-            {inputValue.trim() ? (
-              <ArrowUp size={16} />
-            ) : (
-              <AudioLines size={16} />
-            )}
+            {inputValue.trim() ? <ArrowUp size={16} /> : <AudioLines size={16} />}
           </Button>
         </CardFooter>
       </Card>

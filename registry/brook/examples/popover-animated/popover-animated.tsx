@@ -2,11 +2,7 @@
 
 import { Bell, User } from "lucide-react";
 import type * as React from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/ui/avatar/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   createPopoverHandle,
@@ -24,9 +20,7 @@ function NotificationsContent() {
   return (
     <>
       <PopoverTitle>Notifications</PopoverTitle>
-      <PopoverDescription>
-        You have no new notifications at this time.
-      </PopoverDescription>
+      <PopoverDescription>You have no new notifications at this time.</PopoverDescription>
     </>
   );
 }
@@ -71,9 +65,7 @@ export default function PopoverAnimated() {
       <Popover handle={popoverHandle}>
         {({ payload }) => {
           const Payload = payload as React.ComponentType | undefined;
-          return (
-            <PopoverPopup>{Payload !== undefined && <Payload />}</PopoverPopup>
-          );
+          return <PopoverPopup>{Payload !== undefined && <Payload />}</PopoverPopup>;
         }}
       </Popover>
     </div>

@@ -1,12 +1,5 @@
 import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardImage,
-  CardTitle,
-} from "@/registry/brook/ui/card/card";
+import { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from "@/registry/brook/ui/card/card";
 import styles from "./card-image.module.css";
 
 export default function CardImageDemo() {
@@ -22,8 +15,7 @@ export default function CardImageDemo() {
         <CardTitle className={styles.title}>Threshold</CardTitle>
 
         <CardDescription>
-          Between what we build and what eternally exists standing in quiet
-          contemplation.
+          Between what we build and what eternally exists standing in quiet contemplation.
         </CardDescription>
       </CardContent>
 

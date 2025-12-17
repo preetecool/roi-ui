@@ -11,9 +11,7 @@ export function generateStaticParams() {
   return source.generateParams();
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
-}): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
@@ -54,9 +52,7 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>;
-}) {
+export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) {
@@ -75,8 +71,7 @@ export default async function Page(props: {
   const currentIndex = allPages.findIndex((p) => p.url === page.url);
   const neighbours = {
     previous: currentIndex > 0 ? allPages[currentIndex - 1] : null,
-    next:
-      currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
+    next: currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
   };
 
   return (
@@ -87,9 +82,7 @@ export default async function Page(props: {
             <div className={styles.titleSection}>
               <h1 className={styles.pageTitle}>{doc.title}</h1>
             </div>
-            {doc.description && (
-              <p className={styles.pageDescription}>{doc.description}</p>
-            )}
+            {doc.description && <p className={styles.pageDescription}>{doc.description}</p>}
           </div>
           {links || components ? (
             <div className={styles.linksSection}>
@@ -99,13 +92,7 @@ export default async function Page(props: {
                     <Button
                       className={styles.badgeButton}
                       pointExternal
-                      render={
-                        <Link
-                          href={links.doc}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        />
-                      }
+                      render={<Link href={links.doc} rel="noopener noreferrer" target="_blank" />}
                       showArrow
                       size="sm"
                       variant="outline"
@@ -117,13 +104,7 @@ export default async function Page(props: {
                     <Button
                       className={styles.badgeButton}
                       pointExternal
-                      render={
-                        <Link
-                          href={links.api}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        />
-                      }
+                      render={<Link href={links.api} rel="noopener noreferrer" target="_blank" />}
                       showArrow
                       size="sm"
                       variant="outline"
@@ -150,13 +131,7 @@ export default async function Page(props: {
                     <Button
                       className={styles.badgeButton}
                       pointExternal
-                      render={
-                        <Link
-                          href="https://motion.dev"
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        />
-                      }
+                      render={<Link href="https://motion.dev" rel="noopener noreferrer" target="_blank" />}
                       showArrow
                       size="sm"
                       variant="outline"

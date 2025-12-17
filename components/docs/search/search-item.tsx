@@ -8,26 +8,17 @@ type SearchItemProps = React.ComponentPropsWithoutRef<typeof CommandItem> & {
   onHighlight?: () => void;
 };
 
-export function SearchItem({
-  children,
-  value,
-  onSelect,
-  onHighlight,
-  ...props
-}: SearchItemProps) {
+export function SearchItem({ children, value, onSelect, onHighlight, ...props }: SearchItemProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current || !onHighlight) return;
+    if (!(ref.current && onHighlight)) return;
     const parent = ref.current.parentElement as HTMLDivElement;
     if (!parent) return;
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "aria-selected"
-        ) {
+        if (mutation.type === "attributes" && mutation.attributeName === "aria-selected") {
           const isSelected = parent.getAttribute("aria-selected") === "true";
           if (isSelected) onHighlight();
         }
@@ -43,12 +34,7 @@ export function SearchItem({
   }, [onHighlight]);
 
   return (
-    <CommandItem
-      onSelect={onSelect}
-      value={value}
-      {...props}
-      className={styles.item}
-    >
+    <CommandItem onSelect={onSelect} value={value} {...props} className={styles.item}>
       <span ref={ref} style={{ display: "contents" }}>
         {children}
       </span>

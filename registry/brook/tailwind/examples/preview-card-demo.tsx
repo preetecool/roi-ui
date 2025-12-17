@@ -14,9 +14,7 @@ import {
 export default function PreviewCardDemo() {
   return (
     <div className="p-8 text-center">
-      <p className="mb-8 text-muted-foreground">
-        Hover over the link below to see a preview card:
-      </p>
+      <p className="mb-8 text-muted-foreground">Hover over the link below to see a preview card:</p>
 
       <PreviewCard>
         <PreviewCardTrigger
@@ -45,18 +43,12 @@ export default function PreviewCardDemo() {
                     width={32}
                   />
                   <div className="previewInfo">
-                    <h3 className="m-0 font-semibold text-foreground text-sm">
-                      Preet
-                    </h3>
-                    <p className="m-0 text-muted-foreground text-xs">
-                      @preetecool
-                    </p>
+                    <h3 className="m-0 font-semibold text-foreground text-sm">Preet</h3>
+                    <p className="m-0 text-muted-foreground text-xs">@preetecool</p>
                   </div>
                 </div>
 
-                <p className="m-0 text-muted-foreground text-sm leading-snug">
-                  ❤️ Design & Build
-                </p>
+                <p className="m-0 text-muted-foreground text-sm leading-snug">❤️ Design & Build</p>
               </div>
             </PreviewCardPopup>
           </PreviewCardPositioner>

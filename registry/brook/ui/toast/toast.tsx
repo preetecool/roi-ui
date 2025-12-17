@@ -27,13 +27,7 @@ function ToastPortal({ ...props }: Toast.Portal.Props) {
 }
 
 function ToastViewport({ className, ...props }: Toast.Viewport.Props) {
-  return (
-    <Toast.Viewport
-      className={cn(styles.viewport, className)}
-      data-slot="toast-viewport"
-      {...props}
-    />
-  );
+  return <Toast.Viewport className={cn(styles.viewport, className)} data-slot="toast-viewport" {...props} />;
 }
 
 function ToastRoot({ className, ...props }: Toast.Root.Props) {
@@ -49,23 +43,11 @@ function ToastTitle({ className, ...props }: Toast.Title.Props) {
 }
 
 function ToastDescription({ className, ...props }: Toast.Description.Props) {
-  return (
-    <Toast.Description
-      className={cn(styles.description, className)}
-      data-slot="toast-description"
-      {...props}
-    />
-  );
+  return <Toast.Description className={cn(styles.description, className)} data-slot="toast-description" {...props} />;
 }
 
 function ToastAction({ className, ...props }: Toast.Action.Props) {
-  return (
-    <Toast.Action
-      className={cn(styles.action, className)}
-      data-slot="toast-action"
-      {...props}
-    />
-  );
+  return <Toast.Action className={cn(styles.action, className)} data-slot="toast-action" {...props} />;
 }
 
 function ToastClose({
@@ -73,18 +55,9 @@ function ToastClose({
   render,
   ...props
 }: Toast.Close.Props & {
-  render?: (
-    props: React.ButtonHTMLAttributes<HTMLButtonElement>
-  ) => React.ReactNode;
+  render?: (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => React.ReactNode;
 }) {
-  return (
-    <Toast.Close
-      className={cn(styles.close, className)}
-      data-slot="toast-close"
-      render={render}
-      {...props}
-    />
-  );
+  return <Toast.Close className={cn(styles.close, className)} data-slot="toast-close" render={render} {...props} />;
 }
 
 function ToastList() {
@@ -101,19 +74,13 @@ function ToastList() {
           }}
         >
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div
-              style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-            >
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <ToastTitle />
-              {toast.type && (
-                <span className={styles.statusPill} data-type={toast.type} />
-              )}
+              {toast.type && <span className={styles.statusPill} data-type={toast.type} />}
             </div>
             <ToastDescription />
             {toast.actionProps && (
-              <ToastAction className={styles.actionButton}>
-                {toast.actionProps.children}
-              </ToastAction>
+              <ToastAction className={styles.actionButton}>{toast.actionProps.children}</ToastAction>
             )}
           </div>
         </div>
@@ -173,9 +140,4 @@ function AnchoredToastProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export {
-  ToastProvider,
-  toastManager,
-  AnchoredToastProvider,
-  anchoredToastManager,
-};
+export { ToastProvider, toastManager, AnchoredToastProvider, anchoredToastManager };

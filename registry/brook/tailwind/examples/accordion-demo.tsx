@@ -18,8 +18,7 @@ const accordionItems = [
   {
     id: "item-2",
     title: "How does billing work?",
-    content:
-      "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
+    content: "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
   },
   {
     id: "item-3",

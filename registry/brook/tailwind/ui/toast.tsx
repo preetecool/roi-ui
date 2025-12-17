@@ -93,10 +93,7 @@ function ToastContent({ className, ...props }: Toast.Content.Props) {
 function ToastTitle({ className, ...props }: Toast.Title.Props) {
   return (
     <Toast.Title
-      className={cn(
-        "m-0 font-[450] text-[0.975rem] text-[var(--foreground)] leading-5 tracking-[-0.02em]",
-        className
-      )}
+      className={cn("m-0 font-[450] text-[0.975rem] text-[var(--foreground)] leading-5 tracking-[-0.02em]", className)}
       data-slot="toast-title"
       {...props}
     />
@@ -177,11 +174,7 @@ function ToastList() {
               )}
             </div>
             <ToastDescription />
-            {toast.actionProps && (
-              <ToastAction className="mt-2">
-                {toast.actionProps.children}
-              </ToastAction>
-            )}
+            {toast.actionProps && <ToastAction className="mt-2">{toast.actionProps.children}</ToastAction>}
           </div>
         </div>
         {toast.data?.showCloseButton === true && (
@@ -218,7 +211,7 @@ function AnchoredToasts() {
                 className={cn(
                   "relative text-balance border-[0.5px] border-[var(--border)]",
                   "bg-[var(--popover)] bg-clip-padding text-[var(--popover-foreground)]",
-                  "text-xs rounded-[calc(var(--radius)-2px)]",
+                  "rounded-[calc(var(--radius)-2px)] text-xs",
                   "shadow-[0_4px_6px_-1px_oklch(from_var(--foreground)_l_c_h_/_0.05)]",
                   "transition-[scale,opacity] duration-150",
                   "before:pointer-events-none before:absolute before:inset-0",
@@ -250,9 +243,4 @@ function AnchoredToastProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export {
-  ToastProvider,
-  toastManager,
-  AnchoredToastProvider,
-  anchoredToastManager,
-};
+export { ToastProvider, toastManager, AnchoredToastProvider, anchoredToastManager };

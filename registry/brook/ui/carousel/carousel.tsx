@@ -1,14 +1,7 @@
 "use client";
 
 import { useControlled } from "@base-ui/utils/useControlled";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./carousel.module.css";
 
@@ -137,9 +130,7 @@ export function Root({
     for (const slide of slides) {
       const slideRect = slide.getBoundingClientRect();
       // Check if slide is at least 50% visible in viewport
-      const visibleWidth =
-        Math.min(slideRect.right, viewportRect.right) -
-        Math.max(slideRect.left, viewportRect.left);
+      const visibleWidth = Math.min(slideRect.right, viewportRect.right) - Math.max(slideRect.left, viewportRect.left);
       const slideWidth = slideRect.width;
 
       if (visibleWidth / slideWidth >= VISIBILITY_THRESHOLD) {
@@ -220,11 +211,7 @@ export function Root({
 
   // Calculate inset padding based on parent container
   useEffect(() => {
-    if (
-      variant !== "inset" ||
-      !bleedRefFromContext?.current ||
-      !viewportRef.current
-    ) {
+    if (variant !== "inset" || !bleedRefFromContext?.current || !viewportRef.current) {
       return;
     }
 
@@ -250,16 +237,10 @@ export function Root({
 
       // Calculate the padding needed to align cards with parent's content area (inside padding)
       // Left padding: distance from viewport's left edge to parent's content left edge, minus gap
-      const leftPadding = Math.max(
-        0,
-        parentRect.left + parentPaddingLeft - viewportRect.left - gap
-      );
+      const leftPadding = Math.max(0, parentRect.left + parentPaddingLeft - viewportRect.left - gap);
 
       // Right padding: distance from parent's content right edge to viewport's right edge
-      const rightPadding = Math.max(
-        0,
-        viewportRect.right - (parentRect.right - parentPaddingRight)
-      );
+      const rightPadding = Math.max(0, viewportRect.right - (parentRect.right - parentPaddingRight));
 
       setInsetPaddingLeft(leftPadding);
       setInsetPaddingRight(rightPadding);
@@ -296,8 +277,7 @@ export function Root({
 
 export type CarouselBleedProps = React.ComponentProps<"div">;
 
-const BleedRefContext =
-  createContext<React.RefObject<HTMLDivElement | null> | null>(null);
+const BleedRefContext = createContext<React.RefObject<HTMLDivElement | null> | null>(null);
 
 export function useBleedRef() {
   return useContext(BleedRefContext);
@@ -319,21 +299,11 @@ export function Bleed({ className, children, ...props }: CarouselBleedProps) {
 export type CarouselViewportProps = React.ComponentProps<"div">;
 
 /** Scrollable viewport. */
-export function Viewport({
-  className,
-  children,
-  ...props
-}: CarouselViewportProps) {
+export function Viewport({ className, children, ...props }: CarouselViewportProps) {
   const { viewportRef } = useCarousel();
 
   return (
-    <div
-      aria-atomic="false"
-      aria-live="polite"
-      className={cn(styles.viewport, className)}
-      ref={viewportRef}
-      {...props}
-    >
+    <div aria-atomic="false" aria-live="polite" className={cn(styles.viewport, className)} ref={viewportRef} {...props}>
       {children}
     </div>
   );
@@ -342,11 +312,7 @@ export function Viewport({
 export type CarouselContentProps = React.ComponentProps<"div">;
 
 /** Content wrapper. Flex container for horizontal layout. */
-export function Content({
-  className,
-  children,
-  ...props
-}: CarouselContentProps) {
+export function Content({ className, children, ...props }: CarouselContentProps) {
   const { gap, variant } = useCarousel();
 
   return (
@@ -378,14 +344,8 @@ export type CarouselItemProps = React.ComponentProps<"div"> & {
 };
 
 /** Individual carousel slide. */
-export function Item({
-  index,
-  className,
-  children,
-  ...props
-}: CarouselItemProps) {
-  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev } =
-    useCarousel();
+export function Item({ index, className, children, ...props }: CarouselItemProps) {
+  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev } = useCarousel();
 
   const isVisible = true;
 
@@ -439,11 +399,7 @@ export function Item({
 export type CarouselPreviousProps = React.ComponentProps<"button">;
 
 /** Previous button. Auto-disabled at start. */
-export function Previous({
-  className,
-  children,
-  ...props
-}: CarouselPreviousProps) {
+export function Previous({ className, children, ...props }: CarouselPreviousProps) {
   const { prevSlide, canGoPrev } = useCarousel();
 
   return (
@@ -457,13 +413,7 @@ export function Previous({
       {...props}
     >
       {children || (
-        <svg
-          aria-hidden="true"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
+        <svg aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="m15 18-6-6 6-6" />
         </svg>
       )}
@@ -488,13 +438,7 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
       {...props}
     >
       {children || (
-        <svg
-          aria-hidden="true"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
+        <svg aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="m9 18 6-6-6-6" />
         </svg>
       )}
@@ -505,11 +449,7 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
 export type CarouselNavigationProps = React.ComponentProps<"div">;
 
 /** Navigation wrapper. Renders default buttons if no children provided. Hidden with one item. */
-export function Navigation({
-  className,
-  children,
-  ...props
-}: CarouselNavigationProps) {
+export function Navigation({ className, children, ...props }: CarouselNavigationProps) {
   const { totalItems, variant } = useCarousel();
 
   if (totalItems <= 1) {
@@ -549,12 +489,7 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
   }
 
   return (
-    <div
-      aria-label="Choose slide to display"
-      className={cn(styles.indicators, className)}
-      role="tablist"
-      {...props}
-    >
+    <div aria-label="Choose slide to display" className={cn(styles.indicators, className)} role="tablist" {...props}>
       {Array.from({ length: totalItems }, (_, index) => (
         <button
           aria-controls="carousel-slides"

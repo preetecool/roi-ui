@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { X } from "lucide-react";
+import { useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
@@ -26,14 +26,14 @@ export default function DialogSheet() {
       <Dialog>
         <DialogTrigger
           render={
-            <Button variant="outline" onClick={() => setSide("left")}>
+            <Button onClick={() => setSide("left")} variant="outline">
               Open Left
             </Button>
           }
         />
         <DialogTrigger
           render={
-            <Button variant="outline" onClick={() => setSide("right")}>
+            <Button onClick={() => setSide("right")} variant="outline">
               Open Right
             </Button>
           }
@@ -42,7 +42,7 @@ export default function DialogSheet() {
           <DialogOverlay />
           <DialogPopup
             className={cn(
-              "!fixed !top-2 !bottom-2 !translate-x-0 !translate-y-0 h-[calc(100dvh-1rem)] w-[400px] max-w-[calc(90vw-1rem)] flex flex-col gap-4 !rounded-2xl p-6",
+              "!fixed !top-2 !bottom-2 !translate-x-0 !translate-y-0 !rounded-2xl flex h-[calc(100dvh-1rem)] w-[400px] max-w-[calc(90vw-1rem)] flex-col gap-4 p-6",
               "![transition:all_400ms_cubic-bezier(0.32,0.72,0,1)]",
               "data-[starting-style]:!scale-100 data-[ending-style]:!scale-100",
               side === "left" &&
@@ -59,14 +59,12 @@ export default function DialogSheet() {
             </DialogClose>
             <DialogHeader className="flex flex-col gap-1.5">
               <DialogTitle>Sheet Panel</DialogTitle>
-              <DialogDescription>
-                This dialog slides in from the {side} side of the screen.
-              </DialogDescription>
+              <DialogDescription>This dialog slides in from the {side} side of the screen.</DialogDescription>
             </DialogHeader>
             <div className="flex-1 overflow-y-auto">
               <p>
-                Sheet dialogs are useful for navigation menus, settings panels,
-                or any content that benefits from a slide-in interaction.
+                Sheet dialogs are useful for navigation menus, settings panels, or any content that benefits from a
+                slide-in interaction.
               </p>
             </div>
             <div className="mt-auto flex gap-3 [&>*]:flex-1">

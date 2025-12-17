@@ -94,11 +94,11 @@ export function CardTask({
           </div>
         </CardContent>
 
-        <CardFooter className="mb-0 mt-0 flex flex-col gap-[0.65rem]">
+        <CardFooter className="mt-0 mb-0 flex flex-col gap-[0.65rem]">
           <div className="-mx-4 w-[calc(100%+32px)] py-[5px]">
-            <div className="h-px w-full border-b-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)]" />
+            <div className="h-px w-full border-[oklch(from_var(--border)_l_c_h_/_0.6)] border-b-[0.5px]" />
           </div>
-          <div className="flex w-full justify-between text-xs text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)]">
+          <div className="flex w-full justify-between text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)] text-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
                 <Users size="14" />
@@ -115,13 +115,7 @@ export function CardTask({
             </div>
             <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
               <Calendar size="14" />
-              <span
-                className={
-                  dueDate.variant === "warning"
-                    ? "text-[var(--warning-foreground)]"
-                    : undefined
-                }
-              >
+              <span className={dueDate.variant === "warning" ? "text-[var(--warning-foreground)]" : undefined}>
                 {dueDate.label}
               </span>
             </div>
@@ -129,11 +123,7 @@ export function CardTask({
         </CardFooter>
       </Card>
 
-      <DeleteTaskAlertDialog
-        onDelete={handleDelete}
-        onOpenChange={setAlertOpen}
-        open={alertOpen}
-      />
+      <DeleteTaskAlertDialog onDelete={handleDelete} onOpenChange={setAlertOpen} open={alertOpen} />
 
       {availableUsers.length > 0 && (
         <CollaboratorDialog
@@ -160,22 +150,19 @@ const demoUsers: User[] = [
     value: "john-doe",
     label: "John Doe",
     email: "john@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "jane-smith",
     label: "Jane Smith",
     email: "jane@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
   },
   {
     value: "mike-johnson",
     label: "Mike Johnson",
     email: "mike@example.com",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face",
   },
 ];
 
@@ -191,10 +178,7 @@ export default function CardTaskDemo() {
       onCollaboratorsChange={setCollaborators}
       onDelete={() => console.log("Task deleted")}
       stats={{ comments: 4, subtasks: "4/5" }}
-      tags={[
-        { label: "Urgent", variant: "destructive" },
-        { label: "Docs" },
-      ]}
+      tags={[{ label: "Urgent", variant: "destructive" }, { label: "Docs" }]}
       title="Update Documentation"
     />
   );

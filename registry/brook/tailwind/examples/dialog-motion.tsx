@@ -120,27 +120,13 @@ export default function DialogFramerMotion() {
                 <div className="flex h-full flex-col">
                   <Dialog.Title
                     className="m-0 mb-2 border-b-0 p-0 text-lg"
-                    render={
-                      <motion.span
-                        animate="visible"
-                        exit="exit"
-                        initial="hidden"
-                        variants={contentVariants}
-                      />
-                    }
+                    render={<motion.span animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
                   >
                     Plan Plus
                   </Dialog.Title>
                   <Dialog.Description
                     className="m-0 flex-1"
-                    render={
-                      <motion.p
-                        animate="visible"
-                        exit="exit"
-                        initial="hidden"
-                        variants={contentVariants}
-                      />
-                    }
+                    render={<motion.p animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
                   >
                     Upgrade your plan for full access.
                   </Dialog.Description>

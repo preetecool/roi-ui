@@ -12,14 +12,7 @@ type LogoProps = {
   strokeWidth?: number;
 };
 
-export function Logo({
-  width,
-  height,
-  className = "",
-  fillColor,
-  strokeColor,
-  strokeWidth = 8,
-}: LogoProps) {
+export function Logo({ width, height, className = "", fillColor, strokeColor, strokeWidth = 8 }: LogoProps) {
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
 

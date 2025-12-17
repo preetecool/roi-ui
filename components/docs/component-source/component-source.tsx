@@ -4,11 +4,7 @@ import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import styles from "./component-source.module.css";
 import { ComponentSourceClient } from "./component-source-client";
 import { getCachedVariants } from "./helpers/cached-processors";
-import {
-  getDisplayTitle,
-  loadCodeByName,
-  loadCodeBySrc,
-} from "./helpers/file-loaders";
+import { getDisplayTitle, loadCodeByName, loadCodeBySrc } from "./helpers/file-loaders";
 import { transformCode } from "./helpers/process-files";
 
 type ComponentSourceProps = {
@@ -20,13 +16,7 @@ type ComponentSourceProps = {
   collapsible?: boolean;
 };
 
-export async function ComponentSource({
-  name,
-  src,
-  title,
-  language = "tsx",
-  embedded = false,
-}: ComponentSourceProps) {
+export async function ComponentSource({ name, src, title, language = "tsx", embedded = false }: ComponentSourceProps) {
   "use cache";
   cacheLife("max");
   if (!(name || src)) {

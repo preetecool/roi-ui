@@ -19,32 +19,12 @@ type SiteHeaderProps = {
 export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
-      <div
-        className={cn(
-          styles.container,
-          isHomePage ? styles.containerHomePage : null
-        )}
-      >
-        <div
-          className={cn(
-            styles.innerWrapper,
-            isHomePage ? styles.innerWrapperHomePage : null
-          )}
-        >
+      <div className={cn(styles.container, isHomePage ? styles.containerHomePage : null)}>
+        <div className={cn(styles.innerWrapper, isHomePage ? styles.innerWrapperHomePage : null)}>
           <nav className={styles.nav}>
             <div className={styles.leftSection}>
-              <Link
-                aria-label="ROI UI Home"
-                className={styles.logoLink}
-                href="/"
-              >
-                <Logo
-                  fillColor="var(--foreground)"
-                  height={24}
-                  strokeColor="var(--card)"
-                  strokeWidth={12}
-                  width={24}
-                />
+              <Link aria-label="ROI UI Home" className={styles.logoLink} href="/">
+                <Logo fillColor="var(--foreground)" height={24} strokeColor="var(--card)" strokeWidth={12} width={24} />
               </Link>
             </div>
 
@@ -78,13 +58,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
             <Button
               aria-label="View source on GitHub"
               className={`${styles.githubLink} ${styles.desktopOnly}`}
-              render={
-                <Link
-                  href="https://github.com/preetecool/roi-ui"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                />
-              }
+              render={<Link href="https://github.com/preetecool/roi-ui" rel="noopener noreferrer" target="_blank" />}
               size="icon"
               variant="ghost"
             >

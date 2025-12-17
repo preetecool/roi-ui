@@ -23,9 +23,7 @@ export default function DialogDemo() {
         <DialogPopup className={styles.popup}>
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription className={styles.description}>
-              Make changes to your profile here.
-            </DialogDescription>
+            <DialogDescription className={styles.description}>Make changes to your profile here.</DialogDescription>
           </DialogHeader>
           <div className={styles.form}>
             <div className={styles.fieldGroup}>

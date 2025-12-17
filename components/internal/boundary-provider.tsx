@@ -39,9 +39,7 @@ export function BoundaryProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <BoundaryContext.Provider value={{ mode, setMode: updateMode, toggleMode }}>
-      {children}
-    </BoundaryContext.Provider>
+    <BoundaryContext.Provider value={{ mode, setMode: updateMode, toggleMode }}>{children}</BoundaryContext.Provider>
   );
 }
 

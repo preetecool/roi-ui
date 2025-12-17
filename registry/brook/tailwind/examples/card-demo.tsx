@@ -32,10 +32,7 @@ export default function CardDemo() {
         <CardDescription>Defining a brook</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>
-          A small, natural stream of fresh water flowing along a course towards
-          a river, lake, or sea.
-        </p>
+        <p>A small, natural stream of fresh water flowing along a course towards a river, lake, or sea.</p>
       </CardContent>
       <CardFooter>
         <Button size="sm">Click me</Button>

@@ -28,9 +28,7 @@ export default function DialogDemo() {
         >
           <DialogHeader>
             <DialogTitle>Edit Profile</DialogTitle>
-            <DialogDescription className="text-muted-foreground">
-              Make changes to your profile here.
-            </DialogDescription>
+            <DialogDescription className="text-muted-foreground">Make changes to your profile here.</DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">

@@ -21,9 +21,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   const headingsRef = useRef<Element[]>([]);
 
   useEffect(() => {
-    const headings = Array.from(
-      document.querySelectorAll("h2[id], h3[id], h4[id], h5[id], h6[id]")
-    );
+    const headings = Array.from(document.querySelectorAll("h2[id], h3[id], h4[id], h5[id], h6[id]"));
     headingsRef.current = headings;
 
     const observer = new IntersectionObserver(
@@ -80,10 +78,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
               key={item.url}
               onClick={(e) => handleClick(e, item.url)}
               style={{
-                paddingLeft:
-                  item.depth > 2
-                    ? `${(item.depth - 2) * NESTED_ITEM_INDENT_PX}px`
-                    : "0px",
+                paddingLeft: item.depth > 2 ? `${(item.depth - 2) * NESTED_ITEM_INDENT_PX}px` : "0px",
               }}
             >
               {item.title}

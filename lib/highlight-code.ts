@@ -5,10 +5,7 @@ import { transformers } from "./shiki-transformers";
  * Highlights code using Shiki with caching.
  * Cache is based on code content + language.
  */
-export async function highlightCode(
-  code: string,
-  language = "tsx"
-): Promise<string> {
+export async function highlightCode(code: string, language = "tsx"): Promise<string> {
   "use cache";
   cacheLife("max");
 

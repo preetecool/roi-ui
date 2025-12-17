@@ -24,10 +24,7 @@ export default function ProgressDemo() {
           clearInterval(interval);
           return MAX_PROGRESS;
         }
-        return Math.min(
-          MAX_PROGRESS,
-          Math.round(current + Math.random() * MAX_INCREMENT)
-        );
+        return Math.min(MAX_PROGRESS, Math.round(current + Math.random() * MAX_INCREMENT));
       });
     }, UPDATE_INTERVAL_MS);
     return () => clearInterval(interval);

@@ -6,20 +6,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useKeyboardShortcut } from "@/hooks/use-keyboard-shortcut";
 import type { PageTree } from "@/lib/source-types";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandList,
-} from "@/registry/brook/ui/command/command";
-import {
-  Dialog,
-  DialogOverlay,
-  DialogPopup,
-  DialogPortal,
-  DialogTrigger,
-} from "@/registry/brook/ui/dialog/dialog";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandList } from "@/registry/brook/ui/command/command";
+import { Dialog, DialogOverlay, DialogPopup, DialogPortal, DialogTrigger } from "@/registry/brook/ui/dialog/dialog";
 import styles from "./search.module.css";
 import { SearchFooter } from "./search-footer";
 import { SearchItem } from "./search-item";
@@ -54,13 +42,14 @@ export function Search({ tree }: SearchProps) {
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Cleanup timeout on unmount to prevent memory leaks
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (searchTimeoutRef.current) {
         clearTimeout(searchTimeoutRef.current);
       }
-    };
-  }, []);
+    },
+    []
+  );
 
   // Use fumadocs search with API endpoint
   const { search, setSearch, query } = useDocsSearch({
@@ -68,9 +57,7 @@ export function Search({ tree }: SearchProps) {
   });
 
   // Register Cmd/Ctrl + K keyboard shortcut
-  useKeyboardShortcut({ key: "k", metaKey: true, ctrlKey: true }, () =>
-    setOpen(true)
-  );
+  useKeyboardShortcut({ key: "k", metaKey: true, ctrlKey: true }, () => setOpen(true));
 
   const handleSelect = (url: string) => {
     router.push(url);
@@ -97,9 +84,7 @@ export function Search({ tree }: SearchProps) {
             filter={(value, searchValue, keywords) => {
               handleSearchChange(searchValue);
               const extendValue = value + " " + (keywords?.join(" ") || "");
-              if (
-                extendValue.toLowerCase().includes(searchValue.toLowerCase())
-              ) {
+              if (extendValue.toLowerCase().includes(searchValue.toLowerCase())) {
                 return 1;
               }
               return 0;
@@ -107,37 +92,23 @@ export function Search({ tree }: SearchProps) {
           >
             <CommandInput placeholder="Search documentation..." />
             <CommandList>
-              <CommandEmpty>
-                {query.isLoading ? "Searching..." : "No results found."}
-              </CommandEmpty>
+              <CommandEmpty>{query.isLoading ? "Searching..." : "No results found."}</CommandEmpty>
 
               {tree?.children.map((group: PageTree.Node) => {
                 if (group.type !== "folder") return null;
                 return (
-                  <CommandGroup
-                    heading={group.name as string}
-                    key={group.$id || String(group.name)}
-                  >
+                  <CommandGroup heading={group.name as string} key={group.$id || String(group.name)}>
                     {(group.children as PageTree.Node[])
-                      .filter(
-                        (item: PageTree.Node): item is PageTree.Item =>
-                          item.type === "page"
-                      )
+                      .filter((item: PageTree.Node): item is PageTree.Item => item.type === "page")
                       .map((item: PageTree.Item) => (
                         <SearchItem
                           key={item.url}
                           onSelect={() => handleSelect(item.url)}
-                          value={
-                            item.name?.toString()
-                              ? `${group.name} ${item.name}`
-                              : ""
-                          }
+                          value={item.name?.toString() ? `${group.name} ${item.name}` : ""}
                         >
                           {getIcon(item.url)}
                           <div className={styles.commandItemContent}>
-                            <div className={styles.commandItemTitle}>
-                              {item.name}
-                            </div>
+                            <div className={styles.commandItemTitle}>{item.name}</div>
                           </div>
                         </SearchItem>
                       ))}
@@ -145,12 +116,7 @@ export function Search({ tree }: SearchProps) {
                 );
               })}
 
-              <SearchResults
-                open={open}
-                query={query}
-                search={search}
-                setOpen={setOpen}
-              />
+              <SearchResults open={open} query={query} search={search} setOpen={setOpen} />
             </CommandList>
             <SearchFooter />
           </Command>

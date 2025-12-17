@@ -1,11 +1,7 @@
 "use client";
 
 import { Ban } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/brook/tailwind/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/ui/alert";
 
 export default function AlertDestructive() {
   return (
@@ -13,9 +9,7 @@ export default function AlertDestructive() {
       <Alert variant="destructive">
         <Ban size={16} />
         <AlertTitle>Error</AlertTitle>
-        <AlertDescription>
-          Your session has expired. Please log in again.
-        </AlertDescription>
+        <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
       </Alert>
     </div>
   );

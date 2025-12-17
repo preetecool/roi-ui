@@ -15,9 +15,7 @@ import styles from "./dropdown-menu-submenu.module.css";
 export default function DropdownMenuSubmenu() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="outline">Open Menu</Button>}
-      />
+      <DropdownMenuTrigger render={<Button variant="outline">Open Menu</Button>} />
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup>
@@ -34,12 +32,7 @@ export default function DropdownMenuSubmenu() {
                 <span className={styles.menuItemText}>More Options</span>
               </DropdownMenuSubmenuTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuPositioner
-                  align="start"
-                  alignOffset={-4}
-                  side="right"
-                  sideOffset={-4}
-                >
+                <DropdownMenuPositioner align="start" alignOffset={-4} side="right" sideOffset={-4}>
                   <DropdownMenuPopup>
                     <div className={styles.spacer} />
                     <DropdownMenuItem>

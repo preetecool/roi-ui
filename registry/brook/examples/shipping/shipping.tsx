@@ -7,10 +7,7 @@ import { Card } from "@/registry/brook/ui/card/card";
 
 import styles from "./shipping.module.css";
 
-function getTimelineStatus(item: {
-  completed?: boolean;
-  current?: boolean;
-}): string {
+function getTimelineStatus(item: { completed?: boolean; current?: boolean }): string {
   if (item.completed) {
     return styles.completed;
   }
@@ -42,10 +39,7 @@ export function Shipping() {
 
   return (
     <div className={styles.cardContainer}>
-      <Card
-        className={styles.shippingCard}
-        style={{ backgroundColor: "var(--mix-card-33-bg)" }}
-      >
+      <Card className={styles.shippingCard} style={{ backgroundColor: "var(--mix-card-33-bg)" }}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <div className={styles.shipmentId}>{shipmentData.id}</div>
@@ -58,25 +52,16 @@ export function Shipping() {
               </BadgeIcon>
               {shipmentData.status}
             </Badge>
-            <div className={styles.estimatedTime}>
-              {shipmentData.estimatedTime}
-            </div>
+            <div className={styles.estimatedTime}>{shipmentData.estimatedTime}</div>
           </div>
         </div>
 
         <div className={styles.timeline}>
           {shipmentData.timeline.map((item, index) => (
-            <div
-              className={styles.timelineItem}
-              key={`${item.company}-${item.time}`}
-            >
+            <div className={styles.timelineItem} key={`${item.company}-${item.time}`}>
               <div className={styles.timelineIndicator}>
-                <div
-                  className={`${styles.timelineCircle} ${getTimelineStatus(item)}`}
-                />
-                {index < shipmentData.timeline.length - 1 && (
-                  <div className={styles.timelineLine} />
-                )}
+                <div className={`${styles.timelineCircle} ${getTimelineStatus(item)}`} />
+                {index < shipmentData.timeline.length - 1 && <div className={styles.timelineLine} />}
               </div>
               <div className={styles.timelineContent}>
                 <div className={styles.companyName}>{item.company}</div>

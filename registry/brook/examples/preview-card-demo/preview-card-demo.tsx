@@ -15,9 +15,7 @@ import styles from "./preview-card-demo.module.css";
 export default function PreviewCardDemo() {
   return (
     <div className={styles.container}>
-      <p className={styles.description}>
-        Hover over the link below to see a preview card:
-      </p>
+      <p className={styles.description}>Hover over the link below to see a preview card:</p>
 
       <PreviewCard>
         <PreviewCardTrigger
@@ -38,13 +36,7 @@ export default function PreviewCardDemo() {
               <PreviewCardArrow />
               <div className={styles.previewContent}>
                 <div className={styles.previewHeader}>
-                  <Image
-                    alt="Profile"
-                    className={styles.previewAvatar}
-                    height={32}
-                    src="/preetecool.png"
-                    width={32}
-                  />
+                  <Image alt="Profile" className={styles.previewAvatar} height={32} src="/preetecool.png" width={32} />
                   <div className="previewInfo">
                     <h3 className={styles.previewName}>Preet</h3>
                     <p className={styles.previewUsername}>@preetecool</p>

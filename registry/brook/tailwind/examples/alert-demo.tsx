@@ -1,12 +1,7 @@
 "use client";
 
 import { Mail } from "lucide-react";
-import {
-  Alert,
-  AlertAction,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/brook/tailwind/ui/alert";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/ui/alert";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 
 export default function AlertDemo() {

@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/ui/avatar/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import styles from "./avatar-group.module.css";
 
 const users = [
@@ -29,19 +25,14 @@ export default function AvatarGroup() {
     <div className={styles.container}>
       <div className={styles.group}>
         {displayUsers.map((user) => (
-          <div key={user.name} className={styles.avatarWrapper}>
+          <div className={styles.avatarWrapper} key={user.name}>
             <Avatar className={styles.avatar}>
-              <AvatarImage
-                alt={`Profile picture of ${user.name}`}
-                src={user.avatar}
-              />
+              <AvatarImage alt={`Profile picture of ${user.name}`} src={user.avatar} />
               <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
             </Avatar>
           </div>
         ))}
-        {remainingCount > 0 && (
-          <div className={styles.overflow}>+{remainingCount}</div>
-        )}
+        {remainingCount > 0 && <div className={styles.overflow}>+{remainingCount}</div>}
       </div>
     </div>
   );

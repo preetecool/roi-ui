@@ -28,10 +28,7 @@ export function transformCode(code: string): string {
  */
 export async function processFile(file: FileData): Promise<ProcessedFile> {
   const transformedContent = transformCode(file.content);
-  const highlightedContent = await highlightCode(
-    transformedContent,
-    file.language
-  );
+  const highlightedContent = await highlightCode(transformedContent, file.language);
 
   return {
     name: file.name,
@@ -43,18 +40,14 @@ export async function processFile(file: FileData): Promise<ProcessedFile> {
 /**
  * Process multiple files
  */
-export async function processFiles(
-  files: FileData[]
-): Promise<ProcessedFile[]> {
+export async function processFiles(files: FileData[]): Promise<ProcessedFile[]> {
   return await Promise.all(files.map(processFile));
 }
 
 /**
  * Process all variants with their files
  */
-export async function processVariants(
-  variants: VariantFileData[]
-): Promise<ProcessedVariant[]> {
+export async function processVariants(variants: VariantFileData[]): Promise<ProcessedVariant[]> {
   return await Promise.all(
     variants.map(async (variant) => ({
       variant: variant.variant,

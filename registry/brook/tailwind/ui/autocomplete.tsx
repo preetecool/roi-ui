@@ -6,32 +6,19 @@ import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
-function AutocompleteRoot({
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Root>) {
+function AutocompleteRoot({ ...props }: React.ComponentProps<typeof Autocomplete.Root>) {
   return <Autocomplete.Root {...props} />;
 }
 
-function AutocompleteValue({
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Value>) {
+function AutocompleteValue({ ...props }: React.ComponentProps<typeof Autocomplete.Value>) {
   return <Autocomplete.Value data-slot="autocomplete-value" {...props} />;
 }
 
-function AutocompleteInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Input>) {
-  return (
-    <Autocomplete.Input className={className} render={<Input />} {...props} />
-  );
+function AutocompleteInput({ className, ...props }: React.ComponentProps<typeof Autocomplete.Input>) {
+  return <Autocomplete.Input className={className} render={<Input />} {...props} />;
 }
 
-function AutocompleteTrigger({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Trigger>) {
+function AutocompleteTrigger({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Trigger>) {
   return (
     <Autocomplete.Trigger
       className={cn(
@@ -45,18 +32,12 @@ function AutocompleteTrigger({
       data-slot="autocomplete-trigger"
       {...props}
     >
-      {children || (
-        <Search className="h-4 w-4 flex-shrink-0 opacity-60" size={16} />
-      )}
+      {children || <Search className="h-4 w-4 flex-shrink-0 opacity-60" size={16} />}
     </Autocomplete.Trigger>
   );
 }
 
-function AutocompleteIcon({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Icon>) {
+function AutocompleteIcon({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Icon>) {
   return (
     <Autocomplete.Icon
       className={cn("h-4 w-4 flex-shrink-0 opacity-60", className)}
@@ -68,11 +49,7 @@ function AutocompleteIcon({
   );
 }
 
-function AutocompleteClear({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Clear>) {
+function AutocompleteClear({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Clear>) {
   return (
     <Autocomplete.Clear
       className={cn(
@@ -93,10 +70,7 @@ function AutocompleteClear({
 
 const AutocompletePortal = Autocomplete.Portal;
 
-function AutocompleteBackdrop({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Backdrop>) {
+function AutocompleteBackdrop({ className, ...props }: React.ComponentProps<typeof Autocomplete.Backdrop>) {
   return (
     <Autocomplete.Backdrop
       className={cn(
@@ -110,16 +84,10 @@ function AutocompleteBackdrop({
   );
 }
 
-function AutocompletePositioner({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Positioner>) {
+function AutocompletePositioner({ className, ...props }: React.ComponentProps<typeof Autocomplete.Positioner>) {
   return (
     <Autocomplete.Positioner
-      className={cn(
-        "absolute z-[150] w-[var(--anchor-width)] outline-none",
-        className
-      )}
+      className={cn("absolute z-[150] w-[var(--anchor-width)] outline-none", className)}
       data-slot="autocomplete-positioner"
       sideOffset={4}
       {...props}
@@ -127,11 +95,7 @@ function AutocompletePositioner({
   );
 }
 
-function AutocompletePopup({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Popup>) {
+function AutocompletePopup({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Popup>) {
   return (
     <Autocomplete.Popup
       className={cn(
@@ -156,10 +120,7 @@ function AutocompletePopup({
   );
 }
 
-function AutocompleteArrow({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Arrow>) {
+function AutocompleteArrow({ className, ...props }: React.ComponentProps<typeof Autocomplete.Arrow>) {
   return (
     <Autocomplete.Arrow
       className={cn(
@@ -176,10 +137,7 @@ function AutocompleteArrow({
   );
 }
 
-function AutocompleteStatus({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Status>) {
+function AutocompleteStatus({ className, ...props }: React.ComponentProps<typeof Autocomplete.Status>) {
   return (
     <Autocomplete.Status
       className={cn("px-4 py-2 text-muted-foreground text-sm", className)}
@@ -189,10 +147,7 @@ function AutocompleteStatus({
   );
 }
 
-function AutocompleteList({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.List>) {
+function AutocompleteList({ className, ...props }: React.ComponentProps<typeof Autocomplete.List>) {
   return (
     <Autocomplete.List
       className={cn("flex flex-col gap-px outline-none", className)}
@@ -202,11 +157,7 @@ function AutocompleteList({
   );
 }
 
-function AutocompleteEmpty({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Empty>) {
+function AutocompleteEmpty({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Empty>) {
   return (
     <Autocomplete.Empty
       className={cn(
@@ -223,38 +174,22 @@ function AutocompleteEmpty({
   );
 }
 
-function AutocompleteCollection({
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Collection>) {
-  return (
-    <Autocomplete.Collection data-slot="autocomplete-collection" {...props} />
-  );
+function AutocompleteCollection({ ...props }: React.ComponentProps<typeof Autocomplete.Collection>) {
+  return <Autocomplete.Collection data-slot="autocomplete-collection" {...props} />;
 }
 
-function AutocompleteRow({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Row>) {
-  return (
-    <Autocomplete.Row
-      className={cn("flex items-center", className)}
-      data-slot="autocomplete-row"
-      {...props}
-    />
-  );
+function AutocompleteRow({ className, ...props }: React.ComponentProps<typeof Autocomplete.Row>) {
+  return <Autocomplete.Row className={cn("flex items-center", className)} data-slot="autocomplete-row" {...props} />;
 }
 
-function AutocompleteItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Item>) {
+function AutocompleteItem({ className, ...props }: React.ComponentProps<typeof Autocomplete.Item>) {
   return (
     <Autocomplete.Item
       className={cn(
         "relative isolate m-0 flex h-8 cursor-pointer items-center justify-start gap-3",
-        "pl-3 pr-1.5 text-xs font-normal leading-[1.2] text-foreground",
-        "before:absolute before:inset-y-0 before:inset-x-1 before:-z-10 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
-        "hover:before:bg-[var(--accent)] focus:before:bg-[var(--accent)] focus:outline-none focus-visible:outline-none",
+        "pr-1.5 pl-3 font-normal text-foreground text-xs leading-[1.2]",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
+        "hover:before:bg-[var(--accent)] focus:outline-none focus:before:bg-[var(--accent)] focus-visible:outline-none",
         "data-[highlighted]:before:bg-[var(--accent)]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
         "max-sm:min-h-[2.75rem] max-sm:gap-3 max-sm:px-3 max-sm:py-2.5 max-sm:text-[0.9375rem]",
@@ -266,45 +201,24 @@ function AutocompleteItem({
   );
 }
 
-function AutocompleteGroup({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Group>) {
-  return (
-    <Autocomplete.Group
-      className={cn("py-1", className)}
-      data-slot="autocomplete-group"
-      {...props}
-    />
-  );
+function AutocompleteGroup({ className, ...props }: React.ComponentProps<typeof Autocomplete.Group>) {
+  return <Autocomplete.Group className={cn("py-1", className)} data-slot="autocomplete-group" {...props} />;
 }
 
-function AutocompleteGroupLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.GroupLabel>) {
+function AutocompleteGroupLabel({ className, ...props }: React.ComponentProps<typeof Autocomplete.GroupLabel>) {
   return (
     <Autocomplete.GroupLabel
-      className={cn(
-        "px-3 pt-2 pb-1 font-medium text-muted-foreground text-xs uppercase tracking-wide",
-        className
-      )}
+      className={cn("px-3 pt-2 pb-1 font-medium text-muted-foreground text-xs uppercase tracking-wide", className)}
       data-slot="autocomplete-group-label"
       {...props}
     />
   );
 }
 
-function AutocompleteSeparator({
-  className,
-  ...props
-}: React.ComponentProps<typeof Autocomplete.Separator>) {
+function AutocompleteSeparator({ className, ...props }: React.ComponentProps<typeof Autocomplete.Separator>) {
   return (
     <Autocomplete.Separator
-      className={cn(
-        "h-px border-b-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
-        className
-      )}
+      className={cn("h-px border-[oklch(from_var(--border)_l_c_h_/_0.8)] border-b-[0.5px]", className)}
       data-slot="autocomplete-separator"
       {...props}
     />

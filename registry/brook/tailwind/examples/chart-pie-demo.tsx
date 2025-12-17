@@ -42,19 +42,13 @@ const chartConfig = {
 export default function ChartPieDemo() {
   return (
     <div className="flex h-full w-full flex-col">
-      <ChartContainer
-        className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]"
-        config={chartConfig}
-      >
+      <ChartContainer className="h-[400px] min-h-[400px] max-sm:h-[380px] max-sm:min-h-[380px]" config={chartConfig}>
         <PieChart>
           <ChartTooltip
             content={
               <ChartTooltipContent
                 formatter={(value) => {
-                  const numValue =
-                    typeof value === "number"
-                      ? value
-                      : Number.parseFloat(String(value));
+                  const numValue = typeof value === "number" ? value : Number.parseFloat(String(value));
                   return `${numValue.toFixed(1)}%`;
                 }}
                 nameKey="platform"

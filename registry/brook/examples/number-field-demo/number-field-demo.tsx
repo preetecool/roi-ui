@@ -11,13 +11,7 @@ import styles from "./number-field-demo.module.css";
 
 export default function NumberFieldDemo() {
   return (
-    <NumberField
-      className={styles.numberField}
-      defaultValue={10}
-      max={100}
-      min={0}
-      step={1}
-    >
+    <NumberField className={styles.numberField} defaultValue={10} max={100} min={0} step={1}>
       <NumberFieldScrubArea>
         <NumberFieldScrubAreaCursor />
       </NumberFieldScrubArea>

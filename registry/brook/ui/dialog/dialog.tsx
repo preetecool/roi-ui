@@ -16,23 +16,11 @@ function DialogTrigger({ ...props }: Dialog.Trigger.Props) {
 const DialogPortal = Dialog.Portal;
 
 function DialogOverlay({ className, ...props }: Dialog.Backdrop.Props) {
-  return (
-    <Dialog.Backdrop
-      className={cn(styles.overlay, className)}
-      data-slot="dialog-backdrop"
-      {...props}
-    />
-  );
+  return <Dialog.Backdrop className={cn(styles.overlay, className)} data-slot="dialog-backdrop" {...props} />;
 }
 
 function DialogPopup({ className, ...props }: Dialog.Popup.Props) {
-  return (
-    <Dialog.Popup
-      className={cn(styles.content, className)}
-      data-slot="dialog-popup"
-      {...props}
-    />
-  );
+  return <Dialog.Popup className={cn(styles.content, className)} data-slot="dialog-popup" {...props} />;
 }
 
 function DialogTitle({ className, ...props }: Dialog.Title.Props) {
@@ -40,13 +28,7 @@ function DialogTitle({ className, ...props }: Dialog.Title.Props) {
 }
 
 function DialogDescription({ className, ...props }: Dialog.Description.Props) {
-  return (
-    <Dialog.Description
-      className={cn(styles.description, className)}
-      data-slot="dialog-description"
-      {...props}
-    />
-  );
+  return <Dialog.Description className={cn(styles.description, className)} data-slot="dialog-description" {...props} />;
 }
 
 function DialogClose({ ...props }: Dialog.Close.Props) {

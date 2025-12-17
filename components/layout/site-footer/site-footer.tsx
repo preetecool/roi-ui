@@ -10,11 +10,7 @@ export function SiteFooter() {
           <Button
             className={styles.link}
             render={
-              <a
-                href="https://x.com/preetecool"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <a href="https://x.com/preetecool" rel="noopener noreferrer" target="_blank">
                 @preetecool.
               </a>
             }
@@ -24,11 +20,7 @@ export function SiteFooter() {
           <Button
             className={styles.link}
             render={
-              <a
-                href="https://github.com/preetecool/roi-ui"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <a href="https://github.com/preetecool/roi-ui" rel="noopener noreferrer" target="_blank">
                 GitHub
               </a>
             }

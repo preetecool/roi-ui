@@ -6,13 +6,9 @@ import type { PageTree } from "@/lib/source-types";
 import { Hero } from "./hero/hero";
 import styles from "./home-page.module.css";
 
-const SiteHeader = dynamic(
-  () =>
-    import("@/components/layout/site-header/site-header").then(
-      (mod) => mod.SiteHeader
-    ),
-  { ssr: false }
-);
+const SiteHeader = dynamic(() => import("@/components/layout/site-header/site-header").then((mod) => mod.SiteHeader), {
+  ssr: false,
+});
 
 type HomePageProps = {
   pageTree: PageTree.Root;

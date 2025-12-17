@@ -46,12 +46,8 @@ function ListItem({
 }
 
 export default function NavigationMenuDemo() {
-  const [selectedProductIndex, setSelectedProductIndex] = useState<
-    number | null
-  >(null);
-  const [selectedAboutIndex, setSelectedAboutIndex] = useState<number | null>(
-    null
-  );
+  const [selectedProductIndex, setSelectedProductIndex] = useState<number | null>(null);
+  const [selectedAboutIndex, setSelectedAboutIndex] = useState<number | null>(null);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
@@ -112,30 +108,11 @@ export default function NavigationMenuDemo() {
               </ListItem>
               <li className={styles.previewCard}>
                 <div className={styles.previewContent}>
-                  <svg
-                    aria-label="Preview Shape"
-                    className={styles.previewSvg}
-                    role="img"
-                    viewBox="0 0 200 200"
-                  >
+                  <svg aria-label="Preview Shape" className={styles.previewSvg} role="img" viewBox="0 0 200 200">
                     <defs>
-                      <linearGradient
-                        id="ellipse-gradient-products"
-                        x1="0%"
-                        x2="100%"
-                        y1="0%"
-                        y2="0%"
-                      >
-                        <stop
-                          offset="0%"
-                          stopColor={getGradientColor()}
-                          stopOpacity="0.2"
-                        />
-                        <stop
-                          offset="100%"
-                          stopColor={getGradientColor()}
-                          stopOpacity="0.6"
-                        />
+                      <linearGradient id="ellipse-gradient-products" x1="0%" x2="100%" y1="0%" y2="0%">
+                        <stop offset="0%" stopColor={getGradientColor()} stopOpacity="0.2" />
+                        <stop offset="100%" stopColor={getGradientColor()} stopOpacity="0.6" />
                       </linearGradient>
                     </defs>
                     <ellipse
@@ -208,10 +185,7 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            render={<Link href="#" />}
-          >
+          <NavigationMenuLink className={navigationMenuTriggerStyle()} render={<Link href="#" />}>
             Help
           </NavigationMenuLink>
         </NavigationMenuItem>

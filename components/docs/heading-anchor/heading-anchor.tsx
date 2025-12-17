@@ -16,23 +16,12 @@ const ICON_SIZE_BY_LEVEL: Record<2 | 3 | 4, number> = {
   4: ICON_SIZE_H4,
 };
 
-export function HeadingAnchor({
-  level,
-  children,
-  ...props
-}: ComponentProps<"h2"> & { level: 2 | 3 | 4 }) {
+export function HeadingAnchor({ level, children, ...props }: ComponentProps<"h2"> & { level: 2 | 3 | 4 }) {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const id = useMemo(() => {
     const text = children?.toString() || "";
-    return text
-      .split(" ")
-      .join("-")
-      .split("'")
-      .join("")
-      .split("?")
-      .join("")
-      .toLowerCase();
+    return text.split(" ").join("-").split("'").join("").split("?").join("").toLowerCase();
   }, [children]);
 
   const Component = `h${level}` as const;
@@ -61,13 +50,7 @@ export function HeadingAnchor({
 
   return (
     <Component className={styles.headingWithAnchor} id={id} {...props}>
-      <button
-        aria-label="Copy URL"
-        className={styles.trigger}
-        onClick={handleClick}
-        ref={buttonRef}
-        type="button"
-      >
+      <button aria-label="Copy URL" className={styles.trigger} onClick={handleClick} ref={buttonRef} type="button">
         <LinkIcon className={styles.icon} size={iconSize} strokeWidth={1.5} />
         {children}
       </button>

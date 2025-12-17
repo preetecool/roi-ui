@@ -97,9 +97,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
 
                     <motion.div className={styles.contentExpanded}>
                       <motion.div layoutId={`heading-${item.id}`}>
-                        <h3 className={styles.expandedHeading}>
-                          {item.cardHeading}
-                        </h3>
+                        <h3 className={styles.expandedHeading}>{item.cardHeading}</h3>
                       </motion.div>
 
                       <motion.div
@@ -130,11 +128,7 @@ export default function ExpandableCard({ item }: ExpandableCardProps) {
         </Dialog.Portal>
         <Dialog.Trigger
           render={
-            <motion.button
-              className={styles.card}
-              layoutId={`card-${item.id}`}
-              style={{ borderRadius: "24px" }}
-            />
+            <motion.button className={styles.card} layoutId={`card-${item.id}`} style={{ borderRadius: "24px" }} />
           }
         >
           <motion.img

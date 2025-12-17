@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Slider,
-  SliderControl,
-  SliderIndicator,
-  SliderThumb,
-  SliderTrack,
-} from "@/registry/brook/tailwind/ui/slider";
+import { Slider, SliderControl, SliderIndicator, SliderThumb, SliderTrack } from "@/registry/brook/tailwind/ui/slider";
 
 const DEFAULT_SLIDER_VALUE = 50;
 
@@ -23,9 +17,7 @@ export default function SliderDemo() {
         defaultValue={DEFAULT_SLIDER_VALUE}
         max={100}
         min={0}
-        onValueChange={(newValue) =>
-          setValue(Array.isArray(newValue) ? newValue[0] : newValue)
-        }
+        onValueChange={(newValue) => setValue(Array.isArray(newValue) ? newValue[0] : newValue)}
         step={1}
       >
         <SliderControl>

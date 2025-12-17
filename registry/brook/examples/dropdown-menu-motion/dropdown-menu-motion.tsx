@@ -1,13 +1,6 @@
 "use client";
 import { Menu } from "@base-ui/react";
-import {
-  CreditCard,
-  Ellipsis,
-  LogOut,
-  Settings,
-  User,
-  Users,
-} from "lucide-react";
+import { CreditCard, Ellipsis, LogOut, Settings, User, Users } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useRef, useState } from "react";
 import styles from "./dropdown-menu-motion.module.css";
@@ -38,13 +31,7 @@ export default function DropdownMenuFramerMotion() {
         <Menu.Root onOpenChange={setOpen} open={open}>
           <Menu.Trigger
             hidden={undefined}
-            render={
-              <motion.button
-                className={styles.button}
-                layoutId="menu-wrapper"
-                style={{ borderRadius: "50%" }}
-              />
-            }
+            render={<motion.button className={styles.button} layoutId="menu-wrapper" style={{ borderRadius: "50%" }} />}
           >
             {!open && <Ellipsis size={18} />}
           </Menu.Trigger>
@@ -61,12 +48,7 @@ export default function DropdownMenuFramerMotion() {
                   <motion.div layoutId="menu-wrapper">
                     <Menu.Popup
                       hidden={undefined}
-                      render={
-                        <motion.div
-                          className={styles.popup}
-                          style={{ borderRadius: "0.6rem" }}
-                        />
-                      }
+                      render={<motion.div className={styles.popup} style={{ borderRadius: "0.6rem" }} />}
                     >
                       <motion.ul>
                         <div style={{ height: "4px", width: "100%" }} />
@@ -78,15 +60,9 @@ export default function DropdownMenuFramerMotion() {
                               </div>
                             )}
                             <Menu.Item
-                              className={
-                                item.label === "Logout"
-                                  ? styles.deleteItem
-                                  : undefined
-                              }
+                              className={item.label === "Logout" ? styles.deleteItem : undefined}
                               nativeButton
-                              render={
-                                <motion.button className={styles.menuItem} />
-                              }
+                              render={<motion.button className={styles.menuItem} />}
                             >
                               <item.icon size={14} />
                               {item.label}

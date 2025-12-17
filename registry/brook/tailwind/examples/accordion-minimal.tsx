@@ -18,8 +18,7 @@ const accordionItems = [
   {
     id: "item-2",
     title: "How does billing work?",
-    content:
-      "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
+    content: "You can choose monthly or annual billing. Annual plans save 20% and you can cancel anytime with no fees.",
   },
   {
     id: "item-3",
@@ -31,14 +30,10 @@ const accordionItems = [
 
 export default function AccordionMinimal() {
   return (
-    <Accordion
-      className="max-sm:w-full max-sm:max-w-full"
-      defaultValue={["item-1"]}
-      multiple
-    >
+    <Accordion className="max-sm:w-full max-sm:max-w-full" defaultValue={["item-1"]} multiple>
       {accordionItems.map((item) => (
         <AccordionItem
-          className="overflow-visible !rounded-none !border-b !border-[oklch(from_var(--border)_l_c_h_/_0.5)] bg-transparent !p-0 !pb-6 !mb-6 !mt-0"
+          className="!rounded-none !border-b !border-[oklch(from_var(--border)_l_c_h_/_0.5)] !p-0 !pb-6 !mb-6 !mt-0 overflow-visible bg-transparent"
           key={item.id}
           value={item.id}
         >

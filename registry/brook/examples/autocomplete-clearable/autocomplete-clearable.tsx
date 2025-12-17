@@ -39,11 +39,7 @@ export default function AutocompleteClearable() {
         value={value}
       >
         <div className={styles.inputWrapper}>
-          <AutocompleteInput
-            className={styles.input}
-            id="clearable-input"
-            placeholder="Search frameworks..."
-          />
+          <AutocompleteInput className={styles.input} id="clearable-input" placeholder="Search frameworks..." />
           <AutocompleteClear />
         </div>
 

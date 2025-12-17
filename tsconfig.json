@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,24 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/mdx-components": [
-        "./mdx-components"
-      ],
-      "@/registry/*": [
-        "./registry/*"
-      ],
-      "@/.source": [
-        "./.source"
-      ],
-      "fumadocs-mdx:collections/*": [
-        "./.source/*"
-      ]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/mdx-components": ["./mdx-components"],
+      "@/registry/*": ["./registry/*"],
+      "@/.source": ["./.source"],
+      "fumadocs-mdx:collections/*": ["./.source/*"]
     },
     "strictNullChecks": true
   },
@@ -51,7 +35,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -6,10 +6,7 @@ import { cn } from "@/lib/utils-tailwind";
 function AccordionRoot({ className, ...props }: Accordion.Root.Props) {
   return (
     <Accordion.Root
-      className={cn(
-        "flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col",
-        className
-      )}
+      className={cn("flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col", className)}
       data-slot="accordion-root"
       {...props}
     />
@@ -46,20 +43,10 @@ function AccordionItem({ className, ...props }: Accordion.Item.Props) {
 }
 
 function AccordionHeader({ className, ...props }: Accordion.Header.Props) {
-  return (
-    <Accordion.Header
-      className={cn("m-0", className)}
-      data-slot="accordion-header"
-      {...props}
-    />
-  );
+  return <Accordion.Header className={cn("m-0", className)} data-slot="accordion-header" {...props} />;
 }
 
-function AccordionTrigger({
-  className,
-  children,
-  ...props
-}: Accordion.Trigger.Props) {
+function AccordionTrigger({ className, children, ...props }: Accordion.Trigger.Props) {
   return (
     <Accordion.Trigger
       className={cn(
@@ -79,14 +66,7 @@ function AccordionTrigger({
           "group-hover:text-foreground"
         )}
       >
-        <svg
-          aria-label="Accordion toggle icon"
-          fill="none"
-          height="18"
-          role="img"
-          viewBox="0 0 20 20"
-          width="18"
-        >
+        <svg aria-label="Accordion toggle icon" fill="none" height="18" role="img" viewBox="0 0 20 20" width="18">
           <title>Toggle accordion</title>
           <path
             className={cn(
@@ -98,12 +78,7 @@ function AccordionTrigger({
             strokeLinecap="round"
             strokeWidth="2"
           />
-          <path
-            d="M10 4L10 16"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeWidth="2"
-          />
+          <path d="M10 4L10 16" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
         </svg>
       </div>
       <div>{children}</div>
@@ -111,11 +86,7 @@ function AccordionTrigger({
   );
 }
 
-function AccordionPanel({
-  className,
-  children,
-  ...props
-}: Accordion.Panel.Props) {
+function AccordionPanel({ className, children, ...props }: Accordion.Panel.Props) {
   return (
     <Accordion.Panel
       className={cn(
@@ -136,11 +107,4 @@ function AccordionPanel({
   );
 }
 
-export {
-  AccordionRoot as Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  AccordionRoot,
-  AccordionTrigger,
-};
+export { AccordionRoot as Accordion, AccordionHeader, AccordionItem, AccordionPanel, AccordionRoot, AccordionTrigger };

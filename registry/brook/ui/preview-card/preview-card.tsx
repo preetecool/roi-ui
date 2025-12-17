@@ -8,40 +8,21 @@ function PreviewCardRoot({ ...props }: PreviewCard.Root.Props) {
   return <PreviewCard.Root {...props} />;
 }
 
-function PreviewCardTrigger({
-  className,
-  ...props
-}: PreviewCard.Trigger.Props) {
-  return (
-    <PreviewCard.Trigger
-      className={cn(styles.trigger, className)}
-      data-slot="previewcard-trigger"
-      {...props}
-    />
-  );
+function PreviewCardTrigger({ className, ...props }: PreviewCard.Trigger.Props) {
+  return <PreviewCard.Trigger className={cn(styles.trigger, className)} data-slot="previewcard-trigger" {...props} />;
 }
 
 function PreviewCardPortal({ ...props }: PreviewCard.Portal.Props) {
   return <PreviewCard.Portal {...props} />;
 }
 
-function PreviewCardBackdrop({
-  className,
-  ...props
-}: PreviewCard.Backdrop.Props) {
+function PreviewCardBackdrop({ className, ...props }: PreviewCard.Backdrop.Props) {
   return (
-    <PreviewCard.Backdrop
-      className={cn(styles.backdrop, className)}
-      data-slot="previewcard-backdrop"
-      {...props}
-    />
+    <PreviewCard.Backdrop className={cn(styles.backdrop, className)} data-slot="previewcard-backdrop" {...props} />
   );
 }
 
-function PreviewCardPositioner({
-  className,
-  ...props
-}: PreviewCard.Positioner.Props) {
+function PreviewCardPositioner({ className, ...props }: PreviewCard.Positioner.Props) {
   return (
     <PreviewCard.Positioner
       className={cn(styles.positioner, className)}
@@ -52,23 +33,11 @@ function PreviewCardPositioner({
 }
 
 function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
-  return (
-    <PreviewCard.Popup
-      className={cn(styles.popup, className)}
-      data-slot="previewcard-popup"
-      {...props}
-    />
-  );
+  return <PreviewCard.Popup className={cn(styles.popup, className)} data-slot="previewcard-popup" {...props} />;
 }
 
 function PreviewCardArrow({ className, ...props }: PreviewCard.Arrow.Props) {
-  return (
-    <PreviewCard.Arrow
-      className={cn(styles.arrow, className)}
-      data-slot="previewcard-arrow"
-      {...props}
-    />
-  );
+  return <PreviewCard.Arrow className={cn(styles.arrow, className)} data-slot="previewcard-arrow" {...props} />;
 }
 
 export {

@@ -25,15 +25,8 @@ export function StyleSelector() {
   const { style, setStyle } = useStyle();
 
   return (
-    <Select
-      items={styleOptions}
-      onValueChange={(value) => setStyle(value as "css-modules" | "tailwind")}
-      value={style}
-    >
-      <SelectTrigger
-        aria-label="Select style framework"
-        className={styles.trigger}
-      >
+    <Select items={styleOptions} onValueChange={(value) => setStyle(value as "css-modules" | "tailwind")} value={style}>
+      <SelectTrigger aria-label="Select style framework" className={styles.trigger}>
         <SelectValue>
           {(value) => {
             const selected = styleOptions.find((opt) => opt.value === value);

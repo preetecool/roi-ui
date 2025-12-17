@@ -1,10 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import {
-  Checkbox,
-  CheckboxIndicator,
-} from "@/registry/brook/ui/checkbox/checkbox";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
 import styles from "./checkbox-card.module.css";
 
 export default function CheckboxCard() {
@@ -17,9 +14,7 @@ export default function CheckboxCard() {
       </Checkbox>
       <div className={styles.content}>
         <span className={styles.title}>Enable notifications</span>
-        <span className={styles.description}>
-          You can enable or disable notifications at any time.
-        </span>
+        <span className={styles.description}>You can enable or disable notifications at any time.</span>
       </div>
     </label>
   );

@@ -14,11 +14,6 @@ export function withCodeTabsStyle<P extends object>(
   additionalClassName?: string
 ) {
   return function StyledComponent(props: P & { className?: string }) {
-    return (
-      <Component
-        {...props}
-        className={cn(additionalClassName, props.className)}
-      />
-    );
+    return <Component {...props} className={cn(additionalClassName, props.className)} />;
   };
 }

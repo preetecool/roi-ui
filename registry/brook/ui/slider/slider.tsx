@@ -9,13 +9,7 @@ function SliderRoot({ className, ...props }: Slider.Root.Props) {
 }
 
 function SliderControl({ className, ...props }: Slider.Control.Props) {
-  return (
-    <Slider.Control
-      className={cn(styles.control, className)}
-      data-slot="slider-control"
-      {...props}
-    />
-  );
+  return <Slider.Control className={cn(styles.control, className)} data-slot="slider-control" {...props} />;
 }
 
 function SliderTrack({ className, ...props }: Slider.Track.Props) {
@@ -23,13 +17,7 @@ function SliderTrack({ className, ...props }: Slider.Track.Props) {
 }
 
 function SliderIndicator({ className, ...props }: Slider.Indicator.Props) {
-  return (
-    <Slider.Indicator
-      className={cn(styles.indicator, className)}
-      data-slot="slider-indicator"
-      {...props}
-    />
-  );
+  return <Slider.Indicator className={cn(styles.indicator, className)} data-slot="slider-indicator" {...props} />;
 }
 
 function SliderThumb({ className, ...props }: Slider.Thumb.Props) {
@@ -40,12 +28,4 @@ function SliderValue({ className, ...props }: Slider.Value.Props) {
   return <Slider.Value className={cn(styles.value, className)} {...props} />;
 }
 
-export {
-  SliderRoot as Slider,
-  SliderControl,
-  SliderIndicator,
-  SliderRoot,
-  SliderThumb,
-  SliderTrack,
-  SliderValue,
-};
+export { SliderRoot as Slider, SliderControl, SliderIndicator, SliderRoot, SliderThumb, SliderTrack, SliderValue };

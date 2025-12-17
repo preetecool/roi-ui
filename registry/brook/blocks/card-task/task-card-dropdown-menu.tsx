@@ -15,10 +15,7 @@ type TaskCardDropdownMenuProps = {
   onDeleteTask: () => void;
 };
 
-export function TaskCardDropdownMenu({
-  onAddCollaborator,
-  onDeleteTask,
-}: TaskCardDropdownMenuProps) {
+export function TaskCardDropdownMenu({ onAddCollaborator, onDeleteTask }: TaskCardDropdownMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -37,23 +34,14 @@ export function TaskCardDropdownMenu({
         <DropdownMenuPositioner sideOffset={8}>
           <DropdownMenuPopup render={<ul />} style={{ minWidth: "160px" }}>
             <div style={{ height: "4px", width: "100%" }} />
-            <DropdownMenuItem
-              icon={<UserPlus size="14" />}
-              onClick={onAddCollaborator}
-              render={<li />}
-            >
+            <DropdownMenuItem icon={<UserPlus size="14" />} onClick={onAddCollaborator} render={<li />}>
               Add collaborator
             </DropdownMenuItem>
             <DropdownMenuItem icon={<Calendar size="14" />} render={<li />}>
               Change due date
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              icon={<Trash size="14" />}
-              onClick={onDeleteTask}
-              render={<li />}
-              variant="destructive"
-            >
+            <DropdownMenuItem icon={<Trash size="14" />} onClick={onDeleteTask} render={<li />} variant="destructive">
               Delete task
             </DropdownMenuItem>
             <div style={{ height: "4px", width: "100%" }} />

@@ -5,11 +5,7 @@ import { cn } from "@/lib/utils-tailwind";
 
 function FieldRoot({ className, ...props }: Field.Root.Props) {
   return (
-    <Field.Root
-      className={cn("flex w-full flex-col items-start gap-2", className)}
-      data-slot="field"
-      {...props}
-    />
+    <Field.Root className={cn("flex w-full flex-col items-start gap-2", className)} data-slot="field" {...props} />
   );
 }
 
@@ -34,23 +30,10 @@ function FieldDescription({ className, ...props }: Field.Description.Props) {
 }
 
 function FieldError({ className, ...props }: Field.Error.Props) {
-  return (
-    <Field.Error
-      className={cn("text-destructive text-xs", className)}
-      data-slot="field-error"
-      {...props}
-    />
-  );
+  return <Field.Error className={cn("text-destructive text-xs", className)} data-slot="field-error" {...props} />;
 }
 
 const FieldControl = Field.Control;
 const FieldValidity = Field.Validity;
 
-export {
-  FieldRoot as Field,
-  FieldControl,
-  FieldDescription,
-  FieldError,
-  FieldLabel,
-  FieldValidity,
-};
+export { FieldRoot as Field, FieldControl, FieldDescription, FieldError, FieldLabel, FieldValidity };

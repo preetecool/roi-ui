@@ -1,12 +1,7 @@
 "use client";
 
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import {
-  type ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/registry/brook/ui/chart/chart";
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/registry/brook/ui/chart/chart";
 import styles from "./chart-bar-demo.module.css";
 
 const chartData = [
@@ -36,43 +31,21 @@ export default function ChartBarDemo() {
   return (
     <div className={styles.container}>
       <ChartContainer className={styles.chartContainer} config={chartConfig}>
-        <BarChart
-          data={chartData}
-          margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
-        >
+        <BarChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis
-            axisLine={false}
-            dataKey="month"
-            tickLine={false}
-            tickMargin={8}
-          />
-          <YAxis
-            axisLine={false}
-            domain={[0, "auto"]}
-            tickLine={false}
-            tickMargin={8}
-            width={40}
-          />
+          <XAxis axisLine={false} dataKey="month" tickLine={false} tickMargin={8} />
+          <YAxis axisLine={false} domain={[0, "auto"]} tickLine={false} tickMargin={8} width={40} />
           <ChartTooltip
             content={
               <ChartTooltipContent
                 formatter={(value) => {
-                  const numValue =
-                    typeof value === "number"
-                      ? value
-                      : Number.parseFloat(String(value));
+                  const numValue = typeof value === "number" ? value : Number.parseFloat(String(value));
                   return `$${numValue.toLocaleString()}k`;
                 }}
               />
             }
           />
-          <Bar
-            animationDuration={ANIMATION_DURATION}
-            dataKey="sales"
-            fill="var(--color-sales)"
-            radius={BAR_RADIUS}
-          />
+          <Bar animationDuration={ANIMATION_DURATION} dataKey="sales" fill="var(--color-sales)" radius={BAR_RADIUS} />
         </BarChart>
       </ChartContainer>
     </div>

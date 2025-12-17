@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/brook/ui/avatar/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import {
   Tooltip,
   TooltipArrow,
@@ -38,10 +34,7 @@ export function AvatarGroup({ users, maxDisplay = 3 }: AvatarGroupProps) {
                       border: "2px solid var(--card)",
                     }}
                   >
-                    <AvatarImage
-                      alt={`profile image for ${user.label}`}
-                      src={user.avatar}
-                    />
+                    <AvatarImage alt={`profile image for ${user.label}`} src={user.avatar} />
                     <AvatarFallback>
                       {user.label
                         ?.split(" ")

@@ -16,11 +16,7 @@ type DeleteTaskAlertDialogProps = {
   onDelete: () => void;
 };
 
-export function DeleteTaskAlertDialog({
-  open,
-  onOpenChange,
-  onDelete,
-}: DeleteTaskAlertDialogProps) {
+export function DeleteTaskAlertDialog({ open, onOpenChange, onDelete }: DeleteTaskAlertDialogProps) {
   return (
     <AlertDialog onOpenChange={onOpenChange} open={open}>
       <AlertDialogContent
@@ -36,9 +32,7 @@ export function DeleteTaskAlertDialog({
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="mt-8 flex gap-3 [&>*]:flex-1">
-          <AlertDialogClose
-            render={<Button variant="outline">Cancel</Button>}
-          />
+          <AlertDialogClose render={<Button variant="outline">Cancel</Button>} />
           <Button onClick={onDelete} variant="destructive">
             Delete
           </Button>

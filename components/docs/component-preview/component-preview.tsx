@@ -25,12 +25,9 @@ export function ComponentPreview({
   if (!item || item.type === "ui") {
     return (
       <div className={styles.container}>
-        <div
-          className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}
-        >
+        <div className={`${styles.preview} ${styles[align]} ${isChartComponent ? styles.chartPreview : ""}`}>
           <p className={styles.errorMessage}>
-            Component <code className={styles.errorCode}>{name}</code> not found
-            in registry or is not previewable.
+            Component <code className={styles.errorCode}>{name}</code> not found in registry or is not previewable.
           </p>
         </div>
       </div>

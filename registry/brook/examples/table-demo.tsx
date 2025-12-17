@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/registry/brook/ui/table/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/registry/brook/ui/table/table";
 
 export default function TableDemo() {
   const invoices = [

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { X } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Dialog,
@@ -26,14 +26,14 @@ export default function DialogSheet() {
       <Dialog>
         <DialogTrigger
           render={
-            <Button variant="outline" onClick={() => setSide("left")}>
+            <Button onClick={() => setSide("left")} variant="outline">
               Open Left
             </Button>
           }
         />
         <DialogTrigger
           render={
-            <Button variant="outline" onClick={() => setSide("right")}>
+            <Button onClick={() => setSide("right")} variant="outline">
               Open Right
             </Button>
           }
@@ -41,22 +41,17 @@ export default function DialogSheet() {
         <DialogPortal>
           <DialogOverlay />
           <DialogPopup className={styles.popup} data-side={side}>
-            <DialogClose
-              className={styles.closeButton}
-              render={<button type="button" />}
-            >
+            <DialogClose className={styles.closeButton} render={<button type="button" />}>
               <X size={16} />
             </DialogClose>
             <DialogHeader className={styles.header}>
               <DialogTitle>Sheet Panel</DialogTitle>
-              <DialogDescription>
-                This dialog slides in from the {side} side of the screen.
-              </DialogDescription>
+              <DialogDescription>This dialog slides in from the {side} side of the screen.</DialogDescription>
             </DialogHeader>
             <div className={styles.content}>
               <p>
-                Sheet dialogs are useful for navigation menus, settings panels,
-                or any content that benefits from a slide-in interaction.
+                Sheet dialogs are useful for navigation menus, settings panels, or any content that benefits from a
+                slide-in interaction.
               </p>
             </div>
             <div className={styles.footer}>

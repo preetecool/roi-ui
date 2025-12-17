@@ -17,52 +17,20 @@ const alertVariants = cva(styles.alert, {
   },
 });
 
-function Alert({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  return (
-    <div
-      className={cn(alertVariants({ variant }), className)}
-      data-slot="alert"
-      role="alert"
-      {...props}
-    />
-  );
+function Alert({ className, variant, ...props }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+  return <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />;
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.title, className)}
-      data-slot="alert-title"
-      {...props}
-    />
-  );
+  return <div className={cn(styles.title, className)} data-slot="alert-title" {...props} />;
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.description, className)}
-      data-slot="alert-description"
-      {...props}
-    />
-  );
+function AlertDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.description, className)} data-slot="alert-description" {...props} />;
 }
 
 function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(styles.action, className)}
-      data-slot="alert-action"
-      {...props}
-    />
-  );
+  return <div className={cn(styles.action, className)} data-slot="alert-action" {...props} />;
 }
 
 export { Alert, AlertAction, AlertDescription, AlertTitle };

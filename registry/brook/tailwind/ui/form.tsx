@@ -13,25 +13,13 @@ function FormGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function FormRow({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "flex items-center gap-4 max-sm:flex-col max-sm:items-stretch",
-        className
-      )}
-      {...props}
-    />
-  );
+  return <div className={cn("flex items-center gap-4 max-sm:flex-col max-sm:items-stretch", className)} {...props} />;
 }
 
 function FormActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn(
-        "mt-6 flex justify-end gap-3",
-        "max-sm:flex-col max-sm:justify-stretch",
-        className
-      )}
+      className={cn("mt-6 flex justify-end gap-3", "max-sm:flex-col max-sm:justify-stretch", className)}
       {...props}
     />
   );

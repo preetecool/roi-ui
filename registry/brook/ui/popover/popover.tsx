@@ -11,35 +11,17 @@ function PopoverRoot({ ...props }: Popover.Root.Props) {
 }
 
 function PopoverTrigger({ className, ...props }: Popover.Trigger.Props) {
-  return (
-    <Popover.Trigger
-      className={cn(styles.trigger, className)}
-      data-slot="popover-trigger"
-      {...props}
-    />
-  );
+  return <Popover.Trigger className={cn(styles.trigger, className)} data-slot="popover-trigger" {...props} />;
 }
 
 const PopoverPortal = Popover.Portal;
 
 function PopoverBackdrop({ className, ...props }: Popover.Backdrop.Props) {
-  return (
-    <Popover.Backdrop
-      className={cn(styles.backdrop, className)}
-      data-slot="popover-backdrop"
-      {...props}
-    />
-  );
+  return <Popover.Backdrop className={cn(styles.backdrop, className)} data-slot="popover-backdrop" {...props} />;
 }
 
 function PopoverPositioner({ className, ...props }: Popover.Positioner.Props) {
-  return (
-    <Popover.Positioner
-      className={cn(styles.positioner, className)}
-      data-slot="popover-positioner"
-      {...props}
-    />
-  );
+  return <Popover.Positioner className={cn(styles.positioner, className)} data-slot="popover-positioner" {...props} />;
 }
 
 function PopoverPopup({
@@ -68,20 +50,13 @@ function PopoverPopup({
         side={side}
         sideOffset={sideOffset}
       >
-        <Popover.Popup
-          className={cn(styles.popup, className)}
-          data-slot="popover-popup"
-          {...props}
-        >
+        <Popover.Popup className={cn(styles.popup, className)} data-slot="popover-popup" {...props}>
           {arrow && (
             <Popover.Arrow className={styles.arrow}>
               <ArrowSvg />
             </Popover.Arrow>
           )}
-          <Popover.Viewport
-            className={styles.viewport}
-            data-slot="popover-viewport"
-          >
+          <Popover.Viewport className={styles.viewport} data-slot="popover-viewport">
             {children}
           </Popover.Viewport>
         </Popover.Popup>
@@ -92,7 +67,7 @@ function PopoverPopup({
 
 function ArrowSvg(props: React.ComponentProps<"svg">) {
   return (
-    <svg width="20" height="10" viewBox="0 0 20 10" fill="none" {...props}>
+    <svg fill="none" height="10" viewBox="0 0 20 10" width="20" {...props}>
       <path
         d="M9.66437 2.60207L4.80758 6.97318C4.07308 7.63423 3.11989 8 2.13172 8H0V10H20V8H18.5349C17.5468 8 16.5936 7.63423 15.8591 6.97318L11.0023 2.60207C10.622 2.2598 10.0447 2.25979 9.66437 2.60207Z"
         fill="var(--popover)"
@@ -110,68 +85,32 @@ function ArrowSvg(props: React.ComponentProps<"svg">) {
 }
 
 function PopoverArrow({ className, ...props }: Popover.Arrow.Props) {
-  return (
-    <Popover.Arrow
-      className={cn(styles.arrow, className)}
-      data-slot="popover-arrow"
-      {...props}
-    />
-  );
+  return <Popover.Arrow className={cn(styles.arrow, className)} data-slot="popover-arrow" {...props} />;
 }
 
 function PopoverTitle({ className, ...props }: Popover.Title.Props) {
-  return (
-    <Popover.Title
-      className={cn(styles.title, className)}
-      data-slot="popover-title"
-      {...props}
-    />
-  );
+  return <Popover.Title className={cn(styles.title, className)} data-slot="popover-title" {...props} />;
 }
 
-function PopoverDescription({
-  className,
-  ...props
-}: Popover.Description.Props) {
+function PopoverDescription({ className, ...props }: Popover.Description.Props) {
   return (
-    <Popover.Description
-      className={cn(styles.description, className)}
-      data-slot="popover-description"
-      {...props}
-    />
+    <Popover.Description className={cn(styles.description, className)} data-slot="popover-description" {...props} />
   );
 }
 
 function PopoverClose({ className, ...props }: Popover.Close.Props) {
-  return (
-    <Popover.Close
-      className={cn(styles.close, className)}
-      data-slot="popover-close"
-      {...props}
-    />
-  );
+  return <Popover.Close className={cn(styles.close, className)} data-slot="popover-close" {...props} />;
 }
 
 function PopoverViewport({ className, ...props }: Popover.Viewport.Props) {
-  return (
-    <Popover.Viewport
-      className={cn(styles.viewport, className)}
-      data-slot="popover-viewport"
-      {...props}
-    />
-  );
+  return <Popover.Viewport className={cn(styles.viewport, className)} data-slot="popover-viewport" {...props} />;
 }
 
 function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
   return (
     <PopoverPortal>
       <PopoverPositioner sideOffset={8}>
-        <Popover.Popup
-          className={cn(styles.popup, className)}
-          style={style}
-          data-slot="popover-popup"
-          {...props}
-        />
+        <Popover.Popup className={cn(styles.popup, className)} data-slot="popover-popup" style={style} {...props} />
       </PopoverPositioner>
     </PopoverPortal>
   );

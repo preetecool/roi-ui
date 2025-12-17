@@ -8,34 +8,17 @@ function NumberFieldRoot({ className, ...props }: NumberField.Root.Props) {
   return <NumberField.Root className={cn(styles.root, className)} {...props} />;
 }
 
-function NumberFieldGroup({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function NumberFieldGroup({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn(styles.group, className)} {...props} />;
 }
 
 function NumberFieldInput({ className, ...props }: NumberField.Input.Props) {
-  return (
-    <NumberField.Input
-      className={cn(styles.input, className)}
-      data-slot="numberfield-input"
-      {...props}
-    />
-  );
+  return <NumberField.Input className={cn(styles.input, className)} data-slot="numberfield-input" {...props} />;
 }
 
-function NumberFieldIncrement({
-  className,
-  children,
-  ...props
-}: NumberField.Increment.Props) {
+function NumberFieldIncrement({ className, children, ...props }: NumberField.Increment.Props) {
   return (
-    <NumberField.Increment
-      className={cn(styles.increment, className)}
-      data-slot="numberfield-increment"
-      {...props}
-    >
+    <NumberField.Increment className={cn(styles.increment, className)} data-slot="numberfield-increment" {...props}>
       {children || (
         <svg
           aria-label="Increment"
@@ -59,17 +42,9 @@ function NumberFieldIncrement({
   );
 }
 
-function NumberFieldDecrement({
-  className,
-  children,
-  ...props
-}: NumberField.Decrement.Props) {
+function NumberFieldDecrement({ className, children, ...props }: NumberField.Decrement.Props) {
   return (
-    <NumberField.Decrement
-      className={cn(styles.decrement, className)}
-      data-slot="numberfield-decrement"
-      {...props}
-    >
+    <NumberField.Decrement className={cn(styles.decrement, className)} data-slot="numberfield-decrement" {...props}>
       {children || (
         <svg
           aria-label="Decrement"
@@ -80,36 +55,20 @@ function NumberFieldDecrement({
           viewBox="0 0 24 24"
           width="16"
         >
-          <path
-            d="M5 12h14"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
+          <path d="M5 12h14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
         </svg>
       )}
     </NumberField.Decrement>
   );
 }
 
-function NumberFieldScrubArea({
-  className,
-  ...props
-}: NumberField.ScrubArea.Props) {
+function NumberFieldScrubArea({ className, ...props }: NumberField.ScrubArea.Props) {
   return (
-    <NumberField.ScrubArea
-      className={cn(styles.scrubArea, className)}
-      data-slot="numberfield-scrubarea"
-      {...props}
-    />
+    <NumberField.ScrubArea className={cn(styles.scrubArea, className)} data-slot="numberfield-scrubarea" {...props} />
   );
 }
 
-function NumberFieldScrubAreaCursor({
-  className,
-  ...props
-}: NumberField.ScrubAreaCursor.Props) {
+function NumberFieldScrubAreaCursor({ className, ...props }: NumberField.ScrubAreaCursor.Props) {
   return (
     <NumberField.ScrubAreaCursor
       className={cn(styles.scrubAreaCursor, className)}

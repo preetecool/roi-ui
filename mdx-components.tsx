@@ -1,12 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { CodeBlock } from "@/components/docs/code-block/code-block";
-import {
-  CodeTabs,
-  CodeTabsContent,
-  CodeTabsList,
-  CodeTabsTrigger,
-} from "@/components/docs/code-tabs/code-tabs";
+import { CodeTabs, CodeTabsContent, CodeTabsList, CodeTabsTrigger } from "@/components/docs/code-tabs/code-tabs";
 import { PackageManagerCodeTabs } from "@/components/docs/code-tabs/package-manager-code-tabs";
 import { ComponentPreview } from "@/components/docs/component-preview/component-preview";
 import { ComponentSource } from "@/components/docs/component-source/component-source";
@@ -15,12 +10,7 @@ import { GlobalsCSS } from "@/components/docs/globals-css";
 import { HeadingAnchor } from "@/components/docs/heading-anchor/heading-anchor";
 import { PropTable } from "@/components/docs/prop-table/prop-table";
 import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Tabs as CustomTabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/brook/ui/tabs/tabs";
+import { Tabs as CustomTabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 
 type TabProps = {
   value: string;
@@ -35,15 +25,11 @@ type TabsProps = {
 };
 
 export const mdxComponents = {
-  h1: (props: ComponentProps<"h1">) => (
-    <h1 style={{ color: "var(--docs-heading)" }} {...props} />
-  ),
+  h1: (props: ComponentProps<"h1">) => <h1 style={{ color: "var(--docs-heading)" }} {...props} />,
   h2: (props: ComponentProps<"h2">) => <HeadingAnchor level={2} {...props} />,
   h3: (props: ComponentProps<"h3">) => <HeadingAnchor level={3} {...props} />,
   h4: (props: ComponentProps<"h4">) => <HeadingAnchor level={4} {...props} />,
-  p: (props: ComponentProps<"p">) => (
-    <p style={{ color: "var(--foreground)" }} {...props} />
-  ),
+  p: (props: ComponentProps<"p">) => <p style={{ color: "var(--foreground)" }} {...props} />,
   a: (props: ComponentProps<"a">) => (
     // biome-ignore lint/nursery/useAnchorHref: href is provided via props in MDX
     <a
@@ -58,9 +44,7 @@ export const mdxComponents = {
   ul: (props: ComponentProps<"ul">) => <ul {...props} />,
   ol: (props: ComponentProps<"ol">) => <ol {...props} />,
   li: (props: ComponentProps<"li">) => <li {...props} />,
-  blockquote: (props: ComponentProps<"blockquote">) => (
-    <blockquote {...props} />
-  ),
+  blockquote: (props: ComponentProps<"blockquote">) => <blockquote {...props} />,
   code: (props: ComponentProps<"code">) => {
     if (typeof props.children === "string") {
       return <code {...props} />;
@@ -77,9 +61,7 @@ export const mdxComponents = {
   GlobalsCSS,
 
   // Installation tabs (CLI/Manual)
-  InstallationTabs: (props: ComponentProps<typeof CodeTabs>) => (
-    <CodeTabs variant="installation" {...props} />
-  ),
+  InstallationTabs: (props: ComponentProps<typeof CodeTabs>) => <CodeTabs variant="installation" {...props} />,
   InstallationTabsList: CodeTabsList,
   InstallationTabsTrigger: CodeTabsTrigger,
   InstallationTabsContent: CodeTabsContent,

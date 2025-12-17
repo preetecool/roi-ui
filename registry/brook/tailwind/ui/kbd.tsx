@@ -40,15 +40,8 @@ const kbdVariants = cva(
  * <Kbd size="lg">Enter</Kbd>
  * ```
  */
-function Kbd({
-  className,
-  size,
-  children,
-  ...props
-}: React.ComponentProps<"kbd"> & VariantProps<typeof kbdVariants>) {
-  const isCommandKey =
-    typeof children === "string" &&
-    (children === "⌘" || children.toLowerCase() === "ctrl");
+function Kbd({ className, size, children, ...props }: React.ComponentProps<"kbd"> & VariantProps<typeof kbdVariants>) {
+  const isCommandKey = typeof children === "string" && (children === "⌘" || children.toLowerCase() === "ctrl");
 
   const sizeMap = {
     sm: 11,
@@ -59,15 +52,7 @@ function Kbd({
   const iconSize = sizeMap[size || "md"];
 
   return (
-    <kbd
-      className={cn(
-        kbdVariants({ size }),
-        isCommandKey && "text-[1.15em]",
-        className
-      )}
-      data-slot="kbd"
-      {...props}
-    >
+    <kbd className={cn(kbdVariants({ size }), isCommandKey && "text-[1.15em]", className)} data-slot="kbd" {...props}>
       {isCommandKey ? <Command size={iconSize} strokeWidth={2.5} /> : children}
     </kbd>
   );

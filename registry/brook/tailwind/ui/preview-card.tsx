@@ -7,10 +7,7 @@ function PreviewCardRoot({ ...props }: PreviewCard.Root.Props) {
   return <PreviewCard.Root {...props} />;
 }
 
-function PreviewCardTrigger({
-  className,
-  ...props
-}: PreviewCard.Trigger.Props) {
+function PreviewCardTrigger({ className, ...props }: PreviewCard.Trigger.Props) {
   return (
     <PreviewCard.Trigger
       className={cn(
@@ -27,10 +24,7 @@ function PreviewCardPortal({ ...props }: PreviewCard.Portal.Props) {
   return <PreviewCard.Portal {...props} />;
 }
 
-function PreviewCardBackdrop({
-  className,
-  ...props
-}: PreviewCard.Backdrop.Props) {
+function PreviewCardBackdrop({ className, ...props }: PreviewCard.Backdrop.Props) {
   return (
     <PreviewCard.Backdrop
       className={cn("fixed inset-0 z-[140]", className)}
@@ -40,10 +34,7 @@ function PreviewCardBackdrop({
   );
 }
 
-function PreviewCardPositioner({
-  className,
-  ...props
-}: PreviewCard.Positioner.Props) {
+function PreviewCardPositioner({ className, ...props }: PreviewCard.Positioner.Props) {
   return (
     <PreviewCard.Positioner
       className={cn("absolute z-[150]", className)}
@@ -98,10 +89,7 @@ function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
 function PreviewCardArrow({ className, ...props }: PreviewCard.Arrow.Props) {
   return (
     <PreviewCard.Arrow
-      className={cn(
-        "h-[5px] w-2.5 fill-[var(--popover)] stroke-1 stroke-border",
-        className
-      )}
+      className={cn("h-[5px] w-2.5 fill-[var(--popover)] stroke-1 stroke-border", className)}
       data-slot="previewcard-arrow"
       {...props}
     />

@@ -1,11 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { Check, Minus } from "lucide-react";
-import {
-  Checkbox,
-  CheckboxIndicator,
-} from "@/registry/brook/ui/checkbox/checkbox";
+import * as React from "react";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
 import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
 import styles from "./checkbox-group-parent.module.css";
 
@@ -16,22 +13,14 @@ export default function CheckboxGroupParent() {
 
   return (
     <div className={styles.container}>
-      <CheckboxGroup
-        value={value}
-        onValueChange={setValue}
-        allValues={allValues}
-      >
+      <CheckboxGroup allValues={allValues} onValueChange={setValue} value={value}>
         <label className={styles.label}>
           <Checkbox name="interests" parent>
             <CheckboxIndicator
               keepMounted
               render={(props, state) => (
                 <span {...props}>
-                  {state.indeterminate ? (
-                    <Minus size={16} strokeWidth={3} />
-                  ) : (
-                    <Check size={16} strokeWidth={3} />
-                  )}
+                  {state.indeterminate ? <Minus size={16} strokeWidth={3} /> : <Check size={16} strokeWidth={3} />}
                 </span>
               )}
             />

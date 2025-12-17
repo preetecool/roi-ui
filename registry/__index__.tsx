@@ -500,9 +500,7 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-demo": {
     name: "dropdown-menu-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo.tsx",
-    ],
+    files: ["registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo.tsx"],
     path: "@/registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo",
   },
   "dropdown-menu-motion": {
@@ -685,10 +683,7 @@ export const Index: Record<string, RegistryEntry> = {
   shipping: {
     name: "shipping",
     type: "example",
-    files: [
-      "registry/brook/examples/shipping/shipping.tsx",
-      "registry/brook/examples/shipping/shipping.module.css",
-    ],
+    files: ["registry/brook/examples/shipping/shipping.tsx", "registry/brook/examples/shipping/shipping.module.css"],
     path: "@/registry/brook/examples/shipping/shipping",
   },
   "slider-demo": {
@@ -790,10 +785,7 @@ export const Index: Record<string, RegistryEntry> = {
   "ai-chat": {
     name: "ai-chat",
     type: "block",
-    files: [
-      "registry/brook/blocks/ai-chat/ai-chat.tsx",
-      "registry/brook/blocks/ai-chat/ai-chat.module.css",
-    ],
+    files: ["registry/brook/blocks/ai-chat/ai-chat.tsx", "registry/brook/blocks/ai-chat/ai-chat.module.css"],
     path: "@/registry/brook/blocks/ai-chat/ai-chat",
   },
   "card-history": {
@@ -866,18 +858,12 @@ export const Index: Record<string, RegistryEntry> = {
   accordion: {
     name: "accordion",
     type: "ui",
-    files: [
-      "registry/brook/ui/accordion/accordion.tsx",
-      "registry/brook/ui/accordion/accordion.module.css",
-    ],
+    files: ["registry/brook/ui/accordion/accordion.tsx", "registry/brook/ui/accordion/accordion.module.css"],
   },
   alert: {
     name: "alert",
     type: "ui",
-    files: [
-      "registry/brook/ui/alert/alert.tsx",
-      "registry/brook/ui/alert/alert.module.css",
-    ],
+    files: ["registry/brook/ui/alert/alert.tsx", "registry/brook/ui/alert/alert.module.css"],
   },
   "alert-dialog": {
     name: "alert-dialog",
@@ -903,66 +889,42 @@ export const Index: Record<string, RegistryEntry> = {
   avatar: {
     name: "avatar",
     type: "ui",
-    files: [
-      "registry/brook/ui/avatar/avatar.tsx",
-      "registry/brook/ui/avatar/avatar.module.css",
-    ],
+    files: ["registry/brook/ui/avatar/avatar.tsx", "registry/brook/ui/avatar/avatar.module.css"],
   },
   background: {
     name: "background",
     type: "ui",
-    files: [
-      "registry/brook/ui/background/background.tsx",
-      "registry/brook/ui/background/background.module.css",
-    ],
+    files: ["registry/brook/ui/background/background.tsx", "registry/brook/ui/background/background.module.css"],
   },
   badge: {
     name: "badge",
     type: "ui",
-    files: [
-      "registry/brook/ui/badge/badge.tsx",
-      "registry/brook/ui/badge/badge.module.css",
-    ],
+    files: ["registry/brook/ui/badge/badge.tsx", "registry/brook/ui/badge/badge.module.css"],
   },
   button: {
     name: "button",
     type: "ui",
-    files: [
-      "registry/brook/ui/button/button.tsx",
-      "registry/brook/ui/button/button.module.css",
-    ],
+    files: ["registry/brook/ui/button/button.tsx", "registry/brook/ui/button/button.module.css"],
   },
   card: {
     name: "card",
     type: "ui",
-    files: [
-      "registry/brook/ui/card/card.tsx",
-      "registry/brook/ui/card/card.module.css",
-    ],
+    files: ["registry/brook/ui/card/card.tsx", "registry/brook/ui/card/card.module.css"],
   },
   carousel: {
     name: "carousel",
     type: "ui",
-    files: [
-      "registry/brook/ui/carousel/carousel.tsx",
-      "registry/brook/ui/carousel/carousel.module.css",
-    ],
+    files: ["registry/brook/ui/carousel/carousel.tsx", "registry/brook/ui/carousel/carousel.module.css"],
   },
   chart: {
     name: "chart",
     type: "ui",
-    files: [
-      "registry/brook/ui/chart/chart.tsx",
-      "registry/brook/ui/chart/chart.module.css",
-    ],
+    files: ["registry/brook/ui/chart/chart.tsx", "registry/brook/ui/chart/chart.module.css"],
   },
   checkbox: {
     name: "checkbox",
     type: "ui",
-    files: [
-      "registry/brook/ui/checkbox/checkbox.tsx",
-      "registry/brook/ui/checkbox/checkbox.module.css",
-    ],
+    files: ["registry/brook/ui/checkbox/checkbox.tsx", "registry/brook/ui/checkbox/checkbox.module.css"],
   },
   "checkbox-group": {
     name: "checkbox-group",
@@ -975,26 +937,17 @@ export const Index: Record<string, RegistryEntry> = {
   collapsible: {
     name: "collapsible",
     type: "ui",
-    files: [
-      "registry/brook/ui/collapsible/collapsible.tsx",
-      "registry/brook/ui/collapsible/collapsible.module.css",
-    ],
+    files: ["registry/brook/ui/collapsible/collapsible.tsx", "registry/brook/ui/collapsible/collapsible.module.css"],
   },
   combobox: {
     name: "combobox",
     type: "ui",
-    files: [
-      "registry/brook/ui/combobox/combobox.tsx",
-      "registry/brook/ui/combobox/combobox.module.css",
-    ],
+    files: ["registry/brook/ui/combobox/combobox.tsx", "registry/brook/ui/combobox/combobox.module.css"],
   },
   command: {
     name: "command",
     type: "ui",
-    files: [
-      "registry/brook/ui/command/command.tsx",
-      "registry/brook/ui/command/command.module.css",
-    ],
+    files: ["registry/brook/ui/command/command.tsx", "registry/brook/ui/command/command.module.css"],
   },
   "context-menu": {
     name: "context-menu",
@@ -1007,18 +960,12 @@ export const Index: Record<string, RegistryEntry> = {
   "copy-button": {
     name: "copy-button",
     type: "ui",
-    files: [
-      "registry/brook/ui/copy-button/copy-button.tsx",
-      "registry/brook/ui/copy-button/copy-button.module.css",
-    ],
+    files: ["registry/brook/ui/copy-button/copy-button.tsx", "registry/brook/ui/copy-button/copy-button.module.css"],
   },
   dialog: {
     name: "dialog",
     type: "ui",
-    files: [
-      "registry/brook/ui/dialog/dialog.tsx",
-      "registry/brook/ui/dialog/dialog.module.css",
-    ],
+    files: ["registry/brook/ui/dialog/dialog.tsx", "registry/brook/ui/dialog/dialog.module.css"],
   },
   "dropdown-menu": {
     name: "dropdown-menu",
@@ -1031,66 +978,42 @@ export const Index: Record<string, RegistryEntry> = {
   field: {
     name: "field",
     type: "ui",
-    files: [
-      "registry/brook/ui/field/field.tsx",
-      "registry/brook/ui/field/field.module.css",
-    ],
+    files: ["registry/brook/ui/field/field.tsx", "registry/brook/ui/field/field.module.css"],
   },
   fieldset: {
     name: "fieldset",
     type: "ui",
-    files: [
-      "registry/brook/ui/fieldset/fieldset.tsx",
-      "registry/brook/ui/fieldset/fieldset.module.css",
-    ],
+    files: ["registry/brook/ui/fieldset/fieldset.tsx", "registry/brook/ui/fieldset/fieldset.module.css"],
   },
   form: {
     name: "form",
     type: "ui",
-    files: [
-      "registry/brook/ui/form/form.tsx",
-      "registry/brook/ui/form/form.module.css",
-    ],
+    files: ["registry/brook/ui/form/form.tsx", "registry/brook/ui/form/form.module.css"],
   },
   input: {
     name: "input",
     type: "ui",
-    files: [
-      "registry/brook/ui/input/input.tsx",
-      "registry/brook/ui/input/input.module.css",
-    ],
+    files: ["registry/brook/ui/input/input.tsx", "registry/brook/ui/input/input.module.css"],
   },
   kbd: {
     name: "kbd",
     type: "ui",
-    files: [
-      "registry/brook/ui/kbd/kbd.tsx",
-      "registry/brook/ui/kbd/kbd.module.css",
-    ],
+    files: ["registry/brook/ui/kbd/kbd.tsx", "registry/brook/ui/kbd/kbd.module.css"],
   },
   "like-button": {
     name: "like-button",
     type: "ui",
-    files: [
-      "registry/brook/ui/like-button/like-button.tsx",
-      "registry/brook/ui/like-button/like-button.module.css",
-    ],
+    files: ["registry/brook/ui/like-button/like-button.tsx", "registry/brook/ui/like-button/like-button.module.css"],
   },
   menubar: {
     name: "menubar",
     type: "ui",
-    files: [
-      "registry/brook/ui/menubar/menubar.tsx",
-      "registry/brook/ui/menubar/menubar.module.css",
-    ],
+    files: ["registry/brook/ui/menubar/menubar.tsx", "registry/brook/ui/menubar/menubar.module.css"],
   },
   meter: {
     name: "meter",
     type: "ui",
-    files: [
-      "registry/brook/ui/meter/meter.tsx",
-      "registry/brook/ui/meter/meter.module.css",
-    ],
+    files: ["registry/brook/ui/meter/meter.tsx", "registry/brook/ui/meter/meter.module.css"],
   },
   "navigation-menu": {
     name: "navigation-menu",
@@ -1111,10 +1034,7 @@ export const Index: Record<string, RegistryEntry> = {
   popover: {
     name: "popover",
     type: "ui",
-    files: [
-      "registry/brook/ui/popover/popover.tsx",
-      "registry/brook/ui/popover/popover.module.css",
-    ],
+    files: ["registry/brook/ui/popover/popover.tsx", "registry/brook/ui/popover/popover.module.css"],
   },
   "preview-card": {
     name: "preview-card",
@@ -1127,98 +1047,62 @@ export const Index: Record<string, RegistryEntry> = {
   progress: {
     name: "progress",
     type: "ui",
-    files: [
-      "registry/brook/ui/progress/progress.tsx",
-      "registry/brook/ui/progress/progress.module.css",
-    ],
+    files: ["registry/brook/ui/progress/progress.tsx", "registry/brook/ui/progress/progress.module.css"],
   },
   radio: {
     name: "radio",
     type: "ui",
-    files: [
-      "registry/brook/ui/radio/radio.tsx",
-      "registry/brook/ui/radio/radio.module.css",
-    ],
+    files: ["registry/brook/ui/radio/radio.tsx", "registry/brook/ui/radio/radio.module.css"],
   },
   "scroll-area": {
     name: "scroll-area",
     type: "ui",
-    files: [
-      "registry/brook/ui/scroll-area/scroll-area.tsx",
-      "registry/brook/ui/scroll-area/scroll-area.module.css",
-    ],
+    files: ["registry/brook/ui/scroll-area/scroll-area.tsx", "registry/brook/ui/scroll-area/scroll-area.module.css"],
   },
   select: {
     name: "select",
     type: "ui",
-    files: [
-      "registry/brook/ui/select/select.tsx",
-      "registry/brook/ui/select/select.module.css",
-    ],
+    files: ["registry/brook/ui/select/select.tsx", "registry/brook/ui/select/select.module.css"],
   },
   separator: {
     name: "separator",
     type: "ui",
-    files: [
-      "registry/brook/ui/separator/separator.tsx",
-      "registry/brook/ui/separator/separator.module.css",
-    ],
+    files: ["registry/brook/ui/separator/separator.tsx", "registry/brook/ui/separator/separator.module.css"],
   },
   sidebar: {
     name: "sidebar",
     type: "ui",
-    files: [
-      "registry/brook/ui/sidebar/sidebar.tsx",
-      "registry/brook/ui/sidebar/sidebar.module.css",
-    ],
+    files: ["registry/brook/ui/sidebar/sidebar.tsx", "registry/brook/ui/sidebar/sidebar.module.css"],
   },
   slider: {
     name: "slider",
     type: "ui",
-    files: [
-      "registry/brook/ui/slider/slider.tsx",
-      "registry/brook/ui/slider/slider.module.css",
-    ],
+    files: ["registry/brook/ui/slider/slider.tsx", "registry/brook/ui/slider/slider.module.css"],
   },
   switch: {
     name: "switch",
     type: "ui",
-    files: [
-      "registry/brook/ui/switch/switch.tsx",
-      "registry/brook/ui/switch/switch.module.css",
-    ],
+    files: ["registry/brook/ui/switch/switch.tsx", "registry/brook/ui/switch/switch.module.css"],
   },
   table: {
     name: "table",
     type: "ui",
-    files: [
-      "registry/brook/ui/table/table.tsx",
-      "registry/brook/ui/table/table.module.css",
-    ],
+    files: ["registry/brook/ui/table/table.tsx", "registry/brook/ui/table/table.module.css"],
   },
   tabs: {
     name: "tabs",
     type: "ui",
-    files: [
-      "registry/brook/ui/tabs/tabs.tsx",
-      "registry/brook/ui/tabs/tabs.module.css",
-    ],
+    files: ["registry/brook/ui/tabs/tabs.tsx", "registry/brook/ui/tabs/tabs.module.css"],
   },
   toast: {
     name: "toast",
     type: "ui",
-    files: [
-      "registry/brook/ui/toast/toast.tsx",
-      "registry/brook/ui/toast/toast.module.css",
-    ],
+    files: ["registry/brook/ui/toast/toast.tsx", "registry/brook/ui/toast/toast.module.css"],
   },
   toggle: {
     name: "toggle",
     type: "ui",
-    files: [
-      "registry/brook/ui/toggle/toggle.tsx",
-      "registry/brook/ui/toggle/toggle.module.css",
-    ],
+    files: ["registry/brook/ui/toggle/toggle.tsx", "registry/brook/ui/toggle/toggle.module.css"],
   },
   "toggle-group": {
     name: "toggle-group",
@@ -1231,18 +1115,12 @@ export const Index: Record<string, RegistryEntry> = {
   toolbar: {
     name: "toolbar",
     type: "ui",
-    files: [
-      "registry/brook/ui/toolbar/toolbar.tsx",
-      "registry/brook/ui/toolbar/toolbar.module.css",
-    ],
+    files: ["registry/brook/ui/toolbar/toolbar.tsx", "registry/brook/ui/toolbar/toolbar.module.css"],
   },
   tooltip: {
     name: "tooltip",
     type: "ui",
-    files: [
-      "registry/brook/ui/tooltip/tooltip.tsx",
-      "registry/brook/ui/tooltip/tooltip.module.css",
-    ],
+    files: ["registry/brook/ui/tooltip/tooltip.tsx", "registry/brook/ui/tooltip/tooltip.module.css"],
   },
   "accordion-animation-tailwind": {
     name: "accordion-animation-tailwind",
