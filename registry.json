@@ -917,26 +917,6 @@
           "path": "registry/brook/blocks/card-task/card-task.module.css",
           "type": "registry:file",
           "target": "~/components/blocks/card-task/card-task.module.css"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/avatar-group.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/avatar-group.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/delete-task-alert-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/delete-task-alert-dialog.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/task-card-dropdown-menu.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/task-card-dropdown-menu.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/card-task/collaborator-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/collaborator-dialog.tsx"
         }
       ]
     },
@@ -1757,26 +1737,6 @@
           "path": "registry/brook/tailwind/blocks/card-task/card-task.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/card-task/card-task.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/avatar-group.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/avatar-group.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/delete-task-alert-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/delete-task-alert-dialog.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/task-card-dropdown-menu.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/task-card-dropdown-menu.tsx"
-        },
-        {
-          "path": "registry/brook/tailwind/blocks/card-task/collaborator-dialog.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/card-task/collaborator-dialog.tsx"
         }
       ]
     },

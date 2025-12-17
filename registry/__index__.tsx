@@ -818,14 +818,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-task": {
     name: "card-task",
     type: "block",
-    files: [
-      "registry/brook/blocks/card-task/avatar-group.tsx",
-      "registry/brook/blocks/card-task/card-task.tsx",
-      "registry/brook/blocks/card-task/collaborator-dialog.tsx",
-      "registry/brook/blocks/card-task/delete-task-alert-dialog.tsx",
-      "registry/brook/blocks/card-task/task-card-dropdown-menu.tsx",
-      "registry/brook/blocks/card-task/card-task.module.css",
-    ],
+    files: ["registry/brook/blocks/card-task/card-task.tsx", "registry/brook/blocks/card-task/card-task.module.css"],
     path: "@/registry/brook/blocks/card-task/card-task",
   },
   "card-traffic": {
@@ -1665,13 +1658,7 @@ export const Index: Record<string, RegistryEntry> = {
   "card-task-tailwind": {
     name: "card-task-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/card-task/avatar-group.tsx",
-      "registry/brook/tailwind/blocks/card-task/card-task.tsx",
-      "registry/brook/tailwind/blocks/card-task/collaborator-dialog.tsx",
-      "registry/brook/tailwind/blocks/card-task/delete-task-alert-dialog.tsx",
-      "registry/brook/tailwind/blocks/card-task/task-card-dropdown-menu.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/card-task/card-task.tsx"],
     path: "@/registry/brook/tailwind/blocks/card-task/card-task",
   },
   "card-traffic-tailwind": {
