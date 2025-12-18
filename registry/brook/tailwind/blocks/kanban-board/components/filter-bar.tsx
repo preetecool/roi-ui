@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, Filter, Layers, X } from "lucide-react";
+import { useMemo } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
@@ -44,8 +45,18 @@ export function FilterBar({
   onToggleTag,
   onGroupByChange,
 }: FilterBarProps) {
-  const activeFilterCount = filters.priority.length + filters.tags.length;
-  const currentGroupByLabel = GROUP_BY_ITEMS.find((item) => item.value === groupBy)?.label ?? "Group by";
+  const activeFilterCount = useMemo(
+    () => filters.priority.length + filters.tags.length,
+    [filters.priority.length, filters.tags.length]
+  );
+
+  const currentGroupByLabel = useMemo(
+    () => GROUP_BY_ITEMS.find((item) => item.value === groupBy)?.label ?? "Group by",
+    [groupBy]
+  );
+
+  const prioritySet = useMemo(() => new Set(filters.priority), [filters.priority]);
+  const tagSet = useMemo(() => new Set(filters.tags), [filters.tags]);
 
   return (
     <div className={cn("flex flex-col gap-2 py-3 px-4", className)} data-slot="filter-bar">
@@ -74,7 +85,7 @@ export function FilterBar({
                   <DropdownMenuGroupLabel>Priority</DropdownMenuGroupLabel>
                   {PRIORITY_ITEMS.map((item) => (
                     <DropdownMenuCheckboxItem
-                      checked={filters.priority.includes(item.value)}
+                      checked={prioritySet.has(item.value)}
                       key={item.value}
                       onCheckedChange={(checked) => onTogglePriority(item.value, checked)}
                     >
@@ -92,7 +103,7 @@ export function FilterBar({
                   <DropdownMenuGroupLabel>Tags</DropdownMenuGroupLabel>
                   {TAG_ITEMS.map((item) => (
                     <DropdownMenuCheckboxItem
-                      checked={filters.tags.includes(item.value)}
+                      checked={tagSet.has(item.value)}
                       key={item.value}
                       onCheckedChange={(checked) => onToggleTag(item.value, checked)}
                     >

@@ -13,8 +13,8 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useCallback, useMemo, useRef, useState } from "react";
-import type { GroupByField } from "../types";
-import { calculateDropIndex, getColumnName, getTargetColumnId } from "../lib/project";
+import { calculateDropIndex, getColumnName, getTargetColumnId, getTasksForGroup, PRIORITY_ORDER } from "../lib/project";
+import type { GroupByField, Priority } from "../types";
 
 export type KanbanItemProps = {
   id: string;
@@ -224,22 +224,26 @@ export function useKanbanDnd<
         // Find the final drop target (the card we're dropping ON)
         const overItem = data.find((item) => item.id === over.id);
 
-        // When dropping directly ON a card, inherit its priority and reposition
-        // to be right after the target card. This ensures the card "sticks"
-        // to its drop position after the priority sort.
         if (groupBy === "column" && overItem) {
           const draggedItem = data.find((item) => item.id === active.id);
           if (draggedItem && draggedItem.priority !== overItem.priority) {
             const newData = [...data];
             const draggedIndex = newData.findIndex((item) => item.id === active.id);
 
-            // Update priority
+            const draggedPriorityOrder = PRIORITY_ORDER[draggedItem.priority as Priority] ?? 999;
+            const targetPriorityOrder = PRIORITY_ORDER[overItem.priority as Priority] ?? 999;
+            const movingToHigherPriority = targetPriorityOrder < draggedPriorityOrder;
+
             newData[draggedIndex] = { ...newData[draggedIndex], priority: overItem.priority };
 
-            // Reposition: remove from current position and insert right after target
             const [removed] = newData.splice(draggedIndex, 1);
             const targetIndex = newData.findIndex((item) => item.id === over.id);
-            newData.splice(targetIndex + 1, 0, removed);
+
+            if (movingToHigherPriority) {
+              newData.splice(targetIndex, 0, removed);
+            } else {
+              newData.splice(targetIndex + 1, 0, removed);
+            }
 
             onDataChange(newData);
           }
@@ -259,10 +263,29 @@ export function useKanbanDnd<
       const draggedItem = newData[oldIndex];
       const targetItem = newData[newIndex];
 
-      // When grouping by column and dropping ON a card, inherit its priority
-      // so the dropped card "sticks" to that position after priority sort.
       if (groupBy === "column" && draggedItem.priority !== targetItem.priority) {
         newData[oldIndex] = { ...draggedItem, priority: targetItem.priority };
+        const targetIndex = calculateDropIndex(oldIndex, newIndex, draggedItem.priority, targetItem.priority);
+        onDataChange(arrayMove(newData, oldIndex, targetIndex));
+        return;
+      }
+
+      if (groupBy === "column" && draggedItem.priority === targetItem.priority) {
+        const columnItems = getTasksForGroup(data, draggedItem.columnId, groupBy);
+        const draggedSortedIdx = columnItems.findIndex((item) => item.id === active.id);
+        const targetSortedIdx = columnItems.findIndex((item) => item.id === over.id);
+
+        if (draggedSortedIdx === -1 || targetSortedIdx === -1) {
+          return;
+        }
+
+        const filteredData = data.filter((item) => item.id !== active.id);
+        const targetDataIndex = filteredData.findIndex((item) => item.id === over.id);
+        const insertIndex = draggedSortedIdx < targetSortedIdx ? targetDataIndex + 1 : targetDataIndex;
+
+        filteredData.splice(insertIndex, 0, draggedItem);
+        onDataChange(filteredData);
+        return;
       }
 
       const targetIndex = calculateDropIndex(oldIndex, newIndex, draggedItem.priority, targetItem.priority);

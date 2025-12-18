@@ -15,7 +15,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { cn } from "@/lib/utils-tailwind";
 import {
@@ -62,8 +62,18 @@ import type { Assignee, Column, GroupByField, Priority, Subtask, Task } from "..
 import type { DialogState } from "../hooks/use-task-dialog";
 import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 
+function parseDateString(dateStr: string): Date {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day, 12, 0, 0);
+}
+
 const taskSchema = z.object({
-  title: z.string().min(1, "Title is required"),
+  title: z.string().min(1, "Title is required").max(200, "Title must be 200 characters or less"),
+  columnId: z.string().min(1, "Column is required"),
+  priority: z.enum(["urgent", "high", "medium", "low"]),
+  description: z.string().max(2000, "Description must be 2000 characters or less").optional(),
+  tags: z.array(z.string()).optional(),
+  dueDate: z.string().optional(),
 });
 
 type TaskFormState = {
@@ -228,6 +238,8 @@ function TaskFormDialog({
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+  const defaultColumnId = useMemo(() => columns[0]?.id ?? "", [columns]);
+
   useEffect(() => {
     setErrors({});
     if (mode === "edit" && task) {
@@ -244,19 +256,19 @@ function TaskFormDialog({
     } else {
       setForm({
         ...defaultFormState,
-        columnId: columnId ?? columns[0]?.id ?? "",
+        columnId: columnId ?? defaultColumnId,
       });
     }
-  }, [mode, task, columnId, columns]);
+  }, [mode, task, columnId, defaultColumnId]);
 
-  const addSubtask = () => {
+  const addSubtask = useCallback(() => {
     const newSubtask: Subtask = {
-      id: `subtask-${Date.now()}`,
+      id: `subtask-${crypto.randomUUID()}`,
       title: "",
       completed: false,
     };
-    updateField("subtasks", [...form.subtasks, newSubtask]);
-  };
+    setForm((prev) => ({ ...prev, subtasks: [...prev.subtasks, newSubtask] }));
+  }, []);
 
   const updateSubtask = (id: string, updates: Partial<Subtask>) => {
     updateField(
@@ -296,7 +308,7 @@ function TaskFormDialog({
 
     const formData = {
       ...form,
-      dueDate: form.dueDate ? new Date(form.dueDate).toISOString() : undefined,
+      dueDate: form.dueDate || undefined,
     };
 
     if (mode === "create") {
@@ -612,7 +624,7 @@ function TaskFormDialog({
                   <span className="flex items-center justify-center text-muted-foreground">
                     <CalendarIcon size={14} />
                   </span>
-                  {form.dueDate ? new Date(form.dueDate).toLocaleDateString() : "Due date"}
+                  {form.dueDate ? parseDateString(form.dueDate).toLocaleDateString() : "Due date"}
                 </PopoverTrigger>
                 <PopoverPopup align="start" arrow={false} className="rounded-[var(--radius)] z-[200]" sideOffset={6}>
                   <Calendar
@@ -628,7 +640,7 @@ function TaskFormDialog({
                         updateField("dueDate", "");
                       }
                     }}
-                    selected={form.dueDate.length > 0 ? new Date(`${form.dueDate}T00:00:00`) : undefined}
+                    selected={form.dueDate.length > 0 ? parseDateString(form.dueDate) : undefined}
                   />
                 </PopoverPopup>
               </Popover>

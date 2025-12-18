@@ -15,16 +15,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
-import { ActiveFilters, FilterBar } from "./filter-bar";
-import { KanbanCard, KanbanCardList, KanbanColumn, KanbanColumnHeader, KanbanProvider } from "./kanban";
-import { PriorityIcon } from "./priority-icon";
-import { TaskDialog } from "./task-dialog";
-import type { KanbanData, Task } from "../types";
 import { useFilters } from "../hooks/use-filters";
 import { useTaskDialog } from "../hooks/use-task-dialog";
 import { useView } from "../hooks/use-view";
 import { capitalize, TAG_COLORS, type Tag } from "../lib/project";
+import type { KanbanData, Task } from "../types";
+import { ActiveFilters, FilterBar } from "./filter-bar";
+import { KanbanCard, KanbanCardList, KanbanColumn, KanbanColumnHeader, KanbanProvider } from "./kanban";
+import { PriorityIcon } from "./priority-icon";
 import styles from "./project-board.module.css";
+import { TaskDialog } from "./task-dialog";
 
 export type ProjectBoardProps = {
   data: KanbanData;
@@ -90,12 +90,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
     }
 
     return (
-      <Button
-        aria-label="Add assignees"
-        className={styles.avatarGroup}
-        onClick={() => onEdit?.(task)}
-        variant="ghost"
-      >
+      <Button aria-label="Add assignees" className={styles.avatarGroup} onClick={() => onEdit?.(task)} variant="ghost">
         <div className={styles.avatarPlaceholderAdd}>
           <Plus aria-hidden="true" size={8} />
         </div>
@@ -134,12 +129,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
         <CardFooter className={styles.cardFooter}>
           <div className={styles.footerLeft}>
             {renderAssignees()}
-            <Button
-              aria-label="Comments"
-              className={styles.footerIcon}
-              onClick={() => onEdit?.(task)}
-              variant="ghost"
-            >
+            <Button aria-label="Comments" className={styles.footerIcon} onClick={() => onEdit?.(task)} variant="ghost">
               <MessageCircleMore aria-hidden="true" size={12} />
             </Button>
             {subtaskCount > 0 && (
