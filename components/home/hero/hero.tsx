@@ -22,7 +22,6 @@ const COMPONENTS = [
   { path: "card-login", anchor: "" },
   { path: "card-image", anchor: "" },
   { path: "card-traffic", anchor: "" },
-  { path: "card-history", anchor: "" },
   { path: "dialog", anchor: "#with-animations" },
   { path: "badge", anchor: "#error" },
   { path: "badge", anchor: "#success" },

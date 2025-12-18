@@ -299,6 +299,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/examples/card-settings/card-settings.tsx"],
     path: "@/registry/brook/examples/card-settings/card-settings",
   },
+  "card-transaction": {
+    name: "card-transaction",
+    type: "example",
+    files: ["registry/brook/examples/card-transaction/card-transaction.tsx"],
+    path: "@/registry/brook/examples/card-transaction/card-transaction",
+  },
   "carousel-demo": {
     name: "carousel-demo",
     type: "example",

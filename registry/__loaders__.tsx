@@ -242,6 +242,13 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "card-settings";
     return { default: mod.default || mod[exportName] };
   }),
+  "card-transaction": lazy(async () => {
+    const mod = await import("@/registry/brook/examples/card-transaction/card-transaction");
+    const exportName =
+      Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") ||
+      "card-transaction";
+    return { default: mod.default || mod[exportName] };
+  }),
   "carousel-demo": lazy(async () => {
     const mod = await import("@/registry/brook/examples/carousel-demo/carousel-demo");
     const exportName =
