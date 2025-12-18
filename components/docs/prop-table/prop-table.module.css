@@ -130,20 +130,50 @@
   justify-content: flex-start;
 }
 
-.panel {
-  padding: 16px;
+.panel[data-slot="collapsible-panel"] {
   background-color: var(--mix-card-50-bg);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: start;
+  height: var(--collapsible-panel-height);
+  overflow: hidden;
+  animation: none;
   transition: none;
-  opacity: 0;
-  &[data-closed] {
-    opacity: 0;
-    padding: 0;
+
+  &[data-starting-style] {
+    height: 0;
+    animation: none;
   }
+
   &[data-open] {
-    opacity: 1;
+    animation: propSlideDown 200ms var(--ease-out-expo);
+  }
+
+  &[data-ending-style] {
+    animation: propSlideUp 200ms var(--ease-out-expo) forwards;
+  }
+
+  &[data-closed] {
+    height: 0;
+    animation: none;
+  }
+}
+
+@keyframes propSlideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--collapsible-panel-height);
+  }
+}
+
+@keyframes propSlideUp {
+  from {
+    height: var(--collapsible-panel-height);
+  }
+  to {
+    height: 0;
   }
 }
 
@@ -152,21 +182,34 @@
   grid-template-columns: 1fr;
   gap: 8px;
   align-items: start;
-  padding-bottom: 12px;
+  padding: 12px 16px;
   border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.5);
+}
+
+.panelRow:first-child {
+  padding-top: 16px;
 }
 
 .panelRow:last-child {
   border-bottom: none;
-  padding-bottom: 0;
+  padding-bottom: 16px;
 }
 
 @media (min-width: 768px) {
   .panelRow {
     grid-template-columns: 200px 1fr 1fr;
     gap: 16px;
-    padding-bottom: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
     border-bottom: none;
+  }
+
+  .panelRow:first-child {
+    padding-top: 16px;
+  }
+
+  .panelRow:last-child {
+    padding-bottom: 16px;
   }
 }
 

@@ -1,0 +1,64 @@
+.tree {
+  padding: 0.5rem;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+.node {
+  user-select: none;
+}
+
+.nodeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s;
+}
+
+.nodeButton:hover {
+  background: var(--accent);
+}
+
+.selected {
+  background: var(--accent);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  transition: transform 0.15s;
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
+.spacer {
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+.name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.children {
+  overflow: hidden;
+}

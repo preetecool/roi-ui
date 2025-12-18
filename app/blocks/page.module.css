@@ -1,0 +1,86 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 3rem 1rem 1rem 1rem;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.description {
+  color: var(--muted-foreground);
+  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 0.9375rem);
+  text-wrap: balance;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--mix-card-66-bg);
+  border-radius: var(--radius-lg);
+  background: var(--mix-card-15-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-color: var(--mix-card-85-bg);
+  box-shadow: 0 4px 20px -4px oklch(0 0 0 / 0.08);
+  transform: translateY(-2px);
+}
+
+.cardPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75rem;
+  background: var(--mix-card-33-bg);
+  border-bottom: 1px solid var(--mix-card-66-bg);
+  min-height: 150px;
+}
+
+.skeleton {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  filter: drop-shadow(0 2px 8px oklch(0 0 0 / 0.04));
+}
+
+.cardInfo {
+  padding: 1rem 1.25rem;
+}
+
+.cardTitle {
+  font-weight: 500;
+}

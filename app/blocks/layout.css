@@ -1,0 +1,19 @@
+/* Blocks layout variables - same as docs */
+:root {
+  --header-height: 64px;
+
+  /* Spacing scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 28px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 80px;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --header-height: 52px;
+  }
+}

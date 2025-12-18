@@ -45,6 +45,75 @@ async function getComponentFiles(dir: string, name: string): Promise<string[]> {
   });
 }
 
+/**
+ * Get block files from new structure (page.tsx + components/)
+ */
+async function getBlockFiles(dir: string, name: string): Promise<string[]> {
+  const files: string[] = [];
+  const basePath = path.join(dir, name);
+  const cwd = process.cwd();
+
+  try {
+    // Check for page.tsx
+    const pagePath = path.join(basePath, "page.tsx");
+    try {
+      await fs.stat(pagePath);
+      files.push(path.relative(cwd, pagePath));
+    } catch {
+      // No page.tsx
+    }
+
+    // Check for components/ folder
+    const componentsPath = path.join(basePath, "components");
+    try {
+      const componentFiles = await fs.readdir(componentsPath);
+      for (const file of componentFiles) {
+        if (file.endsWith(".tsx") || file.endsWith(".module.css") || file.endsWith(".ts")) {
+          const fullPath = path.join(componentsPath, file);
+          files.push(path.relative(cwd, fullPath));
+        }
+      }
+    } catch {
+      // No components folder, fall back to old structure
+      const dirFiles = await fs.readdir(basePath);
+      for (const file of dirFiles) {
+        if (file.endsWith(".tsx") || file.endsWith(".module.css")) {
+          const fullPath = path.join(basePath, file);
+          files.push(path.relative(cwd, fullPath));
+        }
+      }
+    }
+  } catch {
+    // Directory doesn't exist
+  }
+
+  return files.sort((a, b) => {
+    // Sort page.tsx first, then tsx, then css
+    const aIsPage = a.endsWith("page.tsx");
+    const bIsPage = b.endsWith("page.tsx");
+    if (aIsPage && !bIsPage) return -1;
+    if (!aIsPage && bIsPage) return 1;
+    const aIsTsx = a.endsWith(".tsx");
+    const bIsTsx = b.endsWith(".tsx");
+    if (aIsTsx && !bIsTsx) return -1;
+    if (!aIsTsx && bIsTsx) return 1;
+    return 0;
+  });
+}
+
+/**
+ * Check if block has new structure (page.tsx)
+ */
+async function hasNewBlockStructure(dir: string, name: string): Promise<boolean> {
+  const pagePath = path.join(dir, name, "page.tsx");
+  try {
+    await fs.stat(pagePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function buildOptimizedRegistry() {
   const examplesDir = path.join(process.cwd(), "registry/brook/examples");
   const blocksDir = path.join(process.cwd(), "registry/brook/blocks");
@@ -163,12 +232,26 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   }
 
   // Process blocks
+  const EXCLUDED_BLOCK_NAMES = ["tailwind", "card-history"];
   for (const entry of blocksEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
-    const isFile = entry.isFile();
-    const componentPath = isFile ? `@/registry/brook/blocks/${name}` : `@/registry/brook/blocks/${name}/${name}`;
 
-    const files = await getComponentFiles(blocksDir, entry.name);
+    // Skip excluded folders (like "tailwind" which is a subfolder, not a block)
+    if (EXCLUDED_BLOCK_NAMES.includes(name)) continue;
+
+    const isFile = entry.isFile();
+
+    // Check if block uses new structure (page.tsx + components/)
+    const hasNewStructure = await hasNewBlockStructure(blocksDir, name);
+    const componentPath = isFile
+      ? `@/registry/brook/blocks/${name}`
+      : hasNewStructure
+        ? `@/registry/brook/blocks/${name}/page`
+        : `@/registry/brook/blocks/${name}/${name}`;
+
+    const files = hasNewStructure
+      ? await getBlockFiles(blocksDir, entry.name)
+      : await getComponentFiles(blocksDir, entry.name);
     const filesArray = files.length > 0 ? `["${files.join('", "')}"]` : "[]";
     const key = name.includes("-") ? `"${name}"` : name;
 

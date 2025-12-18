@@ -1,4 +1,4 @@
-import ExpandableCard, { type ExpandableCardItem } from "@/registry/brook/blocks/expandable-card/expandable-card";
+import { ExpandableCard, type ExpandableCardItem } from "@/registry/brook/blocks/expandable-card/components/expandable-card";
 
 const item: ExpandableCardItem = {
   id: 1,

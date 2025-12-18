@@ -21,7 +21,7 @@
   outline-offset: 2px;
 }
 
-.base:disabled {
+.base[data-disabled] {
   opacity: 0.7;
   cursor: not-allowed;
 }
@@ -40,11 +40,11 @@
     oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
 }
 
-.primary:hover:not(:disabled) {
+.primary:hover:not([data-disabled]) {
   background-color: oklch(from var(--primary) l c h / 0.8);
 }
 
-.primary:active:not(:disabled):not(.loading) {
+.primary:active:not([data-disabled]):not(.loading) {
   transform: scale(0.97);
 }
 
@@ -53,7 +53,7 @@
   color: var(--secondary-foreground);
 }
 
-.secondary:hover:not(:disabled) {
+.secondary:hover:not([data-disabled]) {
   background-color: oklch(from var(--secondary) l c h / 0.8);
 }
 
@@ -62,7 +62,7 @@
   color: var(--destructive-foreground);
 }
 
-.destructive:hover:not(:disabled) {
+.destructive:hover:not([data-disabled]) {
   background-color: oklch(from var(--destructive) l c h / 0.85);
 }
 
@@ -71,7 +71,7 @@
   color: var(--foreground);
 }
 
-.ghost:hover:not(:disabled) {
+.ghost:hover:not([data-disabled]) {
   background-color: oklch(from var(--accent) l c h / 0.6);
 }
 
@@ -81,7 +81,7 @@
   border: 1px solid oklch(from var(--border) l c h / 0.7);
 }
 
-.outline:hover:not(:disabled) {
+.outline:hover:not([data-disabled]) {
   background-color: var(--mix-card-66-bg);
 }
 
@@ -93,7 +93,7 @@
   transition: text-decoration 0.2s ease-out;
 }
 
-.link:hover:not(:disabled) {
+.link:hover:not([data-disabled]) {
   text-decoration: underline;
   color: var(--foreground);
 }
