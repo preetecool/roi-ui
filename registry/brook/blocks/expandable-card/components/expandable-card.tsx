@@ -17,7 +17,7 @@ type ExpandableCardProps = {
   item: ExpandableCardItem;
 };
 
-export default function ExpandableCard({ item }: ExpandableCardProps) {
+export function ExpandableCard({ item }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

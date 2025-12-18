@@ -47,6 +47,15 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
               >
                 Components
               </Button>
+              <Button
+                aria-label="Navigate to /blocks page"
+                className={styles.navLink}
+                render={<Link href="/blocks" />}
+                size="sm"
+                variant="ghost"
+              >
+                Blocks
+              </Button>
             </div>
           </nav>
 

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AiChat } from "@/registry/brook/blocks/ai-chat/ai-chat";
+import { AiChat } from "@/registry/brook/blocks/ai-chat/components/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { Card } from "@/registry/brook/ui/card/card";
@@ -67,8 +67,8 @@ export const Hero = () => {
   return (
     <section aria-label="Hero section" className={styles.container}>
       <Badge className={styles.badge} variant="outline">
-        <Link aria-label="View new animated tabs component" href="/docs/ui/tabs#animated">
-          <span aria-hidden="true">New animated tabs component</span>
+        <Link aria-label="View new blocks page" href="/blocks">
+          <span aria-hidden="true">New blocks view</span>
         </Link>
         <ArrowPointer />
       </Badge>

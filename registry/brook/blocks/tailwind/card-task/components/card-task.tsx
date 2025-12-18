@@ -1,7 +1,7 @@
 import { Calendar, ListTodo, MessageCircleMore, MoreHorizontal, Trash, UserPlus, Users } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
-import { Badge } from "@/registry/brook/ui/badge/badge";
-import { Button } from "@/registry/brook/ui/button/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
+import { Badge } from "@/registry/brook/tailwind/ui/badge";
+import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Card,
   CardAction,
@@ -10,7 +10,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/brook/ui/card/card";
+} from "@/registry/brook/tailwind/ui/card";
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -19,7 +19,7 @@ import {
   DropdownMenuPositioner,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
+} from "@/registry/brook/tailwind/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipArrow,
@@ -28,8 +28,7 @@ import {
   TooltipPositioner,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/brook/ui/tooltip/tooltip";
-import styles from "./card-task.module.css";
+} from "@/registry/brook/tailwind/ui/tooltip";
 
 export type User = {
   value: string;
@@ -64,19 +63,13 @@ function AvatarGroup({ users, maxDisplay = 3 }: { users: User[]; maxDisplay?: nu
 
   return (
     <TooltipProvider>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="flex items-center">
         {displayUsers.map((user, index) => (
           <Tooltip key={user.value}>
             <TooltipTrigger
               render={
-                <div style={{ marginLeft: index > 0 ? "-6px" : "0" }}>
-                  <Avatar
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                      border: "2px solid var(--card)",
-                    }}
-                  >
+                <div className={index > 0 ? "-ml-1.5" : ""}>
+                  <Avatar className="h-6 w-6 border-2 border-[var(--card)]">
                     <AvatarImage alt={`profile image for ${user.label}`} src={user.avatar} />
                     <AvatarFallback>
                       {user.label
@@ -99,22 +92,7 @@ function AvatarGroup({ users, maxDisplay = 3 }: { users: User[]; maxDisplay?: nu
           </Tooltip>
         ))}
         {remainingCount > 0 && (
-          <div
-            style={{
-              width: "24px",
-              height: "24px",
-              borderRadius: "50%",
-              background: "var(--muted)",
-              color: "var(--muted-foreground)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "0.625rem",
-              fontWeight: 600,
-              marginLeft: "-6px",
-              border: "2px solid var(--card)",
-            }}
-          >
+          <div className="-ml-1.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--card)] bg-[var(--muted)] text-[0.625rem] font-semibold text-[var(--muted-foreground)]">
             +{remainingCount}
           </div>
         )}
@@ -135,19 +113,14 @@ function TaskCardDropdownMenu({
       <DropdownMenuTrigger
         render={(props) => (
           <Button {...props} size="icon" variant="ghost">
-            <MoreHorizontal
-              size="16"
-              style={{
-                color: "oklch(from var(--muted-foreground) l c h / 0.8)",
-              }}
-            />
+            <MoreHorizontal className="text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.8)]" size="16" />
           </Button>
         )}
       />
       <DropdownMenuPortal>
         <DropdownMenuPositioner sideOffset={8}>
-          <DropdownMenuPopup render={<ul />} style={{ minWidth: "160px" }}>
-            <div style={{ height: "4px", width: "100%" }} />
+          <DropdownMenuPopup className="min-w-[160px]" render={<ul />}>
+            <div className="h-1 w-full" />
             <DropdownMenuItem icon={<UserPlus size="14" />} onClick={onAddCollaborator} render={<li />}>
               Add collaborator
             </DropdownMenuItem>
@@ -158,7 +131,7 @@ function TaskCardDropdownMenu({
             <DropdownMenuItem icon={<Trash size="14" />} onClick={onDeleteTask} render={<li />} variant="destructive">
               Delete task
             </DropdownMenuItem>
-            <div style={{ height: "4px", width: "100%" }} />
+            <div className="h-1 w-full" />
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>
@@ -177,17 +150,17 @@ export function CardTask({
   onDeleteTask,
 }: TaskCardProps) {
   return (
-    <Card className={styles.taskCard}>
+    <Card className="w-full max-w-[300px] gap-4 p-4 xl:min-h-auto">
       <CardHeader>
-        <CardTitle style={{ fontSize: "1rem" }}>{title}</CardTitle>
+        <CardTitle className="text-base">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
         <CardAction>
           <TaskCardDropdownMenu onAddCollaborator={onAddCollaborator} onDeleteTask={onDeleteTask} />
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div className={styles.contentContainer}>
-          <div className={styles.badgeContainer}>
+        <div className="flex w-full items-center justify-between">
+          <div className="flex items-center gap-2">
             {tags.map((tag) => (
               <Badge key={tag.label} size="sm" variant={tag.variant}>
                 <span>{tag.label}</span>
@@ -198,61 +171,33 @@ export function CardTask({
         </div>
       </CardContent>
 
-      <CardFooter className={styles.taskFooter}>
-        <div className={styles.dividerWrapper}>
-          <div className={styles.divider} />
+      <CardFooter className="mt-0 mb-0 flex flex-col gap-[0.65rem]">
+        <div className="-mx-4 w-[calc(100%+32px)] py-[5px]">
+          <div className="h-px w-full border-[oklch(from_var(--border)_l_c_h_/_0.6)] border-b-[0.5px]" />
         </div>
-        <div className={styles.footerContainer}>
-          <div className={styles.footerLeftGroup}>
-            <div className={styles.iconBubble}>
+        <div className="flex w-full justify-between text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)] text-xs">
+          <div className="flex items-center gap-3">
+            <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
               <Users size="14" />
               <span>{collaborators.length}</span>
             </div>
-            <div className={styles.iconBubble}>
+            <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
               <MessageCircleMore size="14" />
               <span>{stats.comments}</span>
             </div>
-            <div className={styles.iconBubble}>
+            <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
               <ListTodo size="14" />
               <span>{stats.subtasks}</span>
             </div>
           </div>
-          <div className={styles.iconBubble}>
+          <div className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]">
             <Calendar size="14" />
-            <span className={dueDate.variant === "warning" ? styles.tomorrowText : undefined}>{dueDate.label}</span>
+            <span className={dueDate.variant === "warning" ? "text-[var(--warning-foreground)]" : undefined}>
+              {dueDate.label}
+            </span>
           </div>
         </div>
       </CardFooter>
     </Card>
-  );
-}
-
-const demoUsers: User[] = [
-  {
-    value: "preetecool",
-    label: "preetecool",
-    email: "@preetecool",
-    avatar: "/preetecool.png",
-  },
-  {
-    value: "john-doe",
-    label: "John Doe",
-    email: "john@example.com",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
-  },
-];
-
-export default function CardTaskDemo() {
-  return (
-    <CardTask
-      collaborators={demoUsers}
-      description="Update the card component documentation to reflect the new style"
-      dueDate={{ label: "1d", variant: "warning" }}
-      onAddCollaborator={() => console.log("Add collaborator")}
-      onDeleteTask={() => console.log("Delete task")}
-      stats={{ comments: 4, subtasks: "4/5" }}
-      tags={[{ label: "Urgent", variant: "destructive" }, { label: "Docs" }]}
-      title="Update Documentation"
-    />
   );
 }

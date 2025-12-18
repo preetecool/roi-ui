@@ -1,0 +1,39 @@
+.card {
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  font-size: 1.125rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid oklch(from var(--border) l c h / 0.4);
+  padding: 1.25rem 0.25rem 0.5rem 0.25rem;
+  font-size: 0.85rem;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.itemFrom {
+  font-weight: 400;
+  color: var(--foreground);
+}
+
+.itemDate {
+  font-weight: 300;
+  color: var(--muted-foreground);
+}
+
+.itemAmount {
+  font-weight: 300;
+  color: var(--muted-foreground);
+}

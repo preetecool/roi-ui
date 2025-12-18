@@ -10,13 +10,13 @@
   ],
   "files": [
     {
-      "path": "registry/brook/blocks/card-history/card-history.tsx",
+      "path": "registry/brook/blocks/card-history/components/card-history.tsx",
       "content": "\"use client\";\n\nimport { Button } from \"@/registry/brook/ui/button/button\";\nimport { Card, CardAction, CardContent, CardHeader, CardTitle } from \"@/registry/brook/ui/card/card\";\nimport styles from \"./card-history.module.css\";\n\nconst items = [\n  {\n    id: \"ACME001\",\n    from: \"Acme Corp.\",\n    date: \"14:30, July 31, 2025\",\n    amount: \"-$7894\",\n  },\n  {\n    id: \"BROOK02\",\n    from: \"Brook Inc.\",\n    date: \"11:11, July 31, 2025\",\n    amount: \"$4574\",\n  },\n  {\n    id: \"GLOBEX3\",\n    from: \"Globex Industries\",\n    date: \"10:22, July 31, 2025\",\n    amount: \"$27,440\",\n  },\n  {\n    id: \"AWS0004\",\n    from: \"AWS\",\n    date: \"3:00, July 31, 2025\",\n    amount: \"-$740\",\n  },\n  {\n    id: \"ZENITH5\",\n    from: \"Zenith Labs\",\n    date: \"16:50, July 31, 2025\",\n    amount: \"$14,019\",\n  },\n];\n\nexport function CardHistory() {\n  return (\n    <Card style={{ height: \"100%\", width: \"100%\", maxWidth: \"500px\" }}>\n      <CardHeader>\n        <CardTitle style={{ fontSize: \"1.125rem\" }}>Transactions</CardTitle>\n        <CardAction>\n          <Button size=\"sm\" style={{ fontSize: \"0.75rem\" }} variant=\"ghost\">\n            View All\n          </Button>\n        </CardAction>\n      </CardHeader>\n      <CardContent>\n        {items.map(({ id, from, date, amount }) => (\n          <div className={styles.transactionItem} key={id}>\n            <div className={styles.title}>\n              <div className={styles.from}>{from}</div>\n              <div className={styles.date}>{date}</div>\n            </div>\n            <div className={styles.amount}>{amount}</div>\n          </div>\n        ))}\n      </CardContent>\n    </Card>\n  );\n}\n",
       "type": "registry:file",
       "target": "~/components/blocks/card-history/card-history.tsx"
     },
     {
-      "path": "registry/brook/blocks/card-history/card-history.module.css",
+      "path": "registry/brook/blocks/card-history/components/card-history.module.css",
       "content": ".transactionItem {\n  border-top: 1px solid oklch(from var(--border) l c h / 0.4);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0.85rem;\n  padding: 1.25rem 0.25rem 0.5rem 0.25rem;\n}\n\n.title {\n  display: flex;\n  flex-direction: column;\n  gap: 0.25rem;\n}\n\n.from {\n  font-weight: 400;\n  color: var(--foreground);\n}\n\n.date,\n.amount {\n  font-weight: 300;\n  color: var(--muted-foreground);\n}\n",
       "type": "registry:file",
       "target": "~/components/blocks/card-history/card-history.module.css"
