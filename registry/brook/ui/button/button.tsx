@@ -116,6 +116,8 @@ function ButtonRoot({
   pointExternal = false,
   loading = false,
   children,
+  render,
+  nativeButton,
   ...props
 }: ButtonRootProps) {
   const decoratedChildren = (
@@ -127,12 +129,17 @@ function ButtonRoot({
     </>
   );
 
+  // Auto-detect nativeButton based on render prop if not explicitly set
+  const isNativeButton = nativeButton ?? (render ? false : undefined);
+
   return (
     <Button
       className={cn(buttonVariants({ variant, size }), loading ? styles.loading : null, className)}
       data-slot="button"
       disabled={props.disabled || loading}
       focusableWhenDisabled={loading}
+      nativeButton={isNativeButton}
+      render={render}
       {...props}
     >
       {decoratedChildren}
