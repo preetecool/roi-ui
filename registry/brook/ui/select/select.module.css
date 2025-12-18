@@ -64,25 +64,22 @@
 }
 
 .popup {
-  width: var(--anchor-width);
+  min-width: 170px;
   background: var(--popover);
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-radius: var(--radius);
   transform-origin: var(--transform-origin);
   overflow-y: auto;
   z-index: 150;
-
+  box-shadow: var(--shadow-border-stack);
   transition:
-    transform 150ms,
-    opacity 150ms;
+    transform 250ms var(--ease-out-expo),
+    opacity 250ms var(--ease-out-expo);
 
-  &[data-starting-style] {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
+  &[data-starting-style],
   &[data-ending-style] {
-    transition: none;
+    opacity: 0;
+    transform: scale(0.95);
   }
 
   &[data-side="none"] {
@@ -134,9 +131,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 1rem;
+  gap: 0.75rem;
+  padding-inline: 8px 6px;
+  margin-inline: 4px;
+  min-height: 32px;
   font-size: 0.875rem;
   color: var(--foreground);
   cursor: pointer;

@@ -174,6 +174,60 @@ function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemI
   );
 }
 
+interface DropdownMenuCheckboxItemProps extends Menu.CheckboxItem.Props {
+  className?: string;
+  children?: ReactNode;
+}
+
+function DropdownMenuCheckboxItem({ className, children, ...props }: DropdownMenuCheckboxItemProps) {
+  return (
+    <Menu.CheckboxItem
+      className={cn(
+        "flex h-8 cursor-pointer items-center justify-between gap-2 px-3 font-normal text-foreground text-sm leading-tight",
+        "relative isolate m-0",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
+        "data-[popup-open]:before:bg-[var(--accent)]",
+        "data-[highlighted]:before:bg-[var(--accent)]",
+        "hover:before:bg-[var(--accent)]",
+        "focus:outline-none focus:before:bg-[var(--accent)]",
+        "focus-visible:outline-none",
+        "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
+        className
+      )}
+      data-slot="menu-checkboxitem"
+      {...props}
+    >
+      {children}
+    </Menu.CheckboxItem>
+  );
+}
+
+function DropdownMenuCheckboxItemIndicator({ className, ...props }: Menu.CheckboxItemIndicator.Props) {
+  return (
+    <Menu.CheckboxItemIndicator
+      className={cn("ml-auto flex shrink-0 items-center justify-center text-foreground", className)}
+      {...props}
+    />
+  );
+}
+
+function DropdownMenuGroup({ className, ...props }: Menu.Group.Props) {
+  return <Menu.Group className={cn("flex flex-col", className)} data-slot="menu-group" {...props} />;
+}
+
+function DropdownMenuGroupLabel({ className, ...props }: Menu.GroupLabel.Props) {
+  return (
+    <Menu.GroupLabel
+      className={cn(
+        "cursor-default select-none px-3 py-2 text-xs font-medium leading-4 text-muted-foreground uppercase tracking-wide",
+        className
+      )}
+      data-slot="menu-grouplabel"
+      {...props}
+    />
+  );
+}
+
 function DropdownMenuSpacer() {
   return <div style={{ height: "4px", width: "100%" }} />;
 }
@@ -181,6 +235,10 @@ function DropdownMenuSpacer() {
 export {
   DropdownMenuRoot as DropdownMenu,
   DropdownMenuArrow,
+  DropdownMenuCheckboxItem,
+  DropdownMenuCheckboxItemIndicator,
+  DropdownMenuGroup,
+  DropdownMenuGroupLabel,
   DropdownMenuItem,
   DropdownMenuPopup,
   DropdownMenuPortal,

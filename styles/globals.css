@@ -119,6 +119,8 @@
   --chart-3: oklch(0.7091 0.15 264.71);
   --chart-4: oklch(0.8782 0.0981 74.65);
   --chart-5: oklch(0.722 0.1946 146.7);
+
+  --col-background: oklch(0.99 0 0);
 }
 
 @layer fallbacks {
@@ -210,6 +212,8 @@
   --chart-3: oklch(0.7091 0.15 264.71);
   --chart-4: oklch(0.829 0.105 81.04);
   --chart-5: oklch(0.8325 0.2177 151.25);
+
+  --col-background: oklch(0.14 0 0);
 }
 
 @layer base {

@@ -24,7 +24,7 @@
   flex-direction: column;
   width: 320px;
   flex-shrink: 0;
-  background-color: oklch(from var(--muted) l c h / 0.5);
+  background-color: var(--col-background);
   border-radius: var(--radius);
 }
 
@@ -59,6 +59,7 @@
 .card[data-slot="card"] {
   gap: 0.5rem;
   padding: 1rem;
+  border: 0.5px solid oklch(from var(--border) l c h / 0.3);
 }
 
 .card:hover {

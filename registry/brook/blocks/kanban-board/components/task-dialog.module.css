@@ -296,7 +296,7 @@
 
 /* Select popup overrides */
 .fieldRow [data-slot="select-popup"] {
-  min-width: 170px;
+  min-width: 200px;
   border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   box-shadow: var(--shadow-border-stack);
   transition:

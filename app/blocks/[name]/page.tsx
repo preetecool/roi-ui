@@ -18,6 +18,8 @@ type FileData = {
   highlightedContent: string;
 };
 
+const FULL_WIDTH_BLOCKS = ["kanban-board"];
+
 async function getBlockData(name: string) {
   // Check if block exists in registry
   const entry = Index[name];
@@ -73,6 +75,7 @@ async function BlockPageContent({ name }: { name: string }) {
   return (
     <BlockViewer
       cssModulesFiles={blockData.cssModulesFiles}
+      full={FULL_WIDTH_BLOCKS.includes(name)}
       name={blockData.name}
       tailwindFiles={blockData.tailwindFiles}
     >

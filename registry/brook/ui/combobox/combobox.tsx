@@ -23,7 +23,7 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
 }
 
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
-  return <Combobox.Input className={className} render={<Input />} {...props} />;
+  return <Combobox.Input className={className} data-slot="combobox-input" render={<Input />} {...props} />;
 }
 
 function ComboboxClear({ className, children, ...props }: Combobox.Clear.Props) {

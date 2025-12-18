@@ -20,9 +20,10 @@ type BlockViewerProps = {
   cssModulesFiles: FileData[];
   tailwindFiles: FileData[];
   children: React.ReactNode;
+  full?: boolean;
 };
 
-export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children }: BlockViewerProps) {
+export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children, full = false }: BlockViewerProps) {
   const { style } = useStyle();
   const [mounted, setMounted] = useState(false);
   const files = style === "tailwind" ? tailwindFiles : cssModulesFiles;
@@ -56,7 +57,7 @@ export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children }: 
         </div>
 
         <TabsContent className={styles.previewPanel} value="preview">
-          <div className={styles.previewContainer}>{children}</div>
+          <div className={full ? styles.previewContainerFull : styles.previewContainer}>{children}</div>
         </TabsContent>
 
         <TabsContent className={styles.codePanel} value="code">

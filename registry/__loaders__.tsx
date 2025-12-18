@@ -1266,6 +1266,12 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       "expandable-card";
     return { default: mod.default || mod[exportName] };
   }),
+  "kanban-board-tailwind": lazy(async () => {
+    const mod = await import("@/registry/brook/tailwind/blocks/kanban-board/page");
+    const exportName =
+      Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "kanban-board";
+    return { default: mod.default || mod[exportName] };
+  }),
   "profile-menu-tailwind": lazy(async () => {
     const mod = await import("@/registry/brook/tailwind/blocks/profile-menu/page");
     const exportName =
