@@ -1,4 +1,6 @@
-import { useRender } from "@base-ui/react/use-render";
+"use client";
+
+import { Button } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils-tailwind";
 
@@ -10,7 +12,7 @@ const buttonVariants = cva(
     "leading-[1.2] tracking-[-0.014em]",
     "",
     "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",
-    "disabled:cursor-not-allowed disabled:opacity-70",
+    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
     "[&.loading]:cursor-not-allowed [&.loading]:opacity-70",
   ],
   {
@@ -19,30 +21,30 @@ const buttonVariants = cva(
         primary: [
           "bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)]",
           "shadow-[0_0.5px_0.5px_rgba(0,0,0,0.1)]",
-          "hover:bg-[color:oklch(from_var(--color-primary)_l_c_h_/_0.8)] hover:disabled:bg-[color:var(--color-primary)]",
-          "active:scale-[0.97] active:disabled:scale-100 active:[&.loading]:scale-100",
+          "hover:not-data-[disabled]:bg-[color:oklch(from_var(--color-primary)_l_c_h_/_0.8)]",
+          "active:not-data-[disabled]:scale-[0.97] active:[&.loading]:scale-100",
         ],
         secondary: [
           "bg-[color:var(--color-secondary)] text-[color:var(--color-secondary-foreground)]",
-          "hover:bg-[color:oklch(from_var(--color-secondary)_l_c_h_/_0.8)] hover:disabled:bg-[color:var(--color-secondary)]",
+          "hover:not-data-[disabled]:bg-[color:oklch(from_var(--color-secondary)_l_c_h_/_0.8)]",
         ],
         destructive: [
           "bg-[color:var(--color-destructive)] text-[color:var(--color-destructive-foreground)]",
-          "hover:bg-[color:oklch(from_var(--color-destructive)_l_c_h_/_0.85)] hover:disabled:bg-[color:var(--color-destructive)]",
+          "hover:not-data-[disabled]:bg-[color:oklch(from_var(--color-destructive)_l_c_h_/_0.85)]",
         ],
         ghost: [
           "bg-transparent text-[color:var(--color-foreground)]",
-          "hover:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.6)] hover:disabled:bg-transparent",
+          "hover:not-data-[disabled]:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.6)]",
           "data-[popup-open]:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.7)]",
         ],
         outline: [
           "border-[color:oklch(from_var(--color-border)_l_c_h_/_0.7)] bg-[var(--mix-card-50-bg)] text-[color:var(--color-foreground)]",
-          "hover:bg-[var(--mix-card-66-bg)] hover:disabled:bg-[var(--mix-card-50-bg)]",
+          "hover:not-data-[disabled]:bg-[var(--mix-card-66-bg)]",
         ],
         link: [
           "bg-transparent p-0 text-[color:var(--color-muted-foreground)] no-underline",
           "transition-[text-decoration] duration-200 ease-out",
-          "hover:text-[color:var(--color-foreground)] hover:underline hover:disabled:text-[color:var(--color-muted-foreground)] hover:disabled:no-underline",
+          "hover:not-data-[disabled]:text-[color:var(--color-foreground)] hover:not-data-[disabled]:underline",
         ],
       },
       size: {
@@ -135,7 +137,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
     <svg className={arrowClasses} fill="none" viewBox="0 0 14 10" xmlns="http://www.w3.org/2000/svg">
       <g fillRule="nonzero">
         <path
-          className={cn(pointClasses, pointLeft && pointLeftClasses)}
+          className={cn(pointClasses, pointLeft ? pointLeftClasses : null)}
           d={pointLeft ? "M7.2 1l-4 4 4 4" : "M-0.8 1l4 4-4 4"}
           stroke="currentColor"
           strokeLinecap="square"
@@ -143,7 +145,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
           strokeWidth="2"
         />
         <path
-          className={cn(shaftClasses, pointLeft && shaftLeftClasses)}
+          className={cn(shaftClasses, pointLeft ? shaftLeftClasses : null)}
           d={pointLeft ? "M7.2 5H2.2" : "M0 5h4.8"}
           stroke="currentColor"
           strokeLinecap="square"
@@ -155,15 +157,21 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
   );
 }
 
-interface ButtonProps extends useRender.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
+interface ButtonRootProps
+  extends Omit<React.ComponentProps<"button">, "className" | "style">,
+    VariantProps<typeof buttonVariants> {
+  className?: string | ((state: Button.State) => string | undefined);
+  style?: React.CSSProperties | ((state: Button.State) => React.CSSProperties | undefined);
+  render?: React.ReactElement | ((props: React.HTMLAttributes<HTMLElement>, state: Button.State) => React.ReactElement);
+  focusableWhenDisabled?: boolean;
+  nativeButton?: boolean;
   showArrow?: boolean;
   pointLeft?: boolean;
   pointExternal?: boolean;
   loading?: boolean;
 }
 
-function Button({
-  render,
+function ButtonRoot({
   className,
   variant,
   size,
@@ -171,30 +179,29 @@ function Button({
   pointLeft = false,
   pointExternal = false,
   loading = false,
+  children,
   ...props
-}: ButtonProps) {
+}: ButtonRootProps) {
   const decoratedChildren = (
     <>
-      {loading && <Spinner />}
+      {loading ? <Spinner /> : null}
       {!loading && showArrow && pointLeft && <ArrowPointer pointExternal={pointExternal} pointLeft />}
-      {props.children}
+      {children}
       {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
     </>
   );
 
-  return useRender({
-    defaultTagName: "button",
-    render,
-    props: {
-      ...props,
-      "data-slot": "button",
-      className: cn(buttonVariants({ variant, size }), loading && "loading", className),
-      disabled: props.disabled || loading,
-      children: decoratedChildren,
-    },
-  });
+  return (
+    <Button
+      className={cn(buttonVariants({ variant, size }), loading ? "loading" : null, className)}
+      data-slot="button"
+      disabled={props.disabled || loading}
+      focusableWhenDisabled={loading}
+      {...props}
+    >
+      {decoratedChildren}
+    </Button>
+  );
 }
 
-Button.displayName = "Button";
-
-export { Button, ArrowPointer };
+export { ButtonRoot as Button, ArrowPointer };

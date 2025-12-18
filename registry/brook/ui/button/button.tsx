@@ -1,4 +1,6 @@
-import { useRender } from "@base-ui/react/use-render";
+"use client";
+
+import { Button } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import styles from "./button.module.css";
@@ -28,7 +30,6 @@ const buttonVariants = cva(styles.base, {
 
 function Spinner() {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Spinner is decorative loading indicator
     <svg className={styles.spinner} fill="none" height="16" viewBox="0 0 24 24" width="16">
       <circle
         cx="12"
@@ -64,9 +65,8 @@ function Spinner() {
  */
 function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?: boolean; pointExternal?: boolean }) {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Arrow is decorative button icon
     <svg
-      className={cn(styles.arrow, pointLeft && styles.arrowLeft, pointExternal && styles.arrowExternal)}
+      className={cn(styles.arrow, pointLeft ? styles.arrowLeft : null, pointExternal ? styles.arrowExternal : null)}
       fill="none"
       viewBox="0 0 14 10"
       xmlns="http://www.w3.org/2000/svg"
@@ -93,15 +93,21 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
   );
 }
 
-interface ButtonProps extends useRender.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
+interface ButtonRootProps
+  extends Omit<React.ComponentProps<"button">, "className" | "style">,
+    VariantProps<typeof buttonVariants> {
+  className?: string | ((state: Button.State) => string | undefined);
+  style?: React.CSSProperties | ((state: Button.State) => React.CSSProperties | undefined);
+  render?: React.ReactElement | ((props: React.HTMLAttributes<HTMLElement>, state: Button.State) => React.ReactElement);
+  focusableWhenDisabled?: boolean;
+  nativeButton?: boolean;
   showArrow?: boolean;
   pointLeft?: boolean;
   pointExternal?: boolean;
   loading?: boolean;
 }
 
-function Button({
-  render,
+function ButtonRoot({
   className,
   variant,
   size,
@@ -109,30 +115,29 @@ function Button({
   pointLeft = false,
   pointExternal = false,
   loading = false,
+  children,
   ...props
-}: ButtonProps) {
+}: ButtonRootProps) {
   const decoratedChildren = (
     <>
-      {loading && <Spinner />}
+      {loading ? <Spinner /> : null}
       {!loading && showArrow && pointLeft && <ArrowPointer pointExternal={pointExternal} pointLeft />}
-      {props.children}
+      {children}
       {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
     </>
   );
 
-  return useRender({
-    defaultTagName: "button",
-    render,
-    props: {
-      ...props,
-      "data-slot": "button",
-      className: cn(buttonVariants({ variant, size }), loading && styles.loading, className),
-      disabled: props.disabled || loading,
-      children: decoratedChildren,
-    },
-  });
+  return (
+    <Button
+      className={cn(buttonVariants({ variant, size }), loading ? styles.loading : null, className)}
+      data-slot="button"
+      disabled={props.disabled || loading}
+      focusableWhenDisabled={loading}
+      {...props}
+    >
+      {decoratedChildren}
+    </Button>
+  );
 }
 
-Button.displayName = "Button";
-
-export { Button, ArrowPointer };
+export { ButtonRoot as Button, ArrowPointer };
