@@ -82,13 +82,13 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
             <div className={styles.titleSection}>
               <h1 className={styles.pageTitle}>{doc.title}</h1>
             </div>
-            {doc.description && <p className={styles.pageDescription}>{doc.description}</p>}
+            {doc.description ? <p className={styles.pageDescription}>{doc.description}</p> : null}
           </div>
           {links || components ? (
             <div className={styles.linksSection}>
-              {(links?.doc || links?.api) && (
+              {links?.doc || links?.api ? (
                 <div className={styles.externalLinks}>
-                  {links?.doc && (
+                  {links?.doc ? (
                     <Button
                       className={styles.badgeButton}
                       pointExternal
@@ -99,8 +99,8 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                     >
                       Docs
                     </Button>
-                  )}
-                  {links?.api && (
+                  ) : null}
+                  {links?.api ? (
                     <Button
                       className={styles.badgeButton}
                       pointExternal
@@ -111,10 +111,10 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                     >
                       API Reference
                     </Button>
-                  )}
+                  ) : null}
                 </div>
-              )}
-              {components && components.length > 0 && (
+              ) : null}
+              {components && components.length > 0 ? (
                 <div className={styles.componentBadges}>
                   {components.map((component: string) => (
                     <Button
@@ -127,7 +127,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                       {component.charAt(0).toUpperCase() + component.slice(1)}
                     </Button>
                   ))}
-                  {motion && (
+                  {motion ? (
                     <Button
                       className={styles.badgeButton}
                       pointExternal
@@ -138,9 +138,9 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                     >
                       Motion
                     </Button>
-                  )}
+                  ) : null}
                 </div>
-              )}
+              ) : null}
             </div>
           ) : null}
         </header>
@@ -151,7 +151,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
 
         <nav className={styles.bottomNavigation}>
           <div className={styles.prevButton}>
-            {neighbours.previous && (
+            {neighbours.previous ? (
               <Button
                 className={styles.buttonCustomStyle}
                 pointLeft
@@ -162,11 +162,11 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
               >
                 {neighbours.previous.data.title}
               </Button>
-            )}
+            ) : null}
           </div>
 
           <div className={styles.nextButton}>
-            {neighbours.next && (
+            {neighbours.next ? (
               <Button
                 className={styles.buttonCustomStyle}
                 render={<Link href={neighbours.next.url} />}
@@ -176,7 +176,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
               >
                 {neighbours.next.data.title}
               </Button>
-            )}
+            ) : null}
           </div>
         </nav>
       </article>

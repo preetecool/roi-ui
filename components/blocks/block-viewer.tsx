@@ -24,15 +24,23 @@ type BlockViewerProps = {
 
 export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children }: BlockViewerProps) {
   const { style } = useStyle();
+  const [mounted, setMounted] = useState(false);
   const files = style === "tailwind" ? tailwindFiles : cssModulesFiles;
 
-  const [selectedFile, setSelectedFile] = useState(files[0]?.path ?? null);
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const currentFile = files.find((f) => f.path === selectedFile);
 
-  // Reset selected file when style changes
+  // Wait for client-side hydration to prevent flash
   useEffect(() => {
-    setSelectedFile(files[0]?.path ?? null);
-  }, [style, files]);
+    setMounted(true);
+  }, []);
+
+  // Set selected file after mount and when style changes
+  useEffect(() => {
+    if (mounted) {
+      setSelectedFile(files[0]?.path ?? null);
+    }
+  }, [mounted, style, files]);
 
   const fileTree = buildFileTree(files.map((f) => f.path));
 
