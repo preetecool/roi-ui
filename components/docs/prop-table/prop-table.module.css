@@ -137,21 +137,29 @@
   justify-content: start;
   height: var(--collapsible-panel-height);
   overflow: hidden;
+  animation: none;
+  transition: none;
+
+  &[data-starting-style] {
+    height: 0;
+    animation: none;
+  }
 
   &[data-open] {
-    animation: slideDown 200ms var(--ease-out-expo);
+    animation: propSlideDown 200ms var(--ease-out-expo);
   }
 
   &[data-ending-style] {
-    animation: slideUp 200ms var(--ease-out-expo) forwards;
+    animation: propSlideUp 200ms var(--ease-out-expo) forwards;
   }
 
   &[data-closed] {
     height: 0;
+    animation: none;
   }
 }
 
-@keyframes slideDown {
+@keyframes propSlideDown {
   from {
     height: 0;
   }
@@ -160,7 +168,7 @@
   }
 }
 
-@keyframes slideUp {
+@keyframes propSlideUp {
   from {
     height: var(--collapsible-panel-height);
   }
