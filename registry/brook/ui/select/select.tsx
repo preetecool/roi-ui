@@ -16,6 +16,7 @@ function SelectTrigger({ className, children, render, ...props }: React.Componen
     <Select.Trigger
       className={cn(!render && styles.trigger, className)}
       data-slot="select-trigger"
+      nativeButton
       render={render}
       {...props}
     >

@@ -11,7 +11,7 @@ function PopoverRoot({ ...props }: Popover.Root.Props) {
 }
 
 function PopoverTrigger({ className, ...props }: Popover.Trigger.Props) {
-  return <Popover.Trigger className={cn(styles.trigger, className)} data-slot="popover-trigger" {...props} />;
+  return <Popover.Trigger className={cn(styles.trigger, className)} data-slot="popover-trigger" nativeButton {...props} />;
 }
 
 const PopoverPortal = Popover.Portal;

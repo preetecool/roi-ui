@@ -15,6 +15,7 @@ function PopoverTrigger({ className, ...props }: Popover.Trigger.Props) {
     <Popover.Trigger
       className={cn("data-[popup-open]:bg-accent data-[popup-open]:text-accent-foreground", className)}
       data-slot="popover-trigger"
+      nativeButton
       {...props}
     />
   );

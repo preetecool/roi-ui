@@ -574,6 +574,7 @@ function TaskFormDialog({
                 value={form.assignees}
               >
                 <ComboboxPrimitive.Trigger
+                  nativeButton
                   render={<Button className="inline-flex items-center gap-2 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline" />}
                 >
                   <span className="flex items-center justify-center text-muted-foreground">

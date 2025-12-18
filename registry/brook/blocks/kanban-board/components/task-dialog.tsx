@@ -520,6 +520,7 @@ function TaskFormDialog({
                 value={form.assignees}
               >
                 <ComboboxPrimitive.Trigger
+                  nativeButton
                   render={<Button className={styles.fieldButton} size="sm" variant="outline" />}
                 >
                   <span className={styles.fieldIcon}>
