@@ -54,6 +54,7 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
@@ -424,7 +425,7 @@ function TaskFormDialog({
               >
                 <SelectTrigger
                   className="inline-flex items-center gap-2 min-w-0 [&_[data-slot=select-value]]:flex [&_[data-slot=select-value]]:items-center [&_[data-slot=select-value]]:gap-2"
-                  render={<Button size="sm" variant="outline" />}
+                  render={<Button className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline" />}
                 >
                   <SelectValue>
                     {(value) => (
@@ -444,8 +445,9 @@ function TaskFormDialog({
                 </SelectTrigger>
                 <SelectPortal>
                   <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
-                    <SelectPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]">
-                      <SelectList className="p-0 scroll-py-6">
+                    <SelectPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] shadow-[var(--shadow-border-stack)]">
+                      <SelectSpacer />
+                      <SelectList className="p-0">
                         {PRIORITY_ITEMS.map((p) => (
                           <SelectItem
                             className="gap-3 px-2 pr-1.5 mx-1 min-h-8"
@@ -460,6 +462,7 @@ function TaskFormDialog({
                           </SelectItem>
                         ))}
                       </SelectList>
+                      <SelectSpacer />
                     </SelectPopup>
                   </SelectPositioner>
                 </SelectPortal>
@@ -477,7 +480,7 @@ function TaskFormDialog({
                 >
                   <SelectTrigger
                     className="inline-flex items-center gap-2 min-w-0 [&_[data-slot=select-value]]:flex [&_[data-slot=select-value]]:items-center [&_[data-slot=select-value]]:gap-2"
-                    render={<Button size="sm" variant="outline" />}
+                    render={<Button className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline" />}
                   >
                     <SelectValue>
                       {(value) => {
@@ -495,8 +498,9 @@ function TaskFormDialog({
                   </SelectTrigger>
                   <SelectPortal>
                     <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
-                      <SelectPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]">
-                        <SelectList className="p-0 scroll-py-6">
+                      <SelectPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] shadow-[var(--shadow-border-stack)]">
+                        <SelectSpacer />
+                        <SelectList className="p-0">
                           {columns.map((col) => (
                             <SelectItem
                               className="gap-3 px-2 pr-1.5 mx-1 min-h-8"
@@ -511,6 +515,7 @@ function TaskFormDialog({
                             </SelectItem>
                           ))}
                         </SelectList>
+                        <SelectSpacer />
                       </SelectPopup>
                     </SelectPositioner>
                   </SelectPortal>
@@ -520,7 +525,7 @@ function TaskFormDialog({
               <Select<string, true> multiple onValueChange={(values) => updateField("tags", values)} value={form.tags}>
                 <SelectTrigger
                   className="inline-flex items-center gap-2 min-w-0"
-                  render={<Button size="sm" variant="outline" />}
+                  render={<Button className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline" />}
                 >
                   <span className="flex items-center justify-center text-muted-foreground">
                     <TagIcon size={14} />
@@ -541,8 +546,9 @@ function TaskFormDialog({
                 </SelectTrigger>
                 <SelectPortal>
                   <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
-                    <SelectPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]">
-                      <SelectList className="p-0 scroll-py-6">
+                    <SelectPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] shadow-[var(--shadow-border-stack)]">
+                      <SelectSpacer />
+                      <SelectList className="p-0">
                         {TAG_ITEMS.map((item) => (
                           <SelectItem
                             className="gap-3 px-2 pr-1.5 mx-1 min-h-8"
@@ -555,6 +561,7 @@ function TaskFormDialog({
                           </SelectItem>
                         ))}
                       </SelectList>
+                      <SelectSpacer />
                     </SelectPopup>
                   </SelectPositioner>
                 </SelectPortal>
@@ -567,7 +574,7 @@ function TaskFormDialog({
                 value={form.assignees}
               >
                 <ComboboxPrimitive.Trigger
-                  render={<Button className="inline-flex items-center gap-2" size="sm" variant="outline" />}
+                  render={<Button className="inline-flex items-center gap-2 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline" />}
                 >
                   <span className="flex items-center justify-center text-muted-foreground">
                     <Users size={14} />
@@ -578,7 +585,7 @@ function TaskFormDialog({
                 </ComboboxPrimitive.Trigger>
                 <ComboboxPortal>
                   <ComboboxPositioner side="bottom" sideOffset={6}>
-                    <ComboboxPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]">
+                    <ComboboxPopup className="min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] shadow-[var(--shadow-border-stack)]">
                       <ComboboxInput
                         className="mb-1 pl-3 pr-2.5 w-full min-h-8 text-xs border-0 border-b-[0.5px] border-b-[oklch(from_var(--border)_l_c_h_/_0.8)] rounded-none bg-transparent focus:outline-none focus:shadow-none focus:border-b-[oklch(from_var(--border)_l_c_h_/_0.8)]"
                         placeholder="Search assignees..."
@@ -599,7 +606,7 @@ function TaskFormDialog({
               <Popover>
                 <PopoverTrigger
                   className="inline-flex items-center gap-2"
-                  render={<Button size="sm" variant="outline" />}
+                  render={<Button className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline" />}
                 >
                   <span className="flex items-center justify-center text-muted-foreground">
                     <CalendarIcon size={14} />
@@ -629,7 +636,7 @@ function TaskFormDialog({
             <div className="flex items-center justify-between gap-2 mt-6 pt-4 border-t-[0.5px] border-t-[oklch(from_var(--border)_l_c_h_/_0.4)] -mx-5 px-5">
               {mode === "edit" && (
                 <Button
-                  className="text-muted-foreground hover:text-destructive-foreground hover:bg-destructive hover:border-destructive"
+                  className="text-muted-foreground border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] hover:text-destructive-foreground hover:bg-destructive hover:border-destructive"
                   onClick={() => setShowDeleteConfirm(true)}
                   size="sm"
                   type="button"

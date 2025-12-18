@@ -251,6 +251,7 @@
 
 .deleteButton[data-slot="button"] {
   color: var(--muted-foreground);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
 }
 
 .deleteButton[data-slot="button"]:hover {
@@ -294,10 +295,17 @@
   box-shadow: none;
 }
 
+/* Trigger overrides */
+.fieldRow [data-slot="select-trigger"],
+.fieldRow [data-slot="popover-trigger"],
+.fieldRow [data-slot="button"] {
+  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
+}
+
 /* Select popup overrides */
 .fieldRow [data-slot="select-popup"] {
   min-width: 200px;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
   box-shadow: var(--shadow-border-stack);
   transition:
     transform 250ms var(--ease-out-expo),
@@ -339,6 +347,6 @@
 /* Combobox overrides */
 .fieldRow [data-slot="combobox-popup"] {
   min-width: 200px;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
   box-shadow: var(--shadow-border-stack);
 }
