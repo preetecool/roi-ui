@@ -10,6 +10,7 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
@@ -41,6 +42,7 @@ export default function SelectDemo() {
       <SelectPortal>
         <SelectPositioner alignItemWithTrigger={false} sideOffset={4}>
           <SelectPopup>
+            <SelectSpacer />
             <SelectList>
               <SelectItem disabled value="placeholder">
                 <SelectItemText className="text-muted-foreground">Select a Plan</SelectItemText>
@@ -62,6 +64,7 @@ export default function SelectDemo() {
                 <SelectItemIndicator />
               </SelectItem>
             </SelectList>
+            <SelectSpacer />
           </SelectPopup>
         </SelectPositioner>
       </SelectPortal>

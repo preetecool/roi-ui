@@ -10,6 +10,7 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -39,6 +40,7 @@ export default function SelectDemo() {
       <SelectPortal>
         <SelectPositioner alignItemWithTrigger={false} sideOffset={4}>
           <SelectPopup>
+            <SelectSpacer />
             <SelectList>
               <SelectItem disabled value="placeholder">
                 <SelectItemText className={styles.itemText}>Select a Plan</SelectItemText>
@@ -60,6 +62,7 @@ export default function SelectDemo() {
                 <SelectItemIndicator />
               </SelectItem>
             </SelectList>
+            <SelectSpacer />
           </SelectPopup>
         </SelectPositioner>
       </SelectPortal>
