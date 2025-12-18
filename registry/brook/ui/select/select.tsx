@@ -5,8 +5,10 @@ import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import styles from "./select.module.css";
 
-function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {
-  return <Select.Root {...props} />;
+function SelectRoot<Value, Multiple extends boolean | undefined = undefined>(
+  props: React.ComponentProps<typeof Select.Root<Value, Multiple>>
+) {
+  return <Select.Root<Value, Multiple> {...props} />;
 }
 
 function SelectTrigger({ className, children, render, ...props }: React.ComponentProps<typeof Select.Trigger>) {

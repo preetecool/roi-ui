@@ -4,8 +4,10 @@ import { Select } from "@base-ui/react/select";
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils-tailwind";
 
-function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {
-  return <Select.Root {...props} />;
+function SelectRoot<Value, Multiple extends boolean | undefined = undefined>(
+  props: React.ComponentProps<typeof Select.Root<Value, Multiple>>
+) {
+  return <Select.Root<Value, Multiple> {...props} />;
 }
 
 function SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof Select.Trigger>) {

@@ -3,7 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
 import { type DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
-import type { Button } from "@/components/ui/button/button";
+import type { Button } from "@/registry/brook/ui/button/button";
 import { cn } from "@/lib/utils";
 import styles from "./calendar.module.css";
 
