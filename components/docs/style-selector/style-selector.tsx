@@ -7,9 +7,11 @@ import {
   SelectItem,
   SelectItemIndicator,
   SelectItemText,
+  SelectList,
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -38,12 +40,16 @@ export function StyleSelector() {
       <SelectPortal>
         <SelectPositioner sideOffset={8}>
           <SelectPopup className={styles.popup}>
-            {styleOptions.map(({ label, value }) => (
-              <SelectItem className={styles.item} key={value} value={value}>
-                <SelectItemIndicator />
-                <SelectItemText>{label}</SelectItemText>
-              </SelectItem>
-            ))}
+            <SelectSpacer />
+            <SelectList>
+              {styleOptions.map(({ label, value }) => (
+                <SelectItem className={styles.item} key={value} value={value}>
+                  <SelectItemIndicator />
+                  <SelectItemText>{label}</SelectItemText>
+                </SelectItem>
+              ))}
+            </SelectList>
+            <SelectSpacer />
           </SelectPopup>
         </SelectPositioner>
       </SelectPortal>
