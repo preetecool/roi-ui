@@ -12,9 +12,11 @@ import {
   SelectItem,
   SelectItemIndicator,
   SelectItemText,
+  SelectList,
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -66,7 +68,7 @@ export function AiChat() {
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger render={<Button size="sm" style={{ maxWidth: "100px" }} variant="outline" />}>
+              <SelectTrigger render={<Button size="sm" style={{ minWidth: "120px" }} variant="outline" />}>
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find((mode) => mode.value === value);
@@ -84,15 +86,19 @@ export function AiChat() {
               <SelectPortal>
                 <SelectPositioner alignItemWithTrigger={false} sideOffset={8}>
                   <SelectPopup className={styles.popup}>
-                    {aiModes.map(({ label, value, icon: IconComponent }) => (
-                      <SelectItem key={value} value={value}>
-                        <div className={styles.triggerContent}>
-                          <IconComponent size={14} />
-                          <SelectItemText>{label}</SelectItemText>
-                          <SelectItemIndicator />
-                        </div>
-                      </SelectItem>
-                    ))}
+                    <SelectSpacer />
+                    <SelectList>
+                      {aiModes.map(({ label, value, icon: IconComponent }) => (
+                        <SelectItem key={value} value={value}>
+                          <div className={styles.triggerContent}>
+                            <IconComponent size={14} />
+                            <SelectItemText>{label}</SelectItemText>
+                            <SelectItemIndicator />
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectList>
+                    <SelectSpacer />
                   </SelectPopup>
                 </SelectPositioner>
               </SelectPortal>

@@ -13,9 +13,11 @@ import {
   SelectItem,
   SelectItemIndicator,
   SelectItemText,
+  SelectList,
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
@@ -80,7 +82,7 @@ export function AiChat() {
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger className="max-md:!min-w-[120px]" render={<Button size="sm" variant="outline" />}>
+              <SelectTrigger className="min-w-[120px]" render={<Button size="sm" variant="outline" />}>
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find((mode) => mode.value === value);
@@ -97,16 +99,20 @@ export function AiChat() {
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner alignItemWithTrigger={false} sideOffset={8}>
-                  <SelectPopup className="max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px] box-border w-36 min-w-36 max-w-36 p-1">
-                    {aiModes.map(({ label, value, icon: IconComponent }) => (
-                      <SelectItem key={value} value={value}>
-                        <div className="flex w-full items-center gap-2">
-                          <IconComponent className="text-muted-foreground max-md:hidden" size={14} />
-                          <SelectItemText className="max-md:text-sm">{label}</SelectItemText>
-                          <SelectItemIndicator />
-                        </div>
-                      </SelectItem>
-                    ))}
+                  <SelectPopup className="max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px] box-border w-36 min-w-36 max-w-36">
+                    <SelectSpacer />
+                    <SelectList>
+                      {aiModes.map(({ label, value, icon: IconComponent }) => (
+                        <SelectItem key={value} value={value}>
+                          <div className="flex w-full items-center gap-2">
+                            <IconComponent className="text-muted-foreground max-md:hidden" size={14} />
+                            <SelectItemText className="max-md:text-sm">{label}</SelectItemText>
+                            <SelectItemIndicator />
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectList>
+                    <SelectSpacer />
                   </SelectPopup>
                 </SelectPositioner>
               </SelectPortal>

@@ -147,7 +147,7 @@ function SelectScrollDownArrow({ className, children, ...props }: React.Componen
 }
 
 function SelectList({ className, ...props }: React.ComponentProps<typeof Select.List>) {
-  return <Select.List className={cn("scroll-py-6", className)} data-slot="select-list" {...props} />;
+  return <Select.List className={cn("p-0", className)} data-slot="select-list" {...props} />;
 }
 
 function SelectItem({ className, ...props }: React.ComponentProps<typeof Select.Item>) {
