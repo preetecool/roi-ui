@@ -53,6 +53,7 @@ import {
   SelectPopup,
   SelectPortal,
   SelectPositioner,
+  SelectSpacer,
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
@@ -415,6 +416,7 @@ function TaskFormDialog({
                 <SelectPortal>
                   <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
                     <SelectPopup>
+                      <SelectSpacer />
                       <SelectList>
                         {PRIORITY_ITEMS.map((p) => (
                           <SelectItem key={p.value} value={p.value}>
@@ -424,6 +426,7 @@ function TaskFormDialog({
                           </SelectItem>
                         ))}
                       </SelectList>
+                      <SelectSpacer />
                     </SelectPopup>
                   </SelectPositioner>
                 </SelectPortal>
@@ -455,6 +458,7 @@ function TaskFormDialog({
                   <SelectPortal>
                     <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
                       <SelectPopup>
+                        <SelectSpacer />
                         <SelectList>
                           {columns.map((col) => (
                             <SelectItem key={col.id} value={col.id}>
@@ -464,6 +468,7 @@ function TaskFormDialog({
                             </SelectItem>
                           ))}
                         </SelectList>
+                        <SelectSpacer />
                       </SelectPopup>
                     </SelectPositioner>
                   </SelectPortal>
@@ -492,6 +497,7 @@ function TaskFormDialog({
                 <SelectPortal>
                   <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
                     <SelectPopup>
+                      <SelectSpacer />
                       <SelectList>
                         {TAG_ITEMS.map((item) => (
                           <SelectItem key={item.value} value={item.value}>
@@ -501,6 +507,7 @@ function TaskFormDialog({
                           </SelectItem>
                         ))}
                       </SelectList>
+                      <SelectSpacer />
                     </SelectPopup>
                   </SelectPositioner>
                 </SelectPortal>
@@ -513,6 +520,7 @@ function TaskFormDialog({
                 value={form.assignees}
               >
                 <ComboboxPrimitive.Trigger
+                  nativeButton
                   render={<Button className={styles.fieldButton} size="sm" variant="outline" />}
                 >
                   <span className={styles.fieldIcon}>

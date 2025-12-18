@@ -9,7 +9,7 @@ function AlertDialogRoot({ ...props }: AlertDialog.Root.Props) {
 }
 
 function AlertDialogTrigger({ ...props }: AlertDialog.Trigger.Props) {
-  return <AlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />;
+  return <AlertDialog.Trigger data-slot="alert-dialog-trigger" nativeButton {...props} />;
 }
 
 const AlertDialogPortal = AlertDialog.Portal;
@@ -77,7 +77,7 @@ function AlertDialogDescription({ className, ...props }: AlertDialog.Description
 }
 
 function AlertDialogClose({ ...props }: AlertDialog.Close.Props) {
-  return <AlertDialog.Close data-slot="alert-dialog-close" {...props} />;
+  return <AlertDialog.Close data-slot="alert-dialog-close" nativeButton {...props} />;
 }
 
 const AlertDialogOverlay = AlertDialogBackdrop;
