@@ -1,4 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { basename, extname, join } from "node:path";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -30,33 +30,31 @@ function transformCode(code: string): string {
     .replaceAll("@/lib/utils-tailwind", "@/lib/utils");
 }
 
-async function loadBlockFiles(blockPath: string, name: string): Promise<FileData[]> {
+/**
+ * Transforms registry file path to display path
+ * e.g., "registry/brook/blocks/ai-chat/page.tsx" -> "app/ai-chat/page.tsx"
+ * e.g., "registry/brook/blocks/ai-chat/components/ai-chat.tsx" -> "components/ai-chat.tsx"
+ */
+function getDisplayPath(registryPath: string, blockName: string): string {
+  const fileName = basename(registryPath);
+  if (fileName === "page.tsx") {
+    return `app/${blockName}/page.tsx`;
+  }
+  // For components folder files
+  if (registryPath.includes("/components/")) {
+    return `components/${fileName}`;
+  }
+  return fileName;
+}
+
+async function loadBlockFiles(registryFiles: string[], blockName: string): Promise<FileData[]> {
   const files: FileData[] = [];
 
-  // Load page.tsx
-  const pagePath = join(blockPath, "page.tsx");
-  try {
-    const rawContent = await readFile(pagePath, "utf-8");
-    const content = transformCode(rawContent);
-    const highlightedContent = await highlightCode(content, "tsx");
-    files.push({
-      name: "page.tsx",
-      path: `app/${name}/page.tsx`,
-      content,
-      highlightedContent,
-    });
-  } catch {
-    // page.tsx doesn't exist
-  }
-
-  // Load components folder
-  const componentsPath = join(blockPath, "components");
-  try {
-    const componentFiles = await readdir(componentsPath);
-
-    for (const fileName of componentFiles) {
-      const filePath = join(componentsPath, fileName);
-      const rawContent = await readFile(filePath, "utf-8");
+  for (const registryPath of registryFiles) {
+    try {
+      const fullPath = join(process.cwd(), registryPath);
+      const rawContent = await readFile(fullPath, "utf-8");
+      const fileName = basename(registryPath);
       const ext = extname(fileName).slice(1);
       const language = ext === "css" ? "css" : ext === "ts" ? "typescript" : "tsx";
       const content = transformCode(rawContent);
@@ -64,13 +62,13 @@ async function loadBlockFiles(blockPath: string, name: string): Promise<FileData
 
       files.push({
         name: fileName,
-        path: `components/${fileName}`,
+        path: getDisplayPath(registryPath, blockName),
         content,
         highlightedContent,
       });
+    } catch {
+      // File doesn't exist
     }
-  } catch {
-    // components folder doesn't exist
   }
 
   return files;
@@ -79,26 +77,20 @@ async function loadBlockFiles(blockPath: string, name: string): Promise<FileData
 async function getBlockData(name: string) {
   // Check if block exists in registry
   const cssModulesEntry = Index[name];
-  if (!cssModulesEntry || cssModulesEntry.type !== "block") {
+  if (!cssModulesEntry || cssModulesEntry.type !== "block" || !cssModulesEntry.files) {
     return null;
   }
 
-  // Load CSS Modules version
-  const cssModulesPath = join(process.cwd(), "registry/brook/blocks", name);
-  const cssModulesFiles = await loadBlockFiles(cssModulesPath, name);
+  // Load CSS Modules version using registry file list
+  const cssModulesFiles = await loadBlockFiles(cssModulesEntry.files, name);
 
   // Load Tailwind version if it exists
   const tailwindKey = `${name}-tailwind`;
   const tailwindEntry = Index[tailwindKey];
   let tailwindFiles: FileData[] = [];
 
-  if (tailwindEntry) {
-    const tailwindPath = join(process.cwd(), "registry/brook/blocks/tailwind", name);
-    try {
-      tailwindFiles = await loadBlockFiles(tailwindPath, name);
-    } catch {
-      // Tailwind version doesn't exist
-    }
+  if (tailwindEntry?.files) {
+    tailwindFiles = await loadBlockFiles(tailwindEntry.files, name);
   }
 
   return {

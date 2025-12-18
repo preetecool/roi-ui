@@ -1648,50 +1648,66 @@ export const Index: Record<string, RegistryEntry> = {
   "ai-chat-tailwind": {
     name: "ai-chat-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/ai-chat.tsx"],
-    path: "@/registry/brook/tailwind/blocks/ai-chat",
-  },
-  "card-history-tailwind": {
-    name: "card-history-tailwind",
-    type: "block",
-    files: ["registry/brook/tailwind/blocks/card-history.tsx"],
-    path: "@/registry/brook/tailwind/blocks/card-history",
+    files: [
+      "registry/brook/blocks/tailwind/ai-chat/page.tsx",
+      "registry/brook/blocks/tailwind/ai-chat/components/ai-chat.tsx",
+    ],
+    path: "@/registry/brook/blocks/tailwind/ai-chat/page",
   },
   "card-image-tailwind": {
     name: "card-image-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/card-image.tsx"],
-    path: "@/registry/brook/tailwind/blocks/card-image",
+    files: [
+      "registry/brook/blocks/tailwind/card-image/page.tsx",
+      "registry/brook/blocks/tailwind/card-image/components/card-image.tsx",
+    ],
+    path: "@/registry/brook/blocks/tailwind/card-image/page",
   },
   "card-login-tailwind": {
     name: "card-login-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/card-login.tsx"],
-    path: "@/registry/brook/tailwind/blocks/card-login",
+    files: [
+      "registry/brook/blocks/tailwind/card-login/page.tsx",
+      "registry/brook/blocks/tailwind/card-login/components/card-login.tsx",
+    ],
+    path: "@/registry/brook/blocks/tailwind/card-login/page",
   },
   "card-task-tailwind": {
     name: "card-task-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/card-task/card-task.tsx"],
-    path: "@/registry/brook/tailwind/blocks/card-task/card-task",
+    files: [
+      "registry/brook/blocks/tailwind/card-task/page.tsx",
+      "registry/brook/blocks/tailwind/card-task/components/card-task.tsx",
+    ],
+    path: "@/registry/brook/blocks/tailwind/card-task/page",
   },
   "card-traffic-tailwind": {
     name: "card-traffic-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/card-traffic/card-traffic.tsx"],
-    path: "@/registry/brook/tailwind/blocks/card-traffic/card-traffic",
+    files: [
+      "registry/brook/blocks/tailwind/card-traffic/page.tsx",
+      "registry/brook/blocks/tailwind/card-traffic/components/card-traffic.tsx",
+      "registry/brook/blocks/tailwind/card-traffic/components/data.ts",
+    ],
+    path: "@/registry/brook/blocks/tailwind/card-traffic/page",
   },
   "expandable-card-tailwind": {
     name: "expandable-card-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/expandable-card.tsx"],
-    path: "@/registry/brook/tailwind/blocks/expandable-card",
+    files: [
+      "registry/brook/blocks/tailwind/expandable-card/page.tsx",
+      "registry/brook/blocks/tailwind/expandable-card/components/expandable-card.tsx",
+    ],
+    path: "@/registry/brook/blocks/tailwind/expandable-card/page",
   },
   "profile-menu-tailwind": {
     name: "profile-menu-tailwind",
     type: "block",
-    files: ["registry/brook/tailwind/blocks/profile-menu.tsx"],
-    path: "@/registry/brook/tailwind/blocks/profile-menu",
+    files: [
+      "registry/brook/blocks/tailwind/profile-menu/page.tsx",
+      "registry/brook/blocks/tailwind/profile-menu/components/profile-menu.tsx",
+    ],
+    path: "@/registry/brook/blocks/tailwind/profile-menu/page",
   },
   accordionTailwind: {
     name: "accordion-tailwind",

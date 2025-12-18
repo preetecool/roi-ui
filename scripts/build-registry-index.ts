@@ -119,7 +119,7 @@ async function buildOptimizedRegistry() {
   const blocksDir = path.join(process.cwd(), "registry/brook/blocks");
   const uiDir = path.join(process.cwd(), "registry/brook/ui");
   const tailwindExamplesDir = path.join(process.cwd(), "registry/brook/tailwind/examples");
-  const tailwindBlocksDir = path.join(process.cwd(), "registry/brook/tailwind/blocks");
+  const tailwindBlocksDir = path.join(process.cwd(), "registry/brook/blocks/tailwind");
   const tailwindUiDir = path.join(process.cwd(), "registry/brook/tailwind/ui");
 
   const examplesEntries = await fs.readdir(examplesDir, {
@@ -347,11 +347,18 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   for (const entry of tailwindBlocksEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
     const isFile = entry.isFile();
-    const componentPath = isFile
-      ? `@/registry/brook/tailwind/blocks/${name}`
-      : `@/registry/brook/tailwind/blocks/${name}/${name}`;
 
-    const files = await getComponentFiles(tailwindBlocksDir, entry.name);
+    // Check if block uses new structure (page.tsx + components/)
+    const hasNewStructure = await hasNewBlockStructure(tailwindBlocksDir, name);
+    const componentPath = isFile
+      ? `@/registry/brook/blocks/tailwind/${name}`
+      : hasNewStructure
+        ? `@/registry/brook/blocks/tailwind/${name}/page`
+        : `@/registry/brook/blocks/tailwind/${name}/${name}`;
+
+    const files = hasNewStructure
+      ? await getBlockFiles(tailwindBlocksDir, entry.name)
+      : await getComponentFiles(tailwindBlocksDir, entry.name);
     const filesArray = files.length > 0 ? `["${files.join('", "')}"]` : "[]";
     const key = name.includes("-") ? `"${name}-tailwind"` : `${name}Tailwind`;
 
