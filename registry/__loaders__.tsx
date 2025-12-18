@@ -1224,50 +1224,44 @@ export const ComponentLoaders: Record<string, ComponentType> = {
     return { default: mod.default || mod[exportName] };
   }),
   "ai-chat-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/ai-chat");
+    const mod = await import("@/registry/brook/blocks/tailwind/ai-chat/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "ai-chat";
     return { default: mod.default || mod[exportName] };
   }),
-  "card-history-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/card-history");
-    const exportName =
-      Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "card-history";
-    return { default: mod.default || mod[exportName] };
-  }),
   "card-image-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/card-image");
+    const mod = await import("@/registry/brook/blocks/tailwind/card-image/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "card-image";
     return { default: mod.default || mod[exportName] };
   }),
   "card-login-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/card-login");
+    const mod = await import("@/registry/brook/blocks/tailwind/card-login/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "card-login";
     return { default: mod.default || mod[exportName] };
   }),
   "card-task-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/card-task/card-task");
+    const mod = await import("@/registry/brook/blocks/tailwind/card-task/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "card-task";
     return { default: mod.default || mod[exportName] };
   }),
   "card-traffic-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/card-traffic/card-traffic");
+    const mod = await import("@/registry/brook/blocks/tailwind/card-traffic/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "card-traffic";
     return { default: mod.default || mod[exportName] };
   }),
   "expandable-card-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/expandable-card");
+    const mod = await import("@/registry/brook/blocks/tailwind/expandable-card/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") ||
       "expandable-card";
     return { default: mod.default || mod[exportName] };
   }),
   "profile-menu-tailwind": lazy(async () => {
-    const mod = await import("@/registry/brook/tailwind/blocks/profile-menu");
+    const mod = await import("@/registry/brook/blocks/tailwind/profile-menu/page");
     const exportName =
       Object.keys(mod).find((key) => typeof mod[key] === "function" || typeof mod[key] === "object") || "profile-menu";
     return { default: mod.default || mod[exportName] };
