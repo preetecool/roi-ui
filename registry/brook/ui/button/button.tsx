@@ -139,7 +139,7 @@ function ButtonRoot({
       disabled={props.disabled || loading}
       focusableWhenDisabled={loading}
       nativeButton={isNativeButton}
-      render={render}
+      {...(render !== undefined && { render })}
       {...props}
     >
       {decoratedChildren}

@@ -10,7 +10,16 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/brook/tailwind/ui/chart";
-import { trafficData } from "./data";
+
+type TrafficDataPoint = {
+  date: number;
+  desktop: number;
+  mobile: number;
+};
+
+type CardTrafficProps = {
+  data: TrafficDataPoint[];
+};
 
 const CHART_START_YEAR = 2025;
 const CHART_START_MONTH = 6;
@@ -40,7 +49,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function CardTraffic() {
+export function CardTraffic({ data }: CardTrafficProps) {
   return (
     <Card
       className="w-full max-w-[600px]"
@@ -55,7 +64,7 @@ export function CardTraffic() {
       <CardContent className="h-[200px] p-0">
         <div style={{ width: "100%", height: "100%" }}>
           <ChartContainer config={chartConfig}>
-            <LineChart data={trafficData}>
+            <LineChart data={data}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="date" hide={true} tickFormatter={formatDate} />
               <YAxis hide={true} />

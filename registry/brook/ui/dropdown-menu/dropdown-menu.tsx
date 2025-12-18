@@ -92,6 +92,31 @@ function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemI
   return <Menu.RadioItemIndicator className={cn(styles.radioIndicator, className)} {...props} />;
 }
 
+interface DropdownMenuCheckboxItemProps extends Menu.CheckboxItem.Props {
+  className?: string;
+  children?: ReactNode;
+}
+
+function DropdownMenuCheckboxItem({ className, children, ...props }: DropdownMenuCheckboxItemProps) {
+  return (
+    <Menu.CheckboxItem className={cn(styles.checkboxItem, className)} {...props}>
+      {children}
+    </Menu.CheckboxItem>
+  );
+}
+
+function DropdownMenuCheckboxItemIndicator({ className, ...props }: Menu.CheckboxItemIndicator.Props) {
+  return <Menu.CheckboxItemIndicator className={cn(styles.checkboxIndicator, className)} {...props} />;
+}
+
+function DropdownMenuGroup({ className, ...props }: Menu.Group.Props) {
+  return <Menu.Group className={cn(styles.group, className)} {...props} />;
+}
+
+function DropdownMenuGroupLabel({ className, ...props }: Menu.GroupLabel.Props) {
+  return <Menu.GroupLabel className={cn(styles.groupLabel, className)} {...props} />;
+}
+
 function DropdownMenuSpacer() {
   return <div style={{ height: "4px", width: "100%" }} />;
 }
@@ -99,6 +124,10 @@ function DropdownMenuSpacer() {
 export {
   DropdownMenuRoot as DropdownMenu,
   DropdownMenuArrow,
+  DropdownMenuCheckboxItem,
+  DropdownMenuCheckboxItemIndicator,
+  DropdownMenuGroup,
+  DropdownMenuGroupLabel,
   DropdownMenuItem,
   DropdownMenuPopup,
   DropdownMenuPortal,
