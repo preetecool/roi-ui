@@ -34,8 +34,20 @@ function getDisplayPath(registryPath: string, blockName: string): string {
   if (fileName === "page.tsx") {
     return `app/${blockName}/page.tsx`;
   }
+  if (fileName === "data.json") {
+    return `app/${blockName}/data.json`;
+  }
   if (registryPath.includes("/components/")) {
     return `components/${fileName}`;
+  }
+  if (registryPath.includes("/hooks/")) {
+    return `hooks/${fileName}`;
+  }
+  if (registryPath.includes("/lib/")) {
+    return `lib/${fileName}`;
+  }
+  if (registryPath.includes("/types/")) {
+    return `types/${fileName}`;
   }
   return fileName;
 }
@@ -108,7 +120,7 @@ async function getComponentFiles(dir: string, name: string): Promise<string[]> {
 }
 
 /**
- * Get block files from new structure (page.tsx + components/)
+ * Get block files from new structure (page.tsx + components/ + hooks/ + lib/)
  */
 async function getBlockFiles(dir: string, name: string): Promise<string[]> {
   const files: string[] = [];
@@ -125,6 +137,15 @@ async function getBlockFiles(dir: string, name: string): Promise<string[]> {
       // No page.tsx
     }
 
+    // Check for data.json at root level
+    const dataJsonPath = path.join(basePath, "data.json");
+    try {
+      await fs.stat(dataJsonPath);
+      files.push(path.relative(cwd, dataJsonPath));
+    } catch {
+      // No data.json
+    }
+
     // Check for components/ folder
     const componentsPath = path.join(basePath, "components");
     try {
@@ -137,13 +158,59 @@ async function getBlockFiles(dir: string, name: string): Promise<string[]> {
       }
     } catch {
       // No components folder, fall back to old structure
-      const dirFiles = await fs.readdir(basePath);
-      for (const file of dirFiles) {
-        if (file.endsWith(".tsx") || file.endsWith(".module.css")) {
-          const fullPath = path.join(basePath, file);
+      try {
+        const dirFiles = await fs.readdir(basePath);
+        for (const file of dirFiles) {
+          if (file.endsWith(".tsx") || file.endsWith(".module.css")) {
+            const fullPath = path.join(basePath, file);
+            files.push(path.relative(cwd, fullPath));
+          }
+        }
+      } catch {
+        // Directory doesn't exist
+      }
+    }
+
+    // Check for hooks/ folder
+    const hooksPath = path.join(basePath, "hooks");
+    try {
+      const hookFiles = await fs.readdir(hooksPath);
+      for (const file of hookFiles) {
+        if (file.endsWith(".ts") || file.endsWith(".tsx")) {
+          const fullPath = path.join(hooksPath, file);
           files.push(path.relative(cwd, fullPath));
         }
       }
+    } catch {
+      // No hooks folder
+    }
+
+    // Check for lib/ folder
+    const libPath = path.join(basePath, "lib");
+    try {
+      const libFiles = await fs.readdir(libPath);
+      for (const file of libFiles) {
+        if (file.endsWith(".ts") || file.endsWith(".tsx")) {
+          const fullPath = path.join(libPath, file);
+          files.push(path.relative(cwd, fullPath));
+        }
+      }
+    } catch {
+      // No lib folder
+    }
+
+    // Check for types/ folder
+    const typesPath = path.join(basePath, "types");
+    try {
+      const typesFiles = await fs.readdir(typesPath);
+      for (const file of typesFiles) {
+        if (file.endsWith(".ts") || file.endsWith(".tsx")) {
+          const fullPath = path.join(typesPath, file);
+          files.push(path.relative(cwd, fullPath));
+        }
+      }
+    } catch {
+      // No types folder
     }
   } catch {
     // Directory doesn't exist
@@ -181,7 +248,7 @@ async function buildOptimizedRegistry() {
   const blocksDir = path.join(process.cwd(), "registry/brook/blocks");
   const uiDir = path.join(process.cwd(), "registry/brook/ui");
   const tailwindExamplesDir = path.join(process.cwd(), "registry/brook/tailwind/examples");
-  const tailwindBlocksDir = path.join(process.cwd(), "registry/brook/blocks/tailwind");
+  const tailwindBlocksDir = path.join(process.cwd(), "registry/brook/tailwind/blocks");
   const tailwindUiDir = path.join(process.cwd(), "registry/brook/tailwind/ui");
 
   const examplesEntries = await fs.readdir(examplesDir, {
@@ -413,10 +480,10 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     // Check if block uses new structure (page.tsx + components/)
     const hasNewStructure = await hasNewBlockStructure(tailwindBlocksDir, name);
     const componentPath = isFile
-      ? `@/registry/brook/blocks/tailwind/${name}`
+      ? `@/registry/brook/tailwind/blocks/${name}`
       : hasNewStructure
-        ? `@/registry/brook/blocks/tailwind/${name}/page`
-        : `@/registry/brook/blocks/tailwind/${name}/${name}`;
+        ? `@/registry/brook/tailwind/blocks/${name}/page`
+        : `@/registry/brook/tailwind/blocks/${name}/${name}`;
 
     const files = hasNewStructure
       ? await getBlockFiles(tailwindBlocksDir, entry.name)

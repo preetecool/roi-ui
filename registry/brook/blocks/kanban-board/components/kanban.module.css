@@ -1,0 +1,125 @@
+/* Root */
+.root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Board Layout */
+.board {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Column */
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  flex-shrink: 0;
+  background-color: var(--col-background);
+  border-radius: var(--radius);
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.columnContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Card - Kanban-specific overrides for the UI Card component */
+.card {
+  padding: 1rem;
+  cursor: grab;
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+  touch-action: manipulation;
+  background-color: var(--background);
+}
+
+.card[data-slot="card"] {
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 0.5px solid oklch(from var(--border) l c h / 0.3);
+}
+
+.card:hover {
+  background-color: oklch(from var(--accent) l c h / 0.15);
+  box-shadow: var(--shadow-border-stack);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.cardDragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.cardOverlay {
+  cursor: grabbing;
+  box-shadow: var(--shadow-lg);
+}
+
+.card [data-slot="card-header"] {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.card [data-slot="card-title"] {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.card [data-slot="card-content"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.card [data-slot="card-description"] {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Wrapper - for sortable positioning */
+.cardWrapper {
+  display: block;
+  position: relative;
+}
+
+.cardTrigger {
+  display: block;
+}

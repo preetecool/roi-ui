@@ -1,0 +1,23 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: transparent;
+  border: 1px solid var(--border-subtle-light);
+  border-radius: calc(var(--radius) - 2px);
+  flex-shrink: 0;
+}
+
+.bars {
+  color: var(--muted-foreground);
+}
+
+.inactive {
+  fill: oklch(from var(--muted-foreground) l c h / 0.3);
+}
+
+.urgent {
+  color: var(--urgent);
+}

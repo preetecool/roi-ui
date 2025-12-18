@@ -5,13 +5,20 @@ import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import styles from "./select.module.css";
 
-function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {
-  return <Select.Root {...props} />;
+function SelectRoot<Value, Multiple extends boolean | undefined = undefined>(
+  props: React.ComponentProps<typeof Select.Root<Value, Multiple>>
+) {
+  return <Select.Root<Value, Multiple> {...props} />;
 }
 
-function SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof Select.Trigger>) {
+function SelectTrigger({ className, children, render, ...props }: React.ComponentProps<typeof Select.Trigger>) {
   return (
-    <Select.Trigger className={cn(styles.trigger, className)} data-slot="select-trigger" nativeButton {...props}>
+    <Select.Trigger
+      className={cn(!render && styles.trigger, className)}
+      data-slot="select-trigger"
+      render={render}
+      {...props}
+    >
       {children}
     </Select.Trigger>
   );
@@ -19,7 +26,7 @@ function SelectTrigger({ className, children, ...props }: React.ComponentProps<t
 
 function SelectValue({ className, children, ...props }: React.ComponentProps<typeof Select.Value>) {
   return (
-    <Select.Value className={cn(styles.value, className)} {...props}>
+    <Select.Value className={cn(styles.value, className)} data-slot="select-value" {...props}>
       {children}
     </Select.Value>
   );

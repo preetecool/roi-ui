@@ -4,8 +4,10 @@ import { Select } from "@base-ui/react/select";
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils-tailwind";
 
-function SelectRoot({ ...props }: React.ComponentProps<typeof Select.Root>) {
-  return <Select.Root {...props} />;
+function SelectRoot<Value, Multiple extends boolean | undefined = undefined>(
+  props: React.ComponentProps<typeof Select.Root<Value, Multiple>>
+) {
+  return <Select.Root<Value, Multiple> {...props} />;
 }
 
 function SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof Select.Trigger>) {
@@ -99,10 +101,11 @@ function SelectPopup({ className, ...props }: React.ComponentProps<typeof Select
   return (
     <Select.Popup
       className={cn(
-        "z-[150] w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)] border border-[var(--border)] bg-[var(--popover)]",
-        "transition-[transform,scale,opacity] duration-150 ease-in-out",
-        "data-[starting-style]:scale-90 data-[starting-style]:opacity-0",
-        "data-[ending-style]:transition-none",
+        "z-[150] min-w-[170px] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)]",
+        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--popover)] shadow-[var(--shadow-border-stack)]",
+        "transition-[transform,scale,opacity] duration-250 ease-[var(--ease-out-expo)]",
+        "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+        "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
         "data-[side=none]:data-[ending-style]:transition-none",
         className
@@ -151,7 +154,7 @@ function SelectItem({ className, ...props }: React.ComponentProps<typeof Select.
   return (
     <Select.Item
       className={cn(
-        "flex cursor-pointer items-center justify-between rounded-[0.3125rem] py-2 pr-4 pl-3 text-[var(--foreground)] text-sm outline-none",
+        "flex cursor-pointer items-center justify-between gap-3 rounded-[0.3125rem] px-2 pr-1.5 mx-1 min-h-8 text-[var(--foreground)] text-sm outline-none",
         "hover:not-disabled:bg-[var(--accent)]",
         "data-[highlighted]:bg-[var(--muted)] data-[highlighted]:text-[var(--foreground)]",
         "data-[selected]:bg-transparent",

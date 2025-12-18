@@ -198,7 +198,80 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--muted-foreground);
+  color: var(--foreground);
   margin-left: auto;
   flex-shrink: 0;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 12px;
+  font-weight: 400;
+  height: 32px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: var(--foreground);
+  cursor: pointer;
+  margin: 0rem;
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 4px;
+    border-radius: calc(var(--radius) - 4px);
+    background-color: transparent;
+    z-index: -1;
+  }
+
+  &[data-popup-open]::before,
+  &[data-highlighted]::before,
+  &:hover::before,
+  &:focus::before {
+    background-color: var(--accent);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.checkboxIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupLabel {
+  cursor: default;
+  user-select: none;
+  padding: 0.5rem 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }

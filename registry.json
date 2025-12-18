@@ -973,9 +973,9 @@
           "target": "~/components/blocks/card-traffic/card-traffic.module.css"
         },
         {
-          "path": "registry/brook/blocks/card-traffic/components/data.ts",
+          "path": "registry/brook/blocks/card-traffic/data.json",
           "type": "registry:file",
-          "target": "~/components/blocks/card-traffic/data.ts"
+          "target": "~/components/blocks/card-traffic/data.json"
         }
       ]
     },
@@ -1686,7 +1686,7 @@
       "description": "An AI chat input component with mode selector and action buttons.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/ai-chat.tsx",
+          "path": "registry/brook/tailwind/blocks/ai-chat/components/ai-chat.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/ai-chat/ai-chat.tsx"
         }
@@ -1703,7 +1703,7 @@
       "description": "A card component with image, title, description, and button.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/card-image.tsx",
+          "path": "registry/brook/tailwind/blocks/card-image/components/card-image.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/card-image/card-image.tsx"
         }
@@ -1723,7 +1723,7 @@
       "description": "A login card component with email/password fields and social login options.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/card-login.tsx",
+          "path": "registry/brook/tailwind/blocks/card-login/components/card-login.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/card-login/card-login.tsx"
         }
@@ -1750,7 +1750,7 @@
       "description": "A task card component with badges, avatars, and action menu.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/card-task/card-task.tsx",
+          "path": "registry/brook/tailwind/blocks/card-task/components/card-task.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/card-task/card-task.tsx"
         }
@@ -1771,14 +1771,14 @@
       "description": "A website traffic card component with line chart and statistics.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/card-traffic/card-traffic.tsx",
+          "path": "registry/brook/tailwind/blocks/card-traffic/components/card-traffic.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/card-traffic/card-traffic.tsx"
         },
         {
-          "path": "registry/brook/tailwind/blocks/card-traffic/data.ts",
+          "path": "registry/brook/tailwind/blocks/card-traffic/data.json",
           "type": "registry:file",
-          "target": "~/components/blocks/card-traffic/data.ts"
+          "target": "~/components/blocks/card-traffic/data.json"
         }
       ]
     },
@@ -1792,7 +1792,7 @@
       "description": "A card component that can expand to show more content.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/expandable-card.tsx",
+          "path": "registry/brook/tailwind/blocks/expandable-card/components/expandable-card.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/expandable-card/expandable-card.tsx"
         }
@@ -1817,7 +1817,7 @@
       "description": "A dropdown menu component for user profile management.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/profile-menu.tsx",
+          "path": "registry/brook/tailwind/blocks/profile-menu/components/profile-menu.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/profile-menu/profile-menu.tsx"
         }

@@ -236,6 +236,65 @@ export function ProfileMenuSkeleton({ className }: SkeletonProps) {
   );
 }
 
+export function KanbanBoardSkeleton({ className }: SkeletonProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="kanbanBg" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
+        </linearGradient>
+        <linearGradient id="kanbanColumn" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-33-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-15-bg)" />
+        </linearGradient>
+      </defs>
+      {/* Background */}
+      <rect fill="url(#kanbanBg)" height="200" rx="12" width="320" />
+
+      {/* Column 1 - To Do */}
+      <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="12" y="12" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="40" x="20" y="22" />
+      <circle cx="80" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
+      {/* Cards in column 1 */}
+      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="20" y="42" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="50" x="28" y="52" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="35" x="28" y="64" />
+      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="20" y="86" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="45" x="28" y="96" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="55" x="28" y="108" />
+      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="20" y="130" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="55" x="28" y="140" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="40" x="28" y="152" />
+
+      {/* Column 2 - In Progress */}
+      <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="114" y="12" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="55" x="122" y="22" />
+      <circle cx="182" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
+      {/* Cards in column 2 */}
+      <rect fill="var(--mix-card-50-bg)" height="44" rx="6" width="76" x="122" y="42" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="55" x="130" y="52" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="40" x="130" y="64" />
+      <circle cx="140" cy="78" fill="var(--muted-foreground)" opacity="0.15" r="5" />
+      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="122" y="94" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="48" x="130" y="104" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="58" x="130" y="116" />
+
+      {/* Column 3 - Done */}
+      <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="216" y="12" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="35" x="224" y="22" />
+      <circle cx="284" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
+      {/* Cards in column 3 */}
+      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="224" y="42" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="52" x="232" y="52" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="38" x="232" y="64" />
+      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="224" y="86" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="42" x="232" y="96" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="50" x="232" y="108" />
+    </svg>
+  );
+}
+
 export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> = {
   "ai-chat": AiChatSkeleton,
   "card-image": CardImageSkeleton,
@@ -243,5 +302,6 @@ export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> 
   "card-task": CardTaskSkeleton,
   "card-traffic": CardTrafficSkeleton,
   "expandable-card": ExpandableCardSkeleton,
+  "kanban-board": KanbanBoardSkeleton,
   "profile-menu": ProfileMenuSkeleton,
 };
