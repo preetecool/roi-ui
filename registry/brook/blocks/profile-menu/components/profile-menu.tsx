@@ -3,6 +3,7 @@ import { BookOpen, Building2, Check, CreditCard, HelpCircle, LogOut, Zap } from 
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Badge } from "@/registry/brook/ui/badge/badge";
+import { Button } from "@/registry/brook/ui/button/button";
 import {
   DropdownMenu,
   DropdownMenuItem,
