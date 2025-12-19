@@ -6,17 +6,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/u
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
-  Dialog,
-  DialogClose,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPopup,
-  DialogPortal,
-  DialogTitle,
-} from "@/registry/brook/tailwind/ui/dialog";
-import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuPopup,
@@ -30,12 +19,8 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/tailwind/ui/dropdown-menu";
-import { Field, FieldControl, FieldLabel } from "@/registry/brook/tailwind/ui/field";
-import { Input } from "@/registry/brook/tailwind/ui/input";
 
 export function ProfileMenu() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [orgName, setOrgName] = useState("");
   const [selectedOrg, setSelectedOrg] = useState("acme");
 
   return (
@@ -136,7 +121,7 @@ export function ProfileMenu() {
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => setIsDialogOpen(true)} render={<li />}>
+                    <DropdownMenuItem render={<li />}>
                       <span className="ml-1">Add new...</span>
                     </DropdownMenuItem>
                     <div style={{ height: "4px", width: "100%" }} />
@@ -175,44 +160,6 @@ export function ProfileMenu() {
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>
-
-      {/* Add Organization Dialog */}
-      <Dialog onOpenChange={(open) => setIsDialogOpen(open)} open={isDialogOpen}>
-        <DialogPortal>
-          <DialogOverlay />
-          <DialogPopup className={cn("flex w-[400px] flex-col gap-4 rounded-2xl p-6", "max-sm:w-[90vw] max-sm:p-5")}>
-            <DialogHeader>
-              <DialogTitle>Add New Organization</DialogTitle>
-              <DialogDescription className="text-[var(--muted-foreground)]">
-                Enter the name of your new organization.
-              </DialogDescription>
-            </DialogHeader>
-            <Field className="mt-4">
-              <FieldLabel className="ml-1">Organization Name</FieldLabel>
-              <FieldControl
-                onChange={(e) => setOrgName(e.target.value)}
-                placeholder="Enter organization name"
-                render={<Input />}
-                type="text"
-                value={orgName}
-              />
-            </Field>
-            <DialogFooter className="mt-6 flex gap-3 [&>*]:flex-1">
-              <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button
-                onClick={() => {
-                  // Handle organization creation here
-                  console.log("Creating organization:", orgName);
-                  setOrgName("");
-                  setIsDialogOpen(false);
-                }}
-              >
-                Create
-              </Button>
-            </DialogFooter>
-          </DialogPopup>
-        </DialogPortal>
-      </Dialog>
     </DropdownMenu>
   );
 }
