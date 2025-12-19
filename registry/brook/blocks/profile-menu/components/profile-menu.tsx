@@ -3,18 +3,6 @@ import { BookOpen, Building2, Check, CreditCard, HelpCircle, LogOut, Zap } from 
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Badge } from "@/registry/brook/ui/badge/badge";
-import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPopup,
-  DialogPortal,
-  DialogTitle,
-} from "@/registry/brook/ui/dialog/dialog";
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -29,13 +17,9 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import { Field, FieldControl, FieldLabel } from "@/registry/brook/ui/field/field";
-import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./profile-menu.module.css";
 
 export default function ProfileMenuDemo() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [orgName, setOrgName] = useState("");
   const [selectedOrg, setSelectedOrg] = useState("acme");
 
   return (
@@ -109,7 +93,7 @@ export default function ProfileMenuDemo() {
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => setIsDialogOpen(true)} render={<li />}>
+                    <DropdownMenuItem render={<li />}>
                       <span className={styles.menuItemText}>Add new...</span>
                     </DropdownMenuItem>
                     <div className={styles.spacer} />
@@ -148,42 +132,6 @@ export default function ProfileMenuDemo() {
           </DropdownMenuPopup>
         </DropdownMenuPositioner>
       </DropdownMenuPortal>
-
-      {/* Add Organization Dialog */}
-      <Dialog onOpenChange={(open) => setIsDialogOpen(open)} open={isDialogOpen}>
-        <DialogPortal>
-          <DialogOverlay />
-          <DialogPopup className={styles.dialogPopup}>
-            <DialogHeader>
-              <DialogTitle>Add New Organization</DialogTitle>
-              <DialogDescription>Enter the name of your new organization.</DialogDescription>
-            </DialogHeader>
-            <Field className={styles.field}>
-              <FieldLabel className={styles.fieldLabel}>Organization Name</FieldLabel>
-              <FieldControl
-                onChange={(e) => setOrgName(e.target.value)}
-                placeholder="Enter organization name"
-                render={<Input />}
-                type="text"
-                value={orgName}
-              />
-            </Field>
-            <DialogFooter className={styles.dialogFooter}>
-              <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button
-                onClick={() => {
-                  // Handle organization creation here
-                  console.log("Creating organization:", orgName);
-                  setOrgName("");
-                  setIsDialogOpen(false);
-                }}
-              >
-                Create
-              </Button>
-            </DialogFooter>
-          </DialogPopup>
-        </DialogPortal>
-      </Dialog>
     </DropdownMenu>
   );
 }
