@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import type { FilterConfig, Priority, Task } from "../types";
 import { filterTasks, toggleFilterPriority, toggleFilterTag } from "../lib/project";
+import type { FilterConfig, Priority, Task } from "../types";
 
 const DEFAULT_FILTERS: FilterConfig = { priority: [], tags: [] };
 
