@@ -1,33 +1,31 @@
-.commandWrapper {
+.commandWrapper[data-slot="dialog-popup"] {
   width: 100%;
   max-width: 560px;
   border-radius: 0;
   border: none;
   padding: 0;
-}
-
-.commandWrapper {
+  gap: 0;
   outline: none;
 }
 
-.commandWrapper:focus-visible,
-.commandWrapper:focus,
-.commandWrapper:focus-within {
+.commandWrapper[data-slot="dialog-popup"]:focus-visible,
+.commandWrapper[data-slot="dialog-popup"]:focus,
+.commandWrapper[data-slot="dialog-popup"]:focus-within {
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 
-[data-theme="dark"] .commandWrapper:focus-visible,
-[data-theme="dark"] .commandWrapper:focus,
-[data-theme="dark"] .commandWrapper:focus-within {
+[data-theme="dark"] .commandWrapper[data-slot="dialog-popup"]:focus-visible,
+[data-theme="dark"] .commandWrapper[data-slot="dialog-popup"]:focus,
+[data-theme="dark"] .commandWrapper[data-slot="dialog-popup"]:focus-within {
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
 /* Keep focus ring visible during dialog closing animation */
-.commandWrapper:not([data-starting-style]) {
+.commandWrapper[data-slot="dialog-popup"]:not([data-starting-style]) {
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 
-[data-theme="dark"] .commandWrapper:not([data-starting-style]) {
+[data-theme="dark"] .commandWrapper[data-slot="dialog-popup"]:not([data-starting-style]) {
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
