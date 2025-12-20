@@ -12,24 +12,26 @@ import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog
 import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import styles from "./hero.module.css";
 
-const COMPONENTS = [
-  { path: "tabs", anchor: "#animated" },
-  { path: "accordion", anchor: "" },
-  { path: "like-button", anchor: "" },
-  { path: "ai-chat", anchor: "" },
-  { path: "card-task", anchor: "" },
-  { path: "card-expandable", anchor: "" },
-  { path: "card-login", anchor: "" },
-  { path: "card-image", anchor: "" },
-  { path: "card-traffic", anchor: "" },
-  { path: "dialog", anchor: "#with-animations" },
-  { path: "badge", anchor: "#error" },
-  { path: "badge", anchor: "#success" },
+const LUCKY_LINKS = [
+  // Blocks
+  { path: "/blocks/ai-chat" },
+  { path: "/blocks/card-image" },
+  { path: "/blocks/card-login" },
+  { path: "/blocks/card-task" },
+  { path: "/blocks/card-traffic" },
+  { path: "/blocks/expandable-card" },
+  { path: "/blocks/kanban-board" },
+  { path: "/blocks/profile-menu" },
+  // UI components
+  { path: "/docs/ui/tabs", anchor: "#animated" },
+  { path: "/docs/ui/copy-button" },
+  { path: "/docs/ui/accordion" },
+  { path: "/docs/ui/badge", anchor: "#success" },
+  { path: "/docs/ui/badge", anchor: "#error" },
 ];
 
 const HEADING = "React components and blocks";
 const SUBHEADING = "Components and blocks made with Base UI primitives and motion. CSS modules and Tailwind available.";
-const UI_COMPONENTS = ["accordion", "badge", "copy-button", "dialog", "like-button", "separator", "tabs"];
 
 const CAROUSEL_COMPONENTS = [
   {
@@ -43,25 +45,17 @@ const CAROUSEL_COMPONENTS = [
   { id: "ai-chat", name: "AI Chat", Component: AiChat },
 ];
 
-function getRandomComponent() {
-  const randomComponent = COMPONENTS[Math.floor(Math.random() * COMPONENTS.length)];
-
-  return randomComponent;
-}
-
-function getComponentUrl(component: { path: string; anchor: string }) {
-  // UI components are in /docs/ui/, others are in /docs/blocks/
-  const basePath = UI_COMPONENTS.includes(component.path) ? "/docs/ui" : "/docs/blocks";
-
-  return `${basePath}/${component.path}${component.anchor}`;
+function getRandomLink() {
+  const link = LUCKY_LINKS[Math.floor(Math.random() * LUCKY_LINKS.length)];
+  return link.path + (link.anchor ?? "");
 }
 
 export const Hero = () => {
-  const [randomComponent, setRandomComponent] = useState(COMPONENTS[0]);
+  const [luckyLink, setLuckyLink] = useState(LUCKY_LINKS[0].path);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setRandomComponent(getRandomComponent());
+    setLuckyLink(getRandomLink());
   }, []);
 
   return (
@@ -85,7 +79,7 @@ export const Hero = () => {
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
         <Button render={<Link href="/docs/start" />}>Get Started</Button>
-        <Button render={<Link href={getComponentUrl(randomComponent)} />} variant="ghost">
+        <Button render={<Link href={luckyLink} />} variant="ghost">
           I&apos;m Feeling Lucky
         </Button>
       </div>

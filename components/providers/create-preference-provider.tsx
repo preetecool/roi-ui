@@ -27,6 +27,7 @@ export function createPreferenceProvider<T extends string>(options: CreatePrefer
     const [value, setValueState] = useState<T>(defaultValue);
 
     const setValue = useCallback((newValue: T) => {
+      document.documentElement.setAttribute(dataAttribute, newValue);
       setValueState(newValue);
       localStorage.setItem(storageKey, newValue);
     }, []);
