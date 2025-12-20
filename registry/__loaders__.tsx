@@ -7,214 +7,960 @@ import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 
 export const ComponentLoaders: Record<string, ComponentType> = {
-  "accordion-demo": dynamic(() => import("@/registry/brook/examples/accordion-demo/accordion-demo")),
-  "accordion-minimal": dynamic(() => import("@/registry/brook/examples/accordion-minimal/accordion-minimal")),
-  "alert-demo": dynamic(() => import("@/registry/brook/examples/alert-demo/alert-demo")),
-  "alert-destructive": dynamic(() => import("@/registry/brook/examples/alert-destructive/alert-destructive")),
-  "alert-dialog-demo": dynamic(() => import("@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo")),
-  "alert-dialog-nested": dynamic(() => import("@/registry/brook/examples/alert-dialog-nested/alert-dialog-nested")),
-  "alert-info": dynamic(() => import("@/registry/brook/examples/alert-info/alert-info")),
-  "alert-success": dynamic(() => import("@/registry/brook/examples/alert-success/alert-success")),
-  "alert-warning": dynamic(() => import("@/registry/brook/examples/alert-warning/alert-warning")),
-  "autocomplete-auto-highlight": dynamic(
-    () => import("@/registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight")
+  "accordion-demo": dynamic(() =>
+    import("@/registry/brook/examples/accordion-demo/accordion-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "autocomplete-clearable": dynamic(
-    () => import("@/registry/brook/examples/autocomplete-clearable/autocomplete-clearable")
+  "accordion-minimal": dynamic(() =>
+    import("@/registry/brook/examples/accordion-minimal/accordion-minimal").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "autocomplete-demo": dynamic(() => import("@/registry/brook/examples/autocomplete-demo/autocomplete-demo")),
-  "autocomplete-fuzzy": dynamic(() => import("@/registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy")),
-  "autocomplete-grouped": dynamic(() => import("@/registry/brook/examples/autocomplete-grouped/autocomplete-grouped")),
-  "avatar-demo": dynamic(() => import("@/registry/brook/examples/avatar-demo")),
-  "avatar-group": dynamic(() => import("@/registry/brook/examples/avatar-group/avatar-group")),
-  "avatar-motion": dynamic(() => import("@/registry/brook/examples/avatar-motion/avatar-motion")),
-  "background-demo": dynamic(() => import("@/registry/brook/examples/background-demo/background-demo")),
-  "badge-demo": dynamic(() => import("@/registry/brook/examples/badge-demo/badge-demo")),
-  "badge-error": dynamic(() => import("@/registry/brook/examples/badge-error/badge-error")),
-  "badge-external-links": dynamic(() => import("@/registry/brook/examples/badge-external-links/badge-external-links")),
-  "badge-sizes": dynamic(() => import("@/registry/brook/examples/badge-sizes/badge-sizes")),
-  "badge-success": dynamic(() => import("@/registry/brook/examples/badge-success/badge-success")),
-  "button-demo": dynamic(() => import("@/registry/brook/examples/button-demo")),
-  "button-destructive": dynamic(() => import("@/registry/brook/examples/button-destructive")),
-  "button-disabled": dynamic(() => import("@/registry/brook/examples/button-disabled")),
-  "button-external-link": dynamic(() => import("@/registry/brook/examples/button-external-link")),
-  "button-ghost": dynamic(() => import("@/registry/brook/examples/button-ghost")),
-  "button-loading": dynamic(() => import("@/registry/brook/examples/button-loading/button-loading")),
-  "button-outline": dynamic(() => import("@/registry/brook/examples/button-outline")),
-  "button-secondary": dynamic(() => import("@/registry/brook/examples/button-secondary")),
-  "button-sizes": dynamic(() => import("@/registry/brook/examples/button-sizes/button-sizes")),
-  "button-with-arrow": dynamic(() => import("@/registry/brook/examples/button-with-arrow")),
-  "card-demo": dynamic(() => import("@/registry/brook/examples/card-demo/card-demo")),
-  "card-pricing-card": dynamic(() => import("@/registry/brook/examples/card-pricing-card/card-pricing-card")),
-  "card-settings": dynamic(() => import("@/registry/brook/examples/card-settings/card-settings")),
-  "card-transaction": dynamic(() => import("@/registry/brook/examples/card-transaction/card-transaction")),
-  "carousel-demo": dynamic(() => import("@/registry/brook/examples/carousel-demo/carousel-demo")),
-  "chart-area-demo": dynamic(() => import("@/registry/brook/examples/chart-area-demo/chart-area-demo")),
-  "chart-bar-demo": dynamic(() => import("@/registry/brook/examples/chart-bar-demo/chart-bar-demo")),
-  "chart-line-demo": dynamic(() => import("@/registry/brook/examples/chart-line-demo/chart-line-demo")),
-  "chart-pie-demo": dynamic(() => import("@/registry/brook/examples/chart-pie-demo/chart-pie-demo")),
-  "checkbox-card": dynamic(() => import("@/registry/brook/examples/checkbox-card/checkbox-card")),
-  "checkbox-demo": dynamic(() => import("@/registry/brook/examples/checkbox-demo/checkbox-demo")),
-  "checkbox-description": dynamic(() => import("@/registry/brook/examples/checkbox-description/checkbox-description")),
-  "checkbox-group-demo": dynamic(() => import("@/registry/brook/examples/checkbox-group-demo/checkbox-group-demo")),
-  "checkbox-group-parent": dynamic(
-    () => import("@/registry/brook/examples/checkbox-group-parent/checkbox-group-parent")
+  "alert-demo": dynamic(() =>
+    import("@/registry/brook/examples/alert-demo/alert-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "collapsible-demo": dynamic(() => import("@/registry/brook/examples/collapsible-demo/collapsible-demo")),
-  "combobox-auto-highlight": dynamic(
-    () => import("@/registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight")
+  "alert-destructive": dynamic(() =>
+    import("@/registry/brook/examples/alert-destructive/alert-destructive").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "combobox-clearable": dynamic(() => import("@/registry/brook/examples/combobox-clearable/combobox-clearable")),
-  "combobox-demo": dynamic(() => import("@/registry/brook/examples/combobox-demo/combobox-demo")),
-  "combobox-grouped": dynamic(() => import("@/registry/brook/examples/combobox-grouped/combobox-grouped")),
-  "combobox-multiple": dynamic(() => import("@/registry/brook/examples/combobox-multiple/combobox-multiple")),
-  "command-demo": dynamic(() => import("@/registry/brook/examples/command-demo/command-demo")),
-  "context-menu-demo": dynamic(() => import("@/registry/brook/examples/context-menu-demo/context-menu-demo")),
-  "copy-button-demo": dynamic(() => import("@/registry/brook/examples/copy-button-demo/copy-button-demo")),
-  "dialog-demo": dynamic(() => import("@/registry/brook/examples/dialog-demo/dialog-demo")),
-  "dialog-motion": dynamic(() => import("@/registry/brook/examples/dialog-motion/dialog-motion")),
-  "dialog-sheet": dynamic(() => import("@/registry/brook/examples/dialog-sheet/dialog-sheet")),
-  "dropdown-menu-demo": dynamic(() => import("@/registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo")),
-  "dropdown-menu-motion": dynamic(() => import("@/registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion")),
-  "dropdown-menu-submenu": dynamic(
-    () => import("@/registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu")
+  "alert-dialog-demo": dynamic(() =>
+    import("@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "expandable-card-demo": dynamic(() => import("@/registry/brook/examples/expandable-card-demo")),
-  "field-demo": dynamic(() => import("@/registry/brook/examples/field-demo/field-demo")),
-  "fieldset-demo": dynamic(() => import("@/registry/brook/examples/fieldset-demo/fieldset-demo")),
-  "form-demo": dynamic(() => import("@/registry/brook/examples/form-demo")),
-  "input-demo": dynamic(() => import("@/registry/brook/examples/input-demo/input-demo")),
-  "like-button-demo": dynamic(() => import("@/registry/brook/examples/like-button-demo")),
-  "menubar-demo": dynamic(() => import("@/registry/brook/examples/menubar-demo/menubar-demo")),
-  "meter-demo": dynamic(() => import("@/registry/brook/examples/meter-demo/meter-demo")),
-  "navigation-menu-demo": dynamic(() => import("@/registry/brook/examples/navigation-menu-demo/navigation-menu-demo")),
-  "navigation-sub-menu": dynamic(() => import("@/registry/brook/examples/navigation-sub-menu/navigation-sub-menu")),
-  "number-field-demo": dynamic(() => import("@/registry/brook/examples/number-field-demo/number-field-demo")),
-  "popover-animated": dynamic(() => import("@/registry/brook/examples/popover-animated/popover-animated")),
-  "popover-demo": dynamic(() => import("@/registry/brook/examples/popover-demo/popover-demo")),
-  "preview-card-demo": dynamic(() => import("@/registry/brook/examples/preview-card-demo/preview-card-demo")),
-  "progress-demo": dynamic(() => import("@/registry/brook/examples/progress-demo/progress-demo")),
-  "radio-demo": dynamic(() => import("@/registry/brook/examples/radio-demo/radio-demo")),
-  "scroll-area-demo": dynamic(() => import("@/registry/brook/examples/scroll-area-demo/scroll-area-demo")),
-  "select-demo": dynamic(() => import("@/registry/brook/examples/select-demo/select-demo")),
-  "separator-demo": dynamic(() => import("@/registry/brook/examples/separator-demo")),
-  shipping: dynamic(() => import("@/registry/brook/examples/shipping/shipping")),
-  "slider-demo": dynamic(() => import("@/registry/brook/examples/slider-demo/slider-demo")),
-  "switch-demo": dynamic(() => import("@/registry/brook/examples/switch-demo/switch-demo")),
-  "switch-with-label": dynamic(() => import("@/registry/brook/examples/switch-with-label/switch-with-label")),
-  "table-demo": dynamic(() => import("@/registry/brook/examples/table-demo")),
-  "tabs-demo": dynamic(() => import("@/registry/brook/examples/tabs-demo/tabs-demo")),
-  "tabs-motion": dynamic(() => import("@/registry/brook/examples/tabs-motion/tabs-motion")),
-  "tabs-vertical": dynamic(() => import("@/registry/brook/examples/tabs-vertical")),
-  "toast-demo": dynamic(() => import("@/registry/brook/examples/toast-demo")),
-  "toggle-demo": dynamic(() => import("@/registry/brook/examples/toggle-demo/toggle-demo")),
-  "toggle-group-demo": dynamic(() => import("@/registry/brook/examples/toggle-group-demo/toggle-group-demo")),
-  "toolbar-demo": dynamic(() => import("@/registry/brook/examples/toolbar-demo/toolbar-demo")),
-  "tooltip-demo": dynamic(() => import("@/registry/brook/examples/tooltip-demo")),
-  "ai-chat": dynamic(() => import("@/registry/brook/blocks/ai-chat/page")),
-  "card-image": dynamic(() => import("@/registry/brook/blocks/card-image/page")),
-  "card-login": dynamic(() => import("@/registry/brook/blocks/card-login/page")),
-  "card-task": dynamic(() => import("@/registry/brook/blocks/card-task/page")),
-  "card-traffic": dynamic(() => import("@/registry/brook/blocks/card-traffic/page")),
-  "expandable-card": dynamic(() => import("@/registry/brook/blocks/expandable-card/page")),
-  "kanban-board": dynamic(() => import("@/registry/brook/blocks/kanban-board/page")),
-  "profile-menu": dynamic(() => import("@/registry/brook/blocks/profile-menu/page")),
-  "accordion-animation-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/accordion-animation")),
-  "accordion-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/accordion-demo")),
-  "accordion-minimal-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/accordion-minimal")),
-  "alert-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-demo")),
-  "alert-destructive-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-destructive")),
-  "alert-dialog-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-dialog-demo")),
-  "alert-dialog-nested-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-dialog-nested")),
-  "alert-info-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-info")),
-  "alert-success-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-success")),
-  "alert-warning-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/alert-warning")),
-  "autocomplete-auto-highlight-tailwind": dynamic(
-    () => import("@/registry/brook/tailwind/examples/autocomplete-auto-highlight")
+  "alert-dialog-nested": dynamic(() =>
+    import("@/registry/brook/examples/alert-dialog-nested/alert-dialog-nested").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "autocomplete-clearable-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/autocomplete-clearable")),
-  "autocomplete-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/autocomplete-demo")),
-  "autocomplete-fuzzy-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/autocomplete-fuzzy")),
-  "autocomplete-grouped-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/autocomplete-grouped")),
-  "avatar-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/avatar-demo")),
-  "avatar-group-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/avatar-group")),
-  "badge-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/badge-demo")),
-  "badge-error-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/badge-error")),
-  "badge-success-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/badge-success")),
-  "button-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-demo")),
-  "button-destructive-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-destructive")),
-  "button-disabled-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-disabled")),
-  "button-external-link-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-external-link")),
-  "button-ghost-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-ghost")),
-  "button-outline-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-outline")),
-  "button-secondary-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-secondary")),
-  "button-with-arrow-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/button-with-arrow")),
-  "card-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/card-demo")),
-  "carousel-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/carousel-demo")),
-  "chart-area-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/chart-area-demo")),
-  "chart-bar-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/chart-bar-demo")),
-  "chart-line-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/chart-line-demo")),
-  "chart-pie-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/chart-pie-demo")),
-  "checkbox-card-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/checkbox-card")),
-  "checkbox-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/checkbox-demo")),
-  "checkbox-description-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/checkbox-description")),
-  "checkbox-group-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/checkbox-group-demo")),
-  "checkbox-group-parent-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/checkbox-group-parent")),
-  "collapsible-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/collapsible-demo")),
-  "combobox-auto-highlight-tailwind": dynamic(
-    () => import("@/registry/brook/tailwind/examples/combobox-auto-highlight")
+  "alert-info": dynamic(() =>
+    import("@/registry/brook/examples/alert-info/alert-info").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
-  "combobox-clearable-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/combobox-clearable")),
-  "combobox-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/combobox-demo")),
-  "combobox-grouped-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/combobox-grouped")),
-  "combobox-multiple-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/combobox-multiple")),
-  "command-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/command-demo")),
-  "context-menu-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/context-menu-demo")),
-  "copy-button-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/copy-button-demo")),
-  "dialog-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/dialog-demo")),
-  "dialog-motion-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/dialog-motion")),
-  "dialog-sheet-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/dialog-sheet")),
-  "dropdown-menu-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/dropdown-menu-demo")),
-  "dropdown-menu-motion-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/dropdown-menu-motion")),
-  "dropdown-menu-submenu-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/dropdown-menu-submenu")),
-  "expandable-card-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/expandable-card-demo")),
-  "field-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/field-demo")),
-  "fieldset-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/fieldset-demo")),
-  "form-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/form-demo")),
-  "input-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/input-demo")),
-  "like-button-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/like-button-demo")),
-  "menubar-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/menubar-demo")),
-  "meter-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/meter-demo")),
-  "navigation-menu-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/navigation-menu-demo")),
-  "navigation-sub-menu-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/navigation-sub-menu")),
-  "number-field-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/number-field-demo")),
-  "popover-animated-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/popover-animated")),
-  "popover-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/popover-demo")),
-  "preview-card-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/preview-card-demo")),
-  "progress-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/progress-demo")),
-  "radio-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/radio-demo")),
-  "scroll-area-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/scroll-area-demo")),
-  "select-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/select-demo")),
-  "separator-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/separator-demo")),
-  shippingTailwind: dynamic(() => import("@/registry/brook/tailwind/examples/shipping")),
-  "slider-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/slider-demo")),
-  "switch-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/switch-demo")),
-  "switch-with-label-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/switch-with-label")),
-  "table-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/table-demo")),
-  "tabs-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/tabs-demo")),
-  "tabs-motion-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/tabs-motion")),
-  "tabs-vertical-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/tabs-vertical")),
-  "toast-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/toast-demo")),
-  "toggle-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/toggle-demo")),
-  "toggle-group-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/toggle-group-demo")),
-  "toolbar-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/toolbar-demo")),
-  "tooltip-demo-tailwind": dynamic(() => import("@/registry/brook/tailwind/examples/tooltip-demo")),
-  "ai-chat-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/ai-chat/page")),
-  "card-image-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/card-image/page")),
-  "card-login-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/card-login/page")),
-  "card-task-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/card-task/page")),
-  "card-traffic-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/card-traffic/page")),
-  "expandable-card-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/expandable-card/page")),
-  "kanban-board-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/kanban-board/page")),
-  "profile-menu-tailwind": dynamic(() => import("@/registry/brook/tailwind/blocks/profile-menu/page")),
+  "alert-success": dynamic(() =>
+    import("@/registry/brook/examples/alert-success/alert-success").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-warning": dynamic(() =>
+    import("@/registry/brook/examples/alert-warning/alert-warning").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-auto-highlight": dynamic(() =>
+    import("@/registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-clearable": dynamic(() =>
+    import("@/registry/brook/examples/autocomplete-clearable/autocomplete-clearable").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-demo": dynamic(() =>
+    import("@/registry/brook/examples/autocomplete-demo/autocomplete-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-fuzzy": dynamic(() =>
+    import("@/registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-grouped": dynamic(() =>
+    import("@/registry/brook/examples/autocomplete-grouped/autocomplete-grouped").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "avatar-demo": dynamic(() =>
+    import("@/registry/brook/examples/avatar-demo").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "avatar-group": dynamic(() =>
+    import("@/registry/brook/examples/avatar-group/avatar-group").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "avatar-motion": dynamic(() =>
+    import("@/registry/brook/examples/avatar-motion/avatar-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "background-demo": dynamic(() =>
+    import("@/registry/brook/examples/background-demo/background-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-demo": dynamic(() =>
+    import("@/registry/brook/examples/badge-demo/badge-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-error": dynamic(() =>
+    import("@/registry/brook/examples/badge-error/badge-error").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-external-links": dynamic(() =>
+    import("@/registry/brook/examples/badge-external-links/badge-external-links").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-sizes": dynamic(() =>
+    import("@/registry/brook/examples/badge-sizes/badge-sizes").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-success": dynamic(() =>
+    import("@/registry/brook/examples/badge-success/badge-success").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-demo": dynamic(() =>
+    import("@/registry/brook/examples/button-demo").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "button-destructive": dynamic(() =>
+    import("@/registry/brook/examples/button-destructive").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-disabled": dynamic(() =>
+    import("@/registry/brook/examples/button-disabled").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-external-link": dynamic(() =>
+    import("@/registry/brook/examples/button-external-link").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-ghost": dynamic(() =>
+    import("@/registry/brook/examples/button-ghost").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "button-loading": dynamic(() =>
+    import("@/registry/brook/examples/button-loading/button-loading").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-outline": dynamic(() =>
+    import("@/registry/brook/examples/button-outline").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-secondary": dynamic(() =>
+    import("@/registry/brook/examples/button-secondary").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-sizes": dynamic(() =>
+    import("@/registry/brook/examples/button-sizes/button-sizes").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-with-arrow": dynamic(() =>
+    import("@/registry/brook/examples/button-with-arrow").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-demo": dynamic(() =>
+    import("@/registry/brook/examples/card-demo/card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-pricing-card": dynamic(() =>
+    import("@/registry/brook/examples/card-pricing-card/card-pricing-card").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-settings": dynamic(() =>
+    import("@/registry/brook/examples/card-settings/card-settings").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-transaction": dynamic(() =>
+    import("@/registry/brook/examples/card-transaction/card-transaction").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "carousel-demo": dynamic(() =>
+    import("@/registry/brook/examples/carousel-demo/carousel-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-area-demo": dynamic(() =>
+    import("@/registry/brook/examples/chart-area-demo/chart-area-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-bar-demo": dynamic(() =>
+    import("@/registry/brook/examples/chart-bar-demo/chart-bar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-line-demo": dynamic(() =>
+    import("@/registry/brook/examples/chart-line-demo/chart-line-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-pie-demo": dynamic(() =>
+    import("@/registry/brook/examples/chart-pie-demo/chart-pie-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-card": dynamic(() =>
+    import("@/registry/brook/examples/checkbox-card/checkbox-card").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-demo": dynamic(() =>
+    import("@/registry/brook/examples/checkbox-demo/checkbox-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-description": dynamic(() =>
+    import("@/registry/brook/examples/checkbox-description/checkbox-description").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-group-demo": dynamic(() =>
+    import("@/registry/brook/examples/checkbox-group-demo/checkbox-group-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-group-parent": dynamic(() =>
+    import("@/registry/brook/examples/checkbox-group-parent/checkbox-group-parent").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "collapsible-demo": dynamic(() =>
+    import("@/registry/brook/examples/collapsible-demo/collapsible-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-auto-highlight": dynamic(() =>
+    import("@/registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-clearable": dynamic(() =>
+    import("@/registry/brook/examples/combobox-clearable/combobox-clearable").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-demo": dynamic(() =>
+    import("@/registry/brook/examples/combobox-demo/combobox-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-grouped": dynamic(() =>
+    import("@/registry/brook/examples/combobox-grouped/combobox-grouped").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-multiple": dynamic(() =>
+    import("@/registry/brook/examples/combobox-multiple/combobox-multiple").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "command-demo": dynamic(() =>
+    import("@/registry/brook/examples/command-demo/command-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "context-menu-demo": dynamic(() =>
+    import("@/registry/brook/examples/context-menu-demo/context-menu-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "copy-button-demo": dynamic(() =>
+    import("@/registry/brook/examples/copy-button-demo/copy-button-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dialog-demo": dynamic(() =>
+    import("@/registry/brook/examples/dialog-demo/dialog-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dialog-motion": dynamic(() =>
+    import("@/registry/brook/examples/dialog-motion/dialog-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dialog-sheet": dynamic(() =>
+    import("@/registry/brook/examples/dialog-sheet/dialog-sheet").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-demo": dynamic(() =>
+    import("@/registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-motion": dynamic(() =>
+    import("@/registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-submenu": dynamic(() =>
+    import("@/registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "expandable-card-demo": dynamic(() =>
+    import("@/registry/brook/examples/expandable-card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "field-demo": dynamic(() =>
+    import("@/registry/brook/examples/field-demo/field-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "fieldset-demo": dynamic(() =>
+    import("@/registry/brook/examples/fieldset-demo/fieldset-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "form-demo": dynamic(() =>
+    import("@/registry/brook/examples/form-demo").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "input-demo": dynamic(() =>
+    import("@/registry/brook/examples/input-demo/input-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "like-button-demo": dynamic(() =>
+    import("@/registry/brook/examples/like-button-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "menubar-demo": dynamic(() =>
+    import("@/registry/brook/examples/menubar-demo/menubar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "meter-demo": dynamic(() =>
+    import("@/registry/brook/examples/meter-demo/meter-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "navigation-menu-demo": dynamic(() =>
+    import("@/registry/brook/examples/navigation-menu-demo/navigation-menu-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "navigation-sub-menu": dynamic(() =>
+    import("@/registry/brook/examples/navigation-sub-menu/navigation-sub-menu").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "number-field-demo": dynamic(() =>
+    import("@/registry/brook/examples/number-field-demo/number-field-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "popover-animated": dynamic(() =>
+    import("@/registry/brook/examples/popover-animated/popover-animated").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "popover-demo": dynamic(() =>
+    import("@/registry/brook/examples/popover-demo/popover-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "preview-card-demo": dynamic(() =>
+    import("@/registry/brook/examples/preview-card-demo/preview-card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "progress-demo": dynamic(() =>
+    import("@/registry/brook/examples/progress-demo/progress-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "radio-demo": dynamic(() =>
+    import("@/registry/brook/examples/radio-demo/radio-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "scroll-area-demo": dynamic(() =>
+    import("@/registry/brook/examples/scroll-area-demo/scroll-area-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "select-demo": dynamic(() =>
+    import("@/registry/brook/examples/select-demo/select-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "separator-demo": dynamic(() =>
+    import("@/registry/brook/examples/separator-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  shipping: dynamic(() =>
+    import("@/registry/brook/examples/shipping/shipping").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "slider-demo": dynamic(() =>
+    import("@/registry/brook/examples/slider-demo/slider-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "switch-demo": dynamic(() =>
+    import("@/registry/brook/examples/switch-demo/switch-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "switch-with-label": dynamic(() =>
+    import("@/registry/brook/examples/switch-with-label/switch-with-label").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "table-demo": dynamic(() =>
+    import("@/registry/brook/examples/table-demo").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "tabs-demo": dynamic(() =>
+    import("@/registry/brook/examples/tabs-demo/tabs-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tabs-motion": dynamic(() =>
+    import("@/registry/brook/examples/tabs-motion/tabs-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tabs-vertical": dynamic(() =>
+    import("@/registry/brook/examples/tabs-vertical").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "toast-demo": dynamic(() =>
+    import("@/registry/brook/examples/toast-demo").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "toggle-demo": dynamic(() =>
+    import("@/registry/brook/examples/toggle-demo/toggle-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "toggle-group-demo": dynamic(() =>
+    import("@/registry/brook/examples/toggle-group-demo/toggle-group-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "toolbar-demo": dynamic(() =>
+    import("@/registry/brook/examples/toolbar-demo/toolbar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tooltip-demo": dynamic(() =>
+    import("@/registry/brook/examples/tooltip-demo").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "ai-chat": dynamic(() =>
+    import("@/registry/brook/blocks/ai-chat/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "card-image": dynamic(() =>
+    import("@/registry/brook/blocks/card-image/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "card-login": dynamic(() =>
+    import("@/registry/brook/blocks/card-login/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "card-task": dynamic(() =>
+    import("@/registry/brook/blocks/card-task/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
+  "card-traffic": dynamic(() =>
+    import("@/registry/brook/blocks/card-traffic/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "expandable-card": dynamic(() =>
+    import("@/registry/brook/blocks/expandable-card/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "kanban-board": dynamic(() =>
+    import("@/registry/brook/blocks/kanban-board/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "profile-menu": dynamic(() =>
+    import("@/registry/brook/blocks/profile-menu/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "accordion-animation-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/accordion-animation").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "accordion-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/accordion-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "accordion-minimal-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/accordion-minimal").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-destructive-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-destructive").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-dialog-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-dialog-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-dialog-nested-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-dialog-nested").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-info-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-info").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-success-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-success").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "alert-warning-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/alert-warning").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-auto-highlight-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/autocomplete-auto-highlight").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-clearable-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/autocomplete-clearable").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/autocomplete-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-fuzzy-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/autocomplete-fuzzy").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-grouped-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/autocomplete-grouped").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "avatar-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/avatar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "avatar-group-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/avatar-group").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/badge-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-error-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/badge-error").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "badge-success-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/badge-success").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-destructive-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-destructive").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-disabled-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-disabled").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-external-link-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-external-link").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-ghost-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-ghost").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-outline-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-outline").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-secondary-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-secondary").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-with-arrow-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-with-arrow").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "carousel-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/carousel-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-area-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/chart-area-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-bar-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/chart-bar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-line-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/chart-line-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "chart-pie-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/chart-pie-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-card-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/checkbox-card").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/checkbox-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-description-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/checkbox-description").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-group-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/checkbox-group-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "checkbox-group-parent-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/checkbox-group-parent").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "collapsible-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/collapsible-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-auto-highlight-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/combobox-auto-highlight").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-clearable-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/combobox-clearable").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/combobox-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-grouped-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/combobox-grouped").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "combobox-multiple-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/combobox-multiple").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "command-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/command-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "context-menu-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/context-menu-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "copy-button-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/copy-button-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dialog-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dialog-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dialog-motion-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dialog-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dialog-sheet-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dialog-sheet").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dropdown-menu-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-motion-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dropdown-menu-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-submenu-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dropdown-menu-submenu").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "expandable-card-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/expandable-card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "field-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/field-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "fieldset-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/fieldset-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "form-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/form-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "input-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/input-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "like-button-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/like-button-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "menubar-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/menubar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "meter-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/meter-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "navigation-menu-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/navigation-menu-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "navigation-sub-menu-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/navigation-sub-menu").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "number-field-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/number-field-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "popover-animated-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/popover-animated").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "popover-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/popover-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "preview-card-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/preview-card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "progress-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/progress-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "radio-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/radio-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "scroll-area-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/scroll-area-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "select-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/select-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "separator-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/separator-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  shippingTailwind: dynamic(() =>
+    import("@/registry/brook/tailwind/examples/shipping").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "slider-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/slider-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "switch-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/switch-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "switch-with-label-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/switch-with-label").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "table-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/table-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tabs-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/tabs-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tabs-motion-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/tabs-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tabs-vertical-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/tabs-vertical").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "toast-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/toast-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "toggle-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/toggle-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "toggle-group-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/toggle-group-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "toolbar-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/toolbar-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "tooltip-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/tooltip-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "ai-chat-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/ai-chat/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-image-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-image/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-login-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-login/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-task-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-task/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-traffic-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-traffic/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "expandable-card-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/expandable-card/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "kanban-board-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/kanban-board/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "profile-menu-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/profile-menu/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
 };

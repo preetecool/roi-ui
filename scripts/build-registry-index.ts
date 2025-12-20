@@ -340,9 +340,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     path: "${componentPath}",
   },`;
 
-    // Loader
+    // Loader - use .then() to ensure we get the component, not the module
     loadersIndex += `
-  ${key}: dynamic(() => import("${componentPath}")),`;
+  ${key}: dynamic(() => import("${componentPath}").then(mod => ({ default: mod.default || Object.values(mod)[0] }))),`;
   }
 
   // Process blocks
@@ -378,9 +378,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     path: "${componentPath}",
   },`;
 
-    // Loader
+    // Loader - use .then() to ensure we get the component, not the module
     loadersIndex += `
-  ${key}: dynamic(() => import("${componentPath}")),`;
+  ${key}: dynamic(() => import("${componentPath}").then(mod => ({ default: mod.default || Object.values(mod)[0] }))),`;
   }
 
   // Process UI components (no component loading, just metadata)
@@ -422,9 +422,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     path: "${componentPath}",
   },`;
 
-    // Loader
+    // Loader - use .then() to ensure we get the component, not the module
     loadersIndex += `
-  ${key}: dynamic(() => import("${componentPath}")),`;
+  ${key}: dynamic(() => import("${componentPath}").then(mod => ({ default: mod.default || Object.values(mod)[0] }))),`;
   }
 
   // Process tailwind blocks
@@ -455,9 +455,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     path: "${componentPath}",
   },`;
 
-    // Loader
+    // Loader - use .then() to ensure we get the component, not the module
     loadersIndex += `
-  ${key}: dynamic(() => import("${componentPath}")),`;
+  ${key}: dynamic(() => import("${componentPath}").then(mod => ({ default: mod.default || Object.values(mod)[0] }))),`;
   }
 
   // Process tailwind UI components
