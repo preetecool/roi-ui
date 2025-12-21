@@ -11,27 +11,22 @@ import {
   Plus,
   User,
 } from "lucide-react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
+import { capitalize, TAG_COLORS, type Tag } from "../lib/project";
+import type { FilterConfig, GroupByField, KanbanData, Priority, Task } from "../types";
+import { DeleteDialog } from "./delete-dialog";
 import { ActiveFilters, FilterBar } from "./filter-bar";
 import { KanbanCard, KanbanCardList, KanbanColumn, KanbanColumnHeader, KanbanProvider } from "./kanban";
 import { PriorityIcon } from "./priority-icon";
 import { TaskDialog } from "./task-dialog";
-import type { KanbanData, Task } from "../types";
-import { useFilters } from "../hooks/use-filters";
-import { useTaskDialog } from "../hooks/use-task-dialog";
-import { useView } from "../hooks/use-view";
-import { capitalize, TAG_COLORS, type Tag } from "../lib/project";
 
 export type ProjectBoardProps = {
   data: KanbanData;
-  onAddTask: (task: Omit<Task, "id" | "createdAt">) => void;
-  onUpdateTask: (id: string, updates: Partial<Omit<Task, "id">>) => void;
-  onDeleteTask: (id: string) => void;
-  onTasksChange: (tasks: Task[]) => void;
 };
 
 const COLUMN_ICONS: Record<string, React.ReactNode> = {
@@ -203,15 +198,64 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
   );
 }
 
-export function ProjectBoard({ data, onAddTask, onUpdateTask, onDeleteTask, onTasksChange }: ProjectBoardProps) {
-  // Filtering
-  const { filters, filteredTasks, togglePriority, toggleTag, activeFilterCount } = useFilters(data.tasks);
+const DEFAULT_FILTERS: FilterConfig = { priority: [], tags: [] };
 
-  // View preferences
-  const { groupBy, setGroupBy, displayColumns } = useView(data.columns, data.tasks);
+type DialogState =
+  | { mode: "closed" }
+  | { mode: "create"; columnId: string }
+  | { mode: "edit"; task: Task }
+  | { mode: "delete"; task: Task };
+
+export function ProjectBoard({ data }: ProjectBoardProps) {
+  // Local state for tasks (for DnD)
+  const [tasks, setTasks] = useState<Task[]>(data.tasks);
+
+  // Filter state (UI only)
+  const [filters, setFilters] = useState<FilterConfig>(DEFAULT_FILTERS);
+
+  const togglePriority = useCallback((priority: Priority, checked: boolean) => {
+    setFilters((prev) => ({
+      ...prev,
+      priority: checked ? [...prev.priority, priority] : prev.priority.filter((p) => p !== priority),
+    }));
+  }, []);
+
+  const toggleTag = useCallback((tag: string, checked: boolean) => {
+    setFilters((prev) => ({
+      ...prev,
+      tags: checked ? [...prev.tags, tag] : prev.tags.filter((t) => t !== tag),
+    }));
+  }, []);
+
+  const activeFilterCount = filters.priority.length + filters.tags.length;
+
+  // View state (UI only)
+  const [groupBy, setGroupBy] = useState<GroupByField>("column");
 
   // Dialog state
-  const { dialogState, openCreate, openEdit, openDelete, close } = useTaskDialog();
+  const [dialogState, setDialogState] = useState<DialogState>({ mode: "closed" });
+
+  const openCreate = useCallback((columnId: string) => {
+    setDialogState({ mode: "create", columnId });
+  }, []);
+
+  const openEdit = useCallback((task: Task) => {
+    setDialogState({ mode: "edit", task });
+  }, []);
+
+  const openDelete = useCallback((task: Task) => {
+    setDialogState({ mode: "delete", task });
+  }, []);
+
+  const closeDialog = useCallback(() => {
+    setDialogState({ mode: "closed" });
+  }, []);
+
+  const handleDeleteFromEdit = useCallback(() => {
+    if (dialogState.mode === "edit") {
+      setDialogState({ mode: "delete", task: dialogState.task });
+    }
+  }, [dialogState]);
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
@@ -236,10 +280,9 @@ export function ProjectBoard({ data, onAddTask, onUpdateTask, onDeleteTask, onTa
 
       {/* Board */}
       <KanbanProvider
-        columns={displayColumns}
-        data={filteredTasks}
-        groupBy={groupBy}
-        onDataChange={onTasksChange}
+        columns={data.columns}
+        data={tasks}
+        onDataChange={setTasks}
         onDeleteItem={openDelete}
         onEditItem={openEdit}
         renderOverlay={(task) => (
@@ -280,16 +323,24 @@ export function ProjectBoard({ data, onAddTask, onUpdateTask, onDeleteTask, onTa
         )}
       </KanbanProvider>
 
-      {/* Dialog */}
+      {/* Task Dialog */}
       <TaskDialog
         assignees={data.assignees}
+        columnId={dialogState.mode === "create" ? dialogState.columnId : undefined}
         columns={data.columns}
         groupBy={groupBy}
-        onAddTask={onAddTask}
-        onClose={close}
-        onDeleteTask={onDeleteTask}
-        onUpdateTask={onUpdateTask}
-        state={dialogState}
+        mode={dialogState.mode === "create" ? "create" : "edit"}
+        onClose={closeDialog}
+        onDelete={handleDeleteFromEdit}
+        open={dialogState.mode === "create" || dialogState.mode === "edit"}
+        task={dialogState.mode === "edit" ? dialogState.task : undefined}
+      />
+
+      {/* Delete Dialog */}
+      <DeleteDialog
+        onClose={closeDialog}
+        open={dialogState.mode === "delete"}
+        title={dialogState.mode === "delete" ? dialogState.task.title : ""}
       />
     </div>
   );

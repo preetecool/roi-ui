@@ -1,5 +1,6 @@
 "use client";
 
+import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import {
   Calendar as CalendarIcon,
   CheckCircle2,
@@ -16,19 +17,9 @@ import {
   X,
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { z } from "zod";
 import { cn } from "@/lib/utils-tailwind";
-import {
-  AlertDialog,
-  AlertDialogClose,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogTitle,
-} from "@/registry/brook/tailwind/ui/alert-dialog";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import { Calendar } from "@/registry/brook/tailwind/ui/calendar";
-import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import {
   Combobox,
   ComboboxEmpty,
@@ -58,23 +49,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
-import type { Assignee, Column, GroupByField, Priority, Subtask, Task } from "../types";
-import type { DialogState } from "../hooks/use-task-dialog";
 import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
+import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
 
 function parseDateString(dateStr: string): Date {
   const [year, month, day] = dateStr.split("-").map(Number);
   return new Date(year, month - 1, day, 12, 0, 0);
 }
-
-const taskSchema = z.object({
-  title: z.string().min(1, "Title is required").max(200, "Title must be 200 characters or less"),
-  columnId: z.string().min(1, "Column is required"),
-  priority: z.enum(["urgent", "high", "medium", "low"]),
-  description: z.string().max(2000, "Description must be 2000 characters or less").optional(),
-  tags: z.array(z.string()).optional(),
-  dueDate: z.string().optional(),
-});
 
 type TaskFormState = {
   title: string;
@@ -127,112 +108,38 @@ function TagDot({ tag }: { tag: Tag }) {
 }
 
 export type TaskDialogProps = {
-  state: DialogState;
+  open: boolean;
+  mode: "create" | "edit";
+  task?: {
+    title: string;
+    description: string;
+    priority: Priority;
+    columnId: string;
+    tags: string[];
+    assignees?: Assignee[];
+    subtasks?: Subtask[];
+    dueDate?: string;
+  };
+  columnId?: string;
   assignees: Assignee[];
   columns: Column[];
   groupBy: GroupByField;
   onClose: () => void;
-  onAddTask: (task: Omit<Task, "id" | "createdAt">) => void;
-  onUpdateTask: (id: string, updates: Partial<Omit<Task, "id">>) => void;
-  onDeleteTask: (id: string) => void;
+  onDelete?: () => void;
 };
 
 export function TaskDialog({
-  state,
-  assignees,
-  columns,
-  groupBy,
-  onClose,
-  onAddTask,
-  onUpdateTask,
-  onDeleteTask,
-}: TaskDialogProps) {
-  if (state.mode === "closed") {
-    return null;
-  }
-
-  if (state.mode === "delete") {
-    return (
-      <DeleteConfirmDialog
-        onClose={onClose}
-        onDelete={() => {
-          onDeleteTask(state.task.id);
-          onClose();
-        }}
-        task={state.task}
-      />
-    );
-  }
-
-  return (
-    <TaskFormDialog
-      assignees={assignees}
-      columnId={state.mode === "create" ? state.columnId : undefined}
-      columns={columns}
-      groupBy={groupBy}
-      mode={state.mode}
-      onAddTask={onAddTask}
-      onClose={onClose}
-      onDeleteTask={onDeleteTask}
-      onUpdateTask={onUpdateTask}
-      task={state.mode === "edit" ? state.task : undefined}
-    />
-  );
-}
-
-type DeleteConfirmDialogProps = {
-  task: Task;
-  onClose: () => void;
-  onDelete: () => void;
-};
-
-function DeleteConfirmDialog({ task, onClose, onDelete }: DeleteConfirmDialogProps) {
-  return (
-    <AlertDialog onOpenChange={(open) => !open && onClose()} open>
-      <AlertDialogContent>
-        <AlertDialogTitle>Delete Task</AlertDialogTitle>
-        <AlertDialogDescription>
-          Are you sure you want to delete "{task.title}"? This action cannot be undone.
-        </AlertDialogDescription>
-        <AlertDialogFooter>
-          <AlertDialogClose render={<Button variant="outline" />}>Cancel</AlertDialogClose>
-          <Button onClick={onDelete} variant="destructive">
-            Delete
-          </Button>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-}
-
-type TaskFormDialogProps = {
-  mode: "create" | "edit";
-  task?: Task;
-  assignees: Assignee[];
-  columnId?: string;
-  columns: Column[];
-  groupBy: GroupByField;
-  onClose: () => void;
-  onAddTask: (task: Omit<Task, "id" | "createdAt">) => void;
-  onUpdateTask: (id: string, updates: Partial<Omit<Task, "id">>) => void;
-  onDeleteTask: (id: string) => void;
-};
-
-function TaskFormDialog({
+  open,
   mode,
   task,
-  assignees,
   columnId,
+  assignees,
   columns,
   groupBy,
   onClose,
-  onAddTask,
-  onUpdateTask,
-  onDeleteTask,
-}: TaskFormDialogProps) {
+  onDelete,
+}: TaskDialogProps) {
   const [form, setForm] = useState<TaskFormState>(defaultFormState);
-  const [errors, setErrors] = useState<Record<string, string[]>>({});
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const updateField = <K extends keyof TaskFormState>(field: K, value: TaskFormState[K]) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -241,7 +148,6 @@ function TaskFormDialog({
   const defaultColumnId = useMemo(() => columns[0]?.id ?? "", [columns]);
 
   useEffect(() => {
-    setErrors({});
     if (mode === "edit" && task) {
       setForm({
         title: task.title,
@@ -296,46 +202,19 @@ function TaskFormDialog({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [addSubtask]);
 
-  const handleSubmit = () => {
-    const result = taskSchema.safeParse(form);
-
-    if (!result.success) {
-      setErrors(z.flattenError(result.error).fieldErrors);
-      return;
-    }
-
-    setErrors({});
-
-    const formData = {
-      ...form,
-      dueDate: form.dueDate || undefined,
-    };
-
-    if (mode === "create") {
-      onAddTask(formData);
-    } else if (task) {
-      onUpdateTask(task.id, formData);
-    }
-
-    onClose();
-  };
-
-  const handleDelete = () => {
-    if (mode === "edit" && task) {
-      onDeleteTask(task.id);
-      onClose();
-    }
-  };
+  if (!open) {
+    return null;
+  }
 
   return (
-    <Dialog onOpenChange={(open) => !open && onClose()} open>
+    <Dialog onOpenChange={(isOpen) => !isOpen && onClose()} open>
       <DialogPortal>
         <DialogOverlay />
         <DialogPopup
           className="max-w-[660px] overflow-visible p-5 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]"
           data-kanban-dialog
         >
-          <Form className="flex flex-col gap-1 mt-0" errors={errors}>
+          <Form className="flex flex-col gap-1 mt-0">
             <Field name="title">
               <FieldControl
                 autoFocus
@@ -647,10 +526,10 @@ function TaskFormDialog({
             </div>
 
             <div className="flex items-center justify-between gap-2 mt-6 pt-4 border-t-[0.5px] border-t-[oklch(from_var(--border)_l_c_h_/_0.4)] -mx-5 px-5">
-              {mode === "edit" && (
+              {mode === "edit" && onDelete && (
                 <Button
                   className="text-muted-foreground border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] hover:text-destructive-foreground hover:bg-destructive hover:border-destructive"
-                  onClick={() => setShowDeleteConfirm(true)}
+                  onClick={onDelete}
                   size="sm"
                   type="button"
                   variant="outline"
@@ -659,28 +538,11 @@ function TaskFormDialog({
                 </Button>
               )}
               <div className="flex items-center gap-1.5 ml-auto">
-                <Button onClick={handleSubmit} size="sm" type="button">
+                <Button onClick={onClose} size="sm" type="button">
                   {mode === "create" ? "Create" : "Save"}
                 </Button>
               </div>
             </div>
-
-            {mode === "edit" && task && (
-              <AlertDialog onOpenChange={setShowDeleteConfirm} open={showDeleteConfirm}>
-                <AlertDialogContent>
-                  <AlertDialogTitle>Delete Task</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Are you sure you want to delete "{task.title}"? This action cannot be undone.
-                  </AlertDialogDescription>
-                  <AlertDialogFooter>
-                    <AlertDialogClose render={<Button variant="outline" />}>Cancel</AlertDialogClose>
-                    <Button onClick={handleDelete} variant="destructive">
-                      Delete
-                    </Button>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            )}
           </Form>
 
           <Button
