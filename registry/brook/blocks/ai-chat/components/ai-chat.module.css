@@ -3,8 +3,9 @@
   gap: 0.75rem;
   width: 100%;
   height: auto;
-  max-width: none;
+  max-width: 600px;
   min-width: 0;
+  margin: 0 auto;
   border-radius: var(--radius-lg);
   border-color: var(--border);
   background-color: var(--mix-card-50-bg);
@@ -108,9 +109,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .aiChatCard[data-slot="card"] {
-    margin: 0 auto;
   }
 }
