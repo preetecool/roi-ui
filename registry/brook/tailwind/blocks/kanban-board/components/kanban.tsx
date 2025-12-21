@@ -29,12 +29,7 @@ import {
   ContextMenuTrigger,
 } from "@/registry/brook/tailwind/ui/context-menu";
 import { type KanbanColumnDataProps, type KanbanItemProps, useKanbanDnd } from "../hooks/use-kanban-dnd";
-import { getTasksForGroup } from "../lib/project";
-import type { GroupByField } from "../types";
-
-// =============================================================================
-// Custom Collision Detection for Kanban
-// =============================================================================
+import { getTasksForColumn } from "../lib/project";
 
 const kanbanCollisionDetection: CollisionDetection = (args) => {
   const pointerCollisions = pointerWithin(args);
@@ -43,10 +38,6 @@ const kanbanCollisionDetection: CollisionDetection = (args) => {
   }
   return closestCorners(args);
 };
-
-// =============================================================================
-// Context
-// =============================================================================
 
 type KanbanContextValue<T extends KanbanItemProps = KanbanItemProps> = {
   getItemsForColumn: (columnId: string) => T[];
@@ -64,10 +55,6 @@ export function useKanbanContext<T extends KanbanItemProps = KanbanItemProps>() 
   return context;
 }
 
-// =============================================================================
-// KanbanProvider
-// =============================================================================
-
 export type KanbanProviderProps<
   T extends KanbanItemProps = KanbanItemProps,
   C extends KanbanColumnDataProps = KanbanColumnDataProps,
@@ -75,7 +62,6 @@ export type KanbanProviderProps<
   children: (column: C) => React.ReactNode;
   columns: C[];
   data: T[];
-  groupBy?: GroupByField;
   className?: string;
   onDataChange: (data: T[]) => void;
   onDragStart?: (event: DragStartEvent) => void;
@@ -93,7 +79,6 @@ export function KanbanProvider<
   children,
   columns,
   data,
-  groupBy = "column",
   className,
   onDataChange,
   onDragStart,
@@ -103,13 +88,10 @@ export function KanbanProvider<
   onDeleteItem,
   renderOverlay,
 }: KanbanProviderProps<T, C>) {
-  const isDragEnabled = groupBy === "column" || groupBy === "priority";
-
   const { activeItem, sensors, announcements, handleDragStart, handleDragOver, handleDragEnd } = useKanbanDnd({
     data,
     columns,
-    groupBy,
-    enabled: isDragEnabled,
+    enabled: true,
     onDataChange,
     onDragStart,
     onDragEnd,
@@ -117,8 +99,8 @@ export function KanbanProvider<
   });
 
   const getItemsForColumn = useMemo(
-    () => (columnId: string) => getTasksForGroup(data, columnId, groupBy) as T[],
-    [data, groupBy]
+    () => (columnId: string) => getTasksForColumn(data, columnId) as T[],
+    [data]
   );
 
   const contextValue = useMemo<KanbanContextValue<T>>(
@@ -159,10 +141,6 @@ export function KanbanProvider<
   );
 }
 
-// =============================================================================
-// KanbanColumn
-// =============================================================================
-
 export type KanbanColumnProps = React.ComponentProps<"div"> & {
   id: string;
 };
@@ -185,10 +163,6 @@ export function KanbanColumn({ id, className, children, ...props }: KanbanColumn
   );
 }
 
-// =============================================================================
-// KanbanColumnHeader
-// =============================================================================
-
 export type KanbanColumnHeaderProps = React.ComponentProps<"div">;
 
 export function KanbanColumnHeader({ className, ...props }: KanbanColumnHeaderProps) {
@@ -200,10 +174,6 @@ export function KanbanColumnHeader({ className, ...props }: KanbanColumnHeaderPr
     />
   );
 }
-
-// =============================================================================
-// KanbanCardList
-// =============================================================================
 
 export type KanbanCardListProps<T extends KanbanItemProps = KanbanItemProps> = Omit<
   React.ComponentProps<"div">,
@@ -235,10 +205,6 @@ export function KanbanCardList<T extends KanbanItemProps = KanbanItemProps>({
     </SortableContext>
   );
 }
-
-// =============================================================================
-// KanbanCard
-// =============================================================================
 
 export type KanbanCardProps<T extends KanbanItemProps = KanbanItemProps> = {
   id: string;

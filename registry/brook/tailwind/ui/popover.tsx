@@ -74,7 +74,7 @@ function PopoverPopup({
       >
         <Popover.Popup
           className={cn(
-            "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-lg border border-border bg-popover text-popover-foreground shadow-lg transition-[width,height,scale,opacity] duration-200 ease-out data-[ending-style]:scale-[0.98] data-[starting-style]:scale-[0.98] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+            "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-popover text-popover-foreground shadow-lg transition-[width,height,transform,opacity] duration-250 ease-[var(--ease-out-expo)] data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
             className
           )}
           data-slot="popover-popup"
@@ -180,12 +180,12 @@ function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
       <PopoverPositioner sideOffset={8}>
         <Popover.Popup
           className={cn(
-            "!relative box-border origin-[var(--transform-origin)] rounded-lg border border-border bg-popover px-4 py-2 text-popover-foreground",
-            "transition-[transform,scale,opacity] duration-200 ease-out",
+            "!relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-popover px-4 py-2 text-popover-foreground",
+            "transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)]",
             "shadow-lg",
             "z-[1000]",
-            "data-[starting-style]:scale-[0.98] data-[starting-style]:opacity-0",
-            "data-[ending-style]:scale-[0.98] data-[ending-style]:opacity-0",
+            "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+            "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
             "focus-visible:outline-1 focus-visible:outline-ring focus-visible:outline-offset-1",
             "max-sm:m-4 max-sm:max-w-[calc(100vw-2rem)]",
             className

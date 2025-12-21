@@ -60,7 +60,6 @@
   left: 0;
   z-index: 150;
   width: var(--anchor-width);
-  margin-top: 0.25rem;
 }
 
 .popup {
