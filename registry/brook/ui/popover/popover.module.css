@@ -39,15 +39,17 @@
   width: var(--popup-width, auto);
   height: var(--popup-height, auto);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
+  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   background-color: var(--popover);
   background-clip: padding-box;
   color: var(--popover-foreground);
   transform-origin: var(--transform-origin);
   box-shadow: var(--shadow-lg);
-  transition-property: width, height, scale, opacity;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
+  transition:
+    width 250ms var(--ease-out-expo),
+    height 250ms var(--ease-out-expo),
+    transform 250ms var(--ease-out-expo),
+    opacity 250ms var(--ease-out-expo);
 
   &::before {
     content: "";
@@ -60,8 +62,8 @@
 
   &[data-starting-style],
   &[data-ending-style] {
-    scale: 0.98;
     opacity: 0;
+    transform: scale(0.95);
   }
 
   &:focus-visible {
