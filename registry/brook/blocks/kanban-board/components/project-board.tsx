@@ -11,7 +11,7 @@ import {
   Plus,
   User,
 } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -36,22 +36,31 @@ const COLUMN_ICONS: Record<string, React.ReactNode> = {
   done: <CheckCircle2 size={14} />,
 };
 
-function getDaysLeft(dueDate: string | undefined): number | null {
-  if (!dueDate) {
+function getDaysLeft(dueDate: string | undefined, now: Date | null): number | null {
+  if (!dueDate || !now) {
     return null;
   }
   const due = new Date(dueDate);
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
+  const today = new Date(now);
+  today.setHours(0, 0, 0, 0);
   due.setHours(0, 0, 0, 0);
-  const diffTime = due.getTime() - now.getTime();
+  const diffTime = due.getTime() - today.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 
+function useCurrentDate() {
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => {
+    setNow(new Date());
+  }, []);
+  return now;
+}
+
 function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) => void }) {
+  const now = useCurrentDate();
   const subtaskCount = task.subtasks?.length ?? 0;
   const completedSubtasks = task.subtasks?.filter((st) => st.completed).length ?? 0;
-  const daysLeft = getDaysLeft(task.dueDate);
+  const daysLeft = getDaysLeft(task.dueDate, now);
 
   const renderAssignees = () => {
     if (!task.assignees) {
