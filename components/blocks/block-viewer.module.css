@@ -79,12 +79,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  min-width: 600px;
+  width: 100%;
+  max-width: 100%;
   height: 100%;
   flex: 1;
   min-height: 0;
-  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .previewContainer {
+    padding: 0.5rem;
+  }
 }
 
 .previewContainerFull {

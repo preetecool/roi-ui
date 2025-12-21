@@ -1,5 +1,7 @@
 .card {
-  width: 400px;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
   padding: 20px;
   border: 0.5px solid var(--border);
   border-radius: var(--radius-lg);
@@ -157,7 +159,6 @@
 
 @media (max-width: 640px) {
   .card {
-    width: 100%;
     padding: 1rem;
   }
 
