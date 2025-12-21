@@ -31,10 +31,6 @@ import {
 import { type KanbanColumnDataProps, type KanbanItemProps, useKanbanDnd } from "../hooks/use-kanban-dnd";
 import { getTasksForColumn } from "../lib/project";
 
-// =============================================================================
-// Custom Collision Detection for Kanban
-// =============================================================================
-
 const kanbanCollisionDetection: CollisionDetection = (args) => {
   const pointerCollisions = pointerWithin(args);
   if (pointerCollisions.length > 0) {
@@ -42,10 +38,6 @@ const kanbanCollisionDetection: CollisionDetection = (args) => {
   }
   return closestCorners(args);
 };
-
-// =============================================================================
-// Context
-// =============================================================================
 
 type KanbanContextValue<T extends KanbanItemProps = KanbanItemProps> = {
   getItemsForColumn: (columnId: string) => T[];
@@ -62,10 +54,6 @@ export function useKanbanContext<T extends KanbanItemProps = KanbanItemProps>() 
   }
   return context;
 }
-
-// =============================================================================
-// KanbanProvider
-// =============================================================================
 
 export type KanbanProviderProps<
   T extends KanbanItemProps = KanbanItemProps,
@@ -153,10 +141,6 @@ export function KanbanProvider<
   );
 }
 
-// =============================================================================
-// KanbanColumn
-// =============================================================================
-
 export type KanbanColumnProps = React.ComponentProps<"div"> & {
   id: string;
 };
@@ -179,10 +163,6 @@ export function KanbanColumn({ id, className, children, ...props }: KanbanColumn
   );
 }
 
-// =============================================================================
-// KanbanColumnHeader
-// =============================================================================
-
 export type KanbanColumnHeaderProps = React.ComponentProps<"div">;
 
 export function KanbanColumnHeader({ className, ...props }: KanbanColumnHeaderProps) {
@@ -194,10 +174,6 @@ export function KanbanColumnHeader({ className, ...props }: KanbanColumnHeaderPr
     />
   );
 }
-
-// =============================================================================
-// KanbanCardList
-// =============================================================================
 
 export type KanbanCardListProps<T extends KanbanItemProps = KanbanItemProps> = Omit<
   React.ComponentProps<"div">,
@@ -229,10 +205,6 @@ export function KanbanCardList<T extends KanbanItemProps = KanbanItemProps>({
     </SortableContext>
   );
 }
-
-// =============================================================================
-// KanbanCard
-// =============================================================================
 
 export type KanbanCardProps<T extends KanbanItemProps = KanbanItemProps> = {
   id: string;

@@ -25,17 +25,14 @@ export type KanbanColumnDataProps = {
   name: string;
 } & Record<string, unknown>;
 
-/** Get the group ID for an item (always columnId for now) */
 function getItemGroupId<T extends KanbanItemProps>(item: T): string {
   return item.columnId;
 }
 
-/** Apply group change to an item */
 function applyGroupChange<T extends KanbanItemProps>(item: T, groupId: string): T {
   return { ...item, columnId: groupId };
 }
 
-/** Get the target group ID from a drag over event */
 function getOverGroupId<T extends KanbanItemProps, C extends KanbanColumnDataProps>(
   overId: string,
   data: T[],
@@ -54,7 +51,6 @@ function getOverGroupId<T extends KanbanItemProps, C extends KanbanColumnDataPro
   return null;
 }
 
-/** Calculate the insertion index for cross-group moves */
 function getCrossGroupInsertIndex<T extends KanbanItemProps, C extends KanbanColumnDataProps>(
   overId: string,
   data: T[],
@@ -62,32 +58,26 @@ function getCrossGroupInsertIndex<T extends KanbanItemProps, C extends KanbanCol
   targetGroupId: string,
   activeIndex: number
 ): number {
-  // Check if overId is a column (not an item)
   const isOverColumn = columns.some((col) => col.id === overId);
 
   if (isOverColumn) {
-    // Dropping on the column itself - insert at the end of the column
     const itemsInColumn = data.filter((item) => getItemGroupId(item) === targetGroupId);
     if (itemsInColumn.length > 0) {
       const lastItemInColumn = itemsInColumn[itemsInColumn.length - 1];
       const lastItemIndex = data.findIndex((item) => item.id === lastItemInColumn.id);
-      // Adjust for removal of active item if it comes before
       if (activeIndex < lastItemIndex) {
         return lastItemIndex;
       }
       return lastItemIndex + 1;
     }
-    // Empty column - append at end
     return data.length;
   }
 
-  // Dropping on an item - find its index
   const overIndex = data.findIndex((item) => item.id === overId);
   if (overIndex === -1) {
     return data.length;
   }
 
-  // Adjust for arrayMove behavior
   if (activeIndex < overIndex) {
     return overIndex - 1;
   }
@@ -142,7 +132,6 @@ export function useKanbanDnd<
 
   const handleDragOver = useCallback(
     (event: DragOverEvent) => {
-      // Prevent processing while an update is in flight
       if (isUpdatingRef.current) {
         return;
       }
@@ -159,7 +148,6 @@ export function useKanbanDnd<
           const draggedGroupId = getItemGroupId(draggedItem);
 
           if (overGroupId && draggedGroupId !== overGroupId) {
-            // Dedupe: skip if we already processed this exact cross-group move
             const moveKey = `${activeId}:${overGroupId}`;
             if (lastCrossGroupMoveRef.current === moveKey) {
               return;
@@ -167,17 +155,14 @@ export function useKanbanDnd<
             lastCrossGroupMoveRef.current = moveKey;
             isUpdatingRef.current = true;
 
-            // Cross-group move
             const newData = [...data];
             const activeIndex = newData.findIndex((item) => item.id === activeId);
             const finalIndex = getCrossGroupInsertIndex(overId, data, columns, overGroupId, activeIndex);
 
-            // Apply group change
             newData[activeIndex] = applyGroupChange(newData[activeIndex], overGroupId);
 
             onDataChange(arrayMove(newData, activeIndex, finalIndex));
 
-            // Reset the updating flag after a microtask to allow the update to propagate
             queueMicrotask(() => {
               isUpdatingRef.current = false;
             });
@@ -204,7 +189,6 @@ export function useKanbanDnd<
         return;
       }
 
-      // Same-group reorder
       const oldIndex = data.findIndex((item) => item.id === active.id);
       const newIndex = data.findIndex((item) => item.id === over.id);
 

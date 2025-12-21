@@ -169,10 +169,7 @@ type DialogState =
   | { mode: "delete"; task: Task };
 
 export function ProjectBoard({ data }: ProjectBoardProps) {
-  // Local state for tasks (for DnD)
   const [tasks, setTasks] = useState<Task[]>(data.tasks);
-
-  // Filter state (UI only)
   const [filters, setFilters] = useState<FilterConfig>(DEFAULT_FILTERS);
 
   const togglePriority = useCallback((priority: Priority, checked: boolean) => {
@@ -190,11 +187,7 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
   }, []);
 
   const activeFilterCount = filters.priority.length + filters.tags.length;
-
-  // View state (UI only)
   const [groupBy, setGroupBy] = useState<GroupByField>("column");
-
-  // Dialog state
   const [dialogState, setDialogState] = useState<DialogState>({ mode: "closed" });
 
   const openCreate = useCallback((columnId: string) => {
@@ -221,7 +214,6 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
 
   return (
     <div className={styles.container}>
-      {/* Toolbar */}
       <FilterBar
         filters={filters}
         groupBy={groupBy}
@@ -240,7 +232,6 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
         </div>
       )}
 
-      {/* Board */}
       <KanbanProvider
         columns={data.columns}
         data={tasks}
@@ -281,7 +272,6 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
         )}
       </KanbanProvider>
 
-      {/* Task Dialog */}
       <TaskDialog
         assignees={data.assignees}
         columnId={dialogState.mode === "create" ? dialogState.columnId : undefined}
@@ -294,7 +284,6 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
         task={dialogState.mode === "edit" ? dialogState.task : undefined}
       />
 
-      {/* Delete Dialog */}
       <DeleteDialog
         onClose={closeDialog}
         open={dialogState.mode === "delete"}
