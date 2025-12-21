@@ -145,10 +145,6 @@
   padding: 0;
 }
 
-.calendarPopup[data-slot="popover-popup"] {
-  border-radius: var(--radius);
-}
-
 /* Calendar popover needs higher z-index to appear above dialog */
 :global(body:has([data-kanban-dialog]) [data-slot="popover-positioner"]) {
   z-index: 200;

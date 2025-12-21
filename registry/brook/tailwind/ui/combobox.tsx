@@ -59,7 +59,7 @@ const ComboboxPortal = Combobox.Portal;
 function ComboboxPositioner({ className, ...props }: Combobox.Positioner.Props) {
   return (
     <Combobox.Positioner
-      className={cn("absolute top-full left-0 z-[150] mt-1 w-[var(--anchor-width)]", className)}
+      className={cn("absolute top-full left-0 z-[150] w-[var(--anchor-width)]", className)}
       data-slot="combobox-positioner"
       sideOffset={4}
       {...props}

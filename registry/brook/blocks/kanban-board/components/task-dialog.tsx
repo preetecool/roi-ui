@@ -445,7 +445,7 @@ export function TaskDialog({
                   </span>
                   {form.dueDate ? parseDateString(form.dueDate).toLocaleDateString() : "Due date"}
                 </PopoverTrigger>
-                <PopoverPopup align="start" arrow={false} className={styles.calendarPopup} sideOffset={6}>
+                <PopoverPopup align="start" arrow={false} sideOffset={6}>
                   <Calendar
                     className={styles.calendar}
                     mode="single"

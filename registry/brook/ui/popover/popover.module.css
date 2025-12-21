@@ -38,7 +38,7 @@
   box-sizing: border-box;
   width: var(--popup-width, auto);
   height: var(--popup-height, auto);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   background-color: var(--popover);
   background-clip: padding-box;
@@ -56,7 +56,7 @@
     pointer-events: none;
     position: absolute;
     inset: 0;
-    border-radius: calc(var(--radius-lg) - 1px);
+    border-radius: calc(var(--radius) - 1px);
     box-shadow: 0 1px oklch(from var(--foreground) l c h / 4%);
   }
 
