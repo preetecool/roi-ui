@@ -448,8 +448,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 value={form.assignees}
               >
                 <ComboboxPrimitive.Trigger
-                  nativeButton
-                  render={<Button className={styles.fieldButton} nativeButton size="sm" variant="outline" />}
+                  render={<Button className={styles.fieldButton} size="sm" variant="outline" />}
                 >
                   <span className={styles.fieldIcon}>
                     <Users size={14} />
@@ -543,8 +542,8 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
           <AlertDialogTitle>Delete task?</AlertDialogTitle>
           <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
           <AlertDialogFooter>
-            <AlertDialogClose render={<Button nativeButton variant="outline" />}>Cancel</AlertDialogClose>
-            <AlertDialogClose render={<Button nativeButton variant="destructive" />}>Delete</AlertDialogClose>
+            <AlertDialogClose render={<Button variant="outline" />}>Cancel</AlertDialogClose>
+            <AlertDialogClose render={<Button variant="destructive" />}>Delete</AlertDialogClose>
           </AlertDialogFooter>
         </AlertDialogPopup>
       </AlertDialog.Root>

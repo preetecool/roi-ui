@@ -479,7 +479,6 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 value={form.assignees}
               >
                 <ComboboxPrimitive.Trigger
-                  nativeButton
                   render={
                     <Button
                       className="inline-flex items-center gap-2 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]"
