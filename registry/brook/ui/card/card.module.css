@@ -5,8 +5,7 @@
   flex-direction: column;
   gap: 1.5rem;
   padding: 1.5rem;
-
-  background-color: var(--card);
+  background-color: oklch(from var(--card) l c h / 0.3);
   border: 1px solid oklch(from var(--border) l c h / 0.2);
   position: relative;
   justify-content: space-between;

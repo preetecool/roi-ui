@@ -24,7 +24,6 @@ function AlertDialogBackdrop({ className, ...props }: AlertDialog.Backdrop.Props
 function AlertDialogPopup({ className, children, ...props }: AlertDialog.Popup.Props) {
   return (
     <AlertDialogPortal>
-      <AlertDialogBackdrop />
       <AlertDialog.Popup className={cn(styles.content, className)} data-slot="alert-dialog-popup" {...props}>
         {children}
       </AlertDialog.Popup>
@@ -32,7 +31,16 @@ function AlertDialogPopup({ className, children, ...props }: AlertDialog.Popup.P
   );
 }
 
-const AlertDialogContent = AlertDialogPopup;
+function AlertDialogContent({ className, children, ...props }: AlertDialog.Popup.Props) {
+  return (
+    <AlertDialogPortal>
+      <AlertDialogBackdrop />
+      <AlertDialog.Popup className={cn(styles.content, className)} data-slot="alert-dialog-popup" {...props}>
+        {children}
+      </AlertDialog.Popup>
+    </AlertDialogPortal>
+  );
+}
 
 function AlertDialogTitle({ className, ...props }: AlertDialog.Title.Props) {
   return <AlertDialog.Title className={cn(styles.title, className)} data-slot="alert-dialog-title" {...props} />;
@@ -70,6 +78,7 @@ export {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  AlertDialogPopup,
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTitle,

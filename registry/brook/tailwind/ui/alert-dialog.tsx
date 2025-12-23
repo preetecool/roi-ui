@@ -28,33 +28,38 @@ function AlertDialogBackdrop({ className, ...props }: AlertDialog.Backdrop.Props
   );
 }
 
+const popupStyles = cn(
+  "fixed top-1/2 left-1/2 z-[101] grid max-h-[85vh] w-full max-w-[32rem] overflow-y-auto",
+  "gap-4 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] p-6",
+  "-translate-x-1/2 -translate-y-1/2 bg-[var(--mix-card-5-bg)]",
+  "transition-all duration-150",
+  "data-[starting-style]:-translate-x-1/2 data-[starting-style]:-translate-y-1/2 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+  "data-[ending-style]:-translate-x-1/2 data-[ending-style]:-translate-y-1/2 data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+  "max-sm:-translate-y-1/2 max-sm:top-1/2 max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0",
+  "max-sm:data-[starting-style]:-translate-y-1/2 max-sm:data-[starting-style]:scale-90 max-sm:data-[starting-style]:opacity-0",
+  "max-sm:data-[ending-style]:-translate-y-1/2 max-sm:data-[ending-style]:scale-90 max-sm:data-[ending-style]:opacity-0"
+);
+
 function AlertDialogPopup({ className, children, ...props }: AlertDialog.Popup.Props) {
   return (
     <AlertDialogPortal>
-      <AlertDialogBackdrop />
-      <AlertDialog.Popup
-        className={cn(
-          "fixed top-1/2 left-1/2 z-[101] grid max-h-[85vh] w-full max-w-[32rem] overflow-y-auto",
-          "gap-4 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] p-6",
-          "-translate-x-1/2 -translate-y-1/2 bg-[var(--mix-card-5-bg)]",
-          "transition-all duration-150",
-          "data-[starting-style]:-translate-x-1/2 data-[starting-style]:-translate-y-1/2 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
-          "data-[ending-style]:-translate-x-1/2 data-[ending-style]:-translate-y-1/2 data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
-          "max-sm:-translate-y-1/2 max-sm:top-1/2 max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0",
-          "max-sm:data-[starting-style]:-translate-y-1/2 max-sm:data-[starting-style]:scale-90 max-sm:data-[starting-style]:opacity-0",
-          "max-sm:data-[ending-style]:-translate-y-1/2 max-sm:data-[ending-style]:scale-90 max-sm:data-[ending-style]:opacity-0",
-          className
-        )}
-        data-slot="alert-dialog-popup"
-        {...props}
-      >
+      <AlertDialog.Popup className={cn(popupStyles, className)} data-slot="alert-dialog-popup" {...props}>
         {children}
       </AlertDialog.Popup>
     </AlertDialogPortal>
   );
 }
 
-const AlertDialogContent = AlertDialogPopup;
+function AlertDialogContent({ className, children, ...props }: AlertDialog.Popup.Props) {
+  return (
+    <AlertDialogPortal>
+      <AlertDialogBackdrop />
+      <AlertDialog.Popup className={cn(popupStyles, className)} data-slot="alert-dialog-popup" {...props}>
+        {children}
+      </AlertDialog.Popup>
+    </AlertDialogPortal>
+  );
+}
 
 function AlertDialogTitle({ className, ...props }: AlertDialog.Title.Props) {
   return (
@@ -110,6 +115,7 @@ export {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  AlertDialogPopup,
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTitle,

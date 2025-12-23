@@ -10,7 +10,7 @@ import {
   AlertDialogTitle,
 } from "@/registry/brook/ui/alert-dialog/alert-dialog";
 import { Button } from "@/registry/brook/ui/button/button";
-import styles from "./delete-dialog.module.css";
+import styles from "./kanban.module.css";
 
 export type DeleteDialogProps = {
   open: boolean;
@@ -20,15 +20,15 @@ export type DeleteDialogProps = {
 export function DeleteDialog({ open, onOpenChange }: DeleteDialogProps) {
   return (
     <AlertDialog onOpenChange={onOpenChange} open={open}>
-      <AlertDialogContent data-delete-dialog>
-        <div className={styles.iconWrapper}>
-          <Trash2 className={styles.icon} size={28} />
+      <AlertDialogContent className={styles.deleteDialog}>
+        <div className={styles.deleteIconWrapper}>
+          <Trash2 className={styles.deleteIcon} size={28} />
         </div>
         <AlertDialogTitle>Delete task?</AlertDialogTitle>
         <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
         <AlertDialogFooter>
-          <AlertDialogClose render={<Button nativeButton variant="outline" />}>Cancel</AlertDialogClose>
-          <AlertDialogClose render={<Button nativeButton variant="destructive" />}>Delete</AlertDialogClose>
+          <AlertDialogClose render={<Button variant="outline" />}>Cancel</AlertDialogClose>
+          <AlertDialogClose render={<Button variant="destructive" />}>Delete</AlertDialogClose>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

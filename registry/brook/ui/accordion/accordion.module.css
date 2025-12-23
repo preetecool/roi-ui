@@ -124,7 +124,10 @@
   overflow: hidden;
   transition: height 150ms var(--ease-in-out-quad);
 
-  &[data-starting-style],
+  @starting-style {
+    height: 0;
+  }
+
   &[data-ending-style] {
     height: 0;
   }

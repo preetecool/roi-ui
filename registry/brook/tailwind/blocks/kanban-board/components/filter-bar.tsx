@@ -66,7 +66,7 @@ export function FilterBar({
           <DropdownMenuTrigger
             render={
               <Button
-                className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]"
+                className="border-[oklch(from_var(--border)_l_c_h_/_0.5)]"
                 size="sm"
                 variant="outline"
               >
@@ -130,7 +130,7 @@ export function FilterBar({
           <DropdownMenuTrigger
             render={
               <Button
-                className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]"
+                className="border-[oklch(from_var(--border)_l_c_h_/_0.5)]"
                 size="sm"
                 variant="outline"
               >

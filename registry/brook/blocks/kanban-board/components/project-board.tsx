@@ -22,7 +22,7 @@ import { DeleteDialog } from "./delete-dialog";
 import { ActiveFilters, FilterBar } from "./filter-bar";
 import { KanbanCard, KanbanCardList, KanbanColumn, KanbanColumnHeader, KanbanProvider } from "./kanban";
 import { PriorityIcon } from "./priority-icon";
-import styles from "./project-board.module.css";
+import styles from "./kanban.module.css";
 import { TaskDialog } from "./task-dialog";
 
 export type ProjectBoardProps = {
