@@ -2,6 +2,15 @@
   max-width: 660px;
   overflow: visible;
   padding: 1.25rem;
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
+}
+
+/* Style parent dialog when nested delete dialog is open */
+.dialogPopup[data-nested-dialog-open] {
+  transform: translate(-50%, -50%) scale(0.97);
+  opacity: 0.4;
 }
 
 .taskForm[data-slot="form"] {
@@ -55,25 +64,39 @@
   border-radius: var(--radius-sm);
 }
 
-.subtaskCheckbox {
+.subtaskCheckbox[data-slot="checkbox-root"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 16px;
+  height: 16px;
   padding: 0;
-  border: none;
+  border: 1.5px solid var(--muted-foreground);
+  border-radius: 4px;
   background: transparent;
   color: var(--muted-foreground);
   cursor: pointer;
   flex-shrink: 0;
-  transition: color 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
 }
 
-.subtaskCheckbox:hover {
-  color: var(--foreground);
+.subtaskCheckbox[data-slot="checkbox-root"]:hover {
+  border-color: var(--foreground);
 }
 
-.subtaskChecked {
-  color: var(--primary);
+.subtaskCheckbox[data-slot="checkbox-root"][data-checked] {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.subtaskCheckbox [data-slot="checkbox-indicator"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .subtaskInput {
@@ -94,6 +117,27 @@
 .subtaskInput[data-completed="true"] {
   text-decoration: line-through;
   color: var(--muted-foreground);
+}
+
+.subtaskInput[data-error="true"] {
+  color: var(--destructive);
+}
+
+.subtaskInput[data-error="true"]::placeholder {
+  color: var(--destructive);
+  opacity: 0.8;
+}
+
+.subtaskItemWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtaskError {
+  font-size: 0.75rem;
+  color: var(--destructive);
+  margin-left: 1.75rem;
+  margin-top: 0.125rem;
 }
 
 .subtaskRemove {
@@ -145,6 +189,10 @@
   padding: 0;
 }
 
+.calendarPopup[data-slot="popover-popup"] {
+  border-radius: var(--radius);
+}
+
 /* Calendar popover needs higher z-index to appear above dialog */
 :global(body:has([data-kanban-dialog]) [data-slot="popover-positioner"]) {
   z-index: 200;
@@ -164,10 +212,25 @@
   gap: 0.5rem;
 }
 
+/* Highlight triggers on hover and when popup is open */
+.fieldRow [data-slot="select-trigger"]:hover,
+.fieldRow [data-slot="popover-trigger"]:hover,
+.fieldRow [data-slot="button"]:hover,
+.fieldRow [data-slot="select-trigger"][data-popup-open],
+.fieldRow [data-slot="popover-trigger"][data-popup-open],
+.fieldRow [data-slot="combobox-trigger"][data-popup-open],
+.fieldRow [data-popup-open] {
+  background-color: var(--accent);
+}
+
 .fieldButton [data-slot="select-value"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.fieldPlaceholder {
+  color: var(--muted-foreground);
 }
 
 .fieldIcon {
@@ -184,7 +247,6 @@
 .tagChips {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
 }
 
 .tagChip {
@@ -192,6 +254,10 @@
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.tagChips .tagChip:not(:first-child) {
+  margin-left: -3px;
 }
 
 .tagItemContent {
@@ -247,7 +313,6 @@
 
 .deleteButton[data-slot="button"] {
   color: var(--muted-foreground);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
 }
 
 .deleteButton[data-slot="button"]:hover {
@@ -345,4 +410,20 @@
   min-width: 200px;
   border: 0.5px solid oklch(from var(--border) l c h / 0.4);
   box-shadow: var(--shadow-border-stack);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.inlineField[data-slot="field"] {
+  display: contents;
 }

@@ -98,10 +98,7 @@ export function KanbanProvider<
     onDragOver,
   });
 
-  const getItemsForColumn = useMemo(
-    () => (columnId: string) => getTasksForColumn(data, columnId) as T[],
-    [data]
-  );
+  const getItemsForColumn = useMemo(() => (columnId: string) => getTasksForColumn(data, columnId) as T[], [data]);
 
   const contextValue = useMemo<KanbanContextValue<T>>(
     () => ({

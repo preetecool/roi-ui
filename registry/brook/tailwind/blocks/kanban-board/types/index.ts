@@ -41,5 +41,5 @@ export type GroupByField = "column" | "priority" | "tag";
 export type KanbanData = {
   tasks: Task[];
   columns: Column[];
-  assignees: Assignee[];
+  teamMembers: Assignee[];
 };

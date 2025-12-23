@@ -88,9 +88,7 @@
       "columnId": "done",
       "priority": "high",
       "tags": ["feature"],
-      "assignees": [
-        { "id": "user-2", "name": "James Chen" }
-      ],
+      "assignees": [{ "id": "user-2", "name": "James Chen" }],
       "subtasks": [
         {
           "id": "subtask-3-1",

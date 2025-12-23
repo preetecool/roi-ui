@@ -59,17 +59,11 @@
 .card[data-slot="card"] {
   gap: 0.5rem;
   padding: 1rem;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.3);
 }
 
 .card:hover {
   background-color: oklch(from var(--accent) l c h / 0.15);
   box-shadow: var(--shadow-border-stack);
-}
-
-.card:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
 }
 
 .cardDragging {
@@ -118,6 +112,14 @@
 .cardWrapper {
   display: block;
   position: relative;
+  border-radius: var(--radius);
+}
+
+.cardWrapper:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--ring);
 }
 
 .cardTrigger {

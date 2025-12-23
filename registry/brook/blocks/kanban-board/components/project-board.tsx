@@ -37,7 +37,7 @@ const COLUMN_ICONS: Record<string, React.ReactNode> = {
 };
 
 function getDaysLeft(dueDate: string | undefined, now: Date | null): number | null {
-  if (!dueDate || !now) {
+  if (!(dueDate && now)) {
     return null;
   }
   const due = new Date(dueDate);
@@ -215,12 +215,6 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
     setDialogState({ mode: "closed" });
   }, []);
 
-  const handleDeleteFromEdit = useCallback(() => {
-    if (dialogState.mode === "edit") {
-      setDialogState({ mode: "delete", task: dialogState.task });
-    }
-  }, [dialogState]);
-
   return (
     <div className={styles.container}>
       <FilterBar
@@ -282,22 +276,17 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
       </KanbanProvider>
 
       <TaskDialog
-        assignees={data.assignees}
+        assignees={data.teamMembers}
         columnId={dialogState.mode === "create" ? dialogState.columnId : undefined}
         columns={data.columns}
         groupBy={groupBy}
         mode={dialogState.mode === "create" ? "create" : "edit"}
         onClose={closeDialog}
-        onDelete={handleDeleteFromEdit}
         open={dialogState.mode === "create" || dialogState.mode === "edit"}
         task={dialogState.mode === "edit" ? dialogState.task : undefined}
       />
 
-      <DeleteDialog
-        onClose={closeDialog}
-        open={dialogState.mode === "delete"}
-        title={dialogState.mode === "delete" ? dialogState.task.title : ""}
-      />
+      <DeleteDialog onOpenChange={(open) => !open && closeDialog()} open={dialogState.mode === "delete"} />
     </div>
   );
 }

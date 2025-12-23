@@ -37,7 +37,7 @@ const COLUMN_ICONS: Record<string, React.ReactNode> = {
 };
 
 function getDaysLeft(dueDate: string | undefined, now: Date | null): number | null {
-  if (!dueDate || !now) {
+  if (!(dueDate && now)) {
     return null;
   }
   const due = new Date(dueDate);
@@ -71,13 +71,13 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
       return (
         <Button
           aria-label="Edit assignees"
-          className="flex items-center h-auto p-0 bg-transparent border-none hover:bg-transparent"
+          className="flex h-auto items-center border-none bg-transparent p-0 hover:bg-transparent"
           onClick={() => onEdit?.(task)}
           variant="ghost"
         >
           {task.assignees.slice(0, 3).map((user) => (
             <div className="-ml-2 first:ml-0" key={user.id}>
-              <Avatar className="w-6 h-6 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.1)] text-[0.5rem]">
+              <Avatar className="h-6 w-6 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.1)] text-[0.5rem]">
                 <AvatarImage alt={user.name} src={user.avatar} />
                 <AvatarFallback>
                   {user.name
@@ -89,7 +89,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
             </div>
           ))}
           {task.assignees.length > 3 && (
-            <div className="flex items-center justify-center w-6 h-6 -ml-2 rounded-full bg-muted border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] text-[0.5rem] font-medium text-muted-foreground">
+            <div className="-ml-2 flex h-6 w-6 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-muted font-medium text-[0.5rem] text-muted-foreground">
               +{task.assignees.length - 3}
             </div>
           )}
@@ -100,14 +100,14 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
     return (
       <Button
         aria-label="Add assignees"
-        className="flex items-center h-auto p-0 bg-transparent border-none hover:bg-transparent"
+        className="flex h-auto items-center border-none bg-transparent p-0 hover:bg-transparent"
         onClick={() => onEdit?.(task)}
         variant="ghost"
       >
-        <div className="flex items-center justify-center w-6 h-6 rounded-full border border-dashed border-[oklch(from_var(--border)_l_c_h_/_0.4)] text-muted-foreground cursor-pointer transition-all duration-150 hover:border-[oklch(from_var(--border)_l_c_h_/_0.6)] hover:text-foreground">
+        <div className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-[oklch(from_var(--border)_l_c_h_/_0.4)] border-dashed text-muted-foreground transition-all duration-150 hover:border-[oklch(from_var(--border)_l_c_h_/_0.6)] hover:text-foreground">
           <Plus aria-hidden="true" size={8} />
         </div>
-        <div className="flex items-center justify-center w-6 h-6 -ml-2 rounded-full bg-[var(--mix-card-33-bg)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] text-muted-foreground">
+        <div className="-ml-2 flex h-6 w-6 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] text-muted-foreground">
           <User aria-hidden="true" size={10} />
         </div>
       </Button>
@@ -128,7 +128,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
               {task.tags.map((tag) => (
                 <Badge key={tag} size="sm" variant="outline">
                   <span
-                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                    className="h-1.5 w-1.5 shrink-0 rounded-full"
                     style={{ backgroundColor: TAG_COLORS[tag as Tag] }}
                   />
                   {capitalize(tag)}
@@ -138,8 +138,8 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
           )}
         </div>
       </CardContent>
-      <div className="flex flex-col gap-1 -mb-1" onPointerDown={(e) => e.stopPropagation()}>
-        <div className="pt-2 pb-2 -mx-4">
+      <div className="-mb-1 flex flex-col gap-1" onPointerDown={(e) => e.stopPropagation()}>
+        <div className="-mx-4 pt-2 pb-2">
           <div className="h-px bg-[oklch(from_var(--border)_l_c_h_/_0.2)]" />
         </div>
         <CardFooter className="flex items-center justify-between gap-2 p-0">
@@ -148,8 +148,8 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
             <Button
               aria-label="Comments"
               className={cn(
-                "flex items-center justify-center gap-1 px-2 py-1 h-auto",
-                "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] rounded-[calc(var(--radius)-2px)]",
+                "flex h-auto items-center justify-center gap-1 px-2 py-1",
+                "rounded-[calc(var(--radius)-2px)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]",
                 "text-muted-foreground transition-all duration-150",
                 "hover:bg-[var(--mix-card-50-bg)] hover:text-foreground"
               )}
@@ -162,8 +162,8 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
               <Button
                 aria-label={`${completedSubtasks} of ${subtaskCount} subtasks completed`}
                 className={cn(
-                  "flex items-center justify-center gap-1 px-2 py-1 h-auto",
-                  "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] rounded-[calc(var(--radius)-2px)]",
+                  "flex h-auto items-center justify-center gap-1 px-2 py-1",
+                  "rounded-[calc(var(--radius)-2px)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]",
                   "text-muted-foreground transition-all duration-150",
                   "hover:bg-[var(--mix-card-50-bg)] hover:text-foreground"
                 )}
@@ -171,7 +171,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
                 variant="ghost"
               >
                 <ListTodo aria-hidden="true" size={12} />
-                <span className="text-[0.6875rem] font-medium leading-none">
+                <span className="font-medium text-[0.6875rem] leading-none">
                   {completedSubtasks}/{subtaskCount}
                 </span>
               </Button>
@@ -181,8 +181,8 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
             <Button
               aria-label={`${daysLeft} days left`}
               className={cn(
-                "flex items-center justify-center gap-1 px-2 py-1 h-auto",
-                "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] rounded-[calc(var(--radius)-2px)]",
+                "flex h-auto items-center justify-center gap-1 px-2 py-1",
+                "rounded-[calc(var(--radius)-2px)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]",
                 "text-muted-foreground transition-all duration-150",
                 "hover:bg-[var(--mix-card-50-bg)] hover:text-foreground"
               )}
@@ -192,7 +192,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
               <Calendar aria-hidden="true" size={12} />
               <span
                 className={cn(
-                  "text-[0.6875rem] font-medium leading-none",
+                  "font-medium text-[0.6875rem] leading-none",
                   daysLeft >= 0 && daysLeft <= 2 && "text-[var(--warning)]",
                   daysLeft < 0 && "text-destructive"
                 )}
@@ -260,14 +260,8 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
     setDialogState({ mode: "closed" });
   }, []);
 
-  const handleDeleteFromEdit = useCallback(() => {
-    if (dialogState.mode === "edit") {
-      setDialogState({ mode: "delete", task: dialogState.task });
-    }
-  }, [dialogState]);
-
   return (
-    <div className="flex flex-col flex-1 min-h-0">
+    <div className="flex min-h-0 flex-1 flex-col">
       {/* Toolbar */}
       <FilterBar
         filters={filters}
@@ -309,7 +303,7 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
                     {COLUMN_ICONS[column.id]}
                   </span>
                 ) : null}
-                <h2 className="text-sm font-semibold m-0">{column.name}</h2>
+                <h2 className="m-0 font-semibold text-sm">{column.name}</h2>
               </div>
               <Button
                 aria-label={`Add task to ${column.name}`}
@@ -334,23 +328,18 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
 
       {/* Task Dialog */}
       <TaskDialog
-        assignees={data.assignees}
+        assignees={data.teamMembers}
         columnId={dialogState.mode === "create" ? dialogState.columnId : undefined}
         columns={data.columns}
         groupBy={groupBy}
         mode={dialogState.mode === "create" ? "create" : "edit"}
         onClose={closeDialog}
-        onDelete={handleDeleteFromEdit}
         open={dialogState.mode === "create" || dialogState.mode === "edit"}
         task={dialogState.mode === "edit" ? dialogState.task : undefined}
       />
 
-      {/* Delete Dialog */}
-      <DeleteDialog
-        onClose={closeDialog}
-        open={dialogState.mode === "delete"}
-        title={dialogState.mode === "delete" ? dialogState.task.title : ""}
-      />
+      {/* Delete Dialog (standalone - from context menu) */}
+      <DeleteDialog onOpenChange={(open) => !open && closeDialog()} open={dialogState.mode === "delete"} />
     </div>
   );
 }

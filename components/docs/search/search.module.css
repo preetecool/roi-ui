@@ -25,7 +25,8 @@
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 
-[data-theme="dark"] .commandWrapper[data-slot="dialog-popup"]:not([data-starting-style]) {
+[data-theme="dark"]
+  .commandWrapper[data-slot="dialog-popup"]:not([data-starting-style]) {
   box-shadow: 0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
