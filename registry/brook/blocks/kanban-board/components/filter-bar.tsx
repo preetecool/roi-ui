@@ -22,7 +22,7 @@ import {
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
 import { capitalize, cn, GROUP_BY_ITEMS, PRIORITY_ITEMS, TAG_ITEMS } from "../lib/project";
 import type { FilterConfig, GroupByField, Priority } from "../types";
-import styles from "./filter-bar.module.css";
+import styles from "./kanban.module.css";
 
 function CheckIcon() {
   return <Check size={12} />;
@@ -59,13 +59,13 @@ export function FilterBar({
   const tagSet = useMemo(() => new Set(filters.tags), [filters.tags]);
 
   return (
-    <div className={cn(styles.container, className)} data-slot="filter-bar">
-      <div className={styles.bar}>
+    <div className={cn(styles.filterContainer, className)} data-slot="filter-bar">
+      <div className={styles.filterBar}>
         {/* Filter Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button size="sm" variant="outline">
+              <Button className={styles.filterTrigger} size="sm" variant="outline">
                 <Filter size={14} style={{ color: "var(--muted-foreground)" }} />
                 Filters
                 {activeFilterCount > 0 && (
@@ -125,7 +125,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button size="sm" variant="outline">
+              <Button className={styles.filterTrigger} size="sm" variant="outline">
                 <Layers size={14} style={{ color: "var(--muted-foreground)" }} />
                 {currentGroupByLabel}
               </Button>

@@ -1,5 +1,6 @@
 "use client";
 
+import { AlertDialog } from "@base-ui/react/alert-dialog";
 import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import {
   Calendar as CalendarIcon,
@@ -12,10 +13,18 @@ import {
   Command,
   Plus,
   Tag as TagIcon,
+  Trash2,
   Users,
   X,
 } from "lucide-react";
 import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import {
+  AlertDialogClose,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogPopup,
+  AlertDialogTitle,
+} from "@/registry/brook/ui/alert-dialog/alert-dialog";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Calendar } from "@/registry/brook/ui/calendar/calendar";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
@@ -51,8 +60,7 @@ import {
 } from "@/registry/brook/ui/select/select";
 import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
-import { DeleteDialog } from "./delete-dialog";
-import styles from "./task-dialog.module.css";
+import styles from "./kanban.module.css";
 
 function parseDateString(dateStr: string): Date {
   const [year, month, day] = dateStr.split("-").map(Number);
@@ -212,7 +220,7 @@ export type TaskDialogProps = {
 
 export function TaskDialog({ open, mode, task, columnId, assignees, columns, groupBy, onClose }: TaskDialogProps) {
   const [form, setForm] = useState<TaskFormState>(defaultFormState);
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
   const updateField = <K extends keyof TaskFormState>(field: K, value: TaskFormState[K]) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -498,7 +506,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
               {mode === "edit" && (
                 <Button
                   className={styles.deleteButton}
-                  onClick={() => setShowDeleteDialog(true)}
+                  onClick={() => setDeleteConfirmOpen(true)}
                   size="sm"
                   type="button"
                   variant="outline"
@@ -523,11 +531,23 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
           >
             <X aria-hidden="true" size={16} />
           </Button>
-
-          {/* Nested delete confirmation dialog */}
-          <DeleteDialog onOpenChange={setShowDeleteDialog} open={showDeleteDialog} />
         </DialogPopup>
       </DialogPortal>
+
+      {/* Nested delete confirmation dialog */}
+      <AlertDialog.Root onOpenChange={setDeleteConfirmOpen} open={deleteConfirmOpen}>
+        <AlertDialogPopup className={styles.deleteDialog}>
+          <div className={styles.deleteIconWrapper}>
+            <Trash2 className={styles.deleteIcon} size={28} />
+          </div>
+          <AlertDialogTitle>Delete task?</AlertDialogTitle>
+          <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+          <AlertDialogFooter>
+            <AlertDialogClose render={<Button nativeButton variant="outline" />}>Cancel</AlertDialogClose>
+            <AlertDialogClose render={<Button nativeButton variant="destructive" />}>Delete</AlertDialogClose>
+          </AlertDialogFooter>
+        </AlertDialogPopup>
+      </AlertDialog.Root>
     </Dialog>
   );
 }
