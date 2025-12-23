@@ -523,6 +523,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
 
           <Button
             aria-label="Close dialog"
+            nativeButton
             className={styles.closeButton}
             render={<DialogClose />}
             size="icon"
