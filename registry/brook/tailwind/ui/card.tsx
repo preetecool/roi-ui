@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils-tailwind";
 const cardVariants = cva(
   [
     "flex flex-col gap-6 rounded-[var(--radius)] p-6 text-foreground",
-    "relative justify-between border border-border/40 bg-[var(--mix-card-33-bg)]",
+    "relative justify-between border border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[oklch(from_var(--card)_l_c_h_/_0.3)]",
   ],
   {
     variants: {
