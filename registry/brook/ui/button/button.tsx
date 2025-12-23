@@ -129,12 +129,16 @@ function ButtonRoot({
     </>
   );
 
+  // Auto-detect nativeButton based on render prop if not explicitly set
+  const isNativeButton = nativeButton ?? (render ? false : undefined);
+
   return (
     <Button
       className={cn(buttonVariants({ variant, size }), loading ? styles.loading : null, className)}
       data-slot="button"
       disabled={props.disabled || loading}
       focusableWhenDisabled={loading}
+      nativeButton={isNativeButton}
       {...(render !== undefined && { render })}
       {...props}
     >
