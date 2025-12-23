@@ -21,8 +21,8 @@ import {
   DropdownMenuSpacer,
   DropdownMenuTrigger,
 } from "@/registry/brook/tailwind/ui/dropdown-menu";
-import type { FilterConfig, GroupByField, Priority } from "../types";
 import { capitalize, GROUP_BY_ITEMS, PRIORITY_ITEMS, TAG_ITEMS } from "../lib/project";
+import type { FilterConfig, GroupByField, Priority } from "../types";
 
 function CheckIcon() {
   return <Check size={12} />;
@@ -59,14 +59,18 @@ export function FilterBar({
   const tagSet = useMemo(() => new Set(filters.tags), [filters.tags]);
 
   return (
-    <div className={cn("flex flex-col gap-2 py-3 px-4", className)} data-slot="filter-bar">
-      <div className="flex gap-2 items-center">
+    <div className={cn("flex flex-col gap-2 px-4 py-3", className)} data-slot="filter-bar">
+      <div className="flex items-center gap-2">
         {/* Filter Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline">
-                <Filter size={14} className="text-muted-foreground" />
+              <Button
+                className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]"
+                size="sm"
+                variant="outline"
+              >
+                <Filter className="text-muted-foreground" size={14} />
                 Filters
                 {activeFilterCount > 0 && (
                   <Badge size="sm" variant="secondary">
@@ -125,8 +129,12 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]" size="sm" variant="outline">
-                <Layers size={14} className="text-muted-foreground" />
+              <Button
+                className="border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]"
+                size="sm"
+                variant="outline"
+              >
+                <Layers className="text-muted-foreground" size={14} />
                 {currentGroupByLabel}
               </Button>
             }
@@ -180,11 +188,11 @@ export function ActiveFilters({ className, filters, onRemovePriority, onRemoveTa
   return (
     <div className={cn("flex flex-wrap gap-2", className)} data-slot="active-filters">
       {filters.priority.map((p) => (
-        <Badge className="flex gap-1 items-center" key={p} variant="secondary">
+        <Badge className="flex items-center gap-1" key={p} variant="secondary">
           {capitalize(p)}
           <button
             aria-label={`Remove ${capitalize(p)} priority filter`}
-            className="flex items-center justify-center p-0 border-0 bg-transparent rounded-full cursor-pointer opacity-70 transition-opacity duration-150 hover:opacity-100"
+            className="flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 opacity-70 transition-opacity duration-150 hover:opacity-100"
             onClick={() => onRemovePriority(p)}
             type="button"
           >
@@ -193,11 +201,11 @@ export function ActiveFilters({ className, filters, onRemovePriority, onRemoveTa
         </Badge>
       ))}
       {filters.tags.map((tag) => (
-        <Badge className="flex gap-1 items-center" key={tag} variant="secondary">
+        <Badge className="flex items-center gap-1" key={tag} variant="secondary">
           {capitalize(tag)}
           <button
             aria-label={`Remove ${capitalize(tag)} tag filter`}
-            className="flex items-center justify-center p-0 border-0 bg-transparent rounded-full cursor-pointer opacity-70 transition-opacity duration-150 hover:opacity-100"
+            className="flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 opacity-70 transition-opacity duration-150 hover:opacity-100"
             onClick={() => onRemoveTag(tag)}
             type="button"
           >

@@ -75,7 +75,13 @@ function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeP
       {hasChildren && isOpen && (
         <div className={styles.children}>
           {node.children!.map((child) => (
-            <FileTreeNode depth={depth + 1} key={child.path} node={child} onSelect={onSelect} selectedPath={selectedPath} />
+            <FileTreeNode
+              depth={depth + 1}
+              key={child.path}
+              node={child}
+              onSelect={onSelect}
+              selectedPath={selectedPath}
+            />
           ))}
         </div>
       )}

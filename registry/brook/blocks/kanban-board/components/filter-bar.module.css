@@ -11,10 +11,6 @@
   align-items: center;
 }
 
-.bar [data-slot="button"] {
-  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
-}
-
 .filterPills {
   display: flex;
   flex-wrap: wrap;

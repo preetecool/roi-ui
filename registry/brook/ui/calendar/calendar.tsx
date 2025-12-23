@@ -3,8 +3,8 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
 import { type DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
-import type { Button } from "@/registry/brook/ui/button/button";
 import { cn } from "@/lib/utils";
+import type { Button } from "@/registry/brook/ui/button/button";
 import styles from "./calendar.module.css";
 
 interface CalendarDayButtonProps extends React.ComponentProps<typeof DayButton> {}

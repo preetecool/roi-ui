@@ -98,10 +98,7 @@ export function KanbanProvider<
     onDragOver,
   });
 
-  const getItemsForColumn = useMemo(
-    () => (columnId: string) => getTasksForColumn(data, columnId) as T[],
-    [data]
-  );
+  const getItemsForColumn = useMemo(() => (columnId: string) => getTasksForColumn(data, columnId) as T[], [data]);
 
   const contextValue = useMemo<KanbanContextValue<T>>(
     () => ({
@@ -150,10 +147,7 @@ export function KanbanColumn({ id, className, children, ...props }: KanbanColumn
 
   return (
     <div
-      className={cn(
-        "flex w-80 shrink-0 flex-col rounded-[var(--radius)] bg-[var(--col-background)]",
-        className
-      )}
+      className={cn("flex w-80 shrink-0 flex-col rounded-[var(--radius)] bg-[var(--col-background)]", className)}
       data-slot="kanban-column"
       ref={setNodeRef}
       {...props}
@@ -239,7 +233,7 @@ export function KanbanCard<T extends KanbanItemProps = KanbanItemProps>({
         "cursor-grab touch-manipulation bg-background p-4 transition-[box-shadow,border-color] duration-150 ease-out",
         "hover:bg-[oklch(from_var(--accent)_l_c_h_/_0.15)] hover:shadow-[var(--shadow-border-stack)]",
         "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
-        "[&[data-slot=card]]:gap-2 [&[data-slot=card]]:p-4 [&[data-slot=card]]:border-[0.5px] [&[data-slot=card]]:border-[oklch(from_var(--border)_l_c_h_/_0.3)]",
+        "[&[data-slot=card]]:gap-2 [&[data-slot=card]]:border-[0.5px] [&[data-slot=card]]:border-[oklch(from_var(--border)_l_c_h_/_0.3)] [&[data-slot=card]]:p-4",
         "[&_[data-slot=card-header]]:flex [&_[data-slot=card-header]]:items-start [&_[data-slot=card-header]]:justify-between [&_[data-slot=card-header]]:gap-2 [&_[data-slot=card-header]]:p-0",
         "[&_[data-slot=card-title]]:font-medium [&_[data-slot=card-title]]:text-foreground [&_[data-slot=card-title]]:text-sm [&_[data-slot=card-title]]:leading-[1.4]",
         "[&_[data-slot=card-content]]:flex [&_[data-slot=card-content]]:flex-col [&_[data-slot=card-content]]:gap-2 [&_[data-slot=card-content]]:p-0",

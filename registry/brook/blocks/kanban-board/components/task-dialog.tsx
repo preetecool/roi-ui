@@ -3,6 +3,7 @@
 import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import {
   Calendar as CalendarIcon,
+  Check,
   CheckCircle2,
   Circle,
   CircleAlert,
@@ -10,15 +11,15 @@ import {
   CircleDot,
   Command,
   Plus,
-  Square,
-  SquareCheck,
   Tag as TagIcon,
   Users,
   X,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Calendar } from "@/registry/brook/ui/calendar/calendar";
+import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
+import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
 import {
   Combobox,
   ComboboxEmpty,
@@ -50,6 +51,7 @@ import {
 } from "@/registry/brook/ui/select/select";
 import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
+import { DeleteDialog } from "./delete-dialog";
 import styles from "./task-dialog.module.css";
 
 function parseDateString(dateStr: string): Date {
@@ -107,6 +109,87 @@ function TagDot({ tag }: { tag: Tag }) {
   return <span className={styles.tagChip} style={{ backgroundColor: TAG_COLORS[tag] }} />;
 }
 
+type SubtaskSectionProps = {
+  subtasks: Subtask[];
+  onAddSubtask: () => void;
+  onUpdateSubtask: (id: string, updates: Partial<Subtask>) => void;
+  onRemoveSubtask: (id: string) => void;
+};
+
+function SubtaskSection({ subtasks, onAddSubtask, onUpdateSubtask, onRemoveSubtask }: SubtaskSectionProps) {
+  const labelId = useId();
+
+  const completedIds = useMemo(() => subtasks.filter((s) => s.completed).map((s) => s.id), [subtasks]);
+  const allIds = useMemo(() => subtasks.map((s) => s.id), [subtasks]);
+
+  const handleValueChange = (newValue: string[]) => {
+    const newSet = new Set(newValue);
+    for (const subtask of subtasks) {
+      const shouldBeCompleted = newSet.has(subtask.id);
+      if (subtask.completed !== shouldBeCompleted) {
+        onUpdateSubtask(subtask.id, { completed: shouldBeCompleted });
+      }
+    }
+  };
+
+  return (
+    <div className={styles.subtasksSection}>
+      <span className={styles.srOnly} id={labelId}>
+        Subtasks
+      </span>
+      <CheckboxGroup
+        allValues={allIds}
+        aria-labelledby={labelId}
+        onValueChange={handleValueChange}
+        value={completedIds}
+      >
+        {subtasks.map((subtask) => (
+          <div className={styles.subtaskItem} key={subtask.id}>
+            <Checkbox className={styles.subtaskCheckbox} value={subtask.id}>
+              <CheckboxIndicator>
+                <Check aria-hidden="true" size={12} strokeWidth={3} />
+              </CheckboxIndicator>
+            </Checkbox>
+            <input
+              autoFocus={!subtask.title}
+              className={styles.subtaskInput}
+              data-completed={subtask.completed}
+              onChange={(e) => onUpdateSubtask(subtask.id, { title: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  onAddSubtask();
+                }
+                if (e.key === "Backspace" && !subtask.title) {
+                  e.preventDefault();
+                  onRemoveSubtask(subtask.id);
+                }
+              }}
+              placeholder="Subtask title..."
+              value={subtask.title}
+            />
+            <button
+              aria-label="Remove subtask"
+              className={styles.subtaskRemove}
+              onClick={() => onRemoveSubtask(subtask.id)}
+              type="button"
+            >
+              <X aria-hidden="true" size={14} />
+            </button>
+          </div>
+        ))}
+      </CheckboxGroup>
+      <button className={styles.addSubtaskButton} onClick={onAddSubtask} type="button">
+        <Plus aria-hidden="true" size={14} />
+        <span>Add subtask</span>
+        <Kbd size="sm">
+          <Command aria-hidden="true" size={10} />L
+        </Kbd>
+      </button>
+    </div>
+  );
+}
+
 export type TaskDialogProps = {
   open: boolean;
   mode: "create" | "edit";
@@ -125,21 +208,11 @@ export type TaskDialogProps = {
   columns: Column[];
   groupBy: GroupByField;
   onClose: () => void;
-  onDelete?: () => void;
 };
 
-export function TaskDialog({
-  open,
-  mode,
-  task,
-  columnId,
-  assignees,
-  columns,
-  groupBy,
-  onClose,
-  onDelete,
-}: TaskDialogProps) {
+export function TaskDialog({ open, mode, task, columnId, assignees, columns, groupBy, onClose }: TaskDialogProps) {
   const [form, setForm] = useState<TaskFormState>(defaultFormState);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const updateField = <K extends keyof TaskFormState>(field: K, value: TaskFormState[K]) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -235,56 +308,12 @@ export function TaskDialog({
               />
             </Field>
 
-            <div className={styles.subtasksSection}>
-              {form.subtasks.map((subtask) => (
-                <div className={styles.subtaskItem} key={subtask.id}>
-                  <button
-                    className={styles.subtaskCheckbox}
-                    onClick={() => updateSubtask(subtask.id, { completed: !subtask.completed })}
-                    type="button"
-                  >
-                    {subtask.completed ? (
-                      <SquareCheck className={styles.subtaskChecked} size={16} />
-                    ) : (
-                      <Square size={16} />
-                    )}
-                  </button>
-                  <input
-                    autoFocus={!subtask.title}
-                    className={styles.subtaskInput}
-                    data-completed={subtask.completed}
-                    onChange={(e) => updateSubtask(subtask.id, { title: e.target.value })}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        addSubtask();
-                      }
-                      if (e.key === "Backspace" && !subtask.title) {
-                        e.preventDefault();
-                        removeSubtask(subtask.id);
-                      }
-                    }}
-                    placeholder="Subtask title..."
-                    value={subtask.title}
-                  />
-                  <button
-                    aria-label="Remove subtask"
-                    className={styles.subtaskRemove}
-                    onClick={() => removeSubtask(subtask.id)}
-                    type="button"
-                  >
-                    <X size={14} />
-                  </button>
-                </div>
-              ))}
-              <button className={styles.addSubtaskButton} onClick={addSubtask} type="button">
-                <Plus size={14} />
-                <span>Add subtask</span>
-                <Kbd size="sm">
-                  <Command size={10} />L
-                </Kbd>
-              </button>
-            </div>
+            <SubtaskSection
+              onAddSubtask={addSubtask}
+              onRemoveSubtask={removeSubtask}
+              onUpdateSubtask={updateSubtask}
+              subtasks={form.subtasks}
+            />
 
             <div className={styles.fieldRow}>
               <Select
@@ -412,7 +441,7 @@ export function TaskDialog({
               >
                 <ComboboxPrimitive.Trigger
                   nativeButton
-                  render={<Button className={styles.fieldButton} size="sm" variant="outline" />}
+                  render={<Button className={styles.fieldButton} nativeButton size="sm" variant="outline" />}
                 >
                   <span className={styles.fieldIcon}>
                     <Users size={14} />
@@ -466,10 +495,10 @@ export function TaskDialog({
             </div>
 
             <div className={styles.dialogFooter}>
-              {mode === "edit" && onDelete && (
+              {mode === "edit" && (
                 <Button
                   className={styles.deleteButton}
-                  onClick={onDelete}
+                  onClick={() => setShowDeleteDialog(true)}
                   size="sm"
                   type="button"
                   variant="outline"
@@ -494,6 +523,9 @@ export function TaskDialog({
           >
             <X aria-hidden="true" size={16} />
           </Button>
+
+          {/* Nested delete confirmation dialog */}
+          <DeleteDialog onOpenChange={setShowDeleteDialog} open={showDeleteDialog} />
         </DialogPopup>
       </DialogPortal>
     </Dialog>

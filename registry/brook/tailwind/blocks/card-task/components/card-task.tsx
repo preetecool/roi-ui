@@ -92,7 +92,7 @@ function AvatarGroup({ users, maxDisplay = 3 }: { users: User[]; maxDisplay?: nu
           </Tooltip>
         ))}
         {remainingCount > 0 && (
-          <div className="-ml-1.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--card)] bg-[var(--muted)] text-[0.625rem] font-semibold text-[var(--muted-foreground)]">
+          <div className="-ml-1.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--card)] bg-[var(--muted)] font-semibold text-[0.625rem] text-[var(--muted-foreground)]">
             +{remainingCount}
           </div>
         )}

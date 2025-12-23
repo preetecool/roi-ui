@@ -219,7 +219,7 @@ function DropdownMenuGroupLabel({ className, ...props }: Menu.GroupLabel.Props) 
   return (
     <Menu.GroupLabel
       className={cn(
-        "cursor-default select-none px-3 py-2 text-xs font-medium leading-4 text-muted-foreground uppercase tracking-wide",
+        "cursor-default select-none px-3 py-2 font-medium text-muted-foreground text-xs uppercase leading-4 tracking-wide",
         className
       )}
       data-slot="menu-grouplabel"

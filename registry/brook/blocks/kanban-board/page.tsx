@@ -7,7 +7,7 @@ import type { KanbanData, Task } from "./types";
 const data: KanbanData = {
   columns: seedData.columns,
   tasks: seedData.tasks as Task[],
-  assignees: seedData.assignees,
+  teamMembers: seedData.assignees,
 };
 
 export default function Page() {

@@ -520,9 +520,7 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     const cssModulesFiles = await readBlockFiles(files, name);
 
     // Find tailwind version
-    const tailwindEntry = tailwindBlocksEntries.find(
-      (e) => e.name.replace(FILE_EXTENSION_REGEX, "") === name
-    );
+    const tailwindEntry = tailwindBlocksEntries.find((e) => e.name.replace(FILE_EXTENSION_REGEX, "") === name);
     let tailwindFiles: BlockFileData[] = [];
 
     if (tailwindEntry) {

@@ -26,7 +26,15 @@ export function AiChatSkeleton({ className }: SkeletonProps) {
       <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="40" x="60" y="89" />
       {/* Submit button */}
       <circle cx="252" cy="92" fill="var(--muted-foreground)" opacity="0.2" r="16" />
-      <path d="M248 96L252 88L256 96" fill="none" stroke="var(--muted-foreground)" opacity="0.4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      <path
+        d="M248 96L252 88L256 96"
+        fill="none"
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
     </svg>
   );
 }
@@ -154,8 +162,20 @@ export function CardTrafficSkeleton({ className }: SkeletonProps) {
       {/* Title */}
       <rect fill="var(--muted-foreground)" height="12" opacity="0.4" rx="4" width="100" x="16" y="16" />
       {/* Chart area */}
-      <path d="M16 85 Q50 60 80 70 T140 50 T200 60 T264 45" fill="none" stroke="url(#chartLine1)" strokeLinecap="round" strokeWidth="2.5" />
-      <path d="M16 95 Q50 85 80 78 T140 72 T200 82 T264 68" fill="none" stroke="url(#chartLine2)" strokeLinecap="round" strokeWidth="2.5" />
+      <path
+        d="M16 85 Q50 60 80 70 T140 50 T200 60 T264 45"
+        fill="none"
+        stroke="url(#chartLine1)"
+        strokeLinecap="round"
+        strokeWidth="2.5"
+      />
+      <path
+        d="M16 95 Q50 85 80 78 T140 72 T200 82 T264 68"
+        fill="none"
+        stroke="url(#chartLine2)"
+        strokeLinecap="round"
+        strokeWidth="2.5"
+      />
       {/* Stats grid */}
       <line stroke="var(--muted-foreground)" strokeOpacity="0.1" x1="0" x2="280" y1="110" y2="110" />
       <line stroke="var(--muted-foreground)" strokeOpacity="0.1" x1="140" x2="140" y1="110" y2="200" />
@@ -200,8 +220,26 @@ export function ExpandableCardSkeleton({ className }: SkeletonProps) {
       <rect fill="var(--muted-foreground)" height="12" opacity="0.35" rx="4" width="100" x="16" y="180" />
       {/* Expand button */}
       <circle cx="152" cy="190" fill="var(--muted-foreground)" opacity="0.15" r="14" />
-      <line stroke="var(--muted-foreground)" opacity="0.4" strokeLinecap="round" strokeWidth="2" x1="146" x2="158" y1="190" y2="190" />
-      <line stroke="var(--muted-foreground)" opacity="0.4" strokeLinecap="round" strokeWidth="2" x1="152" x2="152" y1="184" y2="196" />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="2"
+        x1="146"
+        x2="158"
+        y1="190"
+        y2="190"
+      />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="2"
+        x1="152"
+        x2="152"
+        y1="184"
+        y2="196"
+      />
     </svg>
   );
 }

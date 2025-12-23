@@ -9,8 +9,8 @@ const demoItem = {
   content: (
     <>
       <p>
-        Between what we build and what eternally exists, she stands in quiet contemplation. The ancient arches frame
-        not just stone, but centuries of human aspiration reaching toward something greater than ourselves.
+        Between what we build and what eternally exists, she stands in quiet contemplation. The ancient arches frame not
+        just stone, but centuries of human aspiration reaching toward something greater than ourselves.
       </p>
       <p>
         In the soft glow of twilight, architecture becomes more than shelter—it transforms into a bridge between the
@@ -19,9 +19,9 @@ const demoItem = {
         made manifest.
       </p>
       <p>
-        The veil she wears mirrors the mystery of the structure itself: layers of meaning wrapped in beauty,
-        revealing and concealing in equal measure. This is the threshold moment—where the practical world of
-        engineering meets the ineffable realm of the sacred, where human craft aspires to capture something divine.
+        The veil she wears mirrors the mystery of the structure itself: layers of meaning wrapped in beauty, revealing
+        and concealing in equal measure. This is the threshold moment—where the practical world of engineering meets the
+        ineffable realm of the sacred, where human craft aspires to capture something divine.
       </p>
     </>
   ),
