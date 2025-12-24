@@ -10,7 +10,9 @@
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
     "registry:build": "shadcn build && node scripts/fix-registry-imports.ts && cp registry.json public/r/registry.json",
-    "registry:index": "node scripts/build-registry-index.ts"
+    "registry:index": "node scripts/build-registry-index.ts",
+    "registry:sync": "node scripts/sync-block-shared-files.ts",
+    "registry:sync-and-index": "pnpm registry:sync && pnpm registry:index"
   },
   "dependencies": {
     "@base-ui/react": "1.0.0",

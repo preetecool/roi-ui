@@ -1,0 +1,49 @@
+{
+  "plans": [
+    {
+      "name": "Starter",
+      "description": "Perfect for side projects and experiments",
+      "monthlyPrice": 0,
+      "features": [
+        "Up to 3 projects",
+        "Basic analytics",
+        "48-hour support response",
+        "1GB storage"
+      ],
+      "cta": "Get Started",
+      "highlighted": false
+    },
+    {
+      "name": "Pro",
+      "description": "For growing teams and businesses",
+      "monthlyPrice": 29,
+      "features": [
+        "Unlimited projects",
+        "Advanced analytics",
+        "Priority support",
+        "100GB storage",
+        "Custom domains",
+        "Team collaboration"
+      ],
+      "cta": "Get Started",
+      "highlighted": true,
+      "badge": "Most Popular"
+    },
+    {
+      "name": "Enterprise",
+      "description": "For large-scale operations",
+      "monthlyPrice": 99,
+      "features": [
+        "Everything in Pro",
+        "Dedicated support",
+        "Custom integrations",
+        "Unlimited storage",
+        "SSO & SAML",
+        "SLA guarantee",
+        "Audit logs"
+      ],
+      "cta": "Contact Sales",
+      "highlighted": false
+    }
+  ]
+}
