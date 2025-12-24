@@ -5,12 +5,25 @@ import styles from "./page.module.css";
 
 const EXCLUDED_BLOCKS = ["card-history", "tailwind"];
 
+const BLOCK_TITLES: Record<string, string> = {
+  "ai-chat": "AI Chat",
+  "card-image": "Image Card",
+  "card-login": "Login Card",
+  "card-task": "Task Card",
+  "card-traffic": "Traffic Card",
+  "expandable-card": "Expandable Card",
+  "kanban-board": "Kanban Board",
+  "pricing-section": "Pricing Section",
+  "profile-menu": "Profile Menu",
+};
+
 function getBlocks() {
   return Object.entries(Index)
     .filter(([key, entry]) => entry.type === "block" && !key.endsWith("-tailwind") && !EXCLUDED_BLOCKS.includes(key))
     .map(([key, entry]) => ({
       ...entry,
       name: key,
+      title: BLOCK_TITLES[key] || key,
     }));
 }
 
@@ -34,7 +47,7 @@ export default function BlocksPage() {
                 </div>
               )}
               <div className={styles.cardInfo}>
-                <div className={styles.cardTitle}>{block.name}</div>
+                <div className={styles.cardTitle}>{block.title}</div>
               </div>
             </Link>
           );

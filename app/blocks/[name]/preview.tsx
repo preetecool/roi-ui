@@ -7,6 +7,7 @@ import CardTask from "@/registry/brook/blocks/card-task/page";
 import CardTraffic from "@/registry/brook/blocks/card-traffic/page";
 import ExpandableCard from "@/registry/brook/blocks/expandable-card/page";
 import KanbanBoard from "@/registry/brook/blocks/kanban-board/page";
+import PricingSection from "@/registry/brook/blocks/pricing-section/page";
 import ProfileMenu from "@/registry/brook/blocks/profile-menu/page";
 
 type BlockPreviewProps = {
@@ -21,6 +22,7 @@ const blocks: Record<string, React.ComponentType> = {
   "card-traffic": CardTraffic,
   "expandable-card": ExpandableCard,
   "kanban-board": KanbanBoard,
+  "pricing-section": PricingSection,
   "profile-menu": ProfileMenu,
 };
 

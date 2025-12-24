@@ -872,6 +872,17 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/blocks/kanban-board/page",
   },
+  "pricing-section": {
+    name: "pricing-section",
+    type: "block",
+    files: [
+      "registry/brook/blocks/pricing-section/page.tsx",
+      "registry/brook/blocks/pricing-section/components/pricing-section.tsx",
+      "registry/brook/blocks/pricing-section/data.json",
+      "registry/brook/blocks/pricing-section/components/pricing-section.module.css",
+    ],
+    path: "@/registry/brook/blocks/pricing-section/page",
+  },
   "profile-menu": {
     name: "profile-menu",
     type: "block",
@@ -1743,6 +1754,16 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/tailwind/blocks/kanban-board/types/index.ts",
     ],
     path: "@/registry/brook/tailwind/blocks/kanban-board/page",
+  },
+  "pricing-section-tailwind": {
+    name: "pricing-section-tailwind",
+    type: "block",
+    files: [
+      "registry/brook/tailwind/blocks/pricing-section/page.tsx",
+      "registry/brook/tailwind/blocks/pricing-section/components/pricing-section.tsx",
+      "registry/brook/tailwind/blocks/pricing-section/data.json",
+    ],
+    path: "@/registry/brook/tailwind/blocks/pricing-section/page",
   },
   "profile-menu-tailwind": {
     name: "profile-menu-tailwind",

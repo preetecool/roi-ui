@@ -488,6 +488,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "pricing-section": dynamic(() =>
+    import("@/registry/brook/blocks/pricing-section/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "profile-menu": dynamic(() =>
     import("@/registry/brook/blocks/profile-menu/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -955,6 +960,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "kanban-board-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/blocks/kanban-board/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "pricing-section-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/pricing-section/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
