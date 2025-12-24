@@ -1,12 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
+import { anchoredToastManager } from "@/registry/brook/ui/toast/toast";
 import styles from "./block-viewer.module.css";
 import { buildFileTree, FileTree } from "./file-tree";
+
+function InstallButton({ name }: { name: string }) {
+  const { style } = useStyle();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const suffix = style === "tailwind" ? "-tailwind" : "";
+  const command = `npx shadcn@latest add @roiui/${name}${suffix}`;
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(command);
+    anchoredToastManager.add({
+      title: "Copied!",
+      timeout: 800,
+      positionerProps: {
+        anchor: buttonRef.current,
+        side: "top",
+        sideOffset: 6,
+      },
+    });
+  };
+
+  return (
+    <button className={styles.installButton} onClick={handleCopy} ref={buttonRef} type="button">
+      <code className={styles.installCode}>{command}</code>
+    </button>
+  );
+}
 
 type FileData = {
   name: string;
@@ -53,7 +80,11 @@ export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children, fu
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
-          <StyleSelector />
+          <div className={styles.headerActions}>
+            <InstallButton name={name} />
+            <div className={styles.separator} />
+            <StyleSelector />
+          </div>
         </div>
 
         <TabsContent className={styles.previewPanel} value="preview">

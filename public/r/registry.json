@@ -1025,6 +1025,124 @@
       ]
     },
     {
+      "name": "pricing-section",
+      "type": "registry:item",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json"
+      ],
+      "title": "Pricing Section",
+      "description": "A pricing section with three plan cards.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/pricing-section/components/pricing-section.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/pricing-section/pricing-section.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/pricing-section/components/pricing-section.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/pricing-section/pricing-section.module.css"
+        },
+        {
+          "path": "registry/brook/blocks/pricing-section/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/pricing-section/data.json"
+        }
+      ]
+    },
+    {
+      "name": "kanban-board",
+      "type": "registry:item",
+      "dependencies": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities", "lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/alert-dialog.json",
+        "https://roiui.com/r/avatar.json",
+        "https://roiui.com/r/badge.json",
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/calendar.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/checkbox.json",
+        "https://roiui.com/r/checkbox-group.json",
+        "https://roiui.com/r/combobox.json",
+        "https://roiui.com/r/context-menu.json",
+        "https://roiui.com/r/dialog.json",
+        "https://roiui.com/r/dropdown-menu.json",
+        "https://roiui.com/r/field.json",
+        "https://roiui.com/r/form.json",
+        "https://roiui.com/r/input.json",
+        "https://roiui.com/r/kbd.json",
+        "https://roiui.com/r/popover.json",
+        "https://roiui.com/r/select.json"
+      ],
+      "title": "Kanban Board",
+      "description": "A full-featured kanban board with drag-and-drop functionality.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/kanban-board/components/kanban.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/kanban.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/components/kanban.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/kanban.module.css"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/components/project-board.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/project-board.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/components/task-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/task-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/components/delete-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/delete-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/components/filter-bar.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/filter-bar.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/components/priority-icon.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/priority-icon.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/hooks/use-kanban-dnd.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/use-kanban-dnd.ts"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/hooks/use-task-dialog.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/use-task-dialog.ts"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/lib/project.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/project.ts"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/types/index.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/types.ts"
+        },
+        {
+          "path": "registry/brook/blocks/kanban-board/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/data.json"
+        }
+      ]
+    },
+    {
       "name": "accordion-tailwind",
       "type": "registry:item",
       "title": "Accordion (Tailwind)",
@@ -1759,6 +1877,114 @@
           "path": "registry/brook/tailwind/blocks/profile-menu/components/profile-menu.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/profile-menu/profile-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-section-tailwind",
+      "type": "registry:item",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json"
+      ],
+      "title": "Pricing Section (Tailwind)",
+      "description": "A pricing section with three plan cards.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/pricing-section/components/pricing-section.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/pricing-section/pricing-section.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/pricing-section/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/pricing-section/data.json"
+        }
+      ]
+    },
+    {
+      "name": "kanban-board-tailwind",
+      "type": "registry:item",
+      "dependencies": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities", "lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/alert-dialog-tailwind.json",
+        "https://roiui.com/r/avatar-tailwind.json",
+        "https://roiui.com/r/badge-tailwind.json",
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/calendar-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/checkbox-tailwind.json",
+        "https://roiui.com/r/checkbox-group-tailwind.json",
+        "https://roiui.com/r/combobox-tailwind.json",
+        "https://roiui.com/r/context-menu-tailwind.json",
+        "https://roiui.com/r/dialog-tailwind.json",
+        "https://roiui.com/r/dropdown-menu-tailwind.json",
+        "https://roiui.com/r/field-tailwind.json",
+        "https://roiui.com/r/form-tailwind.json",
+        "https://roiui.com/r/input-tailwind.json",
+        "https://roiui.com/r/kbd-tailwind.json",
+        "https://roiui.com/r/popover-tailwind.json",
+        "https://roiui.com/r/select-tailwind.json"
+      ],
+      "title": "Kanban Board (Tailwind)",
+      "description": "A full-featured kanban board with drag-and-drop functionality.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/components/kanban.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/kanban.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/components/project-board.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/project-board.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/components/task-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/task-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/components/delete-dialog.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/delete-dialog.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/components/filter-bar.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/filter-bar.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/components/priority-icon.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/priority-icon.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/hooks/use-kanban-dnd.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/use-kanban-dnd.ts"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/hooks/use-task-dialog.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/use-task-dialog.ts"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/lib/project.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/project.ts"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/types/index.ts",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/types.ts"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/kanban-board/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/kanban-board/data.json"
         }
       ]
     }
