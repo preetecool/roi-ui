@@ -4,7 +4,7 @@
   gap: 2rem;
   padding: 2rem;
   width: 100%;
-  max-width: 760px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -38,8 +38,20 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -51,16 +63,11 @@
   background: var(--mix-card-15-bg);
   text-decoration: none;
   color: inherit;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s,
-    transform 0.2s;
+  transition: border-color 0.2s;
 }
 
 .card:hover {
   border-color: var(--mix-card-85-bg);
-  box-shadow: 0 4px 20px -4px oklch(0 0 0 / 0.08);
-  transform: translateY(-2px);
 }
 
 .cardPreview {
@@ -71,6 +78,11 @@
   background: var(--mix-card-33-bg);
   border-bottom: 1px solid var(--mix-card-66-bg);
   min-height: 150px;
+  transition: background-color 0.2s;
+}
+
+.card:hover .cardPreview {
+  background: var(--mix-card-50-bg);
 }
 
 .skeleton {

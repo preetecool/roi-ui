@@ -333,6 +333,78 @@ export function KanbanBoardSkeleton({ className }: SkeletonProps) {
   );
 }
 
+export function PricingSectionSkeleton({ className }: SkeletonProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pricingCardGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
+        </linearGradient>
+        <linearGradient id="pricingHighlightGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-90-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-66-bg)" />
+        </linearGradient>
+      </defs>
+
+      {/* Card 1 - Starter (right corners unrounded) */}
+      <path d="M12 38 Q12 28 22 28 L107 28 L107 152 L22 152 Q12 152 12 142 Z" fill="url(#pricingCardGrad)" />
+      {/* Plan name */}
+      <rect fill="var(--muted-foreground)" height="7" opacity="0.35" rx="3" width="40" x="22" y="38" />
+      {/* Price */}
+      <rect fill="var(--muted-foreground)" height="16" opacity="0.4" rx="3" width="30" x="22" y="52" />
+      <rect fill="var(--muted-foreground)" height="5" opacity="0.15" rx="2" width="20" x="56" y="62" />
+      {/* Features */}
+      <circle cx="27" cy="84" fill="var(--muted-foreground)" opacity="0.12" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.18" rx="2" width="50" x="36" y="82" />
+      <circle cx="27" cy="96" fill="var(--muted-foreground)" opacity="0.12" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.18" rx="2" width="42" x="36" y="94" />
+      <circle cx="27" cy="108" fill="var(--muted-foreground)" opacity="0.12" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.18" rx="2" width="55" x="36" y="106" />
+      {/* Button */}
+      <rect fill="var(--muted-foreground)" height="16" opacity="0.12" rx="5" width="75" x="22" y="124" />
+
+      {/* Card 2 - Pro (taller) */}
+      <rect fill="url(#pricingCardGrad)" height="164" rx="10" width="96" x="112" y="8" />
+      {/* Badge */}
+      <rect fill="var(--muted-foreground)" height="12" opacity="0.25" rx="6" width="50" x="135" y="2" />
+      {/* Plan name */}
+      <rect fill="var(--muted-foreground)" height="7" opacity="0.4" rx="3" width="28" x="122" y="24" />
+      {/* Price */}
+      <rect fill="var(--muted-foreground)" height="16" opacity="0.45" rx="3" width="32" x="122" y="38" />
+      <rect fill="var(--muted-foreground)" height="5" opacity="0.18" rx="2" width="20" x="158" y="48" />
+      {/* Features */}
+      <circle cx="127" cy="70" fill="var(--muted-foreground)" opacity="0.15" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.22" rx="2" width="55" x="136" y="68" />
+      <circle cx="127" cy="82" fill="var(--muted-foreground)" opacity="0.15" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.22" rx="2" width="45" x="136" y="80" />
+      <circle cx="127" cy="94" fill="var(--muted-foreground)" opacity="0.15" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.22" rx="2" width="50" x="136" y="92" />
+      <circle cx="127" cy="106" fill="var(--muted-foreground)" opacity="0.15" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.22" rx="2" width="48" x="136" y="104" />
+      {/* Button (primary style) */}
+      <rect fill="var(--muted-foreground)" height="16" opacity="0.2" rx="5" width="76" x="122" y="146" />
+
+      {/* Card 3 - Enterprise (left corners unrounded) */}
+      <path d="M213 28 L298 28 Q308 28 308 38 L308 142 Q308 152 298 152 L213 152 Z" fill="url(#pricingCardGrad)" />
+      {/* Plan name */}
+      <rect fill="var(--muted-foreground)" height="7" opacity="0.35" rx="3" width="52" x="223" y="38" />
+      {/* Price */}
+      <rect fill="var(--muted-foreground)" height="16" opacity="0.4" rx="3" width="32" x="223" y="52" />
+      <rect fill="var(--muted-foreground)" height="5" opacity="0.15" rx="2" width="20" x="259" y="62" />
+      {/* Features */}
+      <circle cx="228" cy="84" fill="var(--muted-foreground)" opacity="0.12" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.18" rx="2" width="52" x="237" y="82" />
+      <circle cx="228" cy="96" fill="var(--muted-foreground)" opacity="0.12" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.18" rx="2" width="46" x="237" y="94" />
+      <circle cx="228" cy="108" fill="var(--muted-foreground)" opacity="0.12" r="4" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.18" rx="2" width="40" x="237" y="106" />
+      {/* Button */}
+      <rect fill="var(--muted-foreground)" height="16" opacity="0.12" rx="5" width="75" x="223" y="124" />
+    </svg>
+  );
+}
+
 export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> = {
   "ai-chat": AiChatSkeleton,
   "card-image": CardImageSkeleton,
@@ -341,5 +413,6 @@ export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> 
   "card-traffic": CardTrafficSkeleton,
   "expandable-card": ExpandableCardSkeleton,
   "kanban-board": KanbanBoardSkeleton,
+  "pricing-section": PricingSectionSkeleton,
   "profile-menu": ProfileMenuSkeleton,
 };
