@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { CodeBlock } from "@/components/docs/code-block/code-block";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
-import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import { anchoredToastManager } from "@/registry/brook/ui/toast/toast";
 import styles from "./block-viewer.module.css";
@@ -16,20 +16,38 @@ function InstallButton({ name }: { name: string }) {
   const command = `npx shadcn@latest add @roiui/${name}${suffix}`;
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(command);
-    anchoredToastManager.add({
-      title: "Copied!",
-      timeout: 800,
-      positionerProps: {
-        anchor: buttonRef.current,
-        side: "top",
-        sideOffset: 6,
-      },
-    });
+    try {
+      await navigator.clipboard.writeText(command);
+      anchoredToastManager.add({
+        title: "Copied!",
+        timeout: 800,
+        positionerProps: {
+          anchor: buttonRef.current,
+          side: "top",
+          sideOffset: 6,
+        },
+      });
+    } catch {
+      anchoredToastManager.add({
+        title: "Failed to copy",
+        timeout: 2000,
+        positionerProps: {
+          anchor: buttonRef.current,
+          side: "top",
+          sideOffset: 6,
+        },
+      });
+    }
   };
 
   return (
-    <button className={styles.installButton} onClick={handleCopy} ref={buttonRef} type="button">
+    <button
+      aria-label={`Copy install command: ${command}`}
+      className={styles.installButton}
+      onClick={handleCopy}
+      ref={buttonRef}
+      type="button"
+    >
       <code className={styles.installCode}>{command}</code>
     </button>
   );
@@ -66,9 +84,10 @@ export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children, fu
   // Set selected file after mount and when style changes
   useEffect(() => {
     if (mounted) {
-      setSelectedFile(files[0]?.path ?? null);
+      const currentFiles = style === "tailwind" ? tailwindFiles : cssModulesFiles;
+      setSelectedFile(currentFiles[0]?.path ?? null);
     }
-  }, [mounted, style, files]);
+  }, [mounted, style, tailwindFiles, cssModulesFiles]);
 
   const fileTree = buildFileTree(files.map((f) => f.path));
 
@@ -101,19 +120,31 @@ export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children, fu
             </div>
             <div className={styles.codeArea}>
               {currentFile ? (
-                <>
-                  <div className={styles.codeHeader}>
-                    <span className={styles.fileName}>{currentFile.name}</span>
-                    <CopyButton code={currentFile.content} />
-                  </div>
-                  <div className={styles.codeContent}>
-                    <div
-                      className="code-container"
-                      // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
-                      dangerouslySetInnerHTML={{ __html: currentFile.highlightedContent }}
-                    />
-                  </div>
-                </>
+                <CodeBlock.Root
+                  className={styles.codeBlock}
+                  code={currentFile.content}
+                  highlightedCode={currentFile.highlightedContent}
+                >
+                  <CodeBlock.Header className={styles.codeHeader}>
+                    <select
+                      aria-label="Select file"
+                      className={styles.mobileFileSelect}
+                      onChange={(e) => setSelectedFile(e.target.value)}
+                      value={selectedFile ?? ""}
+                    >
+                      {files.map((file) => (
+                        <option key={file.path} value={file.path}>
+                          {file.path}
+                        </option>
+                      ))}
+                    </select>
+                    <CodeBlock.Filename className={styles.fileName}>{currentFile.name}</CodeBlock.Filename>
+                    <CodeBlock.Actions>
+                      <CodeBlock.CopyButton />
+                    </CodeBlock.Actions>
+                  </CodeBlock.Header>
+                  <CodeBlock.Content className={styles.codeContent} />
+                </CodeBlock.Root>
               ) : null}
             </div>
           </div>

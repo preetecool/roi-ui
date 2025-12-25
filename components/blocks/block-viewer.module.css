@@ -162,6 +162,15 @@
   min-height: 0;
 }
 
+.codeBlock {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+}
+
 .codeHeader {
   display: flex;
   align-items: center;
@@ -170,6 +179,32 @@
   min-height: 2.5rem;
   border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
   background: var(--code-header-bg);
+}
+
+.mobileFileSelect {
+  display: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  cursor: pointer;
+  max-width: 200px;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .mobileFileSelect {
+    display: block;
+  }
+
+  .fileName {
+    display: none;
+  }
 }
 
 .fileName {
@@ -188,6 +223,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   min-height: 0;
+  max-height: none;
 }
 
 .codeContent::-webkit-scrollbar {
