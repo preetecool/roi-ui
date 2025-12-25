@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, AudioLines, GraduationCap, Lightbulb, Paperclip, WandSparkles, Zap } from "lucide-react";
+import { ArrowUp, AudioLines, Paperclip } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
@@ -23,10 +23,10 @@ import {
 import styles from "./ai-chat.module.css";
 
 const aiModes = [
-  { value: "creative", label: "Creative", icon: WandSparkles },
-  { value: "fast", label: "Fast", icon: Zap },
-  { value: "reasoning", label: "Reason", icon: Lightbulb },
-  { value: "teach", label: "Teach", icon: GraduationCap },
+  { value: "creative", label: "Creative" },
+  { value: "fast", label: "Fast" },
+  { value: "reasoning", label: "Reason" },
+  { value: "teach", label: "Teach" },
 ];
 
 export function AiChat() {
@@ -39,7 +39,7 @@ export function AiChat() {
         <CardContent>
           <Field className={styles.field}>
             <FieldControl
-              placeholder="Ask and i'll answer."
+              placeholder="How can I help?"
               render={
                 <textarea
                   onChange={(e) => setInputValue(e.target.value)}
@@ -51,50 +51,44 @@ export function AiChat() {
           </Field>
         </CardContent>
         <CardFooter className={styles.footer}>
-          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-            <Button
-              className={styles.iconButton}
-              size="icon"
-              style={{ width: "32px", height: "32px", borderRadius: "50%" }}
-              type="button"
-              variant="outline"
-            >
-              <Paperclip size={14} />
-            </Button>
+          <Button
+            className={styles.iconButton}
+            size="icon"
+            style={{ width: "32px", height: "32px", borderRadius: "50%" }}
+            type="button"
+            variant="ghost"
+          >
+            <Paperclip size={14} />
+          </Button>
 
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
             <Select
               defaultValue={aiModes[0].value}
               items={aiModes}
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger render={<Button size="sm" style={{ minWidth: "120px" }} variant="outline" />}>
+              <SelectTrigger
+                className={styles.selectTrigger}
+                render={<Button size="sm" style={{ borderRadius: "var(--radius)" }} variant="ghost" />}
+              >
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find((mode) => mode.value === value);
-                    const IconComponent = selectedMode?.icon;
-                    return (
-                      <div className={styles.triggerContent}>
-                        {IconComponent && <IconComponent size={14} />}
-                        <span>{selectedMode?.label}</span>
-                      </div>
-                    );
+                    return <span style={{ color: "var(--muted-foreground)" }}>{selectedMode?.label}</span>;
                   }}
                 </SelectValue>
                 <SelectIcon />
               </SelectTrigger>
               <SelectPortal>
-                <SelectPositioner alignItemWithTrigger={false} sideOffset={8}>
+                <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>
                   <SelectPopup className={styles.popup}>
                     <SelectSpacer />
                     <SelectList>
-                      {aiModes.map(({ label, value, icon: IconComponent }) => (
+                      {aiModes.map(({ label, value }) => (
                         <SelectItem key={value} value={value}>
-                          <div className={styles.triggerContent}>
-                            <IconComponent size={14} />
-                            <SelectItemText>{label}</SelectItemText>
-                            <SelectItemIndicator />
-                          </div>
+                          <SelectItemText>{label}</SelectItemText>
+                          <SelectItemIndicator style={{ color: "var(--muted-foreground)" }} />
                         </SelectItem>
                       ))}
                     </SelectList>
@@ -103,17 +97,26 @@ export function AiChat() {
                 </SelectPositioner>
               </SelectPortal>
             </Select>
-          </div>
 
-          <Button
-            className={styles.iconButton}
-            size="icon"
-            style={{ borderRadius: "50%", width: "36px", height: "36px" }}
-            type="submit"
-            variant="outline"
-          >
-            {inputValue.trim() ? <ArrowUp size={16} /> : <AudioLines size={16} />}
-          </Button>
+            <Button
+              className={styles.iconButton}
+              size="icon"
+              style={{
+                borderRadius: "50%",
+                width: "36px",
+                height: "36px",
+                backgroundColor: "var(--primary)",
+              }}
+              type="submit"
+              variant="ghost"
+            >
+              {inputValue.trim() ? (
+                <ArrowUp size={16} style={{ color: "var(--primary-foreground)" }} />
+              ) : (
+                <AudioLines size={16} style={{ color: "var(--primary-foreground)" }} />
+              )}
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </Form>
