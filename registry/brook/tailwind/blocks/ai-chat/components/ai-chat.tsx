@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, AudioLines, GraduationCap, Lightbulb, Paperclip, WandSparkles, Zap } from "lucide-react";
+import { ArrowUp, AudioLines, Paperclip } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
@@ -23,10 +23,10 @@ import {
 } from "@/registry/brook/tailwind/ui/select";
 
 const aiModes = [
-  { value: "creative", label: "Creative", icon: WandSparkles },
-  { value: "fast", label: "Fast", icon: Zap },
-  { value: "reasoning", label: "Reason", icon: Lightbulb },
-  { value: "teach", label: "Teach", icon: GraduationCap },
+  { value: "creative", label: "Creative" },
+  { value: "fast", label: "Fast" },
+  { value: "reasoning", label: "Reason" },
+  { value: "teach", label: "Teach" },
 ];
 
 export function AiChat() {
@@ -37,7 +37,7 @@ export function AiChat() {
     <Form className="w-full max-sm:flex max-sm:items-center max-sm:justify-center max-xl:h-full">
       <Card
         className={cn(
-          "h-auto w-full flex-1 gap-3 rounded-[var(--radius-lg)] border-[var(--border)] bg-[var(--mix-card-50-bg)] p-3",
+          "h-auto w-full flex-1 gap-3 rounded-[var(--radius-lg)] border-[oklch(from_var(--border)_l_c_h_/_0.25)] bg-[var(--mix-card-50-bg)] p-3 transition-[border-color] duration-200 hover:border-[oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
           "min-w-0 max-w-none",
           "max-xl:h-full",
           "max-sm:mx-auto"
@@ -53,7 +53,7 @@ export function AiChat() {
             )}
           >
             <FieldControl
-              placeholder="Ask and i'll answer."
+              placeholder="How can I help?"
               render={
                 <textarea
                   onChange={(e) => setInputValue(e.target.value)}
@@ -65,50 +65,44 @@ export function AiChat() {
           </Field>
         </CardContent>
         <CardFooter className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <Button
-              className="shrink-0 rounded-full p-2 [&>svg:first-child]:rotate-[-45deg] [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
-              size="icon"
-              style={{ width: "32px", height: "32px", borderRadius: "50%" }}
-              type="button"
-              variant="outline"
-            >
-              <Paperclip size={14} />
-            </Button>
+          <Button
+            className="shrink-0 rounded-full p-2 [&>svg:first-child]:rotate-[-45deg] [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
+            size="icon"
+            style={{ width: "32px", height: "32px", borderRadius: "50%" }}
+            type="button"
+            variant="ghost"
+          >
+            <Paperclip size={14} />
+          </Button>
 
+          <div className="flex items-center gap-2">
             <Select
               defaultValue={aiModes[0].value}
               items={aiModes}
               onValueChange={(value) => setSelectedItem(value as string)}
               value={selectedItem}
             >
-              <SelectTrigger className="min-w-[120px]" render={<Button size="sm" variant="outline" />}>
+              <SelectTrigger
+                className="min-w-[100px] hover:!bg-accent data-[popup-open]:!bg-accent"
+                render={<Button className="rounded-[var(--radius)]" size="sm" variant="ghost" />}
+              >
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find((mode) => mode.value === value);
-                    const IconComponent = selectedMode?.icon;
-                    return (
-                      <div className="flex w-full items-center gap-2">
-                        {IconComponent && <IconComponent className="text-muted-foreground max-md:hidden" size={14} />}
-                        <span className="max-md:text-sm">{selectedMode?.label}</span>
-                      </div>
-                    );
+                    return <span className="text-muted-foreground max-md:text-sm">{selectedMode?.label}</span>;
                   }}
                 </SelectValue>
-                <SelectIcon />
+                <SelectIcon className="ml-1" />
               </SelectTrigger>
               <SelectPortal>
-                <SelectPositioner alignItemWithTrigger={false} sideOffset={8}>
-                  <SelectPopup className="max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px] box-border w-36 min-w-36 max-w-36">
+                <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>
+                  <SelectPopup className="min-w-[120px]">
                     <SelectSpacer />
                     <SelectList>
-                      {aiModes.map(({ label, value, icon: IconComponent }) => (
+                      {aiModes.map(({ label, value }) => (
                         <SelectItem key={value} value={value}>
-                          <div className="flex w-full items-center gap-2">
-                            <IconComponent className="text-muted-foreground max-md:hidden" size={14} />
-                            <SelectItemText className="max-md:text-sm">{label}</SelectItemText>
-                            <SelectItemIndicator />
-                          </div>
+                          <SelectItemText>{label}</SelectItemText>
+                          <SelectItemIndicator className="text-muted-foreground" />
                         </SelectItem>
                       ))}
                     </SelectList>
@@ -117,23 +111,28 @@ export function AiChat() {
                 </SelectPositioner>
               </SelectPortal>
             </Select>
-          </div>
 
-          <Button
-            className="shrink-0 rounded-full p-2 [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
-            size="icon"
-            style={{
-              borderRadius: "50%",
-              width: "36px",
-              height: "36px",
-              minWidth: "36px",
-              minHeight: "36px",
-            }}
-            type="submit"
-            variant="outline"
-          >
-            {inputValue.trim() ? <ArrowUp size={16} /> : <AudioLines size={16} />}
-          </Button>
+            <Button
+              className="shrink-0 rounded-full p-2 [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
+              size="icon"
+              style={{
+                borderRadius: "50%",
+                width: "36px",
+                height: "36px",
+                minWidth: "36px",
+                minHeight: "36px",
+                backgroundColor: "var(--primary)",
+              }}
+              type="submit"
+              variant="ghost"
+            >
+              {inputValue.trim() ? (
+                <ArrowUp className="!text-primary-foreground" size={16} />
+              ) : (
+                <AudioLines className="!text-primary-foreground" size={16} />
+              )}
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </Form>

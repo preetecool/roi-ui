@@ -7,8 +7,14 @@
   min-width: 0;
   margin: 0 auto;
   border-radius: var(--radius-lg);
-  border-color: var(--border);
+  border-color: oklch(from var(--border) l c h / 0.25);
   background-color: var(--mix-card-50-bg);
+  transition: border-color 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: oklch(from var(--border) l c h / 0.5);
+  }
 }
 
 .form {
@@ -64,11 +70,19 @@
   color: var(--muted-foreground);
 }
 
+.selectTrigger {
+  min-width: 100px;
+}
+
+.selectTrigger:hover,
+.selectTrigger[data-popup-open],
+.selectTrigger[data-popup-open]:hover {
+  background-color: var(--accent) !important;
+}
+
 .popup {
-  width: 144px;
-  min-width: 144px;
-  max-width: 144px;
   box-sizing: border-box;
+  min-width: 120px;
 }
 
 .footer button[type="submit"] {

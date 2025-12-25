@@ -1,6 +1,6 @@
 :root {
   --linenumber: oklch(0.7604 0 0 / 60%);
-  --code-header-bg: var(--mix-card-33-bg);
+  --code-header-bg: var(--mix-card-50-bg);
 
   /* Prop table syntax colors */
   --prop-code-color: oklch(85% 0.1 264);
