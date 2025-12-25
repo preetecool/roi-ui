@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Search } from "@/components/docs/search/search";
 import { MobileNav } from "@/components/layout/mobile-nav/mobile-nav";
+import { PaletteSwitcher } from "@/components/layout/palette-switcher/palette-switcher";
 import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
 import { GitHubIcon } from "@/components/shared/github-icon";
 import { Logo } from "@/components/shared/logo";
@@ -63,6 +64,10 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
           <div className={styles.actions}>
             <div className={styles.desktopOnly}>
               <Search tree={pageTree} />
+            </div>
+            <div className={`${styles.separator} ${styles.desktopOnly}`} />
+            <div className={styles.desktopOnly}>
+              <PaletteSwitcher />
             </div>
             <div className={`${styles.separator} ${styles.desktopOnly}`} />
             <Button

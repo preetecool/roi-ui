@@ -1,0 +1,50 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	background-color: transparent;
+	color: var(--muted-foreground);
+	text-decoration: none;
+	transition: all 0.2s ease;
+	border-radius: 2px;
+}
+
+.button:hover {
+	color: var(--foreground);
+}
+
+.popup {
+	min-width: 156px;
+	border-radius: 2px;
+	transition:
+		transform 100ms ease-out,
+		opacity 100ms ease-out;
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+	transform: none;
+	opacity: 0;
+}
+
+.popup [role="option"] {
+	border-radius: 1px;
+}
+
+.popup [role="option"]:not([data-selected]) {
+	padding-left: 31px;
+}
+
+.popup [data-part="item-indicator"],
+.popup [class*="indicator"] {
+	margin-left: 0;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	justify-content: flex-start;
+}
