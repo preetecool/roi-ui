@@ -105,9 +105,7 @@ function SelectPopup({ className, ...props }: React.ComponentProps<typeof Select
         "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--popover)] shadow-[var(--shadow-border-stack)]",
         "transition-[transform,scale,opacity] duration-250 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
-        "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",
-        "data-[side=none]:data-[ending-style]:transition-none",
         className
       )}
       data-slot="select-popup"
@@ -208,8 +206,7 @@ function SelectItemIndicator({ className, children, ...props }: React.ComponentP
   return (
     <Select.ItemIndicator
       className={cn(
-        "ml-2 h-4 w-4 shrink-0 opacity-0",
-
+        "ml-2 h-4 w-4 shrink-0 text-[var(--muted-foreground)] opacity-0",
         "transition-opacity duration-200 ease-in-out",
         "[[data-selected]_&]:opacity-100",
         className

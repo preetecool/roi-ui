@@ -78,7 +78,7 @@ export function AiChat() {
                     return <span style={{ color: "var(--muted-foreground)" }}>{selectedMode?.label}</span>;
                   }}
                 </SelectValue>
-                <SelectIcon />
+                <SelectIcon style={{ marginLeft: "0.25rem" }} />
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>

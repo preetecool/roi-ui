@@ -70,12 +70,19 @@
   color: var(--muted-foreground);
 }
 
-.selectTrigger[data-popup-open] {
-  background-color: var(--accent);
+.selectTrigger {
+  min-width: 100px;
+}
+
+.selectTrigger:hover,
+.selectTrigger[data-popup-open],
+.selectTrigger[data-popup-open]:hover {
+  background-color: var(--accent) !important;
 }
 
 .popup {
   box-sizing: border-box;
+  min-width: 120px;
 }
 
 .footer button[type="submit"] {

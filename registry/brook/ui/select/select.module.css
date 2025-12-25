@@ -76,8 +76,7 @@
     transform 250ms var(--ease-out-expo),
     opacity 250ms var(--ease-out-expo);
 
-  &[data-starting-style],
-  &[data-ending-style] {
+  &[data-starting-style] {
     opacity: 0;
     transform: scale(0.95);
   }
@@ -175,6 +174,7 @@
   height: 1rem;
   width: 1rem;
   flex-shrink: 0;
+  color: var(--muted-foreground);
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }

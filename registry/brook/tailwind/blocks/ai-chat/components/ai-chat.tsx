@@ -83,7 +83,7 @@ export function AiChat() {
               value={selectedItem}
             >
               <SelectTrigger
-                className="data-[popup-open]:bg-accent"
+                className="min-w-[100px] hover:!bg-accent data-[popup-open]:!bg-accent"
                 render={<Button className="rounded-[var(--radius)]" size="sm" variant="ghost" />}
               >
                 <SelectValue>
@@ -92,11 +92,11 @@ export function AiChat() {
                     return <span className="text-muted-foreground max-md:text-sm">{selectedMode?.label}</span>;
                   }}
                 </SelectValue>
-                <SelectIcon />
+                <SelectIcon className="ml-1" />
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>
-                  <SelectPopup>
+                  <SelectPopup className="min-w-[120px]">
                     <SelectSpacer />
                     <SelectList>
                       {aiModes.map(({ label, value }) => (
