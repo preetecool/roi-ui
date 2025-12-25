@@ -1,25 +1,17 @@
 .container {
   background-color: var(--code-header-bg);
-  overflow: hidden;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.7);
 }
 
 .container pre {
   background-color: var(--code-header-bg) !important;
 }
 
-.container.embedded {
+.embedded {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.codeContent {
-  position: relative;
-}
-
 .codeContainer {
-  overflow: auto;
-
   max-height: 450px;
 }
 
