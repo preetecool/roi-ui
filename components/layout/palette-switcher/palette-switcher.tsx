@@ -3,64 +3,43 @@
 import { Palette } from "lucide-react";
 import { useEffect, useState } from "react";
 import { type ColorPalette, usePalette, VALID_PALETTES } from "@/components/providers/palette-provider";
+import { SelectMenu, type SelectMenuOption } from "@/components/shared/select-menu/select-menu";
 import { Button } from "@/registry/brook/ui/button/button";
-import {
-	Select,
-	SelectItem,
-	SelectItemIndicator,
-	SelectItemText,
-	SelectPopup,
-	SelectPortal,
-	SelectPositioner,
-	SelectSpacer,
-	SelectTrigger,
-} from "@/registry/brook/ui/select/select";
 import styles from "./palette-switcher.module.css";
 
-const PALETTE_LABELS: Record<ColorPalette, string> = {
-	default: "Default",
-	psevdaryiros: "Psevdaryiros",
-};
+const paletteOptions: SelectMenuOption<ColorPalette>[] = VALID_PALETTES.map((p) => ({
+  value: p,
+  label: p === "default" ? "Default" : "Psevdaryiros",
+}));
 
 export function PaletteSwitcher() {
-	const { palette, setPalette } = usePalette();
-	const [mounted, setMounted] = useState(false);
+  const { palette, setPalette } = usePalette();
+  const [mounted, setMounted] = useState(false);
 
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-	if (!mounted) {
-		return (
-			<Button aria-label="Select color palette" className={styles.button} size="icon" variant="ghost">
-				<Palette size={18} />
-			</Button>
-		);
-	}
+  if (!mounted) {
+    return (
+      <Button aria-label="Select color palette" className={styles.button} size="icon" variant="ghost">
+        <Palette size={18} />
+      </Button>
+    );
+  }
 
-	return (
-		<Select value={palette} onValueChange={(value) => setPalette(value as ColorPalette)}>
-			<SelectTrigger
-				render={
-					<Button aria-label="Select color palette" className={styles.button} size="icon" variant="ghost">
-						<Palette size={18} />
-					</Button>
-				}
-			/>
-			<SelectPortal>
-				<SelectPositioner align="end" sideOffset={8}>
-					<SelectPopup className={styles.popup}>
-						<SelectSpacer />
-						{VALID_PALETTES.map((p) => (
-							<SelectItem key={p} value={p} className={styles.item}>
-								<SelectItemIndicator />
-								<SelectItemText>{PALETTE_LABELS[p]}</SelectItemText>
-							</SelectItem>
-						))}
-						<SelectSpacer />
-					</SelectPopup>
-				</SelectPositioner>
-			</SelectPortal>
-		</Select>
-	);
+  return (
+    <SelectMenu
+      align="end"
+      ariaLabel="Select color palette"
+      onValueChange={setPalette}
+      options={paletteOptions}
+      trigger={
+        <Button aria-label="Select color palette" className={styles.button} size="icon" variant="ghost">
+          <Palette size={18} />
+        </Button>
+      }
+      value={palette}
+    />
+  );
 }
