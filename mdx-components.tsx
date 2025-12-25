@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
-import { CodeBlock } from "@/components/docs/code-block/code-block";
+import { HighlightedCodeBlock as CodeBlock } from "@/components/docs/code-block/highlighted-code-block";
 import { CodeTabs, CodeTabsContent, CodeTabsList, CodeTabsTrigger } from "@/components/docs/code-tabs/code-tabs";
 import { PackageManagerCodeTabs } from "@/components/docs/code-tabs/package-manager-code-tabs";
 import { ComponentPreview } from "@/components/docs/component-preview/component-preview";

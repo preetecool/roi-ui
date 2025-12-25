@@ -1,6 +1,7 @@
 import { cacheLife } from "next/cache";
+import { CodeBlock } from "@/components/docs/code-block/code-block";
 import { highlightCode } from "@/lib/highlight-code";
-import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
+import { cn } from "@/lib/utils";
 import styles from "./component-source.module.css";
 import { ComponentSourceClient } from "./component-source-client";
 import { getCachedVariants } from "./helpers/cached-processors";
@@ -50,19 +51,18 @@ export async function ComponentSource({ name, src, title, language = "tsx", embe
   const highlightedCode = await highlightCode(transformedCode, language);
 
   return (
-    <div className={`${styles.container} ${embedded ? styles.embedded : ""}`}>
-      <div className={styles.header}>
-        <span className={styles.title}>{displayTitle}</span>
-        <CopyButton code={transformedCode} />
-      </div>
-
-      <div className={styles.codeContent}>
-        <div
-          className={`code-container ${styles.codeContainer}`}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
-          dangerouslySetInnerHTML={{ __html: highlightedCode }}
-        />
-      </div>
-    </div>
+    <CodeBlock.Root
+      className={cn(styles.container, embedded && styles.embedded)}
+      code={transformedCode}
+      highlightedCode={highlightedCode}
+    >
+      <CodeBlock.Header>
+        <CodeBlock.Filename>{displayTitle}</CodeBlock.Filename>
+        <CodeBlock.Actions>
+          <CodeBlock.CopyButton />
+        </CodeBlock.Actions>
+      </CodeBlock.Header>
+      <CodeBlock.Content className={styles.codeContainer} />
+    </CodeBlock.Root>
   );
 }

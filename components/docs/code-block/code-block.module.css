@@ -13,6 +13,10 @@
   border-bottom: 0.5px solid var(--border-subtle);
 }
 
+.header [data-slot="copy-button"] {
+  border-radius: 0;
+}
+
 .filename {
   font-size: 0.75rem;
   font-weight: 400;
@@ -24,6 +28,12 @@
 
 .copyButtonWrapper {
   position: relative;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .content {

@@ -44,6 +44,10 @@
   gap: 0.5rem;
 }
 
+.toolbar [data-slot="copy-button"] {
+  border-radius: 0;
+}
+
 .packageTrigger {
   border-radius: 2px;
 }
