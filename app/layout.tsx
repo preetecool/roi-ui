@@ -1,3 +1,4 @@
+import { PaletteProvider } from "@/components/providers/palette-provider";
 import { StyleProvider } from "@/components/providers/style-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import "@/styles/globals.css";
@@ -30,8 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="root">
           <StyleProvider>
             <ThemeProvider defaultTheme="dark" disableTransitionOnChange enableSystem storageKey="theme">
-              {children}
-              <Analytics />
+              <PaletteProvider>
+                {children}
+                <Analytics />
+              </PaletteProvider>
             </ThemeProvider>
           </StyleProvider>
         </div>

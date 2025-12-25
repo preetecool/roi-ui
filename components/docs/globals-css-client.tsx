@@ -1,33 +1,43 @@
 "use client";
 
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
+import { PaletteSelector } from "@/components/docs/palette-selector/palette-selector";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
+import { usePalette } from "@/components/providers/palette-provider";
 import { useStyle } from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 
-type GlobalsCSSClientProps = {
-  cssModulesContent: string;
-  tailwindContent: string;
-  highlightedCssModules: string;
-  highlightedTailwind: string;
+type PaletteVariants = {
+  default: string;
+  psevdaryiros: string;
 };
 
-export function GlobalsCSSClient({
-  cssModulesContent,
-  tailwindContent,
-  highlightedCssModules,
-  highlightedTailwind,
-}: GlobalsCSSClientProps) {
-  const { style } = useStyle();
+type GlobalsCSSClientProps = {
+  variants: {
+    cssModules: PaletteVariants;
+    tailwind: PaletteVariants;
+  };
+  highlighted: {
+    cssModules: PaletteVariants;
+    tailwind: PaletteVariants;
+  };
+};
 
-  const content = style === "tailwind" ? tailwindContent : cssModulesContent;
-  const highlightedCode = style === "tailwind" ? highlightedTailwind : highlightedCssModules;
+export function GlobalsCSSClient({ variants, highlighted }: GlobalsCSSClientProps) {
+  const { style } = useStyle();
+  const { palette } = usePalette();
+
+  const styleKey = style === "tailwind" ? "tailwind" : "cssModules";
+  const content = variants[styleKey][palette];
+  const highlightedCode = highlighted[styleKey][palette];
 
   return (
     <div className={codeTabsStyles.wrapper}>
       <div className={codeTabsStyles.header}>
         <span>globals.css</span>
         <div className={codeTabsStyles.actions}>
+          <PaletteSelector />
+          <span className={codeTabsStyles.separator} />
           <StyleSelector />
           <CopyButton code={content} />
         </div>

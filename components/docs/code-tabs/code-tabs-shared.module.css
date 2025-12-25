@@ -65,6 +65,12 @@
   align-items: center;
 }
 
+.separator {
+  width: 1px;
+  height: 16px;
+  background-color: var(--border);
+}
+
 .content[data-slot="tabs-content"] {
   margin: 0;
   padding: 0;

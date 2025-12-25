@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cacheLife } from "next/cache";
+import type { ColorPalette } from "@/components/providers/palette-provider";
 import { highlightCode } from "@/lib/highlight-code";
 import { GlobalsCSSClient } from "./globals-css-client";
 
@@ -61,26 +62,172 @@ function filterCssForStyle(css: string, style: "css-modules" | "tailwind"): stri
   return filteredLines.join("\n");
 }
 
+function extractPaletteValues(css: string, palette: ColorPalette, mode: "light" | "dark"): Record<string, string> {
+  const values: Record<string, string> = {};
+  if (palette === "default") return values;
+
+  const lines = css.split("\n");
+  let inTargetBlock = false;
+  let braceCount = 0;
+
+  // Look for the palette block matching the mode
+  const selectorPattern =
+    mode === "light"
+      ? new RegExp(`\\.light\\[data-palette="${palette}"\\]|\\[data-theme="light"\\]\\[data-palette="${palette}"\\]`)
+      : new RegExp(`\\.dark\\[data-palette="${palette}"\\]|\\[data-theme="dark"\\]\\[data-palette="${palette}"\\]`);
+
+  for (const line of lines) {
+    if (!inTargetBlock && selectorPattern.test(line)) {
+      inTargetBlock = true;
+      braceCount = 0;
+    }
+
+    if (inTargetBlock) {
+      for (const char of line) {
+        if (char === "{") braceCount++;
+        if (char === "}") braceCount--;
+      }
+
+      // Extract CSS variable declarations
+      const varMatch = line.match(/^\s*(--[\w-]+):\s*(.+?);?\s*$/);
+      if (varMatch) {
+        values[varMatch[1]] = varMatch[2].replace(/;$/, "");
+      }
+
+      if (braceCount === 0 && line.includes("}")) {
+        inTargetBlock = false;
+      }
+    }
+  }
+
+  return values;
+}
+
+function filterCssForPalette(css: string, palette: ColorPalette): string {
+  // For default palette, just remove the palette section entirely
+  if (palette === "default") {
+    const paletteStart = css.indexOf("/* =");
+    if (paletteStart !== -1 && css.indexOf("COLOR PALETTE SYSTEM", paletteStart) !== -1) {
+      return (
+        css
+          .substring(0, paletteStart)
+          .replace(/\n{3,}/g, "\n\n")
+          .trimEnd() + "\n"
+      );
+    }
+    return css;
+  }
+
+  // Extract palette values for light and dark modes
+  const lightValues = extractPaletteValues(css, palette, "light");
+  const darkValues = extractPaletteValues(css, palette, "dark");
+
+  const lines = css.split("\n");
+  const resultLines: string[] = [];
+  let inLightBlock = false;
+  let inDarkBlock = false;
+  let braceCount = 0;
+  let skipPaletteSection = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    // Skip the entire palette section at the end
+    if (line.includes("COLOR PALETTE SYSTEM")) {
+      skipPaletteSection = true;
+      continue;
+    }
+    if (skipPaletteSection) {
+      continue;
+    }
+
+    // Detect light theme block start
+    if (
+      (line.includes(".light,") || line.includes('[data-theme="light"],') || line.includes(":root {")) &&
+      !line.includes("data-palette") &&
+      (line.includes(".light,") || (line.includes(":root") && !inDarkBlock))
+    ) {
+      inLightBlock = true;
+      braceCount = 0;
+    }
+
+    // Detect dark theme block start
+    if ((line.includes(".dark,") || line.includes('[data-theme="dark"]')) && !line.includes("data-palette")) {
+      inDarkBlock = true;
+      inLightBlock = false;
+      braceCount = 0;
+    }
+
+    // Track braces
+    if (inLightBlock || inDarkBlock) {
+      for (const char of line) {
+        if (char === "{") braceCount++;
+        if (char === "}") braceCount--;
+      }
+    }
+
+    // Replace values if we're in a theme block
+    let outputLine = line;
+    const varMatch = line.match(/^(\s*)(--[\w-]+):\s*(.+?);?\s*$/);
+    if (varMatch) {
+      const [, indent, varName] = varMatch;
+      if (inLightBlock && lightValues[varName]) {
+        outputLine = `${indent}${varName}: ${lightValues[varName]};`;
+      } else if (inDarkBlock && darkValues[varName]) {
+        outputLine = `${indent}${varName}: ${darkValues[varName]};`;
+      }
+    }
+
+    resultLines.push(outputLine);
+
+    // Check if we're exiting the block
+    if ((inLightBlock || inDarkBlock) && braceCount === 0 && line.includes("}")) {
+      inLightBlock = false;
+      inDarkBlock = false;
+    }
+  }
+
+  return (
+    resultLines
+      .join("\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trimEnd() + "\n"
+  );
+}
+
 export async function GlobalsCSS() {
   "use cache";
   cacheLife("max");
 
   const cssContent = readFileSync(join(process.cwd(), "styles/globals.css"), "utf8");
 
-  // Pre-render both versions at build time
+  // Pre-render all style variants
   const cssModulesContent = filterCssForStyle(cssContent, "css-modules");
   const tailwindContent = filterCssForStyle(cssContent, "tailwind");
 
-  // Pre-highlight both versions at build time
-  const highlightedCssModules = await highlightCode(cssModulesContent, "css");
-  const highlightedTailwind = await highlightCode(tailwindContent, "css");
+  // Pre-render all palette variants for each style
+  const variants = {
+    cssModules: {
+      default: filterCssForPalette(cssModulesContent, "default"),
+      psevdaryiros: filterCssForPalette(cssModulesContent, "psevdaryiros"),
+    },
+    tailwind: {
+      default: filterCssForPalette(tailwindContent, "default"),
+      psevdaryiros: filterCssForPalette(tailwindContent, "psevdaryiros"),
+    },
+  };
 
-  return (
-    <GlobalsCSSClient
-      cssModulesContent={cssModulesContent}
-      highlightedCssModules={highlightedCssModules}
-      highlightedTailwind={highlightedTailwind}
-      tailwindContent={tailwindContent}
-    />
-  );
+  // Pre-highlight all variants
+  const highlighted = {
+    cssModules: {
+      default: await highlightCode(variants.cssModules.default, "css"),
+      psevdaryiros: await highlightCode(variants.cssModules.psevdaryiros, "css"),
+    },
+    tailwind: {
+      default: await highlightCode(variants.tailwind.default, "css"),
+      psevdaryiros: await highlightCode(variants.tailwind.psevdaryiros, "css"),
+    },
+  };
+
+  return <GlobalsCSSClient highlighted={highlighted} variants={variants} />;
 }
