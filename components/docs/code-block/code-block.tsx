@@ -80,9 +80,9 @@ function Content({ className, ...props }: CodeBlockContentProps) {
   return (
     <div
       className={cn(styles.content, "code-container", className)}
-      data-slot="code-block-content"
       // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
+      data-slot="code-block-content"
       {...props}
     />
   );

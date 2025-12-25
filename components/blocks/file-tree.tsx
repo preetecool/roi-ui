@@ -35,6 +35,13 @@ type FileTreeNodeProps = {
   depth?: number;
 };
 
+function getNodeIcon(type: "file" | "folder", isOpen: boolean) {
+  if (type === "file") {
+    return <File className={styles.icon} size={16} />;
+  }
+  return isOpen ? <FolderOpen className={styles.icon} size={16} /> : <Folder className={styles.icon} size={16} />;
+}
+
 function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeProps) {
   const [isOpen, setIsOpen] = useState(true);
   const isSelected = selectedPath === node.path;
@@ -61,15 +68,7 @@ function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeP
         ) : (
           <span className={styles.spacer} />
         )}
-        {node.type === "folder" ? (
-          isOpen ? (
-            <FolderOpen className={styles.icon} size={16} />
-          ) : (
-            <Folder className={styles.icon} size={16} />
-          )
-        ) : (
-          <File className={styles.icon} size={16} />
-        )}
+        {getNodeIcon(node.type, isOpen)}
         <span className={styles.name}>{node.name}</span>
       </button>
       {hasChildren && isOpen && (
