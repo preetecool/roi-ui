@@ -64,7 +64,7 @@
 }
 
 .popup {
-  min-width: 170px;
+  min-width: var(--anchor-width);
   background: var(--popover);
   border: 0.5px solid oklch(from var(--border) l c h / 0.8);
   border-radius: var(--radius);
