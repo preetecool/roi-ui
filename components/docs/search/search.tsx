@@ -18,9 +18,6 @@ export type SearchProps = {
   tree?: PageTree.Root;
 };
 
-/**
- * Determines the appropriate icon based on URL path
- */
 const getIcon = (url: string) => {
   switch (true) {
     case url.includes("/ui/"):
@@ -32,16 +29,11 @@ const getIcon = (url: string) => {
   }
 };
 
-/**
- * Search dialog component for documentation navigation
- * Supports keyboard shortcuts (Cmd/Ctrl + K) and full-text search via API
- */
 export function Search({ tree }: SearchProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Cleanup timeout on unmount to prevent memory leaks
   useEffect(
     () => () => {
       if (searchTimeoutRef.current) {
@@ -51,12 +43,10 @@ export function Search({ tree }: SearchProps) {
     []
   );
 
-  // Use fumadocs search with API endpoint
   const { search, setSearch, query } = useDocsSearch({
     type: "fetch",
   });
 
-  // Register Cmd/Ctrl + K keyboard shortcut
   useKeyboardShortcut({ key: "k", metaKey: true, ctrlKey: true }, () => setOpen(true));
 
   const handleSelect = (url: string) => {

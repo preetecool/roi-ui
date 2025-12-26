@@ -48,7 +48,6 @@ function isNumber(value: string): boolean {
     return false;
   }
 
-  // Handle negative numbers
   let startIndex = 0;
   if (value[0] === "-") {
     if (value.length === 1) {
@@ -110,8 +109,6 @@ function highlightType(typeString: string) {
       );
     }
 
-    // Check if it's a class type (PascalCase)
-    // Matches: ReactNode, HTMLElement, etc.
     if (CLASS_TYPES.has(part) || isPascalCase(part)) {
       return (
         <span className={styles.typeClass} key={key}>
@@ -146,12 +143,10 @@ function highlightType(typeString: string) {
   });
 }
 
-// Extract simple type (first type before |)
 function getSimpleType(typeString: string): string {
   const pipeIndex = typeString.indexOf("|");
   const firstType = pipeIndex !== -1 ? typeString.slice(0, pipeIndex).trim() : typeString.trim();
 
-  // Remove quotes if it's a string literal type
   if (firstType.startsWith('"') && firstType.endsWith('"')) {
     return "string";
   }
@@ -159,7 +154,6 @@ function getSimpleType(typeString: string): string {
   return firstType;
 }
 
-// Render default value with appropriate styling
 function renderDefaultValue(defaultValue?: string) {
   if (!defaultValue) {
     return <span className={styles.defaultEmpty}>-</span>;

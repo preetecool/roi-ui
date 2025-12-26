@@ -60,7 +60,6 @@ function DocsSidebarGroup({ item, pathname, level = 0 }: { item: SidebarItem; pa
   const hasChildren = Boolean(item.children && item.children.length > 0);
   const isActive = pathname === item.url;
 
-  // Simple link item
   if (!hasChildren && item.type === "page" && item.url) {
     return (
       <Link

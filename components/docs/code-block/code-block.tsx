@@ -21,13 +21,10 @@ function useCodeBlock() {
 }
 
 export type CodeBlockRootProps = React.ComponentProps<"div"> & {
-  /** Raw code string for copying. */
   code: string;
-  /** Pre-highlighted HTML from Shiki. */
   highlightedCode: string;
 };
 
-/** Root component. Provides context with code and highlighted output. */
 function Root({ code, highlightedCode, className, children, ...props }: CodeBlockRootProps) {
   return (
     <CodeBlockContext.Provider value={{ code, highlightedCode }}>
@@ -40,7 +37,6 @@ function Root({ code, highlightedCode, className, children, ...props }: CodeBloc
 
 export type CodeBlockHeaderProps = React.ComponentProps<"div">;
 
-/** Header bar. Contains filename and actions. */
 function Header({ className, children, ...props }: CodeBlockHeaderProps) {
   return (
     <div className={cn(styles.header, className)} data-slot="code-block-header" {...props}>
@@ -51,7 +47,6 @@ function Header({ className, children, ...props }: CodeBlockHeaderProps) {
 
 export type CodeBlockFilenameProps = React.ComponentProps<"span">;
 
-/** Displays the filename or title. */
 function Filename({ className, children, ...props }: CodeBlockFilenameProps) {
   return (
     <span className={cn(styles.filename, className)} data-slot="code-block-filename" {...props}>
@@ -62,7 +57,6 @@ function Filename({ className, children, ...props }: CodeBlockFilenameProps) {
 
 export type CodeBlockCopyButtonProps = Omit<React.ComponentProps<typeof CopyButton>, "code">;
 
-/** Copy button. Automatically uses code from context. */
 function CopyBtn({ className, ...props }: CodeBlockCopyButtonProps) {
   const { code } = useCodeBlock();
   return (
@@ -74,7 +68,6 @@ function CopyBtn({ className, ...props }: CodeBlockCopyButtonProps) {
 
 export type CodeBlockContentProps = Omit<React.ComponentProps<"div">, "children">;
 
-/** Code content. Renders the highlighted code. */
 function Content({ className, ...props }: CodeBlockContentProps) {
   const { highlightedCode } = useCodeBlock();
   return (
@@ -90,7 +83,6 @@ function Content({ className, ...props }: CodeBlockContentProps) {
 
 export type CodeBlockCollapsibleProps = React.ComponentProps<"details">;
 
-/** Collapsible wrapper. Uses native details/summary. */
 function Collapsible({ className, children, ...props }: CodeBlockCollapsibleProps) {
   return (
     <details className={cn(styles.details, className)} data-slot="code-block-collapsible" {...props}>
@@ -101,7 +93,6 @@ function Collapsible({ className, children, ...props }: CodeBlockCollapsibleProp
 
 export type CodeBlockSummaryProps = React.ComponentProps<"summary">;
 
-/** Summary trigger for collapsible. */
 function Summary({ className, children, ...props }: CodeBlockSummaryProps) {
   return (
     <summary className={cn(styles.summary, className)} data-slot="code-block-summary" {...props}>
@@ -112,7 +103,6 @@ function Summary({ className, children, ...props }: CodeBlockSummaryProps) {
 
 export type CodeBlockActionsProps = React.ComponentProps<"div">;
 
-/** Actions container. Wraps copy button and other actions. */
 function Actions({ className, children, ...props }: CodeBlockActionsProps) {
   return (
     <div className={cn(styles.actions, className)} data-slot="code-block-actions" {...props}>
@@ -121,26 +111,6 @@ function Actions({ className, children, ...props }: CodeBlockActionsProps) {
   );
 }
 
-/**
- * Composable code block component with syntax highlighting support.
- *
- * Required: CodeBlock.Root (with pre-highlighted code)
- * Structure: CodeBlock.Header, CodeBlock.Filename, CodeBlock.Actions, CodeBlock.CopyButton, CodeBlock.Content
- * Optional: CodeBlock.Collapsible, CodeBlock.Summary
- *
- * @example
- * ```tsx
- * <CodeBlock.Root code={code} highlightedCode={highlighted}>
- *   <CodeBlock.Header>
- *     <CodeBlock.Filename>button.tsx</CodeBlock.Filename>
- *     <CodeBlock.Actions>
- *       <CodeBlock.CopyButton />
- *     </CodeBlock.Actions>
- *   </CodeBlock.Header>
- *   <CodeBlock.Content />
- * </CodeBlock.Root>
- * ```
- */
 export const CodeBlock = {
   Root,
   Header,
@@ -152,7 +122,6 @@ export const CodeBlock = {
   Actions,
 };
 
-// Named exports for server component compatibility
 export {
   Root as CodeBlockRoot,
   Header as CodeBlockHeader,

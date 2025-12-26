@@ -14,9 +14,6 @@ export type VariantFileData = {
   files: FileData[];
 };
 
-/**
- * Reads file content safely, returning error message if not found
- */
 async function readFileSafe(filePath: string, errorMessage: string): Promise<string> {
   try {
     return await readFile(filePath, "utf-8");
@@ -25,9 +22,6 @@ async function readFileSafe(filePath: string, errorMessage: string): Promise<str
   }
 }
 
-/**
- * Loads code by component name using __index__
- */
 export async function loadCodeByName(name: string): Promise<string> {
   const files = getRegistryFiles(name);
 
@@ -35,7 +29,6 @@ export async function loadCodeByName(name: string): Promise<string> {
     return `Component source not found: ${name}`;
   }
 
-  // Get the first .tsx file from registry
   const tsxFile = files.find((f) => f.endsWith(".tsx"));
 
   if (!tsxFile) {
@@ -46,29 +39,19 @@ export async function loadCodeByName(name: string): Promise<string> {
   return await readFileSafe(filePath, `Component source not found: ${name}.tsx`);
 }
 
-/**
- * Loads code from a source path
- */
 export async function loadCodeBySrc(src: string): Promise<string> {
   const filePath = join(process.cwd(), src);
   return await readFileSafe(filePath, `File not found: ${src}`);
 }
 
-/**
- * Gets display title with fallback logic
- */
 export function getDisplayTitle(title: string | undefined, name: string | undefined, src: string | undefined): string {
   return title || (name && `${name}.tsx`) || (src && basename(src)) || "Code";
 }
 
-/**
- * Load both CSS modules and Tailwind variants of a component using registry
- */
 export async function loadAllVariants(name: string): Promise<VariantFileData[]> {
   const variants = getComponentVariants(name);
   const results: VariantFileData[] = [];
 
-  // Load CSS Modules variant
   if (variants.cssModules && variants.cssModules.length > 0) {
     const files = await loadFilesFromRegistry(variants.cssModules);
     if (files.length > 0) {
@@ -76,7 +59,6 @@ export async function loadAllVariants(name: string): Promise<VariantFileData[]> 
     }
   }
 
-  // Load Tailwind variant
   if (variants.tailwind && variants.tailwind.length > 0) {
     const files = await loadFilesFromRegistry(variants.tailwind);
     if (files.length > 0) {
@@ -87,14 +69,11 @@ export async function loadAllVariants(name: string): Promise<VariantFileData[]> 
   return results;
 }
 
-/**
- * Load files from registry file paths
- */
 async function loadFilesFromRegistry(registryFiles: string[]): Promise<FileData[]> {
   return await Promise.all(
     registryFiles.map(async (filePath) => {
       const fullPath = join(process.cwd(), filePath);
-      const ext = extname(filePath).slice(1); // Remove leading dot
+      const ext = extname(filePath).slice(1);
       const language = ext === "css" ? "css" : "tsx";
 
       return {

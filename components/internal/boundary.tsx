@@ -115,7 +115,6 @@ function getBoundaryStyles(options: GetBoundaryStylesOptions): BoundaryStyles {
     };
   }
 
-  // Fallback (should not reach here due to early returns)
   return {
     containerClass: "",
     colorVariant: "blue",
@@ -132,7 +131,6 @@ export default function Boundary({ children, rendering, hydration, label, showLa
   const showHydration = mode === "hydration" && Boolean(hydration);
   const isActive = showRendering || showHydration;
 
-  // When mode is 'off' or no matching props, render children without wrapper
   if (mode === "off" || !isActive) {
     return <>{children}</>;
   }
@@ -145,7 +143,6 @@ export default function Boundary({ children, rendering, hydration, label, showLa
     label,
   });
 
-  // For small elements, show a colored dot instead of full border
   if (isSmall) {
     return (
       <div className={styles.smallWrapper}>

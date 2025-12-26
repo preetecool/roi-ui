@@ -41,9 +41,7 @@ export function HeadingAnchor({ level, children, ...props }: ComponentProps<"h2"
           sideOffset: 6,
         },
       });
-    } catch {
-      // Silently fail if clipboard is unavailable
-    }
+    } catch {}
 
     window.history.pushState(null, "", `#${id}`);
   };

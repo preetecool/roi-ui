@@ -5,51 +5,55 @@ import type { ColorPalette } from "@/components/providers/palette-provider";
 import { highlightCode } from "@/lib/highlight-code";
 import { GlobalsCSSClient } from "./globals-css-client";
 
-function filterCssForStyle(css: string, style: "css-modules" | "tailwind"): string {
-  const lines = css.split("\n");
+const CSS_VAR_PATTERN = /^(\s*)(--[\w-]+):\s*(.+?);?\s*$/;
+const TRAILING_SEMICOLON = /;$/;
+const MULTIPLE_NEWLINES = /\n{3,}/g;
 
+function countBraces(line: string, currentCount: number): number {
+  let count = currentCount;
+  for (const char of line) {
+    if (char === "{") {
+      count += 1;
+    }
+    if (char === "}") {
+      count -= 1;
+    }
+  }
+  return count;
+}
+
+function shouldSkipForCssModules(line: string): boolean {
+  const trimmed = line.trim();
+  if (line.includes('@import "tailwindcss/')) {
+    return true;
+  }
+  const layerDeclarations = ["@layer all;", "@layer base;", "@layer theme;", "@layer components;", "@layer utilities;"];
+  return layerDeclarations.includes(trimmed);
+}
+
+function filterCssForStyle(css: string, style: "css-modules" | "tailwind"): string {
   if (style === "tailwind") {
-    // For Tailwind, include everything
     return css;
   }
 
-  // For CSS Modules, exclude Tailwind-specific imports and layers
+  const lines = css.split("\n");
   const filteredLines: string[] = [];
   let insideThemeBlock = false;
   let braceCount = 0;
 
   for (const line of lines) {
-    // Skip Tailwind import lines
-    if (line.includes('@import "tailwindcss/')) {
+    if (shouldSkipForCssModules(line)) {
       continue;
     }
 
-    // Skip layer declarations (Tailwind-specific)
-    if (
-      line.trim() === "@layer all;" ||
-      line.trim() === "@layer base;" ||
-      line.trim() === "@layer theme;" ||
-      line.trim() === "@layer components;" ||
-      line.trim() === "@layer utilities;"
-    ) {
-      continue;
-    }
-
-    // Detect start of @theme inline block
     if (line.includes("@theme inline")) {
       insideThemeBlock = true;
-      braceCount = 1; // Start with 1 to account for the opening brace
+      braceCount = 1;
       continue;
     }
 
-    // Track braces inside @theme block
     if (insideThemeBlock) {
-      for (const char of line) {
-        if (char === "{") braceCount++;
-        if (char === "}") braceCount--;
-      }
-
-      // If we've closed all braces, we're done with the @theme block
+      braceCount = countBraces(line, braceCount);
       if (braceCount === 0) {
         insideThemeBlock = false;
       }
@@ -64,13 +68,14 @@ function filterCssForStyle(css: string, style: "css-modules" | "tailwind"): stri
 
 function extractPaletteValues(css: string, palette: ColorPalette, mode: "light" | "dark"): Record<string, string> {
   const values: Record<string, string> = {};
-  if (palette === "default") return values;
+  if (palette === "default") {
+    return values;
+  }
 
   const lines = css.split("\n");
   let inTargetBlock = false;
   let braceCount = 0;
 
-  // Look for the palette block matching the mode
   const selectorPattern =
     mode === "light"
       ? new RegExp(`\\.light\\[data-palette="${palette}"\\]|\\[data-theme="light"\\]\\[data-palette="${palette}"\\]`)
@@ -83,15 +88,11 @@ function extractPaletteValues(css: string, palette: ColorPalette, mode: "light" 
     }
 
     if (inTargetBlock) {
-      for (const char of line) {
-        if (char === "{") braceCount++;
-        if (char === "}") braceCount--;
-      }
+      braceCount = countBraces(line, braceCount);
 
-      // Extract CSS variable declarations
-      const varMatch = line.match(/^\s*(--[\w-]+):\s*(.+?);?\s*$/);
+      const varMatch = line.match(CSS_VAR_PATTERN);
       if (varMatch) {
-        values[varMatch[1]] = varMatch[2].replace(/;$/, "");
+        values[varMatch[1]] = varMatch[2].replace(TRAILING_SEMICOLON, "");
       }
 
       if (braceCount === 0 && line.includes("}")) {
@@ -103,36 +104,97 @@ function extractPaletteValues(css: string, palette: ColorPalette, mode: "light" 
   return values;
 }
 
-function filterCssForPalette(css: string, palette: ColorPalette): string {
-  // For default palette, just remove the palette section entirely
-  if (palette === "default") {
-    const paletteStart = css.indexOf("/* =");
-    if (paletteStart !== -1 && css.indexOf("COLOR PALETTE SYSTEM", paletteStart) !== -1) {
-      return (
-        css
-          .substring(0, paletteStart)
-          .replace(/\n{3,}/g, "\n\n")
-          .trimEnd() + "\n"
-      );
-    }
-    return css;
+function isLightBlockStart(line: string, inDarkBlock: boolean): boolean {
+  const hasLightSelector = line.includes(".light,") || line.includes('[data-theme="light"],');
+  const hasRootSelector = line.includes(":root {");
+  const noPalette = !line.includes("data-palette");
+
+  if (!noPalette) {
+    return false;
+  }
+  if (line.includes(".light,")) {
+    return true;
+  }
+  if ((hasLightSelector || hasRootSelector) && !inDarkBlock) {
+    return true;
+  }
+  return false;
+}
+
+function isDarkBlockStart(line: string): boolean {
+  const hasDarkSelector = line.includes(".dark,") || line.includes('[data-theme="dark"]');
+  return hasDarkSelector && !line.includes("data-palette");
+}
+
+type ThemeContext = {
+  lightValues: Record<string, string>;
+  darkValues: Record<string, string>;
+  inLightBlock: boolean;
+  inDarkBlock: boolean;
+};
+
+function replaceVarValue(line: string, ctx: ThemeContext): string {
+  const varMatch = line.match(CSS_VAR_PATTERN);
+  if (!varMatch) {
+    return line;
   }
 
-  // Extract palette values for light and dark modes
+  const [, indent, varName] = varMatch;
+  if (ctx.inLightBlock && ctx.lightValues[varName]) {
+    return `${indent}${varName}: ${ctx.lightValues[varName]};`;
+  }
+  if (ctx.inDarkBlock && ctx.darkValues[varName]) {
+    return `${indent}${varName}: ${ctx.darkValues[varName]};`;
+  }
+  return line;
+}
+
+function filterDefaultPalette(css: string): string {
+  const paletteStart = css.indexOf("/* =");
+  if (paletteStart !== -1 && css.indexOf("COLOR PALETTE SYSTEM", paletteStart) !== -1) {
+    return `${css.substring(0, paletteStart).replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
+  }
+  return css;
+}
+
+function processLine(line: string, state: { inLightBlock: boolean; inDarkBlock: boolean; braceCount: number }) {
+  if (isLightBlockStart(line, state.inDarkBlock)) {
+    state.inLightBlock = true;
+    state.braceCount = 0;
+  }
+
+  if (isDarkBlockStart(line)) {
+    state.inDarkBlock = true;
+    state.inLightBlock = false;
+    state.braceCount = 0;
+  }
+
+  if (state.inLightBlock || state.inDarkBlock) {
+    state.braceCount = countBraces(line, state.braceCount);
+  }
+}
+
+function checkBlockExit(line: string, state: { inLightBlock: boolean; inDarkBlock: boolean; braceCount: number }) {
+  if ((state.inLightBlock || state.inDarkBlock) && state.braceCount === 0 && line.includes("}")) {
+    state.inLightBlock = false;
+    state.inDarkBlock = false;
+  }
+}
+
+function filterCssForPalette(css: string, palette: ColorPalette): string {
+  if (palette === "default") {
+    return filterDefaultPalette(css);
+  }
+
   const lightValues = extractPaletteValues(css, palette, "light");
   const darkValues = extractPaletteValues(css, palette, "dark");
 
   const lines = css.split("\n");
   const resultLines: string[] = [];
-  let inLightBlock = false;
-  let inDarkBlock = false;
-  let braceCount = 0;
+  const state = { inLightBlock: false, inDarkBlock: false, braceCount: 0 };
   let skipPaletteSection = false;
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    // Skip the entire palette section at the end
+  for (const line of lines) {
     if (line.includes("COLOR PALETTE SYSTEM")) {
       skipPaletteSection = true;
       continue;
@@ -141,58 +203,20 @@ function filterCssForPalette(css: string, palette: ColorPalette): string {
       continue;
     }
 
-    // Detect light theme block start
-    if (
-      (line.includes(".light,") || line.includes('[data-theme="light"],') || line.includes(":root {")) &&
-      !line.includes("data-palette") &&
-      (line.includes(".light,") || (line.includes(":root") && !inDarkBlock))
-    ) {
-      inLightBlock = true;
-      braceCount = 0;
-    }
+    processLine(line, state);
 
-    // Detect dark theme block start
-    if ((line.includes(".dark,") || line.includes('[data-theme="dark"]')) && !line.includes("data-palette")) {
-      inDarkBlock = true;
-      inLightBlock = false;
-      braceCount = 0;
-    }
+    const ctx: ThemeContext = {
+      lightValues,
+      darkValues,
+      inLightBlock: state.inLightBlock,
+      inDarkBlock: state.inDarkBlock,
+    };
+    resultLines.push(replaceVarValue(line, ctx));
 
-    // Track braces
-    if (inLightBlock || inDarkBlock) {
-      for (const char of line) {
-        if (char === "{") braceCount++;
-        if (char === "}") braceCount--;
-      }
-    }
-
-    // Replace values if we're in a theme block
-    let outputLine = line;
-    const varMatch = line.match(/^(\s*)(--[\w-]+):\s*(.+?);?\s*$/);
-    if (varMatch) {
-      const [, indent, varName] = varMatch;
-      if (inLightBlock && lightValues[varName]) {
-        outputLine = `${indent}${varName}: ${lightValues[varName]};`;
-      } else if (inDarkBlock && darkValues[varName]) {
-        outputLine = `${indent}${varName}: ${darkValues[varName]};`;
-      }
-    }
-
-    resultLines.push(outputLine);
-
-    // Check if we're exiting the block
-    if ((inLightBlock || inDarkBlock) && braceCount === 0 && line.includes("}")) {
-      inLightBlock = false;
-      inDarkBlock = false;
-    }
+    checkBlockExit(line, state);
   }
 
-  return (
-    resultLines
-      .join("\n")
-      .replace(/\n{3,}/g, "\n\n")
-      .trimEnd() + "\n"
-  );
+  return `${resultLines.join("\n").replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
 }
 
 export async function GlobalsCSS() {
@@ -201,11 +225,9 @@ export async function GlobalsCSS() {
 
   const cssContent = readFileSync(join(process.cwd(), "styles/globals.css"), "utf8");
 
-  // Pre-render all style variants
   const cssModulesContent = filterCssForStyle(cssContent, "css-modules");
   const tailwindContent = filterCssForStyle(cssContent, "tailwind");
 
-  // Pre-render all palette variants for each style
   const variants = {
     cssModules: {
       default: filterCssForPalette(cssModulesContent, "default"),
@@ -217,7 +239,6 @@ export async function GlobalsCSS() {
     },
   };
 
-  // Pre-highlight all variants
   const highlighted = {
     cssModules: {
       default: await highlightCode(variants.cssModules.default, "css"),

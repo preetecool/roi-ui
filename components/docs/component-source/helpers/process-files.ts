@@ -12,10 +12,6 @@ export type ProcessedVariant = {
   files: ProcessedFile[];
 };
 
-/**
- * Transforms import paths in code
- * Converts: @/registry/brook/ui/button/button -> @/components/ui/button/button
- */
 export function transformCode(code: string): string {
   const REGISTRY_PATH = "@/registry/brook/ui/";
   const COMPONENT_PATH = "@/components/ui/";
@@ -23,9 +19,6 @@ export function transformCode(code: string): string {
   return code.replaceAll(REGISTRY_PATH, COMPONENT_PATH);
 }
 
-/**
- * Process a single file: transform and highlight
- */
 export async function processFile(file: FileData): Promise<ProcessedFile> {
   const transformedContent = transformCode(file.content);
   const highlightedContent = await highlightCode(transformedContent, file.language);
@@ -37,16 +30,10 @@ export async function processFile(file: FileData): Promise<ProcessedFile> {
   };
 }
 
-/**
- * Process multiple files
- */
 export async function processFiles(files: FileData[]): Promise<ProcessedFile[]> {
   return await Promise.all(files.map(processFile));
 }
 
-/**
- * Process all variants with their files
- */
 export async function processVariants(variants: VariantFileData[]): Promise<ProcessedVariant[]> {
   return await Promise.all(
     variants.map(async (variant) => ({

@@ -13,7 +13,6 @@ import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import styles from "./hero.module.css";
 
 const LUCKY_LINKS = [
-  // Blocks
   { path: "/blocks/ai-chat" },
   { path: "/blocks/card-image" },
   { path: "/blocks/card-login" },
@@ -22,7 +21,6 @@ const LUCKY_LINKS = [
   { path: "/blocks/expandable-card" },
   { path: "/blocks/kanban-board" },
   { path: "/blocks/profile-menu" },
-  // UI components
   { path: "/docs/ui/tabs", anchor: "#animated" },
   { path: "/docs/ui/copy-button" },
   { path: "/docs/ui/accordion" },

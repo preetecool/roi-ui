@@ -25,7 +25,6 @@ type CodeTabsListProps = React.ComponentProps<typeof BaseTabsList> & {
   showStyleSelector?: boolean;
 };
 
-// Small delay to ensure DOM is fully rendered before extracting code text
 const DOM_RENDER_DELAY_MS = 50;
 
 function isVisibleElement(element: Element): boolean {
@@ -48,10 +47,6 @@ function findFirstVisibleCodeText(container: HTMLElement): string | null {
   return null;
 }
 
-/**
- * Context for compound component pattern
- * Shares variant and container ref between CodeTabs parent and its children
- */
 const CodeTabsContext = React.createContext<{
   variant: "installation" | "package";
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -99,9 +94,13 @@ export function CodeTabsList({ children, showCopy = false, showStyleSelector = f
     if (!shouldShowCopy) return;
 
     const timeoutId = setTimeout(() => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+        return;
+      }
       const text = findFirstVisibleCodeText(containerRef.current);
-      if (text) setCommandText(text);
+      if (text) {
+        setCommandText(text);
+      }
     }, DOM_RENDER_DELAY_MS);
 
     return () => clearTimeout(timeoutId);
@@ -114,8 +113,8 @@ export function CodeTabsList({ children, showCopy = false, showStyleSelector = f
           {children}
         </BaseTabsList>
         <div className={styles.toolbar}>
-          {shouldShowStyleSelector && <StyleSelector />}
-          {shouldShowCopy && <CopyButton code={currentCommandText} />}
+          {shouldShowStyleSelector ? <StyleSelector /> : null}
+          {shouldShowCopy ? <CopyButton code={currentCommandText} /> : null}
         </div>
       </div>
     );

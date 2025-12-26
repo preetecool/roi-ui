@@ -5,11 +5,6 @@ import type { PackageManager } from "@/components/providers/package-manager-prov
 import { usePackageManager } from "@/components/providers/package-manager-provider";
 import { CodeTabs } from "./code-tabs";
 
-/**
- * CodeTabs wrapper that syncs with PackageManagerProvider
- * Automatically sets the active tab based on user's package manager preference
- * and updates the preference when the user switches tabs
- */
 export function PackageManagerCodeTabs(
   props: Omit<ComponentProps<typeof CodeTabs>, "variant" | "defaultValue" | "value" | "onValueChange">
 ) {

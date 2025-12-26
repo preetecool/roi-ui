@@ -13,22 +13,13 @@ import {
 import styles from "./code-block.module.css";
 
 type HighlightedCodeBlockProps = {
-  /** Filename to display in header. */
   filename: string;
-  /** Code language for syntax highlighting. @default "tsx" */
   language?: string;
-  /** Raw code string. */
   code: string;
-  /** Wrap in collapsible details element. @default false */
   collapsible?: boolean;
-  /** Button text for collapsible trigger. @default "Show code" */
   buttonText?: string;
 };
 
-/**
- * Async server component that handles syntax highlighting.
- * Convenience wrapper around the composable CodeBlock.
- */
 export async function HighlightedCodeBlock({
   filename,
   language = "tsx",
