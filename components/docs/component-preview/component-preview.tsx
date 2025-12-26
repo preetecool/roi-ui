@@ -21,7 +21,6 @@ export function ComponentPreview({
   const item = Index[name];
   const isChartComponent = name.includes("chart");
 
-  // Check if component exists in registry (metadata only)
   if (!item || item.type === "ui") {
     return (
       <div className={styles.container}>

@@ -76,12 +76,10 @@ export function BlockViewer({ name, cssModulesFiles, tailwindFiles, children, fu
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const currentFile = files.find((f) => f.path === selectedFile);
 
-  // Wait for client-side hydration to prevent flash
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Set selected file after mount and when style changes
   useEffect(() => {
     if (mounted) {
       const currentFiles = style === "tailwind" ? tailwindFiles : cssModulesFiles;

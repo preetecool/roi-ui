@@ -26,7 +26,6 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Update the set of visible headings
         for (const entry of entries) {
           if (entry.isIntersecting) {
             visibleHeadingsRef.current.add(entry.target.id);
@@ -35,7 +34,6 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
           }
         }
 
-        // Find the topmost visible heading based on DOM order
         for (const heading of headingsRef.current) {
           if (visibleHeadingsRef.current.has(heading.id)) {
             setActiveId(`#${heading.id}`);

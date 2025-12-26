@@ -32,7 +32,6 @@ export function createPreferenceProvider<T extends string>(options: CreatePrefer
       localStorage.setItem(storageKey, newValue);
     }, []);
 
-    // Load saved preference from localStorage before first paint to prevent flash
     useIsoLayoutEffect(() => {
       const saved = localStorage.getItem(storageKey);
       if (saved && validValues.includes(saved as T)) {

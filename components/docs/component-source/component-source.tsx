@@ -24,7 +24,6 @@ export async function ComponentSource({ name, src, title, language = "tsx", embe
     return null;
   }
 
-  // Check for variants (only for name-based lookups)
   if (name) {
     const processedVariants = await getCachedVariants(name);
 
@@ -33,7 +32,6 @@ export async function ComponentSource({ name, src, title, language = "tsx", embe
     }
   }
 
-  // Single file component
   let code: string | undefined;
 
   if (name) {

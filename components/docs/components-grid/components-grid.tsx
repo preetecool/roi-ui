@@ -4,7 +4,6 @@ import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./components-grid.module.css";
 
 export function ComponentsGrid() {
-  // Find UI and Blocks sections from the tree
   const uiSection = source.pageTree.children.find((group) => group.type === "folder" && group.name === "UI");
   const blocksSection = source.pageTree.children.find((group) => group.type === "folder" && group.name === "Blocks");
 

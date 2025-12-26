@@ -21,7 +21,6 @@ export function ComponentPreviewClient({ name, align, isChartComponent, replayBu
 
   const componentName = style === "tailwind" && Index[`${name}-tailwind`] ? `${name}-tailwind` : name;
 
-  // Dynamically load component from loaders (separate bundle chunk)
   const Component = ComponentLoaders[componentName];
 
   const handleReplay = () => {

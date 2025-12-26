@@ -23,14 +23,12 @@ type ComponentSourceClientProps = {
   variants: ProcessedVariant[];
 };
 
-// Create styled component using HOC
 const CodeTabsContent = withCodeTabsStyle(TabsContent, codeTabsStyles.content);
 
 export function ComponentSourceClient({ variants }: ComponentSourceClientProps) {
   const { style } = useStyle();
   const [activeTab, setActiveTab] = useState(0);
 
-  // Find the current variant based on the global style preference
   const currentVariant = variants.find((v) => v.variant === style) || variants[0];
   const files = currentVariant.files;
 

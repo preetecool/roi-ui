@@ -14,17 +14,13 @@
 @layer utilities;
 
 @theme inline {
-  /* Border radius */
   --radius: 0.563rem;
   --radius-lg: 1.2rem;
 
-  /* Layout dimensions */
   --sidebar-width-icon: 3rem;
 
-  /* Typography */
   --font-size-2xl: 1.5rem;
 
-  /* Reference theme-switching variables */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -55,7 +51,6 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Easing functions */
   --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -68,7 +63,6 @@
   --radius: 0.563rem;
   --radius-lg: 1.2rem;
 
-  /* Subtle border colors for 0.5px borders */
   --border-subtle: oklch(from var(--border) l c h / 0.7);
 
   --background: oklch(1 0 0);
@@ -167,7 +161,6 @@
 
 .dark,
 [data-theme="dark"] {
-  /* Subtle border colors for 0.5px borders */
   --border-subtle: oklch(from var(--border) l c h / 0.7);
 
   --background: oklch(0.15 0 0);
@@ -224,8 +217,7 @@
 
 @layer all {
   html {
-    /* Stable scrollbar - prevents layout shift when portals lock body scroll */
-    overflow-y: scroll;
+    overflow-y: scroll !important;
     scrollbar-gutter: stable;
     max-width: 100vw;
     overflow-x: hidden;
@@ -270,7 +262,6 @@
     color: var(--selection-text);
   }
 
-  /* Hit area extension utility */
   .hit-area-extend {
     position: relative;
   }
@@ -288,10 +279,6 @@
     max-width: 44px;
   }
 }
-
-/* ============================================
-   COLOR PALETTE SYSTEM
-   ============================================ */
 
 /* Psevdaryiros Palette (hue: 270, chroma: 0.005) */
 .light[data-palette="psevdaryiros"],
