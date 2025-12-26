@@ -2,15 +2,14 @@
   overflow: hidden;
 }
 
-/* Reset prose typography inside preview area */
-.proseReset {
+.preview.proseReset {
   font-size: initial;
   line-height: normal;
   letter-spacing: normal;
   color: var(--foreground);
 }
 
-.proseReset :is(h1, h2, h3, h4, h5, h6) {
+.preview.proseReset :is(h1, h2, h3, h4, h5, h6) {
   font-size: revert;
   font-weight: revert;
   line-height: revert;
@@ -19,16 +18,16 @@
   color: inherit;
 }
 
-.proseReset p {
+.preview.proseReset p {
   margin: 0;
 }
 
-.proseReset :is(ul, ol) {
+.preview.proseReset :is(ul, ol) {
   margin: 0;
   padding: 0;
 }
 
-.proseReset li {
+.preview.proseReset li {
   margin: 0;
 }
 
