@@ -74,7 +74,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
       <g fillRule="nonzero">
         <path
           className={styles.arrowPoint}
-          d={pointLeft ? "M7.2 1l-4 4 4 4" : "M-0.8 1l4 4-4 4"}
+          d={pointLeft ? "M14.8 1l-4 4 4 4" : "M-0.8 1l4 4-4 4"}
           stroke="currentColor"
           strokeLinecap="square"
           strokeLinejoin="miter"
@@ -82,7 +82,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
         />
         <path
           className={styles.arrowShaft}
-          d={pointLeft ? "M7.2 5H2.2" : "M0 5h4.8"}
+          d={pointLeft ? "M14.8 5H9.8" : "M0 5h4.8"}
           stroke="currentColor"
           strokeLinecap="square"
           strokeLinejoin="miter"
