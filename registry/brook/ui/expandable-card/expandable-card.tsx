@@ -3,6 +3,7 @@ import { Dialog } from "@base-ui/react/dialog";
 import { Plus, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import styles from "./expandable-card.module.css";
 
 type ExpandableCardItem = {
@@ -15,13 +16,14 @@ type ExpandableCardItem = {
 
 type ExpandableCardProps = {
   item: ExpandableCardItem;
+  className?: string;
 };
 
-export function ExpandableCard({ item }: ExpandableCardProps) {
+function ExpandableCard({ item, className }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, className)}>
       <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
         <AnimatePresence>
           {isOpen && (
@@ -102,7 +104,7 @@ export function ExpandableCard({ item }: ExpandableCardProps) {
 
                       <motion.div
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        className={styles.paragrahWrapper}
+                        className={styles.paragraphWrapper}
                         exit={{
                           opacity: 0,
                           display: "block",
@@ -156,4 +158,5 @@ export function ExpandableCard({ item }: ExpandableCardProps) {
   );
 }
 
-export type { ExpandableCardItem };
+export { ExpandableCard };
+export type { ExpandableCardItem, ExpandableCardProps };

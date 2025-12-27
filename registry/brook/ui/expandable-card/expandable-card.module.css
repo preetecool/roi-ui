@@ -164,7 +164,7 @@
   letter-spacing: -0.02em;
 }
 
-.paragrahWrapper {
+.paragraphWrapper {
   color: oklch(from var(--secondary-foreground) l c h / 0.8);
 }
 

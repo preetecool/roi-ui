@@ -14,13 +14,7 @@ export function ComponentsGrid() {
   return (
     <div className={styles.container}>
       {uiComponents.length > 0 && (
-        <section aria-labelledby="ui-components-heading" className={styles.section}>
-          <h2 className={styles.sectionTitle} id="ui-components-heading">
-            UI Components
-          </h2>
-          <p className={styles.sectionDescription}>
-            Foundational components for building interfaces. Fully accessible and customizable.
-          </p>
+        <section className={styles.section}>
           <ul className={styles.grid}>
             {uiComponents.map((component) => {
               if (component.type !== "page") return null;
