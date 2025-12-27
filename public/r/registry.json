@@ -396,6 +396,34 @@
       ]
     },
     {
+      "name": "expandable-card-carousel",
+      "type": "registry:item",
+      "dependencies": ["motion", "lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/expandable-card.json",
+        "https://roiui.com/r/carousel.json"
+      ],
+      "title": "Expandable Card Carousel",
+      "description": "A carousel of expandable cards showcasing core philosophies.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/expandable-card-carousel/page.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/page.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card-carousel/expandable-card-block.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/expandable-card-block.module.css"
+        },
+        {
+          "path": "registry/brook/blocks-shared-files/expandable-card-carousel/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/data.json"
+        }
+      ]
+    },
+    {
       "name": "field",
       "type": "registry:item",
       "title": "Field",
@@ -1854,6 +1882,29 @@
           "path": "registry/brook/tailwind/ui/expandable-card.tsx",
           "type": "registry:file",
           "target": "~/components/ui/expandable-card/expandable-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card-carousel-tailwind",
+      "type": "registry:item",
+      "dependencies": ["motion", "lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/expandable-card-tailwind.json",
+        "https://roiui.com/r/carousel-tailwind.json"
+      ],
+      "title": "Expandable Card Carousel (Tailwind)",
+      "description": "A carousel of expandable cards showcasing core philosophies.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/page.tsx"
+        },
+        {
+          "path": "registry/brook/blocks-shared-files/expandable-card-carousel/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/data.json"
         }
       ]
     },

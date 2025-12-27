@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-card-carousel",
+  "type": "registry:item",
+  "title": "Expandable Card Carousel",
+  "description": "A carousel of expandable cards showcasing core philosophies.",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://roiui.com/r/expandable-card.json",
+    "https://roiui.com/r/carousel.json"
+  ],
+  "files": [
+    {
+      "path": "registry/brook/blocks/expandable-card-carousel/page.tsx",
+      "content": "\"use client\";\nimport { ExpandableCard, type ExpandableCardItem } from \"@/registry/brook/ui/expandable-card/expandable-card\";\nimport { Carousel } from \"@/registry/brook/ui/carousel/carousel\";\nimport data from \"@/registry/brook/blocks-shared-files/expandable-card-carousel/data.json\";\nimport styles from \"./expandable-card-block.module.css\";\n\nconst items: ExpandableCardItem[] = data.cards.map((card) => ({\n  id: card.id,\n  imageSrc: card.imageSrc,\n  cardHeading: card.cardHeading,\n  alt: card.alt,\n  content: (\n    <div className={styles.content}>\n      {card.paragraphs.map((paragraph, index) => (\n        // biome-ignore lint/suspicious/noArrayIndexKey: paragraphs are static\n        <p key={index}>{paragraph}</p>\n      ))}\n    </div>\n  ),\n}));\n\nexport default function Page() {\n  return (\n    <div className={styles.wrapper}>\n      <header className={styles.header}>\n        <h2 className={styles.heading}>Our Three Core<br />Philosophies</h2>\n        <p className={styles.description}>\n          The principles that guide everything we create, from design decisions to the experiences we craft for our users.\n        </p>\n      </header>\n      <Carousel.Bleed>\n        <Carousel.Root align=\"center\" gap={24} totalItems={items.length} variant=\"inset\">\n          <Carousel.Viewport>\n            <Carousel.Content className={styles.carousel}>\n              {items.map((item, index) => (\n                <Carousel.Item index={index} key={item.id}>\n                  <ExpandableCard item={item} />\n                </Carousel.Item>\n              ))}\n            </Carousel.Content>\n          </Carousel.Viewport>\n        </Carousel.Root>\n      </Carousel.Bleed>\n    </div>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/expandable-card-carousel/page.tsx"
+    },
+    {
+      "path": "registry/brook/blocks/expandable-card-carousel/expandable-card-block.module.css",
+      "content": ".wrapper {\n  width: 100%;\n  max-width: 100%;\n  padding: 24px 0;\n}\n\n.header {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline;\n  gap: 24px;\n  margin-bottom: 32px;\n  margin-left: auto;\n  margin-right: auto;\n  max-width: 1008px;\n  width: 100%;\n}\n\n.heading {\n  font-size: 3rem;\n  font-weight: 500;\n  color: var(--foreground);\n  margin: 0;\n  letter-spacing: -0.02em;\n  line-height: 1.3;\n}\n\n.description {\n  font-size: var(--font-size-sm);\n  color: var(--muted-foreground);\n  margin: 0;\n  max-width: 360px;\n  text-align: left;\n}\n\n.carousel {\n  justify-content: center;\n}\n\n.content p {\n  margin: 0 0 1rem 0;\n}\n\n.content p:last-child {\n  margin-bottom: 0;\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/expandable-card-carousel/expandable-card-block.module.css"
+    },
+    {
+      "path": "registry/brook/blocks-shared-files/expandable-card-carousel/data.json",
+      "content": "{\n  \"cards\": [\n    {\n      \"id\": 1,\n      \"imageSrc\": \"/p-01.svg\",\n      \"cardHeading\": \"Eudaimonia\",\n      \"alt\": \"Figure contemplating under an archway at dusk\",\n      \"paragraphs\": [\n        \"Aristotle taught that eudaimonia, or human flourishing, is not found in fleeting pleasures or material wealth, but in living a life of virtue and purpose. It is the highest good, achieved through the cultivation of character and the exercise of reason.\",\n        \"We build not for momentary delight, but for lasting excellence. Every interface, every interaction is an opportunity to help users flourish in their work and creative pursuits.\"\n      ]\n    },\n    {\n      \"id\": 2,\n      \"imageSrc\": \"/p-02.svg\",\n      \"cardHeading\": \"Ataraxia\",\n      \"alt\": \"Serene figure amidst classical columns at night\",\n      \"paragraphs\": [\n        \"The Stoics and Epicureans alike sought ataraxia: a state of serene calmness, undisturbed by the chaos of the world. It emerges not from avoidance, but from clarity of mind and freedom from unnecessary complexity.\",\n        \"Our designs embrace this tranquility. We strip away the superfluous, leaving only what serves. In simplicity, we find peace; in clarity, we find power.\"\n      ]\n    },\n    {\n      \"id\": 3,\n      \"imageSrc\": \"/p-03.svg\",\n      \"cardHeading\": \"Arete\",\n      \"alt\": \"Wanderer on a path toward distant pillars\",\n      \"paragraphs\": [\n        \"Arete speaks to excellence: the fulfillment of purpose, the realization of potential. For the ancient Greeks, it meant living up to one's highest nature, whether as an athlete, a philosopher, or an artisan.\",\n        \"We pursue arete in every pixel and every line of code. Not perfection for its own sake, but excellence in service of those who use what we create.\"\n      ]\n    }\n  ]\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/expandable-card-carousel/data.json"
+    }
+  ]
+}
