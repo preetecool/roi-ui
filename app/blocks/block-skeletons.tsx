@@ -307,7 +307,7 @@ export function KanbanBoardSkeleton({ className }: SkeletonProps) {
 
       {/* Column 2 - In Progress */}
       <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="114" y="12" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="55" x="122" y="22" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="45" x="122" y="22" />
       <circle cx="182" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
       {/* Cards in column 2 */}
       <rect fill="var(--mix-card-50-bg)" height="44" rx="6" width="76" x="122" y="42" />
@@ -405,13 +405,60 @@ export function PricingSectionSkeleton({ className }: SkeletonProps) {
   );
 }
 
+export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="expandCarouselCardGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
+        </linearGradient>
+        <linearGradient id="expandCarouselImageGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-50-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-33-bg)" />
+        </linearGradient>
+      </defs>
+
+      {/* Card 1 */}
+      <rect fill="url(#expandCarouselCardGrad)" height="140" rx="12" width="100" x="12" y="5" />
+      <rect fill="url(#expandCarouselImageGrad)" height="90" rx="8" width="84" x="20" y="13" />
+      <circle cx="62" cy="52" fill="var(--muted-foreground)" opacity="0.12" r="16" />
+      <path d="M56 56L62 44L68 56" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
+      <rect fill="var(--muted-foreground)" height="10" opacity="0.35" rx="3" width="50" x="20" y="112" />
+      <circle cx="92" cy="120" fill="var(--muted-foreground)" opacity="0.15" r="10" />
+      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="88" x2="96" y1="120" y2="120" />
+      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="92" x2="92" y1="116" y2="124" />
+
+      {/* Card 2 */}
+      <rect fill="url(#expandCarouselCardGrad)" height="140" rx="12" width="100" x="120" y="5" />
+      <rect fill="url(#expandCarouselImageGrad)" height="90" rx="8" width="84" x="128" y="13" />
+      <circle cx="170" cy="52" fill="var(--muted-foreground)" opacity="0.12" r="16" />
+      <path d="M164 56L170 44L176 56" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
+      <rect fill="var(--muted-foreground)" height="10" opacity="0.35" rx="3" width="50" x="128" y="112" />
+      <circle cx="200" cy="120" fill="var(--muted-foreground)" opacity="0.15" r="10" />
+      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="196" x2="204" y1="120" y2="120" />
+      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="200" x2="200" y1="116" y2="124" />
+
+      {/* Card 3 */}
+      <rect fill="url(#expandCarouselCardGrad)" height="140" rx="12" width="100" x="228" y="5" />
+      <rect fill="url(#expandCarouselImageGrad)" height="90" rx="8" width="84" x="236" y="13" />
+      <circle cx="278" cy="52" fill="var(--muted-foreground)" opacity="0.12" r="16" />
+      <path d="M272 56L278 44L284 56" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
+      <rect fill="var(--muted-foreground)" height="10" opacity="0.35" rx="3" width="50" x="236" y="112" />
+      <circle cx="308" cy="120" fill="var(--muted-foreground)" opacity="0.15" r="10" />
+      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="304" x2="312" y1="120" y2="120" />
+      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="308" x2="308" y1="116" y2="124" />
+    </svg>
+  );
+}
+
 export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> = {
   "ai-chat": AiChatSkeleton,
   "card-image": CardImageSkeleton,
   "card-login": CardLoginSkeleton,
   "card-task": CardTaskSkeleton,
   "card-traffic": CardTrafficSkeleton,
-  "expandable-card": ExpandableCardSkeleton,
+  "expandable-card-carousel": ExpandableCardCarouselSkeleton,
   "kanban-board": KanbanBoardSkeleton,
   "pricing-section": PricingSectionSkeleton,
   "profile-menu": ProfileMenuSkeleton,

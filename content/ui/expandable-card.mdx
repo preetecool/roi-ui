@@ -1,0 +1,120 @@
+---
+title: Expandable Card
+description: A card component that expands into a modal to reveal more content with smooth animations.
+links:
+    doc: https://base-ui.com/react/components/dialog
+    api: https://base-ui.com/react/components/dialog#api-reference
+---
+
+<ComponentPreview name="expandable-card-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
+npx shadcn@latest add @roiui/expandable-card
+```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/expandable-card-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/expandable-card
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/expandable-card-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the following files:
+
+<ComponentSource
+    name="expandable-card"
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Props
+
+### ExpandableCard
+
+<PropTable
+    data={[
+        {
+            prop: "item",
+            type: "ExpandableCardItem",
+            description: "The item data for the expandable card",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the wrapper",
+        },
+    ]}
+/>
+
+### ExpandableCardItem
+
+<PropTable
+    data={[
+        {
+            prop: "id",
+            type: "string | number",
+            description: "Unique identifier for the card (used for layout animations)",
+        },
+        {
+            prop: "imageSrc",
+            type: "string",
+            description: "Source URL for the card image",
+        },
+        {
+            prop: "alt",
+            type: "string",
+            description: "Alt text for the card image",
+        },
+        {
+            prop: "cardHeading",
+            type: "string",
+            description: "The heading text displayed on the card",
+        },
+        {
+            prop: "content",
+            type: "ReactNode",
+            description: "The content to display when the card is expanded",
+        },
+    ]}
+/>
+

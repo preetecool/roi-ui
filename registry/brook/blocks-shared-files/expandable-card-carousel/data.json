@@ -1,0 +1,34 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "imageSrc": "/p-01.svg",
+      "cardHeading": "Eudaimonia",
+      "alt": "Figure contemplating under an archway at dusk",
+      "paragraphs": [
+        "Aristotle taught that eudaimonia, or human flourishing, is not found in fleeting pleasures or material wealth, but in living a life of virtue and purpose. It is the highest good, achieved through the cultivation of character and the exercise of reason.",
+        "We build not for momentary delight, but for lasting excellence. Every interface, every interaction is an opportunity to help users flourish in their work and creative pursuits."
+      ]
+    },
+    {
+      "id": 2,
+      "imageSrc": "/p-02.svg",
+      "cardHeading": "Ataraxia",
+      "alt": "Serene figure amidst classical columns at night",
+      "paragraphs": [
+        "The Stoics and Epicureans alike sought ataraxia: a state of serene calmness, undisturbed by the chaos of the world. It emerges not from avoidance, but from clarity of mind and freedom from unnecessary complexity.",
+        "Our designs embrace this tranquility. We strip away the superfluous, leaving only what serves. In simplicity, we find peace; in clarity, we find power."
+      ]
+    },
+    {
+      "id": 3,
+      "imageSrc": "/p-03.svg",
+      "cardHeading": "Arete",
+      "alt": "Wanderer on a path toward distant pillars",
+      "paragraphs": [
+        "Arete speaks to excellence: the fulfillment of purpose, the realization of potential. For the ancient Greeks, it meant living up to one's highest nature, whether as an athlete, a philosopher, or an artisan.",
+        "We pursue arete in every pixel and every line of code. Not perfection for its own sake, but excellence in service of those who use what we create."
+      ]
+    }
+  ]
+}

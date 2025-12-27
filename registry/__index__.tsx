@@ -533,8 +533,11 @@ export const Index: Record<string, RegistryEntry> = {
   "expandable-card-demo": {
     name: "expandable-card-demo",
     type: "example",
-    files: ["registry/brook/examples/expandable-card-demo.tsx"],
-    path: "@/registry/brook/examples/expandable-card-demo",
+    files: [
+      "registry/brook/examples/expandable-card-demo/expandable-card-demo.tsx",
+      "registry/brook/examples/expandable-card-demo/expandable-card-demo.module.css",
+    ],
+    path: "@/registry/brook/examples/expandable-card-demo/expandable-card-demo",
   },
   "field-demo": {
     name: "field-demo",
@@ -842,15 +845,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/blocks/card-traffic/page",
   },
-  "expandable-card": {
-    name: "expandable-card",
+  "expandable-card-carousel": {
+    name: "expandable-card-carousel",
     type: "block",
     files: [
-      "registry/brook/blocks/expandable-card/page.tsx",
-      "registry/brook/blocks/expandable-card/components/expandable-card.tsx",
-      "registry/brook/blocks/expandable-card/components/expandable-card.module.css",
+      "registry/brook/blocks/expandable-card-carousel/page.tsx",
+      "registry/brook/blocks/expandable-card-carousel/data.json",
+      "registry/brook/blocks/expandable-card-carousel/expandable-card-block.module.css",
     ],
-    path: "@/registry/brook/blocks/expandable-card/page",
+    path: "@/registry/brook/blocks/expandable-card-carousel/page",
   },
   "kanban-board": {
     name: "kanban-board",
@@ -1016,6 +1019,14 @@ export const Index: Record<string, RegistryEntry> = {
     files: [
       "registry/brook/ui/dropdown-menu/dropdown-menu.tsx",
       "registry/brook/ui/dropdown-menu/dropdown-menu.module.css",
+    ],
+  },
+  "expandable-card": {
+    name: "expandable-card",
+    type: "ui",
+    files: [
+      "registry/brook/ui/expandable-card/expandable-card.tsx",
+      "registry/brook/ui/expandable-card/expandable-card.module.css",
     ],
   },
   field: {
@@ -1727,14 +1738,14 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/tailwind/blocks/card-traffic/page",
   },
-  "expandable-card-tailwind": {
-    name: "expandable-card-tailwind",
+  "expandable-card-carousel-tailwind": {
+    name: "expandable-card-carousel-tailwind",
     type: "block",
     files: [
-      "registry/brook/tailwind/blocks/expandable-card/page.tsx",
-      "registry/brook/tailwind/blocks/expandable-card/components/expandable-card.tsx",
+      "registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx",
+      "registry/brook/tailwind/blocks/expandable-card-carousel/data.json",
     ],
-    path: "@/registry/brook/tailwind/blocks/expandable-card/page",
+    path: "@/registry/brook/tailwind/blocks/expandable-card-carousel/page",
   },
   "kanban-board-tailwind": {
     name: "kanban-board-tailwind",
@@ -1878,6 +1889,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "dropdown-menu-tailwind",
     type: "ui",
     files: ["registry/brook/tailwind/ui/dropdown-menu.tsx"],
+  },
+  "expandable-card-tailwind": {
+    name: "expandable-card-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/expandable-card.tsx"],
   },
   fieldTailwind: {
     name: "field-tailwind",

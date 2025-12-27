@@ -312,7 +312,7 @@ export const ComponentLoaders: Record<string, ComponentType> = {
     }))
   ),
   "expandable-card-demo": dynamic(() =>
-    import("@/registry/brook/examples/expandable-card-demo").then((mod) => ({
+    import("@/registry/brook/examples/expandable-card-demo/expandable-card-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -478,8 +478,8 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
-  "expandable-card": dynamic(() =>
-    import("@/registry/brook/blocks/expandable-card/page").then((mod) => ({
+  "expandable-card-carousel": dynamic(() =>
+    import("@/registry/brook/blocks/expandable-card-carousel/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -953,8 +953,8 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
-  "expandable-card-tailwind": dynamic(() =>
-    import("@/registry/brook/tailwind/blocks/expandable-card/page").then((mod) => ({
+  "expandable-card-carousel-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/expandable-card-carousel/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

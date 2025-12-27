@@ -15,13 +15,14 @@ type ExpandableCardItem = {
 
 type ExpandableCardProps = {
   item: ExpandableCardItem;
+  className?: string;
 };
 
-export function ExpandableCard({ item }: ExpandableCardProps) {
+function ExpandableCard({ item, className }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative h-fit w-fit">
+    <div className={cn("relative h-fit w-fit", className)}>
       <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
         <AnimatePresence>
           {isOpen && (
@@ -199,4 +200,5 @@ export function ExpandableCard({ item }: ExpandableCardProps) {
   );
 }
 
-export type { ExpandableCardItem };
+export { ExpandableCard };
+export type { ExpandableCardItem, ExpandableCardProps };

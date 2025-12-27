@@ -161,6 +161,8 @@ async function getBlockFiles(dir: string, name: string): Promise<string[]> {
       try {
         const dirFiles = await fs.readdir(basePath);
         for (const file of dirFiles) {
+          // Skip page.tsx and data.json since they're already added above
+          if (file === "page.tsx" || file === "data.json") continue;
           if (file.endsWith(".tsx") || file.endsWith(".module.css")) {
             const fullPath = path.join(basePath, file);
             files.push(path.relative(cwd, fullPath));

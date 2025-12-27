@@ -379,19 +379,19 @@
     {
       "name": "expandable-card",
       "type": "registry:item",
-      "dependencies": ["motion"],
+      "dependencies": ["motion", "lucide-react"],
       "title": "Expandable Card",
       "description": "A card component that can expand to show more content.",
       "files": [
         {
-          "path": "registry/brook/blocks/expandable-card/components/expandable-card.tsx",
+          "path": "registry/brook/ui/expandable-card/expandable-card.tsx",
           "type": "registry:file",
-          "target": "~/components/blocks/expandable-card/expandable-card.tsx"
+          "target": "~/components/ui/expandable-card/expandable-card.tsx"
         },
         {
-          "path": "registry/brook/blocks/expandable-card/components/expandable-card.module.css",
+          "path": "registry/brook/ui/expandable-card/expandable-card.module.css",
           "type": "registry:file",
-          "target": "~/components/blocks/expandable-card/expandable-card.module.css"
+          "target": "~/components/ui/expandable-card/expandable-card.module.css"
         }
       ]
     },
@@ -1846,14 +1846,14 @@
     {
       "name": "expandable-card-tailwind",
       "type": "registry:item",
-      "dependencies": ["motion"],
+      "dependencies": ["motion", "lucide-react"],
       "title": "Expandable Card (Tailwind)",
       "description": "A card component that can expand to show more content.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/expandable-card/components/expandable-card.tsx",
+          "path": "registry/brook/tailwind/ui/expandable-card.tsx",
           "type": "registry:file",
-          "target": "~/components/blocks/expandable-card/expandable-card.tsx"
+          "target": "~/components/ui/expandable-card/expandable-card.tsx"
         }
       ]
     },
