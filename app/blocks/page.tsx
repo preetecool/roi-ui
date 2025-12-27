@@ -11,7 +11,7 @@ const BLOCK_TITLES: Record<string, string> = {
   "card-login": "Login Card",
   "card-task": "Task Card",
   "card-traffic": "Traffic Card",
-  "expandable-card": "Expandable Card",
+  "expandable-card-carousel": "Expandable Card Carousel",
   "kanban-board": "Kanban Board",
   "pricing-section": "Pricing Section",
   "profile-menu": "Profile Menu",
@@ -41,11 +41,11 @@ export default function BlocksPage() {
           const SkeletonComponent = blockSkeletons[block.name];
           return (
             <Link className={styles.card} href={`/blocks/${block.name}`} key={block.name}>
-              {SkeletonComponent && (
+              {SkeletonComponent ? (
                 <div className={styles.cardPreview}>
                   <SkeletonComponent className={styles.skeleton} />
                 </div>
-              )}
+              ) : null}
               <div className={styles.cardInfo}>
                 <div className={styles.cardTitle}>{block.title}</div>
               </div>

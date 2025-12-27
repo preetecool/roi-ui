@@ -58,7 +58,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--mix-card-66-bg);
+  border: 1px solid oklch(from var(--border) l c h / 0.33);
   border-radius: var(--radius-lg);
   background: var(--mix-card-15-bg);
   text-decoration: none;
@@ -67,7 +67,7 @@
 }
 
 .card:hover {
-  border-color: var(--mix-card-85-bg);
+  border: 1px solid oklch(from var(--border) l c h / 0.66);
 }
 
 .cardPreview {
@@ -76,13 +76,14 @@
   justify-content: center;
   padding: 1.75rem;
   background: var(--mix-card-33-bg);
-  border-bottom: 1px solid var(--mix-card-66-bg);
+  border-bottom: 1px solid oklch(from var(--border) l c h / 0.33);
   min-height: 150px;
   transition: background-color 0.2s;
 }
 
 .card:hover .cardPreview {
   background: var(--mix-card-50-bg);
+  border-bottom: 1px solid oklch(from var(--border) l c h / 0.66);
 }
 
 .skeleton {
