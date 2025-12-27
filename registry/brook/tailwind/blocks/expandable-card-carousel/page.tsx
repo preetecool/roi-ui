@@ -10,9 +10,8 @@ const items: ExpandableCardItem[] = data.cards.map((card) => ({
   alt: card.alt,
   content: (
     <div className="[&_p]:mb-4 [&_p:last-child]:mb-0">
-      {card.paragraphs.map((paragraph, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: paragraphs are static
-        <p key={index}>{paragraph}</p>
+      {card.paragraphs.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
       ))}
     </div>
   ),
@@ -21,8 +20,8 @@ const items: ExpandableCardItem[] = data.cards.map((card) => ({
 export default function Page() {
   return (
     <div className="w-full max-w-full py-6">
-      <header className="mx-auto mb-8 flex w-full max-w-[1008px] items-baseline justify-between gap-6">
-        <h2 className="m-0 font-medium text-5xl leading-[1.3] text-[var(--foreground)] tracking-[-0.02em]">
+      <header className="mb-8 flex items-baseline justify-between gap-6 px-4 min-[1100px]:mx-auto min-[1100px]:max-w-[1008px] min-[1100px]:px-0">
+        <h2 className="m-0 text-[clamp(2rem,5vw,3rem)] font-medium leading-[1.3] tracking-[-0.02em] text-[var(--foreground)]">
           Our Three Core
           <br />
           Philosophies
@@ -31,10 +30,10 @@ export default function Page() {
           The principles that guide everything we create, from design decisions to the experiences we craft for our users.
         </p>
       </header>
-      <Carousel.Bleed>
-        <Carousel.Root align="center" gap={24} totalItems={items.length} variant="inset">
+      <Carousel.Bleed className="min-[1100px]:!static min-[1100px]:!mx-0 min-[1100px]:!w-auto min-[1100px]:flex min-[1100px]:justify-center">
+        <Carousel.Root align="start" className="min-[1100px]:w-auto" gap={24} totalItems={items.length} variant="inset">
           <Carousel.Viewport>
-            <Carousel.Content className="justify-center">
+            <Carousel.Content>
               {items.map((item, index) => (
                 <Carousel.Item index={index} key={item.id}>
                   <ExpandableCard item={item} />
