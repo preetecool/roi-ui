@@ -91,7 +91,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                         aria-label="Close"
                         className={cn(
                           "z-20 h-8 w-8 rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)]",
-                          "flex cursor-pointer items-center justify-center bg-transparent text-[var(--muted-foreground)] transition-[150ms_ease-out]",
+                          "flex cursor-pointer items-center justify-center bg-[var(--background)] text-[var(--muted-foreground)] transition-[150ms_ease-out] md:bg-transparent",
                           "hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
                         )}
                         render={
