@@ -169,11 +169,13 @@
 }
 
 .arrowPoint {
-  transition: 200ms var(--ease-in-out-cubic);
+  transition: transform 200ms var(--ease-in-out-cubic);
 }
 
 .arrowShaft {
-  transition: 200ms var(--ease-in-out-cubic);
+  transition:
+    transform 200ms var(--ease-in-out-cubic),
+    opacity 150ms var(--ease-out-quad);
   opacity: 0;
 }
 

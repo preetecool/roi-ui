@@ -28,21 +28,21 @@ type CardImageSectionProps = {
 export function CardImageSection({ data }: CardImageSectionProps) {
   return (
     <section className="mx-auto w-full max-w-[900px] px-6 py-12 max-sm:px-4 max-sm:py-8">
-      <header className="mb-12 text-center max-sm:mb-8">
+      <header className="mb-12 text-left max-sm:mb-8">
         <span className="mb-3 block text-sm font-medium uppercase tracking-[0.05em] text-[var(--accent)]">
           {data.caption}
         </span>
         <h2 className="m-0 mb-4 text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[var(--foreground)]">
           {data.heading}
         </h2>
-        <p className="mx-auto m-0 max-w-[600px] text-base leading-[1.6] text-[var(--muted-foreground)]">
+        <p className="m-0 max-w-[600px] text-base leading-[1.6] text-[var(--muted-foreground)]">
           {data.description}
         </p>
       </header>
 
       <div className="columns-1 gap-6 sm:columns-2">
-        {data.cards.map((card) => (
-          <Card className="mb-6 max-w-full break-inside-avoid rounded-[16px] sm:rounded-[20px]" key={card.id} variant="lift">
+        {data.cards.map((card, index) => (
+          <Card className={`mb-6 max-w-full break-inside-avoid rounded-[16px] [transform:translateZ(0)] sm:rounded-[20px] ${index === 0 ? "sm:mt-[120px]" : ""}`} key={card.id} variant="lift">
             <CardImage alt={card.alt} className="w-auto rounded-[8px] sm:rounded-[12px]" src={card.imageSrc} />
 
             <CardContent className="gap-2">

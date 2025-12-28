@@ -71,10 +71,11 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
       viewBox="0 0 14 10"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g fillRule="nonzero">
+      <g>
         <path
           className={styles.arrowPoint}
           d={pointLeft ? "M14.8 1l-4 4 4 4" : "M-0.8 1l4 4-4 4"}
+          fill="none"
           stroke="currentColor"
           strokeLinecap="square"
           strokeLinejoin="miter"
@@ -83,6 +84,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
         <path
           className={styles.arrowShaft}
           d={pointLeft ? "M14.8 5H9.8" : "M0 5h4.8"}
+          fill="none"
           stroke="currentColor"
           strokeLinecap="square"
           strokeLinejoin="miter"
