@@ -4,20 +4,20 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardImage as CardImageComponent,
+  CardImage,
   CardTitle,
 } from "@/registry/brook/tailwind/ui/card";
 
-export function CardImage() {
+export function CardImageDemo() {
   return (
-    <Card className="max-w-full rounded-[16px] sm:max-w-[360px] sm:rounded-[24px]" variant="lift">
-      <CardImageComponent
+    <Card className="mx-auto w-full max-w-full rounded-[16px] sm:max-w-[360px] sm:rounded-[24px]" variant="lift">
+      <CardImage
         alt="Veiled woman gazing at architecture under the night sky"
         className="w-auto rounded-[8px] sm:rounded-[12px]"
         src="/scene_01.svg"
       />
 
-      <CardContent>
+      <CardContent className="gap-3">
         <CardTitle className="m-0 max-sm:text-[1.125rem] max-sm:leading-[1.3]">Threshold</CardTitle>
         <CardDescription className="mt-0">
           Between what we build and what eternally exists standing in quiet contemplation.

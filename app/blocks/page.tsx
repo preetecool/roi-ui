@@ -7,7 +7,7 @@ const EXCLUDED_BLOCKS = ["card-history", "tailwind"];
 
 const BLOCK_TITLES: Record<string, string> = {
   "ai-chat": "AI Chat",
-  "card-image": "Image Card",
+  "card-image-section": "Card Image Section",
   "card-login": "Login Card",
   "card-task": "Task Card",
   "card-traffic": "Traffic Card",

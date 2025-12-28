@@ -983,24 +983,34 @@
       ]
     },
     {
-      "name": "card-image",
+      "name": "card-image-section",
       "type": "registry:item",
       "registryDependencies": [
         "https://roiui.com/r/button.json",
         "https://roiui.com/r/card.json"
       ],
-      "title": "Card Image",
-      "description": "A card component with image, title, description, and button.",
+      "title": "Card Image Section",
+      "description": "A section with 4 image cards in a masonry layout.",
       "files": [
         {
-          "path": "registry/brook/blocks/card-image/components/card-image.tsx",
+          "path": "registry/brook/blocks/card-image-section/page.tsx",
           "type": "registry:file",
-          "target": "~/components/blocks/card-image/card-image.tsx"
+          "target": "~/components/blocks/card-image-section/page.tsx"
         },
         {
-          "path": "registry/brook/blocks/card-image/components/card-image.module.css",
+          "path": "registry/brook/blocks/card-image-section/components/card-image-section.tsx",
           "type": "registry:file",
-          "target": "~/components/blocks/card-image/card-image.module.css"
+          "target": "~/components/blocks/card-image-section/card-image-section.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-image-section/components/card-image-section.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image-section/card-image-section.module.css"
+        },
+        {
+          "path": "registry/brook/blocks-shared-files/card-image-section/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image-section/data.json"
         }
       ]
     },
@@ -1791,19 +1801,29 @@
       ]
     },
     {
-      "name": "card-image-tailwind",
+      "name": "card-image-section-tailwind",
       "type": "registry:item",
       "registryDependencies": [
         "https://roiui.com/r/button-tailwind.json",
         "https://roiui.com/r/card-tailwind.json"
       ],
-      "title": "Card Image (Tailwind)",
-      "description": "A card component with image, title, description, and button.",
+      "title": "Card Image Section (Tailwind)",
+      "description": "A section with 4 image cards in a masonry layout.",
       "files": [
         {
-          "path": "registry/brook/tailwind/blocks/card-image/components/card-image.tsx",
+          "path": "registry/brook/tailwind/blocks/card-image-section/page.tsx",
           "type": "registry:file",
-          "target": "~/components/blocks/card-image/card-image.tsx"
+          "target": "~/components/blocks/card-image-section/page.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/card-image-section/components/card-image-section.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image-section/card-image-section.tsx"
+        },
+        {
+          "path": "registry/brook/blocks-shared-files/card-image-section/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-image-section/data.json"
         }
       ]
     },

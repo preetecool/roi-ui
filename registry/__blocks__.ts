@@ -51,39 +51,51 @@ export const BlocksData: Record<string, BlockData> = {
       },
     ],
   },
-  "card-image": {
+  "card-image-section": {
     cssModulesFiles: [
       {
         name: "page.tsx",
-        path: "app/card-image/page.tsx",
+        path: "app/card-image-section/page.tsx",
         content:
-          'import CardImage from "./components/card-image";\n\nexport default function Page() {\n  return <CardImage />;\n}\n',
+          '"use client";\nimport { CardImageSection } from "./components/card-image-section";\nimport data from "./data.json";\n\nexport default function Page() {\n  return <CardImageSection data={data} />;\n}\n',
       },
       {
-        name: "card-image.tsx",
-        path: "components/card-image.tsx",
+        name: "card-image-section.tsx",
+        path: "components/card-image-section.tsx",
         content:
-          'import { Button } from "@/components/ui/button/button";\nimport { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from "@/components/ui/card/card";\nimport styles from "./card-image.module.css";\n\nexport default function CardImageDemo() {\n  return (\n    <Card className={styles.card} variant="lift">\n      <CardImage\n        alt="Veiled woman gazing at architecture under the night sky"\n        className={styles.cardImage}\n        src="/scene_01.svg"\n      />\n\n      <CardContent>\n        <CardTitle className={styles.title}>Threshold</CardTitle>\n\n        <CardDescription>\n          Between what we build and what eternally exists standing in quiet contemplation.\n        </CardDescription>\n      </CardContent>\n\n      <CardFooter>\n        <Button showArrow size="sm" variant="outline">\n          Learn More\n        </Button>\n      </CardFooter>\n    </Card>\n  );\n}\n',
+          'import { Button } from "@/components/ui/button/button";\nimport { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from "@/components/ui/card/card";\nimport styles from "./card-image-section.module.css";\n\ntype CardData = {\n  id: number;\n  imageSrc: string;\n  alt: string;\n  title: string;\n  description: string;\n};\n\ntype CardImageSectionProps = {\n  data: {\n    caption: string;\n    heading: string;\n    description: string;\n    cards: CardData[];\n  };\n};\n\nexport function CardImageSection({ data }: CardImageSectionProps) {\n  return (\n    <section className={styles.section}>\n      <header className={styles.header}>\n        <span className={styles.caption}>{data.caption}</span>\n        <h2 className={styles.heading}>{data.heading}</h2>\n        <p className={styles.description}>{data.description}</p>\n      </header>\n\n      <div className={styles.grid}>\n        {data.cards.map((card) => (\n          <Card className={styles.card} key={card.id} variant="lift">\n            <CardImage alt={card.alt} className={styles.cardImage} src={card.imageSrc} />\n\n            <CardContent>\n              <CardTitle className={styles.cardTitle}>{card.title}</CardTitle>\n              <CardDescription>{card.description}</CardDescription>\n            </CardContent>\n\n            <CardFooter>\n              <Button className={styles.linkButton} showArrow size="sm" variant="link">\n                Learn More\n              </Button>\n            </CardFooter>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n',
       },
       {
-        name: "card-image.module.css",
-        path: "components/card-image.module.css",
+        name: "data.json",
+        path: "app/card-image-section/data.json",
         content:
-          '.card {\n  width: 100%;\n  max-width: 360px;\n  margin: 0 auto;\n  border-radius: 24px;\n}\n\n.cardImage {\n  border-radius: 12px;\n  width: auto;\n}\n\n.title {\n  margin: 0;\n}\n\n.card [data-slot="card-content"] {\n  gap: 0.75rem;\n}\n\n@media (max-width: 640px) {\n  .card {\n    max-width: 100%;\n    border-radius: 16px;\n  }\n\n  .cardImage {\n    border-radius: 8px;\n  }\n\n  .title {\n    font-size: 1.125rem;\n    line-height: 1.3;\n  }\n}\n',
+          '{\n  "caption": "What We Offer",\n  "heading": "Four Pillars of Excellence",\n  "description": "Discover the foundational elements that drive our approach to creating exceptional digital experiences.",\n  "cards": [\n    {\n      "id": 1,\n      "imageSrc": "/p-01.svg",\n      "alt": "Feature 1 illustration",\n      "title": "Feature 1",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    },\n    {\n      "id": 2,\n      "imageSrc": "/p-02.svg",\n      "alt": "Feature 2 illustration",\n      "title": "Feature 2",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    },\n    {\n      "id": 3,\n      "imageSrc": "/p-03.svg",\n      "alt": "Feature 3 illustration",\n      "title": "Feature 3",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    },\n    {\n      "id": 4,\n      "imageSrc": "/p-04.svg",\n      "alt": "Feature 4 illustration",\n      "title": "Feature 4",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    }\n  ]\n}\n',
+      },
+      {
+        name: "card-image-section.module.css",
+        path: "components/card-image-section.module.css",
+        content:
+          '.section {\n  width: 100%;\n  max-width: 900px;\n  margin: 0 auto;\n  padding: 48px 24px;\n}\n\n.header {\n  text-align: center;\n  margin-bottom: 48px;\n}\n\n.caption {\n  display: block;\n  font-size: var(--font-size-sm);\n  font-weight: 500;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  margin-bottom: 12px;\n}\n\n.heading {\n  font-size: clamp(1.75rem, 4vw, 2.5rem);\n  font-weight: 600;\n  color: var(--foreground);\n  margin: 0 0 16px 0;\n  letter-spacing: -0.02em;\n  line-height: 1.2;\n}\n\n.description {\n  font-size: var(--font-size-base);\n  color: var(--muted-foreground);\n  margin: 0 auto;\n  max-width: 600px;\n  line-height: 1.6;\n}\n\n.grid {\n  columns: 2;\n  column-gap: 24px;\n}\n\n.card {\n  break-inside: avoid;\n  margin-bottom: 24px;\n  border-radius: 20px;\n  max-width: 100%;\n}\n\n.cardImage {\n  border-radius: 12px;\n  width: auto;\n}\n\n.cardTitle {\n  margin: 0;\n}\n\n.card [data-slot="card-content"] {\n  gap: 0.5rem;\n}\n\n.linkButton {\n  padding-left: 0;\n}\n\n@media (max-width: 640px) {\n  .section {\n    padding: 32px 16px;\n  }\n\n  .header {\n    margin-bottom: 32px;\n  }\n\n  .grid {\n    columns: 1;\n  }\n\n  .card {\n    margin-bottom: 16px;\n    border-radius: 16px;\n  }\n\n  .cardImage {\n    border-radius: 8px;\n  }\n\n  .cardTitle {\n    font-size: 1.125rem;\n    line-height: 1.3;\n  }\n}\n',
       },
     ],
     tailwindFiles: [
       {
         name: "page.tsx",
-        path: "app/card-image/page.tsx",
+        path: "app/card-image-section/page.tsx",
         content:
-          'import { CardImage } from "./components/card-image";\n\nexport default function Page() {\n  return <CardImage />;\n}\n',
+          '"use client";\nimport { CardImageSection } from "./components/card-image-section";\nimport data from "./data.json";\n\nexport default function Page() {\n  return <CardImageSection data={data} />;\n}\n',
       },
       {
-        name: "card-image.tsx",
-        path: "components/card-image.tsx",
+        name: "card-image-section.tsx",
+        path: "components/card-image-section.tsx",
         content:
-          'import { Button } from "@/components/ui/button";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardImage as CardImageComponent,\n  CardTitle,\n} from "@/components/ui/card";\n\nexport function CardImage() {\n  return (\n    <Card className="max-w-full rounded-[16px] sm:max-w-[360px] sm:rounded-[24px]" variant="lift">\n      <CardImageComponent\n        alt="Veiled woman gazing at architecture under the night sky"\n        className="w-auto rounded-[8px] sm:rounded-[12px]"\n        src="/scene_01.svg"\n      />\n\n      <CardContent>\n        <CardTitle className="m-0 max-sm:text-[1.125rem] max-sm:leading-[1.3]">Threshold</CardTitle>\n        <CardDescription className="mt-0">\n          Between what we build and what eternally exists standing in quiet contemplation.\n        </CardDescription>\n      </CardContent>\n\n      <CardFooter>\n        <Button showArrow size="sm" variant="outline">\n          Learn More\n        </Button>\n      </CardFooter>\n    </Card>\n  );\n}\n',
+          'import { Button } from "@/components/ui/button";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardImage,\n  CardTitle,\n} from "@/components/ui/card";\n\ntype CardData = {\n  id: number;\n  imageSrc: string;\n  alt: string;\n  title: string;\n  description: string;\n};\n\ntype CardImageSectionProps = {\n  data: {\n    caption: string;\n    heading: string;\n    description: string;\n    cards: CardData[];\n  };\n};\n\nexport function CardImageSection({ data }: CardImageSectionProps) {\n  return (\n    <section className="mx-auto w-full max-w-[900px] px-6 py-12 max-sm:px-4 max-sm:py-8">\n      <header className="mb-12 text-center max-sm:mb-8">\n        <span className="mb-3 block text-sm font-medium uppercase tracking-[0.05em] text-[var(--accent)]">\n          {data.caption}\n        </span>\n        <h2 className="m-0 mb-4 text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[var(--foreground)]">\n          {data.heading}\n        </h2>\n        <p className="mx-auto m-0 max-w-[600px] text-base leading-[1.6] text-[var(--muted-foreground)]">\n          {data.description}\n        </p>\n      </header>\n\n      <div className="columns-1 gap-6 sm:columns-2">\n        {data.cards.map((card) => (\n          <Card className="mb-6 max-w-full break-inside-avoid rounded-[16px] sm:rounded-[20px]" key={card.id} variant="lift">\n            <CardImage alt={card.alt} className="w-auto rounded-[8px] sm:rounded-[12px]" src={card.imageSrc} />\n\n            <CardContent className="gap-2">\n              <CardTitle className="m-0 max-sm:text-[1.125rem] max-sm:leading-[1.3]">{card.title}</CardTitle>\n              <CardDescription className="mt-0">{card.description}</CardDescription>\n            </CardContent>\n\n            <CardFooter>\n              <Button className="pl-0" showArrow size="sm" variant="link">\n                Learn More\n              </Button>\n            </CardFooter>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n',
+      },
+      {
+        name: "data.json",
+        path: "app/card-image-section/data.json",
+        content:
+          '{\n  "caption": "What We Offer",\n  "heading": "Four Pillars of Excellence",\n  "description": "Discover the foundational elements that drive our approach to creating exceptional digital experiences.",\n  "cards": [\n    {\n      "id": 1,\n      "imageSrc": "/p-01.svg",\n      "alt": "Feature 1 illustration",\n      "title": "Feature 1",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    },\n    {\n      "id": 2,\n      "imageSrc": "/p-02.svg",\n      "alt": "Feature 2 illustration",\n      "title": "Feature 2",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    },\n    {\n      "id": 3,\n      "imageSrc": "/p-03.svg",\n      "alt": "Feature 3 illustration",\n      "title": "Feature 3",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    },\n    {\n      "id": 4,\n      "imageSrc": "/p-04.svg",\n      "alt": "Feature 4 illustration",\n      "title": "Feature 4",\n      "description": "Add a description here to explain what this feature offers and why it matters to your users."\n    }\n  ]\n}\n',
       },
     ],
   },

@@ -1,7 +1,7 @@
 "use client";
 
 import AiChat from "@/registry/brook/blocks/ai-chat/page";
-import CardImage from "@/registry/brook/blocks/card-image/page";
+import CardImageSection from "@/registry/brook/blocks/card-image-section/page";
 import CardLogin from "@/registry/brook/blocks/card-login/page";
 import CardTask from "@/registry/brook/blocks/card-task/page";
 import CardTraffic from "@/registry/brook/blocks/card-traffic/page";
@@ -16,7 +16,7 @@ type BlockPreviewProps = {
 
 const blocks: Record<string, React.ComponentType> = {
   "ai-chat": AiChat,
-  "card-image": CardImage,
+  "card-image-section": CardImageSection,
   "card-login": CardLogin,
   "card-task": CardTask,
   "card-traffic": CardTraffic,

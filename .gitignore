@@ -46,6 +46,8 @@ next-env.d.ts
 
 # AUTO-GENERATED: Synced block shared files (do not edit this section)
 /registry/brook/blocks/ai-chat/page.tsx
+/registry/brook/blocks/card-image-section/data.json
+/registry/brook/blocks/card-image-section/page.tsx
 /registry/brook/blocks/card-traffic/data.json
 /registry/brook/blocks/card-traffic/page.tsx
 /registry/brook/blocks/expandable-card-carousel/data.json
@@ -56,6 +58,8 @@ next-env.d.ts
 /registry/brook/blocks/kanban-board/types/
 /registry/brook/blocks/pricing-section/data.json
 /registry/brook/tailwind/blocks/ai-chat/page.tsx
+/registry/brook/tailwind/blocks/card-image-section/data.json
+/registry/brook/tailwind/blocks/card-image-section/page.tsx
 /registry/brook/tailwind/blocks/card-traffic/data.json
 /registry/brook/tailwind/blocks/card-traffic/page.tsx
 /registry/brook/tailwind/blocks/expandable-card-carousel/data.json

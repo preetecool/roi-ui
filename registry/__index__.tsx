@@ -284,6 +284,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/card-demo/card-demo",
   },
+  "card-image-demo": {
+    name: "card-image-demo",
+    type: "example",
+    files: [
+      "registry/brook/examples/card-image-demo/card-image-demo.tsx",
+      "registry/brook/examples/card-image-demo/card-image-demo.module.css",
+    ],
+    path: "@/registry/brook/examples/card-image-demo/card-image-demo",
+  },
   "card-pricing-card": {
     name: "card-pricing-card",
     type: "example",
@@ -804,15 +813,16 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/blocks/ai-chat/page",
   },
-  "card-image": {
-    name: "card-image",
+  "card-image-section": {
+    name: "card-image-section",
     type: "block",
     files: [
-      "registry/brook/blocks/card-image/page.tsx",
-      "registry/brook/blocks/card-image/components/card-image.tsx",
-      "registry/brook/blocks/card-image/components/card-image.module.css",
+      "registry/brook/blocks/card-image-section/page.tsx",
+      "registry/brook/blocks/card-image-section/components/card-image-section.tsx",
+      "registry/brook/blocks/card-image-section/data.json",
+      "registry/brook/blocks/card-image-section/components/card-image-section.module.css",
     ],
-    path: "@/registry/brook/blocks/card-image/page",
+    path: "@/registry/brook/blocks/card-image-section/page",
   },
   "card-login": {
     name: "card-login",
@@ -1351,6 +1361,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/card-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/card-demo",
   },
+  "card-image-demo-tailwind": {
+    name: "card-image-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/card-image-demo.tsx"],
+    path: "@/registry/brook/tailwind/examples/card-image-demo",
+  },
   "carousel-demo-tailwind": {
     name: "carousel-demo-tailwind",
     type: "example",
@@ -1702,14 +1718,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/tailwind/blocks/ai-chat/page",
   },
-  "card-image-tailwind": {
-    name: "card-image-tailwind",
+  "card-image-section-tailwind": {
+    name: "card-image-section-tailwind",
     type: "block",
     files: [
-      "registry/brook/tailwind/blocks/card-image/page.tsx",
-      "registry/brook/tailwind/blocks/card-image/components/card-image.tsx",
+      "registry/brook/tailwind/blocks/card-image-section/page.tsx",
+      "registry/brook/tailwind/blocks/card-image-section/components/card-image-section.tsx",
+      "registry/brook/tailwind/blocks/card-image-section/data.json",
     ],
-    path: "@/registry/brook/tailwind/blocks/card-image/page",
+    path: "@/registry/brook/tailwind/blocks/card-image-section/page",
   },
   "card-login-tailwind": {
     name: "card-login-tailwind",

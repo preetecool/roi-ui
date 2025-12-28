@@ -1,0 +1,35 @@
+{
+  "caption": "What We Offer",
+  "heading": "Four Pillars of Excellence",
+  "description": "Discover the foundational elements that drive our approach to creating exceptional digital experiences.",
+  "cards": [
+    {
+      "id": 1,
+      "imageSrc": "/p-01.svg",
+      "alt": "Feature 1 illustration",
+      "title": "Feature 1",
+      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+    },
+    {
+      "id": 2,
+      "imageSrc": "/p-02.svg",
+      "alt": "Feature 2 illustration",
+      "title": "Feature 2",
+      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+    },
+    {
+      "id": 3,
+      "imageSrc": "/p-03.svg",
+      "alt": "Feature 3 illustration",
+      "title": "Feature 3",
+      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+    },
+    {
+      "id": 4,
+      "imageSrc": "/p-04.svg",
+      "alt": "Feature 4 illustration",
+      "title": "Feature 4",
+      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+    }
+  ]
+}

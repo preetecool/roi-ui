@@ -143,14 +143,14 @@
 }
 
 .arrow {
-  margin-top: -1px;
+  margin-top: 0;
   margin-left: 0;
   margin-right: -4px;
   position: relative;
   top: 0px;
   overflow: visible;
-  width: 14px;
-  height: 12px;
+  width: 12px;
+  height: 10px;
   transition: 200ms var(--ease-in-out-cubic);
 }
 

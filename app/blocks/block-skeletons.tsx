@@ -39,34 +39,45 @@ export function AiChatSkeleton({ className }: SkeletonProps) {
   );
 }
 
-export function CardImageSkeleton({ className }: SkeletonProps) {
+export function CardImageSectionSkeleton({ className }: SkeletonProps) {
   return (
-    <svg className={className} fill="none" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} fill="none" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="imageCardGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+        <linearGradient id="imageFeatureCardGrad" x1="0%" x2="0%" y1="0%" y2="100%">
           <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
           <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
         </linearGradient>
-        <linearGradient id="imagePlaceholder" x1="0%" x2="0%" y1="0%" y2="100%">
+        <linearGradient id="imageFeaturePlaceholder" x1="0%" x2="0%" y1="0%" y2="100%">
           <stop offset="0%" stopColor="var(--mix-card-33-bg)" />
           <stop offset="100%" stopColor="var(--mix-card-15-bg)" />
         </linearGradient>
       </defs>
-      {/* Card background */}
-      <rect fill="url(#imageCardGrad)" height="240" rx="16" width="200" />
-      {/* Image placeholder */}
-      <rect fill="url(#imagePlaceholder)" height="120" rx="10" width="176" x="12" y="12" />
-      <circle cx="100" cy="72" fill="var(--muted-foreground)" opacity="0.15" r="20" />
-      <path d="M92 76L100 64L108 76" fill="var(--muted-foreground)" opacity="0.25" stroke="none" />
-      <path d="M95 80L100 72L105 80" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
-      {/* Title */}
-      <rect fill="var(--muted-foreground)" height="12" opacity="0.35" rx="4" width="100" x="12" y="148" />
-      {/* Description lines */}
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.2" rx="4" width="160" x="12" y="172" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.15" rx="4" width="120" x="12" y="186" />
-      {/* Button */}
-      <rect fill="var(--muted-foreground)" height="28" opacity="0.15" rx="8" width="90" x="12" y="206" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="50" x="32" y="217" />
+      {/* Header section */}
+      <rect fill="var(--muted-foreground)" height="5" opacity="0.25" rx="2" width="50" x="115" y="8" />
+      <rect fill="var(--muted-foreground)" height="10" opacity="0.4" rx="3" width="120" x="80" y="18" />
+      <rect fill="var(--muted-foreground)" height="5" opacity="0.2" rx="2" width="160" x="60" y="34" />
+      {/* Card 1 - left column, tall */}
+      <rect fill="url(#imageFeatureCardGrad)" height="100" rx="8" width="120" x="16" y="50" />
+      <rect fill="url(#imageFeaturePlaceholder)" height="50" rx="5" width="104" x="24" y="58" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="60" x="24" y="116" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="90" x="24" y="128" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="70" x="24" y="138" />
+      {/* Card 2 - right column, short */}
+      <rect fill="url(#imageFeatureCardGrad)" height="70" rx="8" width="120" x="144" y="50" />
+      <rect fill="url(#imageFeaturePlaceholder)" height="30" rx="5" width="104" x="152" y="58" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="55" x="152" y="96" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="85" x="152" y="108" />
+      {/* Card 3 - left column, short */}
+      <rect fill="url(#imageFeatureCardGrad)" height="60" rx="8" width="120" x="16" y="158" />
+      <rect fill="url(#imageFeaturePlaceholder)" height="25" rx="5" width="104" x="24" y="166" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="50" x="24" y="198" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="80" x="24" y="210" />
+      {/* Card 4 - right column, tall */}
+      <rect fill="url(#imageFeatureCardGrad)" height="90" rx="8" width="120" x="144" y="128" />
+      <rect fill="url(#imageFeaturePlaceholder)" height="45" rx="5" width="104" x="152" y="136" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="58" x="152" y="188" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="88" x="152" y="200" />
+      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="68" x="152" y="210" />
     </svg>
   );
 }
@@ -454,7 +465,7 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
 
 export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> = {
   "ai-chat": AiChatSkeleton,
-  "card-image": CardImageSkeleton,
+  "card-image-section": CardImageSectionSkeleton,
   "card-login": CardLoginSkeleton,
   "card-task": CardTaskSkeleton,
   "card-traffic": CardTrafficSkeleton,
