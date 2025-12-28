@@ -30,6 +30,17 @@
   text-align: left;
 }
 
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .heading {
+    font-size: clamp(1.875rem, 5vw, 2.75rem);
+  }
+}
+
 .bleed {
 }
 
