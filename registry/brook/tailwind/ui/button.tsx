@@ -126,19 +126,20 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
     pointExternal && "group-hover:-rotate-45 origin-[8%]"
   );
 
-  const pointClasses = "transition-all duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
+  const pointClasses = "transition-transform duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
   const shaftClasses =
-    "transition-all duration-200 ease-[var(--ease-in-out-cubic)] opacity-0 group-hover:opacity-100 group-hover:-translate-x-0.5";
+    "opacity-0 transition-[transform,opacity] duration-200 ease-[var(--ease-out-quad)] group-hover:opacity-100 group-hover:-translate-x-0.5";
 
   const pointLeftClasses = "group-hover:-translate-x-0.5";
   const shaftLeftClasses = "group-hover:opacity-100 group-hover:translate-x-px";
 
   return (
     <svg className={arrowClasses} fill="none" viewBox="0 0 14 10" xmlns="http://www.w3.org/2000/svg">
-      <g fillRule="nonzero">
+      <g>
         <path
           className={cn(pointClasses, pointLeft ? pointLeftClasses : null)}
           d={pointLeft ? "M14.8 1l-4 4 4 4" : "M-0.8 1l4 4-4 4"}
+          fill="none"
           stroke="currentColor"
           strokeLinecap="square"
           strokeLinejoin="miter"
@@ -147,6 +148,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
         <path
           className={cn(shaftClasses, pointLeft ? shaftLeftClasses : null)}
           d={pointLeft ? "M14.8 5H9.8" : "M0 5h4.8"}
+          fill="none"
           stroke="currentColor"
           strokeLinecap="square"
           strokeLinejoin="miter"

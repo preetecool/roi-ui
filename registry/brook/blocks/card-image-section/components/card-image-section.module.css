@@ -6,7 +6,7 @@
 }
 
 .header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 48px;
 }
 
@@ -32,7 +32,7 @@
 .description {
   font-size: var(--font-size-base);
   color: var(--muted-foreground);
-  margin: 0 auto;
+  margin: 0;
   max-width: 600px;
   line-height: 1.6;
 }
@@ -47,6 +47,11 @@
   margin-bottom: 24px;
   border-radius: 20px;
   max-width: 100%;
+  transform: translateZ(0);
+}
+
+.card:first-child {
+  margin-top: 120px;
 }
 
 .cardImage {
@@ -82,6 +87,10 @@
   .card {
     margin-bottom: 16px;
     border-radius: 16px;
+  }
+
+  .card:first-child {
+    margin-top: 0;
   }
 
   .cardImage {
