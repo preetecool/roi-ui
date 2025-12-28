@@ -850,8 +850,9 @@ export const Index: Record<string, RegistryEntry> = {
     type: "block",
     files: [
       "registry/brook/blocks/expandable-card-carousel/page.tsx",
+      "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx",
       "registry/brook/blocks/expandable-card-carousel/data.json",
-      "registry/brook/blocks/expandable-card-carousel/expandable-card-block.module.css",
+      "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.module.css",
     ],
     path: "@/registry/brook/blocks/expandable-card-carousel/page",
   },
@@ -1743,6 +1744,7 @@ export const Index: Record<string, RegistryEntry> = {
     type: "block",
     files: [
       "registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx",
+      "registry/brook/tailwind/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx",
       "registry/brook/tailwind/blocks/expandable-card-carousel/data.json",
     ],
     path: "@/registry/brook/tailwind/blocks/expandable-card-carousel/page",

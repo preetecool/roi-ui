@@ -412,9 +412,14 @@
           "target": "~/components/blocks/expandable-card-carousel/page.tsx"
         },
         {
-          "path": "registry/brook/blocks/expandable-card-carousel/expandable-card-block.module.css",
+          "path": "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx",
           "type": "registry:file",
-          "target": "~/components/blocks/expandable-card-carousel/expandable-card-block.module.css"
+          "target": "~/components/blocks/expandable-card-carousel/expandable-card-carousel.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/expandable-card-carousel.module.css"
         },
         {
           "path": "registry/brook/blocks-shared-files/expandable-card-carousel/data.json",
@@ -1900,6 +1905,11 @@
           "path": "registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/expandable-card-carousel/page.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-carousel/expandable-card-carousel.tsx"
         },
         {
           "path": "registry/brook/blocks-shared-files/expandable-card-carousel/data.json",
