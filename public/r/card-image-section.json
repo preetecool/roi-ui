@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-image-section",
+  "type": "registry:item",
+  "title": "Card Image Section",
+  "description": "A section with 4 image cards in a masonry layout.",
+  "registryDependencies": [
+    "https://roiui.com/r/button.json",
+    "https://roiui.com/r/card.json"
+  ],
+  "files": [
+    {
+      "path": "registry/brook/blocks/card-image-section/page.tsx",
+      "content": "\"use client\";\nimport { CardImageSection } from \"./components/card-image-section\";\nimport data from \"./data.json\";\n\nexport default function Page() {\n  return <CardImageSection data={data} />;\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/card-image-section/page.tsx"
+    },
+    {
+      "path": "registry/brook/blocks/card-image-section/components/card-image-section.tsx",
+      "content": "import { Button } from \"@/registry/brook/ui/button/button\";\nimport { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from \"@/registry/brook/ui/card/card\";\nimport styles from \"./card-image-section.module.css\";\n\ntype CardData = {\n  id: number;\n  imageSrc: string;\n  alt: string;\n  title: string;\n  description: string;\n};\n\ntype CardImageSectionProps = {\n  data: {\n    caption: string;\n    heading: string;\n    description: string;\n    cards: CardData[];\n  };\n};\n\nexport function CardImageSection({ data }: CardImageSectionProps) {\n  return (\n    <section className={styles.section}>\n      <header className={styles.header}>\n        <span className={styles.caption}>{data.caption}</span>\n        <h2 className={styles.heading}>{data.heading}</h2>\n        <p className={styles.description}>{data.description}</p>\n      </header>\n\n      <div className={styles.grid}>\n        {data.cards.map((card) => (\n          <Card className={styles.card} key={card.id} variant=\"lift\">\n            <CardImage alt={card.alt} className={styles.cardImage} src={card.imageSrc} />\n\n            <CardContent>\n              <CardTitle className={styles.cardTitle}>{card.title}</CardTitle>\n              <CardDescription>{card.description}</CardDescription>\n            </CardContent>\n\n            <CardFooter>\n              <Button className={styles.linkButton} showArrow size=\"sm\" variant=\"link\">\n                Learn More\n              </Button>\n            </CardFooter>\n          </Card>\n        ))}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/card-image-section/card-image-section.tsx"
+    },
+    {
+      "path": "registry/brook/blocks/card-image-section/components/card-image-section.module.css",
+      "content": ".section {\n  width: 100%;\n  max-width: 900px;\n  margin: 0 auto;\n  padding: 48px 24px;\n}\n\n.header {\n  text-align: center;\n  margin-bottom: 48px;\n}\n\n.caption {\n  display: block;\n  font-size: var(--font-size-sm);\n  font-weight: 500;\n  color: var(--accent);\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  margin-bottom: 12px;\n}\n\n.heading {\n  font-size: clamp(1.75rem, 4vw, 2.5rem);\n  font-weight: 600;\n  color: var(--foreground);\n  margin: 0 0 16px 0;\n  letter-spacing: -0.02em;\n  line-height: 1.2;\n}\n\n.description {\n  font-size: var(--font-size-base);\n  color: var(--muted-foreground);\n  margin: 0 auto;\n  max-width: 600px;\n  line-height: 1.6;\n}\n\n.grid {\n  columns: 2;\n  column-gap: 24px;\n}\n\n.card {\n  break-inside: avoid;\n  margin-bottom: 24px;\n  border-radius: 20px;\n  max-width: 100%;\n}\n\n.cardImage {\n  border-radius: 12px;\n  width: auto;\n}\n\n.cardTitle {\n  margin: 0;\n}\n\n.card [data-slot=\"card-content\"] {\n  gap: 0.5rem;\n}\n\n.linkButton {\n  padding-left: 0;\n}\n\n@media (max-width: 640px) {\n  .section {\n    padding: 32px 16px;\n  }\n\n  .header {\n    margin-bottom: 32px;\n  }\n\n  .grid {\n    columns: 1;\n  }\n\n  .card {\n    margin-bottom: 16px;\n    border-radius: 16px;\n  }\n\n  .cardImage {\n    border-radius: 8px;\n  }\n\n  .cardTitle {\n    font-size: 1.125rem;\n    line-height: 1.3;\n  }\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/card-image-section/card-image-section.module.css"
+    },
+    {
+      "path": "registry/brook/blocks-shared-files/card-image-section/data.json",
+      "content": "{\n  \"caption\": \"What We Offer\",\n  \"heading\": \"Four Pillars of Excellence\",\n  \"description\": \"Discover the foundational elements that drive our approach to creating exceptional digital experiences.\",\n  \"cards\": [\n    {\n      \"id\": 1,\n      \"imageSrc\": \"/p-01.svg\",\n      \"alt\": \"Feature 1 illustration\",\n      \"title\": \"Feature 1\",\n      \"description\": \"Add a description here to explain what this feature offers and why it matters to your users.\"\n    },\n    {\n      \"id\": 2,\n      \"imageSrc\": \"/p-02.svg\",\n      \"alt\": \"Feature 2 illustration\",\n      \"title\": \"Feature 2\",\n      \"description\": \"Add a description here to explain what this feature offers and why it matters to your users.\"\n    },\n    {\n      \"id\": 3,\n      \"imageSrc\": \"/p-03.svg\",\n      \"alt\": \"Feature 3 illustration\",\n      \"title\": \"Feature 3\",\n      \"description\": \"Add a description here to explain what this feature offers and why it matters to your users.\"\n    },\n    {\n      \"id\": 4,\n      \"imageSrc\": \"/p-04.svg\",\n      \"alt\": \"Feature 4 illustration\",\n      \"title\": \"Feature 4\",\n      \"description\": \"Add a description here to explain what this feature offers and why it matters to your users.\"\n    }\n  ]\n}\n",
+      "type": "registry:file",
+      "target": "~/components/blocks/card-image-section/data.json"
+    }
+  ]
+}

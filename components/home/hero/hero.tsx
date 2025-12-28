@@ -14,11 +14,11 @@ import styles from "./hero.module.css";
 
 const LUCKY_LINKS = [
   { path: "/blocks/ai-chat" },
-  { path: "/blocks/card-image" },
+  { path: "/blocks/card-image-section" },
   { path: "/blocks/card-login" },
   { path: "/blocks/card-task" },
   { path: "/blocks/card-traffic" },
-  { path: "/blocks/expandable-card" },
+  { path: "/blocks/expandable-card-carousel" },
   { path: "/blocks/kanban-board" },
   { path: "/blocks/profile-menu" },
   { path: "/docs/ui/tabs", anchor: "#animated" },

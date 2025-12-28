@@ -120,7 +120,7 @@ function Spinner() {
  */
 function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?: boolean; pointExternal?: boolean }) {
   const arrowClasses = cn(
-    "-mt-px -mr-2 relative top-0 ml-2 h-3 w-3.5 overflow-visible",
+    "-mr-2 relative top-0 ml-2 h-2.5 w-3 overflow-visible",
     "transition-all duration-200 ease-[var(--ease-in-out-cubic)]",
     pointLeft && "-ml-2 mr-2",
     pointExternal && "group-hover:-rotate-45 origin-[8%]"

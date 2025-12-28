@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "pnpm registry:sync-and-index && next build",
     "start": "next start",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",

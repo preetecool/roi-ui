@@ -171,6 +171,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "card-image-demo": dynamic(() =>
+    import("@/registry/brook/examples/card-image-demo/card-image-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "card-pricing-card": dynamic(() =>
     import("@/registry/brook/examples/card-pricing-card/card-pricing-card").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -464,8 +469,10 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   "ai-chat": dynamic(() =>
     import("@/registry/brook/blocks/ai-chat/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
-  "card-image": dynamic(() =>
-    import("@/registry/brook/blocks/card-image/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  "card-image-section": dynamic(() =>
+    import("@/registry/brook/blocks/card-image-section/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
   ),
   "card-login": dynamic(() =>
     import("@/registry/brook/blocks/card-login/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
@@ -640,6 +647,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "card-demo-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/card-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-image-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/card-image-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -933,8 +945,8 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
-  "card-image-tailwind": dynamic(() =>
-    import("@/registry/brook/tailwind/blocks/card-image/page").then((mod) => ({
+  "card-image-section-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-image-section/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

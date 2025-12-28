@@ -1,8 +1,8 @@
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from "@/registry/brook/ui/card/card";
-import styles from "./card-image.module.css";
+import styles from "./card-image-demo.module.css";
 
-export default function CardImageDemo() {
+export function CardImageDemo() {
   return (
     <Card className={styles.card} variant="lift">
       <CardImage
