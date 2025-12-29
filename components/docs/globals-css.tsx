@@ -92,7 +92,7 @@ function extractPaletteValues(css: string, palette: ColorPalette, mode: "light" 
 
       const varMatch = line.match(CSS_VAR_PATTERN);
       if (varMatch) {
-        values[varMatch[1]] = varMatch[2].replace(TRAILING_SEMICOLON, "");
+        values[varMatch[2]] = varMatch[3].replace(TRAILING_SEMICOLON, "");
       }
 
       if (braceCount === 0 && line.includes("}")) {
@@ -150,11 +150,37 @@ function replaceVarValue(line: string, ctx: ThemeContext): string {
 }
 
 function filterDefaultPalette(css: string): string {
-  const paletteStart = css.indexOf("/* =");
-  if (paletteStart !== -1 && css.indexOf("COLOR PALETTE SYSTEM", paletteStart) !== -1) {
-    return `${css.substring(0, paletteStart).replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
+  // Find palette section by looking for palette comment or data-palette selectors
+  const lines = css.split("\n");
+  const resultLines: string[] = [];
+  let skipPaletteSection = false;
+  let paletteBraceCount = 0;
+
+  for (const line of lines) {
+    // Skip palette comment lines
+    if (line.includes("Palette") && line.trim().startsWith("/*")) {
+      continue;
+    }
+
+    // Detect start of palette-specific block
+    if (line.includes("data-palette")) {
+      skipPaletteSection = true;
+      paletteBraceCount = 0;
+    }
+
+    // Track braces within palette block
+    if (skipPaletteSection) {
+      paletteBraceCount = countBraces(line, paletteBraceCount);
+      if (paletteBraceCount === 0 && line.includes("}")) {
+        skipPaletteSection = false;
+      }
+      continue;
+    }
+
+    resultLines.push(line);
   }
-  return css;
+
+  return `${resultLines.join("\n").replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
 }
 
 function processLine(line: string, state: { inLightBlock: boolean; inDarkBlock: boolean; braceCount: number }) {
@@ -194,12 +220,26 @@ function filterCssForPalette(css: string, palette: ColorPalette): string {
   const state = { inLightBlock: false, inDarkBlock: false, braceCount: 0 };
   let skipPaletteSection = false;
 
+  let paletteBraceCount = 0;
+
   for (const line of lines) {
-    if (line.includes("COLOR PALETTE SYSTEM")) {
-      skipPaletteSection = true;
+    // Skip palette comment lines
+    if (line.includes("Palette") && line.trim().startsWith("/*")) {
       continue;
     }
+
+    // Detect start of palette-specific block
+    if (line.includes("data-palette")) {
+      skipPaletteSection = true;
+      paletteBraceCount = 0;
+    }
+
+    // Track braces within palette block
     if (skipPaletteSection) {
+      paletteBraceCount = countBraces(line, paletteBraceCount);
+      if (paletteBraceCount === 0 && line.includes("}")) {
+        skipPaletteSection = false;
+      }
       continue;
     }
 
