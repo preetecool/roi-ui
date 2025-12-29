@@ -86,8 +86,14 @@ export function CodeTabsList({ children, showCopy = false, showStyleSelector = f
 
   const currentCommandText = React.useMemo(() => {
     if (!commandText) return "";
-    const styleSuffix = style === "tailwind" ? "-tailwind" : "";
-    return commandText.replace("-tailwind", styleSuffix).replace("-css-modules", styleSuffix);
+    // Remove any existing style suffix to get base command
+    const baseCommand = commandText.replace(/-tailwind\b/, "").replace(/-css-modules\b/, "");
+    // Add suffix for tailwind style
+    if (style === "tailwind") {
+      // Find the last word (component name) and append suffix
+      return baseCommand.replace(/(\S+)(\s*)$/, "$1-tailwind$2");
+    }
+    return baseCommand;
   }, [commandText, style]);
 
   React.useEffect(() => {
