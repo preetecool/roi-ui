@@ -46,10 +46,8 @@ function CommandDialog({
             "w-[calc(100%-2rem)] max-w-2xl",
             "animate-[dialog-in_200ms_ease-out]",
             "max-sm:w-[calc(100%-2rem)]",
-            "[&_[cmdk-root]]:shadow-[var(--shadow-lg)]",
             "[&_[cmdk-root]]:rounded-[var(--radius)]",
-            "[&_[cmdk-root]]:border-[0.5px]",
-            "[&_[cmdk-root]]:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
+            "[&_[cmdk-root]]:shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.5),var(--shadow-lg)]",
             "[&_[cmdk-root]]:bg-card",
             "max-sm:[&_[cmdk-root]]:max-w-full"
           )}

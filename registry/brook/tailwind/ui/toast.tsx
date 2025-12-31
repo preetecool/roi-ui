@@ -46,8 +46,8 @@ function ToastRoot({ className, ...props }: Toast.Root.Props) {
         "[--height:var(--toast-frontmost-height,var(--toast-height))]",
         "[--offset-y:calc(var(--toast-offset-y)*-1+calc(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))]",
         "absolute right-0 bottom-0 left-auto z-[calc(1000-var(--toast-index))] mr-0 w-full origin-bottom",
-        "select-none rounded-[0.5rem] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.5)] bg-[var(--mix-card-5-bg)] bg-clip-padding p-4",
-        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px]",
+        "select-none rounded-[0.5rem] bg-[var(--mix-card-5-bg)] bg-clip-padding p-4",
+        "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.5),oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px]",
         "[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]",
         "after:absolute after:top-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full after:content-['']",
         "data-[ending-style]:opacity-0",
@@ -209,10 +209,10 @@ function AnchoredToasts() {
             >
               <Toast.Root
                 className={cn(
-                  "relative text-balance border-[0.5px] border-[var(--border)]",
+                  "relative text-balance",
                   "bg-[var(--popover)] bg-clip-padding text-[var(--popover-foreground)]",
                   "rounded-[calc(var(--radius)-2px)] text-xs",
-                  "shadow-[0_4px_6px_-1px_oklch(from_var(--foreground)_l_c_h_/_0.05)]",
+                  "shadow-[0_0_0_0.5px_var(--border),0_4px_6px_-1px_oklch(from_var(--foreground)_l_c_h_/_0.05)]",
                   "transition-[scale,opacity] duration-150",
                   "before:pointer-events-none before:absolute before:inset-0",
                   "before:rounded-[calc(var(--radius)-3px)]",

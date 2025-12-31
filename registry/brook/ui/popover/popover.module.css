@@ -39,12 +39,14 @@
   width: var(--popup-width, auto);
   height: var(--popup-height, auto);
   border-radius: var(--radius);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border: none;
   background-color: var(--popover);
   background-clip: padding-box;
   color: var(--popover-foreground);
   transform-origin: var(--transform-origin);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.8),
+    var(--shadow-lg);
   transition:
     width 250ms var(--ease-out-expo),
     height 250ms var(--ease-out-expo),

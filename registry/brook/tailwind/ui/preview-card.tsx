@@ -48,9 +48,9 @@ function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
   return (
     <PreviewCard.Popup
       className={cn(
-        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--popover)]",
+        "bg-[var(--popover)]",
         "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4",
-        "shadow-[oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
         "origin-[var(--transform-origin)]",
         "data-[state=open]:animate-[scaleIn_0.25s_var(--ease-out-expo)]",
         "data-[state=closed]:animate-[scaleOut_0.25s_var(--ease-out-expo)]",

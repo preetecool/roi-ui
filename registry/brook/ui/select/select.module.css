@@ -66,12 +66,14 @@
 .popup {
   min-width: var(--anchor-width);
   background: var(--popover);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border: none;
   border-radius: var(--radius);
   transform-origin: var(--transform-origin);
   overflow-y: auto;
   z-index: 150;
-  box-shadow: var(--shadow-border-stack);
+  box-shadow:
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.8),
+    var(--shadow-border-stack);
   transition:
     transform 250ms var(--ease-out-expo),
     opacity 250ms var(--ease-out-expo);

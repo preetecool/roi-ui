@@ -34,10 +34,11 @@
 
   background: var(--mix-card-5-bg);
   color: var(--muted-foreground);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.5);
+  border: none;
   padding: 1rem;
   width: 100%;
   box-shadow:
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.5),
     oklch(from var(--border) l c h / 0.2) 0px 1px 1px,
     oklch(from var(--border) l c h / 0.2) 0px 1px 1px,
     oklch(from var(--border) l c h / 0.2) 0px 1px 1px;
@@ -251,13 +252,15 @@
 .anchoredRoot {
   position: relative;
   text-wrap: balance;
-  border: 0.5px solid var(--border);
+  border: none;
   background: var(--popover);
   background-clip: padding-box;
   color: var(--popover-foreground);
   font-size: 0.75rem;
   border-radius: calc(var(--radius) - 2px);
-  box-shadow: 0 4px 6px -1px oklch(from var(--foreground) l c h / 0.05);
+  box-shadow:
+    0 0 0 0.5px var(--border),
+    0 4px 6px -1px oklch(from var(--foreground) l c h / 0.05);
   transition:
     scale 0.15s,
     opacity 0.15s;

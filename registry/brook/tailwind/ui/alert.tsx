@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils-tailwind";
 
 const alertVariants = cva(
   [
-    "relative w-full rounded-[var(--radius)] border-[0.5px] border-border/80",
+    "relative w-full rounded-[var(--radius)]",
     "grid grid-cols-[0_1fr_auto] items-start gap-x-3 gap-y-0.5 px-4 py-3",
     "bg-[var(--mix-card-33-bg)] text-xs leading-[1.2]",
-    "shadow-[0px_1px_2px_var(--shadow-color),0px_1px_2px_var(--shadow-color),0px_1px_1px_var(--shadow-color)]",
+    "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),0px_1px_2px_var(--shadow-color),0px_1px_2px_var(--shadow-color),0px_1px_1px_var(--shadow-color)]",
     "has-[>svg]:grid-cols-[1rem_1fr_auto]",
     "[&>svg]:h-full [&>svg]:w-4",
     "max-sm:grid-cols-[1rem_1fr] max-sm:gap-x-3 max-sm:gap-y-2 max-sm:px-4",

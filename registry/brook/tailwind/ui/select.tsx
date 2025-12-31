@@ -102,7 +102,7 @@ function SelectPopup({ className, ...props }: React.ComponentProps<typeof Select
     <Select.Popup
       className={cn(
         "z-[150] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-y-auto rounded-[var(--radius)]",
-        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-[var(--popover)] shadow-[var(--shadow-border-stack)]",
+        "bg-[var(--popover)] shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-border-stack)]",
         "transition-[transform,scale,opacity] duration-250 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[side=none]:data-[starting-style]:scale-100 data-[side=none]:data-[starting-style]:opacity-100 data-[side=none]:data-[starting-style]:transition-none",

@@ -79,7 +79,7 @@
 .outline {
   background-color: var(--mix-card-50-bg);
   color: var(--foreground);
-  border: 1px solid oklch(from var(--border) l c h / 0.7);
+  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.7);
 }
 
 .outline:hover:not([data-disabled]) {
