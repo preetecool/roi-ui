@@ -141,8 +141,10 @@
   overflow-y: auto;
   scroll-padding-block: 0.5rem;
   overscroll-behavior: contain;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
-  box-shadow: var(--shadow-border-stack);
+  border: none;
+  box-shadow:
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.8),
+    var(--shadow-border-stack);
   display: flex;
   flex-direction: column;
   transform-origin: var(--transform-origin);

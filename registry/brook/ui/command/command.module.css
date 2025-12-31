@@ -38,9 +38,11 @@
   animation: dialog-in 200ms ease-out;
 
   .root {
-    box-shadow: var(--shadow-lg);
     border-radius: var(--radius);
-    border: 0.5px solid oklch(from var(--border) l c h / 0.5);
+    border: none;
+    box-shadow:
+      0 0 0 0.5px oklch(from var(--border) l c h / 0.5),
+      var(--shadow-lg);
     background-color: var(--card);
 
     @media (max-width: 640px) {

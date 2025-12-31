@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   border-radius: var(--radius);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.8);
+  border: none;
   padding: 0.75rem 1rem;
   display: grid;
   grid-template-columns: 0 1fr auto;
@@ -12,6 +12,7 @@
   line-height: 1.2;
   background-color: var(--mix-card-33-bg);
   box-shadow:
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.8),
     oklch(from var(--border) l c h / 0.2) 0px 1px 2px,
     oklch(from var(--border) l c h / 0.2) 0px 1px 2px,
     oklch(from var(--border) l c h / 0.2) 0px 1px 1px;

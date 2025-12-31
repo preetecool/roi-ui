@@ -75,7 +75,7 @@ function ComboboxPopup({ className, children, ...props }: Combobox.Popup.Props) 
         "bg-[var(--popover)] text-popover-foreground",
         "max-h-[min(var(--available-height),20rem)] w-[var(--anchor-width)] max-w-[var(--available-width)]",
         "overflow-y-auto overscroll-contain [scroll-padding-block:0.5rem]",
-        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)] shadow-[var(--shadow-border-stack)]",
+        "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-border-stack)]",
         "origin-[var(--transform-origin)] transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:transition-none",

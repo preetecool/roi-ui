@@ -6,10 +6,12 @@
   gap: 1.5rem;
   padding: 1.5rem;
   background-color: oklch(from var(--card) l c h / 0.3);
-  border: 1px solid oklch(from var(--border) l c h / 0.2);
+  border: none;
   position: relative;
   justify-content: space-between;
-  box-shadow: var(--shadow-border-stack);
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.2),
+    var(--shadow-border-stack);
 }
 
 .header {
@@ -69,8 +71,8 @@
 }
 
 .image {
-  width: calc(100% + 3rem + 2px);
-  margin: calc(-1.5rem - 1px) calc(-1.5rem - 1px) 0;
+  width: calc(100% + 3rem);
+  margin: -1.5rem -1.5rem 0;
   object-fit: cover;
   height: 300px;
   aspect-ratio: 16 / 9;
@@ -137,8 +139,9 @@
 .icon {
   background-color: var(--muted);
   border-radius: var(--radius);
-  border: 1px solid oklch(from var(--border) l c h / 0.5);
+  border: none;
   box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.5),
     0 1px 2px oklch(from var(--foreground) l c h / 0.04),
     inset 0 0 0 1px oklch(from var(--background) l c h / 0.02);
   display: flex;

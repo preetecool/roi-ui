@@ -51,8 +51,8 @@ function ContextMenuPopup({ className, ...props }: ContextMenu.Popup.Props) {
     <ContextMenu.Popup
       className={cn(
         "box-border min-w-[140px] bg-[var(--popover)]",
-        "rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
-        "flex flex-col shadow-[var(--shadow-border-stack)]",
+        "rounded-[var(--radius)]",
+        "flex flex-col shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-border-stack)]",
         "origin-[top_center] transition-[transform,scale,opacity] duration-[250ms] ease-[var(--ease-out-expo)]",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",

@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils-tailwind";
 const cardVariants = cva(
   [
     "flex flex-col gap-6 rounded-[var(--radius)] p-6 text-foreground",
-    "relative justify-between border border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[oklch(from_var(--card)_l_c_h_/_0.3)]",
+    "relative justify-between bg-[oklch(from_var(--card)_l_c_h_/_0.3)]",
+    "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.2),var(--shadow-border-stack)]",
   ],
   {
     variants: {
@@ -138,7 +139,7 @@ function CardImage({
       className={cn(
         "card-image box-border aspect-video w-full max-w-none object-cover",
         "-mt-6 mx-0 mb-0 h-[250px]",
-        "md:-mt-[calc(1.5rem+1px)] md:-mx-[calc(1.5rem+1px)] md:mb-0 md:h-[300px] md:w-[calc(100%+3rem+2px)] md:max-w-[100vw]",
+        "md:-mt-6 md:-mx-6 md:mb-0 md:h-[300px] md:w-[calc(100%+3rem)] md:max-w-[100vw]",
         "rounded-t-[var(--radius)] transition-transform duration-[250ms] ease-[var(--ease-in-out-quad)]",
         className
       )}
@@ -188,8 +189,8 @@ function CardIcon({ className, children, ...props }: React.ComponentProps<"div">
   return (
     <div
       className={cn(
-        "rounded-[var(--radius)] border border-border/50 bg-muted",
-        "shadow-[0_1px_2px_rgba(0,0,0,0.04),inset_0_0_0_1px_rgba(255,255,255,0.02)]",
+        "rounded-[var(--radius)] bg-muted",
+        "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),0_1px_2px_rgba(0,0,0,0.04),inset_0_0_0_1px_rgba(255,255,255,0.02)]",
         "relative z-10 flex items-center justify-center",
         "mb-[1.125rem] h-8 w-8 p-1.5",
         "max-sm:mb-4 max-sm:h-7 max-sm:w-7",
