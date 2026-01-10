@@ -6,7 +6,7 @@ const cardVariants = cva(
   [
     "flex flex-col gap-6 rounded-[var(--radius)] p-6 text-foreground",
     "relative justify-between bg-[oklch(from_var(--card)_l_c_h_/_0.3)]",
-    "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.2),var(--shadow-border-stack)]",
+    "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),var(--shadow-border-stack)]",
   ],
   {
     variants: {
