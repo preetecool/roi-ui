@@ -65,7 +65,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button className={styles.filterTrigger} size="sm" variant="outline">
+              <Button size="sm" variant="outline">
                 <Filter size={14} style={{ color: "var(--muted-foreground)" }} />
                 Filters
                 {activeFilterCount > 0 && (
@@ -125,7 +125,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button className={styles.filterTrigger} size="sm" variant="outline">
+              <Button size="sm" variant="outline">
                 <Layers size={14} style={{ color: "var(--muted-foreground)" }} />
                 {currentGroupByLabel}
               </Button>

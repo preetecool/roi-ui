@@ -360,10 +360,6 @@
   align-items: center;
 }
 
-.filterTrigger[data-slot="button"] {
-  border-color: oklch(from var(--border) l c h / 0.5);
-}
-
 .filterPills {
   display: flex;
   flex-wrap: wrap;

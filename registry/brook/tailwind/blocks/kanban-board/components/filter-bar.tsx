@@ -65,11 +65,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button
-                className="border-[oklch(from_var(--border)_l_c_h_/_0.5)]"
-                size="sm"
-                variant="outline"
-              >
+              <Button size="sm" variant="outline">
                 <Filter className="text-muted-foreground" size={14} />
                 Filters
                 {activeFilterCount > 0 && (
@@ -129,11 +125,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button
-                className="border-[oklch(from_var(--border)_l_c_h_/_0.5)]"
-                size="sm"
-                variant="outline"
-              >
+              <Button size="sm" variant="outline">
                 <Layers className="text-muted-foreground" size={14} />
                 {currentGroupByLabel}
               </Button>

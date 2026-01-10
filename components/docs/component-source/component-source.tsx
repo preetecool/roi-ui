@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import { CodeBlock } from "@/components/docs/code-block/code-block";
 import { highlightCode } from "@/lib/highlight-code";
 import { cn } from "@/lib/utils";
@@ -18,8 +17,6 @@ type ComponentSourceProps = {
 };
 
 export async function ComponentSource({ name, src, title, language = "tsx", embedded = false }: ComponentSourceProps) {
-  "use cache";
-  cacheLife("max");
   if (!(name || src)) {
     return null;
   }

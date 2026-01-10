@@ -1,6 +1,5 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { cacheLife } from "next/cache";
 import type { ColorPalette } from "@/components/providers/palette-provider";
 import { highlightCode } from "@/lib/highlight-code";
 import { GlobalsCSSClient } from "./globals-css-client";
@@ -260,9 +259,6 @@ function filterCssForPalette(css: string, palette: ColorPalette): string {
 }
 
 export async function GlobalsCSS() {
-  "use cache";
-  cacheLife("max");
-
   const cssContent = readFileSync(join(process.cwd(), "styles/globals.css"), "utf8");
 
   const cssModulesContent = filterCssForStyle(cssContent, "css-modules");
