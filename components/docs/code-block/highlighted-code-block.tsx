@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import { highlightCode } from "@/lib/highlight-code";
 import {
   CodeBlockActions,
@@ -27,9 +26,6 @@ export async function HighlightedCodeBlock({
   collapsible = false,
   buttonText = "Show code",
 }: HighlightedCodeBlockProps) {
-  "use cache";
-  cacheLife("max");
-
   const highlightedCode = await highlightCode(code, language);
 
   const codeBlock = (

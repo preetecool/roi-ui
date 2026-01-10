@@ -1,13 +1,9 @@
-import { cacheLife } from "next/cache";
 import { transformers } from "./shiki-transformers";
 
 /**
- * Highlights code using Shiki with caching.
- * Cache is based on code content + language.
+ * Highlights code using Shiki.
  */
 export async function highlightCode(code: string, language = "tsx"): Promise<string> {
-  "use cache";
-  cacheLife("max");
 
   const { getSingletonHighlighter } = await import("shiki");
 
