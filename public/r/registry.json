@@ -195,6 +195,25 @@
       ]
     },
     {
+      "name": "calendar",
+      "type": "registry:item",
+      "dependencies": ["lucide-react", "react-day-picker"],
+      "title": "Calendar",
+      "description": "A date picker calendar component.",
+      "files": [
+        {
+          "path": "registry/brook/ui/calendar/calendar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/calendar/calendar.tsx"
+        },
+        {
+          "path": "registry/brook/ui/calendar/calendar.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/calendar/calendar.module.css"
+        }
+      ]
+    },
+    {
       "name": "carousel",
       "type": "registry:item",
       "title": "Carousel",
@@ -1304,6 +1323,20 @@
           "path": "registry/brook/tailwind/ui/card.tsx",
           "type": "registry:file",
           "target": "~/components/ui/card/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar-tailwind",
+      "type": "registry:item",
+      "dependencies": ["lucide-react", "react-day-picker"],
+      "title": "Calendar (Tailwind)",
+      "description": "A date picker calendar component.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/calendar.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/calendar/calendar.tsx"
         }
       ]
     },
