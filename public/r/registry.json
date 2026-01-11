@@ -538,6 +538,24 @@
       ]
     },
     {
+      "name": "kbd",
+      "type": "registry:item",
+      "title": "Kbd",
+      "description": "A component for displaying keyboard keys and shortcuts.",
+      "files": [
+        {
+          "path": "registry/brook/ui/kbd/kbd.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/kbd/kbd.tsx"
+        },
+        {
+          "path": "registry/brook/ui/kbd/kbd.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/kbd/kbd.module.css"
+        }
+      ]
+    },
+    {
       "name": "menubar",
       "type": "registry:item",
       "title": "Menubar",
@@ -1535,6 +1553,19 @@
           "path": "registry/brook/tailwind/ui/like-button.tsx",
           "type": "registry:file",
           "target": "~/components/ui/like-button/like-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kbd-tailwind",
+      "type": "registry:item",
+      "title": "Kbd (Tailwind)",
+      "description": "A component for displaying keyboard keys and shortcuts.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/kbd.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/kbd/kbd.tsx"
         }
       ]
     },

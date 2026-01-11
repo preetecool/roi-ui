@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-tailwind",
+  "type": "registry:item",
+  "title": "Kbd (Tailwind)",
+  "description": "A component for displaying keyboard keys and shortcuts.",
+  "files": [
+    {
+      "path": "registry/brook/tailwind/ui/kbd.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport { Command } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nconst kbdVariants = cva(\n  [\n    \"inline-flex items-center justify-center whitespace-nowrap font-[550] font-mono leading-none\",\n    \"border border-[oklch(from_var(--foreground)_l_c_h_/_0.06)] border-b-[3px]\",\n    \"bg-[var(--card)] text-[var(--foreground)]\",\n    \"shadow-[0_0.753698px_0.452219px_-0.583333px_rgba(0,0,0,0.01),0_1.927px_1.1562px_-1.16667px_rgba(0,0,0,0.025),0_3.86321px_2.31793px_-1.75px_rgba(0,0,0,0.02)]\",\n    \"transition-all duration-150 ease-[ease]\",\n    \"focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2\",\n  ],\n  {\n    variants: {\n      size: {\n        sm: \"h-5 min-w-5 rounded-[calc(var(--radius)*0.75)] px-1 text-[0.625rem]\",\n        md: \"h-6 min-w-6 rounded-[2px] px-1.5 text-xs\",\n        lg: \"h-8 min-w-8 rounded-[var(--radius-lg)] px-2 text-sm\",\n      },\n    },\n    defaultVariants: {\n      size: \"md\",\n    },\n  }\n);\n\n/**\n * Kbd component for displaying keyboard shortcuts\n *\n * @example\n * ```tsx\n * <Kbd>⌘</Kbd>\n * <Kbd>K</Kbd>\n * ```\n *\n * @example\n * ```tsx\n * <Kbd size=\"sm\">Ctrl</Kbd>\n * <Kbd size=\"lg\">Enter</Kbd>\n * ```\n */\nfunction Kbd({ className, size, children, ...props }: React.ComponentProps<\"kbd\"> & VariantProps<typeof kbdVariants>) {\n  const isCommandKey = typeof children === \"string\" && (children === \"⌘\" || children.toLowerCase() === \"ctrl\");\n\n  const sizeMap = {\n    sm: 11,\n    md: 13,\n    lg: 15,\n  };\n\n  const iconSize = sizeMap[size || \"md\"];\n\n  return (\n    <kbd className={cn(kbdVariants({ size }), isCommandKey && \"text-[1.15em]\", className)} data-slot=\"kbd\" {...props}>\n      {isCommandKey ? <Command size={iconSize} strokeWidth={2.5} /> : children}\n    </kbd>\n  );\n}\n\nexport { Kbd };\n",
+      "type": "registry:file",
+      "target": "~/components/ui/kbd/kbd.tsx"
+    }
+  ]
+}
