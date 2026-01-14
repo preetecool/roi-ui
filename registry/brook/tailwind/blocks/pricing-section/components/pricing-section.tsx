@@ -43,11 +43,11 @@ export function PricingSection() {
         {plans.map((plan, index) => (
           <Card
             className={cn(
-              "relative z-[1] flex flex-col border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.3)]",
-              index === 0 && "rounded-r-none border-r-0 max-lg:rounded-[var(--radius)] max-lg:border-r-[0.5px]",
-              index === 2 && "rounded-l-none border-l-0 max-lg:rounded-[var(--radius)] max-lg:border-l-[0.5px]",
+              "relative z-[1] flex flex-col",
+              index === 0 && "rounded-r-none [clip-path:inset(-50px_0_-50px_-50px)] max-lg:rounded-[var(--radius)] max-lg:[clip-path:none]",
+              index === 2 && "rounded-l-none [clip-path:inset(-50px_-50px_-50px_0)] max-lg:rounded-[var(--radius)] max-lg:[clip-path:none]",
               plan.highlighted &&
-                "z-10 -my-6 bg-[oklch(from_var(--card)_l_c_h_/_0.6)] border-[oklch(from_var(--border)_l_c_h_/_0.4)] py-12 shadow-[0_1px_2px_oklch(0_0_0_/_0.03),0_4px_8px_oklch(0_0_0_/_0.02),0_12px_24px_oklch(0_0_0_/_0.03)] max-lg:order-[-1] max-lg:my-0 max-lg:py-6"
+                "z-10 -my-6 bg-[oklch(from_var(--card)_l_c_h_/_0.6)] py-12 max-lg:order-[-1] max-lg:my-0 max-lg:py-6"
             )}
             key={plan.name}
           >

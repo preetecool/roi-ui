@@ -45,8 +45,7 @@ export function CardLogin() {
   return (
     <Card
       className={cn(
-        "w-[400px] rounded-[var(--radius-lg)] border-[0.5px] border-[var(--border)] p-5",
-        "shadow-[0_1px_1px_oklch(from_var(--border)_l_c_h_/_0.2),0_2px_2px_oklch(from_var(--border)_l_c_h_/_0.2),0_1px_1px_oklch(from_var(--border)_l_c_h_/_0.2)]",
+        "w-[400px] rounded-[var(--radius-lg)] p-5",
         "max-sm:w-full max-sm:p-4"
       )}
     >

@@ -44,28 +44,22 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.3);
 }
 
 .card:first-child {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-right: none;
+  clip-path: inset(-50px 0 -50px -50px);
 }
 
 .card:last-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: none;
+  clip-path: inset(-50px -50px -50px 0);
 }
 
 .highlighted {
   background-color: oklch(from var(--card) l c h / 0.6);
-  border: 0.5px solid oklch(from var(--border) l c h / 0.4);
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 0.03),
-    0 4px 8px oklch(0 0 0 / 0.02),
-    0 12px 24px oklch(0 0 0 / 0.03);
   z-index: 10;
   margin-top: -1.5rem;
   margin-bottom: -1.5rem;
