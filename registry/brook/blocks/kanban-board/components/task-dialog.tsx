@@ -342,7 +342,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   </SelectValue>
                 </SelectTrigger>
                 <SelectPortal>
-                  <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
+                  <SelectPositioner align="start" alignItemWithTrigger={false} className={styles.priorityPositioner} sideOffset={6}>
                     <SelectPopup>
                       <SelectSpacer />
                       <SelectList>
@@ -384,7 +384,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                     </SelectValue>
                   </SelectTrigger>
                   <SelectPortal>
-                    <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
+                    <SelectPositioner align="start" alignItemWithTrigger={false} className={styles.columnPositioner} sideOffset={6}>
                       <SelectPopup>
                         <SelectSpacer />
                         <SelectList>
@@ -423,7 +423,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   )}
                 </SelectTrigger>
                 <SelectPortal>
-                  <SelectPositioner align="start" alignItemWithTrigger={false} sideOffset={6}>
+                  <SelectPositioner align="start" alignItemWithTrigger={false} className={styles.tagsPositioner} sideOffset={6}>
                     <SelectPopup>
                       <SelectSpacer />
                       <SelectList>
@@ -523,8 +523,8 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
 
           <Button
             aria-label="Close dialog"
-            nativeButton
             className={styles.closeButton}
+            nativeButton
             render={<DialogClose />}
             size="icon"
             variant="ghost"
