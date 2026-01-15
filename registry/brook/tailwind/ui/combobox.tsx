@@ -18,7 +18,7 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
       className={cn(
         "-translate-y-1/2 absolute top-1/2 right-2",
         "flex cursor-pointer items-center justify-center border-none bg-transparent p-1",
-        "opacity-50 hover:opacity-100",
+        "opacity-20",
         "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className

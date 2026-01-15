@@ -15,7 +15,7 @@ function ComboboxRoot<ItemValue, Multiple extends boolean | undefined = undefine
 
 function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Props) {
   return (
-    <Combobox.Trigger className={cn(styles.trigger, className)} {...props}>
+    <Combobox.Trigger className={cn(styles.trigger, className)} data-slot="combobox-trigger" {...props}>
       {children}
       <ChevronsUpDown className={styles.icon} size={16} />
     </Combobox.Trigger>

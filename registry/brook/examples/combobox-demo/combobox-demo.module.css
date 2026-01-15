@@ -34,6 +34,10 @@
 .inputWrapper {
   position: relative;
   width: 100%;
+
+  &:hover [data-slot="combobox-trigger"] {
+    opacity: 0.5;
+  }
 }
 
 .popup {

@@ -39,7 +39,7 @@ export default function CarouselDemo() {
         <Carousel.Content>
           {features.map((feature, index) => (
             <Carousel.Item index={index} key={feature.id}>
-              <Card className="relative flex h-[300px] w-[330px] flex-col border-[0.5px] border-[color:oklch(from_var(--color-border)_l_c_h_/_0.5)] bg-gradient-to-br from-[color:var(--mix-card-66-bg)] via-[color:var(--color-background)] to-[color:var(--color-background)] p-4 max-sm:h-[340px] max-sm:max-w-[280px] max-sm:p-4 max-md:max-w-[230px]">
+              <Card className="relative flex h-[300px] w-[330px] flex-col bg-gradient-to-br from-[color:var(--mix-card-66-bg)] via-[color:var(--color-background)] to-[color:var(--color-background)] p-4 max-sm:h-[340px] max-sm:max-w-[280px] max-sm:p-4 max-md:max-w-[230px]">
                 <div className="flex flex-1 items-start justify-start">
                   <CardIcon className="border-[color:var(--color-border)] bg-[color:var(--mix-card-66-bg)] text-[color:var(--color-muted-foreground)]">
                     {feature.icon}
@@ -51,7 +51,7 @@ export default function CarouselDemo() {
                     <CardDescription>{feature.description}</CardDescription>
                   </div>
                   <Button
-                    className="hit-area-extend relative h-9 w-9 flex-shrink-0 self-end rounded-full border-[0.5px] border-[color:oklch(from_var(--color-border)_l_c_h_/_0.5)] p-1 text-[color:var(--color-muted-foreground)] hover:text-[color:var(--color-foreground)]"
+                    className="hit-area-extend relative h-9 w-9 flex-shrink-0 self-end rounded-full border-0 p-1 text-[color:var(--color-muted-foreground)] shadow-[0_0_0_0.5px_oklch(from_var(--color-border)_l_c_h_/_0.5)] hover:text-[color:var(--color-foreground)]"
                     size="icon"
                     variant="outline"
                   >

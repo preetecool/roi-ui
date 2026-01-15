@@ -28,13 +28,15 @@
   gap: 0.5rem;
   width: 300px;
   padding-right: 0.5rem;
-  border: 1px solid var(--border);
+  border: none;
   border-radius: var(--radius);
   background-color: var(--mix-card-50-bg);
+  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.5);
 
   &:focus-within {
-    border-color: var(--ring);
-    box-shadow: 0 0 0 2px oklch(from var(--ring) l c h / 0.2);
+    box-shadow:
+      0 0 0 1px var(--ring),
+      0 0 4px oklch(from var(--border) l c h / 0.5);
   }
 
   @media (max-width: 640px) {
@@ -46,6 +48,7 @@ input.input {
   flex: 1;
   border: none;
   background: transparent;
+  box-shadow: none;
 
   &:focus {
     outline: none;
