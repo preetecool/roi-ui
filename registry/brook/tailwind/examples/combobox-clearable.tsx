@@ -45,7 +45,7 @@ export default function ComboboxClearable() {
           itemToStringValue={(item) => item?.value || ""}
         >
           <div className="relative w-full" ref={anchorRef}>
-            <ComboboxInput id="clearable-input" placeholder="Search frameworks..." />
+            <ComboboxInput className="shadow-none focus:shadow-none" id="clearable-input" placeholder="Search frameworks..." />
             <ComboboxValue>
               {(value: Framework | null) => (value ? <ComboboxClear /> : <ComboboxTrigger />)}
             </ComboboxValue>

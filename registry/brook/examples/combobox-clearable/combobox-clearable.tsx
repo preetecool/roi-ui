@@ -43,7 +43,7 @@ export default function ComboboxClearable() {
           itemToStringValue={(item) => item?.value || ""}
         >
           <div className={styles.inputWrapper} ref={anchorRef}>
-            <ComboboxInput id="clearable-input" placeholder="Search frameworks..." />
+            <ComboboxInput className={styles.input} id="clearable-input" placeholder="Search frameworks..." />
             <ComboboxValue>
               {(value: Framework | null) => (value ? <ComboboxClear /> : <ComboboxTrigger />)}
             </ComboboxValue>
