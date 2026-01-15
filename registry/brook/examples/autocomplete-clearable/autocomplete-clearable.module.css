@@ -36,7 +36,7 @@
   &:focus-within {
     box-shadow:
       0 0 0 1px var(--ring),
-      0 0 0 3px oklch(from var(--ring) l c h / 0.2);
+      0 0 4px oklch(from var(--border) l c h / 0.5);
   }
 
   @media (max-width: 640px) {
