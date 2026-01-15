@@ -32,14 +32,33 @@
 }
 
 .inputWrapper {
+  display: flex;
+  align-items: center;
   position: relative;
   width: 100%;
+  padding-right: 0.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--mix-card-50-bg);
+  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.5);
+
+  &:focus-within {
+    box-shadow:
+      0 0 0 1px var(--ring),
+      0 0 4px oklch(from var(--border) l c h / 0.5);
+  }
+
+  &:hover [data-slot="combobox-trigger"] {
+    opacity: 0.5;
+  }
 }
 
 input.input {
   box-shadow: none;
 
-  &:focus {
+  &:focus,
+  &[data-focused],
+  &[data-open] {
     outline: none;
     box-shadow: none;
   }

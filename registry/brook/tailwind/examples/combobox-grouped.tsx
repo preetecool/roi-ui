@@ -70,7 +70,7 @@ export default function ComboboxGrouped() {
           itemToStringLabel={(item) => (item as unknown as Item)?.label || ""}
           itemToStringValue={(item) => (item as unknown as Item)?.value || ""}
         >
-          <div className="relative w-full" ref={anchorRef}>
+          <div className="relative w-full [&:hover_[data-slot=combobox-trigger]]:opacity-50" ref={anchorRef}>
             <ComboboxInput id="grouped-input" placeholder="Search items..." />
             <ComboboxTrigger />
           </div>
