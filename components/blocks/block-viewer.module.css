@@ -84,10 +84,15 @@
   padding: 1rem;
 }
 
+@media (max-width: 1024px) {
+  .previewContainer {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 640px) {
   .previewContainer {
     padding: 0.5rem;
-    justify-content: flex-start;
   }
 }
 
