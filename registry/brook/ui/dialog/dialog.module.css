@@ -25,10 +25,8 @@
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow:
-    0 0 0 0.5px oklch(from var(--border) l c h / 0.6),
-    0 8px 11px -2px oklch(from var(--foreground) l c h / 0.01),
-    0 4px 6px -2px oklch(from var(--foreground) l c h / 0.01),
-    inset 0 0 0 1px oklch(from var(--background) l c h / 0.01);
+    0 0 0 1px oklch(from var(--border) l c h / 0.5),
+    var(--shadow-border-stack);
   transform: translate(-50%, -50%);
   transition: all 150ms;
 

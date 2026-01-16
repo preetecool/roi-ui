@@ -29,7 +29,7 @@ const LUCKY_LINKS = [
 ];
 
 const HEADING = "React components and blocks";
-const SUBHEADING = "Components and blocks made with Base UI primitives and motion. CSS modules and Tailwind available.";
+const SUBHEADING = "Components and blocks built with Base UI primitives and styled with CSS Modules or Tailwind.";
 
 const CAROUSEL_COMPONENTS = [
   {
@@ -77,7 +77,7 @@ export const Hero = () => {
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
         <Button render={<Link href="/docs/start" />}>Get Started</Button>
-        <Button render={<Link href={luckyLink} />} variant="ghost">
+        <Button render={<Link href={luckyLink} />} variant="outline">
           I&apos;m Feeling Lucky
         </Button>
       </div>

@@ -217,7 +217,6 @@
 
 @layer all {
   html {
-    overflow-y: scroll !important;
     scrollbar-gutter: stable;
     max-width: 100vw;
     overflow-x: hidden;
