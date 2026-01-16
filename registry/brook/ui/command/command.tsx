@@ -1,120 +1,137 @@
 "use client";
 
+import { Autocomplete } from "@base-ui/react/autocomplete";
 import { Dialog } from "@base-ui/react/dialog";
-import { Command as CommandPrimitive } from "cmdk";
-import { Command } from "lucide-react";
-import { Children, cloneElement, isValidElement } from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import styles from "./command.module.css";
 
-function CommandRoot({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive>) {
-  return <CommandPrimitive className={cn(styles.root, className)} {...props} />;
+function CommandDialog({ ...props }: Dialog.Root.Props) {
+  return <Dialog.Root {...props} />;
 }
 
-function CommandDialog({
-  children,
-  open,
-  onOpenChange,
-  ...props
-}: Dialog.Root.Props & {
-  children?: React.ReactNode;
-}) {
-  return (
-    <Dialog.Root onOpenChange={onOpenChange} open={open} {...props}>
-      <Dialog.Portal>
-        <Dialog.Backdrop className={cn(styles.dialogOverlay)} />
-        <Dialog.Popup className={cn(styles.dialogContent)}>{children}</Dialog.Popup>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
+function CommandDialogTrigger({ ...props }: Dialog.Trigger.Props) {
+  return <Dialog.Trigger data-slot="command-dialog-trigger" {...props} />;
 }
 
-function CommandInput({ className, ...props }: React.ComponentPropsWithRef<typeof CommandPrimitive.Input>) {
-  return (
-    <CommandPrimitive.Input className={cn(styles.input, className)} data-slot="commandprimitive-input" {...props} />
-  );
+const CommandDialogPortal = Dialog.Portal;
+
+function CommandDialogBackdrop({ className, ...props }: Dialog.Backdrop.Props) {
+  return <Dialog.Backdrop className={cn(styles.backdrop, className)} data-slot="command-dialog-backdrop" {...props} />;
 }
 
-function CommandList({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>) {
-  return <CommandPrimitive.List className={cn(styles.list, className)} data-slot="commandprimitive-list" {...props} />;
-}
-
-function CommandItem({
+function CommandDialogPopup({
   className,
-  icon,
-  keyboardShortcut,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
-  icon?: boolean;
-  keyboardShortcut?: string;
-}) {
-  const processedChildren =
-    icon && Children.count(children) > 0
-      ? Children.map(children, (child, index) => {
-          if (index === 0 && isValidElement(child)) {
-            const typedChild = child as React.ReactElement<React.HTMLAttributes<HTMLElement>>;
-            return cloneElement(typedChild, {
-              className: cn(styles.iconBackground, typedChild.props.className),
-            });
-          }
-          return child;
-        })
-      : children;
-
+}: Dialog.Popup.Props & { children?: React.ReactNode }) {
   return (
-    <CommandPrimitive.Item className={cn(styles.item, className)} {...props}>
-      {processedChildren}
-      {keyboardShortcut && (
-        <span className={styles.keyboardShortcut}>
-          <Command size={11} />
-          {keyboardShortcut}
-        </span>
-      )}
-    </CommandPrimitive.Item>
+    <CommandDialogPortal>
+      <CommandDialogBackdrop />
+      <Dialog.Popup className={cn(styles.dialogPopup, className)} data-slot="command-dialog-popup" {...props}>
+        {children}
+      </Dialog.Popup>
+    </CommandDialogPortal>
   );
 }
 
-function CommandGroup({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>) {
+function Command({
+  autoHighlight = "always",
+  keepHighlight = true,
+  className,
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Root> & { className?: string }) {
   return (
-    <CommandPrimitive.Group className={cn(styles.group, className)} data-slot="commandprimitive-group" {...props} />
+    <div className={cn(styles.root, className)} data-slot="command">
+      <Autocomplete.Root
+        autoHighlight={autoHighlight}
+        filter={null}
+        inline
+        keepHighlight={keepHighlight}
+        open
+        {...props}
+      />
+    </div>
   );
 }
 
-function CommandEmpty({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>) {
+function CommandInput({
+  className,
+  placeholder = "Search...",
+  ...props
+}: React.ComponentProps<typeof Autocomplete.Input>) {
   return (
-    <CommandPrimitive.Empty className={cn(styles.empty, className)} data-slot="commandprimitive-empty" {...props} />
+    <div className={styles.inputWrapper} data-slot="command-input-wrapper">
+      <Autocomplete.Input
+        autoFocus
+        className={cn(styles.input, className)}
+        data-slot="command-input"
+        placeholder={placeholder}
+        {...props}
+      />
+    </div>
   );
 }
 
-function CommandSeparator({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>) {
+function CommandList({ className, ...props }: React.ComponentProps<typeof Autocomplete.List>) {
+  return <Autocomplete.List className={cn(styles.list, className)} data-slot="command-list" {...props} />;
+}
+
+function CommandEmpty({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Empty>) {
   return (
-    <CommandPrimitive.Separator
-      className={cn(styles.separator, className)}
-      data-slot="commandprimitive-separator"
-      {...props}
-    />
+    <Autocomplete.Empty className={cn(styles.empty, className)} data-slot="command-empty" {...props}>
+      {children || "No results found."}
+    </Autocomplete.Empty>
   );
 }
 
-function CommandLoading({ className, ...props }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>) {
+function CommandGroup({ className, ...props }: React.ComponentProps<typeof Autocomplete.Group>) {
+  return <Autocomplete.Group className={cn(styles.group, className)} data-slot="command-group" {...props} />;
+}
+
+function CommandGroupLabel({ className, ...props }: React.ComponentProps<typeof Autocomplete.GroupLabel>) {
   return (
-    <CommandPrimitive.Loading
-      className={cn(styles.loading, className)}
-      data-slot="commandprimitive-loading"
-      {...props}
-    />
+    <Autocomplete.GroupLabel className={cn(styles.groupLabel, className)} data-slot="command-group-label" {...props} />
   );
+}
+
+function CommandCollection({ ...props }: React.ComponentProps<typeof Autocomplete.Collection>) {
+  return <Autocomplete.Collection data-slot="command-collection" {...props} />;
+}
+
+function CommandItem({ className, ...props }: React.ComponentProps<typeof Autocomplete.Item>) {
+  return <Autocomplete.Item className={cn(styles.item, className)} data-slot="command-item" {...props} />;
+}
+
+function CommandSeparator({ className, ...props }: React.ComponentProps<typeof Autocomplete.Separator>) {
+  return (
+    <Autocomplete.Separator className={cn(styles.separator, className)} data-slot="command-separator" {...props} />
+  );
+}
+
+function CommandFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn(styles.footer, className)} data-slot="command-footer" {...props} />;
+}
+
+function CommandShortcut({ className, ...props }: React.ComponentProps<"kbd">) {
+  return <kbd className={cn(styles.shortcut, className)} data-slot="command-shortcut" {...props} />;
 }
 
 export {
-  CommandRoot as Command,
+  Command,
+  CommandCollection,
   CommandDialog,
+  CommandDialogBackdrop,
+  CommandDialogPopup,
+  CommandDialogPortal,
+  CommandDialogTrigger,
   CommandEmpty,
+  CommandFooter,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandLoading,
   CommandSeparator,
+  CommandShortcut,
 };
