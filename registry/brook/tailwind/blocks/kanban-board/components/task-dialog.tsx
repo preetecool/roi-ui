@@ -18,6 +18,7 @@ import {
 import { useActionState, useCallback, useEffect, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
+import { Calendar } from "@/registry/brook/tailwind/ui/calendar";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/tailwind/ui/checkbox";
 import { CheckboxGroup } from "@/registry/brook/tailwind/ui/checkbox-group";
 import {
@@ -33,6 +34,7 @@ import {
 import { Dialog, DialogClose, DialogOverlay, DialogPopup, DialogPortal } from "@/registry/brook/tailwind/ui/dialog";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 import { Kbd } from "@/registry/brook/tailwind/ui/kbd";
+import { Popover, PopoverPopup, PopoverTrigger } from "@/registry/brook/tailwind/ui/popover";
 import {
   Select,
   SelectItem,
@@ -46,10 +48,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
-import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
+import { formatDateString, parseDateString, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
 import { DeleteDialog } from "./delete-dialog";
-
 
 const PRIORITY_CONFIG: Record<Priority, { icon: React.ReactNode; label: string }> = {
   urgent: { icon: <CircleAlert size={14} />, label: "Urgent" },
@@ -122,6 +123,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
   const [formState, submitAction, isPending] = useActionState(submitTaskAction, initialFormState);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [subtasks, setSubtasks] = useState<Subtask[]>(task?.subtasks ?? []);
+  const [dueDate, setDueDate] = useState(task?.dueDate ? task.dueDate.split("T")[0] : "");
 
   const defaultColumnId = columns[0]?.id ?? "";
   const defaultPriority = task?.priority ?? "medium";
@@ -177,6 +179,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
         >
           <form action={submitAction} className="mt-0 flex flex-col gap-1">
             <input name="subtasks" type="hidden" value={JSON.stringify(subtasks)} />
+            <input name="dueDate" type="hidden" value={dueDate} />
 
             <Input
               autoFocus
@@ -488,15 +491,33 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 </ComboboxPortal>
               </Combobox>
 
-              <div className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.4)]">
-                <CalendarIcon className="text-muted-foreground" size={14} />
-                <input
-                  className="border-none bg-transparent text-sm outline-none"
-                  defaultValue={task?.dueDate?.split("T")[0] ?? ""}
-                  name="dueDate"
-                  type="date"
-                />
-              </div>
+              <Popover>
+                <PopoverTrigger
+                  className="inline-flex items-center gap-2"
+                  render={
+                    <Button
+                      className="shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.4)]"
+                      size="sm"
+                      variant="outline"
+                    />
+                  }
+                >
+                  <span className="flex items-center justify-center text-muted-foreground">
+                    <CalendarIcon size={14} />
+                  </span>
+                  {dueDate ? parseDateString(dueDate).toLocaleDateString() : "Due date"}
+                </PopoverTrigger>
+                <PopoverPopup align="start" arrow={false} className="z-[200]" sideOffset={6}>
+                  <Calendar
+                    className="p-0"
+                    mode="single"
+                    onSelect={(date) => {
+                      setDueDate(date ? formatDateString(date) : "");
+                    }}
+                    selected={dueDate.length > 0 ? parseDateString(dueDate) : undefined}
+                  />
+                </PopoverPopup>
+              </Popover>
             </div>
 
             <div className="-mx-5 mt-6 flex items-center justify-between gap-2 border-t-[0.5px] border-t-[oklch(from_var(--border)_l_c_h_/_0.4)] px-5 pt-4">

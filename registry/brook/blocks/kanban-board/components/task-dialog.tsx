@@ -26,6 +26,7 @@ import {
   AlertDialogTitle,
 } from "@/registry/brook/ui/alert-dialog/alert-dialog";
 import { Button } from "@/registry/brook/ui/button/button";
+import { Calendar } from "@/registry/brook/ui/calendar/calendar";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
 import { CheckboxGroup } from "@/registry/brook/ui/checkbox-group/checkbox-group";
 import {
@@ -41,6 +42,7 @@ import {
 import { Dialog, DialogClose, DialogOverlay, DialogPopup, DialogPortal } from "@/registry/brook/ui/dialog/dialog";
 import { Input } from "@/registry/brook/ui/input/input";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
+import { Popover, PopoverPopup, PopoverTrigger } from "@/registry/brook/ui/popover/popover";
 import {
   Select,
   SelectItem,
@@ -54,7 +56,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
-import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
+import { formatDateString, parseDateString, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
 import styles from "./kanban.module.css";
 
@@ -208,6 +210,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
   const [formState, submitAction, isPending] = useActionState(submitTaskAction, initialFormState);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [subtasks, setSubtasks] = useState<Subtask[]>(task?.subtasks ?? []);
+  const [dueDate, setDueDate] = useState(task?.dueDate ? task.dueDate.split("T")[0] : "");
 
   const defaultColumnId = columns[0]?.id ?? "";
   const defaultPriority = task?.priority ?? "medium";
@@ -259,6 +262,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
         <DialogPopup className={styles.dialogPopup} data-kanban-dialog onKeyDown={handleKeyDown}>
           <form action={submitAction} className={styles.taskForm}>
             <input name="subtasks" type="hidden" value={JSON.stringify(subtasks)} />
+            <input name="dueDate" type="hidden" value={dueDate} />
 
             <Input
               autoFocus
@@ -446,15 +450,24 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 </ComboboxPortal>
               </Combobox>
 
-              <div className={styles.dueDateField}>
-                <CalendarIcon className={styles.dueDateIcon} size={14} />
-                <input
-                  className={styles.dueDateInput}
-                  defaultValue={task?.dueDate?.split("T")[0] ?? ""}
-                  name="dueDate"
-                  type="date"
-                />
-              </div>
+              <Popover>
+                <PopoverTrigger className={styles.fieldButton} render={<Button size="sm" variant="outline" />}>
+                  <span className={styles.fieldIcon}>
+                    <CalendarIcon size={14} />
+                  </span>
+                  {dueDate ? parseDateString(dueDate).toLocaleDateString() : "Due date"}
+                </PopoverTrigger>
+                <PopoverPopup align="start" arrow={false} sideOffset={6}>
+                  <Calendar
+                    className={styles.calendar}
+                    mode="single"
+                    onSelect={(date) => {
+                      setDueDate(date ? formatDateString(date) : "");
+                    }}
+                    selected={dueDate.length > 0 ? parseDateString(dueDate) : undefined}
+                  />
+                </PopoverPopup>
+              </Popover>
             </div>
 
             <div className={styles.dialogFooter}>

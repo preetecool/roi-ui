@@ -55,3 +55,15 @@ export function getColumnName<C extends { id: string; name: string }>(columnId: 
   const column = columns.find((col) => col.id === columnId);
   return column?.name ?? columnId;
 }
+
+export function parseDateString(dateStr: string): Date {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day, 12, 0, 0);
+}
+
+export function formatDateString(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
