@@ -1,3 +1,5 @@
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import styles from "./badge.module.css";
@@ -39,31 +41,29 @@ const badgeVariants = cva(styles.badge, {
  *   - `"md"` - Medium badge (default)
  *   - `"lg"` - Large badge
  * @param className - Optional CSS class names
- *
- * @example
- * ```tsx
- * // Standard badge
- * <Badge>New</Badge>
- *
- * // Badge with variant and size
- * <Badge variant="success" size="lg">Active</Badge>
- *
- * // Badge with icon
- * <Badge variant="destructive">
- *   <BadgeIcon>
- *     <AlertIcon />
- *   </BadgeIcon>
- *   Error
- * </Badge>
- * ```
  */
 function Badge({
   className,
-  variant,
-  size,
+  variant = "default",
+  size = "md",
+  render,
   ...props
-}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
-  return <span className={cn(badgeVariants({ variant, size }), className)} data-slot="badge" {...props} />;
+}: useRender.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+  return useRender({
+    defaultTagName: "span",
+    props: mergeProps<"span">(
+      {
+        className: cn(badgeVariants({ variant, size, className })),
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: "badge",
+      variant,
+      size,
+    },
+  });
 }
 
 /**
@@ -81,8 +81,21 @@ function Badge({
  * </Badge>
  * ```
  */
-function BadgeIcon({ className, ...props }: React.ComponentProps<"span">) {
-  return <span className={cn(styles.iconContainer, className)} data-slot="badge-icon" {...props} />;
+
+function BadgeIcon({ className, render, ...props }: useRender.ComponentProps<"span">) {
+  return useRender({
+    defaultTagName: "span",
+    props: mergeProps<"span">(
+      {
+        className: cn(styles.iconContainer, className),
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: "badge-icon",
+    },
+  });
 }
 
 export { Badge, BadgeIcon };
