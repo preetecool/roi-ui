@@ -15,7 +15,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useActionState, useCallback, useEffect, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import { Calendar } from "@/registry/brook/tailwind/ui/calendar";
@@ -32,8 +32,6 @@ import {
   ComboboxPositioner,
 } from "@/registry/brook/tailwind/ui/combobox";
 import { Dialog, DialogClose, DialogOverlay, DialogPopup, DialogPortal } from "@/registry/brook/tailwind/ui/dialog";
-import { Field, FieldControl, FieldError } from "@/registry/brook/tailwind/ui/field";
-import { Form } from "@/registry/brook/tailwind/ui/form";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 import { Kbd } from "@/registry/brook/tailwind/ui/kbd";
 import { Popover, PopoverPopup, PopoverTrigger } from "@/registry/brook/tailwind/ui/popover";
@@ -50,36 +48,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
-import { PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
+import { formatDateString, parseDateString, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
 import { DeleteDialog } from "./delete-dialog";
-
-function parseDateString(dateStr: string): Date {
-  const [year, month, day] = dateStr.split("-").map(Number);
-  return new Date(year, month - 1, day, 12, 0, 0);
-}
-
-type TaskFormState = {
-  title: string;
-  description: string;
-  priority: Priority;
-  columnId: string;
-  tags: string[];
-  assignees: Assignee[];
-  subtasks: Subtask[];
-  dueDate: string;
-};
-
-const defaultFormState: TaskFormState = {
-  title: "",
-  description: "",
-  priority: "medium",
-  columnId: "",
-  tags: [],
-  assignees: [],
-  subtasks: [],
-  dueDate: "",
-};
 
 const PRIORITY_CONFIG: Record<Priority, { icon: React.ReactNode; label: string }> = {
   urgent: { icon: <CircleAlert size={14} />, label: "Urgent" },
@@ -109,6 +80,25 @@ function TagDot({ tag }: { tag: Tag }) {
   return <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: TAG_COLORS[tag] }} />;
 }
 
+type FormState =
+  | { status: "idle" }
+  | { status: "submitting" }
+  | { status: "error"; message: string }
+  | { status: "success" };
+
+const initialFormState: FormState = { status: "idle" };
+
+async function submitTaskAction(_prevState: FormState, formData: FormData): Promise<FormState> {
+  await new Promise((resolve) => setTimeout(resolve, 100));
+
+  const title = formData.get("title") as string;
+  if (!title?.trim()) {
+    return { status: "error", message: "Title is required" };
+  }
+
+  return { status: "success" };
+}
+
 export type TaskDialogProps = {
   open: boolean;
   mode: "create" | "edit";
@@ -130,34 +120,16 @@ export type TaskDialogProps = {
 };
 
 export function TaskDialog({ open, mode, task, columnId, assignees, columns, groupBy, onClose }: TaskDialogProps) {
-  const [form, setForm] = useState<TaskFormState>(defaultFormState);
+  const [formState, submitAction, isPending] = useActionState(submitTaskAction, initialFormState);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [subtasks, setSubtasks] = useState<Subtask[]>(task?.subtasks ?? []);
+  const [dueDate, setDueDate] = useState(task?.dueDate ? task.dueDate.split("T")[0] : "");
 
-  const updateField = <K extends keyof TaskFormState>(field: K, value: TaskFormState[K]) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const defaultColumnId = useMemo(() => columns[0]?.id ?? "", [columns]);
-
-  useEffect(() => {
-    if (mode === "edit" && task) {
-      setForm({
-        title: task.title,
-        description: task.description,
-        priority: task.priority,
-        columnId: task.columnId,
-        tags: task.tags,
-        assignees: task.assignees ?? [],
-        subtasks: task.subtasks ?? [],
-        dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
-      });
-    } else {
-      setForm({
-        ...defaultFormState,
-        columnId: columnId ?? defaultColumnId,
-      });
-    }
-  }, [mode, task, columnId, defaultColumnId]);
+  const defaultColumnId = columns[0]?.id ?? "";
+  const defaultPriority = task?.priority ?? "medium";
+  const defaultSelectedColumnId = task?.columnId ?? columnId ?? defaultColumnId;
+  const defaultTags = task?.tags ?? [];
+  const defaultAssignees = task?.assignees ?? [];
 
   const addSubtask = useCallback(() => {
     const newSubtask: Subtask = {
@@ -165,34 +137,32 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
       title: "",
       completed: false,
     };
-    setForm((prev) => ({ ...prev, subtasks: [...prev.subtasks, newSubtask] }));
+    setSubtasks((prev) => [...prev, newSubtask]);
   }, []);
 
-  const updateSubtask = (id: string, updates: Partial<Subtask>) => {
-    updateField(
-      "subtasks",
-      form.subtasks.map((st) => (st.id === id ? { ...st, ...updates } : st))
-    );
-  };
+  const updateSubtask = useCallback((id: string, updates: Partial<Subtask>) => {
+    setSubtasks((prev) => prev.map((st) => (st.id === id ? { ...st, ...updates } : st)));
+  }, []);
 
-  const removeSubtask = (id: string) => {
-    updateField(
-      "subtasks",
-      form.subtasks.filter((st) => st.id !== id)
-    );
-  };
+  const removeSubtask = useCallback((id: string) => {
+    setSubtasks((prev) => prev.filter((st) => st.id !== id));
+  }, []);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "l") {
         e.preventDefault();
         addSubtask();
       }
-    };
+    },
+    [addSubtask]
+  );
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [addSubtask]);
+  useEffect(() => {
+    if (formState.status === "success") {
+      onClose();
+    }
+  }, [formState.status, onClose]);
 
   if (!open) {
     return null;
@@ -205,59 +175,60 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
         <DialogPopup
           className="max-w-[660px] overflow-visible p-5"
           data-kanban-dialog
+          onKeyDown={handleKeyDown}
         >
-          <Form className="mt-0 flex flex-col gap-1">
-            <Field name="title">
-              <FieldControl
-                autoFocus
-                className={cn(
-                  "rounded-none py-2 font-semibold text-xl leading-[1.3] tracking-[-0.01em]",
-                  "placeholder:font-semibold placeholder:text-muted-foreground placeholder:text-xl placeholder:opacity-60",
-                  "h-auto border-none bg-transparent p-0 shadow-none",
-                  "focus:border-transparent focus:shadow-none focus:outline-none",
-                  "focus-visible:border-transparent focus-visible:shadow-none focus-visible:outline-none"
-                )}
-                data-variant="borderless"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("title", e.target.value)}
-                placeholder={mode === "create" ? "New task..." : "Task title..."}
-                render={<Input />}
-                value={form.title}
-              />
-              <FieldError />
-            </Field>
+          <form action={submitAction} className="mt-0 flex flex-col gap-1">
+            <input name="subtasks" type="hidden" value={JSON.stringify(subtasks)} />
+            <input name="dueDate" type="hidden" value={dueDate} />
 
-            <Field>
-              <Input
-                className={cn(
-                  "min-h-10 rounded-none py-1.5 text-muted-foreground text-sm",
-                  "placeholder:text-sm placeholder:opacity-70",
-                  "h-auto border-none bg-transparent p-0 shadow-none",
-                  "focus:border-transparent focus:shadow-none focus:outline-none",
-                  "focus-visible:border-transparent focus-visible:shadow-none focus-visible:outline-none"
-                )}
-                data-variant="borderless"
-                onChange={(e) => updateField("description", e.target.value)}
-                placeholder="Add description..."
-                value={form.description}
-              />
-            </Field>
+            <Input
+              autoFocus
+              className={cn(
+                "rounded-none py-2 font-semibold text-xl leading-[1.3] tracking-[-0.01em]",
+                "placeholder:font-semibold placeholder:text-muted-foreground placeholder:text-xl placeholder:opacity-60",
+                "h-auto border-none bg-transparent p-0 shadow-none",
+                "focus:border-transparent focus:shadow-none focus:outline-none",
+                "focus-visible:border-transparent focus-visible:shadow-none focus-visible:outline-none"
+              )}
+              data-variant="borderless"
+              defaultValue={task?.title ?? ""}
+              name="title"
+              placeholder={mode === "create" ? "New task..." : "Task title..."}
+            />
+            {formState.status === "error" && (
+              <p className="m-0 text-destructive text-xs">{formState.message}</p>
+            )}
+
+            <Input
+              className={cn(
+                "min-h-10 rounded-none py-1.5 text-muted-foreground text-sm",
+                "placeholder:text-sm placeholder:opacity-70",
+                "h-auto border-none bg-transparent p-0 shadow-none",
+                "focus:border-transparent focus:shadow-none focus:outline-none",
+                "focus-visible:border-transparent focus-visible:shadow-none focus-visible:outline-none"
+              )}
+              data-variant="borderless"
+              defaultValue={task?.description ?? ""}
+              name="description"
+              placeholder="Add description..."
+            />
 
             <div className="mt-3 flex flex-col gap-1">
               <CheckboxGroup
-                allValues={form.subtasks.map((st) => st.id)}
+                allValues={subtasks.map((st) => st.id)}
                 aria-label="Subtasks"
                 className="flex flex-col gap-0"
                 onValueChange={(values) => {
-                  for (const subtask of form.subtasks) {
+                  for (const subtask of subtasks) {
                     const shouldBeCompleted = values.includes(subtask.id);
                     if (subtask.completed !== shouldBeCompleted) {
                       updateSubtask(subtask.id, { completed: shouldBeCompleted });
                     }
                   }
                 }}
-                value={form.subtasks.filter((st) => st.completed).map((st) => st.id)}
+                value={subtasks.filter((st) => st.completed).map((st) => st.id)}
               >
-                {form.subtasks.map((subtask) => (
+                {subtasks.map((subtask) => (
                   <div className="group flex items-center gap-2 rounded-[var(--radius-sm)] py-1" key={subtask.id}>
                     <Checkbox
                       className={cn(
@@ -265,6 +236,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                         "data-[unchecked]:border-[oklch(from_var(--border)_l_c_h_/_0.6)]",
                         "data-[checked]:border-primary data-[checked]:bg-primary"
                       )}
+                      name={`subtask-${subtask.id}`}
                       value={subtask.id}
                     >
                       <CheckboxIndicator>
@@ -278,6 +250,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                         "placeholder:text-muted-foreground placeholder:opacity-60",
                         subtask.completed && "text-muted-foreground line-through"
                       )}
+                      name={`subtask-title-${subtask.id}`}
                       onChange={(e) => updateSubtask(subtask.id, { title: e.target.value })}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
@@ -317,11 +290,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
             </div>
 
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <Select
-                items={PRIORITY_ITEMS}
-                onValueChange={(value) => updateField("priority", value as Priority)}
-                value={form.priority}
-              >
+              <Select defaultValue={defaultPriority} items={PRIORITY_ITEMS} name="priority">
                 <SelectTrigger
                   className="inline-flex items-center gap-2 whitespace-nowrap [&_[data-slot=select-value]]:flex [&_[data-slot=select-value]]:items-center [&_[data-slot=select-value]]:gap-2"
                   render={
@@ -374,13 +343,9 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
 
               {groupBy === "column" && (
                 <Select
+                  defaultValue={defaultSelectedColumnId}
                   items={columns.map((col) => ({ value: col.id, label: col.name }))}
-                  onValueChange={(value) => {
-                    if (value) {
-                      updateField("columnId", value);
-                    }
-                  }}
-                  value={form.columnId}
+                  name="columnId"
                 >
                   <SelectTrigger
                     className="inline-flex items-center gap-2 whitespace-nowrap [&_[data-slot=select-value]]:flex [&_[data-slot=select-value]]:items-center [&_[data-slot=select-value]]:gap-2"
@@ -431,7 +396,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 </Select>
               )}
 
-              <Select<string, true> multiple onValueChange={(values) => updateField("tags", values)} value={form.tags}>
+              <Select<string, true> defaultValue={defaultTags} multiple name="tags">
                 <SelectTrigger
                   className="inline-flex items-center gap-2 whitespace-nowrap"
                   render={
@@ -445,19 +410,23 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   <span className="flex items-center justify-center text-muted-foreground">
                     <TagIcon size={14} />
                   </span>
-                  {form.tags.length > 0 ? (
-                    <div className="flex items-center gap-1.5">
-                      {form.tags.map((tag) => (
-                        <span
-                          className="h-2 w-2 shrink-0 rounded-full"
-                          key={tag}
-                          style={{ backgroundColor: TAG_COLORS[tag as Tag] }}
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    "Tags"
-                  )}
+                  <SelectValue>
+                    {(value) =>
+                      Array.isArray(value) && value.length > 0 ? (
+                        <div className="flex items-center gap-1.5">
+                          {value.map((tag) => (
+                            <span
+                              className="h-2 w-2 shrink-0 rounded-full"
+                              key={tag}
+                              style={{ backgroundColor: TAG_COLORS[tag as Tag] }}
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        "Tags"
+                      )
+                    }
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectPortal>
                   <SelectPositioner align="start" alignItemWithTrigger={false} className="min-w-[130px]" sideOffset={6}>
@@ -481,12 +450,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 </SelectPortal>
               </Select>
 
-              <Combobox<Assignee, true>
-                items={assignees}
-                multiple
-                onValueChange={(values) => updateField("assignees", values)}
-                value={form.assignees}
-              >
+              <Combobox<Assignee, true> defaultValue={defaultAssignees} items={assignees} multiple name="assignees">
                 <ComboboxPrimitive.Trigger
                   render={
                     <Button
@@ -499,9 +463,13 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   <span className="flex items-center justify-center text-muted-foreground">
                     <Users size={14} />
                   </span>
-                  {form.assignees.length > 0
-                    ? `${form.assignees.length} assignee${form.assignees.length > 1 ? "s" : ""}`
-                    : "Assignees"}
+                  <ComboboxPrimitive.Value>
+                    {(value) =>
+                      Array.isArray(value) && value.length > 0
+                        ? `${value.length} assignee${value.length > 1 ? "s" : ""}`
+                        : "Assignees"
+                    }
+                  </ComboboxPrimitive.Value>
                 </ComboboxPrimitive.Trigger>
                 <ComboboxPortal>
                   <ComboboxPositioner side="bottom" sideOffset={6}>
@@ -537,23 +505,16 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   <span className="flex items-center justify-center text-muted-foreground">
                     <CalendarIcon size={14} />
                   </span>
-                  {form.dueDate ? parseDateString(form.dueDate).toLocaleDateString() : "Due date"}
+                  {dueDate ? parseDateString(dueDate).toLocaleDateString() : "Due date"}
                 </PopoverTrigger>
                 <PopoverPopup align="start" arrow={false} className="z-[200]" sideOffset={6}>
                   <Calendar
                     className="p-0"
                     mode="single"
                     onSelect={(date) => {
-                      if (date) {
-                        const year = date.getFullYear();
-                        const month = String(date.getMonth() + 1).padStart(2, "0");
-                        const day = String(date.getDate()).padStart(2, "0");
-                        updateField("dueDate", `${year}-${month}-${day}`);
-                      } else {
-                        updateField("dueDate", "");
-                      }
+                      setDueDate(date ? formatDateString(date) : "");
                     }}
-                    selected={form.dueDate.length > 0 ? parseDateString(form.dueDate) : undefined}
+                    selected={dueDate.length > 0 ? parseDateString(dueDate) : undefined}
                   />
                 </PopoverPopup>
               </Popover>
@@ -572,12 +533,12 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                 </Button>
               )}
               <div className="ml-auto flex items-center gap-1.5">
-                <Button onClick={onClose} size="sm" type="button">
-                  {mode === "create" ? "Create" : "Save"}
+                <Button disabled={isPending} size="sm" type="submit">
+                  {isPending ? "Saving..." : mode === "create" ? "Create" : "Save"}
                 </Button>
               </div>
             </div>
-          </Form>
+          </form>
 
           <Button
             aria-label="Close dialog"
