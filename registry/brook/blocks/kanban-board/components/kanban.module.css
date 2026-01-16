@@ -466,6 +466,12 @@
   opacity: 0.6;
 }
 
+.fieldError {
+  font-size: 0.75rem;
+  color: var(--destructive);
+  margin: 0;
+}
+
 .descriptionInput {
   font-size: 0.875rem;
   color: var(--muted-foreground);
