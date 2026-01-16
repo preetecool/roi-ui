@@ -67,11 +67,17 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
   const motion = doc.motion;
   const toc = doc.toc;
 
+  const pageOrder = ["/docs", "/docs/start", "/docs/components"];
   const allPages = source.getPages();
-  const currentIndex = allPages.findIndex((p) => p.url === page.url);
+  const uiPages = allPages.filter((p) => p.url.startsWith("/docs/ui/")).sort((a, b) => a.url.localeCompare(b.url));
+  const orderedPages = [
+    ...pageOrder.map((url) => allPages.find((p) => p.url === url)).filter(Boolean),
+    ...uiPages,
+  ];
+  const currentIndex = orderedPages.findIndex((p) => p?.url === page.url);
   const neighbours = {
-    previous: currentIndex > 0 ? allPages[currentIndex - 1] : null,
-    next: currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null,
+    previous: currentIndex > 0 ? orderedPages[currentIndex - 1] : null,
+    next: currentIndex < orderedPages.length - 1 ? orderedPages[currentIndex + 1] : null,
   };
 
   return (
