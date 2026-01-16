@@ -128,7 +128,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
 
   const pointClasses = "transition-transform duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
   const shaftClasses =
-    "opacity-0 transition-[transform,opacity] duration-200 ease-[var(--ease-out-quad)] group-hover:opacity-100 group-hover:-translate-x-0.5";
+    "opacity-0 -translate-x-px transition-[transform,opacity] duration-200 ease-[var(--ease-in-out-cubic)] group-hover:opacity-100 group-hover:-translate-x-0.5";
 
   const pointLeftClasses = "group-hover:-translate-x-0.5";
   const shaftLeftClasses = "group-hover:opacity-100 group-hover:translate-x-px";

@@ -178,8 +178,9 @@
 .arrowShaft {
   transition:
     transform 200ms var(--ease-in-out-cubic),
-    opacity 150ms var(--ease-out-quad);
+    opacity 200ms var(--ease-in-out-cubic);
   opacity: 0;
+  transform: translateX(-0.5px);
 }
 
 .base:hover .arrowPoint {
