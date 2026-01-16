@@ -30,7 +30,8 @@ function AlertDialogBackdrop({ className, ...props }: AlertDialog.Backdrop.Props
 
 const popupStyles = cn(
   "fixed top-1/2 left-1/2 z-[101] grid max-h-[85vh] w-full max-w-[32rem] overflow-y-auto",
-  "gap-4 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] p-6",
+  "gap-4 rounded-[var(--radius)] border-none p-6",
+  "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),var(--shadow-border-stack)]",
   "-translate-x-1/2 -translate-y-1/2 bg-[var(--mix-card-5-bg)]",
   "transition-all duration-150",
   "data-[starting-style]:-translate-x-1/2 data-[starting-style]:-translate-y-1/2 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",

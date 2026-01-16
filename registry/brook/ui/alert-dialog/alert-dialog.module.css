@@ -22,7 +22,10 @@
   max-height: 85vh;
   overflow-y: auto;
   gap: 1rem;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.6);
+  border: none;
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.5),
+    var(--shadow-border-stack);
   padding: 1.5rem;
   border-radius: var(--radius);
   background-color: var(--mix-card-5-bg);
