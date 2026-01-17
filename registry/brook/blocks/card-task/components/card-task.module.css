@@ -1,4 +1,4 @@
-.taskCard {
+.taskCard[data-slot="card"] {
   width: 100%;
   max-width: 300px;
   gap: 1rem;
@@ -66,7 +66,7 @@
   color: var(--warning-foreground);
 }
 
-.taskFooter {
+.taskFooter[data-slot="card-footer"] {
   margin-top: 0;
   margin-bottom: 0;
   display: flex;
@@ -75,7 +75,7 @@
 }
 
 @media (max-width: 1280px) {
-  .taskCard {
+  .taskCard[data-slot="card"] {
     min-height: auto;
   }
 }

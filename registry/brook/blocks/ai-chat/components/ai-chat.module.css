@@ -35,7 +35,7 @@
   }
 }
 
-.attachButton {
+.attachButton[data-slot="button"] {
   width: 32px;
   height: 32px;
   padding: 8px;
@@ -55,7 +55,7 @@
   align-items: center;
 }
 
-.selectButton {
+.selectButton[data-slot="button"] {
   border-radius: var(--radius);
 }
 
@@ -71,7 +71,7 @@
   color: var(--muted-foreground);
 }
 
-.submitButton {
+.submitButton[data-slot="button"] {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -79,8 +79,7 @@
   flex-shrink: 0;
 
   &:hover {
-    background-color: var(--primary);
-    opacity: 0.9;
+    background-color: oklch(from var(--primary) calc(l * 0.8) c h);
   }
 }
 
@@ -95,13 +94,13 @@
   align-items: center;
 }
 
-.selectTrigger {
+.selectTrigger[data-slot="select-trigger"] {
   min-width: 100px;
 }
 
-.selectTrigger:hover,
-.selectTrigger[data-popup-open],
-.selectTrigger[data-popup-open]:hover {
+.selectTrigger[data-slot="select-trigger"]:hover,
+.selectTrigger[data-slot="select-trigger"][data-popup-open],
+.selectTrigger[data-slot="select-trigger"][data-popup-open]:hover {
   background-color: var(--accent) !important;
 }
 
@@ -125,7 +124,7 @@
     display: none;
   }
 
-  .footer button[data-slot="trigger"] {
+  .footer[data-slot="card-footer"] [data-slot="select-trigger"] {
     min-width: 120px !important;
   }
 }

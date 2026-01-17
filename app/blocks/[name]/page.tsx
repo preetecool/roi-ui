@@ -3,9 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlockViewer } from "@/components/blocks/block-viewer";
 import { highlightCode } from "@/lib/highlight-code";
-import { Button } from "@/registry/brook/ui/button/button";
 import { BlocksData } from "@/registry/__blocks__";
 import { Index } from "@/registry/__index__";
+import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./page.module.css";
 import { BlockPreview } from "./preview";
 
@@ -66,14 +66,12 @@ async function getBlockData(name: string) {
     return null;
   }
 
-  // Get pre-computed block data
   const blockData = BlocksData[name];
   if (!blockData) {
     return null;
   }
 
-  // Add syntax highlighting to files
-  const cssModulesFiles: FileData[] = await Promise.all(
+  const cssModulesFiles = await Promise.all(
     blockData.cssModulesFiles.map(async (file) => {
       const ext = extname(file.name).slice(1);
       const language = ext === "css" ? "css" : ext === "ts" ? "typescript" : "tsx";
@@ -170,7 +168,7 @@ export default async function BlockPage({ params }: PageProps) {
   );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return Object.entries(Index)
     .filter(([, entry]) => entry.type === "block")
     .map(([name]) => ({ name }));
