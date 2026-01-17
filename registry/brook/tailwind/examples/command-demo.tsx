@@ -1,70 +1,117 @@
+"use client";
+
 import { Calendar, CreditCard, FileText, Mail, Smile, Terminal, User } from "lucide-react";
+import { useCallback, useState } from "react";
+import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import {
   Command,
+  CommandCollection,
   CommandEmpty,
+  CommandFooter,
   CommandGroup,
+  CommandGroupLabel,
   CommandInput,
   CommandItem,
   CommandList,
   CommandSeparator,
 } from "@/registry/brook/tailwind/ui/command";
 import { Kbd } from "@/registry/brook/tailwind/ui/kbd";
-import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
+
+type CommandItemData = {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  group: string;
+};
+
+const suggestions: CommandItemData[] = [
+  { id: "calendar", label: "Calendar", icon: <Calendar size={16} />, group: "Suggestions" },
+  { id: "emoji", label: "Search Emoji", icon: <Smile size={16} />, group: "Suggestions" },
+  { id: "email", label: "Email", icon: <Mail size={16} />, group: "Suggestions" },
+  { id: "documents", label: "Documents", icon: <FileText size={16} />, group: "Suggestions" },
+];
+
+const settings: CommandItemData[] = [
+  { id: "profile", label: "Profile", icon: <User size={16} />, group: "Settings" },
+  { id: "billing", label: "Billing", icon: <CreditCard size={16} />, group: "Settings" },
+  { id: "terminal", label: "Terminal", icon: <Terminal size={16} />, group: "Settings" },
+];
+
+const allItems = [...suggestions, ...settings];
 
 export default function CommandDemo() {
-  return (
-    <Command className="[&_[cmdk-item]]:!min-h-[2.5rem] [&_[cmdk-item]]:!px-[0.375rem] [&_[cmdk-item]]:!py-[0.625rem] [&_[cmdk-item]]:!border [&_[cmdk-item]]:!border-solid [&_[cmdk-item]]:!border-transparent [&_[cmdk-item]]:!leading-[1.15] [&_[cmdk-group]_[cmdk-group-heading]]:!normal-case [&_[cmdk-list]]:!flex-[1_1_0%] [&_[cmdk-list]]:!min-h-0 [&_[cmdk-list]]:!max-h-none [&_[cmdk-list]]:scrollbar-thin [&_[cmdk-list]]:scrollbar-track-transparent [&_[cmdk-list]]:scrollbar-thumb-[oklch(from_var(--border)_l_c_h_/_0.5)] [&_[cmdk-list]]:scrollbar-thumb-rounded-[3px] hover:[&_[cmdk-list]]:scrollbar-thumb-[oklch(from_var(--border)_l_c_h_/_0.7)] h-[440px] border border-[var(--border)] bg-[var(--background)] shadow-[var(--shadow-lg)] [&[cmdk-root]]:flex [&[cmdk-root]]:flex-col [&[cmdk-root]]:pt-0 [&[cmdk-root]]:pb-1 max-sm:[&[cmdk-root]]:p-0 max-sm:[&_[cmdk-group]_[cmdk-group-heading]]:px-2.5 max-sm:[&_[cmdk-group]_[cmdk-group-heading]]:text-[0.8125rem] [&_[cmdk-item]:hover]:bg-[var(--mix-card-50-bg)] [&_[cmdk-item][data-selected=true]]:bg-[var(--mix-card-50-bg)] [&_[cmdk-item]]:font-normal max-sm:[&_[cmdk-item]]:min-h-[2.75rem] max-sm:[&_[cmdk-item]]:px-2.5 max-sm:[&_[cmdk-item]]:py-3 max-sm:[&_[cmdk-item]]:text-[0.9375rem] [&_[cmdk-item]_svg]:text-[var(--muted-foreground)] [&_[cmdk-list]]:overflow-y-auto [&_[cmdk-list]]:pb-0">
-      <CommandInput
-        className="mb-2 rounded-none px-4 max-sm:text-[0.9375rem]"
-        placeholder="Type a command or search..."
-      />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>
-            <Calendar size={16} />
-            Calendar
-          </CommandItem>
+  const [inputValue, setInputValue] = useState("");
 
-          <CommandItem>
-            <Smile size={16} />
-            Search Emoji
-          </CommandItem>
-          <CommandItem>
-            <Mail size={16} />
-            Email
-          </CommandItem>
-          <CommandItem>
-            <FileText size={16} />
-            Documents
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Settings">
-          <CommandItem>
-            <User size={16} />
-            Profile
-          </CommandItem>
-          <CommandItem>
-            <CreditCard size={16} />
-            Billing
-          </CommandItem>
-          <CommandItem>
-            <Terminal size={16} />
-            Terminal
-          </CommandItem>
-        </CommandGroup>
+  const handleValueChange = useCallback((value: string) => {
+    setInputValue(value);
+  }, []);
+
+  const itemToStringValue = useCallback(
+    (item: unknown) => (item && typeof item === "object" && "label" in item ? (item as CommandItemData).label : ""),
+    []
+  );
+
+  const filteredSuggestions = suggestions.filter((item) =>
+    item.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
+  const filteredSettings = settings.filter((item) =>
+    item.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
+  return (
+    <Command
+      className="h-[440px] bg-[var(--background)] shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.4),var(--shadow-lg)] [&_[data-slot=command-group-label]]:normal-case"
+      items={allItems}
+      itemToStringValue={itemToStringValue}
+      onValueChange={handleValueChange}
+    >
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList className="flex-[1_1_0%] min-h-0 max-h-none">
+        {filteredSuggestions.length === 0 && filteredSettings.length === 0 && (
+          <CommandEmpty>No results found.</CommandEmpty>
+        )}
+
+        {filteredSuggestions.length > 0 && (
+          <CommandGroup items={filteredSuggestions}>
+            <CommandGroupLabel>Suggestions</CommandGroupLabel>
+            <CommandCollection>
+              {(item: CommandItemData) => (
+                <CommandItem key={item.id} value={item}>
+                  {item.icon}
+                  {item.label}
+                </CommandItem>
+              )}
+            </CommandCollection>
+          </CommandGroup>
+        )}
+
+        {filteredSuggestions.length > 0 && filteredSettings.length > 0 && <CommandSeparator />}
+
+        {filteredSettings.length > 0 && (
+          <CommandGroup items={filteredSettings}>
+            <CommandGroupLabel>Settings</CommandGroupLabel>
+            <CommandCollection>
+              {(item: CommandItemData) => (
+                <CommandItem key={item.id} value={item}>
+                  {item.icon}
+                  {item.label}
+                </CommandItem>
+              )}
+            </CommandCollection>
+          </CommandGroup>
+        )}
       </CommandList>
-      <div className="-mx-1 -mb-1 flex shrink-0 items-center gap-3 border-[oklch(from_var(--border)_l_c_h_/_0.5)] border-t-[0.5px] bg-[oklch(from_var(--muted)_l_c_h_/_0.2)] px-4 py-3 max-sm:m-0 max-sm:px-4 max-sm:py-2.5">
+      <CommandFooter>
         <div className="flex items-center gap-2">
           <Kbd className="text-[0.9375rem] max-sm:text-base" size="md">
             <EnterArrowIcon />
           </Kbd>
-          <span className="font-normal text-[var(--muted-foreground)] text-xs leading-4 max-sm:text-[0.8125rem]">
+          <span className="text-xs leading-4 font-normal text-[var(--muted-foreground)] max-sm:text-[0.8125rem]">
             to select
           </span>
         </div>
-      </div>
+      </CommandFooter>
     </Command>
   );
 }
