@@ -134,8 +134,9 @@ function TaskCardDropdownMenu({
     <DropdownMenu>
       <DropdownMenuTrigger
         render={(props) => (
-          <Button {...props} size="icon" variant="ghost">
+          <Button {...props} aria-label="Task options" size="icon" variant="ghost">
             <MoreHorizontal
+              aria-hidden="true"
               size="16"
               style={{
                 color: "oklch(from var(--muted-foreground) l c h / 0.8)",
@@ -204,21 +205,21 @@ export function CardTask({
         </div>
         <div className={styles.footerContainer}>
           <div className={styles.footerLeftGroup}>
-            <div className={styles.iconBubble}>
-              <Users size="14" />
+            <div aria-label={`${collaborators.length} collaborators`} className={styles.iconBubble} role="group">
+              <Users aria-hidden="true" size="14" />
               <span>{collaborators.length}</span>
             </div>
-            <div className={styles.iconBubble}>
-              <MessageCircleMore size="14" />
+            <div aria-label={`${stats.comments} comments`} className={styles.iconBubble} role="group">
+              <MessageCircleMore aria-hidden="true" size="14" />
               <span>{stats.comments}</span>
             </div>
-            <div className={styles.iconBubble}>
-              <ListTodo size="14" />
+            <div aria-label={`${stats.subtasks} subtasks`} className={styles.iconBubble} role="group">
+              <ListTodo aria-hidden="true" size="14" />
               <span>{stats.subtasks}</span>
             </div>
           </div>
-          <div className={styles.iconBubble}>
-            <Calendar size="14" />
+          <div aria-label={`Due ${dueDate.label}`} className={styles.iconBubble} role="group">
+            <Calendar aria-hidden="true" size="14" />
             <span className={dueDate.variant === "warning" ? styles.tomorrowText : undefined}>{dueDate.label}</span>
           </div>
         </div>

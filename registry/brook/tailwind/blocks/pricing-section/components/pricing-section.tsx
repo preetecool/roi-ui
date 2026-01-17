@@ -73,7 +73,7 @@ export function PricingSection() {
                 <span className="mt-2 self-start text-2xl font-medium text-[var(--foreground)]">
                   $
                 </span>
-                <span className="text-6xl font-semibold leading-none tracking-tighter text-[var(--foreground)] max-sm:text-5xl">
+                <span className="text-6xl font-semibold leading-none tracking-tighter text-[var(--foreground)] tabular-nums max-sm:text-5xl">
                   {plan.monthlyPrice}
                 </span>
                 <span className="ml-1 text-base text-[var(--muted-foreground)]">

@@ -38,6 +38,19 @@
   width: 100%;
 }
 
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .emailField {
   padding-bottom: 4px;
 }
@@ -99,8 +112,16 @@
 }
 
 .signupLink {
+  background: none;
+  border: none;
+  padding: 0;
   color: var(--secondary-foreground);
   cursor: pointer;
+  font: inherit;
+
+  &:hover {
+    color: var(--foreground);
+  }
 }
 
 .dividerContainer {

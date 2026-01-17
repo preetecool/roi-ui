@@ -29,7 +29,7 @@ export default function ProfileMenuDemo() {
         render={
           <Button className={styles.triggerButton} data-slot="dropdown-trigger" variant="outline">
             <Avatar style={{ width: "32px", height: "32px", flexShrink: 0 }}>
-              <AvatarImage alt="@preetecool" src="/preetecool.png" />
+              <AvatarImage alt="preetecool's profile photo" src="/preetecool.png" />
               <AvatarFallback>PC</AvatarFallback>
             </Avatar>
             <div className={styles.triggerText}>
@@ -48,7 +48,7 @@ export default function ProfileMenuDemo() {
             <div className={styles.profileSection}>
               <div className={styles.profileInfo}>
                 <Avatar className={styles.avatar}>
-                  <AvatarImage alt="@preetecool" src="/preetecool.png" />
+                  <AvatarImage alt="preetecool's profile photo" src="/preetecool.png" />
                   <AvatarFallback>PC</AvatarFallback>
                 </Avatar>
                 <div className={styles.profileText}>

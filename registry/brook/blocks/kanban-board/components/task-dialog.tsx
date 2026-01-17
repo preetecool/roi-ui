@@ -11,6 +11,7 @@ import {
   CircleDashed,
   CircleDot,
   Command,
+  Loader2,
   Plus,
   Tag as TagIcon,
   Trash2,
@@ -484,7 +485,8 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
               )}
               <div className={styles.footerActions}>
                 <Button disabled={isPending} size="sm" type="submit">
-                  {isPending ? "Saving..." : mode === "create" ? "Create" : "Save"}
+                  {isPending && <Loader2 aria-hidden="true" className={styles.spinner} size={14} />}
+                  {mode === "create" ? "Create" : "Save"}
                 </Button>
               </div>
             </div>

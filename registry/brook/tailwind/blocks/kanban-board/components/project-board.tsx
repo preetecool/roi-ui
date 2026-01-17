@@ -216,10 +216,7 @@ type DialogState =
   | { mode: "delete"; task: Task };
 
 export function ProjectBoard({ data }: ProjectBoardProps) {
-  // Local state for tasks (for DnD)
   const [tasks, setTasks] = useState<Task[]>(data.tasks);
-
-  // Filter state (UI only)
   const [filters, setFilters] = useState<FilterConfig>(DEFAULT_FILTERS);
 
   const togglePriority = useCallback((priority: Priority, checked: boolean) => {
@@ -238,10 +235,7 @@ export function ProjectBoard({ data }: ProjectBoardProps) {
 
   const activeFilterCount = filters.priority.length + filters.tags.length;
 
-  // View state (UI only)
   const [groupBy, setGroupBy] = useState<GroupByField>("column");
-
-  // Dialog state
   const [dialogState, setDialogState] = useState<DialogState>({ mode: "closed" });
 
   const openCreate = useCallback((columnId: string) => {
