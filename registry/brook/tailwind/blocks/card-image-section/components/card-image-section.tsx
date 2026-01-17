@@ -14,6 +14,7 @@ type CardData = {
   alt: string;
   title: string;
   description: string;
+  href?: string;
 };
 
 type CardImageSectionProps = {
@@ -51,7 +52,13 @@ export function CardImageSection({ data }: CardImageSectionProps) {
             </CardContent>
 
             <CardFooter>
-              <Button className="pl-0" showArrow size="sm" variant="link">
+              <Button
+                className="pl-0"
+                render={<a href={card.href ?? "#"} />}
+                showArrow
+                size="sm"
+                variant="link"
+              >
                 Learn More
               </Button>
             </CardFooter>

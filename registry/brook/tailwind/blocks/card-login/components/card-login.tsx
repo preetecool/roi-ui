@@ -1,6 +1,6 @@
 "use client";
-import { Check } from "lucide-react";
-import { useState } from "react";
+import { Check, Loader2 } from "lucide-react";
+import { useActionState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
@@ -12,35 +12,73 @@ import { Input } from "@/registry/brook/tailwind/ui/input";
 const EMAIL_REGEX = /\S+@\S+\.\S+/;
 const MIN_PASSWORD_LENGTH = 6;
 
+type FormState =
+  | { status: "idle" }
+  | { status: "error"; errors: { email?: string; password?: string }; focusField?: "email" | "password" }
+  | { status: "success" };
+
+const initialFormState: FormState = { status: "idle" };
+
+async function loginAction(_prevState: FormState, formData: FormData): Promise<FormState> {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  const errors: { email?: string; password?: string } = {};
+
+  if (!email?.trim()) {
+    errors.email = "Email is required";
+  } else if (!EMAIL_REGEX.test(email)) {
+    errors.email = "Email is invalid";
+  }
+
+  if (!password) {
+    errors.password = "Password is required";
+  } else if (password.length < MIN_PASSWORD_LENGTH) {
+    errors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
+  }
+
+  if (Object.keys(errors).length > 0) {
+    const focusField = errors.email ? "email" : "password";
+    return { status: "error", errors, focusField };
+  }
+
+  return { status: "success" };
+}
+
+const getEmailError = (state: FormState): string | undefined =>
+  state.status === "error" ? state.errors.email : undefined;
+
+const getPasswordError = (state: FormState): string | undefined =>
+  state.status === "error" ? state.errors.password : undefined;
+
+const shouldFocusEmail = (state: FormState): boolean =>
+  state.status === "error" && state.focusField === "email";
+
+const shouldFocusPassword = (state: FormState): boolean =>
+  state.status === "error" && state.focusField === "password";
+
 export function CardLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [formState, submitAction, isPending] = useActionState(loginAction, initialFormState);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const emailError = getEmailError(formState);
+  const passwordError = getPasswordError(formState);
 
-    const newErrors: { email?: string; password?: string } = {};
-
-    if (!email) {
-      newErrors.email = "Email is required";
-    } else if (!EMAIL_REGEX.test(email)) {
-      newErrors.email = "Email is invalid";
+  useEffect(() => {
+    if (shouldFocusEmail(formState)) {
+      emailInputRef.current?.focus();
+    } else if (shouldFocusPassword(formState)) {
+      passwordInputRef.current?.focus();
     }
+  }, [formState]);
 
-    if (!password) {
-      newErrors.password = "Password is required";
-    } else if (password.length < MIN_PASSWORD_LENGTH) {
-      newErrors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
+  useEffect(() => {
+    if (formState.status === "success") {
     }
-
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      // Form is valid, ready to submit
-    }
-  };
+  }, [formState.status]);
 
   return (
     <Card
@@ -53,18 +91,18 @@ export function CardLogin() {
         <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form action={submitAction} className="flex flex-col gap-4">
           <Field className="pb-1">
             <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
             <FieldControl
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              render={<Input />}
+              autoComplete="email"
+              name="email"
+              placeholder="Enter your email…"
+              ref={emailInputRef}
+              render={<Input spellCheck={false} />}
               type="email"
-              value={email}
             />
-
-            {errors.email && <FieldError>{errors.email}</FieldError>}
+            {emailError && <FieldError>{emailError}</FieldError>}
           </Field>
 
           <Field>
@@ -82,13 +120,14 @@ export function CardLogin() {
               </button>
             </div>
             <FieldControl
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              autoComplete="current-password"
+              name="password"
+              placeholder="Enter your password…"
+              ref={passwordInputRef}
               render={<Input />}
               type="password"
-              value={password}
             />
-            {errors.password && <FieldError>{errors.password}</FieldError>}
+            {passwordError && <FieldError>{passwordError}</FieldError>}
           </Field>
 
           <label
@@ -98,11 +137,7 @@ export function CardLogin() {
             )}
             htmlFor="remember-me"
           >
-            <Checkbox
-              checked={rememberMe}
-              id="remember-me"
-              onCheckedChange={(checked) => setRememberMe(checked === true)}
-            >
+            <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
               <CheckboxIndicator>
                 <Check size={16} strokeWidth={3} />
               </CheckboxIndicator>
@@ -117,13 +152,15 @@ export function CardLogin() {
               Remember me
             </span>
           </label>
+
+          <CardFooter className="flex flex-col gap-4">
+            <Button className="w-full" disabled={isPending} type="submit">
+              {isPending && <Loader2 aria-hidden="true" className="animate-spin" size={16} />}
+              Sign In
+            </Button>
+          </CardFooter>
         </form>
       </CardContent>
-      <CardFooter className="flex flex-col gap-4">
-        <Button className="w-full" onClick={handleSubmit}>
-          Sign In
-        </Button>
-      </CardFooter>
       <div className="flex items-center gap-4">
         <div className="h-px flex-1 bg-[var(--border)]" />
         <span
@@ -159,7 +196,12 @@ export function CardLogin() {
         )}
       >
         <span className="text-[var(--muted-foreground)]">No account? </span>
-        <span className="cursor-pointer text-[var(--secondary-foreground)]">Sign up</span>
+        <button
+          className="cursor-pointer border-none bg-transparent p-0 font-inherit text-[var(--secondary-foreground)] hover:text-[var(--foreground)]"
+          type="button"
+        >
+          Sign up
+        </button>
       </div>
     </Card>
   );

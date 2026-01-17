@@ -108,7 +108,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
           <div className="flex items-center justify-between">
             <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Mobile</span>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none tabular-nums max-sm:text-[1.75rem] max-[400px]:text-2xl">
             25,010
           </span>
         </div>
@@ -123,7 +123,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
           <div className="flex items-center justify-between">
             <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Desktop</span>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none tabular-nums max-sm:text-[1.75rem] max-[400px]:text-2xl">
             12,840
           </span>
         </div>
@@ -141,7 +141,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
               -3.4%
             </Badge>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none tabular-nums max-sm:text-[1.75rem] max-[400px]:text-2xl">
             24.1%
           </span>
         </div>
@@ -159,7 +159,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
               -0.9%
             </Badge>
           </div>
-          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
+          <span className="font-bold text-[32px] text-[var(--foreground)] leading-none tabular-nums max-sm:text-[1.75rem] max-[400px]:text-2xl">
             2.8%
           </span>
         </div>

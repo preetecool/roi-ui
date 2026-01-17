@@ -21,30 +21,71 @@
   width: 100%;
 }
 
-.iconButton {
-  padding: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.iconButton svg {
-  color: var(--muted-foreground);
-  flex-shrink: 0;
-}
-
-.iconButton:first-child svg {
-  transform: rotate(-45deg);
-}
-
-.field textarea {
+.textarea {
   background-color: transparent;
   border: none;
   padding: 0.25rem;
   resize: none;
   min-height: 2.5rem;
   height: auto;
-  outline: none !important;
   line-height: 1.5;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.attachButton {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  & svg {
+    color: var(--muted-foreground);
+    flex-shrink: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+.footerActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.selectButton {
+  border-radius: var(--radius);
+}
+
+.selectValue {
+  color: var(--muted-foreground);
+}
+
+.selectIcon {
+  margin-left: 0.25rem;
+}
+
+.selectIndicator {
+  color: var(--muted-foreground);
+}
+
+.submitButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--primary);
+    opacity: 0.9;
+  }
+}
+
+.submitIcon {
+  color: var(--primary-foreground);
 }
 
 .footer[data-slot="card-footer"] {
@@ -52,22 +93,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.iconLabel {
-  display: "flex";
-  gap: 0.5rem;
-}
-
-.triggerContent {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  width: 100%;
-}
-
-.triggerContent svg {
-  color: var(--muted-foreground);
 }
 
 .selectTrigger {
@@ -85,11 +110,6 @@
   min-width: 120px;
 }
 
-.footer button[type="submit"] {
-  min-width: 36px;
-  min-height: 36px;
-}
-
 @media (max-width: 768px) {
   .popup {
     width: 120px !important;
@@ -97,22 +117,21 @@
     max-width: 120px !important;
   }
 
-  .triggerContent span {
+  .selectValue {
     font-size: 0.875rem;
   }
 
-  .triggerContent svg {
+  .selectIcon {
     display: none;
   }
 
-  /* Override the select trigger min-width */
   .footer button[data-slot="trigger"] {
     min-width: 120px !important;
   }
 }
 
 @media (max-width: 1280px) {
-  .field textarea {
+  .textarea {
     min-height: 4rem;
     padding: 0.5rem;
   }

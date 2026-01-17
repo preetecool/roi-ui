@@ -1,6 +1,6 @@
 "use client";
-import { Check } from "lucide-react";
-import { useState } from "react";
+import { Check, Loader2 } from "lucide-react";
+import { useActionState, useEffect, useRef } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
@@ -12,35 +12,73 @@ import styles from "./card-login.module.css";
 const EMAIL_REGEX = /\S+@\S+\.\S+/;
 const MIN_PASSWORD_LENGTH = 6;
 
+type FormState =
+  | { status: "idle" }
+  | { status: "error"; errors: { email?: string; password?: string }; focusField?: "email" | "password" }
+  | { status: "success" };
+
+const initialFormState: FormState = { status: "idle" };
+
+async function loginAction(_prevState: FormState, formData: FormData): Promise<FormState> {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  const errors: { email?: string; password?: string } = {};
+
+  if (!email?.trim()) {
+    errors.email = "Email is required";
+  } else if (!EMAIL_REGEX.test(email)) {
+    errors.email = "Email is invalid";
+  }
+
+  if (!password) {
+    errors.password = "Password is required";
+  } else if (password.length < MIN_PASSWORD_LENGTH) {
+    errors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
+  }
+
+  if (Object.keys(errors).length > 0) {
+    const focusField = errors.email ? "email" : "password";
+    return { status: "error", errors, focusField };
+  }
+
+  return { status: "success" };
+}
+
+const getEmailError = (state: FormState): string | undefined =>
+  state.status === "error" ? state.errors.email : undefined;
+
+const getPasswordError = (state: FormState): string | undefined =>
+  state.status === "error" ? state.errors.password : undefined;
+
+const shouldFocusEmail = (state: FormState): boolean =>
+  state.status === "error" && state.focusField === "email";
+
+const shouldFocusPassword = (state: FormState): boolean =>
+  state.status === "error" && state.focusField === "password";
+
 export default function CardLoginDemo() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [formState, submitAction, isPending] = useActionState(loginAction, initialFormState);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const emailError = getEmailError(formState);
+  const passwordError = getPasswordError(formState);
 
-    const newErrors: { email?: string; password?: string } = {};
-
-    if (!email) {
-      newErrors.email = "Email is required";
-    } else if (!EMAIL_REGEX.test(email)) {
-      newErrors.email = "Email is invalid";
+  useEffect(() => {
+    if (shouldFocusEmail(formState)) {
+      emailInputRef.current?.focus();
+    } else if (shouldFocusPassword(formState)) {
+      passwordInputRef.current?.focus();
     }
+  }, [formState]);
 
-    if (!password) {
-      newErrors.password = "Password is required";
-    } else if (password.length < MIN_PASSWORD_LENGTH) {
-      newErrors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
+  useEffect(() => {
+    if (formState.status === "success") {
     }
-
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      // Form is valid, ready to submit
-    }
-  };
+  }, [formState.status]);
 
   return (
     <Card className={styles.card}>
@@ -48,18 +86,18 @@ export default function CardLoginDemo() {
         <CardTitle className={styles.cardTitle}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form action={submitAction} className={styles.form}>
           <Field className={styles.emailField}>
             <FieldLabel className={styles.fieldLabel}>Email</FieldLabel>
             <FieldControl
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              render={<Input />}
+              autoComplete="email"
+              name="email"
+              placeholder="Enter your email…"
+              ref={emailInputRef}
+              render={<Input spellCheck={false} />}
               type="email"
-              value={email}
             />
-
-            {errors.email && <FieldError>{errors.email}</FieldError>}
+            {emailError && <FieldError>{emailError}</FieldError>}
           </Field>
 
           <Field>
@@ -70,34 +108,33 @@ export default function CardLoginDemo() {
               </button>
             </div>
             <FieldControl
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              autoComplete="current-password"
+              name="password"
+              placeholder="Enter your password…"
+              ref={passwordInputRef}
               render={<Input />}
               type="password"
-              value={password}
             />
-            {errors.password && <FieldError>{errors.password}</FieldError>}
+            {passwordError && <FieldError>{passwordError}</FieldError>}
           </Field>
 
           <label className={styles.checkboxLabel} htmlFor="remember-me">
-            <Checkbox
-              checked={rememberMe}
-              id="remember-me"
-              onCheckedChange={(checked) => setRememberMe(checked === true)}
-            >
+            <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
               <CheckboxIndicator>
                 <Check size={16} strokeWidth={3} />
               </CheckboxIndicator>
             </Checkbox>
             <span className={styles.rememberMe}>Remember me</span>
           </label>
+
+          <CardFooter className={styles.footer}>
+            <Button className={styles.button} disabled={isPending} type="submit">
+              {isPending && <Loader2 aria-hidden="true" className={styles.spinner} size={16} />}
+              Sign In
+            </Button>
+          </CardFooter>
         </form>
       </CardContent>
-      <CardFooter className={styles.footer}>
-        <Button className={styles.button} onClick={handleSubmit}>
-          Sign In
-        </Button>
-      </CardFooter>
       <div className={styles.dividerContainer}>
         <div className={styles.dividerLine} />
         <span className={styles.dividerText}>OR</span>
@@ -118,7 +155,9 @@ export default function CardLoginDemo() {
       </div>
       <div className={styles.signupBanner}>
         <span className={styles.signupText}>No account? </span>
-        <span className={styles.signupLink}>Sign up</span>
+        <button className={styles.signupLink} type="button">
+          Sign up
+        </button>
       </div>
     </Card>
   );

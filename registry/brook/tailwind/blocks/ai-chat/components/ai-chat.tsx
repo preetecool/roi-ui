@@ -47,17 +47,17 @@ export function AiChat() {
           <Field
             className={cn(
               "[&_textarea]:!border-0 [&_textarea]:!p-1 [&_textarea]:resize-none [&_textarea]:bg-transparent",
-              "[&_textarea]:!h-[50px] [&_textarea]:!min-h-[50px] [&_textarea]:!outline-0 [&_textarea]:!px-1 [&_textarea]:outline-none",
+              "[&_textarea]:!h-[50px] [&_textarea]:!min-h-[50px] [&_textarea]:!px-1 [&_textarea]:focus:outline-none",
               "[&_textarea]:!leading-normal",
               "max-xl:[&_textarea]:!p-2 max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16"
             )}
           >
             <FieldControl
-              placeholder="How can I help?"
+              placeholder="How can I help…"
               render={
                 <textarea
+                  className="focus:outline-none"
                   onChange={(e) => setInputValue(e.target.value)}
-                  style={{ outline: "none" }}
                   value={inputValue}
                 />
               }
@@ -66,9 +66,9 @@ export function AiChat() {
         </CardContent>
         <CardFooter className="flex items-center justify-between gap-2">
           <Button
-            className="shrink-0 rounded-full p-2 [&>svg:first-child]:rotate-[-45deg] [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
+            aria-label="Attach file"
+            className="size-8 shrink-0 rounded-full p-2 [&>svg]:shrink-0 [&>svg]:rotate-[-45deg] [&>svg]:text-muted-foreground"
             size="icon"
-            style={{ width: "32px", height: "32px", borderRadius: "50%" }}
             type="button"
             variant="ghost"
           >
@@ -92,11 +92,11 @@ export function AiChat() {
                     return <span className="text-muted-foreground max-md:text-sm">{selectedMode?.label}</span>;
                   }}
                 </SelectValue>
-                <SelectIcon className="ml-1" />
+                <SelectIcon className="ml-1 max-md:hidden" />
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>
-                  <SelectPopup className="min-w-[120px]">
+                  <SelectPopup className="min-w-[120px] max-md:w-[120px]">
                     <SelectSpacer />
                     <SelectList>
                       {aiModes.map(({ label, value }) => (
@@ -113,23 +113,16 @@ export function AiChat() {
             </Select>
 
             <Button
-              className="shrink-0 rounded-full p-2 [&>svg]:shrink-0 [&>svg]:text-muted-foreground"
+              aria-label={inputValue.trim() ? "Send message" : "Start voice input"}
+              className="size-9 shrink-0 rounded-full bg-primary p-2 hover:bg-primary hover:opacity-90"
               size="icon"
-              style={{
-                borderRadius: "50%",
-                width: "36px",
-                height: "36px",
-                minWidth: "36px",
-                minHeight: "36px",
-                backgroundColor: "var(--primary)",
-              }}
               type="submit"
               variant="ghost"
             >
               {inputValue.trim() ? (
-                <ArrowUp className="!text-primary-foreground" size={16} />
+                <ArrowUp className="text-primary-foreground" size={16} />
               ) : (
-                <AudioLines className="!text-primary-foreground" size={16} />
+                <AudioLines className="text-primary-foreground" size={16} />
               )}
             </Button>
           </div>

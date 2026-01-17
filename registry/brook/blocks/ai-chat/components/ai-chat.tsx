@@ -39,11 +39,11 @@ export function AiChat() {
         <CardContent>
           <Field className={styles.field}>
             <FieldControl
-              placeholder="How can I help?"
+              placeholder="How can I help…"
               render={
                 <textarea
+                  className={styles.textarea}
                   onChange={(e) => setInputValue(e.target.value)}
-                  style={{ outline: "none" }}
                   value={inputValue}
                 />
               }
@@ -52,16 +52,16 @@ export function AiChat() {
         </CardContent>
         <CardFooter className={styles.footer}>
           <Button
-            className={styles.iconButton}
+            aria-label="Attach file"
+            className={styles.attachButton}
             size="icon"
-            style={{ width: "32px", height: "32px", borderRadius: "50%" }}
             type="button"
             variant="ghost"
           >
             <Paperclip size={14} />
           </Button>
 
-          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          <div className={styles.footerActions}>
             <Select
               defaultValue={aiModes[0].value}
               items={aiModes}
@@ -70,15 +70,15 @@ export function AiChat() {
             >
               <SelectTrigger
                 className={styles.selectTrigger}
-                render={<Button size="sm" style={{ borderRadius: "var(--radius)" }} variant="ghost" />}
+                render={<Button className={styles.selectButton} size="sm" variant="ghost" />}
               >
                 <SelectValue>
                   {(value) => {
                     const selectedMode = aiModes.find((mode) => mode.value === value);
-                    return <span style={{ color: "var(--muted-foreground)" }}>{selectedMode?.label}</span>;
+                    return <span className={styles.selectValue}>{selectedMode?.label}</span>;
                   }}
                 </SelectValue>
-                <SelectIcon style={{ marginLeft: "0.25rem" }} />
+                <SelectIcon className={styles.selectIcon} />
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>
@@ -88,7 +88,7 @@ export function AiChat() {
                       {aiModes.map(({ label, value }) => (
                         <SelectItem key={value} value={value}>
                           <SelectItemText>{label}</SelectItemText>
-                          <SelectItemIndicator style={{ color: "var(--muted-foreground)" }} />
+                          <SelectItemIndicator className={styles.selectIndicator} />
                         </SelectItem>
                       ))}
                     </SelectList>
@@ -99,21 +99,16 @@ export function AiChat() {
             </Select>
 
             <Button
-              className={styles.iconButton}
+              aria-label={inputValue.trim() ? "Send message" : "Start voice input"}
+              className={styles.submitButton}
               size="icon"
-              style={{
-                borderRadius: "50%",
-                width: "36px",
-                height: "36px",
-                backgroundColor: "var(--primary)",
-              }}
               type="submit"
               variant="ghost"
             >
               {inputValue.trim() ? (
-                <ArrowUp size={16} style={{ color: "var(--primary-foreground)" }} />
+                <ArrowUp className={styles.submitIcon} size={16} />
               ) : (
-                <AudioLines size={16} style={{ color: "var(--primary-foreground)" }} />
+                <AudioLines className={styles.submitIcon} size={16} />
               )}
             </Button>
           </div>

@@ -114,6 +114,7 @@
   letter-spacing: -0.04em;
   color: var(--foreground);
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .period {

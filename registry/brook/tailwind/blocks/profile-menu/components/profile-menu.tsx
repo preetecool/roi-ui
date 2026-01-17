@@ -36,7 +36,7 @@ export function ProfileMenu() {
             variant="outline"
           >
             <Avatar className="h-8 w-8 flex-shrink-0">
-              <AvatarImage alt="@preetecool" src="/preetecool.png" />
+              <AvatarImage alt="preetecool's profile photo" src="/preetecool.png" />
               <AvatarFallback>PC</AvatarFallback>
             </Avatar>
             <div className="flex min-w-0 flex-1 flex-col items-start gap-px">
@@ -59,7 +59,7 @@ export function ProfileMenu() {
             <div className="flex items-start justify-between gap-3 px-3 py-2">
               <div className="flex min-w-0 flex-1 items-center gap-3">
                 <Avatar className="h-10 w-10 flex-shrink-0">
-                  <AvatarImage alt="@preetecool" src="/preetecool.png" />
+                  <AvatarImage alt="preetecool's profile photo" src="/preetecool.png" />
                   <AvatarFallback>PC</AvatarFallback>
                 </Avatar>
                 <div className="flex min-w-0 flex-1 flex-col gap-0.5">
