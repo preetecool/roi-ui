@@ -95,7 +95,7 @@ export function AiChat() {
                 <SelectIcon className="ml-1 max-md:hidden" />
               </SelectTrigger>
               <SelectPortal>
-                <SelectPositioner align="end" alignItemWithTrigger={false} sideOffset={8}>
+                <SelectPositioner align="end" alignItemWithTrigger={false} side="top" sideOffset={8}>
                   <SelectPopup className="min-w-[120px] max-md:w-[120px]">
                     <SelectSpacer />
                     <SelectList>
@@ -114,7 +114,7 @@ export function AiChat() {
 
             <Button
               aria-label={inputValue.trim() ? "Send message" : "Start voice input"}
-              className="size-9 shrink-0 rounded-full bg-primary p-2 hover:bg-primary hover:opacity-90"
+              className="size-9 shrink-0 rounded-full bg-primary p-2 hover:bg-[oklch(from_var(--color-primary)_calc(l*0.8)_c_h)]"
               size="icon"
               type="submit"
               variant="ghost"

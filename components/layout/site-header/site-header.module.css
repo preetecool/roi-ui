@@ -48,7 +48,7 @@
   height: 100%;
 }
 
-.navLink {
+.navLink[data-slot="button"] {
   font-size: 0.875rem;
   font-weight: 400;
   text-decoration: none;
@@ -78,7 +78,7 @@
   height: 100%;
 }
 
-.githubLink {
+.githubLink[data-slot="button"] {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,7 @@
   border-radius: 2px;
 }
 
-.githubLink:hover {
+.githubLink[data-slot="button"]:hover {
   color: var(--foreground);
 }
 

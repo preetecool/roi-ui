@@ -19,7 +19,7 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-slot="site-header">
       <div className={cn(styles.container, isHomePage ? styles.containerHomePage : null)}>
         <div className={cn(styles.innerWrapper, isHomePage ? styles.innerWrapperHomePage : null)}>
           <nav className={styles.nav}>
