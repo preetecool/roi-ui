@@ -1,8 +1,8 @@
-.popup {
+.popup[data-slot="menu-popup"] {
   min-width: 280px;
 }
 
-.triggerButton {
+.triggerButton[data-slot="button"] {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -14,7 +14,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.triggerButton:focus-visible {
+.triggerButton[data-slot="button"]:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
@@ -103,7 +103,7 @@
   margin-top: 2px;
 }
 
-.submenuTriggerWithIcon {
+.submenuTriggerWithIcon[data-slot="menu-submenutrigger"] {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -115,11 +115,11 @@
   color: var(--muted-foreground);
 }
 
-.submenuTriggerWithIcon:hover .submenuIcon {
+.submenuTriggerWithIcon[data-slot="menu-submenutrigger"]:hover .submenuIcon {
   color: var(--secondary-foreground);
 }
 
-.radioItem {
+.radioItem[data-slot="menu-radioitem"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -159,7 +159,7 @@
 }
 
 @media (max-width: 640px) {
-  .popup {
+  .popup[data-slot="menu-popup"] {
     min-width: 260px;
   }
 

@@ -11,7 +11,7 @@ function DropdownMenuRoot({ ...props }: Menu.Root.Props) {
 }
 
 function DropdownMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
-  return <Menu.Trigger {...props} className={cn(styles.trigger, className)} />;
+  return <Menu.Trigger {...props} className={cn(styles.trigger, className)} data-slot="menu-trigger" />;
 }
 
 const DropdownMenuPortal = Menu.Portal;
@@ -23,7 +23,7 @@ function DropdownMenuPositioner({ className, ...props }: Menu.Positioner.Props) 
 }
 
 function DropdownMenuPopup({ className, ...props }: Menu.Popup.Props) {
-  return <Menu.Popup className={cn(styles.popup, className)} {...props} />;
+  return <Menu.Popup className={cn(styles.popup, className)} data-slot="menu-popup" {...props} />;
 }
 
 interface DropdownMenuItemProps extends Menu.Item.Props {
@@ -37,6 +37,7 @@ function DropdownMenuItem({ className, icon, children, variant = "default", ...p
   return (
     <Menu.Item
       className={cn(styles.item, className)}
+      data-slot="menu-item"
       data-variant={variant === "destructive" ? "destructive" : undefined}
       {...props}
     >
@@ -48,14 +49,14 @@ function DropdownMenuItem({ className, icon, children, variant = "default", ...p
 
 function DropdownMenuSeparator({ className, ...props }: Menu.Separator.Props) {
   return (
-    <div className={styles.seperatorWrapper}>
-      <Menu.Separator className={cn(styles.separator, className)} {...props} />
+    <div className={styles.seperatorWrapper} data-slot="menu-separator-wrapper">
+      <Menu.Separator className={cn(styles.separator, className)} data-slot="menu-separator" {...props} />
     </div>
   );
 }
 
 function DropdownMenuArrow({ className, ...props }: Menu.Arrow.Props) {
-  return <Menu.Arrow className={cn(styles.arrow, className)} {...props} />;
+  return <Menu.Arrow className={cn(styles.arrow, className)} data-slot="menu-arrow" {...props} />;
 }
 
 function DropdownMenuSubmenuRoot({ ...props }: Menu.SubmenuRoot.Props) {
@@ -72,7 +73,7 @@ function DropdownMenuSubmenuTrigger({ className, children, ...props }: Menu.Subm
 }
 
 function DropdownMenuRadioGroup({ className, ...props }: Menu.RadioGroup.Props) {
-  return <Menu.RadioGroup className={className} {...props} />;
+  return <Menu.RadioGroup className={className} data-slot="menu-radiogroup" {...props} />;
 }
 
 interface DropdownMenuRadioItemProps extends Menu.RadioItem.Props {
@@ -82,14 +83,14 @@ interface DropdownMenuRadioItemProps extends Menu.RadioItem.Props {
 
 function DropdownMenuRadioItem({ className, children, ...props }: DropdownMenuRadioItemProps) {
   return (
-    <Menu.RadioItem className={cn(styles.item, className)} {...props}>
+    <Menu.RadioItem className={cn(styles.item, className)} data-slot="menu-radioitem" {...props}>
       {children}
     </Menu.RadioItem>
   );
 }
 
 function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemIndicator.Props) {
-  return <Menu.RadioItemIndicator className={cn(styles.radioIndicator, className)} {...props} />;
+  return <Menu.RadioItemIndicator className={cn(styles.radioIndicator, className)} data-slot="menu-radioindicator" {...props} />;
 }
 
 interface DropdownMenuCheckboxItemProps extends Menu.CheckboxItem.Props {
@@ -99,22 +100,22 @@ interface DropdownMenuCheckboxItemProps extends Menu.CheckboxItem.Props {
 
 function DropdownMenuCheckboxItem({ className, children, ...props }: DropdownMenuCheckboxItemProps) {
   return (
-    <Menu.CheckboxItem className={cn(styles.checkboxItem, className)} {...props}>
+    <Menu.CheckboxItem className={cn(styles.checkboxItem, className)} data-slot="menu-checkboxitem" {...props}>
       {children}
     </Menu.CheckboxItem>
   );
 }
 
 function DropdownMenuCheckboxItemIndicator({ className, ...props }: Menu.CheckboxItemIndicator.Props) {
-  return <Menu.CheckboxItemIndicator className={cn(styles.checkboxIndicator, className)} {...props} />;
+  return <Menu.CheckboxItemIndicator className={cn(styles.checkboxIndicator, className)} data-slot="menu-checkboxindicator" {...props} />;
 }
 
 function DropdownMenuGroup({ className, ...props }: Menu.Group.Props) {
-  return <Menu.Group className={cn(styles.group, className)} {...props} />;
+  return <Menu.Group className={cn(styles.group, className)} data-slot="menu-group" {...props} />;
 }
 
 function DropdownMenuGroupLabel({ className, ...props }: Menu.GroupLabel.Props) {
-  return <Menu.GroupLabel className={cn(styles.groupLabel, className)} {...props} />;
+  return <Menu.GroupLabel className={cn(styles.groupLabel, className)} data-slot="menu-grouplabel" {...props} />;
 }
 
 function DropdownMenuSpacer() {
