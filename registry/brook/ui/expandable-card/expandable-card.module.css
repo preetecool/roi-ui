@@ -39,9 +39,12 @@
   font-weight: 500;
   color: var(--secondary-foreground);
   margin: 0;
-  transition: 150ms ease-out;
+  transition: color 150ms ease-out;
   line-height: 1.5;
   letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card:hover .heading {
@@ -88,9 +91,12 @@
   height: 100%;
   position: relative;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 24px;
-  padding-top: 0vh;
-  padding-bottom: 12vh;
+  padding-top: max(0vh, env(safe-area-inset-top));
+  padding-bottom: max(12vh, env(safe-area-inset-bottom));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -195,12 +201,17 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 150ms ease-out;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
 }
 
 .closeButton:hover {
   color: var(--foreground);
   background-color: var(--muted);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .contentContainer {
@@ -224,7 +235,7 @@
   border: 0.5px solid oklch(from var(--border) l c h / 0.7);
   margin-left: auto;
   flex-shrink: 0;
-  transition: 150ms ease-out;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
 }
 .expandIcon:hover,
 .card:hover .expandIcon {
@@ -245,6 +256,9 @@
 
   .scrollableContent {
     padding: 0px 16px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: max(8vh, env(safe-area-inset-bottom));
     justify-content: space-between;
     gap: 0px;
     mask-image: linear-gradient(to bottom, #000 0%, #000 95%, transparent 100%);
@@ -258,5 +272,14 @@
 
   .closeButton {
     background-color: var(--background);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .closeButton,
+  .expandIcon,
+  .heading {
+    transition: none;
   }
 }

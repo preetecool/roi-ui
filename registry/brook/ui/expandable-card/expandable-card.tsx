@@ -1,7 +1,7 @@
 "use client";
 import { Dialog } from "@base-ui/react/dialog";
 import { Plus, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./expandable-card.module.css";
@@ -21,6 +21,7 @@ type ExpandableCardProps = {
 
 function ExpandableCard({ item, className }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className={cn(styles.wrapper, className)}>
@@ -39,7 +40,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
                   transition={{
-                    duration: 0.25,
+                    duration: prefersReducedMotion ? 0 : 0.25,
                     // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.455, 0.03, 0.515, 0.955],
                   }}
@@ -74,11 +75,11 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                             animate={{ opacity: 1 }}
                             className={styles.closeButton}
                             exit={{ opacity: 0, display: "flex" }}
-                            initial={{ opacity: 0 }}
+                            initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
                             transition={{
                               type: "spring",
-                              duration: 0.3,
-                              delay: 0.1,
+                              duration: prefersReducedMotion ? 0 : 0.3,
+                              delay: prefersReducedMotion ? 0 : 0.1,
                             }}
                           />
                         }
@@ -108,13 +109,17 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                         exit={{
                           opacity: 0,
                           display: "block",
-                          y: -40,
-                          scale: 0.92,
+                          y: prefersReducedMotion ? 0 : -40,
+                          scale: prefersReducedMotion ? 1 : 0.92,
                         }}
-                        initial={{ opacity: 0, y: -40, scale: 0.92 }}
+                        initial={{
+                          opacity: prefersReducedMotion ? 1 : 0,
+                          y: prefersReducedMotion ? 0 : -40,
+                          scale: prefersReducedMotion ? 1 : 0.92,
+                        }}
                         transition={{
-                          delay: 0.1,
-                          duration: 0.3,
+                          delay: prefersReducedMotion ? 0 : 0.1,
+                          duration: prefersReducedMotion ? 0 : 0.3,
                           type: "spring",
                           bounce: 0,
                         }}
@@ -130,7 +135,12 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
         </Dialog.Portal>
         <Dialog.Trigger
           render={
-            <motion.button className={styles.card} layoutId={`card-${item.id}`} style={{ borderRadius: "24px" }} />
+            <motion.button
+              aria-label={`Expand ${item.cardHeading}`}
+              className={styles.card}
+              layoutId={`card-${item.id}`}
+              style={{ borderRadius: "24px" }}
+            />
           }
         >
           <motion.img

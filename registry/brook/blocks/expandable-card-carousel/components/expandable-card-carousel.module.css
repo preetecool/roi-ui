@@ -47,6 +47,12 @@
 .carouselRoot {
 }
 
+.content {
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (min-width: 1100px) {
   .header {
     max-width: 1008px;
