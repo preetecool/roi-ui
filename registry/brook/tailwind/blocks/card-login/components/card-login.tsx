@@ -154,9 +154,9 @@ export function CardLogin() {
           </label>
 
           <CardFooter className="flex flex-col gap-4">
-            <Button className="w-full" disabled={isPending} type="submit">
-              {isPending && <Loader2 aria-hidden="true" className="animate-spin" size={16} />}
+            <Button className="relative w-full" disabled={isPending} type="submit">
               Sign In
+              {isPending && <Loader2 aria-hidden="true" className="absolute right-4 animate-spin [animation-duration:0.6s]" size={16} />}
             </Button>
           </CardFooter>
         </form>
