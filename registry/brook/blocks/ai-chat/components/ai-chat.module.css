@@ -77,10 +77,10 @@
   border-radius: 50%;
   background-color: var(--primary);
   flex-shrink: 0;
+}
 
-  &:hover {
-    background-color: oklch(from var(--primary) calc(l * 0.8) c h);
-  }
+.submitButton[data-slot="button"]:hover:not([data-disabled]) {
+  background-color: oklch(from var(--primary) calc(l * 0.8) c h);
 }
 
 .submitIcon {
