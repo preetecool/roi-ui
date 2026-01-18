@@ -7,8 +7,8 @@
   border-radius: 2px;
   cursor: pointer;
   opacity: 0;
-  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.4s forwards;
-  transition: all 0.2s ease;
+  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1s forwards;
+  transition: background-color 0.2s ease;
   position: relative;
   z-index: 1;
 }
@@ -25,12 +25,12 @@
 }
 
 .badge svg path:first-child {
-  transition: all 150ms ease-in;
+  transition: transform 150ms ease-in;
   transform: translateX(0);
 }
 
 .badge svg path:last-child {
-  transition: all 150ms ease-in;
+  transition: opacity 150ms ease-in, transform 150ms ease-in;
   opacity: 0;
   transform: translateX(0);
 }
@@ -105,15 +105,15 @@
 
 .buttonWrapper [data-slot="button"]:first-of-type {
   box-shadow:
-    0px 1px 0.5px 0px rgba(255, 255, 255, 0.5) inset,
-    0px 1px 2px 0px rgba(26, 19, 161, 0.5),
-    0px 0px 0px 1px rgba(255, 255, 255, 0.4);
+    0px 0px 0px 1px rgba(255, 255, 255, 0.15) inset,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 1px rgba(255, 255, 255, 0.5);
 }
 
 .buttonWrapper [data-slot="button"]:last-of-type {
   box-shadow:
-    0px 1px 0.5px 0px rgba(255, 255, 255, 0.1) inset,
-    0px 1px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 0px 0px 1px rgba(255, 255, 255, 0.07) inset,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.05),
     0px 0px 0px 1px var(--border);
 }
 
@@ -146,69 +146,177 @@
   }
 }
 
-.carouselRoot {
-  margin-top: 120px;
+/* --- NEW BENTO GRID STYLES --- */
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Use minmax to ensure rows have distinct height but can grow */
+  grid-template-rows: repeat(2, minmax(200px, 1fr));
+  grid-template-areas:
+    "expandable context dialog"
+    "expandable badge chat";
+  gap: 16px; /* Increased gap slightly for elegance */
+  margin-top: 64px;
+  width: 100%;
+  max-width: 1000px; /* Optional: Constrain max width for better aesthetics */
   opacity: 0;
-  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.6s forwards;
-
-  & [data-slot="carousel"] {
-    border-radius: 2px;
-  }
-
-  & [role="group"]:focus-visible {
-    border-radius: 2px;
-  }
+  animation: fadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) 1.2s forwards;
 }
 
-.card {
-  height: 450px;
-  width: 330px;
+.bentoCard {
   position: relative;
-  padding: 1.5rem;
-  border: 0.5px solid oklch(from var(--border) l c h / 0.5);
-  border-radius: 2px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    135deg,
-    var(--mix-card-66-bg) 0%,
-    var(--background) 50%
-  );
+  padding: 1.5rem;
+  border-radius: 2px;
+
+  /* Subtle background */
+  background: oklch(from var(--card) l c h / 0.3);
+
+  /* Border style matching "I'm feeling lucky" button */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 0 0 1px oklch(from var(--border) l c h / 0.5);
+
   overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  isolation: isolate;
 }
 
-@media (max-width: 768px) {
-  .card {
-    max-width: 300px;
-    width: 300px;
-  }
+/* Add a subtle top highlight for depth */
+.bentoCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1); /* Subtle top light */
+  opacity: 0.5;
 }
 
-@media (max-width: 640px) {
-  .card {
-    height: 400px;
-    max-width: 280px;
-  }
+.bentoCard:hover {
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.8),
+    0 4px 12px -4px rgba(0, 0, 0, 0.1);
+
+  z-index: 10;
 }
 
-.cardHeader {
+/* Grid Areas */
+.bentoCard[data-size="large"] { grid-area: expandable; }
+.bentoCard[data-size="medium"]:nth-of-type(2) { grid-area: context; }
+.bentoCard[data-size="medium"]:nth-of-type(3) { grid-area: dialog; }
+.bentoCard[data-size="small"] { grid-area: badge; }
+.bentoCard[data-size="wide"] { grid-area: chat; }
+
+/* Label Styling - Technical/Schematic Look */
+.bentoLabel {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.componentName {
+  align-items: center;
+  gap: 8px;
   font-family: "Geist Mono", monospace;
-  font-size: 0.875rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   font-weight: 500;
   color: var(--muted-foreground);
-  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  transition: color 0.3s ease;
 }
 
-.cardComponentContent {
+/* Decorative dot for the label */
+.bentoLabel::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--border);
+  transition: background-color 0.3s ease;
+}
+
+.bentoCard:hover .bentoLabel {
+  color: var(--foreground);
+  opacity: 1;
+}
+
+.bentoCard:hover .bentoLabel::before {
+  background-color: var(--primary, #000); /* Use primary color or black */
+}
+
+.bentoContent {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  width: 100%;
+  position: relative;
+  /* Ensure content doesn't get cut off weirdly */
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+@media (max-width: 1024px) {
+  .bentoGrid {
+    /* Switch to 2 columns on tablets */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto; /* Let rows size naturally */
+    grid-template-areas:
+      "expandable expandable"
+      "context dialog"
+      "chat badge";
+  }
+
+  /* Force the large card to have a minimum height */
+  .bentoCard[data-size="large"] {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bentoGrid {
+    /* Single column for mobile */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "expandable"
+      "context"
+      "dialog"
+      "chat"
+      "badge";
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .bentoCard {
+    min-height: 260px;
+  }
+
+  .bentoCard[data-size="large"] {
+    min-height: 400px;
+  }
+
+  .bentoCard[data-size="large"] .bentoContent {
+    align-items: flex-start;
+    padding-top: 1rem;
+    mask-image: none;
+  }
+
+  /* Reset hover effects on touch devices to avoid sticky states */
+  .bentoCard:hover {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+      0 1px 2px rgba(0, 0, 0, 0.03),
+      0 0 0 1px oklch(from var(--border) l c h / 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bentoGrid, .bentoCard {
+    animation: none;
+    transition: none;
+  }
 }

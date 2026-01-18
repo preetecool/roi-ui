@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { AiChat } from "@/registry/brook/blocks/ai-chat/components/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
-import { Card } from "@/registry/brook/ui/card/card";
-import { Carousel } from "@/registry/brook/ui/carousel/carousel";
 import { HomeAnimatedBadge } from "../home-animated-badge/home-animated-badge";
 import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
 import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog";
@@ -31,18 +29,6 @@ const LUCKY_LINKS = [
 const HEADING = "React components and blocks";
 const SUBHEADING = "Components and blocks built with Base UI primitives and styled with CSS Modules or Tailwind.";
 
-const CAROUSEL_COMPONENTS = [
-  {
-    id: "expandable-card",
-    name: "Expandable Card",
-    Component: HomeAnimatedCard,
-  },
-  { id: "context-menu", name: "Context Menu", Component: HomeContextMenu },
-  { id: "dialog", name: "Dialog", Component: HomeAnimatedDialog },
-  { id: "badge", name: "Badge", Component: HomeAnimatedBadge },
-  { id: "ai-chat", name: "AI Chat", Component: AiChat },
-];
-
 function getRandomLink() {
   const link = LUCKY_LINKS[Math.floor(Math.random() * LUCKY_LINKS.length)];
   return link.path + (link.anchor ?? "");
@@ -50,7 +36,7 @@ function getRandomLink() {
 
 export const Hero = () => {
   const [luckyLink, setLuckyLink] = useState(LUCKY_LINKS[0].path);
-  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
+  const [expandedCard, setExpandedCard] = useState(false);
 
   useEffect(() => {
     setLuckyLink(getRandomLink());
@@ -81,46 +67,48 @@ export const Hero = () => {
           I&apos;m Feeling Lucky
         </Button>
       </div>
-      <Carousel.Bleed>
-        <Carousel.Root
-          align="start"
-          className={styles.carouselRoot}
-          gap={8}
-          totalItems={CAROUSEL_COMPONENTS.length}
-          variant="inset"
+
+      <div className={styles.bentoGrid}>
+        <div
+          className={styles.bentoCard}
+          data-size="large"
+          onMouseEnter={() => setExpandedCard(true)}
+          onMouseLeave={() => setExpandedCard(false)}
         >
-          <Carousel.Viewport>
-            <Carousel.Content>
-              {CAROUSEL_COMPONENTS.map((item, index) => (
-                <Carousel.Item index={index} key={item.id}>
-                  <Card
-                    className={styles.card}
-                    onMouseEnter={() => setHoveredCardIndex(index)}
-                    onMouseLeave={() => setHoveredCardIndex(null)}
-                  >
-                    <div className={styles.cardHeader}>
-                      <span className={styles.componentName}>
-                        {String(index + 1).padStart(2, "0")} / {item.name}
-                      </span>
-                    </div>
-                    <div className={styles.cardComponentContent}>
-                      {item.id === "expandable-card" ? (
-                        <HomeAnimatedCard isExpanded={hoveredCardIndex === index} />
-                      ) : (
-                        <item.Component />
-                      )}
-                    </div>
-                  </Card>
-                </Carousel.Item>
-              ))}
-            </Carousel.Content>
-          </Carousel.Viewport>
-          <Carousel.Navigation>
-            <Carousel.Previous />
-            <Carousel.Next />
-          </Carousel.Navigation>
-        </Carousel.Root>
-      </Carousel.Bleed>
+          <div className={styles.bentoLabel}>Expandable Card</div>
+          <div className={styles.bentoContent}>
+            <HomeAnimatedCard isExpanded={expandedCard} />
+          </div>
+        </div>
+
+        <div className={styles.bentoCard} data-size="medium">
+          <div className={styles.bentoLabel}>Context Menu</div>
+          <div className={styles.bentoContent}>
+            <HomeContextMenu />
+          </div>
+        </div>
+
+        <div className={styles.bentoCard} data-size="medium">
+          <div className={styles.bentoLabel}>Dialog</div>
+          <div className={styles.bentoContent}>
+            <HomeAnimatedDialog />
+          </div>
+        </div>
+
+        <div className={styles.bentoCard} data-size="small">
+          <div className={styles.bentoLabel}>Badge</div>
+          <div className={styles.bentoContent}>
+            <HomeAnimatedBadge />
+          </div>
+        </div>
+
+        <div className={styles.bentoCard} data-size="wide">
+          <div className={styles.bentoLabel}>AI Chat</div>
+          <div className={styles.bentoContent}>
+            <AiChat />
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

@@ -63,7 +63,6 @@
   color: var(--muted-foreground);
   background-color: var(--background);
   text-decoration: none;
-  transition: all 0.15s ease;
 }
 
 .menuButton:hover:not(.menuButtonActive) {
