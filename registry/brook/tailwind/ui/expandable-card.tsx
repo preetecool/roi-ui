@@ -1,7 +1,7 @@
 "use client";
 import { Dialog } from "@base-ui/react/dialog";
 import { Plus, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 
@@ -20,6 +20,7 @@ type ExpandableCardProps = {
 
 function ExpandableCard({ item, className }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className={cn("relative h-fit w-fit", className)}>
@@ -38,8 +39,8 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
                   transition={{
-                    delay: 0.1,
-                    duration: 0.25,
+                    delay: prefersReducedMotion ? 0 : 0.1,
+                    duration: prefersReducedMotion ? 0 : 0.25,
                     // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.19, 1, 0.22, 1],
                   }}
@@ -76,8 +77,10 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                 >
                   <div
                     className={cn(
-                      "relative flex h-full w-full flex-col items-center gap-[16px] overflow-y-auto px-6 pt-0 pb-[12vh]",
-                      "scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent"
+                      "relative flex h-full w-full flex-col items-center gap-[16px] overflow-y-auto overscroll-contain pt-0",
+                      "px-[max(1.5rem,env(safe-area-inset-left))] pb-[max(12vh,env(safe-area-inset-bottom))]",
+                      "scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent",
+                      "motion-reduce:transition-none"
                     )}
                     style={{
                       maskImage:
@@ -91,18 +94,20 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                         aria-label="Close"
                         className={cn(
                           "z-20 h-8 w-8 rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)]",
-                          "flex cursor-pointer items-center justify-center bg-[var(--background)] text-[var(--muted-foreground)] transition-[150ms_ease-out] md:bg-transparent",
-                          "hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
+                          "flex cursor-pointer items-center justify-center bg-[var(--background)] text-[var(--muted-foreground)] transition-colors duration-150 ease-out md:bg-transparent",
+                          "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
+                          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]",
+                          "motion-reduce:transition-none"
                         )}
                         render={
                           <motion.button
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0, display: "flex" }}
-                            initial={{ opacity: 0 }}
+                            initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
                             transition={{
                               type: "spring",
-                              duration: 0.3,
-                              delay: 0.1,
+                              duration: prefersReducedMotion ? 0 : 0.3,
+                              delay: prefersReducedMotion ? 0 : 0.1,
                             }}
                           />
                         }
@@ -134,14 +139,19 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                         exit={{
                           opacity: 0,
                           display: "block",
-                          y: -40,
-                          scale: 0.92,
+                          y: prefersReducedMotion ? 0 : -40,
+                          scale: prefersReducedMotion ? 1 : 0.92,
                         }}
-                        initial={{ opacity: 0, y: -40, scale: 0.92 }}
+                        initial={{
+                          opacity: prefersReducedMotion ? 1 : 0,
+                          y: prefersReducedMotion ? 0 : -40,
+                          scale: prefersReducedMotion ? 1 : 0.92,
+                        }}
                         transition={{
-                          delay: 0.1,
-                          duration: 0.3,
+                          delay: prefersReducedMotion ? 0 : 0.1,
+                          duration: prefersReducedMotion ? 0 : 0.3,
                           type: "spring",
+                          bounce: 0,
                         }}
                       >
                         {item.content}
@@ -157,6 +167,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
         <Dialog.Trigger
           render={
             <motion.button
+              aria-label={`Expand ${item.cardHeading}`}
               className="flex w-[320px] cursor-pointer flex-col items-center overflow-hidden border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
               layoutId={`card-${item.id}`}
               style={{
@@ -184,13 +195,13 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
           />
 
           <div className="flex w-full items-center justify-center p-4">
-            <motion.div layoutId={`heading-${item.id}`}>
-              <h3 className="m-0 font-medium text-2xl text-[var(--secondary-foreground)] leading-[1.5] tracking-[-0.02em] transition-[150ms_ease-out]">
+            <motion.div className="min-w-0 flex-1" layoutId={`heading-${item.id}`}>
+              <h3 className="m-0 truncate font-medium text-2xl text-[var(--secondary-foreground)] leading-[1.5] tracking-[-0.02em] transition-colors duration-150 ease-out motion-reduce:transition-none">
                 {item.cardHeading}
               </h3>
             </motion.div>
 
-            <motion.div className="ml-auto flex h-9 min-h-9 w-9 min-w-9 shrink-0 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] text-[var(--muted-foreground)] transition-[150ms_ease-out] hover:bg-[var(--card)] hover:text-[var(--foreground)]">
+            <motion.div className="ml-auto flex h-9 min-h-9 w-9 min-w-9 shrink-0 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] text-[var(--muted-foreground)] transition-colors duration-150 ease-out hover:bg-[var(--card)] hover:text-[var(--foreground)] motion-reduce:transition-none">
               <Plus height={21} strokeWidth={2} width={21} />
             </motion.div>
           </div>

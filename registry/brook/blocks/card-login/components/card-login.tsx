@@ -129,8 +129,10 @@ export default function CardLoginDemo() {
 
           <CardFooter className={styles.footer}>
             <Button className={styles.button} disabled={isPending} type="submit">
-              {isPending && <Loader2 aria-hidden="true" className={styles.spinner} size={16} />}
-              Sign In
+              <span className={styles.buttonContent}>
+                Sign In
+                {isPending && <Loader2 aria-hidden="true" className={styles.spinner} size={16} />}
+              </span>
             </Button>
           </CardFooter>
         </form>

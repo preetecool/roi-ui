@@ -1,33 +1,58 @@
-@keyframes badge-bounce {
-  0% {
-    scale: 0.96;
-  }
-  60% {
-    scale: 1.04;
-  }
-  100% {
-    scale: 1;
-  }
+.badgeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes check-draw {
-  from {
-    stroke-dashoffset: 1;
-    opacity: 0;
-  }
-  to {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.badgeBounce {
-  will-change: transform;
-  animation: badge-bounce 1.5s ease infinite;
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.checkPath {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: check-draw 1.5s ease infinite;
+.spinnerOverlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.spinnerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successContent {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.checkBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: oklch(from currentColor l c h / 0.15);
+}
+
+.checkIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.successText {
+  white-space: nowrap;
 }
