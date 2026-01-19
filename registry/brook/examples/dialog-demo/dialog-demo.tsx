@@ -11,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/brook/ui/dialog/dialog";
+import { Field, FieldLabel } from "@/registry/brook/ui/field/field";
+import { Form } from "@/registry/brook/ui/form/form";
 import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./dialog-demo.module.css";
 
@@ -25,20 +27,16 @@ export default function DialogDemo() {
             <DialogTitle>Edit Profile</DialogTitle>
             <DialogDescription className={styles.description}>Make changes to your profile here.</DialogDescription>
           </DialogHeader>
-          <div className={styles.form}>
-            <div className={styles.fieldGroup}>
-              <label className={styles.label} htmlFor="name">
-                Name
-              </label>
-              <Input defaultValue="John Doe" id="name" />
-            </div>
-            <div className={styles.fieldGroup}>
-              <label className={styles.label} htmlFor="email">
-                Email
-              </label>
-              <Input defaultValue="john@example.com" id="email" type="email" />
-            </div>
-          </div>
+          <Form>
+            <Field>
+              <FieldLabel>Name</FieldLabel>
+              <Input defaultValue="John Doe" />
+            </Field>
+            <Field>
+              <FieldLabel>Email</FieldLabel>
+              <Input defaultValue="john@example.com" type="email" />
+            </Field>
+          </Form>
           <DialogFooter className={styles.footer}>
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
             <Button>Save Changes</Button>

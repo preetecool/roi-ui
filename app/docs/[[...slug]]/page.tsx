@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TableOfContents } from "@/components/docs/toc/toc";
+import { FooterNav } from "@/components/layout/footer-nav/footer-nav";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -155,36 +156,11 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
           <MDX components={mdxComponents} />
         </div>
 
-        <nav className={styles.bottomNavigation}>
-          <div className={styles.prevButton}>
-            {neighbours.previous ? (
-              <Button
-                className={styles.buttonCustomStyle}
-                pointLeft
-                render={<Link href={neighbours.previous.url} />}
-                showArrow
-                size="sm"
-                variant="ghost"
-              >
-                {neighbours.previous.data.title}
-              </Button>
-            ) : null}
-          </div>
-
-          <div className={styles.nextButton}>
-            {neighbours.next ? (
-              <Button
-                className={styles.buttonCustomStyle}
-                render={<Link href={neighbours.next.url} />}
-                showArrow
-                size="sm"
-                variant="ghost"
-              >
-                {neighbours.next.data.title}
-              </Button>
-            ) : null}
-          </div>
-        </nav>
+        <FooterNav
+          className={styles.footerNav}
+          next={neighbours.next ? { url: neighbours.next.url, title: neighbours.next.data.title } : null}
+          previous={neighbours.previous ? { url: neighbours.previous.url, title: neighbours.previous.data.title } : null}
+        />
       </article>
 
       <aside className={styles.toc}>

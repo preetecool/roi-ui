@@ -106,7 +106,7 @@
 
 .popup {
   box-sizing: border-box;
-  min-width: 120px;
+  min-width: 140px;
 }
 
 @media (max-width: 768px) {

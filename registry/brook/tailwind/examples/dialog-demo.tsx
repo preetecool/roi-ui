@@ -11,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/brook/tailwind/ui/dialog";
+import { Field, FieldLabel } from "@/registry/brook/tailwind/ui/field";
+import { Form } from "@/registry/brook/tailwind/ui/form";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 import { Button } from "@/registry/brook/ui/button/button";
 
@@ -30,20 +32,16 @@ export default function DialogDemo() {
             <DialogTitle>Edit Profile</DialogTitle>
             <DialogDescription className="text-muted-foreground">Make changes to your profile here.</DialogDescription>
           </DialogHeader>
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <label className="font-medium text-sm" htmlFor="name">
-                Name
-              </label>
-              <Input defaultValue="John Doe" id="name" />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="font-medium text-sm" htmlFor="email">
-                Email
-              </label>
-              <Input defaultValue="john@example.com" id="email" type="email" />
-            </div>
-          </div>
+          <Form className="mt-0">
+            <Field>
+              <FieldLabel>Name</FieldLabel>
+              <Input defaultValue="John Doe" />
+            </Field>
+            <Field>
+              <FieldLabel>Email</FieldLabel>
+              <Input defaultValue="john@example.com" type="email" />
+            </Field>
+          </Form>
           <DialogFooter className="mt-8 flex gap-3 [&>*]:flex-1">
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
             <Button>Save Changes</Button>

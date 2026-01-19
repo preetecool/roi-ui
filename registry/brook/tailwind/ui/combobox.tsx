@@ -244,7 +244,7 @@ function ComboboxChip({ className, ...props }: Combobox.Chip.Props) {
     <Combobox.Chip
       className={cn(
         "flex cursor-default items-center gap-1 overflow-hidden rounded-[calc(var(--radius)-2px)]",
-        "bg-muted text-foreground text-sm",
+        "bg-secondary text-foreground text-sm",
         "py-0.5 pr-0.5 pl-2 outline-0",
         "focus-within:bg-primary focus-within:text-primary-foreground",
         "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground",

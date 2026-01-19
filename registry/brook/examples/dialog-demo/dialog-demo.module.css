@@ -19,23 +19,6 @@
   color: var(--muted-foreground);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.fieldGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.label {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
 .footer {
   margin-top: 32px;
   display: flex;

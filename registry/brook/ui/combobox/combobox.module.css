@@ -245,7 +245,7 @@
 .chip {
   display: flex;
   align-items: center;
-  background-color: var(--muted);
+  background-color: var(--secondary);
   color: var(--foreground);
   border-radius: calc(var(--radius) - 2px);
   font-size: 0.875rem;

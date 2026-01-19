@@ -81,7 +81,7 @@ export function AiChat() {
                 <SelectIcon className={styles.selectIcon} />
               </SelectTrigger>
               <SelectPortal>
-                <SelectPositioner align="end" alignItemWithTrigger={false} side="top" sideOffset={8}>
+                <SelectPositioner align="start" alignItemWithTrigger={false} side="top" sideOffset={8}>
                   <SelectPopup className={styles.popup}>
                     <SelectSpacer />
                     <SelectList>

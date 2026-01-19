@@ -95,7 +95,7 @@ export function AiChat() {
                 <SelectIcon className="ml-1 max-md:hidden" />
               </SelectTrigger>
               <SelectPortal>
-                <SelectPositioner align="end" alignItemWithTrigger={false} side="top" sideOffset={8}>
+                <SelectPositioner align="start" alignItemWithTrigger={false} side="top" sideOffset={8}>
                   <SelectPopup className="min-w-[120px] max-md:w-[120px]">
                     <SelectSpacer />
                     <SelectList>
