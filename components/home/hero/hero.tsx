@@ -89,7 +89,7 @@ export const Hero = () => {
         </div>
 
         <div className={styles.bentoCard} data-size="medium">
-          <div className={styles.bentoLabel}>Popover</div>
+          <div className={styles.bentoLabel}>Expandable Button</div>
           <div className={styles.bentoContent}>
             <HomeAnimatedPopover />
           </div>
