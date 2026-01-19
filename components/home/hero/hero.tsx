@@ -6,7 +6,7 @@ import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { HomeAnimatedBadge } from "../home-animated-badge/home-animated-badge";
 import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
-import { HomeAnimatedDialog } from "../home-animated-dialog/home-animated-dialog";
+import { HomeAnimatedPopover } from "../home-animated-popover/home-animated-popover";
 import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import styles from "./hero.module.css";
 
@@ -89,9 +89,9 @@ export const Hero = () => {
         </div>
 
         <div className={styles.bentoCard} data-size="medium">
-          <div className={styles.bentoLabel}>Dialog</div>
+          <div className={styles.bentoLabel}>Popover</div>
           <div className={styles.bentoContent}>
-            <HomeAnimatedDialog />
+            <HomeAnimatedPopover />
           </div>
         </div>
 

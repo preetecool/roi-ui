@@ -154,7 +154,7 @@
   /* Use minmax to ensure rows have distinct height but can grow */
   grid-template-rows: repeat(2, minmax(200px, 1fr));
   grid-template-areas:
-    "expandable context dialog"
+    "expandable context popover"
     "expandable badge chat";
   gap: 16px; /* Increased gap slightly for elegance */
   margin-top: 64px;
@@ -170,44 +170,21 @@
   flex-direction: column;
   padding: 1.5rem;
   border-radius: 2px;
-
-  /* Subtle background */
-  background: oklch(from var(--card) l c h / 0.3);
-
-  /* Border style matching "I'm feeling lucky" button */
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-    0 1px 2px rgba(0, 0, 0, 0.03),
-    0 0 0 1px oklch(from var(--border) l c h / 0.5);
-
+  background: transparent;
+  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.15);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s ease;
   isolation: isolate;
 }
 
-/* Add a subtle top highlight for depth */
-.bentoCard::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1); /* Subtle top light */
-  opacity: 0.5;
-}
-
 .bentoCard:hover {
-  box-shadow:
-    0 0 0 1px oklch(from var(--border) l c h / 0.8),
-    0 4px 12px -4px rgba(0, 0, 0, 0.1);
-
-  z-index: 10;
+  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.3);
 }
 
 /* Grid Areas */
 .bentoCard[data-size="large"] { grid-area: expandable; }
 .bentoCard[data-size="medium"]:nth-of-type(2) { grid-area: context; }
-.bentoCard[data-size="medium"]:nth-of-type(3) { grid-area: dialog; }
+.bentoCard[data-size="medium"]:nth-of-type(3) { grid-area: popover; }
 .bentoCard[data-size="small"] { grid-area: badge; }
 .bentoCard[data-size="wide"] { grid-area: chat; }
 
@@ -258,6 +235,10 @@
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
+.bentoCard[data-size="wide"] .bentoContent {
+  mask-image: none;
+}
+
 /* --- RESPONSIVE BREAKPOINTS --- */
 
 @media (max-width: 1024px) {
@@ -267,7 +248,7 @@
     grid-template-rows: auto; /* Let rows size naturally */
     grid-template-areas:
       "expandable expandable"
-      "context dialog"
+      "context popover"
       "chat badge";
   }
 
@@ -284,7 +265,7 @@
     grid-template-areas:
       "expandable"
       "context"
-      "dialog"
+      "popover"
       "chat"
       "badge";
     gap: 12px;

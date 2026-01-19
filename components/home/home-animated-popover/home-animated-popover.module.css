@@ -1,0 +1,120 @@
+.container {
+  display: grid;
+  place-items: center;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-grid;
+  z-index: 0;
+  overflow: clip;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background-color: var(--background);
+  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.5);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  padding: 8px 14px;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+}
+
+.triggerText {
+  opacity: 0.9;
+}
+
+.triggerIcon {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.plusIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.menuWrapper {
+  overflow: hidden;
+}
+
+.menu {
+  display: flex;
+  gap: 2px;
+  background-color: var(--popover);
+  margin: 4px;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.menuItem {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground);
+  transition: background-color 0.15s ease;
+}
+
+.menuItem:hover {
+  background-color: var(--accent);
+}
+
+.menuItem:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.menuItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: oklch(from var(--foreground) l c h / 0.05);
+  transition: background-color 0.15s ease;
+}
+
+.menuItem:hover .menuItemIcon {
+  background-color: oklch(from var(--foreground) l c h / 0.08);
+}
+
+.menuIcon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+}
+
+.menuItemLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  opacity: 0.7;
+}
