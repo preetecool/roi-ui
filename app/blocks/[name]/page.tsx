@@ -1,11 +1,10 @@
 import { extname } from "node:path";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlockViewer } from "@/components/blocks/block-viewer";
+import { FooterNav } from "@/components/layout/footer-nav/footer-nav";
 import { highlightCode } from "@/lib/highlight-code";
 import { BlocksData } from "@/registry/__blocks__";
 import { Index } from "@/registry/__index__";
-import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./page.module.css";
 import { BlockPreview } from "./preview";
 
@@ -125,35 +124,11 @@ function BlockNavigation({ currentName }: { currentName: string }) {
   const { prev, next } = getBlockNavigation(currentName);
 
   return (
-    <nav className={styles.navigation}>
-      <div className={styles.navButton}>
-        {prev ? (
-          <Button
-            className={`${styles.navLink} ${styles.navLinkPrev}`}
-            pointLeft
-            render={<Link href={`/blocks/${prev.name}`} />}
-            showArrow
-            size="sm"
-            variant="ghost"
-          >
-            {prev.title}
-          </Button>
-        ) : null}
-      </div>
-      <div className={styles.navButton}>
-        {next ? (
-          <Button
-            className={`${styles.navLink} ${styles.navLinkNext}`}
-            render={<Link href={`/blocks/${next.name}`} />}
-            showArrow
-            size="sm"
-            variant="ghost"
-          >
-            {next.title}
-          </Button>
-        ) : null}
-      </div>
-    </nav>
+    <FooterNav
+      className={styles.footerNav}
+      next={next ? { url: `/blocks/${next.name}`, title: next.title } : null}
+      previous={prev ? { url: `/blocks/${prev.name}`, title: prev.title } : null}
+    />
   );
 }
 
