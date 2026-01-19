@@ -23,6 +23,7 @@
 
 .containerHomePage {
   padding: 0;
+  backdrop-filter: none;
 }
 
 .nav {

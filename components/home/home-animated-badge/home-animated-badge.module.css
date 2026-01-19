@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .content {
@@ -18,32 +17,32 @@
   justify-content: center;
 }
 
-.spinnerOverlay {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.spinnerWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.successContent {
+.stateInner {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+}
+
+.stateHidden {
+  position: absolute;
+  pointer-events: none;
+}
+
+.stateText {
+  white-space: nowrap;
+}
+
+.processingText {
+  white-space: nowrap;
+  color: var(--muted-foreground);
 }
 
 .checkBackground {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: oklch(from currentColor l c h / 0.15);
 }
@@ -51,8 +50,4 @@
 .checkIcon {
   width: 12px;
   height: 12px;
-}
-
-.successText {
-  white-space: nowrap;
 }

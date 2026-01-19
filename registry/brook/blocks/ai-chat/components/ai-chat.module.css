@@ -137,6 +137,10 @@
 }
 
 @media (max-width: 640px) {
+  .aiChatCard[data-slot="card"] {
+    min-width: 230px;
+  }
+
   .form {
     display: flex;
     justify-content: center;

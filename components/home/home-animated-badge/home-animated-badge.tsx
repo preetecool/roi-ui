@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { Badge, BadgeIcon } from "@/registry/brook/ui/badge/badge";
+import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./home-animated-badge.module.css";
 import { Spinner } from "./spinner";
 
@@ -29,73 +29,55 @@ export function HomeAnimatedBadge() {
         variant="success"
       >
         <div className={styles.content}>
-          {/* Spinner - always mounted, fades out */}
           <motion.div
             animate={{
               opacity: isLoading ? 1 : 0,
-              scale: isLoading ? 1 : 0.8,
+              y: isLoading ? 0 : -12,
               filter: isLoading ? "blur(0px)" : "blur(4px)",
             }}
-            className={styles.spinnerOverlay}
-            transition={{ duration: 0.2, delay: isLoading ? 0 : 0.1 }}
+            className={`${styles.stateInner} ${isLoading ? "" : styles.stateHidden}`}
+            layout="position"
+            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
             <Spinner size={16} />
+            <span className={styles.processingText}>Processing</span>
           </motion.div>
-
-          {/* Success content - drives the layout */}
           <motion.div
             animate={{
-              width: isLoading ? 16 : "auto",
               opacity: isLoading ? 0 : 1,
+              y: isLoading ? 12 : 0,
+              filter: isLoading ? "blur(4px)" : "blur(0px)",
             }}
-            className={styles.successContent}
-            transition={{ duration: 0.4 }}
+            className={`${styles.stateInner} ${isLoading ? styles.stateHidden : ""}`}
+            layout="position"
+            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
-            <BadgeIcon>
-              <motion.div
-                animate={{
-                  opacity: isLoading ? 0 : 1,
-                  scale: isLoading ? 0.5 : 1,
-                  x: isLoading ? 8 : 0,
-                }}
-                className={styles.checkBackground}
-                transition={{ type: "spring", bounce: 0.4, duration: 0.5 }}
-              >
-                <svg
-                  aria-hidden="true"
-                  className={styles.checkIcon}
-                  fill="none"
-                  height="16"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 16 16"
-                  width="16"
-                >
-                  <motion.path
-                    animate={{
-                      pathLength: isLoading ? 0 : 1,
-                      opacity: isLoading ? 0 : 1,
-                    }}
-                    d="m3 8 3 3 7-7"
-                    transition={{ duration: 0.2 }}
-                  />
-                </svg>
-              </motion.div>
-            </BadgeIcon>
             <motion.div
-              animate={{
-                opacity: isLoading ? 0 : 1,
-                x: isLoading ? -8 : 0,
-                scale: isLoading ? 0.85 : 1,
-                filter: isLoading ? "blur(4px)" : "blur(0px)",
-              }}
-              className={styles.successText}
+              animate={{ scale: isLoading ? 0.85 : 1 }}
+              className={styles.checkBackground}
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
             >
-              Success
+              <svg
+                aria-hidden="true"
+                className={styles.checkIcon}
+                fill="none"
+                height="16"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 16 16"
+                width="16"
+              >
+                <motion.path
+                  animate={{ pathLength: isLoading ? 0 : 1, pathOffset: 0 }}
+                  d="m3 8 3 3 7-7"
+                  strokeDasharray="0 1"
+                  transition={{ duration: 0.22 }}
+                />
+              </svg>
             </motion.div>
+            <span className={styles.stateText}>Success</span>
           </motion.div>
         </div>
       </Badge>

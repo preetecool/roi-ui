@@ -171,14 +171,14 @@
   padding: 1.5rem;
   border-radius: 2px;
   background: transparent;
-  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.15);
+  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.35);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease, padding 0.3s ease;
   isolation: isolate;
 }
 
 .bentoCard:hover {
-  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.3);
+  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.5);
 }
 
 /* Grid Areas */
@@ -274,6 +274,7 @@
 
   .bentoCard {
     min-height: 260px;
+    padding: 16px;
   }
 
   .bentoCard[data-size="large"] {
