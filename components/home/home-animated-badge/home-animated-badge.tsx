@@ -12,7 +12,7 @@ export function HomeAnimatedBadge() {
   useEffect(() => {
     const interval = setInterval(() => {
       setPhase((prev) => (prev === "loading" ? "success" : "loading"));
-    }, 2000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, []);
@@ -53,7 +53,7 @@ export function HomeAnimatedBadge() {
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
             <motion.div
-              animate={{ scale: isLoading ? 0.85 : 1 }}
+              animate={{ scale: isLoading ? 0.9 : 1 }}
               className={styles.checkBackground}
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
             >
@@ -73,7 +73,7 @@ export function HomeAnimatedBadge() {
                   animate={{ pathLength: isLoading ? 0 : 1, pathOffset: 0 }}
                   d="m3 8 3 3 7-7"
                   strokeDasharray="0 1"
-                  transition={{ duration: 0.22 }}
+                  transition={{ duration: 0.2 }}
                 />
               </svg>
             </motion.div>
