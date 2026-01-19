@@ -26,9 +26,9 @@ export default function AutocompleteClearable() {
   const [value, setValue] = useState("");
 
   return (
-    <div className="p-8 max-sm:p-4">
+    <div className="flex flex-col gap-3 p-8 max-sm:p-4">
       <label
-        className="mb-2 ml-1 flex flex-col gap-1 font-medium text-foreground text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
+        className="ml-1 flex flex-col gap-1 font-medium text-foreground text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
         htmlFor="clearable-input"
       >
         Select a framework
