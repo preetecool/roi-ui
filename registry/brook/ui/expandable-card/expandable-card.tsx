@@ -1,5 +1,6 @@
 "use client";
 import { Dialog } from "@base-ui/react/dialog";
+import { ScrollArea } from "@base-ui/react/scroll-area";
 import { Plus, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
@@ -65,68 +66,75 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                     />
                   }
                 >
-                  <div className={styles.scrollableContent}>
-                    <div className={styles.closeButtonContainer}>
-                      <Dialog.Close
-                        aria-label="Close"
-                        render={
-                          <motion.button
-                            animate={{ opacity: 1 }}
-                            className={styles.closeButton}
-                            exit={{ opacity: 0, display: "flex" }}
-                            initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
-                            transition={{
-                              type: "spring",
-                              duration: prefersReducedMotion ? 0 : 0.3,
-                              delay: prefersReducedMotion ? 0 : 0.1,
-                            }}
-                          />
-                        }
-                      >
-                        <X height={21} strokeWidth={2} width={21} />
-                      </Dialog.Close>
-                    </div>
+                  <ScrollArea.Root className={styles.scrollAreaRoot}>
+                  <ScrollArea.Viewport className={styles.scrollAreaViewport}>
+                    <ScrollArea.Content className={styles.scrollableContent}>
+                      <div className={styles.closeButtonContainer}>
+                        <Dialog.Close
+                          aria-label="Close"
+                          render={
+                            <motion.button
+                              animate={{ opacity: 1 }}
+                              className={styles.closeButton}
+                              exit={{ opacity: 0, display: "flex" }}
+                              initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
+                              transition={{
+                                type: "spring",
+                                duration: prefersReducedMotion ? 0 : 0.3,
+                                delay: prefersReducedMotion ? 0 : 0.1,
+                              }}
+                            />
+                          }
+                        >
+                          <X height={21} strokeWidth={2} width={21} />
+                        </Dialog.Close>
+                      </div>
 
-                    <motion.img
-                      alt={item.alt}
-                      className={styles.expandedImage}
-                      height={600}
-                      layoutId={`image-${item.id}`}
-                      src={item.imageSrc}
-                      style={{ borderRadius: "24px" }}
-                      width={600}
-                    />
+                      <motion.img
+                        alt={item.alt}
+                        className={styles.expandedImage}
+                        height={600}
+                        layoutId={`image-${item.id}`}
+                        src={item.imageSrc}
+                        style={{ borderRadius: "24px" }}
+                        width={600}
+                      />
 
-                    <motion.div className={styles.contentExpanded}>
-                      <motion.div layoutId={`heading-${item.id}`}>
-                        <h3 className={styles.expandedHeading}>{item.cardHeading}</h3>
+                      <motion.div className={styles.contentExpanded}>
+                        <motion.div layoutId={`heading-${item.id}`}>
+                          <h3 className={styles.expandedHeading}>{item.cardHeading}</h3>
+                        </motion.div>
+
+                        <motion.div
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          className={styles.paragraphWrapper}
+                          exit={{
+                            opacity: 0,
+                            display: "block",
+                            y: prefersReducedMotion ? 0 : -40,
+                            scale: prefersReducedMotion ? 1 : 0.92,
+                          }}
+                          initial={{
+                            opacity: prefersReducedMotion ? 1 : 0,
+                            y: prefersReducedMotion ? 0 : -40,
+                            scale: prefersReducedMotion ? 1 : 0.92,
+                          }}
+                          transition={{
+                            delay: prefersReducedMotion ? 0 : 0.1,
+                            duration: prefersReducedMotion ? 0 : 0.3,
+                            type: "spring",
+                            bounce: 0,
+                          }}
+                        >
+                          {item.content}
+                        </motion.div>
                       </motion.div>
-
-                      <motion.div
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        className={styles.paragraphWrapper}
-                        exit={{
-                          opacity: 0,
-                          display: "block",
-                          y: prefersReducedMotion ? 0 : -40,
-                          scale: prefersReducedMotion ? 1 : 0.92,
-                        }}
-                        initial={{
-                          opacity: prefersReducedMotion ? 1 : 0,
-                          y: prefersReducedMotion ? 0 : -40,
-                          scale: prefersReducedMotion ? 1 : 0.92,
-                        }}
-                        transition={{
-                          delay: prefersReducedMotion ? 0 : 0.1,
-                          duration: prefersReducedMotion ? 0 : 0.3,
-                          type: "spring",
-                          bounce: 0,
-                        }}
-                      >
-                        {item.content}
-                      </motion.div>
-                    </motion.div>
-                  </div>
+                    </ScrollArea.Content>
+                  </ScrollArea.Viewport>
+                  <ScrollArea.Scrollbar className={styles.scrollbar} orientation="vertical">
+                    <ScrollArea.Thumb className={styles.scrollbarThumb} />
+                  </ScrollArea.Scrollbar>
+                </ScrollArea.Root>
                 </Dialog.Popup>
               </div>
             ) : null}
