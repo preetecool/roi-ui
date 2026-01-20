@@ -535,8 +535,8 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
               )}
               <div className="ml-auto flex items-center gap-1.5">
                 <Button disabled={isPending} size="sm" type="submit">
-                  {isPending && <Loader2 aria-hidden="true" className="animate-spin" size={14} />}
                   {mode === "create" ? "Create" : "Save"}
+                  {isPending && <Loader2 aria-hidden="true" className="animate-spin" size={14} />}
                 </Button>
               </div>
             </div>
