@@ -26,7 +26,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
     <div className={cn("relative h-fit w-fit", className)}>
       <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
         <AnimatePresence>
-          {isOpen && (
+          {isOpen ? (
             <Dialog.Backdrop
               hidden={undefined}
               key="overlay"
@@ -41,17 +41,16 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   transition={{
                     delay: prefersReducedMotion ? 0 : 0.1,
                     duration: prefersReducedMotion ? 0 : 0.25,
-                    // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.19, 1, 0.22, 1],
                   }}
                 />
               }
             />
-          )}
+          ) : null}
         </AnimatePresence>
         <Dialog.Portal keepMounted>
           <AnimatePresence>
-            {isOpen && (
+            {isOpen ? (
               <div
                 className="pointer-events-none fixed inset-0 z-[9999] flex max-h-full items-center justify-center overflow-y-auto"
                 key="positioner"
@@ -62,7 +61,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                     <motion.div
                       className={cn(
                         "fixed top-[5vh] max-h-dvh w-full max-w-[960px] overflow-hidden",
-                        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h/0.6)] bg-[var(--mix-card-15-bg)] p-0",
+                        "bg-[var(--mix-card-15-bg)] p-0 shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h/0.6)]",
                         "pointer-events-auto flex flex-col items-center gap-[16px]",
                         "transform-none animate-none opacity-100 transition-none",
                         "scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent"
@@ -93,10 +92,10 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                       <Dialog.Close
                         aria-label="Close"
                         className={cn(
-                          "z-20 h-8 w-8 rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)]",
+                          "z-20 h-8 w-8 rounded-full shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)]",
                           "flex cursor-pointer items-center justify-center bg-[var(--background)] text-[var(--muted-foreground)] transition-colors duration-150 ease-out md:bg-transparent",
                           "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
-                          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]",
+                          "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
                           "motion-reduce:transition-none"
                         )}
                         render={
@@ -160,7 +159,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   </div>
                 </Dialog.Popup>
               </div>
-            )}
+            ) : null}
           </AnimatePresence>
         </Dialog.Portal>
 
@@ -168,7 +167,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
           render={
             <motion.button
               aria-label={`Expand ${item.cardHeading}`}
-              className="flex w-[320px] cursor-pointer flex-col items-center overflow-hidden border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
+              className="group flex w-[320px] cursor-pointer flex-col items-center overflow-hidden bg-transparent p-0 shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
               layoutId={`card-${item.id}`}
               style={{
                 all: "unset",
@@ -177,7 +176,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                 flexDirection: "column",
                 alignItems: "center",
                 width: "320px",
-                border: "0.5px solid oklch(from var(--border) l c h / 0.7)",
+                boxShadow: "inset 0 0 0 0.5px oklch(from var(--border) l c h / 0.7)",
                 overflow: "hidden",
                 borderRadius: "24px",
               }}
@@ -195,13 +194,13 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
           />
 
           <div className="flex w-full items-center justify-center p-4">
-            <motion.div className="min-w-0 flex-1" layoutId={`heading-${item.id}`}>
-              <h3 className="m-0 truncate font-medium text-2xl text-[var(--secondary-foreground)] leading-[1.5] tracking-[-0.02em] transition-colors duration-150 ease-out motion-reduce:transition-none">
+            <motion.div layoutId={`heading-${item.id}`}>
+              <h3 className="m-0 overflow-hidden text-ellipsis whitespace-nowrap font-medium text-2xl text-[var(--secondary-foreground)] leading-[1.5] tracking-[-0.02em] transition-colors duration-150 ease-out group-hover:text-[var(--foreground)] motion-reduce:transition-none">
                 {item.cardHeading}
               </h3>
             </motion.div>
 
-            <motion.div className="ml-auto flex h-9 min-h-9 w-9 min-w-9 shrink-0 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)] text-[var(--muted-foreground)] transition-colors duration-150 ease-out hover:bg-[var(--card)] hover:text-[var(--foreground)] motion-reduce:transition-none">
+            <motion.div className="ml-auto flex h-9 min-h-9 w-9 min-w-9 shrink-0 items-center justify-center rounded-full text-[var(--muted-foreground)] shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)] transition-colors duration-150 ease-out hover:bg-[var(--card)] hover:text-[var(--foreground)] group-hover:bg-[var(--card)] group-hover:text-[var(--foreground)] motion-reduce:transition-none">
               <Plus height={21} strokeWidth={2} width={21} />
             </motion.div>
           </div>

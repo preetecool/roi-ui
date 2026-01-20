@@ -27,7 +27,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
     <div className={cn(styles.wrapper, className)}>
       <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
         <AnimatePresence>
-          {isOpen && (
+          {isOpen ? (
             <Dialog.Backdrop
               hidden={undefined}
               key="overlay"
@@ -41,17 +41,16 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   initial={{ opacity: 0 }}
                   transition={{
                     duration: prefersReducedMotion ? 0 : 0.25,
-                    // biome-ignore lint/style/noMagicNumbers: cubic-bezier easing values
                     ease: [0.455, 0.03, 0.515, 0.955],
                   }}
                 />
               }
             />
-          )}
+          ) : null}
         </AnimatePresence>
         <Dialog.Portal keepMounted>
           <AnimatePresence>
-            {isOpen && (
+            {isOpen ? (
               <div className={styles.modalPositioner} key="positioner">
                 <Dialog.Popup
                   hidden={undefined}
@@ -130,7 +129,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   </div>
                 </Dialog.Popup>
               </div>
-            )}
+            ) : null}
           </AnimatePresence>
         </Dialog.Portal>
         <Dialog.Trigger
