@@ -239,16 +239,17 @@
   mask-image: none;
 }
 
+.bentoCard[data-size="wide"] [data-slot="select-trigger"] {
+  min-width: unset;
+  transition: none !important;
+}
+
 .bentoCard[data-size="wide"] [data-slot="select-trigger"][data-popup-open] {
-  background-color: transparent !important;
+  background-color: var(--accent) !important;
 }
 
 .bentoCard[data-size="wide"] [data-slot="select-trigger"] [data-slot="select-value"] + span {
   display: none;
-}
-
-.bentoCard[data-size="wide"] [data-slot="select-trigger"] {
-  min-width: unset;
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
