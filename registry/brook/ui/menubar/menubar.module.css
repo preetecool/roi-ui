@@ -24,7 +24,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.5rem;
   background: transparent;
   border: none;
   font-size: 0.875rem;
@@ -44,7 +44,6 @@
     transition: background-color 250ms var(--ease-out-expo);
   }
 
-  &:focus::before,
   &[data-popup-open]::before {
     background-color: var(--accent);
   }
