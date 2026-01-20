@@ -82,11 +82,11 @@ export function AiChat() {
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="start" alignItemWithTrigger={false} side="top" sideOffset={8}>
-                  <SelectPopup className={styles.popup}>
+                  <SelectPopup className={styles.popup} data-slot="select-popup">
                     <SelectSpacer />
                     <SelectList>
                       {aiModes.map(({ label, value }) => (
-                        <SelectItem key={value} value={value}>
+                        <SelectItem data-slot="select-item" key={value} value={value}>
                           <SelectItemText>{label}</SelectItemText>
                           <SelectItemIndicator className={styles.selectIndicator} />
                         </SelectItem>

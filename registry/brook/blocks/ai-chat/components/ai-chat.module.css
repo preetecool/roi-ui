@@ -94,23 +94,19 @@
   align-items: center;
 }
 
-.selectTrigger[data-slot="select-trigger"] {
-  min-width: 100px;
-}
 
-.selectTrigger[data-slot="select-trigger"]:hover,
-.selectTrigger[data-slot="select-trigger"][data-popup-open],
-.selectTrigger[data-slot="select-trigger"][data-popup-open]:hover {
+.selectButton:hover,
+.selectButton[data-popup-open] {
   background-color: var(--accent) !important;
 }
 
-.popup {
+.popup[data-slot="select-popup"] {
   box-sizing: border-box;
   min-width: 140px;
 }
 
 @media (max-width: 768px) {
-  .popup {
+  .popup[data-slot="select-popup"] {
     width: 120px !important;
     min-width: 120px !important;
     max-width: 120px !important;
@@ -124,9 +120,6 @@
     display: none;
   }
 
-  .footer[data-slot="card-footer"] [data-slot="select-trigger"] {
-    min-width: 120px !important;
-  }
 }
 
 @media (max-width: 1280px) {
