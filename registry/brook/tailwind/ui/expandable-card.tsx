@@ -36,7 +36,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                   animate={{
                     opacity: 0.99,
                   }}
-                  className="fixed inset-0 z-[100] min-h-dvh bg-background"
+                  className="fixed inset-0 z-[101] min-h-dvh bg-background"
                   exit={{ opacity: 0 }}
                   initial={{ opacity: 0 }}
                   transition={{
@@ -91,9 +91,9 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                         "before:ease-out after:ease-out",
                         "before:z-10 after:z-10",
                         "before:top-0 after:bottom-0",
-                        "before:bg-[linear-gradient(to_bottom,var(--background),transparent)]",
+                        "before:bg-[linear-gradient(to_bottom,oklch(from_var(--background)_l_c_h_/_0.7),transparent)]",
                         "after:bg-[linear-gradient(to_top,var(--background)_0%,var(--background)_30%,transparent_100%)]",
-                        "before:[height:min(60px,var(--scroll-area-overflow-y-start))]",
+                        "before:[height:min(40px,var(--scroll-area-overflow-y-start))]",
                         "after:[height:min(10vh,var(--scroll-area-overflow-y-end,10vh))]"
                       )}
                     >
@@ -213,13 +213,14 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                 flexDirection: "column",
                 alignItems: "center",
                 width: "320px",
-                boxShadow: "inset 0 0 0 0.5px oklch(from var(--border) l c h / 0.7)",
                 overflow: "hidden",
                 borderRadius: "24px",
+                position: "relative",
               }}
             />
           }
         >
+          <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)]" />
           <motion.img
             alt={item.alt}
             className="h-[320px] w-full object-cover"
