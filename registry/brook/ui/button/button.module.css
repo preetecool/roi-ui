@@ -76,7 +76,7 @@
 }
 
 .ghost:hover:not([data-disabled]) {
-  background-color: oklch(from var(--accent) l c h / 0.6);
+  background-color: var(--accent);
 }
 
 .outline {
