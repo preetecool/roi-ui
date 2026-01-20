@@ -1,5 +1,6 @@
 "use client";
 
+import { Menu } from "@base-ui/react/menu";
 import { Menubar } from "@base-ui/react/menubar";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils-tailwind";
@@ -13,7 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuSubmenuRoot,
   DropdownMenuSubmenuTrigger,
-  DropdownMenuTrigger,
 } from "./dropdown-menu";
 
 function MenubarRoot({ className, ...props }: React.ComponentProps<typeof Menubar>) {
@@ -36,16 +36,17 @@ function MenubarMenuRoot({ ...props }: React.ComponentProps<typeof DropdownMenu>
   return <DropdownMenu {...props} />;
 }
 
-function MenubarMenuTrigger({ className, ...props }: React.ComponentProps<typeof DropdownMenuTrigger>) {
+function MenubarMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
   return (
-    <DropdownMenuTrigger
+    <Menu.Trigger
       className={cn(
         "inline-flex items-center justify-center rounded-[0.4rem] border-none",
-        "h-8 bg-transparent px-3 font-medium text-sm",
+        "h-8 bg-transparent px-2 font-medium text-sm",
         "leading-[1.2] tracking-[-0.014em]",
         "data-[popup-open]:bg-[var(--accent)]",
         "hover:bg-[var(--accent)]",
         "hover:data-[popup-open]:bg-[var(--accent)]",
+        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         className
       )}
       {...props}

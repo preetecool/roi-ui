@@ -1,5 +1,6 @@
 "use client";
 
+import { Menu } from "@base-ui/react/menu";
 import { Menubar } from "@base-ui/react/menubar";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuSubmenuRoot,
   DropdownMenuSubmenuTrigger,
-  DropdownMenuTrigger,
 } from "../dropdown-menu/dropdown-menu";
 import styles from "./menubar.module.css";
 
@@ -25,8 +25,8 @@ function MenubarMenuRoot({ ...props }: React.ComponentProps<typeof DropdownMenu>
   return <DropdownMenu {...props} />;
 }
 
-function MenubarMenuTrigger({ ...props }: React.ComponentProps<typeof DropdownMenuTrigger>) {
-  return <DropdownMenuTrigger {...props} />;
+function MenubarMenuTrigger({ className, ...props }: Menu.Trigger.Props) {
+  return <Menu.Trigger className={cn(styles.menuTrigger, className)} {...props} />;
 }
 
 const MenubarMenuPortal = DropdownMenuPortal;
