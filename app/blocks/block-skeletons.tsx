@@ -255,36 +255,6 @@ export function ExpandableCardSkeleton({ className }: SkeletonProps) {
   );
 }
 
-export function ProfileMenuSkeleton({ className }: SkeletonProps) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="profileMenuGrad" x1="0%" x2="0%" y1="0%" y2="100%">
-          <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
-          <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
-        </linearGradient>
-      </defs>
-      {/* Dropdown menu (above trigger) */}
-      <rect fill="url(#profileMenuGrad)" height="124" rx="10" width="160" x="20" y="0" />
-      {/* Profile section */}
-      <circle cx="48" cy="26" fill="var(--muted-foreground)" opacity="0.15" r="14" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="50" x="70" y="18" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.2" rx="3" width="70" x="70" y="32" />
-      {/* Separator */}
-      <line stroke="var(--muted-foreground)" strokeOpacity="0.1" x1="28" x2="172" y1="52" y2="52" />
-      {/* Menu items */}
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.2" rx="4" width="80" x="36" y="66" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.2" rx="4" width="60" x="36" y="86" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.2" rx="4" width="70" x="36" y="106" />
-      {/* Trigger button (below menu) */}
-      <rect fill="var(--mix-card-33-bg)" height="44" rx="10" width="140" x="30" y="132" />
-      <circle cx="54" cy="154" fill="var(--muted-foreground)" opacity="0.15" r="14" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="60" x="76" y="144" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.2" rx="3" width="45" x="76" y="158" />
-    </svg>
-  );
-}
-
 export function KanbanBoardSkeleton({ className }: SkeletonProps) {
   return (
     <svg className={className} fill="none" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
@@ -472,5 +442,4 @@ export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> 
   "expandable-card-carousel": ExpandableCardCarouselSkeleton,
   "kanban-board": KanbanBoardSkeleton,
   "pricing-section": PricingSectionSkeleton,
-  "profile-menu": ProfileMenuSkeleton,
 };

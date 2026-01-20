@@ -126,29 +126,6 @@
   padding-right: 12px;
 }
 
-.dialogPopup {
-  width: 400px;
-  padding: 24px;
-}
-
-.field {
-  margin-top: 16px;
-}
-
-.fieldLabel {
-  margin-left: 4px;
-}
-
-.dialogFooter {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.dialogFooter > * {
-  flex: 1;
-}
-
 .spacer {
   height: 4px;
   width: 100%;
@@ -183,16 +160,5 @@
 
   .profileEmail {
     font-size: 0.6875rem;
-  }
-
-  .dialogPopup {
-    width: 90vw;
-    max-width: 400px;
-    padding: 20px;
-  }
-
-  .dialogFooter {
-    margin-top: 20px;
-    gap: 8px;
   }
 }

@@ -1077,34 +1077,6 @@
       ]
     },
     {
-      "name": "profile-menu",
-      "type": "registry:item",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": [
-        "https://roiui.com/r/avatar.json",
-        "https://roiui.com/r/badge.json",
-        "https://roiui.com/r/button.json",
-        "https://roiui.com/r/dialog.json",
-        "https://roiui.com/r/dropdown-menu.json",
-        "https://roiui.com/r/field.json",
-        "https://roiui.com/r/input.json"
-      ],
-      "title": "Profile Menu",
-      "description": "A dropdown menu component for user profile management.",
-      "files": [
-        {
-          "path": "registry/brook/blocks/profile-menu/components/profile-menu.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/profile-menu/profile-menu.tsx"
-        },
-        {
-          "path": "registry/brook/blocks/profile-menu/components/profile-menu.module.css",
-          "type": "registry:file",
-          "target": "~/components/blocks/profile-menu/profile-menu.module.css"
-        }
-      ]
-    },
-    {
       "name": "pricing-section",
       "type": "registry:item",
       "dependencies": ["lucide-react"],
@@ -1999,29 +1971,6 @@
           "path": "registry/brook/blocks-shared-files/expandable-card-carousel/data.json",
           "type": "registry:file",
           "target": "~/components/blocks/expandable-card-carousel/data.json"
-        }
-      ]
-    },
-    {
-      "name": "profile-menu-tailwind",
-      "type": "registry:item",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": [
-        "https://roiui.com/r/avatar-tailwind.json",
-        "https://roiui.com/r/badge-tailwind.json",
-        "https://roiui.com/r/button-tailwind.json",
-        "https://roiui.com/r/dialog-tailwind.json",
-        "https://roiui.com/r/dropdown-menu-tailwind.json",
-        "https://roiui.com/r/field-tailwind.json",
-        "https://roiui.com/r/input-tailwind.json"
-      ],
-      "title": "Profile Menu (Tailwind)",
-      "description": "A dropdown menu component for user profile management.",
-      "files": [
-        {
-          "path": "registry/brook/tailwind/blocks/profile-menu/components/profile-menu.tsx",
-          "type": "registry:file",
-          "target": "~/components/blocks/profile-menu/profile-menu.tsx"
         }
       ]
     },

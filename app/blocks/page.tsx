@@ -14,7 +14,6 @@ const BLOCK_TITLES: Record<string, string> = {
   "expandable-card-carousel": "Expandable Card Carousel",
   "kanban-board": "Kanban Board",
   "pricing-section": "Pricing Section",
-  "profile-menu": "Profile Menu",
 };
 
 function getBlocks() {

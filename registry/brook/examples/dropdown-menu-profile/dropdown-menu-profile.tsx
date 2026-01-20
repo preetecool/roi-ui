@@ -18,9 +18,9 @@ import {
   DropdownMenuSubmenuTrigger,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import styles from "./profile-menu.module.css";
+import styles from "./dropdown-menu-profile.module.css";
 
-export default function ProfileMenuDemo() {
+export default function DropdownMenuProfile() {
   const [selectedOrg, setSelectedOrg] = useState("acme");
 
   return (

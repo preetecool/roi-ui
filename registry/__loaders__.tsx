@@ -141,6 +141,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   "button-ghost": dynamic(() =>
     import("@/registry/brook/examples/button-ghost").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
+  "button-icon": dynamic(() =>
+    import("@/registry/brook/examples/button-icon").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
   "button-loading": dynamic(() =>
     import("@/registry/brook/examples/button-loading/button-loading").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -308,6 +311,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "dropdown-menu-motion": dynamic(() =>
     import("@/registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-profile": dynamic(() =>
+    import("@/registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -500,11 +508,6 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
-  "profile-menu": dynamic(() =>
-    import("@/registry/brook/blocks/profile-menu/page").then((mod) => ({
-      default: mod.default || Object.values(mod)[0],
-    }))
-  ),
   "accordion-animation-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/accordion-animation").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -627,6 +630,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "button-ghost-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/button-ghost").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-icon-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-icon").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -772,6 +780,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "dropdown-menu-motion-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/dropdown-menu-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-profile-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dropdown-menu-profile").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -977,11 +990,6 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "pricing-section-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/blocks/pricing-section/page").then((mod) => ({
-      default: mod.default || Object.values(mod)[0],
-    }))
-  ),
-  "profile-menu-tailwind": dynamic(() =>
-    import("@/registry/brook/tailwind/blocks/profile-menu/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

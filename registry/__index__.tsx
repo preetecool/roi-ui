@@ -239,6 +239,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/examples/button-ghost.tsx"],
     path: "@/registry/brook/examples/button-ghost",
   },
+  "button-icon": {
+    name: "button-icon",
+    type: "example",
+    files: ["registry/brook/examples/button-icon.tsx"],
+    path: "@/registry/brook/examples/button-icon",
+  },
   "button-loading": {
     name: "button-loading",
     type: "example",
@@ -529,6 +535,15 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.module.css",
     ],
     path: "@/registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion",
+  },
+  "dropdown-menu-profile": {
+    name: "dropdown-menu-profile",
+    type: "example",
+    files: [
+      "registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile.tsx",
+      "registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile.module.css",
+    ],
+    path: "@/registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile",
   },
   "dropdown-menu-submenu": {
     name: "dropdown-menu-submenu",
@@ -896,16 +911,6 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/blocks/pricing-section/components/pricing-section.module.css",
     ],
     path: "@/registry/brook/blocks/pricing-section/page",
-  },
-  "profile-menu": {
-    name: "profile-menu",
-    type: "block",
-    files: [
-      "registry/brook/blocks/profile-menu/page.tsx",
-      "registry/brook/blocks/profile-menu/components/profile-menu.tsx",
-      "registry/brook/blocks/profile-menu/components/profile-menu.module.css",
-    ],
-    path: "@/registry/brook/blocks/profile-menu/page",
   },
   accordion: {
     name: "accordion",
@@ -1337,6 +1342,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/button-ghost.tsx"],
     path: "@/registry/brook/tailwind/examples/button-ghost",
   },
+  "button-icon-tailwind": {
+    name: "button-icon-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/button-icon.tsx"],
+    path: "@/registry/brook/tailwind/examples/button-icon",
+  },
   "button-outline-tailwind": {
     name: "button-outline-tailwind",
     type: "example",
@@ -1510,6 +1521,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/dropdown-menu-motion.tsx"],
     path: "@/registry/brook/tailwind/examples/dropdown-menu-motion",
+  },
+  "dropdown-menu-profile-tailwind": {
+    name: "dropdown-menu-profile-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/dropdown-menu-profile.tsx"],
+    path: "@/registry/brook/tailwind/examples/dropdown-menu-profile",
   },
   "dropdown-menu-submenu-tailwind": {
     name: "dropdown-menu-submenu-tailwind",
@@ -1794,15 +1811,6 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/tailwind/blocks/pricing-section/data.json",
     ],
     path: "@/registry/brook/tailwind/blocks/pricing-section/page",
-  },
-  "profile-menu-tailwind": {
-    name: "profile-menu-tailwind",
-    type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/profile-menu/page.tsx",
-      "registry/brook/tailwind/blocks/profile-menu/components/profile-menu.tsx",
-    ],
-    path: "@/registry/brook/tailwind/blocks/profile-menu/page",
   },
   accordionTailwind: {
     name: "accordion-tailwind",
