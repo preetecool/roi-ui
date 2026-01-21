@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./site-footer.module.css";
 
@@ -9,20 +10,22 @@ export function SiteFooter() {
           Built by{" "}
           <Button
             className={styles.link}
+            nativeButton={false}
             render={
-              <a href="https://x.com/preetecool" rel="noopener noreferrer" target="_blank">
+              <Link href="https://x.com/preetecool" rel="noopener noreferrer" target="_blank">
                 @preetecool.
-              </a>
+              </Link>
             }
             variant="link"
           />{" "}
           Available on{" "}
           <Button
             className={styles.link}
+            nativeButton={false}
             render={
-              <a href="https://github.com/preetecool/roi-ui" rel="noopener noreferrer" target="_blank">
+              <Link href="https://github.com/preetecool/roi-ui" rel="noopener noreferrer" target="_blank">
                 GitHub
-              </a>
+              </Link>
             }
             variant="link"
           />
