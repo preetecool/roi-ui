@@ -5,7 +5,7 @@ import { TableOfContents } from "@/components/docs/toc/toc";
 import { FooterNav } from "@/components/layout/footer-nav/footer-nav";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -71,10 +71,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
   const pageOrder = ["/docs", "/docs/start", "/docs/components"];
   const allPages = source.getPages();
   const uiPages = allPages.filter((p) => p.url.startsWith("/docs/ui/")).sort((a, b) => a.url.localeCompare(b.url));
-  const orderedPages = [
-    ...pageOrder.map((url) => allPages.find((p) => p.url === url)).filter(Boolean),
-    ...uiPages,
-  ];
+  const orderedPages = [...pageOrder.map((url) => allPages.find((p) => p.url === url)).filter(Boolean), ...uiPages];
   const currentIndex = orderedPages.findIndex((p) => p?.url === page.url);
   const neighbours = {
     previous: currentIndex > 0 ? orderedPages[currentIndex - 1] : null,
@@ -98,25 +95,25 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                   {links?.doc ? (
                     <Button
                       className={styles.badgeButton}
-                      pointExternal
+                      nativeButton={false}
                       render={<Link href={links.doc} rel="noopener noreferrer" target="_blank" />}
-                      showArrow
                       size="sm"
                       variant="outline"
                     >
                       Docs
+                      <ArrowPointer pointExternal />
                     </Button>
                   ) : null}
                   {links?.api ? (
                     <Button
                       className={styles.badgeButton}
-                      pointExternal
+                      nativeButton={false}
                       render={<Link href={links.api} rel="noopener noreferrer" target="_blank" />}
-                      showArrow
                       size="sm"
                       variant="outline"
                     >
                       API Reference
+                      <ArrowPointer pointExternal />
                     </Button>
                   ) : null}
                 </div>
@@ -137,13 +134,12 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                   {motion ? (
                     <Button
                       className={styles.badgeButton}
-                      pointExternal
                       render={<Link href="https://motion.dev" rel="noopener noreferrer" target="_blank" />}
-                      showArrow
                       size="sm"
                       variant="outline"
                     >
                       Motion
+                      <ArrowPointer pointExternal />
                     </Button>
                   ) : null}
                 </div>
@@ -159,7 +155,9 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
         <FooterNav
           className={styles.footerNav}
           next={neighbours.next ? { url: neighbours.next.url, title: neighbours.next.data.title } : null}
-          previous={neighbours.previous ? { url: neighbours.previous.url, title: neighbours.previous.data.title } : null}
+          previous={
+            neighbours.previous ? { url: neighbours.previous.url, title: neighbours.previous.data.title } : null
+          }
         />
       </article>
 

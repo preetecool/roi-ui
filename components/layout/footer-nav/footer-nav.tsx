@@ -8,11 +8,11 @@ type NavItem = {
   title: string;
 };
 
-interface FooterNavProps {
+type FooterNavProps = {
   previous?: NavItem | null;
   next?: NavItem | null;
   className?: string;
-}
+};
 
 export function FooterNav({ previous, next, className }: FooterNavProps) {
   return (
@@ -21,6 +21,7 @@ export function FooterNav({ previous, next, className }: FooterNavProps) {
         {previous ? (
           <Button
             className={styles.navLink}
+            nativeButton={false}
             render={<Link href={previous.url} />}
             size="sm"
             variant="ghost"
@@ -34,6 +35,7 @@ export function FooterNav({ previous, next, className }: FooterNavProps) {
         {next ? (
           <Button
             className={styles.navLink}
+            nativeButton={false}
             render={<Link href={next.url} />}
             size="sm"
             variant="ghost"

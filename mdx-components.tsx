@@ -31,7 +31,6 @@ export const mdxComponents = {
   h4: (props: ComponentProps<"h4">) => <HeadingAnchor level={4} {...props} />,
   p: (props: ComponentProps<"p">) => <p style={{ color: "var(--foreground)" }} {...props} />,
   a: (props: ComponentProps<"a">) => (
-    // biome-ignore lint/nursery/useAnchorHref: href is provided via props in MDX
     <a
       style={{
         fontWeight: "500",
@@ -60,13 +59,11 @@ export const mdxComponents = {
   PropTable,
   GlobalsCSS,
 
-  // Installation tabs (CLI/Manual)
   InstallationTabs: (props: ComponentProps<typeof CodeTabs>) => <CodeTabs variant="installation" {...props} />,
   InstallationTabsList: CodeTabsList,
   InstallationTabsTrigger: CodeTabsTrigger,
   InstallationTabsContent: CodeTabsContent,
 
-  // Package manager tabs (npm/pnpm) - synced with PackageManagerProvider
   CodeBlockTabs: PackageManagerCodeTabs,
 
   Tab: ({ value, children, ...props }: TabProps) => (
