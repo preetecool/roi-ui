@@ -38,7 +38,7 @@ const buttonVariants = cva(
         ],
         outline: [
           "text-[color:var(--color-foreground)] shadow-[0_0_0_1px_oklch(from_var(--color-border)_l_c_h_/_0.7)]",
-          "hover:not-data-[disabled]:bg-[var(--mix-card-66-bg)]",
+          "hover:not-data-[disabled]:bg-[oklch(from_var(--color-accent)_l_c_h_/_0.85)]",
         ],
         link: [
           "bg-transparent p-0 text-[color:var(--color-muted-foreground)] no-underline",

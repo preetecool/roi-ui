@@ -71,26 +71,26 @@ function PopoverPopup({
       <Popover.Positioner
         align={align}
         alignOffset={alignOffset}
-        className="z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] data-[instant]:transition-none"
+        className="z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] transition-[top,left,right,bottom,transform] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-[instant]:transition-none"
         data-slot="popover-positioner"
         side={side}
         sideOffset={sideOffset}
       >
         <Popover.Popup
           className={cn(
-            "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-[var(--radius)] bg-popover bg-clip-padding text-popover-foreground shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-lg)] transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)] will-change-[transform,opacity] data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+            "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--popover)] bg-clip-padding text-popover-foreground shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-lg)] transition-[width,height,opacity,scale] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[width,height,transform,opacity] data-[ending-style]:scale-90 data-[starting-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
             className
           )}
           data-slot="popover-popup"
           {...props}
         >
           {arrow && (
-            <Popover.Arrow className="z-[1] flex data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=top]:bottom-[-8px] data-[side=right]:left-[-13px] data-[side=bottom]:rotate-0 data-[side=left]:rotate-90 data-[side=top]:rotate-180 data-[side=right]:-rotate-90">
+            <Popover.Arrow className="z-[1] flex transition-[left] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=top]:bottom-[-8px] data-[side=right]:left-[-13px] data-[side=bottom]:rotate-0 data-[side=left]:rotate-90 data-[side=top]:rotate-180 data-[side=right]:-rotate-90">
               <ArrowSvg />
             </Popover.Arrow>
           )}
           <Popover.Viewport
-            className="relative size-full max-h-[var(--available-height)] overflow-clip not-data-[transitioning]:overflow-y-auto px-[var(--viewport-inline-padding)] py-4 outline-none [--viewport-inline-padding:1rem] data-[instant]:transition-none [&[data-activation-direction~=left]_[data-current][data-starting-style]]:translate-x-[-50%] [&[data-activation-direction~=left]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:translate-x-[50%] [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:opacity-0 [&[data-activation-direction~=right]_[data-current][data-starting-style]]:translate-x-[50%] [&[data-activation-direction~=right]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:translate-x-[-50%] [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:opacity-0 [&_[data-current]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding)-2px)] [&_[data-current]]:translate-x-0 [&_[data-current]]:opacity-100 [&_[data-current]]:transition-[transform,opacity] [&_[data-current]]:duration-200 [&_[data-current]]:ease-out [&_[data-previous]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding)-2px)] [&_[data-previous]]:translate-x-0 [&_[data-previous]]:opacity-100 [&_[data-previous]]:transition-[transform,opacity] [&_[data-previous]]:duration-200 [&_[data-previous]]:ease-out"
+            className="relative size-full max-h-[var(--available-height)] overflow-clip not-data-[transitioning]:overflow-y-auto px-[var(--viewport-inline-padding)] py-4 outline-none [--viewport-inline-padding:1rem] data-[instant]:transition-none [&[data-activation-direction~=left]_[data-current][data-starting-style]]:translate-x-[-50%] [&[data-activation-direction~=left]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:translate-x-[50%] [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:opacity-0 [&[data-activation-direction~=right]_[data-current][data-starting-style]]:translate-x-[50%] [&[data-activation-direction~=right]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:translate-x-[-50%] [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:opacity-0 [&_[data-current]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding))] [&_[data-current]]:translate-x-0 [&_[data-current]]:opacity-100 [&_[data-current]]:[transition:transform_350ms_var(--ease-out-expo),opacity_175ms_var(--ease-out-expo)] [&_[data-previous]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding))] [&_[data-previous]]:translate-x-0 [&_[data-previous]]:opacity-100 [&_[data-previous]]:[transition:transform_350ms_var(--ease-out-expo),opacity_175ms_var(--ease-out-expo)]"
             data-slot="popover-viewport"
           >
             {children}
@@ -184,7 +184,7 @@ function PopoverContent({ className, style, ...props }: Popover.Popup.Props) {
       <PopoverPositioner sideOffset={8}>
         <Popover.Popup
           className={cn(
-            "!relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-popover bg-clip-padding px-4 py-2 text-popover-foreground",
+            "!relative box-border origin-[var(--transform-origin)] rounded-[var(--radius)] bg-[var(--popover)] bg-clip-padding px-4 py-2 text-popover-foreground",
             "transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)] will-change-[transform,_opacity]",
             "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-lg)]",
             "z-[1000]",
