@@ -129,7 +129,7 @@
   gap: 0.125rem;
   padding: 0.125rem;
   border-radius: calc(var(--radius) - 2px);
-  background-color: var(--muted);
+  background-color: var(--card);
 
   .root[data-orientation="vertical"] & {
     flex-direction: column;

@@ -485,6 +485,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   "card-login": dynamic(() =>
     import("@/registry/brook/blocks/card-login/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
+  "card-progress": dynamic(() =>
+    import("@/registry/brook/blocks/card-progress/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "card-task": dynamic(() =>
     import("@/registry/brook/blocks/card-task/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
@@ -965,6 +970,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "card-login-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/blocks/card-login/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "card-progress-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-progress/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

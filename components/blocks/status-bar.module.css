@@ -1,0 +1,30 @@
+.toolbar {
+  padding: 2px;
+}
+
+.statusButton {
+  gap: 6px;
+}
+
+.statusCircle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.statusButton.success .statusCircle {
+  background-color: var(--success);
+}
+
+.statusButton.warning .statusCircle {
+  background-color: var(--warning);
+}
+
+.statusButton.error .statusCircle {
+  background-color: var(--destructive);
+}
+
+.statusLabel {
+  user-select: none;
+}

@@ -6,7 +6,7 @@ import { highlightCode } from "@/lib/highlight-code";
 import { BlocksData } from "@/registry/__blocks__";
 import { Index } from "@/registry/__index__";
 import styles from "./page.module.css";
-import { BlockPreview } from "./preview";
+import { BlockPreview, CardProgressBlockViewer } from "./preview";
 
 type PageProps = {
   params: Promise<{ name: string }>;
@@ -106,6 +106,20 @@ async function BlockPageContent({ name }: { name: string }) {
 
   if (!blockData) {
     notFound();
+  }
+
+  if (name === "card-progress") {
+    return (
+      <CardProgressBlockViewer
+        blockViewerProps={{
+          name: blockData.name,
+          cssModulesFiles: blockData.cssModulesFiles,
+          tailwindFiles: blockData.tailwindFiles,
+          full: FULL_WIDTH_BLOCKS.includes(name),
+        }}
+        BlockViewerComponent={BlockViewer}
+      />
+    );
   }
 
   return (

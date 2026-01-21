@@ -1,0 +1,339 @@
+.card {
+  width: 100%;
+  max-width: 320px;
+}
+
+.card[data-slot="card"] {
+  padding: 16px;
+  background-color: oklch(from var(--card) l c h / 0.6);
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.5),
+    0 1px 3px 0 #0000000d,
+    0 1px 2px -1px #0000000d;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radius);
+  transition: background-color 200ms ease-out;
+  position: relative;
+}
+
+.pending {
+}
+.in_progress {
+}
+.complete {
+}
+.error {
+}
+.warning {
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.stepItem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 36px;
+  width: 1px;
+  height: calc(100% - 16px);
+  background-color: var(--border);
+  transition: background-color 200ms ease-out;
+  z-index: 0;
+}
+
+.stepItem.complete:not(:last-child)::after {
+  background-color: var(--foreground);
+}
+
+.pendingCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background-color: var(--card);
+  position: relative;
+  z-index: 1;
+}
+
+.spinnerCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--foreground);
+  background-color: var(--card);
+  animation:
+    spin 0.8s linear infinite,
+    fadeIn 150ms ease-out;
+  will-change: transform, opacity;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.spinnerToCheck {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  background-color: var(--foreground);
+  animation: circleSettle 200ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes circleSettle {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.checkIcon {
+  color: var(--background);
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: iconAppear 150ms cubic-bezier(0.165, 0.84, 0.44, 1) 50ms forwards;
+}
+
+@keyframes iconAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.clockCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--warning);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.clockIcon {
+  color: var(--warning-foreground);
+}
+
+.clockHand {
+  transform-origin: 12px 12px;
+  animation: clockRotate 2s linear infinite;
+}
+
+@keyframes clockRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--destructive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.errorIcon {
+  color: var(--destructive-foreground);
+}
+
+.stepItem.error .stepTitle {
+  color: var(--destructive);
+}
+
+.finalCheck {
+  background-color: var(--success, #22c55e);
+  animation: circleSettle 200ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+  min-height: 24px;
+}
+
+.stepTitle {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  transition: color 200ms ease;
+}
+
+.stepItem.complete .stepTitle {
+  color: oklch(from var(--foreground) l c h / 0.5);
+}
+
+.stepItem.error .stepTitle {
+  color: var(--destructive);
+}
+
+.stepItem.error .stepDescription {
+  color: var(--destructive-foreground);
+}
+
+.stepItem.warning .stepTitle {
+  color: var(--warning);
+}
+
+.stepTitleShimmer {
+  background: linear-gradient(
+    90deg,
+    var(--muted-foreground) 0%,
+    var(--muted-foreground) 40%,
+    color-mix(in oklch, var(--foreground) 50%, var(--muted-foreground)) 50%,
+    var(--muted-foreground) 60%,
+    var(--muted-foreground) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.descriptionWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 250ms cubic-bezier(0.165, 0.84, 0.44, 1),
+    opacity 200ms ease-out;
+}
+
+.descriptionWrapper.descriptionVisible {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.stepDescription {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinnerCircle {
+    animation: none;
+  }
+
+  .clockHand {
+    animation: none;
+  }
+
+  .checkIcon {
+    animation: none;
+    opacity: 1;
+  }
+
+  .spinnerToCheck {
+    animation: none;
+  }
+
+  .finalCheck {
+    animation: none;
+  }
+
+  .descriptionWrapper {
+    transition: none;
+  }
+
+  .stepItem {
+    transition: none;
+  }
+
+  .stepTitle {
+    transition: none;
+  }
+
+  .stepTitleShimmer {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: var(--muted-foreground);
+  }
+}

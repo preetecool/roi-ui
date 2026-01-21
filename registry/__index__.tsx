@@ -849,6 +849,16 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/blocks/card-login/page",
   },
+  "card-progress": {
+    name: "card-progress",
+    type: "block",
+    files: [
+      "registry/brook/blocks/card-progress/page.tsx",
+      "registry/brook/blocks/card-progress/components/progress-card.tsx",
+      "registry/brook/blocks/card-progress/components/progress-card.module.css",
+    ],
+    path: "@/registry/brook/blocks/card-progress/page",
+  },
   "card-task": {
     name: "card-task",
     type: "block",
@@ -1753,6 +1763,15 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/tailwind/blocks/card-login/components/card-login.tsx",
     ],
     path: "@/registry/brook/tailwind/blocks/card-login/page",
+  },
+  "card-progress-tailwind": {
+    name: "card-progress-tailwind",
+    type: "block",
+    files: [
+      "registry/brook/tailwind/blocks/card-progress/page.tsx",
+      "registry/brook/tailwind/blocks/card-progress/components/progress-card.tsx",
+    ],
+    path: "@/registry/brook/tailwind/blocks/card-progress/page",
   },
   "card-task-tailwind": {
     name: "card-task-tailwind",

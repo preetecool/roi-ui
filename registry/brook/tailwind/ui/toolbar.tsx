@@ -81,7 +81,7 @@ function ToolbarGroup({ className, ...props }: Toolbar.Group.Props) {
     <Toolbar.Group
       className={cn(
         "flex items-center gap-0.5 p-0.5",
-        "rounded-[calc(var(--radius)-2px)] bg-muted",
+        "rounded-[calc(var(--radius)-2px)] bg-card",
         "max-sm:gap-0.75 max-sm:p-0.75",
         className
       )}

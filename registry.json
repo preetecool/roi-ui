@@ -1077,6 +1077,30 @@
       ]
     },
     {
+      "name": "card-progress",
+      "type": "registry:item",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/button.json",
+        "https://roiui.com/r/card.json",
+        "https://roiui.com/r/progress.json"
+      ],
+      "title": "Progress Card",
+      "description": "A file upload progress card with multiple file tracking.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/card-progress/components/progress-card.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-progress/progress-card.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/card-progress/components/progress-card.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-progress/progress-card.module.css"
+        }
+      ]
+    },
+    {
       "name": "pricing-section",
       "type": "registry:item",
       "dependencies": ["lucide-react"],
@@ -1833,6 +1857,25 @@
           "path": "registry/brook/tailwind/blocks/ai-chat/components/ai-chat.tsx",
           "type": "registry:file",
           "target": "~/components/blocks/ai-chat/ai-chat.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-progress-tailwind",
+      "type": "registry:item",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://roiui.com/r/button-tailwind.json",
+        "https://roiui.com/r/card-tailwind.json",
+        "https://roiui.com/r/progress-tailwind.json"
+      ],
+      "title": "Progress Card (Tailwind)",
+      "description": "A file upload progress card with multiple file tracking.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/card-progress/components/progress-card.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/card-progress/progress-card.tsx"
         }
       ]
     },
