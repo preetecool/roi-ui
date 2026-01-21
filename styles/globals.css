@@ -319,3 +319,80 @@
   --input: oklch(0.18 0.007 270);
   --ring: oklch(0.5 0.007 270);
 }
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-scale-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-bounce {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes spinner-fill {
+  from {
+    background-color: var(--card);
+    border-color: var(--border);
+  }
+  to {
+    background-color: var(--foreground);
+    border-color: var(--foreground);
+  }
+}
+
+@keyframes icon-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes circle-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -18,7 +18,6 @@ const LUCKY_LINKS = [
   { path: "/blocks/card-traffic" },
   { path: "/blocks/expandable-card-carousel" },
   { path: "/blocks/kanban-board" },
-  { path: "/blocks/profile-menu" },
   { path: "/docs/ui/tabs", anchor: "#animated" },
   { path: "/docs/ui/copy-button" },
   { path: "/docs/ui/accordion" },

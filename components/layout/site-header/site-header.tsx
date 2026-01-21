@@ -56,7 +56,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
                 variant="ghost"
               >
                 Blocks
-                <span className={styles.newBadge}>New</span>
+                <span className={styles.newDot} />
               </Button>
             </div>
           </nav>

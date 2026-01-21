@@ -141,6 +141,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   "button-ghost": dynamic(() =>
     import("@/registry/brook/examples/button-ghost").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
+  "button-icon": dynamic(() =>
+    import("@/registry/brook/examples/button-icon").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
+  ),
   "button-loading": dynamic(() =>
     import("@/registry/brook/examples/button-loading/button-loading").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -311,6 +314,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "dropdown-menu-profile": dynamic(() =>
+    import("@/registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "dropdown-menu-submenu": dynamic(() =>
     import("@/registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -477,6 +485,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   "card-login": dynamic(() =>
     import("@/registry/brook/blocks/card-login/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
+  "card-progress": dynamic(() =>
+    import("@/registry/brook/blocks/card-progress/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "card-task": dynamic(() =>
     import("@/registry/brook/blocks/card-task/page").then((mod) => ({ default: mod.default || Object.values(mod)[0] }))
   ),
@@ -497,11 +510,6 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "pricing-section": dynamic(() =>
     import("@/registry/brook/blocks/pricing-section/page").then((mod) => ({
-      default: mod.default || Object.values(mod)[0],
-    }))
-  ),
-  "profile-menu": dynamic(() =>
-    import("@/registry/brook/blocks/profile-menu/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -627,6 +635,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "button-ghost-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/button-ghost").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "button-icon-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-icon").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -772,6 +785,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "dropdown-menu-motion-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/dropdown-menu-motion").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "dropdown-menu-profile-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/dropdown-menu-profile").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
@@ -955,6 +973,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "card-progress-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/blocks/card-progress/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "card-task-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/blocks/card-task/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -977,11 +1000,6 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "pricing-section-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/blocks/pricing-section/page").then((mod) => ({
-      default: mod.default || Object.values(mod)[0],
-    }))
-  ),
-  "profile-menu-tailwind": dynamic(() =>
-    import("@/registry/brook/tailwind/blocks/profile-menu/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

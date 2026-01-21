@@ -60,15 +60,11 @@
   transition: all 200ms var(--ease-out-quad);
 }
 
-.newBadge {
-  font-size: 0.625rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-  padding: 0.125rem 0.375rem;
-  border-radius: 9999px;
-  background-color: oklch(from var(--info) l c h / 0.15);
-  color: var(--info);
+.newDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--info);
   margin-left: 0.375rem;
 }
 

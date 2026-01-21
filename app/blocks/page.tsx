@@ -14,8 +14,10 @@ const BLOCK_TITLES: Record<string, string> = {
   "expandable-card-carousel": "Expandable Card Carousel",
   "kanban-board": "Kanban Board",
   "pricing-section": "Pricing Section",
-  "profile-menu": "Profile Menu",
+  "card-progress": "Progress Card",
 };
+
+const NEW_BLOCKS = ["card-progress"];
 
 function getBlocks() {
   return Object.entries(Index)
@@ -39,6 +41,7 @@ export default function BlocksPage() {
       <div className={styles.grid}>
         {blocks.map((block) => {
           const SkeletonComponent = blockSkeletons[block.name];
+          const isNew = NEW_BLOCKS.includes(block.name);
           return (
             <Link className={styles.card} href={`/blocks/${block.name}`} key={block.name}>
               {SkeletonComponent ? (
@@ -47,7 +50,10 @@ export default function BlocksPage() {
                 </div>
               ) : null}
               <div className={styles.cardInfo}>
-                <div className={styles.cardTitle}>{block.title}</div>
+                <div className={styles.cardTitle}>
+                  {block.title}
+                  {isNew ? <span className={styles.newBadge}>New</span> : null}
+                </div>
               </div>
             </Link>
           );

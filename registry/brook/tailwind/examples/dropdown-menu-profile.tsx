@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/brook/tailwind/ui/dropdown-menu";
 
-export function ProfileMenu() {
+export default function DropdownMenuProfile() {
   const [selectedOrg, setSelectedOrg] = useState("acme");
 
   return (
