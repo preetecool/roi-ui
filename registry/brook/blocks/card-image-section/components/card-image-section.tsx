@@ -1,4 +1,4 @@
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from "@/registry/brook/ui/card/card";
 import styles from "./card-image-section.module.css";
 
@@ -43,11 +43,11 @@ export function CardImageSection({ data }: CardImageSectionProps) {
               <Button
                 className={styles.linkButton}
                 render={<a href={card.href ?? "#"} />}
-                showArrow
                 size="sm"
                 variant="link"
               >
                 Learn More
+                <ArrowPointer />
               </Button>
             </CardFooter>
           </Card>

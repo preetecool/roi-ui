@@ -1,4 +1,4 @@
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from "@/registry/brook/ui/card/card";
 import styles from "./card-image-demo.module.css";
 
@@ -20,8 +20,9 @@ export function CardImageDemo() {
       </CardContent>
 
       <CardFooter>
-        <Button showArrow size="sm" variant="outline">
+        <Button size="sm" variant="outline">
           Learn More
+          <ArrowPointer />
         </Button>
       </CardFooter>
     </Card>

@@ -1,5 +1,10 @@
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 
 export default function ButtonWithArrow() {
-  return <Button showArrow>With Arrow</Button>;
+  return (
+    <Button>
+      With Arrow
+      <ArrowPointer />
+    </Button>
+  );
 }

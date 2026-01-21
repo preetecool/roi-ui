@@ -1,4 +1,4 @@
-import { Button } from "@/registry/brook/tailwind/ui/button";
+import { ArrowPointer, Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Card,
   CardContent,
@@ -25,8 +25,9 @@ export function CardImageDemo() {
       </CardContent>
 
       <CardFooter>
-        <Button showArrow size="sm" variant="outline">
+        <Button size="sm" variant="outline">
           Learn More
+          <ArrowPointer />
         </Button>
       </CardFooter>
     </Card>

@@ -643,6 +643,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "button-loading-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/button-loading").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "button-outline-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/button-outline").then((mod) => ({
       default: mod.default || Object.values(mod)[0],

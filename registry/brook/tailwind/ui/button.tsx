@@ -1,19 +1,18 @@
 "use client";
 
-import { Button } from "@base-ui/react/button";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils-tailwind";
 
 const buttonVariants = cva(
   [
     "group inline-flex items-center justify-center rounded-[var(--radius)] font-[450]",
     "transition-[transform,background-color,box-shadow] duration-200 ease-[var(--ease-out-quad)] will-change-transform",
-    "relative cursor-pointer overflow-hidden border border-transparent",
+    "relative cursor-pointer overflow-hidden",
     "leading-[1.2] tracking-[-0.014em]",
-    "",
     "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",
     "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
-    "[&.loading]:cursor-not-allowed [&.loading]:opacity-70",
   ],
   {
     variants: {
@@ -22,7 +21,7 @@ const buttonVariants = cva(
           "bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)]",
           "shadow-[0_0.5px_0.5px_rgba(0,0,0,0.1)]",
           "hover:not-data-[disabled]:bg-[color:oklch(from_var(--color-primary)_l_c_h_/_0.8)]",
-          "active:not-data-[disabled]:scale-[0.97] active:[&.loading]:scale-100",
+          "active:not-data-[disabled]:scale-[0.97]",
         ],
         secondary: [
           "bg-[color:var(--color-secondary)] text-[color:var(--color-secondary-foreground)]",
@@ -38,7 +37,7 @@ const buttonVariants = cva(
           "data-[popup-open]:bg-[color:oklch(from_var(--color-accent)_l_c_h_/_0.7)]",
         ],
         outline: [
-          "border-[color:oklch(from_var(--color-border)_l_c_h_/_0.7)] bg-[var(--mix-card-50-bg)] text-[color:var(--color-foreground)]",
+          "text-[color:var(--color-foreground)] shadow-[0_0_0_1px_oklch(from_var(--color-border)_l_c_h_/_0.7)]",
           "hover:not-data-[disabled]:bg-[var(--mix-card-66-bg)]",
         ],
         link: [
@@ -68,7 +67,7 @@ const buttonVariants = cva(
 
 function Spinner() {
   return (
-    <svg className="mr-2 animate-[spin_1s_linear_infinite]" fill="none" height="16" viewBox="0 0 24 24" width="16">
+    <svg className="mr-2 animate-[spinner_1s_linear_infinite]" fill="none" height="16" viewBox="0 0 24 24" width="16">
       <circle
         cx="12"
         cy="12"
@@ -78,13 +77,10 @@ function Spinner() {
         strokeDashoffset="31.416"
         strokeLinecap="round"
         strokeWidth="2"
-        style={{
-          animation: "spin 1s linear infinite",
-        }}
       />
       <style>
         {`
-          @keyframes spin {
+          @keyframes spinner {
             from {
               transform: rotate(0deg);
               stroke-dashoffset: 31.416;
@@ -100,27 +96,9 @@ function Spinner() {
   );
 }
 
-/**
- * ArrowPointer component for displaying directional arrows within buttons.
- *
- * @param pointLeft - When true, arrow points left instead of right
- * @param pointExternal - When true, applies external link arrow styling (diagonal orientation)
- *
- * @example
- * ```tsx
- * // Right-pointing arrow (default)
- * <ArrowPointer />
- *
- * // Left-pointing arrow
- * <ArrowPointer pointLeft />
- *
- * // External link arrow
- * <ArrowPointer pointExternal />
- * ```
- */
 function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?: boolean; pointExternal?: boolean }) {
   const arrowClasses = cn(
-    "-mr-2 relative top-0 ml-2 h-2.5 w-3 overflow-visible",
+    "-mr-2 relative top-[0.5px] ml-2 h-2.5 w-3 overflow-visible",
     "transition-all duration-200 ease-[var(--ease-in-out-cubic)]",
     pointLeft && "-ml-2 mr-2",
     pointExternal && "group-hover:-rotate-45 origin-[8%]"
@@ -128,7 +106,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
 
   const pointClasses = "transition-transform duration-200 ease-[var(--ease-in-out-cubic)] group-hover:translate-x-0.5";
   const shaftClasses =
-    "opacity-0 -translate-x-px transition-[transform,opacity] duration-200 ease-[var(--ease-in-out-cubic)] group-hover:opacity-100 group-hover:-translate-x-0.5";
+    "opacity-0 -translate-x-[0.5px] transition duration-200 ease-[var(--ease-in-out-cubic)] group-hover:opacity-100 group-hover:-translate-x-0.5";
 
   const pointLeftClasses = "group-hover:-translate-x-0.5";
   const shaftLeftClasses = "group-hover:opacity-100 group-hover:translate-x-px";
@@ -159,56 +137,8 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
   );
 }
 
-interface ButtonRootProps
-  extends Omit<React.ComponentProps<"button">, "className" | "style">,
-    VariantProps<typeof buttonVariants> {
-  className?: string | ((state: Button.State) => string | undefined);
-  style?: React.CSSProperties | ((state: Button.State) => React.CSSProperties | undefined);
-  render?: React.ReactElement | ((props: React.HTMLAttributes<HTMLElement>, state: Button.State) => React.ReactElement);
-  focusableWhenDisabled?: boolean;
-  nativeButton?: boolean;
-  showArrow?: boolean;
-  pointLeft?: boolean;
-  pointExternal?: boolean;
-  loading?: boolean;
+function Button({ className, variant, size, ...props }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  return <ButtonPrimitive className={cn(buttonVariants({ variant, size, className }))} data-slot="button" {...props} />;
 }
 
-function ButtonRoot({
-  className,
-  variant,
-  size,
-  showArrow = false,
-  pointLeft = false,
-  pointExternal = false,
-  loading = false,
-  children,
-  render,
-  nativeButton,
-  ...props
-}: ButtonRootProps) {
-  const decoratedChildren = (
-    <>
-      {loading ? <Spinner /> : null}
-      {!loading && showArrow && pointLeft && <ArrowPointer pointExternal={pointExternal} pointLeft />}
-      {children}
-      {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
-    </>
-  );
-
-  // Auto-detect nativeButton based on render prop if not explicitly set
-
-  return (
-    <Button
-      className={cn(buttonVariants({ variant, size }), loading ? "loading" : null, className)}
-      data-slot="button"
-      disabled={props.disabled || loading}
-      focusableWhenDisabled={loading}
-      render={render}
-      {...props}
-    >
-      {decoratedChildren}
-    </Button>
-  );
-}
-
-export { ButtonRoot as Button, ArrowPointer };
+export { Button, buttonVariants, Spinner, ArrowPointer };
