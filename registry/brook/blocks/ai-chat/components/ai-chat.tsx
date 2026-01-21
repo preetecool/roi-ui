@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUp, AudioLines, Paperclip } from "lucide-react";
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardFooter } from "@/registry/brook/ui/card/card";
 import { Field, FieldControl } from "@/registry/brook/ui/field/field";
@@ -29,12 +29,31 @@ const aiModes = [
   { value: "teach", label: "Teach" },
 ];
 
+type FormState =
+  | { status: "idle" }
+  | { status: "success"; data: { message: string; mode: string } }
+  | { status: "error"; error: string; submittedData: { message: string; mode: string } };
+
+const initialFormState: FormState = { status: "idle" };
+
+async function chatAction(_prevState: FormState, formData: FormData): Promise<FormState> {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const message = formData.get("message") as string;
+  const mode = formData.get("mode") as string;
+
+  return { status: "success", data: { message, mode } };
+}
+
 export function AiChat() {
-  const [inputValue, setInputValue] = useState("");
-  const [selectedItem, setSelectedItem] = useState<string>(aiModes[0].value);
+  const [formState, submitAction, isPending] = useActionState(chatAction, initialFormState);
+  const [hasContent, setHasContent] = useState(false);
+
+  const defaultMessage = formState.status === "error" ? formState.submittedData.message : "";
+  const defaultMode = formState.status === "error" ? formState.submittedData.mode : aiModes[0].value;
 
   return (
-    <Form className={styles.form}>
+    <Form action={submitAction} className={styles.form}>
       <Card className={styles.aiChatCard}>
         <CardContent>
           <Field className={styles.field}>
@@ -43,8 +62,10 @@ export function AiChat() {
               render={
                 <textarea
                   className={styles.textarea}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  value={inputValue}
+                  defaultValue={defaultMessage}
+                  disabled={isPending}
+                  name="message"
+                  onChange={(e) => setHasContent(e.target.value.trim().length > 0)}
                 />
               }
             />
@@ -62,12 +83,7 @@ export function AiChat() {
           </Button>
 
           <div className={styles.footerActions}>
-            <Select
-              defaultValue={aiModes[0].value}
-              items={aiModes}
-              onValueChange={(value) => setSelectedItem(value as string)}
-              value={selectedItem}
-            >
+            <Select defaultValue={defaultMode} items={aiModes} name="mode">
               <SelectTrigger
                 className={styles.selectTrigger}
                 render={<Button className={styles.selectButton} size="sm" variant="ghost" />}
@@ -99,13 +115,14 @@ export function AiChat() {
             </Select>
 
             <Button
-              aria-label={inputValue.trim() ? "Send message" : "Start voice input"}
+              aria-label={hasContent ? "Send message" : "Start voice input"}
               className={styles.submitButton}
+              disabled={isPending}
               size="icon"
               type="submit"
               variant="ghost"
             >
-              {inputValue.trim() ? (
+              {hasContent ? (
                 <ArrowUp className={styles.submitIcon} size={16} />
               ) : (
                 <AudioLines className={styles.submitIcon} size={16} />

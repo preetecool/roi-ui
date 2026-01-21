@@ -18,9 +18,11 @@ export function ComponentsGrid() {
               }
               return (
                 <li key={component.url}>
-                  <Button render={<Link href={component.url} />} variant="link">
-                    {component.name}
-                  </Button>
+                  <Button
+                    nativeButton={false}
+                    render={<Link href={component.url}>{component.name}</Link>}
+                    variant="link"
+                  />
                 </li>
               );
             })}
