@@ -41,7 +41,7 @@ function PopoverPositioner({ className, ...props }: Popover.Positioner.Props) {
   return (
     <Popover.Positioner
       className={cn(
-        "z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] transition-[top,left,right,bottom,transform] duration-200 ease-out data-[instant]:transition-none",
+        "z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] data-[instant]:transition-none",
         className
       )}
       data-slot="popover-positioner"
@@ -71,21 +71,21 @@ function PopoverPopup({
       <Popover.Positioner
         align={align}
         alignOffset={alignOffset}
-        className="z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] transition-[top,left,right,bottom,transform] duration-200 ease-out data-[instant]:transition-none"
+        className="z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] data-[instant]:transition-none"
         data-slot="popover-positioner"
         side={side}
         sideOffset={sideOffset}
       >
         <Popover.Popup
           className={cn(
-            "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-[var(--radius)] bg-popover bg-clip-padding text-popover-foreground shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-lg)] transition-[width,height,transform,opacity] duration-250 ease-[var(--ease-out-expo)] will-change-[transform,_opacity] data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+            "relative flex h-[var(--popup-height,auto)] w-[var(--popup-width,auto)] origin-[var(--transform-origin)] rounded-[var(--radius)] bg-popover bg-clip-padding text-popover-foreground shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),var(--shadow-lg)] transition-[transform,opacity] duration-250 ease-[var(--ease-out-expo)] will-change-[transform,opacity] data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
             className
           )}
           data-slot="popover-popup"
           {...props}
         >
           {arrow && (
-            <Popover.Arrow className="data-[side=right]:-rotate-90 z-[1] flex transition-[left] duration-200 ease-out data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=top]:bottom-[-8px] data-[side=right]:left-[-13px] data-[side=bottom]:rotate-0 data-[side=left]:rotate-90 data-[side=top]:rotate-180">
+            <Popover.Arrow className="z-[1] flex data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=top]:bottom-[-8px] data-[side=right]:left-[-13px] data-[side=bottom]:rotate-0 data-[side=left]:rotate-90 data-[side=top]:rotate-180 data-[side=right]:-rotate-90">
               <ArrowSvg />
             </Popover.Arrow>
           )}
@@ -124,7 +124,7 @@ function PopoverArrow({ className, ...props }: Popover.Arrow.Props) {
   return (
     <Popover.Arrow
       className={cn(
-        "z-[1] flex transition-[left] duration-200 ease-out",
+        "z-[1] flex",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
         "data-[side=bottom]:top-[-8px] data-[side=bottom]:rotate-0",
         "data-[side=left]:right-[-13px] data-[side=left]:rotate-90",

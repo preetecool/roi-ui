@@ -23,9 +23,6 @@
   width: var(--positioner-width);
   height: var(--positioner-height);
   max-width: var(--available-width);
-  transition-property: top, left, right, bottom, transform;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
 
   &[data-instant] {
     transition: none;
@@ -49,8 +46,6 @@
     0 0 0 0.5px oklch(from var(--border) l c h / 0.8),
     var(--shadow-lg);
   transition:
-    width 250ms var(--ease-out-expo),
-    height 250ms var(--ease-out-expo),
     transform 250ms var(--ease-out-expo),
     opacity 250ms var(--ease-out-expo);
 
@@ -134,7 +129,6 @@
 
 .arrow {
   display: flex;
-  transition: left 200ms ease-out;
 
   &[data-side="top"] {
     bottom: -8px;
