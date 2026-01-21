@@ -67,7 +67,7 @@
   --foreground: oklch(0.2365 0.0078 17.71);
   --card: oklch(0.978 0 0);
   --popover-foreground: oklch(0.18 0 0);
-  --popover: oklch(0.9959 0 106);
+  --popover: oklch(0.985 0 106);
   --dialog-overlay: oklch(0 0 0 / 0.4);
   --dialog-z: 100;
 
@@ -283,7 +283,7 @@
   --background: oklch(0.98 0.005 270);
   --foreground: oklch(0.18 0.005 270);
   --card: oklch(0.96 0.005 270);
-  --popover: oklch(0.97 0.005 270);
+  --popover: oklch(0.965 0.005 270);
   --popover-foreground: oklch(0.18 0.005 270);
   --primary: oklch(0.22 0.005 270);
   --primary-foreground: oklch(0.98 0.005 270);
