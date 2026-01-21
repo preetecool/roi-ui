@@ -26,7 +26,7 @@ export default function PopoverDemo() {
         />
         <PopoverPortal>
           <PopoverPositioner align="center" side="top" sideOffset={8}>
-            <PopoverPopup className="w-80">
+            <PopoverPopup className="w-[273px]">
               <PopoverArrow />
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">

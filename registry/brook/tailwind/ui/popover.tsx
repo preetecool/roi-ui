@@ -85,12 +85,12 @@ function PopoverPopup({
           {...props}
         >
           {arrow && (
-            <Popover.Arrow className="z-[1] flex transition-[left] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=top]:bottom-[-8px] data-[side=right]:left-[-13px] data-[side=bottom]:rotate-0 data-[side=left]:rotate-90 data-[side=top]:rotate-180 data-[side=right]:-rotate-90">
+            <Popover.Arrow className="z-[1] flex items-center justify-center data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=top]:bottom-[-8px] data-[side=right]:left-[-13px] data-[side=bottom]:rotate-0 data-[side=left]:rotate-90 data-[side=top]:rotate-180 data-[side=right]:-rotate-90">
               <ArrowSvg />
             </Popover.Arrow>
           )}
           <Popover.Viewport
-            className="relative size-full max-h-[var(--available-height)] overflow-clip not-data-[transitioning]:overflow-y-auto px-[var(--viewport-inline-padding)] py-4 outline-none [--viewport-inline-padding:1rem] data-[instant]:transition-none [&[data-activation-direction~=left]_[data-current][data-starting-style]]:translate-x-[-50%] [&[data-activation-direction~=left]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:translate-x-[50%] [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:opacity-0 [&[data-activation-direction~=right]_[data-current][data-starting-style]]:translate-x-[50%] [&[data-activation-direction~=right]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:translate-x-[-50%] [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:opacity-0 [&_[data-current]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding))] [&_[data-current]]:translate-x-0 [&_[data-current]]:opacity-100 [&_[data-current]]:[transition:transform_350ms_var(--ease-out-expo),opacity_175ms_var(--ease-out-expo)] [&_[data-previous]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding))] [&_[data-previous]]:translate-x-0 [&_[data-previous]]:opacity-100 [&_[data-previous]]:[transition:transform_350ms_var(--ease-out-expo),opacity_175ms_var(--ease-out-expo)]"
+            className="relative size-full max-h-[var(--available-height)] overflow-clip not-data-[transitioning]:overflow-y-auto px-[var(--viewport-inline-padding)] py-4 outline-none [--viewport-inline-padding:1rem] data-[instant]:transition-none [&[data-activation-direction~=left]_[data-current][data-starting-style]]:translate-x-[50%] [&[data-activation-direction~=left]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:translate-x-[-50%] [&[data-activation-direction~=left]_[data-previous][data-ending-style]]:opacity-0 [&[data-activation-direction~=right]_[data-current][data-starting-style]]:translate-x-[-50%] [&[data-activation-direction~=right]_[data-current][data-starting-style]]:opacity-0 [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:translate-x-[50%] [&[data-activation-direction~=right]_[data-previous][data-ending-style]]:opacity-0 [&_[data-current]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding))] [&_[data-current]]:translate-x-0 [&_[data-current]]:opacity-100 [&_[data-current]]:[transition:transform_350ms_var(--ease-out-expo),opacity_175ms_var(--ease-out-expo)] [&_[data-previous]]:w-[calc(var(--popup-width)-2*var(--viewport-inline-padding))] [&_[data-previous]]:translate-x-0 [&_[data-previous]]:opacity-100 [&_[data-previous]]:[transition:transform_350ms_var(--ease-out-expo),opacity_175ms_var(--ease-out-expo)]"
             data-slot="popover-viewport"
           >
             {children}
@@ -124,7 +124,7 @@ function PopoverArrow({ className, ...props }: Popover.Arrow.Props) {
   return (
     <Popover.Arrow
       className={cn(
-        "z-[1] flex",
+        "z-[1] flex items-center justify-center",
         "data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180",
         "data-[side=bottom]:top-[-8px] data-[side=bottom]:rotate-0",
         "data-[side=left]:right-[-13px] data-[side=left]:rotate-90",
