@@ -66,7 +66,7 @@ type CardProgressBlockViewerProps = {
 export function CardProgressBlockViewer({ blockViewerProps, BlockViewerComponent }: CardProgressBlockViewerProps) {
   const [steps, setSteps] = useState<Step[]>(INITIAL_STEPS);
   const [isComplete, setIsComplete] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout>(null);
 
   const allComplete = steps.every((s) => s.status === "complete");
 
@@ -98,7 +98,9 @@ export function CardProgressBlockViewer({ blockViewerProps, BlockViewerComponent
     }
 
     timeoutRef.current = setTimeout(advanceSteps, STEP_DELAY);
-    return () => clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, [allComplete, advanceSteps, steps]);
 
   useEffect(() => {
@@ -107,7 +109,9 @@ export function CardProgressBlockViewer({ blockViewerProps, BlockViewerComponent
         setSteps(INITIAL_STEPS);
         setIsComplete(false);
       }, RESET_DELAY);
-      return () => clearTimeout(timeoutRef.current);
+      return () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      };
     }
   }, [isComplete]);
 

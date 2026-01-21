@@ -16,7 +16,7 @@ const RESET_DELAY = 3000;
 export default function Page() {
   const [steps, setSteps] = useState<Step[]>(INITIAL_STEPS);
   const [isComplete, setIsComplete] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout>(null);
 
   const allComplete = steps.every((s) => s.status === "complete");
 
@@ -48,7 +48,9 @@ export default function Page() {
     }
 
     timeoutRef.current = setTimeout(advanceSteps, STEP_DELAY);
-    return () => clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, [allComplete, advanceSteps, steps]);
 
   useEffect(() => {
@@ -57,7 +59,9 @@ export default function Page() {
         setSteps(INITIAL_STEPS);
         setIsComplete(false);
       }, RESET_DELAY);
-      return () => clearTimeout(timeoutRef.current);
+      return () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      };
     }
   }, [isComplete]);
 
