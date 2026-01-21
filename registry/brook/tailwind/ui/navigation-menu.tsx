@@ -12,7 +12,7 @@ function NavigationMenuRoot({ className, ...props }: NavigationMenu.Root.Props) 
   );
 }
 
-function NavigationMenuList({ className, ...props }: NavigationMenu.List.Props) {
+function NavigationMenuList({ className, ...props }: React.ComponentPropsWithRef<typeof NavigationMenu.List>) {
   return (
     <NavigationMenu.List
       className={cn("m-0 flex list-none justify-center rounded-lg p-1", className)}
@@ -22,7 +22,7 @@ function NavigationMenuList({ className, ...props }: NavigationMenu.List.Props) 
   );
 }
 
-function NavigationMenuItem({ className, ...props }: NavigationMenu.Item.Props) {
+function NavigationMenuItem({ className, ...props }: React.ComponentPropsWithRef<typeof NavigationMenu.Item>) {
   return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 

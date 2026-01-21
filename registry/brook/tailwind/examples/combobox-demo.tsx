@@ -60,7 +60,7 @@ export default function ComboboxDemo() {
           itemToStringLabel={(item) => item?.name || ""}
           itemToStringValue={(item) => item?.code || ""}
         >
-          <div className="relative w-full [&:hover_[data-slot=combobox-trigger]]:opacity-50" ref={anchorRef}>
+          <div className="relative w-full" ref={anchorRef}>
             <ComboboxInput id="cb-input" placeholder="Search countries..." />
             <ComboboxTrigger />
           </div>

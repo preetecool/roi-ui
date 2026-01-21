@@ -58,7 +58,7 @@ export default function PopoverAnimated() {
       <PopoverTrigger
         handle={popoverHandle}
         payload={ProfileContent}
-        render={<Button className={styles.iconButton} variant="outline" />}
+        render={<Button className={styles.iconButton} size="sm" variant="outline" />}
       >
         <User aria-label="Profile" size={16} />
       </PopoverTrigger>

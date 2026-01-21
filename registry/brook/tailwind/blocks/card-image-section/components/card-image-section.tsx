@@ -1,4 +1,4 @@
-import { Button } from "@/registry/brook/tailwind/ui/button";
+import { ArrowPointer, Button } from "@/registry/brook/tailwind/ui/button";
 import {
   Card,
   CardContent,
@@ -55,11 +55,11 @@ export function CardImageSection({ data }: CardImageSectionProps) {
               <Button
                 className="pl-0"
                 render={<a href={card.href ?? "#"} />}
-                showArrow
                 size="sm"
                 variant="link"
               >
                 Learn More
+                <ArrowPointer />
               </Button>
             </CardFooter>
           </Card>

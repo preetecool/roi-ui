@@ -7,11 +7,11 @@ function NavigationMenuRoot({ className, ...props }: NavigationMenu.Root.Props) 
   return <NavigationMenu.Root className={cn(styles.root, className)} data-slot="navigationmenu-root" {...props} />;
 }
 
-function NavigationMenuList({ className, ...props }: NavigationMenu.List.Props) {
+function NavigationMenuList({ className, ...props }: React.ComponentPropsWithRef<typeof NavigationMenu.List>) {
   return <NavigationMenu.List className={cn(styles.list, className)} data-slot="navigationmenu-list" {...props} />;
 }
 
-function NavigationMenuItem({ className, ...props }: NavigationMenu.Item.Props) {
+function NavigationMenuItem({ className, ...props }: React.ComponentPropsWithRef<typeof NavigationMenu.Item>) {
   return <NavigationMenu.Item className={cn(className)} {...props} />;
 }
 

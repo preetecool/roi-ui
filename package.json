@@ -15,7 +15,7 @@
     "registry:sync-and-index": "pnpm registry:sync && pnpm registry:index"
   },
   "dependencies": {
-    "@base-ui/react": "1.0.0",
+    "@base-ui/react": "1.1.0",
     "@base-ui/utils": "^0.2.3",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",

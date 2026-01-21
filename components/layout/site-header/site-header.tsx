@@ -33,6 +33,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
               <Button
                 aria-label="Navigate to /docs page"
                 className={styles.navLink}
+                nativeButton={false}
                 render={<Link href="/docs" />}
                 size="sm"
                 variant="ghost"
@@ -42,6 +43,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
               <Button
                 aria-label="Navigate to /components page"
                 className={styles.navLink}
+                nativeButton={false}
                 render={<Link href="/docs/components" />}
                 size="sm"
                 variant="ghost"
@@ -51,6 +53,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
               <Button
                 aria-label="Navigate to /blocks page"
                 className={styles.navLink}
+                nativeButton={false}
                 render={<Link href="/blocks" />}
                 size="sm"
                 variant="ghost"
@@ -73,6 +76,7 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
             <Button
               aria-label="View source on GitHub"
               className={`${styles.githubLink} ${styles.desktopOnly}`}
+              nativeButton={false}
               render={<Link href="https://github.com/preetecool/roi-ui" rel="noopener noreferrer" target="_blank" />}
               size="icon"
               variant="ghost"

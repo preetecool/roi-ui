@@ -18,7 +18,6 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
       className={cn(
         "-translate-y-1/2 absolute top-1/2 right-2",
         "flex cursor-pointer items-center justify-center border-none bg-transparent p-1",
-        "opacity-20",
         "focus-visible:outline-none",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
         className
@@ -27,7 +26,7 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
       {...props}
     >
       {children}
-      <ChevronsUpDown className="h-4 w-4 flex-shrink-0" size={16} />
+      <ChevronsUpDown className="h-4 w-4 flex-shrink-0 text-muted-foreground transition-none" size={16} />
     </Combobox.Trigger>
   );
 }
@@ -228,8 +227,9 @@ function ComboboxChips({ className, ref, ...props }: Combobox.Chips.Props & { re
     <Combobox.Chips
       className={cn(
         "box-border flex w-full flex-wrap items-center gap-1",
-        "rounded-[var(--radius)] border border-border bg-[var(--mix-card-50-bg)] p-1 px-1.5",
-        "focus-within:border-ring focus-within:shadow-[0_0_0_2px_oklch(from_var(--ring)_l_c_h_/_0.2)]",
+        "rounded-[var(--radius)] border-none bg-[var(--mix-card-50-bg)] p-1 px-1.5",
+        "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)]",
+        "focus-within:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)]",
         className
       )}
       data-slot="combobox-chips"

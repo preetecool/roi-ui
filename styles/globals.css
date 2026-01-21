@@ -1,6 +1,4 @@
-@import "tailwindcss/preflight" layer(base);
-@import "tailwindcss/theme" layer(theme);
-@import "tailwindcss/utilities" layer(utilities);
+@import "tailwindcss";
 
 .root {
   isolation: isolate;
@@ -76,7 +74,7 @@
   --primary: oklch(0.1855 0 0);
   --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.95 0.0025 0);
+  --secondary: oklch(0.95 0 0);
   --secondary-foreground: oklch(0.4 0 0);
 
   --muted: oklch(0.95 0 106.42);
@@ -87,7 +85,7 @@
 
   --border: oklch(0.86 0 0);
   --input: oklch(0.98 0 0);
-  --ring: oklch(0.6734 0.153764 264.1315);
+  --ring: oklch(0.6692 0 360);
 
   --shadow-lg:
     0 10px 15px -3px oklch(0 0 0 / 0.05), 0 4px 6px -2px oklch(0 0 0 / 0.02);
@@ -166,7 +164,7 @@
   --background: oklch(0.15 0 0);
   --foreground: oklch(0.94 0 0);
   --card: oklch(0.26 0 0);
-  --popover: oklch(0.24 0 0);
+  --popover: oklch(0.22 0 0);
   --popover-foreground: oklch(0.94 0 0);
 
   --primary: oklch(0.8985 0.0098 0);

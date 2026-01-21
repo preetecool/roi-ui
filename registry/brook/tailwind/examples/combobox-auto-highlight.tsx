@@ -45,7 +45,7 @@ export default function ComboboxAutoHighlight() {
           itemToStringLabel={(item) => item?.label || ""}
           itemToStringValue={(item) => item?.value || ""}
         >
-          <div className="relative w-full [&:hover_[data-slot=combobox-trigger]]:opacity-50" ref={anchorRef}>
+          <div className="relative w-full" ref={anchorRef}>
             <ComboboxInput id="auto-highlight-input" placeholder="Start typing..." />
             <ComboboxTrigger />
           </div>

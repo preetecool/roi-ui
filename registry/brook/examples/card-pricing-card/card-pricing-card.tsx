@@ -3,7 +3,7 @@
 import { Check } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { Badge } from "@/registry/brook/ui/badge/badge";
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import {
   Card,
   CardAction,
@@ -57,8 +57,9 @@ export function CardPricingCard() {
         </CardContent>
         <div />
         <CardFooter>
-          <Button className={styles.button} showArrow>
+          <Button className={styles.button}>
             Get Started Now
+            <ArrowPointer />
           </Button>
         </CardFooter>
       </Card>

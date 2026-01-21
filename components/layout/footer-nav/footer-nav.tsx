@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/brook/ui/button/button";
+import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import styles from "./footer-nav.module.css";
 
 type NavItem = {
@@ -8,11 +8,11 @@ type NavItem = {
   title: string;
 };
 
-interface FooterNavProps {
+type FooterNavProps = {
   previous?: NavItem | null;
   next?: NavItem | null;
   className?: string;
-}
+};
 
 export function FooterNav({ previous, next, className }: FooterNavProps) {
   return (
@@ -21,12 +21,12 @@ export function FooterNav({ previous, next, className }: FooterNavProps) {
         {previous ? (
           <Button
             className={styles.navLink}
-            pointLeft
+            nativeButton={false}
             render={<Link href={previous.url} />}
-            showArrow
             size="sm"
             variant="ghost"
           >
+            <ArrowPointer pointLeft />
             {previous.title}
           </Button>
         ) : null}
@@ -35,12 +35,13 @@ export function FooterNav({ previous, next, className }: FooterNavProps) {
         {next ? (
           <Button
             className={styles.navLink}
+            nativeButton={false}
             render={<Link href={next.url} />}
-            showArrow
             size="sm"
             variant="ghost"
           >
             {next.title}
+            <ArrowPointer />
           </Button>
         ) : null}
       </div>

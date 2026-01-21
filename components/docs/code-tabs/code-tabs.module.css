@@ -30,7 +30,7 @@
   padding-right: 4px;
 }
 
-.packageList {
+.packageList[data-slot="tabs-list"] {
   border-radius: 0;
   border: none;
   background-color: transparent;
@@ -48,11 +48,11 @@
   border-radius: 0;
 }
 
-.packageTrigger {
+.packageTrigger[data-slot="tabs-trigger"] {
   border-radius: 2px;
 }
 
-.installationList {
+.installationList[data-slot="tabs-list"] {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -60,32 +60,31 @@
   margin-bottom: 1.5rem;
 }
 
-.installationTrigger {
+.installationTrigger[data-slot="tabs-trigger"] {
   background-color: transparent;
   padding: 0 0 0.25rem 0;
   margin: 0;
   border-radius: 0;
 }
 
-.installationTrigger,
-.installationTrigger[data-active] {
+.installationTrigger[data-slot="tabs-trigger"],
+.installationTrigger[data-slot="tabs-trigger"][data-active] {
   border-color: transparent;
 }
 
-.installationTrigger[data-active] {
+.installationTrigger[data-slot="tabs-trigger"][data-active] {
   border-radius: 0;
   background-color: transparent;
   border-bottom-color: var(--foreground);
 }
 
-.installationContent {
+.installationContent[data-slot="tabs-content"] {
   margin: 0;
   padding: 0;
   border: none;
   background-color: transparent;
 }
 
-/* Only remove padding from direct pre children, not nested ones */
 .installationContent > pre {
   padding: 0;
 }

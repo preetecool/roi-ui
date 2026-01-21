@@ -1,7 +1,8 @@
 "use client";
 
-import { Button } from "@base-ui/react/button";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils";
 import styles from "./button.module.css";
 
@@ -45,28 +46,10 @@ function Spinner() {
   );
 }
 
-/**
- * ArrowPointer component for displaying directional arrows within buttons.
- *
- * @param pointLeft - When true, arrow points left instead of right
- * @param pointExternal - When true, applies external link arrow styling (diagonal orientation)
- *
- * @example
- * ```tsx
- * // Right-pointing arrow (default)
- * <ArrowPointer />
- *
- * // Left-pointing arrow
- * <ArrowPointer pointLeft />
- *
- * // External link arrow
- * <ArrowPointer pointExternal />
- * ```
- */
 function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?: boolean; pointExternal?: boolean }) {
   return (
     <svg
-      className={cn(styles.arrow, pointLeft ? styles.arrowLeft : null, pointExternal ? styles.arrowExternal : null)}
+      className={cn(styles.arrow, pointLeft && styles.arrowLeft, pointExternal && styles.arrowExternal)}
       fill="none"
       viewBox="0 0 14 10"
       xmlns="http://www.w3.org/2000/svg"
@@ -95,58 +78,8 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
   );
 }
 
-interface ButtonRootProps
-  extends Omit<React.ComponentProps<"button">, "className" | "style">,
-    VariantProps<typeof buttonVariants> {
-  className?: string | ((state: Button.State) => string | undefined);
-  style?: React.CSSProperties | ((state: Button.State) => React.CSSProperties | undefined);
-  render?: React.ReactElement | ((props: React.HTMLAttributes<HTMLElement>, state: Button.State) => React.ReactElement);
-  focusableWhenDisabled?: boolean;
-  nativeButton?: boolean;
-  showArrow?: boolean;
-  pointLeft?: boolean;
-  pointExternal?: boolean;
-  loading?: boolean;
+function Button({ className, variant, size, ...props }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  return <ButtonPrimitive className={cn(buttonVariants({ variant, size, className }))} data-slot="button" {...props} />;
 }
 
-function ButtonRoot({
-  className,
-  variant,
-  size,
-  showArrow = false,
-  pointLeft = false,
-  pointExternal = false,
-  loading = false,
-  children,
-  render,
-  nativeButton,
-  ...props
-}: ButtonRootProps) {
-  const decoratedChildren = (
-    <>
-      {loading ? <Spinner /> : null}
-      {!loading && showArrow && pointLeft && <ArrowPointer pointExternal={pointExternal} pointLeft />}
-      {children}
-      {!loading && showArrow && !pointLeft && <ArrowPointer pointExternal={pointExternal} />}
-    </>
-  );
-
-  // Auto-detect nativeButton based on render prop if not explicitly set
-  const isNativeButton = nativeButton ?? (render ? false : undefined);
-
-  return (
-    <Button
-      className={cn(buttonVariants({ variant, size }), loading ? styles.loading : null, className)}
-      data-slot="button"
-      disabled={props.disabled || loading}
-      focusableWhenDisabled={loading}
-      nativeButton={isNativeButton}
-      {...(render !== undefined && { render })}
-      {...props}
-    >
-      {decoratedChildren}
-    </Button>
-  );
-}
-
-export { ButtonRoot as Button, ArrowPointer };
+export { Button, buttonVariants, Spinner, ArrowPointer };

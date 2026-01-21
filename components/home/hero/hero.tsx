@@ -61,8 +61,10 @@ export const Hero = () => {
       </h1>
       <p className={styles.subheading}>{SUBHEADING}</p>
       <div className={styles.buttonWrapper}>
-        <Button render={<Link href="/docs/start" />}>Get Started</Button>
-        <Button render={<Link href={luckyLink} />} variant="outline">
+        <Button nativeButton={false} render={<Link href="/docs/start" />}>
+          Get Started
+        </Button>
+        <Button nativeButton={false} render={<Link href={luckyLink} />} variant="outline">
           I&apos;m Feeling Lucky
         </Button>
       </div>

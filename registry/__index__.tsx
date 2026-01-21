@@ -1358,6 +1358,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/button-icon.tsx"],
     path: "@/registry/brook/tailwind/examples/button-icon",
   },
+  "button-loading-tailwind": {
+    name: "button-loading-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/button-loading.tsx"],
+    path: "@/registry/brook/tailwind/examples/button-loading",
+  },
   "button-outline-tailwind": {
     name: "button-outline-tailwind",
     type: "example",

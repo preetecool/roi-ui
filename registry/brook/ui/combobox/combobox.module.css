@@ -10,7 +10,6 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  opacity: 0.2;
 
   &:focus-visible {
     outline: none;
@@ -47,7 +46,6 @@
   height: 1rem;
   width: 1rem;
   flex-shrink: 0;
-  opacity: 0.5;
 }
 
 .positioner {
@@ -103,6 +101,16 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.itemIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  width: 1rem;
+  opacity: 0;
+  transition: opacity 150ms ease;
 }
 
 .item {
@@ -178,16 +186,6 @@
   flex: 1;
 }
 
-.itemIndicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1rem;
-  width: 1rem;
-  opacity: 0;
-  transition: opacity 150ms ease;
-}
-
 .group {
   padding: 0.25rem 0;
 }
@@ -230,15 +228,16 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem;
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.25rem 0.375rem;
   width: 100%;
-  background-color: var(--mix-card-50-bg);
+  background-color: var(--popover);
+  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.5);
 
   &:focus-within {
-    border-color: var(--ring);
-    box-shadow: 0 0 0 2px oklch(from var(--ring) l c h / 0.2);
+    box-shadow:
+      0 0 0 1px var(--ring),
+      0 0 0 3px oklch(from var(--ring) l c h / 0.2);
   }
 }
 
