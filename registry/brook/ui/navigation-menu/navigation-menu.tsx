@@ -27,7 +27,7 @@ function NavigationMenuContent({ className, ...props }: NavigationMenu.Content.P
   );
 }
 
-function NavigationMenuIcon({ className, ...props }: NavigationMenu.Icon.Props) {
+function NavigationMenuIcon({ className, ...props }: React.ComponentPropsWithRef<typeof NavigationMenu.Icon>) {
   return <NavigationMenu.Icon className={cn(styles.chevron, className)} data-slot="navigationmenu-icon" {...props} />;
 }
 

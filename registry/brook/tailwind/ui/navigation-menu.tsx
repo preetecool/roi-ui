@@ -61,7 +61,7 @@ function NavigationMenuContent({ className, ...props }: NavigationMenu.Content.P
   );
 }
 
-function NavigationMenuIcon({ className, ...props }: NavigationMenu.Icon.Props) {
+function NavigationMenuIcon({ className, ...props }: React.ComponentPropsWithRef<typeof NavigationMenu.Icon>) {
   return (
     <NavigationMenu.Icon
       className={cn("transition-transform duration-200 ease-out", "data-[popup-open]:rotate-180", className)}
