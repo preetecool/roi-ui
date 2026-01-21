@@ -4,7 +4,7 @@
   width: 100%;
   border-radius: var(--radius);
   border: none;
-  background-color: var(--mix-card-50-bg);
+  background-color: var(--popover);
   padding: 0 0.75rem;
   font-size: 0.875rem;
   transition: all 150ms ease-out;
@@ -23,7 +23,7 @@
   outline: none;
   box-shadow:
     0 0 0 1px var(--ring),
-    0 0 4px oklch(from var(--border) l c h / 0.5);
+    0 0 0 3px oklch(from var(--ring) l c h / 0.2);
 }
 
 .base[data-disabled] {
@@ -39,7 +39,7 @@
 .base[data-invalid][data-focused] {
   box-shadow:
     0 0 0 1px var(--destructive),
-    0 0 4px oklch(from var(--destructive) l c h / 0.2);
+    0 0 0 3px oklch(from var(--destructive) l c h / 0.2);
 }
 
 .base[data-valid] {
