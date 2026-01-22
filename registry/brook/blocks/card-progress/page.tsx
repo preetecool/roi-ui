@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ProgressCard, Step } from "./components/progress-card";
 
 const INITIAL_STEPS: Step[] = [
@@ -15,55 +15,43 @@ const RESET_DELAY = 3000;
 
 export default function Page() {
   const [steps, setSteps] = useState<Step[]>(INITIAL_STEPS);
-  const [isComplete, setIsComplete] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>(null);
 
   const allComplete = steps.every((s) => s.status === "complete");
 
-  const advanceSteps = useCallback(() => {
-    setSteps((prev) => {
-      const currentIndex = prev.findIndex((s) => s.status === "in_progress");
-      const nextPendingIndex = prev.findIndex((s) => s.status === "pending");
-
-      if (currentIndex === -1 && nextPendingIndex !== -1) {
-        return prev.map((s, i) => (i === nextPendingIndex ? { ...s, status: "in_progress" } : s));
-      }
-
-      if (currentIndex !== -1) {
-        return prev.map((s, i) => {
-          if (i === currentIndex) return { ...s, status: "complete" };
-          if (i === currentIndex + 1 && s.status === "pending") return { ...s, status: "in_progress" };
-          return s;
-        });
-      }
-
-      return prev;
-    });
-  }, []);
-
   useEffect(() => {
-    if (allComplete) {
-      setIsComplete(true);
-      return;
-    }
+    timeoutRef.current = setTimeout(
+      () => {
+        if (allComplete) {
+          setSteps(INITIAL_STEPS);
+        } else {
+          setSteps((prev) => {
+            const currentIndex = prev.findIndex((s) => s.status === "in_progress");
+            const nextPendingIndex = prev.findIndex((s) => s.status === "pending");
 
-    timeoutRef.current = setTimeout(advanceSteps, STEP_DELAY);
+            if (currentIndex === -1 && nextPendingIndex !== -1) {
+              return prev.map((s, i) => (i === nextPendingIndex ? { ...s, status: "in_progress" } : s));
+            }
+
+            if (currentIndex !== -1) {
+              return prev.map((s, i) => {
+                if (i === currentIndex) return { ...s, status: "complete" };
+                if (i === currentIndex + 1 && s.status === "pending") return { ...s, status: "in_progress" };
+                return s;
+              });
+            }
+
+            return prev;
+          });
+        }
+      },
+      allComplete ? RESET_DELAY : STEP_DELAY
+    );
+
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [allComplete, advanceSteps, steps]);
-
-  useEffect(() => {
-    if (isComplete) {
-      timeoutRef.current = setTimeout(() => {
-        setSteps(INITIAL_STEPS);
-        setIsComplete(false);
-      }, RESET_DELAY);
-      return () => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      };
-    }
-  }, [isComplete]);
+  }, [allComplete, steps]);
 
   return <ProgressCard steps={steps} />;
 }
