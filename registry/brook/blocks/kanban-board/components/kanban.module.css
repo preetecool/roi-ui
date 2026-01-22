@@ -642,7 +642,7 @@
   margin-top: 1rem;
 }
 
-.fieldButton[data-slot="button"] {
+.fieldButton {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -769,7 +769,6 @@
 .closeButton:hover {
   opacity: 1;
 }
-
 
 /* Input borderless variant overrides */
 .titleInput[data-variant="borderless"],
