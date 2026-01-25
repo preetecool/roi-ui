@@ -117,12 +117,7 @@
     0px 0px 0px 1px var(--border);
 }
 
-.ditheringWrapper {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  animation: fadeIn 2s var(--ease-out-expo) 0.4s forwards;
-}
+
 
 @keyframes reveal {
   from {

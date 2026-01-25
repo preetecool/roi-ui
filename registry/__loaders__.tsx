@@ -503,6 +503,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "expandable-card-spread": dynamic(() =>
+    import("@/registry/brook/blocks/expandable-card-spread/page").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "kanban-board": dynamic(() =>
     import("@/registry/brook/blocks/kanban-board/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],

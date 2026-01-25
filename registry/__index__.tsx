@@ -891,6 +891,17 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/blocks/expandable-card-carousel/page",
   },
+  "expandable-card-spread": {
+    name: "expandable-card-spread",
+    type: "block",
+    files: [
+      "registry/brook/blocks/expandable-card-spread/page.tsx",
+      "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
+      "registry/brook/blocks/expandable-card-spread/data.json",
+      "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.module.css",
+    ],
+    path: "@/registry/brook/blocks/expandable-card-spread/page",
+  },
   "kanban-board": {
     name: "kanban-board",
     type: "block",
