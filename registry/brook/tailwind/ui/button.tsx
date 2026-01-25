@@ -153,7 +153,7 @@ function ArrowPointer({
 				/>
 			</g>
 		</svg>
-	);c
+	);
 }
 
 function Button({
