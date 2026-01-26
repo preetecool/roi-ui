@@ -1,8 +1,9 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
-import { motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import styles from "./expandable-card-spread.module.css";
 import { MobileStack } from "./mobile-stack";
 
@@ -20,33 +21,35 @@ type ExpandableCardSpreadProps = {
   };
 };
 
-function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, [breakpoint]);
-
-  return isMobile;
-}
-
 export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const prefersReducedMotion = useReducedMotion();
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(640);
 
   const isExpanded = expandedId !== null;
 
-  if (isMobile) {
-    return <MobileStack cards={data.cards} />;
-  }
-
   return (
     <div className={styles.container}>
-      <div className={`${styles.spreadLayout} ${isExpanded ? styles.spreadLayoutSmall : ""}`}>
+      <AnimatePresence mode="wait">
+        {isMobile ? (
+          <motion.div
+            key="stack"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <MobileStack cards={data.cards} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="spread"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className={`${styles.spreadLayout} ${isExpanded ? styles.spreadLayoutSmall : ""}`}>
         {data.cards.map((card, index) => {
           const isOpen = expandedId === card.id;
           return (
@@ -157,8 +160,11 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
               </Dialog.Portal>
             </Dialog.Root>
           );
-        })}
-      </div>
+            })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

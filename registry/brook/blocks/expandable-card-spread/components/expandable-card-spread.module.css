@@ -39,6 +39,30 @@
   outline-offset: 2px;
 }
 
+/* Medium screens: scale down spread cards */
+@media (max-width: 1024px) {
+  .spreadCard {
+    width: 155px;
+    height: 195px;
+    padding: 14px;
+    margin-left: -55px;
+  }
+
+  .spreadCard:first-child {
+    margin-left: 0;
+  }
+
+  .circle {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 8px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+}
+
 .spreadLayoutSmall {
   position: fixed;
   bottom: 90px;
