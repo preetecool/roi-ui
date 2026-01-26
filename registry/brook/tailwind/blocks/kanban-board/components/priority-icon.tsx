@@ -13,7 +13,7 @@ export function PriorityIcon({ priority, className }: PriorityIconProps) {
       <span
         aria-label="Urgent priority"
         className={cn(
-          "flex h-6 w-6 shrink-0 items-center justify-center rounded-[calc(var(--radius)-2px)] border border-[var(--border-subtle-light)] bg-transparent",
+          "flex h-6 w-6 shrink-0 items-center justify-center rounded-[calc(var(--radius)-2px)] bg-transparent shadow-[inset_0_0_0_1px_var(--border-subtle-light)]",
           className
         )}
         role="img"
@@ -30,7 +30,7 @@ export function PriorityIcon({ priority, className }: PriorityIconProps) {
     <span
       aria-label={label}
       className={cn(
-        "flex h-6 w-6 shrink-0 items-center justify-center rounded-[calc(var(--radius)-2px)] border border-[var(--border-subtle-light)] bg-transparent",
+        "flex h-6 w-6 shrink-0 items-center justify-center rounded-[calc(var(--radius)-2px)] bg-transparent shadow-[inset_0_0_0_1px_var(--border-subtle-light)]",
         className
       )}
       role="img"

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils-tailwind";
 
 const inputVariants = cva(
   [
-    "flex h-10 w-full rounded-[var(--radius)] border-none bg-[var(--mix-card-50-bg)] px-3",
+    "flex h-10 w-full rounded-[var(--radius)] border-none bg-[var(--popover)] px-3",
     "text-foreground text-sm transition-all duration-150 ease-out",
     "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)]",
     "placeholder:text-muted-foreground placeholder:text-sm",

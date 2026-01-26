@@ -150,9 +150,9 @@ export function CardTask({
   onDeleteTask,
 }: TaskCardProps) {
   return (
-    <Card className="w-full max-w-[300px] gap-4 p-4 xl:min-h-auto">
+    <Card className="w-full max-w-[300px] !gap-4 !p-4 xl:min-h-auto">
       <CardHeader>
-        <CardTitle className="text-base">{title}</CardTitle>
+        <CardTitle className="!text-base">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
         <CardAction>
           <TaskCardDropdownMenu onAddCollaborator={onAddCollaborator} onDeleteTask={onDeleteTask} />

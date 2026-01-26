@@ -71,13 +71,13 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
       return (
         <Button
           aria-label="Edit assignees"
-          className="flex h-auto items-center border-none bg-transparent p-0 hover:bg-transparent"
+          className="flex !h-auto items-center border-none bg-transparent !p-0 hover:bg-transparent"
           onClick={() => onEdit?.(task)}
           variant="ghost"
         >
           {task.assignees.slice(0, 3).map((user) => (
             <div className="-ml-2 first:ml-0" key={user.id}>
-              <Avatar className="h-6 w-6 border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.1)] text-[0.5rem]">
+              <Avatar className="h-6 w-6 shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.1)] text-[0.5rem]">
                 <AvatarImage alt={user.name} src={user.avatar} />
                 <AvatarFallback>
                   {user.name
@@ -89,7 +89,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
             </div>
           ))}
           {task.assignees.length > 3 && (
-            <div className="-ml-2 flex h-6 w-6 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-muted font-medium text-[0.5rem] text-muted-foreground">
+            <div className="-ml-2 flex h-6 w-6 items-center justify-center rounded-full shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.2)] bg-muted font-medium text-[0.5rem] text-muted-foreground">
               +{task.assignees.length - 3}
             </div>
           )}
@@ -100,14 +100,14 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
     return (
       <Button
         aria-label="Add assignees"
-        className="flex h-auto items-center border-none bg-transparent p-0 hover:bg-transparent"
+        className="flex !h-auto items-center border-none bg-transparent !p-0 hover:bg-transparent"
         onClick={() => onEdit?.(task)}
         variant="ghost"
       >
         <div className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-[oklch(from_var(--border)_l_c_h_/_0.4)] border-dashed text-muted-foreground transition-all duration-150 hover:border-[oklch(from_var(--border)_l_c_h_/_0.6)] hover:text-foreground">
           <Plus aria-hidden="true" size={8} />
         </div>
-        <div className="-ml-2 flex h-6 w-6 items-center justify-center rounded-full border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] text-muted-foreground">
+        <div className="-ml-2 flex h-6 w-6 items-center justify-center rounded-full shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] text-muted-foreground">
           <User aria-hidden="true" size={10} />
         </div>
       </Button>
@@ -148,7 +148,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
             <Button
               aria-label="Comments"
               className={cn(
-                "flex h-auto items-center justify-center gap-1 px-2 py-1",
+                "flex !h-auto items-center justify-center gap-1 !px-2 !py-1",
                 "rounded-[calc(var(--radius)-2px)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]",
                 "text-muted-foreground transition-all duration-150",
                 "hover:bg-[var(--mix-card-50-bg)] hover:text-foreground"
@@ -162,7 +162,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
               <Button
                 aria-label={`${completedSubtasks} of ${subtaskCount} subtasks completed`}
                 className={cn(
-                  "flex h-auto items-center justify-center gap-1 px-2 py-1",
+                  "flex !h-auto items-center justify-center gap-1 !px-2 !py-1",
                   "rounded-[calc(var(--radius)-2px)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]",
                   "text-muted-foreground transition-all duration-150",
                   "hover:bg-[var(--mix-card-50-bg)] hover:text-foreground"
@@ -181,7 +181,7 @@ function TaskCardContent({ task, onEdit }: { task: Task; onEdit?: (task: Task) =
             <Button
               aria-label={`${daysLeft} days left`}
               className={cn(
-                "flex h-auto items-center justify-center gap-1 px-2 py-1",
+                "flex !h-auto items-center justify-center gap-1 !px-2 !py-1",
                 "rounded-[calc(var(--radius)-2px)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)]",
                 "text-muted-foreground transition-all duration-150",
                 "hover:bg-[var(--mix-card-50-bg)] hover:text-foreground"

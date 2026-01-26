@@ -109,7 +109,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
   const allComplete = steps.length > 0 && steps.every((s) => s.status === "complete");
 
   return (
-    <Card className="w-full max-w-[320px] bg-[oklch(from_var(--card)_l_c_h_/_0.6)] p-4 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),0_1px_3px_0_#0000000d,0_1px_2px_-1px_#0000000d]">
+    <Card className="w-full max-w-[320px] bg-[oklch(from_var(--card)_l_c_h_/_0.6)] !p-4 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),0_1px_3px_0_#0000000d,0_1px_2px_-1px_#0000000d]">
       <CardContent className="flex flex-col p-0">
         <div className="flex flex-col gap-1">
           {steps.map((step, index) => {

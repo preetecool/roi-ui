@@ -13,7 +13,7 @@ const cardVariants = cva(
 			variant: {
 				default: "",
 				lift: [
-					"gap-0 overflow-hidden pb-0",
+					"!gap-0 overflow-hidden pb-0",
 					"[&_.card-content]:px-6 [&_.card-content]:pt-6 [&_.card-content]:pb-8",
 					"[&_.card-content]:transition-all [&_.card-content]:duration-[250ms] [&_.card-content]:ease-[var(--ease-in-out-quad)]",
 					"[&_.card-content]:-mx-6 [&_.card-content]:w-[calc(100%+3rem)] [&_.card-content]:bg-[var(--mix-card-33-bg)]",

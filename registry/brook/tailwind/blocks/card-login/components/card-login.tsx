@@ -83,8 +83,8 @@ export function CardLogin() {
   return (
     <Card
       className={cn(
-        "w-[400px] rounded-[var(--radius-lg)] p-5",
-        "max-sm:w-full max-sm:p-4"
+        "mx-auto w-full max-w-[440px] rounded-[var(--radius-lg)] !p-5",
+        "max-sm:!p-4"
       )}
     >
       <CardHeader>
@@ -106,7 +106,7 @@ export function CardLogin() {
           </Field>
 
           <Field>
-            <div className={cn("mb-2 flex w-full items-center justify-between", "max-sm:mb-1.5")}>
+            <div className={cn("flex w-full items-center justify-between", "max-sm:mb-1.5")}>
               <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Password</FieldLabel>
               <button
                 className={cn(
