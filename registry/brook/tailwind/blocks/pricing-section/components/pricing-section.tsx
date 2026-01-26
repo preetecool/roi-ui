@@ -73,7 +73,7 @@ export function PricingSection() {
                 <span className="mt-2 self-start text-2xl font-medium text-[var(--foreground)]">
                   $
                 </span>
-                <span className="text-6xl font-semibold leading-none tracking-tighter text-[var(--foreground)] tabular-nums max-sm:text-5xl">
+                <span className="text-[64px] font-semibold leading-none tracking-tighter text-[var(--foreground)] tabular-nums max-sm:text-5xl">
                   {plan.monthlyPrice}
                 </span>
                 <span className="ml-1 text-base text-[var(--muted-foreground)]">
@@ -84,7 +84,7 @@ export function PricingSection() {
               <ul className="m-0 flex list-none flex-col gap-3.5 p-0">
                 {plan.features.map((feature) => (
                   <li
-                    className="flex items-center gap-2 text-sm text-[var(--secondary-foreground)]"
+                    className="flex items-center gap-2 text-sm leading-[21px] text-[var(--secondary-foreground)]"
                     key={feature}
                   >
                     <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[oklch(from_var(--primary)_l_c_h_/_0.15)] text-[var(--primary)]">

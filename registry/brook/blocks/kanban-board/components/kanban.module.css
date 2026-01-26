@@ -451,7 +451,7 @@
 }
 
 .titleInput {
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
   font-weight: 600;
   line-height: 1.3;
   border-radius: 0;
@@ -460,7 +460,7 @@
 }
 
 .titleInput::placeholder {
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
   font-weight: 600;
   color: var(--muted-foreground);
   opacity: 0.6;
