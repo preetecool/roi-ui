@@ -39,7 +39,7 @@ export function ExpandableCardCarousel({ data }: ExpandableCardCarouselProps) {
           <br />
           Philosophies
         </h2>
-        <p className="m-0 max-w-[360px] text-left text-sm text-[var(--muted-foreground)]">
+        <p className="m-0 max-w-[360px] text-left text-base text-[var(--muted-foreground)]">
           The principles that guide everything we create, from design decisions to the experiences we craft for our users.
         </p>
       </header>

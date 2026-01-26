@@ -38,8 +38,8 @@ const buttonVariants = cva(
 				],
 				outline: [
 					"bg-transparent text-[var(--foreground)]",
-					"shadow-[0_0_0_1px_var(--border)]",
-					"hover:bg-[var(--accent)]",
+					"shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.7)]",
+					"hover:bg-[oklch(from_var(--accent)_l_c_h_/_0.85)]",
 				],
 				link: [
 					"bg-transparent p-0 text-[var(--muted-foreground)] no-underline",
