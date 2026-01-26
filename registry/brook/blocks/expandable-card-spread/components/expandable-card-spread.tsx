@@ -2,8 +2,9 @@
 
 import { Dialog } from "@base-ui/react/dialog";
 import { motion, useReducedMotion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./expandable-card-spread.module.css";
+import { MobileStack } from "./mobile-stack";
 
 type CardData = {
   id: number;
@@ -19,11 +20,29 @@ type ExpandableCardSpreadProps = {
   };
 };
 
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
 
   const isExpanded = expandedId !== null;
+
+  if (isMobile) {
+    return <MobileStack cards={data.cards} />;
+  }
 
   return (
     <div className={styles.container}>
@@ -110,10 +129,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                         />
                       }
                     >
-                      <motion.div
-                        className={styles.circleExpanded}
-                        layoutId={`spread-circle-${card.id}`}
-                      />
+                      <motion.div className={styles.circleExpanded} layoutId={`spread-circle-${card.id}`} />
                       <motion.h2 className={styles.expandedTitle} layoutId={`spread-title-${card.id}`}>
                         {card.title}
                       </motion.h2>

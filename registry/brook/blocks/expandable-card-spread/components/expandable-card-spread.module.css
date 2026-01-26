@@ -136,3 +136,58 @@
   margin: 0;
   opacity: 0.8;
 }
+
+/* Mobile stacked view */
+.mobileStack {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileCard {
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  padding: 24px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.mobileCard:active {
+  cursor: grabbing;
+}
+
+.mobileDescription {
+  font-size: var(--font-size-sm, 0.875rem);
+  line-height: 1.6;
+  margin: 12px 0 0 0;
+  opacity: 0.85;
+}
+
+.swipeHint {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.swipeHint span {
+  font-size: var(--font-size-xs, 0.75rem);
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
