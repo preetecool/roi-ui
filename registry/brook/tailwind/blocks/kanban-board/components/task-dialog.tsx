@@ -596,7 +596,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
       </DialogPortal>
 
       <AlertDialog.Root onOpenChange={setDeleteConfirmOpen} open={deleteConfirmOpen}>
-        <AlertDialogPopup className="flex max-w-[400px] w-auto flex-col items-center gap-2">
+        <AlertDialogPopup className="flex !w-auto max-w-[400px] flex-col items-center gap-2">
           <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-lg bg-destructive/15">
             <Trash2 className="text-destructive" size={28} />
           </div>
