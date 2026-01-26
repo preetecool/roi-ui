@@ -17,6 +17,7 @@ const LUCKY_LINKS = [
   { path: "/blocks/card-task" },
   { path: "/blocks/card-traffic" },
   { path: "/blocks/expandable-card-carousel" },
+  { path: "/blocks/expandable-card-spread" },
   { path: "/blocks/kanban-board" },
   { path: "/docs/ui/tabs", anchor: "#animated" },
   { path: "/docs/ui/copy-button" },
@@ -44,7 +45,7 @@ export const Hero = () => {
   return (
     <section aria-label="Hero section" className={styles.container}>
       <Badge className={styles.badge} variant="outline">
-        <Link aria-label="View new blocks page" href="/blocks">
+        <Link aria-label="View new blocks page" href="/blocks/expandable-card-spread">
           <span aria-hidden="true">New expandable card spread block</span>
         </Link>
         <ArrowPointer />

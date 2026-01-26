@@ -12,12 +12,13 @@ const BLOCK_TITLES: Record<string, string> = {
   "card-task": "Task Card",
   "card-traffic": "Traffic Card",
   "expandable-card-carousel": "Expandable Card Carousel",
+  "expandable-card-spread": "Expandable Card Spread",
   "kanban-board": "Kanban Board",
   "pricing-section": "Pricing Section",
   "card-progress": "Progress Card",
 };
 
-const NEW_BLOCKS = ["card-progress"];
+const NEW_BLOCKS = ["card-progress", "expandable-card-spread"];
 
 function getBlocks() {
   return Object.entries(Index)
