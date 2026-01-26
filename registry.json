@@ -2124,6 +2124,79 @@
           "target": "~/components/blocks/kanban-board/data.json"
         }
       ]
+    },
+    {
+      "name": "expandable-card-spread",
+      "type": "registry:item",
+      "dependencies": ["motion"],
+      "title": "Expandable Card Spread",
+      "description": "A spread of expandable cards with mobile swipe-to-cycle stack view.",
+      "files": [
+        {
+          "path": "registry/brook/blocks/expandable-card-spread/page.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/page.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/expandable-card-spread.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.module.css",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/expandable-card-spread.module.css"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card-spread/components/mobile-stack.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/mobile-stack.tsx"
+        },
+        {
+          "path": "registry/brook/blocks/expandable-card-spread/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/data.json"
+        },
+        {
+          "path": "hooks/use-mobile.ts",
+          "type": "registry:file",
+          "target": "~/hooks/use-mobile.ts"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card-spread-tailwind",
+      "type": "registry:item",
+      "dependencies": ["motion"],
+      "title": "Expandable Card Spread (Tailwind)",
+      "description": "A spread of expandable cards with mobile swipe-to-cycle stack view.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card-spread/page.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/page.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/expandable-card-spread.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card-spread/components/mobile-stack.tsx",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/mobile-stack.tsx"
+        },
+        {
+          "path": "registry/brook/tailwind/blocks/expandable-card-spread/data.json",
+          "type": "registry:file",
+          "target": "~/components/blocks/expandable-card-spread/data.json"
+        },
+        {
+          "path": "hooks/use-mobile.ts",
+          "type": "registry:file",
+          "target": "~/hooks/use-mobile.ts"
+        }
+      ]
     }
   ]
 }

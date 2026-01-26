@@ -45,7 +45,7 @@ export const Hero = () => {
     <section aria-label="Hero section" className={styles.container}>
       <Badge className={styles.badge} variant="outline">
         <Link aria-label="View new blocks page" href="/blocks">
-          <span aria-hidden="true">New blocks view</span>
+          <span aria-hidden="true">New expandable card spread block</span>
         </Link>
         <ArrowPointer />
       </Badge>

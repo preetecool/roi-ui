@@ -14,6 +14,7 @@ const blocks: Record<string, React.ComponentType> = {
   "card-task": dynamic(() => import("@/registry/brook/blocks/card-task/page")),
   "card-traffic": dynamic(() => import("@/registry/brook/blocks/card-traffic/page")),
   "expandable-card-carousel": dynamic(() => import("@/registry/brook/blocks/expandable-card-carousel/page")),
+  "expandable-card-spread": dynamic(() => import("@/registry/brook/blocks/expandable-card-spread/page")),
   "kanban-board": dynamic(() => import("@/registry/brook/blocks/kanban-board/page")),
   "pricing-section": dynamic(() => import("@/registry/brook/blocks/pricing-section/page")),
 };
