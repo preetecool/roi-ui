@@ -492,29 +492,36 @@ export function CardProgressSkeleton({ className }: SkeletonProps) {
 export function ExpandableCardSpreadSkeleton({ className }: SkeletonProps) {
   return (
     <svg className={className} fill="none" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
-      {/* Card 1 (back) - Coral */}
-      <rect fill="#D4726A" height="130" rx="14" width="90" x="50" y="15" />
-      <circle cx="72" cy="40" fill="#ffffff" opacity="0.25" r="10" />
-      <rect fill="#ffffff" height="8" opacity="0.5" rx="3" width="50" x="62" y="115" />
-      <rect fill="#ffffff" height="6" opacity="0.35" rx="2" width="35" x="62" y="128" />
+      <defs>
+        <linearGradient id="spreadCardGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
+          <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
+        </linearGradient>
+      </defs>
 
-      {/* Card 2 - Sage */}
-      <rect fill="#7BA88C" height="130" rx="14" width="90" x="95" y="15" />
-      <circle cx="117" cy="40" fill="#ffffff" opacity="0.25" r="10" />
-      <rect fill="#ffffff" height="8" opacity="0.5" rx="3" width="55" x="107" y="115" />
-      <rect fill="#ffffff" height="6" opacity="0.35" rx="2" width="40" x="107" y="128" />
+      {/* Card 1 (back) */}
+      <rect fill="url(#spreadCardGrad)" height="130" rx="14" width="90" x="50" y="15" />
+      <circle cx="72" cy="40" fill="var(--muted-foreground)" opacity="0.15" r="10" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.2" rx="3" width="50" x="62" y="115" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.15" rx="2" width="35" x="62" y="128" />
 
-      {/* Card 3 - Slate Blue */}
-      <rect fill="#5B8DB8" height="130" rx="14" width="90" x="140" y="15" />
-      <circle cx="162" cy="40" fill="#ffffff" opacity="0.25" r="10" />
-      <rect fill="#ffffff" height="8" opacity="0.5" rx="3" width="48" x="152" y="115" />
-      <rect fill="#ffffff" height="6" opacity="0.35" rx="2" width="60" x="152" y="128" />
+      {/* Card 2 */}
+      <rect fill="url(#spreadCardGrad)" height="130" rx="14" width="90" x="95" y="15" />
+      <circle cx="117" cy="40" fill="var(--muted-foreground)" opacity="0.18" r="10" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.25" rx="3" width="55" x="107" y="115" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.18" rx="2" width="40" x="107" y="128" />
 
-      {/* Card 4 (front) - Amber */}
-      <rect fill="#C9A256" height="130" rx="14" width="90" x="185" y="15" />
-      <circle cx="207" cy="40" fill="#ffffff" opacity="0.25" r="10" />
-      <rect fill="#ffffff" height="8" opacity="0.5" rx="3" width="52" x="197" y="115" />
-      <rect fill="#ffffff" height="6" opacity="0.35" rx="2" width="38" x="197" y="128" />
+      {/* Card 3 */}
+      <rect fill="url(#spreadCardGrad)" height="130" rx="14" width="90" x="140" y="15" />
+      <circle cx="162" cy="40" fill="var(--muted-foreground)" opacity="0.2" r="10" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.3" rx="3" width="48" x="152" y="115" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.2" rx="2" width="60" x="152" y="128" />
+
+      {/* Card 4 (front) */}
+      <rect fill="url(#spreadCardGrad)" height="130" rx="14" width="90" x="185" y="15" />
+      <circle cx="207" cy="40" fill="var(--muted-foreground)" opacity="0.25" r="10" />
+      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="3" width="52" x="197" y="115" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="2" width="38" x="197" y="128" />
     </svg>
   );
 }
