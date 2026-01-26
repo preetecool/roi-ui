@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 0;
 }
 
 .spreadCard {
@@ -27,6 +27,11 @@
   justify-content: flex-end;
   padding: 24px;
   border: none;
+  margin-left: -60px;
+}
+
+.spreadCard:first-child {
+  margin-left: 0;
 }
 
 .spreadCard:focus-visible {

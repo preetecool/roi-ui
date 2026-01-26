@@ -1,0 +1,39 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "title": "Design\nSystems",
+      "color": "oklch(0.72 0.08 285)",
+      "textColor": "#1a1a2a",
+      "description": "A structured approach to building reusable components and patterns that maintain consistency across products."
+    },
+    {
+      "id": 2,
+      "title": "Motion\nPrinciples",
+      "color": "oklch(0.78 0.06 320)",
+      "textColor": "#1a1a2a",
+      "description": "Guidelines for meaningful animation that communicates state changes and guides user attention without distraction."
+    },
+    {
+      "id": 3,
+      "title": "Accessible\nInterfaces",
+      "color": "oklch(0.75 0.1 350)",
+      "textColor": "#1a1a2a",
+      "description": "Techniques for building interfaces that work for everyone, regardless of ability or assistive technology."
+    },
+    {
+      "id": 4,
+      "title": "Layout\nComposition",
+      "color": "oklch(0.77 0.07 10)",
+      "textColor": "#1a1a2a",
+      "description": "Strategies for arranging elements on screen to create clear visual hierarchy and intuitive navigation."
+    },
+    {
+      "id": 5,
+      "title": "Type\nScale",
+      "color": "oklch(0.75 0.07 240)",
+      "textColor": "#1a1a2a",
+      "description": "A modular system for sizing and spacing text that creates rhythm and readability across breakpoints."
+    }
+  ]
+}
