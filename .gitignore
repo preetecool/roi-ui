@@ -52,8 +52,6 @@ next-env.d.ts
 /registry/brook/blocks/card-traffic/page.tsx
 /registry/brook/blocks/expandable-card-carousel/data.json
 /registry/brook/blocks/expandable-card-carousel/page.tsx
-/registry/brook/blocks/expandable-card-spread/data.json
-/registry/brook/blocks/expandable-card-spread/page.tsx
 /registry/brook/blocks/kanban-board/data.json
 /registry/brook/blocks/kanban-board/hooks/
 /registry/brook/blocks/kanban-board/lib/
@@ -66,8 +64,6 @@ next-env.d.ts
 /registry/brook/tailwind/blocks/card-traffic/page.tsx
 /registry/brook/tailwind/blocks/expandable-card-carousel/data.json
 /registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx
-/registry/brook/tailwind/blocks/expandable-card-spread/data.json
-/registry/brook/tailwind/blocks/expandable-card-spread/page.tsx
 /registry/brook/tailwind/blocks/kanban-board/data.json
 /registry/brook/tailwind/blocks/kanban-board/hooks/
 /registry/brook/tailwind/blocks/kanban-board/lib/

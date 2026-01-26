@@ -897,6 +897,7 @@ export const Index: Record<string, RegistryEntry> = {
     files: [
       "registry/brook/blocks/expandable-card-spread/page.tsx",
       "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
+      "registry/brook/blocks/expandable-card-spread/components/mobile-stack.tsx",
       "registry/brook/blocks/expandable-card-spread/data.json",
       "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.module.css",
     ],
@@ -1818,6 +1819,17 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/tailwind/blocks/expandable-card-carousel/data.json",
     ],
     path: "@/registry/brook/tailwind/blocks/expandable-card-carousel/page",
+  },
+  "expandable-card-spread-tailwind": {
+    name: "expandable-card-spread-tailwind",
+    type: "block",
+    files: [
+      "registry/brook/tailwind/blocks/expandable-card-spread/page.tsx",
+      "registry/brook/tailwind/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
+      "registry/brook/tailwind/blocks/expandable-card-spread/components/mobile-stack.tsx",
+      "registry/brook/tailwind/blocks/expandable-card-spread/data.json",
+    ],
+    path: "@/registry/brook/tailwind/blocks/expandable-card-spread/page",
   },
   "kanban-board-tailwind": {
     name: "kanban-board-tailwind",
