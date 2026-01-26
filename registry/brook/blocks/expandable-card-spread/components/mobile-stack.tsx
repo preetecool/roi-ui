@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  animate,
-  motion,
-  type PanInfo,
-  useMotionValue,
-  useTransform,
-} from "motion/react";
-import { useRef, useState } from "react";
+import { motion, type PanInfo } from "motion/react";
+import { useState } from "react";
 import styles from "./expandable-card-spread.module.css";
 
 type CardData = {
@@ -22,92 +16,51 @@ type MobileStackProps = {
   cards: CardData[];
 };
 
-const CARD_OFFSET = 8;
-const SCALE_FACTOR = 0.05;
+const SWIPE_THRESHOLD = 100;
 
 export function MobileStack({ cards }: MobileStackProps) {
-  const [cardOrder, setCardOrder] = useState(() => cards.map((c) => c.id));
-  const [animatingCardId, setAnimatingCardId] = useState<number | null>(null);
-  const animatingRef = useRef(false);
-  const x = useMotionValue(0);
-  const sendBackProgress = useMotionValue(0);
-
-  const orderedCards = cardOrder.map((id) => cards.find((c) => c.id === id)!);
-  const backIndex = orderedCards.length - 1;
-  const backScale = 1 - backIndex * SCALE_FACTOR;
-  const backY = backIndex * CARD_OFFSET;
-
-  // Derive scale and y from the send-back animation progress
-  const animatingScale = useTransform(sendBackProgress, [0, 1], [1, backScale]);
-  const animatingY = useTransform(sendBackProgress, [0, 1], [0, backY]);
+  const [frontIndex, setFrontIndex] = useState(0);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
-    const swipeThreshold = 100;
-
-    if (Math.abs(info.offset.x) > swipeThreshold && !animatingRef.current) {
-      animatingRef.current = true;
-      const topCardId = cardOrder[0];
-      setAnimatingCardId(topCardId);
-
-      // Reorder cards immediately so all cards start transitioning
-      setCardOrder((prev) => {
-        const [first, ...rest] = prev;
-        return [...rest, first];
-      });
-
-      // Animate x back to 0 and progress from 0 to 1
-      const springConfig = { type: "spring", stiffness: 300, damping: 30 } as const;
-      animate(x, 0, springConfig);
-      animate(sendBackProgress, 1, springConfig).then(() => {
-        x.set(0);
-        sendBackProgress.set(0);
-        setAnimatingCardId(null);
-        animatingRef.current = false;
-      });
-    } else {
-      // Snap back
-      animate(x, 0, { type: "spring", stiffness: 300, damping: 30 });
+    if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {
+      setFrontIndex((prev) => (prev + 1) % cards.length);
     }
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.mobileStack}>
-        {orderedCards.map((card, index) => {
-          const isTopCard = index === 0;
-          const isAnimatingToBack = card.id === animatingCardId;
-          const stackIndex = orderedCards.length - 1 - index;
-
-          const cardZIndex = isAnimatingToBack ? 0 : stackIndex;
+        {cards.map((card, i) => {
+          const stackPosition = (i - frontIndex + cards.length) % cards.length;
+          const isTopCard = stackPosition === 0;
 
           return (
             <motion.div
               animate={{
-                scale: 1 - index * SCALE_FACTOR,
-                y: index * CARD_OFFSET,
+                scale: 1 - stackPosition * 0.03,
+                x: stackPosition * (13 - stackPosition),
+                y: stackPosition * 6,
+                rotate: Math.sqrt(stackPosition) * 3,
               }}
               className={styles.mobileCard}
-              drag={isTopCard && !animatingCardId ? "x" : false}
+              drag={isTopCard ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
-              initial={false}
               key={card.id}
+              layout
               onDragEnd={isTopCard ? handleDragEnd : undefined}
               style={{
                 backgroundColor: card.color,
                 color: card.textColor || "#ffffff",
-                zIndex: cardZIndex,
-                cursor: isTopCard && !animatingCardId ? "grab" : "auto",
-                x: isAnimatingToBack || (isTopCard && !animatingCardId) ? x : 0,
-                scale: isAnimatingToBack ? animatingScale : undefined,
-                y: isAnimatingToBack ? animatingY : undefined,
+                zIndex: cards.length - stackPosition,
+                cursor: isTopCard ? "grab" : "auto",
               }}
               transition={{
                 type: "spring",
                 stiffness: 300,
                 damping: 25,
               }}
-              whileDrag={{ cursor: "grabbing" }}
+              whileDrag={{ cursor: "grabbing", scale: 1.02 }}
             >
               <div className={styles.circle} />
               <h3 className={styles.cardTitle}>{card.title}</h3>
