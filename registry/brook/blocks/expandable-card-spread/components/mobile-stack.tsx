@@ -1,6 +1,12 @@
 "use client";
 
-import { animate, motion, type PanInfo, useMotionValue } from "motion/react";
+import {
+  animate,
+  motion,
+  type PanInfo,
+  useMotionValue,
+  useTransform,
+} from "motion/react";
 import { useRef, useState } from "react";
 import styles from "./expandable-card-spread.module.css";
 
@@ -24,8 +30,16 @@ export function MobileStack({ cards }: MobileStackProps) {
   const [animatingCardId, setAnimatingCardId] = useState<number | null>(null);
   const animatingRef = useRef(false);
   const x = useMotionValue(0);
+  const sendBackProgress = useMotionValue(0);
 
   const orderedCards = cardOrder.map((id) => cards.find((c) => c.id === id)!);
+  const backIndex = orderedCards.length - 1;
+  const backScale = 1 - backIndex * SCALE_FACTOR;
+  const backY = backIndex * CARD_OFFSET;
+
+  // Derive scale and y from the send-back animation progress
+  const animatingScale = useTransform(sendBackProgress, [0, 1], [1, backScale]);
+  const animatingY = useTransform(sendBackProgress, [0, 1], [0, backY]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     const swipeThreshold = 100;
@@ -41,9 +55,12 @@ export function MobileStack({ cards }: MobileStackProps) {
         return [...rest, first];
       });
 
-      // Animate x back to 0
-      animate(x, 0, { type: "spring", stiffness: 300, damping: 30 }).then(() => {
+      // Animate x back to 0 and progress from 0 to 1
+      const springConfig = { type: "spring", stiffness: 300, damping: 30 } as const;
+      animate(x, 0, springConfig);
+      animate(sendBackProgress, 1, springConfig).then(() => {
         x.set(0);
+        sendBackProgress.set(0);
         setAnimatingCardId(null);
         animatingRef.current = false;
       });
@@ -82,6 +99,8 @@ export function MobileStack({ cards }: MobileStackProps) {
                 zIndex: cardZIndex,
                 cursor: isTopCard && !animatingCardId ? "grab" : "auto",
                 x: isAnimatingToBack || (isTopCard && !animatingCardId) ? x : 0,
+                scale: isAnimatingToBack ? animatingScale : undefined,
+                y: isAnimatingToBack ? animatingY : undefined,
               }}
               transition={{
                 type: "spring",
@@ -93,11 +112,6 @@ export function MobileStack({ cards }: MobileStackProps) {
               <div className={styles.circle} />
               <h3 className={styles.cardTitle}>{card.title}</h3>
               <p className={styles.mobileDescription}>{card.description}</p>
-              {isTopCard && !animatingCardId ? (
-                <div className={styles.swipeHint}>
-                  <span>Swipe to see more</span>
-                </div>
-              ) : null}
             </motion.div>
           );
         })}
