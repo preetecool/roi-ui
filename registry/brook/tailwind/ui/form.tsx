@@ -5,7 +5,7 @@ import type React from "react";
 import { cn } from "@/lib/utils-tailwind";
 
 function FormRoot({ className, ...props }: Form.Props) {
-  return <Form className={cn("mt-4 w-full", className)} {...props} />;
+  return <Form className={cn("w-full flex flex-col gap-4", className)} {...props} />;
 }
 
 function FormGroup({ className, ...props }: React.ComponentProps<"div">) {

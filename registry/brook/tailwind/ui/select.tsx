@@ -10,19 +10,22 @@ function SelectRoot<Value, Multiple extends boolean | undefined = undefined>(
   return <Select.Root<Value, Multiple> {...props} />;
 }
 
-function SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof Select.Trigger>) {
+function SelectTrigger({ className, children, render, ...props }: React.ComponentProps<typeof Select.Trigger>) {
   return (
     <Select.Trigger
       className={cn(
-        "min-w-36 bg-[var(--mix-card-50-bg)] max-md:min-w-28",
-        "hover:not-disabled:bg-[var(--accent)] hover:not-disabled:text-[var(--foreground)]",
-        "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
-        "data-[popup-open]:bg-[var(--muted)] data-[popup-open]:text-[var(--foreground)]",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        !render && [
+          "min-w-36 bg-[var(--mix-card-50-bg)] max-md:min-w-28",
+          "hover:not-disabled:bg-[var(--accent)] hover:not-disabled:text-[var(--foreground)]",
+          "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
+          "data-[popup-open]:bg-[var(--muted)] data-[popup-open]:text-[var(--foreground)]",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+        ],
         className
       )}
       data-slot="select-trigger"
       nativeButton
+      render={render}
       {...props}
     >
       {children}

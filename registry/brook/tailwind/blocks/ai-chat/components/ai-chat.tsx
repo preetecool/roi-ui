@@ -53,22 +53,20 @@ export function AiChat() {
   const defaultMode = formState.status === "error" ? formState.submittedData.mode : aiModes[0].value;
 
   return (
-    <Form action={submitAction} className="w-full max-sm:flex max-sm:items-center max-sm:justify-center max-xl:h-full">
+    <Form action={submitAction} className="w-full max-sm:flex max-sm:items-center max-sm:justify-center">
       <Card
         className={cn(
-          "h-auto w-full flex-1 gap-3 rounded-[var(--radius-lg)] border-[oklch(from_var(--border)_l_c_h_/_0.25)] bg-[var(--mix-card-50-bg)] p-3 transition-[border-color] duration-200 hover:border-[oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
-          "min-w-0 max-w-none",
-          "max-xl:h-full",
-          "max-sm:mx-auto"
+          "mx-auto h-auto w-full !gap-3 rounded-[var(--radius-lg)] border-[oklch(from_var(--border)_l_c_h_/_0.25)] bg-[var(--mix-card-50-bg)] !p-3 transition-[border-color] duration-200 ease-in-out hover:border-[oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
+          "min-w-0 max-w-[600px]",
+          "max-sm:min-w-[230px]"
         )}
       >
         <CardContent>
           <Field
             className={cn(
-              "[&_textarea]:!border-0 [&_textarea]:!p-1 [&_textarea]:resize-none [&_textarea]:bg-transparent",
-              "[&_textarea]:!h-[50px] [&_textarea]:!min-h-[50px] [&_textarea]:!px-1 [&_textarea]:focus:outline-none",
-              "[&_textarea]:!leading-normal",
-              "max-xl:[&_textarea]:!p-2 max-xl:[&_textarea]:h-full max-xl:[&_textarea]:min-h-16"
+              "[&_textarea]:!border-0 [&_textarea]:!bg-transparent [&_textarea]:!p-1 [&_textarea]:resize-none",
+              "[&_textarea]:h-auto [&_textarea]:min-h-10 [&_textarea]:leading-[1.5] [&_textarea]:focus:outline-none",
+              "max-xl:[&_textarea]:!p-2 max-xl:[&_textarea]:min-h-16"
             )}
           >
             <FieldControl
@@ -88,7 +86,7 @@ export function AiChat() {
         <CardFooter className="flex items-center justify-between gap-2">
           <Button
             aria-label="Attach file"
-            className="size-8 shrink-0 rounded-full p-2 [&>svg]:shrink-0 [&>svg]:rotate-[-45deg] [&>svg]:text-muted-foreground"
+            className="!size-8 shrink-0 !rounded-full !p-2 [&>svg]:shrink-0 [&>svg]:rotate-[-45deg] [&>svg]:text-muted-foreground"
             size="icon"
             type="button"
             variant="ghost"
@@ -100,7 +98,7 @@ export function AiChat() {
             <Select defaultValue={defaultMode} items={aiModes} name="mode">
               <SelectTrigger
                 className="!transition-none hover:!bg-accent data-[popup-open]:!bg-accent"
-                render={<Button className="rounded-[var(--radius)]" size="sm" variant="ghost" />}
+                render={<Button className="!rounded-[var(--radius)]" size="sm" variant="ghost" />}
               >
                 <SelectValue>
                   {(value) => {
@@ -112,7 +110,7 @@ export function AiChat() {
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="start" alignItemWithTrigger={false} side="top" sideOffset={8}>
-                  <SelectPopup className="min-w-[120px] max-md:w-[120px]" data-slot="select-popup">
+                  <SelectPopup className="box-border min-w-[140px] max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px]" data-slot="select-popup">
                     <SelectSpacer />
                     <SelectList>
                       {aiModes.map(({ label, value }) => (
@@ -130,7 +128,7 @@ export function AiChat() {
 
             <Button
               aria-label={hasContent ? "Send message" : "Start voice input"}
-              className="size-9 shrink-0 rounded-full bg-primary p-2 hover:bg-[oklch(from_var(--color-primary)_calc(l*0.8)_c_h)]"
+              className="!size-9 shrink-0 !rounded-full !bg-primary hover:not-disabled:!bg-[oklch(from_var(--primary)_calc(l*0.8)_c_h)]"
               disabled={isPending}
               size="icon"
               type="submit"
