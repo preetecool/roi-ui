@@ -20,13 +20,15 @@
 .label {
   font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.4;
   color: var(--secondary-foreground);
 }
 
 .value {
   font-size: 0.75rem;
-  color: var(--muted-foreground);
   font-weight: 500;
+  line-height: 1.4;
+  color: var(--muted-foreground);
 }
 
 .track {

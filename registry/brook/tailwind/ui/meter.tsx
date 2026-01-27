@@ -10,7 +10,7 @@ function MeterRoot({ className, ...props }: Meter.Root.Props) {
 function MeterLabel({ className, ...props }: Meter.Label.Props) {
   return (
     <Meter.Label
-      className={cn("font-medium text-secondary-foreground text-sm", className)}
+      className={cn("font-medium text-secondary-foreground text-sm leading-[1.4]", className)}
       data-slot="meter-label"
       {...props}
     />
@@ -48,7 +48,7 @@ function MeterIndicator({ className, ...props }: Meter.Indicator.Props) {
 function MeterValue({ className, ...props }: Meter.Value.Props) {
   return (
     <Meter.Value
-      className={cn("font-medium text-muted-foreground text-xs", className)}
+      className={cn("font-medium text-muted-foreground text-xs leading-[1.4]", className)}
       data-slot="meter-value"
       {...props}
     />
