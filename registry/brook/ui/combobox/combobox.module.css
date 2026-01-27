@@ -46,6 +46,7 @@
   height: 1rem;
   width: 1rem;
   flex-shrink: 0;
+  color: var(--muted-foreground);
 }
 
 .positioner {

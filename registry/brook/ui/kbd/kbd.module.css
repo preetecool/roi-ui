@@ -8,13 +8,12 @@
   font-weight: 550;
   line-height: 1;
   white-space: nowrap;
-  border: 1px solid var(--mix-card-6-trans);
-  border-bottom: 3px solid oklch(from var(--foreground) l c h / 0.06);
+  border: none;
+  border-radius: 2px;
   background: var(--card);
   box-shadow:
-    0 0.753698px 0.452219px -0.583333px rgba(0, 0, 0, 0.01),
-    0 1.927px 1.1562px -1.16667px rgba(0, 0, 0, 0.025),
-    0 3.86321px 2.31793px -1.75px rgba(0, 0, 0, 0.02);
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 2px 0 0 var(--muted);
   color: var(--foreground);
   transition: all 150ms ease;
 }
@@ -33,7 +32,6 @@
   height: 1.25rem;
   padding: 0 0.25rem;
   font-size: 0.625rem;
-  border-radius: calc(var(--radius) * 0.75);
 }
 
 .md {
@@ -41,7 +39,6 @@
   height: 1.5rem;
   padding: 0 0.375rem;
   font-size: 0.75rem;
-  border-radius: 2px;
 }
 
 .lg {
@@ -49,5 +46,4 @@
   height: 2rem;
   padding: 0 0.5rem;
   font-size: 0.875rem;
-  border-radius: var(--radius-lg);
 }
