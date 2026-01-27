@@ -10,7 +10,7 @@ function ProgressRoot({ className, ...props }: Progress.Root.Props) {
 function ProgressLabel({ className, ...props }: Progress.Label.Props) {
   return (
     <Progress.Label
-      className={cn("font-medium text-[var(--foreground)] text-sm", className)}
+      className={cn("font-medium text-[var(--foreground)] text-sm leading-[1.4]", className)}
       data-slot="progress-label"
       {...props}
     />
@@ -44,7 +44,7 @@ function ProgressIndicator({ className, ...props }: Progress.Indicator.Props) {
 function ProgressValue({ className, ...props }: Progress.Value.Props) {
   return (
     <Progress.Value
-      className={cn("font-medium text-[var(--muted-foreground)] text-xs", className)}
+      className={cn("font-medium text-[var(--muted-foreground)] text-xs leading-[1.4]", className)}
       data-slot="progress-value"
       {...props}
     />

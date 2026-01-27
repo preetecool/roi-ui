@@ -7,32 +7,26 @@ export default function RadioDemo() {
       <RadioGroup aria-label="Select a size">
         <div className={styles.title}>How was your experience?</div>
 
-        <div className={styles.radioItem}>
-          <Radio id="pleasant" value="pleasant">
+        <label className={styles.item}>
+          <Radio value="pleasant">
             <RadioIndicator />
           </Radio>
-          <label className={styles.label} htmlFor="pleasant">
-            Pleasant
-          </label>
-        </div>
+          Pleasant
+        </label>
 
-        <div className={styles.radioItem}>
-          <Radio id="neutral" value="neutral">
+        <label className={styles.item}>
+          <Radio value="neutral">
             <RadioIndicator />
           </Radio>
-          <label className={styles.label} htmlFor="neutral">
-            Neutral
-          </label>
-        </div>
+          Neutral
+        </label>
 
-        <div className={styles.radioItem}>
-          <Radio id="unpleasant" value="unpleasant">
+        <label className={styles.item}>
+          <Radio value="unpleasant">
             <RadioIndicator />
           </Radio>
-          <label className={styles.label} htmlFor="unpleasant">
-            Unpleasant
-          </label>
-        </div>
+          Unpleasant
+        </label>
       </RadioGroup>
     </div>
   );
