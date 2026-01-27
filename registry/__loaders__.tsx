@@ -347,6 +347,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "kbd-demo": dynamic(() =>
+    import("@/registry/brook/examples/kbd-demo/kbd-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "like-button-demo": dynamic(() =>
     import("@/registry/brook/examples/like-button-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -830,6 +835,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "input-demo-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/input-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "kbd-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/kbd-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
