@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils-tailwind";
 
 const tableVariants = cva(
   [
-    "w-full table-auto caption-bottom border-collapse font-[0.925rem] leading-[1.5]",
+    "w-full table-auto caption-bottom border-collapse text-[0.925rem] leading-[1.5]",
     "antialiased",
   ],
   {
@@ -54,7 +54,7 @@ function Table({
 function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   return (
     <thead
-      className={cn("sticky top-0 z-10 border-b border-b-border bg-card", className)}
+      className={cn("sticky top-0 z-10 border-b border-b-border/50 bg-card", className)}
       data-slot="table-header"
       {...props}
     />
