@@ -124,7 +124,6 @@
   border-radius: var(--radius-lg);
 }
 
-/* Light mode specific: white background, black text on selection */
 .light .default::selection,
 .light .default *::selection,
 [data-theme="light"] .default::selection,

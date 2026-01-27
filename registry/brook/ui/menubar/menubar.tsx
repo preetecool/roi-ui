@@ -70,7 +70,6 @@ function MenubarMenuSubmenuTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuSubmenuTrigger>) {
-  // Check if children contains an icon element (checking for common icon props)
   const hasIcon =
     typeof children === "object" && children !== null && "type" in children && typeof children.type === "function";
 

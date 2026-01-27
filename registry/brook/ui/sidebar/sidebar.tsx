@@ -12,7 +12,6 @@ const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
-// Roving tabindex types
 type RovingTabindexItem = {
   id: string;
   element: HTMLElement;
@@ -28,7 +27,6 @@ type RovingTabindexContextValue = {
 
 const RovingTabindexContext = createContext<RovingTabindexContextValue | undefined>(undefined);
 
-// Helper functions for roving tabindex navigation
 function getNextFocusableId(items: RovingTabindexItem[], id: string): RovingTabindexItem | undefined {
   const currIndex = items.findIndex((item) => item.id === id);
   return items.at(currIndex === items.length - 1 ? 0 : currIndex + 1);
@@ -51,9 +49,6 @@ type SidebarContextValue = {
 
 const SidebarContext = createContext<SidebarContextValue | undefined>(undefined);
 
-/**
- * Hook to access sidebar context
- */
 function useSidebar() {
   const context = useContext(SidebarContext);
   if (!context) {
@@ -62,13 +57,9 @@ function useSidebar() {
   return context;
 }
 
-/**
- * Hook for roving tabindex functionality
- */
 function useRovingTabindex(id: string) {
   const context = useContext(RovingTabindexContext);
 
-  // Allow usage outside of roving tabindex context (graceful degradation)
   if (!context) {
     return {
       getOrderedItems: () => [],
@@ -106,9 +97,6 @@ function useRovingTabindex(id: string) {
   };
 }
 
-/**
- * SidebarProvider - Manages sidebar state for both mobile and desktop
- */
 function SidebarProvider({
   children,
   className,
@@ -145,7 +133,6 @@ function SidebarProvider({
     [isMobile, handleOpenChange, open]
   );
 
-  // Keyboard shortcut
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
@@ -158,7 +145,6 @@ function SidebarProvider({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [toggleSidebar]);
 
-  // Prevent body scroll on mobile when sidebar is open
   useEffect(() => {
     if (isMobile && openMobile) {
       document.body.style.overflow = "hidden";
@@ -206,9 +192,6 @@ function SidebarProvider({
   );
 }
 
-/**
- * Sidebar - Main sidebar component
- */
 function Sidebar({
   className,
   children,
@@ -224,7 +207,6 @@ function Sidebar({
   const { isMobile, state, openMobile, toggleSidebar } = useSidebar();
   const [isHovering, setIsHovering] = useState(false);
 
-  // Reset hover state when sidebar expands
   useEffect(() => {
     if (state === "expanded") {
       setIsHovering(false);
@@ -265,10 +247,8 @@ function Sidebar({
       data-state={state}
       data-variant={variant}
     >
-      {/* Sidebar gap - takes up space in the layout */}
       <div className={styles.gap} data-slot="sidebar-gap" />
 
-      {/* Hover trigger area when collapsed */}
       {state === "collapsed" && collapsible === "offcanvas" && (
         <div
           aria-hidden="true"
@@ -278,7 +258,6 @@ function Sidebar({
         />
       )}
 
-      {/* Fixed sidebar container */}
       <div
         className={styles.container}
         data-slot="sidebar-container"
@@ -290,7 +269,6 @@ function Sidebar({
         </aside>
       </div>
 
-      {/* Rail for hover trigger */}
       {collapsible === "offcanvas" && (
         <button
           aria-label="Toggle Sidebar"
@@ -305,9 +283,6 @@ function Sidebar({
   );
 }
 
-/**
- * SidebarTrigger - Button to toggle sidebar
- */
 function SidebarTrigger({ render, className, onClick, ...props }: useRender.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebar();
 
@@ -328,9 +303,6 @@ function SidebarTrigger({ render, className, onClick, ...props }: useRender.Comp
   });
 }
 
-/**
- * SidebarRail - Hover trigger at the edge of collapsed sidebar
- */
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebar();
 
@@ -347,51 +319,30 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
   );
 }
 
-/**
- * SidebarHeader - Sticky header at the top
- */
 function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.header, className)} data-slot="sidebar-header" {...props} />;
 }
 
-/**
- * SidebarContent - Scrollable content area
- */
 function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.content, className)} data-slot="sidebar-content" {...props} />;
 }
 
-/**
- * SidebarGroup - Section within content
- */
 function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.group, className)} data-slot="sidebar-group" {...props} />;
 }
 
-/**
- * SidebarGroupLabel - Label for a group
- */
 function SidebarGroupLabel({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.groupLabel, className)} data-slot="sidebar-group-label" {...props} />;
 }
 
-/**
- * SidebarGroupContent - Content wrapper for a group
- */
 function SidebarGroupContent({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.groupContent, className)} data-slot="sidebar-group-content" {...props} />;
 }
 
-/**
- * SidebarFooter - Sticky footer at the bottom
- */
 function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn(styles.footer, className)} data-slot="sidebar-footer" {...props} />;
 }
 
-/**
- * SidebarClose - Close button
- */
 function SidebarClose({ render, className, onClick, children, ...props }: useRender.ComponentProps<"button">) {
   const { setOpen, setOpenMobile, isMobile } = useSidebar();
 
@@ -429,9 +380,6 @@ function SidebarClose({ render, className, onClick, children, ...props }: useRen
   });
 }
 
-/**
- * SidebarMenu - List container for menu items with roving tabindex
- */
 function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   const [focusableId, setFocusableId] = useState<string | null>(null);
   const [isShiftTabbing, setIsShiftTabbing] = useState(false);
@@ -490,9 +438,6 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   );
 }
 
-/**
- * SidebarMenuItem - Individual menu item
- */
 function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
   return <li className={cn(styles.menuItem, className)} data-slot="sidebar-menu-item" {...props} />;
 }
@@ -501,9 +446,6 @@ const ID_START_INDEX = 2;
 const ID_END_INDEX = 9;
 const ID_RADIX = 36;
 
-/**
- * SidebarMenuButton - Button for menu items with keyboard navigation
- */
 function SidebarMenuButton({
   render,
   className,
@@ -512,7 +454,6 @@ function SidebarMenuButton({
 }: useRender.ComponentProps<"button"> & {
   isActive?: boolean;
 }) {
-  // Generate a stable ID from children or use a ref
   const id = useRef(
     `sidebar-menu-button-${Math.random().toString(ID_RADIX).substring(ID_START_INDEX, ID_END_INDEX)}`
   ).current;
@@ -521,14 +462,12 @@ function SidebarMenuButton({
   const context = useContext(RovingTabindexContext);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    // Call original handler if it exists
     props.onKeyDown?.(e);
 
     if (!context) {
       return;
     }
 
-    // Handle shift+tab to exit the roving tabindex
     if (e.shiftKey && e.key === "Tab") {
       context.onShiftTab();
       return;
@@ -588,9 +527,6 @@ function SidebarMenuButton({
   });
 }
 
-/**
- * SidebarMenuAction - Action button for menu items
- */
 function SidebarMenuAction({ render, className, ...props }: useRender.ComponentProps<"button">) {
   return useRender({
     defaultTagName: "button",
@@ -604,23 +540,14 @@ function SidebarMenuAction({ render, className, ...props }: useRender.ComponentP
   });
 }
 
-/**
- * SidebarMenuSub - Submenu container
- */
 function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
   return <ul className={cn(styles.menuSub, className)} data-slot="sidebar-menu-sub" {...props} />;
 }
 
-/**
- * SidebarMenuSubItem - Submenu item
- */
 function SidebarMenuSubItem({ className, ...props }: React.ComponentProps<"li">) {
   return <li className={cn(styles.menuSubItem, className)} data-slot="sidebar-menu-sub-item" {...props} />;
 }
 
-/**
- * SidebarMenuSubButton - Button for submenu items
- */
 function SidebarMenuSubButton({
   render,
   className,

@@ -1,13 +1,11 @@
-/* Container for responsive scrolling */
 .container {
   position: relative;
   width: 100%;
   overflow-x: auto;
   border-radius: var(--radius);
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Subtle scrollbar styling */
 .container::-webkit-scrollbar {
   height: 8px;
 }
@@ -26,7 +24,6 @@
   background: oklch(from var(--border) l c h / 0.8);
 }
 
-/* Base table styles */
 .table {
   width: 100%;
   caption-side: bottom;
@@ -36,7 +33,6 @@
   table-layout: auto;
 }
 
-/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -45,19 +41,16 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* Body */
 .body {
   background: var(--card);
 }
 
-/* Footer */
 .footer {
   border-top: 1px solid var(--border);
   background: var(--muted);
   font-weight: 500;
 }
 
-/* Row */
 .row {
   border-bottom: 1px solid oklch(from var(--border) l c h / 0.5);
   transition: background-color 0.15s var(--ease-out-quad);
@@ -71,14 +64,12 @@
   background-color: var(--muted);
 }
 
-/* Interactive rows (with onClick handlers) */
 .row[onclick]:hover,
 .row[role="button"]:hover {
   background-color: var(--accent);
   cursor: pointer;
 }
 
-/* Header cell */
 .head {
   padding: 0.75rem 1rem;
   text-align: left;
@@ -97,7 +88,6 @@
   text-align: right;
 }
 
-/* Data cell */
 .cell {
   padding: 0.75rem 1rem;
   color: var(--foreground);
@@ -113,7 +103,6 @@
   text-align: right;
 }
 
-/* Caption */
 .caption {
   margin-top: 1rem;
   font-size: 0.875rem;
@@ -121,7 +110,6 @@
   text-align: left;
 }
 
-/* Variant: Bordered */
 .tableBordered {
   border: 1px solid var(--border);
 }
@@ -140,7 +128,6 @@
   border-right: none;
 }
 
-/* Variant: Striped */
 .tableStriped .body .row:nth-child(odd) {
   background-color: oklch(from var(--muted) l c h / 0.4);
 }
@@ -153,21 +140,18 @@
   background-color: var(--muted);
 }
 
-/* Size: Small */
 .tableSm .head,
 .tableSm .cell {
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
 }
 
-/* Size: Large */
 .tableLg .head,
 .tableLg .cell {
   padding: 1rem 1.25rem;
   font-size: 1rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 640px) {
   .table {
     font-size: 0.875rem;
@@ -191,13 +175,11 @@
   }
 }
 
-/* Accessibility: Focus states */
 .row:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: -2px;
 }
 
-/* Improve text readability */
 .table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -161,7 +161,7 @@ function ToastList() {
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
               <ToastTitle />
-              {toast.type && (
+              {toast.type ? (
                 <span
                   className={cn(
                     "inline-block h-[5px] w-[10px] rounded-[var(--radius)]",
@@ -171,10 +171,10 @@ function ToastList() {
                     toast.type === "info" && "bg-[var(--info)]"
                   )}
                 />
-              )}
+              ) : null}
             </div>
             <ToastDescription />
-            {toast.actionProps && <ToastAction className="mt-2">{toast.actionProps.children}</ToastAction>}
+            {toast.actionProps ? <ToastAction className="mt-2">{toast.actionProps.children}</ToastAction> : null}
           </div>
         </div>
         {toast.data?.showCloseButton === true && (

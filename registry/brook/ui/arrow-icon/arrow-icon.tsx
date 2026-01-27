@@ -2,20 +2,8 @@ type EnterArrowIconProps = {
   className?: string;
 };
 
-/**
- * EnterArrowIcon component for displaying Enter/Return key arrow.
- * Typically used in keyboard shortcuts display.
- *
- * @param className - Optional CSS classes for the SVG element
- *
- * @example
- * ```tsx
- * <EnterArrowIcon />
- * ```
- */
 export function EnterArrowIcon({ className }: EnterArrowIconProps) {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: Arrow is decorative icon for keyboard shortcut
     <svg
       aria-hidden="true"
       className={className}

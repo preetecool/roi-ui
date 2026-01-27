@@ -86,12 +86,10 @@
   right: calc(var(--sidebar-width) * -1);
 }
 
-/* Icon width when collapsed */
 .desktop[data-collapsible="icon"] .container {
   width: var(--sidebar-width-icon);
 }
 
-/* Sidebar */
 .sidebar {
   position: relative;
   display: flex;
@@ -116,7 +114,6 @@
   border-left: 1px solid var(--border);
 }
 
-/* Mobile sidebar */
 .mobile {
   position: fixed;
   top: 0;
@@ -147,7 +144,6 @@
   }
 }
 
-/* Header */
 .header {
   display: flex;
   flex-direction: column;
@@ -386,7 +382,6 @@
   display: none;
 }
 
-/* Menu Sub */
 .menuSub {
   display: flex;
   min-width: 0;
@@ -473,7 +468,6 @@
   }
 }
 
-/* Hover state - slide sidebar in when hovering (only when collapsed) */
 .desktop[data-state="collapsed"][data-hover="true"][data-side="left"]
 .container {
   transform: translateX(0);

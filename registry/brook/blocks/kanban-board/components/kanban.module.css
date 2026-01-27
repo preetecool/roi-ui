@@ -1,17 +1,9 @@
-/* ==========================================================================
-   Root
-   ========================================================================== */
-
 .root {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 }
-
-/* ==========================================================================
-   Board Layout
-   ========================================================================== */
 
 .board {
   display: flex;
@@ -23,10 +15,6 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
-
-/* ==========================================================================
-   Column
-   ========================================================================== */
 
 .column {
   display: flex;
@@ -53,10 +41,6 @@
   min-height: 0;
   overflow-y: auto;
 }
-
-/* ==========================================================================
-   Card
-   ========================================================================== */
 
 .card {
   padding: 1rem;
@@ -138,10 +122,6 @@
   display: block;
 }
 
-/* ==========================================================================
-   Project Board
-   ========================================================================== */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -182,7 +162,6 @@
   margin: 0;
 }
 
-/* Card Meta */
 .cardMeta {
   display: flex;
   align-items: center;
@@ -203,7 +182,6 @@
   flex-shrink: 0;
 }
 
-/* Card Footer */
 .cardFooterWrapper {
   display: flex;
   flex-direction: column;
@@ -269,7 +247,6 @@
   color: var(--destructive);
 }
 
-/* Avatar Group */
 .avatarGroup[data-slot="button"] {
   display: flex;
   align-items: center;
@@ -344,10 +321,6 @@
   color: var(--muted-foreground);
 }
 
-/* ==========================================================================
-   Filter Bar
-   ========================================================================== */
-
 .filterContainer {
   display: flex;
   flex-direction: column;
@@ -390,10 +363,6 @@
   opacity: 1;
 }
 
-/* ==========================================================================
-   Priority Icon
-   ========================================================================== */
-
 .priorityIcon {
   display: flex;
   align-items: center;
@@ -417,10 +386,6 @@
 .priorityUrgent {
   color: var(--urgent);
 }
-
-/* ==========================================================================
-   Task Dialog
-   ========================================================================== */
 
 .dialogPopup {
   max-width: 660px;
@@ -629,7 +594,6 @@
   border-radius: var(--radius);
 }
 
-/* Calendar popover needs higher z-index to appear above dialog */
 :global(body:has([data-kanban-dialog]) [data-slot="popover-positioner"]) {
   z-index: 200;
 }
@@ -649,7 +613,6 @@
   white-space: nowrap;
 }
 
-/* Highlight triggers on hover and when popup is open */
 .fieldRow [data-slot="select-trigger"]:hover,
 .fieldRow [data-slot="popover-trigger"]:hover,
 .fieldRow [data-slot="button"]:hover,
@@ -770,7 +733,6 @@
   opacity: 1;
 }
 
-/* Input borderless variant overrides */
 .titleInput[data-variant="borderless"],
 .descriptionInput[data-variant="borderless"] {
   border: none;
@@ -789,14 +751,12 @@
   box-shadow: none;
 }
 
-/* Trigger overrides */
 .fieldRow [data-slot="select-trigger"],
 .fieldRow [data-slot="popover-trigger"],
 .fieldRow [data-slot="button"] {
   box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.4);
 }
 
-/* Select popup overrides */
 .fieldRow [data-slot="select-popup"] {
   min-width: 0;
   width: 200px;
@@ -825,20 +785,17 @@
   transform: scale(0.95);
 }
 
-/* Select value overrides */
 .fieldRow [data-slot="select-value"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Select list overrides */
 .fieldRow [data-slot="select-list"] {
   padding: 0;
   scroll-padding-block: 1.5rem;
 }
 
-/* Select item overrides */
 .fieldRow [data-slot="select-item"] {
   gap: 0.75rem;
   padding-inline: 8px 6px;
@@ -846,12 +803,10 @@
   min-height: 32px;
 }
 
-/* Select indicator overrides */
 .fieldRow [data-slot="select-item-indicator"] {
   color: var(--muted-foreground);
 }
 
-/* Combobox overrides */
 .fieldRow [data-slot="combobox-popup"] {
   min-width: 200px;
   border: 0.5px solid oklch(from var(--border) l c h / 0.4);
@@ -873,10 +828,6 @@
 .inlineField[data-slot="field"] {
   display: contents;
 }
-
-/* ==========================================================================
-   Delete Dialog
-   ========================================================================== */
 
 .deleteIconWrapper {
   display: flex;
@@ -924,10 +875,6 @@
 .deleteDialog [data-slot="alert-dialog-footer"] > * {
   flex: 1;
 }
-
-/* ==========================================================================
-   Spinner
-   ========================================================================== */
 
 .spinner {
   animation: spin 1s linear infinite;

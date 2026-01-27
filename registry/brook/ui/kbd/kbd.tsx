@@ -16,21 +16,6 @@ const kbdVariants = cva(styles.kbd, {
   },
 });
 
-/**
- * Kbd component for displaying keyboard shortcuts
- *
- * @example
- * ```tsx
- * <Kbd>⌘</Kbd>
- * <Kbd>K</Kbd>
- * ```
- *
- * @example
- * ```tsx
- * <Kbd size="sm">Ctrl</Kbd>
- * <Kbd size="lg">Enter</Kbd>
- * ```
- */
 function Kbd({ className, size, children, ...props }: React.ComponentProps<"kbd"> & VariantProps<typeof kbdVariants>) {
   const isCommandKey = typeof children === "string" && (children === "⌘" || children.toLowerCase() === "ctrl");
 
