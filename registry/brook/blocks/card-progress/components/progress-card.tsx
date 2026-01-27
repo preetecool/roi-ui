@@ -58,12 +58,19 @@ function getIndicatorConfig(status: StepStatus, isFinal: boolean) {
 
 function StepIndicator({ status, isFinal = false }: StepIndicatorProps) {
   const { className, icon } = getIndicatorConfig(status, isFinal);
+  const showSpinner = status === "in_progress" || status === "complete";
+  const isComplete = status === "complete";
 
   return (
-    <div className={className}>
-      {icon === "clock" && <AnimatedClock className={styles.clockIcon} />}
-      {icon === "check" && <Check className={styles.checkIcon} size={14} strokeWidth={3} />}
-      {icon === "error" && <AlertCircle className={styles.errorIcon} size={14} strokeWidth={2.5} />}
+    <div className={styles.indicatorWrapper}>
+      {showSpinner && (
+        <div className={`${styles.spinnerCircleOverlay} ${isComplete ? styles.spinnerFading : ""}`} />
+      )}
+      <div className={className}>
+        {icon === "clock" && <AnimatedClock className={styles.clockIcon} />}
+        {icon === "check" && <Check className={styles.checkIcon} size={14} strokeWidth={3} />}
+        {icon === "error" && <AlertCircle className={styles.errorIcon} size={14} strokeWidth={2.5} />}
+      </div>
     </div>
   );
 }

@@ -51,7 +51,7 @@ function getIndicatorConfig(status: StepStatus, isFinal: boolean) {
       } as const;
     case "in_progress":
       return {
-        className: `${BASE_CLASSES} animate-spin border-2 border-[var(--border)] border-t-[var(--foreground)] bg-[var(--card)]`,
+        className: `${BASE_CLASSES} border-2 border-[var(--border)] bg-[var(--card)]`,
         icon: null,
         iconClassName: null,
       } as const;
@@ -78,12 +78,23 @@ function getIndicatorConfig(status: StepStatus, isFinal: boolean) {
 
 function StepIndicator({ status, isFinal = false }: StepIndicatorProps) {
   const { className, icon, iconClassName } = getIndicatorConfig(status, isFinal);
+  const showSpinner = status === "in_progress" || status === "complete";
+  const isComplete = status === "complete";
 
   return (
-    <div className={className}>
-      {icon === "clock" && <AnimatedClock className={iconClassName!} />}
-      {icon === "check" && <Check className={iconClassName!} size={14} strokeWidth={3} />}
-      {icon === "error" && <AlertCircle className={iconClassName!} size={14} strokeWidth={2.5} />}
+    <div className="relative h-5 w-5">
+      {showSpinner && (
+        <div
+          className={`absolute inset-0 h-5 w-5 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--foreground)] bg-[var(--card)] z-[2] transition-opacity duration-[400ms] ease-out ${
+            isComplete ? "opacity-0" : "opacity-100"
+          }`}
+        />
+      )}
+      <div className={className}>
+        {icon === "clock" && <AnimatedClock className={iconClassName!} />}
+        {icon === "check" && <Check className={iconClassName!} size={14} strokeWidth={3} />}
+        {icon === "error" && <AlertCircle className={iconClassName!} size={14} strokeWidth={2.5} />}
+      </div>
     </div>
   );
 }
