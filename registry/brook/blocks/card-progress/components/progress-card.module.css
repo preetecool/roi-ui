@@ -70,6 +70,31 @@
   background-color: var(--foreground);
 }
 
+.indicatorWrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.spinnerCircleOverlay {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--foreground);
+  background-color: var(--card);
+  animation: spin 0.8s linear infinite;
+  opacity: 1;
+  transition: opacity 400ms ease-out;
+  z-index: 2;
+}
+
+.spinnerFading {
+  opacity: 0;
+}
+
 .pendingCircle {
   width: 20px;
   height: 20px;
@@ -300,6 +325,15 @@
 @media (prefers-reduced-motion: reduce) {
   .spinnerCircle {
     animation: none;
+  }
+
+  .spinnerCircleOverlay {
+    animation: none;
+    transition: none;
+  }
+
+  .spinnerFading {
+    opacity: 0;
   }
 
   .clockHand {

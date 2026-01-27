@@ -218,11 +218,9 @@
 }
 
 .today {
-  /* No special styling for today */
 }
 
 .today[data-selected="true"] {
-  /* No special styling for today when selected */
 }
 
 .outside {

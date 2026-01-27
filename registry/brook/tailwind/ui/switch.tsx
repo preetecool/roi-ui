@@ -8,7 +8,7 @@ function SwitchRoot({ className, ...props }: Switch.Root.Props) {
     <Switch.Root
       className={cn(
         "relative m-0 inline-flex h-6 w-11 appearance-none items-center rounded-xl p-0.5 transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)]",
-        "border-[0.5px] border-[var(--border)] bg-[var(--mix-card-50-bg)]",
+        "border-[0.5px] border-[var(--border)] bg-[var(--mix-card-85-bg)]",
         "hover:bg-[var(--muted-hover,var(--muted))]",
         "data-[checked]:bg-[var(--success)]",
         "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",

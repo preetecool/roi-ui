@@ -128,6 +128,7 @@ function ArrowPointer({
 	return (
 		<svg
 			className={arrowClasses}
+			data-slot="arrow"
 			fill="none"
 			viewBox="0 0 14 10"
 			xmlns="http://www.w3.org/2000/svg"

@@ -39,7 +39,6 @@
   outline-offset: 2px;
 }
 
-/* Medium screens: scale down spread cards */
 @media (max-width: 1024px) {
   .spreadCard {
     width: 155px;
@@ -133,7 +132,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /*z-index: 100;*/
   pointer-events: none;
 }
 
@@ -166,7 +164,6 @@
   opacity: 0.8;
 }
 
-/* Mobile stacked view */
 .mobileStack {
   position: relative;
   width: 100%;

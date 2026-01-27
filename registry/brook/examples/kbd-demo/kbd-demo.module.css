@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.plus {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}

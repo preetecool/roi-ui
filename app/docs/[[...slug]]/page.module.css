@@ -242,7 +242,7 @@
   width: 100%;
 }
 
-.badgeButton {
+.badgeButton[data-slot="button"] {
   height: auto;
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
@@ -252,7 +252,7 @@
   align-items: center;
 }
 
-.badgeButton svg {
+.badgeButton [data-slot="arrow"] {
   width: 10px;
   height: 9px;
   margin-left: 6px;

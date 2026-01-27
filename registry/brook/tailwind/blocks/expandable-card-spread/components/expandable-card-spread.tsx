@@ -71,8 +71,10 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                 render={
                   <motion.li
                     aria-label={`Expand ${card.title}`}
-                    className={`-ml-[55px] flex cursor-pointer flex-col items-start justify-end border-none first:ml-0 focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2 lg:-ml-[60px] ${
-                      isExpanded ? "-ml-[120px] h-[210px] w-[170px] p-3" : "h-[195px] w-[155px] p-3.5 lg:h-[290px] lg:w-[230px] lg:p-6"
+                    className={`flex cursor-pointer flex-col items-start justify-end border-none first:ml-0 focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2 ${
+                      isExpanded
+                        ? "-ml-[120px] h-[210px] w-[170px] p-3"
+                        : "-ml-[55px] lg:-ml-[60px] h-[195px] w-[155px] p-3.5 lg:h-[290px] lg:w-[230px] lg:p-6"
                     }`}
                     layoutId={`spread-card-${card.id}`}
                     onClick={() => {

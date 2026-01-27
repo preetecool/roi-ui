@@ -4,34 +4,28 @@ export default function RadioDemo() {
   return (
     <div className="max-w-96">
       <RadioGroup aria-label="Select a size">
-        <div className="mb-4 font-medium text-sm">How was your experience?</div>
+        <div className="mb-4 font-medium text-sm leading-normal">How was your experience?</div>
 
-        <div className="flex items-center gap-2">
-          <Radio id="pleasant" value="pleasant">
+        <label className="flex items-center gap-2 text-sm leading-normal cursor-pointer">
+          <Radio value="pleasant">
             <RadioIndicator />
           </Radio>
-          <label className="cursor-pointer text-sm leading-[1.5]" htmlFor="pleasant">
-            Pleasant
-          </label>
-        </div>
+          Pleasant
+        </label>
 
-        <div className="flex items-center gap-2">
-          <Radio id="neutral" value="neutral">
+        <label className="flex items-center gap-2 text-sm leading-normal cursor-pointer">
+          <Radio value="neutral">
             <RadioIndicator />
           </Radio>
-          <label className="cursor-pointer text-sm leading-[1.5]" htmlFor="neutral">
-            Neutral
-          </label>
-        </div>
+          Neutral
+        </label>
 
-        <div className="flex items-center gap-2">
-          <Radio id="unpleasant" value="unpleasant">
+        <label className="flex items-center gap-2 text-sm leading-normal cursor-pointer">
+          <Radio value="unpleasant">
             <RadioIndicator />
           </Radio>
-          <label className="cursor-pointer text-sm leading-[1.5]" htmlFor="unpleasant">
-            Unpleasant
-          </label>
-        </div>
+          Unpleasant
+        </label>
       </RadioGroup>
     </div>
   );

@@ -76,12 +76,12 @@ function ToastList() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <ToastTitle />
-              {toast.type && <span className={styles.statusPill} data-type={toast.type} />}
+              {toast.type ? <span className={styles.statusPill} data-type={toast.type} /> : null}
             </div>
             <ToastDescription />
-            {toast.actionProps && (
+            {toast.actionProps ? (
               <ToastAction className={styles.actionButton}>{toast.actionProps.children}</ToastAction>
-            )}
+            ) : null}
           </div>
         </div>
         {toast.data?.showCloseButton === true && (

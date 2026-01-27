@@ -104,7 +104,6 @@
       opacity 175ms var(--ease-out-expo);
   }
 
-  /* Slide left: clicking from right to left, content slides right-to-left */
   &[data-activation-direction~="left"] [data-previous][data-ending-style] {
     transform: translateX(-50%);
     opacity: 0;
@@ -115,7 +114,6 @@
     opacity: 0;
   }
 
-  /* Slide right: clicking from left to right, content slides left-to-right */
   &[data-activation-direction~="right"] [data-previous][data-ending-style] {
     transform: translateX(50%);
     opacity: 0;
@@ -154,7 +152,6 @@
 
   & svg {
     fill: var(--border);
-    /*stroke: var(--border);*/
     stroke-width: 1px;
   }
 }

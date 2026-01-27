@@ -2,7 +2,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./like-button.module.css";
 
-// Constants for animation calculations
 const DEGREES_TO_RADIANS = 180;
 const ANGLE_OFFSET_BASE = 90;
 const DELAY_DIVISOR = 1000;
@@ -36,32 +35,6 @@ type Particle = {
   color: string;
 };
 
-/**
- * LikeButton component with animated thumbs-up and particle effects.
- * Features smooth animations and visual feedback when clicked.
- *
- * @param isPlaying - Auto-play the animation continuously (default: false)
- * @param onClick - Callback function when the button is clicked
- * @param className - Optional CSS class names
- * @param particleCount - Number of particles to generate (default: 6)
- * @param colors - Array of colors for particles (default: ["var(--foreground)"])
- * @param colorMode - How to apply colors: "alternating" or "random" (default: "alternating")
- *
- * @example
- * ```tsx
- * <LikeButton onClick={() => console.log('Liked!')} />
- *
- * // Auto-playing version
- * <LikeButton isPlaying={true} />
- *
- * // Custom particles with colors
- * <LikeButton
- *   particleCount={10}
- *   colors={["#ff0000", "#00ff00", "#0000ff"]}
- *   colorMode="random"
- * />
- * ```
- */
 function LikeButton({
   isPlaying = false,
   onClick,
@@ -89,18 +62,14 @@ function LikeButton({
       const baseAngle = -Math.PI / 2;
       const angle = baseAngle + (angleOffset * Math.PI) / DEGREES_TO_RADIANS;
 
-      // Calculate return delay based on absolute angle (outside-in pattern)
-      // ±60° (outermost) → delay 0 (return first)
-      // ±30° (middle) → delay 0.05s (return second)
-      // 0° (center) → delay 0.05s (return last)
       const absAngle = Math.abs(angleOffset);
       let returnDelay = PARTICLE_RETURN_DELAY_OUTER;
       if (absAngle === PARTICLE_ANGLE_CENTER) {
-        returnDelay = PARTICLE_RETURN_DELAY_INNER; // Center particles return last
+        returnDelay = PARTICLE_RETURN_DELAY_INNER;
       } else if (absAngle === Math.abs(PARTICLE_ANGLE_LEFT_SMALL)) {
-        returnDelay = PARTICLE_RETURN_DELAY_INNER; // Mid particles return second
+        returnDelay = PARTICLE_RETURN_DELAY_INNER;
       } else if (absAngle === Math.abs(PARTICLE_ANGLE_LEFT)) {
-        returnDelay = PARTICLE_RETURN_DELAY_OUTER; // Outer particles return first
+        returnDelay = PARTICLE_RETURN_DELAY_OUTER;
       }
 
       return {
@@ -121,7 +90,7 @@ function LikeButton({
 
   const createParticleSet = useCallback((): Particle[] => {
     const particles: Particle[] = [];
-    const angleSpread = 120; // Total spread in degrees (60 on each side)
+    const angleSpread = 120;
     const angleStep = particleCount > 1 ? angleSpread / (particleCount - 1) : 0;
     const startAngle = -angleSpread / 2;
 
@@ -137,12 +106,10 @@ function LikeButton({
             ? PARTICLE_SIZE_CIRCLE_LARGE
             : PARTICLE_SIZE_CIRCLE_MEDIUM;
 
-      // Select color based on colorMode
       let color: string;
       if (colorMode === "random") {
         color = colors[Math.floor(Math.random() * colors.length)];
       } else {
-        // alternating
         color = colors[i % colors.length];
       }
 

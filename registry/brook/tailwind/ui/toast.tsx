@@ -46,7 +46,7 @@ function ToastRoot({ className, ...props }: Toast.Root.Props) {
         "[--height:var(--toast-frontmost-height,var(--toast-height))]",
         "[--offset-y:calc(var(--toast-offset-y)*-1+calc(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))]",
         "absolute right-0 bottom-0 left-auto z-[calc(1000-var(--toast-index))] mr-0 w-full origin-bottom",
-        "select-none rounded-[0.5rem] bg-[var(--mix-card-5-bg)] bg-clip-padding p-4",
+        "select-none rounded-[0.5rem] border-0 bg-[var(--mix-card-5-bg)] bg-clip-padding p-4",
         "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.5),oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_1px_1px]",
         "[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]",
         "after:absolute after:top-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full after:content-['']",
@@ -161,7 +161,7 @@ function ToastList() {
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
               <ToastTitle />
-              {toast.type && (
+              {toast.type ? (
                 <span
                   className={cn(
                     "inline-block h-[5px] w-[10px] rounded-[var(--radius)]",
@@ -171,10 +171,10 @@ function ToastList() {
                     toast.type === "info" && "bg-[var(--info)]"
                   )}
                 />
-              )}
+              ) : null}
             </div>
             <ToastDescription />
-            {toast.actionProps && <ToastAction className="mt-2">{toast.actionProps.children}</ToastAction>}
+            {toast.actionProps ? <ToastAction className="mt-2">{toast.actionProps.children}</ToastAction> : null}
           </div>
         </div>
         {toast.data?.showCloseButton === true && (

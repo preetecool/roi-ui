@@ -596,6 +596,12 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/input-demo/input-demo",
   },
+  "kbd-demo": {
+    name: "kbd-demo",
+    type: "example",
+    files: ["registry/brook/examples/kbd-demo/kbd-demo.tsx", "registry/brook/examples/kbd-demo/kbd-demo.module.css"],
+    path: "@/registry/brook/examples/kbd-demo/kbd-demo",
+  },
   "like-button-demo": {
     name: "like-button-demo",
     type: "example",
@@ -1591,6 +1597,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/input-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/input-demo",
+  },
+  "kbd-demo-tailwind": {
+    name: "kbd-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/kbd-demo.tsx"],
+    path: "@/registry/brook/tailwind/examples/kbd-demo",
   },
   "like-button-demo-tailwind": {
     name: "like-button-demo-tailwind",

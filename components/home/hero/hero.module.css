@@ -1,4 +1,4 @@
-.badge {
+.badge[data-slot="badge"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,33 +13,33 @@
   z-index: 1;
 }
 
-.badge:hover {
+.badge[data-slot="badge"]:hover {
   background-color: var(--accent);
 }
 
-.badge svg {
+.badge[data-slot="badge"] svg {
   width: 14px;
   height: 12px;
   overflow: visible;
   transition: transform 150ms ease-in-out;
 }
 
-.badge svg path:first-child {
+.badge[data-slot="badge"] svg path:first-child {
   transition: transform 150ms ease-in;
   transform: translateX(0);
 }
 
-.badge svg path:last-child {
+.badge[data-slot="badge"] svg path:last-child {
   transition: opacity 150ms ease-in, transform 150ms ease-in;
   opacity: 0;
   transform: translateX(0);
 }
 
-.badge:hover svg path:first-child {
+.badge[data-slot="badge"]:hover svg path:first-child {
   transform: translateX(2px);
 }
 
-.badge:hover svg path:last-child {
+.badge[data-slot="badge"]:hover svg path:last-child {
   opacity: 1;
   transform: translateX(-1px);
 }

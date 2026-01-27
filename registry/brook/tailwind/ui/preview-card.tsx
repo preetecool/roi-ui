@@ -46,43 +46,31 @@ function PreviewCardPositioner({ className, ...props }: PreviewCard.Positioner.P
 
 function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
   return (
-    <PreviewCard.Popup
-      className={cn(
-        "bg-[var(--popover)]",
-        "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4",
-        "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
-        "origin-[var(--transform-origin)]",
-        "data-[state=open]:animate-[scaleIn_0.25s_var(--ease-out-expo)]",
-        "data-[state=closed]:animate-[scaleOut_0.25s_var(--ease-out-expo)]",
-        className
-      )}
-      data-slot="previewcard-popup"
-      {...props}
-    >
-      {props.children}
-      <style jsx>{`
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
+    <>
+      <style>{`
+        @keyframes previewCardScaleIn {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
         }
-        @keyframes scaleOut {
-          from {
-            opacity: 1;
-            transform: scale(1);
-          }
-          to {
-            opacity: 0;
-            transform: scale(0.9);
-          }
+        @keyframes previewCardScaleOut {
+          from { opacity: 1; transform: scale(1); }
+          to { opacity: 0; transform: scale(0.9); }
         }
       `}</style>
-    </PreviewCard.Popup>
+      <PreviewCard.Popup
+        className={cn(
+          "bg-[var(--popover)]",
+          "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4",
+          "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+          "[transform-origin:var(--transform-origin)]",
+          "[animation:previewCardScaleIn_0.25s_var(--ease-out-expo)]",
+          "data-[state=closed]:[animation:previewCardScaleOut_0.25s_var(--ease-out-expo)]",
+          className
+        )}
+        data-slot="previewcard-popup"
+        {...props}
+      />
+    </>
   );
 }
 

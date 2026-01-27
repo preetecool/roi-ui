@@ -1,0 +1,100 @@
+---
+title: Kbd
+description: A keyboard key indicator component for displaying keyboard shortcuts and key combinations
+---
+
+<ComponentPreview name="kbd-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
+npx shadcn@latest add @roiui/kbd
+```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/kbd-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/kbd
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/kbd-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the following files:
+
+<ComponentSource
+    name="kbd"
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`<Kbd>K</Kbd>`}
+
+/>
+
+## Props
+
+### Kbd
+
+<PropTable
+    data={[
+        {
+            prop: "size",
+            type: '"sm" | "md" | "lg"',
+            default: '"md"',
+            description:
+                "Size variant of the keyboard key indicator",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes to apply to the kbd element",
+        },
+        {
+            prop: "children",
+            type: "ReactNode",
+            description: "The key label to display. Special handling for command key symbols (⌘ or ctrl)",
+        },
+    ]}
+/>

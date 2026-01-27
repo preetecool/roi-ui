@@ -27,10 +27,9 @@ function TooltipPopup({ className, ...props }: Tooltip.Popup.Props) {
       className={cn(
         "max-w-[20rem] px-3 py-2 text-[var(--primary)] text-sm",
         "rounded-[var(--radius)] bg-[var(--mix-card-33-bg)]",
-        "shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]",
+        "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7),0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]",
         "transition-[transform_0.125s_ease-out,opacity_0.125s_ease-out]",
         "relative mb-1 origin-[var(--transform-origin)] break-words",
-        "border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.7)]",
         "data-[starting-style]:scale-[0.97] data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-[0.97] data-[ending-style]:opacity-0",
         "data-[instant]:transition-none",

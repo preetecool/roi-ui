@@ -41,18 +41,6 @@ const CopyIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
-/**
- * CopyButton component for copying text to clipboard with animated feedback.
- * Shows a copy icon that animates to a check mark when clicked.
- *
- * @param code - The text content to copy to clipboard
- * @param className - Optional CSS class names
- *
- * @example
- * ```tsx
- * <CopyButton code="const example = 'Hello World';" />
- * ```
- */
 function CopyButton({ code, className }: { code: string; className?: string }) {
   const [copied, setCopied] = useState(false);
 
@@ -62,7 +50,6 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), COPIED_RESET_DELAY_MS);
     } catch (_error) {
-      // Error handling - Silently fail by default
     }
   };
 
