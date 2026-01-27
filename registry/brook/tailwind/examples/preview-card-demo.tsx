@@ -14,20 +14,20 @@ import {
 export default function PreviewCardDemo() {
   return (
     <div className="p-8 text-center">
-      <p className="mb-8 text-muted-foreground">Hover over the link below to see a preview card:</p>
-
-      <PreviewCard>
-        <PreviewCardTrigger
-          closeDelay={200}
-          href="https://github.com/base-ui"
-          rel="noopener noreferrer"
-          render={
-            <Button className="text-foreground" variant="link">
-              Github
-            </Button>
-          }
-          target="_blank"
-        />
+      <p className="text-muted-foreground">
+        Hover over the{" "}
+        <PreviewCard>
+          <PreviewCardTrigger
+            closeDelay={400}
+            href="https://github.com/base-ui"
+            rel="noopener noreferrer"
+            render={
+              <Button className="text-foreground !px-0" variant="link">
+                Github
+              </Button>
+            }
+            target="_blank"
+          />
 
         <PreviewCardPortal>
           <PreviewCardPositioner align="center" side="top" sideOffset={8}>
@@ -53,7 +53,9 @@ export default function PreviewCardDemo() {
             </PreviewCardPopup>
           </PreviewCardPositioner>
         </PreviewCardPortal>
-      </PreviewCard>
+        </PreviewCard>{" "}
+        link to see a preview card.
+      </p>
     </div>
   );
 }

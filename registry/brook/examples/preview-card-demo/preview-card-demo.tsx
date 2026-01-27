@@ -15,20 +15,20 @@ import styles from "./preview-card-demo.module.css";
 export default function PreviewCardDemo() {
   return (
     <div className={styles.container}>
-      <p className={styles.description}>Hover over the link below to see a preview card:</p>
-
-      <PreviewCard>
-        <PreviewCardTrigger
-          closeDelay={200}
-          href="https://github.com/base-ui"
-          rel="noopener noreferrer"
-          render={
-            <Button className={styles.triggerLink} variant="link">
-              Github
-            </Button>
-          }
-          target="_blank"
-        />
+      <p className={styles.description}>
+        Hover over the{" "}
+        <PreviewCard>
+          <PreviewCardTrigger
+            closeDelay={400}
+            href="https://github.com/base-ui"
+            rel="noopener noreferrer"
+            render={
+              <Button className={styles.triggerLink} variant="link" style={{ paddingLeft: 0, paddingRight: 0 }}>
+                Github
+              </Button>
+            }
+            target="_blank"
+          />
 
         <PreviewCardPortal>
           <PreviewCardPositioner align="center" side="top" sideOffset={8}>
@@ -48,7 +48,9 @@ export default function PreviewCardDemo() {
             </PreviewCardPopup>
           </PreviewCardPositioner>
         </PreviewCardPortal>
-      </PreviewCard>
+        </PreviewCard>{" "}
+        link to see a preview card.
+      </p>
     </div>
   );
 }
