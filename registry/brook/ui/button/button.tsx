@@ -50,6 +50,7 @@ function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?
   return (
     <svg
       className={cn(styles.arrow, pointLeft && styles.arrowLeft, pointExternal && styles.arrowExternal)}
+      data-slot="arrow"
       fill="none"
       viewBox="0 0 14 10"
       xmlns="http://www.w3.org/2000/svg"
