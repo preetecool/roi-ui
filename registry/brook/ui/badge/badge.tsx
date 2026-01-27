@@ -26,22 +26,6 @@ const badgeVariants = cva(styles.badge, {
   },
 });
 
-/**
- * Badge component for displaying labels, tags, and status indicators.
- *
- * @param variant - The visual style of the badge
- *   - `"default"` - Standard badge appearance
- *   - `"secondary"` - Secondary color scheme
- *   - `"destructive"` - Red color scheme for errors or warnings
- *   - `"outline"` - Outlined badge with transparent background
- *   - `"success"` - Green color scheme for success states
- *   - `"info"` - Blue color scheme for informational states
- * @param size - The size of the badge
- *   - `"sm"` - Small badge
- *   - `"md"` - Medium badge (default)
- *   - `"lg"` - Large badge
- * @param className - Optional CSS class names
- */
 function Badge({
   className,
   variant = "default",
@@ -65,22 +49,6 @@ function Badge({
     },
   });
 }
-
-/**
- * BadgeIcon component for displaying icons within a Badge.
- *
- * @param className - Optional CSS class names
- *
- * @example
- * ```tsx
- * <Badge>
- *   <BadgeIcon>
- *     <StarIcon />
- *   </BadgeIcon>
- *   Featured
- * </Badge>
- * ```
- */
 
 function BadgeIcon({ className, render, ...props }: useRender.ComponentProps<"span">) {
   return useRender({
