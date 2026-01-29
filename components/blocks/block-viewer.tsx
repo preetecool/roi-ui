@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CodeBlock } from "@/components/docs/code-block/code-block";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
@@ -79,10 +79,22 @@ export function BlockViewer({
 }: BlockViewerProps) {
   const { style } = useStyle();
   const [mounted, setMounted] = useState(false);
-  const files = style === "tailwind" ? tailwindFiles : cssModulesFiles;
-
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const currentFile = files.find((f) => f.path === selectedFile);
+
+  const files = useMemo(
+    () => (style === "tailwind" ? tailwindFiles : cssModulesFiles),
+    [style, tailwindFiles, cssModulesFiles]
+  );
+
+  const currentFile = useMemo(
+    () => files.find((f) => f.path === selectedFile),
+    [files, selectedFile]
+  );
+
+  const fileTree = useMemo(
+    () => buildFileTree(files.map((f) => f.path)),
+    [files]
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -90,12 +102,9 @@ export function BlockViewer({
 
   useEffect(() => {
     if (mounted) {
-      const currentFiles = style === "tailwind" ? tailwindFiles : cssModulesFiles;
-      setSelectedFile(currentFiles[0]?.path ?? null);
+      setSelectedFile(files[0]?.path ?? null);
     }
-  }, [mounted, style, tailwindFiles, cssModulesFiles]);
-
-  const fileTree = buildFileTree(files.map((f) => f.path));
+  }, [mounted, files]);
 
   return (
     <div className={styles.viewer}>
