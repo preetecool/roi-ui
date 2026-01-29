@@ -18,6 +18,7 @@ type CodeTabsProps = {
   value?: string;
   variant?: "installation" | "package";
   onValueChange?: (value: string) => void;
+  noStyleSuffix?: boolean;
 };
 
 type CodeTabsListProps = React.ComponentProps<typeof BaseTabsList> & {
@@ -50,9 +51,11 @@ function findFirstVisibleCodeText(container: HTMLElement): string | null {
 const CodeTabsContext = React.createContext<{
   variant: "installation" | "package";
   containerRef: React.RefObject<HTMLDivElement | null>;
+  noStyleSuffix?: boolean;
 }>({
   variant: "installation",
   containerRef: { current: null },
+  noStyleSuffix: false,
 });
 
 export function CodeTabs({
@@ -61,11 +64,12 @@ export function CodeTabs({
   value,
   variant = "installation",
   onValueChange,
+  noStyleSuffix,
 }: CodeTabsProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <CodeTabsContext.Provider value={{ variant, containerRef }}>
+    <CodeTabsContext.Provider value={{ variant, containerRef, noStyleSuffix }}>
       <div className={variant === "package" ? styles.packageContainer : undefined} ref={containerRef}>
         <Tabs defaultValue={defaultValue} onValueChange={onValueChange} value={value}>
           {children}
@@ -76,7 +80,7 @@ export function CodeTabs({
 }
 
 export function CodeTabsList({ children, showCopy = false, showStyleSelector = false, ...props }: CodeTabsListProps) {
-  const { variant, containerRef } = React.use(CodeTabsContext);
+  const { variant, containerRef, noStyleSuffix } = React.use(CodeTabsContext);
   const [commandText, setCommandText] = React.useState("");
   const { style } = useStyle();
 
@@ -86,6 +90,7 @@ export function CodeTabsList({ children, showCopy = false, showStyleSelector = f
 
   const currentCommandText = React.useMemo(() => {
     if (!commandText) return "";
+    if (noStyleSuffix) return commandText;
     // Remove any existing style suffix to get base command
     const baseCommand = commandText.replace(/-tailwind\b/, "").replace(/-css-modules\b/, "");
     // Add suffix for tailwind style
@@ -94,7 +99,7 @@ export function CodeTabsList({ children, showCopy = false, showStyleSelector = f
       return baseCommand.replace(/(\S+)(\s*)$/, "$1-tailwind$2");
     }
     return baseCommand;
-  }, [commandText, style]);
+  }, [commandText, style, noStyleSuffix]);
 
   React.useEffect(() => {
     if (!shouldShowCopy) return;
