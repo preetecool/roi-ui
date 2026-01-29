@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronRight, File, Folder, FolderOpen } from "lucide-react";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./file-tree.module.css";
 
@@ -42,7 +42,7 @@ function getNodeIcon(type: "file" | "folder", isOpen: boolean) {
   return isOpen ? <FolderOpen className={styles.icon} size={16} /> : <Folder className={styles.icon} size={16} />;
 }
 
-function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeProps) {
+const FileTreeNode = memo(function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeProps) {
   const [isOpen, setIsOpen] = useState(true);
   const isSelected = selectedPath === node.path;
   const hasChildren = node.children && node.children.length > 0;
@@ -119,7 +119,7 @@ function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeP
       ) : null}
     </div>
   );
-}
+});
 
 function findOrCreateNode(level: FileNode[], name: string, path: string, isFile: boolean): FileNode {
   const existing = level.find((node) => node.name === name);

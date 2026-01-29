@@ -17,17 +17,27 @@ export default function Page() {
   const [steps, setSteps] = useState<Step[]>(INITIAL_STEPS);
   const timeoutRef = useRef<NodeJS.Timeout>(null);
 
-  const allComplete = steps.every((s) => s.status === "complete");
-
   useEffect(() => {
+    const allComplete = steps.every((s) => s.status === "complete");
+
     timeoutRef.current = setTimeout(
       () => {
         if (allComplete) {
           setSteps(INITIAL_STEPS);
         } else {
           setSteps((prev) => {
-            const currentIndex = prev.findIndex((s) => s.status === "in_progress");
-            const nextPendingIndex = prev.findIndex((s) => s.status === "pending");
+            let currentIndex = -1;
+            let nextPendingIndex = -1;
+
+            for (let i = 0; i < prev.length; i++) {
+              if (prev[i].status === "in_progress" && currentIndex === -1) {
+                currentIndex = i;
+              }
+              if (prev[i].status === "pending" && nextPendingIndex === -1) {
+                nextPendingIndex = i;
+              }
+              if (currentIndex !== -1 && nextPendingIndex !== -1) break;
+            }
 
             if (currentIndex === -1 && nextPendingIndex !== -1) {
               return prev.map((s, i) => (i === nextPendingIndex ? { ...s, status: "in_progress" } : s));
@@ -51,7 +61,7 @@ export default function Page() {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [allComplete, steps]);
+  }, [steps]);
 
   return <ProgressCard steps={steps} />;
 }
