@@ -97,10 +97,13 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                       <motion.div
                         className={`${styles.circle} ${isExpanded ? styles.circleSmall : ""}`}
                         layoutId={`spread-circle-${card.id}`}
+                        transition={{ layout: { type: "spring", bounce: 0 } }}
                       />
                       <motion.h3
                         className={`${styles.cardTitle} ${isExpanded ? styles.cardTitleSmall : ""}`}
                         layoutId={`spread-title-${card.id}`}
+                        style={{ color: "oklch(0.75 0 0)" }}
+                        transition={{ layout: { type: "spring", bounce: 0 } }}
                       >
                         {card.title}
                       </motion.h3>
@@ -132,8 +135,17 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                               />
                             }
                           >
-                            <motion.div className={styles.circleExpanded} layoutId={`spread-circle-${card.id}`} />
-                            <motion.h2 className={styles.expandedTitle} layoutId={`spread-title-${card.id}`}>
+                            <motion.div
+                              className={styles.circleExpanded}
+                              layoutId={`spread-circle-${card.id}`}
+                              transition={{ layout: { type: "spring", bounce: 0 } }}
+                            />
+                            <motion.h2
+                              className={styles.expandedTitle}
+                              layoutId={`spread-title-${card.id}`}
+                              style={{ color: "oklch(0.75 0 0)" }}
+                              transition={{ layout: { type: "spring", bounce: 0 } }}
+                            >
                               {card.title}
                             </motion.h2>
 
@@ -145,6 +157,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                                 opacity: prefersReducedMotion ? 1 : 0,
                                 y: prefersReducedMotion ? 0 : 16,
                               }}
+                              style={{ color: "oklch(0.75 0 0)" }}
                               transition={{
                                 delay: prefersReducedMotion ? 0 : 0.15,
                                 duration: prefersReducedMotion ? 0 : 0.3,

@@ -104,12 +104,15 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                 <motion.div
                   className={`rounded-full bg-white/25 ${isExpanded ? "mb-1.5 h-5 w-5" : "mb-2 h-5 w-5 lg:mb-3 lg:h-8 lg:w-8"}`}
                   layoutId={`spread-circle-${card.id}`}
+                  transition={{ layout: { type: "spring", bounce: 0 } }}
                 />
                 <motion.h3
                   className={`whitespace-pre-line text-left font-medium tracking-[-0.01em] ${
                     isExpanded ? "text-[0.9rem] leading-[1.2]" : "text-[1rem] leading-[1.3] lg:text-[1.4rem]"
                   }`}
                   layoutId={`spread-title-${card.id}`}
+                  style={{ color: "oklch(0.75 0 0)" }}
+                  transition={{ layout: { type: "spring", bounce: 0 } }}
                 >
                   {card.title}
                 </motion.h3>
@@ -147,10 +150,13 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                       <motion.div
                         className="mb-[26px] h-[140px] w-[140px] self-center rounded-full bg-white/25"
                         layoutId={`spread-circle-${card.id}`}
+                        transition={{ layout: { type: "spring", bounce: 0 } }}
                       />
                       <motion.h2
                         className="m-0 whitespace-pre-line text-left text-4xl font-medium leading-[1.1] tracking-[-0.02em]"
                         layoutId={`spread-title-${card.id}`}
+                        style={{ color: "oklch(0.75 0 0)" }}
+                        transition={{ layout: { type: "spring", bounce: 0 } }}
                       >
                         {card.title}
                       </motion.h2>
@@ -163,6 +169,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                           opacity: prefersReducedMotion ? 1 : 0,
                           y: prefersReducedMotion ? 0 : 16,
                         }}
+                        style={{ color: "oklch(0.75 0 0)" }}
                         transition={{
                           delay: prefersReducedMotion ? 0 : 0.15,
                           duration: prefersReducedMotion ? 0 : 0.3,
