@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  width: 300px;
+  width: 360px;
   padding-right: 0.5rem;
   border: none;
   border-radius: var(--radius);
@@ -52,7 +52,9 @@ input.input {
   background: transparent;
   box-shadow: none;
 
-  &:focus {
+  &:focus,
+  &:focus-visible,
+  &[data-focused] {
     outline: none;
     border-color: transparent;
     box-shadow: none;
@@ -60,7 +62,7 @@ input.input {
 }
 
 .popup {
-  width: 300px;
+  width: 360px;
 
   @media (max-width: 640px) {
     width: calc(100vw - 2rem);

@@ -129,7 +129,7 @@ function ComboboxItem({
     <Combobox.Item
       className={cn(
         "relative isolate mx-1 flex min-h-8 cursor-pointer items-center justify-start gap-3",
-        "px-2 pr-1.5 font-normal text-foreground text-xs leading-[1.2]",
+        "px-2 pr-1.5 font-normal text-foreground text-sm leading-[1.2]",
         "before:-z-10 before:absolute before:inset-0 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
         "hover:before:bg-[var(--accent)] focus:outline-none focus:before:bg-[var(--accent)] focus-visible:outline-none",
         "data-[highlighted]:before:bg-[var(--accent)]",

@@ -43,7 +43,7 @@ export default function AutocompleteAutoHighlight() {
         value={value}
       >
         <AutocompleteInput
-          className="w-[300px] max-sm:w-full"
+          className="w-[360px] max-sm:w-full"
           id="auto-highlight-input"
           placeholder="Start typing..."
         />

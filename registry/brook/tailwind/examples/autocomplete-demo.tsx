@@ -87,7 +87,7 @@ export default function AutocompleteDemo() {
         value={value}
       >
         <AutocompleteInput
-          className="w-[300px] max-sm:w-full"
+          className="w-[360px] max-sm:w-full"
           id="ac-input"
           placeholder="Type your question or search FAQs..."
         />
@@ -101,7 +101,7 @@ export default function AutocompleteDemo() {
                   <AutocompleteItem key={question.value} value={question}>
                     <div className="flex flex-1 items-center gap-3 max-sm:gap-2.5">
                       <div className="min-w-0 flex-1 text-left">
-                        <div className="font-normal text-xs leading-[1.4] max-sm:text-[0.9375rem]">
+                        <div className="font-normal text-sm leading-[1.4] max-sm:text-[0.9375rem]">
                           {question.question}
                         </div>
                       </div>

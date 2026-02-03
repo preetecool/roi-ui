@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "lib/utils-tailwind.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\n/**\n * Tailwind-optimized utility for merging class names.\n * Uses clsx for conditional classes and tailwind-merge for proper Tailwind class conflict resolution.\n *\n * @example\n * ```tsx\n * cn(\"px-2 py-1\", condition && \"bg-blue-500\", \"px-4\")\n * // Returns: \"py-1 bg-blue-500 px-4\" (px-2 is overridden by px-4)\n * ```\n */\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
       "type": "registry:file",
       "target": "~/lib/utils.ts"
     }
