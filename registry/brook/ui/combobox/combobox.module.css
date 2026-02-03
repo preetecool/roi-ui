@@ -122,7 +122,7 @@
   padding-inline: 8px 6px;
   margin-inline: 4px;
   min-height: 32px;
-  font-size: 12px;
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.2;
   color: var(--foreground);

@@ -138,7 +138,7 @@ export default function AutocompleteFuzzy() {
         value={value}
       >
         <AutocompleteInput
-          className="w-[300px] max-sm:w-full"
+          className="w-[360px] max-sm:w-full"
           id="fuzzy-input"
           placeholder="Try 'billing' or 'password'..."
         />
@@ -155,7 +155,7 @@ export default function AutocompleteFuzzy() {
                     <AutocompleteValue>
                       {(inputValue) => (
                         <div className="flex flex-1 flex-col gap-0.5">
-                          <div className="font-normal text-[0.8125rem] text-foreground leading-[1.4]">
+                          <div className="font-normal text-sm text-foreground leading-[1.4]">
                             {highlightText(item.question, inputValue)}
                           </div>
                           <div className="text-muted-foreground text-xs">

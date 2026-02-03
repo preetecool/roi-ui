@@ -254,7 +254,7 @@
   padding-inline: 12px 6px;
   font-weight: 400;
   height: 32px;
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 1.2;
   color: var(--foreground);
   cursor: pointer;
