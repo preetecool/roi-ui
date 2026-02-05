@@ -88,7 +88,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                           transition={{
                             layout: {
                               type: "spring",
-                              bounce: 0.25,
+                              bounce: isExpanded ? 0 : 0.25,
                             },
                           }}
                         />
