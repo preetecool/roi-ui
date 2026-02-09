@@ -42,10 +42,6 @@
     0 0 0 3px oklch(from var(--destructive) l c h / 0.2);
 }
 
-.base[data-valid] {
-  box-shadow: 0 0 0 1px var(--success, var(--primary));
-}
-
 .error {
   box-shadow: 0 0 0 1px var(--destructive);
 }

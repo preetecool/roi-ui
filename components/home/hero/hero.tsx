@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiChat } from "@/registry/brook/blocks/ai-chat/components/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
@@ -10,37 +10,11 @@ import { HomeAnimatedButton } from "../home-animated-button/home-animated-button
 import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import styles from "./hero.module.css";
 
-const LUCKY_LINKS = [
-  { path: "/blocks/ai-chat" },
-  { path: "/blocks/card-image-section" },
-  { path: "/blocks/card-login" },
-  { path: "/blocks/card-task" },
-  { path: "/blocks/card-traffic" },
-  { path: "/blocks/expandable-card-carousel" },
-  { path: "/blocks/expandable-card-spread" },
-  { path: "/blocks/kanban-board" },
-  { path: "/docs/ui/tabs", anchor: "#animated" },
-  { path: "/docs/ui/copy-button" },
-  { path: "/docs/ui/accordion" },
-  { path: "/docs/ui/badge", anchor: "#success" },
-  { path: "/docs/ui/badge", anchor: "#error" },
-];
-
 const HEADING = "React components and blocks";
 const SUBHEADING = "Components and blocks built with Base UI primitives and styled with CSS Modules or Tailwind.";
 
-function getRandomLink() {
-  const link = LUCKY_LINKS[Math.floor(Math.random() * LUCKY_LINKS.length)];
-  return link.path + (link.anchor ?? "");
-}
-
 export const Hero = () => {
-  const [luckyLink, setLuckyLink] = useState(LUCKY_LINKS[0].path);
   const [expandedCard, setExpandedCard] = useState(false);
-
-  useEffect(() => {
-    setLuckyLink(getRandomLink());
-  }, []);
 
   return (
     <section aria-label="Hero section" className={styles.container}>
@@ -64,9 +38,6 @@ export const Hero = () => {
       <div className={styles.buttonWrapper}>
         <Button nativeButton={false} render={<Link href="/docs/start" />}>
           Get Started
-        </Button>
-        <Button nativeButton={false} render={<Link href={luckyLink} />} variant="outline">
-          I&apos;m Feeling Lucky
         </Button>
       </div>
 

@@ -5,6 +5,12 @@
   gap: 1rem;
 }
 
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .formRow {
   display: flex;
   gap: 1rem;

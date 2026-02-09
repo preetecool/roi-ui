@@ -2,12 +2,44 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  min-height: 600px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-top: 40px;
   position: relative;
+}
+
+.header {
+  width: 100%;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.cardsWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 400px;
+  padding-top: 80px;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+}
+
+.subheading {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-tertiary);
+  max-width: 600px;
 }
 
 .spreadLayout {

@@ -1,84 +1,20 @@
 "use client";
-import { Check, Loader2 } from "lucide-react";
-import { useActionState, useEffect, useRef } from "react";
+import { Check } from "lucide-react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/ui/checkbox/checkbox";
-import { Field, FieldControl, FieldError, FieldLabel } from "@/registry/brook/ui/field/field";
+import { Field, FieldError, FieldLabel } from "@/registry/brook/ui/field/field";
+import { Form, FormActions, FormGroup } from "@/registry/brook/ui/form/form";
 import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./card-login.module.css";
 
-const EMAIL_REGEX = /\S+@\S+\.\S+/;
-const MIN_PASSWORD_LENGTH = 6;
-
-type FormState =
-  | { status: "idle" }
-  | { status: "error"; errors: { email?: string; password?: string }; focusField?: "email" | "password" }
-  | { status: "success" };
-
-const initialFormState: FormState = { status: "idle" };
-
-async function loginAction(_prevState: FormState, formData: FormData): Promise<FormState> {
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-
-  const errors: { email?: string; password?: string } = {};
-
-  if (!email?.trim()) {
-    errors.email = "Email is required";
-  } else if (!EMAIL_REGEX.test(email)) {
-    errors.email = "Email is invalid";
-  }
-
-  if (!password) {
-    errors.password = "Password is required";
-  } else if (password.length < MIN_PASSWORD_LENGTH) {
-    errors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
-  }
-
-  if (Object.keys(errors).length > 0) {
-    const focusField = errors.email ? "email" : "password";
-    return { status: "error", errors, focusField };
-  }
-
-  return { status: "success" };
-}
-
-const getEmailError = (state: FormState): string | undefined =>
-  state.status === "error" ? state.errors.email : undefined;
-
-const getPasswordError = (state: FormState): string | undefined =>
-  state.status === "error" ? state.errors.password : undefined;
-
-const shouldFocusEmail = (state: FormState): boolean =>
-  state.status === "error" && state.focusField === "email";
-
-const shouldFocusPassword = (state: FormState): boolean =>
-  state.status === "error" && state.focusField === "password";
-
 export default function CardLoginDemo() {
-  const [formState, submitAction, isPending] = useActionState(loginAction, initialFormState);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-
-  const emailError = getEmailError(formState);
-  const passwordError = getPasswordError(formState);
-
-  useEffect(() => {
-    if (shouldFocusEmail(formState)) {
-      emailInputRef.current?.focus();
-    } else if (shouldFocusPassword(formState)) {
-      passwordInputRef.current?.focus();
-    }
-  }, [formState]);
-
-  useEffect(() => {
-    if (formState.status === "success") {
-    }
-  }, [formState.status]);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log("Form submitted:", Object.fromEntries(formData));
+  };
 
   return (
     <Card className={styles.card}>
@@ -86,56 +22,54 @@ export default function CardLoginDemo() {
         <CardTitle className={styles.cardTitle}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
-        <form action={submitAction} className={styles.form}>
-          <Field className={styles.emailField}>
-            <FieldLabel className={styles.fieldLabel}>Email</FieldLabel>
-            <FieldControl
-              autoComplete="email"
-              name="email"
-              placeholder="Enter your email…"
-              ref={emailInputRef}
-              render={<Input spellCheck={false} />}
-              type="email"
-            />
-            {emailError && <FieldError>{emailError}</FieldError>}
-          </Field>
+        <Form className={styles.form} onSubmit={handleSubmit}>
+          <FormGroup>
+            <Field className={styles.emailField}>
+              <FieldLabel className={styles.fieldLabel}>Email</FieldLabel>
+              <Input
+                autoComplete="email"
+                name="email"
+                placeholder="Enter your email…"
+                required
+                spellCheck={false}
+                type="email"
+              />
+              <FieldError />
+            </Field>
 
-          <Field>
-            <div className={styles.passwordLabelRow}>
-              <FieldLabel className={styles.fieldLabel}>Password</FieldLabel>
-              <button className={styles.forgotPassword} type="button">
-                Forgot password?
-              </button>
-            </div>
-            <FieldControl
-              autoComplete="current-password"
-              name="password"
-              placeholder="Enter your password…"
-              ref={passwordInputRef}
-              render={<Input />}
-              type="password"
-            />
-            {passwordError && <FieldError>{passwordError}</FieldError>}
-          </Field>
+            <Field>
+              <div className={styles.passwordLabelRow}>
+                <FieldLabel className={styles.fieldLabel}>Password</FieldLabel>
+                <button className={styles.forgotPassword} type="button">
+                  Forgot password?
+                </button>
+              </div>
+              <Input
+                autoComplete="current-password"
+                name="password"
+                placeholder="Enter your password…"
+                required
+                type="password"
+              />
+              <FieldError />
+            </Field>
 
-          <label className={styles.checkboxLabel} htmlFor="remember-me">
-            <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
-              <CheckboxIndicator>
-                <Check size={16} strokeWidth={3} />
-              </CheckboxIndicator>
-            </Checkbox>
-            <span className={styles.rememberMe}>Remember me</span>
-          </label>
+            <label className={styles.checkboxLabel} htmlFor="remember-me">
+              <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
+                <CheckboxIndicator>
+                  <Check size={16} strokeWidth={3} />
+                </CheckboxIndicator>
+              </Checkbox>
+              <span className={styles.rememberMe}>Remember me</span>
+            </label>
+          </FormGroup>
 
-          <CardFooter className={styles.footer}>
-            <Button className={styles.button} disabled={isPending} type="submit">
-              <span className={styles.buttonContent}>
-                Sign In
-                {isPending && <Loader2 aria-hidden="true" className={styles.spinner} size={16} />}
-              </span>
+          <FormActions className={styles.footer}>
+            <Button className={styles.button} type="submit">
+              <span className={styles.buttonContent}>Sign In</span>
             </Button>
-          </CardFooter>
-        </form>
+          </FormActions>
+        </Form>
       </CardContent>
       <div className={styles.dividerContainer}>
         <div className={styles.dividerLine} />

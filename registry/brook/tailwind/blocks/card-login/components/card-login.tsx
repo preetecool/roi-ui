@@ -1,84 +1,20 @@
 "use client";
-import { Check, Loader2 } from "lucide-react";
-import { useActionState, useEffect, useRef } from "react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/tailwind/ui/checkbox";
-import { Field, FieldControl, FieldError, FieldLabel } from "@/registry/brook/tailwind/ui/field";
+import { Field, FieldError, FieldLabel } from "@/registry/brook/tailwind/ui/field";
+import { Form, FormActions, FormGroup } from "@/registry/brook/tailwind/ui/form";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
-const EMAIL_REGEX = /\S+@\S+\.\S+/;
-const MIN_PASSWORD_LENGTH = 6;
-
-type FormState =
-  | { status: "idle" }
-  | { status: "error"; errors: { email?: string; password?: string }; focusField?: "email" | "password" }
-  | { status: "success" };
-
-const initialFormState: FormState = { status: "idle" };
-
-async function loginAction(_prevState: FormState, formData: FormData): Promise<FormState> {
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-
-  const errors: { email?: string; password?: string } = {};
-
-  if (!email?.trim()) {
-    errors.email = "Email is required";
-  } else if (!EMAIL_REGEX.test(email)) {
-    errors.email = "Email is invalid";
-  }
-
-  if (!password) {
-    errors.password = "Password is required";
-  } else if (password.length < MIN_PASSWORD_LENGTH) {
-    errors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
-  }
-
-  if (Object.keys(errors).length > 0) {
-    const focusField = errors.email ? "email" : "password";
-    return { status: "error", errors, focusField };
-  }
-
-  return { status: "success" };
-}
-
-const getEmailError = (state: FormState): string | undefined =>
-  state.status === "error" ? state.errors.email : undefined;
-
-const getPasswordError = (state: FormState): string | undefined =>
-  state.status === "error" ? state.errors.password : undefined;
-
-const shouldFocusEmail = (state: FormState): boolean =>
-  state.status === "error" && state.focusField === "email";
-
-const shouldFocusPassword = (state: FormState): boolean =>
-  state.status === "error" && state.focusField === "password";
-
 export function CardLogin() {
-  const [formState, submitAction, isPending] = useActionState(loginAction, initialFormState);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-
-  const emailError = getEmailError(formState);
-  const passwordError = getPasswordError(formState);
-
-  useEffect(() => {
-    if (shouldFocusEmail(formState)) {
-      emailInputRef.current?.focus();
-    } else if (shouldFocusPassword(formState)) {
-      passwordInputRef.current?.focus();
-    }
-  }, [formState]);
-
-  useEffect(() => {
-    if (formState.status === "success") {
-    }
-  }, [formState.status]);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log("Form submitted:", Object.fromEntries(formData));
+  };
 
   return (
     <Card
@@ -91,75 +27,75 @@ export function CardLogin() {
         <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
-        <form action={submitAction} className="flex flex-col gap-4">
-          <Field className="pb-1">
-            <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
-            <FieldControl
-              autoComplete="email"
-              name="email"
-              placeholder="Enter your email…"
-              ref={emailInputRef}
-              render={<Input spellCheck={false} />}
-              type="email"
-            />
-            {emailError && <FieldError>{emailError}</FieldError>}
-          </Field>
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Field className="pb-1">
+              <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
+              <Input
+                autoComplete="email"
+                name="email"
+                placeholder="Enter your email…"
+                required
+                spellCheck={false}
+                type="email"
+              />
+              <FieldError />
+            </Field>
 
-          <Field>
-            <div className={cn("flex w-full items-center justify-between", "max-sm:mb-1.5")}>
-              <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Password</FieldLabel>
-              <button
-                className={cn(
-                  "mr-1 cursor-pointer border-none bg-transparent p-0 font-light text-[var(--secondary-foreground)] text-sm leading-5 transition-colors duration-200",
-                  "hover:text-[var(--foreground)]",
-                  "max-sm:mr-0 max-sm:min-h-11 max-sm:p-2 max-sm:text-sm"
-                )}
-                type="button"
-              >
-                Forgot password?
-              </button>
-            </div>
-            <FieldControl
-              autoComplete="current-password"
-              name="password"
-              placeholder="Enter your password…"
-              ref={passwordInputRef}
-              render={<Input />}
-              type="password"
-            />
-            {passwordError && <FieldError>{passwordError}</FieldError>}
-          </Field>
+            <Field>
+              <div className={cn("flex w-full items-center justify-between", "max-sm:mb-1.5")}>
+                <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Password</FieldLabel>
+                <button
+                  className={cn(
+                    "mr-1 cursor-pointer border-none bg-transparent p-0 font-light text-[var(--secondary-foreground)] text-sm leading-5 transition-colors duration-200",
+                    "hover:text-[var(--foreground)]",
+                    "max-sm:mr-0 max-sm:min-h-11 max-sm:p-2 max-sm:text-sm"
+                  )}
+                  type="button"
+                >
+                  Forgot password?
+                </button>
+              </div>
+              <Input
+                autoComplete="current-password"
+                name="password"
+                placeholder="Enter your password…"
+                required
+                type="password"
+              />
+              <FieldError />
+            </Field>
 
-          <label
-            className={cn(
-              "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm leading-5",
-              "max-sm:min-h-11 max-sm:items-center max-sm:gap-2.5 max-sm:text-sm"
-            )}
-            htmlFor="remember-me"
-          >
-            <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
-              <CheckboxIndicator>
-                <Check size={16} strokeWidth={3} />
-              </CheckboxIndicator>
-            </Checkbox>
-            <span
+            <label
               className={cn(
-                "cursor-pointer text-[var(--secondary-foreground)]",
-                "hover:text-[var(--foreground)]",
-                "max-sm:text-sm"
+                "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm leading-5",
+                "max-sm:min-h-11 max-sm:items-center max-sm:gap-2.5 max-sm:text-sm"
               )}
+              htmlFor="remember-me"
             >
-              Remember me
-            </span>
-          </label>
+              <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
+                <CheckboxIndicator>
+                  <Check size={16} strokeWidth={3} />
+                </CheckboxIndicator>
+              </Checkbox>
+              <span
+                className={cn(
+                  "cursor-pointer text-[var(--secondary-foreground)]",
+                  "hover:text-[var(--foreground)]",
+                  "max-sm:text-sm"
+                )}
+              >
+                Remember me
+              </span>
+            </label>
+          </FormGroup>
 
-          <CardFooter className="flex flex-col gap-4">
-            <Button className="relative w-full" disabled={isPending} type="submit">
+          <FormActions>
+            <Button className="relative w-full" type="submit">
               Sign In
-              {isPending && <Loader2 aria-hidden="true" className="absolute right-4 animate-spin [animation-duration:0.6s]" size={16} />}
             </Button>
-          </CardFooter>
-        </form>
+          </FormActions>
+        </Form>
       </CardContent>
       <div className="flex items-center gap-4">
         <div className="h-px flex-1 bg-[var(--border)]" />
