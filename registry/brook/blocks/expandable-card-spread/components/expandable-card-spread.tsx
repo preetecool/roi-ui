@@ -29,155 +29,167 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
   const isExpanded = expandedId !== null;
 
   return (
-    <div className={styles.container}>
-      <AnimatePresence mode="wait">
-        {isMobile ? (
-          <motion.div
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            key="stack"
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <MobileStack cards={data.cards} />
-          </motion.div>
-        ) : (
-          <motion.div
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            key="spread"
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <div className={`${styles.spreadLayout} ${isExpanded ? styles.spreadLayoutSmall : ""}`}>
-              {data.cards.map((card, index) => {
-                const isOpen = expandedId === card.id;
-                return (
-                  <Dialog.Root
-                    key={`root-${card.id}`}
-                    modal={false}
-                    onOpenChange={(open) => {
-                      if (!open) {
-                        setExpandedId(null);
-                      }
-                    }}
-                    open={isOpen}
-                  >
-                    <Dialog.Trigger
-                      nativeButton={false}
-                      render={
-                        <motion.li
-                          aria-label={`Expand ${card.title}`}
-                          className={`${styles.spreadCard} ${isExpanded ? styles.spreadCardSmall : ""}`}
-                          layoutId={`spread-card-${card.id}`}
-                          onClick={() => {
-                            setExpandedId(card.id);
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                              e.preventDefault();
-                              setExpandedId(card.id);
-                            }
-                          }}
-                          style={{
-                            backgroundColor: card.color,
-                            borderRadius: 20,
-                            color: card.textColor || "#ffffff",
-                            zIndex: index,
-                          }}
-                          transition={{
-                            layout: {
-                              type: "spring",
-                              bounce: isExpanded ? 0 : 0.25,
-                            },
-                          }}
-                        />
-                      }
+    <section aria-labelledby="expandable-card-heading" className={styles.container}>
+      <div className={styles.header}>
+        <h2 className={styles.heading} id="expandable-card-heading">
+          Expandable Card Spread
+        </h2>
+        <p className={styles.subheading}>
+          Click on any card to expand and explore more details. Each card reveals additional content with smooth
+          animations.
+        </p>
+      </div>
+      <div className={styles.cardsWrapper}>
+        <AnimatePresence mode="wait">
+          {isMobile ? (
+            <motion.div
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              key="stack"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <MobileStack cards={data.cards} />
+            </motion.div>
+          ) : (
+            <motion.div
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              key="spread"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <div className={`${styles.spreadLayout} ${isExpanded ? styles.spreadLayoutSmall : ""}`}>
+                {data.cards.map((card, index) => {
+                  const isOpen = expandedId === card.id;
+                  return (
+                    <Dialog.Root
+                      key={`root-${card.id}`}
+                      modal={false}
+                      onOpenChange={(open) => {
+                        if (!open) {
+                          setExpandedId(null);
+                        }
+                      }}
+                      open={isOpen}
                     >
-                      <motion.div
-                        className={`${styles.circle} ${isExpanded ? styles.circleSmall : ""}`}
-                        layoutId={`spread-circle-${card.id}`}
-                        transition={{ layout: { type: "spring", bounce: 0 } }}
-                      />
-                      <motion.h3
-                        className={`${styles.cardTitle} ${isExpanded ? styles.cardTitleSmall : ""}`}
-                        layoutId={`spread-title-${card.id}`}
-                        style={{ color: "oklch(0.75 0 0)" }}
-                        transition={{ layout: { type: "spring", bounce: 0 } }}
+                      <Dialog.Trigger
+                        nativeButton={false}
+                        render={
+                          <motion.li
+                            aria-label={`Expand ${card.title}`}
+                            className={`${styles.spreadCard} ${isExpanded ? styles.spreadCardSmall : ""}`}
+                            layoutId={`spread-card-${card.id}`}
+                            onClick={() => {
+                              setExpandedId(card.id);
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                setExpandedId(card.id);
+                              }
+                            }}
+                            style={{
+                              backgroundColor: card.color,
+                              borderRadius: 20,
+                              color: card.textColor || "#ffffff",
+                              zIndex: index,
+                            }}
+                            transition={{
+                              layout: {
+                                type: prefersReducedMotion ? "tween" : "spring",
+                                duration: prefersReducedMotion ? 0 : undefined,
+                                bounce: isExpanded ? 0 : 0.25,
+                              },
+                            }}
+                          />
+                        }
                       >
-                        {card.title}
-                      </motion.h3>
-                    </Dialog.Trigger>
+                        <motion.div
+                          className={`${styles.circle} ${isExpanded ? styles.circleSmall : ""}`}
+                          layoutId={`spread-circle-${card.id}`}
+                          transition={{ layout: { type: "spring", bounce: 0 } }}
+                        />
+                        <motion.h3
+                          className={`${styles.cardTitle} ${isExpanded ? styles.cardTitleSmall : ""}`}
+                          layoutId={`spread-title-${card.id}`}
+                          style={{ color: "oklch(0.75 0 0)" }}
+                          transition={{ layout: { type: "spring", bounce: 0 } }}
+                        >
+                          {card.title}
+                        </motion.h3>
+                      </Dialog.Trigger>
 
-                    <Dialog.Portal keepMounted>
-                      {isOpen ? (
-                        <div className={styles.popupPositioner} key={`positioner-${card.id}`}>
-                          <Dialog.Popup
-                            hidden={undefined}
-                            render={
-                              <motion.li
-                                className={styles.expandedCard}
-                                layoutId={`spread-card-${card.id}`}
-                                onClick={() => setExpandedId(null)}
-                                style={{
-                                  borderRadius: 20,
-                                  backgroundColor: card.color,
-                                  color: card.textColor || "#ffffff",
-                                  zIndex: index,
-                                  cursor: "pointer",
-                                }}
-                                transition={{
-                                  layout: {
-                                    type: "spring",
-                                    bounce: 0.15,
-                                  },
-                                }}
+                      <Dialog.Portal keepMounted>
+                        {isOpen ? (
+                          <div className={styles.popupPositioner} key={`positioner-${card.id}`}>
+                            <Dialog.Popup
+                              render={
+                                <motion.li
+                                  className={styles.expandedCard}
+                                  layoutId={`spread-card-${card.id}`}
+                                  onClick={() => setExpandedId(null)}
+                                  style={{
+                                    borderRadius: 20,
+                                    backgroundColor: card.color,
+                                    color: card.textColor || "#ffffff",
+                                    zIndex: index,
+                                    cursor: "pointer",
+                                  }}
+                                  transition={{
+                                    layout: {
+                                      type: prefersReducedMotion ? "tween" : "spring",
+                                      duration: prefersReducedMotion ? 0 : undefined,
+                                      bounce: 0.15,
+                                    },
+                                  }}
+                                />
+                              }
+                            >
+                              <motion.div
+                                className={styles.circleExpanded}
+                                layoutId={`spread-circle-${card.id}`}
+                                transition={{ layout: { type: "spring", bounce: 0 } }}
                               />
-                            }
-                          >
-                            <motion.div
-                              className={styles.circleExpanded}
-                              layoutId={`spread-circle-${card.id}`}
-                              transition={{ layout: { type: "spring", bounce: 0 } }}
-                            />
-                            <motion.h2
-                              className={styles.expandedTitle}
-                              layoutId={`spread-title-${card.id}`}
-                              style={{ color: "oklch(0.75 0 0)" }}
-                              transition={{ layout: { type: "spring", bounce: 0 } }}
-                            >
-                              {card.title}
-                            </motion.h2>
+                              <motion.h2
+                                className={styles.expandedTitle}
+                                layoutId={`spread-title-${card.id}`}
+                                style={{ color: "oklch(0.75 0 0)" }}
+                                transition={{ layout: { type: "spring", bounce: 0 } }}
+                              >
+                                {card.title}
+                              </motion.h2>
 
-                            <motion.p
-                              animate={{ opacity: 1, y: 0 }}
-                              className={styles.expandedDescription}
-                              exit={{ opacity: 0, y: 8 }}
-                              initial={{
-                                opacity: prefersReducedMotion ? 1 : 0,
-                                y: prefersReducedMotion ? 0 : 16,
-                              }}
-                              style={{ color: "oklch(0.75 0 0)" }}
-                              transition={{
-                                delay: prefersReducedMotion ? 0 : 0.15,
-                                duration: prefersReducedMotion ? 0 : 0.3,
-                                type: "spring",
-                                bounce: 0,
-                              }}
-                            >
-                              {card.description}
-                            </motion.p>
-                          </Dialog.Popup>
-                        </div>
-                      ) : null}
-                    </Dialog.Portal>
-                  </Dialog.Root>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+                              <motion.p
+                                animate={{ opacity: 1, y: 0 }}
+                                className={styles.expandedDescription}
+                                exit={{ opacity: 0, y: 8 }}
+                                initial={{
+                                  opacity: prefersReducedMotion ? 1 : 0,
+                                  y: prefersReducedMotion ? 0 : 16,
+                                }}
+                                style={{ color: "oklch(0.75 0 0)" }}
+                                transition={{
+                                  delay: prefersReducedMotion ? 0 : 0.15,
+                                  duration: prefersReducedMotion ? 0 : 0.3,
+                                  type: "spring",
+                                  bounce: 0,
+                                }}
+                              >
+                                {card.description}
+                              </motion.p>
+                            </Dialog.Popup>
+                          </div>
+                        ) : null}
+                      </Dialog.Portal>
+                    </Dialog.Root>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
   );
 }
