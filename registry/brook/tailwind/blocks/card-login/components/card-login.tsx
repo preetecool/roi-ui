@@ -1,84 +1,13 @@
-"use client";
-import { Check, Loader2 } from "lucide-react";
-import { useActionState, useEffect, useRef } from "react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/tailwind/ui/checkbox";
-import { Field, FieldControl, FieldError, FieldLabel } from "@/registry/brook/tailwind/ui/field";
+import { Field, FieldControl, FieldLabel } from "@/registry/brook/tailwind/ui/field";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
-const EMAIL_REGEX = /\S+@\S+\.\S+/;
-const MIN_PASSWORD_LENGTH = 6;
-
-type FormState =
-  | { status: "idle" }
-  | { status: "error"; errors: { email?: string; password?: string }; focusField?: "email" | "password" }
-  | { status: "success" };
-
-const initialFormState: FormState = { status: "idle" };
-
-async function loginAction(_prevState: FormState, formData: FormData): Promise<FormState> {
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-
-  const errors: { email?: string; password?: string } = {};
-
-  if (!email?.trim()) {
-    errors.email = "Email is required";
-  } else if (!EMAIL_REGEX.test(email)) {
-    errors.email = "Email is invalid";
-  }
-
-  if (!password) {
-    errors.password = "Password is required";
-  } else if (password.length < MIN_PASSWORD_LENGTH) {
-    errors.password = `Password must be at least ${MIN_PASSWORD_LENGTH} characters`;
-  }
-
-  if (Object.keys(errors).length > 0) {
-    const focusField = errors.email ? "email" : "password";
-    return { status: "error", errors, focusField };
-  }
-
-  return { status: "success" };
-}
-
-const getEmailError = (state: FormState): string | undefined =>
-  state.status === "error" ? state.errors.email : undefined;
-
-const getPasswordError = (state: FormState): string | undefined =>
-  state.status === "error" ? state.errors.password : undefined;
-
-const shouldFocusEmail = (state: FormState): boolean =>
-  state.status === "error" && state.focusField === "email";
-
-const shouldFocusPassword = (state: FormState): boolean =>
-  state.status === "error" && state.focusField === "password";
-
 export function CardLogin() {
-  const [formState, submitAction, isPending] = useActionState(loginAction, initialFormState);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-
-  const emailError = getEmailError(formState);
-  const passwordError = getPasswordError(formState);
-
-  useEffect(() => {
-    if (shouldFocusEmail(formState)) {
-      emailInputRef.current?.focus();
-    } else if (shouldFocusPassword(formState)) {
-      passwordInputRef.current?.focus();
-    }
-  }, [formState]);
-
-  useEffect(() => {
-    if (formState.status === "success") {
-    }
-  }, [formState.status]);
 
   return (
     <Card
@@ -91,18 +20,16 @@ export function CardLogin() {
         <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
-        <form action={submitAction} className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4">
           <Field className="pb-1">
             <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
             <FieldControl
               autoComplete="email"
               name="email"
               placeholder="Enter your email…"
-              ref={emailInputRef}
               render={<Input spellCheck={false} />}
               type="email"
             />
-            {emailError && <FieldError>{emailError}</FieldError>}
           </Field>
 
           <Field>
@@ -123,11 +50,9 @@ export function CardLogin() {
               autoComplete="current-password"
               name="password"
               placeholder="Enter your password…"
-              ref={passwordInputRef}
               render={<Input />}
               type="password"
             />
-            {passwordError && <FieldError>{passwordError}</FieldError>}
           </Field>
 
           <label
@@ -154,9 +79,8 @@ export function CardLogin() {
           </label>
 
           <CardFooter className="flex flex-col gap-4">
-            <Button className="relative w-full" disabled={isPending} type="submit">
+            <Button className="relative w-full" type="submit">
               Sign In
-              {isPending && <Loader2 aria-hidden="true" className="absolute right-4 animate-spin [animation-duration:0.6s]" size={16} />}
             </Button>
           </CardFooter>
         </form>
