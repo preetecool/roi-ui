@@ -4,6 +4,7 @@
   justify-content: center;
   border-radius: var(--radius);
   font-weight: 450;
+  line-height: 1.2;
   transition:
     transform 0.2s var(--ease-out-quad),
     background-color 0.2s var(--ease-out-quad),

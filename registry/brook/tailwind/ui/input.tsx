@@ -16,7 +16,6 @@ const inputVariants = cva(
     "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
     "data-[invalid]:shadow-[0_0_0_1px_var(--destructive)]",
     "data-[invalid]:data-[focused]:shadow-[0_0_0_1px_var(--destructive),0_0_0_3px_oklch(from_var(--destructive)_l_c_h_/_0.2)] data-[invalid]:focus:shadow-[0_0_0_1px_var(--destructive),0_0_0_3px_oklch(from_var(--destructive)_l_c_h_/_0.2)]",
-    "data-[valid]:shadow-[0_0_0_1px_var(--success,var(--primary))]",
   ],
   {
     variants: {

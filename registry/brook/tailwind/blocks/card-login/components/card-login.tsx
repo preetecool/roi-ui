@@ -1,13 +1,20 @@
+"use client";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
 import { Checkbox, CheckboxIndicator } from "@/registry/brook/tailwind/ui/checkbox";
-import { Field, FieldControl, FieldLabel } from "@/registry/brook/tailwind/ui/field";
+import { Field, FieldError, FieldLabel } from "@/registry/brook/tailwind/ui/field";
+import { Form, FormActions, FormGroup } from "@/registry/brook/tailwind/ui/form";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
 export function CardLogin() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log("Form submitted:", Object.fromEntries(formData));
+  };
 
   return (
     <Card
@@ -20,70 +27,75 @@ export function CardLogin() {
         <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>Sign In</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="flex flex-col gap-4">
-          <Field className="pb-1">
-            <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
-            <FieldControl
-              autoComplete="email"
-              name="email"
-              placeholder="Enter your email…"
-              render={<Input spellCheck={false} />}
-              type="email"
-            />
-          </Field>
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Field className="pb-1">
+              <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Email</FieldLabel>
+              <Input
+                autoComplete="email"
+                name="email"
+                placeholder="Enter your email…"
+                required
+                spellCheck={false}
+                type="email"
+              />
+              <FieldError />
+            </Field>
 
-          <Field>
-            <div className={cn("flex w-full items-center justify-between", "max-sm:mb-1.5")}>
-              <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Password</FieldLabel>
-              <button
-                className={cn(
-                  "mr-1 cursor-pointer border-none bg-transparent p-0 font-light text-[var(--secondary-foreground)] text-sm leading-5 transition-colors duration-200",
-                  "hover:text-[var(--foreground)]",
-                  "max-sm:mr-0 max-sm:min-h-11 max-sm:p-2 max-sm:text-sm"
-                )}
-                type="button"
-              >
-                Forgot password?
-              </button>
-            </div>
-            <FieldControl
-              autoComplete="current-password"
-              name="password"
-              placeholder="Enter your password…"
-              render={<Input />}
-              type="password"
-            />
-          </Field>
+            <Field>
+              <div className={cn("flex w-full items-center justify-between", "max-sm:mb-1.5")}>
+                <FieldLabel className={cn("ml-1", "max-sm:text-sm")}>Password</FieldLabel>
+                <button
+                  className={cn(
+                    "mr-1 cursor-pointer border-none bg-transparent p-0 font-light text-[var(--secondary-foreground)] text-sm leading-5 transition-colors duration-200",
+                    "hover:text-[var(--foreground)]",
+                    "max-sm:mr-0 max-sm:min-h-11 max-sm:p-2 max-sm:text-sm"
+                  )}
+                  type="button"
+                >
+                  Forgot password?
+                </button>
+              </div>
+              <Input
+                autoComplete="current-password"
+                name="password"
+                placeholder="Enter your password…"
+                required
+                type="password"
+              />
+              <FieldError />
+            </Field>
 
-          <label
-            className={cn(
-              "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm leading-5",
-              "max-sm:min-h-11 max-sm:items-center max-sm:gap-2.5 max-sm:text-sm"
-            )}
-            htmlFor="remember-me"
-          >
-            <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
-              <CheckboxIndicator>
-                <Check size={16} strokeWidth={3} />
-              </CheckboxIndicator>
-            </Checkbox>
-            <span
+            <label
               className={cn(
-                "cursor-pointer text-[var(--secondary-foreground)]",
-                "hover:text-[var(--foreground)]",
-                "max-sm:text-sm"
+                "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm leading-5",
+                "max-sm:min-h-11 max-sm:items-center max-sm:gap-2.5 max-sm:text-sm"
               )}
+              htmlFor="remember-me"
             >
-              Remember me
-            </span>
-          </label>
+              <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
+                <CheckboxIndicator>
+                  <Check size={16} strokeWidth={3} />
+                </CheckboxIndicator>
+              </Checkbox>
+              <span
+                className={cn(
+                  "cursor-pointer text-[var(--secondary-foreground)]",
+                  "hover:text-[var(--foreground)]",
+                  "max-sm:text-sm"
+                )}
+              >
+                Remember me
+              </span>
+            </label>
+          </FormGroup>
 
-          <CardFooter className="flex flex-col gap-4">
+          <FormActions>
             <Button className="relative w-full" type="submit">
               Sign In
             </Button>
-          </CardFooter>
-        </form>
+          </FormActions>
+        </Form>
       </CardContent>
       <div className="flex items-center gap-4">
         <div className="h-px flex-1 bg-[var(--border)]" />
