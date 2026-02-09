@@ -3,7 +3,7 @@ import { Index } from "@/registry/__index__";
 import { blockSkeletons } from "./block-skeletons";
 import styles from "./page.module.css";
 
-const EXCLUDED_BLOCKS = ["card-history", "tailwind"];
+const EXCLUDED_BLOCKS = ["card-history", "tailwind", "kanban-board"];
 
 const BLOCK_TITLES: Record<string, string> = {
   "ai-chat": "AI Chat",
