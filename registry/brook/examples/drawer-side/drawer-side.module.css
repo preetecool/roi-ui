@@ -1,0 +1,41 @@
+.viewport {
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.popup {
+  --bleed: 3rem;
+  width: calc(20rem + var(--bleed));
+  max-width: calc(100vw - 3rem + var(--bleed));
+  max-height: none;
+  height: 100%;
+  margin-bottom: 0;
+  margin-right: calc(-1 * var(--bleed));
+  padding: 1.5rem;
+  padding-right: calc(1.5rem + var(--bleed));
+  border-radius: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: auto;
+  transform: translateX(var(--drawer-swipe-movement-x));
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    transform: translateX(calc(100% - var(--bleed)));
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    --bleed: 0px;
+    margin-right: 0;
+    width: 20rem;
+    max-width: calc(100vw - 20px);
+    border-radius: 10px;
+    padding-right: 1.5rem;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

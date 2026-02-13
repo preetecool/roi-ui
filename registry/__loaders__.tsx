@@ -304,6 +304,46 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "drawer-action-sheet": dynamic(() =>
+    import("@/registry/brook/examples/drawer-action-sheet/drawer-action-sheet").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-demo": dynamic(() =>
+    import("@/registry/brook/examples/drawer-demo/drawer-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-indent": dynamic(() =>
+    import("@/registry/brook/examples/drawer-indent/drawer-indent").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-mobile-nav": dynamic(() =>
+    import("@/registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-nested": dynamic(() =>
+    import("@/registry/brook/examples/drawer-nested/drawer-nested").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-non-modal": dynamic(() =>
+    import("@/registry/brook/examples/drawer-non-modal/drawer-non-modal").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-side": dynamic(() =>
+    import("@/registry/brook/examples/drawer-side/drawer-side").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-snap-points": dynamic(() =>
+    import("@/registry/brook/examples/drawer-snap-points/drawer-snap-points").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "dropdown-menu-demo": dynamic(() =>
     import("@/registry/brook/examples/dropdown-menu-demo/dropdown-menu-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -790,6 +830,46 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "dialog-sheet-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/dialog-sheet").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-action-sheet-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-action-sheet").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-indent-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-indent").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-mobile-nav-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-mobile-nav").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-nested-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-nested").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-non-modal-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-non-modal").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-side-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-side").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "drawer-snap-points-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/drawer-snap-points").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

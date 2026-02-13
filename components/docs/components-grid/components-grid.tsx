@@ -3,6 +3,8 @@ import { source } from "@/lib/source";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./components-grid.module.css";
 
+const NEW_COMPONENTS = new Set(["Drawer"]);
+
 export function ComponentsGrid() {
   const uiSection = source.pageTree.children.find((group) => group.type === "folder" && group.name === "UI");
   const uiComponents = uiSection?.type === "folder" ? uiSection.children.filter((item) => item.type === "page") : [];
@@ -20,7 +22,7 @@ export function ComponentsGrid() {
                 <li key={component.url}>
                   <Button
                     nativeButton={false}
-                    render={<Link href={component.url}>{component.name}</Link>}
+                    render={<Link href={component.url}><span className={styles.linkText}>{component.name}</span>{NEW_COMPONENTS.has(component.name as string) ? <span className={styles.newBadge}>New</span> : null}</Link>}
                     variant="link"
                   />
                 </li>

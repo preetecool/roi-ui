@@ -1,0 +1,105 @@
+@layer {
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: var(--dialog-z);
+    min-height: 100dvh;
+    background-color: var(--dialog-overlay);
+    opacity: calc(1 * (1 - var(--drawer-swipe-progress)));
+    transition-duration: 450ms;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+
+    @supports (-webkit-touch-callout: none) {
+      position: absolute;
+    }
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+    }
+
+    &[data-swiping] {
+      transition-duration: 0ms;
+    }
+
+    &[data-ending-style] {
+      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+    }
+  }
+
+  .viewport {
+    position: fixed;
+    inset: 0;
+    z-index: var(--dialog-z);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .popup {
+    --bleed: 3rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: calc(80vh + var(--bleed));
+    margin-bottom: calc(-1 * var(--bleed));
+    padding: 1rem 1.5rem 1.5rem;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
+    border-radius: var(--radius) var(--radius) 0 0;
+    background-color: var(--mix-card-5-bg);
+    color: var(--foreground);
+    box-shadow:
+      0 0 0 1px oklch(from var(--border) l c h / 0.5),
+      var(--shadow-border-stack);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: auto;
+    transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
+    transform: translateY(var(--drawer-swipe-movement-y));
+
+    &[data-swiping] {
+      user-select: none;
+    }
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      transform: translateY(calc(100% - var(--bleed)));
+    }
+
+    &[data-ending-style] {
+      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+    }
+  }
+
+  .content {
+    width: 100%;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .handle {
+    width: 3rem;
+    height: 0.25rem;
+    margin: 0 auto 1rem;
+    border-radius: 9999px;
+    background-color: var(--border);
+  }
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.008em;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  .description {
+    margin: 0 0 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted-foreground);
+  }
+}

@@ -1,0 +1,69 @@
+.root {
+  --bleed: 3rem;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.indent {
+  --indent-progress: var(--drawer-swipe-progress);
+  --indent-radius: calc(1rem * (1 - var(--indent-progress)));
+  --indent-transition: calc(1 - clamp(0, calc(var(--drawer-swipe-progress) * 100000), 1));
+  position: relative;
+  min-height: 320px;
+  transition:
+    transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+    border-radius 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  transform-origin: center top;
+  will-change: transform;
+  border: 1px solid var(--border);
+  contain: layout;
+  padding: 1rem;
+  color: var(--foreground);
+  background-color: var(--mix-card-5-bg);
+  transition-duration:
+    calc(400ms * var(--indent-transition)),
+    calc(250ms * var(--indent-transition));
+
+  &[data-active] {
+    transform: scale(calc(0.98 + (0.02 * var(--indent-progress))))
+      translateY(calc(0.5rem * (1 - var(--indent-progress))));
+    border-top-left-radius: var(--indent-radius);
+    border-top-right-radius: var(--indent-radius);
+  }
+}
+
+.center {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indentBackground {
+  position: absolute;
+  inset: 0;
+  background-color: black;
+}
+
+.backdrop {
+  position: absolute;
+}
+
+.viewport {
+  position: absolute;
+}
+
+.title {
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

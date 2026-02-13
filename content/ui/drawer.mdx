@@ -1,0 +1,121 @@
+---
+title: Drawer
+description: A panel that slides in from the edge of the screen with swipe-to-dismiss gestures.
+links:
+    doc: https://base-ui.com/react/components/drawer
+    api: https://base-ui.com/react/components/drawer#api-reference
+---
+
+<ComponentPreview name="drawer-side" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
+npx shadcn@latest add @roiui/drawer
+```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/drawer-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/drawer
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/drawer-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the following files:
+
+<ComponentSource
+    name="drawer"
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`<Drawer>
+    <DrawerTrigger />
+    <DrawerPortal>
+        <DrawerBackdrop />
+        <DrawerViewport>
+            <DrawerPopup>
+                <DrawerHandle />
+                <DrawerContent>
+                    <DrawerTitle />
+                    <DrawerDescription />
+                    <DrawerClose />
+                </DrawerContent>
+            </DrawerPopup>
+        </DrawerViewport>
+    </DrawerPortal>
+</Drawer>`}
+/>
+
+## Examples
+
+### Bottom Sheet
+
+<ComponentPreview name="drawer-demo" />
+
+### Nested
+
+<ComponentPreview name="drawer-nested" />
+
+### Snap Points
+
+<ComponentPreview name="drawer-snap-points" />
+
+### Indent Effect
+
+<ComponentPreview name="drawer-indent" />
+
+### Non-modal
+
+<ComponentPreview name="drawer-non-modal" />
+
+### Mobile Navigation
+
+<ComponentPreview name="drawer-mobile-nav" />
+
+### Action Sheet
+
+<ComponentPreview name="drawer-action-sheet" />

@@ -521,6 +521,78 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/dialog-sheet/dialog-sheet",
   },
+  "drawer-action-sheet": {
+    name: "drawer-action-sheet",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-action-sheet/drawer-action-sheet.tsx",
+      "registry/brook/examples/drawer-action-sheet/drawer-action-sheet.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-action-sheet/drawer-action-sheet",
+  },
+  "drawer-demo": {
+    name: "drawer-demo",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-demo/drawer-demo.tsx",
+      "registry/brook/examples/drawer-demo/drawer-demo.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-demo/drawer-demo",
+  },
+  "drawer-indent": {
+    name: "drawer-indent",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-indent/drawer-indent.tsx",
+      "registry/brook/examples/drawer-indent/drawer-indent.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-indent/drawer-indent",
+  },
+  "drawer-mobile-nav": {
+    name: "drawer-mobile-nav",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav.tsx",
+      "registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav",
+  },
+  "drawer-nested": {
+    name: "drawer-nested",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-nested/drawer-nested.tsx",
+      "registry/brook/examples/drawer-nested/drawer-nested.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-nested/drawer-nested",
+  },
+  "drawer-non-modal": {
+    name: "drawer-non-modal",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-non-modal/drawer-non-modal.tsx",
+      "registry/brook/examples/drawer-non-modal/drawer-non-modal.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-non-modal/drawer-non-modal",
+  },
+  "drawer-side": {
+    name: "drawer-side",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-side/drawer-side.tsx",
+      "registry/brook/examples/drawer-side/drawer-side.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-side/drawer-side",
+  },
+  "drawer-snap-points": {
+    name: "drawer-snap-points",
+    type: "example",
+    files: [
+      "registry/brook/examples/drawer-snap-points/drawer-snap-points.tsx",
+      "registry/brook/examples/drawer-snap-points/drawer-snap-points.module.css",
+    ],
+    path: "@/registry/brook/examples/drawer-snap-points/drawer-snap-points",
+  },
   "dropdown-menu-demo": {
     name: "dropdown-menu-demo",
     type: "example",
@@ -1057,6 +1129,11 @@ export const Index: Record<string, RegistryEntry> = {
     type: "ui",
     files: ["registry/brook/ui/dialog/dialog.tsx", "registry/brook/ui/dialog/dialog.module.css"],
   },
+  drawer: {
+    name: "drawer",
+    type: "ui",
+    files: ["registry/brook/ui/drawer/drawer.tsx", "registry/brook/ui/drawer/drawer.module.css"],
+  },
   "dropdown-menu": {
     name: "dropdown-menu",
     type: "ui",
@@ -1544,6 +1621,54 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/dialog-sheet.tsx"],
     path: "@/registry/brook/tailwind/examples/dialog-sheet",
   },
+  "drawer-action-sheet-tailwind": {
+    name: "drawer-action-sheet-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-action-sheet.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-action-sheet",
+  },
+  "drawer-demo-tailwind": {
+    name: "drawer-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-demo.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-demo",
+  },
+  "drawer-indent-tailwind": {
+    name: "drawer-indent-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-indent.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-indent",
+  },
+  "drawer-mobile-nav-tailwind": {
+    name: "drawer-mobile-nav-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-mobile-nav.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-mobile-nav",
+  },
+  "drawer-nested-tailwind": {
+    name: "drawer-nested-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-nested.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-nested",
+  },
+  "drawer-non-modal-tailwind": {
+    name: "drawer-non-modal-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-non-modal.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-non-modal",
+  },
+  "drawer-side-tailwind": {
+    name: "drawer-side-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-side.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-side",
+  },
+  "drawer-snap-points-tailwind": {
+    name: "drawer-snap-points-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/drawer-snap-points.tsx"],
+    path: "@/registry/brook/tailwind/examples/drawer-snap-points",
+  },
   "dropdown-menu-demo-tailwind": {
     name: "dropdown-menu-demo-tailwind",
     type: "example",
@@ -1971,6 +2096,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "dialog-tailwind",
     type: "ui",
     files: ["registry/brook/tailwind/ui/dialog.tsx"],
+  },
+  drawerTailwind: {
+    name: "drawer-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/drawer.tsx"],
   },
   "dropdown-menu-tailwind": {
     name: "dropdown-menu-tailwind",

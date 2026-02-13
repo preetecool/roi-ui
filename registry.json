@@ -378,6 +378,24 @@
       ]
     },
     {
+      "name": "drawer",
+      "type": "registry:item",
+      "title": "Drawer",
+      "description": "A panel that slides in from the edge of the screen with swipe-to-dismiss gestures.",
+      "files": [
+        {
+          "path": "registry/brook/ui/drawer/drawer.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/drawer/drawer.tsx"
+        },
+        {
+          "path": "registry/brook/ui/drawer/drawer.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/drawer/drawer.module.css"
+        }
+      ]
+    },
+    {
       "name": "dropdown-menu",
       "type": "registry:item",
       "title": "Dropdown Menu",
@@ -1470,6 +1488,19 @@
           "path": "registry/brook/tailwind/ui/dialog.tsx",
           "type": "registry:file",
           "target": "~/components/ui/dialog/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drawer-tailwind",
+      "type": "registry:item",
+      "title": "Drawer (Tailwind)",
+      "description": "A panel that slides in from the edge of the screen with swipe-to-dismiss gestures.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/drawer.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/drawer/drawer.tsx"
         }
       ]
     },

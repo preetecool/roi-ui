@@ -1,0 +1,110 @@
+.viewport {
+  touch-action: none;
+}
+
+.popup {
+  --bleed: 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - var(--top-margin));
+  padding: 0;
+  padding-bottom: max(0px, calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y)));
+  margin-bottom: 0;
+  overflow: visible;
+  touch-action: none;
+  box-shadow:
+    0 -16px 48px rgb(0 0 0 / 0.12),
+    0 6px 18px rgb(0 0 0 / 0.06),
+    0 0 0 1px oklch(from var(--border) l c h / 0.5);
+  transition:
+    transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 450ms cubic-bezier(0.32, 0.72, 0, 1);
+  transform: translateY(calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y)));
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: var(--bleed);
+    background-color: var(--mix-card-5-bg);
+    pointer-events: none;
+  }
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    transform: translateY(100%);
+    padding-bottom: 0;
+    box-shadow:
+      0 -16px 48px rgb(0 0 0 / 0),
+      0 6px 18px rgb(0 0 0 / 0),
+      0 0 0 1px oklch(from var(--border) l c h / 0);
+  }
+
+  &[data-ending-style] {
+    transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+  }
+}
+
+.dragArea {
+  flex-shrink: 0;
+  padding: 0.875rem 1.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  touch-action: none;
+}
+
+.scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: auto;
+  padding: 1rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.content {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.handle {
+  width: 3rem;
+  height: 0.25rem;
+  margin: 0 auto 0.625rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background-color: var(--border);
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  cursor: default;
+}
+
+.description {
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.card {
+  height: 3rem;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--border);
+  background-color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}

@@ -1,6 +1,7 @@
 :root {
   --linenumber: oklch(0.7604 0 0 / 60%);
   --code-header-bg: var(--mix-card-50-bg);
+  --code-footer-bg: oklch(0.2178 0 0);
 
   /* Prop table syntax colors */
   --prop-code-color: oklch(85% 0.1 264);
@@ -21,6 +22,7 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="light"] {
+  --code-footer-bg: oklch(0.97 0 0);
   /* Prop table syntax colors - light theme */
   --prop-code-color: oklch(50% 0.1 264);
   --prop-type-color: #2e7d32;
@@ -64,10 +66,10 @@ html[data-theme="dark"] [data-line] span {
 
 .code-container pre {
   overflow-x: auto;
-  border-radius: 0.5rem;
+  border-radius: 0;
   margin: 0;
   padding: 1rem;
-  background-color: var(--code-header-bg) !important;
+  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
 }
 
 pre code {

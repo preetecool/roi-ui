@@ -1,12 +1,12 @@
 .packageContainer {
   border: 0.5px solid var(--border-subtle);
   overflow: hidden;
-  background-color: var(--code-header-bg);
+  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
   margin: 0;
 }
 
 .packageContainer pre {
-  background-color: var(--code-header-bg);
+  background: transparent;
 }
 
 .packageContainer pre code span:first-child {
@@ -21,7 +21,7 @@
   border-radius: 0;
   border: none;
   border-bottom: 0.5px solid var(--border-subtle);
-  background-color: var(--code-header-bg);
+  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
