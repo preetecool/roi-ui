@@ -31,4 +31,13 @@ export const lineNumbersTransformer: ShikiTransformer = {
   },
 };
 
-export const transformers = [packageManagerTransformer, lineNumbersTransformer] as ShikiTransformer[];
+export const removePreBackgroundTransformer: ShikiTransformer = {
+  name: "remove-pre-background",
+  pre(node) {
+    if (node.properties.style && typeof node.properties.style === "string") {
+      node.properties.style = node.properties.style.replace(/background-color:[^;]+;?/g, "").trim() || undefined;
+    }
+  },
+};
+
+export const transformers = [packageManagerTransformer, lineNumbersTransformer, removePreBackgroundTransformer] as ShikiTransformer[];

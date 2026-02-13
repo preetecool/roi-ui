@@ -2,6 +2,7 @@
   border: 0.5px solid var(--border-subtle);
   overflow: hidden;
   height: fit-content;
+  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
 }
 
 .header {
@@ -9,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 2px 4px 2px 10px;
-  background-color: var(--code-header-bg);
+  background: transparent;
   border-bottom: 0.5px solid var(--border-subtle);
 }
 
@@ -40,14 +41,14 @@
   max-height: 400px;
   box-sizing: border-box;
   overflow: auto;
-  background-color: var(--code-header-bg);
+  background: transparent;
   position: relative;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
 .content pre {
-  background-color: var(--code-header-bg) !important;
+  background: transparent;
 }
 
 .content::-webkit-scrollbar {

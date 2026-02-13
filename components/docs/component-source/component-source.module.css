@@ -1,9 +1,9 @@
 .container {
-  background-color: var(--code-header-bg);
+  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
 }
 
 .container pre {
-  background-color: var(--code-header-bg) !important;
+  background: transparent;
 }
 
 .embedded {
