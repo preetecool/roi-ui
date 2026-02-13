@@ -14,7 +14,8 @@
 	transition: background-color 0.2s ease;
 }
 
-.trigger:hover {
+.trigger:hover,
+.trigger[data-popup-open] {
 	background-color: oklch(from var(--accent) l c h / 0.66) !important;
 }
 

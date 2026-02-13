@@ -67,16 +67,19 @@
   color: var(--foreground);
 }
 
-.ghost:hover:not([data-disabled]) {
+.ghost:hover:not([data-disabled]),
+.ghost[data-popup-open] {
   background-color: var(--accent);
 }
 
 .outline {
+  background-color: var(--popover);
   color: var(--foreground);
   box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.7);
 }
 
-.outline:hover:not([data-disabled]) {
+.outline:hover:not([data-disabled]),
+.outline[data-popup-open] {
   background-color: oklch(from var(--accent) l c h / 0.85);
 }
 

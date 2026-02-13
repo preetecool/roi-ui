@@ -6,7 +6,7 @@
 
 .trigger {
   min-width: 9rem;
-  background-color: var(--mix-card-50-bg);
+  background-color: var(--popover);
 
   &:hover:not(.disabled) {
     background-color: var(--accent);
@@ -19,7 +19,7 @@
   }
 
   &[data-popup-open] {
-    background-color: var(--muted);
+    background-color: var(--accent);
     color: var(--foreground);
 
     & .icon {
