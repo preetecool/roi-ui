@@ -8,6 +8,8 @@ import type { PageTree } from "@/lib/source-types";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./docs-sidebar.module.css";
 
+const NEW_SIDEBAR_ITEMS = new Set(["Drawer"]);
+
 type SidebarItem = {
   $id?: string;
   name: React.ReactNode;
@@ -73,6 +75,9 @@ function DocsSidebarGroup({ item, pathname, level = 0 }: { item: SidebarItem; pa
           <Badge className={styles.badge} size="sm" variant="secondary">
             {item.badge}
           </Badge>
+        )}
+        {NEW_SIDEBAR_ITEMS.has(item.name as string) && (
+          <span className={styles.newBadge}>New</span>
         )}
       </Link>
     );

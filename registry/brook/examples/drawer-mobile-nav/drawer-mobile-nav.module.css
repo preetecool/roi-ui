@@ -1,0 +1,279 @@
+.backdrop {
+  --backdrop-opacity: 1;
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
+  transition-duration: 600ms;
+  transition-property: -webkit-backdrop-filter, backdrop-filter, opacity;
+  transition-timing-function: cubic-bezier(0.45, 1.005, 0, 1.005);
+  backdrop-filter: blur(1.5px);
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / 5%) 0, rgb(0 0 0 / 10%) 50%);
+  opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
+  background-color: transparent;
+
+  @supports (-webkit-touch-callout: none) {
+    position: absolute;
+  }
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    backdrop-filter: blur(0);
+    opacity: 0;
+  }
+
+  &[data-ending-style] {
+    transition-duration: 350ms;
+    transition-timing-function: cubic-bezier(0.375, 0.015, 0.545, 0.455);
+  }
+}
+
+.viewport {
+  position: fixed;
+  inset: 0;
+  display: block;
+  align-items: unset;
+  justify-content: unset;
+}
+
+.scrollAreaRoot {
+  box-sizing: border-box;
+  height: 100%;
+  overscroll-behavior: contain;
+  transition: transform 600ms cubic-bezier(0.45, 1.005, 0, 1.005);
+
+  [data-ending-style] & {
+    pointer-events: none;
+  }
+
+  [data-starting-style] & {
+    transform: translateY(100dvh);
+  }
+}
+
+.scrollAreaViewport {
+  box-sizing: border-box;
+  height: 100%;
+  overscroll-behavior: contain;
+  touch-action: auto;
+}
+
+.scrollContent {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100%;
+  padding-top: 2rem;
+
+  @media (min-width: 768px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-inline: 4rem;
+  }
+}
+
+.popup {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42rem;
+  max-height: none;
+  margin: 0 auto;
+  margin-bottom: 0;
+  padding: 0;
+  border-radius: 0;
+  outline: 0;
+  background-color: transparent;
+  box-shadow: none;
+  overflow: visible;
+  overscroll-behavior: unset;
+  transition: transform 600ms cubic-bezier(0.45, 1.005, 0, 1.005);
+  will-change: transform;
+  transform: translateY(var(--drawer-swipe-movement-y));
+
+  &[data-swiping] {
+    user-select: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &[data-ending-style] {
+    transform: translateY(max(100dvh, 100%));
+    transition-duration: 350ms;
+    transition-timing-function: cubic-bezier(0.375, 0.015, 0.545, 0.455);
+  }
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem 1.5rem;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  background-color: var(--mix-card-5-bg);
+  box-shadow:
+    0 10px 64px -10px rgb(36 40 52 / 20%),
+    0 0 0 1px oklch(from var(--border) l c h / 0.5),
+    var(--shadow-border-stack);
+  color: var(--foreground);
+  transition: box-shadow 350ms cubic-bezier(0.375, 0.015, 0.545, 0.455);
+
+  @media (min-width: 768px) {
+    border-radius: var(--radius);
+  }
+}
+
+[data-ending-style] .panel {
+  box-shadow:
+    0 10px 64px -10px rgb(36 40 52 / 0%),
+    0 0 0 1px oklch(from var(--border) l c h / 0),
+    0 0 0 0 transparent;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.headerSpacer {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.handle {
+  width: 3rem;
+  height: 0.25rem;
+  margin: 0;
+  border-radius: 9999px;
+  background-color: var(--border);
+  justify-self: center;
+}
+
+.closeButton {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
+  justify-self: end;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--accent);
+    }
+  }
+
+  &:active {
+    background-color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: -1px;
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: none;
+}
+
+.title {
+  margin: 0 0 0.25rem;
+  text-align: left;
+}
+
+.description {
+  margin: 0 0 1.25rem;
+}
+
+.scrollArea {
+  padding-bottom: 2rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.longList {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.item {
+  display: flex;
+}
+
+.link {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--foreground);
+  text-decoration: none;
+  background-color: var(--accent);
+
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: -1px;
+  }
+}
+
+.scrollbar {
+  position: absolute;
+  display: flex;
+  width: 0.25rem;
+  margin: 0.4rem;
+  justify-content: center;
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 250ms;
+  pointer-events: none;
+
+  &:hover,
+  &[data-scrolling] {
+    opacity: 1;
+    transition-duration: 75ms;
+    transition-delay: 0ms;
+    pointer-events: auto;
+  }
+
+  [data-ending-style] & {
+    transition-duration: 250ms;
+    opacity: 0;
+  }
+
+  @media (min-width: 768px) {
+    width: 0.4375rem;
+  }
+}
+
+.scrollbarThumb {
+  width: 100%;
+  border-radius: inherit;
+  background-color: var(--muted-foreground);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 1rem);
+    height: calc(100% + 1rem);
+  }
+}

@@ -18,7 +18,7 @@ const BLOCK_TITLES: Record<string, string> = {
   "card-progress": "Progress Card",
 };
 
-const NEW_BLOCKS = ["card-progress", "expandable-card-spread"];
+const NEW_BLOCKS: string[] = [];
 
 function getBlocks() {
   return Object.entries(Index)
