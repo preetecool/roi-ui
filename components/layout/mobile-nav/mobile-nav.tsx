@@ -1,14 +1,25 @@
 "use client";
 
-import { Dialog } from "@base-ui/react";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
 import { GitHubIcon } from "@/components/shared/github-icon";
-import { useSwipeToClose } from "@/hooks/use-swipe-to-close";
 import type { PageTree } from "@/lib/source-types";
+import {
+  Drawer,
+  DrawerBackdrop,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHandle,
+  DrawerPopup,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerViewport,
+} from "@/registry/brook/ui/drawer/drawer";
 import styles from "./mobile-nav.module.css";
 
 type NodeWithChildren = {
@@ -44,88 +55,77 @@ export function MobileNav({ tree }: MobileNavProps) {
   }
 
   return (
-    <Dialog.Root onOpenChange={setOpen} open={open}>
-      <Dialog.Trigger aria-label="Toggle navigation menu" className={styles.menuButton} data-open={open}>
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerTrigger aria-label="Toggle navigation menu" className={styles.menuButton} data-open={open}>
         <div className={styles.menuButtonInner}>
           <span className={styles.menuLine} />
           <span className={styles.menuLine} />
         </div>
-      </Dialog.Trigger>
+      </DrawerTrigger>
 
-      <Dialog.Portal>
-        <Dialog.Backdrop className={styles.overlay} style={{ backgroundColor: "transparent" }} />
-        <Dialog.Popup className={styles.drawer}>
-          <MobileNavContent pathname={pathname} setOpen={setOpen} tree={tree} />
-        </Dialog.Popup>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
-}
+      <DrawerPortal>
+        <DrawerBackdrop className={styles.backdrop} />
+        <DrawerViewport className={styles.viewport}>
+          <DrawerPopup className={styles.popup}>
+            <div className={styles.popupInner}>
+              <DrawerClose className={styles.backdropTapArea} nativeButton={false} render={<div />} />
+              <div className={styles.panel}>
+                <DrawerHandle className={styles.handle} />
+                <div className={styles.closeContainer}>
+                  <DrawerClose className={styles.closeButton}>
+                    <X size={16} />
+                  </DrawerClose>
+                </div>
 
-function MobileNavContent({
-  tree,
-  pathname,
-  setOpen,
-}: {
-  tree: PageTree.Root;
-  pathname: string;
-  setOpen: (open: boolean) => void;
-}) {
-  const { handleTouchStart } = useSwipeToClose({
-    onClose: () => setOpen(false),
-  });
+                <DrawerTitle className={styles.srOnly}>Navigation</DrawerTitle>
+                <DrawerDescription className={styles.srOnly}>Site navigation menu</DrawerDescription>
 
-  return (
-    <div className={styles.viewport} onTouchStart={handleTouchStart}>
-      <div className={styles.viewportInner}>
-        <Dialog.Close className={styles.backdropTapArea} nativeButton={false} render={<div />} />
-        <div className={styles.panel}>
-          <div className={styles.closeContainer}>
-            <Dialog.Close className={styles.closeButton}>
-              <X size={16} />
-            </Dialog.Close>
-          </div>
-          <div className={styles.menuSection}>
-            <div className={styles.groupTitle}>Menu</div>
-            <Link
-              aria-current={pathname === "/" ? "page" : undefined}
-              className={`${styles.pageLink} ${pathname === "/" ? styles.pageLinkActive : styles.pageLinkInactive}`}
-              href="/"
-              onClick={() => setOpen(false)}
-            >
-              Home
-            </Link>
-          </div>
+                <DrawerContent className={styles.content}>
+                  <div className={styles.menuSection}>
+                    <div className={styles.groupTitle}>Menu</div>
+                    <Link
+                      aria-current={pathname === "/" ? "page" : undefined}
+                      className={`${styles.pageLink} ${pathname === "/" ? styles.pageLinkActive : styles.pageLinkInactive}`}
+                      href="/"
+                      onClick={() => setOpen(false)}
+                    >
+                      Home
+                    </Link>
+                  </div>
 
-          <nav className={styles.treeNav}>
-            <ul className={styles.navList}>
-              {tree?.children?.map((item: PageTree.Node, index: number) => (
-                <li key={item.$id || `item-${index}`}>
-                  <MobileSidebarGroup
-                    item={item as NodeWithChildren}
-                    onNavigate={() => setOpen(false)}
-                    pathname={pathname}
-                  />
-                </li>
-              ))}
-            </ul>
-          </nav>
+                  <nav className={styles.treeNav}>
+                    <ul className={styles.navList}>
+                      {tree?.children?.map((item: PageTree.Node, index: number) => (
+                        <li key={item.$id || `item-${index}`}>
+                          <MobileSidebarGroup
+                            item={item as NodeWithChildren}
+                            onNavigate={() => setOpen(false)}
+                            pathname={pathname}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
 
-          <div className={styles.iconsRow}>
-            <a
-              aria-label="View source on GitHub"
-              className={styles.iconLink}
-              href="https://github.com/preetecool/roi-ui"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <GitHubIcon size={20} />
-            </a>
-            <ThemeSwitcher />
-          </div>
-        </div>
-      </div>
-    </div>
+                  <div className={styles.iconsRow}>
+                    <a
+                      aria-label="View source on GitHub"
+                      className={styles.iconLink}
+                      href="https://github.com/preetecool/roi-ui"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <GitHubIcon size={20} />
+                    </a>
+                    <ThemeSwitcher />
+                  </div>
+                </DrawerContent>
+              </div>
+            </div>
+          </DrawerPopup>
+        </DrawerViewport>
+      </DrawerPortal>
+    </Drawer>
   );
 }
 
