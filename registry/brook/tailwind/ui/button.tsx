@@ -37,9 +37,10 @@ const buttonVariants = cva(
 					"data-[popup-open]:bg-[var(--accent)]",
 				],
 				outline: [
-					"bg-transparent text-[var(--foreground)]",
+					"bg-[var(--popover)] text-[var(--foreground)]",
 					"shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.7)]",
 					"hover:bg-[oklch(from_var(--accent)_l_c_h_/_0.85)]",
+					"data-[popup-open]:bg-[oklch(from_var(--accent)_l_c_h_/_0.85)]",
 				],
 				link: [
 					"bg-transparent p-0 text-[var(--muted-foreground)] no-underline",
