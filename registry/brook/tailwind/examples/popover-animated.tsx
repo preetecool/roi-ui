@@ -52,7 +52,7 @@ export default function PopoverAnimated() {
         payload={NotificationsContent}
         render={<Button className="h-9 w-9 p-0" variant="outline" />}
       >
-        <Bell aria-label="Notifications" className="size-4" />
+        <Bell aria-label="Notifications" className="size-5" />
       </PopoverTrigger>
       <PopoverTrigger
         handle={popoverHandle}
