@@ -52,14 +52,14 @@ export default function PopoverAnimated() {
         payload={NotificationsContent}
         render={<Button className="h-9 w-9 p-0" variant="outline" />}
       >
-        <Bell aria-label="Notifications" size={16} />
+        <Bell aria-label="Notifications" className="size-4" />
       </PopoverTrigger>
       <PopoverTrigger
         handle={popoverHandle}
         payload={ProfileContent}
         render={<Button className="h-9 w-9 p-0" variant="outline" />}
       >
-        <User aria-label="Profile" size={16} />
+        <User aria-label="Profile" className="size-4" />
       </PopoverTrigger>
       <Popover handle={popoverHandle}>
         {({ payload }) => {
