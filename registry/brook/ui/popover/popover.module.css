@@ -54,6 +54,10 @@
     transform 350ms var(--ease-out-expo),
     opacity 350ms var(--ease-out-expo);
 
+  &:has([data-transitioning]) {
+    transition-property: transform, opacity;
+  }
+
   &[data-instant] {
     transition: none;
   }
@@ -105,22 +109,22 @@
   }
 
   &[data-activation-direction~="left"] [data-previous][data-ending-style] {
-    transform: translateX(-50%);
+    transform: translateX(50%);
     opacity: 0;
   }
 
   &[data-activation-direction~="left"] [data-current][data-starting-style] {
-    transform: translateX(50%);
+    transform: translateX(-50%);
     opacity: 0;
   }
 
   &[data-activation-direction~="right"] [data-previous][data-ending-style] {
-    transform: translateX(50%);
+    transform: translateX(-50%);
     opacity: 0;
   }
 
   &[data-activation-direction~="right"] [data-current][data-starting-style] {
-    transform: translateX(-50%);
+    transform: translateX(50%);
     opacity: 0;
   }
 }
