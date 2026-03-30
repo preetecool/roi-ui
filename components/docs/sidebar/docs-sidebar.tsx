@@ -8,7 +8,7 @@ import type { PageTree } from "@/lib/source-types";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./docs-sidebar.module.css";
 
-const NEW_SIDEBAR_ITEMS = new Set([]);
+const NEW_SIDEBAR_ITEMS = new Set<string>([]);
 
 type SidebarItem = {
   $id?: string;

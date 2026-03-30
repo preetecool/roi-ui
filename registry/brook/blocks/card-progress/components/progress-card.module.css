@@ -62,7 +62,8 @@
   width: 1px;
   height: calc(100% - 16px);
   background-color: var(--border);
-  transition: background-color 200ms ease-out;
+  transition: background-color 200ms ease;
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -87,7 +88,8 @@
   background-color: var(--card);
   animation: spin 0.8s linear infinite;
   opacity: 1;
-  transition: opacity 400ms ease-out;
+  transition: opacity 300ms ease-out;
+  will-change: transform;
   z-index: 2;
 }
 
@@ -162,16 +164,6 @@
   }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
 .checkIcon {
   color: var(--background);
   position: relative;
@@ -183,7 +175,7 @@
 @keyframes iconAppear {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
