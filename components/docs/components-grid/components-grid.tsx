@@ -3,7 +3,7 @@ import { source } from "@/lib/source";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./components-grid.module.css";
 
-const NEW_COMPONENTS = new Set(["Drawer"]);
+const NEW_COMPONENTS = new Set<string>([]);
 
 export function ComponentsGrid() {
   const uiSection = source.pageTree.children.find((group) => group.type === "folder" && group.name === "UI");

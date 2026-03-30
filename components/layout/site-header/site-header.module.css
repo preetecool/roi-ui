@@ -60,14 +60,6 @@
   transition: all 200ms var(--ease-out-quad);
 }
 
-.newDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--info);
-  margin-left: 0.375rem;
-}
-
 .actions {
   display: flex;
   align-items: center;

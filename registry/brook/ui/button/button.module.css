@@ -27,41 +27,103 @@
   cursor: not-allowed;
 }
 
-.primary {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  box-shadow:
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
-    oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
+/* Shared stacked border structure */
+.primary,
+.secondary,
+.destructive,
+.outline {
+  isolation: isolate;
+  border: 1px solid transparent;
 }
 
-.primary:hover:not([data-disabled]) {
-  background-color: oklch(from var(--primary) l c h / 0.8);
+.primary:not(.icon)::before,
+.secondary:not(.icon)::before,
+.destructive:not(.icon)::before,
+.outline:not(.icon)::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  inset: 1px;
+  border-radius: calc(var(--radius) - 2px);
 }
 
-.primary:active:not([data-disabled]) {
+.primary:active:not([data-disabled]),
+.secondary:active:not([data-disabled]),
+.destructive:active:not([data-disabled]),
+.outline:active:not([data-disabled]),
+.primary[data-pressed],
+.secondary[data-pressed],
+.destructive[data-pressed],
+.outline[data-pressed] {
+  box-shadow: none;
   transform: scale(0.97);
 }
 
+/* Primary */
+.primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: oklch(from var(--primary) calc(l * 0.82) c h);
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.1),
+    inset 0 1px oklch(1 0 0 / 0.09);
+}
+
+:global(.dark) .primary,
+:global([data-theme="dark"]) .primary {
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.25),
+    inset 0 1px oklch(1 0 0 / 0.06);
+}
+
+.primary:hover:not([data-disabled])::before {
+  background-color: oklch(1 0 0 / 0.08);
+}
+
+/* Secondary */
 .secondary {
   background-color: var(--secondary);
   color: var(--secondary-foreground);
+  border-color: oklch(from var(--secondary) calc(l * 0.92) c h);
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.05),
+    inset 0 -1px oklch(1 0 0 / 0.015);
 }
 
-.secondary:hover:not([data-disabled]) {
-  background-color: oklch(from var(--secondary) l c h / 0.8);
+:global(.dark) .secondary,
+:global([data-theme="dark"]) .secondary {
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.2),
+    inset 0 -1px oklch(1 0 0 / 0.03);
 }
 
+.secondary:hover:not([data-disabled])::before {
+  background-color: oklch(from var(--secondary) l c h / 0.5);
+}
+
+/* Destructive */
 .destructive {
   background-color: var(--destructive);
   color: var(--destructive-foreground);
+  border-color: oklch(from var(--destructive) calc(l * 0.82) c h);
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.1),
+    inset 0 1px oklch(1 0 0 / 0.09);
 }
 
-.destructive:hover:not([data-disabled]) {
-  background-color: oklch(from var(--destructive) l c h / 0.85);
+:global(.dark) .destructive,
+:global([data-theme="dark"]) .destructive {
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.25),
+    inset 0 1px oklch(1 0 0 / 0.06);
 }
 
+.destructive:hover:not([data-disabled])::before {
+  background-color: oklch(1 0 0 / 0.08);
+}
+
+/* Ghost */
 .ghost {
   background-color: transparent;
   color: var(--foreground);
@@ -72,15 +134,30 @@
   background-color: var(--accent);
 }
 
+/* Outline */
 .outline {
-  background-color: var(--popover);
-  color: var(--foreground);
-  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.7);
+  background-color: var(--card);
+  color: var(--muted-foreground);
+  border-color: var(--input);
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.05),
+    inset 0 -1px oklch(1 0 0 / 0.015);
 }
 
-.outline:hover:not([data-disabled]),
-.outline[data-popup-open] {
-  background-color: oklch(from var(--accent) l c h / 0.85);
+:global(.dark) .outline,
+:global([data-theme="dark"]) .outline {
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.2),
+    inset 0 -1px oklch(1 0 0 / 0.03);
+}
+
+:global([data-theme="light"]) .outline {
+  background-clip: padding-box;
+}
+
+.outline:hover:not([data-disabled])::before,
+.outline[data-popup-open]::before {
+  background-color: oklch(from var(--muted) l c h / 0.8);
 }
 
 .link {

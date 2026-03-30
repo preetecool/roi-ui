@@ -1,5 +1,13 @@
 .container {
   overflow: hidden;
+  border-radius: 2px;
+  border: 0.5px solid var(--border-subtle);
+}
+
+.container > :not(.preview) {
+  border: none;
+  border-top: 0.5px solid var(--border-subtle);
+  border-radius: 0;
 }
 
 .preview.proseReset {
@@ -37,10 +45,8 @@
   justify-content: center;
   align-items: start;
   width: 100%;
-  min-height: 450px;
+  min-height: 350px;
   padding: 2.5rem;
-  border: solid var(--border-subtle);
-  border-width: 0.5px 0.5px 0 0.5px;
 }
 
 .preview[data-align="center"] {

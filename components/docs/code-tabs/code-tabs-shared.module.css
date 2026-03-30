@@ -2,6 +2,7 @@
   background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
   overflow: hidden;
   border: 0.5px solid var(--border-subtle);
+  border-radius: 2px;
 }
 
 .wrapper pre {

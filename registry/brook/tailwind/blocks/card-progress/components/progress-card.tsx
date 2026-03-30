@@ -32,7 +32,7 @@ function AnimatedClock({ className }: { className?: string }) {
     >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="12" x2="12" y2="7" />
-      <line className="animate-[spin_2s_linear_infinite]" style={{ transformOrigin: "12px 12px" }} x1="12" y1="12" x2="15" y2="13" />
+      <line className="animate-[spin_2s_linear_infinite] motion-reduce:animate-none" style={{ transformOrigin: "12px 12px" }} x1="12" y1="12" x2="15" y2="13" />
     </svg>
   );
 }
@@ -43,11 +43,11 @@ function getIndicatorConfig(status: StepStatus, isFinal: boolean) {
   switch (status) {
     case "complete":
       return {
-        className: `${BASE_CLASSES} animate-[circle-reveal_0.2s_cubic-bezier(0.165,0.84,0.44,1)_forwards] ${
+        className: `${BASE_CLASSES} animate-[circle-reveal_0.2s_cubic-bezier(0.165,0.84,0.44,1)_forwards] motion-reduce:animate-none ${
           isFinal ? "bg-[var(--success)]" : "bg-[var(--foreground)]"
         }`,
         icon: "check",
-        iconClassName: "opacity-0 animate-[icon-pop_0.15s_cubic-bezier(0.165,0.84,0.44,1)_0.05s_forwards] text-[var(--background)]",
+        iconClassName: "opacity-0 animate-[icon-pop_0.15s_cubic-bezier(0.165,0.84,0.44,1)_0.05s_forwards] motion-reduce:animate-none motion-reduce:opacity-100 text-[var(--background)]",
       } as const;
     case "in_progress":
       return {
@@ -85,7 +85,7 @@ function StepIndicator({ status, isFinal = false }: StepIndicatorProps) {
     <div className="relative h-5 w-5">
       {showSpinner && (
         <div
-          className={`absolute inset-0 h-5 w-5 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--foreground)] bg-[var(--card)] z-[2] transition-opacity duration-[400ms] ease-out ${
+          className={`absolute inset-0 h-5 w-5 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--foreground)] bg-[var(--card)] z-[2] will-change-transform transition-opacity duration-300 ease-out motion-reduce:animate-none ${
             isComplete ? "opacity-0" : "opacity-100"
           }`}
         />
@@ -136,7 +136,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
               >
                 {!isLastStep && (
                   <div
-                    className={`absolute left-[23px] top-9 h-[calc(100%-16px)] w-px transition-colors duration-200 ${
+                    className={`absolute left-[23px] top-9 h-[calc(100%-16px)] w-px pointer-events-none transition-colors duration-200 ease ${
                       step.status === "complete" ? "bg-[var(--foreground)]" : "bg-[var(--border)]"
                     }`}
                   />
@@ -150,7 +150,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
                   <span
                     className={`text-[0.9375rem] font-medium transition-colors duration-200 ${getTitleClassName(step.status)} ${
                       step.status === "in_progress"
-                        ? "animate-shimmer bg-[length:200%_100%] bg-clip-text [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] bg-[linear-gradient(90deg,var(--muted-foreground)_0%,var(--muted-foreground)_40%,color-mix(in_oklch,var(--foreground)_50%,var(--muted-foreground))_50%,var(--muted-foreground)_60%,var(--muted-foreground)_100%)]"
+                        ? "animate-shimmer bg-[length:200%_100%] bg-clip-text [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] bg-[linear-gradient(90deg,var(--muted-foreground)_0%,var(--muted-foreground)_40%,color-mix(in_oklch,var(--foreground)_50%,var(--muted-foreground))_50%,var(--muted-foreground)_60%,var(--muted-foreground)_100%)] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:[-webkit-text-fill-color:var(--muted-foreground)]"
                         : ""
                     }`}
                   >
@@ -158,7 +158,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
                   </span>
                   {step.description && (
                     <div
-                      className={`grid transition-all duration-250 ease-out ${
+                      className={`grid transition-[grid-template-rows,opacity] duration-250 ease-[cubic-bezier(0.165,0.84,0.44,1)] ${
                         showDescription ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
