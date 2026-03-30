@@ -49,7 +49,6 @@ export function SiteHeader({ pageTree, isHomePage }: SiteHeaderProps) {
                 variant="ghost"
               >
                 Components
-                <span className={styles.newDot} />
               </Button>
               <Button
                 aria-label="Navigate to /blocks page"
