@@ -6,8 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/u
 export default function AlertWarning() {
   return (
     <div className="flex w-full justify-center">
-      <Alert variant="warning">
-        <AlertTriangle size={16} />
+      <Alert icon={<AlertTriangle />} variant="warning">
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>Something went wrong.</AlertDescription>
       </Alert>

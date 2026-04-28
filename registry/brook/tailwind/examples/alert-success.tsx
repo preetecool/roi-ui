@@ -6,8 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/u
 export default function AlertSuccess() {
   return (
     <div className="flex w-full justify-center">
-      <Alert variant="success">
-        <CheckCircle size={16} />
+      <Alert icon={<CheckCircle />} variant="success">
         <AlertTitle>Success</AlertTitle>
         <AlertDescription>Your account has been created successfully.</AlertDescription>
       </Alert>

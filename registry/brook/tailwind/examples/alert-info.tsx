@@ -6,8 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/u
 export default function AlertInfo() {
   return (
     <div className="flex w-full justify-center">
-      <Alert variant="info">
-        <Info size={16} />
+      <Alert icon={<Info />} variant="info">
         <AlertTitle>Info</AlertTitle>
         <AlertDescription>New features are available! Check out the latest updates.</AlertDescription>
       </Alert>

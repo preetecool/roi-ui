@@ -6,8 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/registry/brook/tailwind/u
 export default function AlertDestructive() {
   return (
     <div className="flex w-full justify-center">
-      <Alert variant="destructive">
-        <Ban size={16} />
+      <Alert icon={<Ban />} variant="destructive">
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
       </Alert>

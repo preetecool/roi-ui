@@ -94,6 +94,12 @@
     oklch(0 0 0 / 0.02) 0px 3px 8px 1px,
     oklch(0 0 0 / 0.02) 0px 2px 4px -1px,
     oklch(0 0 0 / 0.02) 0px 1px 1px 0;
+  --shadow-ring:
+    0 0 0 4px var(--background), 0 0 0 5px oklch(0 0 0 / 0.03),
+    0 0 0 6px oklch(0 0 0 / 0.015);
+  --shadow-card:
+    0 1px 2px oklch(0 0 0 / 0.04),
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.8);
 
   --destructive: oklch(0.6553 0.1374 15.66);
   --destructive-foreground: oklch(0.9808 0 24);
@@ -188,6 +194,12 @@
   --shadow-border-stack:
     oklch(0 0 0 / 0.2) 0px 3px 8px, oklch(0 0 0 / 0.2) 0px 2px 4px,
     oklch(0 0 0 / 0.2) 0px 1px 1px;
+  --shadow-ring:
+    0 0 0 4px var(--background), 0 0 0 5px oklch(1 0 0 / 0.05),
+    0 0 0 6px oklch(1 0 0 / 0.025);
+  --shadow-card:
+    0 1px 2px oklch(0 0 0 / 0.2),
+    0 0 0 0.5px oklch(from var(--border) l c h / 0.8);
 
   --destructive: oklch(0.54 0.1656 18.34);
   --destructive-foreground: oklch(0.8988 0.0447 17.32);
