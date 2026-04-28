@@ -19,8 +19,8 @@ export const Hero = () => {
   return (
     <section aria-label="Hero section" className={styles.container}>
       <Badge className={styles.badge} variant="outline">
-        <Link aria-label="View new drawer component" href="/docs/ui/drawer">
-          <span aria-hidden="true">New drawer component</span>
+        <Link aria-label="View new OTP field component" href="/docs/ui/otp-field">
+          <span aria-hidden="true">New OTP field component</span>
         </Link>
         <ArrowPointer />
       </Badge>

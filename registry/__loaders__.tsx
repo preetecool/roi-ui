@@ -422,6 +422,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "otp-field-demo": dynamic(() =>
+    import("@/registry/brook/examples/otp-field-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "popover-animated": dynamic(() =>
     import("@/registry/brook/examples/popover-animated/popover-animated").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -950,6 +955,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "number-field-demo-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/number-field-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "otp-field-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/otp-field-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
