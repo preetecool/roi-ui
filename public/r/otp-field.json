@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-field",
+  "type": "registry:item",
+  "title": "OTP Field",
+  "description": "A one-time password and verification code entry field.",
+  "files": [
+    {
+      "path": "registry/brook/ui/otp-field/otp-field.tsx",
+      "content": "\"use client\";\n\nimport { OTPFieldPreview as OTPFieldPrimitive } from \"@base-ui/react/otp-field\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./otp-field.module.css\";\n\nfunction OTPFieldRoot({ className, ...props }: OTPFieldPrimitive.Root.Props) {\n  return <OTPFieldPrimitive.Root className={cn(styles.root, className)} data-slot=\"otpfield-root\" {...props} />;\n}\n\nfunction OTPFieldInput({ className, ...props }: OTPFieldPrimitive.Input.Props) {\n  return (\n    <OTPFieldPrimitive.Input\n      className={(state: OTPFieldPrimitive.Input.State) =>\n        cn(styles.input, typeof className === \"function\" ? className(state) : className)\n      }\n      data-slot=\"otpfield-input\"\n      {...props}\n    />\n  );\n}\n\nfunction OTPFieldSeparator({ className, ...props }: OTPFieldPrimitive.Separator.Props) {\n  return (\n    <OTPFieldPrimitive.Separator\n      className={cn(styles.separator, className)}\n      data-slot=\"otpfield-separator\"\n      {...props}\n    />\n  );\n}\n\nexport { OTPFieldRoot as OTPField, OTPFieldInput, OTPFieldSeparator };\n",
+      "type": "registry:file",
+      "target": "~/components/ui/otp-field/otp-field.tsx"
+    },
+    {
+      "path": "registry/brook/ui/otp-field/otp-field.module.css",
+      "content": ".root {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.5rem;\n}\n\n.input {\n  width: 2.5rem;\n  height: 2.5rem;\n  border-radius: var(--radius);\n  border: none;\n  background-color: var(--popover);\n  text-align: center;\n  font-size: 1rem;\n  font-variant-numeric: tabular-nums;\n  color: var(--foreground);\n  transition: all 150ms ease-out;\n  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.5);\n}\n\n.input:focus,\n.input:focus-visible,\n.input[data-focused] {\n  outline: none;\n  box-shadow:\n    0 0 0 1px var(--ring),\n    0 0 0 3px oklch(from var(--ring) l c h / 0.2);\n}\n\n.input[data-disabled] {\n  cursor: not-allowed;\n  opacity: 0.5;\n}\n\n.input[data-invalid] {\n  box-shadow: 0 0 0 1px var(--destructive);\n}\n\n.input[data-invalid]:focus,\n.input[data-invalid][data-focused] {\n  box-shadow:\n    0 0 0 1px var(--destructive),\n    0 0 0 3px oklch(from var(--destructive) l c h / 0.2);\n}\n\n.separator {\n  width: 0.5rem;\n  height: 1px;\n  background-color: var(--border);\n}\n",
+      "type": "registry:file",
+      "target": "~/components/ui/otp-field/otp-field.module.css"
+    }
+  ]
+}

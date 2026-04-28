@@ -8,8 +8,7 @@ import styles from "./alert-demo.module.css";
 export default function AlertDemo() {
   return (
     <div className={styles.container}>
-      <Alert>
-        <Mail size={14} stroke="var(--muted-foreground)" />
+      <Alert icon={<Mail />}>
         <AlertTitle>New Message</AlertTitle>
         <AlertDescription> You&apos;ve got a new message.</AlertDescription>
         <AlertAction>

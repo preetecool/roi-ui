@@ -60,7 +60,7 @@ export default function DrawerNested() {
   return (
     <Drawer
       open={firstOpen}
-      onOpenChange={(nextOpen) => {
+      onOpenChange={(nextOpen: boolean) => {
         setFirstOpen(nextOpen);
         if (!nextOpen) {
           setSecondOpen(false);
@@ -83,7 +83,7 @@ export default function DrawerNested() {
                 <div className="mr-auto">
                   <Drawer
                     open={secondOpen}
-                    onOpenChange={(nextOpen) => {
+                    onOpenChange={(nextOpen: boolean) => {
                       setSecondOpen(nextOpen);
                       if (!nextOpen) {
                         setThirdOpen(false);

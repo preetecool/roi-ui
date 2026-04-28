@@ -37,6 +37,16 @@ html[data-theme="light"] {
   --code-arg-color: #005cc5;
 }
 
+html[data-theme="light"][data-palette="psevdaryiros"] {
+  --code-header-bg: oklch(0.97 0.005 270);
+  --code-footer-bg: oklch(0.96 0.005 270);
+}
+
+html[data-theme="dark"][data-palette="psevdaryiros"] {
+  --code-header-bg: oklch(0.18 0.007 270);
+  --code-footer-bg: oklch(0.2 0.007 270);
+}
+
 [data-line-numbers] {
   display: grid;
   min-width: 100%;

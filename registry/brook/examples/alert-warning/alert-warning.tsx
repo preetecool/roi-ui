@@ -7,8 +7,7 @@ import styles from "./alert-warning.module.css";
 export default function AlertWarning() {
   return (
     <div className={styles.container}>
-      <Alert variant="warning">
-        <AlertTriangle size={16} />
+      <Alert icon={<AlertTriangle />} variant="warning">
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>Something went wrong.</AlertDescription>
       </Alert>

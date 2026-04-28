@@ -628,6 +628,24 @@
       ]
     },
     {
+      "name": "otp-field",
+      "type": "registry:item",
+      "title": "OTP Field",
+      "description": "A one-time password and verification code entry field.",
+      "files": [
+        {
+          "path": "registry/brook/ui/otp-field/otp-field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/otp-field/otp-field.tsx"
+        },
+        {
+          "path": "registry/brook/ui/otp-field/otp-field.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/otp-field/otp-field.module.css"
+        }
+      ]
+    },
+    {
       "name": "popover",
       "type": "registry:item",
       "title": "Popover",
@@ -1632,6 +1650,19 @@
           "path": "registry/brook/tailwind/ui/navigation-menu.tsx",
           "type": "registry:file",
           "target": "~/components/ui/navigation-menu/navigation-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "otp-field-tailwind",
+      "type": "registry:item",
+      "title": "OTP Field (Tailwind)",
+      "description": "A one-time password and verification code entry field.",
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/otp-field.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/otp-field/otp-field.tsx"
         }
       ]
     },

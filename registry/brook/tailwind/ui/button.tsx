@@ -24,7 +24,7 @@ const buttonVariants = cva(
 					"inset-shadow-[0_1px_oklch(1_0_0/0.09)]",
 					"dark:inset-shadow-[0_1px_oklch(1_0_0/0.06)]",
 					"before:pointer-events-none before:absolute before:-z-1 before:inset-px before:rounded-[calc(var(--radius)-2px)]",
-					"hover:before:bg-[oklch(1_0_0/0.08)]",
+					"hover:before:bg-[oklch(from_var(--primary-foreground)_l_c_h/0.1)]",
 					"[:active,[data-pressed]]:scale-[0.97] [:active,[data-pressed]]:shadow-none",
 				],
 				secondary: [
@@ -34,7 +34,7 @@ const buttonVariants = cva(
 					"inset-shadow-[0_-1px_oklch(1_0_0/0.015)]",
 					"dark:inset-shadow-[0_-1px_oklch(1_0_0/0.03)]",
 					"before:pointer-events-none before:absolute before:-z-1 before:inset-px before:rounded-[calc(var(--radius)-2px)]",
-					"hover:before:bg-[oklch(from_var(--secondary)_l_c_h/0.5)]",
+					"hover:before:bg-[oklch(from_var(--secondary-foreground)_l_c_h/0.08)]",
 					"[:active,[data-pressed]]:scale-[0.97] [:active,[data-pressed]]:shadow-none",
 				],
 				destructive: [

@@ -7,8 +7,7 @@ import styles from "./alert-destructive.module.css";
 export default function AlertDestructive() {
   return (
     <div className={styles.container}>
-      <Alert variant="destructive">
-        <Ban size={16} />
+      <Alert icon={<Ban />} variant="destructive">
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
       </Alert>

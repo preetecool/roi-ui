@@ -725,6 +725,12 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/number-field-demo/number-field-demo",
   },
+  "otp-field-demo": {
+    name: "otp-field-demo",
+    type: "example",
+    files: ["registry/brook/examples/otp-field-demo.tsx"],
+    path: "@/registry/brook/examples/otp-field-demo",
+  },
   "popover-animated": {
     name: "popover-animated",
     type: "example",
@@ -1205,6 +1211,11 @@ export const Index: Record<string, RegistryEntry> = {
       "registry/brook/ui/number-field/number-field.tsx",
       "registry/brook/ui/number-field/number-field.module.css",
     ],
+  },
+  "otp-field": {
+    name: "otp-field",
+    type: "ui",
+    files: ["registry/brook/ui/otp-field/otp-field.tsx", "registry/brook/ui/otp-field/otp-field.module.css"],
   },
   popover: {
     name: "popover",
@@ -1765,6 +1776,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/number-field-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/number-field-demo",
   },
+  "otp-field-demo-tailwind": {
+    name: "otp-field-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/otp-field-demo.tsx"],
+    path: "@/registry/brook/tailwind/examples/otp-field-demo",
+  },
   "popover-animated-tailwind": {
     name: "popover-animated-tailwind",
     type: "example",
@@ -2161,6 +2178,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "number-field-tailwind",
     type: "ui",
     files: ["registry/brook/tailwind/ui/number-field.tsx"],
+  },
+  "otp-field-tailwind": {
+    name: "otp-field-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/otp-field.tsx"],
   },
   popoverTailwind: {
     name: "popover-tailwind",
