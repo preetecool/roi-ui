@@ -78,7 +78,7 @@
 }
 
 .primary:hover:not([data-disabled])::before {
-  background-color: oklch(1 0 0 / 0.08);
+  background-color: oklch(from var(--primary-foreground) l c h / 0.1);
 }
 
 /* Secondary */

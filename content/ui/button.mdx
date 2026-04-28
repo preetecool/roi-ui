@@ -68,22 +68,18 @@ Copy and paste the following files:
 
 <CodeBlock filename="anatomy" language="tsx" code={`import { Button, Spinner, ArrowPointer } from "@/components/ui/button"
 
-// Basic button
 <Button>Click me</Button>
 
-// With loading spinner
 <Button disabled>
   <Spinner />
   Loading...
 </Button>
 
-// With arrow
 <Button>
   Continue
   <ArrowPointer />
 </Button>
 
-// With external link arrow
 <Button render={<a href="#" />}>
   View External
   <ArrowPointer pointExternal />
