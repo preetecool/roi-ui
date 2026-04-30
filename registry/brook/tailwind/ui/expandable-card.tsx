@@ -100,14 +100,14 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                       <ScrollArea.Content
                         className={cn(
                           "flex w-full flex-col items-center gap-[16px]",
-                          "px-[max(1.5rem,env(safe-area-inset-left))] pb-[max(12vh,env(safe-area-inset-bottom))] pt-0"
+                          "px-[max(1.5rem,env(safe-area-inset-left))] pt-0 pb-[max(12vh,env(safe-area-inset-bottom))]"
                         )}
                       >
                         <div className="sticky top-8 z-20 mr-2 flex h-11 w-11 cursor-pointer items-center justify-center self-end rounded-full">
                           <Dialog.Close
                             aria-label="Close"
                             className={cn(
-                              "z-20 p-2 rounded-full shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)]",
+                              "z-20 rounded-full p-2 shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)]",
                               "flex cursor-pointer items-center justify-center bg-[var(--background)] text-[var(--muted-foreground)] transition-colors duration-150 ease-out md:bg-transparent",
                               "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
                               "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
@@ -178,9 +178,9 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
                         "flex w-1.5 justify-center rounded-sm",
                         "m-[2px] mt-[calc(32px+0.5vh)]",
                         "touch-none select-none",
-                        "opacity-0 pointer-events-none",
-                        "transition-opacity duration-150 ease-out delay-[800ms]",
-                        "data-[scrolling]:opacity-100 data-[scrolling]:pointer-events-auto data-[scrolling]:delay-0"
+                        "pointer-events-none opacity-0",
+                        "transition-opacity delay-[800ms] duration-150 ease-out",
+                        "data-[scrolling]:pointer-events-auto data-[scrolling]:opacity-100 data-[scrolling]:delay-0"
                       )}
                       orientation="vertical"
                     >

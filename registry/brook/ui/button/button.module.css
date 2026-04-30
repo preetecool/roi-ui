@@ -70,8 +70,8 @@
     inset 0 1px oklch(1 0 0 / 0.09);
 }
 
-:global(.dark) .primary,
-:global([data-theme="dark"]) .primary {
+:global(.dark).primary,
+:global([data-theme="dark"]).primary {
   box-shadow:
     0 1px 2px oklch(0 0 0 / 0.25),
     inset 0 1px oklch(1 0 0 / 0.06);
@@ -91,8 +91,8 @@
     inset 0 -1px oklch(1 0 0 / 0.015);
 }
 
-:global(.dark) .secondary,
-:global([data-theme="dark"]) .secondary {
+:global(.dark).secondary,
+:global([data-theme="dark"]).secondary {
   box-shadow:
     0 1px 2px oklch(0 0 0 / 0.2),
     inset 0 -1px oklch(1 0 0 / 0.03);
@@ -112,8 +112,8 @@
     inset 0 1px oklch(1 0 0 / 0.09);
 }
 
-:global(.dark) .destructive,
-:global([data-theme="dark"]) .destructive {
+:global(.dark).destructive,
+:global([data-theme="dark"]).destructive {
   box-shadow:
     0 1px 2px oklch(0 0 0 / 0.25),
     inset 0 1px oklch(1 0 0 / 0.06);
@@ -144,14 +144,14 @@
     inset 0 -1px oklch(1 0 0 / 0.015);
 }
 
-:global(.dark) .outline,
-:global([data-theme="dark"]) .outline {
+:global(.dark).outline,
+:global([data-theme="dark"]).outline {
   box-shadow:
     0 1px 2px oklch(0 0 0 / 0.2),
     inset 0 -1px oklch(1 0 0 / 0.03);
 }
 
-:global([data-theme="light"]) .outline {
+:global([data-theme="light"]).outline {
   background-clip: padding-box;
 }
 

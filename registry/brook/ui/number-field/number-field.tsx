@@ -24,10 +24,10 @@ function NumberFieldIncrement({ className, children, ...props }: NumberField.Inc
           aria-label="Increment"
           className={styles.icon}
           fill="none"
-          height="16"
+          height="20"
           role="img"
           viewBox="0 0 24 24"
-          width="16"
+          width="20"
         >
           <path
             d="M12 5v14m-7-7h14"
@@ -50,10 +50,10 @@ function NumberFieldDecrement({ className, children, ...props }: NumberField.Dec
           aria-label="Decrement"
           className={styles.icon}
           fill="none"
-          height="16"
+          height="20"
           role="img"
           viewBox="0 0 24 24"
-          width="16"
+          width="20"
         >
           <path d="M5 12h14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
         </svg>

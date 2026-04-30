@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import type * as React from "react";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Drawer,
@@ -45,13 +45,19 @@ export default function DrawerSnapPoints() {
                 <DrawerDescription className={styles.description}>
                   Trending topics and curated picks based on your interests.
                 </DrawerDescription>
-                <div className={styles.cards} aria-hidden>
+                <div aria-hidden className={styles.cards}>
                   {Array.from({ length: 20 }, (_, index) => (
                     <div className={styles.card} key={index} />
                   ))}
                 </div>
                 <div className={styles.actions}>
-                  <DrawerClose render={<Button variant="outline" size="sm">Close</Button>} />
+                  <DrawerClose
+                    render={
+                      <Button size="sm" variant="outline">
+                        Close
+                      </Button>
+                    }
+                  />
                 </div>
               </div>
             </DrawerContent>

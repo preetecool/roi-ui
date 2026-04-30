@@ -79,7 +79,11 @@ html[data-theme="dark"] [data-line] span {
   border-radius: 0;
   margin: 0;
   padding: 1rem;
-  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
+  background: linear-gradient(
+    to bottom,
+    var(--code-header-bg),
+    var(--code-footer-bg)
+  );
 }
 
 pre code {

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useKeyboardShortcut } from "@/hooks/use-keyboard-shortcut";
 import type { PageTree } from "@/lib/source-types";
+import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import {
   Command,
   CommandCollection,
@@ -20,7 +21,6 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/registry/brook/ui/command/command";
-import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import { Kbd } from "@/registry/brook/ui/kbd/kbd";
 import styles from "./search.module.css";
 import { SearchTrigger } from "./search-trigger";
@@ -149,15 +149,12 @@ export function Search({ tree }: SearchProps) {
     ) as SearchResult[];
   }, [query.data]);
 
-  const itemToStringValue = useCallback(
-    (item: unknown) => {
-      if (!item || typeof item !== "object") return "";
-      if ("content" in item) return (item as SearchResult).content;
-      if ("name" in item) return (item as TreeItem).name;
-      return "";
-    },
-    []
-  );
+  const itemToStringValue = useCallback((item: unknown) => {
+    if (!item || typeof item !== "object") return "";
+    if ("content" in item) return (item as SearchResult).content;
+    if ("name" in item) return (item as TreeItem).name;
+    return "";
+  }, []);
 
   const showSearchResults = inputValue.trim().length > 0;
   const isLoading = query.isLoading;
@@ -176,16 +173,12 @@ export function Search({ tree }: SearchProps) {
       <SearchTrigger onClick={() => setOpen(true)} />
       <CommandDialog onOpenChange={handleOpenChange} open={open}>
         <CommandDialogPopup className={styles.searchDialog} initialFocus={inputRef}>
-          <Command items={allItems} onValueChange={handleValueChange} itemToStringValue={itemToStringValue}>
-            <CommandInput ref={inputRef} placeholder="Search documentation..." className={styles.commandInput} />
+          <Command items={allItems} itemToStringValue={itemToStringValue} onValueChange={handleValueChange}>
+            <CommandInput className={styles.commandInput} placeholder="Search documentation..." ref={inputRef} />
             <CommandList className={styles.searchList}>
               {showSearchResults ? (
                 <>
-                  {!hasSearchResults && (
-                    <CommandEmpty>
-                      {isLoading ? "Searching..." : "No results found."}
-                    </CommandEmpty>
-                  )}
+                  {!hasSearchResults && <CommandEmpty>{isLoading ? "Searching..." : "No results found."}</CommandEmpty>}
                   {hasSearchResults && (
                     <CommandGroup items={searchResults}>
                       <CommandGroupLabel>Search Results</CommandGroupLabel>
@@ -193,8 +186,8 @@ export function Search({ tree }: SearchProps) {
                         {(result: SearchResult) => (
                           <CommandItem
                             key={result.id}
-                            value={result}
                             render={<Link href={result.url} onNavigate={handleItemClick} tabIndex={-1} />}
+                            value={result}
                           >
                             {getIcon(result.url)}
                             {result.content}
@@ -214,8 +207,8 @@ export function Search({ tree }: SearchProps) {
                         {(item: TreeItem) => (
                           <CommandItem
                             key={item.id}
-                            value={item}
                             render={<Link href={item.url} onNavigate={handleItemClick} tabIndex={-1} />}
+                            value={item}
                           >
                             {getIcon(item.url)}
                             {item.name}

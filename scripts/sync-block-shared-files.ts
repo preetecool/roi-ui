@@ -91,7 +91,7 @@ async function syncBlockSharedFiles() {
         .then(() => true)
         .catch(() => false);
 
-      if (!cssModulesExists && !tailwindExists) {
+      if (!(cssModulesExists || tailwindExists)) {
         console.warn(`⚠️  No variant directories found for block: ${blockName}`);
         continue;
       }

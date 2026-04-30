@@ -22,37 +22,37 @@ export default function PreviewCardDemo() {
             href="https://github.com/base-ui"
             rel="noopener noreferrer"
             render={
-              <Button className="text-foreground !px-0" variant="link">
+              <Button className="!px-0 text-foreground" variant="link">
                 Github
               </Button>
             }
             target="_blank"
           />
 
-        <PreviewCardPortal>
-          <PreviewCardPositioner align="center" side="top" sideOffset={8}>
-            <PreviewCardPopup>
-              <PreviewCardArrow />
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <Image
-                    alt="Profile"
-                    className="rounded-full border-2 border-border"
-                    height={32}
-                    src="/preetecool.png"
-                    width={32}
-                  />
-                  <div className="previewInfo">
-                    <h3 className="m-0 font-semibold text-foreground text-sm">Preet</h3>
-                    <p className="m-0 text-muted-foreground text-xs">@preetecool</p>
+          <PreviewCardPortal>
+            <PreviewCardPositioner align="center" side="top" sideOffset={8}>
+              <PreviewCardPopup>
+                <PreviewCardArrow />
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      alt="Profile"
+                      className="rounded-full border-2 border-border"
+                      height={32}
+                      src="/preetecool.png"
+                      width={32}
+                    />
+                    <div className="previewInfo">
+                      <h3 className="m-0 font-semibold text-foreground text-sm">Preet</h3>
+                      <p className="m-0 text-muted-foreground text-xs">@preetecool</p>
+                    </div>
                   </div>
-                </div>
 
-                <p className="m-0 text-muted-foreground text-sm leading-snug">❤️ Design & Build</p>
-              </div>
-            </PreviewCardPopup>
-          </PreviewCardPositioner>
-        </PreviewCardPortal>
+                  <p className="m-0 text-muted-foreground text-sm leading-snug">❤️ Design & Build</p>
+                </div>
+              </PreviewCardPopup>
+            </PreviewCardPositioner>
+          </PreviewCardPortal>
         </PreviewCard>{" "}
         link to see a preview card.
       </p>

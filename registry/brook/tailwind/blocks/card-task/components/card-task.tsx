@@ -113,7 +113,11 @@ function TaskCardDropdownMenu({
       <DropdownMenuTrigger
         render={(props) => (
           <Button {...props} aria-label="Task options" size="icon" variant="ghost">
-            <MoreHorizontal aria-hidden="true" className="text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.8)]" size="16" />
+            <MoreHorizontal
+              aria-hidden="true"
+              className="text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.8)]"
+              size="16"
+            />
           </Button>
         )}
       />
@@ -150,7 +154,7 @@ export function CardTask({
   onDeleteTask,
 }: TaskCardProps) {
   return (
-    <Card className="w-full max-w-[300px] !gap-4 !p-4 xl:min-h-auto">
+    <Card className="!gap-4 !p-4 w-full max-w-[300px] xl:min-h-auto">
       <CardHeader>
         <CardTitle className="!text-base">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
@@ -177,20 +181,36 @@ export function CardTask({
         </div>
         <div className="flex w-full justify-between text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)] text-xs">
           <div className="flex items-center gap-3">
-            <div aria-label={`${collaborators.length} collaborators`} className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]" role="group">
+            <div
+              aria-label={`${collaborators.length} collaborators`}
+              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+              role="group"
+            >
               <Users aria-hidden="true" size="14" />
               <span>{collaborators.length}</span>
             </div>
-            <div aria-label={`${stats.comments} comments`} className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]" role="group">
+            <div
+              aria-label={`${stats.comments} comments`}
+              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+              role="group"
+            >
               <MessageCircleMore aria-hidden="true" size="14" />
               <span>{stats.comments}</span>
             </div>
-            <div aria-label={`${stats.subtasks} subtasks`} className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]" role="group">
+            <div
+              aria-label={`${stats.subtasks} subtasks`}
+              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+              role="group"
+            >
               <ListTodo aria-hidden="true" size="14" />
               <span>{stats.subtasks}</span>
             </div>
           </div>
-          <div aria-label={`Due ${dueDate.label}`} className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]" role="group">
+          <div
+            aria-label={`Due ${dueDate.label}`}
+            className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+            role="group"
+          >
             <Calendar aria-hidden="true" size="14" />
             <span className={dueDate.variant === "warning" ? "text-[var(--warning-foreground)]" : undefined}>
               {dueDate.label}

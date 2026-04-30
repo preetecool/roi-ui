@@ -1,3 +1,82 @@
 .numberField {
-  max-width: 12rem;
+  max-width: 16rem;
+}
+
+.display {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.5rem;
+  height: 3.5rem;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  caret-color: transparent;
+}
+
+.inputEditing {
+  caret-color: var(--foreground);
+}
+
+.digits {
+  display: inline-flex;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--foreground);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.digit {
+  display: inline-block;
+  line-height: 1;
+}
+
+.digitDown {
+  animation: slide-from-top 360ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.digitUp {
+  animation: slide-from-bottom 360ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes slide-from-top {
+  from {
+    transform: translateY(-80%);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slide-from-bottom {
+  from {
+    transform: translateY(80%);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digitDown,
+  .digitUp {
+    animation: none;
+  }
 }

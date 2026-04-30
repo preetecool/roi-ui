@@ -76,9 +76,7 @@ function DocsSidebarGroup({ item, pathname, level = 0 }: { item: SidebarItem; pa
             {item.badge}
           </Badge>
         )}
-        {NEW_SIDEBAR_ITEMS.has(item.name as string) && (
-          <span className={styles.newBadge}>New</span>
-        )}
+        {NEW_SIDEBAR_ITEMS.has(item.name as string) && <span className={styles.newBadge}>New</span>}
       </Link>
     );
   }

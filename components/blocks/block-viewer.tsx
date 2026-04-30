@@ -86,15 +86,9 @@ export function BlockViewer({
     [style, tailwindFiles, cssModulesFiles]
   );
 
-  const currentFile = useMemo(
-    () => files.find((f) => f.path === selectedFile),
-    [files, selectedFile]
-  );
+  const currentFile = useMemo(() => files.find((f) => f.path === selectedFile), [files, selectedFile]);
 
-  const fileTree = useMemo(
-    () => buildFileTree(files.map((f) => f.path)),
-    [files]
-  );
+  const fileTree = useMemo(() => buildFileTree(files.map((f) => f.path)), [files]);
 
   useEffect(() => {
     setMounted(true);

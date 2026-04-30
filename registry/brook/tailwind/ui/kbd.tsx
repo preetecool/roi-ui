@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils-tailwind";
 const kbdVariants = cva(
   [
     "inline-flex items-center justify-center whitespace-nowrap font-[550] font-mono leading-none",
-    "border-none rounded-[2px]",
+    "rounded-[2px] border-none",
     "bg-[var(--card)] text-[var(--foreground)]",
     "[box-shadow:inset_0_0_0_1px_rgba(0,0,0,0.06),0_2px_0_0_var(--muted)]",
     "transition-all duration-150 ease-[ease]",

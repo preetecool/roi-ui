@@ -52,13 +52,9 @@ export default function CommandDemo() {
     []
   );
 
-  const filteredSuggestions = suggestions.filter((item) =>
-    item.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredSuggestions = suggestions.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase()));
 
-  const filteredSettings = settings.filter((item) =>
-    item.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredSettings = settings.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase()));
 
   return (
     <Command

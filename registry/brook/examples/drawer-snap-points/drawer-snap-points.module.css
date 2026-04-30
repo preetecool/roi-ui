@@ -9,7 +9,10 @@
   flex-direction: column;
   max-height: calc(100dvh - var(--top-margin));
   padding: 0;
-  padding-bottom: max(0px, calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y)));
+  padding-bottom: max(
+    0px,
+    calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y))
+  );
   margin-bottom: 0;
   overflow: visible;
   touch-action: none;
@@ -20,7 +23,9 @@
   transition:
     transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
     box-shadow 450ms cubic-bezier(0.32, 0.72, 0, 1);
-  transform: translateY(calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y)));
+  transform: translateY(
+    calc(var(--drawer-snap-point-offset) + var(--drawer-swipe-movement-y))
+  );
 
   &::after {
     content: "";

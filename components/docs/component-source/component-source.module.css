@@ -1,5 +1,9 @@
 .container {
-  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
+  background: linear-gradient(
+    to bottom,
+    var(--code-header-bg),
+    var(--code-footer-bg)
+  );
 }
 
 .container pre {

@@ -28,11 +28,11 @@ export function StatusBar({ status, onStatusChange }: StatusBarProps) {
       <ToolbarGroup>
         {statusOptions.map((option) => (
           <ToolbarButton
-            key={option.value}
-            className={cn(styles.statusButton, styles[option.value])}
-            onClick={() => onStatusChange(option.value)}
             aria-pressed={status === option.value}
+            className={cn(styles.statusButton, styles[option.value])}
             data-state={status === option.value ? "pressed" : undefined}
+            key={option.value}
+            onClick={() => onStatusChange(option.value)}
           >
             <span className={styles.statusCircle} />
             <span className={styles.statusLabel}>{option.label}</span>

@@ -12,7 +12,7 @@ export default function KbdDemo() {
       </div>
       <div className="flex items-center gap-2">
         <Kbd>⌘</Kbd>
-        <span className="text-sm text-[var(--muted-foreground)]">+</span>
+        <span className="text-[var(--muted-foreground)] text-sm">+</span>
         <Kbd>K</Kbd>
       </div>
     </div>

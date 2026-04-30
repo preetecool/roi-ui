@@ -1,8 +1,7 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
 import { ScrollArea } from "@base-ui/react/scroll-area";
+import Link from "next/link";
 import { Button } from "@/registry/brook/ui/button/button";
 import {
   Drawer,
@@ -38,7 +37,7 @@ export default function DrawerMobileNav() {
       <DrawerPortal>
         <DrawerBackdrop className={styles.backdrop} />
         <DrawerViewport className={styles.viewport}>
-          <ScrollArea.Root style={{ position: undefined }} className={styles.scrollAreaRoot}>
+          <ScrollArea.Root className={styles.scrollAreaRoot} style={{ position: undefined }}>
             <ScrollArea.Viewport className={styles.scrollAreaViewport}>
               <ScrollArea.Content className={styles.scrollContent}>
                 <DrawerPopup className={styles.popup}>
@@ -47,13 +46,13 @@ export default function DrawerMobileNav() {
                       <div aria-hidden className={styles.headerSpacer} />
                       <DrawerHandle className={styles.handle} />
                       <DrawerClose aria-label="Close menu" className={styles.closeButton}>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <svg fill="none" height="12" viewBox="0 0 12 12" width="12">
                           <path
                             d="M0.75 0.75L6 6M11.25 11.25L6 6M6 6L0.75 11.25M6 6L11.25 0.75"
                             stroke="currentcolor"
-                            strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
+                            strokeWidth="2"
                           />
                         </svg>
                       </DrawerClose>
@@ -68,7 +67,7 @@ export default function DrawerMobileNav() {
                       <div className={styles.scrollArea}>
                         <ul className={styles.list}>
                           {ITEMS.map((item) => (
-                            <li key={item.label} className={styles.item}>
+                            <li className={styles.item} key={item.label}>
                               <Link className={styles.link} href={item.href}>
                                 {item.label}
                               </Link>
@@ -76,9 +75,9 @@ export default function DrawerMobileNav() {
                           ))}
                         </ul>
 
-                        <ul className={styles.longList} aria-label="Long list">
+                        <ul aria-label="Long list" className={styles.longList}>
                           {LONG_LIST.map((item) => (
-                            <li key={item.label} className={styles.item}>
+                            <li className={styles.item} key={item.label}>
                               <Link className={styles.link} href={item.href}>
                                 {item.label}
                               </Link>

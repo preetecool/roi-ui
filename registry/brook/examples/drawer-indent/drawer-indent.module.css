@@ -8,7 +8,10 @@
 .indent {
   --indent-progress: var(--drawer-swipe-progress);
   --indent-radius: calc(1rem * (1 - var(--indent-progress)));
-  --indent-transition: calc(1 - clamp(0, calc(var(--drawer-swipe-progress) * 100000), 1));
+  --indent-transition: calc(
+    1 -
+    clamp(0, calc(var(--drawer-swipe-progress) * 100000), 1)
+  );
   position: relative;
   min-height: 320px;
   transition:

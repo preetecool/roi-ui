@@ -407,8 +407,26 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
       <path d="M56 56L62 44L68 56" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
       <rect fill="var(--muted-foreground)" height="10" opacity="0.35" rx="3" width="50" x="20" y="112" />
       <circle cx="92" cy="120" fill="var(--muted-foreground)" opacity="0.15" r="10" />
-      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="88" x2="96" y1="120" y2="120" />
-      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="92" x2="92" y1="116" y2="124" />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        x1="88"
+        x2="96"
+        y1="120"
+        y2="120"
+      />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        x1="92"
+        x2="92"
+        y1="116"
+        y2="124"
+      />
 
       {/* Card 2 */}
       <rect fill="url(#expandCarouselCardGrad)" height="140" rx="12" width="100" x="120" y="5" />
@@ -417,8 +435,26 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
       <path d="M164 56L170 44L176 56" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
       <rect fill="var(--muted-foreground)" height="10" opacity="0.35" rx="3" width="50" x="128" y="112" />
       <circle cx="200" cy="120" fill="var(--muted-foreground)" opacity="0.15" r="10" />
-      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="196" x2="204" y1="120" y2="120" />
-      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="200" x2="200" y1="116" y2="124" />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        x1="196"
+        x2="204"
+        y1="120"
+        y2="120"
+      />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        x1="200"
+        x2="200"
+        y1="116"
+        y2="124"
+      />
 
       {/* Card 3 */}
       <rect fill="url(#expandCarouselCardGrad)" height="140" rx="12" width="100" x="228" y="5" />
@@ -427,8 +463,26 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
       <path d="M272 56L278 44L284 56" fill="var(--muted-foreground)" opacity="0.2" stroke="none" />
       <rect fill="var(--muted-foreground)" height="10" opacity="0.35" rx="3" width="50" x="236" y="112" />
       <circle cx="308" cy="120" fill="var(--muted-foreground)" opacity="0.15" r="10" />
-      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="304" x2="312" y1="120" y2="120" />
-      <line opacity="0.4" stroke="var(--muted-foreground)" strokeLinecap="round" strokeWidth="1.5" x1="308" x2="308" y1="116" y2="124" />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        x1="304"
+        x2="312"
+        y1="120"
+        y2="120"
+      />
+      <line
+        opacity="0.4"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+        x1="308"
+        x2="308"
+        y1="116"
+        y2="124"
+      />
     </svg>
   );
 }

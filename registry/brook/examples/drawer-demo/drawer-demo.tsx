@@ -29,7 +29,13 @@ export default function DrawerDemo() {
                 You&apos;ve used 4.2 GB of 10 GB. Upgrade your plan for more space.
               </DrawerDescription>
               <div className={styles.actions}>
-                <DrawerClose render={<Button variant="outline" size="sm">Done</Button>} />
+                <DrawerClose
+                  render={
+                    <Button size="sm" variant="outline">
+                      Done
+                    </Button>
+                  }
+                />
               </div>
             </DrawerContent>
           </DrawerPopup>

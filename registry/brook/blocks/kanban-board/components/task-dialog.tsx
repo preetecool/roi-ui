@@ -57,7 +57,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/ui/select/select";
-import { formatDateString, parseDateString, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
+import { formatDateString, PRIORITY_ITEMS, parseDateString, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
 import styles from "./kanban.module.css";
 

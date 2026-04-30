@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ProgressCard, Step } from "./components/progress-card";
+import { ProgressCard, type Step } from "./components/progress-card";
 
 const INITIAL_STEPS: Step[] = [
   { id: "1", title: "Verifying wallet", status: "in_progress" },

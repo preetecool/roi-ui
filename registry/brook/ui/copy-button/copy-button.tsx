@@ -49,8 +49,7 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), COPIED_RESET_DELAY_MS);
-    } catch (_error) {
-    }
+    } catch (_error) {}
   };
 
   return (

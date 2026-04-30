@@ -40,9 +40,9 @@ export default function AutocompleteClearable() {
         onValueChange={setValue}
         value={value}
       >
-        <div className="flex w-[360px] items-center gap-2 border-none rounded-[var(--radius)] bg-[var(--mix-card-50-bg)] pr-2 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:shadow-[0_0_0_1px_var(--ring),0_0_4px_oklch(from_var(--border)_l_c_h_/_0.5)] max-sm:w-full">
+        <div className="flex w-[360px] items-center gap-2 rounded-[var(--radius)] border-none bg-[var(--mix-card-50-bg)] pr-2 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:shadow-[0_0_0_1px_var(--ring),0_0_4px_oklch(from_var(--border)_l_c_h_/_0.5)] max-sm:w-full">
           <AutocompleteInput
-            className="flex-1 border-none bg-transparent !shadow-none focus:border-transparent focus:!shadow-none focus:outline-none focus-visible:!shadow-none data-[focused]:!shadow-none"
+            className="!shadow-none focus:!shadow-none focus-visible:!shadow-none data-[focused]:!shadow-none flex-1 border-none bg-transparent focus:border-transparent focus:outline-none"
             id="clearable-input"
             placeholder="Search frameworks..."
           />

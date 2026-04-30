@@ -30,12 +30,11 @@ export function PricingSection() {
   return (
     <section className="mx-auto w-full max-w-[900px] px-6 py-16">
       <div className="mb-12 flex flex-col items-center gap-4 text-center">
-        <h2 className="m-0 text-4xl font-semibold leading-tight tracking-tight text-[var(--foreground)] max-sm:text-[1.75rem]">
+        <h2 className="m-0 font-semibold text-4xl text-[var(--foreground)] leading-tight tracking-tight max-sm:text-[1.75rem]">
           Simple, transparent pricing
         </h2>
-        <p className="m-0 max-w-[400px] text-base leading-normal text-[var(--muted-foreground)] max-sm:text-[0.9375rem]">
-          Choose the plan that works best for you. All plans include a 14-day
-          free trial.
+        <p className="m-0 max-w-[400px] text-[var(--muted-foreground)] text-base leading-normal max-sm:text-[0.9375rem]">
+          Choose the plan that works best for you. All plans include a 14-day free trial.
         </p>
       </div>
 
@@ -44,47 +43,41 @@ export function PricingSection() {
           <Card
             className={cn(
               "relative z-[1] flex flex-col",
-              index === 0 && "rounded-r-none [clip-path:inset(-50px_0_-50px_-50px)] max-lg:rounded-[var(--radius)] max-lg:[clip-path:none]",
-              index === 2 && "rounded-l-none [clip-path:inset(-50px_-50px_-50px_0)] max-lg:rounded-[var(--radius)] max-lg:[clip-path:none]",
+              index === 0 &&
+                "rounded-r-none [clip-path:inset(-50px_0_-50px_-50px)] max-lg:rounded-[var(--radius)] max-lg:[clip-path:none]",
+              index === 2 &&
+                "rounded-l-none [clip-path:inset(-50px_-50px_-50px_0)] max-lg:rounded-[var(--radius)] max-lg:[clip-path:none]",
               plan.highlighted &&
-                "z-10 -my-6 bg-[oklch(from_var(--card)_l_c_h_/_0.6)] py-12 max-lg:order-[-1] max-lg:my-0 max-lg:py-6"
+                "-my-6 z-10 bg-[oklch(from_var(--card)_l_c_h_/_0.6)] py-12 max-lg:order-[-1] max-lg:my-0 max-lg:py-6"
             )}
             key={plan.name}
           >
             {plan.badge && (
               <Badge
-                className="absolute top-[-10px] left-1/2 -translate-x-1/2 whitespace-nowrap text-xs"
+                className="-translate-x-1/2 absolute top-[-10px] left-1/2 whitespace-nowrap text-xs"
                 variant="default"
               >
                 {plan.badge}
               </Badge>
             )}
             <CardHeader className="pb-0">
-              <CardTitle className="text-xl font-semibold">
-                {plan.name}
-              </CardTitle>
-              <CardDescription className="text-sm leading-normal">
-                {plan.description}
-              </CardDescription>
+              <CardTitle className="font-semibold text-xl">{plan.name}</CardTitle>
+              <CardDescription className="text-sm leading-normal">{plan.description}</CardDescription>
             </CardHeader>
 
             <CardContent className="flex-1">
               <div className="mb-8 flex items-baseline">
-                <span className="mt-2 self-start text-2xl font-medium text-[var(--foreground)]">
-                  $
-                </span>
-                <span className="text-[64px] font-semibold leading-none tracking-tighter text-[var(--foreground)] tabular-nums max-sm:text-5xl">
+                <span className="mt-2 self-start font-medium text-2xl text-[var(--foreground)]">$</span>
+                <span className="font-semibold text-[64px] text-[var(--foreground)] tabular-nums leading-none tracking-tighter max-sm:text-5xl">
                   {plan.monthlyPrice}
                 </span>
-                <span className="ml-1 text-base text-[var(--muted-foreground)]">
-                  /month
-                </span>
+                <span className="ml-1 text-[var(--muted-foreground)] text-base">/month</span>
               </div>
 
               <ul className="m-0 flex list-none flex-col gap-3.5 p-0">
                 {plan.features.map((feature) => (
                   <li
-                    className="flex items-center gap-2 text-sm leading-[21px] text-[var(--secondary-foreground)]"
+                    className="flex items-center gap-2 text-[var(--secondary-foreground)] text-sm leading-[21px]"
                     key={feature}
                   >
                     <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[oklch(from_var(--primary)_l_c_h_/_0.15)] text-[var(--primary)]">

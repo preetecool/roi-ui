@@ -53,9 +53,7 @@ interface AlertProps extends React.ComponentProps<"div">, VariantProps<typeof al
 
 function Alert({ className, variant, icon, children, ...props }: AlertProps) {
   const filteredChildren = Array.isArray(children)
-    ? children.filter(
-        (child) => !(child && typeof child === "object" && "type" in child && child.type === "svg")
-      )
+    ? children.filter((child) => !(child && typeof child === "object" && "type" in child && child.type === "svg"))
     : children;
 
   return (

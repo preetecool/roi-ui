@@ -2,7 +2,6 @@
 
 import { Calendar, CreditCard, FileText, Mail, Smile, Terminal, User } from "lucide-react";
 import { useCallback, useState } from "react";
-import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 import {
   Command,
   CommandCollection,
@@ -16,6 +15,7 @@ import {
   CommandSeparator,
 } from "@/registry/brook/tailwind/ui/command";
 import { Kbd } from "@/registry/brook/tailwind/ui/kbd";
+import { EnterArrowIcon } from "@/registry/brook/ui/arrow-icon/arrow-icon";
 
 type CommandItemData = {
   id: string;
@@ -51,13 +51,9 @@ export default function CommandDemo() {
     []
   );
 
-  const filteredSuggestions = suggestions.filter((item) =>
-    item.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredSuggestions = suggestions.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase()));
 
-  const filteredSettings = settings.filter((item) =>
-    item.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredSettings = settings.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase()));
 
   return (
     <Command
@@ -67,7 +63,7 @@ export default function CommandDemo() {
       onValueChange={handleValueChange}
     >
       <CommandInput placeholder="Type a command or search..." />
-      <CommandList className="flex-[1_1_0%] min-h-0 max-h-none">
+      <CommandList className="max-h-none min-h-0 flex-[1_1_0%]">
         {filteredSuggestions.length === 0 && filteredSettings.length === 0 && (
           <CommandEmpty>No results found.</CommandEmpty>
         )}
@@ -107,7 +103,7 @@ export default function CommandDemo() {
           <Kbd className="text-[0.9375rem] max-sm:text-base" size="md">
             <EnterArrowIcon />
           </Kbd>
-          <span className="text-xs leading-4 font-normal text-[var(--muted-foreground)] max-sm:text-[0.8125rem]">
+          <span className="font-normal text-[var(--muted-foreground)] text-xs leading-4 max-sm:text-[0.8125rem]">
             to select
           </span>
         </div>

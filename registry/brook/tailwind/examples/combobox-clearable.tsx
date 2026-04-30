@@ -44,8 +44,15 @@ export default function ComboboxClearable() {
           itemToStringLabel={(item) => item?.label || ""}
           itemToStringValue={(item) => item?.value || ""}
         >
-          <div className="relative flex w-full items-center border-none rounded-[var(--radius)] bg-[var(--mix-card-50-bg)] pr-2 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)]" ref={anchorRef}>
-            <ComboboxInput className="flex-1 border-none bg-transparent ![box-shadow:none]" id="clearable-input" placeholder="Search frameworks..." />
+          <div
+            className="relative flex w-full items-center rounded-[var(--radius)] border-none bg-[var(--mix-card-50-bg)] pr-2 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)]"
+            ref={anchorRef}
+          >
+            <ComboboxInput
+              className="![box-shadow:none] flex-1 border-none bg-transparent"
+              id="clearable-input"
+              placeholder="Search frameworks..."
+            />
             <ComboboxValue>
               {(value: Framework | null) => (value ? <ComboboxClear /> : <ComboboxTrigger />)}
             </ComboboxValue>

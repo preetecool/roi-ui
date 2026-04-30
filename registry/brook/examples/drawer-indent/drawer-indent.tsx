@@ -42,7 +42,13 @@ export default function DrawerIndentDemo() {
                         Capture a thought before it slips away.
                       </DrawerDescription>
                       <div className={styles.actions}>
-                        <DrawerClose render={<Button variant="outline" size="sm">Done</Button>} />
+                        <DrawerClose
+                          render={
+                            <Button size="sm" variant="outline">
+                              Done
+                            </Button>
+                          }
+                        />
                       </div>
                     </DrawerContent>
                   </DrawerPopup>

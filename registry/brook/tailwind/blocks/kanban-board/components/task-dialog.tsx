@@ -58,7 +58,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/brook/tailwind/ui/select";
-import { formatDateString, parseDateString, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
+import { formatDateString, PRIORITY_ITEMS, parseDateString, TAG_COLORS, TAG_ITEMS, type Tag } from "../lib/project";
 import type { Assignee, Column, GroupByField, Priority, Subtask } from "../types";
 
 const PRIORITY_CONFIG: Record<Priority, { icon: React.ReactNode; label: string }> = {
@@ -467,7 +467,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   <SelectValue>
                     {(value) =>
                       Array.isArray(value) && value.length > 0 ? (
-                        <div className="flex items-center [&_.tag-chip:not(:first-child)]:-ml-[3px]">
+                        <div className="[&_.tag-chip:not(:first-child)]:-ml-[3px] flex items-center">
                           {value.map((tag) => (
                             <span
                               className="tag-chip h-2 w-2 shrink-0 rounded-full"
@@ -504,11 +504,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
               <Combobox<Assignee, true> defaultValue={defaultAssignees} items={assignees} multiple name="assignees">
                 <ComboboxPrimitive.Trigger
                   render={
-                    <Button
-                      className="inline-flex items-center gap-2 whitespace-nowrap"
-                      size="sm"
-                      variant="outline"
-                    />
+                    <Button className="inline-flex items-center gap-2 whitespace-nowrap" size="sm" variant="outline" />
                   }
                 >
                   <span className="flex items-center justify-center text-muted-foreground">
@@ -526,7 +522,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
                   <ComboboxPositioner side="bottom" sideOffset={6}>
                     <ComboboxPopup className="w-auto min-w-[200px] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.4)] shadow-[var(--shadow-border-stack)]">
                       <ComboboxInput
-                        className="mb-1 min-h-8 w-full rounded-none border-solid border-t-0 border-x-0 border-b-[0.5px] border-b-[oklch(from_var(--border)_l_c_h_/_0.8)] bg-transparent pl-3 pr-2.5 text-xs !shadow-none focus:outline-none focus:!shadow-none focus:ring-0 focus-visible:outline-none focus-visible:!shadow-none focus-visible:ring-0"
+                        className="!shadow-none focus:!shadow-none focus-visible:!shadow-none mb-1 min-h-8 w-full rounded-none border-x-0 border-t-0 border-b-[0.5px] border-b-[oklch(from_var(--border)_l_c_h_/_0.8)] border-solid bg-transparent pr-2.5 pl-3 text-xs focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
                         placeholder="Search assignees..."
                       />
                       <ComboboxEmpty>No users found</ComboboxEmpty>
@@ -596,7 +592,7 @@ export function TaskDialog({ open, mode, task, columnId, assignees, columns, gro
       </DialogPortal>
 
       <AlertDialog.Root onOpenChange={setDeleteConfirmOpen} open={deleteConfirmOpen}>
-        <AlertDialogPopup className="flex !w-auto max-w-[400px] flex-col items-center gap-2">
+        <AlertDialogPopup className="!w-auto flex max-w-[400px] flex-col items-center gap-2">
           <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-lg bg-destructive/15">
             <Trash2 className="text-destructive" size={28} />
           </div>
