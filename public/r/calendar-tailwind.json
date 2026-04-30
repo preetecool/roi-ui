@@ -4,7 +4,10 @@
   "type": "registry:item",
   "title": "Calendar (Tailwind)",
   "description": "A date picker calendar component.",
-  "dependencies": ["lucide-react", "react-day-picker"],
+  "dependencies": [
+    "lucide-react",
+    "react-day-picker"
+  ],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/calendar.tsx",
