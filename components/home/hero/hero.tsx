@@ -5,8 +5,8 @@ import { AiChat } from "@/registry/brook/blocks/ai-chat/components/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
 import { HomeAnimatedBadge } from "../home-animated-badge/home-animated-badge";
-import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
 import { HomeAnimatedButton } from "../home-animated-button/home-animated-button";
+import { HomeAnimatedCard } from "../home-animated-card/home-animated-card";
 import { HomeContextMenu } from "../home-context-menu/home-context-menu";
 import styles from "./hero.module.css";
 

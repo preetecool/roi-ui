@@ -44,7 +44,11 @@
     max-height: calc(80vh + var(--bleed));
     margin-bottom: calc(-1 * var(--bleed));
     padding: 1rem 1.5rem 1.5rem;
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
+    padding-bottom: calc(
+      1.5rem +
+      env(safe-area-inset-bottom, 0px) +
+      var(--bleed)
+    );
     border-radius: var(--radius) var(--radius) 0 0;
     background-color: var(--mix-card-5-bg);
     color: var(--foreground);

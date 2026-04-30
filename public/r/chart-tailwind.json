@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Chart (Tailwind)",
   "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
-  "dependencies": [
-    "recharts"
-  ],
+  "dependencies": ["recharts"],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/chart.tsx",

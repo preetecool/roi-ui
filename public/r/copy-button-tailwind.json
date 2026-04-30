@@ -4,10 +4,7 @@
   "type": "registry:item",
   "title": "Copy Button (Tailwind)",
   "description": "A button component with animated copy-to-clipboard functionality.",
-  "dependencies": [
-    "motion",
-    "lucide-react"
-  ],
+  "dependencies": ["motion", "lucide-react"],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/copy-button.tsx",

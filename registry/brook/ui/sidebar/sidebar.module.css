@@ -469,7 +469,7 @@
 }
 
 .desktop[data-state="collapsed"][data-hover="true"][data-side="left"]
-.container {
+  .container {
   transform: translateX(0);
   transition: transform 150ms var(--ease-in-out-quad);
 }

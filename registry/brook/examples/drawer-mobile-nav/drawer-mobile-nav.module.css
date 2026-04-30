@@ -7,7 +7,11 @@
   transition-property: -webkit-backdrop-filter, backdrop-filter, opacity;
   transition-timing-function: cubic-bezier(0.45, 1.005, 0, 1.005);
   backdrop-filter: blur(1.5px);
-  background-image: linear-gradient(to bottom, rgb(0 0 0 / 5%) 0, rgb(0 0 0 / 10%) 50%);
+  background-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 5%) 0,
+    rgb(0 0 0 / 10%) 50%
+  );
   opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
   background-color: transparent;
 

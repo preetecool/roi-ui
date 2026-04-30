@@ -72,13 +72,7 @@ export function AiChat() {
           </Field>
         </CardContent>
         <CardFooter className={styles.footer}>
-          <Button
-            aria-label="Attach file"
-            className={styles.attachButton}
-            size="icon"
-            type="button"
-            variant="ghost"
-          >
+          <Button aria-label="Attach file" className={styles.attachButton} size="icon" type="button" variant="ghost">
             <Paperclip size={14} />
           </Button>
 

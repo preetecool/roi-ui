@@ -90,7 +90,13 @@ function DropdownMenuRadioItem({ className, children, ...props }: DropdownMenuRa
 }
 
 function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemIndicator.Props) {
-  return <Menu.RadioItemIndicator className={cn(styles.radioIndicator, className)} data-slot="menu-radioindicator" {...props} />;
+  return (
+    <Menu.RadioItemIndicator
+      className={cn(styles.radioIndicator, className)}
+      data-slot="menu-radioindicator"
+      {...props}
+    />
+  );
 }
 
 interface DropdownMenuCheckboxItemProps extends Menu.CheckboxItem.Props {
@@ -107,7 +113,13 @@ function DropdownMenuCheckboxItem({ className, children, ...props }: DropdownMen
 }
 
 function DropdownMenuCheckboxItemIndicator({ className, ...props }: Menu.CheckboxItemIndicator.Props) {
-  return <Menu.CheckboxItemIndicator className={cn(styles.checkboxIndicator, className)} data-slot="menu-checkboxindicator" {...props} />;
+  return (
+    <Menu.CheckboxItemIndicator
+      className={cn(styles.checkboxIndicator, className)}
+      data-slot="menu-checkboxindicator"
+      {...props}
+    />
+  );
 }
 
 function DropdownMenuGroup({ className, ...props }: Menu.Group.Props) {

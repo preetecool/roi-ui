@@ -30,20 +30,22 @@ export function CardImageSection({ data }: CardImageSectionProps) {
   return (
     <section className="mx-auto w-full max-w-[900px] px-6 py-12 max-sm:px-4 max-sm:py-8">
       <header className="mb-12 text-left max-sm:mb-8">
-        <span className="mb-3 block text-[length:var(--font-size-sm)] font-medium uppercase tracking-[0.05em] text-[var(--accent)]">
+        <span className="mb-3 block font-medium text-[length:var(--font-size-sm)] text-[var(--accent)] uppercase tracking-[0.05em]">
           {data.caption}
         </span>
-        <h2 className="m-0 mb-4 text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[var(--foreground)]">
+        <h2 className="m-0 mb-4 font-semibold text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--foreground)] leading-[1.2] tracking-[-0.02em]">
           {data.heading}
         </h2>
-        <p className="m-0 max-w-[600px] text-base leading-[1.6] text-[var(--muted-foreground)]">
-          {data.description}
-        </p>
+        <p className="m-0 max-w-[600px] text-[var(--muted-foreground)] text-base leading-[1.6]">{data.description}</p>
       </header>
 
       <div className="columns-1 sm:columns-2 sm:gap-x-6">
         {data.cards.map((card, index) => (
-          <Card className={`mb-6 max-w-full break-inside-avoid rounded-[16px] [transform:translateZ(0)] sm:rounded-[20px] ${index === 0 ? "sm:mt-[120px]" : ""}`} key={card.id} variant="lift">
+          <Card
+            className={`mb-6 max-w-full break-inside-avoid rounded-[16px] [transform:translateZ(0)] sm:rounded-[20px] ${index === 0 ? "sm:mt-[120px]" : ""}`}
+            key={card.id}
+            variant="lift"
+          >
             <CardImage alt={card.alt} className="w-auto rounded-[8px] sm:rounded-[12px]" src={card.imageSrc} />
 
             <CardContent className="gap-2">
@@ -52,12 +54,7 @@ export function CardImageSection({ data }: CardImageSectionProps) {
             </CardContent>
 
             <CardFooter>
-              <Button
-                className="pl-0"
-                render={<a href={card.href ?? "#"} />}
-                size="sm"
-                variant="link"
-              >
+              <Button className="pl-0" render={<a href={card.href ?? "#"} />} size="sm" variant="link">
                 Learn More
                 <ArrowPointer />
               </Button>

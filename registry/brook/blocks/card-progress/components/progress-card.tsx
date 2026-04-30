@@ -63,9 +63,7 @@ function StepIndicator({ status, isFinal = false }: StepIndicatorProps) {
 
   return (
     <div className={styles.indicatorWrapper}>
-      {showSpinner && (
-        <div className={`${styles.spinnerCircleOverlay} ${isComplete ? styles.spinnerFading : ""}`} />
-      )}
+      {showSpinner && <div className={`${styles.spinnerCircleOverlay} ${isComplete ? styles.spinnerFading : ""}`} />}
       <div className={className}>
         {icon === "clock" && <AnimatedClock className={styles.clockIcon} />}
         {icon === "check" && <Check className={styles.checkIcon} size={14} strokeWidth={3} />}
@@ -94,7 +92,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
             return (
               <div className={`${styles.stepItem} ${styles[step.status]}`} key={step.id}>
                 <div className={styles.stepIndicator}>
-                  <StepIndicator status={step.status} isFinal={isFinal} />
+                  <StepIndicator isFinal={isFinal} status={step.status} />
                 </div>
                 <div className={styles.stepContent}>
                   <span

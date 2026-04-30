@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Pricing Section",
   "description": "A pricing section with three plan cards.",
-  "dependencies": [
-    "lucide-react"
-  ],
+  "dependencies": ["lucide-react"],
   "registryDependencies": [
     "https://roiui.com/r/badge.json",
     "https://roiui.com/r/button.json",

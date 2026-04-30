@@ -14,7 +14,7 @@ import styles from "./drawer-non-modal.module.css";
 
 export default function DrawerNonModal() {
   return (
-    <Drawer swipeDirection="right" modal={false} disablePointerDismissal>
+    <Drawer disablePointerDismissal modal={false} swipeDirection="right">
       <DrawerTrigger render={<Button>Start Export</Button>} />
       <DrawerPortal>
         <DrawerViewport className={styles.viewport}>
@@ -22,11 +22,16 @@ export default function DrawerNonModal() {
             <DrawerContent>
               <DrawerTitle>Export Complete</DrawerTitle>
               <DrawerDescription>
-                Your file has been saved to the Downloads folder. You can continue working while it
-                processes.
+                Your file has been saved to the Downloads folder. You can continue working while it processes.
               </DrawerDescription>
               <div className={styles.actions}>
-                <DrawerClose render={<Button variant="outline" size="sm">Dismiss</Button>} />
+                <DrawerClose
+                  render={
+                    <Button size="sm" variant="outline">
+                      Dismiss
+                    </Button>
+                  }
+                />
               </div>
             </DrawerContent>
           </DrawerPopup>

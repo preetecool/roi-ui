@@ -23,31 +23,37 @@ export default function PreviewCardDemo() {
             href="https://github.com/base-ui"
             rel="noopener noreferrer"
             render={
-              <Button className={styles.triggerLink} variant="link" style={{ paddingLeft: 0, paddingRight: 0 }}>
+              <Button className={styles.triggerLink} style={{ paddingLeft: 0, paddingRight: 0 }} variant="link">
                 Github
               </Button>
             }
             target="_blank"
           />
 
-        <PreviewCardPortal>
-          <PreviewCardPositioner align="center" side="top" sideOffset={8}>
-            <PreviewCardPopup>
-              <PreviewCardArrow />
-              <div className={styles.previewContent}>
-                <div className={styles.previewHeader}>
-                  <Image alt="Profile" className={styles.previewAvatar} height={32} src="/preetecool.png" width={32} />
-                  <div className="previewInfo">
-                    <h3 className={styles.previewName}>Preet</h3>
-                    <p className={styles.previewUsername}>@preetecool</p>
+          <PreviewCardPortal>
+            <PreviewCardPositioner align="center" side="top" sideOffset={8}>
+              <PreviewCardPopup>
+                <PreviewCardArrow />
+                <div className={styles.previewContent}>
+                  <div className={styles.previewHeader}>
+                    <Image
+                      alt="Profile"
+                      className={styles.previewAvatar}
+                      height={32}
+                      src="/preetecool.png"
+                      width={32}
+                    />
+                    <div className="previewInfo">
+                      <h3 className={styles.previewName}>Preet</h3>
+                      <p className={styles.previewUsername}>@preetecool</p>
+                    </div>
                   </div>
-                </div>
 
-                <p className={styles.previewBio}>❤️ Design & Build</p>
-              </div>
-            </PreviewCardPopup>
-          </PreviewCardPositioner>
-        </PreviewCardPortal>
+                  <p className={styles.previewBio}>❤️ Design & Build</p>
+                </div>
+              </PreviewCardPopup>
+            </PreviewCardPositioner>
+          </PreviewCardPortal>
         </PreviewCard>{" "}
         link to see a preview card.
       </p>

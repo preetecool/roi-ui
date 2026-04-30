@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Button",
   "description": "A button component.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
+  "dependencies": ["class-variance-authority"],
   "files": [
     {
       "path": "registry/brook/ui/button/button.tsx",

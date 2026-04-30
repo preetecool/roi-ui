@@ -23,11 +23,15 @@ export default function DrawerSide() {
           <DrawerPopup className={styles.popup}>
             <DrawerContent>
               <DrawerTitle>Activity</DrawerTitle>
-              <DrawerDescription>
-                Recent changes across your workspace this week.
-              </DrawerDescription>
+              <DrawerDescription>Recent changes across your workspace this week.</DrawerDescription>
               <div className={styles.actions}>
-                <DrawerClose render={<Button variant="outline" size="sm">Close</Button>} />
+                <DrawerClose
+                  render={
+                    <Button size="sm" variant="outline">
+                      Close
+                    </Button>
+                  }
+                />
               </div>
             </DrawerContent>
           </DrawerPopup>

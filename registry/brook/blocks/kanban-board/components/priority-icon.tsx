@@ -21,13 +21,34 @@ export function PriorityIcon({ priority, className }: PriorityIconProps) {
 
   return (
     <span aria-label={label} className={`${styles.priorityIcon} ${className ?? ""}`} role="img">
-      <svg aria-hidden="true" className={styles.priorityBars} fill="currentColor" height="14" viewBox="0 0 14 14" width="14">
+      <svg
+        aria-hidden="true"
+        className={styles.priorityBars}
+        fill="currentColor"
+        height="14"
+        viewBox="0 0 14 14"
+        width="14"
+      >
         {/* Bar 1 - always active */}
         <rect height="4" rx="1" width="3" x="1" y="9" />
         {/* Bar 2 */}
-        <rect className={barCount < 2 ? styles.priorityInactive : undefined} height="7" rx="1" width="3" x="5.5" y="6" />
+        <rect
+          className={barCount < 2 ? styles.priorityInactive : undefined}
+          height="7"
+          rx="1"
+          width="3"
+          x="5.5"
+          y="6"
+        />
         {/* Bar 3 */}
-        <rect className={barCount < 3 ? styles.priorityInactive : undefined} height="10" rx="1" width="3" x="10" y="3" />
+        <rect
+          className={barCount < 3 ? styles.priorityInactive : undefined}
+          height="10"
+          rx="1"
+          width="3"
+          x="10"
+          y="3"
+        />
       </svg>
     </span>
   );

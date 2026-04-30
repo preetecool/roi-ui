@@ -31,8 +31,15 @@ function AnimatedClock({ className }: { className?: string }) {
       width="12"
     >
       <circle cx="12" cy="12" r="10" />
-      <line x1="12" y1="12" x2="12" y2="7" />
-      <line className="animate-[spin_2s_linear_infinite] motion-reduce:animate-none" style={{ transformOrigin: "12px 12px" }} x1="12" y1="12" x2="15" y2="13" />
+      <line x1="12" x2="12" y1="12" y2="7" />
+      <line
+        className="animate-[spin_2s_linear_infinite] motion-reduce:animate-none"
+        style={{ transformOrigin: "12px 12px" }}
+        x1="12"
+        x2="15"
+        y1="12"
+        y2="13"
+      />
     </svg>
   );
 }
@@ -47,7 +54,8 @@ function getIndicatorConfig(status: StepStatus, isFinal: boolean) {
           isFinal ? "bg-[var(--success)]" : "bg-[var(--foreground)]"
         }`,
         icon: "check",
-        iconClassName: "opacity-0 animate-[icon-pop_0.15s_cubic-bezier(0.165,0.84,0.44,1)_0.05s_forwards] motion-reduce:animate-none motion-reduce:opacity-100 text-[var(--background)]",
+        iconClassName:
+          "opacity-0 animate-[icon-pop_0.15s_cubic-bezier(0.165,0.84,0.44,1)_0.05s_forwards] motion-reduce:animate-none motion-reduce:opacity-100 text-[var(--background)]",
       } as const;
     case "in_progress":
       return {
@@ -85,7 +93,7 @@ function StepIndicator({ status, isFinal = false }: StepIndicatorProps) {
     <div className="relative h-5 w-5">
       {showSpinner && (
         <div
-          className={`absolute inset-0 h-5 w-5 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--foreground)] bg-[var(--card)] z-[2] will-change-transform transition-opacity duration-300 ease-out motion-reduce:animate-none ${
+          className={`absolute inset-0 z-[2] h-5 w-5 animate-spin rounded-full border-2 border-[var(--border)] border-t-[var(--foreground)] bg-[var(--card)] transition-opacity duration-300 ease-out will-change-transform motion-reduce:animate-none ${
             isComplete ? "opacity-0" : "opacity-100"
           }`}
         />
@@ -120,7 +128,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
   const allComplete = steps.length > 0 && steps.every((s) => s.status === "complete");
 
   return (
-    <Card className="w-full max-w-[320px] bg-[oklch(from_var(--card)_l_c_h_/_0.6)] !p-4 shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),0_1px_3px_0_#0000000d,0_1px_2px_-1px_#0000000d]">
+    <Card className="!p-4 w-full max-w-[320px] bg-[oklch(from_var(--card)_l_c_h_/_0.6)] shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),0_1px_3px_0_#0000000d,0_1px_2px_-1px_#0000000d]">
       <CardContent className="flex flex-col p-0">
         <div className="flex flex-col gap-1">
           {steps.map((step, index) => {
@@ -131,26 +139,26 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
 
             return (
               <div
-                key={step.id}
                 className="relative flex items-start gap-3 rounded-[var(--radius)] p-3 transition-colors duration-200"
+                key={step.id}
               >
                 {!isLastStep && (
                   <div
-                    className={`absolute left-[23px] top-9 h-[calc(100%-16px)] w-px pointer-events-none transition-colors duration-200 ease ${
+                    className={`ease pointer-events-none absolute top-9 left-[23px] h-[calc(100%-16px)] w-px transition-colors duration-200 ${
                       step.status === "complete" ? "bg-[var(--foreground)]" : "bg-[var(--border)]"
                     }`}
                   />
                 )}
 
                 <div className="flex h-6 w-6 shrink-0 items-center justify-center">
-                  <StepIndicator status={step.status} isFinal={isFinal} />
+                  <StepIndicator isFinal={isFinal} status={step.status} />
                 </div>
 
                 <div className="flex min-h-6 flex-col gap-0.5 pt-0.5">
                   <span
-                    className={`text-[0.9375rem] font-medium transition-colors duration-200 ${getTitleClassName(step.status)} ${
+                    className={`font-medium text-[0.9375rem] transition-colors duration-200 ${getTitleClassName(step.status)} ${
                       step.status === "in_progress"
-                        ? "animate-shimmer bg-[length:200%_100%] bg-clip-text [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] bg-[linear-gradient(90deg,var(--muted-foreground)_0%,var(--muted-foreground)_40%,color-mix(in_oklch,var(--foreground)_50%,var(--muted-foreground))_50%,var(--muted-foreground)_60%,var(--muted-foreground)_100%)] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:[-webkit-text-fill-color:var(--muted-foreground)]"
+                        ? "animate-shimmer bg-[length:200%_100%] bg-[linear-gradient(90deg,var(--muted-foreground)_0%,var(--muted-foreground)_40%,color-mix(in_oklch,var(--foreground)_50%,var(--muted-foreground))_50%,var(--muted-foreground)_60%,var(--muted-foreground)_100%)] bg-clip-text [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] motion-reduce:animate-none motion-reduce:bg-none motion-reduce:[-webkit-text-fill-color:var(--muted-foreground)]"
                         : ""
                     }`}
                   >
@@ -162,7 +170,9 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
                         showDescription ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
-                      <span className={`overflow-hidden text-[0.8125rem] ${step.status === "error" ? "text-[var(--destructive-foreground)]" : "text-[var(--muted-foreground)]"}`}>
+                      <span
+                        className={`overflow-hidden text-[0.8125rem] ${step.status === "error" ? "text-[var(--destructive-foreground)]" : "text-[var(--muted-foreground)]"}`}
+                      >
                         {step.description}
                       </span>
                     </div>

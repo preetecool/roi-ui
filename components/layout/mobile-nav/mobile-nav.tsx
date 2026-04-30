@@ -55,7 +55,7 @@ export function MobileNav({ tree }: MobileNavProps) {
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer onOpenChange={setOpen} open={open}>
       <DrawerTrigger aria-label="Toggle navigation menu" className={styles.menuButton} data-open={open}>
         <div className={styles.menuButtonInner}>
           <span className={styles.menuLine} />

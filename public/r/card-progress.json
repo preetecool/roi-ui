@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Progress Card",
   "description": "A file upload progress card with multiple file tracking.",
-  "dependencies": [
-    "lucide-react"
-  ],
+  "dependencies": ["lucide-react"],
   "registryDependencies": [
     "https://roiui.com/r/button.json",
     "https://roiui.com/r/card.json",

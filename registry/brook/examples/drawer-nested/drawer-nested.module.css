@@ -7,16 +7,23 @@
     0px,
     calc((var(--nested-drawers) - var(--stack-progress)) * var(--peek))
   );
-  --stack-scale-base: max(0, calc(1 - (var(--nested-drawers) * var(--stack-step))));
-  --stack-scale: calc(var(--stack-scale-base) + (var(--stack-step) * var(--stack-progress)));
+  --stack-scale-base: max(
+    0,
+    calc(1 - (var(--nested-drawers) * var(--stack-step)))
+  );
+  --stack-scale: calc(
+    var(--stack-scale-base) +
+    (var(--stack-step) * var(--stack-progress))
+  );
   --stack-shrink: calc(1 - var(--stack-scale));
   --stack-height: max(
     0px,
     calc(var(--drawer-frontmost-height, var(--drawer-height)) - var(--bleed))
   );
   --translate-y: calc(
-    var(--drawer-swipe-movement-y) - var(--stack-peek-offset) -
-      (var(--stack-shrink) * var(--stack-height))
+    var(--drawer-swipe-movement-y) -
+    var(--stack-peek-offset) -
+    (var(--stack-shrink) * var(--stack-height))
   );
 
   position: relative;

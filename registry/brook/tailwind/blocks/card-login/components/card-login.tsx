@@ -17,12 +17,7 @@ export function CardLogin() {
   };
 
   return (
-    <Card
-      className={cn(
-        "mx-auto w-full max-w-[440px] rounded-[var(--radius-lg)] !p-5",
-        "max-sm:!p-4"
-      )}
-    >
+    <Card className={cn("!p-5 mx-auto w-full max-w-[440px] rounded-[var(--radius-lg)]", "max-sm:!p-4")}>
       <CardHeader>
         <CardTitle className={cn("ml-1", "max-sm:text-xl max-sm:leading-[1.3]")}>Sign In</CardTitle>
       </CardHeader>

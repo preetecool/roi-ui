@@ -1,8 +1,7 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
 import { ScrollArea } from "@base-ui/react/scroll-area";
+import Link from "next/link";
 import { cn } from "@/lib/utils-tailwind";
 import { Button } from "@/registry/brook/tailwind/ui/button";
 import {
@@ -38,28 +37,28 @@ export default function DrawerMobileNav() {
       <DrawerPortal>
         <DrawerBackdrop
           className={cn(
-            "[--backdrop-opacity:1] !bg-transparent",
+            "!bg-transparent [--backdrop-opacity:1]",
             "bg-[linear-gradient(to_bottom,rgb(0_0_0/5%)_0,rgb(0_0_0/10%)_50%)]",
             "backdrop-blur-[1.5px]",
             "opacity-[calc(var(--backdrop-opacity)*(1-var(--drawer-swipe-progress)))]",
             "transition-[backdrop-filter,opacity] duration-[600ms] ease-[cubic-bezier(0.45,1.005,0,1.005)]",
-            "data-[starting-style]:backdrop-blur-0 data-[starting-style]:opacity-0",
-            "data-[ending-style]:backdrop-blur-0 data-[ending-style]:opacity-0",
-            "data-[ending-style]:duration-[350ms] data-[ending-style]:ease-[cubic-bezier(0.375,0.015,0.545,0.455)]",
+            "data-[starting-style]:opacity-0 data-[starting-style]:backdrop-blur-0",
+            "data-[ending-style]:opacity-0 data-[ending-style]:backdrop-blur-0",
+            "data-[ending-style]:duration-[350ms] data-[ending-style]:ease-[cubic-bezier(0.375,0.015,0.545,0.455)]"
           )}
         />
         <DrawerViewport className="!block fixed inset-0">
           <ScrollArea.Root
-            style={{ position: undefined }}
             className={cn(
               "box-border h-full overscroll-contain",
               "transition-transform duration-[600ms] ease-[cubic-bezier(0.45,1.005,0,1.005)]",
               "[*[data-ending-style]_&]:pointer-events-none",
-              "[*[data-starting-style]_&]:[transform:translateY(100dvh)]",
+              "[*[data-starting-style]_&]:[transform:translateY(100dvh)]"
             )}
+            style={{ position: undefined }}
           >
-            <ScrollArea.Viewport className="box-border h-full overscroll-contain touch-auto">
-              <ScrollArea.Content className="flex min-h-full items-end justify-center pt-8 md:pt-16 md:pb-16 md:px-16">
+            <ScrollArea.Viewport className="box-border h-full touch-auto overscroll-contain">
+              <ScrollArea.Content className="flex min-h-full items-end justify-center pt-8 md:px-16 md:pt-16 md:pb-16">
                 <DrawerPopup
                   className={cn(
                     "!box-border !w-full !max-w-[42rem] !max-h-none",
@@ -71,7 +70,7 @@ export default function DrawerMobileNav() {
                     "motion-reduce:transition-none",
                     "data-[ending-style]:[transform:translateY(max(100dvh,100%))]",
                     "data-[ending-style]:duration-[350ms]",
-                    "data-[ending-style]:ease-[cubic-bezier(0.375,0.015,0.545,0.455)]",
+                    "data-[ending-style]:ease-[cubic-bezier(0.375,0.015,0.545,0.455)]"
                   )}
                 >
                   <nav
@@ -82,28 +81,28 @@ export default function DrawerMobileNav() {
                       "bg-[var(--mix-card-5-bg)] text-foreground",
                       "shadow-[0_10px_64px_-10px_rgb(36_40_52/20%),0_0_0_1px_oklch(from_var(--border)_l_c_h/0.5),var(--shadow-border-stack)]",
                       "transition-shadow duration-[350ms] ease-[cubic-bezier(0.375,0.015,0.545,0.455)]",
-                      "[*[data-ending-style]_&]:shadow-[0_10px_64px_-10px_rgb(36_40_52/0%),0_0_0_1px_oklch(from_var(--border)_l_c_h/0),0_0_0_0_transparent]",
+                      "[*[data-ending-style]_&]:shadow-[0_10px_64px_-10px_rgb(36_40_52/0%),0_0_0_1px_oklch(from_var(--border)_l_c_h/0),0_0_0_0_transparent]"
                     )}
                   >
                     <div className="mb-3 grid grid-cols-[1fr_auto_1fr] items-center">
                       <div aria-hidden className="h-9 w-9" />
-                      <DrawerHandle className="!m-0 w-12 h-1 rounded-full bg-border justify-self-center" />
+                      <DrawerHandle className="!m-0 h-1 w-12 justify-self-center rounded-full bg-border" />
                       <DrawerClose
                         aria-label="Close menu"
                         className={cn(
                           "flex h-9 w-9 cursor-pointer items-center justify-center justify-self-end",
                           "rounded-full border border-border bg-background text-foreground",
                           "hover:bg-accent active:bg-accent",
-                          "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:-outline-offset-1",
+                          "focus-visible:-outline-offset-1 focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
                         )}
                       >
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <svg fill="none" height="12" viewBox="0 0 12 12" width="12">
                           <path
                             d="M0.75 0.75L6 6M11.25 11.25L6 6M6 6L0.75 11.25M6 6L11.25 0.75"
                             stroke="currentcolor"
-                            strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
+                            strokeWidth="2"
                           />
                         </svg>
                       </DrawerClose>
@@ -118,18 +117,24 @@ export default function DrawerMobileNav() {
                       <div className="pb-8">
                         <ul className="m-0 grid list-none gap-1 p-0">
                           {ITEMS.map((item) => (
-                            <li key={item.label} className="flex">
-                              <Link className="w-full rounded-[calc(var(--radius)-2px)] bg-accent px-4 py-3 text-foreground no-underline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:-outline-offset-1" href={item.href}>
+                            <li className="flex" key={item.label}>
+                              <Link
+                                className="focus-visible:-outline-offset-1 w-full rounded-[calc(var(--radius)-2px)] bg-accent px-4 py-3 text-foreground no-underline focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
+                                href={item.href}
+                              >
                                 {item.label}
                               </Link>
                             </li>
                           ))}
                         </ul>
 
-                        <ul className="m-0 mt-6 grid list-none gap-1 p-0" aria-label="Long list">
+                        <ul aria-label="Long list" className="m-0 mt-6 grid list-none gap-1 p-0">
                           {LONG_LIST.map((item) => (
-                            <li key={item.label} className="flex">
-                              <Link className="w-full rounded-[calc(var(--radius)-2px)] bg-accent px-4 py-3 text-foreground no-underline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:-outline-offset-1" href={item.href}>
+                            <li className="flex" key={item.label}>
+                              <Link
+                                className="focus-visible:-outline-offset-1 w-full rounded-[calc(var(--radius)-2px)] bg-accent px-4 py-3 text-foreground no-underline focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
+                                href={item.href}
+                              >
                                 {item.label}
                               </Link>
                             </li>
@@ -143,14 +148,14 @@ export default function DrawerMobileNav() {
             </ScrollArea.Viewport>
             <ScrollArea.Scrollbar
               className={cn(
-                "absolute flex w-1 justify-center rounded-2xl opacity-0 transition-opacity duration-250 pointer-events-none m-[0.4rem]",
-                "hover:opacity-100 hover:duration-75 hover:pointer-events-auto",
-                "data-[scrolling]:opacity-100 data-[scrolling]:duration-75 data-[scrolling]:pointer-events-auto",
-                "[*[data-ending-style]_&]:duration-250 [*[data-ending-style]_&]:opacity-0",
-                "md:w-[0.4375rem]",
+                "pointer-events-none absolute m-[0.4rem] flex w-1 justify-center rounded-2xl opacity-0 transition-opacity duration-250",
+                "hover:pointer-events-auto hover:opacity-100 hover:duration-75",
+                "data-[scrolling]:pointer-events-auto data-[scrolling]:opacity-100 data-[scrolling]:duration-75",
+                "[*[data-ending-style]_&]:opacity-0 [*[data-ending-style]_&]:duration-250",
+                "md:w-[0.4375rem]"
               )}
             >
-              <ScrollArea.Thumb className="w-full rounded-[inherit] bg-muted-foreground before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[calc(100%+1rem)] before:h-[calc(100%+1rem)]" />
+              <ScrollArea.Thumb className="before:-translate-x-1/2 before:-translate-y-1/2 w-full rounded-[inherit] bg-muted-foreground before:absolute before:top-1/2 before:left-1/2 before:h-[calc(100%+1rem)] before:w-[calc(100%+1rem)] before:content-['']" />
             </ScrollArea.Scrollbar>
           </ScrollArea.Root>
         </DrawerViewport>

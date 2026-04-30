@@ -5,29 +5,41 @@
   padding: 0;
   gap: 0;
   outline: none;
-  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.4), var(--shadow-lg);
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.4),
+    var(--shadow-lg);
 }
 
 .searchDialog[data-slot="command-dialog-popup"]:focus-visible,
 .searchDialog[data-slot="command-dialog-popup"]:focus,
 .searchDialog[data-slot="command-dialog-popup"]:focus-within {
-  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.4), 0 0 0 4px oklch(from var(--border) l c h / 0.6);
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.4),
+    0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 
-[data-theme="dark"] .searchDialog[data-slot="command-dialog-popup"]:focus-visible,
+[data-theme="dark"]
+  .searchDialog[data-slot="command-dialog-popup"]:focus-visible,
 [data-theme="dark"] .searchDialog[data-slot="command-dialog-popup"]:focus,
-[data-theme="dark"] .searchDialog[data-slot="command-dialog-popup"]:focus-within {
-  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.4), 0 0 0 4px oklch(from var(--border) l c h / 0.4);
+[data-theme="dark"]
+  .searchDialog[data-slot="command-dialog-popup"]:focus-within {
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.4),
+    0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
 /* Keep focus ring visible during dialog closing animation */
 .searchDialog[data-slot="command-dialog-popup"]:not([data-starting-style]) {
-  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.4), 0 0 0 4px oklch(from var(--border) l c h / 0.6);
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.4),
+    0 0 0 4px oklch(from var(--border) l c h / 0.6);
 }
 
 [data-theme="dark"]
   .searchDialog[data-slot="command-dialog-popup"]:not([data-starting-style]) {
-  box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.4), 0 0 0 4px oklch(from var(--border) l c h / 0.4);
+  box-shadow:
+    0 0 0 1px oklch(from var(--border) l c h / 0.4),
+    0 0 0 4px oklch(from var(--border) l c h / 0.4);
 }
 
 .searchDialog [data-slot="command"] {

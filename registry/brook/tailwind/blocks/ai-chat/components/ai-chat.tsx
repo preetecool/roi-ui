@@ -56,7 +56,7 @@ export function AiChat() {
     <Form action={submitAction} className="w-full max-sm:flex max-sm:items-center max-sm:justify-center">
       <Card
         className={cn(
-          "mx-auto h-auto w-full !gap-3 rounded-[var(--radius-lg)] border-[oklch(from_var(--border)_l_c_h_/_0.25)] bg-[var(--mix-card-50-bg)] !p-3 transition-[border-color] duration-200 ease-in-out hover:border-[oklch(from_var(--border)_l_c_h_/_0.5)] focus-within:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
+          "!gap-3 !p-3 mx-auto h-auto w-full rounded-[var(--radius-lg)] border-[oklch(from_var(--border)_l_c_h_/_0.25)] bg-[var(--mix-card-50-bg)] transition-[border-color] duration-200 ease-in-out focus-within:border-[oklch(from_var(--border)_l_c_h_/_0.5)] hover:border-[oklch(from_var(--border)_l_c_h_/_0.5)]",
           "min-w-0 max-w-[600px]",
           "max-sm:min-w-[230px]"
         )}
@@ -86,7 +86,7 @@ export function AiChat() {
         <CardFooter className="flex items-center justify-between gap-2">
           <Button
             aria-label="Attach file"
-            className="!size-8 shrink-0 !rounded-full !p-2 [&>svg]:shrink-0 [&>svg]:rotate-[-45deg] [&>svg]:text-muted-foreground"
+            className="!size-8 !rounded-full !p-2 shrink-0 [&>svg]:shrink-0 [&>svg]:rotate-[-45deg] [&>svg]:text-muted-foreground"
             size="icon"
             type="button"
             variant="ghost"
@@ -110,7 +110,10 @@ export function AiChat() {
               </SelectTrigger>
               <SelectPortal>
                 <SelectPositioner align="start" alignItemWithTrigger={false} side="top" sideOffset={8}>
-                  <SelectPopup className="box-border min-w-[140px] max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px]" data-slot="select-popup">
+                  <SelectPopup
+                    className="max-md:!w-[120px] max-md:!min-w-[120px] max-md:!max-w-[120px] box-border min-w-[140px]"
+                    data-slot="select-popup"
+                  >
                     <SelectSpacer />
                     <SelectList>
                       {aiModes.map(({ label, value }) => (
@@ -128,7 +131,7 @@ export function AiChat() {
 
             <Button
               aria-label={hasContent ? "Send message" : "Start voice input"}
-              className="!size-9 shrink-0 !rounded-full !bg-primary hover:not-disabled:!bg-[oklch(from_var(--primary)_calc(l*0.8)_c_h)]"
+              className="!size-9 !rounded-full !bg-primary hover:not-disabled:!bg-[oklch(from_var(--primary)_calc(l*0.8)_c_h)] shrink-0"
               disabled={isPending}
               size="icon"
               type="submit"

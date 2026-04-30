@@ -24,7 +24,6 @@ export default function DrawerNested() {
 
   return (
     <Drawer
-      open={firstOpen}
       onOpenChange={(nextOpen: boolean) => {
         setFirstOpen(nextOpen);
         if (!nextOpen) {
@@ -32,6 +31,7 @@ export default function DrawerNested() {
           setThirdOpen(false);
         }
       }}
+      open={firstOpen}
     >
       <DrawerTrigger render={<Button>Workspace Settings</Button>} />
       <DrawerPortal>
@@ -47,15 +47,21 @@ export default function DrawerNested() {
               <div className={styles.actions}>
                 <div className={styles.actionsLeft}>
                   <Drawer
-                    open={secondOpen}
                     onOpenChange={(nextOpen: boolean) => {
                       setSecondOpen(nextOpen);
                       if (!nextOpen) {
                         setThirdOpen(false);
                       }
                     }}
+                    open={secondOpen}
                   >
-                    <DrawerTrigger render={<Button variant="link" size="sm" className={styles.linkButton}>Team members</Button>} />
+                    <DrawerTrigger
+                      render={
+                        <Button className={styles.linkButton} size="sm" variant="link">
+                          Team members
+                        </Button>
+                      }
+                    />
                     <DrawerPortal>
                       <DrawerViewport>
                         <DrawerPopup className={styles.popup}>
@@ -72,8 +78,14 @@ export default function DrawerNested() {
                             </ul>
                             <div className={styles.actions}>
                               <div className={styles.actionsLeft}>
-                                <Drawer open={thirdOpen} onOpenChange={setThirdOpen}>
-                                  <DrawerTrigger render={<Button variant="link" className={styles.linkButton}>Invite member</Button>} />
+                                <Drawer onOpenChange={setThirdOpen} open={thirdOpen}>
+                                  <DrawerTrigger
+                                    render={
+                                      <Button className={styles.linkButton} variant="link">
+                                        Invite member
+                                      </Button>
+                                    }
+                                  />
                                   <DrawerPortal>
                                     <DrawerViewport>
                                       <DrawerPopup className={styles.popup}>
@@ -84,15 +96,34 @@ export default function DrawerNested() {
                                             Send an invitation to join your workspace.
                                           </DrawerDescription>
                                           <div className={styles.field}>
-                                            <label className={styles.label} htmlFor="invite-email">Email address</label>
-                                            <input id="invite-email" className={styles.input} defaultValue="colleague@company.com" />
+                                            <label className={styles.label} htmlFor="invite-email">
+                                              Email address
+                                            </label>
+                                            <input
+                                              className={styles.input}
+                                              defaultValue="colleague@company.com"
+                                              id="invite-email"
+                                            />
                                           </div>
                                           <div className={styles.field}>
-                                            <label className={styles.label} htmlFor="invite-role">Role</label>
-                                            <textarea id="invite-role" className={styles.textarea} defaultValue="Editor" rows={3} />
+                                            <label className={styles.label} htmlFor="invite-role">
+                                              Role
+                                            </label>
+                                            <textarea
+                                              className={styles.textarea}
+                                              defaultValue="Editor"
+                                              id="invite-role"
+                                              rows={3}
+                                            />
                                           </div>
                                           <div className={styles.actions}>
-                                            <DrawerClose render={<Button variant="outline" size="sm">Send Invite</Button>} />
+                                            <DrawerClose
+                                              render={
+                                                <Button size="sm" variant="outline">
+                                                  Send Invite
+                                                </Button>
+                                              }
+                                            />
                                           </div>
                                         </DrawerContent>
                                       </DrawerPopup>
@@ -100,7 +131,13 @@ export default function DrawerNested() {
                                   </DrawerPortal>
                                 </Drawer>
                               </div>
-                              <DrawerClose render={<Button variant="outline" size="sm">Close</Button>} />
+                              <DrawerClose
+                                render={
+                                  <Button size="sm" variant="outline">
+                                    Close
+                                  </Button>
+                                }
+                              />
                             </div>
                           </DrawerContent>
                         </DrawerPopup>
@@ -108,7 +145,13 @@ export default function DrawerNested() {
                     </DrawerPortal>
                   </Drawer>
                 </div>
-                <DrawerClose render={<Button variant="outline" size="sm">Close</Button>} />
+                <DrawerClose
+                  render={
+                    <Button size="sm" variant="outline">
+                      Close
+                    </Button>
+                  }
+                />
               </div>
             </DrawerContent>
           </DrawerPopup>

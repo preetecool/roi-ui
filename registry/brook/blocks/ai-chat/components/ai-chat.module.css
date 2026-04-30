@@ -94,7 +94,6 @@
   align-items: center;
 }
 
-
 .selectButton:hover,
 .selectButton[data-popup-open] {
   background-color: var(--accent) !important;
@@ -119,7 +118,6 @@
   .selectIcon {
     display: none;
   }
-
 }
 
 @media (max-width: 1280px) {

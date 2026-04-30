@@ -4,10 +4,7 @@
   "type": "registry:item",
   "title": "Expandable Card (Tailwind)",
   "description": "A card component that can expand to show more content.",
-  "dependencies": [
-    "motion",
-    "lucide-react"
-  ],
+  "dependencies": ["motion", "lucide-react"],
   "files": [
     {
       "path": "registry/brook/tailwind/ui/expandable-card.tsx",

@@ -2,10 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils-tailwind";
 
 const tableVariants = cva(
-  [
-    "w-full table-auto caption-bottom border-collapse text-[0.925rem] leading-[1.5]",
-    "antialiased",
-  ],
+  ["w-full table-auto caption-bottom border-collapse text-[0.925rem] leading-[1.5]", "antialiased"],
   {
     variants: {
       variant: {

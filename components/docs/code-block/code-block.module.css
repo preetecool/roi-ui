@@ -2,7 +2,11 @@
   border: 0.5px solid var(--border-subtle);
   overflow: hidden;
   height: fit-content;
-  background: linear-gradient(to bottom, var(--code-header-bg), var(--code-footer-bg));
+  background: linear-gradient(
+    to bottom,
+    var(--code-header-bg),
+    var(--code-footer-bg)
+  );
   border-radius: 2px;
 }
 

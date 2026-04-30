@@ -22,7 +22,7 @@ export default function DrawerActionSheet() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer onOpenChange={setOpen} open={open}>
       <DrawerTrigger render={<Button>More Actions</Button>} />
       <DrawerPortal>
         <DrawerBackdrop className={styles.backdrop} />
@@ -30,23 +30,13 @@ export default function DrawerActionSheet() {
           <DrawerPopup className={styles.popup}>
             <DrawerContent className={styles.surface}>
               <DrawerTitle className={styles.visuallyHidden}>File actions</DrawerTitle>
-              <DrawerDescription className={styles.visuallyHidden}>
-                Choose an action for this file.
-              </DrawerDescription>
+              <DrawerDescription className={styles.visuallyHidden}>Choose an action for this file.</DrawerDescription>
 
-              <ul className={styles.actions} aria-label="File actions">
+              <ul aria-label="File actions" className={styles.actions}>
                 {ACTIONS.map((action, index) => (
-                  <li key={action} className={styles.action}>
-                    {index === 0 && (
-                      <DrawerClose className={styles.visuallyHidden}>
-                        Close file actions
-                      </DrawerClose>
-                    )}
-                    <button
-                      type="button"
-                      className={styles.actionButton}
-                      onClick={() => setOpen(false)}
-                    >
+                  <li className={styles.action} key={action}>
+                    {index === 0 && <DrawerClose className={styles.visuallyHidden}>Close file actions</DrawerClose>}
+                    <button className={styles.actionButton} onClick={() => setOpen(false)} type="button">
                       {action}
                     </button>
                   </li>
@@ -54,11 +44,7 @@ export default function DrawerActionSheet() {
               </ul>
             </DrawerContent>
             <div className={styles.dangerSurface}>
-              <button
-                type="button"
-                className={styles.dangerButton}
-                onClick={() => setOpen(false)}
-              >
+              <button className={styles.dangerButton} onClick={() => setOpen(false)} type="button">
                 Delete
               </button>
             </div>

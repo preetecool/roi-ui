@@ -3,14 +3,7 @@
 import { Check } from "lucide-react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/brook/ui/card/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
 import data from "../data.json";
 import styles from "./pricing-section.module.css";
 
@@ -22,17 +15,13 @@ export default function PricingSection() {
       <div className={styles.header}>
         <h2 className={styles.title}>Simple, transparent pricing</h2>
         <p className={styles.subtitle}>
-          Choose the plan that works best for you. All plans include a 14-day
-          free trial.
+          Choose the plan that works best for you. All plans include a 14-day free trial.
         </p>
       </div>
 
       <div className={styles.grid}>
         {plans.map((plan) => (
-          <Card
-            className={`${styles.card} ${plan.highlighted ? styles.highlighted : ""}`}
-            key={plan.name}
-          >
+          <Card className={`${styles.card} ${plan.highlighted ? styles.highlighted : ""}`} key={plan.name}>
             {plan.badge && (
               <Badge className={styles.badge} variant="default">
                 {plan.badge}
@@ -40,9 +29,7 @@ export default function PricingSection() {
             )}
             <CardHeader className={styles.cardHeader}>
               <CardTitle className={styles.planName}>{plan.name}</CardTitle>
-              <CardDescription className={styles.planDescription}>
-                {plan.description}
-              </CardDescription>
+              <CardDescription className={styles.planDescription}>{plan.description}</CardDescription>
             </CardHeader>
 
             <CardContent className={styles.cardContent}>
@@ -65,10 +52,7 @@ export default function PricingSection() {
             </CardContent>
 
             <CardFooter className={styles.cardFooter}>
-              <Button
-                className={styles.button}
-                variant={plan.highlighted ? "primary" : "secondary"}
-              >
+              <Button className={styles.button} variant={plan.highlighted ? "primary" : "secondary"}>
                 {plan.cta}
               </Button>
             </CardFooter>

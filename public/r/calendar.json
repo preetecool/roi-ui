@@ -4,10 +4,7 @@
   "type": "registry:item",
   "title": "Calendar",
   "description": "A date picker calendar component.",
-  "dependencies": [
-    "lucide-react",
-    "react-day-picker"
-  ],
+  "dependencies": ["lucide-react", "react-day-picker"],
   "files": [
     {
       "path": "registry/brook/ui/calendar/calendar.tsx",

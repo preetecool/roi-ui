@@ -1168,7 +1168,12 @@
     {
       "name": "kanban-board",
       "type": "registry:item",
-      "dependencies": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities", "lucide-react"],
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://roiui.com/r/alert-dialog.json",
         "https://roiui.com/r/avatar.json",
@@ -2106,7 +2111,12 @@
     {
       "name": "kanban-board-tailwind",
       "type": "registry:item",
-      "dependencies": ["@dnd-kit/core", "@dnd-kit/sortable", "@dnd-kit/utilities", "lucide-react"],
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://roiui.com/r/alert-dialog-tailwind.json",
         "https://roiui.com/r/avatar-tailwind.json",

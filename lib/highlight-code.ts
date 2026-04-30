@@ -4,7 +4,6 @@ import { transformers } from "./shiki-transformers";
  * Highlights code using Shiki.
  */
 export async function highlightCode(code: string, language = "tsx"): Promise<string> {
-
   const { getSingletonHighlighter } = await import("shiki");
 
   const highlighter = await getSingletonHighlighter({

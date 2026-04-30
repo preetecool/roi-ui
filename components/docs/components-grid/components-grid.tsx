@@ -22,7 +22,14 @@ export function ComponentsGrid() {
                 <li key={component.url}>
                   <Button
                     nativeButton={false}
-                    render={<Link href={component.url}><span className={styles.linkText}>{component.name}</span>{NEW_COMPONENTS.has(component.name as string) ? <span className={styles.newBadge}>New</span> : null}</Link>}
+                    render={
+                      <Link href={component.url}>
+                        <span className={styles.linkText}>{component.name}</span>
+                        {NEW_COMPONENTS.has(component.name as string) ? (
+                          <span className={styles.newBadge}>New</span>
+                        ) : null}
+                      </Link>
+                    }
                     variant="link"
                   />
                 </li>

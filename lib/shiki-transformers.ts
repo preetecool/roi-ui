@@ -40,4 +40,8 @@ export const removePreBackgroundTransformer: ShikiTransformer = {
   },
 };
 
-export const transformers = [packageManagerTransformer, lineNumbersTransformer, removePreBackgroundTransformer] as ShikiTransformer[];
+export const transformers = [
+  packageManagerTransformer,
+  lineNumbersTransformer,
+  removePreBackgroundTransformer,
+] as ShikiTransformer[];

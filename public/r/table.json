@@ -4,9 +4,7 @@
   "type": "registry:item",
   "title": "Table",
   "description": "A responsive table component for displaying structured tabular data.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
+  "dependencies": ["class-variance-authority"],
   "files": [
     {
       "path": "registry/brook/ui/table/table.tsx",

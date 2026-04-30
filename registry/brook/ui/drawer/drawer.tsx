@@ -36,7 +36,13 @@ function DrawerTitle({ className, ...props }: DrawerPrimitive.Title.Props) {
 }
 
 function DrawerDescription({ className, ...props }: DrawerPrimitive.Description.Props) {
-  return <DrawerPrimitive.Description className={cn(styles.description, className)} data-slot="drawer-description" {...props} />;
+  return (
+    <DrawerPrimitive.Description
+      className={cn(styles.description, className)}
+      data-slot="drawer-description"
+      {...props}
+    />
+  );
 }
 
 function DrawerClose({ ...props }: DrawerPrimitive.Close.Props) {

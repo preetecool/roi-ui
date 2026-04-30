@@ -4,10 +4,7 @@
   "type": "registry:item",
   "title": "Expandable Card Carousel",
   "description": "A carousel of expandable cards showcasing core philosophies.",
-  "dependencies": [
-    "motion",
-    "lucide-react"
-  ],
+  "dependencies": ["motion", "lucide-react"],
   "registryDependencies": [
     "https://roiui.com/r/expandable-card.json",
     "https://roiui.com/r/carousel.json"

@@ -560,14 +560,8 @@ export type BlockData = {
 export const BlocksData: Record<string, BlockData> = {`;
 
   // Helper to escape string content for regular string literal
-  const escapeContent = (str: string): string => {
-    return str
-      .replace(/\\/g, "\\\\")
-      .replace(/"/g, '\\"')
-      .replace(/\n/g, "\\n")
-      .replace(/\r/g, "\\r")
-      .replace(/\t/g, "\\t");
-  };
+  const escapeContent = (str: string): string =>
+    str.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t");
 
   for (const [blockName, data] of Object.entries(blocksData)) {
     const key = blockName.includes("-") ? `"${blockName}"` : blockName;

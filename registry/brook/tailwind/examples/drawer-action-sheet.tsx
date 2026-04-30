@@ -22,7 +22,7 @@ export default function DrawerActionSheet() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer onOpenChange={setOpen} open={open}>
       <DrawerTrigger render={<Button>More Actions</Button>} />
       <DrawerPortal>
         <DrawerBackdrop className="[--backdrop-opacity:0.4]" />
@@ -38,33 +38,27 @@ export default function DrawerActionSheet() {
               "data-[swiping]:select-none",
               "data-[starting-style]:[transform:translateY(calc(100%+1rem))]",
               "data-[ending-style]:[transform:translateY(calc(100%+1rem))]",
-              "data-[ending-style]:duration-[calc(var(--drawer-swipe-strength)*400ms)]",
+              "data-[ending-style]:duration-[calc(var(--drawer-swipe-strength)*400ms)]"
             )}
           >
             <DrawerContent
               className={cn(
                 "pointer-events-auto max-w-none",
-                "rounded-[var(--radius)] bg-[var(--mix-card-5-bg)] text-foreground overflow-hidden",
-                "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h/0.5),var(--shadow-border-stack)]",
+                "overflow-hidden rounded-[var(--radius)] bg-[var(--mix-card-5-bg)] text-foreground",
+                "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h/0.5),var(--shadow-border-stack)]"
               )}
             >
               <DrawerTitle className="sr-only">File actions</DrawerTitle>
-              <DrawerDescription className="sr-only">
-                Choose an action for this file.
-              </DrawerDescription>
+              <DrawerDescription className="sr-only">Choose an action for this file.</DrawerDescription>
 
-              <ul className="m-0 list-none p-0" aria-label="File actions">
+              <ul aria-label="File actions" className="m-0 list-none p-0">
                 {ACTIONS.map((action, index) => (
-                  <li key={action} className="[&:not(:first-child)]:border-t [&:not(:first-child)]:border-border">
-                    {index === 0 && (
-                      <DrawerClose className="sr-only">
-                        Close file actions
-                      </DrawerClose>
-                    )}
+                  <li className="[&:not(:first-child)]:border-border [&:not(:first-child)]:border-t" key={action}>
+                    {index === 0 && <DrawerClose className="sr-only">Close file actions</DrawerClose>}
                     <button
-                      type="button"
-                      className="box-border w-full cursor-pointer select-none border-0 bg-transparent p-4 px-5 text-center font-[inherit] text-sm leading-6 text-inherit hover:bg-accent focus-visible:bg-accent focus-visible:outline-0"
+                      className="box-border w-full cursor-pointer select-none border-0 bg-transparent p-4 px-5 text-center font-[inherit] text-inherit text-sm leading-6 hover:bg-accent focus-visible:bg-accent focus-visible:outline-0"
                       onClick={() => setOpen(false)}
+                      type="button"
                     >
                       {action}
                     </button>
@@ -75,14 +69,14 @@ export default function DrawerActionSheet() {
             <div
               className={cn(
                 "pointer-events-auto",
-                "rounded-[var(--radius)] bg-[var(--mix-card-5-bg)] overflow-hidden",
-                "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h/0.5),var(--shadow-border-stack)]",
+                "overflow-hidden rounded-[var(--radius)] bg-[var(--mix-card-5-bg)]",
+                "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h/0.5),var(--shadow-border-stack)]"
               )}
             >
               <button
-                type="button"
-                className="box-border w-full cursor-pointer select-none border-0 bg-transparent p-4 px-5 text-center font-[inherit] text-sm leading-6 text-destructive hover:bg-accent focus-visible:bg-accent focus-visible:outline-0"
+                className="box-border w-full cursor-pointer select-none border-0 bg-transparent p-4 px-5 text-center font-[inherit] text-destructive text-sm leading-6 hover:bg-accent focus-visible:bg-accent focus-visible:outline-0"
                 onClick={() => setOpen(false)}
+                type="button"
               >
                 Delete
               </button>

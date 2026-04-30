@@ -40,12 +40,7 @@ export function CardImageSection({ data }: CardImageSectionProps) {
             </CardContent>
 
             <CardFooter>
-              <Button
-                className={styles.linkButton}
-                render={<a href={card.href ?? "#"} />}
-                size="sm"
-                variant="link"
-              >
+              <Button className={styles.linkButton} render={<a href={card.href ?? "#"} />} size="sm" variant="link">
                 Learn More
                 <ArrowPointer />
               </Button>

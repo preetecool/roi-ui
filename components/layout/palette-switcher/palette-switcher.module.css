@@ -1,16 +1,16 @@
 .button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 36px;
-	height: 36px;
-	background-color: transparent;
-	color: var(--muted-foreground);
-	text-decoration: none;
-	transition: all 0.2s ease;
-	border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 2px;
 }
 
 .button:hover {
-	color: var(--foreground);
+  color: var(--foreground);
 }
