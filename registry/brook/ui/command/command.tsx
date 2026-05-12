@@ -20,10 +20,15 @@ function CommandDialogBackdrop({ className, ...props }: Dialog.Backdrop.Props) {
   return <Dialog.Backdrop className={cn(styles.backdrop, className)} data-slot="command-dialog-backdrop" {...props} />;
 }
 
-function CommandDialogPopup({ className, children, ...props }: Dialog.Popup.Props & { children?: React.ReactNode }) {
+function CommandDialogPopup({
+  className,
+  backdropClassName,
+  children,
+  ...props
+}: Dialog.Popup.Props & { backdropClassName?: string; children?: React.ReactNode }) {
   return (
     <CommandDialogPortal>
-      <CommandDialogBackdrop />
+      <CommandDialogBackdrop className={backdropClassName} />
       <Dialog.Popup className={cn(styles.dialogPopup, className)} data-slot="command-dialog-popup" {...props}>
         {children}
       </Dialog.Popup>

@@ -172,7 +172,11 @@ export function Search({ tree }: SearchProps) {
     <>
       <SearchTrigger onClick={() => setOpen(true)} />
       <CommandDialog onOpenChange={handleOpenChange} open={open}>
-        <CommandDialogPopup className={styles.searchDialog} initialFocus={inputRef}>
+        <CommandDialogPopup
+          backdropClassName={styles.searchBackdrop}
+          className={styles.searchDialog}
+          initialFocus={inputRef}
+        >
           <Command items={allItems} itemToStringValue={itemToStringValue} onValueChange={handleValueChange}>
             <CommandInput className={styles.commandInput} placeholder="Search documentation..." ref={inputRef} />
             <CommandList className={styles.searchList}>
