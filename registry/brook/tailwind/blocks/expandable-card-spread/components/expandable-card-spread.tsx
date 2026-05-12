@@ -112,7 +112,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                               layout: {
                                 type: prefersReducedMotion ? "tween" : "spring",
                                 duration: prefersReducedMotion ? 0 : undefined,
-                                bounce: isExpanded ? 0 : 0.15,
+                                bounce: isExpanded ? 0 : 0.1,
                               },
                             }}
                           />
@@ -158,7 +158,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                                     layout: {
                                       type: prefersReducedMotion ? "tween" : "spring",
                                       duration: prefersReducedMotion ? 0 : undefined,
-                                      bounce: 0.15,
+                                      bounce: 0.05,
                                     },
                                   }}
                                 />
