@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { Index } from "@/registry/__index__";
 import { blockSkeletons } from "./block-skeletons";
 import styles from "./page.module.css";
@@ -18,7 +21,21 @@ const BLOCK_TITLES: Record<string, string> = {
   "card-progress": "Progress Card",
 };
 
+const MARKETING_BLOCKS = new Set([
+  "expandable-card-carousel",
+  "expandable-card-spread",
+  "pricing-section",
+  "card-image-section",
+]);
+
 const NEW_BLOCKS: string[] = [];
+
+const CATEGORIES = [
+  { id: "app", label: "App" },
+  { id: "marketing", label: "Marketing" },
+] as const;
+
+type CategoryId = (typeof CATEGORIES)[number]["id"];
 
 function getBlocks() {
   return Object.entries(Index)
@@ -31,13 +48,30 @@ function getBlocks() {
 }
 
 export default function BlocksPage() {
-  const blocks = getBlocks();
+  const [category, setCategory] = useState<CategoryId>("app");
+  const allBlocks = getBlocks();
+  const blocks = category === "marketing" ? allBlocks.filter((block) => MARKETING_BLOCKS.has(block.name)) : allBlocks;
 
   return (
     <div className={styles.page}>
       <div className={styles.header}>
         <h1 className={styles.title}>Blocks</h1>
         <p className={styles.description}>Pre-built components that you can copy and paste into your projects.</p>
+      </div>
+      <div className={styles.filters} role="tablist" aria-label="Filter blocks by category">
+        {CATEGORIES.map((c) => (
+          <button
+            key={c.id}
+            type="button"
+            role="tab"
+            aria-selected={category === c.id}
+            data-active={category === c.id}
+            className={styles.filter}
+            onClick={() => setCategory(c.id)}
+          >
+            {c.label}
+          </button>
+        ))}
       </div>
       <div className={styles.grid}>
         {blocks.map((block) => {

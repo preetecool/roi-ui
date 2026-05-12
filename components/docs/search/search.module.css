@@ -10,6 +10,11 @@
     var(--shadow-lg);
 }
 
+.searchDialog[data-slot="command-dialog-popup"][data-starting-style] {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .searchDialog[data-slot="command-dialog-popup"]:focus-visible,
 .searchDialog[data-slot="command-dialog-popup"]:focus,
 .searchDialog[data-slot="command-dialog-popup"]:focus-within {
