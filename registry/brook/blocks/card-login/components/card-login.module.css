@@ -38,6 +38,13 @@
   width: 100%;
 }
 
+.card .button:active:not([data-disabled]),
+.card .button[data-pressed],
+.card .socialButton:active:not([data-disabled]),
+.card .socialButton[data-pressed] {
+  transform: scale(0.993);
+}
+
 .buttonContent {
   display: flex;
   align-items: center;

@@ -8,6 +8,18 @@
   box-shadow:
     0 0 0 1px oklch(from var(--border) l c h / 0.4),
     var(--shadow-lg);
+  transition: none;
+}
+
+.searchDialog[data-slot="command-dialog-popup"][data-starting-style],
+.searchDialog[data-slot="command-dialog-popup"][data-ending-style] {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.searchBackdrop[data-starting-style],
+.searchBackdrop[data-ending-style] {
+  opacity: 1;
 }
 
 .searchDialog[data-slot="command-dialog-popup"]:focus-visible,

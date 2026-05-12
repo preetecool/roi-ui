@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type PanInfo } from "motion/react";
+import { motion, type PanInfo, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import styles from "./expandable-card-spread.module.css";
 
@@ -20,6 +20,7 @@ const SWIPE_THRESHOLD = 100;
 
 export function MobileStack({ cards }: MobileStackProps) {
   const [frontIndex, setFrontIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {
@@ -55,12 +56,12 @@ export function MobileStack({ cards }: MobileStackProps) {
                 zIndex: cards.length - stackPosition,
                 cursor: isTopCard ? "grab" : "auto",
               }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 25,
-              }}
-              whileDrag={{ cursor: "grabbing", scale: 1.02 }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { type: "spring", stiffness: 300, damping: 25 }
+              }
+              whileDrag={prefersReducedMotion ? { cursor: "grabbing" } : { cursor: "grabbing", scale: 1.02 }}
             >
               <div className={styles.circle} />
               <h3 className={styles.cardTitle}>{card.title}</h3>

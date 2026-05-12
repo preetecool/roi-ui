@@ -47,7 +47,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
               exit={{ opacity: 0, scale: 0.95 }}
               initial={{ opacity: 0, scale: 0.95 }}
               key="stack"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeOut" }}
             >
               <MobileStack cards={data.cards} />
             </motion.div>
@@ -57,7 +57,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
               exit={{ opacity: 0, scale: 0.95 }}
               initial={{ opacity: 0, scale: 0.95 }}
               key="spread"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeOut" }}
             >
               <div className={`${styles.spreadLayout} ${isExpanded ? styles.spreadLayoutSmall : ""}`}>
                 {data.cards.map((card, index) => {
@@ -76,7 +76,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                       <Dialog.Trigger
                         nativeButton={false}
                         render={
-                          <motion.li
+                          <motion.div
                             aria-label={`Expand ${card.title}`}
                             className={`${styles.spreadCard} ${isExpanded ? styles.spreadCardSmall : ""}`}
                             layoutId={`spread-card-${card.id}`}
@@ -99,7 +99,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                               layout: {
                                 type: prefersReducedMotion ? "tween" : "spring",
                                 duration: prefersReducedMotion ? 0 : undefined,
-                                bounce: isExpanded ? 0 : 0.25,
+                                bounce: isExpanded ? 0 : 0.1,
                               },
                             }}
                           />
@@ -125,7 +125,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                           <div className={styles.popupPositioner} key={`positioner-${card.id}`}>
                             <Dialog.Popup
                               render={
-                                <motion.li
+                                <motion.div
                                   className={styles.expandedCard}
                                   layoutId={`spread-card-${card.id}`}
                                   onClick={() => setExpandedId(null)}
@@ -140,7 +140,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                                     layout: {
                                       type: prefersReducedMotion ? "tween" : "spring",
                                       duration: prefersReducedMotion ? 0 : undefined,
-                                      bounce: 0.15,
+                                      bounce: 0.05,
                                     },
                                   }}
                                 />

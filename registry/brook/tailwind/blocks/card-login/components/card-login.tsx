@@ -86,7 +86,10 @@ export function CardLogin() {
           </FormGroup>
 
           <FormActions>
-            <Button className="relative w-full" type="submit">
+            <Button
+              className="relative w-full [:active,[data-pressed]]:scale-[0.993]"
+              type="submit"
+            >
               Sign In
             </Button>
           </FormActions>
@@ -103,14 +106,20 @@ export function CardLogin() {
       </div>
       <div className="flex flex-col gap-3">
         <Button
-          className={cn("relative flex w-full gap-2", "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]")}
+          className={cn(
+            "relative flex w-full gap-2 [:active,[data-pressed]]:scale-[0.993]",
+            "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]"
+          )}
           variant="outline"
         >
           <AppleIcon className={cn("-ml-2 h-5 w-5", "max-sm:-ml-1 max-sm:h-[1.125rem] max-sm:w-[1.125rem]")} />
           Apple
         </Button>
         <Button
-          className={cn("relative flex w-full gap-2", "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]")}
+          className={cn(
+            "relative flex w-full gap-2 [:active,[data-pressed]]:scale-[0.993]",
+            "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]"
+          )}
           variant="outline"
         >
           <GoogleIcon className={cn("h-5 w-5", "max-sm:h-[1.125rem] max-sm:w-[1.125rem]")} />
