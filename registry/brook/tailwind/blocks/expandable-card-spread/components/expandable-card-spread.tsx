@@ -52,7 +52,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
               exit={{ opacity: 0, scale: 0.95 }}
               initial={{ opacity: 0, scale: 0.95 }}
               key="stack"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeOut" }}
             >
               <MobileStack cards={data.cards} />
             </motion.div>
@@ -62,7 +62,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
               exit={{ opacity: 0, scale: 0.95 }}
               initial={{ opacity: 0, scale: 0.95 }}
               key="spread"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeOut" }}
             >
               <div
                 className={`flex items-center justify-center gap-0 ${
@@ -85,7 +85,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                       <Dialog.Trigger
                         nativeButton={false}
                         render={
-                          <motion.li
+                          <motion.div
                             aria-label={`Expand ${card.title}`}
                             className={`flex cursor-pointer flex-col items-start justify-end border-none first:ml-0 focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2 ${
                               isExpanded
@@ -143,7 +143,7 @@ export function ExpandableCardSpread({ data }: ExpandableCardSpreadProps) {
                           >
                             <Dialog.Popup
                               render={
-                                <motion.li
+                                <motion.div
                                   className="pointer-events-auto flex min-h-[500px] w-[400px] flex-col items-start justify-end gap-3 p-6"
                                   layoutId={`spread-card-${card.id}`}
                                   onClick={() => setExpandedId(null)}

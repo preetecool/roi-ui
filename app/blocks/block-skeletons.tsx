@@ -52,8 +52,8 @@ export function AiChatSkeleton({ className }: SkeletonProps) {
       <rect fill="var(--muted-foreground)" height="10" opacity="0.3" rx="1" width="2" x="27" y="87" />
       <rect fill="var(--muted-foreground)" height="2" opacity="0.3" rx="1" width="10" x="23" y="91" />
       {/* Mode selector */}
-      <rect fill="var(--mix-card-15-bg)" height="26" rx="8" width="70" x="50" y="79" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="40" x="60" y="89" />
+      <rect fill="var(--mix-card-15-bg)" height="26" rx="8" width="70" x="158" y="79" />
+      <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="40" x="168" y="89" />
       {/* Submit button */}
       <circle cx="252" cy="92" fill="var(--muted-foreground)" opacity="0.25" r="16" />
       <path

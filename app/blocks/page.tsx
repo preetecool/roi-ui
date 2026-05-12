@@ -93,16 +93,21 @@ export default function BlocksPage() {
           const SkeletonComponent = blockSkeletons[block.name];
           const isNew = NEW_BLOCKS.includes(block.name);
           return (
-            <Link className={styles.card} href={`/blocks/${block.name}`} key={block.name}>
-              {SkeletonComponent ? (
-                <div className={styles.cardPreview}>
-                  <SkeletonComponent className={styles.skeleton} />
-                </div>
-              ) : null}
-              <div className={styles.cardInfo}>
-                <div className={styles.cardTitle}>
-                  {block.title}
-                  {isNew ? <span className={styles.newBadge}>New</span> : null}
+            <Link aria-label={block.title} className={styles.card} href={`/blocks/${block.name}`} key={block.name}>
+              <div className={styles.cardInner}>
+                {SkeletonComponent ? (
+                  <div className={styles.cardPreview}>
+                    <SkeletonComponent className={styles.skeleton} />
+                  </div>
+                ) : null}
+                <div className={styles.cardFooter}>
+                  <span className={styles.cardTitle}>
+                    {block.title}
+                    {isNew ? <span className={styles.newBadge}>New</span> : null}
+                  </span>
+                  <span aria-hidden="true" className={styles.viewButton}>
+                    View
+                  </span>
                 </div>
               </div>
             </Link>
