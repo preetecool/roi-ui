@@ -1,0 +1,152 @@
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  isolation: isolate;
+}
+
+.root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 60% at 0% 50%,
+      oklch(from var(--accent) l c h / 0.12) 0%,
+      transparent 65%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wheel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  perspective: 900px;
+  perspective-origin: 100% 50%;
+  z-index: 1;
+  scroll-behavior: smooth;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+}
+
+.wheel::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  padding-inline: 0.25rem 0.75rem;
+}
+
+.spacer {
+  flex-shrink: 0;
+  height: 42%;
+  pointer-events: none;
+}
+
+.item,
+.groupLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 2.25rem;
+  padding-inline: 0.6rem;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  transform-origin: 100% 50%;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  transition: color 200ms ease, background-color 200ms ease;
+  border-radius: 6px;
+  backface-visibility: hidden;
+}
+
+.groupLabel {
+  margin-top: 0.85rem;
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(from var(--muted-foreground) l c h / 0.85);
+}
+
+.groupLabel:first-of-type {
+  margin-top: 0;
+}
+
+.item {
+  position: relative;
+  cursor: pointer;
+}
+
+.item:hover {
+  color: var(--foreground);
+}
+
+.itemIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.itemLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.itemActive {
+  color: var(--foreground);
+  font-weight: 500;
+  background: linear-gradient(
+    90deg,
+    oklch(from var(--accent) l c h / 0.45) 0%,
+    oklch(from var(--accent) l c h / 0.08) 100%
+  );
+  box-shadow: inset 2px 0 0 0 var(--foreground);
+}
+
+.focusIndicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 2rem;
+  height: 2.25rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    to left,
+    oklch(from var(--foreground) l c h / 0.06) 0%,
+    transparent 100%
+  );
+  border-right: 1px solid oklch(from var(--foreground) l c h / 0.1);
+}
