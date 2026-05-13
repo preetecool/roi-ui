@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./code-block-collapse.module.css";
 
@@ -10,10 +10,11 @@ type CodeBlockCollapseProps = {
   className?: string;
 };
 
-type CollapseState = "collapsed" | "expanded" | "no-overflow";
-
 export function CodeBlockCollapse({ children, maxHeight = 350, className }: CodeBlockCollapseProps) {
-  const [state, setState] = useState<CollapseState>("collapsed");
+  const [expanded, setExpanded] = useState(false);
+  const [overflows, setOverflows] = useState(false);
+  const [contentHeight, setContentHeight] = useState(maxHeight);
+  const [hydrated, setHydrated] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,19 +23,16 @@ export function CodeBlockCollapse({ children, maxHeight = 350, className }: Code
       return;
     }
 
-    const checkOverflow = () => {
-      const overflows = el.scrollHeight > maxHeight + 1;
-      setState((curr) => {
-        if (curr === "expanded") {
-          return "expanded";
-        }
-        return overflows ? "collapsed" : "no-overflow";
-      });
+    const measure = () => {
+      const sh = el.scrollHeight;
+      setContentHeight(sh);
+      setOverflows(sh > maxHeight + 1);
     };
 
-    checkOverflow();
+    measure();
+    setHydrated(true);
 
-    const observer = new ResizeObserver(checkOverflow);
+    const observer = new ResizeObserver(measure);
     observer.observe(el);
     for (const child of Array.from(el.children)) {
       observer.observe(child);
@@ -43,41 +41,64 @@ export function CodeBlockCollapse({ children, maxHeight = 350, className }: Code
     return () => observer.disconnect();
   }, [maxHeight]);
 
-  const isCollapsed = state === "collapsed";
-  const isExpanded = state === "expanded";
-  const showToggle = state !== "no-overflow";
+  const assumeOverflow = !hydrated || overflows;
+  const isExpanded = expanded && overflows;
+  const isCollapsed = !isExpanded && assumeOverflow;
+  const showToggle = assumeOverflow;
 
-  const toggle = () => setState((s) => (s === "expanded" ? "collapsed" : "expanded"));
+  let viewportStyle: CSSProperties;
+  if (!hydrated) {
+    viewportStyle = { maxHeight };
+  } else if (overflows) {
+    viewportStyle = { height: isExpanded ? contentHeight : maxHeight };
+  } else {
+    viewportStyle = {};
+  }
 
   return (
     <div className={cn(styles.wrapper, className)}>
       <div
-        className={cn(styles.viewport, isCollapsed && styles.collapsed)}
+        className={styles.viewport}
+        data-state={isExpanded ? "open" : "closed"}
         ref={viewportRef}
-        style={isCollapsed ? { maxHeight } : undefined}
+        style={viewportStyle}
       >
         {children}
-        {isCollapsed ? <div aria-hidden="true" className={styles.fade} /> : null}
+        <div aria-hidden="true" className={cn(styles.fade, !isCollapsed && styles.fadeHidden)} />
       </div>
       {showToggle ? (
-        <div className={styles.footer}>
-          <button aria-expanded={isExpanded} className={styles.toggle} onClick={toggle} type="button">
-            <svg
-              className={cn(styles.toggleIcon, isExpanded && styles.toggleIconOpen)}
-              fill="none"
-              height="10"
+        <button
+          aria-expanded={isExpanded}
+          className={styles.toggle}
+          data-state={isExpanded ? "open" : "closed"}
+          onClick={() => setExpanded((v) => !v)}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className={styles.chevron}
+            fill="none"
+            height="14"
+            viewBox="0 0 24 24"
+            width="14"
+          >
+            <path
+              d="m7 15 5 5 5-5"
               stroke="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              viewBox="0 0 12 12"
-              width="10"
-            >
-              <path d="m3 4.5 3 3 3-3" />
-            </svg>
-            {isExpanded ? "Hide code" : "View code"}
-          </button>
-        </div>
+            />
+            <path
+              d="m7 9 5-5 5 5"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+            />
+          </svg>
+          {isExpanded ? "hide code" : "view code"}
+        </button>
       ) : null}
     </div>
   );

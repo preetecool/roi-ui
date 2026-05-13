@@ -158,6 +158,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
           previous={
             neighbours.previous ? { url: neighbours.previous.url, title: neighbours.previous.data.title } : null
           }
+          showLabels
         />
       </article>
 

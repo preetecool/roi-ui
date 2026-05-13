@@ -5,10 +5,7 @@
 .viewport {
   position: relative;
   overflow: hidden;
-}
-
-.collapsed {
-  overflow: hidden;
+  transition: height 250ms var(--ease-out-expo);
 }
 
 .fade {
@@ -17,6 +14,8 @@
   bottom: 0;
   height: 110px;
   pointer-events: none;
+  opacity: 1;
+  transition: opacity 200ms var(--ease-out-expo);
   background: linear-gradient(
     to bottom,
     oklch(from var(--code-footer-bg) l c h / 0) 0%,
@@ -25,45 +24,64 @@
   );
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  padding: 8px 0 10px;
-  border-top: 0.5px solid var(--border-subtle);
-  background: var(--code-footer-bg);
+.fadeHidden {
+  opacity: 0;
 }
 
 .toggle {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.375rem;
-  padding: 0.3rem 0.7rem;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 9px 0;
   font-size: 0.75rem;
   font-family:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
     monospace;
   font-weight: 500;
   color: var(--muted-foreground);
-  background-color: transparent;
-  border: 0.5px solid var(--border-subtle);
-  border-radius: 2px;
+  background: var(--code-footer-bg);
+  border: none;
+  border-top: 0.5px solid var(--border-subtle);
+  border-radius: 0;
   cursor: pointer;
   transition:
-    color 120ms ease,
-    background-color 120ms ease,
-    border-color 120ms ease;
+    color 150ms ease-out,
+    background-color 150ms ease-out;
 }
 
 .toggle:hover {
   color: var(--foreground);
-  background-color: oklch(from var(--foreground) l c h / 0.06);
-  border-color: var(--border);
+  background-color: var(--accent);
 }
 
-.toggleIcon {
-  transition: transform 160ms ease;
+.toggle:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
 }
 
-.toggleIconOpen {
-  transform: rotate(180deg);
+.chevron {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.chevron path:first-child {
+  transition: transform 200ms var(--ease-out-expo);
+  transform-origin: center;
+}
+
+.chevron path:last-child {
+  transition: transform 200ms var(--ease-out-expo);
+  transform-origin: center;
+}
+
+.toggle[data-state="open"] .chevron path:first-child {
+  transform: translate(0, -10px);
+}
+
+.toggle[data-state="open"] .chevron path:last-child {
+  transform: translate(0, 10px);
 }

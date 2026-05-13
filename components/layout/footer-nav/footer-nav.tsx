@@ -33,21 +33,32 @@ type FooterNavProps = {
   previous?: NavItem | null;
   next?: NavItem | null;
   className?: string;
+  showLabels?: boolean;
 };
 
-export function FooterNav({ previous, next, className }: FooterNavProps) {
+export function FooterNav({ previous, next, className, showLabels = false }: FooterNavProps) {
   return (
-    <nav className={cn(styles.navigation, className)}>
+    <nav className={cn(styles.navigation, showLabels && styles.withLabels, className)}>
       <div className={styles.slot}>
         {previous ? (
-          <Link aria-label={`Previous: ${previous.title}`} className={cn(styles.navLink, styles.prev)} href={previous.url}>
+          <Link
+            aria-label={`Previous: ${previous.title}`}
+            className={cn(styles.navLink, styles.prev, showLabels && styles.navLinkLabeled)}
+            href={previous.url}
+          >
             <Chevron direction="left" />
+            {showLabels ? <span className={styles.label}>{previous.title}</span> : null}
           </Link>
         ) : null}
       </div>
       <div className={cn(styles.slot, styles.slotEnd)}>
         {next ? (
-          <Link aria-label={`Next: ${next.title}`} className={cn(styles.navLink, styles.next)} href={next.url}>
+          <Link
+            aria-label={`Next: ${next.title}`}
+            className={cn(styles.navLink, styles.next, showLabels && styles.navLinkLabeled)}
+            href={next.url}
+          >
+            {showLabels ? <span className={styles.label}>{next.title}</span> : null}
             <Chevron direction="right" />
           </Link>
         ) : null}

@@ -122,14 +122,12 @@ pre code {
 }
 
 .code-container {
-  max-height: 400px;
   box-sizing: border-box;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   position: relative;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
 }
 
 .code-container::-webkit-scrollbar {
