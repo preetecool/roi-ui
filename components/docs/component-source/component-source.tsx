@@ -1,4 +1,5 @@
 import { CodeBlock } from "@/components/docs/code-block/code-block";
+import { CodeBlockCollapse } from "@/components/docs/code-block-collapse/code-block-collapse";
 import { highlightCode } from "@/lib/highlight-code";
 import { cn } from "@/lib/utils";
 import styles from "./component-source.module.css";
@@ -57,7 +58,9 @@ export async function ComponentSource({ name, src, title, language = "tsx", embe
           <CodeBlock.CopyButton />
         </CodeBlock.Actions>
       </CodeBlock.Header>
-      <CodeBlock.Content className={styles.codeContainer} />
+      <CodeBlockCollapse>
+        <CodeBlock.Content className={styles.codeContainer} />
+      </CodeBlockCollapse>
     </CodeBlock.Root>
   );
 }

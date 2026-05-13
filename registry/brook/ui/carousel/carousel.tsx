@@ -1,7 +1,7 @@
 "use client";
 
 import { useControlled } from "@base-ui/utils/useControlled";
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./carousel.module.css";
 
@@ -17,6 +17,7 @@ type CarouselContextValue = {
   canGoNext: boolean;
   canGoPrev: boolean;
   viewportRef: React.RefObject<HTMLDivElement | null>;
+  slidesId: string;
 };
 
 const CarouselContext = createContext<CarouselContextValue | null>(null);
@@ -62,6 +63,7 @@ export function Root({
   const bleedRefFromContext = useBleedRef();
   const [insetPaddingLeft, setInsetPaddingLeft] = useState(0);
   const [insetPaddingRight, setInsetPaddingRight] = useState(0);
+  const slidesId = `${useId()}-slides`;
 
   const maxIndex = totalItems - 1;
 
@@ -159,6 +161,7 @@ export function Root({
     canGoNext,
     canGoPrev,
     viewportRef,
+    slidesId,
   };
 
   useEffect(() => {
@@ -250,7 +253,7 @@ export function Root({
       >
         {children}
         <div aria-atomic="true" aria-live="polite" className={styles.srOnly}>
-          Item {currentIndex + 1} of {totalItems}
+          Slide {currentIndex + 1} of {totalItems}
         </div>
       </div>
     </CarouselContext.Provider>
@@ -280,10 +283,10 @@ export function Bleed({ className, children, ...props }: CarouselBleedProps) {
 export type CarouselViewportProps = React.ComponentProps<"div">;
 
 export function Viewport({ className, children, ...props }: CarouselViewportProps) {
-  const { viewportRef } = useCarousel();
+  const { viewportRef, slidesId } = useCarousel();
 
   return (
-    <div aria-atomic="false" aria-live="polite" className={cn(styles.viewport, className)} ref={viewportRef} {...props}>
+    <div className={cn(styles.viewport, className)} id={slidesId} ref={viewportRef} {...props}>
       {children}
     </div>
   );
@@ -322,9 +325,23 @@ export type CarouselItemProps = React.ComponentProps<"div"> & {
 };
 
 export function Item({ index, className, children, ...props }: CarouselItemProps) {
-  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev } = useCarousel();
+  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev, viewportRef } = useCarousel();
+  const itemRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const isVisible = true;
+  useEffect(() => {
+    const el = itemRef.current;
+    const root = viewportRef.current;
+    if (!(el && root)) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.intersectionRatio >= 0.5),
+      { root, threshold: [0, 0.5, 1] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [viewportRef]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -359,10 +376,11 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
   return (
     // biome-ignore lint/a11y/noNoninteractiveElementInteractions: Keyboard navigation is required for carousel accessibility
     <div
-      aria-label={`${index + 1} of ${totalItems}`}
+      aria-label={`Slide ${index + 1} of ${totalItems}`}
       aria-roledescription="slide"
       className={cn(styles.slide, className)}
       onKeyDown={handleKeyDown}
+      ref={itemRef}
       role="group"
       tabIndex={isVisible ? 0 : -1}
       {...props}
@@ -375,12 +393,12 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
 export type CarouselPreviousProps = React.ComponentProps<"button">;
 
 export function Previous({ className, children, ...props }: CarouselPreviousProps) {
-  const { prevSlide, canGoPrev } = useCarousel();
+  const { prevSlide, canGoPrev, slidesId } = useCarousel();
 
   return (
     <button
-      aria-controls="carousel-slides"
-      aria-label="Scroll to previous items"
+      aria-controls={slidesId}
+      aria-label="Previous slide"
       className={cn(styles.navButton, className)}
       disabled={!canGoPrev}
       onClick={prevSlide}
@@ -399,12 +417,12 @@ export function Previous({ className, children, ...props }: CarouselPreviousProp
 export type CarouselNextProps = React.ComponentProps<"button">;
 
 export function Next({ className, children, ...props }: CarouselNextProps) {
-  const { nextSlide, canGoNext } = useCarousel();
+  const { nextSlide, canGoNext, slidesId } = useCarousel();
 
   return (
     <button
-      aria-controls="carousel-slides"
-      aria-label="Scroll to next items"
+      aria-controls={slidesId}
+      aria-label="Next slide"
       className={cn(styles.navButton, className)}
       disabled={!canGoNext}
       onClick={nextSlide}
@@ -454,7 +472,7 @@ export function Navigation({ className, children, ...props }: CarouselNavigation
 export type CarouselIndicatorsProps = React.ComponentProps<"div">;
 
 export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
-  const { totalItems, currentIndex, goToIndex } = useCarousel();
+  const { totalItems, currentIndex, goToIndex, slidesId } = useCarousel();
 
   if (totalItems <= 1) {
     return null;
@@ -464,8 +482,8 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
     <div aria-label="Choose slide to display" className={cn(styles.indicators, className)} role="tablist" {...props}>
       {Array.from({ length: totalItems }, (_, index) => (
         <button
-          aria-controls="carousel-slides"
-          aria-label={`Scroll to item ${index + 1}`}
+          aria-controls={slidesId}
+          aria-label={`Go to slide ${index + 1}`}
           aria-selected={currentIndex === index}
           className={styles.indicator}
           data-active={currentIndex === index ? "" : undefined}

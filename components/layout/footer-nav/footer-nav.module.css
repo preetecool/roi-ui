@@ -6,9 +6,22 @@
   border-top: 1px solid oklch(from var(--border) l c h / 0.4);
 }
 
+.withLabels {
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
 .slot {
   display: flex;
   min-width: 0;
+}
+
+.withLabels .slotEnd {
+  justify-content: flex-end;
+}
+
+.withLabels .slot {
+  flex: 1;
 }
 
 .navLink {
@@ -34,6 +47,23 @@
   border-color: var(--border);
 }
 
+.navLinkLabeled {
+  width: auto;
+  height: auto;
+  gap: 0.5rem;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .chevron {
   display: block;
+  flex-shrink: 0;
 }

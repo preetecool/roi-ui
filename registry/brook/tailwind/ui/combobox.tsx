@@ -32,7 +32,14 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
 }
 
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
-  return <Combobox.Input className={className} data-slot="combobox-input" render={<Input />} {...props} />;
+  return (
+    <Combobox.Input
+      className={cn("max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]", className)}
+      data-slot="combobox-input"
+      render={<Input />}
+      {...props}
+    />
+  );
 }
 
 function ComboboxClear({ className, children, ...props }: Combobox.Clear.Props) {
@@ -84,11 +91,15 @@ function ComboboxPopup({ className, children, ...props }: Combobox.Popup.Props) 
       data-slot="combobox-popup"
       {...props}
     >
-      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      <ComboboxSpacer />
       {children}
-      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      <ComboboxSpacer />
     </Combobox.Popup>
   );
+}
+
+function ComboboxSpacer() {
+  return <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />;
 }
 
 function ComboboxList({ className, ...props }: Combobox.List.Props) {
@@ -310,6 +321,7 @@ export {
   ComboboxPopup,
   ComboboxPortal,
   ComboboxPositioner,
+  ComboboxSpacer,
   ComboboxTrigger,
   ComboboxValue,
 };

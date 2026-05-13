@@ -156,13 +156,13 @@
   height: 0.75rem;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.5);
+  background: oklch(from var(--foreground) l c h / 0.3);
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: oklch(from var(--foreground) l c h / 0.5);
     transform: scale(1.1);
   }
 

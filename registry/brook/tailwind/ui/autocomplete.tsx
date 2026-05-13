@@ -15,7 +15,13 @@ function AutocompleteValue({ ...props }: React.ComponentProps<typeof Autocomplet
 }
 
 function AutocompleteInput({ className, ...props }: React.ComponentProps<typeof Autocomplete.Input>) {
-  return <Autocomplete.Input className={className} render={<Input />} {...props} />;
+  return (
+    <Autocomplete.Input
+      className={cn("max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]", className)}
+      render={<Input />}
+      {...props}
+    />
+  );
 }
 
 function AutocompleteTrigger({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Trigger>) {
@@ -113,11 +119,15 @@ function AutocompletePopup({ className, children, ...props }: React.ComponentPro
       data-slot="autocomplete-popup"
       {...props}
     >
-      <div style={{ height: "4px", width: "100%" }} />
+      <AutocompleteSpacer />
       {children}
-      <div style={{ height: "4px", width: "100%" }} />
+      <AutocompleteSpacer />
     </Autocomplete.Popup>
   );
+}
+
+function AutocompleteSpacer() {
+  return <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />;
 }
 
 function AutocompleteArrow({ className, ...props }: React.ComponentProps<typeof Autocomplete.Arrow>) {
@@ -188,7 +198,7 @@ function AutocompleteItem({ className, ...props }: React.ComponentProps<typeof A
       className={cn(
         "relative isolate m-0 flex h-8 cursor-pointer items-center justify-start gap-3",
         "pr-1.5 pl-3 font-normal text-foreground text-sm leading-[1.2]",
-        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
+        "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[calc(var(--radius)-3px)] before:bg-transparent before:content-['']",
         "hover:before:bg-[var(--accent)] focus:outline-none focus:before:bg-[var(--accent)] focus-visible:outline-none",
         "data-[highlighted]:before:bg-[var(--accent)]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent",
@@ -243,6 +253,7 @@ export {
   AutocompletePositioner,
   AutocompleteRow,
   AutocompleteSeparator,
+  AutocompleteSpacer,
   AutocompleteStatus,
   AutocompleteTrigger,
   AutocompleteValue,

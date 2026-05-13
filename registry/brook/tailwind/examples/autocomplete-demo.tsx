@@ -1,5 +1,6 @@
 "use client";
 
+import { Search } from "lucide-react";
 import { useState } from "react";
 import {
   Autocomplete,
@@ -86,16 +87,22 @@ export default function AutocompleteDemo() {
         onValueChange={setValue}
         value={value}
       >
-        <AutocompleteInput
-          className="w-[360px] max-sm:w-full"
-          id="ac-input"
-          placeholder="Type your question or search FAQs..."
-        />
+        <div className="relative mb-16 w-[360px] max-sm:w-full">
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 z-[1] -translate-y-1/2 text-muted-foreground"
+            size={16}
+          />
+          <AutocompleteInput
+            className="w-full pl-9"
+            id="ac-input"
+            placeholder="Type your question or search FAQs..."
+          />
+        </div>
 
         <AutocompletePortal>
           <AutocompletePositioner>
             <AutocompletePopup>
-              <AutocompleteEmpty>No matching questions found. Type your own question!</AutocompleteEmpty>
+              <AutocompleteEmpty>No matching questions found.</AutocompleteEmpty>
               <AutocompleteList>
                 {(question: Question) => (
                   <AutocompleteItem key={question.value} value={question}>
@@ -105,7 +112,11 @@ export default function AutocompleteDemo() {
                           {question.question}
                         </div>
                       </div>
-                      <Badge className="flex-shrink-0" size="sm" variant="outline">
+                      <Badge
+                        className="flex-shrink-0 border-transparent bg-transparent pr-2 pl-0 font-normal text-muted-foreground hover:bg-transparent"
+                        size="sm"
+                        variant="outline"
+                      >
                         {question.category}
                       </Badge>
                     </div>

@@ -51,6 +51,16 @@
   }
 }
 
+.inputOverride {
+  @media (max-width: 640px) {
+    font-size: 0.9375rem;
+
+    &::placeholder {
+      font-size: 0.9375rem;
+    }
+  }
+}
+
 .trigger {
   display: flex;
   align-items: center;
@@ -267,7 +277,7 @@
     content: "";
     position: absolute;
     inset: 0 4px;
-    border-radius: calc(var(--radius) - 4px);
+    border-radius: calc(var(--radius) - 3px);
     background-color: transparent;
     z-index: -1;
   }

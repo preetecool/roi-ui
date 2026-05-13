@@ -29,7 +29,7 @@ export default function AutocompleteAutoHighlight() {
   return (
     <div className="p-8 max-sm:p-4">
       <label
-        className="mb-2 ml-1 flex flex-col gap-1 font-medium text-foreground text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
+        className="mb-2 ml-0.5 flex flex-col gap-1 font-medium text-foreground text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
         htmlFor="auto-highlight-input"
       >
         Select a country

@@ -1,5 +1,6 @@
 "use client";
 
+import { Search } from "lucide-react";
 import { useState } from "react";
 import {
   Autocomplete,
@@ -84,12 +85,15 @@ export default function AutocompleteDemo() {
         onValueChange={setValue}
         value={value}
       >
-        <AutocompleteInput className={styles.input} id="ac-input" placeholder="Type your question or search FAQs..." />
+        <div className={styles.inputWrapper}>
+          <Search className={styles.searchIcon} size={16} />
+          <AutocompleteInput className={styles.input} id="ac-input" placeholder="Type your question or search FAQs..." />
+        </div>
 
         <AutocompletePortal>
           <AutocompletePositioner>
             <AutocompletePopup>
-              <AutocompleteEmpty>No matching questions found. Type your own question!</AutocompleteEmpty>
+              <AutocompleteEmpty>No matching questions found.</AutocompleteEmpty>
               <AutocompleteList>
                 {(question: Question) => (
                   <AutocompleteItem key={question.value} value={question}>

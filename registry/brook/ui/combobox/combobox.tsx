@@ -23,7 +23,9 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
 }
 
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
-  return <Combobox.Input className={className} data-slot="combobox-input" render={<Input />} {...props} />;
+  return (
+    <Combobox.Input className={cn(styles.input, className)} data-slot="combobox-input" render={<Input />} {...props} />
+  );
 }
 
 function ComboboxClear({ className, children, ...props }: Combobox.Clear.Props) {
@@ -50,11 +52,15 @@ function ComboboxPositioner({ className, ...props }: Combobox.Positioner.Props) 
 function ComboboxPopup({ className, children, ...props }: Combobox.Popup.Props) {
   return (
     <Combobox.Popup className={cn(styles.popup, className)} {...props}>
-      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      <ComboboxSpacer />
       {children}
-      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      <ComboboxSpacer />
     </Combobox.Popup>
   );
+}
+
+function ComboboxSpacer() {
+  return <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />;
 }
 
 function ComboboxList({ className, ...props }: Combobox.List.Props) {
@@ -169,6 +175,7 @@ export {
   ComboboxPopup,
   ComboboxPortal,
   ComboboxPositioner,
+  ComboboxSpacer,
   ComboboxTrigger,
   ComboboxValue,
 };
