@@ -15,7 +15,7 @@
   line-height: 17.5px;
   font-weight: 500;
   color: var(--foreground);
-  margin-left: 4px;
+  margin-left: 2px;
 
   @media (max-width: 640px) {
     font-size: 0.9375rem;

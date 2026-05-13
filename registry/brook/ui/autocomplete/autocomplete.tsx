@@ -65,11 +65,15 @@ function AutocompletePositioner({ className, ...props }: React.ComponentProps<ty
 function AutocompletePopup({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Popup>) {
   return (
     <Autocomplete.Popup className={cn(styles.popup, className)} data-slot="autocomplete-popup" {...props}>
-      <div style={{ height: "4px", width: "100%" }} />
+      <AutocompleteSpacer />
       {children}
-      <div style={{ height: "4px", width: "100%" }} />
+      <AutocompleteSpacer />
     </Autocomplete.Popup>
   );
+}
+
+function AutocompleteSpacer() {
+  return <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />;
 }
 
 function AutocompleteArrow({ className, ...props }: React.ComponentProps<typeof Autocomplete.Arrow>) {
@@ -142,6 +146,7 @@ export {
   AutocompletePositioner,
   AutocompleteRow,
   AutocompleteSeparator,
+  AutocompleteSpacer,
   AutocompleteStatus,
   AutocompleteTrigger,
   AutocompleteValue,

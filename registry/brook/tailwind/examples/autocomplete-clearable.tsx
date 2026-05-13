@@ -28,7 +28,7 @@ export default function AutocompleteClearable() {
   return (
     <div className="flex flex-col gap-3 p-8 max-sm:p-4">
       <label
-        className="ml-1 flex flex-col gap-1 font-medium text-foreground text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
+        className="ml-0.5 flex flex-col gap-1 font-medium text-foreground text-sm leading-[17.5px] max-sm:text-[0.9375rem]"
         htmlFor="clearable-input"
       >
         Select a framework

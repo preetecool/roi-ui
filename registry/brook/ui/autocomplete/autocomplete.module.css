@@ -267,7 +267,7 @@
     content: "";
     position: absolute;
     inset: 0 4px;
-    border-radius: calc(var(--radius) - 4px);
+    border-radius: calc(var(--radius) - 3px);
     background-color: transparent;
     z-index: -1;
   }

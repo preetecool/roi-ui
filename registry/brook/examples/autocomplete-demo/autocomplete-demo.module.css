@@ -17,19 +17,36 @@
   line-height: 17.5px;
   font-weight: 500;
   color: var(--foreground);
-  margin-left: 4px;
+  margin-left: 2px;
 
   @media (max-width: 640px) {
     font-size: 0.9375rem;
   }
 }
 
-input.input {
+.inputWrapper {
+  position: relative;
   width: 360px;
+  margin-bottom: 4rem;
 
   @media (max-width: 640px) {
     width: 100%;
   }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+  z-index: 1;
+}
+
+input.input {
+  width: 100%;
+  padding-left: 2.25rem;
 }
 
 .itemContainer {
@@ -61,4 +78,13 @@ input.input {
 
 .badge {
   flex-shrink: 0;
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  font-weight: 400;
+  padding-inline: 0 0.5rem;
+
+  &:hover {
+    background: transparent;
+  }
 }

@@ -84,11 +84,15 @@ function ComboboxPopup({ className, children, ...props }: Combobox.Popup.Props) 
       data-slot="combobox-popup"
       {...props}
     >
-      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      <ComboboxSpacer />
       {children}
-      <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />
+      <ComboboxSpacer />
     </Combobox.Popup>
   );
+}
+
+function ComboboxSpacer() {
+  return <div style={{ height: "4px", width: "100%", flexShrink: 0 }} />;
 }
 
 function ComboboxList({ className, ...props }: Combobox.List.Props) {
@@ -310,6 +314,7 @@ export {
   ComboboxPopup,
   ComboboxPortal,
   ComboboxPositioner,
+  ComboboxSpacer,
   ComboboxTrigger,
   ComboboxValue,
 };
