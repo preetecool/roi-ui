@@ -1,7 +1,7 @@
 "use client";
 
 import { useControlled } from "@base-ui/utils/useControlled";
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 
 type CarouselContextValue = {
@@ -16,6 +16,7 @@ type CarouselContextValue = {
   canGoNext: boolean;
   canGoPrev: boolean;
   viewportRef: React.RefObject<HTMLDivElement | null>;
+  slidesId: string;
 };
 
 const CarouselContext = createContext<CarouselContextValue | null>(null);
@@ -61,6 +62,7 @@ export function Root({
   const bleedRefFromContext = useBleedRef();
   const [insetPaddingLeft, setInsetPaddingLeft] = useState(0);
   const [insetPaddingRight, setInsetPaddingRight] = useState(0);
+  const slidesId = `${useId()}-slides`;
 
   const maxIndex = totalItems - 1;
 
@@ -158,6 +160,7 @@ export function Root({
     canGoNext,
     canGoPrev,
     viewportRef,
+    slidesId,
   };
 
   useEffect(() => {
@@ -238,6 +241,7 @@ export function Root({
       <div
         className={cn(
           "relative mx-auto w-full overflow-visible rounded-lg",
+          "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
           "data-[align=center]:flex data-[align=center]:flex-col data-[align=center]:items-center",
           className
         )}
@@ -245,6 +249,12 @@ export function Root({
         data-slot="carousel"
         style={
           {
+            "--page-max-width": "1280px",
+            "--page-padding-left": "1rem",
+            "--carousel-gap": "16px",
+            "--edge": "calc((100vw - var(--page-max-width)) / 2)",
+            "--min-edge": "calc(var(--edge) - var(--carousel-gap))",
+            "--min-padding": "calc(var(--page-padding-left) - var(--carousel-gap))",
             "--calculated-inset-padding-left": `${insetPaddingLeft}px`,
             "--calculated-inset-padding-right": `${insetPaddingRight}px`,
           } as React.CSSProperties
@@ -258,7 +268,7 @@ export function Root({
           className="-m-px absolute h-px w-px overflow-hidden whitespace-nowrap border-0 p-0"
           style={{ clip: "rect(0, 0, 0, 0)" }}
         >
-          Item {currentIndex + 1} of {totalItems}
+          Slide {currentIndex + 1} of {totalItems}
         </div>
       </div>
     </CarouselContext.Provider>
@@ -292,18 +302,17 @@ export function Bleed({ className, children, ...props }: CarouselBleedProps) {
 export type CarouselViewportProps = React.ComponentProps<"div">;
 
 export function Viewport({ className, children, ...props }: CarouselViewportProps) {
-  const { viewportRef } = useCarousel();
+  const { viewportRef, slidesId } = useCarousel();
 
   return (
     <div
-      aria-atomic="false"
-      aria-live="polite"
       className={cn(
-        "scroll-snap-stop-always relative w-full overflow-y-hidden overflow-x-scroll overscroll-x-contain",
-        "py-[calc(2px+2px)] [-ms-overflow-style:none] [scrollbar-width:none]",
+        "[scroll-snap-stop:always] relative w-full overflow-y-hidden overflow-x-scroll overscroll-x-contain",
+        "py-[calc(var(--focus-ring-width,2px)+var(--focus-ring-offset,2px))] [-ms-overflow-style:none] [scrollbar-width:none]",
         "[&::-webkit-scrollbar]:hidden",
         className
       )}
+      id={slidesId}
       ref={viewportRef}
       {...props}
     >
@@ -350,9 +359,23 @@ export type CarouselItemProps = React.ComponentProps<"div"> & {
 };
 
 export function Item({ index, className, children, ...props }: CarouselItemProps) {
-  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev } = useCarousel();
+  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev, viewportRef } = useCarousel();
+  const itemRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const isVisible = true;
+  useEffect(() => {
+    const el = itemRef.current;
+    const root = viewportRef.current;
+    if (!(el && root)) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.intersectionRatio >= 0.5),
+      { root, threshold: [0, 0.5, 1] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [viewportRef]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -387,14 +410,15 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
   return (
     // biome-ignore lint/a11y/noNoninteractiveElementInteractions: Keyboard navigation is required for carousel accessibility
     <div
-      aria-label={`${index + 1} of ${totalItems}`}
+      aria-label={`Slide ${index + 1} of ${totalItems}`}
       aria-roledescription="slide"
       className={cn(
-        "relative flex-shrink-0 rounded-[var(--radius)]",
-        "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-[1px]",
+        "relative flex-shrink-0",
+        "focus-visible:rounded-[var(--radius)] focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-[1px]",
         className
       )}
       onKeyDown={handleKeyDown}
+      ref={itemRef}
       role="group"
       tabIndex={isVisible ? 0 : -1}
       {...props}
@@ -407,21 +431,21 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
 export type CarouselPreviousProps = React.ComponentProps<"button">;
 
 export function Previous({ className, children, ...props }: CarouselPreviousProps) {
-  const { prevSlide, canGoPrev } = useCarousel();
+  const { prevSlide, canGoPrev, slidesId } = useCarousel();
 
   return (
     <button
-      aria-controls="carousel-slides"
-      aria-label="Scroll to previous items"
+      aria-controls={slidesId}
+      aria-label="Previous slide"
       className={cn(
         "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
         "flex cursor-pointer items-center justify-center bg-[color:var(--card)] text-[color:var(--foreground)]",
         "opacity-90 shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)]",
-        "hover:scale-105 hover:bg-[color:var(--muted)] hover:opacity-100",
+        "hover:bg-[color:var(--muted)] hover:opacity-100",
         "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
         "active:scale-95",
         "disabled:pointer-events-none disabled:cursor-default disabled:bg-[color:var(--muted)] disabled:text-[color:var(--muted-foreground)] disabled:opacity-30",
-        "disabled:hover:scale-100 disabled:hover:bg-[color:var(--muted)] disabled:hover:opacity-30",
+        "disabled:hover:bg-[color:var(--muted)] disabled:hover:opacity-30 disabled:hover:[transform:none]",
         "motion-reduce:transition-none [&_svg]:h-4 [&_svg]:w-4",
         className
       )}
@@ -442,21 +466,21 @@ export function Previous({ className, children, ...props }: CarouselPreviousProp
 export type CarouselNextProps = React.ComponentProps<"button">;
 
 export function Next({ className, children, ...props }: CarouselNextProps) {
-  const { nextSlide, canGoNext } = useCarousel();
+  const { nextSlide, canGoNext, slidesId } = useCarousel();
 
   return (
     <button
-      aria-controls="carousel-slides"
-      aria-label="Scroll to next items"
+      aria-controls={slidesId}
+      aria-label="Next slide"
       className={cn(
         "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
         "flex cursor-pointer items-center justify-center bg-[color:var(--card)] text-[color:var(--foreground)]",
         "opacity-90 shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)]",
-        "hover:scale-105 hover:bg-[color:var(--muted)] hover:opacity-100",
+        "hover:bg-[color:var(--muted)] hover:opacity-100",
         "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
         "active:scale-95",
         "disabled:pointer-events-none disabled:cursor-default disabled:bg-[color:var(--muted)] disabled:text-[color:var(--muted-foreground)] disabled:opacity-30",
-        "disabled:hover:scale-100 disabled:hover:bg-[color:var(--muted)] disabled:hover:opacity-30",
+        "disabled:hover:bg-[color:var(--muted)] disabled:hover:opacity-30 disabled:hover:[transform:none]",
         "motion-reduce:transition-none [&_svg]:h-4 [&_svg]:w-4",
         className
       )}
@@ -508,7 +532,7 @@ export function Navigation({ className, children, ...props }: CarouselNavigation
 export type CarouselIndicatorsProps = React.ComponentProps<"div">;
 
 export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
-  const { totalItems, currentIndex, goToIndex } = useCarousel();
+  const { totalItems, currentIndex, goToIndex, slidesId } = useCarousel();
 
   if (totalItems <= 1) {
     return null;
@@ -523,15 +547,15 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
     >
       {Array.from({ length: totalItems }, (_, index) => (
         <button
-          aria-controls="carousel-slides"
-          aria-label={`Scroll to item ${index + 1}`}
+          aria-controls={slidesId}
+          aria-label={`Go to slide ${index + 1}`}
           aria-selected={currentIndex === index}
           className={cn(
             "relative h-3 w-3 cursor-pointer rounded-full border-none",
-            "bg-white/50 transition-all duration-200 ease-in-out",
-            "hover:scale-110 hover:bg-white/70",
-            "focus-visible:outline-2 focus-visible:outline-[color:var(--color-ring)] focus-visible:outline-offset-2",
-            "data-[active]:scale-[1.2] data-[active]:bg-[color:var(--color-primary)] data-[active]:hover:bg-[color:var(--color-primary)]",
+            "bg-[color:oklch(from_var(--foreground)_l_c_h_/_0.3)] transition-all duration-200 ease-[ease]",
+            "hover:scale-110 hover:bg-[color:oklch(from_var(--foreground)_l_c_h_/_0.5)]",
+            "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
+            "data-[active]:scale-[1.2] data-[active]:bg-[color:var(--primary)] data-[active]:hover:bg-[color:var(--primary)]",
             "motion-reduce:transition-none"
           )}
           data-active={currentIndex === index ? "" : undefined}
