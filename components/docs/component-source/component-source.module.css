@@ -16,7 +16,7 @@
 }
 
 .codeContainer {
-  max-height: 450px;
+  max-height: none;
 }
 
 .noSourceText {

@@ -43,9 +43,8 @@
 }
 
 .content {
-  max-height: 400px;
   box-sizing: border-box;
-  overflow: auto;
+  overflow-x: auto;
   background: transparent;
   position: relative;
   scrollbar-width: none;

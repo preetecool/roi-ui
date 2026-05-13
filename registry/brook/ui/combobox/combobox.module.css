@@ -1,3 +1,13 @@
+.input {
+  @media (max-width: 640px) {
+    font-size: 0.9375rem;
+
+    &::placeholder {
+      font-size: 0.9375rem;
+    }
+  }
+}
+
 .trigger {
   position: absolute;
   top: 50%;

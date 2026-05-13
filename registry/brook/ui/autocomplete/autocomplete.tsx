@@ -16,7 +16,7 @@ function AutocompleteValue({ ...props }: React.ComponentProps<typeof Autocomplet
 }
 
 function AutocompleteInput({ className, ...props }: React.ComponentProps<typeof Autocomplete.Input>) {
-  return <Autocomplete.Input className={className} render={<Input />} {...props} />;
+  return <Autocomplete.Input className={cn(styles.inputOverride, className)} render={<Input />} {...props} />;
 }
 
 function AutocompleteTrigger({ className, children, ...props }: React.ComponentProps<typeof Autocomplete.Trigger>) {

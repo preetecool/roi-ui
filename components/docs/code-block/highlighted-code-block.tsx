@@ -1,3 +1,4 @@
+import { CodeBlockCollapse } from "@/components/docs/code-block-collapse/code-block-collapse";
 import { highlightCode } from "@/lib/highlight-code";
 import {
   CodeBlockActions,
@@ -36,7 +37,9 @@ export async function HighlightedCodeBlock({
           <CodeBlockCopyButton />
         </CodeBlockActions>
       </CodeBlockHeader>
-      <CodeBlockContent />
+      <CodeBlockCollapse>
+        <CodeBlockContent />
+      </CodeBlockCollapse>
     </CodeBlockRoot>
   );
 
