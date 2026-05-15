@@ -13,7 +13,7 @@
 .background {
   position: absolute;
   inset: 0;
-  background-color: var(--background);
+  background-color: var(--popover);
   box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.5);
   z-index: -1;
   border-radius: inherit;
@@ -69,7 +69,7 @@
 .menu {
   display: flex;
   gap: 2px;
-  background-color: var(--popover);
+  background-color: oklch(0.16 0 0);
   margin: 4px;
   padding: 4px;
   border-radius: 12px;
@@ -88,12 +88,12 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--foreground);
+  color: oklch(0.94 0 0);
   transition: background-color 0.15s ease;
 }
 
 .menuItem:hover {
-  background-color: var(--accent);
+  background-color: oklch(1 0 0 / 0.08);
 }
 
 .menuItem:focus-visible {
@@ -108,12 +108,12 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background-color: oklch(from var(--foreground) l c h / 0.05);
+  background-color: oklch(1 0 0 / 0.06);
   transition: background-color 0.15s ease;
 }
 
 .menuItem:hover .menuItemIcon {
-  background-color: oklch(from var(--foreground) l c h / 0.08);
+  background-color: oklch(1 0 0 / 0.1);
 }
 
 .menuIcon {

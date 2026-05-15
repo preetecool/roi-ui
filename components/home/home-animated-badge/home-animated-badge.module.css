@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .badge {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0.5px solid oklch(1 0 0 / 0.15);
 }
 
 .content {
@@ -49,12 +51,25 @@
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
+.badgeContainer[data-paused="true"] .processingText {
+  animation-play-state: paused;
+}
+
 @keyframes shimmer {
   0% {
     background-position: 100% 0;
   }
   100% {
     background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .processingText {
+    animation: none;
+    background: none;
+    color: var(--muted-foreground);
+    -webkit-text-fill-color: currentColor;
   }
 }
 

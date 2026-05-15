@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiChat } from "@/registry/brook/blocks/ai-chat/components/ai-chat";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { ArrowPointer, Button } from "@/registry/brook/ui/button/button";
@@ -15,38 +15,51 @@ const SUBHEADING = "Components and blocks built with Base UI primitives and styl
 
 export const Hero = () => {
   const [expandedCard, setExpandedCard] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(hover: none)");
+    const update = () => setIsTouch(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isTouch) return;
+    const interval = setInterval(() => setExpandedCard((prev) => !prev), 3500);
+    return () => clearInterval(interval);
+  }, [isTouch]);
 
   return (
     <section aria-label="Hero section" className={styles.container}>
-      <Badge className={styles.badge} variant="outline">
-        <Link aria-label="View new OTP field component" href="/docs/ui/otp-field">
-          <span aria-hidden="true">New OTP field component</span>
-        </Link>
+      <Badge
+        className={`${styles.badge} ${styles.animateEnter}`}
+        render={<Link aria-label="View new OTP field component" href="/docs/ui/otp-field" />}
+        style={{ "--stagger": 1 } as React.CSSProperties}
+        variant="outline"
+      >
+        <span aria-hidden="true">New OTP field component</span>
         <ArrowPointer />
       </Badge>
-      <h1 className={styles.h1}>
-        {HEADING.split(" ").map((word, index) => (
-          <span className={styles.wordContainer} key={`word-${word}`}>
-            <span className={styles.wordWrapper} style={{ "--index": index } as React.CSSProperties}>
-              {word}
-              {index < HEADING.split(" ").length - 1 && " "}
-            </span>
-          </span>
-        ))}
+      <h1 className={`${styles.h1} ${styles.animateEnter}`} style={{ "--stagger": 2 } as React.CSSProperties}>
+        {HEADING}
       </h1>
-      <p className={styles.subheading}>{SUBHEADING}</p>
-      <div className={styles.buttonWrapper}>
+      <p className={`${styles.subheading} ${styles.animateEnter}`} style={{ "--stagger": 3 } as React.CSSProperties}>
+        {SUBHEADING}
+      </p>
+      <div className={`${styles.buttonWrapper} ${styles.animateEnter}`} style={{ "--stagger": 4 } as React.CSSProperties}>
         <Button nativeButton={false} render={<Link href="/docs/start" />}>
           Get Started
         </Button>
       </div>
 
-      <div className={styles.bentoGrid}>
+      <div className={`${styles.bentoGrid} ${styles.animateEnter}`} style={{ "--stagger": 5 } as React.CSSProperties}>
         <div
           className={styles.bentoCard}
           data-size="large"
-          onMouseEnter={() => setExpandedCard(true)}
-          onMouseLeave={() => setExpandedCard(false)}
+          onMouseEnter={isTouch ? undefined : () => setExpandedCard(true)}
+          onMouseLeave={isTouch ? undefined : () => setExpandedCard(false)}
         >
           <div className={styles.bentoLabel}>Expandable Card</div>
           <div className={styles.bentoContent}>

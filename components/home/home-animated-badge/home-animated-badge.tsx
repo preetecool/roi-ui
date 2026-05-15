@@ -1,31 +1,50 @@
 "use client";
 
-import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import styles from "./home-animated-badge.module.css";
 import { Spinner } from "./spinner";
 
 export function HomeAnimatedBadge() {
   const [phase, setPhase] = useState<"loading" | "success">("loading");
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
     const interval = setInterval(() => {
       setPhase((prev) => (prev === "loading" ? "success" : "loading"));
     }, 3500);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
   const isLoading = phase === "loading";
+  const stateTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : ({ type: "spring", bounce: 0, duration: 0.4 } as const);
+  const checkPopTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : ({ type: "spring", bounce: 0.25, duration: 0.4 } as const);
+  const pathTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : ({ duration: 0.25, ease: [0.215, 0.61, 0.355, 1] } as const);
 
   return (
-    <div className={styles.badgeContainer}>
+    <div aria-hidden="true" className={styles.badgeContainer} data-paused={!isVisible} ref={containerRef}>
       <Badge
         className={styles.badge}
         render={<motion.div layout style={{ borderRadius: 12 }} />}
         size="lg"
-        style={{ border: "0.5px solid oklch(1 0 0 / 0.15)" }}
         variant="success"
       >
         <div className={styles.content}>
@@ -37,7 +56,7 @@ export function HomeAnimatedBadge() {
             }}
             className={`${styles.stateInner} ${isLoading ? "" : styles.stateHidden}`}
             layout="position"
-            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+            transition={stateTransition}
           >
             <Spinner size={16} />
             <span className={styles.processingText}>Processing</span>
@@ -50,12 +69,12 @@ export function HomeAnimatedBadge() {
             }}
             className={`${styles.stateInner} ${isLoading ? styles.stateHidden : ""}`}
             layout="position"
-            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+            transition={stateTransition}
           >
             <motion.div
               animate={{ scale: isLoading ? 0.9 : 1 }}
               className={styles.checkBackground}
-              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              transition={checkPopTransition}
             >
               <svg
                 aria-hidden="true"
@@ -73,7 +92,7 @@ export function HomeAnimatedBadge() {
                   animate={{ pathLength: isLoading ? 0 : 1, pathOffset: 0 }}
                   d="m3 8 3 3 7-7"
                   strokeDasharray="0 1"
-                  transition={{ duration: 0.2 }}
+                  transition={pathTransition}
                 />
               </svg>
             </motion.div>
