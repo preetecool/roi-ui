@@ -5,7 +5,7 @@ import styles from "./home-context-menu.module.css";
 
 export function HomeContextMenu() {
   return (
-    <div className={styles.popup}>
+    <div aria-hidden="true" className={styles.popup}>
       <div className={styles.item}>
         <span className={styles.icon}>
           <FileText size={14} />

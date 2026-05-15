@@ -66,6 +66,7 @@
   line-height: 1.2;
   margin-bottom: 2px;
   color: var(--foreground);
+  text-wrap: balance;
 }
 
 .linkListItemText {
@@ -74,6 +75,7 @@
   font-size: 0.75rem;
   line-height: 1.4;
   font-weight: initial;
+  text-wrap: pretty;
 }
 
 .previewCard {
@@ -110,14 +112,18 @@
   width: 150%;
   height: 100%;
   pointer-events: none;
-  animation: sway 5s ease-in-out infinite;
+  will-change: transform;
 
   & ellipse {
-    transition: fill 0.4s ease;
+    transition: fill 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   & stop {
-    transition: stop-color 0.4s ease;
+    transition: stop-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: sway 5s ease-in-out infinite;
   }
 }
 

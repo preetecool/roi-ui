@@ -17,7 +17,7 @@ type HomeAnimatedCardProps = {
 export const HomeAnimatedCard = ({ isExpanded = false }: HomeAnimatedCardProps) => (
   <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0 }}>
     <div className={styles.container}>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isExpanded ? (
           <motion.div className={styles.cardExpanded} layoutId="card" style={{ borderRadius: "24px" }}>
             <motion.img

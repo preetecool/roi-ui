@@ -29,6 +29,17 @@
   animation: spinner-fade 0.8s linear infinite;
 }
 
+[data-paused="true"] .spinner div {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner div {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
 .spinner div::after {
   content: "";
   display: block;

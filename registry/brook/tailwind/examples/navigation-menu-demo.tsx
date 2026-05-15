@@ -38,8 +38,8 @@ function ListItem({
         onMouseEnter={onMouseEnter}
         render={<Link href={href} />}
       >
-        <h3 className="mb-1.5 font-normal text-foreground text-sm leading-tight">{title}</h3>
-        <p className="font-normal text-muted-foreground text-xs leading-snug">{children}</p>
+        <h3 className="mb-0.5 text-balance font-normal text-foreground text-sm leading-tight">{title}</h3>
+        <p className="text-pretty font-normal text-muted-foreground text-xs leading-snug">{children}</p>
       </NavigationMenuLink>
     </li>
   );
@@ -127,7 +127,7 @@ export default function NavigationMenuDemo() {
                   <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-md bg-gradient-to-b from-accent/5 to-accent/10 p-6">
                     <svg
                       aria-label="Preview Shape"
-                      className="pointer-events-none absolute top-1/2 right-0 h-full w-[150%] animate-[sway_5s_ease-in-out_infinite] [&_ellipse]:transition-[fill] [&_ellipse]:duration-400 [&_ellipse]:ease-in-out [&_stop]:transition-[stop-color] [&_stop]:duration-400 [&_stop]:ease-in-out"
+                      className="pointer-events-none absolute top-1/2 right-0 h-full w-[150%] will-change-transform motion-safe:animate-[sway_5s_ease-in-out_infinite] [&_ellipse]:transition-[fill] [&_ellipse]:duration-[400ms] [&_ellipse]:ease-[cubic-bezier(0.22,1,0.36,1)] [&_stop]:transition-[stop-color] [&_stop]:duration-[400ms] [&_stop]:ease-[cubic-bezier(0.22,1,0.36,1)]"
                       role="img"
                       viewBox="0 0 200 200"
                     >
