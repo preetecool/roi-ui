@@ -252,6 +252,10 @@
   align-items: center;
 }
 
+.badgeButton[data-slot="button"]::before {
+  border-radius: 1px;
+}
+
 .badgeButton [data-slot="arrow"] {
   width: 10px;
   height: 9px;
