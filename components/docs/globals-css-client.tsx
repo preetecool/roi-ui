@@ -1,5 +1,6 @@
 "use client";
 
+import { CodeBlockCollapse } from "@/components/docs/code-block-collapse/code-block-collapse";
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 import { PaletteSelector } from "@/components/docs/palette-selector/palette-selector";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
@@ -43,11 +44,13 @@ export function GlobalsCSSClient({ variants, highlighted }: GlobalsCSSClientProp
         </div>
       </div>
 
-      <div
-        className="code-container"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
-        dangerouslySetInnerHTML={{ __html: highlightedCode }}
-      />
+      <CodeBlockCollapse>
+        <div
+          className="code-container"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
+          dangerouslySetInnerHTML={{ __html: highlightedCode }}
+        />
+      </CodeBlockCollapse>
     </div>
   );
 }
