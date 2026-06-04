@@ -52,6 +52,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "autocomplete-animated": dynamic(() =>
+    import("@/registry/brook/examples/autocomplete-animated/autocomplete-animated").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "autocomplete-auto-highlight": dynamic(() =>
     import("@/registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -615,6 +620,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "alert-warning-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/alert-warning").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "autocomplete-animated-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/autocomplete-animated").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
