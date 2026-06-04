@@ -89,6 +89,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/alert-warning/alert-warning",
   },
+  "autocomplete-animated": {
+    name: "autocomplete-animated",
+    type: "example",
+    files: [
+      "registry/brook/examples/autocomplete-animated/autocomplete-animated.tsx",
+      "registry/brook/examples/autocomplete-animated/autocomplete-animated.module.css",
+    ],
+    path: "@/registry/brook/examples/autocomplete-animated/autocomplete-animated",
+  },
   "autocomplete-auto-highlight": {
     name: "autocomplete-auto-highlight",
     type: "example",
@@ -1367,6 +1376,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/alert-warning.tsx"],
     path: "@/registry/brook/tailwind/examples/alert-warning",
+  },
+  "autocomplete-animated-tailwind": {
+    name: "autocomplete-animated-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/autocomplete-animated.tsx"],
+    path: "@/registry/brook/tailwind/examples/autocomplete-animated",
   },
   "autocomplete-auto-highlight-tailwind": {
     name: "autocomplete-auto-highlight-tailwind",
