@@ -1,0 +1,306 @@
+.root {
+  --ac-radius: 1rem;
+  --ac-duration: 400ms;
+  --ac-duration-fast: 250ms;
+  --ac-easing: cubic-bezier(0.77, 0, 0.175, 1);
+  --ac-cell-width: 10rem;
+  --ac-popover-pad: 0.25rem;
+  --ac-popover-width: calc(var(--ac-cols) * var(--ac-cell-width) + 0.5rem);
+  --ac-popover-height: calc(var(--ac-list-height, 0px) + 0.5rem);
+
+  position: relative;
+  z-index: 0;
+  display: inline-grid;
+  isolation: isolate;
+}
+
+.root[data-open] {
+  overflow: clip;
+}
+
+.surface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--card);
+  border: 1px solid var(--input);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px oklch(0 0 0 / 0.05);
+  transition: border-radius var(--ac-duration) var(--ac-easing);
+}
+
+:global(.dark) .surface,
+:global([data-theme="dark"]) .surface {
+  box-shadow: 0 1px 2px oklch(0 0 0 / 0.2);
+}
+
+.root[data-open] .surface {
+  border-radius: var(--ac-radius);
+}
+
+.widthClip {
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  border-radius: var(--ac-radius);
+  transition:
+    width var(--ac-duration) var(--ac-easing),
+    opacity calc(var(--ac-duration) * 0.85) var(--ac-easing);
+}
+
+.root[data-open] .widthClip {
+  width: calc(var(--ac-popover-width) + 0.5rem);
+  opacity: 1;
+  transition: width var(--ac-duration) var(--ac-easing);
+}
+
+.heightClip {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  transition: height var(--ac-duration) var(--ac-easing);
+}
+
+.root[data-open] .heightClip {
+  height: calc(var(--ac-popover-height) + var(--ac-popover-pad));
+  transition: height var(--ac-duration-fast) var(--ac-easing);
+}
+
+.popoverFill {
+  position: absolute;
+  top: var(--ac-popover-pad);
+  left: var(--ac-popover-pad);
+  right: var(--ac-popover-pad);
+  bottom: 0;
+  background-color: var(--popover);
+  border-radius: calc(var(--ac-radius) - var(--ac-popover-pad)) calc(var(--ac-radius) - var(--ac-popover-pad)) 0 0;
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity var(--ac-duration) var(--ac-easing),
+    filter var(--ac-duration) var(--ac-easing);
+}
+
+.root[data-open] .popoverFill {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.popover {
+  position: relative;
+  margin: var(--ac-popover-pad) var(--ac-popover-pad) 0;
+  padding: var(--ac-popover-pad);
+  width: var(--ac-popover-width);
+  height: var(--ac-popover-height);
+  background-color: var(--popover);
+  border-radius: calc(var(--ac-radius) - var(--ac-popover-pad)) calc(var(--ac-radius) - var(--ac-popover-pad)) 0 0;
+  overflow: hidden;
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity var(--ac-duration) var(--ac-easing),
+    filter var(--ac-duration) var(--ac-easing),
+    height var(--ac-duration-fast) var(--ac-easing);
+}
+
+.root[data-open] .popover {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Overrides the wrapped list's column-flex default */
+.list {
+  display: block;
+  gap: 0;
+  max-height: 16rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  outline: none;
+}
+
+.group {
+  display: block;
+  padding: 0;
+}
+
+/* Overrides the wrapped row's flex default */
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--ac-cols), 1fr);
+  gap: 0.25rem;
+  align-items: stretch;
+}
+
+.row + .row {
+  margin-top: 0.25rem;
+}
+
+.item {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  height: auto;
+  margin: 0;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.015em;
+  color: oklch(from var(--foreground) l c h / 0.7);
+  cursor: default;
+  user-select: none;
+  outline: none;
+  border-radius: calc(var(--ac-radius) - 0.5rem);
+  transition: color 150ms ease-out;
+}
+
+/* Suppresses the wrapper's ::before hover background so .itemBg can drive it */
+.item::before {
+  content: none;
+}
+
+:global(.dark) .item,
+:global([data-theme="dark"]) .item {
+  color: var(--muted-foreground);
+}
+
+.item[data-highlighted] {
+  color: var(--foreground);
+}
+
+.itemBg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: oklch(from var(--muted) l c h / 0.8);
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px oklch(from var(--border) l c h / 0.5),
+    0 1px 2px oklch(0 0 0 / 0.06);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+}
+
+:global(.dark) .itemBg,
+:global([data-theme="dark"]) .itemBg {
+  background-color: oklch(1 0 0 / 0.04);
+  box-shadow:
+    inset 0 0 0 1px oklch(1 0 0 / 0.06),
+    0 1px 2px oklch(0 0 0 / 0.3),
+    inset 0 1px 0 oklch(1 0 0 / 0.02);
+}
+
+.item:hover .itemBg,
+.item[data-highlighted] .itemBg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.swatch {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.375rem;
+  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.5);
+  background-color: color-mix(in oklch, var(--swatch-color, oklch(0.5 0 0 / 0.06)) 50%, transparent);
+}
+
+:global(.dark) .swatch,
+:global([data-theme="dark"]) .swatch {
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.06);
+  background-color: color-mix(in oklch, var(--swatch-color, oklch(0.5 0 0 / 0.06)) 25%, transparent);
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  padding: 1.5rem 0;
+  font-size: 0.75rem;
+  color: oklch(from var(--muted-foreground) l c h / 0.5);
+}
+
+.empty:empty {
+  margin: 0;
+  padding: 0;
+}
+
+.inputClip {
+  overflow: hidden;
+  height: 0;
+  transition: height var(--ac-duration) var(--ac-easing);
+}
+
+.root[data-open] .inputClip {
+  height: 2.5rem;
+}
+
+.inputBar {
+  margin: 0 var(--ac-popover-pad) var(--ac-popover-pad);
+  padding: 0 var(--ac-popover-pad) var(--ac-popover-pad);
+  width: var(--ac-popover-width);
+  background-color: var(--popover);
+  border-radius: 0 0 calc(var(--ac-radius) - var(--ac-popover-pad)) calc(var(--ac-radius) - var(--ac-popover-pad));
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity var(--ac-duration) var(--ac-easing),
+    filter var(--ac-duration) var(--ac-easing);
+}
+
+.root[data-open] .inputBar {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.input {
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.625rem;
+  border: 0;
+  background: transparent;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  outline: none;
+}
+
+.input::placeholder {
+  color: oklch(from var(--muted-foreground) l c h / 0.4);
+}
+
+.trigger {
+  justify-self: center;
+  transition:
+    background-color 200ms ease-out 350ms,
+    border-color 200ms ease-out 350ms,
+    box-shadow 200ms ease-out 350ms;
+}
+
+.root[data-open] .trigger {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transition-delay: 0ms;
+}
+
+.root[data-open] .trigger::before {
+  background-color: transparent;
+}
+
+.root[data-open] .trigger:focus-visible {
+  outline: none;
+}
+
+.triggerIcon {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform var(--ac-duration) var(--ac-easing);
+}
+
+.root[data-open] .triggerIcon {
+  transform: rotate(45deg);
+}
