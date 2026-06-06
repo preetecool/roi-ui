@@ -9,6 +9,14 @@
     outline: 2px solid var(--ring);
     outline-offset: -1px;
   }
+
+  /* Don't scale the trigger on press. The rendered Button sets data-slot="button", so we
+     match on [data-slot] presence (not its value) to keep this at 0,4,0 specificity — beating
+     the button variant's active/pressed scale rule regardless of stylesheet source order. */
+  &[data-slot]:active:not([data-disabled]),
+  &[data-slot][data-pressed]:not([data-disabled]) {
+    transform: none;
+  }
 }
 
 .backdrop {
