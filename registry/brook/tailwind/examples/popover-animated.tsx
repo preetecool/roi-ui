@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, User } from "lucide-react";
+import { Activity, Bell, User } from "lucide-react";
 import type * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/tailwind/ui/avatar";
 import { Button } from "@/registry/brook/tailwind/ui/button";
@@ -17,27 +17,36 @@ const popoverHandle = createPopoverHandle<React.ComponentType>();
 
 function NotificationsContent() {
   return (
-    <>
-      <PopoverTitle>Notifications</PopoverTitle>
-      <PopoverDescription>You have no new notifications at this time.</PopoverDescription>
-    </>
+    <div className="flex flex-col gap-1">
+      <PopoverTitle className="text-sm leading-5">Notifications</PopoverTitle>
+      <PopoverDescription>You are all caught up.</PopoverDescription>
+    </div>
+  );
+}
+
+function ActivityContent() {
+  return (
+    <div className="flex flex-col gap-1">
+      <PopoverTitle className="text-sm leading-5">Activity</PopoverTitle>
+      <PopoverDescription>No recent activity to show.</PopoverDescription>
+    </div>
   );
 }
 
 function ProfileContent() {
   return (
-    <div className="w-48">
+    <div className="flex w-48 flex-col gap-3">
       <div className="flex items-center gap-3">
         <Avatar className="h-10 w-10 shrink-0">
-          <AvatarImage alt="@preetecool" src="/preetecool.png" />
+          <AvatarImage alt="preetecool" src="/preetecool.png" />
           <AvatarFallback>PC</AvatarFallback>
         </Avatar>
-        <div className="min-w-0 flex-1">
-          <h4 className="m-0 truncate font-medium text-sm leading-5">preetecool</h4>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <PopoverTitle className="text-sm leading-5">preetecool</PopoverTitle>
           <span className="text-muted-foreground text-xs">Design Engineer</span>
         </div>
       </div>
-      <Button className="mt-3 w-full" variant="outline">
+      <Button className="w-full" variant="outline">
         Log out
       </Button>
     </div>
@@ -46,13 +55,20 @@ function ProfileContent() {
 
 export default function PopoverAnimated() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center justify-center gap-2">
       <PopoverTrigger
         handle={popoverHandle}
         payload={NotificationsContent}
         render={<Button className="h-9 w-9 p-0" variant="outline" />}
       >
-        <Bell aria-label="Notifications" className="size-5" />
+        <Bell aria-label="Notifications" className="size-4" />
+      </PopoverTrigger>
+      <PopoverTrigger
+        handle={popoverHandle}
+        payload={ActivityContent}
+        render={<Button className="h-9 w-9 p-0" variant="outline" />}
+      >
+        <Activity aria-label="Activity" className="size-4" />
       </PopoverTrigger>
       <PopoverTrigger
         handle={popoverHandle}
