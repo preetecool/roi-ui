@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils-tailwind";
 function AccordionRoot({ className, ...props }: Accordion.Root.Props) {
   return (
     <Accordion.Root
-      className={cn("flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col", className)}
+      className={cn("flex w-[32rem] max-w-[calc(100vw-8rem)] flex-col max-sm:w-full max-sm:max-w-full", className)}
       data-slot="accordion-root"
       {...props}
     />
@@ -50,7 +50,7 @@ function AccordionTrigger({ className, children, ...props }: Accordion.Trigger.P
   return (
     <Accordion.Trigger
       className={cn(
-        "group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent text-left",
+        "group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent text-left max-sm:gap-3",
         "font-[350] text-base text-secondary-foreground tracking-[-0.02em]",
         className
       )}
@@ -59,14 +59,22 @@ function AccordionTrigger({ className, children, ...props }: Accordion.Trigger.P
     >
       <div
         className={cn(
-          "flex h-8 w-8 items-center justify-center text-muted-foreground",
+          "flex h-8 w-8 items-center justify-center text-muted-foreground max-sm:h-7 max-sm:w-7 max-sm:flex-shrink-0",
           "transition-[color,rotate] duration-[200ms,150ms] ease-[ease,var(--ease-in-out-quad)]",
           "rotate-0",
           "[[data-panel-open]_&]:rotate-90",
           "group-hover:text-foreground"
         )}
       >
-        <svg aria-label="Accordion toggle icon" fill="none" height="18" role="img" viewBox="0 0 20 20" width="18">
+        <svg
+          aria-label="Accordion toggle icon"
+          className="max-sm:h-4 max-sm:w-4"
+          fill="none"
+          height="18"
+          role="img"
+          viewBox="0 0 20 20"
+          width="18"
+        >
           <title>Toggle accordion</title>
           <path
             className={cn(

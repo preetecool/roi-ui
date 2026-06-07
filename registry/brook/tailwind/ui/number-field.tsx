@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils-tailwind";
 function NumberFieldRoot({ className, ...props }: NumberField.Root.Props) {
   return (
     <NumberField.Root
-      className={cn("relative inline-flex w-full max-w-64 flex-col", className)}
+      className={cn("relative inline-flex w-full max-w-48 flex-col", className)}
       data-slot="numberfield-root"
       {...props}
     />
@@ -14,15 +14,17 @@ function NumberFieldRoot({ className, ...props }: NumberField.Root.Props) {
 }
 
 function NumberFieldGroup({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("relative z-[2] flex items-center justify-center gap-1", className)} {...props} />;
+  return <div className={cn("relative z-[2] flex items-center gap-0", className)} {...props} />;
 }
 
 function NumberFieldInput({ className, ...props }: NumberField.Input.Props) {
   return (
     <NumberField.Input
       className={cn(
-        "h-14 w-22 min-w-0 flex-[0_1_auto] border-none bg-transparent px-1 text-center font-bold text-5xl text-[var(--foreground)] outline-none transition-colors duration-150 ease-out",
-        "placeholder:font-normal placeholder:text-[var(--muted-foreground)] placeholder:text-sm",
+        "h-10 min-w-24 flex-[0_1_6rem] border border-[var(--border)] px-2 text-center text-[var(--foreground)] text-sm outline-none transition-all duration-150 ease-out",
+        "bg-[var(--mix-card-50-bg)]",
+        "placeholder:text-[var(--muted-foreground)]",
+        "focus:border-[var(--ring)] focus:shadow-[0_0_0_2px_var(--ring)/0.2]",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
@@ -36,7 +38,8 @@ function NumberFieldIncrement({ className, children, ...props }: NumberField.Inc
   return (
     <NumberField.Increment
       className={cn(
-        "flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--border)_15%,transparent)] bg-[var(--mix-card-50-bg)] text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+        "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+        "rounded-r-[var(--radius)] border-l-0",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         "active:bg-[var(--muted)]",
         "disabled:cursor-not-allowed disabled:opacity-50",
@@ -51,10 +54,10 @@ function NumberFieldIncrement({ className, children, ...props }: NumberField.Inc
           aria-label="Increment"
           className="shrink-0"
           fill="none"
-          height="20"
+          height="16"
           role="img"
           viewBox="0 0 24 24"
-          width="20"
+          width="16"
         >
           <path
             d="M12 5v14m-7-7h14"
@@ -73,7 +76,8 @@ function NumberFieldDecrement({ className, children, ...props }: NumberField.Dec
   return (
     <NumberField.Decrement
       className={cn(
-        "flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--border)_15%,transparent)] bg-[var(--mix-card-50-bg)] text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+        "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+        "rounded-l-[var(--radius)] border-r-0",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         "active:bg-[var(--muted)]",
         "disabled:cursor-not-allowed disabled:opacity-50",
@@ -88,10 +92,10 @@ function NumberFieldDecrement({ className, children, ...props }: NumberField.Dec
           aria-label="Decrement"
           className="shrink-0"
           fill="none"
-          height="20"
+          height="16"
           role="img"
           viewBox="0 0 24 24"
-          width="20"
+          width="16"
         >
           <path d="M5 12h14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
         </svg>
