@@ -725,6 +725,15 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/navigation-sub-menu/navigation-sub-menu",
   },
+  "number-field-animated": {
+    name: "number-field-animated",
+    type: "example",
+    files: [
+      "registry/brook/examples/number-field-animated/number-field-animated.tsx",
+      "registry/brook/examples/number-field-animated/number-field-animated.module.css",
+    ],
+    path: "@/registry/brook/examples/number-field-animated/number-field-animated",
+  },
   "number-field-demo": {
     name: "number-field-demo",
     type: "example",
@@ -1784,6 +1793,12 @@ export const Index: Record<string, RegistryEntry> = {
     type: "example",
     files: ["registry/brook/tailwind/examples/navigation-sub-menu.tsx"],
     path: "@/registry/brook/tailwind/examples/navigation-sub-menu",
+  },
+  "number-field-animated-tailwind": {
+    name: "number-field-animated-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/number-field-animated.tsx"],
+    path: "@/registry/brook/tailwind/examples/number-field-animated",
   },
   "number-field-demo-tailwind": {
     name: "number-field-demo-tailwind",

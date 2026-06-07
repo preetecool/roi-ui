@@ -422,6 +422,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "number-field-animated": dynamic(() =>
+    import("@/registry/brook/examples/number-field-animated/number-field-animated").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "number-field-demo": dynamic(() =>
     import("@/registry/brook/examples/number-field-demo/number-field-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -960,6 +965,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "navigation-sub-menu-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/navigation-sub-menu").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "number-field-animated-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/number-field-animated").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),
