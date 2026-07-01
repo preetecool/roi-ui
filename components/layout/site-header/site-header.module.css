@@ -57,7 +57,9 @@
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   border-radius: 2px;
-  transition: all 200ms var(--ease-out-quad);
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
 }
 
 .actions {
@@ -76,7 +78,7 @@
   background-color: transparent;
   color: var(--muted-foreground);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 150ms ease;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   border-radius: 2px;
