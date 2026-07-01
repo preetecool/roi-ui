@@ -1,5 +1,5 @@
 .animateEnter {
-  animation: enter 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: enter 600ms var(--ease-out-quad) both;
   animation-delay: calc(var(--delay, 80ms) * var(--stagger, 0));
 }
 
@@ -35,14 +35,14 @@
 }
 
 .badge[data-slot="badge"] svg path:first-child {
-  transition: transform 150ms ease-in;
+  transition: transform 150ms ease-out;
   transform: translateX(0);
 }
 
 .badge[data-slot="badge"] svg path:last-child {
   transition:
-    opacity 150ms ease-in,
-    transform 150ms ease-in;
+    opacity 150ms ease-out,
+    transform 150ms ease-out;
   opacity: 0;
   transform: translateX(0);
 }
