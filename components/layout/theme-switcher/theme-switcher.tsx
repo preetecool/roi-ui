@@ -2,17 +2,13 @@
 
 import { SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./theme-switcher.module.css";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";

@@ -4,11 +4,14 @@ import { createPreferenceProvider } from "./create-preference-provider";
 
 export type ColorPalette = "default" | "psevdaryiros";
 
-const VALID_PALETTES = ["default", "psevdaryiros"] as const;
+export const PALETTE_OPTIONS: { value: ColorPalette; label: string }[] = [
+  { value: "default", label: "Default" },
+  { value: "psevdaryiros", label: "Psevdaryiros" },
+];
 
 const { Provider: PaletteProvider, usePreference } = createPreferenceProvider<ColorPalette>({
   storageKey: "color-palette",
-  validValues: VALID_PALETTES,
+  validValues: PALETTE_OPTIONS.map((o) => o.value),
   dataAttribute: "data-palette",
   defaultValue: "default",
 });
@@ -19,5 +22,3 @@ export function usePalette() {
   const { value, setValue } = usePreference();
   return { palette: value, setPalette: setValue };
 }
-
-export { VALID_PALETTES };

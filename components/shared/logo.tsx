@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 
 type LogoProps = {
   width?: number;
@@ -13,12 +13,8 @@ type LogoProps = {
 };
 
 export function Logo({ width, height, className = "", fillColor, strokeColor, strokeWidth = 8 }: LogoProps) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const { theme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   let finalFillColor = fillColor;
   let finalStrokeColor = strokeColor;

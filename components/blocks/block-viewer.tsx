@@ -11,8 +11,9 @@ import {
 } from "@/components/docs/code-block/code-block";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
+import { copyWithToast } from "@/components/shared/copy-with-toast";
+import { useMounted } from "@/hooks/use-mounted";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
-import { anchoredToastManager } from "@/registry/brook/ui/toast/toast";
 import styles from "./block-viewer.module.css";
 import { buildFileTree, FileTree } from "./file-tree";
 
@@ -22,30 +23,7 @@ function InstallButton({ name }: { name: string }) {
   const suffix = style === "tailwind" ? "-tailwind" : "";
   const command = `npx shadcn@latest add @roiui/${name}${suffix}`;
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(command);
-      anchoredToastManager.add({
-        title: "Copied!",
-        timeout: 800,
-        positionerProps: {
-          anchor: buttonRef.current,
-          side: "top",
-          sideOffset: 6,
-        },
-      });
-    } catch {
-      anchoredToastManager.add({
-        title: "Failed to copy",
-        timeout: 2000,
-        positionerProps: {
-          anchor: buttonRef.current,
-          side: "top",
-          sideOffset: 6,
-        },
-      });
-    }
-  };
+  const handleCopy = () => copyWithToast(command, buttonRef.current);
 
   return (
     <button
@@ -85,7 +63,7 @@ export function BlockViewer({
   toolbar,
 }: BlockViewerProps) {
   const { style } = useStyle();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
   const files = useMemo(
@@ -96,10 +74,6 @@ export function BlockViewer({
   const currentFile = useMemo(() => files.find((f) => f.path === selectedFile), [files, selectedFile]);
 
   const fileTree = useMemo(() => buildFileTree(files.map((f) => f.path)), [files]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (mounted) {

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { ThemeSwitcher } from "@/components/layout/theme-switcher/theme-switcher";
 import { GitHubIcon } from "@/components/shared/github-icon";
+import { useMounted } from "@/hooks/use-mounted";
 import type { PageTree } from "@/lib/source-types";
 import {
   Drawer,
@@ -37,11 +38,7 @@ type MobileNavProps = {
 export function MobileNav({ tree }: MobileNavProps) {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   if (!mounted) {
     return (

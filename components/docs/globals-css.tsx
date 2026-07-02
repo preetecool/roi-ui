@@ -148,26 +148,22 @@ function replaceVarValue(line: string, ctx: ThemeContext): string {
   return line;
 }
 
-function filterDefaultPalette(css: string): string {
-  // Find palette section by looking for palette comment or data-palette selectors
-  const lines = css.split("\n");
+/** Drops palette comment lines and palette-specific (`data-palette`) blocks. */
+function nonPaletteLines(css: string): string[] {
   const resultLines: string[] = [];
   let skipPaletteSection = false;
   let paletteBraceCount = 0;
 
-  for (const line of lines) {
-    // Skip palette comment lines
+  for (const line of css.split("\n")) {
     if (line.includes("Palette") && line.trim().startsWith("/*")) {
       continue;
     }
 
-    // Detect start of palette-specific block
     if (line.includes("data-palette")) {
       skipPaletteSection = true;
       paletteBraceCount = 0;
     }
 
-    // Track braces within palette block
     if (skipPaletteSection) {
       paletteBraceCount = countBraces(line, paletteBraceCount);
       if (paletteBraceCount === 0 && line.includes("}")) {
@@ -179,7 +175,11 @@ function filterDefaultPalette(css: string): string {
     resultLines.push(line);
   }
 
-  return `${resultLines.join("\n").replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
+  return resultLines;
+}
+
+function joinCss(lines: string[]): string {
+  return `${lines.join("\n").replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
 }
 
 function processLine(line: string, state: { inLightBlock: boolean; inDarkBlock: boolean; braceCount: number }) {
@@ -207,41 +207,19 @@ function checkBlockExit(line: string, state: { inLightBlock: boolean; inDarkBloc
 }
 
 function filterCssForPalette(css: string, palette: ColorPalette): string {
+  const lines = nonPaletteLines(css);
+
   if (palette === "default") {
-    return filterDefaultPalette(css);
+    return joinCss(lines);
   }
 
   const lightValues = extractPaletteValues(css, palette, "light");
   const darkValues = extractPaletteValues(css, palette, "dark");
 
-  const lines = css.split("\n");
   const resultLines: string[] = [];
   const state = { inLightBlock: false, inDarkBlock: false, braceCount: 0 };
-  let skipPaletteSection = false;
-
-  let paletteBraceCount = 0;
 
   for (const line of lines) {
-    // Skip palette comment lines
-    if (line.includes("Palette") && line.trim().startsWith("/*")) {
-      continue;
-    }
-
-    // Detect start of palette-specific block
-    if (line.includes("data-palette")) {
-      skipPaletteSection = true;
-      paletteBraceCount = 0;
-    }
-
-    // Track braces within palette block
-    if (skipPaletteSection) {
-      paletteBraceCount = countBraces(line, paletteBraceCount);
-      if (paletteBraceCount === 0 && line.includes("}")) {
-        skipPaletteSection = false;
-      }
-      continue;
-    }
-
     processLine(line, state);
 
     const ctx: ThemeContext = {
@@ -255,7 +233,7 @@ function filterCssForPalette(css: string, palette: ColorPalette): string {
     checkBlockExit(line, state);
   }
 
-  return `${resultLines.join("\n").replace(MULTIPLE_NEWLINES, "\n\n").trimEnd()}\n`;
+  return joinCss(resultLines);
 }
 
 export async function GlobalsCSS() {
