@@ -23,6 +23,17 @@
   background-color: transparent;
 }
 
+/* Static hover extension covering the icon's translated position, so hover
+   state never depends on the icon mid-animation (prevents flicker). */
+.trigger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2rem;
+  width: 2rem;
+}
+
 .trigger:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
