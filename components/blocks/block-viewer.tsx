@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CodeBlock } from "@/components/docs/code-block/code-block";
+import {
+  CodeBlockActions,
+  CodeBlockContent,
+  CodeBlockCopyButton,
+  CodeBlockFilename,
+  CodeBlockHeader,
+  CodeBlockRoot,
+} from "@/components/docs/code-block/code-block";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
@@ -131,12 +138,12 @@ export function BlockViewer({
             </div>
             <div className={styles.codeArea}>
               {currentFile ? (
-                <CodeBlock.Root
+                <CodeBlockRoot
                   className={styles.codeBlock}
                   code={currentFile.content}
                   highlightedCode={currentFile.highlightedContent}
                 >
-                  <CodeBlock.Header className={styles.codeHeader}>
+                  <CodeBlockHeader className={styles.codeHeader}>
                     <select
                       aria-label="Select file"
                       className={styles.mobileFileSelect}
@@ -149,13 +156,13 @@ export function BlockViewer({
                         </option>
                       ))}
                     </select>
-                    <CodeBlock.Filename className={styles.fileName}>{currentFile.name}</CodeBlock.Filename>
-                    <CodeBlock.Actions>
-                      <CodeBlock.CopyButton />
-                    </CodeBlock.Actions>
-                  </CodeBlock.Header>
-                  <CodeBlock.Content className={styles.codeContent} />
-                </CodeBlock.Root>
+                    <CodeBlockFilename className={styles.fileName}>{currentFile.name}</CodeBlockFilename>
+                    <CodeBlockActions>
+                      <CodeBlockCopyButton />
+                    </CodeBlockActions>
+                  </CodeBlockHeader>
+                  <CodeBlockContent className={styles.codeContent} />
+                </CodeBlockRoot>
               ) : null}
             </div>
           </div>

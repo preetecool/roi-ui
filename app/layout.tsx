@@ -1,6 +1,6 @@
 import { PaletteProvider } from "@/components/providers/palette-provider";
 import { StyleProvider } from "@/components/providers/style-provider";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ThemeProvider } from "next-themes";
 import "@/styles/globals.css";
 import "@/styles/syntax-highlight.css";
 import { Analytics } from "@vercel/analytics/next";

@@ -1,12 +1,18 @@
-import { CodeBlock } from "@/components/docs/code-block/code-block";
+import {
+  CodeBlockActions,
+  CodeBlockContent,
+  CodeBlockCopyButton,
+  CodeBlockFilename,
+  CodeBlockHeader,
+  CodeBlockRoot,
+} from "@/components/docs/code-block/code-block";
 import { CodeBlockCollapse } from "@/components/docs/code-block-collapse/code-block-collapse";
 import { highlightCode } from "@/lib/highlight-code";
 import { cn } from "@/lib/utils";
 import styles from "./component-source.module.css";
 import { ComponentSourceClient } from "./component-source-client";
-import { getCachedVariants } from "./helpers/cached-processors";
-import { getDisplayTitle, loadCodeByName, loadCodeBySrc } from "./helpers/file-loaders";
-import { transformCode } from "./helpers/process-files";
+import { getDisplayTitle, loadAllVariants, loadCodeByName, loadCodeBySrc } from "./helpers/file-loaders";
+import { processVariants, transformCode } from "./helpers/process-files";
 
 type ComponentSourceProps = {
   name?: string;
@@ -14,7 +20,6 @@ type ComponentSourceProps = {
   title?: string;
   language?: string;
   embedded?: boolean;
-  collapsible?: boolean;
 };
 
 export async function ComponentSource({ name, src, title, language = "tsx", embedded = false }: ComponentSourceProps) {
@@ -23,7 +28,7 @@ export async function ComponentSource({ name, src, title, language = "tsx", embe
   }
 
   if (name) {
-    const processedVariants = await getCachedVariants(name);
+    const processedVariants = await processVariants(await loadAllVariants(name));
 
     if (processedVariants.length > 0) {
       return <ComponentSourceClient variants={processedVariants} />;
@@ -47,20 +52,20 @@ export async function ComponentSource({ name, src, title, language = "tsx", embe
   const highlightedCode = await highlightCode(transformedCode, language);
 
   return (
-    <CodeBlock.Root
+    <CodeBlockRoot
       className={cn(styles.container, embedded && styles.embedded)}
       code={transformedCode}
       highlightedCode={highlightedCode}
     >
-      <CodeBlock.Header>
-        <CodeBlock.Filename>{displayTitle}</CodeBlock.Filename>
-        <CodeBlock.Actions>
-          <CodeBlock.CopyButton />
-        </CodeBlock.Actions>
-      </CodeBlock.Header>
+      <CodeBlockHeader>
+        <CodeBlockFilename>{displayTitle}</CodeBlockFilename>
+        <CodeBlockActions>
+          <CodeBlockCopyButton />
+        </CodeBlockActions>
+      </CodeBlockHeader>
       <CodeBlockCollapse>
-        <CodeBlock.Content className={styles.codeContainer} />
+        <CodeBlockContent className={styles.codeContainer} />
       </CodeBlockCollapse>
-    </CodeBlock.Root>
+    </CodeBlockRoot>
   );
 }
