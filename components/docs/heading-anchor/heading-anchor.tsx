@@ -2,10 +2,9 @@
 
 import { Link as LinkIcon } from "lucide-react";
 import { type ComponentProps, useMemo, useRef } from "react";
-import { anchoredToastManager } from "@/registry/brook/ui/toast/toast";
+import { copyWithToast } from "@/components/shared/copy-with-toast";
 import styles from "./heading-anchor.module.css";
 
-const COPIED_DISPLAY_DURATION = 800;
 const ICON_SIZE_H2 = 16;
 const ICON_SIZE_H3 = 14;
 const ICON_SIZE_H4 = 12;
@@ -29,20 +28,7 @@ export function HeadingAnchor({ level, children, ...props }: ComponentProps<"h2"
 
   const handleClick = async () => {
     const url = `${window.location.origin}${window.location.pathname}#${id}`;
-
-    try {
-      await navigator.clipboard.writeText(url);
-      anchoredToastManager.add({
-        title: "Copied!",
-        timeout: COPIED_DISPLAY_DURATION,
-        positionerProps: {
-          anchor: buttonRef.current,
-          side: "top",
-          sideOffset: 6,
-        },
-      });
-    } catch {}
-
+    await copyWithToast(url, buttonRef.current);
     window.history.pushState(null, "", `#${id}`);
   };
 

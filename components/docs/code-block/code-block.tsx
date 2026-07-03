@@ -111,17 +111,6 @@ function Actions({ className, children, ...props }: CodeBlockActionsProps) {
   );
 }
 
-export const CodeBlock = {
-  Root,
-  Header,
-  Filename,
-  CopyButton: CopyBtn,
-  Content,
-  Collapsible,
-  Summary,
-  Actions,
-};
-
 export {
   Root as CodeBlockRoot,
   Header as CodeBlockHeader,

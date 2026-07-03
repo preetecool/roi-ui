@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronsUpDown } from "lucide-react";
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./code-block-collapse.module.css";
@@ -74,29 +75,7 @@ export function CodeBlockCollapse({ children, maxHeight = 350, className }: Code
           onClick={() => setExpanded((v) => !v)}
           type="button"
         >
-          <svg
-            aria-hidden="true"
-            className={styles.chevron}
-            fill="none"
-            height="14"
-            viewBox="0 0 24 24"
-            width="14"
-          >
-            <path
-              d="m7 15 5 5 5-5"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-            <path
-              d="m7 9 5-5 5 5"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </svg>
+          <ChevronsUpDown aria-hidden="true" className={styles.chevron} size={14} />
           {isExpanded ? "hide code" : "view code"}
         </button>
       ) : null}

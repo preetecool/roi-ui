@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { CodeBlockCollapse } from "@/components/docs/code-block-collapse/code-block-collapse";
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
-import { withCodeTabsStyle } from "@/components/docs/code-tabs/with-code-tabs-style";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { type StyleVariant, useStyle } from "@/components/providers/style-provider";
 import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
@@ -23,8 +22,6 @@ type ProcessedVariant = {
 type ComponentSourceClientProps = {
   variants: ProcessedVariant[];
 };
-
-const CodeTabsContent = withCodeTabsStyle(TabsContent, codeTabsStyles.content);
 
 export function ComponentSourceClient({ variants }: ComponentSourceClientProps) {
   const { style } = useStyle();
@@ -61,13 +58,13 @@ export function ComponentSourceClient({ variants }: ComponentSourceClientProps) 
 
         <CodeBlockCollapse>
           {files.map((file, index) => (
-            <CodeTabsContent key={file.name} value={index}>
+            <TabsContent className={codeTabsStyles.content} key={file.name} value={index}>
               <div
                 className="code-container"
                 // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for Shiki syntax highlighting
                 dangerouslySetInnerHTML={{ __html: file.highlightedContent }}
               />
-            </CodeTabsContent>
+            </TabsContent>
           ))}
         </CodeBlockCollapse>
       </Tabs>

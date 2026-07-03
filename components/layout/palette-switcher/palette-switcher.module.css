@@ -1,4 +1,6 @@
-.button {
+/* doubled class beats button.module.css; data-slot is unreliable here —
+   SelectTrigger's render-prop merge rewrites it to "select-trigger" */
+.button.button {
   display: flex;
   align-items: center;
   justify-content: center;

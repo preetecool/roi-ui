@@ -1,24 +1,15 @@
 "use client";
 
 import { Palette } from "lucide-react";
-import { useEffect, useState } from "react";
-import { type ColorPalette, usePalette, VALID_PALETTES } from "@/components/providers/palette-provider";
-import { SelectMenu, type SelectMenuOption } from "@/components/shared/select-menu/select-menu";
+import { PALETTE_OPTIONS, usePalette } from "@/components/providers/palette-provider";
+import { SelectMenu } from "@/components/shared/select-menu/select-menu";
+import { useMounted } from "@/hooks/use-mounted";
 import { Button } from "@/registry/brook/ui/button/button";
 import styles from "./palette-switcher.module.css";
 
-const paletteOptions: SelectMenuOption<ColorPalette>[] = VALID_PALETTES.map((p) => ({
-  value: p,
-  label: p === "default" ? "Default" : "Psevdaryiros",
-}));
-
 export function PaletteSwitcher() {
   const { palette, setPalette } = usePalette();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   if (!mounted) {
     return (
@@ -33,7 +24,7 @@ export function PaletteSwitcher() {
       align="end"
       ariaLabel="Select color palette"
       onValueChange={setPalette}
-      options={paletteOptions}
+      options={PALETTE_OPTIONS}
       trigger={
         <Button aria-label="Select color palette" className={styles.button} size="icon" variant="ghost">
           <Palette size={18} />

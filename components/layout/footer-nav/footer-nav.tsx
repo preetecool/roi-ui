@@ -1,27 +1,11 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import styles from "./footer-nav.module.css";
 
 function Chevron({ direction }: { direction: "left" | "right" }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={styles.chevron}
-      fill="none"
-      height="14"
-      viewBox="0 0 14 14"
-      width="14"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d={direction === "left" ? "M9 3L5 7l4 4" : "M5 3l4 4-4 4"}
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
+  const Icon = direction === "left" ? ChevronLeft : ChevronRight;
+  return <Icon absoluteStrokeWidth aria-hidden="true" className={styles.chevron} size={14} strokeWidth={1.5} />;
 }
 
 type NavItem = {

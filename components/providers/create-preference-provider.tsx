@@ -8,22 +8,18 @@ type PreferenceContextType<T extends string> = {
   setValue: (value: T) => void;
 };
 
-type PreferenceProviderProps<T extends string> = {
-  children: ReactNode;
-  defaultValue: T;
-};
-
 type CreatePreferenceProviderOptions<T extends string> = {
   storageKey: string;
   validValues: readonly T[];
   dataAttribute: string;
+  defaultValue: T;
 };
 
 export function createPreferenceProvider<T extends string>(options: CreatePreferenceProviderOptions<T>) {
-  const { storageKey, validValues, dataAttribute } = options;
+  const { storageKey, validValues, dataAttribute, defaultValue } = options;
   const Context = createContext<PreferenceContextType<T> | undefined>(undefined);
 
-  function Provider({ children, defaultValue }: PreferenceProviderProps<T>) {
+  function Provider({ children }: { children: ReactNode }) {
     const [value, setValueState] = useState<T>(defaultValue);
 
     const setValue = useCallback((newValue: T) => {
