@@ -785,6 +785,12 @@ export const Index: Record<string, RegistryEntry> = {
     ],
     path: "@/registry/brook/examples/progress-demo/progress-demo",
   },
+  "prop-table-demo": {
+    name: "prop-table-demo",
+    type: "example",
+    files: ["registry/brook/examples/prop-table-demo/prop-table-demo.tsx"],
+    path: "@/registry/brook/examples/prop-table-demo/prop-table-demo",
+  },
   "radio-demo": {
     name: "radio-demo",
     type: "example",
@@ -1252,6 +1258,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "progress",
     type: "ui",
     files: ["registry/brook/ui/progress/progress.tsx", "registry/brook/ui/progress/progress.module.css"],
+  },
+  "prop-table": {
+    name: "prop-table",
+    type: "ui",
+    files: ["registry/brook/ui/prop-table/prop-table.tsx", "registry/brook/ui/prop-table/prop-table.module.css"],
   },
   radio: {
     name: "radio",
@@ -1836,6 +1847,12 @@ export const Index: Record<string, RegistryEntry> = {
     files: ["registry/brook/tailwind/examples/progress-demo.tsx"],
     path: "@/registry/brook/tailwind/examples/progress-demo",
   },
+  "prop-table-demo-tailwind": {
+    name: "prop-table-demo-tailwind",
+    type: "example",
+    files: ["registry/brook/tailwind/examples/prop-table-demo.tsx"],
+    path: "@/registry/brook/tailwind/examples/prop-table-demo",
+  },
   "radio-demo-tailwind": {
     name: "radio-demo-tailwind",
     type: "example",
@@ -2228,6 +2245,11 @@ export const Index: Record<string, RegistryEntry> = {
     name: "progress-tailwind",
     type: "ui",
     files: ["registry/brook/tailwind/ui/progress.tsx"],
+  },
+  "prop-table-tailwind": {
+    name: "prop-table-tailwind",
+    type: "ui",
+    files: ["registry/brook/tailwind/ui/prop-table.tsx"],
   },
   radioTailwind: {
     name: "radio-tailwind",

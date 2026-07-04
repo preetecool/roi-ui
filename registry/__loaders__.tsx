@@ -457,6 +457,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
+  "prop-table-demo": dynamic(() =>
+    import("@/registry/brook/examples/prop-table-demo/prop-table-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
   "radio-demo": dynamic(() =>
     import("@/registry/brook/examples/radio-demo/radio-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -1000,6 +1005,11 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "progress-demo-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/examples/progress-demo").then((mod) => ({
+      default: mod.default || Object.values(mod)[0],
+    }))
+  ),
+  "prop-table-demo-tailwind": dynamic(() =>
+    import("@/registry/brook/tailwind/examples/prop-table-demo").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

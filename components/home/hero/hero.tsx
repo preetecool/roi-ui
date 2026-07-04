@@ -35,11 +35,11 @@ export const Hero = () => {
     <section aria-label="Hero section" className={styles.container}>
       <Badge
         className={`${styles.badge} ${styles.animateEnter}`}
-        render={<Link aria-label="View new OTP field component" href="/docs/ui/otp-field" />}
+        render={<Link aria-label="View new prop table component" href="/docs/ui/prop-table" />}
         style={{ "--stagger": 1 } as React.CSSProperties}
         variant="outline"
       >
-        <span aria-hidden="true">New OTP field component</span>
+        <span aria-hidden="true">New prop table component</span>
         <ArrowPointer />
       </Badge>
       <h1 className={`${styles.h1} ${styles.animateEnter}`} style={{ "--stagger": 2 } as React.CSSProperties}>
