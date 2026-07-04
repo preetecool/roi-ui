@@ -210,7 +210,8 @@
 }
 
 .arrowExternal {
-  --webkit-transform-origin: 8%;
+  /* Safari resolves % origins on <svg> against the viewBox (transform-box: view-box) */
+  transform-box: border-box;
   transform-origin: 8%;
   transition: transform 200ms var(--ease-in-out-cubic);
 }

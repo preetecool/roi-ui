@@ -1,0 +1,116 @@
+---
+title: Prop Table
+description: An expandable table for documenting component props.
+---
+
+<ComponentPreview name="prop-table-demo" />
+
+## Installation
+
+<InstallationTabs>
+
+<InstallationTabsList>
+  <InstallationTabsTrigger value="cli">CLI</InstallationTabsTrigger>
+  <InstallationTabsTrigger value="manual">Manual</InstallationTabsTrigger>
+</InstallationTabsList>
+
+<InstallationTabsContent value="cli">
+
+<CodeBlockTabs>
+
+<CodeBlockTabsList>
+  <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+  <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+</CodeBlockTabsList>
+
+<CodeBlockTab value="npm">
+
+```bash if=css-modules
+npx shadcn@latest add @roiui/prop-table
+```
+
+```bash if=tailwind
+npx shadcn@latest add @roiui/prop-table-tailwind
+```
+
+</CodeBlockTab>
+
+<CodeBlockTab value="pnpm">
+
+```bash if=css-modules
+pnpm dlx shadcn@latest add @roiui/prop-table
+```
+
+```bash if=tailwind
+pnpm dlx shadcn@latest add @roiui/prop-table-tailwind
+```
+
+</CodeBlockTab>
+
+
+</CodeBlockTabs>
+
+</InstallationTabsContent>
+
+<InstallationTabsContent value="manual" data-manual="true">
+
+Copy and paste the following files:
+
+<ComponentSource
+    name="prop-table"
+/>
+
+</InstallationTabsContent>
+
+</InstallationTabs>
+
+## Anatomy
+
+<CodeBlock
+filename="anatomy"
+  language="tsx"
+  code={`<PropTable>
+    <PropTableRow name="size" type='"sm" | "md" | "lg"' defaultValue='"md"'>
+        Size of the component.
+    </PropTableRow>
+</PropTable>
+`} />
+
+## API Reference
+
+### PropTable
+
+Renders the table header and wraps the rows. Accepts all `section` element props.
+
+### PropTableRow
+
+<PropTable
+    data={[
+        {
+            prop: "name",
+            type: "string",
+            description: "Name of the prop being documented",
+        },
+        {
+            prop: "type",
+            type: "string",
+            description:
+                "Type signature of the prop. Union members, generics, and known React types are syntax highlighted.",
+        },
+        {
+            prop: "defaultValue",
+            type: "string",
+            description: "Default value of the prop, shown in the summary row and expanded panel",
+        },
+        {
+            prop: "children",
+            type: "ReactNode",
+            description: "Description of the prop, shown in the expanded panel",
+        },
+        {
+            prop: "className",
+            type: "string",
+            description: "Additional CSS classes applied to the row",
+        },
+    ]}
+/>

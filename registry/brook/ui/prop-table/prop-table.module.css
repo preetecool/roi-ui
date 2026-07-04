@@ -9,7 +9,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  padding: 8px 16px;
+  /* right padding = 16px + trigger chevron (16px) + gap (16px), so columns align with rows */
+  padding: 8px 48px 8px 16px;
   background-color: var(--mix-card-33-bg);
   border-bottom: 0.5px solid oklch(from var(--border) l c h / 0.7);
 }
@@ -22,6 +23,7 @@
 
 .headerCell {
   font-size: 14px;
+  line-height: 20px;
   font-weight: 500;
   color: var(--foreground);
 }
@@ -38,18 +40,6 @@
   }
 }
 
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
 .body {
   display: flex;
   flex-direction: column;
@@ -63,14 +53,6 @@
 
 .collapsible:last-child {
   border-bottom: none;
-}
-
-.collapsible .panel[data-panel-open] {
-  animation: none;
-}
-
-.collapsible .panel[data-closed] {
-  animation: none;
 }
 
 .trigger {
@@ -118,9 +100,13 @@
 }
 
 @media (min-width: 768px) {
-  .summaryGrid > *:nth-child(2),
-  .summaryGrid > *:nth-child(3) {
+  .summaryGrid > *:nth-child(2) {
     display: block;
+  }
+
+  /* flex, not block: keeps the inline <code> from adding baseline leading to the row */
+  .summaryGrid > *:nth-child(3) {
+    display: flex;
   }
 }
 
@@ -130,6 +116,7 @@
   justify-content: flex-start;
 }
 
+/* Opens instantly, animates closed. */
 .panel[data-slot="collapsible-panel"] {
   background-color: var(--mix-card-50-bg);
   display: flex;
@@ -141,39 +128,23 @@
   transition: none;
 
   &[data-starting-style] {
-    height: 0;
-    animation: none;
-  }
-
-  &[data-open] {
-    animation: propSlideDown 200ms var(--ease-out-expo);
-  }
-
-  &[data-ending-style] {
-    animation: propSlideUp 200ms var(--ease-out-expo) forwards;
+    height: var(--collapsible-panel-height);
   }
 
   &[data-closed] {
     height: 0;
     animation: none;
   }
-}
 
-@keyframes propSlideDown {
-  from {
+  &[data-ending-style] {
     height: 0;
-  }
-  to {
-    height: var(--collapsible-panel-height);
+    transition: height 200ms var(--ease-out-expo);
   }
 }
 
-@keyframes propSlideUp {
-  from {
-    height: var(--collapsible-panel-height);
-  }
-  to {
-    height: 0;
+@media (prefers-reduced-motion: reduce) {
+  .panel[data-slot="collapsible-panel"][data-ending-style] {
+    transition: none;
   }
 }
 
@@ -215,6 +186,7 @@
 
 .detailLabel {
   font-size: 13px;
+  line-height: 20px;
   font-weight: 400;
   color: var(--muted-foreground);
 }
@@ -235,18 +207,20 @@
 
 .code {
   font-size: 12px;
+  line-height: 20px;
   font-family: "Geist Mono", monospace;
-  color: var(--prop-code-color);
+  color: var(--prop-code-color, var(--foreground));
 }
 
 .typeCode {
   font-size: 12px;
+  line-height: 20px;
   font-family: "Geist Mono", monospace;
-  color: var(--prop-type-color);
+  color: var(--prop-type-color, var(--muted-foreground));
 }
 
 .typeClass {
-  color: var(--prop-type-class-color);
+  color: var(--prop-type-class-color, var(--foreground));
 }
 
 .separator {
@@ -254,19 +228,19 @@
 }
 
 .stringValue {
-  color: var(--prop-string-color);
+  color: var(--prop-string-color, var(--foreground));
 }
 
 .booleanValue {
-  color: var(--prop-boolean-color);
+  color: var(--prop-boolean-color, var(--foreground));
 }
 
 .numberValue {
-  color: var(--prop-number-color);
+  color: var(--prop-number-color, var(--foreground));
 }
 
 .functionValue {
-  color: var(--prop-function-color);
+  color: var(--prop-function-color, var(--foreground));
 }
 
 .defaultEmpty {

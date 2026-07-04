@@ -936,6 +936,25 @@
       ]
     },
     {
+      "name": "prop-table",
+      "type": "registry:item",
+      "title": "Prop Table",
+      "description": "An expandable table for documenting component props.",
+      "registryDependencies": ["https://roiui.com/r/collapsible.json"],
+      "files": [
+        {
+          "path": "registry/brook/ui/prop-table/prop-table.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/prop-table/prop-table.tsx"
+        },
+        {
+          "path": "registry/brook/ui/prop-table/prop-table.module.css",
+          "type": "registry:file",
+          "target": "~/components/ui/prop-table/prop-table.module.css"
+        }
+      ]
+    },
+    {
       "name": "number-field",
       "type": "registry:item",
       "title": "Number Field",
@@ -1720,6 +1739,20 @@
           "path": "registry/brook/tailwind/ui/progress.tsx",
           "type": "registry:file",
           "target": "~/components/ui/progress/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prop-table-tailwind",
+      "type": "registry:item",
+      "title": "Prop Table (Tailwind)",
+      "description": "An expandable table for documenting component props.",
+      "registryDependencies": ["https://roiui.com/r/collapsible-tailwind.json"],
+      "files": [
+        {
+          "path": "registry/brook/tailwind/ui/prop-table.tsx",
+          "type": "registry:file",
+          "target": "~/components/ui/prop-table/prop-table.tsx"
         }
       ]
     },
