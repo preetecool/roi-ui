@@ -20,9 +20,10 @@ import {
   DropdownMenuSpacer,
   DropdownMenuTrigger,
 } from "@/registry/brook/ui/dropdown-menu/dropdown-menu";
-import { capitalize, cn, GROUP_BY_ITEMS, PRIORITY_ITEMS, TAG_ITEMS } from "../lib/project";
+import { capitalize, cn, GROUP_BY_ITEMS, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS } from "../lib/project";
 import type { FilterConfig, GroupByField, Priority } from "../types";
 import styles from "./kanban.module.css";
+import { PriorityIcon } from "./priority-icon";
 
 function CheckIcon() {
   return <Check size={12} />;
@@ -65,7 +66,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button size="sm" variant="outline">
+              <Button className={styles.filterTrigger} size="sm" variant="outline">
                 <Filter size={14} style={{ color: "var(--muted-foreground)" }} />
                 Filters
                 {activeFilterCount > 0 && (
@@ -89,7 +90,10 @@ export function FilterBar({
                       key={item.value}
                       onCheckedChange={(checked) => onTogglePriority(item.value, checked)}
                     >
-                      <span>{item.label}</span>
+                      <span className={styles.filterItemLabel}>
+                        <PriorityIcon priority={item.value} />
+                        {item.label}
+                      </span>
                       <DropdownMenuCheckboxItemIndicator>
                         <CheckIcon />
                       </DropdownMenuCheckboxItemIndicator>
@@ -107,7 +111,12 @@ export function FilterBar({
                       key={item.value}
                       onCheckedChange={(checked) => onToggleTag(item.value, checked)}
                     >
-                      <span>{item.label}</span>
+                      <span className={styles.filterItemLabel}>
+                        <span className={styles.filterDotSlot}>
+                          <span className={styles.tagDot} style={{ backgroundColor: TAG_COLORS[item.value] }} />
+                        </span>
+                        {item.label}
+                      </span>
                       <DropdownMenuCheckboxItemIndicator>
                         <CheckIcon />
                       </DropdownMenuCheckboxItemIndicator>
@@ -125,7 +134,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button size="sm" variant="outline">
+              <Button className={styles.filterTrigger} size="sm" variant="outline">
                 <Layers size={14} style={{ color: "var(--muted-foreground)" }} />
                 {currentGroupByLabel}
               </Button>
@@ -143,7 +152,7 @@ export function FilterBar({
                     value={groupBy}
                   >
                     {GROUP_BY_ITEMS.map((item) => (
-                      <DropdownMenuRadioItem key={item.value} value={item.value}>
+                      <DropdownMenuRadioItem className={styles.groupByItem} key={item.value} value={item.value}>
                         {item.label}
                         <DropdownMenuRadioItemIndicator>
                           <CheckIcon />
