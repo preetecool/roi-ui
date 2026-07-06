@@ -21,7 +21,7 @@ type FileData = {
 
 const FULL_WIDTH_BLOCKS = ["kanban-board", "card-image-section"];
 
-const EXCLUDED_BLOCKS = ["card-history", "tailwind"];
+const EXCLUDED_BLOCKS = ["card-history", "tailwind", "kanban-board"];
 
 const BLOCK_TITLES: Record<string, string> = {
   "ai-chat": "AI Chat",

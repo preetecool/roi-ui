@@ -21,8 +21,9 @@ import {
   DropdownMenuSpacer,
   DropdownMenuTrigger,
 } from "@/registry/brook/tailwind/ui/dropdown-menu";
-import { capitalize, GROUP_BY_ITEMS, PRIORITY_ITEMS, TAG_ITEMS } from "../lib/project";
+import { capitalize, GROUP_BY_ITEMS, PRIORITY_ITEMS, TAG_COLORS, TAG_ITEMS } from "../lib/project";
 import type { FilterConfig, GroupByField, Priority } from "../types";
+import { PriorityIcon } from "./priority-icon";
 
 function CheckIcon() {
   return <Check size={12} />;
@@ -65,7 +66,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button size="sm" variant="outline">
+              <Button className="gap-1.5" size="sm" variant="outline">
                 <Filter className="text-muted-foreground" size={14} />
                 Filters
                 {activeFilterCount > 0 && (
@@ -89,7 +90,10 @@ export function FilterBar({
                       key={item.value}
                       onCheckedChange={(checked) => onTogglePriority(item.value, checked)}
                     >
-                      <span>{item.label}</span>
+                      <span className="flex items-center gap-2">
+                        <PriorityIcon priority={item.value} />
+                        {item.label}
+                      </span>
                       <DropdownMenuCheckboxItemIndicator>
                         <CheckIcon />
                       </DropdownMenuCheckboxItemIndicator>
@@ -107,7 +111,15 @@ export function FilterBar({
                       key={item.value}
                       onCheckedChange={(checked) => onToggleTag(item.value, checked)}
                     >
-                      <span>{item.label}</span>
+                      <span className="flex items-center gap-2">
+                        <span className="flex w-3.5 shrink-0 justify-center">
+                          <span
+                            className="h-1.5 w-1.5 rounded-full"
+                            style={{ backgroundColor: TAG_COLORS[item.value] }}
+                          />
+                        </span>
+                        {item.label}
+                      </span>
                       <DropdownMenuCheckboxItemIndicator>
                         <CheckIcon />
                       </DropdownMenuCheckboxItemIndicator>
@@ -125,7 +137,7 @@ export function FilterBar({
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
-              <Button size="sm" variant="outline">
+              <Button className="gap-1.5" size="sm" variant="outline">
                 <Layers className="text-muted-foreground" size={14} />
                 {currentGroupByLabel}
               </Button>
@@ -143,7 +155,7 @@ export function FilterBar({
                     value={groupBy}
                   >
                     {GROUP_BY_ITEMS.map((item) => (
-                      <DropdownMenuRadioItem key={item.value} value={item.value}>
+                      <DropdownMenuRadioItem className="pr-3" key={item.value} value={item.value}>
                         {item.label}
                         <DropdownMenuRadioItemIndicator>
                           <CheckIcon />

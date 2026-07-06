@@ -334,6 +334,29 @@
   align-items: center;
 }
 
+.filterTrigger {
+  gap: 0.375rem;
+}
+
+.filterItemLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* matches the 14px priority icon so tag and priority labels align */
+.filterDotSlot {
+  display: inline-flex;
+  width: 14px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* matches .checkboxItem's 12px right padding so the checkmark lines up with the Filters menu */
+.groupByItem {
+  padding-right: 12px;
+}
+
 .filterPills {
   display: flex;
   flex-wrap: wrap;

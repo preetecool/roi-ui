@@ -146,7 +146,7 @@ function DropdownMenuRadioItem({ className, children, ...props }: Menu.RadioItem
   return (
     <Menu.RadioItem
       className={cn(
-        "flex h-8 cursor-pointer items-center gap-3 px-2 pr-1.5 font-normal text-foreground text-sm leading-tight",
+        "flex h-8 cursor-pointer items-center gap-3 pr-1.5 pl-3 font-normal text-foreground text-sm leading-tight",
         "relative isolate m-0 justify-start",
         "before:-z-10 before:absolute before:inset-x-1 before:inset-y-0 before:rounded-[calc(var(--radius)-4px)] before:bg-transparent before:content-['']",
         "data-[popup-open]:before:bg-[var(--accent)]",
@@ -168,7 +168,7 @@ function DropdownMenuRadioItem({ className, children, ...props }: Menu.RadioItem
 function DropdownMenuRadioItemIndicator({ className, ...props }: Menu.RadioItemIndicator.Props) {
   return (
     <Menu.RadioItemIndicator
-      className={cn("ml-auto flex items-center justify-center text-muted-foreground", className)}
+      className={cn("ml-auto flex items-center justify-center text-foreground", className)}
       {...props}
     />
   );
