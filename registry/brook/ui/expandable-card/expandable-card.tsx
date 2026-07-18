@@ -22,11 +22,20 @@ type ExpandableCardProps = {
 
 function ExpandableCard({ item, className }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isElevated, setIsElevated] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className={cn(styles.wrapper, className)}>
-      <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
+    <div className={cn(styles.wrapper, className)} style={{ zIndex: isElevated ? 100 : undefined }}>
+      <Dialog.Root
+        onOpenChange={(open) => {
+          setIsOpen(open);
+          if (open) {
+            setIsElevated(true);
+          }
+        }}
+        open={isOpen}
+      >
         <AnimatePresence>
           {isOpen ? (
             <Dialog.Backdrop
@@ -146,6 +155,11 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
               aria-label={`Expand ${item.cardHeading}`}
               className={styles.card}
               layoutId={`card-${item.id}`}
+              onLayoutAnimationComplete={() => {
+                if (!isOpen) {
+                  setIsElevated(false);
+                }
+              }}
               style={{ borderRadius: "24px" }}
             />
           }

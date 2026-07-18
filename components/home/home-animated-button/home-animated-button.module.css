@@ -69,7 +69,7 @@
 .menu {
   display: flex;
   gap: 2px;
-  background-color: oklch(0.16 0 0);
+  background-color: var(--muted);
   margin: 4px;
   padding: 4px;
   border-radius: 12px;
@@ -88,12 +88,12 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: oklch(0.94 0 0);
+  color: var(--foreground);
   transition: background-color 0.15s ease;
 }
 
 .menuItem:hover {
-  background-color: oklch(1 0 0 / 0.08);
+  background-color: oklch(from var(--foreground) l c h / 0.08);
 }
 
 .menuItem:focus-visible {
@@ -108,12 +108,12 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background-color: oklch(1 0 0 / 0.06);
+  background-color: oklch(from var(--foreground) l c h / 0.06);
   transition: background-color 0.15s ease;
 }
 
 .menuItem:hover .menuItemIcon {
-  background-color: oklch(1 0 0 / 0.1);
+  background-color: oklch(from var(--foreground) l c h / 0.1);
 }
 
 .menuIcon {
