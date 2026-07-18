@@ -21,11 +21,20 @@ type ExpandableCardProps = {
 
 function ExpandableCard({ item, className }: ExpandableCardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isElevated, setIsElevated] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className={cn("relative h-fit w-fit", className)}>
-      <Dialog.Root onOpenChange={setIsOpen} open={isOpen}>
+    <div className={cn("relative h-fit w-fit", className)} style={{ zIndex: isElevated ? 100 : undefined }}>
+      <Dialog.Root
+        onOpenChange={(open) => {
+          setIsOpen(open);
+          if (open) {
+            setIsElevated(true);
+          }
+        }}
+        open={isOpen}
+      >
         <AnimatePresence>
           {isOpen ? (
             <Dialog.Backdrop
@@ -206,6 +215,11 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
               aria-label={`Expand ${item.cardHeading}`}
               className="group flex w-[320px] cursor-pointer flex-col items-center overflow-hidden bg-transparent p-0 shadow-[inset_0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.7)] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2"
               layoutId={`card-${item.id}`}
+              onLayoutAnimationComplete={() => {
+                if (!isOpen) {
+                  setIsElevated(false);
+                }
+              }}
               style={{
                 all: "unset",
                 cursor: "pointer",
