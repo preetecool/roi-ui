@@ -1,4 +1,6 @@
 import { highlightCode } from "@/lib/highlight-code";
+import { transformRegistryImports } from "@/lib/registry-imports";
+import registry from "@/registry.json";
 import type { FileData, VariantFileData } from "./file-loaders";
 
 export type ProcessedFile = {
@@ -13,10 +15,7 @@ export type ProcessedVariant = {
 };
 
 export function transformCode(code: string): string {
-  const REGISTRY_PATH = "@/registry/brook/ui/";
-  const COMPONENT_PATH = "@/components/ui/";
-
-  return code.replaceAll(REGISTRY_PATH, COMPONENT_PATH);
+  return transformRegistryImports(code, registry, false);
 }
 
 export async function processFile(file: FileData): Promise<ProcessedFile> {

@@ -20,11 +20,13 @@ type FileTreeProps = {
 
 export function FileTree({ files, selectedPath, onSelect }: FileTreeProps) {
   return (
-    <div aria-label="File explorer" className={styles.tree} role="tree">
-      {files.map((node) => (
-        <FileTreeNode key={node.path} node={node} onSelect={onSelect} selectedPath={selectedPath} />
-      ))}
-    </div>
+    <nav aria-label="Source files" className={styles.tree}>
+      <ul className={styles.list}>
+        {files.map((node) => (
+          <FileTreeNode key={node.path} node={node} onSelect={onSelect} selectedPath={selectedPath} />
+        ))}
+      </ul>
+    </nav>
   );
 }
 
@@ -42,7 +44,7 @@ function getNodeIcon(type: "file" | "folder", isOpen: boolean) {
   return isOpen ? <FolderOpen className={styles.icon} size={16} /> : <Folder className={styles.icon} size={16} />;
 }
 
-const FileTreeNode = memo(function FileTreeNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeProps) {
+const FileTreeNode = memo(function SourceFileNode({ node, selectedPath, onSelect, depth = 0 }: FileTreeNodeProps) {
   const [isOpen, setIsOpen] = useState(true);
   const isSelected = selectedPath === node.path;
   const hasChildren = node.children && node.children.length > 0;
@@ -55,45 +57,18 @@ const FileTreeNode = memo(function FileTreeNode({ node, selectedPath, onSelect, 
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    switch (e.key) {
-      case "ArrowRight":
-        if (node.type === "folder" && !isOpen) {
-          e.preventDefault();
-          setIsOpen(true);
-        }
-        break;
-      case "ArrowLeft":
-        if (node.type === "folder" && isOpen) {
-          e.preventDefault();
-          setIsOpen(false);
-        }
-        break;
-      case "Enter":
-      case " ":
-        e.preventDefault();
-        handleClick();
-        break;
-      default:
-        break;
-    }
-  };
-
   const isFolder = node.type === "folder";
 
-  const showChildren = Boolean(hasChildren && isOpen && node.children);
+  const showChildren = Boolean(hasChildren) && isOpen;
 
   return (
-    <div className={styles.node}>
+    <li className={styles.node}>
       <button
         {...(isFolder ? { "aria-expanded": isOpen } : {})}
-        aria-selected={isSelected}
+        aria-current={isSelected}
         className={cn(styles.nodeButton, isSelected ? styles.selected : null)}
         onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        role="treeitem"
         style={{ paddingLeft: depth * 12 + 8 }}
-        tabIndex={isSelected ? 0 : -1}
         type="button"
       >
         {isFolder ? (
@@ -105,7 +80,7 @@ const FileTreeNode = memo(function FileTreeNode({ node, selectedPath, onSelect, 
         <span className={styles.name}>{node.name}</span>
       </button>
       {showChildren ? (
-        <div className={styles.children}>
+        <ul className={cn(styles.children, styles.list)}>
           {node.children?.map((child) => (
             <FileTreeNode
               depth={depth + 1}
@@ -115,9 +90,9 @@ const FileTreeNode = memo(function FileTreeNode({ node, selectedPath, onSelect, 
               selectedPath={selectedPath}
             />
           ))}
-        </div>
+        </ul>
       ) : null}
-    </div>
+    </li>
   );
 });
 

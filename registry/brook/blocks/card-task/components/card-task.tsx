@@ -1,3 +1,5 @@
+"use client";
+
 import { Calendar, ListTodo, MessageCircleMore, MoreHorizontal, Trash, UserPlus, Users } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 import { Badge } from "@/registry/brook/ui/badge/badge";

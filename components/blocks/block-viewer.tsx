@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   CodeBlockActions,
   CodeBlockContent,
@@ -12,10 +12,11 @@ import {
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
 import { useStyle } from "@/components/providers/style-provider";
 import { copyWithToast } from "@/components/shared/copy-with-toast";
-import { useMounted } from "@/hooks/use-mounted";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/brook/ui/tabs/tabs";
 import styles from "./block-viewer.module.css";
+import { resolveSelectedFile } from "./file-selection";
 import { buildFileTree, FileTree } from "./file-tree";
+import { useBlockSource } from "./use-block-source";
 
 function InstallButton({ name }: { name: string }) {
   const { style } = useStyle();
@@ -41,8 +42,7 @@ function InstallButton({ name }: { name: string }) {
 type FileData = {
   name: string;
   path: string;
-  content: string;
-  highlightedContent: string;
+  kind: "installed" | "usage";
 };
 
 type BlockViewerProps = {
@@ -63,7 +63,7 @@ export function BlockViewer({
   toolbar,
 }: BlockViewerProps) {
   const { style } = useStyle();
-  const mounted = useMounted();
+  const [tab, setTab] = useState("preview");
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
   const files = useMemo(
@@ -71,19 +71,15 @@ export function BlockViewer({
     [style, tailwindFiles, cssModulesFiles]
   );
 
-  const currentFile = useMemo(() => files.find((f) => f.path === selectedFile), [files, selectedFile]);
+  const currentFile = useMemo(() => resolveSelectedFile(files, selectedFile), [files, selectedFile]);
 
   const fileTree = useMemo(() => buildFileTree(files.map((f) => f.path)), [files]);
 
-  useEffect(() => {
-    if (mounted) {
-      setSelectedFile(files[0]?.path ?? null);
-    }
-  }, [mounted, files]);
+  const { source, error, retry } = useBlockSource(name, style, currentFile?.path, tab === "code");
 
   return (
     <div className={styles.viewer}>
-      <Tabs className={styles.tabs} defaultValue="preview">
+      <Tabs className={styles.tabs} onValueChange={setTab} value={tab}>
         <div className={styles.tabsHeader}>
           <TabsList>
             <TabsTrigger value="preview">Preview</TabsTrigger>
@@ -108,34 +104,36 @@ export function BlockViewer({
               <div className={styles.sidebarHeader}>
                 <span className={styles.sidebarTitle}>Files</span>
               </div>
-              <FileTree files={fileTree} onSelect={setSelectedFile} selectedPath={selectedFile} />
+              <FileTree files={fileTree} onSelect={setSelectedFile} selectedPath={currentFile?.path ?? null} />
             </div>
             <div className={styles.codeArea}>
               {currentFile ? (
                 <CodeBlockRoot
                   className={styles.codeBlock}
-                  code={currentFile.content}
-                  highlightedCode={currentFile.highlightedContent}
+                  code={source?.content ?? ""}
+                  highlightedCode={source?.highlightedContent ?? ""}
                 >
                   <CodeBlockHeader className={styles.codeHeader}>
                     <select
                       aria-label="Select file"
                       className={styles.mobileFileSelect}
                       onChange={(e) => setSelectedFile(e.target.value)}
-                      value={selectedFile ?? ""}
+                      value={currentFile.path}
                     >
                       {files.map((file) => (
                         <option key={file.path} value={file.path}>
                           {file.path}
+                          {file.kind === "usage" ? " (usage, not installed)" : ""}
                         </option>
                       ))}
                     </select>
-                    <CodeBlockFilename className={styles.fileName}>{currentFile.name}</CodeBlockFilename>
-                    <CodeBlockActions>
-                      <CodeBlockCopyButton />
-                    </CodeBlockActions>
+                    <CodeBlockFilename className={styles.fileName}>
+                      {currentFile.name} ·{" "}
+                      {currentFile.kind === "usage" ? "Usage example · not installed" : "Installed source"}
+                    </CodeBlockFilename>
+                    <CodeBlockActions>{source ? <CodeBlockCopyButton /> : null}</CodeBlockActions>
                   </CodeBlockHeader>
-                  <CodeBlockContent className={styles.codeContent} />
+                  <SourceContent error={error} ready={Boolean(source)} retry={retry} />
                 </CodeBlockRoot>
               ) : null}
             </div>
@@ -144,4 +142,21 @@ export function BlockViewer({
       </Tabs>
     </div>
   );
+}
+
+function SourceContent({ error, ready, retry }: { error: boolean; ready: boolean; retry: () => void }) {
+  if (error) {
+    return (
+      <div role="alert">
+        Could not load this file.{" "}
+        <button onClick={retry} type="button">
+          Retry
+        </button>
+      </div>
+    );
+  }
+  if (ready) {
+    return <CodeBlockContent className={styles.codeContent} />;
+  }
+  return <output>Loading source…</output>;
 }

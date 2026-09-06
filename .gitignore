@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
 
 # next.js
 /.next/
@@ -55,11 +57,6 @@ next-env.d.ts
 /registry/brook/blocks/expandable-card-carousel/page.tsx
 /registry/brook/blocks/expandable-card-spread/data.json
 /registry/brook/blocks/expandable-card-spread/page.tsx
-/registry/brook/blocks/kanban-board/data.json
-/registry/brook/blocks/kanban-board/hooks/
-/registry/brook/blocks/kanban-board/lib/
-/registry/brook/blocks/kanban-board/page.tsx
-/registry/brook/blocks/kanban-board/types/
 /registry/brook/blocks/pricing-section/data.json
 /registry/brook/tailwind/blocks/ai-chat/page.tsx
 /registry/brook/tailwind/blocks/card-image-section/data.json
@@ -71,10 +68,5 @@ next-env.d.ts
 /registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx
 /registry/brook/tailwind/blocks/expandable-card-spread/data.json
 /registry/brook/tailwind/blocks/expandable-card-spread/page.tsx
-/registry/brook/tailwind/blocks/kanban-board/data.json
-/registry/brook/tailwind/blocks/kanban-board/hooks/
-/registry/brook/tailwind/blocks/kanban-board/lib/
-/registry/brook/tailwind/blocks/kanban-board/page.tsx
-/registry/brook/tailwind/blocks/kanban-board/types/
 /registry/brook/tailwind/blocks/pricing-section/data.json
 # END AUTO-GENERATED

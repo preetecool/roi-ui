@@ -1,3 +1,5 @@
+"use client";
+
 import { CardTask } from "./components/card-task";
 
 const demoUsers = [

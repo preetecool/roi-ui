@@ -9,15 +9,8 @@ function CardEffects({ prefix }: { prefix: string }) {
         <stop offset="0%" stopColor="var(--foreground)" stopOpacity="0.1" />
         <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.02" />
       </linearGradient>
-      <filter
-        id={`${prefix}-shadow`}
-        x="-15%"
-        y="-15%"
-        width="130%"
-        height="130%"
-        colorInterpolationFilters="sRGB"
-      >
-        <feDropShadow dx="0" dy="1" stdDeviation="1.5" floodColor="black" floodOpacity="0.06" />
+      <filter colorInterpolationFilters="sRGB" height="130%" id={`${prefix}-shadow`} width="130%" x="-15%" y="-15%">
+        <feDropShadow dx="0" dy="1" floodColor="black" floodOpacity="0.06" stdDeviation="1.5" />
       </filter>
     </>
   );
@@ -36,12 +29,12 @@ export function AiChatSkeleton({ className }: SkeletonProps) {
       {/* Card background */}
       <rect
         fill="url(#aiChatGrad)"
+        filter="url(#aiChat-shadow)"
         height="120"
         rx="12"
-        width="280"
         stroke="url(#aiChat-border)"
         strokeWidth="1"
-        filter="url(#aiChat-shadow)"
+        width="280"
       />
       {/* Textarea area */}
       <rect fill="var(--mix-card-15-bg)" height="50" rx="8" width="256" x="12" y="12" />
@@ -91,14 +84,14 @@ export function CardImageSectionSkeleton({ className }: SkeletonProps) {
       {/* Card 1 - left column, tall */}
       <rect
         fill="url(#imageFeatureCardGrad)"
+        filter="url(#imgSection-shadow)"
         height="100"
         rx="8"
+        stroke="url(#imgSection-border)"
+        strokeWidth="1"
         width="120"
         x="16"
         y="60"
-        stroke="url(#imgSection-border)"
-        strokeWidth="1"
-        filter="url(#imgSection-shadow)"
       />
       <rect fill="url(#imageFeaturePlaceholder)" height="50" rx="5" width="104" x="24" y="68" />
       <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="60" x="24" y="126" />
@@ -107,14 +100,14 @@ export function CardImageSectionSkeleton({ className }: SkeletonProps) {
       {/* Card 2 - right column, short */}
       <rect
         fill="url(#imageFeatureCardGrad)"
+        filter="url(#imgSection-shadow)"
         height="70"
         rx="8"
+        stroke="url(#imgSection-border)"
+        strokeWidth="1"
         width="120"
         x="144"
         y="60"
-        stroke="url(#imgSection-border)"
-        strokeWidth="1"
-        filter="url(#imgSection-shadow)"
       />
       <rect fill="url(#imageFeaturePlaceholder)" height="30" rx="5" width="104" x="152" y="68" />
       <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="55" x="152" y="106" />
@@ -122,14 +115,14 @@ export function CardImageSectionSkeleton({ className }: SkeletonProps) {
       {/* Card 3 - left column, short */}
       <rect
         fill="url(#imageFeatureCardGrad)"
+        filter="url(#imgSection-shadow)"
         height="60"
         rx="8"
+        stroke="url(#imgSection-border)"
+        strokeWidth="1"
         width="120"
         x="16"
         y="168"
-        stroke="url(#imgSection-border)"
-        strokeWidth="1"
-        filter="url(#imgSection-shadow)"
       />
       <rect fill="url(#imageFeaturePlaceholder)" height="25" rx="5" width="104" x="24" y="176" />
       <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="50" x="24" y="208" />
@@ -137,14 +130,14 @@ export function CardImageSectionSkeleton({ className }: SkeletonProps) {
       {/* Card 4 - right column, tall */}
       <rect
         fill="url(#imageFeatureCardGrad)"
+        filter="url(#imgSection-shadow)"
         height="90"
         rx="8"
+        stroke="url(#imgSection-border)"
+        strokeWidth="1"
         width="120"
         x="144"
         y="138"
-        stroke="url(#imgSection-border)"
-        strokeWidth="1"
-        filter="url(#imgSection-shadow)"
       />
       <rect fill="url(#imageFeaturePlaceholder)" height="45" rx="5" width="104" x="152" y="146" />
       <rect fill="var(--muted-foreground)" height="6" opacity="0.3" rx="3" width="58" x="152" y="198" />
@@ -167,12 +160,12 @@ export function CardLoginSkeleton({ className }: SkeletonProps) {
       {/* Card background */}
       <rect
         fill="url(#loginCardGrad)"
+        filter="url(#login-shadow)"
         height="280"
         rx="14"
-        width="220"
         stroke="url(#login-border)"
         strokeWidth="1"
-        filter="url(#login-shadow)"
+        width="220"
       />
       {/* Title */}
       <rect fill="var(--muted-foreground)" height="12" opacity="0.42" rx="3" width="64" x="16" y="20" />
@@ -209,12 +202,12 @@ export function CardTaskSkeleton({ className }: SkeletonProps) {
       {/* Card background */}
       <rect
         fill="url(#taskCardGrad)"
+        filter="url(#task-shadow)"
         height="180"
         rx="14"
-        width="200"
         stroke="url(#task-border)"
         strokeWidth="1"
-        filter="url(#task-shadow)"
+        width="200"
       />
       {/* Title and menu */}
       <rect fill="var(--muted-foreground)" height="9" opacity="0.42" rx="3" width="100" x="16" y="16" />
@@ -262,12 +255,12 @@ export function CardTrafficSkeleton({ className }: SkeletonProps) {
       {/* Card background */}
       <rect
         fill="url(#trafficCardGrad)"
+        filter="url(#traffic-shadow)"
         height="200"
         rx="14"
-        width="280"
         stroke="url(#traffic-border)"
         strokeWidth="1"
-        filter="url(#traffic-shadow)"
+        width="280"
       />
       {/* Title */}
       <rect fill="var(--muted-foreground)" height="10" opacity="0.42" rx="3" width="100" x="16" y="16" />
@@ -323,12 +316,12 @@ export function ExpandableCardSkeleton({ className }: SkeletonProps) {
       {/* Card background */}
       <rect
         fill="url(#expandCardGrad)"
+        filter="url(#expand-shadow)"
         height="220"
         rx="16"
-        width="180"
         stroke="url(#expand-border)"
         strokeWidth="1"
-        filter="url(#expand-shadow)"
+        width="180"
       />
       {/* Image placeholder */}
       <rect fill="url(#expandImageGrad)" height="160" rx="12" width="164" x="8" y="8" />
@@ -363,74 +356,6 @@ export function ExpandableCardSkeleton({ className }: SkeletonProps) {
   );
 }
 
-export function KanbanBoardSkeleton({ className }: SkeletonProps) {
-  return (
-    <svg className={className} fill="none" overflow="visible" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="kanbanBg" x1="0%" x2="0%" y1="0%" y2="100%">
-          <stop offset="0%" stopColor="var(--mix-card-75-bg)" />
-          <stop offset="100%" stopColor="var(--mix-card-50-bg)" />
-        </linearGradient>
-        <linearGradient id="kanbanColumn" x1="0%" x2="0%" y1="0%" y2="100%">
-          <stop offset="0%" stopColor="var(--mix-card-33-bg)" />
-          <stop offset="100%" stopColor="var(--mix-card-15-bg)" />
-        </linearGradient>
-        <CardEffects prefix="kanban" />
-      </defs>
-      {/* Background */}
-      <rect
-        fill="url(#kanbanBg)"
-        height="200"
-        rx="12"
-        width="320"
-        stroke="url(#kanban-border)"
-        strokeWidth="1"
-        filter="url(#kanban-shadow)"
-      />
-
-      {/* Column 1 - To Do */}
-      <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="12" y="12" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="40" x="20" y="22" />
-      <circle cx="80" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
-      {/* Cards in column 1 */}
-      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="20" y="42" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="50" x="28" y="52" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="35" x="28" y="64" />
-      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="20" y="86" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="45" x="28" y="96" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="55" x="28" y="108" />
-      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="20" y="130" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="55" x="28" y="140" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="40" x="28" y="152" />
-
-      {/* Column 2 - In Progress */}
-      <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="114" y="12" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="45" x="122" y="22" />
-      <circle cx="182" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
-      {/* Cards in column 2 */}
-      <rect fill="var(--mix-card-50-bg)" height="44" rx="6" width="76" x="122" y="42" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="55" x="130" y="52" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="40" x="130" y="64" />
-      <circle cx="140" cy="78" fill="var(--muted-foreground)" opacity="0.15" r="5" />
-      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="122" y="94" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="48" x="130" y="104" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="58" x="130" y="116" />
-
-      {/* Column 3 - Done */}
-      <rect fill="url(#kanbanColumn)" height="176" rx="8" width="92" x="216" y="12" />
-      <rect fill="var(--muted-foreground)" height="8" opacity="0.35" rx="4" width="35" x="224" y="22" />
-      <circle cx="284" cy="26" fill="var(--muted-foreground)" opacity="0.2" r="8" />
-      {/* Cards in column 3 */}
-      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="224" y="42" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="52" x="232" y="52" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="38" x="232" y="64" />
-      <rect fill="var(--mix-card-50-bg)" height="36" rx="6" width="76" x="224" y="86" />
-      <rect fill="var(--muted-foreground)" height="6" opacity="0.25" rx="3" width="42" x="232" y="96" />
-      <rect fill="var(--muted-foreground)" height="4" opacity="0.15" rx="2" width="50" x="232" y="108" />
-    </svg>
-  );
-}
-
 export function PricingSectionSkeleton({ className }: SkeletonProps) {
   return (
     <svg className={className} fill="none" overflow="visible" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
@@ -446,9 +371,9 @@ export function PricingSectionSkeleton({ className }: SkeletonProps) {
       <path
         d="M12 38 Q12 28 22 28 L107 28 L107 152 L22 152 Q12 152 12 142 Z"
         fill="url(#pricingCardGrad)"
+        filter="url(#pricing-shadow)"
         stroke="url(#pricing-border)"
         strokeWidth="1"
-        filter="url(#pricing-shadow)"
       />
       {/* Plan name */}
       <rect fill="var(--muted-foreground)" height="6" opacity="0.38" rx="3" width="38" x="22" y="40" />
@@ -468,14 +393,14 @@ export function PricingSectionSkeleton({ className }: SkeletonProps) {
       {/* Card 2 - Pro (taller, highlighted) */}
       <rect
         fill="url(#pricingCardGrad)"
+        filter="url(#pricing-shadow)"
         height="164"
         rx="10"
+        stroke="url(#pricing-border)"
+        strokeWidth="1"
         width="96"
         x="112"
         y="8"
-        stroke="url(#pricing-border)"
-        strokeWidth="1"
-        filter="url(#pricing-shadow)"
       />
       {/* Badge */}
       <rect fill="var(--muted-foreground)" height="12" opacity="0.28" rx="6" width="50" x="135" y="2" />
@@ -500,9 +425,9 @@ export function PricingSectionSkeleton({ className }: SkeletonProps) {
       <path
         d="M213 28 L298 28 Q308 28 308 38 L308 142 Q308 152 298 152 L213 152 Z"
         fill="url(#pricingCardGrad)"
+        filter="url(#pricing-shadow)"
         stroke="url(#pricing-border)"
         strokeWidth="1"
-        filter="url(#pricing-shadow)"
       />
       {/* Plan name */}
       <rect fill="var(--muted-foreground)" height="6" opacity="0.38" rx="3" width="50" x="223" y="40" />
@@ -540,14 +465,14 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
       {/* Card 1 */}
       <rect
         fill="url(#expandCarouselCardGrad)"
+        filter="url(#carousel-shadow)"
         height="140"
         rx="12"
+        stroke="url(#carousel-border)"
+        strokeWidth="1"
         width="100"
         x="12"
         y="5"
-        stroke="url(#carousel-border)"
-        strokeWidth="1"
-        filter="url(#carousel-shadow)"
       />
       <rect fill="url(#expandCarouselImageGrad)" height="90" rx="8" width="84" x="20" y="13" />
       <circle cx="62" cy="52" fill="var(--muted-foreground)" opacity="0.14" r="14" />
@@ -578,14 +503,14 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
       {/* Card 2 */}
       <rect
         fill="url(#expandCarouselCardGrad)"
+        filter="url(#carousel-shadow)"
         height="140"
         rx="12"
+        stroke="url(#carousel-border)"
+        strokeWidth="1"
         width="100"
         x="120"
         y="5"
-        stroke="url(#carousel-border)"
-        strokeWidth="1"
-        filter="url(#carousel-shadow)"
       />
       <rect fill="url(#expandCarouselImageGrad)" height="90" rx="8" width="84" x="128" y="13" />
       <circle cx="170" cy="52" fill="var(--muted-foreground)" opacity="0.14" r="14" />
@@ -616,14 +541,14 @@ export function ExpandableCardCarouselSkeleton({ className }: SkeletonProps) {
       {/* Card 3 */}
       <rect
         fill="url(#expandCarouselCardGrad)"
+        filter="url(#carousel-shadow)"
         height="140"
         rx="12"
+        stroke="url(#carousel-border)"
+        strokeWidth="1"
         width="100"
         x="228"
         y="5"
-        stroke="url(#carousel-border)"
-        strokeWidth="1"
-        filter="url(#carousel-shadow)"
       />
       <rect fill="url(#expandCarouselImageGrad)" height="90" rx="8" width="84" x="236" y="13" />
       <circle cx="278" cy="52" fill="var(--muted-foreground)" opacity="0.14" r="14" />
@@ -667,12 +592,12 @@ export function CardProgressSkeleton({ className }: SkeletonProps) {
       {/* Card background */}
       <rect
         fill="url(#progressCardGrad)"
+        filter="url(#progress-shadow)"
         height="180"
         rx="12"
-        width="200"
         stroke="url(#progress-border)"
         strokeWidth="1"
-        filter="url(#progress-shadow)"
+        width="200"
       />
 
       {/* Step 1 - Complete */}
@@ -733,14 +658,14 @@ export function ExpandableCardSpreadSkeleton({ className }: SkeletonProps) {
       {/* Card 1 (back) */}
       <rect
         fill="url(#spreadCardGrad)"
+        filter="url(#spread-shadow)"
         height="130"
         rx="14"
+        stroke="url(#spread-border)"
+        strokeWidth="1"
         width="90"
         x="50"
         y="15"
-        stroke="url(#spread-border)"
-        strokeWidth="1"
-        filter="url(#spread-shadow)"
       />
       <circle cx="72" cy="40" fill="var(--muted-foreground)" opacity="0.18" r="10" />
       <rect fill="var(--muted-foreground)" height="7" opacity="0.22" rx="3" width="50" x="62" y="115" />
@@ -749,14 +674,14 @@ export function ExpandableCardSpreadSkeleton({ className }: SkeletonProps) {
       {/* Card 2 */}
       <rect
         fill="url(#spreadCardGrad)"
+        filter="url(#spread-shadow)"
         height="130"
         rx="14"
+        stroke="url(#spread-border)"
+        strokeWidth="1"
         width="90"
         x="95"
         y="15"
-        stroke="url(#spread-border)"
-        strokeWidth="1"
-        filter="url(#spread-shadow)"
       />
       <circle cx="117" cy="40" fill="var(--muted-foreground)" opacity="0.22" r="10" />
       <rect fill="var(--muted-foreground)" height="7" opacity="0.27" rx="3" width="55" x="107" y="115" />
@@ -765,14 +690,14 @@ export function ExpandableCardSpreadSkeleton({ className }: SkeletonProps) {
       {/* Card 3 */}
       <rect
         fill="url(#spreadCardGrad)"
+        filter="url(#spread-shadow)"
         height="130"
         rx="14"
+        stroke="url(#spread-border)"
+        strokeWidth="1"
         width="90"
         x="140"
         y="15"
-        stroke="url(#spread-border)"
-        strokeWidth="1"
-        filter="url(#spread-shadow)"
       />
       <circle cx="162" cy="40" fill="var(--muted-foreground)" opacity="0.24" r="10" />
       <rect fill="var(--muted-foreground)" height="7" opacity="0.32" rx="3" width="48" x="152" y="115" />
@@ -781,14 +706,14 @@ export function ExpandableCardSpreadSkeleton({ className }: SkeletonProps) {
       {/* Card 4 (front) */}
       <rect
         fill="url(#spreadCardGrad)"
+        filter="url(#spread-shadow)"
         height="130"
         rx="14"
+        stroke="url(#spread-border)"
+        strokeWidth="1"
         width="90"
         x="185"
         y="15"
-        stroke="url(#spread-border)"
-        strokeWidth="1"
-        filter="url(#spread-shadow)"
       />
       <circle cx="207" cy="40" fill="var(--muted-foreground)" opacity="0.28" r="10" />
       <rect fill="var(--muted-foreground)" height="7" opacity="0.38" rx="3" width="52" x="197" y="115" />
@@ -805,7 +730,6 @@ export const blockSkeletons: Record<string, React.ComponentType<SkeletonProps>> 
   "card-traffic": CardTrafficSkeleton,
   "expandable-card-carousel": ExpandableCardCarouselSkeleton,
   "expandable-card-spread": ExpandableCardSpreadSkeleton,
-  "kanban-board": KanbanBoardSkeleton,
   "pricing-section": PricingSectionSkeleton,
   "card-progress": CardProgressSkeleton,
 };

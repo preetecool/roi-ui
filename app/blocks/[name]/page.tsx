@@ -1,10 +1,8 @@
-import { extname } from "node:path";
 import { notFound } from "next/navigation";
 import { BlockViewer } from "@/components/blocks/block-viewer";
 import { FooterNav } from "@/components/layout/footer-nav/footer-nav";
-import { highlightCode } from "@/lib/highlight-code";
 import { BlocksData } from "@/registry/__blocks__";
-import { Index } from "@/registry/__index__";
+import { blockCatalog } from "@/registry/block-catalog";
 import styles from "./page.module.css";
 import { BlockPreview } from "./preview";
 
@@ -12,38 +10,8 @@ type PageProps = {
   params: Promise<{ name: string }>;
 };
 
-type FileData = {
-  name: string;
-  path: string;
-  content: string;
-  highlightedContent: string;
-};
-
-const FULL_WIDTH_BLOCKS = ["kanban-board", "card-image-section"];
-
-const EXCLUDED_BLOCKS = ["card-history", "tailwind", "kanban-board"];
-
-const BLOCK_TITLES: Record<string, string> = {
-  "ai-chat": "AI Chat",
-  "card-image-section": "Card Image Section",
-  "card-login": "Login Card",
-  "card-progress": "Progress Card",
-  "card-task": "Task Card",
-  "card-traffic": "Traffic Card",
-  "expandable-card-carousel": "Expandable Card Carousel",
-  "expandable-card-spread": "Expandable Card Spread",
-  "kanban-board": "Kanban Board",
-  "pricing-section": "Pricing Section",
-  "profile-menu": "Profile Menu",
-};
-
 function getOrderedBlocks() {
-  return Object.entries(Index)
-    .filter(([key, entry]) => entry.type === "block" && !key.endsWith("-tailwind") && !EXCLUDED_BLOCKS.includes(key))
-    .map(([key]) => ({
-      name: key,
-      title: BLOCK_TITLES[key] || key,
-    }));
+  return Object.entries(blockCatalog).map(([name, metadata]) => ({ name, ...metadata }));
 }
 
 function getBlockNavigation(currentName: string) {
@@ -60,10 +28,10 @@ function getBlockNavigation(currentName: string) {
   return { prev, next };
 }
 
-async function getBlockData(name: string) {
+function getBlockData(name: string) {
   // Check if block exists in registry
-  const entry = Index[name];
-  if (!entry || entry.type !== "block") {
+  const entry = blockCatalog[name];
+  if (!(Object.hasOwn(blockCatalog, name) && entry)) {
     return null;
   }
 
@@ -72,39 +40,20 @@ async function getBlockData(name: string) {
     return null;
   }
 
-  const cssModulesFiles = await Promise.all(
-    blockData.cssModulesFiles.map(async (file) => {
-      const ext = extname(file.name).slice(1);
-      const language = ext === "css" ? "css" : ext === "ts" ? "typescript" : "tsx";
-      const highlightedContent = await highlightCode(file.content, language);
-      return {
-        ...file,
-        highlightedContent,
-      };
-    })
-  );
-
-  const tailwindFiles: FileData[] = await Promise.all(
-    blockData.tailwindFiles.map(async (file) => {
-      const ext = extname(file.name).slice(1);
-      const language = ext === "css" ? "css" : ext === "ts" ? "typescript" : "tsx";
-      const highlightedContent = await highlightCode(file.content, language);
-      return {
-        ...file,
-        highlightedContent,
-      };
-    })
-  );
-
+  const metadata = ({ name: filename, path, kind }: { name: string; path: string; kind: "installed" | "usage" }) => ({
+    name: filename,
+    path,
+    kind,
+  });
   return {
     name,
-    cssModulesFiles,
-    tailwindFiles,
+    cssModulesFiles: blockData.cssModulesFiles.map(metadata),
+    tailwindFiles: blockData.tailwindFiles.map(metadata),
   };
 }
 
-async function BlockPageContent({ name }: { name: string }) {
-  const blockData = await getBlockData(name);
+function BlockPageContent({ name }: { name: string }) {
+  const blockData = getBlockData(name);
 
   if (!blockData) {
     notFound();
@@ -113,7 +62,7 @@ async function BlockPageContent({ name }: { name: string }) {
   return (
     <BlockViewer
       cssModulesFiles={blockData.cssModulesFiles}
-      full={FULL_WIDTH_BLOCKS.includes(name)}
+      full={blockCatalog[name].full}
       name={blockData.name}
       tailwindFiles={blockData.tailwindFiles}
     >
@@ -146,7 +95,5 @@ export default async function BlockPage({ params }: PageProps) {
 }
 
 export function generateStaticParams() {
-  return Object.entries(Index)
-    .filter(([, entry]) => entry.type === "block")
-    .map(([name]) => ({ name }));
+  return Object.keys(blockCatalog).map((name) => ({ name }));
 }

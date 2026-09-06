@@ -1,5 +1,6 @@
 "use client";
 import { Check } from "lucide-react";
+import { useId, useState } from "react";
 import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Button } from "@/registry/brook/ui/button/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
@@ -9,11 +10,41 @@ import { Form, FormActions, FormGroup } from "@/registry/brook/ui/form/form";
 import { Input } from "@/registry/brook/ui/input/input";
 import styles from "./card-login.module.css";
 
-export default function CardLoginDemo() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export type CardLoginProps = {
+  onSignIn?: (credentials: { email: string; password: string; rememberMe: boolean }) => void | Promise<void>;
+  onForgotPassword?: () => void;
+  onSignUp?: () => void;
+  onSocialSignIn?: (provider: "apple" | "google") => void;
+};
+
+export default function CardLoginDemo({ onSignIn, onForgotPassword, onSignUp, onSocialSignIn }: CardLoginProps = {}) {
+  const rememberId = useId();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    console.log("Form submitted:", Object.fromEntries(formData));
+    if (pending) {
+      return;
+    }
+    const form = e.currentTarget;
+    setError(null);
+    if (!onSignIn) {
+      return;
+    }
+    const data = new FormData(form);
+    setPending(true);
+    try {
+      await onSignIn({
+        email: String(data.get("email") ?? ""),
+        password: String(data.get("password") ?? ""),
+        rememberMe: data.get("rememberMe") !== null,
+      });
+      form.reset();
+    } catch {
+      setError("Unable to sign in. Please try again.");
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -40,7 +71,12 @@ export default function CardLoginDemo() {
             <Field>
               <div className={styles.passwordLabelRow}>
                 <FieldLabel className={styles.fieldLabel}>Password</FieldLabel>
-                <button className={styles.forgotPassword} type="button">
+                <button
+                  className={styles.forgotPassword}
+                  disabled={!onForgotPassword || pending}
+                  onClick={onForgotPassword}
+                  type="button"
+                >
                   Forgot password?
                 </button>
               </div>
@@ -54,8 +90,8 @@ export default function CardLoginDemo() {
               <FieldError />
             </Field>
 
-            <label className={styles.checkboxLabel} htmlFor="remember-me">
-              <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
+            <label className={styles.checkboxLabel} htmlFor={rememberId}>
+              <Checkbox defaultChecked={false} id={rememberId} name="rememberMe">
                 <CheckboxIndicator>
                   <Check size={16} strokeWidth={3} />
                 </CheckboxIndicator>
@@ -65,10 +101,11 @@ export default function CardLoginDemo() {
           </FormGroup>
 
           <FormActions className={styles.footer}>
-            <Button className={styles.button} type="submit">
-              <span className={styles.buttonContent}>Sign In</span>
+            <Button className={styles.button} disabled={pending} type="submit">
+              <span className={styles.buttonContent}>{pending ? "Signing in…" : "Sign In"}</span>
             </Button>
           </FormActions>
+          {error ? <p role="alert">{error}</p> : null}
         </Form>
       </CardContent>
       <div className={styles.dividerContainer}>
@@ -77,11 +114,21 @@ export default function CardLoginDemo() {
         <div className={styles.dividerLine} />
       </div>
       <div className={styles.socialLoginContainer}>
-        <Button className={styles.socialButton} variant="outline">
+        <Button
+          className={styles.socialButton}
+          disabled={!onSocialSignIn || pending}
+          onClick={() => onSocialSignIn?.("apple")}
+          variant="outline"
+        >
           <AppleIcon className={styles.appleLogo} />
           Apple
         </Button>
-        <Button className={styles.socialButton} variant="outline">
+        <Button
+          className={styles.socialButton}
+          disabled={!onSocialSignIn || pending}
+          onClick={() => onSocialSignIn?.("google")}
+          variant="outline"
+        >
           <GoogleIcon className={styles.socialIcon} />
           Google
           <Badge className={styles.lastUsedBadge} size="sm" variant="info">
@@ -91,7 +138,7 @@ export default function CardLoginDemo() {
       </div>
       <div className={styles.signupBanner}>
         <span className={styles.signupText}>No account? </span>
-        <button className={styles.signupLink} type="button">
+        <button className={styles.signupLink} disabled={!onSignUp || pending} onClick={onSignUp} type="button">
           Sign up
         </button>
       </div>

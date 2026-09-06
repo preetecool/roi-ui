@@ -50,6 +50,7 @@
 }
 
 .footerActions {
+  margin-left: auto;
   display: flex;
   gap: 0.5rem;
   align-items: center;
