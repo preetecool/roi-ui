@@ -2,82 +2,14 @@ import type { Dirent } from "node:fs";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
+const TAILWIND_SUFFIX = /-tailwind$/;
 const FILE_EXTENSION_REGEX = /\.(tsx?|jsx?)$/;
-const MAX_IMPORT_LINE_LENGTH = 44;
+const _MAX_IMPORT_LINE_LENGTH = 44;
 
-type BlockFileData = {
-  name: string;
-  path: string;
-  content: string;
-};
+import { blockCatalog } from "../registry/block-catalog.ts";
+import { type BlockFileData, collectFiles, readBlockFiles } from "./block-files.ts";
 
-type BlockData = {
-  cssModulesFiles: BlockFileData[];
-  tailwindFiles: BlockFileData[];
-};
-
-/**
- * Transform code for display (converts registry paths to user-facing paths)
- */
-function transformCode(code: string): string {
-  return code
-    .replaceAll("@/registry/brook/ui/", "@/components/ui/")
-    .replaceAll("@/registry/brook/tailwind/ui/", "@/components/ui/")
-    .replaceAll("@/lib/utils-tailwind", "@/lib/utils");
-}
-
-/**
- * Transform registry file path to display path
- */
-function getDisplayPath(registryPath: string, blockName: string): string {
-  const fileName = path.basename(registryPath);
-  if (fileName === "page.tsx") {
-    return `app/${blockName}/page.tsx`;
-  }
-  if (fileName === "data.json") {
-    return `app/${blockName}/data.json`;
-  }
-  if (registryPath.includes("/components/")) {
-    return `components/${fileName}`;
-  }
-  if (registryPath.includes("/hooks/")) {
-    return `hooks/${fileName}`;
-  }
-  if (registryPath.includes("/lib/")) {
-    return `lib/${fileName}`;
-  }
-  if (registryPath.includes("/types/")) {
-    return `types/${fileName}`;
-  }
-  return fileName;
-}
-
-/**
- * Read and process block files for pre-computation
- */
-async function readBlockFiles(filePaths: string[], blockName: string): Promise<BlockFileData[]> {
-  const files: BlockFileData[] = [];
-  const cwd = process.cwd();
-
-  for (const filePath of filePaths) {
-    try {
-      const fullPath = path.join(cwd, filePath);
-      const rawContent = await fs.readFile(fullPath, "utf-8");
-      const content = transformCode(rawContent);
-      const fileName = path.basename(filePath);
-
-      files.push({
-        name: fileName,
-        path: getDisplayPath(filePath, blockName),
-        content,
-      });
-    } catch {
-      // File doesn't exist
-    }
-  }
-
-  return files;
-}
+type BlockData = { cssModulesFiles: BlockFileData[]; tailwindFiles: BlockFileData[] };
 
 /**
  * Get all files in a directory (tsx and css)
@@ -113,8 +45,12 @@ async function getComponentFiles(dir: string, name: string): Promise<string[]> {
   return files.sort((a, b) => {
     const aIsTsx = a.endsWith(".tsx");
     const bIsTsx = b.endsWith(".tsx");
-    if (aIsTsx && !bIsTsx) return -1;
-    if (!aIsTsx && bIsTsx) return 1;
+    if (aIsTsx && !bIsTsx) {
+      return -1;
+    }
+    if (!aIsTsx && bIsTsx) {
+      return 1;
+    }
     return 0;
   });
 }
@@ -123,113 +59,7 @@ async function getComponentFiles(dir: string, name: string): Promise<string[]> {
  * Get block files from new structure (page.tsx + components/ + hooks/ + lib/)
  */
 async function getBlockFiles(dir: string, name: string): Promise<string[]> {
-  const files: string[] = [];
-  const basePath = path.join(dir, name);
-  const cwd = process.cwd();
-
-  try {
-    // Check for page.tsx
-    const pagePath = path.join(basePath, "page.tsx");
-    try {
-      await fs.stat(pagePath);
-      files.push(path.relative(cwd, pagePath));
-    } catch {
-      // No page.tsx
-    }
-
-    // Check for data.json at root level
-    const dataJsonPath = path.join(basePath, "data.json");
-    try {
-      await fs.stat(dataJsonPath);
-      files.push(path.relative(cwd, dataJsonPath));
-    } catch {
-      // No data.json
-    }
-
-    // Check for components/ folder
-    const componentsPath = path.join(basePath, "components");
-    try {
-      const componentFiles = await fs.readdir(componentsPath);
-      for (const file of componentFiles) {
-        if (file.endsWith(".tsx") || file.endsWith(".module.css") || file.endsWith(".ts")) {
-          const fullPath = path.join(componentsPath, file);
-          files.push(path.relative(cwd, fullPath));
-        }
-      }
-    } catch {
-      // No components folder, fall back to old structure
-      try {
-        const dirFiles = await fs.readdir(basePath);
-        for (const file of dirFiles) {
-          // Skip page.tsx and data.json since they're already added above
-          if (file === "page.tsx" || file === "data.json") continue;
-          if (file.endsWith(".tsx") || file.endsWith(".module.css")) {
-            const fullPath = path.join(basePath, file);
-            files.push(path.relative(cwd, fullPath));
-          }
-        }
-      } catch {
-        // Directory doesn't exist
-      }
-    }
-
-    // Check for hooks/ folder
-    const hooksPath = path.join(basePath, "hooks");
-    try {
-      const hookFiles = await fs.readdir(hooksPath);
-      for (const file of hookFiles) {
-        if (file.endsWith(".ts") || file.endsWith(".tsx")) {
-          const fullPath = path.join(hooksPath, file);
-          files.push(path.relative(cwd, fullPath));
-        }
-      }
-    } catch {
-      // No hooks folder
-    }
-
-    // Check for lib/ folder
-    const libPath = path.join(basePath, "lib");
-    try {
-      const libFiles = await fs.readdir(libPath);
-      for (const file of libFiles) {
-        if (file.endsWith(".ts") || file.endsWith(".tsx")) {
-          const fullPath = path.join(libPath, file);
-          files.push(path.relative(cwd, fullPath));
-        }
-      }
-    } catch {
-      // No lib folder
-    }
-
-    // Check for types/ folder
-    const typesPath = path.join(basePath, "types");
-    try {
-      const typesFiles = await fs.readdir(typesPath);
-      for (const file of typesFiles) {
-        if (file.endsWith(".ts") || file.endsWith(".tsx")) {
-          const fullPath = path.join(typesPath, file);
-          files.push(path.relative(cwd, fullPath));
-        }
-      }
-    } catch {
-      // No types folder
-    }
-  } catch {
-    // Directory doesn't exist
-  }
-
-  return files.sort((a, b) => {
-    // Sort page.tsx first, then tsx, then css
-    const aIsPage = a.endsWith("page.tsx");
-    const bIsPage = b.endsWith("page.tsx");
-    if (aIsPage && !bIsPage) return -1;
-    if (!aIsPage && bIsPage) return 1;
-    const aIsTsx = a.endsWith(".tsx");
-    const bIsTsx = b.endsWith(".tsx");
-    if (aIsTsx && !bIsTsx) return -1;
-    if (!aIsTsx && bIsTsx) return 1;
-    return 0;
-  });
+  return (await collectFiles(path.join(dir, name))).map((file) => path.relative(process.cwd(), file));
 }
 
 /**
@@ -246,6 +76,15 @@ async function hasNewBlockStructure(dir: string, name: string): Promise<boolean>
 }
 
 async function buildOptimizedRegistry() {
+  const manifest = JSON.parse(await fs.readFile("registry.json", "utf8"));
+  for (const item of manifest.items) {
+    const name = item.name.replace(TAILWIND_SUFFIX, "");
+    if (Object.hasOwn(blockCatalog, name)) {
+      item.title = blockCatalog[name].title + (item.name.endsWith("-tailwind") ? " (Tailwind)" : "");
+    }
+  }
+  await fs.writeFile("registry.json", `${JSON.stringify(manifest, null, 2)}\n`);
+
   const examplesDir = path.join(process.cwd(), "registry/brook/examples");
   const blocksDir = path.join(process.cwd(), "registry/brook/blocks");
   const uiDir = path.join(process.cwd(), "registry/brook/ui");
@@ -323,6 +162,25 @@ import dynamic from "next/dynamic";
 
 export const ComponentLoaders: Record<string, ComponentType> = {`;
 
+  const blockLoaders = Object.keys(blockCatalog).flatMap((name) =>
+    [false, true].map(
+      (tailwind) =>
+        `  "${name}${tailwind ? "-tailwind" : ""}": dynamic(() => import("@/registry/brook/${tailwind ? "tailwind/" : ""}blocks/${name}/page")${blockCatalog[name].clientOnlyPreview ? ", { ssr: false, loading: LoadingPreview }" : ""}),`
+    )
+  );
+  await fs.writeFile(
+    "registry/__block-loaders__.tsx",
+    `// @generated by scripts/build-registry-index.ts
+"use client";
+import dynamic from "next/dynamic";
+import type { ComponentType } from "react";
+function LoadingPreview() { return <output>Loading preview…</output>; }
+export const BlockLoaders: Record<string, ComponentType> = {
+${blockLoaders.join("\n")}
+};
+`
+  );
+
   // Process examples
   for (const entry of examplesEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
@@ -348,12 +206,14 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   }
 
   // Process blocks
-  const EXCLUDED_BLOCK_NAMES = ["tailwind", "card-history"];
+
   for (const entry of blocksEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
 
     // Skip excluded folders (like "tailwind" which is a subfolder, not a block)
-    if (EXCLUDED_BLOCK_NAMES.includes(name)) continue;
+    if (!blockCatalog[name]) {
+      continue;
+    }
 
     const isFile = entry.isFile();
 
@@ -390,7 +250,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     const name = entry.name;
     const files = await getComponentFiles(uiDir, name);
 
-    if (files.length === 0) continue;
+    if (files.length === 0) {
+      continue;
+    }
 
     const filesArray = `["${files.join('", "')}"]`;
     const key = name.includes("-") ? `"${name}"` : name;
@@ -432,6 +294,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   // Process tailwind blocks
   for (const entry of tailwindBlocksEntries) {
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
+    if (!blockCatalog[name]) {
+      continue;
+    }
     const isFile = entry.isFile();
 
     // Check if block uses new structure (page.tsx + components/)
@@ -467,7 +332,9 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
     const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
     const files = await getComponentFiles(tailwindUiDir, entry.name);
 
-    if (files.length === 0) continue;
+    if (files.length === 0) {
+      continue;
+    }
 
     const filesArray = `["${files.join('", "')}"]`;
     const key = name.includes("-") ? `"${name}-tailwind"` : `${name}Tailwind`;
@@ -509,33 +376,10 @@ export const ComponentLoaders: Record<string, ComponentType> = {`;
   // Build pre-computed block files data
   const blocksData: Record<string, BlockData> = {};
 
-  // Process CSS modules blocks
-  for (const entry of blocksEntries) {
-    const name = entry.name.replace(FILE_EXTENSION_REGEX, "");
-    if (EXCLUDED_BLOCK_NAMES.includes(name)) continue;
-
-    const hasNewStructure = await hasNewBlockStructure(blocksDir, name);
-    const files = hasNewStructure
-      ? await getBlockFiles(blocksDir, entry.name)
-      : await getComponentFiles(blocksDir, entry.name);
-
-    const cssModulesFiles = await readBlockFiles(files, name);
-
-    // Find tailwind version
-    const tailwindEntry = tailwindBlocksEntries.find((e) => e.name.replace(FILE_EXTENSION_REGEX, "") === name);
-    let tailwindFiles: BlockFileData[] = [];
-
-    if (tailwindEntry) {
-      const twHasNewStructure = await hasNewBlockStructure(tailwindBlocksDir, name);
-      const twFilePaths = twHasNewStructure
-        ? await getBlockFiles(tailwindBlocksDir, tailwindEntry.name)
-        : await getComponentFiles(tailwindBlocksDir, tailwindEntry.name);
-      tailwindFiles = await readBlockFiles(twFilePaths, name);
-    }
-
+  for (const name of Object.keys(blockCatalog)) {
     blocksData[name] = {
-      cssModulesFiles,
-      tailwindFiles: tailwindFiles.length > 0 ? tailwindFiles : cssModulesFiles,
+      cssModulesFiles: await readBlockFiles(name),
+      tailwindFiles: await readBlockFiles(name, true),
     };
   }
 
@@ -550,6 +394,7 @@ export type BlockFileData = {
   name: string;
   path: string;
   content: string;
+  kind: "installed" | "usage";
 };
 
 export type BlockData = {
@@ -573,6 +418,7 @@ export const BlocksData: Record<string, BlockData> = {`;
       blocksDataContent += `
       {
         name: "${file.name}",
+        kind: "${file.kind}",
         path: "${file.path}",
         content: "${escapeContent(file.content)}",
       },`;
@@ -586,6 +432,7 @@ export const BlocksData: Record<string, BlockData> = {`;
       blocksDataContent += `
       {
         name: "${file.name}",
+        kind: "${file.kind}",
         path: "${file.path}",
         content: "${escapeContent(file.content)}",
       },`;
@@ -607,9 +454,12 @@ export const BlocksData: Record<string, BlockData> = {`;
   // Format the generated files
   const { execSync } = await import("node:child_process");
   try {
-    execSync("pnpm lint:fix registry/__index__.tsx registry/__loaders__.tsx registry/__blocks__.tsx", {
-      stdio: "inherit",
-    });
+    execSync(
+      "pnpm lint:fix registry.json registry/__index__.tsx registry/__loaders__.tsx registry/__blocks__.tsx registry/__block-loaders__.tsx",
+      {
+        stdio: "inherit",
+      }
+    );
     console.log("✅ Formatted registry files");
   } catch (_error) {
     console.warn("⚠️  Could not format files, but continuing...");

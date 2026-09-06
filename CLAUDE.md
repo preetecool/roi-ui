@@ -1,24 +1,13 @@
-# CLAUDE.md
+# Registry rebuild
 
-## Registry rebuild
-
-Whenever you change anything under `registry/brook/` — components in `ui/`, examples in `examples/`, or their tailwind counterparts under `registry/brook/tailwind/` — rebuild the registry so the public JSON manifests in `public/r/` stay in sync:
+After changing anything under `registry/brook/`, run:
 
 ```sh
 pnpm registry:build
 ```
 
-This runs `shadcn build`, patches imports via `scripts/fix-registry-imports.ts`, and copies `registry.json` to `public/r/registry.json`.
+This syncs shared block files, regenerates registry indexes and block source, builds public manifests, resolves consumer imports, and copies `registry.json` to `public/r/registry.json`.
 
-### Blocks
+Edit shared block pages/data/hooks in `registry/brook/blocks-shared-files`, not the generated copies listed in `.gitignore`. Sync removes stale generated copies. Block install targets and dependencies are authored in `registry.json`; catalog metadata is authored in `registry/block-catalog.ts`.
 
-If the change touches a block (anything under `registry/brook/blocks/`, its tailwind copy under `registry/brook/tailwind/blocks/`, or shared block files in `registry/brook/blocks-shared-files/`), first sync the shared files, then build:
-
-```sh
-pnpm registry:sync-and-index
-pnpm registry:build
-```
-
-`registry:sync` copies shared block files into each block via `scripts/sync-block-shared-files.ts` and `registry:index` regenerates the index. Skipping the sync step leaves blocks with stale shared files in the published JSON.
-
-Run these after the edits are final, not after every intermediate save.
+Development startup and production builds generate the source they need. After block changes, validate with `pnpm test:registry`, `pnpm build`, and `pnpm test:browser`. The actual installer check is `node scripts/verify-block-install.mjs`.

@@ -573,11 +573,6 @@ export const ComponentLoaders: Record<string, ComponentType> = {
       default: mod.default || Object.values(mod)[0],
     }))
   ),
-  "kanban-board": dynamic(() =>
-    import("@/registry/brook/blocks/kanban-board/page").then((mod) => ({
-      default: mod.default || Object.values(mod)[0],
-    }))
-  ),
   "pricing-section": dynamic(() =>
     import("@/registry/brook/blocks/pricing-section/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
@@ -1135,11 +1130,6 @@ export const ComponentLoaders: Record<string, ComponentType> = {
   ),
   "expandable-card-spread-tailwind": dynamic(() =>
     import("@/registry/brook/tailwind/blocks/expandable-card-spread/page").then((mod) => ({
-      default: mod.default || Object.values(mod)[0],
-    }))
-  ),
-  "kanban-board-tailwind": dynamic(() =>
-    import("@/registry/brook/tailwind/blocks/kanban-board/page").then((mod) => ({
       default: mod.default || Object.values(mod)[0],
     }))
   ),

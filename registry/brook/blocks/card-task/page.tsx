@@ -1,3 +1,5 @@
+"use client";
+
 import { CardTask, type User } from "./components/card-task";
 
 const users: User[] = [

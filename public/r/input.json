@@ -4,10 +4,13 @@
   "type": "registry:item",
   "title": "Input",
   "description": "An input component for user text entry.",
+  "dependencies": [
+    "@base-ui/react@1.5.0"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/input/input.tsx",
-      "content": "\"use client\";\n\nimport { Input } from \"@base-ui/react/input\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./input.module.css\";\n\ninterface InputProps extends Input.Props {\n  variant?: \"default\" | \"error\";\n}\n\nfunction InputRoot({ className, variant = \"default\", ...props }: InputProps) {\n  return (\n    <Input\n      className={(state: Input.State) =>\n        cn(styles.base, styles[variant], typeof className === \"function\" ? className(state) : className)\n      }\n      {...props}\n    />\n  );\n}\n\nexport { InputRoot as Input };\n",
+      "content": "\"use client\";\n\nimport { Input } from \"@base-ui/react/input\";\nimport { cn } from \"../../../lib/utils\";\nimport styles from \"./input.module.css\";\n\ninterface InputProps extends Input.Props {\n  variant?: \"default\" | \"error\";\n}\n\nfunction InputRoot({ className, variant = \"default\", ...props }: InputProps) {\n  return (\n    <Input\n      className={(state: Input.State) =>\n        cn(styles.base, styles[variant], typeof className === \"function\" ? className(state) : className)\n      }\n      {...props}\n    />\n  );\n}\n\nexport { InputRoot as Input };\n",
       "type": "registry:file",
       "target": "~/components/ui/input/input.tsx"
     },

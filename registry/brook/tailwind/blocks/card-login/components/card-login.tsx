@@ -1,5 +1,6 @@
 "use client";
 import { Check } from "lucide-react";
+import { useId, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Button } from "@/registry/brook/tailwind/ui/button";
@@ -9,11 +10,41 @@ import { Field, FieldError, FieldLabel } from "@/registry/brook/tailwind/ui/fiel
 import { Form, FormActions, FormGroup } from "@/registry/brook/tailwind/ui/form";
 import { Input } from "@/registry/brook/tailwind/ui/input";
 
-export function CardLogin() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export type CardLoginProps = {
+  onSignIn?: (credentials: { email: string; password: string; rememberMe: boolean }) => void | Promise<void>;
+  onForgotPassword?: () => void;
+  onSignUp?: () => void;
+  onSocialSignIn?: (provider: "apple" | "google") => void;
+};
+
+export function CardLogin({ onSignIn, onForgotPassword, onSignUp, onSocialSignIn }: CardLoginProps = {}) {
+  const rememberId = useId();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    console.log("Form submitted:", Object.fromEntries(formData));
+    if (pending) {
+      return;
+    }
+    const form = e.currentTarget;
+    setError(null);
+    if (!onSignIn) {
+      return;
+    }
+    const data = new FormData(form);
+    setPending(true);
+    try {
+      await onSignIn({
+        email: String(data.get("email") ?? ""),
+        password: String(data.get("password") ?? ""),
+        rememberMe: data.get("rememberMe") !== null,
+      });
+      form.reset();
+    } catch {
+      setError("Unable to sign in. Please try again.");
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -46,6 +77,8 @@ export function CardLogin() {
                     "hover:text-[var(--foreground)]",
                     "max-sm:mr-0 max-sm:min-h-11 max-sm:p-2 max-sm:text-sm"
                   )}
+                  disabled={!onForgotPassword || pending}
+                  onClick={onForgotPassword}
                   type="button"
                 >
                   Forgot password?
@@ -66,9 +99,9 @@ export function CardLogin() {
                 "mt-2 ml-1 flex cursor-pointer items-center gap-2 font-light text-sm leading-5",
                 "max-sm:min-h-11 max-sm:items-center max-sm:gap-2.5 max-sm:text-sm"
               )}
-              htmlFor="remember-me"
+              htmlFor={rememberId}
             >
-              <Checkbox defaultChecked={false} id="remember-me" name="rememberMe">
+              <Checkbox defaultChecked={false} id={rememberId} name="rememberMe">
                 <CheckboxIndicator>
                   <Check size={16} strokeWidth={3} />
                 </CheckboxIndicator>
@@ -86,13 +119,11 @@ export function CardLogin() {
           </FormGroup>
 
           <FormActions>
-            <Button
-              className="relative w-full [:active,[data-pressed]]:scale-[0.993]"
-              type="submit"
-            >
-              Sign In
+            <Button className="relative w-full [:active,[data-pressed]]:scale-[0.993]" disabled={pending} type="submit">
+              {pending ? "Signing in…" : "Sign In"}
             </Button>
           </FormActions>
+          {error ? <p role="alert">{error}</p> : null}
         </Form>
       </CardContent>
       <div className="flex items-center gap-4">
@@ -110,6 +141,8 @@ export function CardLogin() {
             "relative flex w-full gap-2 [:active,[data-pressed]]:scale-[0.993]",
             "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]"
           )}
+          disabled={!onSocialSignIn || pending}
+          onClick={() => onSocialSignIn?.("apple")}
           variant="outline"
         >
           <AppleIcon className={cn("-ml-2 h-5 w-5", "max-sm:-ml-1 max-sm:h-[1.125rem] max-sm:w-[1.125rem]")} />
@@ -120,6 +153,8 @@ export function CardLogin() {
             "relative flex w-full gap-2 [:active,[data-pressed]]:scale-[0.993]",
             "max-sm:min-h-11 max-sm:gap-2.5 max-sm:text-[0.9375rem]"
           )}
+          disabled={!onSocialSignIn || pending}
+          onClick={() => onSocialSignIn?.("google")}
           variant="outline"
         >
           <GoogleIcon className={cn("h-5 w-5", "max-sm:h-[1.125rem] max-sm:w-[1.125rem]")} />
@@ -138,6 +173,8 @@ export function CardLogin() {
         <span className="text-[var(--muted-foreground)]">No account? </span>
         <button
           className="cursor-pointer border-none bg-transparent p-0 font-inherit text-[var(--secondary-foreground)] hover:text-[var(--foreground)]"
+          disabled={!onSignUp || pending}
+          onClick={onSignUp}
           type="button"
         >
           Sign up

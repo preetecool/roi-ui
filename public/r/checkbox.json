@@ -4,10 +4,13 @@
   "type": "registry:item",
   "title": "Checkbox",
   "description": "A control that allows users to select one or more options from a set.",
+  "dependencies": [
+    "@base-ui/react@1.5.0"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/checkbox/checkbox.tsx",
-      "content": "\"use client\";\n\nimport { Checkbox } from \"@base-ui/react/checkbox\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./checkbox.module.css\";\n\nfunction CheckboxRoot({ className, ...props }: Checkbox.Root.Props) {\n  return (\n    <Checkbox.Root className={cn(\"hit-area-extend\", styles.root, className)} data-slot=\"checkbox-root\" {...props} />\n  );\n}\n\nfunction CheckboxIndicator({ className, ...props }: Checkbox.Indicator.Props) {\n  return <Checkbox.Indicator className={cn(styles.indicator, className)} data-slot=\"checkbox-indicator\" {...props} />;\n}\n\nexport { CheckboxRoot as Checkbox, CheckboxIndicator };\n",
+      "content": "\"use client\";\n\nimport { Checkbox } from \"@base-ui/react/checkbox\";\nimport { cn } from \"../../../lib/utils\";\nimport styles from \"./checkbox.module.css\";\n\nfunction CheckboxRoot({ className, ...props }: Checkbox.Root.Props) {\n  return (\n    <Checkbox.Root className={cn(\"hit-area-extend\", styles.root, className)} data-slot=\"checkbox-root\" {...props} />\n  );\n}\n\nfunction CheckboxIndicator({ className, ...props }: Checkbox.Indicator.Props) {\n  return <Checkbox.Indicator className={cn(styles.indicator, className)} data-slot=\"checkbox-indicator\" {...props} />;\n}\n\nexport { CheckboxRoot as Checkbox, CheckboxIndicator };\n",
       "type": "registry:file",
       "target": "~/components/ui/checkbox/checkbox.tsx"
     },

@@ -4,10 +4,13 @@
   "type": "registry:item",
   "title": "Avatar",
   "description": "An image element with a fallback for representing the user.",
+  "dependencies": [
+    "@base-ui/react@1.5.0"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/avatar/avatar.tsx",
-      "content": "\"use client\";\n\nimport { Avatar } from \"@base-ui/react/avatar\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./avatar.module.css\";\n\nfunction AvatarRoot({ className, ...props }: Avatar.Root.Props) {\n  return <Avatar.Root className={cn(styles.root, className)} data-slot=\"avatar-root\" {...props} />;\n}\n\nfunction AvatarImage({ className, ...props }: Avatar.Image.Props) {\n  return <Avatar.Image className={cn(styles.image, className)} data-slot=\"avatar-image\" {...props} />;\n}\n\nfunction AvatarFallback({ className, ...props }: Avatar.Fallback.Props) {\n  return <Avatar.Fallback className={cn(styles.fallback, className)} data-slot=\"avatar-fallback\" {...props} />;\n}\n\nexport { AvatarRoot as Avatar, AvatarFallback, AvatarImage };\n",
+      "content": "\"use client\";\n\nimport { Avatar } from \"@base-ui/react/avatar\";\nimport { cn } from \"../../../lib/utils\";\nimport styles from \"./avatar.module.css\";\n\nfunction AvatarRoot({ className, ...props }: Avatar.Root.Props) {\n  return <Avatar.Root className={cn(styles.root, className)} data-slot=\"avatar-root\" {...props} />;\n}\n\nfunction AvatarImage({ className, ...props }: Avatar.Image.Props) {\n  return <Avatar.Image className={cn(styles.image, className)} data-slot=\"avatar-image\" {...props} />;\n}\n\nfunction AvatarFallback({ className, ...props }: Avatar.Fallback.Props) {\n  return <Avatar.Fallback className={cn(styles.fallback, className)} data-slot=\"avatar-fallback\" {...props} />;\n}\n\nexport { AvatarRoot as Avatar, AvatarFallback, AvatarImage };\n",
       "type": "registry:file",
       "target": "~/components/ui/avatar/avatar.tsx"
     },

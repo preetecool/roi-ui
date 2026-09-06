@@ -2,7 +2,6 @@
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { cn } from "@/lib/utils-tailwind";
-import { Badge } from "@/registry/brook/tailwind/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/tailwind/ui/card";
 import {
   type ChartConfig,
@@ -11,31 +10,27 @@ import {
   ChartTooltipContent,
 } from "@/registry/brook/tailwind/ui/chart";
 
-type TrafficDataPoint = {
-  date: number;
+export type TrafficDataPoint = {
+  /** ISO date (YYYY-MM-DD), or a numeric day label. */
+  date: string | number;
   desktop: number;
   mobile: number;
 };
 
-type CardTrafficProps = {
+export type CardTrafficProps = {
   data: TrafficDataPoint[];
+  bounceRate?: number;
+  conversionRate?: number;
 };
 
-const CHART_START_YEAR = 2025;
-const CHART_START_MONTH = 6;
-const CHART_START_DAY = 14;
-
 const formatDate = (value: unknown) => {
-  const dayNumber = Math.round(Number(value));
-
-  const startDate = new Date(CHART_START_YEAR, CHART_START_MONTH, CHART_START_DAY);
-  const currentDate = new Date(startDate);
-  currentDate.setDate(startDate.getDate() + (dayNumber - 1));
-
-  return currentDate.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-  });
+  if (typeof value === "number") {
+    return `Day ${value}`;
+  }
+  const date = new Date(String(value));
+  return Number.isNaN(date.getTime())
+    ? String(value)
+    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 };
 
 const chartConfig = {
@@ -49,7 +44,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function CardTraffic({ data }: CardTrafficProps) {
+export function CardTraffic({ data, bounceRate, conversionRate }: CardTrafficProps) {
+  const mobile = data.reduce((sum, point) => sum + point.mobile, 0);
+  const desktop = data.reduce((sum, point) => sum + point.desktop, 0);
   return (
     <Card
       className="w-full max-w-[600px]"
@@ -68,7 +65,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="date" hide={true} tickFormatter={formatDate} />
               <YAxis hide={true} />
-              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartTooltip content={<ChartTooltipContent labelFormatter={formatDate} />} />
               <Line
                 animationDuration={800}
                 dataKey="mobile"
@@ -109,7 +106,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
             <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Mobile</span>
           </div>
           <span className="font-bold text-[32px] text-[var(--foreground)] tabular-nums leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
-            25,010
+            {mobile.toLocaleString("en-US")}
           </span>
         </div>
 
@@ -124,7 +121,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
             <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Desktop</span>
           </div>
           <span className="font-bold text-[32px] text-[var(--foreground)] tabular-nums leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
-            12,840
+            {desktop.toLocaleString("en-US")}
           </span>
         </div>
 
@@ -137,12 +134,9 @@ export function CardTraffic({ data }: CardTrafficProps) {
         >
           <div className="flex items-center justify-between">
             <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Bounce Rate</span>
-            <Badge size="sm" variant="success">
-              -3.4%
-            </Badge>
           </div>
           <span className="font-bold text-[32px] text-[var(--foreground)] tabular-nums leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
-            24.1%
+            {bounceRate === undefined ? "Not provided" : `${bounceRate}%`}
           </span>
         </div>
 
@@ -155,12 +149,9 @@ export function CardTraffic({ data }: CardTrafficProps) {
         >
           <div className="flex items-center justify-between">
             <span className="font-medium text-[var(--muted-foreground)] text-sm leading-5">Conversion</span>
-            <Badge size="sm" variant="destructive">
-              -0.9%
-            </Badge>
           </div>
           <span className="font-bold text-[32px] text-[var(--foreground)] tabular-nums leading-none max-sm:text-[1.75rem] max-[400px]:text-2xl">
-            2.8%
+            {conversionRate === undefined ? "Not provided" : `${conversionRate}%`}
           </span>
         </div>
       </div>

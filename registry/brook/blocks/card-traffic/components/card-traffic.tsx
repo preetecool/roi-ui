@@ -1,36 +1,31 @@
 "use client";
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import { Badge } from "@/registry/brook/ui/badge/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/registry/brook/ui/card/card";
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/registry/brook/ui/chart/chart";
 import styles from "./card-traffic.module.css";
 
-type TrafficDataPoint = {
-  date: number;
+export type TrafficDataPoint = {
+  /** ISO date (YYYY-MM-DD), or a numeric day label. */
+  date: string | number;
   desktop: number;
   mobile: number;
 };
 
-type CardTrafficProps = {
+export type CardTrafficProps = {
   data: TrafficDataPoint[];
+  bounceRate?: number;
+  conversionRate?: number;
 };
 
-const CHART_START_YEAR = 2025;
-const CHART_START_MONTH = 6;
-const CHART_START_DAY = 14;
-
 const formatDate = (value: unknown) => {
-  const dayNumber = Math.round(Number(value));
-
-  const startDate = new Date(CHART_START_YEAR, CHART_START_MONTH, CHART_START_DAY);
-  const currentDate = new Date(startDate);
-  currentDate.setDate(startDate.getDate() + (dayNumber - 1));
-
-  return currentDate.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-  });
+  if (typeof value === "number") {
+    return `Day ${value}`;
+  }
+  const date = new Date(String(value));
+  return Number.isNaN(date.getTime())
+    ? String(value)
+    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 };
 
 const chartConfig = {
@@ -44,7 +39,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function CardTraffic({ data }: CardTrafficProps) {
+export function CardTraffic({ data, bounceRate, conversionRate }: CardTrafficProps) {
+  const mobile = data.reduce((sum, point) => sum + point.mobile, 0);
+  const desktop = data.reduce((sum, point) => sum + point.desktop, 0);
   return (
     <Card
       className={styles.cardContainer}
@@ -63,7 +60,7 @@ export function CardTraffic({ data }: CardTrafficProps) {
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="date" hide={true} tickFormatter={formatDate} />
               <YAxis hide={true} />
-              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartTooltip content={<ChartTooltipContent labelFormatter={formatDate} />} />
               <Line
                 animationDuration={800}
                 dataKey="mobile"
@@ -91,34 +88,30 @@ export function CardTraffic({ data }: CardTrafficProps) {
           <div className={styles.statHeader}>
             <span className={styles.statLabel}>Mobile</span>
           </div>
-          <span className={styles.statNumber}>25,010</span>
+          <span className={styles.statNumber}>{mobile.toLocaleString("en-US")}</span>
         </div>
 
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <span className={styles.statLabel}>Desktop</span>
           </div>
-          <span className={styles.statNumber}>12,840</span>
+          <span className={styles.statNumber}>{desktop.toLocaleString("en-US")}</span>
         </div>
 
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <span className={styles.statLabel}>Bounce Rate</span>
-            <Badge size="sm" variant="success">
-              -3.4%
-            </Badge>
           </div>
-          <span className={styles.statNumber}>24.1%</span>
+          <span className={styles.statNumber}>{bounceRate === undefined ? "Not provided" : `${bounceRate}%`}</span>
         </div>
 
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <span className={styles.statLabel}>Conversion</span>
-            <Badge size="sm" variant="destructive">
-              -0.9%
-            </Badge>
           </div>
-          <span className={styles.statNumber}>2.8%</span>
+          <span className={styles.statNumber}>
+            {conversionRate === undefined ? "Not provided" : `${conversionRate}%`}
+          </span>
         </div>
       </div>
     </Card>

@@ -4,10 +4,13 @@
   "type": "registry:item",
   "title": "Field",
   "description": "A form field component with label and validation.",
+  "dependencies": [
+    "@base-ui/react@1.5.0"
+  ],
   "files": [
     {
       "path": "registry/brook/ui/field/field.tsx",
-      "content": "\"use client\";\n\nimport { Field } from \"@base-ui/react/field\";\nimport { cn } from \"@/lib/utils\";\nimport styles from \"./field.module.css\";\n\nfunction FieldRoot({ className, ...props }: Field.Root.Props) {\n  return <Field.Root className={cn(styles.root, className)} data-slot=\"field\" {...props} />;\n}\n\nfunction FieldLabel({ className, ...props }: Field.Label.Props) {\n  return <Field.Label className={cn(styles.label, className)} data-slot=\"field-label\" {...props} />;\n}\n\nfunction FieldDescription({ className, ...props }: Field.Description.Props) {\n  return <Field.Description className={cn(styles.description, className)} data-slot=\"field-description\" {...props} />;\n}\n\nfunction FieldError({ className, ...props }: Field.Error.Props) {\n  return <Field.Error className={cn(styles.error, className)} data-slot=\"field-error\" {...props} />;\n}\n\nconst FieldControl = Field.Control;\nconst FieldValidity = Field.Validity;\n\nexport { FieldRoot as Field, FieldControl, FieldDescription, FieldError, FieldLabel, FieldValidity };\n",
+      "content": "\"use client\";\n\nimport { Field } from \"@base-ui/react/field\";\nimport { cn } from \"../../../lib/utils\";\nimport styles from \"./field.module.css\";\n\nfunction FieldRoot({ className, ...props }: Field.Root.Props) {\n  return <Field.Root className={cn(styles.root, className)} data-slot=\"field\" {...props} />;\n}\n\nfunction FieldLabel({ className, ...props }: Field.Label.Props) {\n  return <Field.Label className={cn(styles.label, className)} data-slot=\"field-label\" {...props} />;\n}\n\nfunction FieldDescription({ className, ...props }: Field.Description.Props) {\n  return <Field.Description className={cn(styles.description, className)} data-slot=\"field-description\" {...props} />;\n}\n\nfunction FieldError({ className, ...props }: Field.Error.Props) {\n  return <Field.Error className={cn(styles.error, className)} data-slot=\"field-error\" {...props} />;\n}\n\nconst FieldControl = Field.Control;\nconst FieldValidity = Field.Validity;\n\nexport { FieldRoot as Field, FieldControl, FieldDescription, FieldError, FieldLabel, FieldValidity };\n",
       "type": "registry:file",
       "target": "~/components/ui/field/field.tsx"
     },
