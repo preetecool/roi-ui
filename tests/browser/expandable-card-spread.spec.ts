@@ -41,6 +41,7 @@ for (const style of ["css-modules", "tailwind"]) {
     const entrance = await sampling;
     expect(entrance.maxBlur).toBeCloseTo(4, 1);
     expect(entrance.maxOffset).toBeCloseTo(entrance.expectedOffset, 0);
+    await expect(page.getByRole("dialog")).toHaveAccessibleName("Accessible Interfaces");
     await expect(page.getByRole("dialog")).toHaveCSS("overflow", "hidden");
     expect(entrance.opacities.some((opacity) => opacity < 0.1)).toBe(true);
     expect(entrance.opacities.some((opacity) => opacity > 0.1 && opacity < 0.9)).toBe(true);
@@ -101,8 +102,25 @@ for (const style of ["css-modules", "tailwind"]) {
     await page.goto("/blocks/expandable-card-spread");
     const trigger = page.getByRole("button", { name: "Expand Accessible Interfaces" });
     await trigger.focus();
+    const opening = page.evaluate(async () => {
+      let sawDescription = false;
+      let sawMotionOrBlur = false;
+      const start = performance.now();
+      while (performance.now() - start < 500) {
+        const description = document.querySelector('[role="dialog"] p');
+        if (description) {
+          sawDescription = true;
+          const computed = getComputedStyle(description);
+          const matrix = new DOMMatrixReadOnly(computed.transform);
+          sawMotionOrBlur ||= !matrix.isIdentity || computed.filter !== "blur(0px)";
+        }
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      }
+      return { sawDescription, sawMotionOrBlur };
+    });
     await page.keyboard.press("Enter");
     await expect(page.getByRole("dialog")).toBeVisible();
+    expect(await opening).toEqual({ sawDescription: true, sawMotionOrBlur: false });
     await page.keyboard.press("Escape");
     await expect(page.getByRole("dialog")).toHaveCount(0);
     const movingContents = await page.evaluate(async () => {

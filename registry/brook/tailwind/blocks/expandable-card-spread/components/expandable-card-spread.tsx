@@ -122,6 +122,7 @@ function SpreadCard({ card, index, isExpanded, isOpen, onOpenChange, prefersRedu
               layoutRoot
             >
               <Dialog.Popup
+                aria-label={card.title}
                 render={
                   <motion.div
                     className="pointer-events-auto flex min-h-[500px] w-[400px] flex-col items-start justify-end gap-3 overflow-hidden p-6"

@@ -113,6 +113,7 @@ function SpreadCard({ card, index, isExpanded, isOpen, onOpenChange, prefersRedu
           {isOpen ? (
             <motion.div className={styles.popupPositioner} key={`positioner-${card.id}`} layoutRoot>
               <Dialog.Popup
+                aria-label={card.title}
                 render={
                   <motion.div
                     className={styles.expandedCard}
