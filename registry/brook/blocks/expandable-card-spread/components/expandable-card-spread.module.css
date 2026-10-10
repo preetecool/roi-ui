@@ -168,6 +168,7 @@
 }
 
 .expandedCard {
+  overflow: hidden;
   width: 400px;
   min-height: 500px;
   padding: 24px;
@@ -183,7 +184,7 @@
   font-size: 36px;
   font-weight: 500;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.1;
   white-space: pre-line;
   text-align: left;
