@@ -94,11 +94,14 @@
   }
 }
 
+/* Centred without transform: the popups portal in here and must stay viewport-fixed. */
 .spreadLayoutSmall {
   position: fixed;
   bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin-inline: auto;
   height: auto;
   display: flex;
   flex-direction: row;
@@ -169,6 +172,7 @@
 
 .expandedCard {
   overflow: hidden;
+  will-change: transform;
   width: 400px;
   min-height: 500px;
   padding: 24px;
