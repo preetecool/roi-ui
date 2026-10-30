@@ -10,7 +10,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-areas:
     "installs score stack"
-    "registry registry browse";
+    "props props browse";
   gap: 16px;
   font-variant-numeric: tabular-nums;
 }
@@ -24,8 +24,8 @@
 .grid [data-area="stack"] {
   grid-area: stack;
 }
-.grid [data-area="registry"] {
-  grid-area: registry;
+.grid [data-area="props"] {
+  grid-area: props;
 }
 .grid [data-area="browse"] {
   grid-area: browse;
@@ -59,7 +59,7 @@
 }
 
 .label {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 18px;
   color: var(--muted-foreground);
 }
@@ -174,8 +174,8 @@ a.control:focus-visible {
   place-content: center;
   grid-auto-flow: column;
   align-items: baseline;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 28px;
+  line-height: 34px;
   font-weight: 500;
   letter-spacing: -0.02em;
   pointer-events: none;
@@ -261,7 +261,7 @@ a.control:focus-visible {
   gap: 10px;
   padding: 11px 10px;
   border-radius: 2px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 18px;
   color: var(--foreground);
   text-decoration: none;
@@ -276,7 +276,7 @@ a.control:focus-visible {
 }
 
 @media (hover: hover) {
-  .option:not([data-primary]):hover {
+  .option:hover {
     background: oklch(from var(--foreground) l c h / 0.04);
   }
 }
@@ -366,24 +366,18 @@ a.option:focus-visible {
   padding: 2px 7px;
   border-radius: 2px;
   background: var(--raised);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 16px;
   color: var(--muted-foreground);
 }
 
-.option[data-primary] {
-  background: var(--primary);
-  color: var(--primary-foreground);
-}
-
-.option[data-primary] .tag {
-  background: oklch(from var(--primary-foreground) l c h / 0.12);
-  color: var(--primary-foreground);
-}
-
-/* --- Registry: table --- */
+/* --- Props: Prop Table inside a card --- */
 
 .tableCard {
+  /* Let the card tint show through the Prop Table's own backgrounds */
+  --mix-card-33-bg: transparent;
+  --mix-card-50-bg: var(--inset);
+
   gap: 0;
   padding: 0;
   overflow: hidden;
@@ -394,97 +388,13 @@ a.option:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.tableTitle {
-  font-size: 15px;
-  line-height: 18px;
-  font-weight: 500;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.table th {
   padding: 12px 16px;
   border-bottom: 1px solid var(--hairline);
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 400;
-  text-align: left;
-  color: var(--muted-foreground);
 }
 
-.table td {
-  padding: 12px 16px;
-}
-
-.table tbody tr + tr td {
-  border-top: 1px solid oklch(from var(--foreground) l c h / 0.04);
-}
-
-.table [data-align="end"] {
-  text-align: right;
-}
-
-.table tbody tr {
-  position: relative;
-  transition: background-color 150ms ease-out;
-}
-
-.rowLink {
-  color: var(--foreground);
-  text-decoration: none;
-}
-
-/* The whole row is the link target, not just the name */
-.rowLink::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
-
-.rowLink:focus-visible {
-  outline: none;
-}
-
-.table tbody tr:has(.rowLink:focus-visible) {
-  outline: 2px solid var(--ring);
-  outline-offset: -2px;
-}
-
-@media (hover: hover) {
-  .table tbody tr:hover {
-    background: oklch(from var(--foreground) l c h / 0.03);
-  }
-}
-
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px 4px 8px;
-  border-radius: 2px;
-  background: var(--raised);
-  box-shadow: inset 0 0 0 1px var(--hairline);
-  font-size: 13px;
-  line-height: 16px;
-}
-
-.statusDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-}
-
-.muted {
-  color: var(--muted-foreground);
+.tableCard .propTable {
+  margin: 0;
+  border: 0;
 }
 
 /* --- Responsive --- */
@@ -494,7 +404,7 @@ a.option:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "installs score"
-      "registry registry"
+      "props props"
       "stack browse";
   }
 }
@@ -506,13 +416,20 @@ a.option:focus-visible {
       "installs"
       "score"
       "stack"
-      "registry"
+      "props"
       "browse";
     gap: 12px;
   }
+}
 
-  .table [data-hide-mobile] {
-    display: none;
+/* Touch wants 44px targets: grow the stepper hit area and the list rows */
+@media (pointer: coarse) {
+  .stepperButton::after {
+    inset: -12px;
+  }
+
+  .option {
+    padding-block: 13px;
   }
 }
 
