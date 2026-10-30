@@ -2,38 +2,38 @@
   "cards": [
     {
       "id": 1,
-      "imageSrc": "/p-01.svg",
-      "cardHeading": "Eudaimonia",
-      "alt": "Figure contemplating under an archway at dusk",
+      "imageSrc": "/figure-01.webp",
+      "cardHeading": "Make work easier",
+      "alt": "A hooded figure by a river at night, looking up at lit stone arches and a full moon",
       "paragraphs": [
-        "Aristotle taught that eudaimonia, or human flourishing, is not found in fleeting pleasures or material wealth, but in living a life of virtue and purpose. It is the highest good, achieved through the cultivation of character and the exercise of reason.",
-        "We build not for momentary delight, but for lasting excellence. Every interface, every interaction is an opportunity to help users flourish in their work and creative pursuits.",
-        "This philosophy shapes how we approach every decision. When faced with a choice between what is easy and what is meaningful, we choose meaning. When tempted by trends, we return to timeless principles.",
-        "The pursuit of eudaimonia reminds us that software is not merely functional -it is formative. The tools we create shape how people think, work, and ultimately, how they live."
+        "Good software helps people finish their work. It should never get in the way.",
+        "We test each component against real tasks. If a component slows people down, we change it.",
+        "When we must choose between what is easy to build and what is useful, we choose useful.",
+        "The tools you build shape how people work every day. We want those tools to be clear, fast, and fair to everyone."
       ]
     },
     {
       "id": 2,
-      "imageSrc": "/p-02.svg",
-      "cardHeading": "Ataraxia",
-      "alt": "Serene figure amidst classical columns at night",
+      "imageSrc": "/figure-02.webp",
+      "cardHeading": "Keep it simple",
+      "alt": "A hooded figure sits by the water below a lit stone arcade and a full moon",
       "paragraphs": [
-        "The Stoics and Epicureans alike sought ataraxia: a state of serene calmness, undisturbed by the chaos of the world. It emerges not from avoidance, but from clarity of mind and freedom from unnecessary complexity.",
-        "Our designs embrace this tranquility. We strip away the superfluous, leaving only what serves. In simplicity, we find peace; in clarity, we find power.",
-        "Every element earns its place. We question each line, each shadow, each interaction. Does it serve the user? Does it bring clarity? If not, it does not belong.",
-        "This restraint is not minimalism for its own sake -it is respect for attention. In a world that constantly demands more, we offer less, so that what remains matters more."
+        "Every part of a component needs a reason to be there. If a part does not help you, we remove it.",
+        "Simple components are easier to read, change, and test.",
+        "We check each line, shadow, and animation against one question: does this help the person using it?",
+        "Less on the screen means people can focus on the task in front of them."
       ]
     },
     {
       "id": 3,
-      "imageSrc": "/p-03.svg",
-      "cardHeading": "Arete",
-      "alt": "Wanderer on a path toward distant pillars",
+      "imageSrc": "/figure-03.webp",
+      "cardHeading": "Get the details right",
+      "alt": "A hooded figure faces a domed temple across the water under a full moon",
       "paragraphs": [
-        "Arete speaks to excellence: the fulfillment of purpose, the realization of potential. For the ancient Greeks, it meant living up to one's highest nature, whether as an athlete, a philosopher, or an artisan.",
-        "We pursue arete in every pixel and every line of code. Not perfection for its own sake, but excellence in service of those who use what we create.",
-        "Excellence is not a destination but a practice. It lives in the details others overlook, in the edge cases others ignore, in the refinements that users feel but never see.",
-        "Through arete, craft becomes art. What begins as function transforms into something that inspires -not through excess, but through the relentless pursuit of doing one thing exceptionally well."
+        "Small details decide whether an interface feels finished. We pay close attention to them.",
+        "We handle keyboard use, focus states, screen readers, and edge cases, so you do not have to.",
+        "Quality is a habit, not a final step. We review and improve components after every release.",
+        "You get components that work well on day one and keep working as your product grows."
       ]
     }
   ]

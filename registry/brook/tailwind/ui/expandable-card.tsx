@@ -245,8 +245,8 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
             width={300}
           />
 
-          <div className="flex w-full items-center justify-center p-4">
-            <motion.div layoutId={`heading-${item.id}`}>
+          <div className="flex w-full items-center justify-center gap-3 p-4">
+            <motion.div className="min-w-0" layoutId={`heading-${item.id}`}>
               <h3 className="m-0 overflow-hidden text-ellipsis whitespace-nowrap font-medium text-2xl text-[var(--secondary-foreground)] leading-[1.5] tracking-[-0.02em] transition-colors duration-150 ease-out group-hover:text-[var(--foreground)] motion-reduce:transition-none">
                 {item.cardHeading}
               </h3>

@@ -175,7 +175,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
           />
 
           <div className={styles.contentContainer}>
-            <motion.div layoutId={`heading-${item.id}`}>
+            <motion.div className={styles.headingWrapper} layoutId={`heading-${item.id}`}>
               <h3 className={styles.heading}>{item.cardHeading}</h3>
             </motion.div>
 

@@ -1,35 +1,35 @@
 {
-  "caption": "What We Offer",
-  "heading": "Four Pillars of Excellence",
-  "description": "Discover the foundational elements that drive our approach to creating exceptional digital experiences.",
+  "caption": "What you get",
+  "heading": "Four reasons to use Roi UI",
+  "description": "Each component is ready to use, easy to change, and works for everyone.",
   "cards": [
     {
       "id": 1,
-      "imageSrc": "/p-01.svg",
-      "alt": "Feature 1 illustration",
-      "title": "Feature 1",
-      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+      "imageSrc": "/arch-01.webp",
+      "alt": "Stone arches and cypress trees under a night sky with a crescent moon",
+      "title": "Accessible by default",
+      "description": "Every component works with a keyboard and a screen reader. You do not need extra setup."
     },
     {
       "id": 2,
-      "imageSrc": "/p-02.svg",
-      "alt": "Feature 2 illustration",
-      "title": "Feature 2",
-      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+      "imageSrc": "/arch-02.webp",
+      "alt": "A white city of temples and gardens under a bright blue sky",
+      "title": "You own the code",
+      "description": "You copy the source into your project. You can change any part of it."
     },
     {
       "id": 3,
-      "imageSrc": "/p-03.svg",
-      "alt": "Feature 3 illustration",
-      "title": "Feature 3",
-      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+      "imageSrc": "/arch-03.webp",
+      "alt": "Stone columns and terraces covered in cypress trees and flowers",
+      "title": "Two ways to style",
+      "description": "Choose CSS Modules or Tailwind. Both versions look and work the same."
     },
     {
       "id": 4,
-      "imageSrc": "/p-04.svg",
-      "alt": "Feature 4 illustration",
-      "title": "Feature 4",
-      "description": "Add a description here to explain what this feature offers and why it matters to your users."
+      "imageSrc": "/arch-04.webp",
+      "alt": "White stone arches rising over a green forest pond under a blue sky",
+      "title": "Motion with a purpose",
+      "description": "Animations show what changed and where to look. They stay small, so they never slow you down."
     }
   ]
 }

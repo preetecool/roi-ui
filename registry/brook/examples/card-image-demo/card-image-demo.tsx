@@ -6,17 +6,15 @@ export function CardImageDemo() {
   return (
     <Card className={styles.card} variant="lift">
       <CardImage
-        alt="Veiled woman gazing at architecture under the night sky"
+        alt="A hooded figure sits by the water below a lit stone arcade and a full moon"
         className={styles.cardImage}
-        src="/scene_01.svg"
+        src="/figure-02.webp"
       />
 
       <CardContent>
-        <CardTitle className={styles.title}>Threshold</CardTitle>
+        <CardTitle className={styles.title}>Your first component</CardTitle>
 
-        <CardDescription>
-          Between what we build and what eternally exists standing in quiet contemplation.
-        </CardDescription>
+        <CardDescription>Add a component with one command. Then edit the code to fit your product.</CardDescription>
       </CardContent>
 
       <CardFooter>

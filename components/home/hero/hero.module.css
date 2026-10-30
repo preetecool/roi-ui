@@ -3,125 +3,57 @@
   animation-delay: calc(var(--delay, 80ms) * var(--stagger, 0));
 }
 
-.badge[data-slot="badge"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.75rem;
-  height: 26px;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.badge[data-slot="badge"]::after {
-  content: "";
-  position: absolute;
-  inset-block: -9px;
-  inset-inline: 0;
-}
-
-@media (hover: hover) {
-  .badge[data-slot="badge"]:hover {
-    background-color: var(--accent);
-  }
-}
-
-.badge[data-slot="badge"] svg {
-  width: 14px;
-  height: 12px;
-  overflow: visible;
-  transition: transform 150ms ease-in-out;
-}
-
-.badge[data-slot="badge"] svg path:first-child {
-  transition: transform 150ms ease-out;
-  transform: translateX(0);
-}
-
-.badge[data-slot="badge"] svg path:last-child {
-  transition:
-    opacity 150ms ease-out,
-    transform 150ms ease-out;
-  opacity: 0;
-  transform: translateX(0);
-}
-
-@media (hover: hover) {
-  .badge[data-slot="badge"]:hover svg path:first-child {
-    transform: translateX(2px);
-  }
-}
-
-@media (hover: hover) {
-  .badge[data-slot="badge"]:hover svg path:last-child {
-    opacity: 1;
-    transform: translateX(-1px);
-  }
-}
-
-.h1 {
-  font-size: clamp(28px, 4vw + 1rem, 48px);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-  text-wrap: balance;
-  position: relative;
-  z-index: 1;
-}
-
 .container {
-  text-align: left;
-  min-height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   position: relative;
   isolation: isolate;
 }
 
+/* --- Intro: headline left, pitch + action right --- */
+
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 380px;
+  flex-shrink: 0;
+  padding-bottom: 6px;
+}
+
+.h1 {
+  font-size: clamp(36px, 5vw + 0.5rem, 64px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.h1Muted {
+  color: var(--muted-foreground);
+}
+
 .subheading {
   font-size: 16px;
-  font-weight: 400;
+  line-height: 24px;
   color: var(--muted-foreground);
-  margin-top: 16px;
   text-wrap: pretty;
-  position: relative;
-  z-index: 1;
 }
 
 .buttonWrapper {
-  margin-top: 32px;
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
 }
 
 .buttonWrapper [data-slot="button"] {
   white-space: nowrap;
-  border-radius: 2px;
-}
-
-.buttonWrapper [data-slot="button"][data-slot="button"]::before {
-  border-radius: 1px;
-}
-
-.buttonWrapper [data-slot="button"]:first-of-type {
-  box-shadow:
-    0px 0px 0px 1px rgba(255, 255, 255, 0.15) inset,
-    0px 1px 2px 0px rgba(0, 0, 0, 0.2),
-    0px 0px 0px 1px rgba(255, 255, 255, 0.5);
-}
-
-.buttonWrapper [data-slot="button"]:last-of-type {
-  box-shadow:
-    0px 0px 0px 1px rgba(255, 255, 255, 0.07) inset,
-    0px 1px 2px 0px rgba(0, 0, 0, 0.05),
-    0px 0px 0px 1px var(--border);
 }
 
 @keyframes enter {
@@ -137,181 +69,28 @@
   }
 }
 
-/* --- NEW BENTO GRID STYLES --- */
-
-.bentoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* Use minmax to ensure rows have distinct height but can grow */
-  grid-template-rows: repeat(2, minmax(200px, 1fr));
-  grid-template-areas:
-    "expandable context popover"
-    "expandable badge chat";
-  gap: 16px; /* Increased gap slightly for elegance */
-  margin-top: 64px;
-  width: 100%;
-  max-width: 1000px; /* Optional: Constrain max width for better aesthetics */
+.showcase {
+  margin-top: 56px;
 }
 
-.bentoCard {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-  border-radius: 2px;
-  background: transparent;
-  box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.35);
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-  isolation: isolate;
-}
-
-@media (hover: hover) {
-  .bentoCard:hover {
-    box-shadow: inset 0 0 0 1px oklch(from var(--border) l c h / 0.5);
-  }
-
-  .bentoCard:hover .bentoLabel {
-    color: var(--foreground);
-    opacity: 1;
-  }
-
-  .bentoCard:hover .bentoLabel::before {
-    background-color: var(--primary, #000);
-  }
-}
-
-/* Grid Areas */
-.bentoCard[data-size="large"] {
-  grid-area: expandable;
-}
-.bentoCard[data-size="medium"]:nth-of-type(2) {
-  grid-area: context;
-}
-.bentoCard[data-size="medium"]:nth-of-type(3) {
-  grid-area: popover;
-}
-.bentoCard[data-size="small"] {
-  grid-area: badge;
-}
-.bentoCard[data-size="wide"] {
-  grid-area: chat;
-}
-
-/* Label Styling - Technical/Schematic Look */
-.bentoLabel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "Geist Mono", monospace;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: color 0.3s ease;
-}
-
-/* Decorative dot for the label */
-.bentoLabel::before {
-  content: "";
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--border);
-  transition: background-color 0.3s ease;
-}
-
-.bentoContent {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-  /* Ensure content doesn't get cut off weirdly */
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
-
-.bentoCard[data-size="wide"] .bentoContent {
-  mask-image: none;
-}
-
-.bentoCard[data-size="wide"] [data-slot="select-trigger"] {
-  min-width: unset;
-  transition: none !important;
-}
-
-.bentoCard[data-size="wide"] [data-slot="select-trigger"][data-popup-open] {
-  background-color: var(--accent) !important;
-}
-
-.bentoCard[data-size="wide"]
-  [data-slot="select-trigger"]
-  [data-slot="select-value"]
-  + span {
-  display: none;
-}
-
-/* --- RESPONSIVE BREAKPOINTS --- */
+/* --- Responsive --- */
 
 @media (max-width: 1024px) {
-  .bentoGrid {
-    /* Switch to 2 columns on tablets */
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto; /* Let rows size naturally */
-    grid-template-areas:
-      "expandable expandable"
-      "context popover"
-      "chat badge";
-  }
-
-  /* Force the large card to have a minimum height */
-  .bentoCard[data-size="large"] {
-    min-height: 300px;
-  }
-}
-
-@media (max-width: 640px) {
-  .bentoGrid {
-    /* Single column for mobile */
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "expandable"
-      "context"
-      "popover"
-      "chat"
-      "badge";
-    gap: 12px;
-    margin-top: 48px;
-  }
-
-  .bentoCard {
-    min-height: 260px;
-    padding: 16px;
-  }
-
-  .bentoCard[data-size="large"] {
-    min-height: 400px;
-  }
-
-  .bentoCard[data-size="large"] .bentoContent {
+  .intro {
+    flex-direction: column;
     align-items: flex-start;
-    padding-top: 1rem;
-    mask-image: none;
+    gap: 24px;
+  }
+
+  .aside {
+    width: 100%;
+    max-width: 480px;
+    padding-bottom: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animateEnter,
-  .bentoCard {
+  .animateEnter {
     animation: none;
-    transition: none;
-    opacity: 1;
-    transform: none;
-    filter: none;
   }
 }
