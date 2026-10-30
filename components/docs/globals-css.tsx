@@ -245,22 +245,22 @@ export async function GlobalsCSS() {
   const variants = {
     cssModules: {
       default: filterCssForPalette(cssModulesContent, "default"),
-      psevdaryiros: filterCssForPalette(cssModulesContent, "psevdaryiros"),
+      zinc: filterCssForPalette(cssModulesContent, "zinc"),
     },
     tailwind: {
       default: filterCssForPalette(tailwindContent, "default"),
-      psevdaryiros: filterCssForPalette(tailwindContent, "psevdaryiros"),
+      zinc: filterCssForPalette(tailwindContent, "zinc"),
     },
   };
 
   const highlighted = {
     cssModules: {
       default: await highlightCode(variants.cssModules.default, "css"),
-      psevdaryiros: await highlightCode(variants.cssModules.psevdaryiros, "css"),
+      zinc: await highlightCode(variants.cssModules.zinc, "css"),
     },
     tailwind: {
       default: await highlightCode(variants.tailwind.default, "css"),
-      psevdaryiros: await highlightCode(variants.tailwind.psevdaryiros, "css"),
+      zinc: await highlightCode(variants.tailwind.zinc, "css"),
     },
   };
 

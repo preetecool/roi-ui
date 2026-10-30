@@ -285,9 +285,9 @@
   }
 }
 
-/* Psevdaryiros Palette (hue: 270, chroma: 0.005) */
-.light[data-palette="psevdaryiros"],
-[data-theme="light"][data-palette="psevdaryiros"] {
+/* Zinc Palette (hue: 270, chroma: 0.005) */
+.light[data-palette="zinc"],
+[data-theme="light"][data-palette="zinc"] {
   --background: oklch(0.98 0.005 270);
   --foreground: oklch(0.18 0.005 270);
   --card: oklch(0.96 0.005 270);
@@ -306,8 +306,8 @@
   --ring: oklch(0.55 0.005 270);
 }
 
-.dark[data-palette="psevdaryiros"],
-[data-theme="dark"][data-palette="psevdaryiros"] {
+.dark[data-palette="zinc"],
+[data-theme="dark"][data-palette="zinc"] {
   --background: oklch(0.13 0.007 270);
   --foreground: oklch(0.94 0 0);
   --card: oklch(0.21 0.007 270);

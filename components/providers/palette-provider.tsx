@@ -2,11 +2,11 @@
 
 import { createPreferenceProvider } from "./create-preference-provider";
 
-export type ColorPalette = "default" | "psevdaryiros";
+export type ColorPalette = "default" | "zinc";
 
 export const PALETTE_OPTIONS: { value: ColorPalette; label: string }[] = [
   { value: "default", label: "Default" },
-  { value: "psevdaryiros", label: "Psevdaryiros" },
+  { value: "zinc", label: "Zinc" },
 ];
 
 const { Provider: PaletteProvider, usePreference } = createPreferenceProvider<ColorPalette>({
