@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
 import { Button } from "@/registry/brook/tailwind/ui/button";
@@ -86,67 +86,69 @@ export default function TabsFramerMotion() {
   const activeTabData = tabs.find((tab) => tab.id === activeTab);
 
   return (
-    <div className="mx-auto w-full max-w-[32rem]">
-      <Tabs onValueChange={handleTabChange} value={activeTab}>
-        <TabsList className="relative">
-          {tabs.map((tab) => (
-            <TabsTrigger
-              className="data-[active]:!bg-transparent data-[active]:!border-transparent relative bg-transparent [-webkit-tap-highlight-color:transparent]"
-              data-framer-motion="true"
-              key={tab.id}
-              tabIndex={0}
-              value={tab.id}
-            >
-              {activeTab === tab.id && (
-                <motion.span
-                  className="absolute inset-0 border border-border bg-muted"
-                  layoutId="bubble"
-                  style={{ borderRadius: "var(--radius)", zIndex: 0 }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
-              )}
-              <span className="relative z-[1]">{tab.label}</span>
-            </TabsTrigger>
-          ))}
-        </TabsList>
+    <MotionConfig reducedMotion="user">
+      <div className="mx-auto w-full max-w-[32rem]">
+        <Tabs onValueChange={handleTabChange} value={activeTab}>
+          <TabsList className="relative">
+            {tabs.map((tab) => (
+              <TabsTrigger
+                className="data-[active]:!bg-transparent data-[active]:!border-transparent relative bg-transparent [-webkit-tap-highlight-color:transparent]"
+                data-framer-motion="true"
+                key={tab.id}
+                tabIndex={0}
+                value={tab.id}
+              >
+                {activeTab === tab.id && (
+                  <motion.span
+                    className="absolute inset-0 border border-border bg-muted"
+                    layoutId="bubble"
+                    style={{ borderRadius: "var(--radius)", zIndex: 0 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                  />
+                )}
+                <span className="relative z-[1]">{tab.label}</span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        <motion.div
-          animate={{ height: bounds.height }}
-          className="relative mt-0 overflow-hidden rounded-b-[var(--radius)] border-[0.5px] border-border/80 border-t-0 bg-[var(--mix-card-33-bg)]"
-          initial={{ height: "auto" }}
-          transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-        >
-          <div className="relative w-full" ref={ref}>
-            <AnimatePresence custom={direction} initial={false} mode="popLayout">
-              {activeTabData && (
-                <motion.div
-                  animate="active"
-                  className="flex w-full flex-col gap-6"
-                  custom={direction}
-                  exit="exit"
-                  initial="initial"
-                  key={activeTab}
-                  style={{ padding: "1.5rem" }}
-                  transition={contentTransition}
-                  variants={contentVariants}
-                >
-                  <div>
-                    <span className="!m-0 !text-[18px] font-semibold leading-7">{activeTabData.heading}</span>
-                    <p className="mt-0 mb-0 text-muted-foreground text-sm leading-5">{activeTabData.description}</p>
-                  </div>
-                  <div className="flex gap-2 max-[640px]:flex-col">
-                    {activeTabData.buttons.map((button) => (
-                      <Button key={button.label} size="sm" variant={button.variant}>
-                        {button.label}
-                      </Button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      </Tabs>
-    </div>
+          <motion.div
+            animate={{ height: bounds.height }}
+            className="relative mt-0 overflow-hidden rounded-b-[var(--radius)] border-[0.5px] border-border/80 border-t-0 bg-[var(--mix-card-33-bg)]"
+            initial={{ height: "auto" }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+          >
+            <div className="relative w-full" ref={ref}>
+              <AnimatePresence custom={direction} initial={false} mode="popLayout">
+                {activeTabData && (
+                  <motion.div
+                    animate="active"
+                    className="flex w-full flex-col gap-6"
+                    custom={direction}
+                    exit="exit"
+                    initial="initial"
+                    key={activeTab}
+                    style={{ padding: "1.5rem" }}
+                    transition={contentTransition}
+                    variants={contentVariants}
+                  >
+                    <div>
+                      <span className="!m-0 !text-[18px] font-semibold leading-7">{activeTabData.heading}</span>
+                      <p className="mt-0 mb-0 text-muted-foreground text-sm leading-5">{activeTabData.description}</p>
+                    </div>
+                    <div className="flex gap-2 max-[640px]:flex-col">
+                      {activeTabData.buttons.map((button) => (
+                        <Button key={button.label} size="sm" variant={button.variant}>
+                          {button.label}
+                        </Button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </Tabs>
+      </div>
+    </MotionConfig>
   );
 }

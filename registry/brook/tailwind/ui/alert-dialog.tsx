@@ -33,7 +33,7 @@ const popupStyles = cn(
   "gap-4 rounded-[var(--radius)] border-none p-6",
   "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),var(--shadow-border-stack)]",
   "-translate-x-1/2 -translate-y-1/2 bg-[var(--mix-card-5-bg)]",
-  "transition-all duration-150",
+  "transition duration-150",
   "data-[starting-style]:-translate-x-1/2 data-[starting-style]:-translate-y-1/2 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
   "data-[ending-style]:-translate-x-1/2 data-[ending-style]:-translate-y-1/2 data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
   "max-sm:-translate-y-1/2 max-sm:top-1/2 max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0",

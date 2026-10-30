@@ -41,14 +41,18 @@
   border-radius: var(--radius);
   background: transparent;
   cursor: pointer;
-  transition: all 150ms ease;
+  transition: 150ms ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   color: var(--foreground);
   outline: 0.5px solid oklch(from var(--border) l c h / 0.6);
   outline-offset: 2px;
 }
 
-.socialButton:hover {
-  background: var(--muted);
+@media (hover: hover) {
+  .socialButton:hover {
+    background: var(--muted);
+  }
 }
 
 .inputGroup {
@@ -75,6 +79,8 @@
   outline-offset: 2px;
 }
 
-.copyButton:hover {
-  background: var(--muted);
+@media (hover: hover) {
+  .copyButton:hover {
+    background: var(--muted);
+  }
 }

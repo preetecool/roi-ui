@@ -1,6 +1,6 @@
 "use client";
 
-import { OTPFieldPreview as OTPFieldPrimitive } from "@base-ui/react/otp-field";
+import { OTPField as OTPFieldPrimitive } from "@base-ui/react/otp-field";
 import { cn } from "@/lib/utils-tailwind";
 
 function OTPFieldRoot({ className, ...props }: OTPFieldPrimitive.Root.Props) {
@@ -18,7 +18,7 @@ function OTPFieldInput({ className, ...props }: OTPFieldPrimitive.Input.Props) {
     <OTPFieldPrimitive.Input
       className={(state: OTPFieldPrimitive.Input.State) =>
         cn(
-          "h-10 w-10 rounded-[var(--radius)] border-none bg-[var(--popover)] text-center text-foreground tabular-nums transition-all duration-150 ease-out",
+          "h-10 w-10 rounded-[var(--radius)] border-none bg-[var(--popover)] text-center text-foreground tabular-nums transition duration-150 ease-out",
           "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)]",
           "focus:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)] focus:outline-none",
           "focus-visible:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)] focus-visible:outline-none",

@@ -50,6 +50,10 @@
   &[data-ending-style] {
     transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .dragArea {

@@ -8,11 +8,11 @@ export default function SwitchDemo() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className={styles.container}>
+    <label className={styles.container}>
       <Switch checked={checked} onCheckedChange={setChecked}>
         <SwitchThumb />
       </Switch>
-      <label className={styles.label}>Enable notifications</label>
-    </div>
+      <span className={styles.label}>Enable notifications</span>
+    </label>
   );
 }

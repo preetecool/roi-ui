@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-area",
-  "type": "registry:item",
   "title": "Scroll Area",
   "description": "A native scroll container with custom scrollbars.",
   "files": [
@@ -17,5 +16,6 @@
       "type": "registry:file",
       "target": "~/components/ui/scroll-area/scroll-area.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

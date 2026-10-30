@@ -23,8 +23,10 @@
   inset-inline: 0;
 }
 
-.badge[data-slot="badge"]:hover {
-  background-color: var(--accent);
+@media (hover: hover) {
+  .badge[data-slot="badge"]:hover {
+    background-color: var(--accent);
+  }
 }
 
 .badge[data-slot="badge"] svg {
@@ -47,13 +49,17 @@
   transform: translateX(0);
 }
 
-.badge[data-slot="badge"]:hover svg path:first-child {
-  transform: translateX(2px);
+@media (hover: hover) {
+  .badge[data-slot="badge"]:hover svg path:first-child {
+    transform: translateX(2px);
+  }
 }
 
-.badge[data-slot="badge"]:hover svg path:last-child {
-  opacity: 1;
-  transform: translateX(-1px);
+@media (hover: hover) {
+  .badge[data-slot="badge"]:hover svg path:last-child {
+    opacity: 1;
+    transform: translateX(-1px);
+  }
 }
 
 .h1 {

@@ -31,7 +31,7 @@ function ProgressIndicator({ className, ...props }: Progress.Indicator.Props) {
   return (
     <Progress.Indicator
       className={cn(
-        "h-full w-[var(--progress-indicator-width)] rounded-none bg-[var(--primary)] transition-all duration-150 ease-out",
+        "h-full w-[var(--progress-indicator-width)] rounded-none bg-[var(--primary)] transition-[width,background-color] duration-150 ease-out",
         "[.root[data-indeterminate]_&]:w-[40%] [.root[data-indeterminate]_&]:animate-[indeterminate_2s_infinite_linear]",
         className
       )}

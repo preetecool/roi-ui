@@ -25,7 +25,7 @@ export default function PopoverDemo() {
             <div className="flex justify-start gap-3">
               <button
                 aria-label="Share on Facebook"
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition-all duration-150 hover:bg-muted"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition duration-150 hover:bg-muted"
                 type="button"
               >
                 <svg fill="currentColor" height="24" viewBox="0 0 30 30" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@ export default function PopoverDemo() {
               </button>
               <button
                 aria-label="Share on X"
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition-all duration-150 hover:bg-muted"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition duration-150 hover:bg-muted"
                 type="button"
               >
                 <svg fill="currentColor" height="24" viewBox="0 0 30 30" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@ export default function PopoverDemo() {
               </button>
               <button
                 aria-label="Share on LinkedIn"
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition-all duration-150 hover:bg-muted"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition duration-150 hover:bg-muted"
                 type="button"
               >
                 <svg fill="currentColor" height="24" viewBox="0 0 30 30" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@ export default function PopoverDemo() {
               </button>
               <button
                 aria-label="Share on Instagram"
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition-all duration-150 hover:bg-muted"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[var(--radius)] bg-transparent text-foreground outline outline-[0.5px] outline-border/60 outline-offset-2 transition duration-150 hover:bg-muted"
                 type="button"
               >
                 <svg fill="currentColor" height="24" viewBox="0 0 30 30" width="24" xmlns="http://www.w3.org/2000/svg">

@@ -46,31 +46,19 @@ function PreviewCardPositioner({ className, ...props }: PreviewCard.Positioner.P
 
 function PreviewCardPopup({ className, ...props }: PreviewCard.Popup.Props) {
   return (
-    <>
-      <style>{`
-        @keyframes previewCardScaleIn {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes previewCardScaleOut {
-          from { opacity: 1; transform: scale(1); }
-          to { opacity: 0; transform: scale(0.9); }
-        }
-      `}</style>
-      <PreviewCard.Popup
-        className={cn(
-          "bg-[var(--popover)]",
-          "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4",
-          "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
-          "[transform-origin:var(--transform-origin)]",
-          "[animation:previewCardScaleIn_0.25s_var(--ease-out-expo)]",
-          "data-[state=closed]:[animation:previewCardScaleOut_0.25s_var(--ease-out-expo)]",
-          className
-        )}
-        data-slot="previewcard-popup"
-        {...props}
-      />
-    </>
+    <PreviewCard.Popup
+      className={cn(
+        "bg-[var(--popover)]",
+        "z-[150] max-w-80 rounded-[var(--radius-lg)] p-4",
+        "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.8),oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px,oklch(from_var(--border)_l_c_h_/_0.2)_0px_0.5px_0.5px]",
+        "[transform-origin:var(--transform-origin)]",
+        "transition-[scale,opacity] duration-250 ease-[var(--ease-out-expo)] motion-reduce:transition-opacity",
+        "data-[ending-style]:scale-90 data-[starting-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+        className
+      )}
+      data-slot="previewcard-popup"
+      {...props}
+    />
   );
 }
 

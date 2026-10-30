@@ -53,12 +53,16 @@
   padding-left: 0;
 }
 
-.grid a[data-slot="button"]:hover {
-  text-decoration: none;
+@media (hover: hover) {
+  .grid a[data-slot="button"]:hover {
+    text-decoration: none;
+  }
 }
 
-.grid a[data-slot="button"]:hover .linkText {
-  text-decoration: underline;
+@media (hover: hover) {
+  .grid a[data-slot="button"]:hover .linkText {
+    text-decoration: underline;
+  }
 }
 
 .grid a[data-slot="button"]:active:not(:disabled) {

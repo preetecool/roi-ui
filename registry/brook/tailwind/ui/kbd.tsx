@@ -8,7 +8,7 @@ const kbdVariants = cva(
     "rounded-[2px] border-none",
     "bg-[var(--card)] text-[var(--foreground)]",
     "[box-shadow:inset_0_0_0_1px_rgba(0,0,0,0.06),0_2px_0_0_var(--muted)]",
-    "transition-all duration-150 ease-[ease]",
+    "transition duration-150 ease-[ease]",
     "focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
   ],
   {

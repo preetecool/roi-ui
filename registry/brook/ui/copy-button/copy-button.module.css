@@ -7,7 +7,10 @@
 
   color: var(--muted);
   cursor: pointer;
-  transition: all 0.25s;
+  transition: 0.25s;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform, scale,
+    rotate, filter;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -65,7 +68,10 @@
 .copyFront,
 .copyBack {
   transform-origin: center;
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform, scale,
+    rotate, filter;
   will-change: transform;
 }
 
@@ -74,7 +80,10 @@
   scale: 1;
   rotate: 0deg;
   filter: blur(0px);
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform, scale,
+    rotate, filter;
 }
 
 .iconContainer[data-icon="check"] {
@@ -82,7 +91,10 @@
   scale: 0;
   rotate: -45deg;
   filter: blur(4px);
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform, scale,
+    rotate, filter;
 }
 
 .root[data-copied="true"] .copyFront {
@@ -111,5 +123,8 @@
   scale: 1;
   rotate: 0deg;
   filter: blur(0px);
-  transition: all 0.2s ease 50ms;
+  transition: 0.2s ease 50ms;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform, scale,
+    rotate, filter;
 }

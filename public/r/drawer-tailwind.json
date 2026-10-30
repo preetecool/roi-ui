@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drawer-tailwind",
-  "type": "registry:item",
   "title": "Drawer (Tailwind)",
   "description": "A panel that slides in from the edge of the screen with swipe-to-dismiss gestures.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/drawer/drawer.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

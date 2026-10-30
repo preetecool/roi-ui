@@ -17,8 +17,10 @@
   cursor: pointer;
   flex-shrink: 0;
 
-  &:hover {
-    border-color: oklch(from var(--secondary-foreground) l c h / 0.4);
+  @media (hover: hover) {
+    &:hover {
+      border-color: oklch(from var(--secondary-foreground) l c h / 0.4);
+    }
   }
 
   &[data-focused] {
@@ -30,8 +32,10 @@
   &[data-checked] {
     border-color: oklch(from var(--secondary-foreground) l c h / 0.6);
 
-    &:hover {
-      border-color: oklch(from var(--secondary-foreground) l c h / 0.8);
+    @media (hover: hover) {
+      &:hover {
+        border-color: oklch(from var(--secondary-foreground) l c h / 0.8);
+      }
     }
 
     & .indicator {

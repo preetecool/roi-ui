@@ -1,11 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip-tailwind",
-  "type": "registry:item",
   "title": "Tooltip (Tailwind)",
   "description": "A popup that displays information on hover.",
   "dependencies": [
-    "@base-ui/react@1.5.0"
+    "@base-ui/react@1.9.0"
   ],
   "files": [
     {
@@ -14,5 +13,6 @@
       "type": "registry:file",
       "target": "~/components/ui/tooltip/tooltip.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert-tailwind",
-  "type": "registry:item",
   "title": "Alert (Tailwind)",
   "description": "A component for displaying important messages to users.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:file",
       "target": "~/components/ui/alert/alert.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

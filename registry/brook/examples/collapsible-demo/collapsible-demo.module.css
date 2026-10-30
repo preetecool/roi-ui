@@ -16,8 +16,10 @@
   transition: background-color 150ms;
 }
 
-.trigger:hover {
-  background-color: var(--mix-card-75-bg);
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: var(--mix-card-75-bg);
+  }
 }
 
 .mainStat {

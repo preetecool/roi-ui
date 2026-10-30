@@ -33,7 +33,9 @@
     0 0 0 0.5px oklch(from var(--border) l c h / 0.5),
     var(--shadow-lg);
   background-color: var(--background);
-  transition: all 150ms;
+  transition: 150ms;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 
   &[data-starting-style],
   &[data-ending-style] {
@@ -44,6 +46,10 @@
   @media (max-width: 640px) {
     width: calc(100% - 2rem);
     max-width: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
   }
 }
 
@@ -69,8 +75,8 @@
   &::placeholder {
     color: var(--muted-foreground);
 
-    @media (max-width: 640px) {
-      font-size: 0.9375rem;
+    @media (max-width: 640px), (pointer: coarse) {
+      font-size: 1rem;
     }
   }
 
@@ -78,8 +84,8 @@
     outline: none;
   }
 
-  @media (max-width: 640px) {
-    font-size: 0.9375rem;
+  @media (max-width: 640px), (pointer: coarse) {
+    font-size: 1rem;
   }
 }
 
@@ -104,8 +110,10 @@
     border-radius: 3px;
   }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: oklch(from var(--border) l c h / 0.7);
+  @media (hover: hover) {
+    &::-webkit-scrollbar-thumb:hover {
+      background: oklch(from var(--border) l c h / 0.7);
+    }
   }
 
   @media (max-width: 640px) {
@@ -129,9 +137,14 @@
   border-radius: 0;
   border: 1px solid transparent;
 
-  &:hover,
   &[data-highlighted] {
     background-color: var(--mix-card-50-bg);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--mix-card-50-bg);
+    }
   }
 
   &:focus-visible {

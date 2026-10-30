@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "separator-tailwind",
-  "type": "registry:item",
   "title": "Separator (Tailwind)",
   "description": "A separator element accessible to screen readers.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/separator/separator.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

@@ -30,6 +30,10 @@
   &[data-instant] {
     transition-duration: 0ms;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .arrow {

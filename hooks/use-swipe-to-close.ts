@@ -23,11 +23,15 @@ export function useSwipeToClose({ threshold = 32, onClose }: UseSwipeToCloseOpti
       const viewport = event.currentTarget;
 
       // Only handle gesture when at top of scroll
-      if (viewport.scrollTop > 0) return;
+      if (viewport.scrollTop > 0) {
+        return;
+      }
 
       const handleTouchEnd = () => {
         // Check if user pulled down past threshold
-        if (viewport.scrollTop >= -threshold) return;
+        if (viewport.scrollTop >= -threshold) {
+          return;
+        }
 
         const scrollPosition = viewport.scrollTop;
 

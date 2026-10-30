@@ -67,8 +67,10 @@
   border-radius: 0;
 }
 
-.trigger:hover {
-  background-color: var(--accent);
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: var(--accent);
+  }
 }
 
 .trigger:focus-visible {

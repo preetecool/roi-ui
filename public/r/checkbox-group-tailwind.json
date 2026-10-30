@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox-group-tailwind",
-  "type": "registry:item",
   "title": "Checkbox Group (Tailwind)",
   "description": "A set of checkboxes with shared state management for selecting multiple options.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/checkbox-group/checkbox-group.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

@@ -113,6 +113,10 @@
     left: 0;
     height: calc(var(--gap) + 1px);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .content {
@@ -188,9 +192,11 @@
   cursor: pointer;
   transition: background-color 0.15s ease;
 
-  &:hover {
-    background-color: var(--primary);
-    opacity: 0.9;
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary);
+      opacity: 0.9;
+    }
   }
 
   &:focus-visible {
@@ -217,11 +223,15 @@
   border-radius: 0.25rem;
   color: oklch(from var(--foreground) l c h / 0.3);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: 0.15s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform, scale;
 
-  &:hover {
-    background-color: var(--muted);
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--muted);
+      color: var(--foreground);
+    }
   }
 
   &:focus {
@@ -281,6 +291,10 @@
   &[data-ending-style] {
     scale: 0.98;
     opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
   }
 }
 

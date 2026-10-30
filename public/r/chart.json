@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart",
-  "type": "registry:item",
   "title": "Chart",
   "description": "Composable chart components for building any type of data visualization with Recharts primitives.",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:file",
       "target": "~/components/ui/chart/chart.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

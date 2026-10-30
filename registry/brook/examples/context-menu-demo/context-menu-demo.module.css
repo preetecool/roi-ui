@@ -14,12 +14,16 @@
   outline: none;
   border-radius: var(--radius);
   border: 2px dashed var(--border);
-  transition: all 150ms ease;
+  transition: 150ms ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   font-size: 0.875rem;
   color: var(--muted-foreground);
 
-  &:hover {
-    border-color: var(--ring);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--ring);
+    }
   }
 
   &:focus-visible {

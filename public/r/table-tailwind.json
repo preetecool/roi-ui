@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "table-tailwind",
-  "type": "registry:item",
   "title": "Table (Tailwind)",
   "description": "A responsive table component for displaying structured tabular data.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:file",
       "target": "~/components/ui/table/table.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

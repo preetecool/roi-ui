@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "prop-table-tailwind",
-  "type": "registry:item",
   "title": "Prop Table (Tailwind)",
   "description": "An expandable table for documenting component props.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:file",
       "target": "~/components/ui/prop-table/prop-table.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

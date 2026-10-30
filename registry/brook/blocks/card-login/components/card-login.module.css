@@ -94,16 +94,20 @@
   font-weight: 300;
 }
 
-.forgotPassword:hover {
-  color: var(--foreground);
+@media (hover: hover) {
+  .forgotPassword:hover {
+    color: var(--foreground);
+  }
 }
 
 .rememberMe {
   color: var(--secondary-foreground);
   cursor: pointer;
 }
-.rememberMe:hover {
-  color: var(--foreground);
+@media (hover: hover) {
+  .rememberMe:hover {
+    color: var(--foreground);
+  }
 }
 .signupBanner {
   width: calc(100% + 40px);
@@ -133,8 +137,10 @@
   cursor: pointer;
   font: inherit;
 
-  &:hover {
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--foreground);
+    }
   }
 }
 

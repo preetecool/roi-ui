@@ -26,11 +26,11 @@ function ToolbarButton({ className, ...props }: Toolbar.Button.Props) {
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] border-none bg-transparent",
         "cursor-pointer font-medium text-foreground text-sm",
-        "min-h-8 min-w-8 transition-all duration-200",
+        "min-h-8 min-w-8 transition duration-200",
         "hover:bg-accent hover:text-accent-foreground",
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        "data-[state=pressed]:bg-accent data-[state=pressed]:text-accent-foreground",
+        "data-[pressed]:bg-accent data-[pressed]:text-accent-foreground",
         "max-sm:min-h-10 max-sm:min-w-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
         className
       )}
@@ -46,7 +46,7 @@ function ToolbarLink({ className, ...props }: Toolbar.Link.Props) {
       className={cn(
         "inline-flex items-center justify-center gap-2 px-3 py-1.5",
         "rounded-[calc(var(--radius)-2px)] text-foreground no-underline",
-        "h-8 min-w-8 font-medium text-sm leading-none transition-all duration-200",
+        "h-8 min-w-8 font-medium text-sm leading-none transition duration-200",
         "hover:bg-accent hover:text-accent-foreground",
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "max-sm:h-10 max-sm:min-w-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",
@@ -64,7 +64,7 @@ function ToolbarInput({ className, ...props }: Toolbar.Input.Props) {
       className={cn(
         "flex-1 rounded-[calc(var(--radius)-2px)] px-3 py-1.5",
         "min-h-8 border border-border bg-input text-foreground text-sm",
-        "transition-all duration-200",
+        "transition duration-200",
         "focus:border-transparent focus:outline-2 focus:outline-ring focus:outline-offset-2",
         "placeholder:text-muted-foreground",
         "max-sm:min-h-10 max-sm:px-4 max-sm:py-2 max-sm:text-[0.9375rem]",

@@ -1,11 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "field",
-  "type": "registry:item",
   "title": "Field",
   "description": "A form field component with label and validation.",
   "dependencies": [
-    "@base-ui/react@1.5.0"
+    "@base-ui/react@1.9.0"
   ],
   "files": [
     {
@@ -20,5 +19,6 @@
       "type": "registry:file",
       "target": "~/components/ui/field/field.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

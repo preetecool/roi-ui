@@ -51,16 +51,22 @@
   font-size: 0.875rem;
   color: var(--foreground);
   text-align: center;
-  transition: all 150ms ease-out;
+  transition: 150ms ease-out;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   background-color: var(--mix-card-50-bg);
 
   &::placeholder {
     color: var(--muted-foreground);
   }
 
+  @media (max-width: 640px), (pointer: coarse) {
+    font-size: 1rem;
+  }
+
   &:focus {
     border-color: var(--ring);
-    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+    box-shadow: 0 0 0 2px oklch(from var(--ring) l c h / 0.2);
   }
 
   &:disabled {
@@ -80,11 +86,15 @@
   background-color: var(--mix-card-50-bg);
   color: var(--muted-foreground);
   cursor: pointer;
-  transition: all 150ms ease-out;
+  transition: 150ms ease-out;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 
-  &:hover {
-    color: var(--foreground);
-    background: var(--muted);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--foreground);
+      background: var(--muted);
+    }
   }
 
   &:active {
@@ -95,9 +105,11 @@
     cursor: not-allowed;
     opacity: 0.5;
 
-    &:hover {
-      color: var(--muted-foreground);
-      background: transparent;
+    @media (hover: hover) {
+      &:hover {
+        color: var(--muted-foreground);
+        background: transparent;
+      }
     }
   }
 }

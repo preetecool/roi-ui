@@ -56,8 +56,10 @@
   white-space: nowrap;
 }
 
-.card:hover .heading {
-  color: var(--foreground);
+@media (hover: hover) {
+  .card:hover .heading {
+    color: var(--foreground);
+  }
 }
 
 .modalPositioner {
@@ -66,7 +68,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 102;
   pointer-events: none;
   overflow-y: auto;
   max-height: 100%;
@@ -184,8 +186,10 @@
   transition: background-color 150ms ease-out;
 }
 
-.scrollbarThumb:hover {
-  background-color: oklch(from var(--border) l c h / 0.8);
+@media (hover: hover) {
+  .scrollbarThumb:hover {
+    background-color: oklch(from var(--border) l c h / 0.8);
+  }
 }
 
 .contentExpanded {
@@ -258,9 +262,11 @@
     color 150ms ease-out;
 }
 
-.closeButton:hover {
-  color: var(--foreground);
-  background-color: var(--muted);
+@media (hover: hover) {
+  .closeButton:hover {
+    color: var(--foreground);
+    background-color: var(--muted);
+  }
 }
 
 .closeButton:focus-visible {
@@ -293,10 +299,12 @@
     background-color 150ms ease-out,
     color 150ms ease-out;
 }
-.expandIcon:hover,
-.card:hover .expandIcon {
-  background-color: var(--card);
-  color: var(--foreground);
+@media (hover: hover) {
+  .expandIcon:hover,
+  .card:hover .expandIcon {
+    background-color: var(--card);
+    color: var(--foreground);
+  }
 }
 
 @media (max-width: 768px) {

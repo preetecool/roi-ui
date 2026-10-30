@@ -23,7 +23,7 @@ const buttonVariants = cva(
           "inset-shadow-[0_1px_oklch(1_0_0/0.16)]",
           "before:-z-1 before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius)-1px)]",
           "hover:before:bg-[oklch(from_var(--primary-foreground)_l_c_h/0.1)]",
-          "[:active,[data-pressed]]:shadow-none [:active,[data-pressed]]:inset-shadow-[0_1px_oklch(0_0_0/0.08)]",
+          "[:active,[data-pressed]]:inset-shadow-[0_1px_oklch(0_0_0/0.08)] [:active,[data-pressed]]:shadow-none",
         ],
         secondary: [
           "isolate border border-transparent bg-[var(--secondary)] text-[var(--secondary-foreground)]",
@@ -36,7 +36,7 @@ const buttonVariants = cva(
           "inset-shadow-[0_1px_oklch(1_0_0/0.16)]",
           "before:-z-1 before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius)-1px)]",
           "hover:before:bg-[oklch(1_0_0/0.08)]",
-          "[:active,[data-pressed]]:shadow-none [:active,[data-pressed]]:inset-shadow-[0_1px_oklch(0_0_0/0.08)]",
+          "[:active,[data-pressed]]:inset-shadow-[0_1px_oklch(0_0_0/0.08)] [:active,[data-pressed]]:shadow-none",
         ],
         ghost: [
           "bg-transparent text-[var(--foreground)]",
@@ -114,7 +114,7 @@ function Spinner() {
 function ArrowPointer({ pointLeft = false, pointExternal = false }: { pointLeft?: boolean; pointExternal?: boolean }) {
   const arrowClasses = cn(
     "-mr-2 relative top-[0.5px] ml-2 h-2.5 w-3 overflow-visible",
-    "transition-all duration-200 ease-[var(--ease-in-out-cubic)]",
+    "transition duration-200 ease-[var(--ease-in-out-cubic)]",
     pointLeft && "-ml-2 mr-2",
     pointExternal && "group-hover:-rotate-45 origin-[8%] [transform-box:border-box]"
   );

@@ -87,7 +87,11 @@ export default function AutocompleteDemo() {
       >
         <div className={styles.inputWrapper}>
           <Search className={styles.searchIcon} size={16} />
-          <AutocompleteInput className={styles.input} id="ac-input" placeholder="Type your question or search FAQs..." />
+          <AutocompleteInput
+            className={styles.input}
+            id="ac-input"
+            placeholder="Type your question or search FAQs..."
+          />
         </div>
 
         <AutocompletePortal>

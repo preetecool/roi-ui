@@ -65,9 +65,11 @@
   text-decoration: none;
 }
 
-.menuButton:hover:not(.menuButtonActive) {
-  color: var(--foreground);
-  background-color: oklch(from var(--accent) l c h / 0.4);
+@media (hover: hover) {
+  .menuButton:hover:not(.menuButtonActive) {
+    color: var(--foreground);
+    background-color: oklch(from var(--accent) l c h / 0.4);
+  }
 }
 
 .menuButtonActive {

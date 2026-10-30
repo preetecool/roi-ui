@@ -9,10 +9,14 @@
   background-color: transparent;
   color: var(--muted-foreground);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   border-radius: 2px;
 }
 
-.button:hover {
-  color: var(--foreground);
+@media (hover: hover) {
+  .button:hover {
+    color: var(--foreground);
+  }
 }

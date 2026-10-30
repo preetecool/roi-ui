@@ -30,7 +30,9 @@
   border-radius: var(--radius);
   background-color: var(--mix-card-5-bg);
   transform: translate(-50%, -50%);
-  transition: all 150ms;
+  transition: 150ms;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 
   &[data-starting-style],
   &[data-ending-style] {
@@ -51,6 +53,10 @@
       opacity: 0;
       transform: translateY(-50%) scale(0.95);
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
   }
 }
 
@@ -105,10 +111,14 @@
   border-radius: var(--radius);
   font-size: 0.875rem;
   font-weight: 500;
-  transition: all 150ms ease-out;
+  transition: 150ms ease-out;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 
-  &:hover {
-    background-color: var(--muted);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--muted);
+    }
   }
 
   &:focus-visible {

@@ -1,11 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "avatar-tailwind",
-  "type": "registry:item",
   "title": "Avatar (Tailwind)",
   "description": "An image element with a fallback for representing the user.",
   "dependencies": [
-    "@base-ui/react@1.5.0"
+    "@base-ui/react@1.9.0"
   ],
   "files": [
     {
@@ -14,5 +13,6 @@
       "type": "registry:file",
       "target": "~/components/ui/avatar/avatar.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

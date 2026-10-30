@@ -61,9 +61,11 @@
     border-color 0.15s ease;
 }
 
-.filter:hover {
-  color: var(--foreground);
-  border-color: var(--border);
+@media (hover: hover) {
+  .filter:hover {
+    color: var(--foreground);
+    border-color: var(--border);
+  }
 }
 
 .filter[data-active="true"] {
@@ -111,7 +113,11 @@
   flex-direction: column;
   border-radius: var(--card-radius);
   border: 1px solid oklch(from var(--border) l c h / 0.5);
-  background: linear-gradient(to top, var(--card), oklch(from var(--muted) l c h / 0.4));
+  background: linear-gradient(
+    to top,
+    var(--card),
+    oklch(from var(--muted) l c h / 0.4)
+  );
   transition: border-color 0.2s ease;
 }
 
@@ -127,13 +133,17 @@
   transition: background-color 0.2s ease;
 }
 
-.card:hover .cardInner::before {
-  background: oklch(0 0 0 / 0.04);
+@media (hover: hover) {
+  .card:hover .cardInner::before {
+    background: oklch(0 0 0 / 0.04);
+  }
 }
 
-:global(.dark) .card:hover .cardInner::before,
-:global([data-theme="dark"]) .card:hover .cardInner::before {
-  background: oklch(0 0 0 / 0.18);
+@media (hover: hover) {
+  :global(.dark) .card:hover .cardInner::before,
+  :global([data-theme="dark"]) .card:hover .cardInner::before {
+    background: oklch(0 0 0 / 0.18);
+  }
 }
 
 :global(.dark) .cardInner::before,
@@ -160,8 +170,10 @@
     0 0 0 2px oklch(1 0 0 / 0.025);
 }
 
-.card:hover .cardInner {
-  border-color: oklch(from var(--border) l c h / 0.7);
+@media (hover: hover) {
+  .card:hover .cardInner {
+    border-color: oklch(from var(--border) l c h / 0.7);
+  }
 }
 
 .cardPreview {
@@ -179,8 +191,10 @@
   transition: background-color 0.2s ease;
 }
 
-.card:hover .cardPreview {
-  background: var(--mix-card-50-bg);
+@media (hover: hover) {
+  .card:hover .cardPreview {
+    background: var(--mix-card-50-bg);
+  }
 }
 
 .skeleton {
@@ -197,8 +211,13 @@
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 0 0 calc(var(--card-radius) - 1px) calc(var(--card-radius) - 1px);
-  background: linear-gradient(to bottom, transparent, oklch(from var(--muted) l c h / 0.4));
+  border-radius: 0 0 calc(var(--card-radius) - 1px)
+    calc(var(--card-radius) - 1px);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    oklch(from var(--muted) l c h / 0.4)
+  );
 }
 
 .cardTitle {
@@ -245,9 +264,11 @@
     inset 0 -1px 0 oklch(1 0 0 / 0.03);
 }
 
-.viewButton:hover {
-  background: var(--muted);
-  color: var(--foreground);
+@media (hover: hover) {
+  .viewButton:hover {
+    background: var(--muted);
+    color: var(--foreground);
+  }
 }
 
 .newBadge {

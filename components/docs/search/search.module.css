@@ -87,9 +87,14 @@
   text-transform: none;
 }
 
-.searchDialog [data-slot="command-item"]:hover,
 .searchDialog [data-slot="command-item"][data-highlighted] {
   background-color: var(--mix-card-50-bg);
+}
+
+@media (hover: hover) {
+  .searchDialog [data-slot="command-item"]:hover {
+    background-color: var(--mix-card-50-bg);
+  }
 }
 
 .searchDialog [data-slot="command-item"]:focus-visible {
@@ -121,8 +126,10 @@
   border-radius: 3px;
 }
 
-.searchDialog [data-slot="command-list"]::-webkit-scrollbar-thumb:hover {
-  background: oklch(from var(--border) l c h / 0.7);
+@media (hover: hover) {
+  .searchDialog [data-slot="command-list"]::-webkit-scrollbar-thumb:hover {
+    background: oklch(from var(--border) l c h / 0.7);
+  }
 }
 
 .searchDialog [data-slot="command-footer"] {
@@ -187,9 +194,11 @@
   height: 36px;
 }
 
-.searchButton[data-slot="button"]:hover {
-  background-color: oklch(from var(--accent) l c h / 0.5);
-  color: var(--foreground);
+@media (hover: hover) {
+  .searchButton[data-slot="button"]:hover {
+    background-color: oklch(from var(--accent) l c h / 0.5);
+    color: var(--foreground);
+  }
 }
 
 .searchIcon {
@@ -197,8 +206,10 @@
   flex-shrink: 0;
 }
 
-.searchButton:hover .searchIcon {
-  color: var(--foreground);
+@media (hover: hover) {
+  .searchButton:hover .searchIcon {
+    color: var(--foreground);
+  }
 }
 
 .searchText {

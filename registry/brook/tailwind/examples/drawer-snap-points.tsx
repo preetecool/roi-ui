@@ -62,6 +62,7 @@ export default function DrawerSnapPoints() {
                   {Array.from({ length: 20 }, (_, index) => (
                     <div
                       className="h-12 rounded-[calc(var(--radius)-2px)] border border-border bg-accent"
+                      // biome-ignore lint/suspicious/noArrayIndexKey: static placeholder list that never reorders
                       key={index}
                     />
                   ))}

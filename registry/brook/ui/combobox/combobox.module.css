@@ -1,9 +1,9 @@
 .input {
-  @media (max-width: 640px) {
-    font-size: 0.9375rem;
+  @media (max-width: 640px), (pointer: coarse) {
+    font-size: 1rem;
 
     &::placeholder {
-      font-size: 0.9375rem;
+      font-size: 1rem;
     }
   }
 }
@@ -43,11 +43,15 @@
   border-radius: calc(var(--radius) - 2px);
   cursor: pointer;
   color: var(--muted-foreground);
-  transition: all 150ms ease;
+  transition: 150ms ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 
-  &:hover {
-    color: var(--foreground);
-    background: var(--accent);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--foreground);
+      background: var(--accent);
+    }
   }
 }
 
@@ -101,16 +105,9 @@
   @media (max-width: 640px) {
     max-width: calc(100vw - 2rem);
   }
-}
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
   }
 }
 
@@ -152,9 +149,14 @@
   }
 
   &[data-highlighted]::before,
-  &:hover::before,
   &:focus::before {
     background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus,
@@ -166,8 +168,10 @@
     opacity: 0.5;
     cursor: not-allowed;
 
-    &:hover::before {
-      background: transparent;
+    @media (hover: hover) {
+      &:hover::before {
+        background: transparent;
+      }
     }
   }
 
@@ -287,8 +291,10 @@
   border-radius: calc(var(--radius) - 4px);
   cursor: pointer;
 
-  &:hover {
-    background-color: oklch(from var(--foreground) l c h / 0.1);
+  @media (hover: hover) {
+    &:hover {
+      background-color: oklch(from var(--foreground) l c h / 0.1);
+    }
   }
 }
 

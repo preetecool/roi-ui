@@ -57,9 +57,11 @@
   color: var(--muted-foreground);
 }
 
-.header [data-slot="tabs-trigger"]:not([data-active]):hover {
-  color: var(--muted-foreground);
-  background-color: oklch(from var(--foreground) l c h / 0.14);
+@media (hover: hover) {
+  .header [data-slot="tabs-trigger"]:not([data-active]):hover {
+    color: var(--muted-foreground);
+    background-color: oklch(from var(--foreground) l c h / 0.14);
+  }
 }
 
 .header [data-slot="tabs-trigger"][data-active] {

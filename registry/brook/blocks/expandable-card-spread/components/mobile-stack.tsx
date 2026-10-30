@@ -56,11 +56,7 @@ export function MobileStack({ cards }: MobileStackProps) {
                 zIndex: cards.length - stackPosition,
                 cursor: isTopCard ? "grab" : "auto",
               }}
-              transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { type: "spring", stiffness: 300, damping: 25 }
-              }
+              transition={prefersReducedMotion ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 25 }}
               whileDrag={prefersReducedMotion ? { cursor: "grabbing" } : { cursor: "grabbing", scale: 1.02 }}
             >
               <div className={styles.circle} />

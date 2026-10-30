@@ -34,7 +34,10 @@ function ComboboxTrigger({ className, children, ...props }: Combobox.Trigger.Pro
 function ComboboxInput({ className, ...props }: Combobox.Input.Props) {
   return (
     <Combobox.Input
-      className={cn("max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]", className)}
+      className={cn(
+        "pointer-coarse:text-base pointer-coarse:placeholder:text-base max-sm:text-base max-sm:placeholder:text-base",
+        className
+      )}
       data-slot="combobox-input"
       render={<Input />}
       {...props}
@@ -48,7 +51,7 @@ function ComboboxClear({ className, children, ...props }: Combobox.Clear.Props) 
       className={cn(
         "-translate-y-1/2 absolute top-1/2 right-2",
         "flex cursor-pointer items-center justify-center rounded-[calc(var(--radius)-2px)] p-1",
-        "text-muted-foreground transition-all duration-150",
+        "text-muted-foreground transition duration-150",
         "hover:bg-accent hover:text-foreground",
         className
       )}

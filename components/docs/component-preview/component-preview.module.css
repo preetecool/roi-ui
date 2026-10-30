@@ -112,9 +112,11 @@
   z-index: 10;
 }
 
-.replayButton:hover {
-  background-color: var(--muted);
-  color: var(--foreground);
+@media (hover: hover) {
+  .replayButton:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
 }
 
 .replayButton:active {

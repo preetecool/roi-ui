@@ -51,25 +51,35 @@
   z-index: -1;
 }
 
-.item:hover::before {
-  background-color: var(--accent);
+@media (hover: hover) {
+  .item:hover::before {
+    background-color: var(--accent);
+  }
 }
 
-.item:hover .icon {
-  color: var(--secondary-foreground);
-  opacity: 1;
+@media (hover: hover) {
+  .item:hover .icon {
+    color: var(--secondary-foreground);
+    opacity: 1;
+  }
 }
 
-.item:hover .shortcut {
-  color: var(--secondary-foreground);
+@media (hover: hover) {
+  .item:hover .shortcut {
+    color: var(--secondary-foreground);
+  }
 }
 
-.itemDestructive:hover {
-  color: var(--destructive);
+@media (hover: hover) {
+  .itemDestructive:hover {
+    color: var(--destructive);
+  }
 }
 
-.itemDestructive:hover .icon {
-  color: var(--destructive);
+@media (hover: hover) {
+  .itemDestructive:hover .icon {
+    color: var(--destructive);
+  }
 }
 
 .separatorWrapper {

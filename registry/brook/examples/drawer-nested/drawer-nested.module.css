@@ -73,6 +73,10 @@
       0 0 0 1px oklch(from var(--border) l c h / 0);
     transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .content {

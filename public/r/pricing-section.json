@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing-section",
-  "type": "registry:item",
   "title": "Pricing Section",
   "description": "A pricing section with three plan cards.",
   "dependencies": [
@@ -31,5 +30,6 @@
       "type": "registry:file",
       "target": "~/components/blocks/pricing-section/data.json"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-chat-tailwind",
-  "type": "registry:item",
   "title": "AI Composer (Tailwind)",
   "description": "An AI chat input component with mode selector and action buttons.",
   "dependencies": [
@@ -21,5 +20,6 @@
       "type": "registry:file",
       "target": "~/components/blocks/ai-chat/ai-chat.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

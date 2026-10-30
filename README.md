@@ -1,33 +1,22 @@
-# ROI UI
+# Roi UI
 
-## Documentation
+Copy-paste components built on [Base UI](https://base-ui.com/), shipped in two styles: CSS Modules and Tailwind. Distributed through the [shadcn](https://ui.shadcn.com/) registry (`npx shadcn@latest add @roiui/<name>`). Docs run on Next.js and [Fumadocs](https://fumadocs.dev/).
 
-Built with [Fumadocs](https://fumadocs.dev/) and MDX.
+- `registry/brook/ui`: components, CSS Modules style
+- `registry/brook/tailwind`: the same components, Tailwind style
+- `registry/brook/examples`, `registry/brook/blocks`: demos and blocks
+- `content/`: MDX docs
 
+## Getting started
 
-##  Components
-
-The core component library is located in the `ui` directory and built on [Base UI](https://base-ui.com/).
-
-##  Registry
-
-The library uses the [shadcn/ui](https://ui.shadcn.com/) registry distribution system.
-
-## Getting Started
-
-First, run the development server:
+Requires Node 22.18+ and pnpm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
 ## Block source and generation
 

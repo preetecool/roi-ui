@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlockViewer } from "@/components/blocks/block-viewer";
 import { FooterNav } from "@/components/layout/footer-nav/footer-nav";
@@ -81,6 +82,12 @@ function BlockNavigation({ currentName }: { currentName: string }) {
       previous={prev ? { url: `/blocks/${prev.name}`, title: prev.title } : null}
     />
   );
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { name } = await params;
+  const entry = Object.hasOwn(blockCatalog, name) ? blockCatalog[name] : undefined;
+  return entry ? { title: entry.title } : {};
 }
 
 export default async function BlockPage({ params }: PageProps) {

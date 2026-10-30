@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "separator",
-  "type": "registry:item",
   "title": "Separator",
   "description": "A separator element accessible to screen readers.",
   "files": [
@@ -17,5 +16,6 @@
       "type": "registry:file",
       "target": "~/components/ui/separator/separator.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

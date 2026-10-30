@@ -15,7 +15,9 @@
     inset 0 0 0 1px rgba(0, 0, 0, 0.06),
     0 2px 0 0 var(--muted);
   color: var(--foreground);
-  transition: all 150ms ease;
+  transition: 150ms ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 }
 
 .commandKey {

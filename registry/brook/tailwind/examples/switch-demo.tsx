@@ -7,11 +7,11 @@ export default function SwitchDemo() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="flex items-center gap-3">
+    <label className="flex items-center gap-3">
       <Switch checked={checked} onCheckedChange={setChecked}>
         <SwitchThumb />
       </Switch>
-      <label className="text-foreground text-sm">Enable notifications</label>
-    </div>
+      <span className="text-foreground text-sm">Enable notifications</span>
+    </label>
   );
 }

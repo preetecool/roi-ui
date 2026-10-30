@@ -53,8 +53,10 @@
   border: 1px solid transparent;
   flex-shrink: 0;
 
-  &:hover {
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--foreground);
+    }
   }
 
   &:focus-visible {
@@ -94,14 +96,6 @@
     outline: 2px solid var(--ring);
   }
 
-  &[data-state="inactive"] {
-    display: none;
-  }
-
-  &[data-state="active"] {
-    display: block;
-  }
-
   & p {
     margin-top: 0;
     margin-bottom: 0;
@@ -117,7 +111,8 @@
   position: absolute;
   background-color: var(--primary);
   border-radius: var(--radius);
-  transition: all 150ms ease-in-out;
+  transition: 150ms ease-in-out;
+  transition-property: left, top, width;
 
   left: var(--active-tab-left);
   top: calc(var(--active-tab-top) + var(--active-tab-height) - 3px);

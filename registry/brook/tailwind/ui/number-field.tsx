@@ -21,10 +21,10 @@ function NumberFieldInput({ className, ...props }: NumberField.Input.Props) {
   return (
     <NumberField.Input
       className={cn(
-        "h-10 min-w-24 flex-[0_1_6rem] border border-[var(--border)] px-2 text-center text-[var(--foreground)] text-sm outline-none transition-all duration-150 ease-out",
+        "h-10 min-w-24 flex-[0_1_6rem] border border-[var(--border)] px-2 text-center pointer-coarse:text-base text-[var(--foreground)] text-sm outline-none transition duration-150 ease-out max-sm:text-base",
         "bg-[var(--mix-card-50-bg)]",
         "placeholder:text-[var(--muted-foreground)]",
-        "focus:border-[var(--ring)] focus:shadow-[0_0_0_2px_var(--ring)/0.2]",
+        "focus:border-[var(--ring)] focus:shadow-[0_0_0_2px_oklch(from_var(--ring)_l_c_h/0.2)]",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
@@ -38,7 +38,7 @@ function NumberFieldIncrement({ className, children, ...props }: NumberField.Inc
   return (
     <NumberField.Increment
       className={cn(
-        "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+        "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition duration-150 ease-out",
         "rounded-r-[var(--radius)] border-l-0",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         "active:bg-[var(--muted)]",
@@ -76,7 +76,7 @@ function NumberFieldDecrement({ className, children, ...props }: NumberField.Dec
   return (
     <NumberField.Decrement
       className={cn(
-        "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+        "flex h-10 cursor-pointer items-center justify-center border border-[var(--border)] bg-[var(--mix-card-50-bg)] px-4 text-[var(--muted-foreground)] transition duration-150 ease-out",
         "rounded-l-[var(--radius)] border-r-0",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         "active:bg-[var(--muted)]",

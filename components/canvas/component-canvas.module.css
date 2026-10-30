@@ -1,0 +1,194 @@
+.viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--background);
+  background-image: radial-gradient(
+    oklch(from var(--foreground) l c h / 0.12) 1px,
+    transparent 1px
+  );
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.viewport[data-dragging] {
+  cursor: grabbing;
+}
+
+.world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3200px;
+  transform-origin: 0 0;
+}
+
+.sectionTitle {
+  margin: 0 0 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.masonry {
+  columns: 6 480px;
+  column-gap: 32px;
+  margin-bottom: 96px;
+}
+
+.blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  break-inside: avoid;
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px oklch(from var(--foreground) l c h / 0.07);
+  overflow: hidden;
+  cursor: auto;
+  user-select: text;
+}
+
+.card[data-wide] {
+  width: 1000px;
+  margin-bottom: 0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 20px 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.cardCount {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 16px 12px;
+}
+
+.tab {
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--foreground);
+}
+
+.tab[data-active] {
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: inset 0 0 0 1px oklch(from var(--foreground) l c h / 0.1);
+}
+
+.tab:focus-visible,
+.hudButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.stage {
+  margin: 0 8px 8px;
+  border-radius: 12px;
+  background: var(--background);
+  box-shadow: inset 0 0 0 1px oklch(from var(--foreground) l c h / 0.05);
+}
+
+.stage > * {
+  min-height: 240px;
+}
+
+.hud {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.hudTitle {
+  margin-right: auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px oklch(from var(--foreground) l c h / 0.07);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.hudGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px oklch(from var(--foreground) l c h / 0.07);
+  pointer-events: auto;
+}
+
+.hudButton {
+  min-width: 32px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.hudButton:hover,
+.hudButton[aria-pressed="true"] {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.hudZoom {
+  min-width: 48px;
+  text-align: center;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+.sectionTitle[data-proposed] {
+  margin-top: 96px;
+  color: var(--foreground);
+}

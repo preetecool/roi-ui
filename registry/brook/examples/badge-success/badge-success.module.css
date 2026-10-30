@@ -31,3 +31,9 @@
   stroke-dashoffset: 1;
   animation: check-draw 0.4s ease forwards;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .badgeBounce {
+    animation: none;
+  }
+}

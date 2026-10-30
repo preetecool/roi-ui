@@ -26,7 +26,9 @@ export const Hero = () => {
   }, []);
 
   useEffect(() => {
-    if (!isTouch) return;
+    if (!isTouch) {
+      return;
+    }
     const interval = setInterval(() => setExpandedCard((prev) => !prev), 3500);
     return () => clearInterval(interval);
   }, [isTouch]);
@@ -48,13 +50,18 @@ export const Hero = () => {
       <p className={`${styles.subheading} ${styles.animateEnter}`} style={{ "--stagger": 3 } as React.CSSProperties}>
         {SUBHEADING}
       </p>
-      <div className={`${styles.buttonWrapper} ${styles.animateEnter}`} style={{ "--stagger": 4 } as React.CSSProperties}>
+      <div
+        className={`${styles.buttonWrapper} ${styles.animateEnter}`}
+        style={{ "--stagger": 4 } as React.CSSProperties}
+      >
         <Button nativeButton={false} render={<Link href="/docs/start" />}>
           Get Started
         </Button>
       </div>
 
       <div className={`${styles.bentoGrid} ${styles.animateEnter}`} style={{ "--stagger": 5 } as React.CSSProperties}>
+        {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: decorative hover preview; the same content is reachable without hovering */}
+        {/* biome-ignore lint/a11y/noStaticElementInteractions: decorative hover preview; the same content is reachable without hovering */}
         <div
           className={styles.bentoCard}
           data-size="large"

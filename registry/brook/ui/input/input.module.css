@@ -7,7 +7,9 @@
   background-color: var(--popover);
   padding: 0 0.75rem;
   font-size: 0.875rem;
-  transition: all 150ms ease-out;
+  transition: 150ms ease-out;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   color: var(--foreground);
   box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.5);
 }
@@ -15,6 +17,14 @@
 .base::placeholder {
   color: var(--muted-foreground);
   font-size: 0.875rem;
+}
+
+/* 16px on touch: iOS Safari zooms into inputs below 16px */
+@media (max-width: 640px), (pointer: coarse) {
+  .base,
+  .base::placeholder {
+    font-size: 1rem;
+  }
 }
 
 .base:focus,

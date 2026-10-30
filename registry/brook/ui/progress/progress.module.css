@@ -37,7 +37,8 @@
   height: 100%;
   background-color: var(--primary);
   border-radius: 0;
-  transition: all 150ms ease-out;
+  transition: 150ms ease-out;
+  transition-property: width, background-color;
   width: var(--progress-indicator-width);
 }
 

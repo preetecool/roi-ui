@@ -30,13 +30,17 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: 0.2s;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   min-height: 2rem;
   min-width: 2rem;
 
-  &:hover {
-    background-color: var(--accent);
-    color: var(--accent-foreground);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
   }
 
   &:focus-visible {
@@ -49,7 +53,7 @@
     cursor: not-allowed;
   }
 
-  &[data-state="pressed"] {
+  &[data-pressed] {
     background-color: var(--accent);
     color: var(--accent-foreground);
   }
@@ -73,13 +77,17 @@
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: 0.2s;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   min-height: 2rem;
   min-width: 2rem;
 
-  &:hover {
-    background-color: var(--accent);
-    color: var(--accent-foreground);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
   }
 
   &:focus-visible {
@@ -104,7 +112,9 @@
   color: var(--foreground);
   font-size: 0.875rem;
   min-height: 2rem;
-  transition: all 0.2s;
+  transition: 0.2s;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 
   &:focus {
     outline: 2px solid var(--ring);

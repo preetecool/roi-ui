@@ -11,9 +11,14 @@
   background-color: var(--mix-card-50-bg);
   transition: border-color 0.2s ease;
 
-  &:hover,
   &:focus-within {
     border-color: oklch(from var(--border) l c h / 0.5);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: oklch(from var(--border) l c h / 0.5);
+    }
   }
 }
 
@@ -80,8 +85,10 @@
   flex-shrink: 0;
 }
 
-.submitButton[data-slot="button"]:hover:not([data-disabled]) {
-  background-color: oklch(from var(--primary) calc(l * 0.8) c h);
+@media (hover: hover) {
+  .submitButton[data-slot="button"]:hover:not([data-disabled]) {
+    background-color: oklch(from var(--primary) calc(l * 0.8) c h);
+  }
 }
 
 .submitIcon {
@@ -95,9 +102,14 @@
   align-items: center;
 }
 
-.selectButton:hover,
 .selectButton[data-popup-open] {
   background-color: var(--accent) !important;
+}
+
+@media (hover: hover) {
+  .selectButton:hover {
+    background-color: var(--accent) !important;
+  }
 }
 
 .popup[data-slot="select-popup"] {

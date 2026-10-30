@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils-tailwind",
-  "type": "registry:item",
   "dependencies": [
     "clsx",
     "tailwind-merge"
@@ -13,5 +12,6 @@
       "type": "registry:file",
       "target": "~/lib/utils.ts"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { MotionConfig, motion } from "motion/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/brook/ui/avatar/avatar";
 
 const avatarVariants = {
@@ -25,13 +25,15 @@ const avatarTransition = {
 
 export default function AvatarMotion() {
   return (
-    <div>
-      <motion.div animate="visible" initial="hidden" transition={avatarTransition} variants={avatarVariants}>
-        <Avatar>
-          <AvatarImage alt="@preetecool" loading="eager" src="/preetecool.png" />
-          <AvatarFallback>PC</AvatarFallback>
-        </Avatar>
-      </motion.div>
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div>
+        <motion.div animate="visible" initial="hidden" transition={avatarTransition} variants={avatarVariants}>
+          <Avatar>
+            <AvatarImage alt="@preetecool" loading="eager" src="/preetecool.png" />
+            <AvatarFallback>PC</AvatarFallback>
+          </Avatar>
+        </motion.div>
+      </div>
+    </MotionConfig>
   );
 }

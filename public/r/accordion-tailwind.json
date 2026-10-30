@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "accordion-tailwind",
-  "type": "registry:item",
   "title": "Accordion (Tailwind)",
   "description": "A collapsible content component.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/accordion/accordion.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

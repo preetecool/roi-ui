@@ -207,19 +207,23 @@ export function CardTask({
         </div>
         <div className={styles.footerContainer}>
           <div className={styles.footerLeftGroup}>
+            {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
             <div aria-label={`${collaborators.length} collaborators`} className={styles.iconBubble} role="group">
               <Users aria-hidden="true" size="14" />
               <span>{collaborators.length}</span>
             </div>
+            {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
             <div aria-label={`${stats.comments} comments`} className={styles.iconBubble} role="group">
               <MessageCircleMore aria-hidden="true" size="14" />
               <span>{stats.comments}</span>
             </div>
+            {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
             <div aria-label={`${stats.subtasks} subtasks`} className={styles.iconBubble} role="group">
               <ListTodo aria-hidden="true" size="14" />
               <span>{stats.subtasks}</span>
             </div>
           </div>
+          {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
           <div aria-label={`Due ${dueDate.label}`} className={styles.iconBubble} role="group">
             <Calendar aria-hidden="true" size="14" />
             <span className={dueDate.variant === "warning" ? styles.tomorrowText : undefined}>{dueDate.label}</span>

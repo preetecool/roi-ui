@@ -62,7 +62,7 @@ function ExpandableCard({ item, className }: ExpandableCardProps) {
           <AnimatePresence>
             {isOpen ? (
               <div
-                className="pointer-events-none fixed inset-0 z-[9999] flex max-h-full items-center justify-center overflow-y-auto"
+                className="pointer-events-none fixed inset-0 z-[102] flex max-h-full items-center justify-center overflow-y-auto"
                 key="positioner"
               >
                 <Dialog.Popup

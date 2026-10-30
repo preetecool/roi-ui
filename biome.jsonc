@@ -1,6 +1,20 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "extends": ["ultracite/core"],
+  "files": {
+    "includes": [
+      "**",
+      "!public/r",
+      "!registry/__*.tsx",
+      "!.source",
+      "!next-env.d.ts"
+    ]
+  },
+  "css": {
+    "parser": {
+      "cssModules": true
+    }
+  },
   "formatter": {
     "lineWidth": 120,
     "indentWidth": 2,
@@ -9,10 +23,23 @@
   "linter": {
     "rules": {
       "performance": {
-        "noImgElement": "off"
+        "noImgElement": "off",
+        "noNamespaceImport": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "warn"
+      },
+      "style": {
+        "useConsistentTypeDefinitions": "off",
+        "noMagicNumbers": "off",
+        "noDescendingSpecificity": "off"
       },
       "a11y": {
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "noLabelWithoutControl": {
+          "level": "error",
+          "options": { "inputComponents": ["Checkbox", "Radio", "Switch"] }
+        }
       }
     }
   }

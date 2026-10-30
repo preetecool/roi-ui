@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
-import { AnimatePresence, motion, type Variants } from "motion/react";
+import { AnimatePresence, MotionConfig, motion, type Variants } from "motion/react";
 import { useRef, useState } from "react";
 import styles from "./dialog-motion.module.css";
 
@@ -78,77 +78,79 @@ export default function DialogFramerMotion() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Dialog.Root onOpenChange={setOpen} open={open}>
-      <div className={styles.triggerWrapper}>
-        <motion.div className={styles.morphWrapper} layoutId="wrapper" style={{ borderRadius: 8 }} />
-        <Dialog.Trigger className={styles.trigger} render={<motion.button layoutId="button" />}>
-          Upgrade
-        </Dialog.Trigger>
-      </div>
+    <MotionConfig reducedMotion="user">
+      <Dialog.Root onOpenChange={setOpen} open={open}>
+        <div className={styles.triggerWrapper}>
+          <motion.div className={styles.morphWrapper} layoutId="wrapper" style={{ borderRadius: 8 }} />
+          <Dialog.Trigger className={styles.trigger} render={<motion.button layoutId="button" />}>
+            Upgrade
+          </Dialog.Trigger>
+        </div>
 
-      <AnimatePresence>
-        {open && (
-          <Dialog.Backdrop
-            className={styles.overlay}
-            hidden={undefined}
-            key="overlay"
-            render={
-              <motion.div
-                animate={{
-                  opacity: 1,
-                }}
-                exit={{ opacity: 0 }}
-                initial={{ opacity: 0 }}
-              />
-            }
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {open && (
-          <Dialog.Portal container={containerRef} keepMounted>
-            <div className={styles.popupWrapper}>
-              <motion.div className={styles.popupMorphWrapper} layoutId="wrapper" style={{ borderRadius: 12 }} />
-              <Dialog.Popup className={styles.popup} hidden={undefined}>
-                <div className={styles.popupContent}>
-                  <Dialog.Title
-                    className={styles.title}
-                    render={<motion.span animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
-                  >
-                    Plan Plus
-                  </Dialog.Title>
-                  <Dialog.Description
-                    className={styles.description}
-                    render={<motion.p animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
-                  >
-                    Upgrade your plan for full access.
-                  </Dialog.Description>
-
-                  <div className={styles.actions}>
-                    <Dialog.Close
-                      className={styles.closeButton}
-                      render={
-                        <motion.button
-                          animate="visible"
-                          exit="exit"
-                          initial="hidden"
-                          style={{ originX: -20, originY: -20 }}
-                          variants={closeButtonVariants}
-                        />
-                      }
+        <AnimatePresence>
+          {open && (
+            <Dialog.Backdrop
+              className={styles.overlay}
+              hidden={undefined}
+              key="overlay"
+              render={
+                <motion.div
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{ opacity: 0 }}
+                  initial={{ opacity: 0 }}
+                />
+              }
+            />
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {open && (
+            <Dialog.Portal container={containerRef} keepMounted>
+              <div className={styles.popupWrapper}>
+                <motion.div className={styles.popupMorphWrapper} layoutId="wrapper" style={{ borderRadius: 12 }} />
+                <Dialog.Popup className={styles.popup} hidden={undefined}>
+                  <div className={styles.popupContent}>
+                    <Dialog.Title
+                      className={styles.title}
+                      render={<motion.span animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
                     >
-                      Close
-                    </Dialog.Close>
-                    <motion.button className={styles.actionButton} layoutId="button">
-                      Upgrade
-                    </motion.button>
+                      Plan Plus
+                    </Dialog.Title>
+                    <Dialog.Description
+                      className={styles.description}
+                      render={<motion.p animate="visible" exit="exit" initial="hidden" variants={contentVariants} />}
+                    >
+                      Upgrade your plan for full access.
+                    </Dialog.Description>
+
+                    <div className={styles.actions}>
+                      <Dialog.Close
+                        className={styles.closeButton}
+                        render={
+                          <motion.button
+                            animate="visible"
+                            exit="exit"
+                            initial="hidden"
+                            style={{ originX: -20, originY: -20 }}
+                            variants={closeButtonVariants}
+                          />
+                        }
+                      >
+                        Close
+                      </Dialog.Close>
+                      <motion.button className={styles.actionButton} layoutId="button">
+                        Upgrade
+                      </motion.button>
+                    </div>
                   </div>
-                </div>
-              </Dialog.Popup>
-            </div>
-          </Dialog.Portal>
-        )}
-      </AnimatePresence>
-    </Dialog.Root>
+                </Dialog.Popup>
+              </div>
+            </Dialog.Portal>
+          )}
+        </AnimatePresence>
+      </Dialog.Root>
+    </MotionConfig>
   );
 }

@@ -80,8 +80,10 @@
   margin-bottom: 1rem;
 }
 
-.summary:hover {
-  color: var(--foreground);
+@media (hover: hover) {
+  .summary:hover {
+    color: var(--foreground);
+  }
 }
 
 .summary::-webkit-details-marker {

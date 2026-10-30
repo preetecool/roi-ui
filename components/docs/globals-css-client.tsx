@@ -10,7 +10,7 @@ import { CopyButton } from "@/registry/brook/ui/copy-button/copy-button";
 
 type PaletteVariants = {
   default: string;
-  psevdaryiros: string;
+  zinc: string;
 };
 
 type GlobalsCSSClientProps = {

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils",
-  "type": "registry:item",
   "dependencies": [
     "clsx"
   ],
@@ -12,5 +11,6 @@
       "type": "registry:file",
       "target": "~/lib/utils.ts"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

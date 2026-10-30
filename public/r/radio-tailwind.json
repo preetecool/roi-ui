@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radio-tailwind",
-  "type": "registry:item",
   "title": "Radio (Tailwind)",
   "description": "A customizable radio button component for selecting one option from a group.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/radio/radio.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

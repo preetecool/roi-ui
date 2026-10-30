@@ -84,7 +84,9 @@ input.input {
   font-weight: 400;
   padding-inline: 0 0.5rem;
 
-  &:hover {
-    background: transparent;
+  @media (hover: hover) {
+    &:hover {
+      background: transparent;
+    }
   }
 }

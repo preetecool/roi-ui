@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils-tailwind";
 const inputVariants = cva(
   [
     "flex h-10 w-full rounded-[var(--radius)] border-none bg-[var(--popover)] px-3",
-    "text-foreground text-sm transition-all duration-150 ease-out",
+    "text-foreground text-sm transition duration-150 ease-out",
     "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5)]",
-    "placeholder:text-muted-foreground placeholder:text-sm",
+    "pointer-coarse:text-base placeholder:text-muted-foreground placeholder:text-sm pointer-coarse:placeholder:text-base max-sm:text-base max-sm:placeholder:text-base",
     "focus:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)] focus:outline-none",
     "focus-visible:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)] focus-visible:outline-none",
     "data-[focused]:shadow-[0_0_0_1px_var(--ring),0_0_0_3px_oklch(from_var(--ring)_l_c_h_/_0.2)] data-[focused]:outline-none",

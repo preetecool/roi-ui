@@ -90,7 +90,7 @@ export function ProgressCard({ steps = [] }: ProgressCardProps) {
             const isFinal = index === steps.length - 1 && allComplete;
 
             return (
-              <div className={`${styles.stepItem} ${styles[step.status]}`} key={step.id}>
+              <div className={styles.stepItem} key={step.id}>
                 <div className={styles.stepIndicator}>
                   <StepIndicator isFinal={isFinal} status={step.status} />
                 </div>

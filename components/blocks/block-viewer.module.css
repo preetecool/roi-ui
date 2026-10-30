@@ -265,8 +265,10 @@
   cursor: pointer;
 }
 
-.installButton:hover .installCode {
-  color: var(--foreground);
+@media (hover: hover) {
+  .installButton:hover .installCode {
+    color: var(--foreground);
+  }
 }
 
 .installCode {

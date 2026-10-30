@@ -88,8 +88,10 @@
   color: var(--foreground);
 }
 
-.closeButton:hover {
-  background: var(--accent);
+@media (hover: hover) {
+  .closeButton:hover {
+    background: var(--accent);
+  }
 }
 
 .actionButton {
@@ -101,8 +103,10 @@
   cursor: pointer;
 }
 
-.actionButton:hover {
-  background: var(--accent);
+@media (hover: hover) {
+  .actionButton:hover {
+    background: var(--accent);
+  }
 }
 
 .dialogLabel {

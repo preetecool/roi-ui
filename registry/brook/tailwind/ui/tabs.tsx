@@ -60,8 +60,6 @@ function TabsContent({ className, ...props }: Tabs.Panel.Props) {
         "border-t-0 bg-[var(--mix-card-33-bg)] p-6",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-ring)]",
         "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:flex-1",
-        "data-[state=inactive]:hidden",
-        "data-[state=active]:block",
         "[&_p]:m-0",
         className
       )}
@@ -75,7 +73,7 @@ function TabsIndicator({ className, ...props }: Tabs.Indicator.Props) {
   return (
     <Tabs.Indicator
       className={cn(
-        "absolute rounded-[var(--radius)] bg-primary transition-all duration-150 ease-in-out",
+        "absolute rounded-[var(--radius)] bg-primary transition-[left,top,width] duration-150 ease-in-out",
         "top-[calc(var(--active-tab-top)+var(--active-tab-height)-3px)] left-[var(--active-tab-left)]",
         "h-[3px] w-[var(--active-tab-width)]",
         className

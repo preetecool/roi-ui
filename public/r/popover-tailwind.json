@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "popover-tailwind",
-  "type": "registry:item",
   "title": "Popover (Tailwind)",
   "description": "A floating content container.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/popover/popover.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }
