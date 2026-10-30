@@ -11,6 +11,7 @@
     "dev": "pnpm registry:sync-and-index && next dev --turbopack",
     "build": "pnpm registry:sync-and-index && next build",
     "start": "next start",
+    "postinstall": "fumadocs-mdx",
     "lint": "biome check",
     "lint:fix": "biome check --write",
     "registry:build": "pnpm registry:sync-and-index && shadcn build && node scripts/fix-registry-imports.ts && cp registry.json public/r/registry.json",
