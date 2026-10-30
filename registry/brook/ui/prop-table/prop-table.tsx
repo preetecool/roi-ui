@@ -133,9 +133,29 @@ function highlightType(typeString: string) {
   });
 }
 
+// Index of the first "|" outside brackets, so unions inside a signature or generic stay whole.
+function topLevelPipeIndex(typeString: string): number {
+  let depth = 0;
+  for (let i = 0; i < typeString.length; i++) {
+    const char = typeString[i];
+    if ("([{<".includes(char)) {
+      depth++;
+    } else if (")]}".includes(char) || (char === ">" && typeString[i - 1] !== "=")) {
+      depth--;
+    } else if (char === "|" && depth === 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 function getSimpleType(typeString: string): string {
-  const pipeIndex = typeString.indexOf("|");
+  const pipeIndex = topLevelPipeIndex(typeString);
   const firstType = pipeIndex !== -1 ? typeString.slice(0, pipeIndex).trim() : typeString.trim();
+
+  if (firstType.includes("=>")) {
+    return "function";
+  }
 
   if (firstType.startsWith('"') && firstType.endsWith('"')) {
     return "string";

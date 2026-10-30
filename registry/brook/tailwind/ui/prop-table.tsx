@@ -140,9 +140,29 @@ function highlightType(typeString: string) {
   });
 }
 
+// Index of the first "|" outside brackets, so unions inside a signature or generic stay whole.
+function topLevelPipeIndex(typeString: string): number {
+  let depth = 0;
+  for (let i = 0; i < typeString.length; i++) {
+    const char = typeString[i];
+    if ("([{<".includes(char)) {
+      depth++;
+    } else if (")]}".includes(char) || (char === ">" && typeString[i - 1] !== "=")) {
+      depth--;
+    } else if (char === "|" && depth === 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 function getSimpleType(typeString: string): string {
-  const pipeIndex = typeString.indexOf("|");
+  const pipeIndex = topLevelPipeIndex(typeString);
   const firstType = pipeIndex !== -1 ? typeString.slice(0, pipeIndex).trim() : typeString.trim();
+
+  if (firstType.includes("=>")) {
+    return "function";
+  }
 
   if (firstType.startsWith('"') && firstType.endsWith('"')) {
     return "string";
@@ -179,7 +199,7 @@ function PropTable({ className, children, ...props }: ComponentProps<"section">)
       {...props}
     >
       {/* pr-12 = 16px + trigger chevron (16px) + gap (16px), so columns align with rows */}
-      <div className="grid grid-cols-1 gap-4 border-border/70 border-b-[0.5px] bg-[var(--mix-card-33-bg)] py-2 pr-12 pl-4 md:grid-cols-[200px_1fr_1fr]">
+      <div className="grid grid-cols-1 gap-4 border-border/70 border-b-[0.5px] bg-[var(--mix-card-33-bg)] py-2 pr-12 pl-4 md:grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)]">
         <div className="font-medium text-foreground text-sm">Prop</div>
         <div className="hidden font-medium text-foreground text-sm md:block">Type</div>
         <div className="hidden font-medium text-foreground text-sm md:block">Default</div>
@@ -198,7 +218,7 @@ type PropTableRowProps = {
 };
 
 const panelRowClass =
-  "grid grid-cols-1 items-start gap-2 border-b-[0.5px] border-border/50 px-4 py-3 first:pt-4 last:border-b-0 last:pb-4 md:grid-cols-[200px_1fr_1fr] md:gap-4 md:border-b-0";
+  "grid grid-cols-1 items-start gap-2 border-b-[0.5px] border-border/50 px-4 py-3 first:pt-4 last:border-b-0 last:pb-4 md:grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)] md:gap-4 md:border-b-0";
 const detailLabelClass = "font-normal text-[13px] text-muted-foreground leading-5";
 const detailValueClass = "break-words text-[13px] text-foreground leading-[1.6]";
 
@@ -206,12 +226,12 @@ function PropTableRow({ name, type, defaultValue, className, children }: PropTab
   return (
     <Collapsible className={cn("w-full max-w-none border-border/70 border-b-[0.5px] last:border-b-0", className)}>
       <CollapsibleTrigger className="focus-visible:-outline-offset-2 flex w-full items-center justify-between gap-4 rounded-none border-none bg-[var(--mix-card-33-bg)] px-4 py-2 hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring">
-        <div className="grid flex-1 grid-cols-1 items-center gap-4 text-left md:grid-cols-[200px_1fr_1fr]">
-          <code className={codeClass}>{name}</code>
-          <code className={cn(typeCodeClass, "hidden md:block")}>{highlightType(getSimpleType(type))}</code>
+        <div className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)] items-center gap-4 text-left md:grid-cols-[200px_minmax(0,1fr)_minmax(0,1fr)]">
+          <code className={cn(codeClass, "wrap-anywhere")}>{name}</code>
+          <code className={cn(typeCodeClass, "hidden truncate md:block")}>{highlightType(getSimpleType(type))}</code>
           <div className="hidden items-center justify-start md:flex">
             {defaultValue ? (
-              <code className={codeClass}>{renderDefaultValue(defaultValue)}</code>
+              <code className={cn(codeClass, "min-w-0 truncate [&>span]:block [&>span]:truncate")}>{renderDefaultValue(defaultValue)}</code>
             ) : (
               renderDefaultValue()
             )}
