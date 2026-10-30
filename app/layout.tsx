@@ -4,6 +4,7 @@ import { StyleProvider } from "@/components/providers/style-provider";
 import "@/styles/globals.css";
 import "@/styles/syntax-highlight.css";
 import { Analytics } from "@vercel/analytics/next";
+import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={GeistSans.className} lang="en" suppressHydrationWarning>
+    <html className={`${GeistSans.className} ${GeistMono.variable}`} lang="en" suppressHydrationWarning>
       <body>
         <div className="root">
           <StyleProvider>

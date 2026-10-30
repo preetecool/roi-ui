@@ -1,0 +1,528 @@
+.grid {
+  /* Translucent tints of the foreground, so cards let whatever is behind them show through */
+  --surface: oklch(from var(--foreground) l c h / 0.035);
+  --inset: oklch(from var(--foreground) l c h / 0.04);
+  --raised: oklch(from var(--foreground) l c h / 0.07);
+  --hairline: oklch(from var(--foreground) l c h / 0.06);
+  --hairline-strong: oklch(from var(--foreground) l c h / 0.1);
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "installs score stack"
+    "registry registry browse";
+  gap: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid [data-area="installs"] {
+  grid-area: installs;
+}
+.grid [data-area="score"] {
+  grid-area: score;
+}
+.grid [data-area="stack"] {
+  grid-area: stack;
+}
+.grid [data-area="registry"] {
+  grid-area: registry;
+}
+.grid [data-area="browse"] {
+  grid-area: browse;
+}
+
+/* --- Card shell --- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 2px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  min-width: 0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--muted-foreground);
+}
+
+.value {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 2px;
+  background: var(--raised);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--foreground);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.control {
+  transition-property: box-shadow, transform;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+.stepperButton {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-block: -1px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition-property: color, transform;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+/* 20px glyph box grown to a 40px target; the gap to the label keeps neighbours from overlapping */
+.stepperButton::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+
+.stepperButton:active,
+a.control:active {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) {
+  .stepperButton:hover {
+    color: var(--foreground);
+  }
+
+  a.control:hover {
+    box-shadow: inset 0 0 0 1px oklch(from var(--foreground) l c h / 0.2);
+  }
+}
+
+.stepperButton:focus-visible,
+a.control:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --- Charts --- */
+
+.barChart {
+  flex: 1;
+  min-height: 220px;
+}
+
+.dial {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.donut {
+  width: 116px;
+  height: 116px;
+  flex: none;
+}
+
+.dialValue {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  grid-auto-flow: column;
+  align-items: baseline;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+}
+
+.dialMax {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted-foreground);
+}
+
+.inset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: 2px;
+  background: var(--inset);
+}
+
+.insetRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.insetRow + .insetRow {
+  border-top: 1px solid var(--hairline);
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.insetLabel {
+  flex: 1;
+  color: var(--muted-foreground);
+}
+
+/* --- List cards: styling, steps, browse --- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Styling keeps its natural height; the checklist takes the rest of the column */
+.stack > .card:last-child {
+  flex: 1;
+}
+
+.listCard {
+  gap: 4px;
+  padding: 12px;
+}
+
+.listTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 8px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 10px;
+  border-radius: 2px;
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--foreground);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease-out,
+    box-shadow 150ms ease-out;
+}
+
+.option[data-step] {
+  justify-content: flex-start;
+}
+
+@media (hover: hover) {
+  .option:not([data-primary]):hover {
+    background: oklch(from var(--foreground) l c h / 0.04);
+  }
+}
+
+.option:has([data-checked]):not([data-step]) {
+  background: var(--raised);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+.option[data-current] {
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+a.option:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}
+
+.radio,
+.check {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  box-shadow: inset 0 0 0 1.5px oklch(from var(--foreground) l c h / 0.2);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease-out,
+    box-shadow 150ms ease-out;
+}
+
+.radio[data-checked] {
+  background: var(--primary);
+  box-shadow: none;
+}
+
+.radioDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--primary-foreground);
+}
+
+.check[data-checked] {
+  background: oklch(from var(--foreground) l c h / 0.3);
+  box-shadow: none;
+  color: var(--background);
+}
+
+.checkIndicator {
+  display: flex;
+}
+
+.radio:focus-visible,
+.check:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.stepText {
+  transition: color 150ms ease-out;
+}
+
+.option:has([data-checked]) .stepText {
+  color: var(--muted-foreground);
+  text-decoration: line-through 1px;
+}
+
+.progress circle {
+  fill: none;
+  stroke-width: 1.5;
+  stroke: oklch(from var(--foreground) l c h / 0.2);
+}
+
+.progress circle + circle {
+  stroke: var(--foreground);
+  stroke-linecap: round;
+  transition: stroke-dasharray 400ms var(--ease-out-expo);
+}
+
+.tag {
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--raised);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--muted-foreground);
+}
+
+.option[data-primary] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.option[data-primary] .tag {
+  background: oklch(from var(--primary-foreground) l c h / 0.12);
+  color: var(--primary-foreground);
+}
+
+/* --- Registry: table --- */
+
+.tableCard {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.tableTitle {
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.table th {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--muted-foreground);
+}
+
+.table td {
+  padding: 12px 16px;
+}
+
+.table tbody tr + tr td {
+  border-top: 1px solid oklch(from var(--foreground) l c h / 0.04);
+}
+
+.table [data-align="end"] {
+  text-align: right;
+}
+
+.table tbody tr {
+  position: relative;
+  transition: background-color 150ms ease-out;
+}
+
+.rowLink {
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+/* The whole row is the link target, not just the name */
+.rowLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.rowLink:focus-visible {
+  outline: none;
+}
+
+.table tbody tr:has(.rowLink:focus-visible) {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}
+
+@media (hover: hover) {
+  .table tbody tr:hover {
+    background: oklch(from var(--foreground) l c h / 0.03);
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 2px;
+  background: var(--raised);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.muted {
+  color: var(--muted-foreground);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "installs score"
+      "registry registry"
+      "stack browse";
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "installs"
+      "score"
+      "stack"
+      "registry"
+      "browse";
+    gap: 12px;
+  }
+
+  .table [data-hide-mobile] {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress circle + circle {
+    transition: none;
+  }
+
+  .stepperButton:active,
+  a.control:active {
+    transform: none;
+  }
+}

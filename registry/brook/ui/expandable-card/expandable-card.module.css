@@ -279,7 +279,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   padding: 16px;
+}
+
+/* Lets long headings shrink and ellipsize instead of pushing past the card edge */
+.headingWrapper {
+  min-width: 0;
 }
 
 .expandIcon {
