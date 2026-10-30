@@ -1,6 +1,6 @@
+import { ThemeProvider } from "next-themes";
 import { PaletteProvider } from "@/components/providers/palette-provider";
 import { StyleProvider } from "@/components/providers/style-provider";
-import { ThemeProvider } from "next-themes";
 import "@/styles/globals.css";
 import "@/styles/syntax-highlight.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,25 +8,20 @@ import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Roi UI - Component system with CSS Modules",
-  description: "Copy-paste components built on Base UI and CSS Modules",
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    shortcut: "/favicon.svg",
+  metadataBase: new URL("https://roiui.com"),
+  title: {
+    default: "Roi UI - Components built on Base UI",
+    template: "%s - Roi UI",
+  },
+  description: "Copy-paste components built on Base UI, in CSS Modules or Tailwind.",
+  openGraph: {
+    images: ["/og"],
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className={GeistSans.className} lang="en" suppressHydrationWarning>
-      <head>
-        <link href="/icon.svg" rel="icon" type="image/svg+xml" />
-        <link href="/favicon.ico" rel="icon" sizes="any" />
-        <link href="/favicon.svg" rel="shortcut icon" />
-      </head>
       <body>
         <div className="root">
           <StyleProvider>

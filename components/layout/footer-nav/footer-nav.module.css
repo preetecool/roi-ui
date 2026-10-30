@@ -41,10 +41,12 @@
     border-color 0.15s ease;
 }
 
-.navLink:hover {
-  color: var(--foreground);
-  background-color: var(--muted);
-  border-color: var(--border);
+@media (hover: hover) {
+  .navLink:hover {
+    color: var(--foreground);
+    background-color: var(--muted);
+    border-color: var(--border);
+  }
 }
 
 .navLinkLabeled {

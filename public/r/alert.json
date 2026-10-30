@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert",
-  "type": "registry:item",
   "title": "Alert",
   "description": "A component for displaying important messages to users.",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:file",
       "target": "~/components/ui/alert/alert.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

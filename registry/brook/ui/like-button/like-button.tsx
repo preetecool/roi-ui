@@ -97,14 +97,10 @@ function LikeButton({
     for (let i = 0; i < particleCount; i++) {
       const angleOffset = startAngle + i * angleStep;
       const type: "star" | "circle" = i % 2 === 0 ? "star" : "circle";
-      const size =
-        type === "star"
-          ? i % 3 === 0
-            ? PARTICLE_SIZE_STAR_LARGE
-            : PARTICLE_SIZE_STAR_MEDIUM
-          : i % 3 === 0
-            ? PARTICLE_SIZE_CIRCLE_LARGE
-            : PARTICLE_SIZE_CIRCLE_MEDIUM;
+      const isLarge = i % 3 === 0;
+      const starSize = isLarge ? PARTICLE_SIZE_STAR_LARGE : PARTICLE_SIZE_STAR_MEDIUM;
+      const circleSize = isLarge ? PARTICLE_SIZE_CIRCLE_LARGE : PARTICLE_SIZE_CIRCLE_MEDIUM;
+      const size = type === "star" ? starSize : circleSize;
 
       let color: string;
       if (colorMode === "random") {

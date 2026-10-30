@@ -21,8 +21,10 @@
   transition: background-color 0.2s ease;
 }
 
-.linkListItem:hover {
-  background-color: var(--secondary);
+@media (hover: hover) {
+  .linkListItem:hover {
+    background-color: var(--secondary);
+  }
 }
 
 .linkListItemHeading {

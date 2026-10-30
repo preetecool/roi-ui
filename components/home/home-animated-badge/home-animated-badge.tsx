@@ -14,14 +14,18 @@ export function HomeAnimatedBadge() {
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el) return;
+    if (!el) {
+      return;
+    }
     const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0 });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible) {
+      return;
+    }
     const interval = setInterval(() => {
       setPhase((prev) => (prev === "loading" ? "success" : "loading"));
     }, 3500);

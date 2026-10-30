@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "fieldset",
-  "type": "registry:item",
   "title": "Fieldset",
   "description": "A native fieldset element with an easily stylable legend.",
   "files": [
@@ -17,5 +16,6 @@
       "type": "registry:file",
       "target": "~/components/ui/fieldset/fieldset.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

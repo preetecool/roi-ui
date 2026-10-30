@@ -55,9 +55,11 @@
     border-color 150ms;
 }
 
-.navButton:hover {
-  background-color: var(--accent);
-  border-color: var(--accent);
+@media (hover: hover) {
+  .navButton:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
 }
 
 .navButton:focus-visible {
@@ -217,12 +219,6 @@
   background-color: var(--accent);
 }
 
-.today {
-}
-
-.today[data-selected="true"] {
-}
-
 .outside {
   color: var(--muted-foreground);
 }
@@ -266,10 +262,12 @@
   transition: background-color 150ms;
 }
 
-.dayButton:hover:not([data-selected-single="true"]):not(
-    [data-range-start="true"]
-  ):not([data-range-end="true"]) {
-  background-color: var(--accent);
+@media (hover: hover) {
+  .dayButton:hover:not([data-selected-single="true"]):not(
+      [data-range-start="true"]
+    ):not([data-range-end="true"]) {
+    background-color: var(--accent);
+  }
 }
 
 .dayButton span {

@@ -82,7 +82,7 @@ function Calendar({
         range_start: cn(styles.rangeStart, defaultClassNames.range_start),
         range_middle: cn(styles.rangeMiddle, defaultClassNames.range_middle),
         range_end: cn(styles.rangeEnd, defaultClassNames.range_end),
-        today: cn(styles.today, defaultClassNames.today),
+        today: defaultClassNames.today,
         outside: cn(styles.outside, defaultClassNames.outside),
         disabled: cn(styles.disabled, defaultClassNames.disabled),
         hidden: cn(styles.hidden, defaultClassNames.hidden),

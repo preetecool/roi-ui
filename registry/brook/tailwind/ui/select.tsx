@@ -89,7 +89,6 @@ function SelectScrollUpArrow({ className, children, ...props }: React.ComponentP
       className={cn(
         "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
         "hover:bg-[var(--muted)]",
-        "data-[state=hidden]:hidden",
         className
       )}
       data-slot="select-scrolluparrow"
@@ -136,7 +135,6 @@ function SelectScrollDownArrow({ className, children, ...props }: React.Componen
       className={cn(
         "flex h-6 cursor-pointer items-center justify-center border-none bg-[var(--mix-card-33-bg)] text-[var(--foreground)] transition-colors duration-200 ease-in-out",
         "hover:bg-[var(--muted)]",
-        "data-[state=hidden]:hidden",
         className
       )}
       data-slot="select-scrolldownarrow"

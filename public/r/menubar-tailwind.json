@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "menubar-tailwind",
-  "type": "registry:item",
   "title": "Menubar (Tailwind)",
   "description": "A horizontal menu bar component.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/menubar/menubar.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

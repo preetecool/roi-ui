@@ -219,11 +219,8 @@ ${blockLoaders.join("\n")}
 
     // Check if block uses new structure (page.tsx + components/)
     const hasNewStructure = await hasNewBlockStructure(blocksDir, name);
-    const componentPath = isFile
-      ? `@/registry/brook/blocks/${name}`
-      : hasNewStructure
-        ? `@/registry/brook/blocks/${name}/page`
-        : `@/registry/brook/blocks/${name}/${name}`;
+    const folderEntry = hasNewStructure ? "page" : name;
+    const componentPath = isFile ? `@/registry/brook/blocks/${name}` : `@/registry/brook/blocks/${name}/${folderEntry}`;
 
     const files = hasNewStructure
       ? await getBlockFiles(blocksDir, entry.name)
@@ -301,11 +298,10 @@ ${blockLoaders.join("\n")}
 
     // Check if block uses new structure (page.tsx + components/)
     const hasNewStructure = await hasNewBlockStructure(tailwindBlocksDir, name);
+    const folderEntry = hasNewStructure ? "page" : name;
     const componentPath = isFile
       ? `@/registry/brook/tailwind/blocks/${name}`
-      : hasNewStructure
-        ? `@/registry/brook/tailwind/blocks/${name}/page`
-        : `@/registry/brook/tailwind/blocks/${name}/${name}`;
+      : `@/registry/brook/tailwind/blocks/${name}/${folderEntry}`;
 
     const files = hasNewStructure
       ? await getBlockFiles(tailwindBlocksDir, entry.name)

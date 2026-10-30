@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "navigation-menu-tailwind",
-  "type": "registry:item",
   "title": "Navigation Menu (Tailwind)",
   "description": "A navigation menu component.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/navigation-menu/navigation-menu.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

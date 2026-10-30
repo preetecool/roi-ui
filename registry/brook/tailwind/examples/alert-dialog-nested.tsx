@@ -25,7 +25,7 @@ export default function AlertDialogNested() {
       <Dialog.Trigger render={<Button>New Post</Button>} />
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-[var(--dialog-z)] bg-[var(--dialog-overlay)] transition-opacity duration-150 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
-        <Dialog.Popup className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-[101] flex w-full max-w-md flex-col gap-4 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-[var(--mix-card-5-bg)] p-6 transition-all duration-150 data-[ending-style]:scale-95 data-[nested-dialog-open]:scale-[0.94] data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 data-[nested-dialog-open]:brightness-[0.7] max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0">
+        <Dialog.Popup className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-[101] flex w-full max-w-md flex-col gap-4 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-[var(--mix-card-5-bg)] p-6 transition duration-150 data-[ending-style]:scale-95 data-[nested-dialog-open]:scale-[0.94] data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 data-[nested-dialog-open]:brightness-[0.7] max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0">
           <Dialog.Title className="m-0 font-semibold text-foreground text-lg leading-none tracking-tight">
             Create post
           </Dialog.Title>
@@ -54,7 +54,7 @@ export default function AlertDialogNested() {
 
       <AlertDialog.Root onOpenChange={setConfirmationOpen} open={confirmationOpen}>
         <AlertDialog.Portal>
-          <AlertDialog.Popup className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-[102] flex w-full max-w-sm flex-col gap-2 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-[var(--mix-card-5-bg)] p-6 transition-all duration-150 data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0">
+          <AlertDialog.Popup className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-[102] flex w-full max-w-sm flex-col gap-2 rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.6)] bg-[var(--mix-card-5-bg)] p-6 transition duration-150 data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 max-sm:right-4 max-sm:left-4 max-sm:w-[calc(100vw-2rem)] max-sm:max-w-none max-sm:translate-x-0">
             <AlertDialog.Title className="m-0 font-semibold text-foreground text-lg leading-none tracking-tight">
               Discard post?
             </AlertDialog.Title>

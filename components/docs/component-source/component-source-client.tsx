@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CodeBlockCollapse } from "@/components/docs/code-block-collapse/code-block-collapse";
 import codeTabsStyles from "@/components/docs/code-tabs/code-tabs-shared.module.css";
 import { StyleSelector } from "@/components/docs/style-selector/style-selector";
@@ -29,12 +29,6 @@ export function ComponentSourceClient({ variants }: ComponentSourceClientProps) 
 
   const currentVariant = variants.find((v) => v.variant === style) || variants[0];
   const files = currentVariant.files;
-
-  useEffect(() => {
-    if (activeTab >= files.length) {
-      setActiveTab(0);
-    }
-  }, [style, activeTab, files.length]);
 
   const safeActiveTab = activeTab < files.length ? activeTab : 0;
   const currentFile = files[safeActiveTab];

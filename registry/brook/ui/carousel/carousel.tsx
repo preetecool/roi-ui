@@ -335,10 +335,10 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
     if (!(el && root)) {
       return;
     }
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.intersectionRatio >= 0.5),
-      { root, threshold: [0, 0.5, 1] }
-    );
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.intersectionRatio >= 0.5), {
+      root,
+      threshold: [0, 0.5, 1],
+    });
     observer.observe(el);
     return () => observer.disconnect();
   }, [viewportRef]);
@@ -375,6 +375,7 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
 
   return (
     // biome-ignore lint/a11y/noNoninteractiveElementInteractions: Keyboard navigation is required for carousel accessibility
+    // biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend>
     <div
       aria-label={`Slide ${index + 1} of ${totalItems}`}
       aria-roledescription="slide"

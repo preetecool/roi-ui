@@ -39,7 +39,7 @@ function CommandDialogPopup({ className, children, ...props }: Dialog.Popup.Prop
           "w-[calc(100%-2rem)] max-w-[560px] rounded-[var(--radius)]",
           "border-none bg-[var(--background)]",
           "shadow-[0_0_0_0.5px_oklch(from_var(--border)_l_c_h_/_0.5),var(--shadow-lg)]",
-          "transition-all duration-150",
+          "transition duration-150",
           "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
           "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
           "max-sm:w-[calc(100%-2rem)] max-sm:max-w-none",
@@ -91,7 +91,7 @@ function CommandInput({
           "text-[var(--foreground)] caret-[var(--primary)]",
           "placeholder:text-[var(--muted-foreground)]",
           "focus:outline-none",
-          "max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]",
+          "pointer-coarse:text-base pointer-coarse:placeholder:text-base max-sm:text-base max-sm:placeholder:text-base",
           className
         )}
         data-slot="command-input"

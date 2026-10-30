@@ -100,12 +100,16 @@
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-md);
-  transition: all 0.2s var(--ease-out-quad);
+  transition: 0.2s var(--ease-out-quad);
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   opacity: 0.9;
 
-  &:hover {
-    opacity: 1;
-    background: var(--muted);
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+      background: var(--muted);
+    }
   }
 
   &:focus-visible {
@@ -124,10 +128,12 @@
     color: var(--muted-foreground);
     pointer-events: none;
 
-    &:hover {
-      opacity: 0.3;
-      transform: none;
-      background: var(--muted);
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.3;
+        transform: none;
+        background: var(--muted);
+      }
     }
   }
 
@@ -158,12 +164,16 @@
   border: none;
   background: oklch(from var(--foreground) l c h / 0.3);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   position: relative;
 
-  &:hover {
-    background: oklch(from var(--foreground) l c h / 0.5);
-    transform: scale(1.1);
+  @media (hover: hover) {
+    &:hover {
+      background: oklch(from var(--foreground) l c h / 0.5);
+      transform: scale(1.1);
+    }
   }
 
   &:focus-visible {
@@ -175,8 +185,10 @@
     background: var(--primary);
     transform: scale(1.2);
 
-    &:hover {
-      background: var(--primary);
+    @media (hover: hover) {
+      &:hover {
+        background: var(--primary);
+      }
     }
   }
 

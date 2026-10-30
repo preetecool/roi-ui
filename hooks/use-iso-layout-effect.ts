@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect } from "react";
 
-const noop = () => {};
+const noop = () => undefined;
 
 /**
  * Isomorphic useLayoutEffect hook

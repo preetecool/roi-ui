@@ -54,12 +54,16 @@
   border-radius: 12px;
   background-color: var(--mix-card-33-bg);
   border: 0.5px solid oklch(from var(--border) l c h / 0.2);
-  transition: all 150ms ease;
+  transition: 150ms ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 }
 
-.iconBubble:hover {
-  background-color: var(--mix-card-50-bg);
-  border-color: var(--border);
+@media (hover: hover) {
+  .iconBubble:hover {
+    background-color: var(--mix-card-50-bg);
+    border-color: var(--border);
+  }
 }
 
 .tomorrowText {

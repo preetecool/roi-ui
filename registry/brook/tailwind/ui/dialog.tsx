@@ -35,7 +35,7 @@ function DialogPopup({ className, ...props }: Dialog.Popup.Props) {
         "-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-[101] grid w-full gap-4 overflow-y-auto",
         "rounded-[var(--radius)] bg-[var(--mix-card-5-bg)] p-6",
         "shadow-[0_0_0_1px_oklch(from_var(--border)_l_c_h_/_0.5),var(--shadow-border-stack)]",
-        "transition-all duration-150",
+        "transition duration-150",
         "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
         "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
         "max-sm:w-[calc(100vw-2rem)]",

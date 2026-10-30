@@ -1,6 +1,24 @@
 import type { Element, ElementContent, Parent, Properties, Root } from "hast";
 import { visit } from "unist-util-visit";
 
+const CSS_MODULES_INSTALL = /@roiui\/\w+(?!-tailwind)/;
+
+type StyleData = { styleCondition?: string } | undefined;
+
+function extractText(children: ElementContent[]): string {
+  return children
+    .map((child) => {
+      if (child.type === "text") {
+        return child.value;
+      }
+      if (child.type === "element") {
+        return extractText(child.children);
+      }
+      return "";
+    })
+    .join("");
+}
+
 export default function rehypeCodeStyleFilter() {
   return (tree: Root) => {
     visit(tree, "element", (node: Element, index?: number | null, parent?: Parent) => {
@@ -13,35 +31,19 @@ export default function rehypeCodeStyleFilter() {
           className: ["code-container"],
         };
 
-        // Extract text content from code block
-        let textContent = "";
-        if (code.children && code.children.length > 0) {
-          const extractText = (children: any[]): string =>
-            children
-              .map((child) => {
-                if (child.type === "text") return child.value;
-                if (child.type === "element" && child.children) {
-                  return extractText(child.children);
-                }
-                return "";
-              })
-              .join("");
-          textContent = extractText(code.children);
-        }
+        const textContent = extractText(code.children);
 
         // Check for style condition from remark plugin (if= meta attribute)
         // The remark plugin sets styleCondition on the code block node (which becomes <pre>)
-        const styleCondition = (node.data as any)?.styleCondition || (code.data as any)?.styleCondition;
+        const styleCondition = (node.data as StyleData)?.styleCondition || (code.data as StyleData)?.styleCondition;
         if (styleCondition) {
           wrapperProperties["data-if"] = styleCondition;
-        } else {
+        } else if (textContent.includes("shadcn@latest add")) {
           // Fallback: Detect style based on command content
-          if (textContent.includes("shadcn@latest add")) {
-            if (textContent.includes("-tailwind")) {
-              wrapperProperties["data-if"] = "tailwind";
-            } else if (textContent.match(/@roiui\/\w+(?!-tailwind)/)) {
-              wrapperProperties["data-if"] = "css-modules";
-            }
+          if (textContent.includes("-tailwind")) {
+            wrapperProperties["data-if"] = "tailwind";
+          } else if (CSS_MODULES_INSTALL.test(textContent)) {
+            wrapperProperties["data-if"] = "css-modules";
           }
         }
 

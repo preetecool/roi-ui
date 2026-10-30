@@ -84,8 +84,10 @@
   border-radius: 2px;
 }
 
-.githubLink[data-slot="button"]:hover {
-  color: var(--foreground);
+@media (hover: hover) {
+  .githubLink[data-slot="button"]:hover {
+    color: var(--foreground);
+  }
 }
 
 .leftSection {

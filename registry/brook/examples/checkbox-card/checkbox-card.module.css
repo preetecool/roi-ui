@@ -12,8 +12,10 @@
     background-color 150ms ease;
   max-width: 24rem;
 
-  &:hover {
-    background-color: oklch(from var(--card) l c h / 0.7);
+  @media (hover: hover) {
+    &:hover {
+      background-color: oklch(from var(--card) l c h / 0.7);
+    }
   }
 
   &:has(.checkbox[data-checked]) {

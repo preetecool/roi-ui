@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-area-tailwind",
-  "type": "registry:item",
   "title": "Scroll Area (Tailwind)",
   "description": "A native scroll container with custom scrollbars.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/scroll-area/scroll-area.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

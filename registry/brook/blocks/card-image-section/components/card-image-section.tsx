@@ -40,7 +40,16 @@ export function CardImageSection({ data }: CardImageSectionProps) {
             </CardContent>
 
             <CardFooter>
-              <Button className={styles.linkButton} render={<a href={card.href ?? "#"} />} size="sm" variant="link">
+              <Button
+                className={styles.linkButton}
+                nativeButton={false}
+                render={
+                  // biome-ignore lint/a11y/useAnchorContent: link text is passed as Button children
+                  <a href={card.href ?? "#"} />
+                }
+                size="sm"
+                variant="link"
+              >
                 Learn More
                 <ArrowPointer />
               </Button>

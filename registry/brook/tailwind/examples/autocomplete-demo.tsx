@@ -89,14 +89,10 @@ export default function AutocompleteDemo() {
       >
         <div className="relative mb-16 w-[360px] max-sm:w-full">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 z-[1] -translate-y-1/2 text-muted-foreground"
+            className="-translate-y-1/2 pointer-events-none absolute top-1/2 left-3 z-[1] text-muted-foreground"
             size={16}
           />
-          <AutocompleteInput
-            className="w-full pl-9"
-            id="ac-input"
-            placeholder="Type your question or search FAQs..."
-          />
+          <AutocompleteInput className="w-full pl-9" id="ac-input" placeholder="Type your question or search FAQs..." />
         </div>
 
         <AutocompletePortal>

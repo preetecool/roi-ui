@@ -1,8 +1,14 @@
 .trigger {
-  &[data-popup-open],
-  &[data-popup-open]:hover {
+  &[data-popup-open] {
     background-color: var(--accent);
     color: var(--accent-foreground);
+  }
+
+  @media (hover: hover) {
+    &[data-popup-open]:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
   }
 
   &:focus-visible {
@@ -93,6 +99,10 @@
   @media (max-width: 640px) {
     max-width: calc(100vw - 2rem);
     margin: 1rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
   }
 }
 
@@ -206,9 +216,11 @@
     background-color 150ms ease,
     color 150ms ease;
 
-  &:hover {
-    background-color: var(--muted);
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--muted);
+      color: var(--foreground);
+    }
   }
 
   &:focus-visible {

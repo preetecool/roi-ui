@@ -20,8 +20,10 @@
   border-radius: 4px;
 }
 
-.container::-webkit-scrollbar-thumb:hover {
-  background: oklch(from var(--border) l c h / 0.8);
+@media (hover: hover) {
+  .container::-webkit-scrollbar-thumb:hover {
+    background: oklch(from var(--border) l c h / 0.8);
+  }
 }
 
 .table {
@@ -60,14 +62,18 @@
   border-bottom: none;
 }
 
-.body .row:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .body .row:hover {
+    background-color: var(--muted);
+  }
 }
 
-.row[onclick]:hover,
-.row[role="button"]:hover {
-  background-color: var(--accent);
-  cursor: pointer;
+@media (hover: hover) {
+  .row[onclick]:hover,
+  .row[role="button"]:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+  }
 }
 
 .head {
@@ -136,8 +142,10 @@
   background-color: var(--card);
 }
 
-.tableStriped .body .row:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .tableStriped .body .row:hover {
+    background-color: var(--muted);
+  }
 }
 
 .tableSm .head,

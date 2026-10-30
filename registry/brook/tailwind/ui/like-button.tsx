@@ -97,14 +97,10 @@ function LikeButton({
     for (let i = 0; i < particleCount; i++) {
       const angleOffset = startAngle + i * angleStep;
       const type: "star" | "circle" = i % 2 === 0 ? "star" : "circle";
-      const size =
-        type === "star"
-          ? i % 3 === 0
-            ? PARTICLE_SIZE_STAR_LARGE
-            : PARTICLE_SIZE_STAR_MEDIUM
-          : i % 3 === 0
-            ? PARTICLE_SIZE_CIRCLE_LARGE
-            : PARTICLE_SIZE_CIRCLE_MEDIUM;
+      const isLarge = i % 3 === 0;
+      const starSize = isLarge ? PARTICLE_SIZE_STAR_LARGE : PARTICLE_SIZE_STAR_MEDIUM;
+      const circleSize = isLarge ? PARTICLE_SIZE_CIRCLE_LARGE : PARTICLE_SIZE_CIRCLE_MEDIUM;
+      const size = type === "star" ? starSize : circleSize;
 
       let color: string;
       if (colorMode === "random") {
@@ -198,7 +194,7 @@ function LikeButton({
       )}
     >
       <div className="relative flex w-full max-w-[240px] flex-col items-center justify-center overflow-visible p-5">
-        <div className="pointer-events-none absolute inset-x-[-40px] inset-y-[-60px] z-[1] overflow-visible">
+        <div className="pointer-events-none absolute inset-x-[-40px] inset-y-[-60px] z-[1] overflow-visible motion-reduce:hidden">
           {particles.map((particle) => (
             <div
               className={cn("absolute top-1/2 left-1/2 will-change-[transform,opacity]")}
@@ -247,12 +243,12 @@ function LikeButton({
             "rounded-full p-4 transition-transform duration-[250ms] ease-linear",
             "relative z-10 flex cursor-pointer items-center justify-center border-0 bg-transparent",
             "touch-[manipulation] select-none [-webkit-touch-callout:none] [-webkit-user-select:none]",
-            "[-webkit-tap-highlight-color:transparent] [tap-highlight-color:transparent]",
+            "[-webkit-tap-highlight-color:transparent]",
             "transform-[translateZ(0)] [-webkit-transform:translateZ(0)]",
             "[-webkit-perspective:1000] [perspective:1000]",
             "[-webkit-backface-visibility:hidden] [backface-visibility:hidden]",
             "my-1 overflow-visible outline-none will-change-[transform,opacity]",
-            "[@media(hover:hover)]:hover:scale-105",
+            "motion-reduce:animate-none! [@media(hover:hover)]:hover:scale-105",
             "focus:outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
             "max-md:transform-[translate3d(0,0,0)] max-md:min-h-12 max-md:min-w-12 max-md:p-4 max-md:[-webkit-transform:translate3d(0,0,0)]",
             "max-md:[-webkit-backface-visibility:hidden] max-md:[backface-visibility:hidden] max-md:[transform-origin:center]",
@@ -277,7 +273,7 @@ function LikeButton({
           <svg
             aria-label="Like"
             className={cn(
-              "h-6 w-6 transition-all duration-[250ms] ease-linear",
+              "h-6 w-6 transition duration-[250ms] ease-linear",
               "transform-[translateZ(0)] will-change-[transform,opacity] [-webkit-transform:translateZ(0)]",
               isPlaying && "scale-110",
               "max-md:[-webkit-backface-visibility:hidden] max-md:[backface-visibility:hidden] max-md:[transform-origin:center]",

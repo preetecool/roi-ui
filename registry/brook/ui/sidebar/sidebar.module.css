@@ -65,7 +65,7 @@
     calc(-1 * (var(--sidebar-width) + 0.5rem + 1px + 0.25rem))
   );
   padding: 0.25rem;
-  height: calc(100vh - 0.5rem);
+  height: calc(100dvh - 0.5rem);
   top: 0.25rem;
   width: calc(var(--sidebar-width) + 0.5rem + 1px);
   overflow: visible;
@@ -177,8 +177,8 @@
   font-weight: 500;
   color: var(--muted-foreground);
   transition:
-    margin 200ms ease-linear,
-    opacity 200ms ease-linear;
+    margin 200ms linear,
+    opacity 200ms linear;
 }
 
 .desktop[data-collapsible="icon"] .groupLabel {
@@ -212,8 +212,10 @@
   cursor: pointer;
 }
 
-.trigger:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: var(--muted);
+  }
 }
 
 .trigger:focus-visible {
@@ -234,8 +236,10 @@
   justify-content: center;
 }
 
-.close:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .close:hover {
+    background-color: var(--muted);
+  }
 }
 
 .close:focus-visible {
@@ -253,7 +257,9 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: all 200ms ease-linear;
+  transition: 200ms linear;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
 }
 
 @media (min-width: 768px) {
@@ -278,8 +284,10 @@
   cursor: w-resize;
 }
 
-.desktop[data-collapsible="offcanvas"]:has(.rail:hover) .container {
-  transform: translateX(0);
+@media (hover: hover) {
+  .desktop[data-collapsible="offcanvas"]:has(.rail:hover) .container {
+    transform: translateX(0);
+  }
 }
 
 .menu {
@@ -318,8 +326,10 @@
   outline: none;
 }
 
-.menuButton:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .menuButton:hover {
+    background-color: var(--muted);
+  }
 }
 
 .menuButton:focus-visible {
@@ -368,9 +378,11 @@
   outline: none;
 }
 
-.menuAction:hover {
-  background-color: var(--muted);
-  color: var(--foreground);
+@media (hover: hover) {
+  .menuAction:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
 }
 
 .menuAction:focus-visible {
@@ -421,8 +433,10 @@
   text-decoration: none;
 }
 
-.menuSubButton:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .menuSubButton:hover {
+    background-color: var(--muted);
+  }
 }
 
 .menuSubButton:focus-visible {
@@ -457,7 +471,7 @@
   top: 0;
   left: 0;
   width: 20px;
-  height: 100vh;
+  height: 100dvh;
   z-index: 90;
   display: none;
 }

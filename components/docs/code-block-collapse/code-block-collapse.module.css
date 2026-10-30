@@ -51,9 +51,11 @@
     background-color 150ms ease-out;
 }
 
-.toggle:hover {
-  color: var(--foreground);
-  background-color: var(--accent);
+@media (hover: hover) {
+  .toggle:hover {
+    color: var(--foreground);
+    background-color: var(--accent);
+  }
 }
 
 .toggle:focus-visible {

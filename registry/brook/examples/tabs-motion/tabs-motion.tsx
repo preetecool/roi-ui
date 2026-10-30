@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
 import { Button } from "@/registry/brook/ui/button/button";
@@ -87,67 +87,69 @@ export default function TabsFramerMotion() {
   const activeTabData = tabs.find((tab) => tab.id === activeTab);
 
   return (
-    <div className={styles.container}>
-      <Tabs onValueChange={handleTabChange} value={activeTab}>
-        <TabsList className={styles.tabsList}>
-          {tabs.map((tab) => (
-            <TabsTrigger
-              className={styles.tabTrigger}
-              data-framer-motion="true"
-              key={tab.id}
-              tabIndex={0}
-              value={tab.id}
-            >
-              {activeTab === tab.id && (
-                <motion.span
-                  className={styles.bubble}
-                  layoutId="bubble"
-                  style={{ borderRadius: "var(--radius)", zIndex: 0 }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
-              )}
-              <span className={styles.tabLabel}>{tab.label}</span>
-            </TabsTrigger>
-          ))}
-        </TabsList>
+    <MotionConfig reducedMotion="user">
+      <div className={styles.container}>
+        <Tabs onValueChange={handleTabChange} value={activeTab}>
+          <TabsList className={styles.tabsList}>
+            {tabs.map((tab) => (
+              <TabsTrigger
+                className={styles.tabTrigger}
+                data-framer-motion="true"
+                key={tab.id}
+                tabIndex={0}
+                value={tab.id}
+              >
+                {activeTab === tab.id && (
+                  <motion.span
+                    className={styles.bubble}
+                    layoutId="bubble"
+                    style={{ borderRadius: "var(--radius)", zIndex: 0 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                  />
+                )}
+                <span className={styles.tabLabel}>{tab.label}</span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        <motion.div
-          animate={{ height: bounds.height }}
-          className={styles.contentContainer}
-          initial={{ height: "auto" }}
-          transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-        >
-          <div className={styles.contentWrapper} ref={ref}>
-            <AnimatePresence custom={direction} initial={false} mode="popLayout">
-              {activeTabData && (
-                <motion.div
-                  animate="active"
-                  className={styles.tabContent}
-                  custom={direction}
-                  exit="exit"
-                  initial="initial"
-                  key={activeTab}
-                  style={{ padding: "1.5rem" }}
-                  transition={contentTransition}
-                  variants={contentVariants}
-                >
-                  <div>
-                    <span className={styles.heading}>{activeTabData.heading}</span>
-                    <p className={styles.description}>{activeTabData.description}</p>
-                  </div>
-                  <div className={styles.buttonGroup}>
-                    {activeTabData.buttons.map((button) => (
-                      <Button key={button.label} size="sm" variant={button.variant}>
-                        {button.label}
-                      </Button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      </Tabs>
-    </div>
+          <motion.div
+            animate={{ height: bounds.height }}
+            className={styles.contentContainer}
+            initial={{ height: "auto" }}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+          >
+            <div className={styles.contentWrapper} ref={ref}>
+              <AnimatePresence custom={direction} initial={false} mode="popLayout">
+                {activeTabData && (
+                  <motion.div
+                    animate="active"
+                    className={styles.tabContent}
+                    custom={direction}
+                    exit="exit"
+                    initial="initial"
+                    key={activeTab}
+                    style={{ padding: "1.5rem" }}
+                    transition={contentTransition}
+                    variants={contentVariants}
+                  >
+                    <div>
+                      <span className={styles.heading}>{activeTabData.heading}</span>
+                      <p className={styles.description}>{activeTabData.description}</p>
+                    </div>
+                    <div className={styles.buttonGroup}>
+                      {activeTabData.buttons.map((button) => (
+                        <Button key={button.label} size="sm" variant={button.variant}>
+                          {button.label}
+                        </Button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </Tabs>
+      </div>
+    </MotionConfig>
   );
 }

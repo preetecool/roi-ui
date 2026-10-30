@@ -4,7 +4,7 @@ import { Badge, BadgeIcon } from "@/registry/brook/tailwind/ui/badge";
 
 export default function BadgeError() {
   return (
-    <div className="animate-[badge-shake_0.3s_ease] will-change-transform">
+    <div className="animate-[badge-shake_0.3s_ease] will-change-transform motion-reduce:animate-none">
       <style>
         {`
           @keyframes badge-shake {

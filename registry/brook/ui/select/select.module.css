@@ -8,9 +8,11 @@
   min-width: 9rem;
   background-color: var(--popover);
 
-  &:hover:not(.disabled) {
-    background-color: var(--accent);
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      background-color: var(--accent);
+      color: var(--foreground);
+    }
   }
 
   &:focus-visible {
@@ -88,6 +90,10 @@
     transform: none;
     opacity: 1;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .arrow {
@@ -112,12 +118,10 @@
   color: var(--foreground);
   transition: background-color 0.2s ease-in-out;
 
-  &:hover {
-    background-color: var(--muted);
-  }
-
-  &[data-state="hidden"] {
-    display: none;
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--muted);
+    }
   }
 }
 
@@ -140,8 +144,10 @@
 
   outline: none;
 
-  &:hover:not(.itemDisabled) {
-    background-color: var(--accent);
+  @media (hover: hover) {
+    &:hover:not(.itemDisabled) {
+      background-color: var(--accent);
+    }
   }
 
   &[data-highlighted] {

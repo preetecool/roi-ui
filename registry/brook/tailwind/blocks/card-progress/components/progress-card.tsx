@@ -99,9 +99,9 @@ function StepIndicator({ status, isFinal = false }: StepIndicatorProps) {
         />
       )}
       <div className={className}>
-        {icon === "clock" && <AnimatedClock className={iconClassName!} />}
-        {icon === "check" && <Check className={iconClassName!} size={14} strokeWidth={3} />}
-        {icon === "error" && <AlertCircle className={iconClassName!} size={14} strokeWidth={2.5} />}
+        {icon === "clock" && <AnimatedClock className={iconClassName} />}
+        {icon === "check" && <Check className={iconClassName} size={14} strokeWidth={3} />}
+        {icon === "error" && <AlertCircle className={iconClassName} size={14} strokeWidth={2.5} />}
       </div>
     </div>
   );

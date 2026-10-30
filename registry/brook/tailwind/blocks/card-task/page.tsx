@@ -23,8 +23,6 @@ export default function Page() {
       collaborators={demoUsers}
       description="Update the card component documentation to reflect the new style"
       dueDate={{ label: "1d", variant: "warning" }}
-      onAddCollaborator={() => console.log("Add collaborator")}
-      onDeleteTask={() => console.log("Delete task")}
       stats={{ comments: 4, subtasks: "4/5" }}
       tags={[{ label: "Urgent", variant: "destructive" }, { label: "Docs" }]}
       title="Update Documentation"

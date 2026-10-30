@@ -79,8 +79,10 @@
   align-self: end;
   color: var(--muted-foreground);
 
-  &:hover {
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--foreground);
+    }
   }
 
   &[data-slot="button"] {

@@ -274,11 +274,8 @@ type BackgroundProps = {
 
 const Background: React.FC<BackgroundProps> = ({
   className,
-  // biome-ignore lint/style/noMagicNumbers: WebGL RGB color values
   primaryColor = [0.85, 0.85, 0.85],
-  // biome-ignore lint/style/noMagicNumbers: WebGL RGB color values
   secondaryColor = [0.25, 0.25, 0.25],
-  // biome-ignore lint/style/noMagicNumbers: WebGL RGB color values
   backgroundColor = [0.0, 0.0, 0.0],
   backgroundOpacity = 0.0,
   animationSpeed = 0.3,

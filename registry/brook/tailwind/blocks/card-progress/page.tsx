@@ -36,7 +36,9 @@ export default function Page() {
               if (prev[i].status === "pending" && nextPendingIndex === -1) {
                 nextPendingIndex = i;
               }
-              if (currentIndex !== -1 && nextPendingIndex !== -1) break;
+              if (currentIndex !== -1 && nextPendingIndex !== -1) {
+                break;
+              }
             }
 
             if (currentIndex === -1 && nextPendingIndex !== -1) {
@@ -45,8 +47,12 @@ export default function Page() {
 
             if (currentIndex !== -1) {
               return prev.map((s, i) => {
-                if (i === currentIndex) return { ...s, status: "complete" };
-                if (i === currentIndex + 1 && s.status === "pending") return { ...s, status: "in_progress" };
+                if (i === currentIndex) {
+                  return { ...s, status: "complete" };
+                }
+                if (i === currentIndex + 1 && s.status === "pending") {
+                  return { ...s, status: "in_progress" };
+                }
                 return s;
               });
             }
@@ -59,7 +65,9 @@ export default function Page() {
     );
 
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, [steps]);
 

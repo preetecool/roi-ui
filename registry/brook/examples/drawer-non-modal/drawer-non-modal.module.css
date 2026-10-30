@@ -55,6 +55,10 @@
     border-radius: 10px;
     padding-right: 1.5rem;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .actions {

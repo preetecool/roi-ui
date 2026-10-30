@@ -48,6 +48,10 @@
     padding: 0.375rem;
     max-width: calc(100vw - 2rem);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .seperatorWrapper {
@@ -92,9 +96,14 @@
 
   &[data-popup-open]::before,
   &[data-highlighted]::before,
-  &:hover::before,
   &:focus::before {
     background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus,
@@ -106,28 +115,34 @@
     cursor: not-allowed;
     opacity: 0.5;
 
+    @media (hover: hover) {
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  @media (hover: hover) {
     &:hover {
-      background: transparent;
+      & > .shortcut {
+        color: var(--secondary-foreground);
+      }
+
+      & > .icon,
+      & .icon {
+        color: var(--secondary-foreground);
+        opacity: 1;
+      }
     }
   }
 
-  &:hover {
-    & > .shortcut {
-      color: var(--secondary-foreground);
-    }
-
-    & > .icon,
-    & .icon {
-      color: var(--secondary-foreground);
-      opacity: 1;
-    }
-  }
-
-  &[data-variant="destructive"]:hover {
-    color: var(--destructive);
-
-    & .icon {
+  @media (hover: hover) {
+    &[data-variant="destructive"]:hover {
       color: var(--destructive);
+
+      & .icon {
+        color: var(--destructive);
+      }
     }
   }
 
@@ -170,10 +185,16 @@
     outline-offset: 2px;
   }
 
-  &:hover,
   &[data-highlighted] {
     background: var(--muted);
     color: var(--accent-foreground);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--muted);
+      color: var(--accent-foreground);
+    }
   }
 
   &[data-disabled] {
@@ -249,9 +270,14 @@
 
   &[data-popup-open]::before,
   &[data-highlighted]::before,
-  &:hover::before,
   &:focus::before {
     background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus,
@@ -259,10 +285,12 @@
     outline: none;
   }
 
-  &:hover {
-    & .submenuIcon,
-    & > svg {
-      color: var(--secondary-foreground);
+  @media (hover: hover) {
+    &:hover {
+      & .submenuIcon,
+      & > svg {
+        color: var(--secondary-foreground);
+      }
     }
   }
 

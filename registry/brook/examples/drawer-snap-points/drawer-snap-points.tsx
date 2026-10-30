@@ -47,6 +47,7 @@ export default function DrawerSnapPoints() {
                 </DrawerDescription>
                 <div aria-hidden className={styles.cards}>
                   {Array.from({ length: 20 }, (_, index) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: static placeholder list that never reorders
                     <div className={styles.card} key={index} />
                   ))}
                 </div>

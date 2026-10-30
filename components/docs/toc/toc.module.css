@@ -29,8 +29,10 @@
     font-weight 0.2s;
 }
 
-.tocItem:hover {
-  color: var(--foreground);
+@media (hover: hover) {
+  .tocItem:hover {
+    color: var(--foreground);
+  }
 }
 
 .tocItem[data-active="true"] {

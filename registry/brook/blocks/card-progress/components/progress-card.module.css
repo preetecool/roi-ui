@@ -33,17 +33,6 @@
   position: relative;
 }
 
-.pending {
-}
-.in_progress {
-}
-.complete {
-}
-.error {
-}
-.warning {
-}
-
 .stepIndicator {
   display: flex;
   align-items: center;

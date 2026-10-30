@@ -1,12 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge-tailwind",
-  "type": "registry:item",
   "title": "Badge (Tailwind)",
   "description": "A small count and labeling component.",
   "dependencies": [
     "class-variance-authority",
-    "@base-ui/react@1.5.0"
+    "@base-ui/react@1.9.0"
   ],
   "files": [
     {
@@ -15,5 +14,6 @@
       "type": "registry:file",
       "target": "~/components/ui/badge/badge.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

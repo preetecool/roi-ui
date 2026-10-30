@@ -22,7 +22,7 @@ const animationStyles = `
 `;
 
 const stepperClasses = cn(
-  "flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--border)_15%,transparent)] bg-[var(--mix-card-50-bg)] text-[var(--muted-foreground)] transition-all duration-150 ease-out",
+  "flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--border)_15%,transparent)] bg-[var(--mix-card-50-bg)] text-[var(--muted-foreground)] transition duration-150 ease-out",
   "will-change-[width,height,border-radius,background-color,transform]",
   "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
   "active:bg-[var(--muted)]",

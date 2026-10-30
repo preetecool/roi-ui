@@ -13,10 +13,12 @@
   z-index: 999;
 }
 
-.button:hover {
-  background-color: var(--muted);
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--muted);
 
-  transition: 150ms ease-out;
+    transition: 150ms ease-out;
+  }
 }
 .button[data-popup-open] {
   background-color: none;
@@ -118,8 +120,10 @@
     background-color: oklch(from var(--accent) l c h / 0.7);
   }
 
-  &:hover::before {
-    background-color: oklch(from var(--accent) l c h / 0.7);
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: oklch(from var(--accent) l c h / 0.7);
+    }
   }
 
   &:focus::before {
@@ -135,8 +139,10 @@
     opacity: 0.5;
   }
 
-  &[data-disabled]:hover {
-    background: transparent;
+  @media (hover: hover) {
+    &[data-disabled]:hover {
+      background: transparent;
+    }
   }
 }
 
@@ -177,12 +183,16 @@
   margin-left: 4px;
 }
 
-.menuItem:hover > .icon {
-  color: var(--secondary-foreground);
+@media (hover: hover) {
+  .menuItem:hover > .icon {
+    color: var(--secondary-foreground);
+  }
 }
 
-.menuItem:hover .icon {
-  opacity: 1;
+@media (hover: hover) {
+  .menuItem:hover .icon {
+    opacity: 1;
+  }
 }
 
 .menuItem svg {
@@ -193,12 +203,16 @@
   margin-left: 4px;
 }
 
-.menuItem:hover svg {
-  color: var(--secondary-foreground);
+@media (hover: hover) {
+  .menuItem:hover svg {
+    color: var(--secondary-foreground);
+  }
 }
 
-.menuItem:hover svg {
-  opacity: 1;
+@media (hover: hover) {
+  .menuItem:hover svg {
+    opacity: 1;
+  }
 }
 
 .menuItem:active {
@@ -232,14 +246,20 @@
   z-index: -1;
 }
 
-.deleteItem:hover::before {
-  background-color: var(--destructive);
+@media (hover: hover) {
+  .deleteItem:hover::before {
+    background-color: var(--destructive);
+  }
 }
 
-.deleteItem:hover {
-  color: var(--destructive-foreground);
+@media (hover: hover) {
+  .deleteItem:hover {
+    color: var(--destructive-foreground);
+  }
 }
 
-.deleteItem:hover svg {
-  color: var(--destructive-foreground);
+@media (hover: hover) {
+  .deleteItem:hover svg {
+    color: var(--destructive-foreground);
+  }
 }

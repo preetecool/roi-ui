@@ -90,8 +90,10 @@
   background-color: transparent;
 }
 
-.outline:hover {
-  background-color: var(--card);
+@media (hover: hover) {
+  .outline:hover {
+    background-color: var(--card);
+  }
 }
 
 .iconContainer {

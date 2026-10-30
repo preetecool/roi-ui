@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "expandable-card-carousel-tailwind",
-  "type": "registry:item",
   "title": "Expandable Card Carousel (Tailwind)",
   "description": "A carousel of expandable cards showcasing core philosophies.",
   "dependencies": [
@@ -31,5 +30,6 @@
       "type": "registry:file",
       "target": "~/components/blocks/expandable-card-carousel/data.json"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

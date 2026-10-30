@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "context-menu-tailwind",
-  "type": "registry:item",
   "title": "Context Menu (Tailwind)",
   "description": "A menu component triggered by right-click or long press.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:file",
       "target": "~/components/ui/context-menu/context-menu.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

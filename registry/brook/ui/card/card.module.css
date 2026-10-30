@@ -93,17 +93,23 @@
   right: 1.5rem;
 }
 
-.cardLift:hover .content {
-  transform: translateY(-2rem);
+@media (hover: hover) {
+  .cardLift:hover .content {
+    transform: translateY(-2rem);
+  }
 }
 
-.cardLift:hover .footer {
-  opacity: 1;
-  transform: translateY(-1rem);
+@media (hover: hover) {
+  .cardLift:hover .footer {
+    opacity: 1;
+    transform: translateY(-1rem);
+  }
 }
 
-.cardLift:hover .image {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .cardLift:hover .image {
+    transform: scale(1.04);
+  }
 }
 
 @media (max-width: 768px) {

@@ -20,7 +20,7 @@ function CollapsibleTrigger({ className, children, ...props }: Collapsible.Trigg
         "m-0 flex items-center justify-between rounded px-2 py-1 outline-none",
         "bg-[var(--mix-card-15-bg)] text-foreground",
         "cursor-pointer font-inherit font-medium text-sm leading-5",
-        "border border-border transition-all duration-150 ease-out",
+        "border border-border transition duration-150 ease-out",
         "hover:bg-[var(--mix-card-50-bg)]",
         "active:bg-[var(--mix-card-15-bg)]",
         "focus-visible:outline-2 focus-visible:outline-ring",
@@ -60,7 +60,7 @@ function CollapsiblePanel({ className, ...props }: Collapsible.Panel.Props) {
     <Collapsible.Panel
       className={cn(
         "flex h-[var(--collapsible-panel-height)] flex-col justify-end overflow-hidden",
-        "box-border w-full text-sm leading-5 transition-all duration-150 ease-out",
+        "box-border w-full text-sm leading-5 transition-[height] duration-150 ease-out",
         "data-[ending-style]:h-0 data-[starting-style]:h-0",
         className
       )}

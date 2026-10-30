@@ -12,6 +12,10 @@ import {
 } from "@/registry/brook/ui/tabs/tabs";
 import styles from "./code-tabs.module.css";
 
+const TAILWIND_SUFFIX = /-tailwind\b/;
+const CSS_MODULES_SUFFIX = /-css-modules\b/;
+const LAST_WORD = /(\S+)(\s*)$/;
+
 type CodeTabsProps = {
   children: React.ReactNode;
   defaultValue?: string;
@@ -89,20 +93,27 @@ export function CodeTabsList({ children, showCopy = false, showStyleSelector = f
   const shouldShowStyleSelector = showStyleSelector || isPackageVariant;
 
   const currentCommandText = React.useMemo(() => {
-    if (!commandText) return "";
-    if (noStyleSuffix) return commandText;
+    if (!commandText) {
+      return "";
+    }
+    if (noStyleSuffix) {
+      return commandText;
+    }
     // Remove any existing style suffix to get base command
-    const baseCommand = commandText.replace(/-tailwind\b/, "").replace(/-css-modules\b/, "");
+    const baseCommand = commandText.replace(TAILWIND_SUFFIX, "").replace(CSS_MODULES_SUFFIX, "");
     // Add suffix for tailwind style
     if (style === "tailwind") {
       // Find the last word (component name) and append suffix
-      return baseCommand.replace(/(\S+)(\s*)$/, "$1-tailwind$2");
+      return baseCommand.replace(LAST_WORD, "$1-tailwind$2");
     }
     return baseCommand;
   }, [commandText, style, noStyleSuffix]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-read the rendered command when the style toggles; refs are not dependencies
   React.useEffect(() => {
-    if (!shouldShowCopy) return;
+    if (!shouldShowCopy) {
+      return;
+    }
 
     const timeoutId = setTimeout(() => {
       if (!containerRef.current) {

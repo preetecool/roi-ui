@@ -43,6 +43,8 @@ export type SearchProps = {
   tree?: PageTree.Root;
 };
 
+const WHITESPACE = /\s+/;
+
 const getIcon = (url: string) => {
   switch (true) {
     case url.includes("/ui/"):
@@ -60,7 +62,7 @@ export function Search({ tree }: SearchProps) {
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { search, setSearch, query } = useDocsSearch({
+  const { setSearch, query } = useDocsSearch({
     type: "fetch",
   });
 
@@ -109,12 +111,16 @@ export function Search({ tree }: SearchProps) {
 
   // Build tree items from pageTree
   const treeGroups = useMemo(() => {
-    if (!tree?.children) return [];
+    if (!tree?.children) {
+      return [];
+    }
 
     const groups: { name: string; items: TreeItem[] }[] = [];
 
-    tree.children.forEach((group: PageTree.Node) => {
-      if (group.type !== "folder") return;
+    for (const group of tree.children) {
+      if (group.type !== "folder") {
+        continue;
+      }
 
       const items: TreeItem[] = (group.children as PageTree.Node[])
         .filter((item: PageTree.Node): item is PageTree.Item => item.type === "page")
@@ -131,7 +137,7 @@ export function Search({ tree }: SearchProps) {
           items,
         });
       }
-    });
+    }
 
     return groups;
   }, [tree]);
@@ -144,15 +150,21 @@ export function Search({ tree }: SearchProps) {
 
     return query.data.filter(
       (item, index, self) =>
-        !(item.type === "text" && item.content.trim().split(/\s+/).length <= 1) &&
+        !(item.type === "text" && item.content.trim().split(WHITESPACE).length <= 1) &&
         index === self.findIndex((t) => t.content === item.content)
     ) as SearchResult[];
   }, [query.data]);
 
   const itemToStringValue = useCallback((item: unknown) => {
-    if (!item || typeof item !== "object") return "";
-    if ("content" in item) return (item as SearchResult).content;
-    if ("name" in item) return (item as TreeItem).name;
+    if (!item || typeof item !== "object") {
+      return "";
+    }
+    if ("content" in item) {
+      return (item as SearchResult).content;
+    }
+    if ("name" in item) {
+      return (item as TreeItem).name;
+    }
     return "";
   }, []);
 

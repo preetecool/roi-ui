@@ -4,7 +4,7 @@ import { Badge, BadgeIcon } from "@/registry/brook/tailwind/ui/badge";
 
 export default function BadgeSuccess() {
   return (
-    <div className="animate-[badge-bounce_0.4s_ease] will-change-transform [--badge-bounce:_scale(0.96)_scale(1.04)_scale(1)]">
+    <div className="animate-[badge-bounce_0.4s_ease] will-change-transform [--badge-bounce:_scale(0.96)_scale(1.04)_scale(1)] motion-reduce:animate-none">
       <style>
         {`
           @keyframes badge-bounce {

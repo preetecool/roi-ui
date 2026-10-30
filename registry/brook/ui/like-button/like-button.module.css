@@ -87,7 +87,6 @@
   -webkit-touch-callout: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent !important;
-  tap-highlight-color: transparent !important;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-perspective: 1000;
@@ -100,8 +99,10 @@
   will-change: transform, opacity;
 }
 
-.thumbButton:hover {
-  transform: scale(1.05);
+@media (hover: hover) {
+  .thumbButton:hover {
+    transform: scale(1.05);
+  }
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -120,7 +121,9 @@
 }
 
 .thumbIcon {
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   width: 24px;
   height: 24px;
   will-change: transform, opacity;
@@ -237,4 +240,14 @@
 
 .container {
   -webkit-overflow-scrolling: touch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particlesContainer {
+    display: none;
+  }
+
+  .animateThumbTilt {
+    animation: none;
+  }
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-traffic",
-  "type": "registry:item",
   "title": "Traffic Card",
   "description": "A website traffic card component with line chart and statistics.",
   "dependencies": [
@@ -31,5 +30,6 @@
       "type": "registry:file",
       "target": "~/components/blocks/card-traffic/data.json"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

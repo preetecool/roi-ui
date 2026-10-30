@@ -14,6 +14,7 @@ export default function FormDemo() {
     setLoading(true);
     await new Promise((r) => setTimeout(r, 800));
     setLoading(false);
+    // biome-ignore lint/suspicious/noAlert: demo shows the submitted value
     alert(`Email: ${formData.get("email") || ""}`);
   };
 

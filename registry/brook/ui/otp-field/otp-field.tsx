@@ -1,6 +1,6 @@
 "use client";
 
-import { OTPFieldPreview as OTPFieldPrimitive } from "@base-ui/react/otp-field";
+import { OTPField as OTPFieldPrimitive } from "@base-ui/react/otp-field";
 import { cn } from "@/lib/utils";
 import styles from "./otp-field.module.css";
 

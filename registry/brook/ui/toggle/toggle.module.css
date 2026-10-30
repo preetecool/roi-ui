@@ -12,23 +12,27 @@
   color: var(--muted-foreground);
   cursor: pointer;
 
-  &:hover {
-    background-color: var(--accent);
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--accent);
+      color: var(--foreground);
+    }
   }
 
   &[data-focused] {
     outline: none;
-    box-shadow: 0 0 0 2px var(--ring) / 0.2;
+    box-shadow: 0 0 0 2px oklch(from var(--ring) l c h / 0.2);
   }
 
   &[data-pressed] {
     background-color: var(--accent);
     color: var(--foreground);
 
-    &:hover {
-      background-color: var(--accent);
-      color: var(--foreground);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--accent);
+        color: var(--foreground);
+      }
     }
   }
 

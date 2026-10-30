@@ -52,6 +52,10 @@
   [data-starting-style] & {
     transform: translateY(100dvh);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .scrollAreaViewport {
@@ -248,12 +252,20 @@
   transition: opacity 250ms;
   pointer-events: none;
 
-  &:hover,
   &[data-scrolling] {
     opacity: 1;
     transition-duration: 75ms;
     transition-delay: 0ms;
     pointer-events: auto;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+      transition-duration: 75ms;
+      transition-delay: 0ms;
+      pointer-events: auto;
+    }
   }
 
   [data-ending-style] & {

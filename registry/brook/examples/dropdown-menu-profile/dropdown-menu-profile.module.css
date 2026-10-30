@@ -115,8 +115,10 @@
   color: var(--muted-foreground);
 }
 
-.submenuTriggerWithIcon[data-slot="menu-submenutrigger"]:hover .submenuIcon {
-  color: var(--secondary-foreground);
+@media (hover: hover) {
+  .submenuTriggerWithIcon[data-slot="menu-submenutrigger"]:hover .submenuIcon {
+    color: var(--secondary-foreground);
+  }
 }
 
 .radioItem[data-slot="menu-radioitem"] {

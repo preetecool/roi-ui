@@ -35,3 +35,9 @@
   stroke-dashoffset: 1;
   animation: icon-draw 0.4s ease forwards;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .badgeShake {
+    animation: none;
+  }
+}

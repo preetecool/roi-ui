@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch",
-  "type": "registry:item",
   "title": "Switch",
   "description": "A toggle switch component.",
   "files": [
@@ -13,9 +12,10 @@
     },
     {
       "path": "registry/brook/ui/switch/switch.module.css",
-      "content": ".root {\n  --box-shadow:\n    0 0.753698px 0.452219px -0.583333px #0000000f,\n    0 1.927px 1.1562px -1.16667px #0000000d,\n    0 3.86321px 2.31793px -1.75px #0000000d,\n    0 7.32331px 4.39398px -2.33333px #0000000d,\n    0 14.5565px 8.73393px -2.91667px #0000000a,\n    0 10px 19.2px -3.5px #00000005;\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n  appearance: none;\n  margin: 0;\n  padding: 2px;\n  width: 44px;\n  height: 24px;\n  border-radius: 12px;\n  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  background-color: var(--mix-card-85-bg);\n  border: 0.5px solid var(--border);\n\n  &:hover {\n    background-color: var(--muted-hover, var(--muted));\n  }\n\n  &[data-checked] {\n    background-color: var(--success);\n  }\n\n  &:focus-visible {\n    outline: 2px solid var(--ring);\n    outline-offset: 2px;\n  }\n\n  &[data-disabled] {\n    cursor: not-allowed;\n    opacity: 0.5;\n\n    &:hover {\n      background-color: var(--muted);\n    }\n\n    &[data-checked]:hover {\n      background-color: var(--primary);\n    }\n  }\n}\n\n.thumb {\n  box-shadow: var(--box-shadow);\n  border: 0.5px solid oklch(from var(--border) l c h / 0.2);\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  background-color: #fff;\n  transition: transform 0.2s var(--ease-in-out-quad);\n  transform: translateX(0px);\n\n  &[data-checked] {\n    transform: translateX(20px);\n  }\n}\n",
+      "content": ".root {\n  --box-shadow:\n    0 0.753698px 0.452219px -0.583333px #0000000f,\n    0 1.927px 1.1562px -1.16667px #0000000d,\n    0 3.86321px 2.31793px -1.75px #0000000d,\n    0 7.32331px 4.39398px -2.33333px #0000000d,\n    0 14.5565px 8.73393px -2.91667px #0000000a,\n    0 10px 19.2px -3.5px #00000005;\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n  appearance: none;\n  margin: 0;\n  padding: 2px;\n  width: 44px;\n  height: 24px;\n  border-radius: 12px;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  transition-property:\n    color, background-color, border-color, box-shadow, opacity, transform;\n  background-color: var(--mix-card-85-bg);\n  border: 0.5px solid var(--border);\n\n  @media (hover: hover) {\n    &:hover {\n      background-color: var(--muted-hover, var(--muted));\n    }\n  }\n\n  &[data-checked] {\n    background-color: var(--success);\n  }\n\n  &:focus-visible {\n    outline: 2px solid var(--ring);\n    outline-offset: 2px;\n  }\n\n  &[data-disabled] {\n    cursor: not-allowed;\n    opacity: 0.5;\n\n    @media (hover: hover) {\n      &:hover {\n        background-color: var(--muted);\n      }\n    }\n\n    @media (hover: hover) {\n      &[data-checked]:hover {\n        background-color: var(--primary);\n      }\n    }\n  }\n}\n\n.thumb {\n  box-shadow: var(--box-shadow);\n  border: 0.5px solid oklch(from var(--border) l c h / 0.2);\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  background-color: #fff;\n  transition: transform 0.2s var(--ease-in-out-quad);\n  transform: translateX(0px);\n\n  &[data-checked] {\n    transform: translateX(20px);\n  }\n}\n",
       "type": "registry:file",
       "target": "~/components/ui/switch/switch.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

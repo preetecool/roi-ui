@@ -26,9 +26,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-// biome-ignore lint/style/noMagicNumbers: Animation duration in milliseconds
 const ANIMATION_DURATION = 500;
-// biome-ignore lint/style/noMagicNumbers: Border radius for top corners of bars
 const BAR_RADIUS: [number, number, number, number] = [4, 4, 0, 0];
 
 export default function ChartBarDemo() {

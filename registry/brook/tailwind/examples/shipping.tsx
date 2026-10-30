@@ -11,7 +11,7 @@ function getTimelineStatus(item: { completed?: boolean; current?: boolean }): st
     return "bg-foreground border-foreground";
   }
   if (item.current) {
-    return "bg-primary border-primary shadow-[0_0_0_2px_oklch(var(--primary)/0.2)]";
+    return "bg-primary border-primary shadow-[0_0_0_2px_oklch(from_var(--primary)_l_c_h/0.2)]";
   }
   return "bg-background border-border";
 }

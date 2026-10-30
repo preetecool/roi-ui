@@ -1,12 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "expandable-card-spread",
-  "type": "registry:item",
   "title": "Expandable Card Spread",
   "description": "A spread of expandable cards with mobile swipe-to-cycle stack view.",
   "dependencies": [
     "motion",
-    "@base-ui/react@1.5.0"
+    "@base-ui/react@1.9.0"
   ],
   "files": [
     {
@@ -29,7 +28,7 @@
     },
     {
       "path": "registry/brook/blocks/expandable-card-spread/components/mobile-stack.tsx",
-      "content": "\"use client\";\n\nimport { motion, type PanInfo, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport styles from \"./expandable-card-spread.module.css\";\n\ntype CardData = {\n  id: number;\n  title: string;\n  color: string;\n  textColor?: string;\n  description: string;\n};\n\ntype MobileStackProps = {\n  cards: CardData[];\n};\n\nconst SWIPE_THRESHOLD = 100;\n\nexport function MobileStack({ cards }: MobileStackProps) {\n  const [frontIndex, setFrontIndex] = useState(0);\n  const prefersReducedMotion = useReducedMotion();\n\n  const handleDragEnd = (_: unknown, info: PanInfo) => {\n    if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {\n      setFrontIndex((prev) => (prev + 1) % cards.length);\n    }\n  };\n\n  return (\n    <div className={styles.container}>\n      <div className={styles.mobileStack}>\n        {cards.map((card, i) => {\n          const stackPosition = (i - frontIndex + cards.length) % cards.length;\n          const isTopCard = stackPosition === 0;\n\n          return (\n            <motion.div\n              animate={{\n                scale: 1 - stackPosition * 0.03,\n                x: stackPosition * (13 - stackPosition),\n                y: stackPosition * 6,\n                rotate: Math.sqrt(stackPosition) * 3,\n              }}\n              className={styles.mobileCard}\n              drag={isTopCard ? \"x\" : false}\n              dragConstraints={{ left: 0, right: 0 }}\n              dragElastic={1}\n              key={card.id}\n              layout\n              onDragEnd={isTopCard ? handleDragEnd : undefined}\n              style={{\n                backgroundColor: card.color,\n                color: card.textColor || \"#ffffff\",\n                zIndex: cards.length - stackPosition,\n                cursor: isTopCard ? \"grab\" : \"auto\",\n              }}\n              transition={\n                prefersReducedMotion\n                  ? { duration: 0 }\n                  : { type: \"spring\", stiffness: 300, damping: 25 }\n              }\n              whileDrag={prefersReducedMotion ? { cursor: \"grabbing\" } : { cursor: \"grabbing\", scale: 1.02 }}\n            >\n              <div className={styles.circle} />\n              <h3 className={styles.cardTitle}>{card.title}</h3>\n              <p className={styles.mobileDescription}>{card.description}</p>\n            </motion.div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { motion, type PanInfo, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport styles from \"./expandable-card-spread.module.css\";\n\ntype CardData = {\n  id: number;\n  title: string;\n  color: string;\n  textColor?: string;\n  description: string;\n};\n\ntype MobileStackProps = {\n  cards: CardData[];\n};\n\nconst SWIPE_THRESHOLD = 100;\n\nexport function MobileStack({ cards }: MobileStackProps) {\n  const [frontIndex, setFrontIndex] = useState(0);\n  const prefersReducedMotion = useReducedMotion();\n\n  const handleDragEnd = (_: unknown, info: PanInfo) => {\n    if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {\n      setFrontIndex((prev) => (prev + 1) % cards.length);\n    }\n  };\n\n  return (\n    <div className={styles.container}>\n      <div className={styles.mobileStack}>\n        {cards.map((card, i) => {\n          const stackPosition = (i - frontIndex + cards.length) % cards.length;\n          const isTopCard = stackPosition === 0;\n\n          return (\n            <motion.div\n              animate={{\n                scale: 1 - stackPosition * 0.03,\n                x: stackPosition * (13 - stackPosition),\n                y: stackPosition * 6,\n                rotate: Math.sqrt(stackPosition) * 3,\n              }}\n              className={styles.mobileCard}\n              drag={isTopCard ? \"x\" : false}\n              dragConstraints={{ left: 0, right: 0 }}\n              dragElastic={1}\n              key={card.id}\n              layout\n              onDragEnd={isTopCard ? handleDragEnd : undefined}\n              style={{\n                backgroundColor: card.color,\n                color: card.textColor || \"#ffffff\",\n                zIndex: cards.length - stackPosition,\n                cursor: isTopCard ? \"grab\" : \"auto\",\n              }}\n              transition={prefersReducedMotion ? { duration: 0 } : { type: \"spring\", stiffness: 300, damping: 25 }}\n              whileDrag={prefersReducedMotion ? { cursor: \"grabbing\" } : { cursor: \"grabbing\", scale: 1.02 }}\n            >\n              <div className={styles.circle} />\n              <h3 className={styles.cardTitle}>{card.title}</h3>\n              <p className={styles.mobileDescription}>{card.description}</p>\n            </motion.div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
       "type": "registry:file",
       "target": "~/components/blocks/expandable-card-spread/mobile-stack.tsx"
     },
@@ -45,5 +44,6 @@
       "type": "registry:file",
       "target": "~/hooks/use-mobile.ts"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

@@ -183,34 +183,38 @@ export function CardTask({
         </div>
         <div className="flex w-full justify-between text-[oklch(from_var(--muted-foreground)_l_c_h_/_0.6)] text-xs">
           <div className="flex items-center gap-3">
+            {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
             <div
               aria-label={`${collaborators.length} collaborators`}
-              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
               role="group"
             >
               <Users aria-hidden="true" size="14" />
               <span>{collaborators.length}</span>
             </div>
+            {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
             <div
               aria-label={`${stats.comments} comments`}
-              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
               role="group"
             >
               <MessageCircleMore aria-hidden="true" size="14" />
               <span>{stats.comments}</span>
             </div>
+            {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
             <div
               aria-label={`${stats.subtasks} subtasks`}
-              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+              className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
               role="group"
             >
               <ListTodo aria-hidden="true" size="14" />
               <span>{stats.subtasks}</span>
             </div>
           </div>
+          {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
           <div
             aria-label={`Due ${dueDate.label}`}
-            className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition-all duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
+            className="flex h-[27px] items-center justify-center gap-1 rounded-xl border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.2)] bg-[var(--mix-card-33-bg)] px-2 py-1 transition duration-150 hover:border-[var(--border)] hover:bg-[var(--mix-card-50-bg)]"
             role="group"
           >
             <Calendar aria-hidden="true" size="14" />

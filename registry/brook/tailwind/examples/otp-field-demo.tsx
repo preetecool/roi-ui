@@ -11,6 +11,7 @@ export default function OTPFieldDemo() {
   return (
     <OTPField id={id} length={OTP_LENGTH}>
       {Array.from({ length: OTP_LENGTH }, (_, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: fixed-length slots never reorder
         <React.Fragment key={i}>
           <OTPFieldInput aria-label={`Character ${i + 1} of ${OTP_LENGTH}`} />
           {i === 2 ? <OTPFieldSeparator /> : null}

@@ -20,127 +20,85 @@ export const Index: Record<string, RegistryEntry> = {
   "accordion-minimal": {
     name: "accordion-minimal",
     type: "example",
-    files: [
-      "registry/brook/examples/accordion-minimal/accordion-minimal.tsx",
-      "registry/brook/examples/accordion-minimal/accordion-minimal.module.css",
-    ],
+    files: ["registry/brook/examples/accordion-minimal/accordion-minimal.tsx", "registry/brook/examples/accordion-minimal/accordion-minimal.module.css"],
     path: "@/registry/brook/examples/accordion-minimal/accordion-minimal",
   },
   "alert-demo": {
     name: "alert-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-demo/alert-demo.tsx",
-      "registry/brook/examples/alert-demo/alert-demo.module.css",
-    ],
+    files: ["registry/brook/examples/alert-demo/alert-demo.tsx", "registry/brook/examples/alert-demo/alert-demo.module.css"],
     path: "@/registry/brook/examples/alert-demo/alert-demo",
   },
   "alert-destructive": {
     name: "alert-destructive",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-destructive/alert-destructive.tsx",
-      "registry/brook/examples/alert-destructive/alert-destructive.module.css",
-    ],
+    files: ["registry/brook/examples/alert-destructive/alert-destructive.tsx", "registry/brook/examples/alert-destructive/alert-destructive.module.css"],
     path: "@/registry/brook/examples/alert-destructive/alert-destructive",
   },
   "alert-dialog-demo": {
     name: "alert-dialog-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-dialog-demo/alert-dialog-demo.tsx",
-      "registry/brook/examples/alert-dialog-demo/alert-dialog-demo.module.css",
-    ],
+    files: ["registry/brook/examples/alert-dialog-demo/alert-dialog-demo.tsx", "registry/brook/examples/alert-dialog-demo/alert-dialog-demo.module.css"],
     path: "@/registry/brook/examples/alert-dialog-demo/alert-dialog-demo",
   },
   "alert-dialog-nested": {
     name: "alert-dialog-nested",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.tsx",
-      "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.module.css",
-    ],
+    files: ["registry/brook/examples/alert-dialog-nested/alert-dialog-nested.tsx", "registry/brook/examples/alert-dialog-nested/alert-dialog-nested.module.css"],
     path: "@/registry/brook/examples/alert-dialog-nested/alert-dialog-nested",
   },
   "alert-info": {
     name: "alert-info",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-info/alert-info.tsx",
-      "registry/brook/examples/alert-info/alert-info.module.css",
-    ],
+    files: ["registry/brook/examples/alert-info/alert-info.tsx", "registry/brook/examples/alert-info/alert-info.module.css"],
     path: "@/registry/brook/examples/alert-info/alert-info",
   },
   "alert-success": {
     name: "alert-success",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-success/alert-success.tsx",
-      "registry/brook/examples/alert-success/alert-success.module.css",
-    ],
+    files: ["registry/brook/examples/alert-success/alert-success.tsx", "registry/brook/examples/alert-success/alert-success.module.css"],
     path: "@/registry/brook/examples/alert-success/alert-success",
   },
   "alert-warning": {
     name: "alert-warning",
     type: "example",
-    files: [
-      "registry/brook/examples/alert-warning/alert-warning.tsx",
-      "registry/brook/examples/alert-warning/alert-warning.module.css",
-    ],
+    files: ["registry/brook/examples/alert-warning/alert-warning.tsx", "registry/brook/examples/alert-warning/alert-warning.module.css"],
     path: "@/registry/brook/examples/alert-warning/alert-warning",
   },
   "autocomplete-animated": {
     name: "autocomplete-animated",
     type: "example",
-    files: [
-      "registry/brook/examples/autocomplete-animated/autocomplete-animated.tsx",
-      "registry/brook/examples/autocomplete-animated/autocomplete-animated.module.css",
-    ],
+    files: ["registry/brook/examples/autocomplete-animated/autocomplete-animated.tsx", "registry/brook/examples/autocomplete-animated/autocomplete-animated.module.css"],
     path: "@/registry/brook/examples/autocomplete-animated/autocomplete-animated",
   },
   "autocomplete-auto-highlight": {
     name: "autocomplete-auto-highlight",
     type: "example",
-    files: [
-      "registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight.tsx",
-      "registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight.module.css",
-    ],
+    files: ["registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight.tsx", "registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight.module.css"],
     path: "@/registry/brook/examples/autocomplete-auto-highlight/autocomplete-auto-highlight",
   },
   "autocomplete-clearable": {
     name: "autocomplete-clearable",
     type: "example",
-    files: [
-      "registry/brook/examples/autocomplete-clearable/autocomplete-clearable.tsx",
-      "registry/brook/examples/autocomplete-clearable/autocomplete-clearable.module.css",
-    ],
+    files: ["registry/brook/examples/autocomplete-clearable/autocomplete-clearable.tsx", "registry/brook/examples/autocomplete-clearable/autocomplete-clearable.module.css"],
     path: "@/registry/brook/examples/autocomplete-clearable/autocomplete-clearable",
   },
   "autocomplete-demo": {
     name: "autocomplete-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/autocomplete-demo/autocomplete-demo.tsx",
-      "registry/brook/examples/autocomplete-demo/autocomplete-demo.module.css",
-    ],
+    files: ["registry/brook/examples/autocomplete-demo/autocomplete-demo.tsx", "registry/brook/examples/autocomplete-demo/autocomplete-demo.module.css"],
     path: "@/registry/brook/examples/autocomplete-demo/autocomplete-demo",
   },
   "autocomplete-fuzzy": {
     name: "autocomplete-fuzzy",
     type: "example",
-    files: [
-      "registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy.tsx",
-      "registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy.module.css",
-    ],
+    files: ["registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy.tsx", "registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy.module.css"],
     path: "@/registry/brook/examples/autocomplete-fuzzy/autocomplete-fuzzy",
   },
   "autocomplete-grouped": {
     name: "autocomplete-grouped",
     type: "example",
-    files: [
-      "registry/brook/examples/autocomplete-grouped/autocomplete-grouped.tsx",
-      "registry/brook/examples/autocomplete-grouped/autocomplete-grouped.module.css",
-    ],
+    files: ["registry/brook/examples/autocomplete-grouped/autocomplete-grouped.tsx", "registry/brook/examples/autocomplete-grouped/autocomplete-grouped.module.css"],
     path: "@/registry/brook/examples/autocomplete-grouped/autocomplete-grouped",
   },
   "avatar-demo": {
@@ -152,10 +110,7 @@ export const Index: Record<string, RegistryEntry> = {
   "avatar-group": {
     name: "avatar-group",
     type: "example",
-    files: [
-      "registry/brook/examples/avatar-group/avatar-group.tsx",
-      "registry/brook/examples/avatar-group/avatar-group.module.css",
-    ],
+    files: ["registry/brook/examples/avatar-group/avatar-group.tsx", "registry/brook/examples/avatar-group/avatar-group.module.css"],
     path: "@/registry/brook/examples/avatar-group/avatar-group",
   },
   "avatar-motion": {
@@ -167,55 +122,37 @@ export const Index: Record<string, RegistryEntry> = {
   "background-demo": {
     name: "background-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/background-demo/background-demo.tsx",
-      "registry/brook/examples/background-demo/background-demo.module.css",
-    ],
+    files: ["registry/brook/examples/background-demo/background-demo.tsx", "registry/brook/examples/background-demo/background-demo.module.css"],
     path: "@/registry/brook/examples/background-demo/background-demo",
   },
   "badge-demo": {
     name: "badge-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/badge-demo/badge-demo.tsx",
-      "registry/brook/examples/badge-demo/badge-demo.module.css",
-    ],
+    files: ["registry/brook/examples/badge-demo/badge-demo.tsx", "registry/brook/examples/badge-demo/badge-demo.module.css"],
     path: "@/registry/brook/examples/badge-demo/badge-demo",
   },
   "badge-error": {
     name: "badge-error",
     type: "example",
-    files: [
-      "registry/brook/examples/badge-error/badge-error.tsx",
-      "registry/brook/examples/badge-error/badge-error.module.css",
-    ],
+    files: ["registry/brook/examples/badge-error/badge-error.tsx", "registry/brook/examples/badge-error/badge-error.module.css"],
     path: "@/registry/brook/examples/badge-error/badge-error",
   },
   "badge-external-links": {
     name: "badge-external-links",
     type: "example",
-    files: [
-      "registry/brook/examples/badge-external-links/badge-external-links.tsx",
-      "registry/brook/examples/badge-external-links/badge-external-links.module.css",
-    ],
+    files: ["registry/brook/examples/badge-external-links/badge-external-links.tsx", "registry/brook/examples/badge-external-links/badge-external-links.module.css"],
     path: "@/registry/brook/examples/badge-external-links/badge-external-links",
   },
   "badge-sizes": {
     name: "badge-sizes",
     type: "example",
-    files: [
-      "registry/brook/examples/badge-sizes/badge-sizes.tsx",
-      "registry/brook/examples/badge-sizes/badge-sizes.module.css",
-    ],
+    files: ["registry/brook/examples/badge-sizes/badge-sizes.tsx", "registry/brook/examples/badge-sizes/badge-sizes.module.css"],
     path: "@/registry/brook/examples/badge-sizes/badge-sizes",
   },
   "badge-success": {
     name: "badge-success",
     type: "example",
-    files: [
-      "registry/brook/examples/badge-success/badge-success.tsx",
-      "registry/brook/examples/badge-success/badge-success.module.css",
-    ],
+    files: ["registry/brook/examples/badge-success/badge-success.tsx", "registry/brook/examples/badge-success/badge-success.module.css"],
     path: "@/registry/brook/examples/badge-success/badge-success",
   },
   "button-demo": {
@@ -257,10 +194,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-loading": {
     name: "button-loading",
     type: "example",
-    files: [
-      "registry/brook/examples/button-loading/button-loading.tsx",
-      "registry/brook/examples/button-loading/button-loading.module.css",
-    ],
+    files: ["registry/brook/examples/button-loading/button-loading.tsx", "registry/brook/examples/button-loading/button-loading.module.css"],
     path: "@/registry/brook/examples/button-loading/button-loading",
   },
   "button-outline": {
@@ -278,10 +212,7 @@ export const Index: Record<string, RegistryEntry> = {
   "button-sizes": {
     name: "button-sizes",
     type: "example",
-    files: [
-      "registry/brook/examples/button-sizes/button-sizes.tsx",
-      "registry/brook/examples/button-sizes/button-sizes.module.css",
-    ],
+    files: ["registry/brook/examples/button-sizes/button-sizes.tsx", "registry/brook/examples/button-sizes/button-sizes.module.css"],
     path: "@/registry/brook/examples/button-sizes/button-sizes",
   },
   "button-with-arrow": {
@@ -293,28 +224,19 @@ export const Index: Record<string, RegistryEntry> = {
   "card-demo": {
     name: "card-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/card-demo/card-demo.tsx",
-      "registry/brook/examples/card-demo/card-demo.module.css",
-    ],
+    files: ["registry/brook/examples/card-demo/card-demo.tsx", "registry/brook/examples/card-demo/card-demo.module.css"],
     path: "@/registry/brook/examples/card-demo/card-demo",
   },
   "card-image-demo": {
     name: "card-image-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/card-image-demo/card-image-demo.tsx",
-      "registry/brook/examples/card-image-demo/card-image-demo.module.css",
-    ],
+    files: ["registry/brook/examples/card-image-demo/card-image-demo.tsx", "registry/brook/examples/card-image-demo/card-image-demo.module.css"],
     path: "@/registry/brook/examples/card-image-demo/card-image-demo",
   },
   "card-pricing-card": {
     name: "card-pricing-card",
     type: "example",
-    files: [
-      "registry/brook/examples/card-pricing-card/card-pricing-card.tsx",
-      "registry/brook/examples/card-pricing-card/card-pricing-card.module.css",
-    ],
+    files: ["registry/brook/examples/card-pricing-card/card-pricing-card.tsx", "registry/brook/examples/card-pricing-card/card-pricing-card.module.css"],
     path: "@/registry/brook/examples/card-pricing-card/card-pricing-card",
   },
   "card-settings": {
@@ -326,280 +248,187 @@ export const Index: Record<string, RegistryEntry> = {
   "card-transaction": {
     name: "card-transaction",
     type: "example",
-    files: [
-      "registry/brook/examples/card-transaction/card-transaction.tsx",
-      "registry/brook/examples/card-transaction/card-transaction.module.css",
-    ],
+    files: ["registry/brook/examples/card-transaction/card-transaction.tsx", "registry/brook/examples/card-transaction/card-transaction.module.css"],
     path: "@/registry/brook/examples/card-transaction/card-transaction",
   },
   "carousel-demo": {
     name: "carousel-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/carousel-demo/carousel-demo.tsx",
-      "registry/brook/examples/carousel-demo/carousel-demo.module.css",
-    ],
+    files: ["registry/brook/examples/carousel-demo/carousel-demo.tsx", "registry/brook/examples/carousel-demo/carousel-demo.module.css"],
     path: "@/registry/brook/examples/carousel-demo/carousel-demo",
   },
   "chart-area-demo": {
     name: "chart-area-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/chart-area-demo/chart-area-demo.tsx",
-      "registry/brook/examples/chart-area-demo/chart-area-demo.module.css",
-    ],
+    files: ["registry/brook/examples/chart-area-demo/chart-area-demo.tsx", "registry/brook/examples/chart-area-demo/chart-area-demo.module.css"],
     path: "@/registry/brook/examples/chart-area-demo/chart-area-demo",
   },
   "chart-bar-demo": {
     name: "chart-bar-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/chart-bar-demo/chart-bar-demo.tsx",
-      "registry/brook/examples/chart-bar-demo/chart-bar-demo.module.css",
-    ],
+    files: ["registry/brook/examples/chart-bar-demo/chart-bar-demo.tsx", "registry/brook/examples/chart-bar-demo/chart-bar-demo.module.css"],
     path: "@/registry/brook/examples/chart-bar-demo/chart-bar-demo",
   },
   "chart-line-demo": {
     name: "chart-line-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/chart-line-demo/chart-line-demo.tsx",
-      "registry/brook/examples/chart-line-demo/chart-line-demo.module.css",
-    ],
+    files: ["registry/brook/examples/chart-line-demo/chart-line-demo.tsx", "registry/brook/examples/chart-line-demo/chart-line-demo.module.css"],
     path: "@/registry/brook/examples/chart-line-demo/chart-line-demo",
   },
   "chart-pie-demo": {
     name: "chart-pie-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/chart-pie-demo/chart-pie-demo.tsx",
-      "registry/brook/examples/chart-pie-demo/chart-pie-demo.module.css",
-    ],
+    files: ["registry/brook/examples/chart-pie-demo/chart-pie-demo.tsx", "registry/brook/examples/chart-pie-demo/chart-pie-demo.module.css"],
     path: "@/registry/brook/examples/chart-pie-demo/chart-pie-demo",
   },
   "checkbox-card": {
     name: "checkbox-card",
     type: "example",
-    files: [
-      "registry/brook/examples/checkbox-card/checkbox-card.tsx",
-      "registry/brook/examples/checkbox-card/checkbox-card.module.css",
-    ],
+    files: ["registry/brook/examples/checkbox-card/checkbox-card.tsx", "registry/brook/examples/checkbox-card/checkbox-card.module.css"],
     path: "@/registry/brook/examples/checkbox-card/checkbox-card",
   },
   "checkbox-demo": {
     name: "checkbox-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/checkbox-demo/checkbox-demo.tsx",
-      "registry/brook/examples/checkbox-demo/checkbox-demo.module.css",
-    ],
+    files: ["registry/brook/examples/checkbox-demo/checkbox-demo.tsx", "registry/brook/examples/checkbox-demo/checkbox-demo.module.css"],
     path: "@/registry/brook/examples/checkbox-demo/checkbox-demo",
   },
   "checkbox-description": {
     name: "checkbox-description",
     type: "example",
-    files: [
-      "registry/brook/examples/checkbox-description/checkbox-description.tsx",
-      "registry/brook/examples/checkbox-description/checkbox-description.module.css",
-    ],
+    files: ["registry/brook/examples/checkbox-description/checkbox-description.tsx", "registry/brook/examples/checkbox-description/checkbox-description.module.css"],
     path: "@/registry/brook/examples/checkbox-description/checkbox-description",
   },
   "checkbox-group-demo": {
     name: "checkbox-group-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/checkbox-group-demo/checkbox-group-demo.tsx",
-      "registry/brook/examples/checkbox-group-demo/checkbox-group-demo.module.css",
-    ],
+    files: ["registry/brook/examples/checkbox-group-demo/checkbox-group-demo.tsx", "registry/brook/examples/checkbox-group-demo/checkbox-group-demo.module.css"],
     path: "@/registry/brook/examples/checkbox-group-demo/checkbox-group-demo",
   },
   "checkbox-group-parent": {
     name: "checkbox-group-parent",
     type: "example",
-    files: [
-      "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.tsx",
-      "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.module.css",
-    ],
+    files: ["registry/brook/examples/checkbox-group-parent/checkbox-group-parent.tsx", "registry/brook/examples/checkbox-group-parent/checkbox-group-parent.module.css"],
     path: "@/registry/brook/examples/checkbox-group-parent/checkbox-group-parent",
   },
   "collapsible-demo": {
     name: "collapsible-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/collapsible-demo/collapsible-demo.tsx",
-      "registry/brook/examples/collapsible-demo/collapsible-demo.module.css",
-    ],
+    files: ["registry/brook/examples/collapsible-demo/collapsible-demo.tsx", "registry/brook/examples/collapsible-demo/collapsible-demo.module.css"],
     path: "@/registry/brook/examples/collapsible-demo/collapsible-demo",
   },
   "combobox-auto-highlight": {
     name: "combobox-auto-highlight",
     type: "example",
-    files: [
-      "registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight.tsx",
-      "registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight.module.css",
-    ],
+    files: ["registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight.tsx", "registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight.module.css"],
     path: "@/registry/brook/examples/combobox-auto-highlight/combobox-auto-highlight",
   },
   "combobox-clearable": {
     name: "combobox-clearable",
     type: "example",
-    files: [
-      "registry/brook/examples/combobox-clearable/combobox-clearable.tsx",
-      "registry/brook/examples/combobox-clearable/combobox-clearable.module.css",
-    ],
+    files: ["registry/brook/examples/combobox-clearable/combobox-clearable.tsx", "registry/brook/examples/combobox-clearable/combobox-clearable.module.css"],
     path: "@/registry/brook/examples/combobox-clearable/combobox-clearable",
   },
   "combobox-demo": {
     name: "combobox-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/combobox-demo/combobox-demo.tsx",
-      "registry/brook/examples/combobox-demo/combobox-demo.module.css",
-    ],
+    files: ["registry/brook/examples/combobox-demo/combobox-demo.tsx", "registry/brook/examples/combobox-demo/combobox-demo.module.css"],
     path: "@/registry/brook/examples/combobox-demo/combobox-demo",
   },
   "combobox-grouped": {
     name: "combobox-grouped",
     type: "example",
-    files: [
-      "registry/brook/examples/combobox-grouped/combobox-grouped.tsx",
-      "registry/brook/examples/combobox-grouped/combobox-grouped.module.css",
-    ],
+    files: ["registry/brook/examples/combobox-grouped/combobox-grouped.tsx", "registry/brook/examples/combobox-grouped/combobox-grouped.module.css"],
     path: "@/registry/brook/examples/combobox-grouped/combobox-grouped",
   },
   "combobox-multiple": {
     name: "combobox-multiple",
     type: "example",
-    files: [
-      "registry/brook/examples/combobox-multiple/combobox-multiple.tsx",
-      "registry/brook/examples/combobox-multiple/combobox-multiple.module.css",
-    ],
+    files: ["registry/brook/examples/combobox-multiple/combobox-multiple.tsx", "registry/brook/examples/combobox-multiple/combobox-multiple.module.css"],
     path: "@/registry/brook/examples/combobox-multiple/combobox-multiple",
   },
   "command-demo": {
     name: "command-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/command-demo/command-demo.tsx",
-      "registry/brook/examples/command-demo/command-demo.module.css",
-    ],
+    files: ["registry/brook/examples/command-demo/command-demo.tsx", "registry/brook/examples/command-demo/command-demo.module.css"],
     path: "@/registry/brook/examples/command-demo/command-demo",
   },
   "context-menu-demo": {
     name: "context-menu-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/context-menu-demo/context-menu-demo.tsx",
-      "registry/brook/examples/context-menu-demo/context-menu-demo.module.css",
-    ],
+    files: ["registry/brook/examples/context-menu-demo/context-menu-demo.tsx", "registry/brook/examples/context-menu-demo/context-menu-demo.module.css"],
     path: "@/registry/brook/examples/context-menu-demo/context-menu-demo",
   },
   "copy-button-demo": {
     name: "copy-button-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/copy-button-demo/copy-button-demo.tsx",
-      "registry/brook/examples/copy-button-demo/copy-button-demo.module.css",
-    ],
+    files: ["registry/brook/examples/copy-button-demo/copy-button-demo.tsx", "registry/brook/examples/copy-button-demo/copy-button-demo.module.css"],
     path: "@/registry/brook/examples/copy-button-demo/copy-button-demo",
   },
   "dialog-demo": {
     name: "dialog-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/dialog-demo/dialog-demo.tsx",
-      "registry/brook/examples/dialog-demo/dialog-demo.module.css",
-    ],
+    files: ["registry/brook/examples/dialog-demo/dialog-demo.tsx", "registry/brook/examples/dialog-demo/dialog-demo.module.css"],
     path: "@/registry/brook/examples/dialog-demo/dialog-demo",
   },
   "dialog-motion": {
     name: "dialog-motion",
     type: "example",
-    files: [
-      "registry/brook/examples/dialog-motion/dialog-motion.tsx",
-      "registry/brook/examples/dialog-motion/dialog-motion.module.css",
-    ],
+    files: ["registry/brook/examples/dialog-motion/dialog-motion.tsx", "registry/brook/examples/dialog-motion/dialog-motion.module.css"],
     path: "@/registry/brook/examples/dialog-motion/dialog-motion",
   },
   "dialog-sheet": {
     name: "dialog-sheet",
     type: "example",
-    files: [
-      "registry/brook/examples/dialog-sheet/dialog-sheet.tsx",
-      "registry/brook/examples/dialog-sheet/dialog-sheet.module.css",
-    ],
+    files: ["registry/brook/examples/dialog-sheet/dialog-sheet.tsx", "registry/brook/examples/dialog-sheet/dialog-sheet.module.css"],
     path: "@/registry/brook/examples/dialog-sheet/dialog-sheet",
   },
   "drawer-action-sheet": {
     name: "drawer-action-sheet",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-action-sheet/drawer-action-sheet.tsx",
-      "registry/brook/examples/drawer-action-sheet/drawer-action-sheet.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-action-sheet/drawer-action-sheet.tsx", "registry/brook/examples/drawer-action-sheet/drawer-action-sheet.module.css"],
     path: "@/registry/brook/examples/drawer-action-sheet/drawer-action-sheet",
   },
   "drawer-demo": {
     name: "drawer-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-demo/drawer-demo.tsx",
-      "registry/brook/examples/drawer-demo/drawer-demo.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-demo/drawer-demo.tsx", "registry/brook/examples/drawer-demo/drawer-demo.module.css"],
     path: "@/registry/brook/examples/drawer-demo/drawer-demo",
   },
   "drawer-indent": {
     name: "drawer-indent",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-indent/drawer-indent.tsx",
-      "registry/brook/examples/drawer-indent/drawer-indent.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-indent/drawer-indent.tsx", "registry/brook/examples/drawer-indent/drawer-indent.module.css"],
     path: "@/registry/brook/examples/drawer-indent/drawer-indent",
   },
   "drawer-mobile-nav": {
     name: "drawer-mobile-nav",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav.tsx",
-      "registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav.tsx", "registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav.module.css"],
     path: "@/registry/brook/examples/drawer-mobile-nav/drawer-mobile-nav",
   },
   "drawer-nested": {
     name: "drawer-nested",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-nested/drawer-nested.tsx",
-      "registry/brook/examples/drawer-nested/drawer-nested.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-nested/drawer-nested.tsx", "registry/brook/examples/drawer-nested/drawer-nested.module.css"],
     path: "@/registry/brook/examples/drawer-nested/drawer-nested",
   },
   "drawer-non-modal": {
     name: "drawer-non-modal",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-non-modal/drawer-non-modal.tsx",
-      "registry/brook/examples/drawer-non-modal/drawer-non-modal.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-non-modal/drawer-non-modal.tsx", "registry/brook/examples/drawer-non-modal/drawer-non-modal.module.css"],
     path: "@/registry/brook/examples/drawer-non-modal/drawer-non-modal",
   },
   "drawer-side": {
     name: "drawer-side",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-side/drawer-side.tsx",
-      "registry/brook/examples/drawer-side/drawer-side.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-side/drawer-side.tsx", "registry/brook/examples/drawer-side/drawer-side.module.css"],
     path: "@/registry/brook/examples/drawer-side/drawer-side",
   },
   "drawer-snap-points": {
     name: "drawer-snap-points",
     type: "example",
-    files: [
-      "registry/brook/examples/drawer-snap-points/drawer-snap-points.tsx",
-      "registry/brook/examples/drawer-snap-points/drawer-snap-points.module.css",
-    ],
+    files: ["registry/brook/examples/drawer-snap-points/drawer-snap-points.tsx", "registry/brook/examples/drawer-snap-points/drawer-snap-points.module.css"],
     path: "@/registry/brook/examples/drawer-snap-points/drawer-snap-points",
   },
   "dropdown-menu-demo": {
@@ -611,55 +440,37 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu-motion": {
     name: "dropdown-menu-motion",
     type: "example",
-    files: [
-      "registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.tsx",
-      "registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.module.css",
-    ],
+    files: ["registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.tsx", "registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion.module.css"],
     path: "@/registry/brook/examples/dropdown-menu-motion/dropdown-menu-motion",
   },
   "dropdown-menu-profile": {
     name: "dropdown-menu-profile",
     type: "example",
-    files: [
-      "registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile.tsx",
-      "registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile.module.css",
-    ],
+    files: ["registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile.tsx", "registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile.module.css"],
     path: "@/registry/brook/examples/dropdown-menu-profile/dropdown-menu-profile",
   },
   "dropdown-menu-submenu": {
     name: "dropdown-menu-submenu",
     type: "example",
-    files: [
-      "registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu.tsx",
-      "registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu.module.css",
-    ],
+    files: ["registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu.tsx", "registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu.module.css"],
     path: "@/registry/brook/examples/dropdown-menu-submenu/dropdown-menu-submenu",
   },
   "expandable-card-demo": {
     name: "expandable-card-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/expandable-card-demo/expandable-card-demo.tsx",
-      "registry/brook/examples/expandable-card-demo/expandable-card-demo.module.css",
-    ],
+    files: ["registry/brook/examples/expandable-card-demo/expandable-card-demo.tsx", "registry/brook/examples/expandable-card-demo/expandable-card-demo.module.css"],
     path: "@/registry/brook/examples/expandable-card-demo/expandable-card-demo",
   },
   "field-demo": {
     name: "field-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/field-demo/field-demo.tsx",
-      "registry/brook/examples/field-demo/field-demo.module.css",
-    ],
+    files: ["registry/brook/examples/field-demo/field-demo.tsx", "registry/brook/examples/field-demo/field-demo.module.css"],
     path: "@/registry/brook/examples/field-demo/field-demo",
   },
   "fieldset-demo": {
     name: "fieldset-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/fieldset-demo/fieldset-demo.tsx",
-      "registry/brook/examples/fieldset-demo/fieldset-demo.module.css",
-    ],
+    files: ["registry/brook/examples/fieldset-demo/fieldset-demo.tsx", "registry/brook/examples/fieldset-demo/fieldset-demo.module.css"],
     path: "@/registry/brook/examples/fieldset-demo/fieldset-demo",
   },
   "form-demo": {
@@ -671,10 +482,7 @@ export const Index: Record<string, RegistryEntry> = {
   "input-demo": {
     name: "input-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/input-demo/input-demo.tsx",
-      "registry/brook/examples/input-demo/input-demo.module.css",
-    ],
+    files: ["registry/brook/examples/input-demo/input-demo.tsx", "registry/brook/examples/input-demo/input-demo.module.css"],
     path: "@/registry/brook/examples/input-demo/input-demo",
   },
   "kbd-demo": {
@@ -692,55 +500,37 @@ export const Index: Record<string, RegistryEntry> = {
   "menubar-demo": {
     name: "menubar-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/menubar-demo/menubar-demo.tsx",
-      "registry/brook/examples/menubar-demo/menubar-demo.module.css",
-    ],
+    files: ["registry/brook/examples/menubar-demo/menubar-demo.tsx", "registry/brook/examples/menubar-demo/menubar-demo.module.css"],
     path: "@/registry/brook/examples/menubar-demo/menubar-demo",
   },
   "meter-demo": {
     name: "meter-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/meter-demo/meter-demo.tsx",
-      "registry/brook/examples/meter-demo/meter-demo.module.css",
-    ],
+    files: ["registry/brook/examples/meter-demo/meter-demo.tsx", "registry/brook/examples/meter-demo/meter-demo.module.css"],
     path: "@/registry/brook/examples/meter-demo/meter-demo",
   },
   "navigation-menu-demo": {
     name: "navigation-menu-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/navigation-menu-demo/navigation-menu-demo.tsx",
-      "registry/brook/examples/navigation-menu-demo/navigation-menu-demo.module.css",
-    ],
+    files: ["registry/brook/examples/navigation-menu-demo/navigation-menu-demo.tsx", "registry/brook/examples/navigation-menu-demo/navigation-menu-demo.module.css"],
     path: "@/registry/brook/examples/navigation-menu-demo/navigation-menu-demo",
   },
   "navigation-sub-menu": {
     name: "navigation-sub-menu",
     type: "example",
-    files: [
-      "registry/brook/examples/navigation-sub-menu/navigation-sub-menu.tsx",
-      "registry/brook/examples/navigation-sub-menu/navigation-sub-menu.module.css",
-    ],
+    files: ["registry/brook/examples/navigation-sub-menu/navigation-sub-menu.tsx", "registry/brook/examples/navigation-sub-menu/navigation-sub-menu.module.css"],
     path: "@/registry/brook/examples/navigation-sub-menu/navigation-sub-menu",
   },
   "number-field-animated": {
     name: "number-field-animated",
     type: "example",
-    files: [
-      "registry/brook/examples/number-field-animated/number-field-animated.tsx",
-      "registry/brook/examples/number-field-animated/number-field-animated.module.css",
-    ],
+    files: ["registry/brook/examples/number-field-animated/number-field-animated.tsx", "registry/brook/examples/number-field-animated/number-field-animated.module.css"],
     path: "@/registry/brook/examples/number-field-animated/number-field-animated",
   },
   "number-field-demo": {
     name: "number-field-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/number-field-demo/number-field-demo.tsx",
-      "registry/brook/examples/number-field-demo/number-field-demo.module.css",
-    ],
+    files: ["registry/brook/examples/number-field-demo/number-field-demo.tsx", "registry/brook/examples/number-field-demo/number-field-demo.module.css"],
     path: "@/registry/brook/examples/number-field-demo/number-field-demo",
   },
   "otp-field-demo": {
@@ -752,37 +542,25 @@ export const Index: Record<string, RegistryEntry> = {
   "popover-animated": {
     name: "popover-animated",
     type: "example",
-    files: [
-      "registry/brook/examples/popover-animated/popover-animated.tsx",
-      "registry/brook/examples/popover-animated/popover-animated.module.css",
-    ],
+    files: ["registry/brook/examples/popover-animated/popover-animated.tsx", "registry/brook/examples/popover-animated/popover-animated.module.css"],
     path: "@/registry/brook/examples/popover-animated/popover-animated",
   },
   "popover-demo": {
     name: "popover-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/popover-demo/popover-demo.tsx",
-      "registry/brook/examples/popover-demo/popover-demo.module.css",
-    ],
+    files: ["registry/brook/examples/popover-demo/popover-demo.tsx", "registry/brook/examples/popover-demo/popover-demo.module.css"],
     path: "@/registry/brook/examples/popover-demo/popover-demo",
   },
   "preview-card-demo": {
     name: "preview-card-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/preview-card-demo/preview-card-demo.tsx",
-      "registry/brook/examples/preview-card-demo/preview-card-demo.module.css",
-    ],
+    files: ["registry/brook/examples/preview-card-demo/preview-card-demo.tsx", "registry/brook/examples/preview-card-demo/preview-card-demo.module.css"],
     path: "@/registry/brook/examples/preview-card-demo/preview-card-demo",
   },
   "progress-demo": {
     name: "progress-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/progress-demo/progress-demo.tsx",
-      "registry/brook/examples/progress-demo/progress-demo.module.css",
-    ],
+    files: ["registry/brook/examples/progress-demo/progress-demo.tsx", "registry/brook/examples/progress-demo/progress-demo.module.css"],
     path: "@/registry/brook/examples/progress-demo/progress-demo",
   },
   "prop-table-demo": {
@@ -794,28 +572,19 @@ export const Index: Record<string, RegistryEntry> = {
   "radio-demo": {
     name: "radio-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/radio-demo/radio-demo.tsx",
-      "registry/brook/examples/radio-demo/radio-demo.module.css",
-    ],
+    files: ["registry/brook/examples/radio-demo/radio-demo.tsx", "registry/brook/examples/radio-demo/radio-demo.module.css"],
     path: "@/registry/brook/examples/radio-demo/radio-demo",
   },
   "scroll-area-demo": {
     name: "scroll-area-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/scroll-area-demo/scroll-area-demo.tsx",
-      "registry/brook/examples/scroll-area-demo/scroll-area-demo.module.css",
-    ],
+    files: ["registry/brook/examples/scroll-area-demo/scroll-area-demo.tsx", "registry/brook/examples/scroll-area-demo/scroll-area-demo.module.css"],
     path: "@/registry/brook/examples/scroll-area-demo/scroll-area-demo",
   },
   "select-demo": {
     name: "select-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/select-demo/select-demo.tsx",
-      "registry/brook/examples/select-demo/select-demo.module.css",
-    ],
+    files: ["registry/brook/examples/select-demo/select-demo.tsx", "registry/brook/examples/select-demo/select-demo.module.css"],
     path: "@/registry/brook/examples/select-demo/select-demo",
   },
   "separator-demo": {
@@ -833,28 +602,19 @@ export const Index: Record<string, RegistryEntry> = {
   "slider-demo": {
     name: "slider-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/slider-demo/slider-demo.tsx",
-      "registry/brook/examples/slider-demo/slider-demo.module.css",
-    ],
+    files: ["registry/brook/examples/slider-demo/slider-demo.tsx", "registry/brook/examples/slider-demo/slider-demo.module.css"],
     path: "@/registry/brook/examples/slider-demo/slider-demo",
   },
   "switch-demo": {
     name: "switch-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/switch-demo/switch-demo.tsx",
-      "registry/brook/examples/switch-demo/switch-demo.module.css",
-    ],
+    files: ["registry/brook/examples/switch-demo/switch-demo.tsx", "registry/brook/examples/switch-demo/switch-demo.module.css"],
     path: "@/registry/brook/examples/switch-demo/switch-demo",
   },
   "switch-with-label": {
     name: "switch-with-label",
     type: "example",
-    files: [
-      "registry/brook/examples/switch-with-label/switch-with-label.tsx",
-      "registry/brook/examples/switch-with-label/switch-with-label.module.css",
-    ],
+    files: ["registry/brook/examples/switch-with-label/switch-with-label.tsx", "registry/brook/examples/switch-with-label/switch-with-label.module.css"],
     path: "@/registry/brook/examples/switch-with-label/switch-with-label",
   },
   "table-demo": {
@@ -866,19 +626,13 @@ export const Index: Record<string, RegistryEntry> = {
   "tabs-demo": {
     name: "tabs-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/tabs-demo/tabs-demo.tsx",
-      "registry/brook/examples/tabs-demo/tabs-demo.module.css",
-    ],
+    files: ["registry/brook/examples/tabs-demo/tabs-demo.tsx", "registry/brook/examples/tabs-demo/tabs-demo.module.css"],
     path: "@/registry/brook/examples/tabs-demo/tabs-demo",
   },
   "tabs-motion": {
     name: "tabs-motion",
     type: "example",
-    files: [
-      "registry/brook/examples/tabs-motion/tabs-motion.tsx",
-      "registry/brook/examples/tabs-motion/tabs-motion.module.css",
-    ],
+    files: ["registry/brook/examples/tabs-motion/tabs-motion.tsx", "registry/brook/examples/tabs-motion/tabs-motion.module.css"],
     path: "@/registry/brook/examples/tabs-motion/tabs-motion",
   },
   "tabs-vertical": {
@@ -896,28 +650,19 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-demo": {
     name: "toggle-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/toggle-demo/toggle-demo.tsx",
-      "registry/brook/examples/toggle-demo/toggle-demo.module.css",
-    ],
+    files: ["registry/brook/examples/toggle-demo/toggle-demo.tsx", "registry/brook/examples/toggle-demo/toggle-demo.module.css"],
     path: "@/registry/brook/examples/toggle-demo/toggle-demo",
   },
   "toggle-group-demo": {
     name: "toggle-group-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/toggle-group-demo/toggle-group-demo.tsx",
-      "registry/brook/examples/toggle-group-demo/toggle-group-demo.module.css",
-    ],
+    files: ["registry/brook/examples/toggle-group-demo/toggle-group-demo.tsx", "registry/brook/examples/toggle-group-demo/toggle-group-demo.module.css"],
     path: "@/registry/brook/examples/toggle-group-demo/toggle-group-demo",
   },
   "toolbar-demo": {
     name: "toolbar-demo",
     type: "example",
-    files: [
-      "registry/brook/examples/toolbar-demo/toolbar-demo.tsx",
-      "registry/brook/examples/toolbar-demo/toolbar-demo.module.css",
-    ],
+    files: ["registry/brook/examples/toolbar-demo/toolbar-demo.tsx", "registry/brook/examples/toolbar-demo/toolbar-demo.module.css"],
     path: "@/registry/brook/examples/toolbar-demo/toolbar-demo",
   },
   "tooltip-demo": {
@@ -929,97 +674,55 @@ export const Index: Record<string, RegistryEntry> = {
   "ai-chat": {
     name: "ai-chat",
     type: "block",
-    files: [
-      "registry/brook/blocks/ai-chat/components/ai-chat.module.css",
-      "registry/brook/blocks/ai-chat/components/ai-chat.tsx",
-      "registry/brook/blocks/ai-chat/page.tsx",
-    ],
+    files: ["registry/brook/blocks/ai-chat/components/ai-chat.module.css", "registry/brook/blocks/ai-chat/components/ai-chat.tsx", "registry/brook/blocks/ai-chat/page.tsx"],
     path: "@/registry/brook/blocks/ai-chat/page",
   },
   "card-image-section": {
     name: "card-image-section",
     type: "block",
-    files: [
-      "registry/brook/blocks/card-image-section/components/card-image-section.module.css",
-      "registry/brook/blocks/card-image-section/components/card-image-section.tsx",
-      "registry/brook/blocks/card-image-section/data.json",
-      "registry/brook/blocks/card-image-section/page.tsx",
-    ],
+    files: ["registry/brook/blocks/card-image-section/components/card-image-section.module.css", "registry/brook/blocks/card-image-section/components/card-image-section.tsx", "registry/brook/blocks/card-image-section/data.json", "registry/brook/blocks/card-image-section/page.tsx"],
     path: "@/registry/brook/blocks/card-image-section/page",
   },
   "card-login": {
     name: "card-login",
     type: "block",
-    files: [
-      "registry/brook/blocks/card-login/components/card-login.module.css",
-      "registry/brook/blocks/card-login/components/card-login.tsx",
-      "registry/brook/blocks/card-login/page.tsx",
-    ],
+    files: ["registry/brook/blocks/card-login/components/card-login.module.css", "registry/brook/blocks/card-login/components/card-login.tsx", "registry/brook/blocks/card-login/page.tsx"],
     path: "@/registry/brook/blocks/card-login/page",
   },
   "card-progress": {
     name: "card-progress",
     type: "block",
-    files: [
-      "registry/brook/blocks/card-progress/components/progress-card.module.css",
-      "registry/brook/blocks/card-progress/components/progress-card.tsx",
-      "registry/brook/blocks/card-progress/page.tsx",
-    ],
+    files: ["registry/brook/blocks/card-progress/components/progress-card.module.css", "registry/brook/blocks/card-progress/components/progress-card.tsx", "registry/brook/blocks/card-progress/page.tsx"],
     path: "@/registry/brook/blocks/card-progress/page",
   },
   "card-task": {
     name: "card-task",
     type: "block",
-    files: [
-      "registry/brook/blocks/card-task/components/card-task.module.css",
-      "registry/brook/blocks/card-task/components/card-task.tsx",
-      "registry/brook/blocks/card-task/page.tsx",
-    ],
+    files: ["registry/brook/blocks/card-task/components/card-task.module.css", "registry/brook/blocks/card-task/components/card-task.tsx", "registry/brook/blocks/card-task/page.tsx"],
     path: "@/registry/brook/blocks/card-task/page",
   },
   "card-traffic": {
     name: "card-traffic",
     type: "block",
-    files: [
-      "registry/brook/blocks/card-traffic/components/card-traffic.module.css",
-      "registry/brook/blocks/card-traffic/components/card-traffic.tsx",
-      "registry/brook/blocks/card-traffic/data.json",
-      "registry/brook/blocks/card-traffic/page.tsx",
-    ],
+    files: ["registry/brook/blocks/card-traffic/components/card-traffic.module.css", "registry/brook/blocks/card-traffic/components/card-traffic.tsx", "registry/brook/blocks/card-traffic/data.json", "registry/brook/blocks/card-traffic/page.tsx"],
     path: "@/registry/brook/blocks/card-traffic/page",
   },
   "expandable-card-carousel": {
     name: "expandable-card-carousel",
     type: "block",
-    files: [
-      "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.module.css",
-      "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx",
-      "registry/brook/blocks/expandable-card-carousel/data.json",
-      "registry/brook/blocks/expandable-card-carousel/page.tsx",
-    ],
+    files: ["registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.module.css", "registry/brook/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx", "registry/brook/blocks/expandable-card-carousel/data.json", "registry/brook/blocks/expandable-card-carousel/page.tsx"],
     path: "@/registry/brook/blocks/expandable-card-carousel/page",
   },
   "expandable-card-spread": {
     name: "expandable-card-spread",
     type: "block",
-    files: [
-      "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.module.css",
-      "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
-      "registry/brook/blocks/expandable-card-spread/components/mobile-stack.tsx",
-      "registry/brook/blocks/expandable-card-spread/data.json",
-      "registry/brook/blocks/expandable-card-spread/page.tsx",
-    ],
+    files: ["registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.module.css", "registry/brook/blocks/expandable-card-spread/components/expandable-card-spread.tsx", "registry/brook/blocks/expandable-card-spread/components/mobile-stack.tsx", "registry/brook/blocks/expandable-card-spread/data.json", "registry/brook/blocks/expandable-card-spread/page.tsx"],
     path: "@/registry/brook/blocks/expandable-card-spread/page",
   },
   "pricing-section": {
     name: "pricing-section",
     type: "block",
-    files: [
-      "registry/brook/blocks/pricing-section/components/pricing-section.module.css",
-      "registry/brook/blocks/pricing-section/components/pricing-section.tsx",
-      "registry/brook/blocks/pricing-section/data.json",
-      "registry/brook/blocks/pricing-section/page.tsx",
-    ],
+    files: ["registry/brook/blocks/pricing-section/components/pricing-section.module.css", "registry/brook/blocks/pricing-section/components/pricing-section.tsx", "registry/brook/blocks/pricing-section/data.json", "registry/brook/blocks/pricing-section/page.tsx"],
     path: "@/registry/brook/blocks/pricing-section/page",
   },
   accordion: {
@@ -1035,10 +738,7 @@ export const Index: Record<string, RegistryEntry> = {
   "alert-dialog": {
     name: "alert-dialog",
     type: "ui",
-    files: [
-      "registry/brook/ui/alert-dialog/alert-dialog.tsx",
-      "registry/brook/ui/alert-dialog/alert-dialog.module.css",
-    ],
+    files: ["registry/brook/ui/alert-dialog/alert-dialog.tsx", "registry/brook/ui/alert-dialog/alert-dialog.module.css"],
   },
   "arrow-icon": {
     name: "arrow-icon",
@@ -1048,10 +748,7 @@ export const Index: Record<string, RegistryEntry> = {
   autocomplete: {
     name: "autocomplete",
     type: "ui",
-    files: [
-      "registry/brook/ui/autocomplete/autocomplete.tsx",
-      "registry/brook/ui/autocomplete/autocomplete.module.css",
-    ],
+    files: ["registry/brook/ui/autocomplete/autocomplete.tsx", "registry/brook/ui/autocomplete/autocomplete.module.css"],
   },
   avatar: {
     name: "avatar",
@@ -1101,10 +798,7 @@ export const Index: Record<string, RegistryEntry> = {
   "checkbox-group": {
     name: "checkbox-group",
     type: "ui",
-    files: [
-      "registry/brook/ui/checkbox-group/checkbox-group.tsx",
-      "registry/brook/ui/checkbox-group/checkbox-group.module.css",
-    ],
+    files: ["registry/brook/ui/checkbox-group/checkbox-group.tsx", "registry/brook/ui/checkbox-group/checkbox-group.module.css"],
   },
   collapsible: {
     name: "collapsible",
@@ -1124,10 +818,7 @@ export const Index: Record<string, RegistryEntry> = {
   "context-menu": {
     name: "context-menu",
     type: "ui",
-    files: [
-      "registry/brook/ui/context-menu/context-menu.tsx",
-      "registry/brook/ui/context-menu/context-menu.module.css",
-    ],
+    files: ["registry/brook/ui/context-menu/context-menu.tsx", "registry/brook/ui/context-menu/context-menu.module.css"],
   },
   "copy-button": {
     name: "copy-button",
@@ -1147,18 +838,12 @@ export const Index: Record<string, RegistryEntry> = {
   "dropdown-menu": {
     name: "dropdown-menu",
     type: "ui",
-    files: [
-      "registry/brook/ui/dropdown-menu/dropdown-menu.tsx",
-      "registry/brook/ui/dropdown-menu/dropdown-menu.module.css",
-    ],
+    files: ["registry/brook/ui/dropdown-menu/dropdown-menu.tsx", "registry/brook/ui/dropdown-menu/dropdown-menu.module.css"],
   },
   "expandable-card": {
     name: "expandable-card",
     type: "ui",
-    files: [
-      "registry/brook/ui/expandable-card/expandable-card.tsx",
-      "registry/brook/ui/expandable-card/expandable-card.module.css",
-    ],
+    files: ["registry/brook/ui/expandable-card/expandable-card.tsx", "registry/brook/ui/expandable-card/expandable-card.module.css"],
   },
   field: {
     name: "field",
@@ -1203,18 +888,12 @@ export const Index: Record<string, RegistryEntry> = {
   "navigation-menu": {
     name: "navigation-menu",
     type: "ui",
-    files: [
-      "registry/brook/ui/navigation-menu/navigation-menu.tsx",
-      "registry/brook/ui/navigation-menu/navigation-menu.module.css",
-    ],
+    files: ["registry/brook/ui/navigation-menu/navigation-menu.tsx", "registry/brook/ui/navigation-menu/navigation-menu.module.css"],
   },
   "number-field": {
     name: "number-field",
     type: "ui",
-    files: [
-      "registry/brook/ui/number-field/number-field.tsx",
-      "registry/brook/ui/number-field/number-field.module.css",
-    ],
+    files: ["registry/brook/ui/number-field/number-field.tsx", "registry/brook/ui/number-field/number-field.module.css"],
   },
   "otp-field": {
     name: "otp-field",
@@ -1229,10 +908,7 @@ export const Index: Record<string, RegistryEntry> = {
   "preview-card": {
     name: "preview-card",
     type: "ui",
-    files: [
-      "registry/brook/ui/preview-card/preview-card.tsx",
-      "registry/brook/ui/preview-card/preview-card.module.css",
-    ],
+    files: ["registry/brook/ui/preview-card/preview-card.tsx", "registry/brook/ui/preview-card/preview-card.module.css"],
   },
   progress: {
     name: "progress",
@@ -1302,10 +978,7 @@ export const Index: Record<string, RegistryEntry> = {
   "toggle-group": {
     name: "toggle-group",
     type: "ui",
-    files: [
-      "registry/brook/ui/toggle-group/toggle-group.tsx",
-      "registry/brook/ui/toggle-group/toggle-group.module.css",
-    ],
+    files: ["registry/brook/ui/toggle-group/toggle-group.tsx", "registry/brook/ui/toggle-group/toggle-group.module.css"],
   },
   toolbar: {
     name: "toolbar",
@@ -1938,88 +1611,55 @@ export const Index: Record<string, RegistryEntry> = {
   "ai-chat-tailwind": {
     name: "ai-chat-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/ai-chat/components/ai-chat.tsx",
-      "registry/brook/tailwind/blocks/ai-chat/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/ai-chat/components/ai-chat.tsx", "registry/brook/tailwind/blocks/ai-chat/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/ai-chat/page",
   },
   "card-image-section-tailwind": {
     name: "card-image-section-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/card-image-section/components/card-image-section.tsx",
-      "registry/brook/tailwind/blocks/card-image-section/data.json",
-      "registry/brook/tailwind/blocks/card-image-section/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/card-image-section/components/card-image-section.tsx", "registry/brook/tailwind/blocks/card-image-section/data.json", "registry/brook/tailwind/blocks/card-image-section/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/card-image-section/page",
   },
   "card-login-tailwind": {
     name: "card-login-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/card-login/components/card-login.tsx",
-      "registry/brook/tailwind/blocks/card-login/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/card-login/components/card-login.tsx", "registry/brook/tailwind/blocks/card-login/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/card-login/page",
   },
   "card-progress-tailwind": {
     name: "card-progress-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/card-progress/components/progress-card.tsx",
-      "registry/brook/tailwind/blocks/card-progress/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/card-progress/components/progress-card.tsx", "registry/brook/tailwind/blocks/card-progress/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/card-progress/page",
   },
   "card-task-tailwind": {
     name: "card-task-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/card-task/components/card-task.tsx",
-      "registry/brook/tailwind/blocks/card-task/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/card-task/components/card-task.tsx", "registry/brook/tailwind/blocks/card-task/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/card-task/page",
   },
   "card-traffic-tailwind": {
     name: "card-traffic-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/card-traffic/components/card-traffic.tsx",
-      "registry/brook/tailwind/blocks/card-traffic/data.json",
-      "registry/brook/tailwind/blocks/card-traffic/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/card-traffic/components/card-traffic.tsx", "registry/brook/tailwind/blocks/card-traffic/data.json", "registry/brook/tailwind/blocks/card-traffic/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/card-traffic/page",
   },
   "expandable-card-carousel-tailwind": {
     name: "expandable-card-carousel-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx",
-      "registry/brook/tailwind/blocks/expandable-card-carousel/data.json",
-      "registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/expandable-card-carousel/components/expandable-card-carousel.tsx", "registry/brook/tailwind/blocks/expandable-card-carousel/data.json", "registry/brook/tailwind/blocks/expandable-card-carousel/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/expandable-card-carousel/page",
   },
   "expandable-card-spread-tailwind": {
     name: "expandable-card-spread-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/expandable-card-spread/components/expandable-card-spread.tsx",
-      "registry/brook/tailwind/blocks/expandable-card-spread/components/mobile-stack.tsx",
-      "registry/brook/tailwind/blocks/expandable-card-spread/data.json",
-      "registry/brook/tailwind/blocks/expandable-card-spread/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/expandable-card-spread/components/expandable-card-spread.tsx", "registry/brook/tailwind/blocks/expandable-card-spread/components/mobile-stack.tsx", "registry/brook/tailwind/blocks/expandable-card-spread/data.json", "registry/brook/tailwind/blocks/expandable-card-spread/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/expandable-card-spread/page",
   },
   "pricing-section-tailwind": {
     name: "pricing-section-tailwind",
     type: "block",
-    files: [
-      "registry/brook/tailwind/blocks/pricing-section/components/pricing-section.tsx",
-      "registry/brook/tailwind/blocks/pricing-section/data.json",
-      "registry/brook/tailwind/blocks/pricing-section/page.tsx",
-    ],
+    files: ["registry/brook/tailwind/blocks/pricing-section/components/pricing-section.tsx", "registry/brook/tailwind/blocks/pricing-section/data.json", "registry/brook/tailwind/blocks/pricing-section/page.tsx"],
     path: "@/registry/brook/tailwind/blocks/pricing-section/page",
   },
   accordionTailwind: {

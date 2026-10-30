@@ -110,8 +110,10 @@
     rotate: 90deg;
   }
 
-  &:hover .icon {
-    color: var(--foreground);
+  @media (hover: hover) {
+    &:hover .icon {
+      color: var(--foreground);
+    }
   }
 
   &[data-panel-open] .horizontalLine {

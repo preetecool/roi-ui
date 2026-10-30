@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { MotionConfig, motion } from "motion/react";
 import { useState } from "react";
 import styles from "./home-animated-button.module.css";
 
@@ -68,80 +68,82 @@ export const HomeAnimatedButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={styles.container}>
-      <motion.div
-        animate={{
-          borderRadius: isOpen ? 16 : 10,
-        }}
-        className={styles.wrapper}
-        layout
-        transition={{
-          duration: 0.4,
-          ease: [0.77, 0, 0.175, 1],
-        }}
-      >
+    <MotionConfig reducedMotion="user">
+      <div className={styles.container}>
         <motion.div
-          className={styles.background}
+          animate={{
+            borderRadius: isOpen ? 16 : 10,
+          }}
+          className={styles.wrapper}
           layout
           transition={{
             duration: 0.4,
             ease: [0.77, 0, 0.175, 1],
           }}
-        />
-
-        <button
-          aria-expanded={isOpen}
-          aria-haspopup="menu"
-          className={styles.trigger}
-          onClick={() => setIsOpen(!isOpen)}
-          type="button"
         >
-          <span className={styles.triggerText}>New file</span>
-          <motion.span
-            animate={{ rotate: isOpen ? 45 : 0 }}
-            className={styles.triggerIcon}
+          <motion.div
+            className={styles.background}
+            layout
+            transition={{
+              duration: 0.4,
+              ease: [0.77, 0, 0.175, 1],
+            }}
+          />
+
+          <button
+            aria-expanded={isOpen}
+            aria-haspopup="menu"
+            className={styles.trigger}
+            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+          >
+            <span className={styles.triggerText}>New file</span>
+            <motion.span
+              animate={{ rotate: isOpen ? 45 : 0 }}
+              className={styles.triggerIcon}
+              transition={{
+                duration: 0.4,
+                ease: [0.77, 0, 0.175, 1],
+              }}
+            >
+              <svg
+                aria-hidden="true"
+                className={styles.plusIcon}
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 5v14m7-7H5" />
+              </svg>
+            </motion.span>
+          </button>
+
+          <motion.div
+            animate={{
+              height: isOpen ? "auto" : 0,
+              opacity: isOpen ? 1 : 0,
+            }}
+            className={styles.menuWrapper}
+            initial={false}
             transition={{
               duration: 0.4,
               ease: [0.77, 0, 0.175, 1],
             }}
           >
-            <svg
-              aria-hidden="true"
-              className={styles.plusIcon}
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 5v14m7-7H5" />
-            </svg>
-          </motion.span>
-        </button>
-
-        <motion.div
-          animate={{
-            height: isOpen ? "auto" : 0,
-            opacity: isOpen ? 1 : 0,
-          }}
-          className={styles.menuWrapper}
-          initial={false}
-          transition={{
-            duration: 0.4,
-            ease: [0.77, 0, 0.175, 1],
-          }}
-        >
-          <div className={styles.menu}>
-            {menuItems.map((item) => (
-              <button className={styles.menuItem} key={item.label} type="button">
-                <span className={styles.menuItemIcon}>{item.icon}</span>
-                <span className={styles.menuItemLabel}>{item.label}</span>
-              </button>
-            ))}
-          </div>
+            <div className={styles.menu}>
+              {menuItems.map((item) => (
+                <button className={styles.menuItem} key={item.label} type="button">
+                  <span className={styles.menuItemIcon}>{item.icon}</span>
+                  <span className={styles.menuItemLabel}>{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+    </MotionConfig>
   );
 };

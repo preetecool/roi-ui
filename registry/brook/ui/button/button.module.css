@@ -70,8 +70,10 @@
     inset 0 1px oklch(1 0 0 / 0.16);
 }
 
-.primary:hover:not([data-disabled])::before {
-  background-color: oklch(from var(--primary-foreground) l c h / 0.1);
+@media (hover: hover) {
+  .primary:hover:not([data-disabled])::before {
+    background-color: oklch(from var(--primary-foreground) l c h / 0.1);
+  }
 }
 
 /* Secondary */
@@ -80,9 +82,14 @@
   color: var(--secondary-foreground);
 }
 
-.secondary:hover:not([data-disabled])::before,
 .secondary[data-pressed]::before {
   background-color: oklch(from var(--secondary-foreground) l c h / 0.08);
+}
+
+@media (hover: hover) {
+  .secondary:hover:not([data-disabled])::before {
+    background-color: oklch(from var(--secondary-foreground) l c h / 0.08);
+  }
 }
 
 /* Destructive */
@@ -95,8 +102,10 @@
     inset 0 1px oklch(1 0 0 / 0.16);
 }
 
-.destructive:hover:not([data-disabled])::before {
-  background-color: oklch(1 0 0 / 0.08);
+@media (hover: hover) {
+  .destructive:hover:not([data-disabled])::before {
+    background-color: oklch(1 0 0 / 0.08);
+  }
 }
 
 /* Ghost */
@@ -105,9 +114,14 @@
   color: var(--foreground);
 }
 
-.ghost:hover:not([data-disabled]),
 .ghost[data-popup-open] {
   background-color: var(--accent);
+}
+
+@media (hover: hover) {
+  .ghost:hover:not([data-disabled]) {
+    background-color: var(--accent);
+  }
 }
 
 /* Outline */
@@ -131,9 +145,14 @@
   background-clip: padding-box;
 }
 
-.outline:hover:not([data-disabled])::before,
 .outline[data-popup-open]::before {
   background-color: oklch(from var(--muted) l c h / 0.8);
+}
+
+@media (hover: hover) {
+  .outline:hover:not([data-disabled])::before {
+    background-color: oklch(from var(--muted) l c h / 0.8);
+  }
 }
 
 .link {
@@ -144,9 +163,11 @@
   transition: text-decoration 0.2s ease-out;
 }
 
-.link:hover:not([data-disabled]) {
-  text-decoration: underline;
-  color: var(--foreground);
+@media (hover: hover) {
+  .link:hover:not([data-disabled]) {
+    text-decoration: underline;
+    color: var(--foreground);
+  }
 }
 
 .sm {
@@ -216,8 +237,10 @@
   transition: transform 200ms var(--ease-in-out-cubic);
 }
 
-.base:hover .arrowExternal {
-  transform: rotate(-45deg);
+@media (hover: hover) {
+  .base:hover .arrowExternal {
+    transform: rotate(-45deg);
+  }
 }
 
 .arrowPoint {
@@ -232,22 +255,30 @@
   transform: translateX(-0.5px);
 }
 
-.base:hover .arrowPoint {
-  transform: translateX(2px);
+@media (hover: hover) {
+  .base:hover .arrowPoint {
+    transform: translateX(2px);
+  }
 }
 
-.base:hover .arrowShaft {
-  opacity: 1;
-  transform: translateX(-2px);
+@media (hover: hover) {
+  .base:hover .arrowShaft {
+    opacity: 1;
+    transform: translateX(-2px);
+  }
 }
 
-.base:hover .arrowLeft .arrowPoint {
-  transform: translateX(-2px);
+@media (hover: hover) {
+  .base:hover .arrowLeft .arrowPoint {
+    transform: translateX(-2px);
+  }
 }
 
-.base:hover .arrowLeft .arrowShaft {
-  opacity: 1;
-  transform: translateX(1px);
+@media (hover: hover) {
+  .base:hover .arrowLeft .arrowShaft {
+    opacity: 1;
+    transform: translateX(1px);
+  }
 }
 
 .spinner {

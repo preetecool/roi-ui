@@ -62,7 +62,7 @@
           "target": "~/components/ui/alert-dialog/alert-dialog.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "autocomplete",
@@ -119,7 +119,7 @@
           "target": "~/components/ui/avatar/avatar.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "background",
@@ -142,7 +142,7 @@
     {
       "name": "badge",
       "type": "registry:item",
-      "dependencies": ["class-variance-authority", "@base-ui/react@1.5.0"],
+      "dependencies": ["class-variance-authority", "@base-ui/react@1.9.0"],
       "title": "Badge",
       "description": "A small count and labeling component.",
       "files": [
@@ -161,7 +161,7 @@
     {
       "name": "button",
       "type": "registry:item",
-      "dependencies": ["class-variance-authority", "@base-ui/react@1.5.0"],
+      "dependencies": ["class-variance-authority", "@base-ui/react@1.9.0"],
       "title": "Button",
       "description": "A button component.",
       "files": [
@@ -251,7 +251,7 @@
           "target": "~/components/ui/checkbox/checkbox.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "checkbox-group",
@@ -307,7 +307,7 @@
           "target": "~/components/ui/combobox/combobox.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0", "lucide-react"]
+      "dependencies": ["@base-ui/react@1.9.0", "lucide-react"]
     },
     {
       "name": "command",
@@ -381,7 +381,7 @@
           "target": "~/components/ui/dialog/dialog.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "drawer",
@@ -418,12 +418,12 @@
           "target": "~/components/ui/dropdown-menu/dropdown-menu.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0", "lucide-react"]
+      "dependencies": ["@base-ui/react@1.9.0", "lucide-react"]
     },
     {
       "name": "expandable-card",
       "type": "registry:item",
-      "dependencies": ["motion", "lucide-react", "@base-ui/react@1.5.0"],
+      "dependencies": ["motion", "lucide-react", "@base-ui/react@1.9.0"],
       "title": "Expandable Card",
       "description": "A card component that can expand to show more content.",
       "files": [
@@ -489,7 +489,7 @@
           "target": "~/components/ui/field/field.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "fieldset",
@@ -526,7 +526,7 @@
           "target": "~/components/ui/form/form.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "input",
@@ -545,7 +545,7 @@
           "target": "~/components/ui/input/input.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "like-button",
@@ -726,7 +726,7 @@
           "target": "~/components/ui/select/select.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0", "lucide-react"]
+      "dependencies": ["@base-ui/react@1.9.0", "lucide-react"]
     },
     {
       "name": "separator",
@@ -908,7 +908,7 @@
           "target": "~/components/ui/tooltip/tooltip.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "chart",
@@ -946,7 +946,7 @@
           "target": "~/components/ui/progress/progress.module.css"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "prop-table",
@@ -1240,7 +1240,7 @@
           "target": "~/components/ui/alert-dialog/alert-dialog.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "autocomplete-tailwind",
@@ -1268,7 +1268,7 @@
           "target": "~/components/ui/avatar/avatar.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "background-tailwind",
@@ -1286,7 +1286,7 @@
     {
       "name": "badge-tailwind",
       "type": "registry:item",
-      "dependencies": ["class-variance-authority", "@base-ui/react@1.5.0"],
+      "dependencies": ["class-variance-authority", "@base-ui/react@1.9.0"],
       "title": "Badge (Tailwind)",
       "description": "A small count and labeling component.",
       "files": [
@@ -1300,7 +1300,7 @@
     {
       "name": "button-tailwind",
       "type": "registry:item",
-      "dependencies": ["class-variance-authority", "@base-ui/react@1.5.0"],
+      "dependencies": ["class-variance-authority", "@base-ui/react@1.9.0"],
       "title": "Button (Tailwind)",
       "description": "A button component.",
       "files": [
@@ -1365,7 +1365,7 @@
           "target": "~/components/ui/checkbox/checkbox.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "checkbox-group-tailwind",
@@ -1406,7 +1406,7 @@
           "target": "~/components/ui/combobox/combobox.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0", "lucide-react"]
+      "dependencies": ["@base-ui/react@1.9.0", "lucide-react"]
     },
     {
       "name": "command-tailwind",
@@ -1460,7 +1460,7 @@
           "target": "~/components/ui/dialog/dialog.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "drawer-tailwind",
@@ -1487,7 +1487,7 @@
           "target": "~/components/ui/dropdown-menu/dropdown-menu.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0", "lucide-react"]
+      "dependencies": ["@base-ui/react@1.9.0", "lucide-react"]
     },
     {
       "name": "field-tailwind",
@@ -1501,7 +1501,7 @@
           "target": "~/components/ui/field/field.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "fieldset-tailwind",
@@ -1528,12 +1528,12 @@
           "target": "~/components/ui/form/form.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "input-tailwind",
       "type": "registry:item",
-      "dependencies": ["class-variance-authority", "@base-ui/react@1.5.0"],
+      "dependencies": ["class-variance-authority", "@base-ui/react@1.9.0"],
       "title": "Input (Tailwind)",
       "description": "An input component for user text entry.",
       "files": [
@@ -1673,7 +1673,7 @@
           "target": "~/components/ui/progress/progress.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "prop-table-tailwind",
@@ -1727,7 +1727,7 @@
           "target": "~/components/ui/select/select.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0", "lucide-react"]
+      "dependencies": ["@base-ui/react@1.9.0", "lucide-react"]
     },
     {
       "name": "separator-tailwind",
@@ -1846,7 +1846,7 @@
           "target": "~/components/ui/tooltip/tooltip.tsx"
         }
       ],
-      "dependencies": ["@base-ui/react@1.5.0"]
+      "dependencies": ["@base-ui/react@1.9.0"]
     },
     {
       "name": "toolbar-tailwind",
@@ -2017,7 +2017,7 @@
     {
       "name": "expandable-card-tailwind",
       "type": "registry:item",
-      "dependencies": ["motion", "lucide-react", "@base-ui/react@1.5.0"],
+      "dependencies": ["motion", "lucide-react", "@base-ui/react@1.9.0"],
       "title": "Expandable Card (Tailwind)",
       "description": "A card component that can expand to show more content.",
       "files": [
@@ -2083,7 +2083,7 @@
     {
       "name": "expandable-card-spread",
       "type": "registry:item",
-      "dependencies": ["motion", "@base-ui/react@1.5.0"],
+      "dependencies": ["motion", "@base-ui/react@1.9.0"],
       "title": "Expandable Card Spread",
       "description": "A spread of expandable cards with mobile swipe-to-cycle stack view.",
       "files": [
@@ -2122,7 +2122,7 @@
     {
       "name": "expandable-card-spread-tailwind",
       "type": "registry:item",
-      "dependencies": ["motion", "@base-ui/react@1.5.0"],
+      "dependencies": ["motion", "@base-ui/react@1.9.0"],
       "title": "Expandable Card Spread (Tailwind)",
       "description": "A spread of expandable cards with mobile swipe-to-cycle stack view.",
       "files": [

@@ -52,6 +52,10 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
+  }
 }
 
 .seperatorWrapper {
@@ -94,9 +98,14 @@
 
   &[data-popup-open]::before,
   &[data-highlighted]::before,
-  &:hover::before,
   &:focus::before {
     background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus,
@@ -108,25 +117,38 @@
     cursor: not-allowed;
     opacity: 0.5;
 
+    @media (hover: hover) {
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  @media (hover: hover) {
     &:hover {
-      background: transparent;
+      & > .icon,
+      & .icon {
+        color: var(--secondary-foreground);
+        opacity: 1;
+      }
     }
   }
 
-  &:hover {
-    & > .icon,
-    & .icon {
-      color: var(--secondary-foreground);
-      opacity: 1;
-    }
-  }
-
-  &[data-variant="destructive"]:hover,
   &[data-variant="destructive"][data-highlighted] {
     color: var(--destructive);
 
     & .icon {
       color: var(--destructive);
+    }
+  }
+
+  @media (hover: hover) {
+    &[data-variant="destructive"]:hover {
+      color: var(--destructive);
+
+      & .icon {
+        color: var(--destructive);
+      }
     }
   }
 }
@@ -165,9 +187,14 @@
   }
 
   &[data-popup-open]::before,
-  &[data-highlighted]::before,
-  &:hover::before {
+  &[data-highlighted]::before {
     background-color: oklch(from var(--accent) l c h / 0.7);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: oklch(from var(--accent) l c h / 0.7);
+    }
   }
 
   &:focus,
@@ -175,9 +202,11 @@
     outline: none;
   }
 
-  &:hover {
-    & .submenuIcon {
-      color: var(--secondary-foreground);
+  @media (hover: hover) {
+    &:hover {
+      & .submenuIcon {
+        color: var(--secondary-foreground);
+      }
     }
   }
 }
@@ -232,9 +261,14 @@
 
   &[data-popup-open]::before,
   &[data-highlighted]::before,
-  &:hover::before,
   &:focus::before {
     background-color: var(--accent);
+  }
+
+  @media (hover: hover) {
+    &:hover::before {
+      background-color: var(--accent);
+    }
   }
 
   &:focus,
@@ -246,8 +280,10 @@
     cursor: not-allowed;
     opacity: 0.5;
 
-    &:hover {
-      background: transparent;
+    @media (hover: hover) {
+      &:hover {
+        background: transparent;
+      }
     }
   }
 }

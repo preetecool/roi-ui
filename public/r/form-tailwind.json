@@ -1,11 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "form-tailwind",
-  "type": "registry:item",
   "title": "Form (Tailwind)",
   "description": "A form component for handling user input.",
   "dependencies": [
-    "@base-ui/react@1.5.0"
+    "@base-ui/react@1.9.0"
   ],
   "files": [
     {
@@ -14,5 +13,6 @@
       "type": "registry:file",
       "target": "~/components/ui/form/form.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

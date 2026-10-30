@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "content";
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
   position: relative;
 }
 
@@ -43,7 +43,7 @@
   grid-area: sidebar;
   position: sticky;
   top: var(--header-height);
-  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   overflow-y: auto;
   display: none;
 }

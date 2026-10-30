@@ -14,7 +14,9 @@
   font-size: 1rem;
   font-variant-numeric: tabular-nums;
   color: var(--foreground);
-  transition: all 150ms ease-out;
+  transition: 150ms ease-out;
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, transform;
   box-shadow: 0 0 0 1px oklch(from var(--border) l c h / 0.5);
 }
 

@@ -48,6 +48,7 @@ export default function BlocksPage() {
         <h1 className={styles.title}>Blocks</h1>
         <p className={styles.description}>Pre-built components that you can copy and paste into your projects.</p>
       </div>
+      {/* biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend> */}
       <div aria-label="Filter blocks by category" className={styles.filters} role="group">
         {CATEGORIES.map((c) => {
           const isActive = active.has(c.id);

@@ -71,7 +71,7 @@ function Calendar({
         button_previous: cn(
           "inline-flex h-[var(--cell-size)] w-[var(--cell-size)] items-center justify-center p-0",
           "select-none rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
-          "cursor-pointer bg-popover text-foreground transition-all duration-150",
+          "cursor-pointer bg-popover text-foreground transition duration-150",
           "hover:border-accent hover:bg-accent",
           "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
           "aria-disabled:pointer-events-none aria-disabled:opacity-50",
@@ -80,7 +80,7 @@ function Calendar({
         button_next: cn(
           "inline-flex h-[var(--cell-size)] w-[var(--cell-size)] items-center justify-center p-0",
           "select-none rounded-[var(--radius)] border-[0.5px] border-[oklch(from_var(--border)_l_c_h_/_0.8)]",
-          "cursor-pointer bg-popover text-foreground transition-all duration-150",
+          "cursor-pointer bg-popover text-foreground transition duration-150",
           "hover:border-accent hover:bg-accent",
           "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
           "aria-disabled:pointer-events-none aria-disabled:opacity-50",

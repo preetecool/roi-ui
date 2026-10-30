@@ -45,8 +45,8 @@ export function ExpandableCardCarousel({ data }: ExpandableCardCarouselProps) {
           users.
         </p>
       </header>
-      <Carousel.Bleed className={styles.bleed}>
-        <Carousel.Root align="start" className={styles.carouselRoot} gap={24} totalItems={items.length} variant="inset">
+      <Carousel.Bleed>
+        <Carousel.Root align="start" gap={24} totalItems={items.length} variant="inset">
           <Carousel.Viewport>
             <Carousel.Content className={styles.content}>
               {items.map((item, index) => (

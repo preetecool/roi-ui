@@ -253,8 +253,10 @@
     border-radius: 4px;
   }
 
-  html::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-foreground);
+  @media (hover: hover) {
+    html::-webkit-scrollbar-thumb:hover {
+      background: var(--muted-foreground);
+    }
   }
 
   ::selection {

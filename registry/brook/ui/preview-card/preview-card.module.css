@@ -31,15 +31,19 @@
     oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px,
     oklch(from var(--border) l c h / 0.2) 0px 0.5px 0.5px;
   z-index: 150;
-  animation: scaleIn 0.25s var(--ease-out-expo);
   transform-origin: var(--transform-origin);
+  transition:
+    transform 250ms var(--ease-out-expo),
+    opacity 250ms var(--ease-out-expo);
 
-  &[data-state="open"] {
-    animation: scaleIn 0.25s var(--ease-out-expo);
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.9);
   }
 
-  &[data-state="closed"] {
-    animation: scaleOut 0.25s var(--ease-out-expo);
+  @media (prefers-reduced-motion: reduce) {
+    transition-property: opacity;
   }
 }
 
@@ -49,28 +53,6 @@
   stroke-width: 1px;
   width: 10px;
   height: 5px;
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.9);
-  }
 }
 
 .previewContent {

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox-group",
-  "type": "registry:item",
   "title": "Checkbox Group",
   "description": "A set of checkboxes with shared state management for selecting multiple options.",
   "files": [
@@ -17,5 +16,6 @@
       "type": "registry:file",
       "target": "~/components/ui/checkbox-group/checkbox-group.module.css"
     }
-  ]
+  ],
+  "type": "registry:item"
 }

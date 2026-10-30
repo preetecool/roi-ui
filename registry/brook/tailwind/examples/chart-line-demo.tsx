@@ -58,7 +58,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-// biome-ignore lint/style/noMagicNumbers: X-axis tick values for 5-year intervals
 const X_AXIS_TICKS = [1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025];
 
 export default function ChartLineDemo() {

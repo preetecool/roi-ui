@@ -121,7 +121,7 @@ function ToastAction({ className, ...props }: Toast.Action.Props) {
         "font-medium text-sm leading-5",
         "mt-2 cursor-pointer border-none",
         "bg-[var(--primary)] text-[var(--primary-foreground)]",
-        "transition-all duration-150",
+        "transition duration-150",
         "hover:opacity-90",
         "focus:outline-none",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",
@@ -138,7 +138,7 @@ function ToastClose({ className, children, ...props }: Toast.Close.Props) {
     <Toast.Close
       className={cn(
         "absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-sm border-none bg-transparent",
-        "text-[oklch(from_var(--foreground)_l_c_h_/_0.3)] transition-all duration-150",
+        "text-[oklch(from_var(--foreground)_l_c_h_/_0.3)] transition duration-150",
         "hover:bg-[var(--muted)] hover:text-[var(--foreground)]",
         "focus:outline-none",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-2",

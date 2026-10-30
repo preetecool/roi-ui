@@ -307,7 +307,7 @@ export function Viewport({ className, children, ...props }: CarouselViewportProp
   return (
     <div
       className={cn(
-        "[scroll-snap-stop:always] relative w-full overflow-y-hidden overflow-x-scroll overscroll-x-contain",
+        "relative w-full overflow-y-hidden overflow-x-scroll overscroll-x-contain [scroll-snap-stop:always]",
         "py-[calc(var(--focus-ring-width,2px)+var(--focus-ring-offset,2px))] [-ms-overflow-style:none] [scrollbar-width:none]",
         "[&::-webkit-scrollbar]:hidden",
         className
@@ -369,10 +369,10 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
     if (!(el && root)) {
       return;
     }
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.intersectionRatio >= 0.5),
-      { root, threshold: [0, 0.5, 1] }
-    );
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.intersectionRatio >= 0.5), {
+      root,
+      threshold: [0, 0.5, 1],
+    });
     observer.observe(el);
     return () => observer.disconnect();
   }, [viewportRef]);
@@ -409,6 +409,7 @@ export function Item({ index, className, children, ...props }: CarouselItemProps
 
   return (
     // biome-ignore lint/a11y/noNoninteractiveElementInteractions: Keyboard navigation is required for carousel accessibility
+    // biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend>
     <div
       aria-label={`Slide ${index + 1} of ${totalItems}`}
       aria-roledescription="slide"
@@ -440,7 +441,7 @@ export function Previous({ className, children, ...props }: CarouselPreviousProp
       className={cn(
         "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
         "flex cursor-pointer items-center justify-center bg-[color:var(--card)] text-[color:var(--foreground)]",
-        "opacity-90 shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)]",
+        "opacity-90 shadow-[var(--shadow-md)] transition duration-200 ease-[var(--ease-out-quad)]",
         "hover:bg-[color:var(--muted)] hover:opacity-100",
         "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
         "active:scale-95",
@@ -475,7 +476,7 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
       className={cn(
         "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
         "flex cursor-pointer items-center justify-center bg-[color:var(--card)] text-[color:var(--foreground)]",
-        "opacity-90 shadow-[var(--shadow-md)] transition-all duration-200 ease-[var(--ease-out-quad)]",
+        "opacity-90 shadow-[var(--shadow-md)] transition duration-200 ease-[var(--ease-out-quad)]",
         "hover:bg-[color:var(--muted)] hover:opacity-100",
         "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
         "active:scale-95",
@@ -552,7 +553,7 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
           aria-selected={currentIndex === index}
           className={cn(
             "relative h-3 w-3 cursor-pointer rounded-full border-none",
-            "bg-[color:oklch(from_var(--foreground)_l_c_h_/_0.3)] transition-all duration-200 ease-[ease]",
+            "bg-[color:oklch(from_var(--foreground)_l_c_h_/_0.3)] transition duration-200 ease-[ease]",
             "hover:scale-110 hover:bg-[color:oklch(from_var(--foreground)_l_c_h_/_0.5)]",
             "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
             "data-[active]:scale-[1.2] data-[active]:bg-[color:var(--primary)] data-[active]:hover:bg-[color:var(--primary)]",

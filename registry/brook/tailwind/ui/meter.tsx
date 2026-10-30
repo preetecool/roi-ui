@@ -32,7 +32,7 @@ function MeterIndicator({ className, ...props }: Meter.Indicator.Props) {
     <Meter.Indicator
       className={cn(
         "h-full rounded-none bg-[oklch(from_var(--foreground)_l_c_h_/_0.5)]",
-        "transition-all duration-150 ease-out",
+        "transition-[width,background-color] duration-150 ease-out",
         "w-[var(--meter-indicator-width)]",
         "[.root[data-value=high]_&]:bg-destructive",
         "[.root[data-value=medium]_&]:bg-[hsl(45_93%_47%)]",

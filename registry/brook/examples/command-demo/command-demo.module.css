@@ -33,9 +33,14 @@
       color: var(--muted-foreground);
     }
 
-    &:hover,
     &[data-highlighted] {
       background-color: var(--mix-card-50-bg);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--mix-card-50-bg);
+      }
     }
 
     @media (max-width: 640px) {
@@ -81,8 +86,10 @@
       background: oklch(from var(--border) l c h / 0.5);
       border-radius: 3px;
 
-      &:hover {
-        background: oklch(from var(--border) l c h / 0.7);
+      @media (hover: hover) {
+        &:hover {
+          background: oklch(from var(--border) l c h / 0.7);
+        }
       }
     }
   }

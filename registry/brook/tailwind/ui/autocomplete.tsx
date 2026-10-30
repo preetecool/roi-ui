@@ -17,7 +17,10 @@ function AutocompleteValue({ ...props }: React.ComponentProps<typeof Autocomplet
 function AutocompleteInput({ className, ...props }: React.ComponentProps<typeof Autocomplete.Input>) {
   return (
     <Autocomplete.Input
-      className={cn("max-sm:text-[0.9375rem] max-sm:placeholder:text-[0.9375rem]", className)}
+      className={cn(
+        "pointer-coarse:text-base pointer-coarse:placeholder:text-base max-sm:text-base max-sm:placeholder:text-base",
+        className
+      )}
       render={<Input />}
       {...props}
     />
@@ -60,7 +63,7 @@ function AutocompleteClear({ className, children, ...props }: React.ComponentPro
     <Autocomplete.Clear
       className={cn(
         "flex cursor-pointer items-center justify-center rounded-[calc(var(--radius)-2px)] p-1",
-        "text-muted-foreground transition-all duration-150",
+        "text-muted-foreground transition duration-150",
         "hover:bg-accent hover:text-foreground",
         "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",

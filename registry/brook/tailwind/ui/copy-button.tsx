@@ -70,14 +70,16 @@ function CopyButton({ code, className }: { code: string; className?: string }) {
       await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), COPIED_RESET_DELAY_MS);
-    } catch (_error) {}
+    } catch {
+      // Clipboard can be unavailable (insecure context, denied permission); keep the idle state.
+    }
   };
 
   return (
     <button
       className={cn(
         "flex h-[1.875rem] w-[1.875rem] items-center justify-center",
-        "cursor-pointer rounded-md p-2 transition-all duration-[250ms]",
+        "cursor-pointer rounded-md p-2 transition duration-[250ms]",
         "text-[var(--muted-foreground)]",
         "[-webkit-tap-highlight-color:transparent]",
         "hover:bg-[var(--accent)]",

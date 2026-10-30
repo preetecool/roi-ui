@@ -1,11 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dropdown-menu-tailwind",
-  "type": "registry:item",
   "title": "Dropdown Menu (Tailwind)",
   "description": "A dropdown menu component.",
   "dependencies": [
-    "@base-ui/react@1.5.0",
+    "@base-ui/react@1.9.0",
     "lucide-react"
   ],
   "files": [
@@ -15,5 +14,6 @@
       "type": "registry:file",
       "target": "~/components/ui/dropdown-menu/dropdown-menu.tsx"
     }
-  ]
+  ],
+  "type": "registry:item"
 }
