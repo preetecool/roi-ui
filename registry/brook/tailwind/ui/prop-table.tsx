@@ -231,7 +231,9 @@ function PropTableRow({ name, type, defaultValue, className, children }: PropTab
           <code className={cn(typeCodeClass, "hidden truncate md:block")}>{highlightType(getSimpleType(type))}</code>
           <div className="hidden items-center justify-start md:flex">
             {defaultValue ? (
-              <code className={cn(codeClass, "min-w-0 truncate [&>span]:block [&>span]:truncate")}>{renderDefaultValue(defaultValue)}</code>
+              <code className={cn(codeClass, "min-w-0 truncate [&>span]:block [&>span]:truncate")}>
+                {renderDefaultValue(defaultValue)}
+              </code>
             ) : (
               renderDefaultValue()
             )}
