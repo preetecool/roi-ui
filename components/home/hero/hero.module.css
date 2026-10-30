@@ -53,6 +53,7 @@
 }
 
 .buttonWrapper [data-slot="button"] {
+  border-radius: 2px;
   white-space: nowrap;
 }
 

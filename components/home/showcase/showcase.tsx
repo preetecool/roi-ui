@@ -3,6 +3,7 @@
 import { Checkbox } from "@base-ui/react/checkbox";
 import { Radio } from "@base-ui/react/radio";
 import { RadioGroup } from "@base-ui/react/radio-group";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,6 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/brook/ui/chart/chart";
+import { PropTable, PropTableRow } from "@/registry/brook/ui/prop-table/prop-table";
 import styles from "./showcase.module.css";
 
 const WEEKS = [
@@ -78,22 +80,9 @@ const scoreData = [
 // Mirrors the Quick Start guide (content/(root)/start.mdx).
 const STEPS = ["Install @base-ui/react", "Add @roiui/utils", "Set up portals", "Add global styles"];
 
-const REGISTRY = [
-  { name: "Prop Table", href: "/docs/ui/prop-table", status: "New", tone: "var(--chart-1)", installs: "742" },
-  { name: "Charts", href: "/docs/ui/charts", status: "Beta", tone: "var(--chart-4)", installs: "1,903" },
-  {
-    name: "Expandable Card",
-    href: "/docs/ui/expandable-card",
-    status: "Stable",
-    tone: "var(--chart-5)",
-    installs: "4,812",
-  },
-];
-
 const BROWSE = [
   { label: "Components", href: "/docs/components", count: 48 },
   { label: "Blocks", href: "/blocks" },
-  { label: "Get started", href: "/docs/start" },
   { label: "GitHub", href: "https://github.com/preetecool/roi-ui", external: true },
 ];
 
@@ -118,11 +107,11 @@ function InstallsCard() {
         </div>
         <div className={styles.control}>
           <button aria-label="Previous week" className={styles.stepperButton} onClick={() => step(-1)} type="button">
-            ‹
+            <ChevronLeft aria-hidden="true" size={14} />
           </button>
           <span>{week.label}</span>
           <button aria-label="Next week" className={styles.stepperButton} onClick={() => step(1)} type="button">
-            ›
+            <ChevronRight aria-hidden="true" size={14} />
           </button>
         </div>
       </header>
@@ -171,7 +160,7 @@ function ScoreCard() {
           <span className={styles.label}>Accessibility score</span>
           <span className={styles.value}>Excellent</span>
         </div>
-        <span className={styles.control}>v2.1</span>
+        <span className={styles.label}>v2.1</span>
       </header>
       <div className={styles.dial}>
         <ChartContainer aria-hidden="true" className={styles.donut} config={scoreConfig}>
@@ -290,49 +279,32 @@ function StepsCard() {
   );
 }
 
-function RegistryCard() {
+function PropsCard() {
   return (
-    <article className={`${styles.card} ${styles.tableCard}`} data-area="registry">
+    <article className={`${styles.card} ${styles.tableCard}`} data-area="props">
       <header className={styles.tableHeader}>
-        <div className={styles.heading}>
-          <span className={styles.label}>Registry</span>
-          <span className={styles.tableTitle}>48 components</span>
-        </div>
-        <Link className={styles.control} href="/docs/components">
-          View all
+        <span className={styles.label}>PropTableRow props</span>
+        <Link className={styles.control} href="/docs/ui/prop-table">
+          View docs
         </Link>
       </header>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Status</th>
-            <th data-hide-mobile="">Styles</th>
-            <th data-align="end">Installs</th>
-          </tr>
-        </thead>
-        <tbody>
-          {REGISTRY.map((row) => (
-            <tr key={row.name}>
-              <td>
-                <Link className={styles.rowLink} href={row.href}>
-                  {row.name}
-                </Link>
-              </td>
-              <td>
-                <span className={styles.status}>
-                  <span className={styles.statusDot} style={{ background: row.tone }} />
-                  {row.status}
-                </span>
-              </td>
-              <td className={styles.muted} data-hide-mobile="">
-                CSS · TW
-              </td>
-              <td data-align="end">{row.installs}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <PropTable aria-label="PropTableRow props" className={styles.propTable}>
+        <PropTableRow name="name" type="string">
+          Name of the prop being documented.
+        </PropTableRow>
+        <PropTableRow name="type" type="string">
+          Type signature of the prop. Union members, generics, and known React types are syntax highlighted.
+        </PropTableRow>
+        <PropTableRow name="defaultValue" type="string">
+          Default value of the prop, shown in the summary row and expanded panel.
+        </PropTableRow>
+        <PropTableRow name="children" type="ReactNode">
+          Description of the prop, shown in the expanded panel.
+        </PropTableRow>
+        <PropTableRow name="className" type="string">
+          Additional CSS classes applied to the row.
+        </PropTableRow>
+      </PropTable>
     </article>
   );
 }
@@ -342,10 +314,9 @@ function BrowseCard() {
     <nav aria-label="Browse" className={`${styles.card} ${styles.listCard}`} data-area="browse">
       <span className={`${styles.label} ${styles.listTitle}`}>Browse</span>
       <div className={styles.list}>
-        {BROWSE.map((item, index) => (
+        {BROWSE.map((item) => (
           <Link
             className={styles.option}
-            data-primary={index === 0 || undefined}
             href={item.href}
             key={item.label}
             {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -368,7 +339,7 @@ export function Showcase({ className, style }: { className?: string; style?: Rea
         <StylingCard />
         <StepsCard />
       </div>
-      <RegistryCard />
+      <PropsCard />
       <BrowseCard />
     </div>
   );
