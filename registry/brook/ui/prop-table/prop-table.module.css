@@ -17,7 +17,7 @@
 
 @media (min-width: 768px) {
   .header {
-    grid-template-columns: 200px 1fr 1fr;
+    grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
@@ -80,20 +80,41 @@
 
 .summaryGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   flex: 1;
+  min-width: 0;
   align-items: center;
 }
 
 @media (min-width: 768px) {
   .summaryGrid {
-    grid-template-columns: 200px 1fr 1fr;
+    grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
 .summaryGrid > * {
   text-align: left;
+}
+
+/* Long names wrap instead of widening the row */
+.summaryGrid > :first-child {
+  overflow-wrap: anywhere;
+}
+
+/* Type and default stay on one line in the summary; the panel shows the full value */
+.summaryGrid > :nth-child(2),
+.defaultCell > code,
+.defaultCell > code > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The colored value span does the truncating, so the ellipsis takes its color */
+.defaultCell > code > span {
+  display: block;
 }
 
 .summaryGrid > *:nth-child(2),
@@ -170,7 +191,7 @@
 
 @media (min-width: 768px) {
   .panelRow {
-    grid-template-columns: 200px 1fr 1fr;
+    grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr);
     gap: 16px;
     padding-top: 12px;
     padding-bottom: 12px;
