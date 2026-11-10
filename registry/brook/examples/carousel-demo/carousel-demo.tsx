@@ -35,28 +35,26 @@ export default function CarouselDemo() {
   ];
 
   return (
-    <Carousel.Root align="start" className={styles.carouselRoot} gap={8} totalItems={features.length} variant="inset">
-      <Carousel.Viewport>
-        <Carousel.Content>
-          {features.map((feature, index) => (
-            <Carousel.Item index={index} key={feature.id}>
-              <Card className={styles.card}>
-                <div className={styles.iconSection}>
-                  <CardIcon className={styles.icon}>{feature.icon}</CardIcon>
+    <Carousel.Root variant="inset">
+      <Carousel.Viewport className={styles.viewport}>
+        {features.map((feature) => (
+          <Carousel.Item key={feature.id}>
+            <Card className={styles.card}>
+              <div className={styles.iconSection}>
+                <CardIcon className={styles.icon}>{feature.icon}</CardIcon>
+              </div>
+              <div className={styles.cardContent}>
+                <div className={styles.contentText}>
+                  <CardTitle className={styles.cardTitle}>{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
                 </div>
-                <div className={styles.cardContent}>
-                  <div className={styles.contentText}>
-                    <CardTitle className={styles.cardTitle}>{feature.title}</CardTitle>
-                    <CardDescription>{feature.description}</CardDescription>
-                  </div>
-                  <Button className={`${styles.button} hit-area-extend`} size="icon" variant="outline">
-                    <Plus strokeWidth={1.5} />
-                  </Button>
-                </div>
-              </Card>
-            </Carousel.Item>
-          ))}
-        </Carousel.Content>
+                <Button className={`${styles.button} hit-area-extend`} size="icon" variant="outline">
+                  <Plus strokeWidth={1.5} />
+                </Button>
+              </div>
+            </Card>
+          </Carousel.Item>
+        ))}
       </Carousel.Viewport>
       <Carousel.Navigation>
         <Carousel.Previous />

@@ -45,15 +45,13 @@ export function ExpandableCardCarousel({ data }: ExpandableCardCarouselProps) {
         </p>
       </header>
       <Carousel.Bleed className="min-[1100px]:!static min-[1100px]:!mx-0 min-[1100px]:!w-auto min-[1100px]:flex min-[1100px]:justify-center">
-        <Carousel.Root align="start" className="min-[1100px]:w-auto" gap={24} totalItems={items.length} variant="inset">
-          <Carousel.Viewport>
-            <Carousel.Content className="h-[50vh] items-center justify-center">
-              {items.map((item, index) => (
-                <Carousel.Item index={index} key={item.id}>
-                  <ExpandableCard item={item} />
-                </Carousel.Item>
-              ))}
-            </Carousel.Content>
+        <Carousel.Root className="min-[1100px]:w-auto" variant="inset">
+          <Carousel.Viewport className="h-[50vh] items-center [--carousel-gap:24px] [&>:first-child]:ml-auto [&>:last-child]:mr-auto">
+            {items.map((item) => (
+              <Carousel.Item key={item.id}>
+                <ExpandableCard item={item} />
+              </Carousel.Item>
+            ))}
           </Carousel.Viewport>
         </Carousel.Root>
       </Carousel.Bleed>

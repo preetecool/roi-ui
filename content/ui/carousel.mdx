@@ -72,21 +72,17 @@ filename="anatomy"
   code={`import { Carousel } from "@/components/ui/carousel";
 
 <Carousel.Bleed>
-  <Carousel.Root totalItems={3} gap={16} variant="inset" align="center">
+  <Carousel.Root variant="inset">
     <Carousel.Viewport>
-      <Carousel.Content>
-        <Carousel.Item index={0}>
-          <div>Item 1</div>
-        </Carousel.Item>
-        <Carousel.Item index={1}>
-          <div>Item 2</div>
-        </Carousel.Item>
-        <Carousel.Item index={2}>
-          <div>Item 3</div>
-        </Carousel.Item>
-      </Carousel.Content>
+      <Carousel.Item>Item 1</Carousel.Item>
+      <Carousel.Item>Item 2</Carousel.Item>
+      <Carousel.Item>Item 3</Carousel.Item>
     </Carousel.Viewport>
-    <Carousel.Navigation />
+    <Carousel.Navigation>
+      <Carousel.Previous />
+      <Carousel.Next />
+    </Carousel.Navigation>
+    <Carousel.Indicators />
   </Carousel.Root>
 </Carousel.Bleed>
 `} />
@@ -95,33 +91,15 @@ filename="anatomy"
 
 ### Root
 
-The main carousel component that manages state and provides context.
+Manages the index and provides context. It counts the slides itself: each direct child of the viewport is one slide.
 
 <PropTable
     data={[
         {
-            prop: "totalItems",
-            type: "number",
-            required: true,
-            description: "Total number of items in the carousel",
-        },
-        {
-            prop: "gap",
-            type: "number",
-            default: "16",
-            description: "Gap between carousel items in pixels",
-        },
-        {
             prop: "variant",
             type: '"default" | "inset"',
             default: '"default"',
-            description: "Carousel variant. Use 'inset' to align with parent container bounds",
-        },
-        {
-            prop: "align",
-            type: '"start" | "center"',
-            default: '"start"',
-            description: "Alignment of carousel content",
+            description: "Use 'inset' inside Carousel.Bleed to align the first and last slide with the parent of the bleed",
         },
         {
             prop: "index",
@@ -149,7 +127,7 @@ The main carousel component that manages state and provides context.
 
 ### Bleed
 
-Wrapper that extends carousel to full viewport width.
+Optional wrapper that makes the carousel as wide as the window. Put it around `Carousel.Root`.
 
 <PropTable
     data={[
@@ -163,7 +141,7 @@ Wrapper that extends carousel to full viewport width.
 
 ### Viewport
 
-Scrollable viewport container with hidden scrollbars.
+The scroll container and the slide track. Set the space between slides with the `--carousel-gap` CSS variable (default `1rem`).
 
 <PropTable
     data={[
@@ -175,30 +153,12 @@ Scrollable viewport container with hidden scrollbars.
     ]}
 />
 
-### Content
-
-Flex container for horizontal layout with pseudo elements for spacing.
-
-<PropTable
-    data={[
-        {
-            prop: "className",
-            type: "string",
-            description: "Additional CSS classes to apply to the content container",
-        },
-    ]}
-/>
-
 ### Item
 
+One slide. The arrow keys, Home, and End move the carousel when the slide has focus.
+
 <PropTable
     data={[
-        {
-            prop: "index",
-            type: "number",
-            required: true,
-            description: "The index of the item in the carousel",
-        },
         {
             prop: "className",
             type: "string",
@@ -266,7 +226,7 @@ Next button that auto-disables at end.
 
 ### Indicators
 
-Dot indicators for each item (hidden when only one item).
+One button for each slide (hidden when there is only one slide). The active button has `data-active` and `aria-current`.
 
 <PropTable
     data={[
