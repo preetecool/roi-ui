@@ -2,7 +2,7 @@
   min-width: 280px;
 }
 
-.triggerButton[data-slot="button"] {
+.triggerButton[data-slot="dropdown-trigger"] {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -14,7 +14,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.triggerButton[data-slot="button"]:focus-visible {
+.triggerButton[data-slot="dropdown-trigger"]:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
