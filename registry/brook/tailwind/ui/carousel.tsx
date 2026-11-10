@@ -1,22 +1,70 @@
 "use client";
 
 import { useControlled } from "@base-ui/utils/useControlled";
-import { createContext, useCallback, useContext, useEffect, useId, useRef, useState } from "react";
+import { useMergedRefs } from "@base-ui/utils/useMergedRefs";
+import { useStableCallback } from "@base-ui/utils/useStableCallback";
+import { createContext, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils-tailwind";
 
+const SETTLE_MS = 150;
+const VISIBILITY_THRESHOLD = 0.5;
+
+function getInset(viewport: HTMLElement) {
+  return Number.parseFloat(getComputedStyle(viewport).paddingLeft) || 0;
+}
+
+function getMaxScroll(viewport: HTMLElement) {
+  return viewport.scrollWidth - viewport.clientWidth;
+}
+
+function getLeadingIndex(viewport: HTMLElement) {
+  const start = viewport.getBoundingClientRect().left + getInset(viewport);
+  let leading = 0;
+  let leadingDistance = Number.POSITIVE_INFINITY;
+  for (let i = 0; i < viewport.children.length; i++) {
+    const distance = Math.abs(viewport.children[i].getBoundingClientRect().left - start);
+    if (distance < leadingDistance) {
+      leadingDistance = distance;
+      leading = i;
+    }
+  }
+  return leading;
+}
+
+function getScrollIndex(viewport: HTMLElement) {
+  const maxScroll = getMaxScroll(viewport);
+  if (maxScroll <= 1) {
+    return 0;
+  }
+  if (viewport.scrollLeft >= maxScroll - 1) {
+    return viewport.children.length - 1;
+  }
+  return getLeadingIndex(viewport);
+}
+
+function getVisibleCount(viewport: HTMLElement) {
+  const bounds = viewport.getBoundingClientRect();
+  let visible = 0;
+  for (const slide of viewport.children) {
+    const rect = slide.getBoundingClientRect();
+    const visibleWidth = Math.min(rect.right, bounds.right) - Math.max(rect.left, bounds.left);
+    if (visibleWidth / rect.width >= VISIBILITY_THRESHOLD) {
+      visible++;
+    }
+  }
+  return Math.max(1, visible);
+}
+
 type CarouselContextValue = {
-  currentIndex: number;
-  setCurrentIndex: (index: number) => void;
-  totalItems: number;
-  gap: number;
-  variant: "default" | "inset";
-  goToIndex: (index: number) => void;
-  nextSlide: () => void;
-  prevSlide: () => void;
+  index: number;
+  slides: Element[];
+  goTo: (index: number) => void;
+  next: () => void;
+  prev: () => void;
   canGoNext: boolean;
   canGoPrev: boolean;
   viewportRef: React.RefObject<HTMLDivElement | null>;
-  slidesId: string;
+  viewportId: string;
 };
 
 const CarouselContext = createContext<CarouselContextValue | null>(null);
@@ -24,419 +72,303 @@ const CarouselContext = createContext<CarouselContextValue | null>(null);
 function useCarousel() {
   const context = useContext(CarouselContext);
   if (!context) {
-    throw new Error("Carousel components must be used within Carousel.Root");
+    throw new Error("Carousel parts must be used within <Carousel.Root>");
   }
   return context;
 }
 
+const BleedContext = createContext<React.RefObject<HTMLDivElement | null> | null>(null);
+
 export type CarouselRootProps = React.ComponentProps<"div"> & {
-  totalItems: number;
-  gap?: number;
   index?: number;
   defaultIndex?: number;
   onIndexChange?: (index: number) => void;
-  align?: "start" | "center";
   variant?: "default" | "inset";
 };
 
-export function Root({
+function CarouselRoot({
   children,
-  totalItems,
-  gap = 16,
   index: indexProp,
   defaultIndex = 0,
   onIndexChange,
-  align = "start",
   variant = "default",
   className,
   ...props
 }: CarouselRootProps) {
-  const [currentIndex, setCurrentIndexInternal] = useControlled({
+  const [index, setIndexState] = useControlled({
     controlled: indexProp,
     default: defaultIndex,
     name: "Carousel",
     state: "index",
   });
+  const [slides, setSlides] = useState<Element[]>([]);
+  const [canGoPrev, setCanGoPrev] = useState(false);
+  const [canGoNext, setCanGoNext] = useState(false);
 
   const viewportRef = useRef<HTMLDivElement>(null);
-  const bleedRefFromContext = useBleedRef();
-  const [insetPaddingLeft, setInsetPaddingLeft] = useState(0);
-  const [insetPaddingRight, setInsetPaddingRight] = useState(0);
-  const slidesId = `${useId()}-slides`;
+  const bleedRef = useContext(BleedContext);
+  const viewportId = useId();
+  const scrolledIndexRef = useRef(0);
+  const seenIndexRef = useRef(0);
+  const programmaticRef = useRef(false);
+  const settleTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const mountedRef = useRef(false);
 
-  const maxIndex = totalItems - 1;
+  const setIndex = useStableCallback((nextIndex: number) => {
+    scrolledIndexRef.current = nextIndex;
+    if (nextIndex !== index) {
+      setIndexState(nextIndex);
+      onIndexChange?.(nextIndex);
+    }
+  });
 
-  const setCurrentIndex = useCallback(
-    (index: number) => {
-      setCurrentIndexInternal(index);
-      onIndexChange?.(index);
-    },
-    [setCurrentIndexInternal, onIndexChange]
-  );
-
-  const goToIndex = useCallback(
-    (index: number) => {
-      const viewport = viewportRef.current;
-      if (!viewport) {
-        return;
-      }
-
-      const slides = viewport.querySelectorAll('[role="group"]');
-      const targetSlide = slides[index] as HTMLElement;
-
-      if (targetSlide) {
-        let targetScroll = targetSlide.offsetLeft;
-
-        if (variant === "inset" && bleedRefFromContext?.current) {
-          const parent = bleedRefFromContext.current.parentElement;
-          if (parent) {
-            const parentRect = parent.getBoundingClientRect();
-            const leftPadding = parentRect.left;
-            targetScroll = targetSlide.offsetLeft - leftPadding;
-          }
-        }
-
-        viewport.scrollTo({ left: targetScroll, behavior: "smooth" });
-      }
-
-      setCurrentIndex(index);
-    },
-    [setCurrentIndex, variant, bleedRefFromContext]
-  );
-
-  const getVisibleItemsCount = useCallback(() => {
+  const sync = useStableCallback(() => {
     const viewport = viewportRef.current;
     if (!viewport) {
-      return 1;
+      return;
     }
-
-    const slides = viewport.querySelectorAll('[role="group"]');
-    if (slides.length === 0) {
-      return 1;
+    setCanGoPrev(viewport.scrollLeft > 1);
+    setCanGoNext(viewport.scrollLeft < getMaxScroll(viewport) - 1);
+    if (!programmaticRef.current) {
+      setIndex(getScrollIndex(viewport));
     }
+  });
 
-    const viewportRect = viewport.getBoundingClientRect();
-    let visibleCount = 0;
-    const VISIBILITY_THRESHOLD = 0.5;
+  const settle = useStableCallback(() => {
+    clearTimeout(settleTimerRef.current);
+    settleTimerRef.current = setTimeout(() => {
+      programmaticRef.current = false;
+      sync();
+    }, SETTLE_MS);
+  });
 
-    for (const slide of slides) {
-      const slideRect = slide.getBoundingClientRect();
-      const visibleWidth = Math.min(slideRect.right, viewportRect.right) - Math.max(slideRect.left, viewportRect.left);
-      const slideWidth = slideRect.width;
-
-      if (visibleWidth / slideWidth >= VISIBILITY_THRESHOLD) {
-        visibleCount++;
-      }
+  const scrollToSlide = useStableCallback((target: number, behavior: ScrollBehavior) => {
+    const viewport = viewportRef.current;
+    const slide = viewport?.children[target] as HTMLElement | undefined;
+    if (!(viewport && slide)) {
+      return;
     }
+    programmaticRef.current = true;
+    settle();
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    viewport.scrollTo({ left: slide.offsetLeft - getInset(viewport), behavior: reduceMotion ? "auto" : behavior });
+  });
 
-    return Math.max(1, visibleCount);
-  }, []);
+  const goTo = useStableCallback((target: number) => {
+    const viewport = viewportRef.current;
+    if (!viewport || getMaxScroll(viewport) <= 1) {
+      return;
+    }
+    const last = viewport.children.length - 1;
+    const clamped = Math.max(0, Math.min(target, last));
+    const slide = viewport.children[clamped] as HTMLElement;
+    const pastEnd = slide.offsetLeft - getInset(viewport) >= getMaxScroll(viewport) - 1;
+    const resolved = pastEnd ? last : clamped;
+    setIndex(resolved);
+    scrollToSlide(resolved, "smooth");
+  });
 
-  const visibleItemsForNav = getVisibleItemsCount();
-  const canGoNext = currentIndex + visibleItemsForNav <= maxIndex;
-  const canGoPrev = currentIndex > 0;
-
-  const nextSlide = useCallback(() => {
-    const visibleItems = getVisibleItemsCount();
-    const newIndex = Math.min(currentIndex + visibleItems, maxIndex);
-    goToIndex(newIndex);
-  }, [currentIndex, maxIndex, goToIndex, getVisibleItemsCount]);
-
-  const prevSlide = useCallback(() => {
-    const visibleItems = getVisibleItemsCount();
-    const newIndex = Math.max(currentIndex - visibleItems, 0);
-    goToIndex(newIndex);
-  }, [currentIndex, goToIndex, getVisibleItemsCount]);
-
-  const value: CarouselContextValue = {
-    currentIndex,
-    setCurrentIndex,
-    totalItems,
-    gap,
-    variant,
-    goToIndex,
-    nextSlide,
-    prevSlide,
-    canGoNext,
-    canGoPrev,
-    viewportRef,
-    slidesId,
+  const step = (direction: 1 | -1) => {
+    const viewport = viewportRef.current;
+    if (viewport) {
+      goTo(getLeadingIndex(viewport) + direction * getVisibleCount(viewport));
+    }
   };
+  const next = useStableCallback(() => step(1));
+  const prev = useStableCallback(() => step(-1));
+
+  useEffect(() => {
+    if (index !== seenIndexRef.current && index !== scrolledIndexRef.current) {
+      scrolledIndexRef.current = index;
+      scrollToSlide(index, mountedRef.current ? "smooth" : "auto");
+    }
+    seenIndexRef.current = index;
+    mountedRef.current = true;
+  }, [index, scrollToSlide]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) {
       return;
     }
-
-    const handleScroll = () => {
-      const slides = viewport.querySelectorAll('[role="group"]');
-      if (slides.length === 0) {
-        return;
+    const readSlides = () => {
+      setSlides(Array.from(viewport.children));
+      sync();
+    };
+    const onScroll = () => {
+      if (programmaticRef.current) {
+        settle();
       }
-
-      const viewportRect = viewport.getBoundingClientRect();
-      let closestIndex = 0;
-      let closestDistance = Number.POSITIVE_INFINITY;
-
-      slides.forEach((slide, index) => {
-        const slideRect = slide.getBoundingClientRect();
-        const distance = Math.abs(slideRect.left - viewportRect.left);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
-
-      if (closestIndex !== currentIndex) {
-        setCurrentIndexInternal(closestIndex);
-      }
+      sync();
     };
 
-    viewport.addEventListener("scroll", handleScroll, { passive: true });
-    return () => viewport.removeEventListener("scroll", handleScroll);
-  }, [currentIndex, setCurrentIndexInternal]);
+    readSlides();
+    const mutationObserver = new MutationObserver(readSlides);
+    mutationObserver.observe(viewport, { childList: true });
+    const resizeObserver = new ResizeObserver(sync);
+    resizeObserver.observe(viewport);
+    viewport.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      mutationObserver.disconnect();
+      resizeObserver.disconnect();
+      viewport.removeEventListener("scroll", onScroll);
+      clearTimeout(settleTimerRef.current);
+      programmaticRef.current = false;
+    };
+  }, [sync, settle]);
 
   useEffect(() => {
-    if (variant !== "inset" || !bleedRefFromContext?.current || !viewportRef.current) {
+    const bleed = bleedRef?.current;
+    const parent = bleed?.parentElement;
+    const viewport = viewportRef.current;
+    if (variant !== "inset" || !(bleed && parent && viewport)) {
       return;
     }
-
-    const calculatePadding = () => {
-      const bleed = bleedRefFromContext.current;
-      const viewport = viewportRef.current;
-      if (!(bleed && viewport)) {
-        return;
-      }
-
-      const parent = bleed.parentElement;
-      if (!parent) {
-        return;
-      }
-
+    const measure = () => {
       const parentRect = parent.getBoundingClientRect();
       const viewportRect = viewport.getBoundingClientRect();
-
-      const parentStyles = window.getComputedStyle(parent);
-      const parentPaddingLeft = Number.parseFloat(parentStyles.paddingLeft);
-      const parentPaddingRight = Number.parseFloat(parentStyles.paddingRight);
-
-      const leftPadding = Math.max(0, parentRect.left + parentPaddingLeft - viewportRect.left - gap);
-
-      const rightPadding = Math.max(0, viewportRect.right - (parentRect.right - parentPaddingRight));
-
-      setInsetPaddingLeft(leftPadding);
-      setInsetPaddingRight(rightPadding);
+      const parentStyles = getComputedStyle(parent);
+      const start = parentRect.left + Number.parseFloat(parentStyles.paddingLeft) - viewportRect.left;
+      const end = viewportRect.right - (parentRect.right - Number.parseFloat(parentStyles.paddingRight));
+      viewport.style.setProperty("--carousel-inset-start", `${Math.max(0, start)}px`);
+      viewport.style.setProperty("--carousel-inset-end", `${Math.max(0, end)}px`);
     };
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(bleed);
+    resizeObserver.observe(parent);
+    return () => {
+      resizeObserver.disconnect();
+      viewport.style.removeProperty("--carousel-inset-start");
+      viewport.style.removeProperty("--carousel-inset-end");
+    };
+  }, [variant, bleedRef]);
 
-    calculatePadding();
-
-    window.addEventListener("resize", calculatePadding);
-    return () => window.removeEventListener("resize", calculatePadding);
-  }, [variant, bleedRefFromContext, gap]);
+  const value = useMemo(
+    () => ({ index, slides, goTo, next, prev, canGoNext, canGoPrev, viewportRef, viewportId }),
+    [index, slides, goTo, next, prev, canGoNext, canGoPrev, viewportId]
+  );
 
   return (
     <CarouselContext.Provider value={value}>
-      <div
-        className={cn(
-          "relative mx-auto w-full overflow-visible rounded-lg",
-          "focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-2",
-          "data-[align=center]:flex data-[align=center]:flex-col data-[align=center]:items-center",
-          className
-        )}
-        data-align={align}
-        data-slot="carousel"
-        style={
-          {
-            "--page-max-width": "1280px",
-            "--page-padding-left": "1rem",
-            "--carousel-gap": "16px",
-            "--edge": "calc((100vw - var(--page-max-width)) / 2)",
-            "--min-edge": "calc(var(--edge) - var(--carousel-gap))",
-            "--min-padding": "calc(var(--page-padding-left) - var(--carousel-gap))",
-            "--calculated-inset-padding-left": `${insetPaddingLeft}px`,
-            "--calculated-inset-padding-right": `${insetPaddingRight}px`,
-          } as React.CSSProperties
-        }
-        {...props}
-      >
+      <div className={cn("relative mx-auto w-full", className)} data-slot="carousel" data-variant={variant} {...props}>
         {children}
-        <div
-          aria-atomic="true"
-          aria-live="polite"
-          className="-m-px absolute h-px w-px overflow-hidden whitespace-nowrap border-0 p-0"
-          style={{ clip: "rect(0, 0, 0, 0)" }}
-        >
-          Slide {currentIndex + 1} of {totalItems}
-        </div>
+        {slides.length > 0 && (
+          <div aria-atomic="true" aria-live="polite" className="sr-only">
+            Slide {index + 1} of {slides.length}
+          </div>
+        )}
       </div>
     </CarouselContext.Provider>
   );
 }
 
-export type CarouselBleedProps = React.ComponentProps<"div">;
-
-const BleedRefContext = createContext<React.RefObject<HTMLDivElement | null> | null>(null);
-
-export function useBleedRef() {
-  return useContext(BleedRefContext);
-}
-
-export function Bleed({ className, children, ...props }: CarouselBleedProps) {
+function CarouselBleed({ className, ref, ...props }: React.ComponentProps<"div">) {
   const bleedRef = useRef<HTMLDivElement | null>(null);
+  const mergedRef = useMergedRefs(ref, bleedRef);
 
   return (
-    <BleedRefContext.Provider value={bleedRef}>
+    <BleedContext.Provider value={bleedRef}>
       <div
         className={cn("-ml-[50vw] -mr-[50vw] relative right-1/2 left-1/2 w-screen", className)}
-        ref={bleedRef}
+        data-slot="carousel-bleed"
+        ref={mergedRef}
         {...props}
-      >
-        {children}
-      </div>
-    </BleedRefContext.Provider>
+      />
+    </BleedContext.Provider>
   );
 }
 
-export type CarouselViewportProps = React.ComponentProps<"div">;
-
-export function Viewport({ className, children, ...props }: CarouselViewportProps) {
-  const { viewportRef, slidesId } = useCarousel();
+function CarouselViewport({ className, ref, ...props }: React.ComponentProps<"div">) {
+  const { viewportRef, viewportId } = useCarousel();
+  const mergedRef = useMergedRefs(ref, viewportRef);
 
   return (
     <div
       className={cn(
-        "relative w-full overflow-y-hidden overflow-x-scroll overscroll-x-contain [scroll-snap-stop:always]",
-        "py-[calc(var(--focus-ring-width,2px)+var(--focus-ring-offset,2px))] [-ms-overflow-style:none] [scrollbar-width:none]",
-        "[&::-webkit-scrollbar]:hidden",
+        "relative flex w-full items-stretch gap-[var(--carousel-gap,1rem)] overflow-x-auto overflow-y-hidden overscroll-x-contain",
+        "py-[var(--carousel-edge)] [--carousel-edge:calc(var(--focus-ring-width,2px)+var(--focus-ring-offset,2px))]",
+        "ps-[max(var(--carousel-inset-start,0px),var(--carousel-edge))] pe-[max(var(--carousel-inset-end,0px),var(--carousel-edge))]",
+        "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         className
       )}
-      id={slidesId}
-      ref={viewportRef}
+      data-slot="carousel-viewport"
+      id={viewportId}
+      ref={mergedRef}
       {...props}
-    >
-      {children}
-    </div>
+    />
   );
 }
 
-export type CarouselContentProps = React.ComponentProps<"div">;
-
-export function Content({ className, children, ...props }: CarouselContentProps) {
-  const { gap, variant } = useCarousel();
-
-  return (
-    <div
-      className={cn(
-        "flex items-stretch",
-        "before:w-[var(--inset-padding-left,0)] before:flex-shrink-0 before:content-['']",
-        "after:w-[var(--inset-padding-right,0)] after:flex-shrink-0 after:content-['']",
-        className
-      )}
-      style={
-        {
-          gap: `${gap}px`,
-          "--inset-padding-left":
-            variant === "inset"
-              ? "var(--calculated-inset-padding-left, max(var(--min-edge), var(--min-padding)))"
-              : undefined,
-          "--inset-padding-right":
-            variant === "inset"
-              ? "var(--calculated-inset-padding-right, max(var(--min-edge), var(--min-padding)))"
-              : undefined,
-        } as React.CSSProperties
-      }
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
-
-export type CarouselItemProps = React.ComponentProps<"div"> & {
-  index: number;
-};
-
-export function Item({ index, className, children, ...props }: CarouselItemProps) {
-  const { totalItems, goToIndex, nextSlide, prevSlide, canGoNext, canGoPrev, viewportRef } = useCarousel();
-  const itemRef = useRef<HTMLDivElement>(null);
+function CarouselItem({ className, onKeyDown, ref, ...props }: React.ComponentProps<"div">) {
+  const { slides, goTo, next, prev, viewportRef } = useCarousel();
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  const mergedRef = useMergedRefs(ref, setElement);
   const [isVisible, setIsVisible] = useState(false);
+  const position = element ? slides.indexOf(element) + 1 : 0;
 
   useEffect(() => {
-    const el = itemRef.current;
     const root = viewportRef.current;
-    if (!(el && root)) {
+    if (!(element && root)) {
       return;
     }
-    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.intersectionRatio >= 0.5), {
-      root,
-      threshold: [0, 0.5, 1],
-    });
-    observer.observe(el);
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.intersectionRatio >= VISIBILITY_THRESHOLD),
+      { root, threshold: [0, VISIBILITY_THRESHOLD, 1] }
+    );
+    observer.observe(element);
     return () => observer.disconnect();
-  }, [viewportRef]);
+  }, [element, viewportRef]);
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      switch (e.key) {
-        case "ArrowLeft":
-          if (canGoPrev) {
-            e.preventDefault();
-            prevSlide();
-          }
-          break;
-        case "ArrowRight":
-          if (canGoNext) {
-            e.preventDefault();
-            nextSlide();
-          }
-          break;
-        case "Home":
-          e.preventDefault();
-          goToIndex(0);
-          break;
-        case "End":
-          e.preventDefault();
-          goToIndex(totalItems - 1);
-          break;
-        default:
-          break;
-      }
-    },
-    [canGoPrev, canGoNext, prevSlide, nextSlide, goToIndex, totalItems]
-  );
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    onKeyDown?.(event);
+    if (event.defaultPrevented || event.target !== event.currentTarget) {
+      return;
+    }
+    const actions: Record<string, () => void> = {
+      ArrowLeft: prev,
+      ArrowRight: next,
+      Home: () => goTo(0),
+      End: () => goTo(slides.length - 1),
+    };
+    const action = actions[event.key];
+    if (action) {
+      event.preventDefault();
+      action();
+    }
+  };
 
   return (
     // biome-ignore lint/a11y/noNoninteractiveElementInteractions: Keyboard navigation is required for carousel accessibility
     // biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend>
     <div
-      aria-label={`Slide ${index + 1} of ${totalItems}`}
+      aria-label={position > 0 ? `Slide ${position} of ${slides.length}` : undefined}
       aria-roledescription="slide"
       className={cn(
         "relative flex-shrink-0",
         "focus-visible:rounded-[var(--radius)] focus-visible:outline-2 focus-visible:outline-[color:var(--ring)] focus-visible:outline-offset-[1px]",
         className
       )}
+      data-slot="carousel-item"
       onKeyDown={handleKeyDown}
-      ref={itemRef}
+      ref={mergedRef}
       role="group"
       tabIndex={isVisible ? 0 : -1}
       {...props}
-    >
-      {children}
-    </div>
+    />
   );
 }
 
-export type CarouselPreviousProps = React.ComponentProps<"button">;
+function CarouselPrevious({ className, children, onClick, ...props }: React.ComponentProps<"button">) {
+  const { prev, canGoPrev, slides, viewportId } = useCarousel();
 
-export function Previous({ className, children, ...props }: CarouselPreviousProps) {
-  const { prevSlide, canGoPrev, slidesId } = useCarousel();
+  if (slides.length === 1) {
+    return null;
+  }
 
   return (
     <button
-      aria-controls={slidesId}
+      aria-controls={viewportId}
       aria-label="Previous slide"
       className={cn(
         "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
@@ -450,12 +382,18 @@ export function Previous({ className, children, ...props }: CarouselPreviousProp
         "motion-reduce:transition-none [&_svg]:h-4 [&_svg]:w-4",
         className
       )}
+      data-slot="carousel-previous"
       disabled={!canGoPrev}
-      onClick={prevSlide}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          prev();
+        }
+      }}
       type="button"
       {...props}
     >
-      {children || (
+      {children ?? (
         <svg aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="m15 18-6-6 6-6" />
         </svg>
@@ -464,14 +402,16 @@ export function Previous({ className, children, ...props }: CarouselPreviousProp
   );
 }
 
-export type CarouselNextProps = React.ComponentProps<"button">;
+function CarouselNext({ className, children, onClick, ...props }: React.ComponentProps<"button">) {
+  const { next, canGoNext, slides, viewportId } = useCarousel();
 
-export function Next({ className, children, ...props }: CarouselNextProps) {
-  const { nextSlide, canGoNext, slidesId } = useCarousel();
+  if (slides.length === 1) {
+    return null;
+  }
 
   return (
     <button
-      aria-controls={slidesId}
+      aria-controls={viewportId}
       aria-label="Next slide"
       className={cn(
         "relative h-10 w-10 rounded-full border-[0.5px] border-[color:oklch(from_var(--border)_l_c_h_/_0.8)]",
@@ -485,12 +425,18 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
         "motion-reduce:transition-none [&_svg]:h-4 [&_svg]:w-4",
         className
       )}
+      data-slot="carousel-next"
       disabled={!canGoNext}
-      onClick={nextSlide}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          next();
+        }
+      }}
       type="button"
       {...props}
     >
-      {children || (
+      {children ?? (
         <svg aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="m9 18 6-6-6-6" />
         </svg>
@@ -499,58 +445,46 @@ export function Next({ className, children, ...props }: CarouselNextProps) {
   );
 }
 
-export type CarouselNavigationProps = React.ComponentProps<"div">;
+function CarouselNavigation({ className, children, ...props }: React.ComponentProps<"div">) {
+  const { slides } = useCarousel();
 
-export function Navigation({ className, children, ...props }: CarouselNavigationProps) {
-  const { totalItems, variant } = useCarousel();
-
-  if (totalItems <= 1) {
+  if (slides.length === 1) {
     return null;
   }
 
   return (
-    <div
-      className={cn("mt-12 flex justify-center gap-2", className)}
-      style={
-        variant === "inset"
-          ? ({
-              "--inset-padding": "var(--calculated-inset-padding, 0)",
-            } as React.CSSProperties)
-          : undefined
-      }
-      {...props}
-    >
-      {children || (
+    <div className={cn("mt-12 flex justify-center gap-2", className)} data-slot="carousel-navigation" {...props}>
+      {children ?? (
         <>
-          <Previous />
-          <Next />
+          <CarouselPrevious />
+          <CarouselNext />
         </>
       )}
     </div>
   );
 }
 
-export type CarouselIndicatorsProps = React.ComponentProps<"div">;
+function CarouselIndicators({ className, ...props }: Omit<React.ComponentProps<"div">, "children">) {
+  const { slides, index, goTo, viewportId } = useCarousel();
 
-export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
-  const { totalItems, currentIndex, goToIndex, slidesId } = useCarousel();
-
-  if (totalItems <= 1) {
+  if (slides.length <= 1) {
     return null;
   }
 
   return (
+    // biome-ignore lint/a11y/useSemanticElements: role="group" with aria-label is the intended ARIA pattern; <fieldset> would need a <legend>
     <div
       aria-label="Choose slide to display"
       className={cn("-translate-x-1/2 absolute bottom-4 left-1/2 z-10 flex gap-2", className)}
-      role="tablist"
+      data-slot="carousel-indicators"
+      role="group"
       {...props}
     >
-      {Array.from({ length: totalItems }, (_, index) => (
+      {slides.map((_, slideIndex) => (
         <button
-          aria-controls={slidesId}
-          aria-label={`Go to slide ${index + 1}`}
-          aria-selected={currentIndex === index}
+          aria-controls={viewportId}
+          aria-current={index === slideIndex ? "true" : undefined}
+          aria-label={`Go to slide ${slideIndex + 1}`}
           className={cn(
             "relative h-3 w-3 cursor-pointer rounded-full border-none",
             "bg-[color:oklch(from_var(--foreground)_l_c_h_/_0.3)] transition duration-200 ease-[ease]",
@@ -559,11 +493,10 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
             "data-[active]:scale-[1.2] data-[active]:bg-[color:var(--primary)] data-[active]:hover:bg-[color:var(--primary)]",
             "motion-reduce:transition-none"
           )}
-          data-active={currentIndex === index ? "" : undefined}
-          // biome-ignore lint/suspicious/noArrayIndexKey: Indicators are stable and don't reorder
-          key={`indicator-${index}`}
-          onClick={() => goToIndex(index)}
-          role="tab"
+          data-active={index === slideIndex ? "" : undefined}
+          // biome-ignore lint/suspicious/noArrayIndexKey: Indicators have no identity other than their position
+          key={slideIndex}
+          onClick={() => goTo(slideIndex)}
           type="button"
         />
       ))}
@@ -572,13 +505,12 @@ export function Indicators({ className, ...props }: CarouselIndicatorsProps) {
 }
 
 export const Carousel = {
-  Root,
-  Bleed,
-  Viewport,
-  Content,
-  Item,
-  Previous,
-  Next,
-  Navigation,
-  Indicators,
+  Root: CarouselRoot,
+  Bleed: CarouselBleed,
+  Viewport: CarouselViewport,
+  Item: CarouselItem,
+  Previous: CarouselPrevious,
+  Next: CarouselNext,
+  Navigation: CarouselNavigation,
+  Indicators: CarouselIndicators,
 };

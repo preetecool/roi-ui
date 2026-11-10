@@ -89,3 +89,7 @@
     box-shadow: 0 0 0 0.5px oklch(from var(--border) l c h / 0.5);
   }
 }
+
+.viewport {
+  --carousel-gap: 8px;
+}

@@ -1,27 +1,7 @@
 .carousel {
-  --page-max-width: 1280px;
-  --page-padding-left: 1rem;
-  --carousel-gap: 16px;
-  --edge: calc((100vw - var(--page-max-width)) / 2);
-  --min-edge: calc(var(--edge) - var(--carousel-gap));
-  --min-padding: calc(var(--page-padding-left) - var(--carousel-gap));
-
   position: relative;
   width: 100%;
   margin: 0 auto;
-  border-radius: 0.5rem;
-  overflow: visible;
-
-  &:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
-  }
-
-  &[data-align="center"] {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 .bleed {
@@ -35,37 +15,25 @@
 
 .viewport {
   position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: var(--carousel-gap, 1rem);
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
-  scroll-snap-stop: always;
-  padding-block: calc(
+  --carousel-edge: calc(
     var(--focus-ring-width, 2px) +
     var(--focus-ring-offset, 2px)
   );
+
+  padding-block: var(--carousel-edge);
+  padding-inline: max(var(--carousel-inset-start, 0px), var(--carousel-edge))
+    max(var(--carousel-inset-end, 0px), var(--carousel-edge));
   scrollbar-width: none;
-  -ms-overflow-style: none;
 
   &::-webkit-scrollbar {
     display: none;
-  }
-}
-
-.container {
-  display: flex;
-  align-items: stretch;
-
-  &::before {
-    content: "";
-    flex-shrink: 0;
-    width: var(--inset-padding-left, 0);
-  }
-
-  &::after {
-    content: "";
-    flex-shrink: 0;
-    width: var(--inset-padding-right, 0);
   }
 }
 

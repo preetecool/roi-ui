@@ -47,6 +47,22 @@
   justify-content: center;
 }
 
+.viewport {
+  --carousel-gap: 24px;
+
+  height: 50vh;
+  align-items: center;
+}
+
+/* Center the slides when they fit. Auto margins keep the first slide reachable when they do not. */
+.viewport > :first-child {
+  margin-left: auto;
+}
+
+.viewport > :last-child {
+  margin-right: auto;
+}
+
 @media (min-width: 1100px) {
   .header {
     max-width: 1008px;
