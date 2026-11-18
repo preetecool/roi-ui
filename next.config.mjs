@@ -7,6 +7,9 @@ const nextConfig = {
   turbopack: {
     root: import.meta.dirname,
   },
+  experimental: {
+    agentUpgrade: "security",
+  },
 };
 
 const withMDX = createMDX();
