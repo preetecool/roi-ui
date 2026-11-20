@@ -45,7 +45,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  border-radius: calc(var(--radius) - 1px);
+  border-radius: inherit;
 }
 
 .primary:active:not([data-disabled]),
